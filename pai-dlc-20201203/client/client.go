@@ -150,6 +150,8 @@ type ContainerSpec struct {
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	// 容器名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 容器资源
+	Resources *ResourceRequirements `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// 容器内工作目录
 	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
@@ -184,6 +186,11 @@ func (s *ContainerSpec) SetImage(v string) *ContainerSpec {
 
 func (s *ContainerSpec) SetName(v string) *ContainerSpec {
 	s.Name = &v
+	return s
+}
+
+func (s *ContainerSpec) SetResources(v *ResourceRequirements) *ContainerSpec {
+	s.Resources = v
 	return s
 }
 
@@ -287,7 +294,291 @@ func (s *DataSourceItem) SetUserId(v string) *DataSourceItem {
 	return s
 }
 
+type DebuggerConfig struct {
+	// 配置项细节，json结构
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// 系统生成的debug config唯一ID
+	DebuggerConfigId *string `json:"DebuggerConfigId,omitempty" xml:"DebuggerConfigId,omitempty"`
+	// 配置项描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 模板配置项名称
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// 创建时间（UTC）
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 修改时间（UTC）
+	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+}
+
+func (s DebuggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DebuggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DebuggerConfig) SetContent(v string) *DebuggerConfig {
+	s.Content = &v
+	return s
+}
+
+func (s *DebuggerConfig) SetDebuggerConfigId(v string) *DebuggerConfig {
+	s.DebuggerConfigId = &v
+	return s
+}
+
+func (s *DebuggerConfig) SetDescription(v string) *DebuggerConfig {
+	s.Description = &v
+	return s
+}
+
+func (s *DebuggerConfig) SetDisplayName(v string) *DebuggerConfig {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *DebuggerConfig) SetGmtCreateTime(v string) *DebuggerConfig {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *DebuggerConfig) SetGmtModifyTime(v string) *DebuggerConfig {
+	s.GmtModifyTime = &v
+	return s
+}
+
+type DebuggerJob struct {
+	// debugger分析作业ID
+	DebuggerJobId *string `json:"DebuggerJobId,omitempty" xml:"DebuggerJobId,omitempty"`
+	// 作业显示名
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// 作业运行的时长（单位秒）
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// 创建时间（UTC）
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 失败时间（UTC）
+	GmtFailedTime *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
+	// 任务完成时间（UTC）
+	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// 运行开始时间（UTC）
+	GmtRunningTime *string `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
+	// 结束时间（UTC）
+	GmtStoppedTime *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
+	// 提交时间（UTC）
+	GmtSubmittedTime *string `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
+	// 成功结束时间（UTC）
+	GmtSucceedTime *string `json:"GmtSucceedTime,omitempty" xml:"GmtSucceedTime,omitempty"`
+	// 作业运行状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 作业所属的运行工作空间
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// 作业所属的运行工作空间名称
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+}
+
+func (s DebuggerJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DebuggerJob) GoString() string {
+	return s.String()
+}
+
+func (s *DebuggerJob) SetDebuggerJobId(v string) *DebuggerJob {
+	s.DebuggerJobId = &v
+	return s
+}
+
+func (s *DebuggerJob) SetDisplayName(v string) *DebuggerJob {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *DebuggerJob) SetDuration(v string) *DebuggerJob {
+	s.Duration = &v
+	return s
+}
+
+func (s *DebuggerJob) SetGmtCreateTime(v string) *DebuggerJob {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *DebuggerJob) SetGmtFailedTime(v string) *DebuggerJob {
+	s.GmtFailedTime = &v
+	return s
+}
+
+func (s *DebuggerJob) SetGmtFinishTime(v string) *DebuggerJob {
+	s.GmtFinishTime = &v
+	return s
+}
+
+func (s *DebuggerJob) SetGmtRunningTime(v string) *DebuggerJob {
+	s.GmtRunningTime = &v
+	return s
+}
+
+func (s *DebuggerJob) SetGmtStoppedTime(v string) *DebuggerJob {
+	s.GmtStoppedTime = &v
+	return s
+}
+
+func (s *DebuggerJob) SetGmtSubmittedTime(v string) *DebuggerJob {
+	s.GmtSubmittedTime = &v
+	return s
+}
+
+func (s *DebuggerJob) SetGmtSucceedTime(v string) *DebuggerJob {
+	s.GmtSucceedTime = &v
+	return s
+}
+
+func (s *DebuggerJob) SetStatus(v string) *DebuggerJob {
+	s.Status = &v
+	return s
+}
+
+func (s *DebuggerJob) SetUserId(v string) *DebuggerJob {
+	s.UserId = &v
+	return s
+}
+
+func (s *DebuggerJob) SetWorkspaceId(v string) *DebuggerJob {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *DebuggerJob) SetWorkspaceName(v string) *DebuggerJob {
+	s.WorkspaceName = &v
+	return s
+}
+
+type DebuggerJobIssue struct {
+	// 规则报告的具体json描述
+	DebuggerJobIssue *string `json:"DebuggerJobIssue,omitempty" xml:"DebuggerJobIssue,omitempty"`
+	// 创建时间（UTC）
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// event的全局唯一ID
+	JobDebuggerIssueId *string `json:"JobDebuggerIssueId,omitempty" xml:"JobDebuggerIssueId,omitempty"`
+	// 作业ID
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 规则触发原因的编码
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// 规则触发的原因
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s DebuggerJobIssue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DebuggerJobIssue) GoString() string {
+	return s.String()
+}
+
+func (s *DebuggerJobIssue) SetDebuggerJobIssue(v string) *DebuggerJobIssue {
+	s.DebuggerJobIssue = &v
+	return s
+}
+
+func (s *DebuggerJobIssue) SetGmtCreateTime(v string) *DebuggerJobIssue {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *DebuggerJobIssue) SetJobDebuggerIssueId(v string) *DebuggerJobIssue {
+	s.JobDebuggerIssueId = &v
+	return s
+}
+
+func (s *DebuggerJobIssue) SetJobId(v string) *DebuggerJobIssue {
+	s.JobId = &v
+	return s
+}
+
+func (s *DebuggerJobIssue) SetReasonCode(v string) *DebuggerJobIssue {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *DebuggerJobIssue) SetReasonMessage(v string) *DebuggerJobIssue {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *DebuggerJobIssue) SetRuleName(v string) *DebuggerJobIssue {
+	s.RuleName = &v
+	return s
+}
+
+type DebuggerResult struct {
+	// 配置项细节，json结构
+	DebuggerConfigContent *string `json:"DebuggerConfigContent,omitempty" xml:"DebuggerConfigContent,omitempty"`
+	// 规则报告细节信息
+	DebuggerJobIssues *string `json:"DebuggerJobIssues,omitempty" xml:"DebuggerJobIssues,omitempty"`
+	// debugger job运行状态描述
+	DebuggerJobStatus *string `json:"DebuggerJobStatus,omitempty" xml:"DebuggerJobStatus,omitempty"`
+	// 报告文件下载地址
+	DebuggerReportURL *string `json:"DebuggerReportURL,omitempty" xml:"DebuggerReportURL,omitempty"`
+	// 作业显示名
+	JobDisplayName *string `json:"JobDisplayName,omitempty" xml:"JobDisplayName,omitempty"`
+	// 作业ID
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 用户ID
+	JobUserId *string `json:"JobUserId,omitempty" xml:"JobUserId,omitempty"`
+}
+
+func (s DebuggerResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DebuggerResult) GoString() string {
+	return s.String()
+}
+
+func (s *DebuggerResult) SetDebuggerConfigContent(v string) *DebuggerResult {
+	s.DebuggerConfigContent = &v
+	return s
+}
+
+func (s *DebuggerResult) SetDebuggerJobIssues(v string) *DebuggerResult {
+	s.DebuggerJobIssues = &v
+	return s
+}
+
+func (s *DebuggerResult) SetDebuggerJobStatus(v string) *DebuggerResult {
+	s.DebuggerJobStatus = &v
+	return s
+}
+
+func (s *DebuggerResult) SetDebuggerReportURL(v string) *DebuggerResult {
+	s.DebuggerReportURL = &v
+	return s
+}
+
+func (s *DebuggerResult) SetJobDisplayName(v string) *DebuggerResult {
+	s.JobDisplayName = &v
+	return s
+}
+
+func (s *DebuggerResult) SetJobId(v string) *DebuggerResult {
+	s.JobId = &v
+	return s
+}
+
+func (s *DebuggerResult) SetJobUserId(v string) *DebuggerResult {
+	s.JobUserId = &v
+	return s
+}
+
 type EcsSpec struct {
+	// 加速器类型
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
 	// cpu数量
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// gpu数量
@@ -296,6 +587,8 @@ type EcsSpec struct {
 	GpuType *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
 	// 规格类型
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// 是否有库存
+	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
 	// Memory数量
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
@@ -306,6 +599,11 @@ func (s EcsSpec) String() string {
 
 func (s EcsSpec) GoString() string {
 	return s.String()
+}
+
+func (s *EcsSpec) SetAcceleratorType(v string) *EcsSpec {
+	s.AcceleratorType = &v
+	return s
 }
 
 func (s *EcsSpec) SetCpu(v int32) *EcsSpec {
@@ -325,6 +623,11 @@ func (s *EcsSpec) SetGpuType(v string) *EcsSpec {
 
 func (s *EcsSpec) SetInstanceType(v string) *EcsSpec {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *EcsSpec) SetIsAvailable(v bool) *EcsSpec {
+	s.IsAvailable = &v
 	return s
 }
 
@@ -439,6 +742,8 @@ func (s *GPUDetail) SetGPUTypeFullName(v string) *GPUDetail {
 type ImageItem struct {
 	// 加速器类型
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// 镜像作者
+	AuthorId *string `json:"AuthorId,omitempty" xml:"AuthorId,omitempty"`
 	// 镜像包含的框架类型
 	Framework *string `json:"Framework,omitempty" xml:"Framework,omitempty"`
 	// 镜像类型
@@ -464,6 +769,11 @@ func (s *ImageItem) SetAcceleratorType(v string) *ImageItem {
 	return s
 }
 
+func (s *ImageItem) SetAuthorId(v string) *ImageItem {
+	s.AuthorId = &v
+	return s
+}
+
 func (s *ImageItem) SetFramework(v string) *ImageItem {
 	s.Framework = &v
 	return s
@@ -486,6 +796,45 @@ func (s *ImageItem) SetImageUrl(v string) *ImageItem {
 
 func (s *ImageItem) SetImageUrlVpc(v string) *ImageItem {
 	s.ImageUrlVpc = &v
+	return s
+}
+
+type JobDebuggerConfig struct {
+	// debugger配置信息
+	DebuggerConfigContent *string `json:"DebuggerConfigContent,omitempty" xml:"DebuggerConfigContent,omitempty"`
+	// debugger配置项ID
+	DebuggerConfigId *string `json:"DebuggerConfigId,omitempty" xml:"DebuggerConfigId,omitempty"`
+	// debugger配置创建的时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 作业ID
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s JobDebuggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JobDebuggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *JobDebuggerConfig) SetDebuggerConfigContent(v string) *JobDebuggerConfig {
+	s.DebuggerConfigContent = &v
+	return s
+}
+
+func (s *JobDebuggerConfig) SetDebuggerConfigId(v string) *JobDebuggerConfig {
+	s.DebuggerConfigId = &v
+	return s
+}
+
+func (s *JobDebuggerConfig) SetGmtCreateTime(v string) *JobDebuggerConfig {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *JobDebuggerConfig) SetJobId(v string) *JobDebuggerConfig {
+	s.JobId = &v
 	return s
 }
 
@@ -537,6 +886,8 @@ type JobItem struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// 作业运行时长，单位：秒
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// 是否开启了debugger分析
+	EnabledDebugger *bool `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
 	// 环境变量配置
 	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	// 作业创建时间（UTC）
@@ -555,6 +906,10 @@ type JobItem struct {
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
 	// 作业运行所在的资源组ID
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// 作业运行时的资源级别
+	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+	// 作业运行的资源名称
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// 作业额外参数
 	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	// 作业状态
@@ -601,6 +956,11 @@ func (s *JobItem) SetDuration(v int64) *JobItem {
 	return s
 }
 
+func (s *JobItem) SetEnabledDebugger(v bool) *JobItem {
+	s.EnabledDebugger = &v
+	return s
+}
+
 func (s *JobItem) SetEnvs(v map[string]*string) *JobItem {
 	s.Envs = v
 	return s
@@ -643,6 +1003,16 @@ func (s *JobItem) SetReasonMessage(v string) *JobItem {
 
 func (s *JobItem) SetResourceId(v string) *JobItem {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *JobItem) SetResourceLevel(v string) *JobItem {
+	s.ResourceLevel = &v
+	return s
+}
+
+func (s *JobItem) SetResourceName(v string) *JobItem {
+	s.ResourceName = &v
 	return s
 }
 
@@ -755,6 +1125,14 @@ type JobSettings struct {
 	BusinessUserId *string `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
 	// 调用方
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// 允许打开作业容错监控
+	EnableErrorMonitoringInAIMaster *bool `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
+	// 允许作业使用RDMA
+	EnableRDMA *bool `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
+	// 允许作业使用潮汐资源
+	EnableTideResource *bool `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
+	// 用户指定容错监控的配置参数，比如指定是否启动基于log hang的检测
+	ErrorMonitoringArgs *string `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
 	// 工作流ID
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	// 自定义标签
@@ -776,6 +1154,26 @@ func (s *JobSettings) SetBusinessUserId(v string) *JobSettings {
 
 func (s *JobSettings) SetCaller(v string) *JobSettings {
 	s.Caller = &v
+	return s
+}
+
+func (s *JobSettings) SetEnableErrorMonitoringInAIMaster(v bool) *JobSettings {
+	s.EnableErrorMonitoringInAIMaster = &v
+	return s
+}
+
+func (s *JobSettings) SetEnableRDMA(v bool) *JobSettings {
+	s.EnableRDMA = &v
+	return s
+}
+
+func (s *JobSettings) SetEnableTideResource(v bool) *JobSettings {
+	s.EnableTideResource = &v
+	return s
+}
+
+func (s *JobSettings) SetErrorMonitoringArgs(v string) *JobSettings {
+	s.ErrorMonitoringArgs = &v
 	return s
 }
 
@@ -802,6 +1200,8 @@ type JobSpec struct {
 	ResourceConfig *ResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
 	// 类型
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 是否使用竞价实例
+	UseSpotInstance *bool `json:"UseSpotInstance,omitempty" xml:"UseSpotInstance,omitempty"`
 }
 
 func (s JobSpec) String() string {
@@ -839,6 +1239,11 @@ func (s *JobSpec) SetResourceConfig(v *ResourceConfig) *JobSpec {
 
 func (s *JobSpec) SetType(v string) *JobSpec {
 	s.Type = &v
+	return s
+}
+
+func (s *JobSpec) SetUseSpotInstance(v bool) *JobSpec {
+	s.UseSpotInstance = &v
 	return s
 }
 
@@ -947,6 +1352,8 @@ type Quota struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// 是否允许使用潮汐资源
+	EnableTideResource *bool `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
 	// 是否是独占Quota组
 	IsExclusiveQuota *bool `json:"IsExclusiveQuota,omitempty" xml:"IsExclusiveQuota,omitempty"`
 	// 资源配额id
@@ -955,10 +1362,16 @@ type Quota struct {
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
 	// 资源配额类型
 	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	// 资源组允许使用的潮汐资源级别
+	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
 	// 资源总量
 	TotalQuota *QuotaDetail `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
+	// 潮汐资源总量
+	TotalTideQuota *QuotaDetail `json:"TotalTideQuota,omitempty" xml:"TotalTideQuota,omitempty"`
 	// 资源用量
 	UsedQuota *QuotaDetail `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
+	// 潮汐资源用量
+	UsedTideQuota *QuotaDetail `json:"UsedTideQuota,omitempty" xml:"UsedTideQuota,omitempty"`
 }
 
 func (s Quota) String() string {
@@ -976,6 +1389,11 @@ func (s *Quota) SetClusterId(v string) *Quota {
 
 func (s *Quota) SetClusterName(v string) *Quota {
 	s.ClusterName = &v
+	return s
+}
+
+func (s *Quota) SetEnableTideResource(v bool) *Quota {
+	s.EnableTideResource = &v
 	return s
 }
 
@@ -999,13 +1417,28 @@ func (s *Quota) SetQuotaType(v string) *Quota {
 	return s
 }
 
+func (s *Quota) SetResourceLevel(v string) *Quota {
+	s.ResourceLevel = &v
+	return s
+}
+
 func (s *Quota) SetTotalQuota(v *QuotaDetail) *Quota {
 	s.TotalQuota = v
 	return s
 }
 
+func (s *Quota) SetTotalTideQuota(v *QuotaDetail) *Quota {
+	s.TotalTideQuota = v
+	return s
+}
+
 func (s *Quota) SetUsedQuota(v *QuotaDetail) *Quota {
 	s.UsedQuota = v
+	return s
+}
+
+func (s *Quota) SetUsedTideQuota(v *QuotaDetail) *Quota {
+	s.UsedTideQuota = v
 	return s
 }
 
@@ -1108,6 +1541,31 @@ func (s *ResourceConfig) SetSharedMemory(v string) *ResourceConfig {
 	return s
 }
 
+type ResourceRequirements struct {
+	// 资源限制
+	Limits map[string]*string `json:"Limits,omitempty" xml:"Limits,omitempty"`
+	// 资源需求
+	Requests map[string]*string `json:"Requests,omitempty" xml:"Requests,omitempty"`
+}
+
+func (s ResourceRequirements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceRequirements) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceRequirements) SetLimits(v map[string]*string) *ResourceRequirements {
+	s.Limits = v
+	return s
+}
+
+func (s *ResourceRequirements) SetRequests(v map[string]*string) *ResourceRequirements {
+	s.Requests = v
+	return s
+}
+
 type Resources struct {
 	// CPU核心数
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
@@ -1137,6 +1595,129 @@ func (s *Resources) SetGPU(v string) *Resources {
 
 func (s *Resources) SetMemory(v string) *Resources {
 	s.Memory = &v
+	return s
+}
+
+type SmartCache struct {
+	// cache worker的数量单位是个
+	CacheWorkerNum *int64 `json:"CacheWorkerNum,omitempty" xml:"CacheWorkerNum,omitempty"`
+	// 每个cache worker的cache大小单位是GB
+	CacheWorkerSize *int64 `json:"CacheWorkerSize,omitempty" xml:"CacheWorkerSize,omitempty"`
+	// SmartCache 描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// SmartCache 名称
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// 已运行时长
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// OSS Endpoint
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// 阿里云的NAS文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// 创建时间（UTC）
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 修改时间（UTC）
+	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// 数据源本地挂载目录
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// 可选的超参数
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// OSS数据源路径
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// SmartCacheId
+	SmartCacheId *string `json:"SmartCacheId,omitempty" xml:"SmartCacheId,omitempty"`
+	// 运行状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 挂载的数据类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 创建者Id
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s SmartCache) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartCache) GoString() string {
+	return s.String()
+}
+
+func (s *SmartCache) SetCacheWorkerNum(v int64) *SmartCache {
+	s.CacheWorkerNum = &v
+	return s
+}
+
+func (s *SmartCache) SetCacheWorkerSize(v int64) *SmartCache {
+	s.CacheWorkerSize = &v
+	return s
+}
+
+func (s *SmartCache) SetDescription(v string) *SmartCache {
+	s.Description = &v
+	return s
+}
+
+func (s *SmartCache) SetDisplayName(v string) *SmartCache {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *SmartCache) SetDuration(v string) *SmartCache {
+	s.Duration = &v
+	return s
+}
+
+func (s *SmartCache) SetEndpoint(v string) *SmartCache {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *SmartCache) SetFileSystemId(v string) *SmartCache {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *SmartCache) SetGmtCreateTime(v string) *SmartCache {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *SmartCache) SetGmtModifyTime(v string) *SmartCache {
+	s.GmtModifyTime = &v
+	return s
+}
+
+func (s *SmartCache) SetMountPath(v string) *SmartCache {
+	s.MountPath = &v
+	return s
+}
+
+func (s *SmartCache) SetOptions(v string) *SmartCache {
+	s.Options = &v
+	return s
+}
+
+func (s *SmartCache) SetPath(v string) *SmartCache {
+	s.Path = &v
+	return s
+}
+
+func (s *SmartCache) SetSmartCacheId(v string) *SmartCache {
+	s.SmartCacheId = &v
+	return s
+}
+
+func (s *SmartCache) SetStatus(v string) *SmartCache {
+	s.Status = &v
+	return s
+}
+
+func (s *SmartCache) SetType(v string) *SmartCache {
+	s.Type = &v
+	return s
+}
+
+func (s *SmartCache) SetUserId(v string) *SmartCache {
+	s.UserId = &v
 	return s
 }
 
@@ -1323,72 +1904,6 @@ func (s *Workspace) SetWorkspaceName(v string) *Workspace {
 	return s
 }
 
-type BatchGetJobsStatisticsRequest struct {
-	// 工作空间id列表
-	WorkspaceIds *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
-}
-
-func (s BatchGetJobsStatisticsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchGetJobsStatisticsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchGetJobsStatisticsRequest) SetWorkspaceIds(v string) *BatchGetJobsStatisticsRequest {
-	s.WorkspaceIds = &v
-	return s
-}
-
-type BatchGetJobsStatisticsResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 每一个工作空间id下面的Job按照状态的分类统计信息
-	Statistics map[string]interface{} `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-}
-
-func (s BatchGetJobsStatisticsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchGetJobsStatisticsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BatchGetJobsStatisticsResponseBody) SetRequestId(v string) *BatchGetJobsStatisticsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *BatchGetJobsStatisticsResponseBody) SetStatistics(v map[string]interface{}) *BatchGetJobsStatisticsResponseBody {
-	s.Statistics = v
-	return s
-}
-
-type BatchGetJobsStatisticsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchGetJobsStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s BatchGetJobsStatisticsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchGetJobsStatisticsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchGetJobsStatisticsResponse) SetHeaders(v map[string]*string) *BatchGetJobsStatisticsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchGetJobsStatisticsResponse) SetBody(v *BatchGetJobsStatisticsResponseBody) *BatchGetJobsStatisticsResponse {
-	s.Body = v
-	return s
-}
-
 type CreateCodeSourceRequest struct {
 	// 代码分支
 	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
@@ -1475,8 +1990,9 @@ func (s *CreateCodeSourceResponseBody) SetRequestId(v string) *CreateCodeSourceR
 }
 
 type CreateCodeSourceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCodeSourceResponse) String() string {
@@ -1489,6 +2005,11 @@ func (s CreateCodeSourceResponse) GoString() string {
 
 func (s *CreateCodeSourceResponse) SetHeaders(v map[string]*string) *CreateCodeSourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateCodeSourceResponse) SetStatusCode(v int32) *CreateCodeSourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1590,8 +2111,9 @@ func (s *CreateDataSourceResponseBody) SetRequestId(v string) *CreateDataSourceR
 }
 
 type CreateDataSourceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDataSourceResponse) String() string {
@@ -1607,6 +2129,11 @@ func (s *CreateDataSourceResponse) SetHeaders(v map[string]*string) *CreateDataS
 	return s
 }
 
+func (s *CreateDataSourceResponse) SetStatusCode(v int32) *CreateDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateDataSourceResponse) SetBody(v *CreateDataSourceResponseBody) *CreateDataSourceResponse {
 	s.Body = v
 	return s
@@ -1617,6 +2144,8 @@ type CreateJobRequest struct {
 	CodeSource *CreateJobRequestCodeSource `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
 	// 数据源配置列表
 	DataSources []*CreateJobRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// debugger参数
+	DebuggerConfigContent *string `json:"DebuggerConfigContent,omitempty" xml:"DebuggerConfigContent,omitempty"`
 	// 作业显示名称
 	DisplayName *string         `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
@@ -1628,6 +2157,7 @@ type CreateJobRequest struct {
 	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
 	// 作业类型
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// 作业优先级
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// 资源组编号
@@ -1663,6 +2193,11 @@ func (s *CreateJobRequest) SetDataSources(v []*CreateJobRequestDataSources) *Cre
 	return s
 }
 
+func (s *CreateJobRequest) SetDebuggerConfigContent(v string) *CreateJobRequest {
+	s.DebuggerConfigContent = &v
+	return s
+}
+
 func (s *CreateJobRequest) SetDisplayName(v string) *CreateJobRequest {
 	s.DisplayName = &v
 	return s
@@ -1690,6 +2225,11 @@ func (s *CreateJobRequest) SetJobSpecs(v []*JobSpec) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetJobType(v string) *CreateJobRequest {
 	s.JobType = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetOptions(v string) *CreateJobRequest {
+	s.Options = &v
 	return s
 }
 
@@ -1862,8 +2402,9 @@ func (s *CreateJobResponseBody) SetRequestId(v string) *CreateJobResponseBody {
 }
 
 type CreateJobResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateJobResponse) String() string {
@@ -1879,25 +2420,35 @@ func (s *CreateJobResponse) SetHeaders(v map[string]*string) *CreateJobResponse 
 	return s
 }
 
+func (s *CreateJobResponse) SetStatusCode(v int32) *CreateJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse {
 	s.Body = v
 	return s
 }
 
 type CreateTensorboardRequest struct {
-	// 工作空间ID
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// DataSource Id
-	DataSourceId *string           `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	DataSources  []*DataSourceItem `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	DataSourceId   *string           `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceType *string           `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	DataSources    []*DataSourceItem `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
 	// Tensorboard名称
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// 任务Id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// 最长运行时长
-	MaxRunningTimeMinutes *int64 `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	MaxRunningTimeMinutes *int64  `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	Options               *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	SourceId              *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// Summary 目录
-	SummaryPath *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	SummaryPath         *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	SummaryRelativePath *string `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
+	Uri                 *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateTensorboardRequest) String() string {
@@ -1908,13 +2459,13 @@ func (s CreateTensorboardRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTensorboardRequest) SetWorkspaceId(v string) *CreateTensorboardRequest {
-	s.WorkspaceId = &v
+func (s *CreateTensorboardRequest) SetDataSourceId(v string) *CreateTensorboardRequest {
+	s.DataSourceId = &v
 	return s
 }
 
-func (s *CreateTensorboardRequest) SetDataSourceId(v string) *CreateTensorboardRequest {
-	s.DataSourceId = &v
+func (s *CreateTensorboardRequest) SetDataSourceType(v string) *CreateTensorboardRequest {
+	s.DataSourceType = &v
 	return s
 }
 
@@ -1938,8 +2489,38 @@ func (s *CreateTensorboardRequest) SetMaxRunningTimeMinutes(v int64) *CreateTens
 	return s
 }
 
+func (s *CreateTensorboardRequest) SetOptions(v string) *CreateTensorboardRequest {
+	s.Options = &v
+	return s
+}
+
+func (s *CreateTensorboardRequest) SetSourceId(v string) *CreateTensorboardRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *CreateTensorboardRequest) SetSourceType(v string) *CreateTensorboardRequest {
+	s.SourceType = &v
+	return s
+}
+
 func (s *CreateTensorboardRequest) SetSummaryPath(v string) *CreateTensorboardRequest {
 	s.SummaryPath = &v
+	return s
+}
+
+func (s *CreateTensorboardRequest) SetSummaryRelativePath(v string) *CreateTensorboardRequest {
+	s.SummaryRelativePath = &v
+	return s
+}
+
+func (s *CreateTensorboardRequest) SetUri(v string) *CreateTensorboardRequest {
+	s.Uri = &v
+	return s
+}
+
+func (s *CreateTensorboardRequest) SetWorkspaceId(v string) *CreateTensorboardRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -1983,8 +2564,9 @@ func (s *CreateTensorboardResponseBody) SetTensorboardId(v string) *CreateTensor
 }
 
 type CreateTensorboardResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTensorboardResponse) String() string {
@@ -1997,6 +2579,11 @@ func (s CreateTensorboardResponse) GoString() string {
 
 func (s *CreateTensorboardResponse) SetHeaders(v map[string]*string) *CreateTensorboardResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateTensorboardResponse) SetStatusCode(v int32) *CreateTensorboardResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2030,8 +2617,9 @@ func (s *DeleteCodeSourceResponseBody) SetRequestId(v string) *DeleteCodeSourceR
 }
 
 type DeleteCodeSourceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteCodeSourceResponse) String() string {
@@ -2044,6 +2632,11 @@ func (s DeleteCodeSourceResponse) GoString() string {
 
 func (s *DeleteCodeSourceResponse) SetHeaders(v map[string]*string) *DeleteCodeSourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteCodeSourceResponse) SetStatusCode(v int32) *DeleteCodeSourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2078,8 +2671,9 @@ func (s *DeleteDataSourceResponseBody) SetRequestId(v string) *DeleteDataSourceR
 }
 
 type DeleteDataSourceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDataSourceResponse) String() string {
@@ -2092,6 +2686,11 @@ func (s DeleteDataSourceResponse) GoString() string {
 
 func (s *DeleteDataSourceResponse) SetHeaders(v map[string]*string) *DeleteDataSourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteDataSourceResponse) SetStatusCode(v int32) *DeleteDataSourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2126,8 +2725,9 @@ func (s *DeleteJobResponseBody) SetRequestId(v string) *DeleteJobResponseBody {
 }
 
 type DeleteJobResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteJobResponse) String() string {
@@ -2143,7 +2743,83 @@ func (s *DeleteJobResponse) SetHeaders(v map[string]*string) *DeleteJobResponse 
 	return s
 }
 
+func (s *DeleteJobResponse) SetStatusCode(v int32) *DeleteJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteJobResponse) SetBody(v *DeleteJobResponseBody) *DeleteJobResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteJobsRequest struct {
+	// 作业ID列表
+	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+}
+
+func (s DeleteJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteJobsRequest) SetJobIds(v []*string) *DeleteJobsRequest {
+	s.JobIds = v
+	return s
+}
+
+type DeleteJobsResponseBody struct {
+	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteJobsResponseBody) SetJobIds(v []*string) *DeleteJobsResponseBody {
+	s.JobIds = v
+	return s
+}
+
+func (s *DeleteJobsResponseBody) SetRequestId(v string) *DeleteJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteJobsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteJobsResponse) SetHeaders(v map[string]*string) *DeleteJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteJobsResponse) SetStatusCode(v int32) *DeleteJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteJobsResponse) SetBody(v *DeleteJobsResponseBody) *DeleteJobsResponse {
 	s.Body = v
 	return s
 }
@@ -2192,8 +2868,9 @@ func (s *DeleteTensorboardResponseBody) SetTensorboardId(v string) *DeleteTensor
 }
 
 type DeleteTensorboardResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteTensorboardResponse) String() string {
@@ -2209,69 +2886,12 @@ func (s *DeleteTensorboardResponse) SetHeaders(v map[string]*string) *DeleteTens
 	return s
 }
 
+func (s *DeleteTensorboardResponse) SetStatusCode(v int32) *DeleteTensorboardResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteTensorboardResponse) SetBody(v *DeleteTensorboardResponseBody) *DeleteTensorboardResponse {
-	s.Body = v
-	return s
-}
-
-type GetAuthorizationResponseBody struct {
-	// 授权失败码
-	AuthorizationFailedCode *string `json:"AuthorizationFailedCode,omitempty" xml:"AuthorizationFailedCode,omitempty"`
-	// 授权失败消息
-	AuthorizationFailedMessage *string `json:"AuthorizationFailedMessage,omitempty" xml:"AuthorizationFailedMessage,omitempty"`
-	// 是否授权
-	Authorized *bool `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetAuthorizationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAuthorizationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetAuthorizationResponseBody) SetAuthorizationFailedCode(v string) *GetAuthorizationResponseBody {
-	s.AuthorizationFailedCode = &v
-	return s
-}
-
-func (s *GetAuthorizationResponseBody) SetAuthorizationFailedMessage(v string) *GetAuthorizationResponseBody {
-	s.AuthorizationFailedMessage = &v
-	return s
-}
-
-func (s *GetAuthorizationResponseBody) SetAuthorized(v bool) *GetAuthorizationResponseBody {
-	s.Authorized = &v
-	return s
-}
-
-func (s *GetAuthorizationResponseBody) SetRequestId(v string) *GetAuthorizationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetAuthorizationResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAuthorizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetAuthorizationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAuthorizationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetAuthorizationResponse) SetHeaders(v map[string]*string) *GetAuthorizationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetAuthorizationResponse) SetBody(v *GetAuthorizationResponseBody) *GetAuthorizationResponse {
 	s.Body = v
 	return s
 }
@@ -2379,8 +2999,9 @@ func (s *GetCodeSourceResponseBody) SetUserId(v string) *GetCodeSourceResponseBo
 }
 
 type GetCodeSourceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetCodeSourceResponse) String() string {
@@ -2393,6 +3014,11 @@ func (s GetCodeSourceResponse) GoString() string {
 
 func (s *GetCodeSourceResponse) SetHeaders(v map[string]*string) *GetCodeSourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetCodeSourceResponse) SetStatusCode(v int32) *GetCodeSourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2504,8 +3130,9 @@ func (s *GetDataSourceResponseBody) SetUserId(v string) *GetDataSourceResponseBo
 }
 
 type GetDataSourceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDataSourceResponse) String() string {
@@ -2518,6 +3145,11 @@ func (s GetDataSourceResponse) GoString() string {
 
 func (s *GetDataSourceResponse) SetHeaders(v map[string]*string) *GetDataSourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetDataSourceResponse) SetStatusCode(v int32) *GetDataSourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2539,6 +3171,8 @@ type GetJobResponseBody struct {
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// 弹性任务参数
 	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
+	// 是否开启debugger任务
+	EnabledDebugger *bool `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
 	// 环境变量配置
 	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	// 作业创建时间（UTC）
@@ -2566,6 +3200,8 @@ type GetJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 作业运行所在的资源组ID
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// 作业运行时使用的资源级别
+	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
 	// 作业额外参数配置
 	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	// 作业状态
@@ -2619,6 +3255,11 @@ func (s *GetJobResponseBody) SetDuration(v int64) *GetJobResponseBody {
 
 func (s *GetJobResponseBody) SetElasticSpec(v *JobElasticSpec) *GetJobResponseBody {
 	s.ElasticSpec = v
+	return s
+}
+
+func (s *GetJobResponseBody) SetEnabledDebugger(v bool) *GetJobResponseBody {
+	s.EnabledDebugger = &v
 	return s
 }
 
@@ -2699,6 +3340,11 @@ func (s *GetJobResponseBody) SetRequestId(v string) *GetJobResponseBody {
 
 func (s *GetJobResponseBody) SetResourceId(v string) *GetJobResponseBody {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetResourceLevel(v string) *GetJobResponseBody {
+	s.ResourceLevel = &v
 	return s
 }
 
@@ -2813,10 +3459,14 @@ type GetJobResponseBodyPods struct {
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
 	// Pod启动时间（UTC）
 	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	// 历史Pods
+	HistoryPods []*GetJobResponseBodyPodsHistoryPods `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
 	// Pod Ip
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// Pod Id
 	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// Pod UId
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
 	// Pod状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Pod类型
@@ -2846,6 +3496,11 @@ func (s *GetJobResponseBodyPods) SetGmtStartTime(v string) *GetJobResponseBodyPo
 	return s
 }
 
+func (s *GetJobResponseBodyPods) SetHistoryPods(v []*GetJobResponseBodyPodsHistoryPods) *GetJobResponseBodyPods {
+	s.HistoryPods = v
+	return s
+}
+
 func (s *GetJobResponseBodyPods) SetIp(v string) *GetJobResponseBodyPods {
 	s.Ip = &v
 	return s
@@ -2853,6 +3508,11 @@ func (s *GetJobResponseBodyPods) SetIp(v string) *GetJobResponseBodyPods {
 
 func (s *GetJobResponseBodyPods) SetPodId(v string) *GetJobResponseBodyPods {
 	s.PodId = &v
+	return s
+}
+
+func (s *GetJobResponseBodyPods) SetPodUid(v string) *GetJobResponseBodyPods {
+	s.PodUid = &v
 	return s
 }
 
@@ -2866,9 +3526,77 @@ func (s *GetJobResponseBodyPods) SetType(v string) *GetJobResponseBodyPods {
 	return s
 }
 
+type GetJobResponseBodyPodsHistoryPods struct {
+	// Pod创建时间（UTC）
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// Pod结束时间（UTC）
+	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// Pod启动时间（UTC）
+	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	// Pod Ip
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// Pod Id
+	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// Pod UId
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// Pod状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Pod类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetJobResponseBodyPodsHistoryPods) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobResponseBodyPodsHistoryPods) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyPodsHistoryPods) SetGmtCreateTime(v string) *GetJobResponseBodyPodsHistoryPods {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetJobResponseBodyPodsHistoryPods) SetGmtFinishTime(v string) *GetJobResponseBodyPodsHistoryPods {
+	s.GmtFinishTime = &v
+	return s
+}
+
+func (s *GetJobResponseBodyPodsHistoryPods) SetGmtStartTime(v string) *GetJobResponseBodyPodsHistoryPods {
+	s.GmtStartTime = &v
+	return s
+}
+
+func (s *GetJobResponseBodyPodsHistoryPods) SetIp(v string) *GetJobResponseBodyPodsHistoryPods {
+	s.Ip = &v
+	return s
+}
+
+func (s *GetJobResponseBodyPodsHistoryPods) SetPodId(v string) *GetJobResponseBodyPodsHistoryPods {
+	s.PodId = &v
+	return s
+}
+
+func (s *GetJobResponseBodyPodsHistoryPods) SetPodUid(v string) *GetJobResponseBodyPodsHistoryPods {
+	s.PodUid = &v
+	return s
+}
+
+func (s *GetJobResponseBodyPodsHistoryPods) SetStatus(v string) *GetJobResponseBodyPodsHistoryPods {
+	s.Status = &v
+	return s
+}
+
+func (s *GetJobResponseBodyPodsHistoryPods) SetType(v string) *GetJobResponseBodyPodsHistoryPods {
+	s.Type = &v
+	return s
+}
+
 type GetJobResponse struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetJobResponse) String() string {
@@ -2881,6 +3609,11 @@ func (s GetJobResponse) GoString() string {
 
 func (s *GetJobResponse) SetHeaders(v map[string]*string) *GetJobResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetJobResponse) SetStatusCode(v int32) *GetJobResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2954,8 +3687,9 @@ func (s *GetJobEventsResponseBody) SetRequestId(v int32) *GetJobEventsResponseBo
 }
 
 type GetJobEventsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJobEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetJobEventsResponse) String() string {
@@ -2968,6 +3702,11 @@ func (s GetJobEventsResponse) GoString() string {
 
 func (s *GetJobEventsResponse) SetHeaders(v map[string]*string) *GetJobEventsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetJobEventsResponse) SetStatusCode(v int32) *GetJobEventsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3055,8 +3794,9 @@ func (s *GetJobMetricsResponseBody) SetRequestId(v string) *GetJobMetricsRespons
 }
 
 type GetJobMetricsResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJobMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetJobMetricsResponse) String() string {
@@ -3072,73 +3812,12 @@ func (s *GetJobMetricsResponse) SetHeaders(v map[string]*string) *GetJobMetricsR
 	return s
 }
 
+func (s *GetJobMetricsResponse) SetStatusCode(v int32) *GetJobMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetJobMetricsResponse) SetBody(v *GetJobMetricsResponseBody) *GetJobMetricsResponse {
-	s.Body = v
-	return s
-}
-
-type GetJobsStatisticsRequest struct {
-	// 工作空间id
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-}
-
-func (s GetJobsStatisticsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobsStatisticsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobsStatisticsRequest) SetWorkspaceId(v string) *GetJobsStatisticsRequest {
-	s.WorkspaceId = &v
-	return s
-}
-
-type GetJobsStatisticsResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 当前的Workspace ID下面的JOB统计数据
-	Statistics map[string]interface{} `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-}
-
-func (s GetJobsStatisticsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobsStatisticsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobsStatisticsResponseBody) SetRequestId(v string) *GetJobsStatisticsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetJobsStatisticsResponseBody) SetStatistics(v map[string]interface{}) *GetJobsStatisticsResponseBody {
-	s.Statistics = v
-	return s
-}
-
-type GetJobsStatisticsResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobsStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetJobsStatisticsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobsStatisticsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobsStatisticsResponse) SetHeaders(v map[string]*string) *GetJobsStatisticsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetJobsStatisticsResponse) SetBody(v *GetJobsStatisticsResponseBody) *GetJobsStatisticsResponse {
 	s.Body = v
 	return s
 }
@@ -3148,6 +3827,8 @@ type GetPodEventsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// 返回的事件最大数量
 	MaxEventsNum *int32 `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
+	// 运行实例UID
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
 	// 起始时间
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -3170,6 +3851,11 @@ func (s *GetPodEventsRequest) SetMaxEventsNum(v int32) *GetPodEventsRequest {
 	return s
 }
 
+func (s *GetPodEventsRequest) SetPodUid(v string) *GetPodEventsRequest {
+	s.PodUid = &v
+	return s
+}
+
 func (s *GetPodEventsRequest) SetStartTime(v string) *GetPodEventsRequest {
 	s.StartTime = &v
 	return s
@@ -3181,7 +3867,8 @@ type GetPodEventsResponseBody struct {
 	// 作业ID
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// 运行示例ID
-	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodId  *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -3209,14 +3896,20 @@ func (s *GetPodEventsResponseBody) SetPodId(v string) *GetPodEventsResponseBody 
 	return s
 }
 
+func (s *GetPodEventsResponseBody) SetPodUid(v string) *GetPodEventsResponseBody {
+	s.PodUid = &v
+	return s
+}
+
 func (s *GetPodEventsResponseBody) SetRequestId(v string) *GetPodEventsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
 type GetPodEventsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPodEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPodEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetPodEventsResponse) String() string {
@@ -3232,6 +3925,11 @@ func (s *GetPodEventsResponse) SetHeaders(v map[string]*string) *GetPodEventsRes
 	return s
 }
 
+func (s *GetPodEventsResponse) SetStatusCode(v int32) *GetPodEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetPodEventsResponse) SetBody(v *GetPodEventsResponseBody) *GetPodEventsResponse {
 	s.Body = v
 	return s
@@ -3243,7 +3941,8 @@ type GetPodLogsRequest struct {
 	// 查询的截止时间，默认值：当前。
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// 返回的日志的最大行数，默认值：2000。
-	MaxLines *int32 `json:"MaxLines,omitempty" xml:"MaxLines,omitempty"`
+	MaxLines *int32  `json:"MaxLines,omitempty" xml:"MaxLines,omitempty"`
+	PodUid   *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
 	// 查询的起始时间，默认值：7天前。
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -3271,6 +3970,11 @@ func (s *GetPodLogsRequest) SetMaxLines(v int32) *GetPodLogsRequest {
 	return s
 }
 
+func (s *GetPodLogsRequest) SetPodUid(v string) *GetPodLogsRequest {
+	s.PodUid = &v
+	return s
+}
+
 func (s *GetPodLogsRequest) SetStartTime(v string) *GetPodLogsRequest {
 	s.StartTime = &v
 	return s
@@ -3283,6 +3987,8 @@ type GetPodLogsResponseBody struct {
 	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// 实例ID
 	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// 实例UID
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -3310,14 +4016,20 @@ func (s *GetPodLogsResponseBody) SetPodId(v string) *GetPodLogsResponseBody {
 	return s
 }
 
+func (s *GetPodLogsResponseBody) SetPodUid(v string) *GetPodLogsResponseBody {
+	s.PodUid = &v
+	return s
+}
+
 func (s *GetPodLogsResponseBody) SetRequestId(v string) *GetPodLogsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
 type GetPodLogsResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPodLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPodLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetPodLogsResponse) String() string {
@@ -3333,138 +4045,12 @@ func (s *GetPodLogsResponse) SetHeaders(v map[string]*string) *GetPodLogsRespons
 	return s
 }
 
+func (s *GetPodLogsResponse) SetStatusCode(v int32) *GetPodLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetPodLogsResponse) SetBody(v *GetPodLogsResponseBody) *GetPodLogsResponse {
-	s.Body = v
-	return s
-}
-
-type GetSecurityGroupResponseBody struct {
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 安全组id
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// 安全组名称
-	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
-	// 所属vpc的id
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-}
-
-func (s GetSecurityGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSecurityGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetSecurityGroupResponseBody) SetRequestId(v string) *GetSecurityGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetSecurityGroupResponseBody) SetSecurityGroupId(v string) *GetSecurityGroupResponseBody {
-	s.SecurityGroupId = &v
-	return s
-}
-
-func (s *GetSecurityGroupResponseBody) SetSecurityGroupName(v string) *GetSecurityGroupResponseBody {
-	s.SecurityGroupName = &v
-	return s
-}
-
-func (s *GetSecurityGroupResponseBody) SetVpcId(v string) *GetSecurityGroupResponseBody {
-	s.VpcId = &v
-	return s
-}
-
-type GetSecurityGroupResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSecurityGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSecurityGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSecurityGroupResponse) SetHeaders(v map[string]*string) *GetSecurityGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSecurityGroupResponse) SetBody(v *GetSecurityGroupResponseBody) *GetSecurityGroupResponse {
-	s.Body = v
-	return s
-}
-
-type GetSwitchResponseBody struct {
-	// 网段
-	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 交换机的id
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// 交换机的名称
-	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	// 所属VPC的id
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-}
-
-func (s GetSwitchResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSwitchResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetSwitchResponseBody) SetCidrBlock(v string) *GetSwitchResponseBody {
-	s.CidrBlock = &v
-	return s
-}
-
-func (s *GetSwitchResponseBody) SetRequestId(v string) *GetSwitchResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetSwitchResponseBody) SetVSwitchId(v string) *GetSwitchResponseBody {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *GetSwitchResponseBody) SetVSwitchName(v string) *GetSwitchResponseBody {
-	s.VSwitchName = &v
-	return s
-}
-
-func (s *GetSwitchResponseBody) SetVpcId(v string) *GetSwitchResponseBody {
-	s.VpcId = &v
-	return s
-}
-
-type GetSwitchResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSwitchResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSwitchResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSwitchResponse) SetHeaders(v map[string]*string) *GetSwitchResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSwitchResponse) SetBody(v *GetSwitchResponseBody) *GetSwitchResponse {
 	s.Body = v
 	return s
 }
@@ -3495,8 +4081,9 @@ func (s *GetTensorboardRequest) SetWorkspaceId(v string) *GetTensorboardRequest 
 }
 
 type GetTensorboardResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Tensorboard       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Tensorboard       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTensorboardResponse) String() string {
@@ -3512,451 +4099,12 @@ func (s *GetTensorboardResponse) SetHeaders(v map[string]*string) *GetTensorboar
 	return s
 }
 
+func (s *GetTensorboardResponse) SetStatusCode(v int32) *GetTensorboardResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetTensorboardResponse) SetBody(v *Tensorboard) *GetTensorboardResponse {
-	s.Body = v
-	return s
-}
-
-type GetTokenRequest struct {
-	// ExpireTime
-	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// TargetId
-	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// TargetType
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-}
-
-func (s GetTokenRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTokenRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetTokenRequest) SetExpireTime(v int64) *GetTokenRequest {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *GetTokenRequest) SetTargetId(v string) *GetTokenRequest {
-	s.TargetId = &v
-	return s
-}
-
-func (s *GetTokenRequest) SetTargetType(v string) *GetTokenRequest {
-	s.TargetType = &v
-	return s
-}
-
-type GetTokenResponseBody struct {
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Token
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-}
-
-func (s GetTokenResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTokenResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetTokenResponseBody) SetRequestId(v string) *GetTokenResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetTokenResponseBody) SetToken(v string) *GetTokenResponseBody {
-	s.Token = &v
-	return s
-}
-
-type GetTokenResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetTokenResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTokenResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetTokenResponse) SetHeaders(v map[string]*string) *GetTokenResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
-	s.Body = v
-	return s
-}
-
-type GetUserAuthorizationResponseBody struct {
-	// 是否通过鉴权
-	IsPassed *bool `json:"IsPassed,omitempty" xml:"IsPassed,omitempty"`
-	// 请求ID
-	RequestId *int32 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetUserAuthorizationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserAuthorizationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserAuthorizationResponseBody) SetIsPassed(v bool) *GetUserAuthorizationResponseBody {
-	s.IsPassed = &v
-	return s
-}
-
-func (s *GetUserAuthorizationResponseBody) SetRequestId(v int32) *GetUserAuthorizationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetUserAuthorizationResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserAuthorizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserAuthorizationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserAuthorizationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserAuthorizationResponse) SetHeaders(v map[string]*string) *GetUserAuthorizationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserAuthorizationResponse) SetBody(v *GetUserAuthorizationResponseBody) *GetUserAuthorizationResponse {
-	s.Body = v
-	return s
-}
-
-type GetVpcResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Vpc的ID
-	VpcId *int32 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// Vpc名称
-	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-}
-
-func (s GetVpcResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVpcResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetVpcResponseBody) SetRequestId(v string) *GetVpcResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetVpcResponseBody) SetVpcId(v int32) *GetVpcResponseBody {
-	s.VpcId = &v
-	return s
-}
-
-func (s *GetVpcResponseBody) SetVpcName(v string) *GetVpcResponseBody {
-	s.VpcName = &v
-	return s
-}
-
-type GetVpcResponse struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetVpcResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVpcResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetVpcResponse) SetHeaders(v map[string]*string) *GetVpcResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetVpcResponse) SetBody(v *GetVpcResponseBody) *GetVpcResponse {
-	s.Body = v
-	return s
-}
-
-type GetWorkspaceResponseBody struct {
-	// 是否是当前工作空间的管理员
-	IsWorkspaceAdmin *bool `json:"IsWorkspaceAdmin,omitempty" xml:"IsWorkspaceAdmin,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 工作空间
-	Workspace *Workspace `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
-}
-
-func (s GetWorkspaceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWorkspaceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetWorkspaceResponseBody) SetIsWorkspaceAdmin(v bool) *GetWorkspaceResponseBody {
-	s.IsWorkspaceAdmin = &v
-	return s
-}
-
-func (s *GetWorkspaceResponseBody) SetRequestId(v string) *GetWorkspaceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetWorkspaceResponseBody) SetWorkspace(v *Workspace) *GetWorkspaceResponseBody {
-	s.Workspace = v
-	return s
-}
-
-type GetWorkspaceResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetWorkspaceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWorkspaceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetWorkspaceResponse) SetHeaders(v map[string]*string) *GetWorkspaceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetWorkspaceResponse) SetBody(v *GetWorkspaceResponseBody) *GetWorkspaceResponse {
-	s.Body = v
-	return s
-}
-
-type JobDispatchQueryRequest struct {
-	// PAI-Xflow名称
-	AlgoName *string `json:"AlgoName,omitempty" xml:"AlgoName,omitempty"`
-	// PAI-project名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// properties of pai command
-	Properties map[string]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// odps settings
-	Settings map[string]*string `json:"Settings,omitempty" xml:"Settings,omitempty"`
-}
-
-func (s JobDispatchQueryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s JobDispatchQueryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *JobDispatchQueryRequest) SetAlgoName(v string) *JobDispatchQueryRequest {
-	s.AlgoName = &v
-	return s
-}
-
-func (s *JobDispatchQueryRequest) SetProjectName(v string) *JobDispatchQueryRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *JobDispatchQueryRequest) SetProperties(v map[string]*string) *JobDispatchQueryRequest {
-	s.Properties = v
-	return s
-}
-
-func (s *JobDispatchQueryRequest) SetSettings(v map[string]*string) *JobDispatchQueryRequest {
-	s.Settings = v
-	return s
-}
-
-type JobDispatchQueryShrinkRequest struct {
-	// PAI-Xflow名称
-	AlgoName *string `json:"AlgoName,omitempty" xml:"AlgoName,omitempty"`
-	// PAI-project名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// properties of pai command
-	PropertiesShrink *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// odps settings
-	SettingsShrink *string `json:"Settings,omitempty" xml:"Settings,omitempty"`
-}
-
-func (s JobDispatchQueryShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s JobDispatchQueryShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *JobDispatchQueryShrinkRequest) SetAlgoName(v string) *JobDispatchQueryShrinkRequest {
-	s.AlgoName = &v
-	return s
-}
-
-func (s *JobDispatchQueryShrinkRequest) SetProjectName(v string) *JobDispatchQueryShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *JobDispatchQueryShrinkRequest) SetPropertiesShrink(v string) *JobDispatchQueryShrinkRequest {
-	s.PropertiesShrink = &v
-	return s
-}
-
-func (s *JobDispatchQueryShrinkRequest) SetSettingsShrink(v string) *JobDispatchQueryShrinkRequest {
-	s.SettingsShrink = &v
-	return s
-}
-
-type JobDispatchQueryResponseBody struct {
-	// 作业Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s JobDispatchQueryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s JobDispatchQueryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *JobDispatchQueryResponseBody) SetJobId(v string) *JobDispatchQueryResponseBody {
-	s.JobId = &v
-	return s
-}
-
-func (s *JobDispatchQueryResponseBody) SetRequestId(v string) *JobDispatchQueryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type JobDispatchQueryResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *JobDispatchQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s JobDispatchQueryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s JobDispatchQueryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *JobDispatchQueryResponse) SetHeaders(v map[string]*string) *JobDispatchQueryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *JobDispatchQueryResponse) SetBody(v *JobDispatchQueryResponseBody) *JobDispatchQueryResponse {
-	s.Body = v
-	return s
-}
-
-type JobDispatchSubmitRequest struct {
-	// PAI-Xflow名称
-	AlgoName *string `json:"AlgoName,omitempty" xml:"AlgoName,omitempty"`
-	// PAI-project名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// properties of pai command
-	Properties map[string]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// odps settings
-	Settings map[string]*string `json:"Settings,omitempty" xml:"Settings,omitempty"`
-}
-
-func (s JobDispatchSubmitRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s JobDispatchSubmitRequest) GoString() string {
-	return s.String()
-}
-
-func (s *JobDispatchSubmitRequest) SetAlgoName(v string) *JobDispatchSubmitRequest {
-	s.AlgoName = &v
-	return s
-}
-
-func (s *JobDispatchSubmitRequest) SetProjectName(v string) *JobDispatchSubmitRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *JobDispatchSubmitRequest) SetProperties(v map[string]*string) *JobDispatchSubmitRequest {
-	s.Properties = v
-	return s
-}
-
-func (s *JobDispatchSubmitRequest) SetSettings(v map[string]*string) *JobDispatchSubmitRequest {
-	s.Settings = v
-	return s
-}
-
-type JobDispatchSubmitResponseBody struct {
-	// 作业Url
-	JobUrl *string `json:"JobUrl,omitempty" xml:"JobUrl,omitempty"`
-}
-
-func (s JobDispatchSubmitResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s JobDispatchSubmitResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *JobDispatchSubmitResponseBody) SetJobUrl(v string) *JobDispatchSubmitResponseBody {
-	s.JobUrl = &v
-	return s
-}
-
-type JobDispatchSubmitResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *JobDispatchSubmitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s JobDispatchSubmitResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s JobDispatchSubmitResponse) GoString() string {
-	return s.String()
-}
-
-func (s *JobDispatchSubmitResponse) SetHeaders(v map[string]*string) *JobDispatchSubmitResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *JobDispatchSubmitResponse) SetBody(v *JobDispatchSubmitResponseBody) *JobDispatchSubmitResponse {
 	s.Body = v
 	return s
 }
@@ -3970,7 +4118,7 @@ type ListCodeSourcesRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 分页大小
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 用于排序的字段名，可选字段名：'DisplayName' 'GmtCreateTime' 'GmtModifyTime'
+	// 用于排序的字段名，可选字段名：DisplayName、GmtCreateTime、 GmtModifyTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
@@ -4040,8 +4188,9 @@ func (s *ListCodeSourcesResponseBody) SetTotalCount(v int64) *ListCodeSourcesRes
 }
 
 type ListCodeSourcesResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListCodeSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCodeSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListCodeSourcesResponse) String() string {
@@ -4054,6 +4203,11 @@ func (s ListCodeSourcesResponse) GoString() string {
 
 func (s *ListCodeSourcesResponse) SetHeaders(v map[string]*string) *ListCodeSourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListCodeSourcesResponse) SetStatusCode(v int32) *ListCodeSourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4148,8 +4302,9 @@ func (s *ListDataSourcesResponseBody) SetTotalCount(v int64) *ListDataSourcesRes
 }
 
 type ListDataSourcesResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDataSourcesResponse) String() string {
@@ -4165,12 +4320,19 @@ func (s *ListDataSourcesResponse) SetHeaders(v map[string]*string) *ListDataSour
 	return s
 }
 
+func (s *ListDataSourcesResponse) SetStatusCode(v int32) *ListDataSourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDataSourcesResponse) SetBody(v *ListDataSourcesResponseBody) *ListDataSourcesResponse {
 	s.Body = v
 	return s
 }
 
 type ListEcsSpecsRequest struct {
+	// 按加速器类型过滤
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
 	// 排序顺序
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// 查询第几页数据
@@ -4187,6 +4349,11 @@ func (s ListEcsSpecsRequest) String() string {
 
 func (s ListEcsSpecsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListEcsSpecsRequest) SetAcceleratorType(v string) *ListEcsSpecsRequest {
+	s.AcceleratorType = &v
+	return s
 }
 
 func (s *ListEcsSpecsRequest) SetOrder(v string) *ListEcsSpecsRequest {
@@ -4242,8 +4409,9 @@ func (s *ListEcsSpecsResponseBody) SetTotalCount(v int64) *ListEcsSpecsResponseB
 }
 
 type ListEcsSpecsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEcsSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEcsSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListEcsSpecsResponse) String() string {
@@ -4256,6 +4424,11 @@ func (s ListEcsSpecsResponse) GoString() string {
 
 func (s *ListEcsSpecsResponse) SetHeaders(v map[string]*string) *ListEcsSpecsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListEcsSpecsResponse) SetStatusCode(v int32) *ListEcsSpecsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4275,6 +4448,8 @@ type ListImagesRequest struct {
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// 按返回字段排序
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// 工作空间ID
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListImagesRequest) String() string {
@@ -4307,6 +4482,11 @@ func (s *ListImagesRequest) SetOrder(v string) *ListImagesRequest {
 
 func (s *ListImagesRequest) SetSortBy(v string) *ListImagesRequest {
 	s.SortBy = &v
+	return s
+}
+
+func (s *ListImagesRequest) SetWorkspaceId(v string) *ListImagesRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -4343,8 +4523,9 @@ func (s *ListImagesResponseBody) SetTotalCount(v int64) *ListImagesResponseBody 
 }
 
 type ListImagesResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListImagesResponse) String() string {
@@ -4357,6 +4538,11 @@ func (s ListImagesResponse) GoString() string {
 
 func (s *ListImagesResponse) SetHeaders(v map[string]*string) *ListImagesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListImagesResponse) SetStatusCode(v int32) *ListImagesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4373,7 +4559,8 @@ type ListJobsRequest struct {
 	// 作业显示名称，支持模糊查询
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// 截止时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FromAllWorkspaces *bool   `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
 	// 作业类型
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// 排序顺序
@@ -4425,6 +4612,11 @@ func (s *ListJobsRequest) SetDisplayName(v string) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetEndTime(v string) *ListJobsRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetFromAllWorkspaces(v bool) *ListJobsRequest {
+	s.FromAllWorkspaces = &v
 	return s
 }
 
@@ -4496,7 +4688,8 @@ type ListJobsShrinkRequest struct {
 	// 作业显示名称，支持模糊查询
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// 截止时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FromAllWorkspaces *bool   `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
 	// 作业类型
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// 排序顺序
@@ -4548,6 +4741,11 @@ func (s *ListJobsShrinkRequest) SetDisplayName(v string) *ListJobsShrinkRequest 
 
 func (s *ListJobsShrinkRequest) SetEndTime(v string) *ListJobsShrinkRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetFromAllWorkspaces(v bool) *ListJobsShrinkRequest {
+	s.FromAllWorkspaces = &v
 	return s
 }
 
@@ -4644,8 +4842,9 @@ func (s *ListJobsResponseBody) SetTotalCount(v int64) *ListJobsResponseBody {
 }
 
 type ListJobsResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListJobsResponse) String() string {
@@ -4661,266 +4860,12 @@ func (s *ListJobsResponse) SetHeaders(v map[string]*string) *ListJobsResponse {
 	return s
 }
 
+func (s *ListJobsResponse) SetStatusCode(v int32) *ListJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
-	s.Body = v
-	return s
-}
-
-type ListSecurityGroupsRequest struct {
-	// 取第几页的数据
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 所属Vpc
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-}
-
-func (s ListSecurityGroupsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSecurityGroupsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListSecurityGroupsRequest) SetPageNumber(v int32) *ListSecurityGroupsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListSecurityGroupsRequest) SetPageSize(v int32) *ListSecurityGroupsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListSecurityGroupsRequest) SetVpcId(v string) *ListSecurityGroupsRequest {
-	s.VpcId = &v
-	return s
-}
-
-type ListSecurityGroupsResponseBody struct {
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 代码源配置列表
-	SecurityGroups []*ListSecurityGroupsResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	// 符合过滤条件的代码源配置的总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListSecurityGroupsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSecurityGroupsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListSecurityGroupsResponseBody) SetRequestId(v string) *ListSecurityGroupsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListSecurityGroupsResponseBody) SetSecurityGroups(v []*ListSecurityGroupsResponseBodySecurityGroups) *ListSecurityGroupsResponseBody {
-	s.SecurityGroups = v
-	return s
-}
-
-func (s *ListSecurityGroupsResponseBody) SetTotalCount(v int64) *ListSecurityGroupsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListSecurityGroupsResponseBodySecurityGroups struct {
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 安全组Id
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// 安全组名称
-	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
-	// 所属VPC ID
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-}
-
-func (s ListSecurityGroupsResponseBodySecurityGroups) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSecurityGroupsResponseBodySecurityGroups) GoString() string {
-	return s.String()
-}
-
-func (s *ListSecurityGroupsResponseBodySecurityGroups) SetDescription(v string) *ListSecurityGroupsResponseBodySecurityGroups {
-	s.Description = &v
-	return s
-}
-
-func (s *ListSecurityGroupsResponseBodySecurityGroups) SetSecurityGroupId(v string) *ListSecurityGroupsResponseBodySecurityGroups {
-	s.SecurityGroupId = &v
-	return s
-}
-
-func (s *ListSecurityGroupsResponseBodySecurityGroups) SetSecurityGroupName(v string) *ListSecurityGroupsResponseBodySecurityGroups {
-	s.SecurityGroupName = &v
-	return s
-}
-
-func (s *ListSecurityGroupsResponseBodySecurityGroups) SetVpcId(v string) *ListSecurityGroupsResponseBodySecurityGroups {
-	s.VpcId = &v
-	return s
-}
-
-type ListSecurityGroupsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSecurityGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListSecurityGroupsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSecurityGroupsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListSecurityGroupsResponse) SetHeaders(v map[string]*string) *ListSecurityGroupsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListSecurityGroupsResponse) SetBody(v *ListSecurityGroupsResponseBody) *ListSecurityGroupsResponse {
-	s.Body = v
-	return s
-}
-
-type ListSwitchesRequest struct {
-	// 取第几页的数据
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 所属VPC id
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-}
-
-func (s ListSwitchesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSwitchesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListSwitchesRequest) SetPageNumber(v int32) *ListSwitchesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListSwitchesRequest) SetPageSize(v int32) *ListSwitchesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListSwitchesRequest) SetVpcId(v string) *ListSwitchesRequest {
-	s.VpcId = &v
-	return s
-}
-
-type ListSwitchesResponseBody struct {
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 代码源配置列表
-	Switches []*ListSwitchesResponseBodySwitches `json:"Switches,omitempty" xml:"Switches,omitempty" type:"Repeated"`
-	// 符合过滤条件的代码源配置的总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListSwitchesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSwitchesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListSwitchesResponseBody) SetRequestId(v string) *ListSwitchesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListSwitchesResponseBody) SetSwitches(v []*ListSwitchesResponseBodySwitches) *ListSwitchesResponseBody {
-	s.Switches = v
-	return s
-}
-
-func (s *ListSwitchesResponseBody) SetTotalCount(v int64) *ListSwitchesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListSwitchesResponseBodySwitches struct {
-	// 网段
-	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 交换机id
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// 交换机名称
-	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	// 所属VPCid
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-}
-
-func (s ListSwitchesResponseBodySwitches) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSwitchesResponseBodySwitches) GoString() string {
-	return s.String()
-}
-
-func (s *ListSwitchesResponseBodySwitches) SetCidrBlock(v string) *ListSwitchesResponseBodySwitches {
-	s.CidrBlock = &v
-	return s
-}
-
-func (s *ListSwitchesResponseBodySwitches) SetDescription(v string) *ListSwitchesResponseBodySwitches {
-	s.Description = &v
-	return s
-}
-
-func (s *ListSwitchesResponseBodySwitches) SetVSwitchId(v string) *ListSwitchesResponseBodySwitches {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *ListSwitchesResponseBodySwitches) SetVSwitchName(v string) *ListSwitchesResponseBodySwitches {
-	s.VSwitchName = &v
-	return s
-}
-
-func (s *ListSwitchesResponseBodySwitches) SetVpcId(v string) *ListSwitchesResponseBodySwitches {
-	s.VpcId = &v
-	return s
-}
-
-type ListSwitchesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSwitchesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListSwitchesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSwitchesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListSwitchesResponse) SetHeaders(v map[string]*string) *ListSwitchesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListSwitchesResponse) SetBody(v *ListSwitchesResponseBody) *ListSwitchesResponse {
 	s.Body = v
 	return s
 }
@@ -4939,7 +4884,9 @@ type ListTensorboardsRequest struct {
 	// 每页返回的作业数
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// 按返回字段排序
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// 起始时间
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// 根据状态过滤
@@ -4992,6 +4939,16 @@ func (s *ListTensorboardsRequest) SetPageSize(v int32) *ListTensorboardsRequest 
 
 func (s *ListTensorboardsRequest) SetSortBy(v string) *ListTensorboardsRequest {
 	s.SortBy = &v
+	return s
+}
+
+func (s *ListTensorboardsRequest) SetSourceId(v string) *ListTensorboardsRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *ListTensorboardsRequest) SetSourceType(v string) *ListTensorboardsRequest {
+	s.SourceType = &v
 	return s
 }
 
@@ -5053,8 +5010,9 @@ func (s *ListTensorboardsResponseBody) SetTotalCount(v int64) *ListTensorboardsR
 }
 
 type ListTensorboardsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTensorboardsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTensorboardsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTensorboardsResponse) String() string {
@@ -5070,213 +5028,12 @@ func (s *ListTensorboardsResponse) SetHeaders(v map[string]*string) *ListTensorb
 	return s
 }
 
+func (s *ListTensorboardsResponse) SetStatusCode(v int32) *ListTensorboardsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListTensorboardsResponse) SetBody(v *ListTensorboardsResponseBody) *ListTensorboardsResponse {
-	s.Body = v
-	return s
-}
-
-type ListVpcsRequest struct {
-	// 取第几页的数据
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListVpcsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVpcsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListVpcsRequest) SetPageNumber(v int32) *ListVpcsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListVpcsRequest) SetPageSize(v int32) *ListVpcsRequest {
-	s.PageSize = &v
-	return s
-}
-
-type ListVpcsResponseBody struct {
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 符合过滤条件的代码源配置的总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// 代码源配置列表
-	Vpcs []*ListVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
-}
-
-func (s ListVpcsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVpcsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListVpcsResponseBody) SetRequestId(v string) *ListVpcsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListVpcsResponseBody) SetTotalCount(v int64) *ListVpcsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListVpcsResponseBody) SetVpcs(v []*ListVpcsResponseBodyVpcs) *ListVpcsResponseBody {
-	s.Vpcs = v
-	return s
-}
-
-type ListVpcsResponseBodyVpcs struct {
-	// vpc的id
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// VPC的名称。
-	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-}
-
-func (s ListVpcsResponseBodyVpcs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVpcsResponseBodyVpcs) GoString() string {
-	return s.String()
-}
-
-func (s *ListVpcsResponseBodyVpcs) SetVpcId(v string) *ListVpcsResponseBodyVpcs {
-	s.VpcId = &v
-	return s
-}
-
-func (s *ListVpcsResponseBodyVpcs) SetVpcName(v string) *ListVpcsResponseBodyVpcs {
-	s.VpcName = &v
-	return s
-}
-
-type ListVpcsResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVpcsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListVpcsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVpcsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListVpcsResponse) SetHeaders(v map[string]*string) *ListVpcsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListVpcsResponse) SetBody(v *ListVpcsResponseBody) *ListVpcsResponse {
-	s.Body = v
-	return s
-}
-
-type ListWorkspacesRequest struct {
-	// 是否返回详情(Quotas, Members)
-	NeedDetail *bool `json:"NeedDetail,omitempty" xml:"NeedDetail,omitempty"`
-	// 排列顺序: desc 或者 asc
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 查询第几页数据,最小值为1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 设置查询的分页大小,最小值为1
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 返回结果的排序字段名，枚举值
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-}
-
-func (s ListWorkspacesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWorkspacesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListWorkspacesRequest) SetNeedDetail(v bool) *ListWorkspacesRequest {
-	s.NeedDetail = &v
-	return s
-}
-
-func (s *ListWorkspacesRequest) SetOrder(v string) *ListWorkspacesRequest {
-	s.Order = &v
-	return s
-}
-
-func (s *ListWorkspacesRequest) SetPageNumber(v int32) *ListWorkspacesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListWorkspacesRequest) SetPageSize(v int32) *ListWorkspacesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListWorkspacesRequest) SetSortBy(v string) *ListWorkspacesRequest {
-	s.SortBy = &v
-	return s
-}
-
-type ListWorkspacesResponseBody struct {
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 结果数
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// 工作空间列表
-	Workspaces []*Workspace `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
-}
-
-func (s ListWorkspacesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWorkspacesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListWorkspacesResponseBody) SetRequestId(v string) *ListWorkspacesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListWorkspacesResponseBody) SetTotalCount(v int64) *ListWorkspacesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListWorkspacesResponseBody) SetWorkspaces(v []*Workspace) *ListWorkspacesResponseBody {
-	s.Workspaces = v
-	return s
-}
-
-type ListWorkspacesResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListWorkspacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListWorkspacesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWorkspacesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListWorkspacesResponse) SetHeaders(v map[string]*string) *ListWorkspacesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListWorkspacesResponse) SetBody(v *ListWorkspacesResponseBody) *ListWorkspacesResponse {
 	s.Body = v
 	return s
 }
@@ -5325,8 +5082,9 @@ func (s *StartTensorboardResponseBody) SetTensorboardId(v string) *StartTensorbo
 }
 
 type StartTensorboardResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartTensorboardResponse) String() string {
@@ -5339,6 +5097,11 @@ func (s StartTensorboardResponse) GoString() string {
 
 func (s *StartTensorboardResponse) SetHeaders(v map[string]*string) *StartTensorboardResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StartTensorboardResponse) SetStatusCode(v int32) *StartTensorboardResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5373,8 +5136,9 @@ func (s *StopJobResponseBody) SetRequestId(v string) *StopJobResponseBody {
 }
 
 type StopJobResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopJobResponse) String() string {
@@ -5390,7 +5154,84 @@ func (s *StopJobResponse) SetHeaders(v map[string]*string) *StopJobResponse {
 	return s
 }
 
+func (s *StopJobResponse) SetStatusCode(v int32) *StopJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *StopJobResponse) SetBody(v *StopJobResponseBody) *StopJobResponse {
+	s.Body = v
+	return s
+}
+
+type StopJobsRequest struct {
+	// 作业ID列表
+	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+}
+
+func (s StopJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopJobsRequest) SetJobIds(v []*string) *StopJobsRequest {
+	s.JobIds = v
+	return s
+}
+
+type StopJobsResponseBody struct {
+	// 作业ID列表
+	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopJobsResponseBody) SetJobIds(v []*string) *StopJobsResponseBody {
+	s.JobIds = v
+	return s
+}
+
+func (s *StopJobsResponseBody) SetRequestId(v string) *StopJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopJobsResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopJobsResponse) SetHeaders(v map[string]*string) *StopJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopJobsResponse) SetStatusCode(v int32) *StopJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopJobsResponse) SetBody(v *StopJobsResponseBody) *StopJobsResponse {
 	s.Body = v
 	return s
 }
@@ -5439,8 +5280,9 @@ func (s *StopTensorboardResponseBody) SetTensorboardId(v string) *StopTensorboar
 }
 
 type StopTensorboardResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopTensorboardResponse) String() string {
@@ -5456,7 +5298,84 @@ func (s *StopTensorboardResponse) SetHeaders(v map[string]*string) *StopTensorbo
 	return s
 }
 
+func (s *StopTensorboardResponse) SetStatusCode(v int32) *StopTensorboardResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *StopTensorboardResponse) SetBody(v *StopTensorboardResponseBody) *StopTensorboardResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateJobRequest struct {
+	// 设置优先级
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+}
+
+func (s UpdateJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobRequest) SetPriority(v int32) *UpdateJobRequest {
+	s.Priority = &v
+	return s
+}
+
+type UpdateJobResponseBody struct {
+	// 作业ID
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobResponseBody) SetJobId(v string) *UpdateJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *UpdateJobResponseBody) SetRequestId(v string) *UpdateJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateJobResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobResponse) SetHeaders(v map[string]*string) *UpdateJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateJobResponse) SetStatusCode(v int32) *UpdateJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateJobResponse) SetBody(v *UpdateJobResponseBody) *UpdateJobResponse {
 	s.Body = v
 	return s
 }
@@ -5512,8 +5431,9 @@ func (s *UpdateTensorboardResponseBody) SetTensorboardId(v string) *UpdateTensor
 }
 
 type UpdateTensorboardResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTensorboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateTensorboardResponse) String() string {
@@ -5526,6 +5446,11 @@ func (s UpdateTensorboardResponse) GoString() string {
 
 func (s *UpdateTensorboardResponse) SetHeaders(v map[string]*string) *UpdateTensorboardResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateTensorboardResponse) SetStatusCode(v int32) *UpdateTensorboardResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5549,6 +5474,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -5578,41 +5504,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 		return _result, _err
 	}
 	_result = _body
-	return _result, _err
-}
-
-func (client *Client) BatchGetJobsStatistics(request *BatchGetJobsStatisticsRequest) (_result *BatchGetJobsStatisticsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &BatchGetJobsStatisticsResponse{}
-	_body, _err := client.BatchGetJobsStatisticsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) BatchGetJobsStatisticsWithOptions(request *BatchGetJobsStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchGetJobsStatisticsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.WorkspaceIds)) {
-		query["WorkspaceIds"] = request.WorkspaceIds
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &BatchGetJobsStatisticsResponse{}
-	_body, _err := client.DoROARequest(tea.String("BatchGetJobsStatistics"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/batch/statistics/jobs"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
 
@@ -5666,8 +5557,19 @@ func (client *Client) CreateCodeSourceWithOptions(request *CreateCodeSourceReque
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCodeSource"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/codesources"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateCodeSourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateCodeSource"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/codesources"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5729,8 +5631,19 @@ func (client *Client) CreateDataSourceWithOptions(request *CreateDataSourceReque
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataSource"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasources"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateDataSourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateDataSource"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/datasources"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5764,6 +5677,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		body["DataSources"] = request.DataSources
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DebuggerConfigContent)) {
+		body["DebuggerConfigContent"] = request.DebuggerConfigContent
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
 		body["DisplayName"] = request.DisplayName
 	}
@@ -5786,6 +5703,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 
 	if !tea.BoolValue(util.IsUnset(request.JobType)) {
 		body["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		body["Options"] = request.Options
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Priority)) {
@@ -5824,8 +5745,19 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateJob"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateJobResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateJob"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/jobs"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5850,14 +5782,13 @@ func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
-		query["WorkspaceId"] = request.WorkspaceId
-	}
-
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
 		body["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DataSources)) {
@@ -5876,17 +5807,51 @@ func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardReq
 		body["MaxRunningTimeMinutes"] = request.MaxRunningTimeMinutes
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		body["Options"] = request.Options
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		body["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SummaryPath)) {
 		body["SummaryPath"] = request.SummaryPath
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SummaryRelativePath)) {
+		body["SummaryRelativePath"] = request.SummaryRelativePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uri)) {
+		body["Uri"] = request.Uri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTensorboard"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tensorboards"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateTensorboardResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateTensorboard"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/tensorboards"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5911,8 +5876,19 @@ func (client *Client) DeleteCodeSourceWithOptions(CodeSourceId *string, headers 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCodeSource"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/codesources/" + tea.StringValue(CodeSourceId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteCodeSourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteCodeSource"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/codesources/"+tea.StringValue(CodeSourceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5937,8 +5913,19 @@ func (client *Client) DeleteDataSourceWithOptions(DataSourceId *string, headers 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataSource"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasources/" + tea.StringValue(DataSourceId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteDataSourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteDataSource"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/datasources/"+tea.StringValue(DataSourceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5963,8 +5950,65 @@ func (client *Client) DeleteJobWithOptions(JobId *string, headers map[string]*st
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteJob"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteJobResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteJob"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/jobs/"+tea.StringValue(JobId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteJobs(request *DeleteJobsRequest) (_result *DeleteJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteJobsResponse{}
+	_body, _err := client.DeleteJobsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteJobsWithOptions(request *DeleteJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		body["JobIds"] = request.JobIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteJobs"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/batch/jobs/delete"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5999,33 +6043,19 @@ func (client *Client) DeleteTensorboardWithOptions(TensorboardId *string, reques
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTensorboard"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(TensorboardId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteTensorboardResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteTensorboard"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/tensorboards/"+tea.StringValue(TensorboardId)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetAuthorization() (_result *GetAuthorizationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetAuthorizationResponse{}
-	_body, _err := client.GetAuthorizationWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetAuthorizationWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAuthorizationResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetAuthorizationResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetAuthorization"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/authorization"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6050,8 +6080,19 @@ func (client *Client) GetCodeSourceWithOptions(CodeSourceId *string, headers map
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCodeSource"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/codesources/" + tea.StringValue(CodeSourceId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetCodeSourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetCodeSource"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/codesources/"+tea.StringValue(CodeSourceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6076,8 +6117,19 @@ func (client *Client) GetDataSourceWithOptions(DataSourceId *string, headers map
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataSource"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasources/" + tea.StringValue(DataSourceId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetDataSourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetDataSource"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/datasources/"+tea.StringValue(DataSourceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6102,8 +6154,19 @@ func (client *Client) GetJobWithOptions(JobId *string, headers map[string]*strin
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJob"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetJobResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetJob"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/jobs/"+tea.StringValue(JobId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6146,8 +6209,19 @@ func (client *Client) GetJobEventsWithOptions(JobId *string, request *GetJobEven
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobEvents"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId) + "/events"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetJobEventsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetJobEvents"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/jobs/"+tea.StringValue(JobId)+"/events"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6198,43 +6272,19 @@ func (client *Client) GetJobMetricsWithOptions(JobId *string, request *GetJobMet
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobMetrics"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId) + "/metrics"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetJobMetricsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetJobMetrics"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/jobs/"+tea.StringValue(JobId)+"/metrics"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetJobsStatistics(request *GetJobsStatisticsRequest) (_result *GetJobsStatisticsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetJobsStatisticsResponse{}
-	_body, _err := client.GetJobsStatisticsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetJobsStatisticsWithOptions(request *GetJobsStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobsStatisticsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
-		query["WorkspaceId"] = request.WorkspaceId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &GetJobsStatisticsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetJobsStatistics"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/statistics/jobs"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6270,6 +6320,10 @@ func (client *Client) GetPodEventsWithOptions(JobId *string, PodId *string, requ
 		query["MaxEventsNum"] = request.MaxEventsNum
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PodUid)) {
+		query["PodUid"] = request.PodUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -6278,8 +6332,19 @@ func (client *Client) GetPodEventsWithOptions(JobId *string, PodId *string, requ
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPodEvents"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId) + "/pods/" + tea.StringValue(PodId) + "/events"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetPodEventsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetPodEvents"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/jobs/"+tea.StringValue(JobId)+"/pods/"+tea.StringValue(PodId)+"/events"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6319,6 +6384,10 @@ func (client *Client) GetPodLogsWithOptions(JobId *string, PodId *string, reques
 		query["MaxLines"] = request.MaxLines
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PodUid)) {
+		query["PodUid"] = request.PodUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -6327,60 +6396,19 @@ func (client *Client) GetPodLogsWithOptions(JobId *string, PodId *string, reques
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPodLogs"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId) + "/pods/" + tea.StringValue(PodId) + "/logs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetPodLogsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetPodLogs"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/jobs/"+tea.StringValue(JobId)+"/pods/"+tea.StringValue(PodId)+"/logs"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetSecurityGroup(SecurityGroupId *string) (_result *GetSecurityGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSecurityGroupResponse{}
-	_body, _err := client.GetSecurityGroupWithOptions(SecurityGroupId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetSecurityGroupWithOptions(SecurityGroupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSecurityGroupResponse, _err error) {
-	SecurityGroupId = openapiutil.GetEncodeParam(SecurityGroupId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetSecurityGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetSecurityGroup"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/securitygroups/"+tea.StringValue(SecurityGroupId)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetSwitch(SwitchId *string) (_result *GetSwitchResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSwitchResponse{}
-	_body, _err := client.GetSwitchWithOptions(SwitchId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetSwitchWithOptions(SwitchId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSwitchResponse, _err error) {
-	SwitchId = openapiutil.GetEncodeParam(SwitchId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetSwitchResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetSwitch"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/switches/"+tea.StringValue(SwitchId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6419,233 +6447,19 @@ func (client *Client) GetTensorboardWithOptions(TensorboardId *string, request *
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTensorboard"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(TensorboardId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetTensorboardResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetTensorboard"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/tensorboards/"+tea.StringValue(TensorboardId)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTokenResponse{}
-	_body, _err := client.GetTokenWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTokenResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ExpireTime)) {
-		query["ExpireTime"] = request.ExpireTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
-		query["TargetId"] = request.TargetId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
-		query["TargetType"] = request.TargetType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &GetTokenResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetToken"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/tokens"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetUserAuthorization(UserId *string) (_result *GetUserAuthorizationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetUserAuthorizationResponse{}
-	_body, _err := client.GetUserAuthorizationWithOptions(UserId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetUserAuthorizationWithOptions(UserId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserAuthorizationResponse, _err error) {
-	UserId = openapiutil.GetEncodeParam(UserId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetUserAuthorizationResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetUserAuthorization"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/users/"+tea.StringValue(UserId)+"/authorization"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetVpc(VpcId *string) (_result *GetVpcResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetVpcResponse{}
-	_body, _err := client.GetVpcWithOptions(VpcId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetVpcWithOptions(VpcId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVpcResponse, _err error) {
-	VpcId = openapiutil.GetEncodeParam(VpcId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetVpcResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetVpc"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/vpcs/"+tea.StringValue(VpcId)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetWorkspace(WorkspaceId *string) (_result *GetWorkspaceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetWorkspaceResponse{}
-	_body, _err := client.GetWorkspaceWithOptions(WorkspaceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetWorkspaceWithOptions(WorkspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
-	WorkspaceId = openapiutil.GetEncodeParam(WorkspaceId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetWorkspaceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetWorkspace"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/workspaces/"+tea.StringValue(WorkspaceId)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) JobDispatchQuery(request *JobDispatchQueryRequest) (_result *JobDispatchQueryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &JobDispatchQueryResponse{}
-	_body, _err := client.JobDispatchQueryWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) JobDispatchQueryWithOptions(tmpReq *JobDispatchQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *JobDispatchQueryResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &JobDispatchQueryShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Properties)) {
-		request.PropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Properties, tea.String("Properties"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.Settings)) {
-		request.SettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Settings, tea.String("Settings"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AlgoName)) {
-		query["AlgoName"] = request.AlgoName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
-		query["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PropertiesShrink)) {
-		query["Properties"] = request.PropertiesShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SettingsShrink)) {
-		query["Settings"] = request.SettingsShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &JobDispatchQueryResponse{}
-	_body, _err := client.DoROARequest(tea.String("JobDispatchQuery"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/jobdispatch"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) JobDispatchSubmit(request *JobDispatchSubmitRequest) (_result *JobDispatchSubmitResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &JobDispatchSubmitResponse{}
-	_body, _err := client.JobDispatchSubmitWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) JobDispatchSubmitWithOptions(request *JobDispatchSubmitRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *JobDispatchSubmitResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AlgoName)) {
-		body["AlgoName"] = request.AlgoName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
-		body["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Properties)) {
-		body["Properties"] = request.Properties
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Settings)) {
-		body["Settings"] = request.Settings
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	_result = &JobDispatchSubmitResponse{}
-	_body, _err := client.DoROARequest(tea.String("JobDispatchSubmit"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/jobdispatch"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6695,8 +6509,19 @@ func (client *Client) ListCodeSourcesWithOptions(request *ListCodeSourcesRequest
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCodeSources"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/codesources"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListCodeSourcesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListCodeSources"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/codesources"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6750,8 +6575,19 @@ func (client *Client) ListDataSourcesWithOptions(request *ListDataSourcesRequest
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataSources"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasources"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDataSourcesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDataSources"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/datasources"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6777,6 +6613,10 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorType)) {
+		query["AcceleratorType"] = request.AcceleratorType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
 		query["Order"] = request.Order
 	}
@@ -6797,8 +6637,19 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEcsSpecs"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/ecsspecs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListEcsSpecsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListEcsSpecs"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/ecsspecs"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6844,12 +6695,27 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers 
 		query["SortBy"] = request.SortBy
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListImages"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/images"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListImagesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListImages"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/images"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6895,6 +6761,10 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FromAllWorkspaces)) {
+		query["FromAllWorkspaces"] = request.FromAllWorkspaces
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JobType)) {
@@ -6949,94 +6819,19 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobs"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListJobsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListJobs"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/jobs"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListSecurityGroups(request *ListSecurityGroupsRequest) (_result *ListSecurityGroupsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSecurityGroupsResponse{}
-	_body, _err := client.ListSecurityGroupsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListSecurityGroupsWithOptions(request *ListSecurityGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSecurityGroupsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
-		query["VpcId"] = request.VpcId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &ListSecurityGroupsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListSecurityGroups"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/securitygroups"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListSwitches(request *ListSwitchesRequest) (_result *ListSwitchesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSwitchesResponse{}
-	_body, _err := client.ListSwitchesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListSwitchesWithOptions(request *ListSwitchesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSwitchesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
-		query["VpcId"] = request.VpcId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &ListSwitchesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListSwitches"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/switches"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7090,6 +6885,14 @@ func (client *Client) ListTensorboardsWithOptions(request *ListTensorboardsReque
 		query["SortBy"] = request.SortBy
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -7114,98 +6917,19 @@ func (client *Client) ListTensorboardsWithOptions(request *ListTensorboardsReque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTensorboards"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tensorboards"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListTensorboardsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListTensorboards"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/tensorboards"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListVpcs(request *ListVpcsRequest) (_result *ListVpcsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListVpcsResponse{}
-	_body, _err := client.ListVpcsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListVpcsWithOptions(request *ListVpcsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListVpcsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &ListVpcsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListVpcs"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/vpcs"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *ListWorkspacesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListWorkspacesResponse{}
-	_body, _err := client.ListWorkspacesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.NeedDetail)) {
-		query["NeedDetail"] = request.NeedDetail
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Order)) {
-		query["Order"] = request.Order
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
-		query["SortBy"] = request.SortBy
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &ListWorkspacesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListWorkspaces"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/workspaces"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7240,8 +6964,19 @@ func (client *Client) StartTensorboardWithOptions(TensorboardId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StartTensorboard"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(TensorboardId) + "/start"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StartTensorboardResponse{}
-	_body, _err := client.DoROARequest(tea.String("StartTensorboard"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v1/tensorboards/"+tea.StringValue(TensorboardId)+"/start"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7266,8 +7001,65 @@ func (client *Client) StopJobWithOptions(JobId *string, headers map[string]*stri
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopJob"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId) + "/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StopJobResponse{}
-	_body, _err := client.DoROARequest(tea.String("StopJob"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/jobs/"+tea.StringValue(JobId)+"/stop"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopJobs(request *StopJobsRequest) (_result *StopJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopJobsResponse{}
+	_body, _err := client.StopJobsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopJobsWithOptions(request *StopJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		body["JobIds"] = request.JobIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopJobs"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/batch/jobs/stop"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7302,8 +7094,66 @@ func (client *Client) StopTensorboardWithOptions(TensorboardId *string, request 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopTensorboard"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(TensorboardId) + "/stop"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StopTensorboardResponse{}
-	_body, _err := client.DoROARequest(tea.String("StopTensorboard"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v1/tensorboards/"+tea.StringValue(TensorboardId)+"/stop"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateJob(JobId *string, request *UpdateJobRequest) (_result *UpdateJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateJobResponse{}
+	_body, _err := client.UpdateJobWithOptions(JobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateJobWithOptions(JobId *string, request *UpdateJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	JobId = openapiutil.GetEncodeParam(JobId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateJob"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7342,8 +7192,19 @@ func (client *Client) UpdateTensorboardWithOptions(TensorboardId *string, reques
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTensorboard"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(TensorboardId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateTensorboardResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateTensorboard"), tea.String("2020-12-03"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v1/tensorboards/"+tea.StringValue(TensorboardId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
