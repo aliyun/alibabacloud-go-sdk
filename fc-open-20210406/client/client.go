@@ -2290,6 +2290,7 @@ type CreateFunctionRequest struct {
 	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// 层列表
 	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
@@ -2374,6 +2375,11 @@ func (s *CreateFunctionRequest) SetInstanceLifecycleConfig(v *InstanceLifecycleC
 	return s
 }
 
+func (s *CreateFunctionRequest) SetInstanceSoftConcurrency(v int32) *CreateFunctionRequest {
+	s.InstanceSoftConcurrency = &v
+	return s
+}
+
 func (s *CreateFunctionRequest) SetInstanceType(v string) *CreateFunctionRequest {
 	s.InstanceType = &v
 	return s
@@ -2428,6 +2434,7 @@ type CreateFunctionResponseBody struct {
 	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// function上次修改时间
 	LastModifiedTime *string   `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
@@ -2525,6 +2532,11 @@ func (s *CreateFunctionResponseBody) SetInstanceConcurrency(v int32) *CreateFunc
 
 func (s *CreateFunctionResponseBody) SetInstanceLifecycleConfig(v *InstanceLifecycleConfig) *CreateFunctionResponseBody {
 	s.InstanceLifecycleConfig = v
+	return s
+}
+
+func (s *CreateFunctionResponseBody) SetInstanceSoftConcurrency(v int32) *CreateFunctionResponseBody {
+	s.InstanceSoftConcurrency = &v
 	return s
 }
 
@@ -2867,6 +2879,7 @@ type CreateServiceResponseBody struct {
 	// 服务名称
 	ServiceName   *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VendorConfig  *VendorConfig  `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
 	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
@@ -2925,6 +2938,11 @@ func (s *CreateServiceResponseBody) SetServiceName(v string) *CreateServiceRespo
 
 func (s *CreateServiceResponseBody) SetTracingConfig(v *TracingConfig) *CreateServiceResponseBody {
 	s.TracingConfig = v
+	return s
+}
+
+func (s *CreateServiceResponseBody) SetVendorConfig(v *VendorConfig) *CreateServiceResponseBody {
+	s.VendorConfig = v
 	return s
 }
 
@@ -4404,6 +4422,7 @@ type GetFunctionResponseBody struct {
 	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// function上次修改时间
 	LastModifiedTime *string   `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
@@ -4501,6 +4520,11 @@ func (s *GetFunctionResponseBody) SetInstanceConcurrency(v int32) *GetFunctionRe
 
 func (s *GetFunctionResponseBody) SetInstanceLifecycleConfig(v *InstanceLifecycleConfig) *GetFunctionResponseBody {
 	s.InstanceLifecycleConfig = v
+	return s
+}
+
+func (s *GetFunctionResponseBody) SetInstanceSoftConcurrency(v int32) *GetFunctionResponseBody {
+	s.InstanceSoftConcurrency = &v
 	return s
 }
 
@@ -6609,6 +6633,7 @@ type ListFunctionsResponseBodyFunctions struct {
 	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// function上次修改时间
 	LastModifiedTime *string   `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
@@ -6699,6 +6724,11 @@ func (s *ListFunctionsResponseBodyFunctions) SetInstanceLifecycleConfig(v *Insta
 	return s
 }
 
+func (s *ListFunctionsResponseBodyFunctions) SetInstanceSoftConcurrency(v int32) *ListFunctionsResponseBodyFunctions {
+	s.InstanceSoftConcurrency = &v
+	return s
+}
+
 func (s *ListFunctionsResponseBodyFunctions) SetInstanceType(v string) *ListFunctionsResponseBodyFunctions {
 	s.InstanceType = &v
 	return s
@@ -6761,6 +6791,8 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 type ListInstancesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListInstancesHeaders) String() string {
@@ -6778,6 +6810,16 @@ func (s *ListInstancesHeaders) SetCommonHeaders(v map[string]*string) *ListInsta
 
 func (s *ListInstancesHeaders) SetXFcAccountId(v string) *ListInstancesHeaders {
 	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListInstancesHeaders) SetXFcDate(v string) *ListInstancesHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListInstancesHeaders) SetXFcTraceId(v string) *ListInstancesHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -9986,6 +10028,7 @@ type UpdateFunctionRequest struct {
 	// 初始化 function 执行的入口，具体格式和语言相关
 	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	Layers                  []*string                `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
 	// function的内存规格，单位为MB，为64MB的倍数
@@ -10064,6 +10107,11 @@ func (s *UpdateFunctionRequest) SetInstanceLifecycleConfig(v *InstanceLifecycleC
 	return s
 }
 
+func (s *UpdateFunctionRequest) SetInstanceSoftConcurrency(v int32) *UpdateFunctionRequest {
+	s.InstanceSoftConcurrency = &v
+	return s
+}
+
 func (s *UpdateFunctionRequest) SetInstanceType(v string) *UpdateFunctionRequest {
 	s.InstanceType = &v
 	return s
@@ -10118,6 +10166,7 @@ type UpdateFunctionResponseBody struct {
 	// 初始化 function 执行的入口，具体格式和语言相关
 	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// function上次修改时间
 	LastModifiedTime *string   `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
@@ -10210,6 +10259,11 @@ func (s *UpdateFunctionResponseBody) SetInitializer(v string) *UpdateFunctionRes
 
 func (s *UpdateFunctionResponseBody) SetInstanceLifecycleConfig(v *InstanceLifecycleConfig) *UpdateFunctionResponseBody {
 	s.InstanceLifecycleConfig = v
+	return s
+}
+
+func (s *UpdateFunctionResponseBody) SetInstanceSoftConcurrency(v int32) *UpdateFunctionResponseBody {
+	s.InstanceSoftConcurrency = &v
 	return s
 }
 
@@ -10388,6 +10442,7 @@ type UpdateServiceResponseBody struct {
 	// 服务名称
 	ServiceName   *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VendorConfig  *VendorConfig  `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
 	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
@@ -10446,6 +10501,11 @@ func (s *UpdateServiceResponseBody) SetServiceName(v string) *UpdateServiceRespo
 
 func (s *UpdateServiceResponseBody) SetTracingConfig(v *TracingConfig) *UpdateServiceResponseBody {
 	s.TracingConfig = v
+	return s
+}
+
+func (s *UpdateServiceResponseBody) SetVendorConfig(v *VendorConfig) *UpdateServiceResponseBody {
+	s.VendorConfig = v
 	return s
 }
 
@@ -10986,6 +11046,10 @@ func (client *Client) CreateFunctionWithOptions(serviceName *string, request *Cr
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.InstanceLifecycleConfig))) {
 		body["instanceLifecycleConfig"] = request.InstanceLifecycleConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSoftConcurrency)) {
+		body["instanceSoftConcurrency"] = request.InstanceSoftConcurrency
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
@@ -13323,6 +13387,14 @@ func (client *Client) ListInstancesWithOptions(serviceName *string, functionName
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
@@ -15035,6 +15107,10 @@ func (client *Client) UpdateFunctionWithOptions(serviceName *string, functionNam
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.InstanceLifecycleConfig))) {
 		body["instanceLifecycleConfig"] = request.InstanceLifecycleConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSoftConcurrency)) {
+		body["instanceSoftConcurrency"] = request.InstanceSoftConcurrency
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
