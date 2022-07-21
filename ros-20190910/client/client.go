@@ -6704,14 +6704,16 @@ func (s *GetTemplateScratchResponse) SetBody(v *GetTemplateScratchResponseBody) 
 }
 
 type GetTemplateSummaryRequest struct {
-	ChangeSetId     *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackGroupName  *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	StackId         *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	TemplateBody    *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateURL     *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	ChangeSetId     *string                                `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
+	ClientToken     *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Parameters      []*GetTemplateSummaryRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RegionId        *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackGroupName  *string                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	StackId         *string                                `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	TemplateBody    *string                                `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId      *string                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL     *string                                `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion *string                                `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s GetTemplateSummaryRequest) String() string {
@@ -6724,6 +6726,16 @@ func (s GetTemplateSummaryRequest) GoString() string {
 
 func (s *GetTemplateSummaryRequest) SetChangeSetId(v string) *GetTemplateSummaryRequest {
 	s.ChangeSetId = &v
+	return s
+}
+
+func (s *GetTemplateSummaryRequest) SetClientToken(v string) *GetTemplateSummaryRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetTemplateSummaryRequest) SetParameters(v []*GetTemplateSummaryRequestParameters) *GetTemplateSummaryRequest {
+	s.Parameters = v
 	return s
 }
 
@@ -6759,6 +6771,29 @@ func (s *GetTemplateSummaryRequest) SetTemplateURL(v string) *GetTemplateSummary
 
 func (s *GetTemplateSummaryRequest) SetTemplateVersion(v string) *GetTemplateSummaryRequest {
 	s.TemplateVersion = &v
+	return s
+}
+
+type GetTemplateSummaryRequestParameters struct {
+	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s GetTemplateSummaryRequestParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateSummaryRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateSummaryRequestParameters) SetParameterKey(v string) *GetTemplateSummaryRequestParameters {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *GetTemplateSummaryRequestParameters) SetParameterValue(v string) *GetTemplateSummaryRequestParameters {
+	s.ParameterValue = &v
 	return s
 }
 
@@ -14902,6 +14937,14 @@ func (client *Client) GetTemplateSummaryWithOptions(request *GetTemplateSummaryR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChangeSetId)) {
 		query["ChangeSetId"] = request.ChangeSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
