@@ -892,14 +892,26 @@ type JobItem struct {
 	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	// 作业创建时间（UTC）
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 作业失败时间（UTC）
+	GmtFailedTime *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
 	// 作业结束时间（UTC）
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// 作业开始运行时间（UTC）
+	GmtRunningTime *string `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
+	// 作业停止时间（UTC）
+	GmtStoppedTime *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
+	// 作业提交时间（UTC）
+	GmtSubmittedTime *string `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
+	// 作业成功完成时间（UTC）
+	GmtSuccessedTime *string `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
 	// 作业Id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// 作业规格配置
 	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
 	// 作业类型
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// 任务优先级
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// 状态详情码
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	// 状态详情
@@ -971,8 +983,33 @@ func (s *JobItem) SetGmtCreateTime(v string) *JobItem {
 	return s
 }
 
+func (s *JobItem) SetGmtFailedTime(v string) *JobItem {
+	s.GmtFailedTime = &v
+	return s
+}
+
 func (s *JobItem) SetGmtFinishTime(v string) *JobItem {
 	s.GmtFinishTime = &v
+	return s
+}
+
+func (s *JobItem) SetGmtRunningTime(v string) *JobItem {
+	s.GmtRunningTime = &v
+	return s
+}
+
+func (s *JobItem) SetGmtStoppedTime(v string) *JobItem {
+	s.GmtStoppedTime = &v
+	return s
+}
+
+func (s *JobItem) SetGmtSubmittedTime(v string) *JobItem {
+	s.GmtSubmittedTime = &v
+	return s
+}
+
+func (s *JobItem) SetGmtSuccessedTime(v string) *JobItem {
+	s.GmtSuccessedTime = &v
 	return s
 }
 
@@ -988,6 +1025,11 @@ func (s *JobItem) SetJobSpecs(v []*JobSpec) *JobItem {
 
 func (s *JobItem) SetJobType(v string) *JobItem {
 	s.JobType = &v
+	return s
+}
+
+func (s *JobItem) SetPriority(v int32) *JobItem {
+	s.Priority = &v
 	return s
 }
 
@@ -3192,6 +3234,8 @@ type GetJobResponseBody struct {
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// 作业所以运行Pod列表
 	Pods []*GetJobResponseBodyPods `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
+	// 任务的优先级
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// 状态详情码
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	// 状态详情
@@ -3320,6 +3364,11 @@ func (s *GetJobResponseBody) SetJobType(v string) *GetJobResponseBody {
 
 func (s *GetJobResponseBody) SetPods(v []*GetJobResponseBodyPods) *GetJobResponseBody {
 	s.Pods = v
+	return s
+}
+
+func (s *GetJobResponseBody) SetPriority(v int32) *GetJobResponseBody {
+	s.Priority = &v
 	return s
 }
 
