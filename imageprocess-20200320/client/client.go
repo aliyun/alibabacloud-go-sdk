@@ -3112,6 +3112,7 @@ type ScreenChestCTResponseBodyData struct {
 	DetectRibFracture  *ScreenChestCTResponseBodyDataDetectRibFracture  `json:"DetectRibFracture,omitempty" xml:"DetectRibFracture,omitempty" type:"Struct"`
 	ErrorMessage       *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	LungNodule         *ScreenChestCTResponseBodyDataLungNodule         `json:"LungNodule,omitempty" xml:"LungNodule,omitempty" type:"Struct"`
+	NestedUrlList      map[string]interface{}                           `json:"NestedUrlList,omitempty" xml:"NestedUrlList,omitempty"`
 	URLList            map[string]interface{}                           `json:"URLList,omitempty" xml:"URLList,omitempty"`
 }
 
@@ -3160,6 +3161,11 @@ func (s *ScreenChestCTResponseBodyData) SetErrorMessage(v string) *ScreenChestCT
 
 func (s *ScreenChestCTResponseBodyData) SetLungNodule(v *ScreenChestCTResponseBodyDataLungNodule) *ScreenChestCTResponseBodyData {
 	s.LungNodule = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyData) SetNestedUrlList(v map[string]interface{}) *ScreenChestCTResponseBodyData {
+	s.NestedUrlList = v
 	return s
 }
 
@@ -3298,10 +3304,11 @@ func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo) SetNeares
 }
 
 type ScreenChestCTResponseBodyDataCACS struct {
-	Detections  []*ScreenChestCTResponseBodyDataCACSDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
-	ResultUrl   *string                                        `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
-	Score       *string                                        `json:"Score,omitempty" xml:"Score,omitempty"`
-	VolumeScore *string                                        `json:"VolumeScore,omitempty" xml:"VolumeScore,omitempty"`
+	Detections        []*ScreenChestCTResponseBodyDataCACSDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
+	ResultUrl         *string                                        `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
+	Score             *string                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	SeriesInstanceUID *string                                        `json:"SeriesInstanceUID,omitempty" xml:"SeriesInstanceUID,omitempty"`
+	VolumeScore       *string                                        `json:"VolumeScore,omitempty" xml:"VolumeScore,omitempty"`
 }
 
 func (s ScreenChestCTResponseBodyDataCACS) String() string {
@@ -3324,6 +3331,11 @@ func (s *ScreenChestCTResponseBodyDataCACS) SetResultUrl(v string) *ScreenChestC
 
 func (s *ScreenChestCTResponseBodyDataCACS) SetScore(v string) *ScreenChestCTResponseBodyDataCACS {
 	s.Score = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataCACS) SetSeriesInstanceUID(v string) *ScreenChestCTResponseBodyDataCACS {
+	s.SeriesInstanceUID = &v
 	return s
 }
 
@@ -3373,6 +3385,7 @@ type ScreenChestCTResponseBodyDataCovid struct {
 	NewProbability    *string `json:"NewProbability,omitempty" xml:"NewProbability,omitempty"`
 	NormalProbability *string `json:"NormalProbability,omitempty" xml:"NormalProbability,omitempty"`
 	OtherProbability  *string `json:"OtherProbability,omitempty" xml:"OtherProbability,omitempty"`
+	SeriesInstanceUID *string `json:"SeriesInstanceUID,omitempty" xml:"SeriesInstanceUID,omitempty"`
 }
 
 func (s ScreenChestCTResponseBodyDataCovid) String() string {
@@ -3408,8 +3421,14 @@ func (s *ScreenChestCTResponseBodyDataCovid) SetOtherProbability(v string) *Scre
 	return s
 }
 
+func (s *ScreenChestCTResponseBodyDataCovid) SetSeriesInstanceUID(v string) *ScreenChestCTResponseBodyDataCovid {
+	s.SeriesInstanceUID = &v
+	return s
+}
+
 type ScreenChestCTResponseBodyDataDetectLymph struct {
-	Lesions []*ScreenChestCTResponseBodyDataDetectLymphLesions `json:"Lesions,omitempty" xml:"Lesions,omitempty" type:"Repeated"`
+	Lesions           []*ScreenChestCTResponseBodyDataDetectLymphLesions `json:"Lesions,omitempty" xml:"Lesions,omitempty" type:"Repeated"`
+	SeriesInstanceUID *string                                            `json:"SeriesInstanceUID,omitempty" xml:"SeriesInstanceUID,omitempty"`
 }
 
 func (s ScreenChestCTResponseBodyDataDetectLymph) String() string {
@@ -3422,6 +3441,11 @@ func (s ScreenChestCTResponseBodyDataDetectLymph) GoString() string {
 
 func (s *ScreenChestCTResponseBodyDataDetectLymph) SetLesions(v []*ScreenChestCTResponseBodyDataDetectLymphLesions) *ScreenChestCTResponseBodyDataDetectLymph {
 	s.Lesions = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLymph) SetSeriesInstanceUID(v string) *ScreenChestCTResponseBodyDataDetectLymph {
+	s.SeriesInstanceUID = &v
 	return s
 }
 
@@ -3467,7 +3491,8 @@ func (s *ScreenChestCTResponseBodyDataDetectLymphLesions) SetScore(v float32) *S
 }
 
 type ScreenChestCTResponseBodyDataDetectPdac struct {
-	Lesion *ScreenChestCTResponseBodyDataDetectPdacLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+	Lesion            *ScreenChestCTResponseBodyDataDetectPdacLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+	SeriesInstanceUID *string                                        `json:"SeriesInstanceUID,omitempty" xml:"SeriesInstanceUID,omitempty"`
 }
 
 func (s ScreenChestCTResponseBodyDataDetectPdac) String() string {
@@ -3480,6 +3505,11 @@ func (s ScreenChestCTResponseBodyDataDetectPdac) GoString() string {
 
 func (s *ScreenChestCTResponseBodyDataDetectPdac) SetLesion(v *ScreenChestCTResponseBodyDataDetectPdacLesion) *ScreenChestCTResponseBodyDataDetectPdac {
 	s.Lesion = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectPdac) SetSeriesInstanceUID(v string) *ScreenChestCTResponseBodyDataDetectPdac {
+	s.SeriesInstanceUID = &v
 	return s
 }
 
@@ -3530,6 +3560,7 @@ type ScreenChestCTResponseBodyDataDetectRibFracture struct {
 	Origin            []*float32                                                  `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
 	ResultURL         *string                                                     `json:"ResultURL,omitempty" xml:"ResultURL,omitempty"`
 	RibSegmentMaskURL *string                                                     `json:"RibSegmentMaskURL,omitempty" xml:"RibSegmentMaskURL,omitempty"`
+	SeriesInstanceUID *string                                                     `json:"SeriesInstanceUID,omitempty" xml:"SeriesInstanceUID,omitempty"`
 	Spacing           []*float32                                                  `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
 }
 
@@ -3563,6 +3594,11 @@ func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetResultURL(v string) 
 
 func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetRibSegmentMaskURL(v string) *ScreenChestCTResponseBodyDataDetectRibFracture {
 	s.RibSegmentMaskURL = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetSeriesInstanceUID(v string) *ScreenChestCTResponseBodyDataDetectRibFracture {
+	s.SeriesInstanceUID = &v
 	return s
 }
 
