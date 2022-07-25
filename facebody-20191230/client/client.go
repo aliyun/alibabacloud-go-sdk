@@ -7683,7 +7683,7 @@ func (s *MonitorExaminationResponseBodyData) SetThreshold(v float32) *MonitorExa
 }
 
 type MonitorExaminationResponseBodyDataFaceInfo struct {
-	Completeness *int64                                          `json:"Completeness,omitempty" xml:"Completeness,omitempty"`
+	Completeness *float32                                        `json:"Completeness,omitempty" xml:"Completeness,omitempty"`
 	FaceNumber   *int64                                          `json:"FaceNumber,omitempty" xml:"FaceNumber,omitempty"`
 	Pose         *MonitorExaminationResponseBodyDataFaceInfoPose `json:"Pose,omitempty" xml:"Pose,omitempty" type:"Struct"`
 }
@@ -7696,7 +7696,7 @@ func (s MonitorExaminationResponseBodyDataFaceInfo) GoString() string {
 	return s.String()
 }
 
-func (s *MonitorExaminationResponseBodyDataFaceInfo) SetCompleteness(v int64) *MonitorExaminationResponseBodyDataFaceInfo {
+func (s *MonitorExaminationResponseBodyDataFaceInfo) SetCompleteness(v float32) *MonitorExaminationResponseBodyDataFaceInfo {
 	s.Completeness = &v
 	return s
 }
