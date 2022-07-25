@@ -1056,8 +1056,7 @@ func (s *CreateSuspEventNoteResponse) SetBody(v *CreateSuspEventNoteResponseBody
 }
 
 type CreateVulAutoRepairConfigRequest struct {
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// 漏洞类型
+	Reason                  *string                                                    `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	Type                    *string                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
 	VulAutoRepairConfigList []*CreateVulAutoRepairConfigRequestVulAutoRepairConfigList `json:"VulAutoRepairConfigList,omitempty" xml:"VulAutoRepairConfigList,omitempty" type:"Repeated"`
 }
@@ -1086,10 +1085,8 @@ func (s *CreateVulAutoRepairConfigRequest) SetVulAutoRepairConfigList(v []*Creat
 }
 
 type CreateVulAutoRepairConfigRequestVulAutoRepairConfigList struct {
-	// 漏洞别名
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// 漏洞名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateVulAutoRepairConfigRequestVulAutoRepairConfigList) String() string {
@@ -2867,34 +2864,33 @@ func (s *DescribeAlarmEventListResponseBodyPageInfo) SetTotalCount(v int32) *Des
 }
 
 type DescribeAlarmEventListResponseBodySuspEvents struct {
-	AlarmEventName         *string `json:"AlarmEventName,omitempty" xml:"AlarmEventName,omitempty"`
-	AlarmEventNameOriginal *string `json:"AlarmEventNameOriginal,omitempty" xml:"AlarmEventNameOriginal,omitempty"`
-	AlarmEventType         *string `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
-	AlarmUniqueInfo        *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	CanBeDealOnLine        *bool   `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
-	CanCancelFault         *bool   `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
-	DataSource             *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	Dealed                 *bool   `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndTime                *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GmtModified            *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	HasTraceInfo           *bool   `json:"HasTraceInfo,omitempty" xml:"HasTraceInfo,omitempty"`
-	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName           *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetIp             *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp             *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Level                  *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	OperateErrorCode       *string `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
-	OperateTime            *int64  `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
-	SaleVersion            *string `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
-	SecurityEventIds       *string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty"`
-	Solution               *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
-	Stages                 *string `json:"Stages,omitempty" xml:"Stages,omitempty"`
-	StartTime              *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	SuspiciousEventCount   *int32  `json:"SuspiciousEventCount,omitempty" xml:"SuspiciousEventCount,omitempty"`
-	// 攻击阶段展示名
-	TacticItems []*DescribeAlarmEventListResponseBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
-	Uuid        *string                                                    `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	AlarmEventName         *string                                                    `json:"AlarmEventName,omitempty" xml:"AlarmEventName,omitempty"`
+	AlarmEventNameOriginal *string                                                    `json:"AlarmEventNameOriginal,omitempty" xml:"AlarmEventNameOriginal,omitempty"`
+	AlarmEventType         *string                                                    `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
+	AlarmUniqueInfo        *string                                                    `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	CanBeDealOnLine        *bool                                                      `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
+	CanCancelFault         *bool                                                      `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
+	DataSource             *string                                                    `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	Dealed                 *bool                                                      `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	Description            *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime                *int64                                                     `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtModified            *int64                                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HasTraceInfo           *bool                                                      `json:"HasTraceInfo,omitempty" xml:"HasTraceInfo,omitempty"`
+	InstanceId             *string                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName           *string                                                    `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp             *string                                                    `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp             *string                                                    `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	Level                  *string                                                    `json:"Level,omitempty" xml:"Level,omitempty"`
+	OperateErrorCode       *string                                                    `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
+	OperateTime            *int64                                                     `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
+	SaleVersion            *string                                                    `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
+	SecurityEventIds       *string                                                    `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty"`
+	Solution               *string                                                    `json:"Solution,omitempty" xml:"Solution,omitempty"`
+	Stages                 *string                                                    `json:"Stages,omitempty" xml:"Stages,omitempty"`
+	StartTime              *int64                                                     `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	SuspiciousEventCount   *int32                                                     `json:"SuspiciousEventCount,omitempty" xml:"SuspiciousEventCount,omitempty"`
+	TacticItems            []*DescribeAlarmEventListResponseBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
+	Uuid                   *string                                                    `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeAlarmEventListResponseBodySuspEvents) String() string {
@@ -7053,7 +7049,6 @@ func (s *DescribeDomainListResponse) SetBody(v *DescribeDomainListResponseBody) 
 }
 
 type DescribeEmgVulItemRequest struct {
-	// 检测方式
 	CheckType   *int32  `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -10127,8 +10122,7 @@ func (s *DescribeImageFixTaskRequest) SetStatus(v string) *DescribeImageFixTaskR
 type DescribeImageFixTaskResponseBody struct {
 	BuildTasks []*DescribeImageFixTaskResponseBodyBuildTasks `json:"BuildTasks,omitempty" xml:"BuildTasks,omitempty" type:"Repeated"`
 	PageInfo   *DescribeImageFixTaskResponseBodyPageInfo     `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeImageFixTaskResponseBody) String() string {
@@ -17569,8 +17563,7 @@ type DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseM
 	MarkMisType      *string   `json:"MarkMisType,omitempty" xml:"MarkMisType,omitempty"`
 	MarkMisValue     *string   `json:"MarkMisValue,omitempty" xml:"MarkMisValue,omitempty"`
 	SupportedMisType []*string `json:"SupportedMisType,omitempty" xml:"SupportedMisType,omitempty" type:"Repeated"`
-	// 资产uuid
-	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Uuid             *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField) String() string {
@@ -19820,24 +19813,20 @@ type DescribeSuspEventsRequest struct {
 	Levels               *string   `json:"Levels,omitempty" xml:"Levels,omitempty"`
 	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	OperateErrorCodeList []*string `json:"OperateErrorCodeList,omitempty" xml:"OperateErrorCodeList,omitempty" type:"Repeated"`
-	// 处理时间结束时间
-	OperateTimeEnd *string `json:"OperateTimeEnd,omitempty" xml:"OperateTimeEnd,omitempty"`
-	// 处理时间开始时间
-	OperateTimeStart *string `json:"OperateTimeStart,omitempty" xml:"OperateTimeStart,omitempty"`
-	PageSize         *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ParentEventTypes *string `json:"ParentEventTypes,omitempty" xml:"ParentEventTypes,omitempty"`
-	Remark           *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Source           *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	SourceIp         *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TacticId         *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
-	TargetType       *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// 最新发生结束时间
-	TimeEnd *string `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
-	// 最新发生开始时间
-	TimeStart  *string `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
-	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	Uuids      *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	OperateTimeEnd       *string   `json:"OperateTimeEnd,omitempty" xml:"OperateTimeEnd,omitempty"`
+	OperateTimeStart     *string   `json:"OperateTimeStart,omitempty" xml:"OperateTimeStart,omitempty"`
+	PageSize             *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ParentEventTypes     *string   `json:"ParentEventTypes,omitempty" xml:"ParentEventTypes,omitempty"`
+	Remark               *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Source               *string   `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceIp             *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TacticId             *string   `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+	TargetType           *string   `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	TimeEnd              *string   `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
+	TimeStart            *string   `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
+	UniqueInfo           *string   `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	Uuids                *string   `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
 func (s DescribeSuspEventsRequest) String() string {
@@ -20036,56 +20025,55 @@ func (s *DescribeSuspEventsResponseBody) SetTotalCount(v int32) *DescribeSuspEve
 }
 
 type DescribeSuspEventsResponseBodySuspEvents struct {
-	Advanced              *bool                                                 `json:"Advanced,omitempty" xml:"Advanced,omitempty"`
-	AlarmEventName        *string                                               `json:"AlarmEventName,omitempty" xml:"AlarmEventName,omitempty"`
-	AlarmEventNameDisplay *string                                               `json:"AlarmEventNameDisplay,omitempty" xml:"AlarmEventNameDisplay,omitempty"`
-	AlarmEventType        *string                                               `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
-	AlarmEventTypeDisplay *string                                               `json:"AlarmEventTypeDisplay,omitempty" xml:"AlarmEventTypeDisplay,omitempty"`
-	AlarmUniqueInfo       *string                                               `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	AppName               *string                                               `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AutoBreaking          *bool                                                 `json:"AutoBreaking,omitempty" xml:"AutoBreaking,omitempty"`
-	CanBeDealOnLine       *bool                                                 `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
-	CanCancelFault        *bool                                                 `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
-	ContainHwMode         *bool                                                 `json:"ContainHwMode,omitempty" xml:"ContainHwMode,omitempty"`
-	ContainerId           *string                                               `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	ContainerImageId      *string                                               `json:"ContainerImageId,omitempty" xml:"ContainerImageId,omitempty"`
-	ContainerImageName    *string                                               `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
-	DataSource            *string                                               `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	Desc                  *string                                               `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Details               []*DescribeSuspEventsResponseBodySuspEventsDetails    `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	EventNotes            []*DescribeSuspEventsResponseBodySuspEventsEventNotes `json:"EventNotes,omitempty" xml:"EventNotes,omitempty" type:"Repeated"`
-	EventStatus           *int32                                                `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	EventSubType          *string                                               `json:"EventSubType,omitempty" xml:"EventSubType,omitempty"`
-	HasTraceInfo          *bool                                                 `json:"HasTraceInfo,omitempty" xml:"HasTraceInfo,omitempty"`
-	Id                    *int64                                                `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceId            *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName          *string                                               `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetIp            *string                                               `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp            *string                                               `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	K8sClusterId          *string                                               `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
-	K8sClusterName        *string                                               `json:"K8sClusterName,omitempty" xml:"K8sClusterName,omitempty"`
-	K8sNamespace          *string                                               `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
-	K8sNodeId             *string                                               `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
-	K8sNodeName           *string                                               `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
-	K8sPodName            *string                                               `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
-	LastTime              *string                                               `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	LastTimeStamp         *int64                                                `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
-	Level                 *string                                               `json:"Level,omitempty" xml:"Level,omitempty"`
-	MaliciousRuleStatus   *string                                               `json:"MaliciousRuleStatus,omitempty" xml:"MaliciousRuleStatus,omitempty"`
-	MarkMisRules          *string                                               `json:"MarkMisRules,omitempty" xml:"MarkMisRules,omitempty"`
-	Name                  *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	OccurrenceTime        *string                                               `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
-	OccurrenceTimeStamp   *int64                                                `json:"OccurrenceTimeStamp,omitempty" xml:"OccurrenceTimeStamp,omitempty"`
-	OperateErrorCode      *string                                               `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
-	OperateMsg            *string                                               `json:"OperateMsg,omitempty" xml:"OperateMsg,omitempty"`
-	OperateTime           *int64                                                `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
-	SaleVersion           *string                                               `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
-	SecurityEventIds      *string                                               `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty"`
-	Stages                *string                                               `json:"Stages,omitempty" xml:"Stages,omitempty"`
-	// 攻击阶段展示名
-	TacticItems []*DescribeSuspEventsResponseBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
-	UniqueInfo  *string                                                `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	Uuid        *string                                                `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Advanced              *bool                                                  `json:"Advanced,omitempty" xml:"Advanced,omitempty"`
+	AlarmEventName        *string                                                `json:"AlarmEventName,omitempty" xml:"AlarmEventName,omitempty"`
+	AlarmEventNameDisplay *string                                                `json:"AlarmEventNameDisplay,omitempty" xml:"AlarmEventNameDisplay,omitempty"`
+	AlarmEventType        *string                                                `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
+	AlarmEventTypeDisplay *string                                                `json:"AlarmEventTypeDisplay,omitempty" xml:"AlarmEventTypeDisplay,omitempty"`
+	AlarmUniqueInfo       *string                                                `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	AppName               *string                                                `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AutoBreaking          *bool                                                  `json:"AutoBreaking,omitempty" xml:"AutoBreaking,omitempty"`
+	CanBeDealOnLine       *bool                                                  `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
+	CanCancelFault        *bool                                                  `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
+	ContainHwMode         *bool                                                  `json:"ContainHwMode,omitempty" xml:"ContainHwMode,omitempty"`
+	ContainerId           *string                                                `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerImageId      *string                                                `json:"ContainerImageId,omitempty" xml:"ContainerImageId,omitempty"`
+	ContainerImageName    *string                                                `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
+	DataSource            *string                                                `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	Desc                  *string                                                `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Details               []*DescribeSuspEventsResponseBodySuspEventsDetails     `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	EventNotes            []*DescribeSuspEventsResponseBodySuspEventsEventNotes  `json:"EventNotes,omitempty" xml:"EventNotes,omitempty" type:"Repeated"`
+	EventStatus           *int32                                                 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	EventSubType          *string                                                `json:"EventSubType,omitempty" xml:"EventSubType,omitempty"`
+	HasTraceInfo          *bool                                                  `json:"HasTraceInfo,omitempty" xml:"HasTraceInfo,omitempty"`
+	Id                    *int64                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId            *string                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName          *string                                                `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp            *string                                                `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp            *string                                                `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	K8sClusterId          *string                                                `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	K8sClusterName        *string                                                `json:"K8sClusterName,omitempty" xml:"K8sClusterName,omitempty"`
+	K8sNamespace          *string                                                `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
+	K8sNodeId             *string                                                `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
+	K8sNodeName           *string                                                `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
+	K8sPodName            *string                                                `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
+	LastTime              *string                                                `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	LastTimeStamp         *int64                                                 `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
+	Level                 *string                                                `json:"Level,omitempty" xml:"Level,omitempty"`
+	MaliciousRuleStatus   *string                                                `json:"MaliciousRuleStatus,omitempty" xml:"MaliciousRuleStatus,omitempty"`
+	MarkMisRules          *string                                                `json:"MarkMisRules,omitempty" xml:"MarkMisRules,omitempty"`
+	Name                  *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	OccurrenceTime        *string                                                `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
+	OccurrenceTimeStamp   *int64                                                 `json:"OccurrenceTimeStamp,omitempty" xml:"OccurrenceTimeStamp,omitempty"`
+	OperateErrorCode      *string                                                `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
+	OperateMsg            *string                                                `json:"OperateMsg,omitempty" xml:"OperateMsg,omitempty"`
+	OperateTime           *int64                                                 `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
+	SaleVersion           *string                                                `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
+	SecurityEventIds      *string                                                `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty"`
+	Stages                *string                                                `json:"Stages,omitempty" xml:"Stages,omitempty"`
+	TacticItems           []*DescribeSuspEventsResponseBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
+	UniqueInfo            *string                                                `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	Uuid                  *string                                                `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeSuspEventsResponseBodySuspEvents) String() string {
@@ -24823,16 +24811,11 @@ func (s *InstallBackupClientResponse) SetBody(v *InstallBackupClientResponseBody
 }
 
 type InstallCloudMonitorRequest struct {
-	// 非阿里云主机安装云监控插件时所需要的AccessKey
-	AgentAccessKey *string `json:"AgentAccessKey,omitempty" xml:"AgentAccessKey,omitempty"`
-	// 非阿里云主机安装云监控插件时所需要的AccessSecret
-	AgentSecretKey *string `json:"AgentSecretKey,omitempty" xml:"AgentSecretKey,omitempty"`
-	// 云监控版本
-	ArgusVersion *string `json:"ArgusVersion,omitempty" xml:"ArgusVersion,omitempty"`
-	// 实例 instanceId
+	AgentAccessKey *string   `json:"AgentAccessKey,omitempty" xml:"AgentAccessKey,omitempty"`
+	AgentSecretKey *string   `json:"AgentSecretKey,omitempty" xml:"AgentSecretKey,omitempty"`
+	ArgusVersion   *string   `json:"ArgusVersion,omitempty" xml:"ArgusVersion,omitempty"`
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	// uuid 列表
-	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+	UuidList       []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 
 func (s InstallCloudMonitorRequest) String() string {
@@ -25010,12 +24993,11 @@ func (s *ListCheckInstanceResultRequest) SetStatuses(v []*string) *ListCheckInst
 }
 
 type ListCheckInstanceResultResponseBody struct {
-	BasicData  []*ListCheckInstanceResultResponseBodyBasicData `json:"BasicData,omitempty" xml:"BasicData,omitempty" type:"Repeated"`
-	Checks     map[string]interface{}                          `json:"Checks,omitempty" xml:"Checks,omitempty"`
-	Columns    []*ListCheckInstanceResultResponseBodyColumns   `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	PageInfo   *ListCheckInstanceResultResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	BasicData []*ListCheckInstanceResultResponseBodyBasicData `json:"BasicData,omitempty" xml:"BasicData,omitempty" type:"Repeated"`
+	Checks    []map[string]interface{}                        `json:"Checks,omitempty" xml:"Checks,omitempty" type:"Repeated"`
+	Columns   []*ListCheckInstanceResultResponseBodyColumns   `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	PageInfo  *ListCheckInstanceResultResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListCheckInstanceResultResponseBody) String() string {
@@ -25031,7 +25013,7 @@ func (s *ListCheckInstanceResultResponseBody) SetBasicData(v []*ListCheckInstanc
 	return s
 }
 
-func (s *ListCheckInstanceResultResponseBody) SetChecks(v map[string]interface{}) *ListCheckInstanceResultResponseBody {
+func (s *ListCheckInstanceResultResponseBody) SetChecks(v []map[string]interface{}) *ListCheckInstanceResultResponseBody {
 	s.Checks = v
 	return s
 }
@@ -25048,11 +25030,6 @@ func (s *ListCheckInstanceResultResponseBody) SetPageInfo(v *ListCheckInstanceRe
 
 func (s *ListCheckInstanceResultResponseBody) SetRequestId(v string) *ListCheckInstanceResultResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListCheckInstanceResultResponseBody) SetTotalCount(v int32) *ListCheckInstanceResultResponseBody {
-	s.TotalCount = &v
 	return s
 }
 
@@ -25538,12 +25515,10 @@ func (s *ListCheckResultResponse) SetBody(v *ListCheckResultResponseBody) *ListC
 }
 
 type ListVulAutoRepairConfigRequest struct {
-	// 漏洞别名
 	AliasName   *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 漏洞类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListVulAutoRepairConfigRequest) String() string {
@@ -28650,7 +28625,6 @@ func (s *OperateVulsResponse) SetBody(v *OperateVulsResponseBody) *OperateVulsRe
 }
 
 type OperationCancelIgnoreSuspEventRequest struct {
-	// 告警编号集合
 	SecurityEventIds []*int64 `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty" type:"Repeated"`
 }
 
@@ -28983,9 +28957,8 @@ func (s *PublicCreateImageScanTaskRequest) SetTags(v string) *PublicCreateImageS
 }
 
 type PublicCreateImageScanTaskResponseBody struct {
-	Data *PublicCreateImageScanTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *PublicCreateImageScanTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PublicCreateImageScanTaskResponseBody) String() string {
@@ -29166,9 +29139,8 @@ func (s *PublicPreCheckImageScanTaskRequest) SetTags(v string) *PublicPreCheckIm
 }
 
 type PublicPreCheckImageScanTaskResponseBody struct {
-	Data *PublicPreCheckImageScanTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *PublicPreCheckImageScanTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PublicPreCheckImageScanTaskResponseBody) String() string {
@@ -29265,9 +29237,8 @@ func (s *PublicSyncAndCreateImageScanTaskRequest) SetSourceIp(v string) *PublicS
 }
 
 type PublicSyncAndCreateImageScanTaskResponseBody struct {
-	Data *PublicSyncAndCreateImageScanTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *PublicSyncAndCreateImageScanTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PublicSyncAndCreateImageScanTaskResponseBody) String() string {
@@ -29458,17 +29429,14 @@ func (s *QueryGroupIdByGroupNameResponse) SetBody(v *QueryGroupIdByGroupNameResp
 }
 
 type QueryGroupedSecurityEventMarkMissListRequest struct {
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 加白方式
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DisposalWay *string `json:"DisposalWay,omitempty" xml:"DisposalWay,omitempty"`
-	// 告警事件名称（子类型）
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	From      *string `json:"From,omitempty" xml:"From,omitempty"`
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 资产名
-	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	EventName   *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	From        *string `json:"From,omitempty" xml:"From,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s QueryGroupedSecurityEventMarkMissListRequest) String() string {
@@ -29567,28 +29535,17 @@ func (s *QueryGroupedSecurityEventMarkMissListResponseBody) SetSuccess(v bool) *
 }
 
 type QueryGroupedSecurityEventMarkMissListResponseBodyList struct {
-	// 用户统一编号
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 处置方式
-	DisposalWay *string `json:"DisposalWay,omitempty" xml:"DisposalWay,omitempty"`
-	// 告警事件名称（子类型）
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// 告警事件名称（子类型）
+	AliUid            *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	DisposalWay       *string `json:"DisposalWay,omitempty" xml:"DisposalWay,omitempty"`
+	EventName         *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	EventNameOriginal *string `json:"EventNameOriginal,omitempty" xml:"EventNameOriginal,omitempty"`
-	// 告警事件名称（父类型）
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// 告警事件名称（父类型）
+	EventType         *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	EventTypeOriginal *string `json:"EventTypeOriginal,omitempty" xml:"EventTypeOriginal,omitempty"`
-	// 加白字段
-	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// 加白值
-	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	// 加白字段别名
-	FiledAliasName *string `json:"FiledAliasName,omitempty" xml:"FiledAliasName,omitempty"`
-	// 操作符
-	Operate *string `json:"Operate,omitempty" xml:"Operate,omitempty"`
-	// 资产ids，逗号分割
-	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	Field             *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	FieldValue        *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	FiledAliasName    *string `json:"FiledAliasName,omitempty" xml:"FiledAliasName,omitempty"`
+	Operate           *string `json:"Operate,omitempty" xml:"Operate,omitempty"`
+	Uuids             *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
 func (s QueryGroupedSecurityEventMarkMissListResponseBodyList) String() string {
