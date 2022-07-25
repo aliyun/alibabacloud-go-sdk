@@ -3842,6 +3842,146 @@ func (s *ScreenChestCTResponse) SetBody(v *ScreenChestCTResponseBody) *ScreenChe
 	return s
 }
 
+type SegmentOARRequest struct {
+	BodyPart   *string                     `json:"BodyPart,omitempty" xml:"BodyPart,omitempty"`
+	Contrast   *bool                       `json:"Contrast,omitempty" xml:"Contrast,omitempty"`
+	DataFormat *string                     `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	MaskList   []*int64                    `json:"MaskList,omitempty" xml:"MaskList,omitempty" type:"Repeated"`
+	OrgId      *string                     `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string                     `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList    []*SegmentOARRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s SegmentOARRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentOARRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentOARRequest) SetBodyPart(v string) *SegmentOARRequest {
+	s.BodyPart = &v
+	return s
+}
+
+func (s *SegmentOARRequest) SetContrast(v bool) *SegmentOARRequest {
+	s.Contrast = &v
+	return s
+}
+
+func (s *SegmentOARRequest) SetDataFormat(v string) *SegmentOARRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *SegmentOARRequest) SetMaskList(v []*int64) *SegmentOARRequest {
+	s.MaskList = v
+	return s
+}
+
+func (s *SegmentOARRequest) SetOrgId(v string) *SegmentOARRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *SegmentOARRequest) SetOrgName(v string) *SegmentOARRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *SegmentOARRequest) SetURLList(v []*SegmentOARRequestURLList) *SegmentOARRequest {
+	s.URLList = v
+	return s
+}
+
+type SegmentOARRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s SegmentOARRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentOARRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentOARRequestURLList) SetURL(v string) *SegmentOARRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type SegmentOARResponseBody struct {
+	Data *SegmentOARResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SegmentOARResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentOARResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentOARResponseBody) SetData(v *SegmentOARResponseBodyData) *SegmentOARResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SegmentOARResponseBody) SetRequestId(v string) *SegmentOARResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SegmentOARResponseBodyData struct {
+	ResultURL *string `json:"ResultURL,omitempty" xml:"ResultURL,omitempty"`
+}
+
+func (s SegmentOARResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentOARResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentOARResponseBodyData) SetResultURL(v string) *SegmentOARResponseBodyData {
+	s.ResultURL = &v
+	return s
+}
+
+type SegmentOARResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentOARResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SegmentOARResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentOARResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentOARResponse) SetHeaders(v map[string]*string) *SegmentOARResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SegmentOARResponse) SetStatusCode(v int32) *SegmentOARResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SegmentOARResponse) SetBody(v *SegmentOARResponseBody) *SegmentOARResponse {
+	s.Body = v
+	return s
+}
+
 type TranslateMedRequest struct {
 	FromLanguage *string `json:"FromLanguage,omitempty" xml:"FromLanguage,omitempty"`
 	Text         *string `json:"Text,omitempty" xml:"Text,omitempty"`
@@ -5544,6 +5684,74 @@ func (client *Client) ScreenChestCT(request *ScreenChestCTRequest) (_result *Scr
 	runtime := &util.RuntimeOptions{}
 	_result = &ScreenChestCTResponse{}
 	_body, _err := client.ScreenChestCTWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SegmentOARWithOptions(request *SegmentOARRequest, runtime *util.RuntimeOptions) (_result *SegmentOARResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BodyPart)) {
+		body["BodyPart"] = request.BodyPart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Contrast)) {
+		body["Contrast"] = request.Contrast
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataFormat)) {
+		body["DataFormat"] = request.DataFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaskList)) {
+		body["MaskList"] = request.MaskList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		body["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
+		body["OrgName"] = request.OrgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		body["URLList"] = request.URLList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentOAR"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SegmentOARResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentOAR(request *SegmentOARRequest) (_result *SegmentOARResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentOARResponse{}
+	_body, _err := client.SegmentOARWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
