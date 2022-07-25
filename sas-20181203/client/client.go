@@ -23946,6 +23946,180 @@ func (s *GetBackupStorageCountResponse) SetBody(v *GetBackupStorageCountResponse
 	return s
 }
 
+type GetCheckDetailRequest struct {
+	CheckId *int64  `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s GetCheckDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckDetailRequest) SetCheckId(v int64) *GetCheckDetailRequest {
+	s.CheckId = &v
+	return s
+}
+
+func (s *GetCheckDetailRequest) SetLang(v string) *GetCheckDetailRequest {
+	s.Lang = &v
+	return s
+}
+
+type GetCheckDetailResponseBody struct {
+	AssistInfo  *GetCheckDetailResponseBodyAssistInfo  `json:"AssistInfo,omitempty" xml:"AssistInfo,omitempty" type:"Struct"`
+	Description *GetCheckDetailResponseBodyDescription `json:"Description,omitempty" xml:"Description,omitempty" type:"Struct"`
+	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Solution    *GetCheckDetailResponseBodySolution    `json:"Solution,omitempty" xml:"Solution,omitempty" type:"Struct"`
+}
+
+func (s GetCheckDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckDetailResponseBody) SetAssistInfo(v *GetCheckDetailResponseBodyAssistInfo) *GetCheckDetailResponseBody {
+	s.AssistInfo = v
+	return s
+}
+
+func (s *GetCheckDetailResponseBody) SetDescription(v *GetCheckDetailResponseBodyDescription) *GetCheckDetailResponseBody {
+	s.Description = v
+	return s
+}
+
+func (s *GetCheckDetailResponseBody) SetRequestId(v string) *GetCheckDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCheckDetailResponseBody) SetSolution(v *GetCheckDetailResponseBodySolution) *GetCheckDetailResponseBody {
+	s.Solution = v
+	return s
+}
+
+type GetCheckDetailResponseBodyAssistInfo struct {
+	Link  *string `json:"Link,omitempty" xml:"Link,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetCheckDetailResponseBodyAssistInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckDetailResponseBodyAssistInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckDetailResponseBodyAssistInfo) SetLink(v string) *GetCheckDetailResponseBodyAssistInfo {
+	s.Link = &v
+	return s
+}
+
+func (s *GetCheckDetailResponseBodyAssistInfo) SetType(v string) *GetCheckDetailResponseBodyAssistInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *GetCheckDetailResponseBodyAssistInfo) SetValue(v string) *GetCheckDetailResponseBodyAssistInfo {
+	s.Value = &v
+	return s
+}
+
+type GetCheckDetailResponseBodyDescription struct {
+	Link  *string `json:"Link,omitempty" xml:"Link,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetCheckDetailResponseBodyDescription) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckDetailResponseBodyDescription) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckDetailResponseBodyDescription) SetLink(v string) *GetCheckDetailResponseBodyDescription {
+	s.Link = &v
+	return s
+}
+
+func (s *GetCheckDetailResponseBodyDescription) SetType(v string) *GetCheckDetailResponseBodyDescription {
+	s.Type = &v
+	return s
+}
+
+func (s *GetCheckDetailResponseBodyDescription) SetValue(v string) *GetCheckDetailResponseBodyDescription {
+	s.Value = &v
+	return s
+}
+
+type GetCheckDetailResponseBodySolution struct {
+	Link  *string `json:"Link,omitempty" xml:"Link,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetCheckDetailResponseBodySolution) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckDetailResponseBodySolution) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckDetailResponseBodySolution) SetLink(v string) *GetCheckDetailResponseBodySolution {
+	s.Link = &v
+	return s
+}
+
+func (s *GetCheckDetailResponseBodySolution) SetType(v string) *GetCheckDetailResponseBodySolution {
+	s.Type = &v
+	return s
+}
+
+func (s *GetCheckDetailResponseBodySolution) SetValue(v string) *GetCheckDetailResponseBodySolution {
+	s.Value = &v
+	return s
+}
+
+type GetCheckDetailResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCheckDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCheckDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckDetailResponse) SetHeaders(v map[string]*string) *GetCheckDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCheckDetailResponse) SetStatusCode(v int32) *GetCheckDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCheckDetailResponse) SetBody(v *GetCheckDetailResponseBody) *GetCheckDetailResponse {
+	s.Body = v
+	return s
+}
+
 type GetFileDetectResultRequest struct {
 	HashKeyList []*string `json:"HashKeyList,omitempty" xml:"HashKeyList,omitempty" type:"Repeated"`
 	SourceIp    *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
@@ -24760,6 +24934,305 @@ func (s *InstallCloudMonitorResponse) SetStatusCode(v int32) *InstallCloudMonito
 }
 
 func (s *InstallCloudMonitorResponse) SetBody(v *InstallCloudMonitorResponseBody) *InstallCloudMonitorResponse {
+	s.Body = v
+	return s
+}
+
+type ListCheckInstanceResultRequest struct {
+	CheckId         *int64    `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CurrentPage     *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	InstanceIdKey   *string   `json:"InstanceIdKey,omitempty" xml:"InstanceIdKey,omitempty"`
+	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	InstanceNameKey *string   `json:"InstanceNameKey,omitempty" xml:"InstanceNameKey,omitempty"`
+	Lang            *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionIdKey     *string   `json:"RegionIdKey,omitempty" xml:"RegionIdKey,omitempty"`
+	SortTypes       []*string `json:"SortTypes,omitempty" xml:"SortTypes,omitempty" type:"Repeated"`
+	Statuses        []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+}
+
+func (s ListCheckInstanceResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckInstanceResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckInstanceResultRequest) SetCheckId(v int64) *ListCheckInstanceResultRequest {
+	s.CheckId = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultRequest) SetCurrentPage(v int32) *ListCheckInstanceResultRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultRequest) SetInstanceIdKey(v string) *ListCheckInstanceResultRequest {
+	s.InstanceIdKey = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultRequest) SetInstanceIds(v []*string) *ListCheckInstanceResultRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *ListCheckInstanceResultRequest) SetInstanceNameKey(v string) *ListCheckInstanceResultRequest {
+	s.InstanceNameKey = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultRequest) SetLang(v string) *ListCheckInstanceResultRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultRequest) SetPageSize(v int32) *ListCheckInstanceResultRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultRequest) SetRegionIdKey(v string) *ListCheckInstanceResultRequest {
+	s.RegionIdKey = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultRequest) SetSortTypes(v []*string) *ListCheckInstanceResultRequest {
+	s.SortTypes = v
+	return s
+}
+
+func (s *ListCheckInstanceResultRequest) SetStatuses(v []*string) *ListCheckInstanceResultRequest {
+	s.Statuses = v
+	return s
+}
+
+type ListCheckInstanceResultResponseBody struct {
+	BasicData  []*ListCheckInstanceResultResponseBodyBasicData `json:"BasicData,omitempty" xml:"BasicData,omitempty" type:"Repeated"`
+	Checks     map[string]interface{}                          `json:"Checks,omitempty" xml:"Checks,omitempty"`
+	Columns    []*ListCheckInstanceResultResponseBodyColumns   `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	PageInfo   *ListCheckInstanceResultResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCheckInstanceResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckInstanceResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckInstanceResultResponseBody) SetBasicData(v []*ListCheckInstanceResultResponseBodyBasicData) *ListCheckInstanceResultResponseBody {
+	s.BasicData = v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBody) SetChecks(v map[string]interface{}) *ListCheckInstanceResultResponseBody {
+	s.Checks = v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBody) SetColumns(v []*ListCheckInstanceResultResponseBodyColumns) *ListCheckInstanceResultResponseBody {
+	s.Columns = v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBody) SetPageInfo(v *ListCheckInstanceResultResponseBodyPageInfo) *ListCheckInstanceResultResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBody) SetRequestId(v string) *ListCheckInstanceResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBody) SetTotalCount(v int32) *ListCheckInstanceResultResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCheckInstanceResultResponseBodyBasicData struct {
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListCheckInstanceResultResponseBodyBasicData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckInstanceResultResponseBodyBasicData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckInstanceResultResponseBodyBasicData) SetId(v int64) *ListCheckInstanceResultResponseBodyBasicData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyBasicData) SetInstanceId(v string) *ListCheckInstanceResultResponseBodyBasicData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyBasicData) SetInstanceName(v string) *ListCheckInstanceResultResponseBodyBasicData {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyBasicData) SetRegionId(v string) *ListCheckInstanceResultResponseBodyBasicData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyBasicData) SetStatus(v string) *ListCheckInstanceResultResponseBodyBasicData {
+	s.Status = &v
+	return s
+}
+
+type ListCheckInstanceResultResponseBodyColumns struct {
+	Grids     []*ListCheckInstanceResultResponseBodyColumnsGrids `json:"Grids,omitempty" xml:"Grids,omitempty" type:"Repeated"`
+	Key       *string                                            `json:"Key,omitempty" xml:"Key,omitempty"`
+	Search    *bool                                              `json:"Search,omitempty" xml:"Search,omitempty"`
+	SearchKey *string                                            `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	ShowName  *string                                            `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	Type      *string                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListCheckInstanceResultResponseBodyColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckInstanceResultResponseBodyColumns) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckInstanceResultResponseBodyColumns) SetGrids(v []*ListCheckInstanceResultResponseBodyColumnsGrids) *ListCheckInstanceResultResponseBodyColumns {
+	s.Grids = v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyColumns) SetKey(v string) *ListCheckInstanceResultResponseBodyColumns {
+	s.Key = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyColumns) SetSearch(v bool) *ListCheckInstanceResultResponseBodyColumns {
+	s.Search = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyColumns) SetSearchKey(v string) *ListCheckInstanceResultResponseBodyColumns {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyColumns) SetShowName(v string) *ListCheckInstanceResultResponseBodyColumns {
+	s.ShowName = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyColumns) SetType(v string) *ListCheckInstanceResultResponseBodyColumns {
+	s.Type = &v
+	return s
+}
+
+type ListCheckInstanceResultResponseBodyColumnsGrids struct {
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListCheckInstanceResultResponseBodyColumnsGrids) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckInstanceResultResponseBodyColumnsGrids) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckInstanceResultResponseBodyColumnsGrids) SetKey(v string) *ListCheckInstanceResultResponseBodyColumnsGrids {
+	s.Key = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyColumnsGrids) SetShowName(v string) *ListCheckInstanceResultResponseBodyColumnsGrids {
+	s.ShowName = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyColumnsGrids) SetType(v string) *ListCheckInstanceResultResponseBodyColumnsGrids {
+	s.Type = &v
+	return s
+}
+
+type ListCheckInstanceResultResponseBodyPageInfo struct {
+	Count       *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCheckInstanceResultResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckInstanceResultResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckInstanceResultResponseBodyPageInfo) SetCount(v string) *ListCheckInstanceResultResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyPageInfo) SetCurrentPage(v int32) *ListCheckInstanceResultResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyPageInfo) SetPageSize(v int32) *ListCheckInstanceResultResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyPageInfo) SetTotalCount(v int32) *ListCheckInstanceResultResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCheckInstanceResultResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCheckInstanceResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCheckInstanceResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckInstanceResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckInstanceResultResponse) SetHeaders(v map[string]*string) *ListCheckInstanceResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponse) SetStatusCode(v int32) *ListCheckInstanceResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponse) SetBody(v *ListCheckInstanceResultResponseBody) *ListCheckInstanceResultResponse {
 	s.Body = v
 	return s
 }
@@ -38287,6 +38760,54 @@ func (client *Client) GetBackupStorageCount() (_result *GetBackupStorageCountRes
 	return _result, _err
 }
 
+func (client *Client) GetCheckDetailWithOptions(request *GetCheckDetailRequest, runtime *util.RuntimeOptions) (_result *GetCheckDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckId)) {
+		query["CheckId"] = request.CheckId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCheckDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCheckDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCheckDetail(request *GetCheckDetailRequest) (_result *GetCheckDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCheckDetailResponse{}
+	_body, _err := client.GetCheckDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetFileDetectResultWithOptions(request *GetFileDetectResultRequest, runtime *util.RuntimeOptions) (_result *GetFileDetectResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38736,6 +39257,86 @@ func (client *Client) InstallCloudMonitor(request *InstallCloudMonitorRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallCloudMonitorResponse{}
 	_body, _err := client.InstallCloudMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCheckInstanceResultWithOptions(request *ListCheckInstanceResultRequest, runtime *util.RuntimeOptions) (_result *ListCheckInstanceResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckId)) {
+		query["CheckId"] = request.CheckId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdKey)) {
+		query["InstanceIdKey"] = request.InstanceIdKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceNameKey)) {
+		query["InstanceNameKey"] = request.InstanceNameKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdKey)) {
+		query["RegionIdKey"] = request.RegionIdKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortTypes)) {
+		query["SortTypes"] = request.SortTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Statuses)) {
+		query["Statuses"] = request.Statuses
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCheckInstanceResult"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCheckInstanceResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCheckInstanceResult(request *ListCheckInstanceResultRequest) (_result *ListCheckInstanceResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCheckInstanceResultResponse{}
+	_body, _err := client.ListCheckInstanceResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
