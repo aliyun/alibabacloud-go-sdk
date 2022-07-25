@@ -13,10 +13,8 @@ import (
 )
 
 type AddMosaicsRequest struct {
-	// 马赛克位置数据
 	MarkPosition *string `json:"MarkPosition,omitempty" xml:"MarkPosition,omitempty"`
-	// 子场景ID
-	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
+	SubSceneId   *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
 }
 
 func (s AddMosaicsRequest) String() string {
@@ -38,16 +36,11 @@ func (s *AddMosaicsRequest) SetSubSceneId(v string) *AddMosaicsRequest {
 }
 
 type AddMosaicsResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s AddMosaicsResponseBody) String() string {
@@ -113,10 +106,8 @@ func (s *AddMosaicsResponse) SetBody(v *AddMosaicsResponseBody) *AddMosaicsRespo
 }
 
 type AddProjectRequest struct {
-	// 业务id
-	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// 项目名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	BusinessId *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s AddProjectRequest) String() string {
@@ -138,16 +129,11 @@ func (s *AddProjectRequest) SetName(v string) *AddProjectRequest {
 }
 
 type AddProjectResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 项目ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddProjectResponseBody) String() string {
@@ -213,10 +199,8 @@ func (s *AddProjectResponse) SetBody(v *AddProjectResponseBody) *AddProjectRespo
 }
 
 type AddRelativePositionRequest struct {
-	// 相对位置信息
 	RelativePosition *string `json:"RelativePosition,omitempty" xml:"RelativePosition,omitempty"`
-	// 场景ID
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneId          *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s AddRelativePositionRequest) String() string {
@@ -238,14 +222,10 @@ func (s *AddRelativePositionRequest) SetSceneId(v string) *AddRelativePositionRe
 }
 
 type AddRelativePositionResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddRelativePositionResponseBody) String() string {
@@ -306,7 +286,6 @@ func (s *AddRelativePositionResponse) SetBody(v *AddRelativePositionResponseBody
 }
 
 type AddRoomPlanRequest struct {
-	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -324,16 +303,11 @@ func (s *AddRoomPlanRequest) SetSceneId(v string) *AddRoomPlanRequest {
 }
 
 type AddRoomPlanResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 文件上传凭据
-	Data *AddRoomPlanResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *AddRoomPlanResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddRoomPlanResponseBody) String() string {
@@ -370,19 +344,12 @@ func (s *AddRoomPlanResponseBody) SetSuccess(v bool) *AddRoomPlanResponseBody {
 }
 
 type AddRoomPlanResponseBodyData struct {
-	// accessId
-	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// 上传回调
-	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
-	// 授权路径
-	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	// 授权失效时间(s)
-	Expire *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	// 上传地址
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 授权
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// 签名
+	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	Callback  *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	Dir       *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
+	Expire    *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 }
 
@@ -460,12 +427,9 @@ func (s *AddRoomPlanResponse) SetBody(v *AddRoomPlanResponseBody) *AddRoomPlanRe
 
 type AddSceneRequest struct {
 	CustomerUid *string `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
-	// 场景名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 项目ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 场景类型 3D模型：MODEL_3D  全景图片：PIC  全景视频：VIDEO 混合：MIX
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AddSceneRequest) String() string {
@@ -497,16 +461,11 @@ func (s *AddSceneRequest) SetType(v string) *AddSceneRequest {
 }
 
 type AddSceneResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 场景ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddSceneResponseBody) String() string {
@@ -572,11 +531,8 @@ func (s *AddSceneResponse) SetBody(v *AddSceneResponseBody) *AddSceneResponse {
 }
 
 type AddSubSceneRequest struct {
-	// 子场景名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 场景ID
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 类型 图片：IMAGE 视频：VIDEO
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SceneId    *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	UploadType *string `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
 }
 
@@ -604,16 +560,11 @@ func (s *AddSubSceneRequest) SetUploadType(v string) *AddSubSceneRequest {
 }
 
 type AddSubSceneResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 子场景ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddSubSceneResponseBody) String() string {
@@ -679,7 +630,6 @@ func (s *AddSubSceneResponse) SetBody(v *AddSubSceneResponseBody) *AddSubSceneRe
 }
 
 type CheckUserPropertyRequest struct {
-	// 用户uid
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -697,16 +647,11 @@ func (s *CheckUserPropertyRequest) SetUid(v string) *CheckUserPropertyRequest {
 }
 
 type CheckUserPropertyResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 用户属性是否匹配
-	Match *bool `json:"Match,omitempty" xml:"Match,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Match     *bool   `json:"Match,omitempty" xml:"Match,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckUserPropertyResponseBody) String() string {
@@ -772,9 +717,8 @@ func (s *CheckUserPropertyResponse) SetBody(v *CheckUserPropertyResponseBody) *C
 }
 
 type CopySceneRequest struct {
-	// 场景Id
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 新场景名称
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 }
 
@@ -784,6 +728,11 @@ func (s CopySceneRequest) String() string {
 
 func (s CopySceneRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CopySceneRequest) SetProjectId(v string) *CopySceneRequest {
+	s.ProjectId = &v
+	return s
 }
 
 func (s *CopySceneRequest) SetSceneId(v string) *CopySceneRequest {
@@ -797,15 +746,11 @@ func (s *CopySceneRequest) SetSceneName(v string) *CopySceneRequest {
 }
 
 type CopySceneResponseBody struct {
-	// 返回码
-	Code *int64                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *CopySceneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CopySceneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CopySceneResponseBody) String() string {
@@ -842,7 +787,6 @@ func (s *CopySceneResponseBody) SetSuccess(v bool) *CopySceneResponseBody {
 }
 
 type CopySceneResponseBodyData struct {
-	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -888,8 +832,153 @@ func (s *CopySceneResponse) SetBody(v *CopySceneResponseBody) *CopySceneResponse
 	return s
 }
 
+type CreateUploadPolicyRequest struct {
+	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateUploadPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUploadPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUploadPolicyRequest) SetOption(v string) *CreateUploadPolicyRequest {
+	s.Option = &v
+	return s
+}
+
+func (s *CreateUploadPolicyRequest) SetType(v string) *CreateUploadPolicyRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateUploadPolicyResponseBody struct {
+	Code      *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateUploadPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateUploadPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUploadPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUploadPolicyResponseBody) SetCode(v int64) *CreateUploadPolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateUploadPolicyResponseBody) SetData(v *CreateUploadPolicyResponseBodyData) *CreateUploadPolicyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateUploadPolicyResponseBody) SetMessage(v string) *CreateUploadPolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateUploadPolicyResponseBody) SetRequestId(v string) *CreateUploadPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateUploadPolicyResponseBody) SetSuccess(v bool) *CreateUploadPolicyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateUploadPolicyResponseBodyData struct {
+	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	Callback  *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	Dir       *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
+	Expire    *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+}
+
+func (s CreateUploadPolicyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUploadPolicyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUploadPolicyResponseBodyData) SetAccessId(v string) *CreateUploadPolicyResponseBodyData {
+	s.AccessId = &v
+	return s
+}
+
+func (s *CreateUploadPolicyResponseBodyData) SetCallback(v string) *CreateUploadPolicyResponseBodyData {
+	s.Callback = &v
+	return s
+}
+
+func (s *CreateUploadPolicyResponseBodyData) SetDir(v string) *CreateUploadPolicyResponseBodyData {
+	s.Dir = &v
+	return s
+}
+
+func (s *CreateUploadPolicyResponseBodyData) SetExpire(v string) *CreateUploadPolicyResponseBodyData {
+	s.Expire = &v
+	return s
+}
+
+func (s *CreateUploadPolicyResponseBodyData) SetHost(v string) *CreateUploadPolicyResponseBodyData {
+	s.Host = &v
+	return s
+}
+
+func (s *CreateUploadPolicyResponseBodyData) SetPolicy(v string) *CreateUploadPolicyResponseBodyData {
+	s.Policy = &v
+	return s
+}
+
+func (s *CreateUploadPolicyResponseBodyData) SetSignature(v string) *CreateUploadPolicyResponseBodyData {
+	s.Signature = &v
+	return s
+}
+
+type CreateUploadPolicyResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateUploadPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateUploadPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUploadPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUploadPolicyResponse) SetHeaders(v map[string]*string) *CreateUploadPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateUploadPolicyResponse) SetStatusCode(v int32) *CreateUploadPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateUploadPolicyResponse) SetBody(v *CreateUploadPolicyResponseBody) *CreateUploadPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type DetailProjectRequest struct {
-	// 项目Id
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -907,28 +996,17 @@ func (s *DetailProjectRequest) SetId(v string) *DetailProjectRequest {
 }
 
 type DetailProjectResponseBody struct {
-	// 业务ID
-	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// 业务名称
+	BusinessId   *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 最后修改时间
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 项目ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 项目名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Token
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	Code         *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Token        *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s DetailProjectResponseBody) String() string {
@@ -1024,7 +1102,6 @@ func (s *DetailProjectResponse) SetBody(v *DetailProjectResponseBody) *DetailPro
 }
 
 type DetailSceneRequest struct {
-	// 场景Id
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1042,34 +1119,23 @@ func (s *DetailSceneRequest) SetId(v string) *DetailSceneRequest {
 }
 
 type DetailSceneResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 封面地址
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 最后修改时间
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 主场景Id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 场景名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 预览Token
-	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
-	// 是否已发布 true：已发布：false：未发布
-	Published *bool `json:"Published,omitempty" xml:"Published,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源数
-	SourceNum *int64 `json:"SourceNum,omitempty" xml:"SourceNum,omitempty"`
-	// 子场景数
-	SubSceneNum *int64 `json:"SubSceneNum,omitempty" xml:"SubSceneNum,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 场景类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Captures     []*DetailSceneResponseBodyCaptures `json:"Captures,omitempty" xml:"Captures,omitempty" type:"Repeated"`
+	Code         *int64                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	CoverUrl     *string                            `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	GmtCreate    *int64                             `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *int64                             `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *string                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message      *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name         *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreviewToken *string                            `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
+	Published    *bool                              `json:"Published,omitempty" xml:"Published,omitempty"`
+	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceNum    *int64                             `json:"SourceNum,omitempty" xml:"SourceNum,omitempty"`
+	Status       *string                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusName   *string                            `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	SubSceneNum  *int64                             `json:"SubSceneNum,omitempty" xml:"SubSceneNum,omitempty"`
+	Success      *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	Type         *string                            `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DetailSceneResponseBody) String() string {
@@ -1078,6 +1144,11 @@ func (s DetailSceneResponseBody) String() string {
 
 func (s DetailSceneResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DetailSceneResponseBody) SetCaptures(v []*DetailSceneResponseBodyCaptures) *DetailSceneResponseBody {
+	s.Captures = v
+	return s
 }
 
 func (s *DetailSceneResponseBody) SetCode(v int64) *DetailSceneResponseBody {
@@ -1135,6 +1206,16 @@ func (s *DetailSceneResponseBody) SetSourceNum(v int64) *DetailSceneResponseBody
 	return s
 }
 
+func (s *DetailSceneResponseBody) SetStatus(v string) *DetailSceneResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DetailSceneResponseBody) SetStatusName(v string) *DetailSceneResponseBody {
+	s.StatusName = &v
+	return s
+}
+
 func (s *DetailSceneResponseBody) SetSubSceneNum(v int64) *DetailSceneResponseBody {
 	s.SubSceneNum = &v
 	return s
@@ -1147,6 +1228,29 @@ func (s *DetailSceneResponseBody) SetSuccess(v bool) *DetailSceneResponseBody {
 
 func (s *DetailSceneResponseBody) SetType(v string) *DetailSceneResponseBody {
 	s.Type = &v
+	return s
+}
+
+type DetailSceneResponseBodyCaptures struct {
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s DetailSceneResponseBodyCaptures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetailSceneResponseBodyCaptures) GoString() string {
+	return s.String()
+}
+
+func (s *DetailSceneResponseBodyCaptures) SetTitle(v string) *DetailSceneResponseBodyCaptures {
+	s.Title = &v
+	return s
+}
+
+func (s *DetailSceneResponseBodyCaptures) SetUrl(v string) *DetailSceneResponseBodyCaptures {
+	s.Url = &v
 	return s
 }
 
@@ -1180,7 +1284,6 @@ func (s *DetailSceneResponse) SetBody(v *DetailSceneResponseBody) *DetailSceneRe
 }
 
 type DetailSubSceneRequest struct {
-	// 子场景ID
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1198,40 +1301,24 @@ func (s *DetailSubSceneRequest) SetId(v string) *DetailSubSceneRequest {
 }
 
 type DetailSubSceneResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 图片路径/视频封面路径
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 切图路径
+	Code        *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	CoverUrl    *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
 	CubemapPath *string `json:"CubemapPath,omitempty" xml:"CubemapPath,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 最后修改时间
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 子场景id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 矫正后图的路径
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// 墙线标注数据
-	LayoutData *string `json:"LayoutData,omitempty" xml:"LayoutData,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 子场景名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 原图路径
-	OriginUrl *string `json:"OriginUrl,omitempty" xml:"OriginUrl,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 图片ID/视频ID
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 子场景状态
-	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 资源类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 图片路径/视频路径
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ImageUrl    *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	LayoutData  *string `json:"LayoutData,omitempty" xml:"LayoutData,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OriginUrl   *string `json:"OriginUrl,omitempty" xml:"OriginUrl,omitempty"`
+	Position    *string `json:"Position,omitempty" xml:"Position,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Status      *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success     *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url         *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DetailSubSceneResponseBody) String() string {
@@ -1297,6 +1384,11 @@ func (s *DetailSubSceneResponseBody) SetOriginUrl(v string) *DetailSubSceneRespo
 	return s
 }
 
+func (s *DetailSubSceneResponseBody) SetPosition(v string) *DetailSubSceneResponseBody {
+	s.Position = &v
+	return s
+}
+
 func (s *DetailSubSceneResponseBody) SetRequestId(v string) *DetailSubSceneResponseBody {
 	s.RequestId = &v
 	return s
@@ -1357,7 +1449,6 @@ func (s *DetailSubSceneResponse) SetBody(v *DetailSubSceneResponseBody) *DetailS
 }
 
 type DropProjectRequest struct {
-	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -1375,14 +1466,10 @@ func (s *DropProjectRequest) SetProjectId(v string) *DropProjectRequest {
 }
 
 type DropProjectResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID与入参中requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DropProjectResponseBody) String() string {
@@ -1443,7 +1530,6 @@ func (s *DropProjectResponse) SetBody(v *DropProjectResponseBody) *DropProjectRe
 }
 
 type DropSceneRequest struct {
-	// 主场景id
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1461,14 +1547,10 @@ func (s *DropSceneRequest) SetId(v string) *DropSceneRequest {
 }
 
 type DropSceneResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DropSceneResponseBody) String() string {
@@ -1529,7 +1611,6 @@ func (s *DropSceneResponse) SetBody(v *DropSceneResponseBody) *DropSceneResponse
 }
 
 type DropSubSceneRequest struct {
-	// 子场景ID
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1547,14 +1628,10 @@ func (s *DropSubSceneRequest) SetId(v string) *DropSubSceneRequest {
 }
 
 type DropSubSceneResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DropSubSceneResponseBody) String() string {
@@ -1615,7 +1692,6 @@ func (s *DropSubSceneResponse) SetBody(v *DropSubSceneResponseBody) *DropSubScen
 }
 
 type GetConnDataRequest struct {
-	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -1633,20 +1709,13 @@ func (s *GetConnDataRequest) SetSceneId(v string) *GetConnDataRequest {
 }
 
 type GetConnDataResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 扩展信息
-	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// 关联信息
-	List []*GetConnDataResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 版本
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Code      *int64                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Extend    *string                        `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	List      []*GetConnDataResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	Version   *string                        `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetConnDataResponseBody) String() string {
@@ -1693,12 +1762,9 @@ func (s *GetConnDataResponseBody) SetVersion(v string) *GetConnDataResponseBody 
 }
 
 type GetConnDataResponseBodyList struct {
-	// ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 关联的ID
+	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	MapId *string `json:"MapId,omitempty" xml:"MapId,omitempty"`
-	// outer:外关联 inner：内关联 stair：楼梯关联
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetConnDataResponseBodyList) String() string {
@@ -1754,7 +1820,6 @@ func (s *GetConnDataResponse) SetBody(v *GetConnDataResponseBody) *GetConnDataRe
 }
 
 type GetCopySceneTaskStatusRequest struct {
-	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1772,15 +1837,11 @@ func (s *GetCopySceneTaskStatusRequest) SetTaskId(v string) *GetCopySceneTaskSta
 }
 
 type GetCopySceneTaskStatusResponseBody struct {
-	// 返回码
-	Code *int64                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetCopySceneTaskStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetCopySceneTaskStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetCopySceneTaskStatusResponseBody) String() string {
@@ -1817,10 +1878,8 @@ func (s *GetCopySceneTaskStatusResponseBody) SetSuccess(v bool) *GetCopySceneTas
 }
 
 type GetCopySceneTaskStatusResponseBodyData struct {
-	// 任务进度
-	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Progress *int64  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetCopySceneTaskStatusResponseBodyData) String() string {
@@ -1906,15 +1965,11 @@ func (s *GetHotspotConfigRequest) SetType(v int64) *GetHotspotConfigRequest {
 }
 
 type GetHotspotConfigResponseBody struct {
-	// 返回码
-	Code *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetHotspotConfigResponseBody) String() string {
@@ -1980,14 +2035,10 @@ func (s *GetHotspotConfigResponse) SetBody(v *GetHotspotConfigResponseBody) *Get
 }
 
 type GetHotspotSceneDataRequest struct {
-	// 自定义oss域名（可为cdn域名）
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// 是否开启自用资源访问
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// 预览token
+	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Enabled      *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
-	// 0 未发布， 1 已发布
-	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type         *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetHotspotSceneDataRequest) String() string {
@@ -2019,15 +2070,11 @@ func (s *GetHotspotSceneDataRequest) SetType(v int64) *GetHotspotSceneDataReques
 }
 
 type GetHotspotSceneDataResponseBody struct {
-	// 返回码
-	Code *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetHotspotSceneDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetHotspotSceneDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetHotspotSceneDataResponseBody) String() string {
@@ -2064,14 +2111,10 @@ func (s *GetHotspotSceneDataResponseBody) SetSuccess(v bool) *GetHotspotSceneDat
 }
 
 type GetHotspotSceneDataResponseBodyData struct {
-	// 模型token（sgm token）
-	ModelToken *string `json:"ModelToken,omitempty" xml:"ModelToken,omitempty"`
-	// html转译后的预览数据，包含图片、子场景ID等信息
-	PreviewData *string `json:"PreviewData,omitempty" xml:"PreviewData,omitempty"`
-	// 预览token
+	ModelToken   *string `json:"ModelToken,omitempty" xml:"ModelToken,omitempty"`
+	PreviewData  *string `json:"PreviewData,omitempty" xml:"PreviewData,omitempty"`
 	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
-	// 3D模型：MODEL_3D 全景图片：PIC 全景视频：VIDEO
-	SceneType *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
+	SceneType    *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
 }
 
 func (s GetHotspotSceneDataResponseBodyData) String() string {
@@ -2243,7 +2286,6 @@ func (s *GetHotspotTagResponse) SetBody(v *GetHotspotTagResponseBody) *GetHotspo
 }
 
 type GetLayoutDataRequest struct {
-	// 子场景ID
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
 }
 
@@ -2261,16 +2303,11 @@ func (s *GetLayoutDataRequest) SetSubSceneId(v string) *GetLayoutDataRequest {
 }
 
 type GetLayoutDataResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 标注信息
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetLayoutDataResponseBody) String() string {
@@ -2336,7 +2373,6 @@ func (s *GetLayoutDataResponse) SetBody(v *GetLayoutDataResponseBody) *GetLayout
 }
 
 type GetOriginLayoutDataRequest struct {
-	// 子场景ID
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
 }
 
@@ -2354,16 +2390,11 @@ func (s *GetOriginLayoutDataRequest) SetSubSceneId(v string) *GetOriginLayoutDat
 }
 
 type GetOriginLayoutDataResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 标注数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOriginLayoutDataResponseBody) String() string {
@@ -2429,7 +2460,6 @@ func (s *GetOriginLayoutDataResponse) SetBody(v *GetOriginLayoutDataResponseBody
 }
 
 type GetOssPolicyRequest struct {
-	// 子场景ID
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
 }
 
@@ -2447,28 +2477,17 @@ func (s *GetOssPolicyRequest) SetSubSceneId(v string) *GetOssPolicyRequest {
 }
 
 type GetOssPolicyResponseBody struct {
-	// accessId
-	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// 上传回调
-	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 授权路径
-	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	// 授权失效时间(s)
-	Expire *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	// 上传地址
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 授权
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// 请求ID，与入参requestId对应
+	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	Callback  *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Dir       *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
+	Expire    *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 签名
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOssPolicyResponseBody) String() string {
@@ -2564,10 +2583,8 @@ func (s *GetOssPolicyResponse) SetBody(v *GetOssPolicyResponseBody) *GetOssPolic
 }
 
 type GetPackSceneTaskStatusRequest struct {
-	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// 操作类型：download（下载），sync（同步）
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetPackSceneTaskStatusRequest) String() string {
@@ -2589,15 +2606,11 @@ func (s *GetPackSceneTaskStatusRequest) SetType(v string) *GetPackSceneTaskStatu
 }
 
 type GetPackSceneTaskStatusResponseBody struct {
-	// 返回码
-	Code *int64                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetPackSceneTaskStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetPackSceneTaskStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetPackSceneTaskStatusResponseBody) String() string {
@@ -2634,10 +2647,8 @@ func (s *GetPackSceneTaskStatusResponseBody) SetSuccess(v bool) *GetPackSceneTas
 }
 
 type GetPackSceneTaskStatusResponseBodyData struct {
-	// 任务进度
-	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Progress *int64  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetPackSceneTaskStatusResponseBodyData) String() string {
@@ -2688,7 +2699,6 @@ func (s *GetPackSceneTaskStatusResponse) SetBody(v *GetPackSceneTaskStatusRespon
 }
 
 type GetRectifyImageRequest struct {
-	// 子场景ID
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
 }
 
@@ -2706,16 +2716,11 @@ func (s *GetRectifyImageRequest) SetSubSceneId(v string) *GetRectifyImageRequest
 }
 
 type GetRectifyImageResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 图片地址
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetRectifyImageResponseBody) String() string {
@@ -2781,7 +2786,6 @@ func (s *GetRectifyImageResponse) SetBody(v *GetRectifyImageResponseBody) *GetRe
 }
 
 type GetSceneBuildTaskStatusRequest struct {
-	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -2799,22 +2803,14 @@ func (s *GetSceneBuildTaskStatusRequest) SetSceneId(v string) *GetSceneBuildTask
 }
 
 type GetSceneBuildTaskStatusResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 任务失败错误码
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 任务失败错误消息
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 场景ID
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 未开始  init 处理中 失败     failed   processing  完成     succeed 取消     canceled
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSceneBuildTaskStatusResponseBody) String() string {
@@ -2895,7 +2891,6 @@ func (s *GetSceneBuildTaskStatusResponse) SetBody(v *GetSceneBuildTaskStatusResp
 }
 
 type GetScenePackUrlRequest struct {
-	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -2913,15 +2908,11 @@ func (s *GetScenePackUrlRequest) SetSceneId(v string) *GetScenePackUrlRequest {
 }
 
 type GetScenePackUrlResponseBody struct {
-	// 返回码
-	Code *int64                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetScenePackUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetScenePackUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetScenePackUrlResponseBody) String() string {
@@ -2958,12 +2949,9 @@ func (s *GetScenePackUrlResponseBody) SetSuccess(v bool) *GetScenePackUrlRespons
 }
 
 type GetScenePackUrlResponseBodyData struct {
-	// 失效日期
 	Expire *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	// 打包文件地址
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 是否有效
-	Valid *bool `json:"Valid,omitempty" xml:"Valid,omitempty"`
+	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Valid  *bool   `json:"Valid,omitempty" xml:"Valid,omitempty"`
 }
 
 func (s GetScenePackUrlResponseBodyData) String() string {
@@ -3019,14 +3007,10 @@ func (s *GetScenePackUrlResponse) SetBody(v *GetScenePackUrlResponseBody) *GetSc
 }
 
 type GetScenePreviewDataRequest struct {
-	// 自定义oss域名（可为cdn域名）
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// 是否开启自用资源访问（默认false）
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// 预览token
+	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Enabled      *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
-	// 是否返回热点数据（默认false）
-	ShowTag *bool `json:"ShowTag,omitempty" xml:"ShowTag,omitempty"`
+	ShowTag      *bool   `json:"ShowTag,omitempty" xml:"ShowTag,omitempty"`
 }
 
 func (s GetScenePreviewDataRequest) String() string {
@@ -3058,15 +3042,11 @@ func (s *GetScenePreviewDataRequest) SetShowTag(v bool) *GetScenePreviewDataRequ
 }
 
 type GetScenePreviewDataResponseBody struct {
-	// 返回码
-	Code *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetScenePreviewDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetScenePreviewDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetScenePreviewDataResponseBody) String() string {
@@ -3103,10 +3083,8 @@ func (s *GetScenePreviewDataResponseBody) SetSuccess(v bool) *GetScenePreviewDat
 }
 
 type GetScenePreviewDataResponseBodyData struct {
-	// 模型数据
-	Model *GetScenePreviewDataResponseBodyDataModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	// 热点数据
-	Tags []*GetScenePreviewDataResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Model *GetScenePreviewDataResponseBodyDataModel  `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	Tags  []*GetScenePreviewDataResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetScenePreviewDataResponseBodyData) String() string {
@@ -3128,14 +3106,10 @@ func (s *GetScenePreviewDataResponseBodyData) SetTags(v []*GetScenePreviewDataRe
 }
 
 type GetScenePreviewDataResponseBodyDataModel struct {
-	// 模型地址
-	ModelPath *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
-	// 点位数据
-	PanoList []*GetScenePreviewDataResponseBodyDataModelPanoList `json:"PanoList,omitempty" xml:"PanoList,omitempty" type:"Repeated"`
-	// 模型的贴图路径
-	TextureModelPath *string `json:"TextureModelPath,omitempty" xml:"TextureModelPath,omitempty"`
-	// 漫游后预览图片路径
-	TexturePanoPath *string `json:"TexturePanoPath,omitempty" xml:"TexturePanoPath,omitempty"`
+	ModelPath        *string                                             `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
+	PanoList         []*GetScenePreviewDataResponseBodyDataModelPanoList `json:"PanoList,omitempty" xml:"PanoList,omitempty" type:"Repeated"`
+	TextureModelPath *string                                             `json:"TextureModelPath,omitempty" xml:"TextureModelPath,omitempty"`
+	TexturePanoPath  *string                                             `json:"TexturePanoPath,omitempty" xml:"TexturePanoPath,omitempty"`
 }
 
 func (s GetScenePreviewDataResponseBodyDataModel) String() string {
@@ -3167,34 +3141,20 @@ func (s *GetScenePreviewDataResponseBodyDataModel) SetTexturePanoPath(v string) 
 }
 
 type GetScenePreviewDataResponseBodyDataModelPanoList struct {
-	// 当前房间的所有点位
-	CurRoomPicList []*string `json:"CurRoomPicList,omitempty" xml:"CurRoomPicList,omitempty" type:"Repeated"`
-	// 当前点位是否渲染，false不渲染，场景无法跳转
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// 楼层号
-	FloorIdx *string `json:"FloorIdx,omitempty" xml:"FloorIdx,omitempty"`
-	// 点位ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 单房间多图情况下，是否为主图，默认true
-	MainImage *bool `json:"MainImage,omitempty" xml:"MainImage,omitempty"`
-	// 当前房间邻近可视的点位id
-	Neighbours []*string `json:"Neighbours,omitempty" xml:"Neighbours,omitempty" type:"Repeated"`
-	// 位置数据
-	Position *GetScenePreviewDataResponseBodyDataModelPanoListPosition `json:"Position,omitempty" xml:"Position,omitempty" type:"Struct"`
-	// 一个名称，无实际意义
-	RawName *string `json:"RawName,omitempty" xml:"RawName,omitempty"`
-	// 全景贴图路径
-	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// 房间号
-	RoomIdx *string `json:"RoomIdx,omitempty" xml:"RoomIdx,omitempty"`
-	// 子场景ID
-	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
-	// token
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// 图片虚拟ID
-	VirtualId *string `json:"VirtualId,omitempty" xml:"VirtualId,omitempty"`
-	// 图片名称
-	VirtualName *string `json:"VirtualName,omitempty" xml:"VirtualName,omitempty"`
+	CurRoomPicList []*string                                                 `json:"CurRoomPicList,omitempty" xml:"CurRoomPicList,omitempty" type:"Repeated"`
+	Enabled        *bool                                                     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	FloorIdx       *string                                                   `json:"FloorIdx,omitempty" xml:"FloorIdx,omitempty"`
+	Id             *string                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
+	MainImage      *bool                                                     `json:"MainImage,omitempty" xml:"MainImage,omitempty"`
+	Neighbours     []*string                                                 `json:"Neighbours,omitempty" xml:"Neighbours,omitempty" type:"Repeated"`
+	Position       *GetScenePreviewDataResponseBodyDataModelPanoListPosition `json:"Position,omitempty" xml:"Position,omitempty" type:"Struct"`
+	RawName        *string                                                   `json:"RawName,omitempty" xml:"RawName,omitempty"`
+	Resource       *string                                                   `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	RoomIdx        *string                                                   `json:"RoomIdx,omitempty" xml:"RoomIdx,omitempty"`
+	SubSceneId     *string                                                   `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
+	Token          *string                                                   `json:"Token,omitempty" xml:"Token,omitempty"`
+	VirtualId      *string                                                   `json:"VirtualId,omitempty" xml:"VirtualId,omitempty"`
+	VirtualName    *string                                                   `json:"VirtualName,omitempty" xml:"VirtualName,omitempty"`
 }
 
 func (s GetScenePreviewDataResponseBodyDataModelPanoList) String() string {
@@ -3276,11 +3236,8 @@ func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetVirtualName(v stri
 }
 
 type GetScenePreviewDataResponseBodyDataModelPanoListPosition struct {
-	// 当前点位在场景中的旋转四元素
-	Rotation []*float64 `json:"Rotation,omitempty" xml:"Rotation,omitempty" type:"Repeated"`
-	// 当前点位在场景中的坐标
-	Spot []*float64 `json:"Spot,omitempty" xml:"Spot,omitempty" type:"Repeated"`
-	// 当前子场景名标签在场景中的坐标
+	Rotation  []*float64 `json:"Rotation,omitempty" xml:"Rotation,omitempty" type:"Repeated"`
+	Spot      []*float64 `json:"Spot,omitempty" xml:"Spot,omitempty" type:"Repeated"`
 	Viewpoint []*float64 `json:"Viewpoint,omitempty" xml:"Viewpoint,omitempty" type:"Repeated"`
 }
 
@@ -3308,15 +3265,11 @@ func (s *GetScenePreviewDataResponseBodyDataModelPanoListPosition) SetViewpoint(
 }
 
 type GetScenePreviewDataResponseBodyDataTags struct {
-	// 配置
-	Config *GetScenePreviewDataResponseBodyDataTagsConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// 标签ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 坐标
-	Position         []*float64 `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
-	PositionPanoCube []*float64 `json:"PositionPanoCube,omitempty" xml:"PositionPanoCube,omitempty" type:"Repeated"`
-	// 热点类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Config           *GetScenePreviewDataResponseBodyDataTagsConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	Id               *string                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	Position         []*float64                                     `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
+	PositionPanoCube []*float64                                     `json:"PositionPanoCube,omitempty" xml:"PositionPanoCube,omitempty" type:"Repeated"`
+	Type             *string                                        `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetScenePreviewDataResponseBodyDataTags) String() string {
@@ -3353,33 +3306,22 @@ func (s *GetScenePreviewDataResponseBodyDataTags) SetType(v string) *GetScenePre
 }
 
 type GetScenePreviewDataResponseBodyDataTagsConfig struct {
-	// 背景色
-	BackgroundColor *string `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
-	// 按钮配置
-	ButtonConfig *GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig `json:"ButtonConfig,omitempty" xml:"ButtonConfig,omitempty" type:"Struct"`
-	// 内容
-	Content           *string  `json:"Content,omitempty" xml:"Content,omitempty"`
-	FormImgSize       []*int64 `json:"FormImgSize,omitempty" xml:"FormImgSize,omitempty" type:"Repeated"`
-	FormJumpType      *bool    `json:"FormJumpType,omitempty" xml:"FormJumpType,omitempty"`
-	FormSelectImgType *string  `json:"FormSelectImgType,omitempty" xml:"FormSelectImgType,omitempty"`
-	// 图片链接
-	Images []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	// 是否在鸟瞰模式下显示
-	IsTagVisibleBy3d *bool `json:"IsTagVisibleBy3d,omitempty" xml:"IsTagVisibleBy3d,omitempty"`
-	// 超链接
-	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
-	// 点位ID
-	PanoId *string `json:"PanoId,omitempty" xml:"PanoId,omitempty"`
-	// 坐标
-	Position         []*float64 `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
-	PositionPanoCube []*float64 `json:"PositionPanoCube,omitempty" xml:"PositionPanoCube,omitempty" type:"Repeated"`
-	RelatedPanoIds   []*string  `json:"RelatedPanoIds,omitempty" xml:"RelatedPanoIds,omitempty" type:"Repeated"`
-	// 场景ID
-	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 视频链接
-	Video *string `json:"Video,omitempty" xml:"Video,omitempty"`
+	BackgroundColor   *string                                                    `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	ButtonConfig      *GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig `json:"ButtonConfig,omitempty" xml:"ButtonConfig,omitempty" type:"Struct"`
+	Content           *string                                                    `json:"Content,omitempty" xml:"Content,omitempty"`
+	FormImgSize       []*int64                                                   `json:"FormImgSize,omitempty" xml:"FormImgSize,omitempty" type:"Repeated"`
+	FormJumpType      *bool                                                      `json:"FormJumpType,omitempty" xml:"FormJumpType,omitempty"`
+	FormSelectImgType *string                                                    `json:"FormSelectImgType,omitempty" xml:"FormSelectImgType,omitempty"`
+	Images            []*string                                                  `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	IsTagVisibleBy3d  *bool                                                      `json:"IsTagVisibleBy3d,omitempty" xml:"IsTagVisibleBy3d,omitempty"`
+	Link              *string                                                    `json:"Link,omitempty" xml:"Link,omitempty"`
+	PanoId            *string                                                    `json:"PanoId,omitempty" xml:"PanoId,omitempty"`
+	Position          []*float64                                                 `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
+	PositionPanoCube  []*float64                                                 `json:"PositionPanoCube,omitempty" xml:"PositionPanoCube,omitempty" type:"Repeated"`
+	RelatedPanoIds    []*string                                                  `json:"RelatedPanoIds,omitempty" xml:"RelatedPanoIds,omitempty" type:"Repeated"`
+	SceneId           *int64                                                     `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Title             *string                                                    `json:"Title,omitempty" xml:"Title,omitempty"`
+	Video             *string                                                    `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 
 func (s GetScenePreviewDataResponseBodyDataTagsConfig) String() string {
@@ -3523,11 +3465,8 @@ func (s *GetScenePreviewDataResponse) SetBody(v *GetScenePreviewDataResponseBody
 }
 
 type GetScenePreviewInfoRequest struct {
-	// 自定义oss域名（可为cdn域名）
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// 是否开启自用资源访问
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// 模型token
+	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Enabled    *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	ModelToken *string `json:"ModelToken,omitempty" xml:"ModelToken,omitempty"`
 }
 
@@ -3555,15 +3494,11 @@ func (s *GetScenePreviewInfoRequest) SetModelToken(v string) *GetScenePreviewInf
 }
 
 type GetScenePreviewInfoResponseBody struct {
-	// 返回码
-	Code *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetScenePreviewInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetScenePreviewInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetScenePreviewInfoResponseBody) String() string {
@@ -3600,14 +3535,10 @@ func (s *GetScenePreviewInfoResponseBody) SetSuccess(v bool) *GetScenePreviewInf
 }
 
 type GetScenePreviewInfoResponseBodyData struct {
-	// 模型地址
-	ModelPath *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
-	// html转译后的预览数据
-	PanoList *string `json:"PanoList,omitempty" xml:"PanoList,omitempty"`
-	// 模型的贴图路径
+	ModelPath        *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
+	PanoList         *string `json:"PanoList,omitempty" xml:"PanoList,omitempty"`
 	TextureModelPath *string `json:"TextureModelPath,omitempty" xml:"TextureModelPath,omitempty"`
-	// 漫游后预览图片路径
-	TexturePanoPath *string `json:"TexturePanoPath,omitempty" xml:"TexturePanoPath,omitempty"`
+	TexturePanoPath  *string `json:"TexturePanoPath,omitempty" xml:"TexturePanoPath,omitempty"`
 }
 
 func (s GetScenePreviewInfoResponseBodyData) String() string {
@@ -3668,7 +3599,7 @@ func (s *GetScenePreviewInfoResponse) SetBody(v *GetScenePreviewInfoResponseBody
 }
 
 type GetScenePreviewResourceRequest struct {
-	// 预览token
+	Draft        *bool   `json:"Draft,omitempty" xml:"Draft,omitempty"`
 	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
 }
 
@@ -3680,21 +3611,22 @@ func (s GetScenePreviewResourceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetScenePreviewResourceRequest) SetDraft(v bool) *GetScenePreviewResourceRequest {
+	s.Draft = &v
+	return s
+}
+
 func (s *GetScenePreviewResourceRequest) SetPreviewToken(v string) *GetScenePreviewResourceRequest {
 	s.PreviewToken = &v
 	return s
 }
 
 type GetScenePreviewResourceResponseBody struct {
-	// 返回码
-	Code *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetScenePreviewResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetScenePreviewResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetScenePreviewResourceResponseBody) String() string {
@@ -3760,9 +3692,10 @@ func (s *GetScenePreviewResourceResponseBodyData) SetVersion(v string) *GetScene
 }
 
 type GetScenePreviewResourceResponseBodyDataResourceDirectory struct {
-	ModelConfig    *string `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
-	OrthomapConfig *string `json:"OrthomapConfig,omitempty" xml:"OrthomapConfig,omitempty"`
-	RootPath       *string `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
+	HotspotTagConfig *string `json:"HotspotTagConfig,omitempty" xml:"HotspotTagConfig,omitempty"`
+	ModelConfig      *string `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
+	OrthomapConfig   *string `json:"OrthomapConfig,omitempty" xml:"OrthomapConfig,omitempty"`
+	RootPath         *string `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
 }
 
 func (s GetScenePreviewResourceResponseBodyDataResourceDirectory) String() string {
@@ -3771,6 +3704,11 @@ func (s GetScenePreviewResourceResponseBodyDataResourceDirectory) String() strin
 
 func (s GetScenePreviewResourceResponseBodyDataResourceDirectory) GoString() string {
 	return s.String()
+}
+
+func (s *GetScenePreviewResourceResponseBodyDataResourceDirectory) SetHotspotTagConfig(v string) *GetScenePreviewResourceResponseBodyDataResourceDirectory {
+	s.HotspotTagConfig = &v
+	return s
 }
 
 func (s *GetScenePreviewResourceResponseBodyDataResourceDirectory) SetModelConfig(v string) *GetScenePreviewResourceResponseBodyDataResourceDirectory {
@@ -3818,7 +3756,6 @@ func (s *GetScenePreviewResourceResponse) SetBody(v *GetScenePreviewResourceResp
 }
 
 type GetSingleConnDataRequest struct {
-	// 子场景ID
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
 }
 
@@ -3836,18 +3773,12 @@ func (s *GetSingleConnDataRequest) SetSubSceneId(v string) *GetSingleConnDataReq
 }
 
 type GetSingleConnDataResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 关联信息
-	List []*GetSingleConnDataResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 版本
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Code      *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	List      []*GetSingleConnDataResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	Version   *string                              `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetSingleConnDataResponseBody) String() string {
@@ -3889,12 +3820,9 @@ func (s *GetSingleConnDataResponseBody) SetVersion(v string) *GetSingleConnDataR
 }
 
 type GetSingleConnDataResponseBodyList struct {
-	// ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 关联ID
+	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	MapId *string `json:"MapId,omitempty" xml:"MapId,omitempty"`
-	// outer:外关联 inner：内关联 stair：楼梯关联
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetSingleConnDataResponseBodyList) String() string {
@@ -3950,7 +3878,6 @@ func (s *GetSingleConnDataResponse) SetBody(v *GetSingleConnDataResponseBody) *G
 }
 
 type GetSourcePackStatusRequest struct {
-	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -3968,17 +3895,12 @@ func (s *GetSourcePackStatusRequest) SetTaskId(v string) *GetSourcePackStatusReq
 }
 
 type GetSourcePackStatusResponseBody struct {
-	// 返回码
-	Code *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetSourcePackStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 压缩包的地址
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Code      *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetSourcePackStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	Url       *string                              `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetSourcePackStatusResponseBody) String() string {
@@ -4020,10 +3942,8 @@ func (s *GetSourcePackStatusResponseBody) SetUrl(v string) *GetSourcePackStatusR
 }
 
 type GetSourcePackStatusResponseBodyData struct {
-	// 任务进度
-	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Progress *int64  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetSourcePackStatusResponseBodyData) String() string {
@@ -4074,7 +3994,6 @@ func (s *GetSourcePackStatusResponse) SetBody(v *GetSourcePackStatusResponseBody
 }
 
 type GetSubSceneTaskStatusRequest struct {
-	// 子场景ID
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
 }
 
@@ -4092,16 +4011,11 @@ func (s *GetSubSceneTaskStatusRequest) SetSubSceneId(v string) *GetSubSceneTaskS
 }
 
 type GetSubSceneTaskStatusResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 任务信息
-	List []*GetSubSceneTaskStatusResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	List      []*GetSubSceneTaskStatusResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSubSceneTaskStatusResponseBody) String() string {
@@ -4138,20 +4052,13 @@ func (s *GetSubSceneTaskStatusResponseBody) SetSuccess(v bool) *GetSubSceneTaskS
 }
 
 type GetSubSceneTaskStatusResponseBodyList struct {
-	// 任务失败错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 任务失败错误信息
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// 任务ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 场景ID
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 未开始  init 处理中   processing   失败     failure  完成     succeed  取消     canceled
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 子场景ID
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	SceneId    *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
-	// 墙线预测: wall_line   切图: cut_image 重建: build  直角优化：right_angle_optimization 其他：other
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetSubSceneTaskStatusResponseBodyList) String() string {
@@ -4227,7 +4134,6 @@ func (s *GetSubSceneTaskStatusResponse) SetBody(v *GetSubSceneTaskStatusResponse
 }
 
 type GetTaskStatusRequest struct {
-	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -4245,22 +4151,14 @@ func (s *GetTaskStatusRequest) SetTaskId(v string) *GetTaskStatusRequest {
 }
 
 type GetTaskStatusResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 任务执行失败错误码
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 任务执行失败错误消息
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 未开始 :init 处理中 : processing    失败 :failure   完成 :succeed  取消 :canceled
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 墙线预测: wall_line 切图: cut_image   重建: build  直角优化：right_angle_optimization  其他：other
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTaskStatusResponseBody) String() string {
@@ -4428,18 +4326,12 @@ func (s *GetWindowConfigResponse) SetBody(v *GetWindowConfigResponseBody) *GetWi
 }
 
 type LabelBuildRequest struct {
-	// 重建模式：MANUAL：手动（云端），默认，SEMI_AUTOMATIC：半自动（移动端）
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// 模型效果 PATCH：切片模型（默认） DEPTH：深度模型 VIRTUAL：虚拟模型 MOBILE：移动重建模型
-	ModelStyle *string `json:"ModelStyle,omitempty" xml:"ModelStyle,omitempty"`
-	// 墙宽优化，OFF:关闭（默认） NORMAL：标准 ENHANCED：加强
+	Mode              *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	ModelStyle        *string `json:"ModelStyle,omitempty" xml:"ModelStyle,omitempty"`
 	OptimizeWallWidth *string `json:"OptimizeWallWidth,omitempty" xml:"OptimizeWallWidth,omitempty"`
-	// 户型图，DEFAULT（默认），STANDARD（标准）
-	PlanStyle *string `json:"PlanStyle,omitempty" xml:"PlanStyle,omitempty"`
-	// 场景ID
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 墙高，默认0不设置，范围200-1000. 单位cm
-	WallHeight *int64 `json:"WallHeight,omitempty" xml:"WallHeight,omitempty"`
+	PlanStyle         *string `json:"PlanStyle,omitempty" xml:"PlanStyle,omitempty"`
+	SceneId           *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	WallHeight        *int64  `json:"WallHeight,omitempty" xml:"WallHeight,omitempty"`
 }
 
 func (s LabelBuildRequest) String() string {
@@ -4481,16 +4373,11 @@ func (s *LabelBuildRequest) SetWallHeight(v int64) *LabelBuildRequest {
 }
 
 type LabelBuildResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 重建任务ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s LabelBuildResponseBody) String() string {
@@ -4556,14 +4443,10 @@ func (s *LabelBuildResponse) SetBody(v *LabelBuildResponseBody) *LabelBuildRespo
 }
 
 type LinkImageRequest struct {
-	// 相机高度 单位 cm
-	CameraHeight *int32 `json:"CameraHeight,omitempty" xml:"CameraHeight,omitempty"`
-	// 图片或者视频名称xxx.jpg
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 平台标识，默认PC
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// 子场景ID
-	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
+	CameraHeight *int32  `json:"CameraHeight,omitempty" xml:"CameraHeight,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	SubSceneId   *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
 }
 
 func (s LinkImageRequest) String() string {
@@ -4595,16 +4478,11 @@ func (s *LinkImageRequest) SetSubSceneId(v string) *LinkImageRequest {
 }
 
 type LinkImageResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 图片/视频ID
+	Code       *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s LinkImageResponseBody) String() string {
@@ -4670,12 +4548,9 @@ func (s *LinkImageResponse) SetBody(v *LinkImageResponseBody) *LinkImageResponse
 }
 
 type ListProjectRequest struct {
-	// 项目名称（使用name%搜索）
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 页码
-	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// 页长
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNum  *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListProjectRequest) String() string {
@@ -4702,24 +4577,15 @@ func (s *ListProjectRequest) SetPageSize(v int64) *ListProjectRequest {
 }
 
 type ListProjectResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// count
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 当前页
-	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 是否有下一页
-	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	// 项目数据
-	List []*ListProjectResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总页数
-	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	Code        *int64                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count       *int64                         `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int64                         `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	HasNext     *bool                          `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	List        []*ListProjectResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Message     *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId   *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalPage   *int64                         `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListProjectResponseBody) String() string {
@@ -4776,20 +4642,13 @@ func (s *ListProjectResponseBody) SetTotalPage(v int64) *ListProjectResponseBody
 }
 
 type ListProjectResponseBodyList struct {
-	// 业务ID
-	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// 业务名称
+	BusinessId   *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
-	// 创建时间
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 项目ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 最后修改时间
-	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 项目名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Token
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	CreateTime   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifiedTime *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Token        *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s ListProjectResponseBodyList) String() string {
@@ -4865,13 +4724,9 @@ func (s *ListProjectResponse) SetBody(v *ListProjectResponseBody) *ListProjectRe
 }
 
 type ListSceneRequest struct {
-	// 主场景名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 当前页
-	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// 页长
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 所有项目Id
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNum   *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -4904,24 +4759,15 @@ func (s *ListSceneRequest) SetProjectId(v string) *ListSceneRequest {
 }
 
 type ListSceneResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 数据总数
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 当前页
-	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 是否有下一页
-	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	// 主场景数据
-	List []*ListSceneResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总页数
-	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	Code        *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count       *int64                       `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int64                       `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	HasNext     *bool                        `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	List        []*ListSceneResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Message     *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalPage   *int64                       `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListSceneResponseBody) String() string {
@@ -4978,26 +4824,18 @@ func (s *ListSceneResponseBody) SetTotalPage(v int64) *ListSceneResponseBody {
 }
 
 type ListSceneResponseBodyList struct {
-	// 封面地址
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 最后修改时间
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 主场景Id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 场景名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 预览Token
+	CoverUrl     *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
-	// 是否已发布 true：已发布：false：未发布
-	Published *bool `json:"Published,omitempty" xml:"Published,omitempty"`
-	// 资源数
-	SourceNum *int64 `json:"SourceNum,omitempty" xml:"SourceNum,omitempty"`
-	// 子场景数
-	SubSceneNum *int64 `json:"SubSceneNum,omitempty" xml:"SubSceneNum,omitempty"`
-	// 场景类型 3D模型：MODEL_3D  全景图片：PIC  全景视频：VIDEO
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Published    *bool   `json:"Published,omitempty" xml:"Published,omitempty"`
+	SourceNum    *int64  `json:"SourceNum,omitempty" xml:"SourceNum,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusName   *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	SubSceneNum  *int64  `json:"SubSceneNum,omitempty" xml:"SubSceneNum,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListSceneResponseBodyList) String() string {
@@ -5048,6 +4886,16 @@ func (s *ListSceneResponseBodyList) SetSourceNum(v int64) *ListSceneResponseBody
 	return s
 }
 
+func (s *ListSceneResponseBodyList) SetStatus(v string) *ListSceneResponseBodyList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListSceneResponseBodyList) SetStatusName(v string) *ListSceneResponseBodyList {
+	s.StatusName = &v
+	return s
+}
+
 func (s *ListSceneResponseBodyList) SetSubSceneNum(v int64) *ListSceneResponseBodyList {
 	s.SubSceneNum = &v
 	return s
@@ -5088,15 +4936,11 @@ func (s *ListSceneResponse) SetBody(v *ListSceneResponseBody) *ListSceneResponse
 }
 
 type ListSubSceneRequest struct {
-	// 页码
-	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// 页长
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 场景ID
+	PageNum        *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SceneId        *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	ShowLayoutData *bool   `json:"ShowLayoutData,omitempty" xml:"ShowLayoutData,omitempty"`
-	// 排序字段，默认：NAME（名称），SEQUENCE（自定义排序）
-	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	SortField      *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 }
 
 func (s ListSubSceneRequest) String() string {
@@ -5133,24 +4977,15 @@ func (s *ListSubSceneRequest) SetSortField(v string) *ListSubSceneRequest {
 }
 
 type ListSubSceneResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 数据总条数
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 当前页
-	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 是否有下一页
-	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	// 子场景列表集
-	List []*ListSubSceneResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总页数
-	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	Code        *int64                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count       *int64                          `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int64                          `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	HasNext     *bool                           `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	List        []*ListSubSceneResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Message     *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId   *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalPage   *int64                          `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListSubSceneResponseBody) String() string {
@@ -5207,36 +5042,21 @@ func (s *ListSubSceneResponseBody) SetTotalPage(v int64) *ListSubSceneResponseBo
 }
 
 type ListSubSceneResponseBodyList struct {
-	// 2k基准图路径
 	BaseImageUrl *string `json:"BaseImageUrl,omitempty" xml:"BaseImageUrl,omitempty"`
-	// 图片路径/视频封面路径
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 切图的路径
-	CubemapPath *string `json:"CubemapPath,omitempty" xml:"CubemapPath,omitempty"`
-	// 是否删除
-	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 最后修改时间
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 子场景ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 标注数据
-	LayoutData *string `json:"LayoutData,omitempty" xml:"LayoutData,omitempty"`
-	// 子场景名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 原图地址
-	OriginUrl *string `json:"OriginUrl,omitempty" xml:"OriginUrl,omitempty"`
-	// 图片ID/视频ID
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 资源名称
+	CoverUrl     *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	CubemapPath  *string `json:"CubemapPath,omitempty" xml:"CubemapPath,omitempty"`
+	Deleted      *bool   `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	LayoutData   *string `json:"LayoutData,omitempty" xml:"LayoutData,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OriginUrl    *string `json:"OriginUrl,omitempty" xml:"OriginUrl,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// 子场景状态 1.未重建，      * 2.中间模型重建中，      * 3.中间模型重建完成，      * 4.待重建，      * 5.服务商重建中，      * 6.服务商重建完成，      * 7.已发布      * 8.发布中
-	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 上传资源类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 图片路径/视频路径
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Status       *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url          *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s ListSubSceneResponseBodyList) String() string {
@@ -5352,7 +5172,6 @@ func (s *ListSubSceneResponse) SetBody(v *ListSubSceneResponseBody) *ListSubScen
 }
 
 type OptimizeRightAngleRequest struct {
-	// 子场景ID
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
 }
 
@@ -5370,16 +5189,11 @@ func (s *OptimizeRightAngleRequest) SetSubSceneId(v string) *OptimizeRightAngleR
 }
 
 type OptimizeRightAngleResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s OptimizeRightAngleResponseBody) String() string {
@@ -5445,10 +5259,8 @@ func (s *OptimizeRightAngleResponse) SetBody(v *OptimizeRightAngleResponseBody) 
 }
 
 type PackSceneRequest struct {
-	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 操作类型：download（下载），sync（同步）
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s PackSceneRequest) String() string {
@@ -5470,15 +5282,11 @@ func (s *PackSceneRequest) SetType(v string) *PackSceneRequest {
 }
 
 type PackSceneResponseBody struct {
-	// 返回码
-	Code *int64                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *PackSceneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *PackSceneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PackSceneResponseBody) String() string {
@@ -5515,7 +5323,6 @@ func (s *PackSceneResponseBody) SetSuccess(v bool) *PackSceneResponseBody {
 }
 
 type PackSceneResponseBodyData struct {
-	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -5562,7 +5369,6 @@ func (s *PackSceneResponse) SetBody(v *PackSceneResponseBody) *PackSceneResponse
 }
 
 type PackSourceRequest struct {
-	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -5580,15 +5386,11 @@ func (s *PackSourceRequest) SetSceneId(v string) *PackSourceRequest {
 }
 
 type PackSourceResponseBody struct {
-	// 返回码
-	Code *int64                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *PackSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *PackSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PackSourceResponseBody) String() string {
@@ -5625,7 +5427,6 @@ func (s *PackSourceResponseBody) SetSuccess(v bool) *PackSourceResponseBody {
 }
 
 type PackSourceResponseBodyData struct {
-	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -5672,14 +5473,10 @@ func (s *PackSourceResponse) SetBody(v *PackSourceResponseBody) *PackSourceRespo
 }
 
 type PredImageRequest struct {
-	// 是否垂直矫正
-	CorrectVertical *bool `json:"CorrectVertical,omitempty" xml:"CorrectVertical,omitempty"`
-	// 门数量(DetectDoor为false时，可为0)
-	CountDetectDoor *int64 `json:"CountDetectDoor,omitempty" xml:"CountDetectDoor,omitempty"`
-	// 是否门预测
-	DetectDoor *bool `json:"DetectDoor,omitempty" xml:"DetectDoor,omitempty"`
-	// 子场景ID
-	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
+	CorrectVertical *bool   `json:"CorrectVertical,omitempty" xml:"CorrectVertical,omitempty"`
+	CountDetectDoor *int64  `json:"CountDetectDoor,omitempty" xml:"CountDetectDoor,omitempty"`
+	DetectDoor      *bool   `json:"DetectDoor,omitempty" xml:"DetectDoor,omitempty"`
+	SubSceneId      *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
 }
 
 func (s PredImageRequest) String() string {
@@ -5711,16 +5508,11 @@ func (s *PredImageRequest) SetSubSceneId(v string) *PredImageRequest {
 }
 
 type PredImageResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s PredImageResponseBody) String() string {
@@ -5786,10 +5578,8 @@ func (s *PredImageResponse) SetBody(v *PredImageResponseBody) *PredImageResponse
 }
 
 type PredictionWallLineRequest struct {
-	// 相机高度 单位 cm
-	CameraHeight *int64 `json:"CameraHeight,omitempty" xml:"CameraHeight,omitempty"`
-	// 图片地址
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	CameraHeight *int64  `json:"CameraHeight,omitempty" xml:"CameraHeight,omitempty"`
+	Url          *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s PredictionWallLineRequest) String() string {
@@ -5811,18 +5601,12 @@ func (s *PredictionWallLineRequest) SetUrl(v string) *PredictionWallLineRequest 
 }
 
 type PredictionWallLineResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 子场景ID
+	Code       *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s PredictionWallLineResponseBody) String() string {
@@ -5979,8 +5763,88 @@ func (s *PublishHotspotResponse) SetBody(v *PublishHotspotResponseBody) *Publish
 	return s
 }
 
+type PublishHotspotConfigRequest struct {
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s PublishHotspotConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishHotspotConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishHotspotConfigRequest) SetSceneId(v string) *PublishHotspotConfigRequest {
+	s.SceneId = &v
+	return s
+}
+
+type PublishHotspotConfigResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PublishHotspotConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishHotspotConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PublishHotspotConfigResponseBody) SetCode(v int64) *PublishHotspotConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PublishHotspotConfigResponseBody) SetMessage(v string) *PublishHotspotConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PublishHotspotConfigResponseBody) SetRequestId(v string) *PublishHotspotConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PublishHotspotConfigResponseBody) SetSuccess(v bool) *PublishHotspotConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PublishHotspotConfigResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PublishHotspotConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PublishHotspotConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishHotspotConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PublishHotspotConfigResponse) SetHeaders(v map[string]*string) *PublishHotspotConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PublishHotspotConfigResponse) SetStatusCode(v int32) *PublishHotspotConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PublishHotspotConfigResponse) SetBody(v *PublishHotspotConfigResponseBody) *PublishHotspotConfigResponse {
+	s.Body = v
+	return s
+}
+
 type PublishSceneRequest struct {
-	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -5998,16 +5862,11 @@ func (s *PublishSceneRequest) SetSceneId(v string) *PublishSceneRequest {
 }
 
 type PublishSceneResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 预览链接
+	Code       *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PublishSceneResponseBody) String() string {
@@ -6073,7 +5932,6 @@ func (s *PublishSceneResponse) SetBody(v *PublishSceneResponseBody) *PublishScen
 }
 
 type PublishStatusRequest struct {
-	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -6091,17 +5949,11 @@ func (s *PublishStatusRequest) SetSceneId(v string) *PublishStatusRequest {
 }
 
 type PublishStatusResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务运行状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 文件同步状态
+	Code       *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	SyncStatus *string `json:"SyncStatus,omitempty" xml:"SyncStatus,omitempty"`
 }
 
@@ -6173,7 +6025,6 @@ func (s *PublishStatusResponse) SetBody(v *PublishStatusResponseBody) *PublishSt
 }
 
 type RecoveryOriginImageRequest struct {
-	// 子场景ID
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
 }
 
@@ -6191,14 +6042,10 @@ func (s *RecoveryOriginImageRequest) SetSubSceneId(v string) *RecoveryOriginImag
 }
 
 type RecoveryOriginImageResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RecoveryOriginImageResponseBody) String() string {
@@ -6259,14 +6106,10 @@ func (s *RecoveryOriginImageResponse) SetBody(v *RecoveryOriginImageResponseBody
 }
 
 type RectVerticalRequest struct {
-	// 需要预测的门的数量
-	CountDetectDoor *int32 `json:"CountDetectDoor,omitempty" xml:"CountDetectDoor,omitempty"`
-	// 是否开启门预测
-	DetectDoor *bool `json:"DetectDoor,omitempty" xml:"DetectDoor,omitempty"`
-	// 子场景ID
-	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
-	// 矫正数据
-	VerticalRect *string `json:"VerticalRect,omitempty" xml:"VerticalRect,omitempty"`
+	CountDetectDoor *int32  `json:"CountDetectDoor,omitempty" xml:"CountDetectDoor,omitempty"`
+	DetectDoor      *bool   `json:"DetectDoor,omitempty" xml:"DetectDoor,omitempty"`
+	SubSceneId      *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
+	VerticalRect    *string `json:"VerticalRect,omitempty" xml:"VerticalRect,omitempty"`
 }
 
 func (s RectVerticalRequest) String() string {
@@ -6298,16 +6141,11 @@ func (s *RectVerticalRequest) SetVerticalRect(v string) *RectVerticalRequest {
 }
 
 type RectVerticalResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RectVerticalResponseBody) String() string {
@@ -6373,10 +6211,8 @@ func (s *RectVerticalResponse) SetBody(v *RectVerticalResponseBody) *RectVertica
 }
 
 type RectifyImageRequest struct {
-	// 相机高度 单位 cm
-	CameraHeight *int64 `json:"CameraHeight,omitempty" xml:"CameraHeight,omitempty"`
-	// 图片地址
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	CameraHeight *int64  `json:"CameraHeight,omitempty" xml:"CameraHeight,omitempty"`
+	Url          *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s RectifyImageRequest) String() string {
@@ -6398,18 +6234,12 @@ func (s *RectifyImageRequest) SetUrl(v string) *RectifyImageRequest {
 }
 
 type RectifyImageResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 子场景ID
+	Code       *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RectifyImageResponseBody) String() string {
@@ -6480,7 +6310,6 @@ func (s *RectifyImageResponse) SetBody(v *RectifyImageResponseBody) *RectifyImag
 }
 
 type RollbackSubSceneRequest struct {
-	// 子场景ID
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -6498,14 +6327,10 @@ func (s *RollbackSubSceneRequest) SetId(v string) *RollbackSubSceneRequest {
 }
 
 type RollbackSubSceneResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RollbackSubSceneResponseBody) String() string {
@@ -6727,8 +6552,181 @@ func (s *SaveHotspotTagResponse) SetBody(v *SaveHotspotTagResponseBody) *SaveHot
 	return s
 }
 
+type SaveHotspotTagListRequest struct {
+	HotspotListJson *string `json:"HotspotListJson,omitempty" xml:"HotspotListJson,omitempty"`
+	SceneId         *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s SaveHotspotTagListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveHotspotTagListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveHotspotTagListRequest) SetHotspotListJson(v string) *SaveHotspotTagListRequest {
+	s.HotspotListJson = &v
+	return s
+}
+
+func (s *SaveHotspotTagListRequest) SetSceneId(v string) *SaveHotspotTagListRequest {
+	s.SceneId = &v
+	return s
+}
+
+type SaveHotspotTagListResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SaveHotspotTagListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveHotspotTagListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveHotspotTagListResponseBody) SetCode(v int64) *SaveHotspotTagListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SaveHotspotTagListResponseBody) SetMessage(v string) *SaveHotspotTagListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SaveHotspotTagListResponseBody) SetRequestId(v string) *SaveHotspotTagListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveHotspotTagListResponseBody) SetSuccess(v bool) *SaveHotspotTagListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SaveHotspotTagListResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveHotspotTagListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveHotspotTagListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveHotspotTagListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveHotspotTagListResponse) SetHeaders(v map[string]*string) *SaveHotspotTagListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveHotspotTagListResponse) SetStatusCode(v int32) *SaveHotspotTagListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveHotspotTagListResponse) SetBody(v *SaveHotspotTagListResponseBody) *SaveHotspotTagListResponse {
+	s.Body = v
+	return s
+}
+
+type SaveModelConfigRequest struct {
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s SaveModelConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveModelConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveModelConfigRequest) SetData(v string) *SaveModelConfigRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *SaveModelConfigRequest) SetSceneId(v string) *SaveModelConfigRequest {
+	s.SceneId = &v
+	return s
+}
+
+type SaveModelConfigResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SaveModelConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveModelConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveModelConfigResponseBody) SetCode(v int64) *SaveModelConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SaveModelConfigResponseBody) SetMessage(v string) *SaveModelConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SaveModelConfigResponseBody) SetRequestId(v string) *SaveModelConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveModelConfigResponseBody) SetSuccess(v bool) *SaveModelConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SaveModelConfigResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveModelConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveModelConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveModelConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveModelConfigResponse) SetHeaders(v map[string]*string) *SaveModelConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveModelConfigResponse) SetStatusCode(v int32) *SaveModelConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveModelConfigResponse) SetBody(v *SaveModelConfigResponseBody) *SaveModelConfigResponse {
+	s.Body = v
+	return s
+}
+
 type ScenePublishRequest struct {
-	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -6746,16 +6744,11 @@ func (s *ScenePublishRequest) SetSceneId(v string) *ScenePublishRequest {
 }
 
 type ScenePublishResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 预览链接
+	Code       *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ScenePublishResponseBody) String() string {
@@ -6821,7 +6814,6 @@ func (s *ScenePublishResponse) SetBody(v *ScenePublishResponseBody) *ScenePublis
 }
 
 type TempPreviewRequest struct {
-	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -6839,18 +6831,12 @@ func (s *TempPreviewRequest) SetSceneId(v string) *TempPreviewRequest {
 }
 
 type TempPreviewResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 预览链接
+	Code       *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 场景ID
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SceneId    *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s TempPreviewResponseBody) String() string {
@@ -6921,7 +6907,6 @@ func (s *TempPreviewResponse) SetBody(v *TempPreviewResponseBody) *TempPreviewRe
 }
 
 type TempPreviewStatusRequest struct {
-	// 任务ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -6939,16 +6924,11 @@ func (s *TempPreviewStatusRequest) SetSceneId(v string) *TempPreviewStatusReques
 }
 
 type TempPreviewStatusResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 状态标识
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s TempPreviewStatusResponseBody) String() string {
@@ -7014,10 +6994,8 @@ func (s *TempPreviewStatusResponse) SetBody(v *TempPreviewStatusResponseBody) *T
 }
 
 type UpdateConnDataRequest struct {
-	// 关联数据
 	ConnData *string `json:"ConnData,omitempty" xml:"ConnData,omitempty"`
-	// 场景ID
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneId  *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s UpdateConnDataRequest) String() string {
@@ -7039,14 +7017,10 @@ func (s *UpdateConnDataRequest) SetSceneId(v string) *UpdateConnDataRequest {
 }
 
 type UpdateConnDataResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateConnDataResponseBody) String() string {
@@ -7107,9 +7081,7 @@ func (s *UpdateConnDataResponse) SetBody(v *UpdateConnDataResponseBody) *UpdateC
 }
 
 type UpdateLayoutDataRequest struct {
-	// 标注数据
 	LayoutData *string `json:"LayoutData,omitempty" xml:"LayoutData,omitempty"`
-	// 子场景ID
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
 }
 
@@ -7132,14 +7104,10 @@ func (s *UpdateLayoutDataRequest) SetSubSceneId(v string) *UpdateLayoutDataReque
 }
 
 type UpdateLayoutDataResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateLayoutDataResponseBody) String() string {
@@ -7200,12 +7168,9 @@ func (s *UpdateLayoutDataResponse) SetBody(v *UpdateLayoutDataResponseBody) *Upd
 }
 
 type UpdateProjectRequest struct {
-	// 业务Id
 	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// 项目id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 项目名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateProjectRequest) String() string {
@@ -7232,14 +7197,10 @@ func (s *UpdateProjectRequest) SetName(v string) *UpdateProjectRequest {
 }
 
 type UpdateProjectResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateProjectResponseBody) String() string {
@@ -7300,9 +7261,7 @@ func (s *UpdateProjectResponse) SetBody(v *UpdateProjectResponseBody) *UpdatePro
 }
 
 type UpdateSceneRequest struct {
-	// 场景Id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 场景名称
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -7325,14 +7284,10 @@ func (s *UpdateSceneRequest) SetName(v string) *UpdateSceneRequest {
 }
 
 type UpdateSceneResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateSceneResponseBody) String() string {
@@ -7393,11 +7348,8 @@ func (s *UpdateSceneResponse) SetBody(v *UpdateSceneResponseBody) *UpdateSceneRe
 }
 
 type UpdateSubSceneRequest struct {
-	// 子场景ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 子场景名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 视角坐标，目前支持3元坐标，4元坐标，例如：[0.94005,0.13397,-0.3136,0.782992]
+	Id        *string    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name      *string    `json:"Name,omitempty" xml:"Name,omitempty"`
 	ViewPoint []*float64 `json:"ViewPoint,omitempty" xml:"ViewPoint,omitempty" type:"Repeated"`
 }
 
@@ -7425,11 +7377,8 @@ func (s *UpdateSubSceneRequest) SetViewPoint(v []*float64) *UpdateSubSceneReques
 }
 
 type UpdateSubSceneShrinkRequest struct {
-	// 子场景ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 子场景名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 视角坐标，目前支持3元坐标，4元坐标，例如：[0.94005,0.13397,-0.3136,0.782992]
+	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ViewPointShrink *string `json:"ViewPoint,omitempty" xml:"ViewPoint,omitempty"`
 }
 
@@ -7457,14 +7406,10 @@ func (s *UpdateSubSceneShrinkRequest) SetViewPointShrink(v string) *UpdateSubSce
 }
 
 type UpdateSubSceneResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateSubSceneResponseBody) String() string {
@@ -7525,7 +7470,6 @@ func (s *UpdateSubSceneResponse) SetBody(v *UpdateSubSceneResponseBody) *UpdateS
 }
 
 type UpdateSubSceneSeqRequest struct {
-	// 子场景ID
 	SceneId         *string   `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	SortSubSceneIds []*string `json:"SortSubSceneIds,omitempty" xml:"SortSubSceneIds,omitempty" type:"Repeated"`
 }
@@ -7549,7 +7493,6 @@ func (s *UpdateSubSceneSeqRequest) SetSortSubSceneIds(v []*string) *UpdateSubSce
 }
 
 type UpdateSubSceneSeqShrinkRequest struct {
-	// 子场景ID
 	SceneId               *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	SortSubSceneIdsShrink *string `json:"SortSubSceneIds,omitempty" xml:"SortSubSceneIds,omitempty"`
 }
@@ -7573,14 +7516,10 @@ func (s *UpdateSubSceneSeqShrinkRequest) SetSortSubSceneIdsShrink(v string) *Upd
 }
 
 type UpdateSubSceneSeqResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateSubSceneSeqResponseBody) String() string {
@@ -8036,6 +7975,10 @@ func (client *Client) CopySceneWithOptions(request *CopySceneRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
 		query["SceneId"] = request.SceneId
 	}
@@ -8071,6 +8014,54 @@ func (client *Client) CopyScene(request *CopySceneRequest) (_result *CopySceneRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CopySceneResponse{}
 	_body, _err := client.CopySceneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateUploadPolicyWithOptions(request *CreateUploadPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateUploadPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Option)) {
+		query["Option"] = request.Option
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUploadPolicy"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateUploadPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateUploadPolicy(request *CreateUploadPolicyRequest) (_result *CreateUploadPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateUploadPolicyResponse{}
+	_body, _err := client.CreateUploadPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9028,6 +9019,10 @@ func (client *Client) GetScenePreviewResourceWithOptions(request *GetScenePrevie
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Draft)) {
+		query["Draft"] = request.Draft
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PreviewToken)) {
 		query["PreviewToken"] = request.PreviewToken
 	}
@@ -9862,6 +9857,50 @@ func (client *Client) PublishHotspot(request *PublishHotspotRequest) (_result *P
 	return _result, _err
 }
 
+func (client *Client) PublishHotspotConfigWithOptions(request *PublishHotspotConfigRequest, runtime *util.RuntimeOptions) (_result *PublishHotspotConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishHotspotConfig"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PublishHotspotConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PublishHotspotConfig(request *PublishHotspotConfigRequest) (_result *PublishHotspotConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PublishHotspotConfigResponse{}
+	_body, _err := client.PublishHotspotConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) PublishSceneWithOptions(request *PublishSceneRequest, runtime *util.RuntimeOptions) (_result *PublishSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10231,6 +10270,102 @@ func (client *Client) SaveHotspotTag(request *SaveHotspotTagRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveHotspotTagResponse{}
 	_body, _err := client.SaveHotspotTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SaveHotspotTagListWithOptions(request *SaveHotspotTagListRequest, runtime *util.RuntimeOptions) (_result *SaveHotspotTagListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotspotListJson)) {
+		query["HotspotListJson"] = request.HotspotListJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveHotspotTagList"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveHotspotTagListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveHotspotTagList(request *SaveHotspotTagListRequest) (_result *SaveHotspotTagListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveHotspotTagListResponse{}
+	_body, _err := client.SaveHotspotTagListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SaveModelConfigWithOptions(request *SaveModelConfigRequest, runtime *util.RuntimeOptions) (_result *SaveModelConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveModelConfig"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveModelConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveModelConfig(request *SaveModelConfigRequest) (_result *SaveModelConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveModelConfigResponse{}
+	_body, _err := client.SaveModelConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
