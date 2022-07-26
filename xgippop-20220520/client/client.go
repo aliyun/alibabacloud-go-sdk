@@ -13,17 +13,12 @@ import (
 )
 
 type ChangeApplicationInfoRequest struct {
-	// 阿里UID
-	AliUid *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// dynamic|static
+	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	AppTypeList *string `json:"AppTypeList,omitempty" xml:"AppTypeList,omitempty"`
-	// [
-	AppingList *string `json:"AppingList,omitempty" xml:"AppingList,omitempty"`
-	// 商品code
-	ItemCode *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	AppingList  *string `json:"AppingList,omitempty" xml:"AppingList,omitempty"`
+	ItemCode    *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
 }
 
 func (s ChangeApplicationInfoRequest) String() string {
@@ -65,16 +60,11 @@ func (s *ChangeApplicationInfoRequest) SetItemCode(v string) *ChangeApplicationI
 }
 
 type ChangeApplicationInfoResponseBody struct {
-	// 应用id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ChangeApplicationInfoResponseBody) String() string {
@@ -140,15 +130,11 @@ func (s *ChangeApplicationInfoResponse) SetBody(v *ChangeApplicationInfoResponse
 }
 
 type CreateApplicationInfoRequest struct {
-	// 阿里UID
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// dynamic（动态业务）/static（静态业务
+	AliUid      *int64                                    `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppName     *string                                   `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	AppTypeList []*string                                 `json:"AppTypeList,omitempty" xml:"AppTypeList,omitempty" type:"Repeated"`
 	AppingList  []*CreateApplicationInfoRequestAppingList `json:"AppingList,omitempty" xml:"AppingList,omitempty" type:"Repeated"`
-	// 商品code
-	ItemCode *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	ItemCode    *string                                   `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
 }
 
 func (s CreateApplicationInfoRequest) String() string {
@@ -185,14 +171,10 @@ func (s *CreateApplicationInfoRequest) SetItemCode(v string) *CreateApplicationI
 }
 
 type CreateApplicationInfoRequestAppingList struct {
-	ExtId *int64 `json:"ExtId,omitempty" xml:"ExtId,omitempty"`
-	// cdn ip
-	FlowIp []*string `json:"FlowIp,omitempty" xml:"FlowIp,omitempty" type:"Repeated"`
-	// cdn 域名信息
-	FlowUrl []*string `json:"FlowUrl,omitempty" xml:"FlowUrl,omitempty" type:"Repeated"`
-	// 业务方ip集合
-	OriginalIpList []*string `json:"OriginalIpList,omitempty" xml:"OriginalIpList,omitempty" type:"Repeated"`
-	// 业务方域名集合
+	ExtId           *int64    `json:"ExtId,omitempty" xml:"ExtId,omitempty"`
+	FlowIp          []*string `json:"FlowIp,omitempty" xml:"FlowIp,omitempty" type:"Repeated"`
+	FlowUrl         []*string `json:"FlowUrl,omitempty" xml:"FlowUrl,omitempty" type:"Repeated"`
+	OriginalIpList  []*string `json:"OriginalIpList,omitempty" xml:"OriginalIpList,omitempty" type:"Repeated"`
 	OriginalUrlList []*string `json:"OriginalUrlList,omitempty" xml:"OriginalUrlList,omitempty" type:"Repeated"`
 }
 
@@ -230,16 +212,11 @@ func (s *CreateApplicationInfoRequestAppingList) SetOriginalUrlList(v []*string)
 }
 
 type CreateApplicationInfoResponseBody struct {
-	// 应用id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateApplicationInfoResponseBody) String() string {
@@ -305,18 +282,12 @@ func (s *CreateApplicationInfoResponse) SetBody(v *CreateApplicationInfoResponse
 }
 
 type GetAliyunXgipTokenResponseBody struct {
-	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务端处理耗时，ms
-	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Rt        *int64  `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAliyunXgipTokenResponseBody) String() string {
@@ -387,10 +358,9 @@ func (s *GetAliyunXgipTokenResponse) SetBody(v *GetAliyunXgipTokenResponseBody) 
 }
 
 type GetApplicationRequest struct {
-	// 阿里UID
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 应用ID
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	AliUid   *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppCode  *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	ItemCode *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
 }
 
 func (s GetApplicationRequest) String() string {
@@ -411,18 +381,18 @@ func (s *GetApplicationRequest) SetAppCode(v string) *GetApplicationRequest {
 	return s
 }
 
+func (s *GetApplicationRequest) SetItemCode(v string) *GetApplicationRequest {
+	s.ItemCode = &v
+	return s
+}
+
 type GetApplicationResponseBody struct {
-	// 结果码
-	Code *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务端处理耗时，ms
-	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                   `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetApplicationResponseBody) String() string {
@@ -493,10 +463,8 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 }
 
 type GetFreeFlowInstanceRequest struct {
-	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 实例ID
+	Aliuid     *int64  `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ItemCode   *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
 }
@@ -530,18 +498,12 @@ func (s *GetFreeFlowInstanceRequest) SetItemCode(v string) *GetFreeFlowInstanceR
 }
 
 type GetFreeFlowInstanceResponseBody struct {
-	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果
-	Data []*GetFreeFlowInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务端处理耗时，ms
-	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetFreeFlowInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                                 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetFreeFlowInstanceResponseBody) String() string {
@@ -583,22 +545,14 @@ func (s *GetFreeFlowInstanceResponseBody) SetSuccess(v bool) *GetFreeFlowInstanc
 }
 
 type GetFreeFlowInstanceResponseBodyData struct {
-	// APP编号
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	// APP名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 产品失效时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 实例名称
-	InstanceMemo *string `json:"InstanceMemo,omitempty" xml:"InstanceMemo,omitempty"`
-	// 实例状态
+	AppCode        *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceMemo   *string `json:"InstanceMemo,omitempty" xml:"InstanceMemo,omitempty"`
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// 产品开通时间
-	OpenTime *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
-	// 规格类型
-	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	// 产品生效时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	OpenTime       *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
+	SpecType       *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetFreeFlowInstanceResponseBodyData) String() string {
@@ -679,9 +633,7 @@ func (s *GetFreeFlowInstanceResponse) SetBody(v *GetFreeFlowInstanceResponseBody
 }
 
 type GetFreeFlowProductListRequest struct {
-	// 用户编号
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 实例ID
+	AliUid     *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -704,17 +656,12 @@ func (s *GetFreeFlowProductListRequest) SetInstanceId(v string) *GetFreeFlowProd
 }
 
 type GetFreeFlowProductListResponseBody struct {
-	// 结果码
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data []*GetFreeFlowProductListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务端处理耗时，ms
-	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetFreeFlowProductListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                                    `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetFreeFlowProductListResponseBody) String() string {
@@ -756,24 +703,16 @@ func (s *GetFreeFlowProductListResponseBody) SetSuccess(v bool) *GetFreeFlowProd
 }
 
 type GetFreeFlowProductListResponseBodyData struct {
-	// 产品当前状态，true为已配置，false为未配置
-	Configured *bool `json:"Configured,omitempty" xml:"Configured,omitempty"`
-	// 产品包含的流量大小
+	Configured        *bool   `json:"Configured,omitempty" xml:"Configured,omitempty"`
 	FlowProductAmount *string `json:"FlowProductAmount,omitempty" xml:"FlowProductAmount,omitempty"`
-	// 免流产品ID
-	FlowProductId *string `json:"FlowProductId,omitempty" xml:"FlowProductId,omitempty"`
-	// 流量包名称
-	FlowProductName *string `json:"FlowProductName,omitempty" xml:"FlowProductName,omitempty"`
-	// 产品周期
+	FlowProductId     *string `json:"FlowProductId,omitempty" xml:"FlowProductId,omitempty"`
+	FlowProductName   *string `json:"FlowProductName,omitempty" xml:"FlowProductName,omitempty"`
 	FlowProductPeriod *string `json:"FlowProductPeriod,omitempty" xml:"FlowProductPeriod,omitempty"`
-	// 取值包括free（定向流量）/normal（通用流量）
-	FlowType *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
-	// 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 注意这里返回的全量套餐里，只能包含SpecType与该InstanceId的SpecType相同的规格
-	SpecType  *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	Spid      *string `json:"Spid,omitempty" xml:"Spid,omitempty"`
-	UnitPrice *int32  `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
+	FlowType          *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
+	Operator          *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	SpecType          *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	Spid              *string `json:"Spid,omitempty" xml:"Spid,omitempty"`
+	UnitPrice         *int32  `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
 }
 
 func (s GetFreeFlowProductListResponseBodyData) String() string {
@@ -864,15 +803,11 @@ func (s *GetFreeFlowProductListResponse) SetBody(v *GetFreeFlowProductListRespon
 }
 
 type GetFreeFlowUsageRequest struct {
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 当前页
-	CurPageNum *int32 `json:"CurPageNum,omitempty" xml:"CurPageNum,omitempty"`
-	// 实例ID
+	AliUid     *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	CurPageNum *int32  `json:"CurPageNum,omitempty" xml:"CurPageNum,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 查询月份
-	Month *string `json:"Month,omitempty" xml:"Month,omitempty"`
-	// 每页的记录数量
-	NumPerPage *int32 `json:"NumPerPage,omitempty" xml:"NumPerPage,omitempty"`
+	Month      *string `json:"Month,omitempty" xml:"Month,omitempty"`
+	NumPerPage *int32  `json:"NumPerPage,omitempty" xml:"NumPerPage,omitempty"`
 }
 
 func (s GetFreeFlowUsageRequest) String() string {
@@ -909,18 +844,12 @@ func (s *GetFreeFlowUsageRequest) SetNumPerPage(v int32) *GetFreeFlowUsageReques
 }
 
 type GetFreeFlowUsageResponseBody struct {
-	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果
-	Data *GetFreeFlowUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务端处理耗时，ms
-	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetFreeFlowUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                            `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetFreeFlowUsageResponseBody) String() string {
@@ -962,22 +891,14 @@ func (s *GetFreeFlowUsageResponseBody) SetSuccess(v bool) *GetFreeFlowUsageRespo
 }
 
 type GetFreeFlowUsageResponseBodyData struct {
-	// 当前页数
-	CurPageNum *int32 `json:"CurPageNum,omitempty" xml:"CurPageNum,omitempty"`
-	// C端用户列表
+	CurPageNum   *int32                                          `json:"CurPageNum,omitempty" xml:"CurPageNum,omitempty"`
 	CustomerList []*GetFreeFlowUsageResponseBodyDataCustomerList `json:"CustomerList,omitempty" xml:"CustomerList,omitempty" type:"Repeated"`
-	// 是否有下一页
-	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	// 是否有上一页
-	HasPrev *bool `json:"HasPrev,omitempty" xml:"HasPrev,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 每页的记录条数
-	NumPerPage *int32 `json:"NumPerPage,omitempty" xml:"NumPerPage,omitempty"`
-	// 总记录条数
-	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	// 总页数
-	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	HasNext      *bool                                           `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	HasPrev      *bool                                           `json:"HasPrev,omitempty" xml:"HasPrev,omitempty"`
+	InstanceId   *string                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NumPerPage   *int32                                          `json:"NumPerPage,omitempty" xml:"NumPerPage,omitempty"`
+	TotalNum     *int32                                          `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	TotalPageNum *int32                                          `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s GetFreeFlowUsageResponseBodyData) String() string {
@@ -1029,29 +950,18 @@ func (s *GetFreeFlowUsageResponseBodyData) SetTotalPageNum(v int32) *GetFreeFlow
 }
 
 type GetFreeFlowUsageResponseBodyDataCustomerList struct {
-	// 购买渠道
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// C端产品失效时间
+	ChannelId           *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	CustomerEndTime     *string `json:"CustomerEndTime,omitempty" xml:"CustomerEndTime,omitempty"`
 	CustomerFlowOrderId *string `json:"CustomerFlowOrderId,omitempty" xml:"CustomerFlowOrderId,omitempty"`
-	// C端免流状态，取值包括create/working/expiration
-	CustomerFlowStatus *string `json:"CustomerFlowStatus,omitempty" xml:"CustomerFlowStatus,omitempty"`
-	// C端产品开通时间
-	CustomerOpenTime *string `json:"CustomerOpenTime,omitempty" xml:"CustomerOpenTime,omitempty"`
-	// C端产品生效时间
-	CustomerStartTime *string `json:"CustomerStartTime,omitempty" xml:"CustomerStartTime,omitempty"`
-	// 免流产品ID
-	FlowProductId *string `json:"FlowProductId,omitempty" xml:"FlowProductId,omitempty"`
-	// 免流产品名
-	FlowProductName *string `json:"FlowProductName,omitempty" xml:"FlowProductName,omitempty"`
-	// 是否包月，true或false
-	IsLasting *bool `json:"IsLasting,omitempty" xml:"IsLasting,omitempty"`
-	// C端手机号
-	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
-	// 该流量包的计量单元数
-	UnitNum *int32 `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
-	// 流量包价格
-	UnitPrice *int32 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
+	CustomerFlowStatus  *string `json:"CustomerFlowStatus,omitempty" xml:"CustomerFlowStatus,omitempty"`
+	CustomerOpenTime    *string `json:"CustomerOpenTime,omitempty" xml:"CustomerOpenTime,omitempty"`
+	CustomerStartTime   *string `json:"CustomerStartTime,omitempty" xml:"CustomerStartTime,omitempty"`
+	FlowProductId       *string `json:"FlowProductId,omitempty" xml:"FlowProductId,omitempty"`
+	FlowProductName     *string `json:"FlowProductName,omitempty" xml:"FlowProductName,omitempty"`
+	IsLasting           *bool   `json:"IsLasting,omitempty" xml:"IsLasting,omitempty"`
+	MobileNumber        *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	UnitNum             *int32  `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+	UnitPrice           *int32  `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
 }
 
 func (s GetFreeFlowUsageResponseBodyDataCustomerList) String() string {
@@ -1193,18 +1103,12 @@ func (s *GetFreeFlowUsageStatisticRequest) SetMonth(v int64) *GetFreeFlowUsageSt
 }
 
 type GetFreeFlowUsageStatisticResponseBody struct {
-	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果
-	Data []*GetFreeFlowUsageStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务端处理耗时，ms
-	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetFreeFlowUsageStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                                       `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetFreeFlowUsageStatisticResponseBody) String() string {
@@ -1246,16 +1150,12 @@ func (s *GetFreeFlowUsageStatisticResponseBody) SetSuccess(v bool) *GetFreeFlowU
 }
 
 type GetFreeFlowUsageStatisticResponseBodyData struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 该实例对应的包类型
-	SpecType   *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	TotalMoney *string `json:"TotalMoney,omitempty" xml:"TotalMoney,omitempty"`
-	// 该实例的订单总数
-	TotalOrderNumber *int64 `json:"TotalOrderNumber,omitempty" xml:"TotalOrderNumber,omitempty"`
-	// 该实例的订单总计量单元数
-	TotalUnitNumber *int64 `json:"TotalUnitNumber,omitempty" xml:"TotalUnitNumber,omitempty"`
-	// 产品规格
-	YunOutProduct *string `json:"YunOutProduct,omitempty" xml:"YunOutProduct,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SpecType         *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	TotalMoney       *string `json:"TotalMoney,omitempty" xml:"TotalMoney,omitempty"`
+	TotalOrderNumber *int64  `json:"TotalOrderNumber,omitempty" xml:"TotalOrderNumber,omitempty"`
+	TotalUnitNumber  *int64  `json:"TotalUnitNumber,omitempty" xml:"TotalUnitNumber,omitempty"`
+	YunOutProduct    *string `json:"YunOutProduct,omitempty" xml:"YunOutProduct,omitempty"`
 }
 
 func (s GetFreeFlowUsageStatisticResponseBodyData) String() string {
@@ -1326,8 +1226,7 @@ func (s *GetFreeFlowUsageStatisticResponse) SetBody(v *GetFreeFlowUsageStatistic
 }
 
 type GetOrderFreeFlowProductStatusRequest struct {
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 在订购接口2.1.9中引擎侧生成的id
+	AliUid              *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	CustomerFlowOrderId *string `json:"CustomerFlowOrderId,omitempty" xml:"CustomerFlowOrderId,omitempty"`
 }
 
@@ -1350,17 +1249,12 @@ func (s *GetOrderFreeFlowProductStatusRequest) SetCustomerFlowOrderId(v string) 
 }
 
 type GetOrderFreeFlowProductStatusResponseBody struct {
-	// 结果码
-	Code *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetOrderFreeFlowProductStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务端处理耗时，ms
-	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetOrderFreeFlowProductStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                                         `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOrderFreeFlowProductStatusResponseBody) String() string {
@@ -1402,13 +1296,10 @@ func (s *GetOrderFreeFlowProductStatusResponseBody) SetSuccess(v bool) *GetOrder
 }
 
 type GetOrderFreeFlowProductStatusResponseBodyData struct {
-	// C端免流订单ID
 	CustomerFlowOrderId   *string `json:"CustomerFlowOrderId,omitempty" xml:"CustomerFlowOrderId,omitempty"`
 	CustomerFlowRequestId *string `json:"CustomerFlowRequestId,omitempty" xml:"CustomerFlowRequestId,omitempty"`
-	// status为fail时，描述fail的具体原因
-	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// 执行中ordering、成功success、失败fail
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Error                 *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetOrderFreeFlowProductStatusResponseBodyData) String() string {
@@ -1468,17 +1359,1191 @@ func (s *GetOrderFreeFlowProductStatusResponse) SetBody(v *GetOrderFreeFlowProdu
 	return s
 }
 
+type GetQosFlowUsageRequest struct {
+	AliUid     *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	CurPageNum *int32  `json:"CurPageNum,omitempty" xml:"CurPageNum,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Month      *int64  `json:"Month,omitempty" xml:"Month,omitempty"`
+	NumPerPage *int32  `json:"NumPerPage,omitempty" xml:"NumPerPage,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type       *bool   `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetQosFlowUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQosFlowUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetQosFlowUsageRequest) SetAliUid(v int64) *GetQosFlowUsageRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetQosFlowUsageRequest) SetCurPageNum(v int32) *GetQosFlowUsageRequest {
+	s.CurPageNum = &v
+	return s
+}
+
+func (s *GetQosFlowUsageRequest) SetEndTime(v string) *GetQosFlowUsageRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetQosFlowUsageRequest) SetInstanceId(v string) *GetQosFlowUsageRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetQosFlowUsageRequest) SetMonth(v int64) *GetQosFlowUsageRequest {
+	s.Month = &v
+	return s
+}
+
+func (s *GetQosFlowUsageRequest) SetNumPerPage(v int32) *GetQosFlowUsageRequest {
+	s.NumPerPage = &v
+	return s
+}
+
+func (s *GetQosFlowUsageRequest) SetStartTime(v string) *GetQosFlowUsageRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetQosFlowUsageRequest) SetType(v bool) *GetQosFlowUsageRequest {
+	s.Type = &v
+	return s
+}
+
+type GetQosFlowUsageResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetQosFlowUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                           `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetQosFlowUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQosFlowUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetQosFlowUsageResponseBody) SetCode(v string) *GetQosFlowUsageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBody) SetData(v *GetQosFlowUsageResponseBodyData) *GetQosFlowUsageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBody) SetMessage(v string) *GetQosFlowUsageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBody) SetRequestId(v string) *GetQosFlowUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBody) SetRt(v int64) *GetQosFlowUsageResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBody) SetSuccess(v bool) *GetQosFlowUsageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetQosFlowUsageResponseBodyData struct {
+	CurPageNum   *int32                                         `json:"CurPageNum,omitempty" xml:"CurPageNum,omitempty"`
+	CustomerList []*GetQosFlowUsageResponseBodyDataCustomerList `json:"CustomerList,omitempty" xml:"CustomerList,omitempty" type:"Repeated"`
+	HasNext      *bool                                          `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	HasPrev      *bool                                          `json:"HasPrev,omitempty" xml:"HasPrev,omitempty"`
+	InstanceId   *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NumPerPage   *int32                                         `json:"NumPerPage,omitempty" xml:"NumPerPage,omitempty"`
+	TotalNum     *int32                                         `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	TotalPageNum *int32                                         `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+}
+
+func (s GetQosFlowUsageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQosFlowUsageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetQosFlowUsageResponseBodyData) SetCurPageNum(v int32) *GetQosFlowUsageResponseBodyData {
+	s.CurPageNum = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyData) SetCustomerList(v []*GetQosFlowUsageResponseBodyDataCustomerList) *GetQosFlowUsageResponseBodyData {
+	s.CustomerList = v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyData) SetHasNext(v bool) *GetQosFlowUsageResponseBodyData {
+	s.HasNext = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyData) SetHasPrev(v bool) *GetQosFlowUsageResponseBodyData {
+	s.HasPrev = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyData) SetInstanceId(v string) *GetQosFlowUsageResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyData) SetNumPerPage(v int32) *GetQosFlowUsageResponseBodyData {
+	s.NumPerPage = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyData) SetTotalNum(v int32) *GetQosFlowUsageResponseBodyData {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyData) SetTotalPageNum(v int32) *GetQosFlowUsageResponseBodyData {
+	s.TotalPageNum = &v
+	return s
+}
+
+type GetQosFlowUsageResponseBodyDataCustomerList struct {
+	AliUid       *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DsDay        *int64  `json:"DsDay,omitempty" xml:"DsDay,omitempty"`
+	DsMonth      *int64  `json:"DsMonth,omitempty" xml:"DsMonth,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemCode     *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operator     *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	OrderNum     *int32  `json:"OrderNum,omitempty" xml:"OrderNum,omitempty"`
+	ProductId    *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductName  *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	Provice      *string `json:"Provice,omitempty" xml:"Provice,omitempty"`
+	QosRequestId *string `json:"QosRequestId,omitempty" xml:"QosRequestId,omitempty"`
+	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SpecType     *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalPrice   *int32  `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty"`
+	TotolTime    *int64  `json:"TotolTime,omitempty" xml:"TotolTime,omitempty"`
+}
+
+func (s GetQosFlowUsageResponseBodyDataCustomerList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQosFlowUsageResponseBodyDataCustomerList) GoString() string {
+	return s.String()
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetAliUid(v int64) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetAppId(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetDsDay(v int64) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.DsDay = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetDsMonth(v int64) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.DsMonth = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetEndTime(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetInstanceId(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetItemCode(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.ItemCode = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetMessage(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.Message = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetName(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.Name = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetOperator(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetOrderNum(v int32) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.OrderNum = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetProductId(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.ProductId = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetProductName(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.ProductName = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetProvice(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.Provice = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetQosRequestId(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.QosRequestId = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetRemark(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.Remark = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetSpecType(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.SpecType = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetStartTime(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetStatus(v string) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.Status = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetTotalPrice(v int32) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.TotalPrice = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponseBodyDataCustomerList) SetTotolTime(v int64) *GetQosFlowUsageResponseBodyDataCustomerList {
+	s.TotolTime = &v
+	return s
+}
+
+type GetQosFlowUsageResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetQosFlowUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetQosFlowUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQosFlowUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetQosFlowUsageResponse) SetHeaders(v map[string]*string) *GetQosFlowUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetQosFlowUsageResponse) SetStatusCode(v int32) *GetQosFlowUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetQosFlowUsageResponse) SetBody(v *GetQosFlowUsageResponseBody) *GetQosFlowUsageResponse {
+	s.Body = v
+	return s
+}
+
+type GetQosUsageStatisticRequest struct {
+	AliUid     *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	CurPageNum *int32  `json:"CurPageNum,omitempty" xml:"CurPageNum,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Month      *int64  `json:"Month,omitempty" xml:"Month,omitempty"`
+	NumPerPage *int32  `json:"NumPerPage,omitempty" xml:"NumPerPage,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetQosUsageStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQosUsageStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetQosUsageStatisticRequest) SetAliUid(v int64) *GetQosUsageStatisticRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticRequest) SetCurPageNum(v int32) *GetQosUsageStatisticRequest {
+	s.CurPageNum = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticRequest) SetEndTime(v string) *GetQosUsageStatisticRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticRequest) SetInstanceId(v string) *GetQosUsageStatisticRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticRequest) SetMonth(v int64) *GetQosUsageStatisticRequest {
+	s.Month = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticRequest) SetNumPerPage(v int32) *GetQosUsageStatisticRequest {
+	s.NumPerPage = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticRequest) SetRequestId(v string) *GetQosUsageStatisticRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticRequest) SetStartTime(v string) *GetQosUsageStatisticRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetQosUsageStatisticResponseBody struct {
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetQosUsageStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                                `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetQosUsageStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQosUsageStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetQosUsageStatisticResponseBody) SetCode(v string) *GetQosUsageStatisticResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBody) SetData(v *GetQosUsageStatisticResponseBodyData) *GetQosUsageStatisticResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBody) SetMessage(v string) *GetQosUsageStatisticResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBody) SetRequestId(v string) *GetQosUsageStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBody) SetRt(v int64) *GetQosUsageStatisticResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBody) SetSuccess(v bool) *GetQosUsageStatisticResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetQosUsageStatisticResponseBodyData struct {
+	CurPageNum                  *int32                                                             `json:"CurPageNum,omitempty" xml:"CurPageNum,omitempty"`
+	GetQosUsageStatisticResList []*GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList `json:"GetQosUsageStatisticResList,omitempty" xml:"GetQosUsageStatisticResList,omitempty" type:"Repeated"`
+	NumPerPage                  *int32                                                             `json:"NumPerPage,omitempty" xml:"NumPerPage,omitempty"`
+	TotalNum                    *int32                                                             `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s GetQosUsageStatisticResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQosUsageStatisticResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetQosUsageStatisticResponseBodyData) SetCurPageNum(v int32) *GetQosUsageStatisticResponseBodyData {
+	s.CurPageNum = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyData) SetGetQosUsageStatisticResList(v []*GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) *GetQosUsageStatisticResponseBodyData {
+	s.GetQosUsageStatisticResList = v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyData) SetNumPerPage(v int32) *GetQosUsageStatisticResponseBodyData {
+	s.NumPerPage = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyData) SetTotalNum(v int32) *GetQosUsageStatisticResponseBodyData {
+	s.TotalNum = &v
+	return s
+}
+
+type GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList struct {
+	BillCount     *int64  `json:"BillCount,omitempty" xml:"BillCount,omitempty"`
+	DsDay         *int64  `json:"DsDay,omitempty" xml:"DsDay,omitempty"`
+	FailCount     *int64  `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Month         *int64  `json:"Month,omitempty" xml:"Month,omitempty"`
+	Operator      *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	ProductName   *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	Provice       *string `json:"Provice,omitempty" xml:"Provice,omitempty"`
+	SpecType      *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	SucessCount   *int64  `json:"SucessCount,omitempty" xml:"SucessCount,omitempty"`
+	TotalCount    *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	YunOutProduct *string `json:"YunOutProduct,omitempty" xml:"YunOutProduct,omitempty"`
+}
+
+func (s GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) GoString() string {
+	return s.String()
+}
+
+func (s *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) SetBillCount(v int64) *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList {
+	s.BillCount = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) SetDsDay(v int64) *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList {
+	s.DsDay = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) SetFailCount(v int64) *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList {
+	s.FailCount = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) SetInstanceId(v string) *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) SetMonth(v int64) *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList {
+	s.Month = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) SetOperator(v string) *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) SetProductName(v string) *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList {
+	s.ProductName = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) SetProvice(v string) *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList {
+	s.Provice = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) SetSpecType(v string) *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList {
+	s.SpecType = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) SetSucessCount(v int64) *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList {
+	s.SucessCount = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) SetTotalCount(v int64) *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList) SetYunOutProduct(v string) *GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList {
+	s.YunOutProduct = &v
+	return s
+}
+
+type GetQosUsageStatisticResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetQosUsageStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetQosUsageStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQosUsageStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetQosUsageStatisticResponse) SetHeaders(v map[string]*string) *GetQosUsageStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponse) SetStatusCode(v int32) *GetQosUsageStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetQosUsageStatisticResponse) SetBody(v *GetQosUsageStatisticResponseBody) *GetQosUsageStatisticResponse {
+	s.Body = v
+	return s
+}
+
+type GetUatDataListRequest struct {
+	AliUid  *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	DsMonth *int64  `json:"DsMonth,omitempty" xml:"DsMonth,omitempty"`
+	ItemId  *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+}
+
+func (s GetUatDataListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUatDataListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUatDataListRequest) SetAliUid(v int64) *GetUatDataListRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetUatDataListRequest) SetDsMonth(v int64) *GetUatDataListRequest {
+	s.DsMonth = &v
+	return s
+}
+
+func (s *GetUatDataListRequest) SetItemId(v string) *GetUatDataListRequest {
+	s.ItemId = &v
+	return s
+}
+
+type GetUatDataListResponseBody struct {
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetUatDataListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                            `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetUatDataListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUatDataListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUatDataListResponseBody) SetCode(v string) *GetUatDataListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetUatDataListResponseBody) SetData(v []*GetUatDataListResponseBodyData) *GetUatDataListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetUatDataListResponseBody) SetMessage(v string) *GetUatDataListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetUatDataListResponseBody) SetRequestId(v string) *GetUatDataListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUatDataListResponseBody) SetRt(v int64) *GetUatDataListResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetUatDataListResponseBody) SetSuccess(v bool) *GetUatDataListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetUatDataListResponseBodyData struct {
+	DsList   []*GetUatDataListResponseBodyDataDsList `json:"DsList,omitempty" xml:"DsList,omitempty" type:"Repeated"`
+	SpecType *string                                 `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+}
+
+func (s GetUatDataListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUatDataListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetUatDataListResponseBodyData) SetDsList(v []*GetUatDataListResponseBodyDataDsList) *GetUatDataListResponseBodyData {
+	s.DsList = v
+	return s
+}
+
+func (s *GetUatDataListResponseBodyData) SetSpecType(v string) *GetUatDataListResponseBodyData {
+	s.SpecType = &v
+	return s
+}
+
+type GetUatDataListResponseBodyDataDsList struct {
+	DsData *int64 `json:"DsData,omitempty" xml:"DsData,omitempty"`
+	DsDay  *int64 `json:"DsDay,omitempty" xml:"DsDay,omitempty"`
+}
+
+func (s GetUatDataListResponseBodyDataDsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUatDataListResponseBodyDataDsList) GoString() string {
+	return s.String()
+}
+
+func (s *GetUatDataListResponseBodyDataDsList) SetDsData(v int64) *GetUatDataListResponseBodyDataDsList {
+	s.DsData = &v
+	return s
+}
+
+func (s *GetUatDataListResponseBodyDataDsList) SetDsDay(v int64) *GetUatDataListResponseBodyDataDsList {
+	s.DsDay = &v
+	return s
+}
+
+type GetUatDataListResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUatDataListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUatDataListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUatDataListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUatDataListResponse) SetHeaders(v map[string]*string) *GetUatDataListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUatDataListResponse) SetStatusCode(v int32) *GetUatDataListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUatDataListResponse) SetBody(v *GetUatDataListResponseBody) *GetUatDataListResponse {
+	s.Body = v
+	return s
+}
+
+type GetUatSpecCtDataRequest struct {
+	AliUid  *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	DsMonth *int64  `json:"DsMonth,omitempty" xml:"DsMonth,omitempty"`
+	ItemId  *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+}
+
+func (s GetUatSpecCtDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUatSpecCtDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUatSpecCtDataRequest) SetAliUid(v int64) *GetUatSpecCtDataRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetUatSpecCtDataRequest) SetDsMonth(v int64) *GetUatSpecCtDataRequest {
+	s.DsMonth = &v
+	return s
+}
+
+func (s *GetUatSpecCtDataRequest) SetItemId(v string) *GetUatSpecCtDataRequest {
+	s.ItemId = &v
+	return s
+}
+
+type GetUatSpecCtDataResponseBody struct {
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetUatSpecCtDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                              `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetUatSpecCtDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUatSpecCtDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUatSpecCtDataResponseBody) SetCode(v string) *GetUatSpecCtDataResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetUatSpecCtDataResponseBody) SetData(v []*GetUatSpecCtDataResponseBodyData) *GetUatSpecCtDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetUatSpecCtDataResponseBody) SetMessage(v string) *GetUatSpecCtDataResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetUatSpecCtDataResponseBody) SetRequestId(v string) *GetUatSpecCtDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUatSpecCtDataResponseBody) SetRt(v int64) *GetUatSpecCtDataResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetUatSpecCtDataResponseBody) SetSuccess(v bool) *GetUatSpecCtDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetUatSpecCtDataResponseBodyData struct {
+	MonthCount *int64  `json:"MonthCount,omitempty" xml:"MonthCount,omitempty"`
+	SpecType   *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+}
+
+func (s GetUatSpecCtDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUatSpecCtDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetUatSpecCtDataResponseBodyData) SetMonthCount(v int64) *GetUatSpecCtDataResponseBodyData {
+	s.MonthCount = &v
+	return s
+}
+
+func (s *GetUatSpecCtDataResponseBodyData) SetSpecType(v string) *GetUatSpecCtDataResponseBodyData {
+	s.SpecType = &v
+	return s
+}
+
+type GetUatSpecCtDataResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUatSpecCtDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUatSpecCtDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUatSpecCtDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUatSpecCtDataResponse) SetHeaders(v map[string]*string) *GetUatSpecCtDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUatSpecCtDataResponse) SetStatusCode(v int32) *GetUatSpecCtDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUatSpecCtDataResponse) SetBody(v *GetUatSpecCtDataResponseBody) *GetUatSpecCtDataResponse {
+	s.Body = v
+	return s
+}
+
+type MockGetOrderFreeFlowProductStatusRequest struct {
+	AliUid              *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	CustomerFlowOrderId *string `json:"CustomerFlowOrderId,omitempty" xml:"CustomerFlowOrderId,omitempty"`
+}
+
+func (s MockGetOrderFreeFlowProductStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MockGetOrderFreeFlowProductStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MockGetOrderFreeFlowProductStatusRequest) SetAliUid(v int64) *MockGetOrderFreeFlowProductStatusRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *MockGetOrderFreeFlowProductStatusRequest) SetCustomerFlowOrderId(v string) *MockGetOrderFreeFlowProductStatusRequest {
+	s.CustomerFlowOrderId = &v
+	return s
+}
+
+type MockGetOrderFreeFlowProductStatusResponseBody struct {
+	Code      *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *MockGetOrderFreeFlowProductStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                                             `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s MockGetOrderFreeFlowProductStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MockGetOrderFreeFlowProductStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MockGetOrderFreeFlowProductStatusResponseBody) SetCode(v string) *MockGetOrderFreeFlowProductStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MockGetOrderFreeFlowProductStatusResponseBody) SetData(v *MockGetOrderFreeFlowProductStatusResponseBodyData) *MockGetOrderFreeFlowProductStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *MockGetOrderFreeFlowProductStatusResponseBody) SetMessage(v string) *MockGetOrderFreeFlowProductStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *MockGetOrderFreeFlowProductStatusResponseBody) SetRequestId(v string) *MockGetOrderFreeFlowProductStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MockGetOrderFreeFlowProductStatusResponseBody) SetRt(v int64) *MockGetOrderFreeFlowProductStatusResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *MockGetOrderFreeFlowProductStatusResponseBody) SetSuccess(v bool) *MockGetOrderFreeFlowProductStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type MockGetOrderFreeFlowProductStatusResponseBodyData struct {
+	CustomerFlowOrderId   *string `json:"CustomerFlowOrderId,omitempty" xml:"CustomerFlowOrderId,omitempty"`
+	CustomerFlowRequestId *string `json:"CustomerFlowRequestId,omitempty" xml:"CustomerFlowRequestId,omitempty"`
+	Error                 *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s MockGetOrderFreeFlowProductStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MockGetOrderFreeFlowProductStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *MockGetOrderFreeFlowProductStatusResponseBodyData) SetCustomerFlowOrderId(v string) *MockGetOrderFreeFlowProductStatusResponseBodyData {
+	s.CustomerFlowOrderId = &v
+	return s
+}
+
+func (s *MockGetOrderFreeFlowProductStatusResponseBodyData) SetCustomerFlowRequestId(v string) *MockGetOrderFreeFlowProductStatusResponseBodyData {
+	s.CustomerFlowRequestId = &v
+	return s
+}
+
+func (s *MockGetOrderFreeFlowProductStatusResponseBodyData) SetError(v string) *MockGetOrderFreeFlowProductStatusResponseBodyData {
+	s.Error = &v
+	return s
+}
+
+func (s *MockGetOrderFreeFlowProductStatusResponseBodyData) SetStatus(v string) *MockGetOrderFreeFlowProductStatusResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type MockGetOrderFreeFlowProductStatusResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MockGetOrderFreeFlowProductStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MockGetOrderFreeFlowProductStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MockGetOrderFreeFlowProductStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MockGetOrderFreeFlowProductStatusResponse) SetHeaders(v map[string]*string) *MockGetOrderFreeFlowProductStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MockGetOrderFreeFlowProductStatusResponse) SetStatusCode(v int32) *MockGetOrderFreeFlowProductStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MockGetOrderFreeFlowProductStatusResponse) SetBody(v *MockGetOrderFreeFlowProductStatusResponseBody) *MockGetOrderFreeFlowProductStatusResponse {
+	s.Body = v
+	return s
+}
+
+type MockOrderFreeFlowProductRequest struct {
+	AliUid                *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ChannelId             *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CustomerFlowRequestId *string `json:"CustomerFlowRequestId,omitempty" xml:"CustomerFlowRequestId,omitempty"`
+	FlowProductId         *string `json:"FlowProductId,omitempty" xml:"FlowProductId,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lasting               *string `json:"Lasting,omitempty" xml:"Lasting,omitempty"`
+	MobileNumber          *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	NotifyUrl             *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	Operator              *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	PurchaseOrderId       *string `json:"PurchaseOrderId,omitempty" xml:"PurchaseOrderId,omitempty"`
+}
+
+func (s MockOrderFreeFlowProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MockOrderFreeFlowProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MockOrderFreeFlowProductRequest) SetAliUid(v int64) *MockOrderFreeFlowProductRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductRequest) SetChannelId(v string) *MockOrderFreeFlowProductRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductRequest) SetCustomerFlowRequestId(v string) *MockOrderFreeFlowProductRequest {
+	s.CustomerFlowRequestId = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductRequest) SetFlowProductId(v string) *MockOrderFreeFlowProductRequest {
+	s.FlowProductId = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductRequest) SetInstanceId(v string) *MockOrderFreeFlowProductRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductRequest) SetLasting(v string) *MockOrderFreeFlowProductRequest {
+	s.Lasting = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductRequest) SetMobileNumber(v string) *MockOrderFreeFlowProductRequest {
+	s.MobileNumber = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductRequest) SetNotifyUrl(v string) *MockOrderFreeFlowProductRequest {
+	s.NotifyUrl = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductRequest) SetOperator(v string) *MockOrderFreeFlowProductRequest {
+	s.Operator = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductRequest) SetPurchaseOrderId(v string) *MockOrderFreeFlowProductRequest {
+	s.PurchaseOrderId = &v
+	return s
+}
+
+type MockOrderFreeFlowProductResponseBody struct {
+	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *MockOrderFreeFlowProductResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                                    `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s MockOrderFreeFlowProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MockOrderFreeFlowProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MockOrderFreeFlowProductResponseBody) SetCode(v string) *MockOrderFreeFlowProductResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductResponseBody) SetData(v *MockOrderFreeFlowProductResponseBodyData) *MockOrderFreeFlowProductResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductResponseBody) SetMessage(v string) *MockOrderFreeFlowProductResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductResponseBody) SetRequestId(v string) *MockOrderFreeFlowProductResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductResponseBody) SetRt(v int64) *MockOrderFreeFlowProductResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductResponseBody) SetSuccess(v bool) *MockOrderFreeFlowProductResponseBody {
+	s.Success = &v
+	return s
+}
+
+type MockOrderFreeFlowProductResponseBodyData struct {
+	BizCode               *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	CustomerFlowOrderId   *string `json:"CustomerFlowOrderId,omitempty" xml:"CustomerFlowOrderId,omitempty"`
+	CustomerFlowRequestId *string `json:"CustomerFlowRequestId,omitempty" xml:"CustomerFlowRequestId,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s MockOrderFreeFlowProductResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MockOrderFreeFlowProductResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *MockOrderFreeFlowProductResponseBodyData) SetBizCode(v string) *MockOrderFreeFlowProductResponseBodyData {
+	s.BizCode = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductResponseBodyData) SetCustomerFlowOrderId(v string) *MockOrderFreeFlowProductResponseBodyData {
+	s.CustomerFlowOrderId = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductResponseBodyData) SetCustomerFlowRequestId(v string) *MockOrderFreeFlowProductResponseBodyData {
+	s.CustomerFlowRequestId = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductResponseBodyData) SetStatus(v string) *MockOrderFreeFlowProductResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type MockOrderFreeFlowProductResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MockOrderFreeFlowProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MockOrderFreeFlowProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MockOrderFreeFlowProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MockOrderFreeFlowProductResponse) SetHeaders(v map[string]*string) *MockOrderFreeFlowProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductResponse) SetStatusCode(v int32) *MockOrderFreeFlowProductResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MockOrderFreeFlowProductResponse) SetBody(v *MockOrderFreeFlowProductResponseBody) *MockOrderFreeFlowProductResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyApplicationRequest struct {
-	// AliUid
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// AppId
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// dynamic（动态业务）/static（静态业务
-	AppTypeList []*string `json:"AppTypeList,omitempty" xml:"AppTypeList,omitempty" type:"Repeated"`
-	// 扩展属性 源域名和源ip信息保存
-	AppingList []*ModifyApplicationRequestAppingList `json:"AppingList,omitempty" xml:"AppingList,omitempty" type:"Repeated"`
+	AliUid      *int64                                `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppCode     *string                               `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	AppName     *string                               `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppTypeList []*string                             `json:"AppTypeList,omitempty" xml:"AppTypeList,omitempty" type:"Repeated"`
+	AppingList  []*ModifyApplicationRequestAppingList `json:"AppingList,omitempty" xml:"AppingList,omitempty" type:"Repeated"`
 }
 
 func (s ModifyApplicationRequest) String() string {
@@ -1515,14 +2580,10 @@ func (s *ModifyApplicationRequest) SetAppingList(v []*ModifyApplicationRequestAp
 }
 
 type ModifyApplicationRequestAppingList struct {
-	ExtId *int64 `json:"ExtId,omitempty" xml:"ExtId,omitempty"`
-	// cdn ip
-	FlowIp []*string `json:"FlowIp,omitempty" xml:"FlowIp,omitempty" type:"Repeated"`
-	// cdn 域名信息
-	FlowUrl []*string `json:"FlowUrl,omitempty" xml:"FlowUrl,omitempty" type:"Repeated"`
-	// 业务方ip集合
-	OriginalIpList []*string `json:"OriginalIpList,omitempty" xml:"OriginalIpList,omitempty" type:"Repeated"`
-	// 业务方域名集合
+	ExtId           *int64    `json:"ExtId,omitempty" xml:"ExtId,omitempty"`
+	FlowIp          []*string `json:"FlowIp,omitempty" xml:"FlowIp,omitempty" type:"Repeated"`
+	FlowUrl         []*string `json:"FlowUrl,omitempty" xml:"FlowUrl,omitempty" type:"Repeated"`
+	OriginalIpList  []*string `json:"OriginalIpList,omitempty" xml:"OriginalIpList,omitempty" type:"Repeated"`
 	OriginalUrlList []*string `json:"OriginalUrlList,omitempty" xml:"OriginalUrlList,omitempty" type:"Repeated"`
 }
 
@@ -1560,16 +2621,11 @@ func (s *ModifyApplicationRequestAppingList) SetOriginalUrlList(v []*string) *Mo
 }
 
 type ModifyApplicationResponseBody struct {
-	// 应用id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyApplicationResponseBody) String() string {
@@ -1635,25 +2691,16 @@ func (s *ModifyApplicationResponse) SetBody(v *ModifyApplicationResponseBody) *M
 }
 
 type OrderFreeFlowProductRequest struct {
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 渠道ID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 客户侧生成的QoS请求ID，需要保证请求幂等性，确保不同请求间该参数值唯一
+	AliUid                *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ChannelId             *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	CustomerFlowRequestId *string `json:"CustomerFlowRequestId,omitempty" xml:"CustomerFlowRequestId,omitempty"`
-	// 免流产品ID
-	FlowProductId *string `json:"FlowProductId,omitempty" xml:"FlowProductId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 是否包月，true为包月，false为不包月
-	Lasting *string `json:"Lasting,omitempty" xml:"Lasting,omitempty"`
-	// C端手机号
-	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
-	// 客户提供的回调通知接口url
-	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
-	// 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 支付订单ID
-	PurchaseOrderId *string `json:"PurchaseOrderId,omitempty" xml:"PurchaseOrderId,omitempty"`
+	FlowProductId         *string `json:"FlowProductId,omitempty" xml:"FlowProductId,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lasting               *string `json:"Lasting,omitempty" xml:"Lasting,omitempty"`
+	MobileNumber          *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	NotifyUrl             *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	Operator              *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	PurchaseOrderId       *string `json:"PurchaseOrderId,omitempty" xml:"PurchaseOrderId,omitempty"`
 }
 
 func (s OrderFreeFlowProductRequest) String() string {
@@ -1715,18 +2762,12 @@ func (s *OrderFreeFlowProductRequest) SetPurchaseOrderId(v string) *OrderFreeFlo
 }
 
 type OrderFreeFlowProductResponseBody struct {
-	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果
-	Data *OrderFreeFlowProductResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务端处理耗时，ms
-	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *OrderFreeFlowProductResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                                `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s OrderFreeFlowProductResponseBody) String() string {
@@ -1768,12 +2809,10 @@ func (s *OrderFreeFlowProductResponseBody) SetSuccess(v bool) *OrderFreeFlowProd
 }
 
 type OrderFreeFlowProductResponseBodyData struct {
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// C端免流订单ID
+	BizCode               *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	CustomerFlowOrderId   *string `json:"CustomerFlowOrderId,omitempty" xml:"CustomerFlowOrderId,omitempty"`
 	CustomerFlowRequestId *string `json:"CustomerFlowRequestId,omitempty" xml:"CustomerFlowRequestId,omitempty"`
-	// 执行中ordering、成功success、失败fail
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s OrderFreeFlowProductResponseBodyData) String() string {
@@ -1834,34 +2873,21 @@ func (s *OrderFreeFlowProductResponse) SetBody(v *OrderFreeFlowProductResponseBo
 }
 
 type OrderQosProductRequest struct {
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 渠道ID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// C端v6 IP（移动场景下可以携带）
-	IPv6 *string `json:"IPv6,omitempty" xml:"IPv6,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// IP类型
-	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	// C端手机号
-	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
-	// 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// C端用户私网IP（联通场景下必须携带)
-	PrivateIpv4 *string `json:"PrivateIpv4,omitempty" xml:"PrivateIpv4,omitempty"`
-	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	Provice   *string `json:"Provice,omitempty" xml:"Provice,omitempty"`
-	// C端用户公网IP（联通场景下必须携带）
-	PublicIpv4 *string `json:"PublicIpv4,omitempty" xml:"PublicIpv4,omitempty"`
-	// 客户侧生成的QoS请求ID，需要保证请求幂等性，确保不同请求间该参数值唯一
-	QosRequestId *string `json:"QosRequestId,omitempty" xml:"QosRequestId,omitempty"`
-	// 移动场景目前ip
+	AliUid       *int64    `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ChannelId    *string   `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	IPv6         *string   `json:"IPv6,omitempty" xml:"IPv6,omitempty"`
+	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpType       *string   `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	MobileNumber *string   `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	Operator     *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	PrivateIpv4  *string   `json:"PrivateIpv4,omitempty" xml:"PrivateIpv4,omitempty"`
+	ProductId    *string   `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	Provice      *string   `json:"Provice,omitempty" xml:"Provice,omitempty"`
+	PublicIpv4   *string   `json:"PublicIpv4,omitempty" xml:"PublicIpv4,omitempty"`
+	QosRequestId *string   `json:"QosRequestId,omitempty" xml:"QosRequestId,omitempty"`
 	TargetIpList []*string `json:"TargetIpList,omitempty" xml:"TargetIpList,omitempty" type:"Repeated"`
-	// token获取
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// 请求次数
-	UnitNum *int32 `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+	Token        *string   `json:"Token,omitempty" xml:"Token,omitempty"`
+	UnitNum      *int32    `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
 }
 
 func (s OrderQosProductRequest) String() string {
@@ -1948,18 +2974,12 @@ func (s *OrderQosProductRequest) SetUnitNum(v int32) *OrderQosProductRequest {
 }
 
 type OrderQosProductResponseBody struct {
-	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务端处理耗时，ms
-	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Rt        *int64  `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s OrderQosProductResponseBody) String() string {
@@ -2030,17 +3050,12 @@ func (s *OrderQosProductResponse) SetBody(v *OrderQosProductResponseBody) *Order
 }
 
 type SaveApplicationInfoRequest struct {
-	// 阿里UID
-	AliUid *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// dynamic|static
+	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	AppTypeList *string `json:"AppTypeList,omitempty" xml:"AppTypeList,omitempty"`
-	// [
-	AppingList *string `json:"AppingList,omitempty" xml:"AppingList,omitempty"`
-	// 商品code
-	ItemCode *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	AppingList  *string `json:"AppingList,omitempty" xml:"AppingList,omitempty"`
+	ItemCode    *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
 }
 
 func (s SaveApplicationInfoRequest) String() string {
@@ -2082,16 +3097,11 @@ func (s *SaveApplicationInfoRequest) SetItemCode(v string) *SaveApplicationInfoR
 }
 
 type SaveApplicationInfoResponseBody struct {
-	// 应用id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SaveApplicationInfoResponseBody) String() string {
@@ -2157,15 +3167,11 @@ func (s *SaveApplicationInfoResponse) SetBody(v *SaveApplicationInfoResponseBody
 }
 
 type SdkValidateStatusRequest struct {
-	// 应用名称
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 凭证类型
-	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// mobile=150xxxx4661
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CredentialType  *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
 	CredentialValue *string `json:"CredentialValue,omitempty" xml:"CredentialValue,omitempty"`
-	// 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Token    *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	Operator        *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Token           *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s SdkValidateStatusRequest) String() string {
@@ -2202,18 +3208,12 @@ func (s *SdkValidateStatusRequest) SetToken(v string) *SdkValidateStatusRequest 
 }
 
 type SdkValidateStatusResponseBody struct {
-	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果
-	Data *SdkValidateStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务端处理耗时，ms
-	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *SdkValidateStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                             `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SdkValidateStatusResponseBody) String() string {
@@ -2256,10 +3256,8 @@ func (s *SdkValidateStatusResponseBody) SetSuccess(v bool) *SdkValidateStatusRes
 
 type SdkValidateStatusResponseBodyData struct {
 	AppExtPopList []*SdkValidateStatusResponseBodyDataAppExtPopList `json:"AppExtPopList,omitempty" xml:"AppExtPopList,omitempty" type:"Repeated"`
-	// 是否处于免流状态，取值范围为true/false
-	FreeFlow *bool `json:"FreeFlow,omitempty" xml:"FreeFlow,omitempty"`
-	// 伪码
-	PseudoCode *string `json:"PseudoCode,omitempty" xml:"PseudoCode,omitempty"`
+	FreeFlow      *bool                                             `json:"FreeFlow,omitempty" xml:"FreeFlow,omitempty"`
+	PseudoCode    *string                                           `json:"PseudoCode,omitempty" xml:"PseudoCode,omitempty"`
 }
 
 func (s SdkValidateStatusResponseBodyData) String() string {
@@ -2286,14 +3284,10 @@ func (s *SdkValidateStatusResponseBodyData) SetPseudoCode(v string) *SdkValidate
 }
 
 type SdkValidateStatusResponseBodyDataAppExtPopList struct {
-	ExtId *int64 `json:"ExtId,omitempty" xml:"ExtId,omitempty"`
-	// cdn ip
-	FlowIp []*string `json:"FlowIp,omitempty" xml:"FlowIp,omitempty" type:"Repeated"`
-	// cdn 域名信息
-	FlowUrl []*string `json:"FlowUrl,omitempty" xml:"FlowUrl,omitempty" type:"Repeated"`
-	// 业务方ip集合
-	OriginalIpList []*string `json:"OriginalIpList,omitempty" xml:"OriginalIpList,omitempty" type:"Repeated"`
-	// 业务方域名集合
+	ExtId           *int64    `json:"ExtId,omitempty" xml:"ExtId,omitempty"`
+	FlowIp          []*string `json:"FlowIp,omitempty" xml:"FlowIp,omitempty" type:"Repeated"`
+	FlowUrl         []*string `json:"FlowUrl,omitempty" xml:"FlowUrl,omitempty" type:"Repeated"`
+	OriginalIpList  []*string `json:"OriginalIpList,omitempty" xml:"OriginalIpList,omitempty" type:"Repeated"`
 	OriginalUrlList []*string `json:"OriginalUrlList,omitempty" xml:"OriginalUrlList,omitempty" type:"Repeated"`
 }
 
@@ -2360,8 +3354,7 @@ func (s *SdkValidateStatusResponse) SetBody(v *SdkValidateStatusResponseBody) *S
 }
 
 type ValidControllerAuthorRequest struct {
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 商品code
+	AliUid   *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	ItemCode *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
 }
 
@@ -2384,18 +3377,12 @@ func (s *ValidControllerAuthorRequest) SetItemCode(v string) *ValidControllerAut
 }
 
 type ValidControllerAuthorResponseBody struct {
-	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务端处理耗时，ms
-	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Rt        *int64  `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ValidControllerAuthorResponseBody) String() string {
@@ -2466,16 +3453,11 @@ func (s *ValidControllerAuthorResponse) SetBody(v *ValidControllerAuthorResponse
 }
 
 type ValidateStatusRequest struct {
-	// 阿里UID
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 应用名称
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 凭证类型
-	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// mobile=150xxxx4661
+	AliUid          *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CredentialType  *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
 	CredentialValue *string `json:"CredentialValue,omitempty" xml:"CredentialValue,omitempty"`
-	// 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Operator        *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 }
 
 func (s ValidateStatusRequest) String() string {
@@ -2512,18 +3494,12 @@ func (s *ValidateStatusRequest) SetOperator(v string) *ValidateStatusRequest {
 }
 
 type ValidateStatusResponseBody struct {
-	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果
-	Data *ValidateStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 结果描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务端处理耗时，ms
-	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ValidateStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                          `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ValidateStatusResponseBody) String() string {
@@ -2566,10 +3542,8 @@ func (s *ValidateStatusResponseBody) SetSuccess(v bool) *ValidateStatusResponseB
 
 type ValidateStatusResponseBodyData struct {
 	AppExtPopList []*ValidateStatusResponseBodyDataAppExtPopList `json:"AppExtPopList,omitempty" xml:"AppExtPopList,omitempty" type:"Repeated"`
-	// 是否处于免流状态，取值范围为true/false
-	FreeFlow *bool `json:"FreeFlow,omitempty" xml:"FreeFlow,omitempty"`
-	// 伪码
-	PseudoCode *string `json:"PseudoCode,omitempty" xml:"PseudoCode,omitempty"`
+	FreeFlow      *bool                                          `json:"FreeFlow,omitempty" xml:"FreeFlow,omitempty"`
+	PseudoCode    *string                                        `json:"PseudoCode,omitempty" xml:"PseudoCode,omitempty"`
 }
 
 func (s ValidateStatusResponseBodyData) String() string {
@@ -2596,14 +3570,10 @@ func (s *ValidateStatusResponseBodyData) SetPseudoCode(v string) *ValidateStatus
 }
 
 type ValidateStatusResponseBodyDataAppExtPopList struct {
-	ExtId *int64 `json:"ExtId,omitempty" xml:"ExtId,omitempty"`
-	// cdn ip
-	FlowIp []*string `json:"FlowIp,omitempty" xml:"FlowIp,omitempty" type:"Repeated"`
-	// cdn 域名信息
-	FlowUrl []*string `json:"FlowUrl,omitempty" xml:"FlowUrl,omitempty" type:"Repeated"`
-	// 业务方ip集合
-	OriginalIpList []*string `json:"OriginalIpList,omitempty" xml:"OriginalIpList,omitempty" type:"Repeated"`
-	// 业务方域名集合
+	ExtId           *int64    `json:"ExtId,omitempty" xml:"ExtId,omitempty"`
+	FlowIp          []*string `json:"FlowIp,omitempty" xml:"FlowIp,omitempty" type:"Repeated"`
+	FlowUrl         []*string `json:"FlowUrl,omitempty" xml:"FlowUrl,omitempty" type:"Repeated"`
+	OriginalIpList  []*string `json:"OriginalIpList,omitempty" xml:"OriginalIpList,omitempty" type:"Repeated"`
 	OriginalUrlList []*string `json:"OriginalUrlList,omitempty" xml:"OriginalUrlList,omitempty" type:"Repeated"`
 }
 
@@ -3107,6 +4077,286 @@ func (client *Client) GetOrderFreeFlowProductStatus(request *GetOrderFreeFlowPro
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOrderFreeFlowProductStatusResponse{}
 	_body, _err := client.GetOrderFreeFlowProductStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetQosFlowUsageWithOptions(request *GetQosFlowUsageRequest, runtime *util.RuntimeOptions) (_result *GetQosFlowUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetQosFlowUsage"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetQosFlowUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetQosFlowUsage(request *GetQosFlowUsageRequest) (_result *GetQosFlowUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetQosFlowUsageResponse{}
+	_body, _err := client.GetQosFlowUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetQosUsageStatisticWithOptions(request *GetQosUsageStatisticRequest, runtime *util.RuntimeOptions) (_result *GetQosUsageStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetQosUsageStatistic"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetQosUsageStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetQosUsageStatistic(request *GetQosUsageStatisticRequest) (_result *GetQosUsageStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetQosUsageStatisticResponse{}
+	_body, _err := client.GetQosUsageStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUatDataListWithOptions(request *GetUatDataListRequest, runtime *util.RuntimeOptions) (_result *GetUatDataListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUatDataList"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUatDataListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUatDataList(request *GetUatDataListRequest) (_result *GetUatDataListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUatDataListResponse{}
+	_body, _err := client.GetUatDataListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUatSpecCtDataWithOptions(request *GetUatSpecCtDataRequest, runtime *util.RuntimeOptions) (_result *GetUatSpecCtDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUatSpecCtData"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUatSpecCtDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUatSpecCtData(request *GetUatSpecCtDataRequest) (_result *GetUatSpecCtDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUatSpecCtDataResponse{}
+	_body, _err := client.GetUatSpecCtDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MockGetOrderFreeFlowProductStatusWithOptions(request *MockGetOrderFreeFlowProductStatusRequest, runtime *util.RuntimeOptions) (_result *MockGetOrderFreeFlowProductStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MockGetOrderFreeFlowProductStatus"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MockGetOrderFreeFlowProductStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MockGetOrderFreeFlowProductStatus(request *MockGetOrderFreeFlowProductStatusRequest) (_result *MockGetOrderFreeFlowProductStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MockGetOrderFreeFlowProductStatusResponse{}
+	_body, _err := client.MockGetOrderFreeFlowProductStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MockOrderFreeFlowProductWithOptions(request *MockOrderFreeFlowProductRequest, runtime *util.RuntimeOptions) (_result *MockOrderFreeFlowProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		query["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerFlowRequestId)) {
+		query["CustomerFlowRequestId"] = request.CustomerFlowRequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowProductId)) {
+		query["FlowProductId"] = request.FlowProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lasting)) {
+		query["Lasting"] = request.Lasting
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileNumber)) {
+		query["MobileNumber"] = request.MobileNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyUrl)) {
+		query["NotifyUrl"] = request.NotifyUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operator)) {
+		query["Operator"] = request.Operator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PurchaseOrderId)) {
+		query["PurchaseOrderId"] = request.PurchaseOrderId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MockOrderFreeFlowProduct"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MockOrderFreeFlowProductResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MockOrderFreeFlowProduct(request *MockOrderFreeFlowProductRequest) (_result *MockOrderFreeFlowProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MockOrderFreeFlowProductResponse{}
+	_body, _err := client.MockOrderFreeFlowProductWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
