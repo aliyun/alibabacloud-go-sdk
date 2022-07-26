@@ -12,6 +12,105 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddHotspotFileRequest struct {
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	SceneId  *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AddHotspotFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddHotspotFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddHotspotFileRequest) SetFileName(v string) *AddHotspotFileRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *AddHotspotFileRequest) SetSceneId(v string) *AddHotspotFileRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *AddHotspotFileRequest) SetType(v string) *AddHotspotFileRequest {
+	s.Type = &v
+	return s
+}
+
+type AddHotspotFileResponseBody struct {
+	Code      *int64                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddHotspotFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddHotspotFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddHotspotFileResponseBody) SetCode(v int64) *AddHotspotFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddHotspotFileResponseBody) SetData(v map[string]interface{}) *AddHotspotFileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddHotspotFileResponseBody) SetMessage(v string) *AddHotspotFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddHotspotFileResponseBody) SetRequestId(v string) *AddHotspotFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddHotspotFileResponseBody) SetSuccess(v bool) *AddHotspotFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddHotspotFileResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddHotspotFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddHotspotFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddHotspotFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddHotspotFileResponse) SetHeaders(v map[string]*string) *AddHotspotFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddHotspotFileResponse) SetStatusCode(v int32) *AddHotspotFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddHotspotFileResponse) SetBody(v *AddHotspotFileResponseBody) *AddHotspotFileResponse {
+	s.Body = v
+	return s
+}
+
 type AddMosaicsRequest struct {
 	MarkPosition *string `json:"MarkPosition,omitempty" xml:"MarkPosition,omitempty"`
 	SubSceneId   *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
@@ -978,6 +1077,93 @@ func (s *CreateUploadPolicyResponse) SetBody(v *CreateUploadPolicyResponseBody) 
 	return s
 }
 
+type DecryptContentRequest struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s DecryptContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecryptContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DecryptContentRequest) SetContent(v string) *DecryptContentRequest {
+	s.Content = &v
+	return s
+}
+
+type DecryptContentResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DecryptContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecryptContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DecryptContentResponseBody) SetCode(v int64) *DecryptContentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DecryptContentResponseBody) SetContent(v string) *DecryptContentResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *DecryptContentResponseBody) SetMessage(v string) *DecryptContentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DecryptContentResponseBody) SetRequestId(v string) *DecryptContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DecryptContentResponseBody) SetSuccess(v bool) *DecryptContentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DecryptContentResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DecryptContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DecryptContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecryptContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DecryptContentResponse) SetHeaders(v map[string]*string) *DecryptContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DecryptContentResponse) SetStatusCode(v int32) *DecryptContentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DecryptContentResponse) SetBody(v *DecryptContentResponseBody) *DecryptContentResponse {
+	s.Body = v
+	return s
+}
+
 type DetailProjectRequest struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
@@ -1687,6 +1873,93 @@ func (s *DropSubSceneResponse) SetStatusCode(v int32) *DropSubSceneResponse {
 }
 
 func (s *DropSubSceneResponse) SetBody(v *DropSubSceneResponseBody) *DropSubSceneResponse {
+	s.Body = v
+	return s
+}
+
+type EncryptContentRequest struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s EncryptContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EncryptContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EncryptContentRequest) SetContent(v string) *EncryptContentRequest {
+	s.Content = &v
+	return s
+}
+
+type EncryptContentResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EncryptContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EncryptContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EncryptContentResponseBody) SetCode(v int64) *EncryptContentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EncryptContentResponseBody) SetContent(v string) *EncryptContentResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *EncryptContentResponseBody) SetMessage(v string) *EncryptContentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EncryptContentResponseBody) SetRequestId(v string) *EncryptContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EncryptContentResponseBody) SetSuccess(v bool) *EncryptContentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EncryptContentResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EncryptContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EncryptContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EncryptContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EncryptContentResponse) SetHeaders(v map[string]*string) *EncryptContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EncryptContentResponse) SetStatusCode(v int32) *EncryptContentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EncryptContentResponse) SetBody(v *EncryptContentResponseBody) *EncryptContentResponse {
 	s.Body = v
 	return s
 }
@@ -7629,6 +7902,58 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) AddHotspotFileWithOptions(request *AddHotspotFileRequest, runtime *util.RuntimeOptions) (_result *AddHotspotFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddHotspotFile"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddHotspotFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddHotspotFile(request *AddHotspotFileRequest) (_result *AddHotspotFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddHotspotFileResponse{}
+	_body, _err := client.AddHotspotFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddMosaicsWithOptions(request *AddMosaicsRequest, runtime *util.RuntimeOptions) (_result *AddMosaicsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8069,6 +8394,50 @@ func (client *Client) CreateUploadPolicy(request *CreateUploadPolicyRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DecryptContentWithOptions(request *DecryptContentRequest, runtime *util.RuntimeOptions) (_result *DecryptContentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DecryptContent"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DecryptContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DecryptContent(request *DecryptContentRequest) (_result *DecryptContentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DecryptContentResponse{}
+	_body, _err := client.DecryptContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DetailProjectWithOptions(request *DetailProjectRequest, runtime *util.RuntimeOptions) (_result *DetailProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8326,6 +8695,50 @@ func (client *Client) DropSubScene(request *DropSubSceneRequest) (_result *DropS
 	runtime := &util.RuntimeOptions{}
 	_result = &DropSubSceneResponse{}
 	_body, _err := client.DropSubSceneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EncryptContentWithOptions(request *EncryptContentRequest, runtime *util.RuntimeOptions) (_result *EncryptContentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EncryptContent"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EncryptContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EncryptContent(request *EncryptContentRequest) (_result *EncryptContentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EncryptContentResponse{}
+	_body, _err := client.EncryptContentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
