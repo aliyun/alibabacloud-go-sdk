@@ -22774,14 +22774,18 @@ func (s *DescribeWarningExportInfoResponse) SetBody(v *DescribeWarningExportInfo
 }
 
 type DescribeWarningMachinesRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MachineName *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RiskId      *int64  `json:"RiskId,omitempty" xml:"RiskId,omitempty"`
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StrategyId  *int64  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	Uuids       *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ContainerFieldName  *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
+	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
+	CurrentPage         *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MachineName         *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RiskId              *int64  `json:"RiskId,omitempty" xml:"RiskId,omitempty"`
+	SourceIp            *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	StrategyId          *int64  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Uuids               *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
 func (s DescribeWarningMachinesRequest) String() string {
@@ -22790,6 +22794,21 @@ func (s DescribeWarningMachinesRequest) String() string {
 
 func (s DescribeWarningMachinesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeWarningMachinesRequest) SetClusterId(v string) *DescribeWarningMachinesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeWarningMachinesRequest) SetContainerFieldName(v string) *DescribeWarningMachinesRequest {
+	s.ContainerFieldName = &v
+	return s
+}
+
+func (s *DescribeWarningMachinesRequest) SetContainerFieldValue(v string) *DescribeWarningMachinesRequest {
+	s.ContainerFieldValue = &v
+	return s
 }
 
 func (s *DescribeWarningMachinesRequest) SetCurrentPage(v int32) *DescribeWarningMachinesRequest {
@@ -22824,6 +22843,11 @@ func (s *DescribeWarningMachinesRequest) SetSourceIp(v string) *DescribeWarningM
 
 func (s *DescribeWarningMachinesRequest) SetStrategyId(v int64) *DescribeWarningMachinesRequest {
 	s.StrategyId = &v
+	return s
+}
+
+func (s *DescribeWarningMachinesRequest) SetTargetType(v string) *DescribeWarningMachinesRequest {
+	s.TargetType = &v
 	return s
 }
 
@@ -38210,6 +38234,18 @@ func (client *Client) DescribeWarningMachinesWithOptions(request *DescribeWarnin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerFieldName)) {
+		query["ContainerFieldName"] = request.ContainerFieldName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerFieldValue)) {
+		query["ContainerFieldValue"] = request.ContainerFieldValue
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -38236,6 +38272,10 @@ func (client *Client) DescribeWarningMachinesWithOptions(request *DescribeWarnin
 
 	if !tea.BoolValue(util.IsUnset(request.StrategyId)) {
 		query["StrategyId"] = request.StrategyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
