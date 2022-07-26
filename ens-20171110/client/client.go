@@ -13,28 +13,17 @@ import (
 )
 
 type BucketInfo struct {
-	// Bucket读写权限类型： public-read-write：公共读写 public-read：公共读 private：私有（默认值）
-	BucketAcl *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
-	// Bucket名称。 3~50 个字符，只允许小写字母、数字、短横线（-），且不能以短横线开头或结尾。
-	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// 备注。 1-128个字符或汉字，UTF-8编码。
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Bucket创建时间。 （格式：yyyy-mm-ddThh:mm:ss.timezone, 例如 2011-12-01T12:27:13.000Z）
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 指定Bucket的数据容灾类型。 取值范围： LRS（默认值）。本地冗余LRS ZRS 同城冗余ZRS采用多可用区（AZ）机制。
+	BucketAcl          *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
+	BucketName         *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	Comment            *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DataRedundancyType *string `json:"DataRedundancyType,omitempty" xml:"DataRedundancyType,omitempty"`
-	// Bucket的调度类型： node：节点(同城) area：区域(多城市) global：全局(全国)
-	DispatcherType *string `json:"DispatcherType,omitempty" xml:"DispatcherType,omitempty"`
-	// 访问域名，边缘存储取值： eos.aliyuncs.com
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// 节点区域id，如果为空表示全局
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// Bucket修改时间。 （格式：yyyy-mm-ddThh:mm:ss.timezone, 例如 2011-12-01T12:27:13.000Z）
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 指定Bucket的资源类型。 取值范围： general：通用 national-network：国网
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Bucket存储类型，支持Standard
-	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	DispatcherType     *string `json:"DispatcherType,omitempty" xml:"DispatcherType,omitempty"`
+	Endpoint           *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	ModifyTime         *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	StorageClass       *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 }
 
 func (s BucketInfo) String() string {
@@ -101,7 +90,6 @@ func (s *BucketInfo) SetStorageClass(v string) *BucketInfo {
 }
 
 type DataDisk struct {
-	// 数据盘
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -119,30 +107,18 @@ func (s *DataDisk) SetSize(v int64) *DataDisk {
 }
 
 type HealthCheck struct {
-	// 是否开启健康检查。  取值：on | off。
-	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// 健康检查的后端服务器的端口。  取值： 1~65535。    说明 在HealthCheck值为on时才会有效。
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 每次健康检查响应的最大超时时间。  取值：1~300（秒）。  默认值：5。
-	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// 用于健康检查的域名，取值：  $_ip： 后端服务器的私网IP。当指定了IP或该参数未指定时，负载均衡会使用各后端服务器的私网IP当做健康检查使用的域名。是否要支持？ domain：域名长度为1-80字符，只能包含字母、数字、点号（.）和连字符（-）。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// 健康检查正常的HTTP状态码，多个状态码用逗号分隔。  默认值为http_2xx。  取值：http_2xx | http_3xx | http_4xx | http_5xx。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// 健康检查的时间间隔。  取值： 1~50（秒）。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 健康检查的method
-	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// 接收来自运行状况检查的响应需要等待的时间。如果后端ECS在指定的时间内没有正确响应，则判定为健康检查失败。在HealthCheck值为on时才会有效。  取值：1~300（秒）。   说明 如果HealthCHeckTimeout的值小于HealthCheckInterval的值，则HealthCHeckTimeout无效，超时时间为HealthCheckInterval的值。
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// 健康检查类型。  取值：tcp（默认值） | http。
-	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// 用于健康检查的URI。  长度限制为1~80，只能使用字母、数字和”-/.%?#&amp;“这些字符。 URL不能只为”/“，但必须以”/“开头。    说明 在HealthCheck值为on时才会有效。
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2~10。    说明 在HealthCheck值为on时才会有效。
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2~10。   说明 在HealthCheck值为on时才会有效。
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheck               *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckMethod         *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheckTimeout        *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s HealthCheck) String() string {
@@ -214,24 +190,15 @@ func (s *HealthCheck) SetUnhealthyThreshold(v int32) *HealthCheck {
 }
 
 type HttpConfig struct {
-	// 服务器上配置的Cookie。 长度为1-200，只能包含ASCII英文字母和数字字符，不能包含逗号、分号或空格，也不能以$开头。 说明 当StickySession为on且StickySessionType为server时，该参数必选。
-	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// Cookie超时时间。  取值：1~86400（秒）。   说明 当StickySession为on且StickySessionType为insert时，该参数必选。
-	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// 指定连接空闲超时时间，取值范围为1~60秒，默认值为15秒。  在超时时间内一直没有访问请求，负载均衡会暂时中断当前连接，直到一下次请求来临时重新建立新的连接。
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// 指定请求超时时间，取值范围为1~180秒，默认值为60秒。  在超时时间内后端服务器一直没有响应，负载均衡将放弃等待，给客户端返回 HTTP 504 错误码。
-	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 服务器证书的ID。
+	Cookie              *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	CookieTimeout       *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	IdleTimeout         *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	RequestTimeout      *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	Scheduler           *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
 	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	// 是否开启会话保持。  取值：on | off。
-	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	// cookie的处理方式。取值：  insert：植入Cookie。  客户端第一次访问时，负载均衡会在返回请求中植入Cookie（即在HTTP/HTTPS响应报文中插入SERVERID），下次客户端携带此Cookie访问，负载均衡服务会将请求定向转发给之前记录到的后端服务器上。  server：重写Cookie。  负载均衡发现用户自定义了Cookie，将会对原来的Cookie进行重写，下次客户端携带新的Cookie访问，负载均衡服务会将请求定向转发给之前记录到的后端服务器。   说明 当StickySession的值为on时，必须指定该参数。
-	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	// 是否开启通过X-Forwarded-For头字段获取来访者真实 IP。  取值为on。
-	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	StickySession       *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	StickySessionType   *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	XForwardedFor       *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
 }
 
 func (s HttpConfig) String() string {
@@ -288,24 +255,15 @@ func (s *HttpConfig) SetXForwardedFor(v string) *HttpConfig {
 }
 
 type SecurityGroupRule struct {
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 目标网段
-	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	// 方向
-	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// 协议
-	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// 授权策略
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// 目的端口
-	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// 源网段
-	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	// 源端口
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestCidrIp      *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	Direction       *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	IpProtocol      *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange       *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	SourceCidrIp    *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	// 优先级
-	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
+	Priority        *int32  `json:"priority,omitempty" xml:"priority,omitempty"`
 }
 
 func (s SecurityGroupRule) String() string {
@@ -362,12 +320,9 @@ func (s *SecurityGroupRule) SetPriority(v int32) *SecurityGroupRule {
 }
 
 type TcpConfig struct {
-	// 连接超时时间。取值：10~900（秒）。
-	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	// 会话保持的超时时间。取值：0~3600（秒）。默认值：0，表示关闭会话保持。
-	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	// 调度算法。取值：wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。rr：按照访问顺序依次将外部请求依序分发到后端服务器。sch：基于源IP地址的一致性hash，相同的源地址会调度到相同的后端服务器。
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	EstablishedTimeout *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	PersistenceTimeout *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	Scheduler          *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
 }
 
 func (s TcpConfig) String() string {
@@ -394,16 +349,11 @@ func (s *TcpConfig) SetScheduler(v string) *TcpConfig {
 }
 
 type UdpCheck struct {
-	// 健康检查使用的端口。取值：1-65535  不设置此参数时，表示使用后端服务端口（BackendServerPort）。
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 接收来自运行状况检查的响应需要等待的时间。  如果后端ENS在指定的时间内没有正确响应，则判定为健康检查失败。  取值：1-300（秒）。默认为5秒
+	HealthCheckConnectPort    *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// 健康检查的时间间隔。  取值：1-50（秒）。
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2-10。
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2-10。
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckInterval       *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthyThreshold          *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold        *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s UdpCheck) String() string {
@@ -440,9 +390,7 @@ func (s *UdpCheck) SetUnhealthyThreshold(v int32) *UdpCheck {
 }
 
 type UdpConfig struct {
-	// hash key
-	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。 sch：基于源IP地址的一致性hash，相同的源地址会调度到相同的后端服务器。
+	HashKey   *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
 	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
 }
 
@@ -488,14 +436,11 @@ func (s *AddBackendServersRequest) SetLoadBalancerId(v string) *AddBackendServer
 }
 
 type AddBackendServersRequestBackendServers struct {
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 端口
+	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 后端服务器类型。  ens：ENS实例（默认）
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 后端服务器的权重。  取值：0~100  默认值为100，如果值为0，则不会将请求转发给该后端服务器。
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s AddBackendServersRequestBackendServers) String() string {
@@ -556,8 +501,7 @@ func (s *AddBackendServersShrinkRequest) SetLoadBalancerId(v string) *AddBackend
 
 type AddBackendServersResponseBody struct {
 	BackendServers *AddBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddBackendServersResponseBody) String() string {
@@ -666,8 +610,7 @@ func (s *AddBackendServersResponse) SetBody(v *AddBackendServersResponseBody) *A
 }
 
 type AddDeviceInternetPortRequest struct {
-	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// 实例ID
+	ISP          *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InternalIp   *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
@@ -714,10 +657,8 @@ func (s *AddDeviceInternetPortRequest) SetRegionId(v string) *AddDeviceInternetP
 }
 
 type AddDeviceInternetPortResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// RuleIds
-	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleIds   []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 }
 
 func (s AddDeviceInternetPortResponseBody) String() string {
@@ -867,8 +808,7 @@ func (s *AssignPrivateIpAddressesRequest) SetVSwitchId(v string) *AssignPrivateI
 
 type AssignPrivateIpAddressesResponseBody struct {
 	AssignedPrivateIpAddressesSet *AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet `json:"AssignedPrivateIpAddressesSet,omitempty" xml:"AssignedPrivateIpAddressesSet,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                     *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AssignPrivateIpAddressesResponseBody) String() string {
@@ -971,7 +911,6 @@ func (s *AssociateEnsEipAddressRequest) SetInstanceType(v string) *AssociateEnsE
 }
 
 type AssociateEnsEipAddressResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1378,33 +1317,18 @@ func (s *AuthorizeSecurityGroupEgressResponse) SetBody(v *AuthorizeSecurityGroup
 }
 
 type CreateARMServerInstancesRequest struct {
-	// 数量，最大支持10
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// 是否自动续费，默认为false。
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// ENS节点ID。
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	Frequency   *int32  `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	// 镜像ID。
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// AIC容器实例规格。
+	Amount       *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AutoRenew    *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	Frequency    *int32  `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// keypair名称
-	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// 付费类型。PrePaid（目前只支持此种）：包年包月
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// 购买周期。
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// Month（默认）：按月计费的价格单位。
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// 分辨率。目前取值
-	// 1920*1080
-	// 1280*720
-	// 1080*1920
-	// 720*1280
-	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// 服务器规格。
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	KeyPairName  *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	PayType      *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Period       *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit   *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	Resolution   *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	ServerType   *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 }
 
 func (s CreateARMServerInstancesRequest) String() string {
@@ -1478,8 +1402,7 @@ func (s *CreateARMServerInstancesRequest) SetServerType(v string) *CreateARMServ
 type CreateARMServerInstancesResponseBody struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	OrderId     *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateARMServerInstancesResponseBody) String() string {
@@ -1646,7 +1569,6 @@ func (s *CreateClassicNetworkRequest) SetNetworkName(v string) *CreateClassicNet
 
 type CreateClassicNetworkResponseBody struct {
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1698,14 +1620,10 @@ func (s *CreateClassicNetworkResponse) SetBody(v *CreateClassicNetworkResponseBo
 }
 
 type CreateDiskRequest struct {
-	// 磁盘种类 高效云盘:cloud_efficiency 全闪云盘:cloud_ssd
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 节点ID
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// 实例付费方式，取值 PrePaid:预付费，包年包月 PostPaid:按量付费。目前只支持：PostPaid
+	Category           *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// 磁盘大小,单位GB
-	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size               *string `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s CreateDiskRequest) String() string {
@@ -1737,12 +1655,9 @@ func (s *CreateDiskRequest) SetSize(v string) *CreateDiskRequest {
 }
 
 type CreateDiskResponseBody struct {
-	// 实列ID集合
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// 订单id,多个以逗号分割，可以直接跳转到收银行台 只有预付费返回订单号，后付费不返回
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// 请求唯一ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OrderId     *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDiskResponseBody) String() string {
@@ -1798,18 +1713,12 @@ func (s *CreateDiskResponse) SetBody(v *CreateDiskResponseBody) *CreateDiskRespo
 }
 
 type CreateEipInstanceRequest struct {
-	// EIP的带宽峰值
-	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// ENS节点ID
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// EIP的计费方式，取值：  PrePaid：包年包月。 PostPaid（默认值）：按量计费。 当InstanceChargeType取值为PostPaid时，InternetChargeType不能为PayByBandwidth
+	Bandwidth          *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// EIP的计量方式，取值：  PayByBandwidth（默认值）：按带宽计费。 取值：95BandwidthByMonth：月95。
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// 运营商信息
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// EIP实例名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Isp                *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateEipInstanceRequest) String() string {
@@ -1851,10 +1760,8 @@ func (s *CreateEipInstanceRequest) SetName(v string) *CreateEipInstanceRequest {
 }
 
 type CreateEipInstanceResponseBody struct {
-	// EIP的ID。
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateEipInstanceResponseBody) String() string {
@@ -1905,18 +1812,12 @@ func (s *CreateEipInstanceResponse) SetBody(v *CreateEipInstanceResponseBody) *C
 }
 
 type CreateEnsRouteEntryRequest struct {
-	// 自定义路由条目的描述信息。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 自定义路由条目的目标网段。
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// 自定义路由条目的下一跳实例的ID。
-	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// 自定义路由条目的下一跳的类型
-	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// 要创建的自定义路由条目的名称。
-	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
-	// 要创建自定义路由条目的路由表ID。
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	RouteEntryName       *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
+	RouteTableId         *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 }
 
 func (s CreateEnsRouteEntryRequest) String() string {
@@ -1958,9 +1859,7 @@ func (s *CreateEnsRouteEntryRequest) SetRouteTableId(v string) *CreateEnsRouteEn
 }
 
 type CreateEnsRouteEntryResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 路由条目id。
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
 }
 
@@ -2189,6 +2088,7 @@ type CreateForwardEntryRequest struct {
 	ExternalIp       *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
 	ExternalPort     *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
 	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
+	HealthCheckPort  *int32  `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
 	InternalIp       *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
 	InternalPort     *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
 	IpProtocol       *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
@@ -2218,6 +2118,11 @@ func (s *CreateForwardEntryRequest) SetForwardEntryName(v string) *CreateForward
 	return s
 }
 
+func (s *CreateForwardEntryRequest) SetHealthCheckPort(v int32) *CreateForwardEntryRequest {
+	s.HealthCheckPort = &v
+	return s
+}
+
 func (s *CreateForwardEntryRequest) SetInternalIp(v string) *CreateForwardEntryRequest {
 	s.InternalIp = &v
 	return s
@@ -2240,8 +2145,7 @@ func (s *CreateForwardEntryRequest) SetNatGatewayId(v string) *CreateForwardEntr
 
 type CreateForwardEntryResponseBody struct {
 	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateForwardEntryResponseBody) String() string {
@@ -2327,8 +2231,7 @@ func (s *CreateImageRequest) SetProduct(v string) *CreateImageRequest {
 }
 
 type CreateImageResponseBody struct {
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 镜像ID
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
 	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -2386,30 +2289,29 @@ func (s *CreateImageResponse) SetBody(v *CreateImageResponseBody) *CreateImageRe
 }
 
 type CreateInstanceRequest struct {
-	DataDisk           []*CreateInstanceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	SystemDisk         *CreateInstanceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	AutoRenew          *string                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoRenewPeriod    *string                          `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	EnsRegionId        *string                          `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	HostName           *string                          `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	ImageId            *string                          `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceName       *string                          `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType       *string                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType *string                          `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	IpType             *string                          `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	KeyPairName        *string                          `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	OwnerId            *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Password           *string                          `json:"Password,omitempty" xml:"Password,omitempty"`
-	// 是否使用镜像预设的密码。使用该参数时，Password参数必须为空，同时您需要确保使用的镜像已经设置了密码。
-	PasswordInherit        *bool   `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	PaymentType            *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	Period                 *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	PrivateIpAddress       *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	PublicIpIdentification *bool   `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
-	Quantity               *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	UniqueSuffix           *bool   `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	VSwitchId              *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	DataDisk               []*CreateInstanceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	SystemDisk             *CreateInstanceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	AutoRenew              *string                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewPeriod        *string                          `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	EnsRegionId            *string                          `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	HostName               *string                          `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ImageId                *string                          `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceName           *string                          `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType           *string                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType     *string                          `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	IpType                 *string                          `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	KeyPairName            *string                          `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	OwnerId                *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Password               *string                          `json:"Password,omitempty" xml:"Password,omitempty"`
+	PasswordInherit        *bool                            `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
+	PaymentType            *string                          `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	Period                 *string                          `json:"Period,omitempty" xml:"Period,omitempty"`
+	PrivateIpAddress       *string                          `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PublicIpIdentification *bool                            `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
+	Quantity               *string                          `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	UniqueSuffix           *bool                            `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
+	UserData               *string                          `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	VSwitchId              *string                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -2738,18 +2640,12 @@ func (s *CreateKeyPairResponse) SetBody(v *CreateKeyPairResponseBody) *CreateKey
 }
 
 type CreateLoadBalancerRequest struct {
-	// ENS节点ID。
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// 负载均衡实例的名称。
+	EnsRegionId      *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// 负载均衡实例的名称。
 	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
-	// 要创建的ELB实例的网络ID
-	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// 付费类型。PostPaid（目前只支持此种）：按量付费
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// 专有网络实例的所属的交换机ID。
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	NetworkId        *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	PayType          *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateLoadBalancerRequest) String() string {
@@ -2861,43 +2757,25 @@ func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) 
 }
 
 type CreateLoadBalancerHTTPListenerRequest struct {
-	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// HTTP至HTTPS的监听转发端口。
-	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	// 是否开启健康检查。  取值：on | off。
-	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// 健康检查的后端服务器的端口。  取值： 1~65535。    说明 在HealthCheck值为on时才会有效。
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 用于健康检查的域名，取值：  $_ip： 后端服务器的私网IP。当指定了IP或该参数未指定时，负载均衡会使用各后端服务器的私网IP当做健康检查使用的域名。是否要支持？ domain：域名长度为1-80字符，只能包含字母、数字、点号（.）和连字符（-）。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// 健康检查正常的HTTP状态码，多个状态码用逗号分隔。  默认值为http_2xx。  取值：http_2xx | http_3xx | http_4xx | http_5xx。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// 健康检查的时间间隔。  取值： 1~50（秒）。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod   *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// 接收来自运行状况检查的响应需要等待的时间。如果后端ECS在指定的时间内没有正确响应，则判定为健康检查失败。在HealthCheck值为on时才会有效。  取值：1~300（秒）。   说明 如果HealthCHeckTimeout的值小于HealthCheckInterval的值，则HealthCHeckTimeout无效，超时时间为HealthCheckInterval的值。
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// 用于健康检查的URI。  长度限制为1~80，只能使用字母、数字和”-/.%?#&amp;“这些字符。 URL不能只为”/“，但必须以”/“开头。    说明 在HealthCheck值为on时才会有效。
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2~10。    说明 在HealthCheck值为on时才会有效。
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 指定连接空闲超时时间，取值范围为1~60秒，默认值为15秒。  在超时时间内一直没有访问请求，负载均衡会暂时中断当前连接，直到一下次请求来临时重新建立新的连接。
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// 是否开启HTTP至HTTPS的转发。取值：on | off。
-	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	// 负载均衡实例前端使用的端口。  取值：1-65535。
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 负载均衡实例的ID。
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 指定请求超时时间，取值范围为1~180秒，默认值为60秒。  在超时时间内后端服务器一直没有响应，负载均衡将放弃等待，给客户端返回 HTTP 504 错误码。
-	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2~10。   说明 在HealthCheck值为on时才会有效。
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	// 是否开启通过X-Forwarded-For头字段获取来访者真实 IP。  取值为on。
-	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ForwardPort            *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ListenerForward        *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	XForwardedFor          *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
 }
 
 func (s CreateLoadBalancerHTTPListenerRequest) String() string {
@@ -3004,7 +2882,6 @@ func (s *CreateLoadBalancerHTTPListenerRequest) SetXForwardedFor(v string) *Crea
 }
 
 type CreateLoadBalancerHTTPListenerResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3051,49 +2928,28 @@ func (s *CreateLoadBalancerHTTPListenerResponse) SetBody(v *CreateLoadBalancerHT
 }
 
 type CreateLoadBalancerHTTPSListenerRequest struct {
-	// 服务器上配置的Cookie。 长度为1-200，只能包含ASCII英文字母和数字字符，不能包含逗号、分号或空格，也不能以$开头。 说明 当StickySession为on且StickySessionType为server时，该参数必选。
-	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// Cookie超时时间。  取值：1~86400（秒）。   说明 当StickySession为on且StickySessionType为insert时，该参数必选。
-	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// HTTP至HTTPS的监听转发端口。
-	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	// 是否开启健康检查。  取值：on | off。
-	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// 健康检查的后端服务器的端口。  取值： 1~65535。    说明 在HealthCheck值为on时才会有效。
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 用于健康检查的域名，取值：  $_ip： 后端服务器的私网IP。当指定了IP或该参数未指定时，负载均衡会使用各后端服务器的私网IP当做健康检查使用的域名。是否要支持？ domain：域名长度为1-80字符，只能包含字母、数字、点号（.）和连字符（-）。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// 健康检查正常的HTTP状态码，多个状态码用逗号分隔。  默认值为http_2xx。  取值：http_2xx | http_3xx | http_4xx | http_5xx。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// 健康检查的时间间隔。  取值： 1~50（秒）。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod   *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// 接收来自运行状况检查的响应需要等待的时间。如果后端ECS在指定的时间内没有正确响应，则判定为健康检查失败。在HealthCheck值为on时才会有效。  取值：1~300（秒）。   说明 如果HealthCHeckTimeout的值小于HealthCheckInterval的值，则HealthCHeckTimeout无效，超时时间为HealthCheckInterval的值。
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// 用于健康检查的URI。  长度限制为1~80，只能使用字母、数字和”-/.%?#&amp;“这些字符。 URL不能只为”/“，但必须以”/“开头。    说明 在HealthCheck值为on时才会有效。
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2~10。    说明 在HealthCheck值为on时才会有效。
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 指定连接空闲超时时间，取值范围为1~60秒，默认值为15秒。  在超时时间内一直没有访问请求，负载均衡会暂时中断当前连接，直到一下次请求来临时重新建立新的连接。
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// 是否开启HTTP至HTTPS的转发。取值：on | off。
-	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	// 负载均衡实例前端使用的端口。  取值：1-65535。
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 负载均衡实例的ID。
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 指定请求超时时间，取值范围为1~180秒，默认值为60秒。  在超时时间内后端服务器一直没有响应，负载均衡将放弃等待，给客户端返回 HTTP 504 错误码。
-	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 服务器证书的ID。
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	// cookie的处理方式。取值：  insert：植入Cookie。  客户端第一次访问时，负载均衡会在返回请求中植入Cookie（即在HTTP/HTTPS响应报文中插入SERVERID），下次客户端携带此Cookie访问，负载均衡服务会将请求定向转发给之前记录到的后端服务器上。  server：重写Cookie。  负载均衡发现用户自定义了Cookie，将会对原来的Cookie进行重写，下次客户端携带新的Cookie访问，负载均衡服务会将请求定向转发给之前记录到的后端服务器。   说明 当StickySession的值为on时，必须指定该参数。
-	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2~10。   说明 在HealthCheck值为on时才会有效。
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	CookieTimeout          *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ForwardPort            *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ListenerForward        *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	ServerCertificateId    *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	StickySessionType      *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s CreateLoadBalancerHTTPSListenerRequest) String() string {
@@ -3215,7 +3071,6 @@ func (s *CreateLoadBalancerHTTPSListenerRequest) SetUnhealthyThreshold(v int32) 
 }
 
 type CreateLoadBalancerHTTPSListenerResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3262,39 +3117,23 @@ func (s *CreateLoadBalancerHTTPSListenerResponse) SetBody(v *CreateLoadBalancerH
 }
 
 type CreateLoadBalancerTCPListenerRequest struct {
-	// 负载均衡实例后端使用的端口，取值：1~65535
-	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EipTransmit *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
-	// 连接超时时间。  取值：10~900（秒）。
-	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	// 健康检查使用的端口。  取值：1~65535。  不设置此参数时，表示使用后端服务端口（BackendServerPort）。
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 每次健康检查响应的最大超时时间。  取值：1~300（秒）。  默认值：5。
-	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// 用于健康检查的域名
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// 健康检查正常的HTTP状态码，多个状态码用逗号（,）分割。  取值：http_2xx（默认值） | http_3xx | http_4xx | http_5xx。
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// 健康检查的时间间隔。  取值：1~50（秒）。
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 健康检查类型。  取值：tcp（默认值） | http。
-	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// 用于健康检查的URI。长度限制为1~80，只能使用字母、数字、短横线（-）、正斜杠（/）、点号（.）、百分号（%）、#和&amp;这些字符。 URL不能只为/，但必须以/开头。  当TCP监听需要使用HTTP健康检查时可配置此参数，如不配置则按TCP健康检查。
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值： 2~10。
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 负载均衡实例前端使用的端口。  取值：1-65535。
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 负载均衡实例的ID。
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 会话保持的超时时间。  取值：0~3600（秒）。  默认值：0，表示关闭会话保持。
-	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	// 度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。 sch：基于源IP地址的一致性hash，相同的源地址会调度到相同的后端服务器。
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2~10。
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EipTransmit               *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
+	EstablishedTimeout        *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s CreateLoadBalancerTCPListenerRequest) String() string {
@@ -3391,7 +3230,6 @@ func (s *CreateLoadBalancerTCPListenerRequest) SetUnhealthyThreshold(v int32) *C
 }
 
 type CreateLoadBalancerTCPListenerResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3438,31 +3276,19 @@ func (s *CreateLoadBalancerTCPListenerResponse) SetBody(v *CreateLoadBalancerTCP
 }
 
 type CreateLoadBalancerUDPListenerRequest struct {
-	// 负载均衡实例后端使用的端口，取值：1~65535
-	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EipTransmit *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
-	// 健康检查使用的端口。取值：1-65535  不设置此参数时，表示使用后端服务端口（BackendServerPort）
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 接收来自运行状况检查的响应需要等待的时间。  如果后端ENS在指定的时间内没有正确响应，则判定为健康检查失败。  取值：1-300（秒）。默认为5秒
-	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// UDP监听健康检查的响应串，只允许包含字母、数字，最大长度限制为64个字符。
-	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
-	// 健康检查的时间间隔。  取值：1-50（秒）。
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// UDP监听健康检查的请求串，只允许包含字母、数字，最大长度限制为64个字符。
-	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
-	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2-10。
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 负载均衡实例前端使用的端口。  取值：1-65535。
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 负载均衡实例的ID。
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。 sch：基于源IP地址的一致性hash，相同的源地址会调度到相同的后端服务器。
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2-10。
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EipTransmit               *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckExp            *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
+	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckReq            *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s CreateLoadBalancerUDPListenerRequest) String() string {
@@ -3539,7 +3365,6 @@ func (s *CreateLoadBalancerUDPListenerRequest) SetUnhealthyThreshold(v int32) *C
 }
 
 type CreateLoadBalancerUDPListenerResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3622,8 +3447,7 @@ func (s *CreateNatGatewayRequest) SetVSwitchId(v string) *CreateNatGatewayReques
 
 type CreateNatGatewayResponseBody struct {
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateNatGatewayResponseBody) String() string {
@@ -3710,7 +3534,6 @@ func (s *CreateNetworkRequest) SetNetworkName(v string) *CreateNetworkRequest {
 
 type CreateNetworkResponseBody struct {
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3884,7 +3707,6 @@ func (s *CreateSnatEntryRequest) SetSourceVSwitchId(v string) *CreateSnatEntryRe
 }
 
 type CreateSnatEntryResponseBody struct {
-	// Id of the request
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
 }
@@ -4099,12 +3921,9 @@ func (s *DeleteApplicationResponse) SetBody(v *DeleteApplicationResponseBody) *D
 }
 
 type DeleteDeviceInternetPortRequest struct {
-	// InstanceId
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// NatType
-	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	// RuleId
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	NatType    *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
+	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DeleteDeviceInternetPortRequest) String() string {
@@ -4131,10 +3950,8 @@ func (s *DeleteDeviceInternetPortRequest) SetRuleId(v string) *DeleteDeviceInter
 }
 
 type DeleteDeviceInternetPortResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// RuleIds
-	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleIds   []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 }
 
 func (s DeleteDeviceInternetPortResponseBody) String() string {
@@ -4185,7 +4002,6 @@ func (s *DeleteDeviceInternetPortResponse) SetBody(v *DeleteDeviceInternetPortRe
 }
 
 type DeleteEnsRouteEntryRequest struct {
-	// 要删除的路由条目ID。
 	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
 }
 
@@ -4203,7 +4019,6 @@ func (s *DeleteEnsRouteEntryRequest) SetRouteEntryId(v string) *DeleteEnsRouteEn
 }
 
 type DeleteEnsRouteEntryResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4330,7 +4145,6 @@ func (s *DeleteForwardEntryRequest) SetForwardEntryId(v string) *DeleteForwardEn
 }
 
 type DeleteForwardEntryResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4544,7 +4358,6 @@ func (s *DeleteLoadBalancerListenerRequest) SetLoadBalancerId(v string) *DeleteL
 }
 
 type DeleteLoadBalancerListenerResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4608,7 +4421,6 @@ func (s *DeleteNatGatewayRequest) SetNatGatewayId(v string) *DeleteNatGatewayReq
 }
 
 type DeleteNatGatewayResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4672,7 +4484,6 @@ func (s *DeleteNetworkRequest) SetNetworkId(v string) *DeleteNetworkRequest {
 }
 
 type DeleteNetworkResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4805,7 +4616,6 @@ func (s *DeleteSnatEntryRequest) SetSnatEntryId(v string) *DeleteSnatEntryReques
 }
 
 type DeleteSnatEntryResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4916,6 +4726,275 @@ func (s *DeleteVSwitchResponse) SetStatusCode(v int32) *DeleteVSwitchResponse {
 }
 
 func (s *DeleteVSwitchResponse) SetBody(v *DeleteVSwitchResponseBody) *DeleteVSwitchResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeARMServerInstancesRequest struct {
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
+	PageNumber   *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ServerIds    []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
+}
+
+func (s DescribeARMServerInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeARMServerInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeARMServerInstancesRequest) SetEnsRegionIds(v []*string) *DescribeARMServerInstancesRequest {
+	s.EnsRegionIds = v
+	return s
+}
+
+func (s *DescribeARMServerInstancesRequest) SetPageNumber(v int32) *DescribeARMServerInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesRequest) SetPageSize(v int32) *DescribeARMServerInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesRequest) SetServerIds(v []*string) *DescribeARMServerInstancesRequest {
+	s.ServerIds = v
+	return s
+}
+
+type DescribeARMServerInstancesShrinkRequest struct {
+	EnsRegionIdsShrink *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
+	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ServerIdsShrink    *string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty"`
+}
+
+func (s DescribeARMServerInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeARMServerInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetEnsRegionIdsShrink(v string) *DescribeARMServerInstancesShrinkRequest {
+	s.EnsRegionIdsShrink = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetPageNumber(v int32) *DescribeARMServerInstancesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetPageSize(v int32) *DescribeARMServerInstancesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetServerIdsShrink(v string) *DescribeARMServerInstancesShrinkRequest {
+	s.ServerIdsShrink = &v
+	return s
+}
+
+type DescribeARMServerInstancesResponseBody struct {
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Servers   []*DescribeARMServerInstancesResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+}
+
+func (s DescribeARMServerInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeARMServerInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeARMServerInstancesResponseBody) SetRequestId(v string) *DescribeARMServerInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBody) SetServers(v []*DescribeARMServerInstancesResponseBodyServers) *DescribeARMServerInstancesResponseBody {
+	s.Servers = v
+	return s
+}
+
+type DescribeARMServerInstancesResponseBodyServers struct {
+	AICInstances []*DescribeARMServerInstancesResponseBodyServersAICInstances `json:"AICInstances,omitempty" xml:"AICInstances,omitempty" type:"Repeated"`
+	CreationTime *string                                                      `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	EnsRegionId  *string                                                      `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	ExpiredTime  *string                                                      `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ServerId     *string                                                      `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	SpecName     *string                                                      `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	State        *string                                                      `json:"State,omitempty" xml:"State,omitempty"`
+	Status       *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeARMServerInstancesResponseBodyServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeARMServerInstancesResponseBodyServers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServers) SetAICInstances(v []*DescribeARMServerInstancesResponseBodyServersAICInstances) *DescribeARMServerInstancesResponseBodyServers {
+	s.AICInstances = v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServers) SetCreationTime(v string) *DescribeARMServerInstancesResponseBodyServers {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServers) SetEnsRegionId(v string) *DescribeARMServerInstancesResponseBodyServers {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServers) SetExpiredTime(v string) *DescribeARMServerInstancesResponseBodyServers {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServers) SetServerId(v string) *DescribeARMServerInstancesResponseBodyServers {
+	s.ServerId = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServers) SetSpecName(v string) *DescribeARMServerInstancesResponseBodyServers {
+	s.SpecName = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServers) SetState(v string) *DescribeARMServerInstancesResponseBodyServers {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServers) SetStatus(v string) *DescribeARMServerInstancesResponseBodyServers {
+	s.Status = &v
+	return s
+}
+
+type DescribeARMServerInstancesResponseBodyServersAICInstances struct {
+	Frequency         *int64                                                                      `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	ImageId           *string                                                                     `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceId        *string                                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkAttributes *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
+	Resolution        *string                                                                     `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	Spec              *string                                                                     `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	State             *string                                                                     `json:"State,omitempty" xml:"State,omitempty"`
+	Status            *string                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeARMServerInstancesResponseBodyServersAICInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeARMServerInstancesResponseBodyServersAICInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetFrequency(v int64) *DescribeARMServerInstancesResponseBodyServersAICInstances {
+	s.Frequency = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetImageId(v string) *DescribeARMServerInstancesResponseBodyServersAICInstances {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetInstanceId(v string) *DescribeARMServerInstancesResponseBodyServersAICInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetNetworkAttributes(v *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes) *DescribeARMServerInstancesResponseBodyServersAICInstances {
+	s.NetworkAttributes = v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetResolution(v string) *DescribeARMServerInstancesResponseBodyServersAICInstances {
+	s.Resolution = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetSpec(v string) *DescribeARMServerInstancesResponseBodyServersAICInstances {
+	s.Spec = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetState(v string) *DescribeARMServerInstancesResponseBodyServersAICInstances {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetStatus(v string) *DescribeARMServerInstancesResponseBodyServersAICInstances {
+	s.Status = &v
+	return s
+}
+
+type DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes struct {
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes) SetIpAddress(v string) *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes {
+	s.IpAddress = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes) SetNetworkId(v string) *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes) SetVSwitchId(v string) *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes {
+	s.VSwitchId = &v
+	return s
+}
+
+type DescribeARMServerInstancesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeARMServerInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeARMServerInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeARMServerInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeARMServerInstancesResponse) SetHeaders(v map[string]*string) *DescribeARMServerInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponse) SetStatusCode(v int32) *DescribeARMServerInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponse) SetBody(v *DescribeARMServerInstancesResponseBody) *DescribeARMServerInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -5760,7 +5839,6 @@ func (s *DescribeBandwitdhByInternetChargeTypeResponse) SetBody(v *DescribeBandw
 }
 
 type DescribeCloudDiskAvailableResourceInfoResponseBody struct {
-	// Id of the request
 	RequestId        *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SupportResources *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
@@ -5883,7 +5961,6 @@ func (s *DescribeCloudDiskAvailableResourceInfoResponse) SetBody(v *DescribeClou
 }
 
 type DescribeCloudDiskTypesRequest struct {
-	// A short description of struct
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 }
 
@@ -6799,8 +6876,7 @@ type DescribeDeviceServiceRequest struct {
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OrderId     *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Service ID
-	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
 func (s DescribeDeviceServiceRequest) String() string {
@@ -6842,9 +6918,8 @@ func (s *DescribeDeviceServiceRequest) SetServiceId(v string) *DescribeDeviceSer
 }
 
 type DescribeDeviceServiceResponseBody struct {
-	AppMetaData *DescribeDeviceServiceResponseBodyAppMetaData `json:"AppMetaData,omitempty" xml:"AppMetaData,omitempty" type:"Struct"`
-	AppStatus   *DescribeDeviceServiceResponseBodyAppStatus   `json:"AppStatus,omitempty" xml:"AppStatus,omitempty" type:"Struct"`
-	// Id of the request
+	AppMetaData         *DescribeDeviceServiceResponseBodyAppMetaData           `json:"AppMetaData,omitempty" xml:"AppMetaData,omitempty" type:"Struct"`
+	AppStatus           *DescribeDeviceServiceResponseBodyAppStatus             `json:"AppStatus,omitempty" xml:"AppStatus,omitempty" type:"Struct"`
 	RequestId           *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceDetailInfos []*DescribeDeviceServiceResponseBodyResourceDetailInfos `json:"ResourceDetailInfos,omitempty" xml:"ResourceDetailInfos,omitempty" type:"Repeated"`
 	ResourceInfos       []*DescribeDeviceServiceResponseBodyResourceInfos       `json:"ResourceInfos,omitempty" xml:"ResourceInfos,omitempty" type:"Repeated"`
@@ -7738,18 +7813,13 @@ func (s *DescribeElbAvailableResourceInfoResponse) SetBody(v *DescribeElbAvailab
 }
 
 type DescribeEnsEipAddressesRequest struct {
-	// 要查询的EIP实例的ID。  最多支持输入50个EIP实例ID，实例ID之间用逗号（,）分隔。
 	AllocationId           *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	AssociatedInstanceId   *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
-	// 要查询的EIP的IP地址。  最多支持输入50个EIP的IP地址，IP地址之间用逗号（,）分隔。
-	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
-	// ENS节点ID
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// 列表的页码，默认值为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页查询时每页的行数，最大值为100，默认值为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	EipAddress             *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
+	EnsRegionId            *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	PageNumber             *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize               *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeEnsEipAddressesRequest) String() string {
@@ -7799,9 +7869,8 @@ type DescribeEnsEipAddressesResponseBody struct {
 	EipAddresses *DescribeEnsEipAddressesResponseBodyEipAddresses `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Struct"`
 	PageNumber   *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeEnsEipAddressesResponseBody) String() string {
@@ -8820,9 +8889,7 @@ func (s *DescribeEnsRegionsResponse) SetBody(v *DescribeEnsRegionsResponseBody) 
 }
 
 type DescribeEnsResourceUsageRequest struct {
-	// vm实例使用结束时间查询结束范围，，格式： yyyy-MM-dd或yyyy-MM-dd HH:mm:ss
-	ExpiredEndTime *string `json:"ExpiredEndTime,omitempty" xml:"ExpiredEndTime,omitempty"`
-	// vm实例使用结束时间查询开始范围，格式： yyyy-MM-dd或yyyy-MM-dd HH:mm:ss
+	ExpiredEndTime   *string `json:"ExpiredEndTime,omitempty" xml:"ExpiredEndTime,omitempty"`
 	ExpiredStartTime *string `json:"ExpiredStartTime,omitempty" xml:"ExpiredStartTime,omitempty"`
 }
 
@@ -8846,8 +8913,7 @@ func (s *DescribeEnsResourceUsageRequest) SetExpiredStartTime(v string) *Describ
 
 type DescribeEnsResourceUsageResponseBody struct {
 	EnsResourceUsage []*DescribeEnsResourceUsageResponseBodyEnsResourceUsage `json:"EnsResourceUsage,omitempty" xml:"EnsResourceUsage,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeEnsResourceUsageResponseBody) String() string {
@@ -8975,24 +9041,15 @@ func (s *DescribeEnsResourceUsageResponse) SetBody(v *DescribeEnsResourceUsageRe
 }
 
 type DescribeEnsRouteEntryListRequest struct {
-	// 路由条目的目标网段
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// 下一跳实例ID。
-	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// 下一跳类型
-	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// 列表的页码，默认值为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页查询时每页的行数，最大值为100，默认值为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 要查询的路由条目的ID。
-	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
-	// 路由条目的名称。
-	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
-	// 路由条目的类型
-	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
-	// 要查询的路由表的ID。
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RouteEntryId         *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+	RouteEntryName       *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
+	RouteEntryType       *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
+	RouteTableId         *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 }
 
 func (s DescribeEnsRouteEntryListRequest) String() string {
@@ -9049,11 +9106,9 @@ func (s *DescribeEnsRouteEntryListRequest) SetRouteTableId(v string) *DescribeEn
 }
 
 type DescribeEnsRouteEntryListResponseBody struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 路由条目信息。
+	PageNumber  *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteEntrys []*DescribeEnsRouteEntryListResponseBodyRouteEntrys `json:"RouteEntrys,omitempty" xml:"RouteEntrys,omitempty" type:"Repeated"`
 	TotalCount  *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
@@ -9092,22 +9147,14 @@ func (s *DescribeEnsRouteEntryListResponseBody) SetTotalCount(v int32) *Describe
 }
 
 type DescribeEnsRouteEntryListResponseBodyRouteEntrys struct {
-	// 路由条目的描述信息。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 路由条目的目标网段。
-	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// 下一跳
-	NextHops []*DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Repeated"`
-	// 路由条目的ID。
-	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
-	// 路由条目的名称。
-	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
-	// 路由表ID。
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// 路由条目的状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 路由条目的类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Description          *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationCidrBlock *string                                                     `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	NextHops             []*DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Repeated"`
+	RouteEntryId         *string                                                     `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+	RouteEntryName       *string                                                     `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
+	RouteTableId         *string                                                     `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	Status               *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                 *string                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeEnsRouteEntryListResponseBodyRouteEntrys) String() string {
@@ -9159,9 +9206,7 @@ func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetType(v string) *De
 }
 
 type DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops struct {
-	// 下一跳实例ID。
-	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// 下一跳类型
+	NextHopId   *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
 }
 
@@ -10429,9 +10474,8 @@ type DescribeForwardTableEntriesResponseBody struct {
 	ForwardTableEntries []*DescribeForwardTableEntriesResponseBodyForwardTableEntries `json:"ForwardTableEntries,omitempty" xml:"ForwardTableEntries,omitempty" type:"Repeated"`
 	PageNumber          *string                                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize            *string                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId           *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount          *string                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeForwardTableEntriesResponseBody) String() string {
@@ -10472,6 +10516,7 @@ type DescribeForwardTableEntriesResponseBodyForwardTableEntries struct {
 	ExternalPort     *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
 	ForwardEntryId   *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
 	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
+	HealthCheckPort  *string `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
 	InternalIp       *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
 	InternalPort     *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
 	IpProtocol       *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
@@ -10504,6 +10549,11 @@ func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetForwardE
 
 func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetForwardEntryName(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
 	s.ForwardEntryName = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetHealthCheckPort(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
+	s.HealthCheckPort = &v
 	return s
 }
 
@@ -11596,7 +11646,6 @@ func (s *DescribeInstanceTypesResponse) SetBody(v *DescribeInstanceTypesResponse
 }
 
 type DescribeInstanceVncUrlRequest struct {
-	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -11614,10 +11663,8 @@ func (s *DescribeInstanceVncUrlRequest) SetInstanceId(v string) *DescribeInstanc
 }
 
 type DescribeInstanceVncUrlResponseBody struct {
-	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 管理终端Url。
-	VncUrl *string `json:"VncUrl,omitempty" xml:"VncUrl,omitempty"`
+	VncUrl    *string `json:"VncUrl,omitempty" xml:"VncUrl,omitempty"`
 }
 
 func (s DescribeInstanceVncUrlResponseBody) String() string {
@@ -12542,9 +12589,8 @@ type DescribeLoadBalancerAttributeResponseBody struct {
 	LoadBalancerStatus        *string                                                               `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
 	NetworkId                 *string                                                               `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	PayType                   *string                                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VSwitchId                 *string                                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeLoadBalancerAttributeResponseBody) String() string {
@@ -12790,13 +12836,12 @@ type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
 	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	ListenerForward        *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
 	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// Id of the request
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RequestTimeout      *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	Scheduler           *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UnhealthyThreshold  *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	ServerCertificateId    *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s DescribeLoadBalancerHTTPListenerAttributeResponseBody) String() string {
@@ -12980,13 +13025,12 @@ type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
 	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	ListenerForward        *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
 	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// Id of the request
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RequestTimeout      *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	Scheduler           *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UnhealthyThreshold  *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	ServerCertificateId    *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBody) String() string {
@@ -13152,9 +13196,8 @@ type DescribeLoadBalancerSpecResponseBody struct {
 	LoadBalancerSpecs []*DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs `json:"LoadBalancerSpecs,omitempty" xml:"LoadBalancerSpecs,omitempty" type:"Repeated"`
 	PageNumber        *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize          *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount        *int32                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeLoadBalancerSpecResponseBody) String() string {
@@ -13282,11 +13325,10 @@ type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
 	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	// Id of the request
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scheduler          *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UnhealthyThreshold *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s DescribeLoadBalancerTCPListenerAttributeResponseBody) String() string {
@@ -13462,11 +13504,10 @@ type DescribeLoadBalancerUDPListenerAttributeResponseBody struct {
 	HealthCheckReq            *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
 	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// Id of the request
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scheduler          *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UnhealthyThreshold *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s DescribeLoadBalancerUDPListenerAttributeResponseBody) String() string {
@@ -13661,9 +13702,8 @@ type DescribeLoadBalancersResponseBody struct {
 	LoadBalancers *DescribeLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Struct"`
 	PageNumber    *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount    *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeLoadBalancersResponseBody) String() string {
@@ -14151,9 +14191,8 @@ type DescribeNatGatewaysResponseBody struct {
 	NatGateways []*DescribeNatGatewaysResponseBodyNatGateways `json:"NatGateways,omitempty" xml:"NatGateways,omitempty" type:"Repeated"`
 	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeNatGatewaysResponseBody) String() string {
@@ -14290,11 +14329,10 @@ type DescribeNetworkAttributeResponseBody struct {
 	EnsRegionId    *string                                             `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	NetworkId      *string                                             `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	NetworkName    *string                                             `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
-	// Id of the request
-	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RouterTableId *string                                         `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
-	Status        *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchIds    *DescribeNetworkAttributeResponseBodyVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RouterTableId  *string                                             `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
+	Status         *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchIds     *DescribeNetworkAttributeResponseBodyVSwitchIds     `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeNetworkAttributeResponseBody) String() string {
@@ -14736,9 +14774,8 @@ type DescribeNetworksResponseBody struct {
 	Networks   *DescribeNetworksResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Struct"`
 	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeNetworksResponseBody) String() string {
@@ -15032,24 +15069,15 @@ func (s *DescribePrePaidInstanceStockResponse) SetBody(v *DescribePrePaidInstanc
 }
 
 type DescribePriceRequest struct {
-	DataDisk   []*DescribePriceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	SystemDisk *DescribePriceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// 如果DataDisk.1.Size为空且此字段不为空时的则以此字段为准
-	DataDisks []*DescribePriceRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
-	// 节点ID。
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// 实列规格。
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// 带宽计费方式
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// 购买资源的时长，如果不指定PeriodUnit，则默认按月购买。目前只支持按Days和Month。如果PeriodUnit=Day时，Period仅可以3。如果PeriodUnit=Monthc时，则Period可以为1-9,12。
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// 查询云服务器ENS不同计费周期的价格。取值范围：
-	// Month（默认）：按月计费的价格单位。
-	// Day：按天计费的价格单位。
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// 数量。
-	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	DataDisk           []*DescribePriceRequestDataDisk  `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	SystemDisk         *DescribePriceRequestSystemDisk  `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	DataDisks          []*DescribePriceRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	EnsRegionId        *string                          `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	InstanceType       *string                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType *string                          `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	Period             *int32                           `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit         *string                          `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	Quantity           *int32                           `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 }
 
 func (s DescribePriceRequest) String() string {
@@ -15106,7 +15134,6 @@ func (s *DescribePriceRequest) SetQuantity(v int32) *DescribePriceRequest {
 }
 
 type DescribePriceRequestDataDisk struct {
-	// 数据盘大小，单位GB。如果此字段不为空，则以此段为准。
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -15124,7 +15151,6 @@ func (s *DescribePriceRequestDataDisk) SetSize(v int32) *DescribePriceRequestDat
 }
 
 type DescribePriceRequestSystemDisk struct {
-	// 系统盘大小，单位：GB
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -15142,7 +15168,6 @@ func (s *DescribePriceRequestSystemDisk) SetSize(v int32) *DescribePriceRequestS
 }
 
 type DescribePriceRequestDataDisks struct {
-	// 磁盘类型
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	Size     *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
@@ -15166,24 +15191,15 @@ func (s *DescribePriceRequestDataDisks) SetSize(v int64) *DescribePriceRequestDa
 }
 
 type DescribePriceShrinkRequest struct {
-	DataDisk   []*DescribePriceShrinkRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	SystemDisk *DescribePriceShrinkRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// 如果DataDisk.1.Size为空且此字段不为空时的则以此字段为准
-	DataDisksShrink *string `json:"DataDisks,omitempty" xml:"DataDisks,omitempty"`
-	// 节点ID。
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// 实列规格。
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// 带宽计费方式
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// 购买资源的时长，如果不指定PeriodUnit，则默认按月购买。目前只支持按Days和Month。如果PeriodUnit=Day时，Period仅可以3。如果PeriodUnit=Monthc时，则Period可以为1-9,12。
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// 查询云服务器ENS不同计费周期的价格。取值范围：
-	// Month（默认）：按月计费的价格单位。
-	// Day：按天计费的价格单位。
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// 数量。
-	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	DataDisk           []*DescribePriceShrinkRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	SystemDisk         *DescribePriceShrinkRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	DataDisksShrink    *string                               `json:"DataDisks,omitempty" xml:"DataDisks,omitempty"`
+	EnsRegionId        *string                               `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	InstanceType       *string                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType *string                               `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	Period             *int32                                `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit         *string                               `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	Quantity           *int32                                `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 }
 
 func (s DescribePriceShrinkRequest) String() string {
@@ -15240,7 +15256,6 @@ func (s *DescribePriceShrinkRequest) SetQuantity(v int32) *DescribePriceShrinkRe
 }
 
 type DescribePriceShrinkRequestDataDisk struct {
-	// 数据盘大小，单位GB。如果此字段不为空，则以此段为准。
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -15258,7 +15273,6 @@ func (s *DescribePriceShrinkRequestDataDisk) SetSize(v int32) *DescribePriceShri
 }
 
 type DescribePriceShrinkRequestSystemDisk struct {
-	// 系统盘大小，单位：GB
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -15397,9 +15411,8 @@ func (s *DescribeRegionIspsRequest) SetEnsRegionId(v string) *DescribeRegionIsps
 }
 
 type DescribeRegionIspsResponseBody struct {
-	Isps []*DescribeRegionIspsResponseBodyIsps `json:"Isps,omitempty" xml:"Isps,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Isps      []*DescribeRegionIspsResponseBodyIsps `json:"Isps,omitempty" xml:"Isps,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionIspsResponseBody) String() string {
@@ -16287,9 +16300,8 @@ func (s *DescribeSnatTableEntriesRequest) SetSourceCIDR(v string) *DescribeSnatT
 }
 
 type DescribeSnatTableEntriesResponseBody struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	PageNumber       *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnatTableEntries []*DescribeSnatTableEntriesResponseBodySnatTableEntries `json:"SnatTableEntries,omitempty" xml:"SnatTableEntries,omitempty" type:"Repeated"`
 	TotalCount       *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -17034,9 +17046,7 @@ func (s *DistApplicationDataResponse) SetBody(v *DistApplicationDataResponseBody
 }
 
 type ExportBillDetailDataRequest struct {
-	// 结束时间UTC格式
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 开始时间，UTC格式
+	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
@@ -17059,9 +17069,7 @@ func (s *ExportBillDetailDataRequest) SetStartDate(v string) *ExportBillDetailDa
 }
 
 type ExportBillDetailDataResponseBody struct {
-	// 文件下载地址
-	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// 请求ID，公共字段
+	FilePath  *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17206,9 +17214,7 @@ func (s *ExportImageResponse) SetBody(v *ExportImageResponseBody) *ExportImageRe
 }
 
 type ExportMeasurementDataRequest struct {
-	// 结束时间，UTC格式
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 开始时间，UTC格式
+	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
@@ -17231,9 +17237,7 @@ func (s *ExportMeasurementDataRequest) SetStartDate(v string) *ExportMeasurement
 }
 
 type ExportMeasurementDataResponseBody struct {
-	// 文件下载地址
-	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// 请求ID，公共字段
+	FilePath  *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17285,7 +17289,6 @@ func (s *ExportMeasurementDataResponse) SetBody(v *ExportMeasurementDataResponse
 }
 
 type GetDeviceInternetPortRequest struct {
-	// A short description of struct
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NatType    *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
 	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
@@ -17315,11 +17318,9 @@ func (s *GetDeviceInternetPortRequest) SetRuleId(v string) *GetDeviceInternetPor
 }
 
 type GetDeviceInternetPortResponseBody struct {
-	// InstanceId
 	InstanceId  *string                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NetworkInfo []*GetDeviceInternetPortResponseBodyNetworkInfo `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDeviceInternetPortResponseBody) String() string {
@@ -18035,7 +18036,6 @@ func (s *ModifyEnsEipAddressAttributeRequest) SetName(v string) *ModifyEnsEipAdd
 }
 
 type ModifyEnsEipAddressAttributeResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18158,6 +18158,81 @@ func (s *ModifyEpnInstanceResponse) SetStatusCode(v int32) *ModifyEpnInstanceRes
 }
 
 func (s *ModifyEpnInstanceResponse) SetBody(v *ModifyEpnInstanceResponseBody) *ModifyEpnInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyForwardEntryRequest struct {
+	ForwardEntryId   *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
+	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
+	HealthCheckPort  *int32  `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+}
+
+func (s ModifyForwardEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyForwardEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyForwardEntryRequest) SetForwardEntryId(v string) *ModifyForwardEntryRequest {
+	s.ForwardEntryId = &v
+	return s
+}
+
+func (s *ModifyForwardEntryRequest) SetForwardEntryName(v string) *ModifyForwardEntryRequest {
+	s.ForwardEntryName = &v
+	return s
+}
+
+func (s *ModifyForwardEntryRequest) SetHealthCheckPort(v int32) *ModifyForwardEntryRequest {
+	s.HealthCheckPort = &v
+	return s
+}
+
+type ModifyForwardEntryResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyForwardEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyForwardEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyForwardEntryResponseBody) SetRequestId(v string) *ModifyForwardEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyForwardEntryResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyForwardEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyForwardEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyForwardEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyForwardEntryResponse) SetHeaders(v map[string]*string) *ModifyForwardEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyForwardEntryResponse) SetStatusCode(v int32) *ModifyForwardEntryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyForwardEntryResponse) SetBody(v *ModifyForwardEntryResponseBody) *ModifyForwardEntryResponse {
 	s.Body = v
 	return s
 }
@@ -18528,7 +18603,6 @@ func (s *ModifyLoadBalancerAttributeRequest) SetLoadBalancerName(v string) *Modi
 }
 
 type ModifyLoadBalancerAttributeResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18650,9 +18724,7 @@ func (s *ModifyNetworkAttributeResponse) SetBody(v *ModifyNetworkAttributeRespon
 }
 
 type ModifyPrepayInstanceSpecRequest struct {
-	// 变配实例id
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 更新的配置
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
@@ -18675,7 +18747,6 @@ func (s *ModifyPrepayInstanceSpecRequest) SetInstanceType(v string) *ModifyPrepa
 }
 
 type ModifyPrepayInstanceSpecResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18751,7 +18822,6 @@ func (s *ModifySecurityGroupAttributeRequest) SetSecurityGroupName(v string) *Mo
 }
 
 type ModifySecurityGroupAttributeResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18827,7 +18897,6 @@ func (s *ModifyVSwitchAttributeRequest) SetVSwitchName(v string) *ModifyVSwitchA
 }
 
 type ModifyVSwitchAttributeResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19258,6 +19327,138 @@ func (s *ReInitDiskResponse) SetBody(v *ReInitDiskResponseBody) *ReInitDiskRespo
 	return s
 }
 
+type RebootAICInstanceRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ServerId   *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s RebootAICInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootAICInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebootAICInstanceRequest) SetInstanceId(v string) *RebootAICInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RebootAICInstanceRequest) SetServerId(v string) *RebootAICInstanceRequest {
+	s.ServerId = &v
+	return s
+}
+
+type RebootAICInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RebootAICInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootAICInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RebootAICInstanceResponseBody) SetRequestId(v string) *RebootAICInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RebootAICInstanceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RebootAICInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RebootAICInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootAICInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RebootAICInstanceResponse) SetHeaders(v map[string]*string) *RebootAICInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RebootAICInstanceResponse) SetStatusCode(v int32) *RebootAICInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RebootAICInstanceResponse) SetBody(v *RebootAICInstanceResponseBody) *RebootAICInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type RebootARMServerInstanceRequest struct {
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s RebootARMServerInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootARMServerInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebootARMServerInstanceRequest) SetServerId(v string) *RebootARMServerInstanceRequest {
+	s.ServerId = &v
+	return s
+}
+
+type RebootARMServerInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RebootARMServerInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootARMServerInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RebootARMServerInstanceResponseBody) SetRequestId(v string) *RebootARMServerInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RebootARMServerInstanceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RebootARMServerInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RebootARMServerInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootARMServerInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RebootARMServerInstanceResponse) SetHeaders(v map[string]*string) *RebootARMServerInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RebootARMServerInstanceResponse) SetStatusCode(v int32) *RebootARMServerInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RebootARMServerInstanceResponse) SetBody(v *RebootARMServerInstanceResponseBody) *RebootARMServerInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type RebootInstanceRequest struct {
 	ForceStop  *string `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -19340,7 +19541,6 @@ func (s *RebootInstanceResponse) SetBody(v *RebootInstanceResponseBody) *RebootI
 }
 
 type ReleaseARMServerInstanceRequest struct {
-	// AIC实例ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -19358,7 +19558,6 @@ func (s *ReleaseARMServerInstanceRequest) SetInstanceId(v string) *ReleaseARMSer
 }
 
 type ReleaseARMServerInstanceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19405,7 +19604,6 @@ func (s *ReleaseARMServerInstanceResponse) SetBody(v *ReleaseARMServerInstanceRe
 }
 
 type ReleaseInstanceRequest struct {
-	// 实例id
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -19423,7 +19621,6 @@ func (s *ReleaseInstanceRequest) SetInstanceId(v string) *ReleaseInstanceRequest
 }
 
 type ReleaseInstanceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19471,7 +19668,6 @@ func (s *ReleaseInstanceResponse) SetBody(v *ReleaseInstanceResponseBody) *Relea
 
 type ReleasePostPaidInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ReleasePostPaidInstanceRequest) String() string {
@@ -19484,11 +19680,6 @@ func (s ReleasePostPaidInstanceRequest) GoString() string {
 
 func (s *ReleasePostPaidInstanceRequest) SetInstanceId(v string) *ReleasePostPaidInstanceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *ReleasePostPaidInstanceRequest) SetVersion(v string) *ReleasePostPaidInstanceRequest {
-	s.Version = &v
 	return s
 }
 
@@ -19625,14 +19816,11 @@ func (s *RemoveBackendServersRequest) SetLoadBalancerId(v string) *RemoveBackend
 }
 
 type RemoveBackendServersRequestBackendServers struct {
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 端口
+	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 后端服务器类型。  ens：ENS实例（默认）
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 后端服务器的权重。  取值：0~100  默认值为100，如果值为0，则不会将请求转发给该后端服务器。
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s RemoveBackendServersRequestBackendServers) String() string {
@@ -19693,8 +19881,7 @@ func (s *RemoveBackendServersShrinkRequest) SetLoadBalancerId(v string) *RemoveB
 
 type RemoveBackendServersResponseBody struct {
 	BackendServers *RemoveBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RemoveBackendServersResponseBody) String() string {
@@ -19970,7 +20157,6 @@ func (s *RenewARMServerInstanceRequest) SetPeriodUnit(v string) *RenewARMServerI
 }
 
 type RenewARMServerInstanceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20017,10 +20203,8 @@ func (s *RenewARMServerInstanceResponse) SetBody(v *RenewARMServerInstanceRespon
 }
 
 type RenewInstanceRequest struct {
-	// 需要续费的实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 包年包月续费时长。
-	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	Period     *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
 }
 
 func (s RenewInstanceRequest) String() string {
@@ -20252,9 +20436,8 @@ func (s *RescaleDeviceServiceRequest) SetTimeout(v int64) *RescaleDeviceServiceR
 }
 
 type RescaleDeviceServiceResponseBody struct {
-	DeviceIds []*string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Repeated"`
-	OrderId   *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Id of the request
+	DeviceIds           []*string                                              `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Repeated"`
+	OrderId             *string                                                `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceDetailInfos []*RescaleDeviceServiceResponseBodyResourceDetailInfos `json:"ResourceDetailInfos,omitempty" xml:"ResourceDetailInfos,omitempty" type:"Repeated"`
 }
@@ -20375,8 +20558,76 @@ func (s *RescaleDeviceServiceResponse) SetBody(v *RescaleDeviceServiceResponseBo
 	return s
 }
 
+type ResetAICInstanceRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ServerId   *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s ResetAICInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetAICInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResetAICInstanceRequest) SetInstanceId(v string) *ResetAICInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ResetAICInstanceRequest) SetServerId(v string) *ResetAICInstanceRequest {
+	s.ServerId = &v
+	return s
+}
+
+type ResetAICInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResetAICInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetAICInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResetAICInstanceResponseBody) SetRequestId(v string) *ResetAICInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResetAICInstanceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResetAICInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResetAICInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetAICInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResetAICInstanceResponse) SetHeaders(v map[string]*string) *ResetAICInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResetAICInstanceResponse) SetStatusCode(v int32) *ResetAICInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResetAICInstanceResponse) SetBody(v *ResetAICInstanceResponseBody) *ResetAICInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type ResetDeviceInstanceRequest struct {
-	// A short description of struct
 	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -20406,7 +20657,6 @@ func (s *ResetDeviceInstanceRequest) SetInstanceId(v string) *ResetDeviceInstanc
 }
 
 type ResetDeviceInstanceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20453,9 +20703,7 @@ func (s *ResetDeviceInstanceResponse) SetBody(v *ResetDeviceInstanceResponseBody
 }
 
 type RestartDeviceInstanceRequest struct {
-	// App ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Instance ID
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -20478,7 +20726,6 @@ func (s *RestartDeviceInstanceRequest) SetInstanceId(v string) *RestartDeviceIns
 }
 
 type RestartDeviceInstanceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20816,63 +21063,34 @@ func (s *RollbackApplicationResponse) SetBody(v *RollbackApplicationResponseBody
 }
 
 type RunInstancesRequest struct {
-	// 数量
-	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// 是否自动续费，默认为false
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// 运营商
-	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	// 数据盘规格
-	DataDisk []*RunInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	// 节点id
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// 主机名称
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 镜像id
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// 实例付费方式，PrePaid:预付费，包年包月 PostPaid:按量付费
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// 实例名称。长度为2~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、点号（.）或者连字符（-）。默认值为实例的InstanceId
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// 实例规格
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// 带宽计费方式
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// 公网最大带宽，如果参数InternetMaxBandwidthOut的值大于0，则自动为实例分配公网IP。
-	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// 密钥对名称
-	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// 地区code
-	NetDistrictCode *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
-	// 网络id
-	NetWorkId *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
-	// 实例密码
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// 购买资源的时长，单位为：月
-	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// 查询云服务器ENS不同计费周期的价格。取值范围：
-	// Month（默认）：按月计费的价格单位。
-	// Day：按天计费的价格单位。
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// 私网ip
-	PrivateIpAddress       *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	PublicIpIdentification *bool   `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
-	// 调度层级
-	ScheduleAreaLevel *string `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
-	// 调度价格策略
-	SchedulingPriceStrategy *string `json:"SchedulingPriceStrategy,omitempty" xml:"SchedulingPriceStrategy,omitempty"`
-	// 调度策略
-	SchedulingStrategy *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
-	// 安全组id
-	SecurityId *string `json:"SecurityId,omitempty" xml:"SecurityId,omitempty"`
-	// 系统盘规格
-	SystemDisk *RunInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// 是否为HostName和InstanceName添加有序后缀，有序后缀从001开始递增，最大不能超过999
-	UniqueSuffix *bool `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
-	// 用户自定义数据，最大支持16KB 您可传入UserData信息。UserData以Base64的方式编码
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// 交换机id
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	Amount                  *int64                         `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AutoRenew               *bool                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	Carrier                 *string                        `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	DataDisk                []*RunInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	EnsRegionId             *string                        `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	HostName                *string                        `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ImageId                 *string                        `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceChargeType      *string                        `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceName            *string                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType            *string                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType      *string                        `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthOut *int64                         `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	KeyPairName             *string                        `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	NetDistrictCode         *string                        `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
+	NetWorkId               *string                        `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
+	Password                *string                        `json:"Password,omitempty" xml:"Password,omitempty"`
+	Period                  *int64                         `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit              *string                        `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PrivateIpAddress        *string                        `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PublicIpIdentification  *bool                          `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
+	ScheduleAreaLevel       *string                        `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
+	SchedulingPriceStrategy *string                        `json:"SchedulingPriceStrategy,omitempty" xml:"SchedulingPriceStrategy,omitempty"`
+	SchedulingStrategy      *string                        `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
+	SecurityId              *string                        `json:"SecurityId,omitempty" xml:"SecurityId,omitempty"`
+	SystemDisk              *RunInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	UniqueSuffix            *bool                          `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
+	UserData                *string                        `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	VSwitchId               *string                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s RunInstancesRequest) String() string {
@@ -21064,63 +21282,34 @@ func (s *RunInstancesRequestSystemDisk) SetSize(v int64) *RunInstancesRequestSys
 }
 
 type RunInstancesShrinkRequest struct {
-	// 数量
-	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// 是否自动续费，默认为false
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// 运营商
-	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	// 数据盘规格
-	DataDiskShrink *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
-	// 节点id
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// 主机名称
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 镜像id
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// 实例付费方式，PrePaid:预付费，包年包月 PostPaid:按量付费
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// 实例名称。长度为2~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、点号（.）或者连字符（-）。默认值为实例的InstanceId
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// 实例规格
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// 带宽计费方式
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// 公网最大带宽，如果参数InternetMaxBandwidthOut的值大于0，则自动为实例分配公网IP。
-	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// 密钥对名称
-	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// 地区code
-	NetDistrictCode *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
-	// 网络id
-	NetWorkId *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
-	// 实例密码
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// 购买资源的时长，单位为：月
-	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// 查询云服务器ENS不同计费周期的价格。取值范围：
-	// Month（默认）：按月计费的价格单位。
-	// Day：按天计费的价格单位。
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// 私网ip
-	PrivateIpAddress       *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	PublicIpIdentification *bool   `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
-	// 调度层级
-	ScheduleAreaLevel *string `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
-	// 调度价格策略
+	Amount                  *int64  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AutoRenew               *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	Carrier                 *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	DataDiskShrink          *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
+	EnsRegionId             *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	HostName                *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ImageId                 *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceChargeType      *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceName            *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType      *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthOut *int64  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	KeyPairName             *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	NetDistrictCode         *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
+	NetWorkId               *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
+	Password                *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Period                  *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit              *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PrivateIpAddress        *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PublicIpIdentification  *bool   `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
+	ScheduleAreaLevel       *string `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
 	SchedulingPriceStrategy *string `json:"SchedulingPriceStrategy,omitempty" xml:"SchedulingPriceStrategy,omitempty"`
-	// 调度策略
-	SchedulingStrategy *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
-	// 安全组id
-	SecurityId *string `json:"SecurityId,omitempty" xml:"SecurityId,omitempty"`
-	// 系统盘规格
-	SystemDiskShrink *string `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
-	// 是否为HostName和InstanceName添加有序后缀，有序后缀从001开始递增，最大不能超过999
-	UniqueSuffix *bool `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
-	// 用户自定义数据，最大支持16KB 您可传入UserData信息。UserData以Base64的方式编码
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// 交换机id
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	SchedulingStrategy      *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
+	SecurityId              *string `json:"SecurityId,omitempty" xml:"SecurityId,omitempty"`
+	SystemDiskShrink        *string `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
+	UniqueSuffix            *bool   `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
+	UserData                *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s RunInstancesShrinkRequest) String() string {
@@ -21553,10 +21742,8 @@ func (s *SetBackendServersRequest) SetLoadBalancerId(v string) *SetBackendServer
 
 type SetBackendServersRequestBackendServers struct {
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 后端服务器类型。  ens：ENS实例（默认）
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 后端服务器的权重。  取值：0~100  默认值为100，如果值为0，则不会将请求转发给该后端服务器。
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s SetBackendServersRequestBackendServers) String() string {
@@ -21607,8 +21794,7 @@ func (s *SetBackendServersShrinkRequest) SetLoadBalancerId(v string) *SetBackend
 
 type SetBackendServersResponseBody struct {
 	BackendServers *SetBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetBackendServersResponseBody) String() string {
@@ -21717,37 +21903,22 @@ func (s *SetBackendServersResponse) SetBody(v *SetBackendServersResponseBody) *S
 }
 
 type SetLoadBalancerHTTPListenerAttributeRequest struct {
-	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 是否开启健康检查。  取值：on | off。
-	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// 健康检查的后端服务器的端口。  取值： 1~65535。    说明 在HealthCheck值为on时才会有效。
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 用于健康检查的域名，取值：  $_ip： 后端服务器的私网IP。当指定了IP或该参数未指定时，负载均衡会使用各后端服务器的私网IP当做健康检查使用的域名。是否要支持？ domain：域名长度为1-80字符，只能包含字母、数字、点号（.）和连字符（-）。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// 健康检查正常的HTTP状态码，多个状态码用逗号分隔。  默认值为http_2xx。  取值：http_2xx | http_3xx | http_4xx | http_5xx。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// 健康检查的时间间隔。  取值： 1~50（秒）。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod   *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// 接收来自运行状况检查的响应需要等待的时间。如果后端ECS在指定的时间内没有正确响应，则判定为健康检查失败。在HealthCheck值为on时才会有效。  取值：1~300（秒）。   说明 如果HealthCHeckTimeout的值小于HealthCheckInterval的值，则HealthCHeckTimeout无效，超时时间为HealthCheckInterval的值。
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// 用于健康检查的URI。  长度限制为1~80，只能使用字母、数字和”-/.%?#&amp;“这些字符。 URL不能只为”/“，但必须以”/“开头。    说明 在HealthCheck值为on时才会有效。
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2~10。    说明 在HealthCheck值为on时才会有效。
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 指定连接空闲超时时间，取值范围为1~60秒，默认值为15秒。  在超时时间内一直没有访问请求，负载均衡会暂时中断当前连接，直到一下次请求来临时重新建立新的连接。
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// 负载均衡实例前端使用的端口。  取值：1-65535。
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 负载均衡实例的ID。
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 指定请求超时时间，取值范围为1~180秒，默认值为60秒。  在超时时间内后端服务器一直没有响应，负载均衡将放弃等待，给客户端返回 HTTP 504 错误码。
-	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2~10。   说明 在HealthCheck值为on时才会有效。
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s SetLoadBalancerHTTPListenerAttributeRequest) String() string {
@@ -21839,7 +22010,6 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetUnhealthyThreshold(v in
 }
 
 type SetLoadBalancerHTTPListenerAttributeResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21886,39 +22056,23 @@ func (s *SetLoadBalancerHTTPListenerAttributeResponse) SetBody(v *SetLoadBalance
 }
 
 type SetLoadBalancerHTTPSListenerAttributeRequest struct {
-	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 是否开启健康检查。  取值：on | off。
-	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// 健康检查的后端服务器的端口。  取值： 1~65535。    说明 在HealthCheck值为on时才会有效。
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 用于健康检查的域名，取值：  $_ip： 后端服务器的私网IP。当指定了IP或该参数未指定时，负载均衡会使用各后端服务器的私网IP当做健康检查使用的域名。是否要支持？ domain：域名长度为1-80字符，只能包含字母、数字、点号（.）和连字符（-）。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// 健康检查正常的HTTP状态码，多个状态码用逗号分隔。  默认值为http_2xx。  取值：http_2xx | http_3xx | http_4xx | http_5xx。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// 健康检查的时间间隔。  取值： 1~50（秒）。   说明 在HealthCheck值为on时才会有效。
-	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod   *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// 接收来自运行状况检查的响应需要等待的时间。如果后端ECS在指定的时间内没有正确响应，则判定为健康检查失败。在HealthCheck值为on时才会有效。  取值：1~300（秒）。   说明 如果HealthCHeckTimeout的值小于HealthCheckInterval的值，则HealthCHeckTimeout无效，超时时间为HealthCheckInterval的值。
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// 用于健康检查的URI。  长度限制为1~80，只能使用字母、数字和”-/.%?#&amp;“这些字符。 URL不能只为”/“，但必须以”/“开头。    说明 在HealthCheck值为on时才会有效。
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2~10。    说明 在HealthCheck值为on时才会有效。
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 指定连接空闲超时时间，取值范围为1~60秒，默认值为15秒。  在超时时间内一直没有访问请求，负载均衡会暂时中断当前连接，直到一下次请求来临时重新建立新的连接。
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// 负载均衡实例前端使用的端口。  取值：1-65535。
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 负载均衡实例的ID。
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 指定请求超时时间，取值范围为1~180秒，默认值为60秒。  在超时时间内后端服务器一直没有响应，负载均衡将放弃等待，给客户端返回 HTTP 504 错误码。
-	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 服务器证书的ID。
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2~10。   说明 在HealthCheck值为on时才会有效。
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	ServerCertificateId    *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s SetLoadBalancerHTTPSListenerAttributeRequest) String() string {
@@ -22015,7 +22169,6 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetUnhealthyThreshold(v i
 }
 
 type SetLoadBalancerHTTPSListenerAttributeResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22085,7 +22238,6 @@ func (s *SetLoadBalancerStatusRequest) SetLoadBalancerStatus(v string) *SetLoadB
 }
 
 type SetLoadBalancerStatusResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22132,37 +22284,22 @@ func (s *SetLoadBalancerStatusResponse) SetBody(v *SetLoadBalancerStatusResponse
 }
 
 type SetLoadBalancerTCPListenerAttributeRequest struct {
-	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EipTransmit *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
-	// 连接超时时间。  取值：10~900（秒）。
-	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	// 健康检查使用的端口。  取值：1~65535。  不设置此参数时，表示使用后端服务端口（BackendServerPort）。
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 每次健康检查响应的最大超时时间。  取值：1~300（秒）。  默认值：5。
-	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// 用于健康检查的域名
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// 健康检查正常的HTTP状态码，多个状态码用逗号（,）分割。  取值：http_2xx（默认值） | http_3xx | http_4xx | http_5xx。
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// 健康检查的时间间隔。  取值：1~50（秒）。
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 健康检查类型。  取值：tcp（默认值） | http。
-	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// 用于健康检查的URI。长度限制为1~80，只能使用字母、数字、短横线（-）、正斜杠（/）、点号（.）、百分号（%）、#和&amp;这些字符。 URL不能只为/，但必须以/开头。  当TCP监听需要使用HTTP健康检查时可配置此参数，如不配置则按TCP健康检查。
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值： 2~10。
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 负载均衡实例前端使用的端口。  取值：1-65535。
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 负载均衡实例的ID。
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 会话保持的超时时间。  取值：0~3600（秒）。  默认值：0，表示关闭会话保持。
-	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	// 度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。 sch：基于源IP地址的一致性hash，相同的源地址会调度到相同的后端服务器。
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2~10。
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EipTransmit               *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
+	EstablishedTimeout        *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s SetLoadBalancerTCPListenerAttributeRequest) String() string {
@@ -22254,7 +22391,6 @@ func (s *SetLoadBalancerTCPListenerAttributeRequest) SetUnhealthyThreshold(v int
 }
 
 type SetLoadBalancerTCPListenerAttributeResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22301,29 +22437,18 @@ func (s *SetLoadBalancerTCPListenerAttributeResponse) SetBody(v *SetLoadBalancer
 }
 
 type SetLoadBalancerUDPListenerAttributeRequest struct {
-	// 设置监听的描述信息。  长度限制为1-80个字符，允许包含字母、数字、“-”、“/”、“.”和“_”等字符。支持中文描述。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EipTransmit *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
-	// 健康检查使用的端口。取值：1-65535  不设置此参数时，表示使用后端服务端口（BackendServerPort）
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 接收来自运行状况检查的响应需要等待的时间。  如果后端ENS在指定的时间内没有正确响应，则判定为健康检查失败。  取值：1-300（秒）。默认为5秒
-	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// UDP监听健康检查的响应串，只允许包含字母、数字，最大长度限制为64个字符。
-	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
-	// 健康检查的时间间隔。  取值：1-50（秒）。
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// UDP监听健康检查的请求串，只允许包含字母、数字，最大长度限制为64个字符。
-	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
-	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。  取值：2-10。
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 负载均衡实例前端使用的端口。  取值：1-65535。
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 负载均衡实例的ID。
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。 sch：基于源IP地址的一致性hash，相同的源地址会调度到相同的后端服务器。
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail。  取值：2-10。
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EipTransmit               *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckExp            *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
+	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckReq            *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s SetLoadBalancerUDPListenerAttributeRequest) String() string {
@@ -22395,7 +22520,6 @@ func (s *SetLoadBalancerUDPListenerAttributeRequest) SetUnhealthyThreshold(v int
 }
 
 type SetLoadBalancerUDPListenerAttributeResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22609,7 +22733,6 @@ func (s *StartLoadBalancerListenerRequest) SetLoadBalancerId(v string) *StartLoa
 }
 
 type StartLoadBalancerListenerResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22829,7 +22952,6 @@ func (s *StopLoadBalancerListenerRequest) SetLoadBalancerId(v string) *StopLoadB
 }
 
 type StopLoadBalancerListenerResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22893,7 +23015,6 @@ func (s *UnAssociateEnsEipAddressRequest) SetAllocationId(v string) *UnAssociate
 }
 
 type UnAssociateEnsEipAddressResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22963,7 +23084,6 @@ func (s *UnassignPrivateIpAddressesRequest) SetPrivateIpAddress(v []*string) *Un
 }
 
 type UnassignPrivateIpAddressesResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23005,6 +23125,110 @@ func (s *UnassignPrivateIpAddressesResponse) SetStatusCode(v int32) *UnassignPri
 }
 
 func (s *UnassignPrivateIpAddressesResponse) SetBody(v *UnassignPrivateIpAddressesResponseBody) *UnassignPrivateIpAddressesResponse {
+	s.Body = v
+	return s
+}
+
+type UpgradeAICInstanceImageRequest struct {
+	ImageId   *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ServerIds []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
+	Timeout   *int32    `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s UpgradeAICInstanceImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeAICInstanceImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeAICInstanceImageRequest) SetImageId(v string) *UpgradeAICInstanceImageRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *UpgradeAICInstanceImageRequest) SetServerIds(v []*string) *UpgradeAICInstanceImageRequest {
+	s.ServerIds = v
+	return s
+}
+
+func (s *UpgradeAICInstanceImageRequest) SetTimeout(v int32) *UpgradeAICInstanceImageRequest {
+	s.Timeout = &v
+	return s
+}
+
+type UpgradeAICInstanceImageShrinkRequest struct {
+	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ServerIdsShrink *string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty"`
+	Timeout         *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s UpgradeAICInstanceImageShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeAICInstanceImageShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeAICInstanceImageShrinkRequest) SetImageId(v string) *UpgradeAICInstanceImageShrinkRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *UpgradeAICInstanceImageShrinkRequest) SetServerIdsShrink(v string) *UpgradeAICInstanceImageShrinkRequest {
+	s.ServerIdsShrink = &v
+	return s
+}
+
+func (s *UpgradeAICInstanceImageShrinkRequest) SetTimeout(v int32) *UpgradeAICInstanceImageShrinkRequest {
+	s.Timeout = &v
+	return s
+}
+
+type UpgradeAICInstanceImageResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpgradeAICInstanceImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeAICInstanceImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeAICInstanceImageResponseBody) SetRequestId(v string) *UpgradeAICInstanceImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpgradeAICInstanceImageResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpgradeAICInstanceImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpgradeAICInstanceImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeAICInstanceImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeAICInstanceImageResponse) SetHeaders(v map[string]*string) *UpgradeAICInstanceImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeAICInstanceImageResponse) SetStatusCode(v int32) *UpgradeAICInstanceImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeAICInstanceImageResponse) SetBody(v *UpgradeAICInstanceImageResponseBody) *UpgradeAICInstanceImageResponse {
 	s.Body = v
 	return s
 }
@@ -24125,6 +24349,10 @@ func (client *Client) CreateForwardEntryWithOptions(request *CreateForwardEntryR
 
 	if !tea.BoolValue(util.IsUnset(request.ForwardEntryName)) {
 		query["ForwardEntryName"] = request.ForwardEntryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckPort)) {
+		query["HealthCheckPort"] = request.HealthCheckPort
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InternalIp)) {
@@ -25790,6 +26018,56 @@ func (client *Client) DeleteVSwitch(request *DeleteVSwitchRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVSwitchResponse{}
 	_body, _err := client.DeleteVSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeARMServerInstancesWithOptions(tmpReq *DescribeARMServerInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeARMServerInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeARMServerInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EnsRegionIds)) {
+		request.EnsRegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EnsRegionIds, tea.String("EnsRegionIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ServerIds)) {
+		request.ServerIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServerIds, tea.String("ServerIds"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeARMServerInstances"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeARMServerInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeARMServerInstances(request *DescribeARMServerInstancesRequest) (_result *DescribeARMServerInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeARMServerInstancesResponse{}
+	_body, _err := client.DescribeARMServerInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30017,6 +30295,58 @@ func (client *Client) ModifyEpnInstance(request *ModifyEpnInstanceRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ModifyForwardEntryWithOptions(request *ModifyForwardEntryRequest, runtime *util.RuntimeOptions) (_result *ModifyForwardEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ForwardEntryId)) {
+		query["ForwardEntryId"] = request.ForwardEntryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForwardEntryName)) {
+		query["ForwardEntryName"] = request.ForwardEntryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckPort)) {
+		query["HealthCheckPort"] = request.HealthCheckPort
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyForwardEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyForwardEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyForwardEntry(request *ModifyForwardEntryRequest) (_result *ModifyForwardEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyForwardEntryResponse{}
+	_body, _err := client.ModifyForwardEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyImageAttributeWithOptions(request *ModifyImageAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyImageAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30697,6 +31027,86 @@ func (client *Client) ReInitDisk(request *ReInitDiskRequest) (_result *ReInitDis
 	return _result, _err
 }
 
+func (client *Client) RebootAICInstanceWithOptions(request *RebootAICInstanceRequest, runtime *util.RuntimeOptions) (_result *RebootAICInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RebootAICInstance"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RebootAICInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RebootAICInstance(request *RebootAICInstanceRequest) (_result *RebootAICInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RebootAICInstanceResponse{}
+	_body, _err := client.RebootAICInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RebootARMServerInstanceWithOptions(request *RebootARMServerInstanceRequest, runtime *util.RuntimeOptions) (_result *RebootARMServerInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RebootARMServerInstance"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RebootARMServerInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RebootARMServerInstance(request *RebootARMServerInstanceRequest) (_result *RebootARMServerInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RebootARMServerInstanceResponse{}
+	_body, _err := client.RebootARMServerInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, runtime *util.RuntimeOptions) (_result *RebootInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30845,10 +31255,6 @@ func (client *Client) ReleasePostPaidInstanceWithOptions(request *ReleasePostPai
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -31310,6 +31716,46 @@ func (client *Client) RescaleDeviceService(request *RescaleDeviceServiceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &RescaleDeviceServiceResponse{}
 	_body, _err := client.RescaleDeviceServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResetAICInstanceWithOptions(request *ResetAICInstanceRequest, runtime *util.RuntimeOptions) (_result *ResetAICInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetAICInstance"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResetAICInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResetAICInstance(request *ResetAICInstanceRequest) (_result *ResetAICInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResetAICInstanceResponse{}
+	_body, _err := client.ResetAICInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32718,6 +33164,52 @@ func (client *Client) UnassignPrivateIpAddresses(request *UnassignPrivateIpAddre
 	runtime := &util.RuntimeOptions{}
 	_result = &UnassignPrivateIpAddressesResponse{}
 	_body, _err := client.UnassignPrivateIpAddressesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpgradeAICInstanceImageWithOptions(tmpReq *UpgradeAICInstanceImageRequest, runtime *util.RuntimeOptions) (_result *UpgradeAICInstanceImageResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpgradeAICInstanceImageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ServerIds)) {
+		request.ServerIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServerIds, tea.String("ServerIds"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeAICInstanceImage"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpgradeAICInstanceImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpgradeAICInstanceImage(request *UpgradeAICInstanceImageRequest) (_result *UpgradeAICInstanceImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpgradeAICInstanceImageResponse{}
+	_body, _err := client.UpgradeAICInstanceImageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
