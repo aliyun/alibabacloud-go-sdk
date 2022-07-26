@@ -24185,11 +24185,11 @@ func (s *GetFileDetectResultResponseBody) SetResultList(v []*GetFileDetectResult
 }
 
 type GetFileDetectResultResponseBodyResultList struct {
-	Ext       *GetFileDetectResultResponseBodyResultListExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
-	HashKey   *string                                       `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	Result    *int32                                        `json:"Result,omitempty" xml:"Result,omitempty"`
-	Score     *int32                                        `json:"Score,omitempty" xml:"Score,omitempty"`
-	VirusType *string                                       `json:"VirusType,omitempty" xml:"VirusType,omitempty"`
+	Ext       *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	HashKey   *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+	Result    *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
+	Score     *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
+	VirusType *string `json:"VirusType,omitempty" xml:"VirusType,omitempty"`
 }
 
 func (s GetFileDetectResultResponseBodyResultList) String() string {
@@ -24200,8 +24200,8 @@ func (s GetFileDetectResultResponseBodyResultList) GoString() string {
 	return s.String()
 }
 
-func (s *GetFileDetectResultResponseBodyResultList) SetExt(v *GetFileDetectResultResponseBodyResultListExt) *GetFileDetectResultResponseBodyResultList {
-	s.Ext = v
+func (s *GetFileDetectResultResponseBodyResultList) SetExt(v string) *GetFileDetectResultResponseBodyResultList {
+	s.Ext = &v
 	return s
 }
 
@@ -24222,23 +24222,6 @@ func (s *GetFileDetectResultResponseBodyResultList) SetScore(v int32) *GetFileDe
 
 func (s *GetFileDetectResultResponseBodyResultList) SetVirusType(v string) *GetFileDetectResultResponseBodyResultList {
 	s.VirusType = &v
-	return s
-}
-
-type GetFileDetectResultResponseBodyResultListExt struct {
-	VirusName *string `json:"VirusName,omitempty" xml:"VirusName,omitempty"`
-}
-
-func (s GetFileDetectResultResponseBodyResultListExt) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileDetectResultResponseBodyResultListExt) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileDetectResultResponseBodyResultListExt) SetVirusName(v string) *GetFileDetectResultResponseBodyResultListExt {
-	s.VirusName = &v
 	return s
 }
 
