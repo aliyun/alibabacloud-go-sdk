@@ -13,13 +13,9 @@ import (
 )
 
 type AliyunAccounts struct {
-	// Aliyun账号的UID
-	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	// 弹内用户的工号
-	EmployeeId *string `json:"EmployeeId,omitempty" xml:"EmployeeId,omitempty"`
-	// 这条记录的创建时间
+	AliyunUid     *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	EmployeeId    *string `json:"EmployeeId,omitempty" xml:"EmployeeId,omitempty"`
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 这条记录的上次修改时间
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
 }
 
@@ -52,28 +48,17 @@ func (s *AliyunAccounts) SetGmtModifyTime(v string) *AliyunAccounts {
 }
 
 type CodeSourceItem struct {
-	// 代码分支
-	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
-	// 代码Commit ID
-	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
-	// 代码仓库地址
-	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
-	// 访问代码仓库所用的AccessToken
+	CodeBranch          *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+	CodeCommit          *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
+	CodeRepo            *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	// 访问代码仓库的用户名
-	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
-	// 代码源ID
-	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	// 代码源详细描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 代码源配置的名字
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 创建时间
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 修改时间
-	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// 代码源配置的用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CodeRepoUserName    *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
+	CodeSourceId        *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	GmtCreateTime       *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifyTime       *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CodeSourceItem) String() string {
@@ -140,20 +125,13 @@ func (s *CodeSourceItem) SetUserId(v string) *CodeSourceItem {
 }
 
 type ContainerSpec struct {
-	// 命令参数
-	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	// 用户命令
-	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	// 环境变量
-	Env []*EnvVar `json:"Env,omitempty" xml:"Env,omitempty" type:"Repeated"`
-	// 容器镜像地址
-	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// 容器名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 容器资源
-	Resources *ResourceRequirements `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// 容器内工作目录
-	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	Args       []*string             `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	Command    []*string             `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	Env        []*EnvVar             `json:"Env,omitempty" xml:"Env,omitempty" type:"Repeated"`
+	Image      *string               `json:"Image,omitempty" xml:"Image,omitempty"`
+	Name       *string               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Resources  *ResourceRequirements `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	WorkingDir *string               `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s ContainerSpec) String() string {
@@ -200,30 +178,18 @@ func (s *ContainerSpec) SetWorkingDir(v string) *ContainerSpec {
 }
 
 type DataSourceItem struct {
-	// 数据源Id
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 数据源类型
+	DataSourceId   *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// 数据源描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 数据源显示名称
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 阿里云OSS文件系统服务端点
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// 阿里云NAS文件系统Id
-	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// 创建时间（UTC）
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 修改时间（UTC）
-	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// 本地挂载目录
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// 阿里云OSS文件系统配置选项
-	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// 阿里云OSS文件系统路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 创建人Id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Endpoint       *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	FileSystemId   *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	GmtCreateTime  *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifyTime  *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	MountPath      *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Options        *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	Path           *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DataSourceItem) String() string {
@@ -295,18 +261,12 @@ func (s *DataSourceItem) SetUserId(v string) *DataSourceItem {
 }
 
 type DebuggerConfig struct {
-	// 配置项细节，json结构
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 系统生成的debug config唯一ID
+	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	DebuggerConfigId *string `json:"DebuggerConfigId,omitempty" xml:"DebuggerConfigId,omitempty"`
-	// 配置项描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 模板配置项名称
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 创建时间（UTC）
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 修改时间（UTC）
-	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName      *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	GmtCreateTime    *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifyTime    *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
 }
 
 func (s DebuggerConfig) String() string {
@@ -348,34 +308,20 @@ func (s *DebuggerConfig) SetGmtModifyTime(v string) *DebuggerConfig {
 }
 
 type DebuggerJob struct {
-	// debugger分析作业ID
-	DebuggerJobId *string `json:"DebuggerJobId,omitempty" xml:"DebuggerJobId,omitempty"`
-	// 作业显示名
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 作业运行的时长（单位秒）
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 创建时间（UTC）
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 失败时间（UTC）
-	GmtFailedTime *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
-	// 任务完成时间（UTC）
-	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	// 运行开始时间（UTC）
-	GmtRunningTime *string `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
-	// 结束时间（UTC）
-	GmtStoppedTime *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
-	// 提交时间（UTC）
+	DebuggerJobId    *string `json:"DebuggerJobId,omitempty" xml:"DebuggerJobId,omitempty"`
+	DisplayName      *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Duration         *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	GmtCreateTime    *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtFailedTime    *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
+	GmtFinishTime    *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	GmtRunningTime   *string `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
+	GmtStoppedTime   *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
 	GmtSubmittedTime *string `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
-	// 成功结束时间（UTC）
-	GmtSucceedTime *string `json:"GmtSucceedTime,omitempty" xml:"GmtSucceedTime,omitempty"`
-	// 作业运行状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 作业所属的运行工作空间
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// 作业所属的运行工作空间名称
-	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	GmtSucceedTime   *string `json:"GmtSucceedTime,omitempty" xml:"GmtSucceedTime,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId           *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId      *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName    *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s DebuggerJob) String() string {
@@ -457,20 +403,13 @@ func (s *DebuggerJob) SetWorkspaceName(v string) *DebuggerJob {
 }
 
 type DebuggerJobIssue struct {
-	// 规则报告的具体json描述
-	DebuggerJobIssue *string `json:"DebuggerJobIssue,omitempty" xml:"DebuggerJobIssue,omitempty"`
-	// 创建时间（UTC）
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// event的全局唯一ID
+	DebuggerJobIssue   *string `json:"DebuggerJobIssue,omitempty" xml:"DebuggerJobIssue,omitempty"`
+	GmtCreateTime      *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	JobDebuggerIssueId *string `json:"JobDebuggerIssueId,omitempty" xml:"JobDebuggerIssueId,omitempty"`
-	// 作业ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 规则触发原因的编码
-	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// 规则触发的原因
-	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	// 规则名称
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	JobId              *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ReasonCode         *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage      *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s DebuggerJobIssue) String() string {
@@ -517,20 +456,13 @@ func (s *DebuggerJobIssue) SetRuleName(v string) *DebuggerJobIssue {
 }
 
 type DebuggerResult struct {
-	// 配置项细节，json结构
 	DebuggerConfigContent *string `json:"DebuggerConfigContent,omitempty" xml:"DebuggerConfigContent,omitempty"`
-	// 规则报告细节信息
-	DebuggerJobIssues *string `json:"DebuggerJobIssues,omitempty" xml:"DebuggerJobIssues,omitempty"`
-	// debugger job运行状态描述
-	DebuggerJobStatus *string `json:"DebuggerJobStatus,omitempty" xml:"DebuggerJobStatus,omitempty"`
-	// 报告文件下载地址
-	DebuggerReportURL *string `json:"DebuggerReportURL,omitempty" xml:"DebuggerReportURL,omitempty"`
-	// 作业显示名
-	JobDisplayName *string `json:"JobDisplayName,omitempty" xml:"JobDisplayName,omitempty"`
-	// 作业ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 用户ID
-	JobUserId *string `json:"JobUserId,omitempty" xml:"JobUserId,omitempty"`
+	DebuggerJobIssues     *string `json:"DebuggerJobIssues,omitempty" xml:"DebuggerJobIssues,omitempty"`
+	DebuggerJobStatus     *string `json:"DebuggerJobStatus,omitempty" xml:"DebuggerJobStatus,omitempty"`
+	DebuggerReportURL     *string `json:"DebuggerReportURL,omitempty" xml:"DebuggerReportURL,omitempty"`
+	JobDisplayName        *string `json:"JobDisplayName,omitempty" xml:"JobDisplayName,omitempty"`
+	JobId                 *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobUserId             *string `json:"JobUserId,omitempty" xml:"JobUserId,omitempty"`
 }
 
 func (s DebuggerResult) String() string {
@@ -577,20 +509,13 @@ func (s *DebuggerResult) SetJobUserId(v string) *DebuggerResult {
 }
 
 type EcsSpec struct {
-	// 加速器类型
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	// cpu数量
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// gpu数量
-	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// gpu类型
-	GpuType *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
-	// 规格类型
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// 是否有库存
-	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
-	// Memory数量
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Cpu             *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Gpu             *int32  `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	GpuType         *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IsAvailable     *bool   `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	Memory          *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
 func (s EcsSpec) String() string {
@@ -637,9 +562,7 @@ func (s *EcsSpec) SetMemory(v int32) *EcsSpec {
 }
 
 type EnvVar struct {
-	// 环境变量名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 环境变量值
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -662,16 +585,11 @@ func (s *EnvVar) SetValue(v string) *EnvVar {
 }
 
 type ExtraPodSpec struct {
-	// 初始化容器
-	InitContainers []*ContainerSpec `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
-	// Pod注解
-	PodAnnotations map[string]*string `json:"PodAnnotations,omitempty" xml:"PodAnnotations,omitempty"`
-	// Pod标签
-	PodLabels map[string]*string `json:"PodLabels,omitempty" xml:"PodLabels,omitempty"`
-	// 容器间共享的本地目录
-	SharedVolumeMountPaths []*string `json:"SharedVolumeMountPaths,omitempty" xml:"SharedVolumeMountPaths,omitempty" type:"Repeated"`
-	// 伴随容器
-	SideCarContainers []*ContainerSpec `json:"SideCarContainers,omitempty" xml:"SideCarContainers,omitempty" type:"Repeated"`
+	InitContainers         []*ContainerSpec   `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
+	PodAnnotations         map[string]*string `json:"PodAnnotations,omitempty" xml:"PodAnnotations,omitempty"`
+	PodLabels              map[string]*string `json:"PodLabels,omitempty" xml:"PodLabels,omitempty"`
+	SharedVolumeMountPaths []*string          `json:"SharedVolumeMountPaths,omitempty" xml:"SharedVolumeMountPaths,omitempty" type:"Repeated"`
+	SideCarContainers      []*ContainerSpec   `json:"SideCarContainers,omitempty" xml:"SideCarContainers,omitempty" type:"Repeated"`
 }
 
 func (s ExtraPodSpec) String() string {
@@ -708,11 +626,8 @@ func (s *ExtraPodSpec) SetSideCarContainers(v []*ContainerSpec) *ExtraPodSpec {
 }
 
 type GPUDetail struct {
-	// GPU卡数
-	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	// GPU卡型
-	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	// GPU卡型全名
+	GPU             *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUType         *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
 	GPUTypeFullName *string `json:"GPUTypeFullName,omitempty" xml:"GPUTypeFullName,omitempty"`
 }
 
@@ -740,20 +655,13 @@ func (s *GPUDetail) SetGPUTypeFullName(v string) *GPUDetail {
 }
 
 type ImageItem struct {
-	// 加速器类型
-	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	// 镜像作者
-	AuthorId *string `json:"AuthorId,omitempty" xml:"AuthorId,omitempty"`
-	// 镜像包含的框架类型
-	Framework *string `json:"Framework,omitempty" xml:"Framework,omitempty"`
-	// 镜像类型
+	AcceleratorType   *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	AuthorId          *string `json:"AuthorId,omitempty" xml:"AuthorId,omitempty"`
+	Framework         *string `json:"Framework,omitempty" xml:"Framework,omitempty"`
 	ImageProviderType *string `json:"ImageProviderType,omitempty" xml:"ImageProviderType,omitempty"`
-	// 镜像Tag
-	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// 镜像地址
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// 镜像vpc地址
-	ImageUrlVpc *string `json:"ImageUrlVpc,omitempty" xml:"ImageUrlVpc,omitempty"`
+	ImageTag          *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	ImageUrl          *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrlVpc       *string `json:"ImageUrlVpc,omitempty" xml:"ImageUrlVpc,omitempty"`
 }
 
 func (s ImageItem) String() string {
@@ -800,14 +708,10 @@ func (s *ImageItem) SetImageUrlVpc(v string) *ImageItem {
 }
 
 type JobDebuggerConfig struct {
-	// debugger配置信息
 	DebuggerConfigContent *string `json:"DebuggerConfigContent,omitempty" xml:"DebuggerConfigContent,omitempty"`
-	// debugger配置项ID
-	DebuggerConfigId *string `json:"DebuggerConfigId,omitempty" xml:"DebuggerConfigId,omitempty"`
-	// debugger配置创建的时间
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 作业ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	DebuggerConfigId      *string `json:"DebuggerConfigId,omitempty" xml:"DebuggerConfigId,omitempty"`
+	GmtCreateTime         *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	JobId                 *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s JobDebuggerConfig) String() string {
@@ -839,14 +743,10 @@ func (s *JobDebuggerConfig) SetJobId(v string) *JobDebuggerConfig {
 }
 
 type JobElasticSpec struct {
-	// aimaster角色使用的资源规格
-	AIMasterType *string `json:"AIMasterType,omitempty" xml:"AIMasterType,omitempty"`
-	// 打开弹性训练
-	EnableElasticTraining *bool `json:"EnableElasticTraining,omitempty" xml:"EnableElasticTraining,omitempty"`
-	// 最大并行度
-	MaxParallelism *int32 `json:"MaxParallelism,omitempty" xml:"MaxParallelism,omitempty"`
-	// 最小并行度
-	MinParallelism *int32 `json:"MinParallelism,omitempty" xml:"MinParallelism,omitempty"`
+	AIMasterType          *string `json:"AIMasterType,omitempty" xml:"AIMasterType,omitempty"`
+	EnableElasticTraining *bool   `json:"EnableElasticTraining,omitempty" xml:"EnableElasticTraining,omitempty"`
+	MaxParallelism        *int32  `json:"MaxParallelism,omitempty" xml:"MaxParallelism,omitempty"`
+	MinParallelism        *int32  `json:"MinParallelism,omitempty" xml:"MinParallelism,omitempty"`
 }
 
 func (s JobElasticSpec) String() string {
@@ -878,66 +778,36 @@ func (s *JobElasticSpec) SetMinParallelism(v int32) *JobElasticSpec {
 }
 
 type JobItem struct {
-	// 代码源配置
-	CodeSource *JobItemCodeSource `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
-	// 数据源配置列表
-	DataSources []*JobItemDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// 作业显示名称
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 作业运行时长，单位：秒
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 是否开启了debugger分析
-	EnabledDebugger *bool `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
-	// 环境变量配置
-	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	// 作业创建时间（UTC）
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 作业失败时间（UTC）
-	GmtFailedTime *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
-	// 作业结束时间（UTC）
-	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	// 作业开始运行时间（UTC）
-	GmtRunningTime *string `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
-	// 作业停止时间（UTC）
-	GmtStoppedTime *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
-	// 作业提交时间（UTC）
-	GmtSubmittedTime *string `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
-	// 作业成功完成时间（UTC）
-	GmtSuccessedTime *string `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
-	// 作业Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 作业规格配置
-	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
-	// 作业类型
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// 任务优先级
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 状态详情码
-	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// 状态详情
-	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	// 作业运行所在的资源组ID
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 作业运行时的资源级别
-	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
-	// 作业运行的资源名称
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// 作业额外参数
-	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
-	// 作业状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 三方库(requirements.txt)文件路径
-	ThirdpartyLibDir *string `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
-	// 三方库配置列表
-	ThirdpartyLibs []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
-	// 用户命令
-	UserCommand *string `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
-	// 作业提交人Id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 作业所属工作空间ID
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// 作业所属工作空间名称
-	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	CodeSource       *JobItemCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
+	DataSources      []*JobItemDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	DisplayName      *string               `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Duration         *int64                `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EnabledDebugger  *bool                 `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
+	Envs             map[string]*string    `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	GmtCreateTime    *string               `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtFailedTime    *string               `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
+	GmtFinishTime    *string               `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	GmtRunningTime   *string               `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
+	GmtStoppedTime   *string               `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
+	GmtSubmittedTime *string               `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
+	GmtSuccessedTime *string               `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
+	JobId            *string               `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobSpecs         []*JobSpec            `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	JobType          *string               `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Priority         *int32                `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ReasonCode       *string               `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage    *string               `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	ResourceId       *string               `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceLevel    *string               `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+	ResourceName     *string               `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Settings         *JobSettings          `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	Status           *string               `json:"Status,omitempty" xml:"Status,omitempty"`
+	ThirdpartyLibDir *string               `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
+	ThirdpartyLibs   []*string             `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
+	UserCommand      *string               `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
+	UserId           *string               `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId      *string               `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName    *string               `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s JobItem) String() string {
@@ -1099,14 +969,10 @@ func (s *JobItem) SetWorkspaceName(v string) *JobItem {
 }
 
 type JobItemCodeSource struct {
-	// 代码分支
-	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
-	// 代码源Id
+	Branch       *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	// 代码Commit
-	Commit *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
-	// 本地挂载路径
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Commit       *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
+	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
 func (s JobItemCodeSource) String() string {
@@ -1138,10 +1004,8 @@ func (s *JobItemCodeSource) SetMountPath(v string) *JobItemCodeSource {
 }
 
 type JobItemDataSources struct {
-	// 数据源Id
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 本地挂载路径
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
 func (s JobItemDataSources) String() string {
@@ -1163,22 +1027,14 @@ func (s *JobItemDataSources) SetMountPath(v string) *JobItemDataSources {
 }
 
 type JobSettings struct {
-	// 作业关联用户ID
-	BusinessUserId *string `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
-	// 调用方
-	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	// 允许打开作业容错监控
-	EnableErrorMonitoringInAIMaster *bool `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
-	// 允许作业使用RDMA
-	EnableRDMA *bool `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
-	// 允许作业使用潮汐资源
-	EnableTideResource *bool `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
-	// 用户指定容错监控的配置参数，比如指定是否启动基于log hang的检测
-	ErrorMonitoringArgs *string `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
-	// 工作流ID
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 自定义标签
-	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	BusinessUserId                  *string            `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
+	Caller                          *string            `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	EnableErrorMonitoringInAIMaster *bool              `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
+	EnableRDMA                      *bool              `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
+	EnableTideResource              *bool              `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
+	ErrorMonitoringArgs             *string            `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
+	PipelineId                      *string            `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	Tags                            map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s JobSettings) String() string {
@@ -1230,20 +1086,13 @@ func (s *JobSettings) SetTags(v map[string]*string) *JobSettings {
 }
 
 type JobSpec struct {
-	// Ecs实例规格
-	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	// 额外的Pod配置
-	ExtraPodSpec *ExtraPodSpec `json:"ExtraPodSpec,omitempty" xml:"ExtraPodSpec,omitempty"`
-	// 镜像
-	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// 实例数量
-	PodCount *int64 `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
-	// 资源配置
-	ResourceConfig *ResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 是否使用竞价实例
-	UseSpotInstance *bool `json:"UseSpotInstance,omitempty" xml:"UseSpotInstance,omitempty"`
+	EcsSpec         *string         `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	ExtraPodSpec    *ExtraPodSpec   `json:"ExtraPodSpec,omitempty" xml:"ExtraPodSpec,omitempty"`
+	Image           *string         `json:"Image,omitempty" xml:"Image,omitempty"`
+	PodCount        *int64          `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
+	ResourceConfig  *ResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
+	Type            *string         `json:"Type,omitempty" xml:"Type,omitempty"`
+	UseSpotInstance *bool           `json:"UseSpotInstance,omitempty" xml:"UseSpotInstance,omitempty"`
 }
 
 func (s JobSpec) String() string {
@@ -1290,9 +1139,7 @@ func (s *JobSpec) SetUseSpotInstance(v bool) *JobSpec {
 }
 
 type Member struct {
-	// 成员id
-	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// 成员角色
+	MemberId   *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
 }
 
@@ -1315,9 +1162,7 @@ func (s *Member) SetMemberType(v string) *Member {
 }
 
 type Metric struct {
-	// 时间戳（毫秒）
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// 样本值
+	Time  *int64   `json:"Time,omitempty" xml:"Time,omitempty"`
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1340,10 +1185,8 @@ func (s *Metric) SetValue(v float32) *Metric {
 }
 
 type NodeMetric struct {
-	// 监控指标样本序列
-	Metrics []*Metric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	// 节点名称
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	Metrics  []*Metric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	NodeName *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 }
 
 func (s NodeMetric) String() string {
@@ -1365,10 +1208,8 @@ func (s *NodeMetric) SetNodeName(v string) *NodeMetric {
 }
 
 type PodMetric struct {
-	// 监控指标样本序列
 	Metrics []*Metric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	// Pod编号
-	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodId   *string   `json:"PodId,omitempty" xml:"PodId,omitempty"`
 }
 
 func (s PodMetric) String() string {
@@ -1390,30 +1231,18 @@ func (s *PodMetric) SetPodId(v string) *PodMetric {
 }
 
 type Quota struct {
-	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// 是否允许使用潮汐资源
-	EnableTideResource *bool `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
-	// 是否是独占Quota组
-	IsExclusiveQuota *bool `json:"IsExclusiveQuota,omitempty" xml:"IsExclusiveQuota,omitempty"`
-	// 资源配额id
-	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// 资源配额名称
-	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	// 资源配额类型
-	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
-	// 资源组允许使用的潮汐资源级别
-	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
-	// 资源总量
-	TotalQuota *QuotaDetail `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
-	// 潮汐资源总量
-	TotalTideQuota *QuotaDetail `json:"TotalTideQuota,omitempty" xml:"TotalTideQuota,omitempty"`
-	// 资源用量
-	UsedQuota *QuotaDetail `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
-	// 潮汐资源用量
-	UsedTideQuota *QuotaDetail `json:"UsedTideQuota,omitempty" xml:"UsedTideQuota,omitempty"`
+	ClusterId          *string      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName        *string      `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	EnableTideResource *bool        `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
+	IsExclusiveQuota   *bool        `json:"IsExclusiveQuota,omitempty" xml:"IsExclusiveQuota,omitempty"`
+	QuotaId            *string      `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	QuotaName          *string      `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	QuotaType          *string      `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	ResourceLevel      *string      `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+	TotalQuota         *QuotaDetail `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
+	TotalTideQuota     *QuotaDetail `json:"TotalTideQuota,omitempty" xml:"TotalTideQuota,omitempty"`
+	UsedQuota          *QuotaDetail `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
+	UsedTideQuota      *QuotaDetail `json:"UsedTideQuota,omitempty" xml:"UsedTideQuota,omitempty"`
 }
 
 func (s Quota) String() string {
@@ -1485,18 +1314,12 @@ func (s *Quota) SetUsedTideQuota(v *QuotaDetail) *Quota {
 }
 
 type QuotaDetail struct {
-	// CPU核数
-	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	// GPU卡数
-	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	// GPU详情
-	GPUDetails []*GPUDetail `json:"GPUDetails,omitempty" xml:"GPUDetails,omitempty" type:"Repeated"`
-	// GPU卡型
-	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	// GPU卡型全名
-	GPUTypeFullName *string `json:"GPUTypeFullName,omitempty" xml:"GPUTypeFullName,omitempty"`
-	// 内存容量
-	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	CPU             *string      `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	GPU             *string      `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUDetails      []*GPUDetail `json:"GPUDetails,omitempty" xml:"GPUDetails,omitempty" type:"Repeated"`
+	GPUType         *string      `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	GPUTypeFullName *string      `json:"GPUTypeFullName,omitempty" xml:"GPUTypeFullName,omitempty"`
+	Memory          *string      `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
 func (s QuotaDetail) String() string {
@@ -1538,15 +1361,10 @@ func (s *QuotaDetail) SetMemory(v string) *QuotaDetail {
 }
 
 type ResourceConfig struct {
-	// CPU核心数
-	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	// GPU核心数
-	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	// 显卡类型
-	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	// 内存容量
-	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// 共享内存容量
+	CPU          *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	GPU          *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUType      *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	SharedMemory *string `json:"SharedMemory,omitempty" xml:"SharedMemory,omitempty"`
 }
 
@@ -1584,9 +1402,7 @@ func (s *ResourceConfig) SetSharedMemory(v string) *ResourceConfig {
 }
 
 type ResourceRequirements struct {
-	// 资源限制
-	Limits map[string]*string `json:"Limits,omitempty" xml:"Limits,omitempty"`
-	// 资源需求
+	Limits   map[string]*string `json:"Limits,omitempty" xml:"Limits,omitempty"`
 	Requests map[string]*string `json:"Requests,omitempty" xml:"Requests,omitempty"`
 }
 
@@ -1609,11 +1425,8 @@ func (s *ResourceRequirements) SetRequests(v map[string]*string) *ResourceRequir
 }
 
 type Resources struct {
-	// CPU核心数
-	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	// GPU卡数
-	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	// 内存大小
+	CPU    *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	GPU    *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
@@ -1641,38 +1454,22 @@ func (s *Resources) SetMemory(v string) *Resources {
 }
 
 type SmartCache struct {
-	// cache worker的数量单位是个
-	CacheWorkerNum *int64 `json:"CacheWorkerNum,omitempty" xml:"CacheWorkerNum,omitempty"`
-	// 每个cache worker的cache大小单位是GB
-	CacheWorkerSize *int64 `json:"CacheWorkerSize,omitempty" xml:"CacheWorkerSize,omitempty"`
-	// SmartCache 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// SmartCache 名称
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 已运行时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// OSS Endpoint
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// 阿里云的NAS文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// 创建时间（UTC）
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 修改时间（UTC）
-	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// 数据源本地挂载目录
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// 可选的超参数
-	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// OSS数据源路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// SmartCacheId
-	SmartCacheId *string `json:"SmartCacheId,omitempty" xml:"SmartCacheId,omitempty"`
-	// 运行状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 挂载的数据类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 创建者Id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CacheWorkerNum  *int64  `json:"CacheWorkerNum,omitempty" xml:"CacheWorkerNum,omitempty"`
+	CacheWorkerSize *int64  `json:"CacheWorkerSize,omitempty" xml:"CacheWorkerSize,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Duration        *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	FileSystemId    *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifyTime   *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	MountPath       *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Options         *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	SmartCacheId    *string `json:"SmartCacheId,omitempty" xml:"SmartCacheId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s SmartCache) String() string {
@@ -1764,34 +1561,20 @@ func (s *SmartCache) SetUserId(v string) *SmartCache {
 }
 
 type Tensorboard struct {
-	// 数据源Id
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 展示名称
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 运行时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 创建时间（UTC）
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 修改时间（UTC）
-	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// 任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 状态详情码
-	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// 状态详情
-	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 文件路径
-	SummaryPath *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
-	// Tensorboard Id
-	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
-	// Tensorboard URL
+	DataSourceId   *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	GmtCreateTime  *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifyTime  *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ReasonCode     *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage  *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SummaryPath    *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	TensorboardId  *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 	TensorboardUrl *string `json:"TensorboardUrl,omitempty" xml:"TensorboardUrl,omitempty"`
-	// 创建者
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s Tensorboard) String() string {
@@ -1873,24 +1656,15 @@ func (s *Tensorboard) SetUserId(v string) *Tensorboard {
 }
 
 type Workspace struct {
-	// 创建者
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// 创建时间
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 最近修改时间
-	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// 成员列表
-	Members []*Member `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
-	// 资源配额列表
-	Quotas []*Quota `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	// 资源总量
-	TotalResources *Resources `json:"TotalResources,omitempty" xml:"TotalResources,omitempty"`
-	// 管理员列表
-	WorkspaceAdmins []*Member `json:"WorkspaceAdmins,omitempty" xml:"WorkspaceAdmins,omitempty" type:"Repeated"`
-	// 工作空间id
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// 工作空间名称
-	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	Creator         *string    `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	GmtCreateTime   *string    `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifyTime   *string    `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	Members         []*Member  `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	Quotas          []*Quota   `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	TotalResources  *Resources `json:"TotalResources,omitempty" xml:"TotalResources,omitempty"`
+	WorkspaceAdmins []*Member  `json:"WorkspaceAdmins,omitempty" xml:"WorkspaceAdmins,omitempty" type:"Repeated"`
+	WorkspaceId     *string    `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName   *string    `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s Workspace) String() string {
@@ -1946,275 +1720,25 @@ func (s *Workspace) SetWorkspaceName(v string) *Workspace {
 	return s
 }
 
-type CreateCodeSourceRequest struct {
-	// 代码分支
-	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
-	// 代码仓库地址
-	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
-	// 密码
-	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	// 用户名
-	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
-	// 代码源详细描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 代码源配置名称
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 代码本地挂载目录，默认挂载到/root/code/下
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-}
-
-func (s CreateCodeSourceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCodeSourceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCodeSourceRequest) SetCodeBranch(v string) *CreateCodeSourceRequest {
-	s.CodeBranch = &v
-	return s
-}
-
-func (s *CreateCodeSourceRequest) SetCodeRepo(v string) *CreateCodeSourceRequest {
-	s.CodeRepo = &v
-	return s
-}
-
-func (s *CreateCodeSourceRequest) SetCodeRepoAccessToken(v string) *CreateCodeSourceRequest {
-	s.CodeRepoAccessToken = &v
-	return s
-}
-
-func (s *CreateCodeSourceRequest) SetCodeRepoUserName(v string) *CreateCodeSourceRequest {
-	s.CodeRepoUserName = &v
-	return s
-}
-
-func (s *CreateCodeSourceRequest) SetDescription(v string) *CreateCodeSourceRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateCodeSourceRequest) SetDisplayName(v string) *CreateCodeSourceRequest {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *CreateCodeSourceRequest) SetMountPath(v string) *CreateCodeSourceRequest {
-	s.MountPath = &v
-	return s
-}
-
-type CreateCodeSourceResponseBody struct {
-	// 创建的代码源配置的ID
-	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateCodeSourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCodeSourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCodeSourceResponseBody) SetCodeSourceId(v string) *CreateCodeSourceResponseBody {
-	s.CodeSourceId = &v
-	return s
-}
-
-func (s *CreateCodeSourceResponseBody) SetRequestId(v string) *CreateCodeSourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateCodeSourceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateCodeSourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCodeSourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCodeSourceResponse) SetHeaders(v map[string]*string) *CreateCodeSourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateCodeSourceResponse) SetStatusCode(v int32) *CreateCodeSourceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateCodeSourceResponse) SetBody(v *CreateCodeSourceResponseBody) *CreateCodeSourceResponse {
-	s.Body = v
-	return s
-}
-
-type CreateDataSourceRequest struct {
-	// 数据源类型
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// 数据源描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 数据源显示名称
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 阿里云OSS文件系统服务端点
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// 阿里云NAS文件系统Id
-	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// 本地挂载目录
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// 阿里云OSS文件系统配置选项
-	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// 阿里云OSS文件系统路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-}
-
-func (s CreateDataSourceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDataSourceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDataSourceRequest) SetDataSourceType(v string) *CreateDataSourceRequest {
-	s.DataSourceType = &v
-	return s
-}
-
-func (s *CreateDataSourceRequest) SetDescription(v string) *CreateDataSourceRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateDataSourceRequest) SetDisplayName(v string) *CreateDataSourceRequest {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *CreateDataSourceRequest) SetEndpoint(v string) *CreateDataSourceRequest {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *CreateDataSourceRequest) SetFileSystemId(v string) *CreateDataSourceRequest {
-	s.FileSystemId = &v
-	return s
-}
-
-func (s *CreateDataSourceRequest) SetMountPath(v string) *CreateDataSourceRequest {
-	s.MountPath = &v
-	return s
-}
-
-func (s *CreateDataSourceRequest) SetOptions(v string) *CreateDataSourceRequest {
-	s.Options = &v
-	return s
-}
-
-func (s *CreateDataSourceRequest) SetPath(v string) *CreateDataSourceRequest {
-	s.Path = &v
-	return s
-}
-
-type CreateDataSourceResponseBody struct {
-	// 数据源Id
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateDataSourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDataSourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDataSourceResponseBody) SetDataSourceId(v string) *CreateDataSourceResponseBody {
-	s.DataSourceId = &v
-	return s
-}
-
-func (s *CreateDataSourceResponseBody) SetRequestId(v string) *CreateDataSourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateDataSourceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDataSourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDataSourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDataSourceResponse) SetHeaders(v map[string]*string) *CreateDataSourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDataSourceResponse) SetStatusCode(v int32) *CreateDataSourceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateDataSourceResponse) SetBody(v *CreateDataSourceResponseBody) *CreateDataSourceResponse {
-	s.Body = v
-	return s
-}
-
 type CreateJobRequest struct {
-	// 代码源配置
-	CodeSource *CreateJobRequestCodeSource `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
-	// 数据源配置列表
-	DataSources []*CreateJobRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// debugger参数
-	DebuggerConfigContent *string `json:"DebuggerConfigContent,omitempty" xml:"DebuggerConfigContent,omitempty"`
-	// 作业显示名称
-	DisplayName *string         `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
-	// 环境变量配置
-	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	// 作业最大运行时间
-	JobMaxRunningTimeMinutes *int64 `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
-	// 作业规格配置
-	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
-	// 作业类型
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// 作业优先级
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 资源组编号
-	ResourceId *string      `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Settings   *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
-	// 三方库(requirements.txt)文件路径
-	ThirdpartyLibDir *string `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
-	// 三方库配置列表
-	ThirdpartyLibs []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
-	// 作业命令
-	UserCommand *string `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
-	// 用户VPC
-	UserVpc *CreateJobRequestUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
-	// 工作空间编号
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	CodeSource               *CreateJobRequestCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
+	DataSources              []*CreateJobRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	DebuggerConfigContent    *string                        `json:"DebuggerConfigContent,omitempty" xml:"DebuggerConfigContent,omitempty"`
+	DisplayName              *string                        `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	ElasticSpec              *JobElasticSpec                `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
+	Envs                     map[string]*string             `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	JobMaxRunningTimeMinutes *int64                         `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
+	JobSpecs                 []*JobSpec                     `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	JobType                  *string                        `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Options                  *string                        `json:"Options,omitempty" xml:"Options,omitempty"`
+	Priority                 *int32                         `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ResourceId               *string                        `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Settings                 *JobSettings                   `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	ThirdpartyLibDir         *string                        `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
+	ThirdpartyLibs           []*string                      `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
+	UserCommand              *string                        `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
+	UserVpc                  *CreateJobRequestUserVpc       `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	WorkspaceId              *string                        `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateJobRequest) String() string {
@@ -2316,14 +1840,10 @@ func (s *CreateJobRequest) SetWorkspaceId(v string) *CreateJobRequest {
 }
 
 type CreateJobRequestCodeSource struct {
-	// 代码分支
-	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
-	// 代码源Id
+	Branch       *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	// 代码Commit
-	Commit *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
-	// 本地挂载路径
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Commit       *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
+	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
 func (s CreateJobRequestCodeSource) String() string {
@@ -2355,10 +1875,8 @@ func (s *CreateJobRequestCodeSource) SetMountPath(v string) *CreateJobRequestCod
 }
 
 type CreateJobRequestDataSources struct {
-	// 数据源Id
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 本地挂载路径
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
 func (s CreateJobRequestDataSources) String() string {
@@ -2380,14 +1898,10 @@ func (s *CreateJobRequestDataSources) SetMountPath(v string) *CreateJobRequestDa
 }
 
 type CreateJobRequestUserVpc struct {
-	// 扩展网段
-	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	// 用户安全组的id
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// 用户交换机的id
-	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	// 用户VPC的id
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SwitchId        *string   `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateJobRequestUserVpc) String() string {
@@ -2419,9 +1933,7 @@ func (s *CreateJobRequestUserVpc) SetVpcId(v string) *CreateJobRequestUserVpc {
 }
 
 type CreateJobResponseBody struct {
-	// 作业Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求Id
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2473,24 +1985,19 @@ func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse
 }
 
 type CreateTensorboardRequest struct {
-	// DataSource Id
-	DataSourceId   *string           `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	DataSourceType *string           `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DataSources    []*DataSourceItem `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// Tensorboard名称
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 最长运行时长
-	MaxRunningTimeMinutes *int64  `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
-	Options               *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	SourceId              *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// Summary 目录
-	SummaryPath         *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
-	SummaryRelativePath *string `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
-	Uri                 *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	DataSourceId          *string           `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceType        *string           `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	DataSources           []*DataSourceItem `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	DisplayName           *string           `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	JobId                 *string           `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MaxRunningTimeMinutes *int64            `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	Options               *string           `json:"Options,omitempty" xml:"Options,omitempty"`
+	SourceId              *string           `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType            *string           `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SummaryPath           *string           `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	SummaryRelativePath   *string           `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
+	Uri                   *string           `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	WorkspaceId           *string           `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateTensorboardRequest) String() string {
@@ -2567,13 +2074,9 @@ func (s *CreateTensorboardRequest) SetWorkspaceId(v string) *CreateTensorboardRe
 }
 
 type CreateTensorboardResponseBody struct {
-	// DataSourceId
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Tensorboard id
+	DataSourceId  *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -2634,117 +2137,8 @@ func (s *CreateTensorboardResponse) SetBody(v *CreateTensorboardResponseBody) *C
 	return s
 }
 
-type DeleteCodeSourceResponseBody struct {
-	// 被删除的代码源配置ID
-	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteCodeSourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteCodeSourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteCodeSourceResponseBody) SetCodeSourceId(v string) *DeleteCodeSourceResponseBody {
-	s.CodeSourceId = &v
-	return s
-}
-
-func (s *DeleteCodeSourceResponseBody) SetRequestId(v string) *DeleteCodeSourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteCodeSourceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteCodeSourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteCodeSourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteCodeSourceResponse) SetHeaders(v map[string]*string) *DeleteCodeSourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteCodeSourceResponse) SetStatusCode(v int32) *DeleteCodeSourceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteCodeSourceResponse) SetBody(v *DeleteCodeSourceResponseBody) *DeleteCodeSourceResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteDataSourceResponseBody struct {
-	// 数据源Id
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteDataSourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDataSourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDataSourceResponseBody) SetDataSourceId(v string) *DeleteDataSourceResponseBody {
-	s.DataSourceId = &v
-	return s
-}
-
-func (s *DeleteDataSourceResponseBody) SetRequestId(v string) *DeleteDataSourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteDataSourceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteDataSourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDataSourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDataSourceResponse) SetHeaders(v map[string]*string) *DeleteDataSourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteDataSourceResponse) SetStatusCode(v int32) *DeleteDataSourceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteDataSourceResponse) SetBody(v *DeleteDataSourceResponseBody) *DeleteDataSourceResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteJobResponseBody struct {
-	// 作业Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求Id
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2795,79 +2189,7 @@ func (s *DeleteJobResponse) SetBody(v *DeleteJobResponseBody) *DeleteJobResponse
 	return s
 }
 
-type DeleteJobsRequest struct {
-	// 作业ID列表
-	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
-}
-
-func (s DeleteJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteJobsRequest) SetJobIds(v []*string) *DeleteJobsRequest {
-	s.JobIds = v
-	return s
-}
-
-type DeleteJobsResponseBody struct {
-	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteJobsResponseBody) SetJobIds(v []*string) *DeleteJobsResponseBody {
-	s.JobIds = v
-	return s
-}
-
-func (s *DeleteJobsResponseBody) SetRequestId(v string) *DeleteJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteJobsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteJobsResponse) SetHeaders(v map[string]*string) *DeleteJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteJobsResponse) SetStatusCode(v int32) *DeleteJobsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteJobsResponse) SetBody(v *DeleteJobsResponseBody) *DeleteJobsResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteTensorboardRequest struct {
-	// 工作空间ID
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -2885,9 +2207,7 @@ func (s *DeleteTensorboardRequest) SetWorkspaceId(v string) *DeleteTensorboardRe
 }
 
 type DeleteTensorboardResponseBody struct {
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Tensorboad Id
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -2938,330 +2258,40 @@ func (s *DeleteTensorboardResponse) SetBody(v *DeleteTensorboardResponseBody) *D
 	return s
 }
 
-type GetCodeSourceResponseBody struct {
-	// 代码仓库分支
-	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
-	// 代码Commit
-	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
-	// 代码仓库地址
-	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
-	// 访问代码仓库的token
-	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	// 代码仓库的用户名
-	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
-	// 代码源配置ID
-	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	// 详细描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 代码源配置名字
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 创建时间
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 修改时间
-	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// 代码本地挂载目录，默认挂载到/root/code/下
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 代码配置源的创建者ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s GetCodeSourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetCodeSourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetCodeSourceResponseBody) SetCodeBranch(v string) *GetCodeSourceResponseBody {
-	s.CodeBranch = &v
-	return s
-}
-
-func (s *GetCodeSourceResponseBody) SetCodeCommit(v string) *GetCodeSourceResponseBody {
-	s.CodeCommit = &v
-	return s
-}
-
-func (s *GetCodeSourceResponseBody) SetCodeRepo(v string) *GetCodeSourceResponseBody {
-	s.CodeRepo = &v
-	return s
-}
-
-func (s *GetCodeSourceResponseBody) SetCodeRepoAccessToken(v string) *GetCodeSourceResponseBody {
-	s.CodeRepoAccessToken = &v
-	return s
-}
-
-func (s *GetCodeSourceResponseBody) SetCodeRepoUserName(v string) *GetCodeSourceResponseBody {
-	s.CodeRepoUserName = &v
-	return s
-}
-
-func (s *GetCodeSourceResponseBody) SetCodeSourceId(v string) *GetCodeSourceResponseBody {
-	s.CodeSourceId = &v
-	return s
-}
-
-func (s *GetCodeSourceResponseBody) SetDescription(v string) *GetCodeSourceResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *GetCodeSourceResponseBody) SetDisplayName(v string) *GetCodeSourceResponseBody {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *GetCodeSourceResponseBody) SetGmtCreateTime(v string) *GetCodeSourceResponseBody {
-	s.GmtCreateTime = &v
-	return s
-}
-
-func (s *GetCodeSourceResponseBody) SetGmtModifyTime(v string) *GetCodeSourceResponseBody {
-	s.GmtModifyTime = &v
-	return s
-}
-
-func (s *GetCodeSourceResponseBody) SetMountPath(v string) *GetCodeSourceResponseBody {
-	s.MountPath = &v
-	return s
-}
-
-func (s *GetCodeSourceResponseBody) SetRequestId(v string) *GetCodeSourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetCodeSourceResponseBody) SetUserId(v string) *GetCodeSourceResponseBody {
-	s.UserId = &v
-	return s
-}
-
-type GetCodeSourceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetCodeSourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetCodeSourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetCodeSourceResponse) SetHeaders(v map[string]*string) *GetCodeSourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetCodeSourceResponse) SetStatusCode(v int32) *GetCodeSourceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetCodeSourceResponse) SetBody(v *GetCodeSourceResponseBody) *GetCodeSourceResponse {
-	s.Body = v
-	return s
-}
-
-type GetDataSourceResponseBody struct {
-	// 数据源Id
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 数据源类型
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// 数据源描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 数据源显示名称
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 阿里云OSS文件系统服务端点
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// 阿里云NAS文件系统Id
-	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// 创建时间（UTC）
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 修改时间（UTC）
-	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// 本地挂载目录
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// 阿里云OSS文件系统配置选项
-	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// 阿里云OSS文件系统路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 创建人Id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s GetDataSourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDataSourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDataSourceResponseBody) SetDataSourceId(v string) *GetDataSourceResponseBody {
-	s.DataSourceId = &v
-	return s
-}
-
-func (s *GetDataSourceResponseBody) SetDataSourceType(v string) *GetDataSourceResponseBody {
-	s.DataSourceType = &v
-	return s
-}
-
-func (s *GetDataSourceResponseBody) SetDescription(v string) *GetDataSourceResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *GetDataSourceResponseBody) SetDisplayName(v string) *GetDataSourceResponseBody {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *GetDataSourceResponseBody) SetEndpoint(v string) *GetDataSourceResponseBody {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *GetDataSourceResponseBody) SetFileSystemId(v string) *GetDataSourceResponseBody {
-	s.FileSystemId = &v
-	return s
-}
-
-func (s *GetDataSourceResponseBody) SetGmtCreateTime(v string) *GetDataSourceResponseBody {
-	s.GmtCreateTime = &v
-	return s
-}
-
-func (s *GetDataSourceResponseBody) SetGmtModifyTime(v string) *GetDataSourceResponseBody {
-	s.GmtModifyTime = &v
-	return s
-}
-
-func (s *GetDataSourceResponseBody) SetMountPath(v string) *GetDataSourceResponseBody {
-	s.MountPath = &v
-	return s
-}
-
-func (s *GetDataSourceResponseBody) SetOptions(v string) *GetDataSourceResponseBody {
-	s.Options = &v
-	return s
-}
-
-func (s *GetDataSourceResponseBody) SetPath(v string) *GetDataSourceResponseBody {
-	s.Path = &v
-	return s
-}
-
-func (s *GetDataSourceResponseBody) SetRequestId(v string) *GetDataSourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDataSourceResponseBody) SetUserId(v string) *GetDataSourceResponseBody {
-	s.UserId = &v
-	return s
-}
-
-type GetDataSourceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDataSourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDataSourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDataSourceResponse) SetHeaders(v map[string]*string) *GetDataSourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDataSourceResponse) SetStatusCode(v int32) *GetDataSourceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDataSourceResponse) SetBody(v *GetDataSourceResponseBody) *GetDataSourceResponse {
-	s.Body = v
-	return s
-}
-
 type GetJobResponseBody struct {
-	// 集群ID
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 代码源配置
-	CodeSource *GetJobResponseBodyCodeSource `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
-	// 数据源配置列表
-	DataSources []*GetJobResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// 作业显示名称
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 作业运行时长（s）
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 弹性任务参数
-	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
-	// 是否开启debugger任务
-	EnabledDebugger *bool `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
-	// 环境变量配置
-	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	// 作业创建时间（UTC）
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtFailedTime *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
-	// 作业结束时间（UTC）
-	GmtFinishTime    *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	GmtRunningTime   *string `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
-	GmtStoppedTime   *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
-	GmtSubmittedTime *string `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
-	GmtSuccessedTime *string `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
-	// 作业Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 作业规格配置
-	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
-	// 作业类型
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// 作业所以运行Pod列表
-	Pods []*GetJobResponseBodyPods `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
-	// 任务的优先级
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 状态详情码
-	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// 状态详情
-	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 作业运行所在的资源组ID
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 作业运行时使用的资源级别
-	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
-	// 作业额外参数配置
-	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
-	// 作业状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 三方库(requirements.txt)文件路径
-	ThirdpartyLibDir *string `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
-	// 三方库配置列表
-	ThirdpartyLibs []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
-	// 用户命令
-	UserCommand *string `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
-	// 作业提交人Id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 作业所属工作空间ID
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// 作业所属工作空间名称
-	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	ClusterId        *string                          `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CodeSource       *GetJobResponseBodyCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
+	DataSources      []*GetJobResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	DisplayName      *string                          `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Duration         *int64                           `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ElasticSpec      *JobElasticSpec                  `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
+	EnabledDebugger  *bool                            `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
+	Envs             map[string]*string               `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	GmtCreateTime    *string                          `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtFailedTime    *string                          `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
+	GmtFinishTime    *string                          `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	GmtRunningTime   *string                          `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
+	GmtStoppedTime   *string                          `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
+	GmtSubmittedTime *string                          `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
+	GmtSuccessedTime *string                          `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
+	JobId            *string                          `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobSpecs         []*JobSpec                       `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	JobType          *string                          `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Pods             []*GetJobResponseBodyPods        `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
+	Priority         *int32                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ReasonCode       *string                          `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage    *string                          `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	RequestId        *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceId       *string                          `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceLevel    *string                          `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+	Settings         *JobSettings                     `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	Status           *string                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	ThirdpartyLibDir *string                          `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
+	ThirdpartyLibs   []*string                        `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
+	UserCommand      *string                          `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
+	UserId           *string                          `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId      *string                          `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName    *string                          `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s GetJobResponseBody) String() string {
@@ -3438,14 +2468,10 @@ func (s *GetJobResponseBody) SetWorkspaceName(v string) *GetJobResponseBody {
 }
 
 type GetJobResponseBodyCodeSource struct {
-	// 代码分支
-	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
-	// 代码源Id
+	Branch       *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	// 代码Commit
-	Commit *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
-	// 本地挂载路径
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Commit       *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
+	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
 func (s GetJobResponseBodyCodeSource) String() string {
@@ -3477,10 +2503,8 @@ func (s *GetJobResponseBodyCodeSource) SetMountPath(v string) *GetJobResponseBod
 }
 
 type GetJobResponseBodyDataSources struct {
-	// 数据源Id
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 本地挂载路径
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
 func (s GetJobResponseBodyDataSources) String() string {
@@ -3502,24 +2526,15 @@ func (s *GetJobResponseBodyDataSources) SetMountPath(v string) *GetJobResponseBo
 }
 
 type GetJobResponseBodyPods struct {
-	// Pod创建时间（UTC）
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// Pod结束时间（UTC）
-	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	// Pod启动时间（UTC）
-	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	// 历史Pods
-	HistoryPods []*GetJobResponseBodyPodsHistoryPods `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
-	// Pod Ip
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// Pod Id
-	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	// Pod UId
-	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	// Pod状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Pod类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	GmtCreateTime *string                              `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtFinishTime *string                              `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	GmtStartTime  *string                              `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	HistoryPods   []*GetJobResponseBodyPodsHistoryPods `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
+	Ip            *string                              `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	PodId         *string                              `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodUid        *string                              `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	Status        *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type          *string                              `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetJobResponseBodyPods) String() string {
@@ -3576,22 +2591,14 @@ func (s *GetJobResponseBodyPods) SetType(v string) *GetJobResponseBodyPods {
 }
 
 type GetJobResponseBodyPodsHistoryPods struct {
-	// Pod创建时间（UTC）
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// Pod结束时间（UTC）
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	// Pod启动时间（UTC）
-	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	// Pod Ip
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// Pod Id
-	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	// Pod UId
-	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	// Pod状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Pod类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	GmtStartTime  *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	PodId         *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodUid        *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetJobResponseBodyPodsHistoryPods) String() string {
@@ -3672,12 +2679,9 @@ func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
 }
 
 type GetJobEventsRequest struct {
-	// 查询事件的时间区间的截止时间，默认值是当前。
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 获取事件的最大数目，默认值：2000
-	MaxEventsNum *int32 `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
-	// 查询事件的时间区间的起始时间，默认值是7天前。
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MaxEventsNum *int32  `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetJobEventsRequest) String() string {
@@ -3704,12 +2708,9 @@ func (s *GetJobEventsRequest) SetStartTime(v string) *GetJobEventsRequest {
 }
 
 type GetJobEventsResponseBody struct {
-	// 事件
-	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// 作业ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求ID
-	RequestId *int32 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Events    []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	JobId     *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *int32    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetJobEventsResponseBody) String() string {
@@ -3765,16 +2766,11 @@ func (s *GetJobEventsResponse) SetBody(v *GetJobEventsResponseBody) *GetJobEvent
 }
 
 type GetJobMetricsRequest struct {
-	// 截止时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 指标类型
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 时间间隔
-	TimeStep *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
-	// Token
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TimeStep   *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
+	Token      *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetJobMetricsRequest) String() string {
@@ -3811,12 +2807,9 @@ func (s *GetJobMetricsRequest) SetToken(v string) *GetJobMetricsRequest {
 }
 
 type GetJobMetricsResponseBody struct {
-	// 作业ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 任务监控指标序列集合
+	JobId      *string      `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	PodMetrics []*PodMetric `json:"PodMetrics,omitempty" xml:"PodMetrics,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetJobMetricsResponseBody) String() string {
@@ -3872,14 +2865,10 @@ func (s *GetJobMetricsResponse) SetBody(v *GetJobMetricsResponseBody) *GetJobMet
 }
 
 type GetPodEventsRequest struct {
-	// 截止时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 返回的事件最大数量
-	MaxEventsNum *int32 `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
-	// 运行实例UID
-	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MaxEventsNum *int32  `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
+	PodUid       *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetPodEventsRequest) String() string {
@@ -3911,15 +2900,11 @@ func (s *GetPodEventsRequest) SetStartTime(v string) *GetPodEventsRequest {
 }
 
 type GetPodEventsResponseBody struct {
-	// 事件列表
-	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// 作业ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 运行示例ID
-	PodId  *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Events    []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	JobId     *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	PodId     *string   `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodUid    *string   `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPodEventsResponseBody) String() string {
@@ -3985,15 +2970,11 @@ func (s *GetPodEventsResponse) SetBody(v *GetPodEventsResponseBody) *GetPodEvent
 }
 
 type GetPodLogsRequest struct {
-	// 是否下载日志文件，默认：false。
-	DownloadToFile *bool `json:"DownloadToFile,omitempty" xml:"DownloadToFile,omitempty"`
-	// 查询的截止时间，默认值：当前。
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 返回的日志的最大行数，默认值：2000。
-	MaxLines *int32  `json:"MaxLines,omitempty" xml:"MaxLines,omitempty"`
-	PodUid   *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	// 查询的起始时间，默认值：7天前。
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	DownloadToFile *bool   `json:"DownloadToFile,omitempty" xml:"DownloadToFile,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MaxLines       *int32  `json:"MaxLines,omitempty" xml:"MaxLines,omitempty"`
+	PodUid         *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetPodLogsRequest) String() string {
@@ -4030,16 +3011,11 @@ func (s *GetPodLogsRequest) SetStartTime(v string) *GetPodLogsRequest {
 }
 
 type GetPodLogsResponseBody struct {
-	// 作业ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 日志列表
-	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// 实例ID
-	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	// 实例UID
-	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobId     *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Logs      []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	PodId     *string   `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodUid    *string   `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPodLogsResponseBody) String() string {
@@ -4105,9 +3081,7 @@ func (s *GetPodLogsResponse) SetBody(v *GetPodLogsResponseBody) *GetPodLogsRespo
 }
 
 type GetTensorboardRequest struct {
-	// JodId
-	JodId *string `json:"JodId,omitempty" xml:"JodId,omitempty"`
-	// 工作空间ID
+	JodId       *string `json:"JodId,omitempty" xml:"JodId,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -4158,238 +3132,12 @@ func (s *GetTensorboardResponse) SetBody(v *Tensorboard) *GetTensorboardResponse
 	return s
 }
 
-type ListCodeSourcesRequest struct {
-	// 代码源显示名称，支持模糊匹配
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 排序顺序, 枚举值 desc 或者 asc
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 取第几页的数据
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 用于排序的字段名，可选字段名：DisplayName、GmtCreateTime、 GmtModifyTime
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-}
-
-func (s ListCodeSourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCodeSourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListCodeSourcesRequest) SetDisplayName(v string) *ListCodeSourcesRequest {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *ListCodeSourcesRequest) SetOrder(v string) *ListCodeSourcesRequest {
-	s.Order = &v
-	return s
-}
-
-func (s *ListCodeSourcesRequest) SetPageNumber(v int32) *ListCodeSourcesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListCodeSourcesRequest) SetPageSize(v int32) *ListCodeSourcesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListCodeSourcesRequest) SetSortBy(v string) *ListCodeSourcesRequest {
-	s.SortBy = &v
-	return s
-}
-
-type ListCodeSourcesResponseBody struct {
-	// 代码源配置列表
-	CodeSources []*CodeSourceItem `json:"CodeSources,omitempty" xml:"CodeSources,omitempty" type:"Repeated"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 符合过滤条件的代码源配置的总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListCodeSourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCodeSourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListCodeSourcesResponseBody) SetCodeSources(v []*CodeSourceItem) *ListCodeSourcesResponseBody {
-	s.CodeSources = v
-	return s
-}
-
-func (s *ListCodeSourcesResponseBody) SetRequestId(v string) *ListCodeSourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListCodeSourcesResponseBody) SetTotalCount(v int64) *ListCodeSourcesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListCodeSourcesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCodeSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListCodeSourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCodeSourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListCodeSourcesResponse) SetHeaders(v map[string]*string) *ListCodeSourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListCodeSourcesResponse) SetStatusCode(v int32) *ListCodeSourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListCodeSourcesResponse) SetBody(v *ListCodeSourcesResponseBody) *ListCodeSourcesResponse {
-	s.Body = v
-	return s
-}
-
-type ListDataSourcesRequest struct {
-	// 数据源类型
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// 数据源显示名称，支持模糊查询
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 排序顺序
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 查询第几页数据
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 设置查询的分页大写
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 按返回字段排序
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-}
-
-func (s ListDataSourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDataSourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDataSourcesRequest) SetDataSourceType(v string) *ListDataSourcesRequest {
-	s.DataSourceType = &v
-	return s
-}
-
-func (s *ListDataSourcesRequest) SetDisplayName(v string) *ListDataSourcesRequest {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *ListDataSourcesRequest) SetOrder(v string) *ListDataSourcesRequest {
-	s.Order = &v
-	return s
-}
-
-func (s *ListDataSourcesRequest) SetPageNumber(v int32) *ListDataSourcesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListDataSourcesRequest) SetPageSize(v int32) *ListDataSourcesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDataSourcesRequest) SetSortBy(v string) *ListDataSourcesRequest {
-	s.SortBy = &v
-	return s
-}
-
-type ListDataSourcesResponseBody struct {
-	// 数据源配置列表
-	DataSources []*DataSourceItem `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 符合条件的数据源总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListDataSourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDataSourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDataSourcesResponseBody) SetDataSources(v []*DataSourceItem) *ListDataSourcesResponseBody {
-	s.DataSources = v
-	return s
-}
-
-func (s *ListDataSourcesResponseBody) SetRequestId(v string) *ListDataSourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListDataSourcesResponseBody) SetTotalCount(v int64) *ListDataSourcesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListDataSourcesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDataSourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDataSourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDataSourcesResponse) SetHeaders(v map[string]*string) *ListDataSourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDataSourcesResponse) SetStatusCode(v int32) *ListDataSourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListDataSourcesResponse) SetBody(v *ListDataSourcesResponseBody) *ListDataSourcesResponse {
-	s.Body = v
-	return s
-}
-
 type ListEcsSpecsRequest struct {
-	// 按加速器类型过滤
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	// 排序顺序
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 查询第几页数据
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 设置查询的分页大写
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 按返回字段排序
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy          *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListEcsSpecsRequest) String() string {
@@ -4426,12 +3174,9 @@ func (s *ListEcsSpecsRequest) SetSortBy(v string) *ListEcsSpecsRequest {
 }
 
 type ListEcsSpecsResponseBody struct {
-	// ECS规格列表
-	EcsSpecs []*EcsSpec `json:"EcsSpecs,omitempty" xml:"EcsSpecs,omitempty" type:"Repeated"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 符合过滤条件的总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	EcsSpecs   []*EcsSpec `json:"EcsSpecs,omitempty" xml:"EcsSpecs,omitempty" type:"Repeated"`
+	RequestId  *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListEcsSpecsResponseBody) String() string {
@@ -4486,154 +3231,24 @@ func (s *ListEcsSpecsResponse) SetBody(v *ListEcsSpecsResponseBody) *ListEcsSpec
 	return s
 }
 
-type ListImagesRequest struct {
-	// 加速器类型
-	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	// 镜像包含的框架类型
-	Framework *string `json:"Framework,omitempty" xml:"Framework,omitempty"`
-	// 镜像类型
-	ImageProviderType *string `json:"ImageProviderType,omitempty" xml:"ImageProviderType,omitempty"`
-	// 排序顺序
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 按返回字段排序
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// 工作空间ID
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-}
-
-func (s ListImagesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImagesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListImagesRequest) SetAcceleratorType(v string) *ListImagesRequest {
-	s.AcceleratorType = &v
-	return s
-}
-
-func (s *ListImagesRequest) SetFramework(v string) *ListImagesRequest {
-	s.Framework = &v
-	return s
-}
-
-func (s *ListImagesRequest) SetImageProviderType(v string) *ListImagesRequest {
-	s.ImageProviderType = &v
-	return s
-}
-
-func (s *ListImagesRequest) SetOrder(v string) *ListImagesRequest {
-	s.Order = &v
-	return s
-}
-
-func (s *ListImagesRequest) SetSortBy(v string) *ListImagesRequest {
-	s.SortBy = &v
-	return s
-}
-
-func (s *ListImagesRequest) SetWorkspaceId(v string) *ListImagesRequest {
-	s.WorkspaceId = &v
-	return s
-}
-
-type ListImagesResponseBody struct {
-	// 镜像详情列表
-	Images []*ImageItem `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 2
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListImagesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImagesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListImagesResponseBody) SetImages(v []*ImageItem) *ListImagesResponseBody {
-	s.Images = v
-	return s
-}
-
-func (s *ListImagesResponseBody) SetRequestId(v string) *ListImagesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListImagesResponseBody) SetTotalCount(v int64) *ListImagesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListImagesResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListImagesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImagesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListImagesResponse) SetHeaders(v map[string]*string) *ListImagesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListImagesResponse) SetStatusCode(v int32) *ListImagesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListImagesResponse) SetBody(v *ListImagesResponseBody) *ListImagesResponse {
-	s.Body = v
-	return s
-}
-
 type ListJobsRequest struct {
-	// 作业关联用户ID
-	BusinessUserId *string `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
-	// 调用方
-	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	// 作业显示名称，支持模糊查询
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 截止时间
-	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FromAllWorkspaces *bool   `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
-	// 作业类型
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// 排序顺序
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 当前页
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页返回的作业数
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 工作流ID
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 资源组ID
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 是否只返回当前登录者所提交的作业
-	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
-	// 按返回字段排序
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 作业状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 自定义标签
-	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// 工作空间ID
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	BusinessUserId    *string            `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
+	Caller            *string            `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	DisplayName       *string            `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	EndTime           *string            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FromAllWorkspaces *bool              `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
+	JobType           *string            `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Order             *string            `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber        *int32             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PipelineId        *string            `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	ResourceId        *string            `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ShowOwn           *bool              `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
+	SortBy            *string            `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	StartTime         *string            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status            *string            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags              map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	WorkspaceId       *string            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListJobsRequest) String() string {
@@ -4730,39 +3345,23 @@ func (s *ListJobsRequest) SetWorkspaceId(v string) *ListJobsRequest {
 }
 
 type ListJobsShrinkRequest struct {
-	// 作业关联用户ID
-	BusinessUserId *string `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
-	// 调用方
-	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	// 作业显示名称，支持模糊查询
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 截止时间
+	BusinessUserId    *string `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
+	Caller            *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	FromAllWorkspaces *bool   `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
-	// 作业类型
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// 排序顺序
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 当前页
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页返回的作业数
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 工作流ID
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 资源组ID
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 是否只返回当前登录者所提交的作业
-	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
-	// 按返回字段排序
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 作业状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 自定义标签
-	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// 工作空间ID
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	JobType           *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Order             *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PipelineId        *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ShowOwn           *bool   `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
+	SortBy            *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagsShrink        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	WorkspaceId       *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListJobsShrinkRequest) String() string {
@@ -4859,12 +3458,9 @@ func (s *ListJobsShrinkRequest) SetWorkspaceId(v string) *ListJobsShrinkRequest 
 }
 
 type ListJobsResponseBody struct {
-	// 作业列表
-	Jobs []*JobItem `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 符合过滤条件的总作业数
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Jobs       []*JobItem `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	RequestId  *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListJobsResponseBody) String() string {
@@ -4920,32 +3516,20 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 }
 
 type ListTensorboardsRequest struct {
-	// 展示名称
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 截止时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// JobId
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 排序顺序
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 当前页
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页返回的作业数
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 按返回字段排序
-	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 根据状态过滤
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// TensorboardId
+	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SourceId      *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
-	// 是否显示详情
-	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	// 工作空间ID
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Verbose       *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListTensorboardsRequest) String() string {
@@ -5027,12 +3611,9 @@ func (s *ListTensorboardsRequest) SetWorkspaceId(v string) *ListTensorboardsRequ
 }
 
 type ListTensorboardsResponseBody struct {
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Tensorboard 列表
+	RequestId    *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tensorboards []*Tensorboard `json:"Tensorboards,omitempty" xml:"Tensorboards,omitempty" type:"Repeated"`
-	// 符合条件的数据源总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount   *int64         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTensorboardsResponseBody) String() string {
@@ -5088,7 +3669,6 @@ func (s *ListTensorboardsResponse) SetBody(v *ListTensorboardsResponseBody) *Lis
 }
 
 type StartTensorboardRequest struct {
-	// 工作空间ID
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -5106,9 +3686,7 @@ func (s *StartTensorboardRequest) SetWorkspaceId(v string) *StartTensorboardRequ
 }
 
 type StartTensorboardResponseBody struct {
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Tensorboad Id
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -5160,9 +3738,7 @@ func (s *StartTensorboardResponse) SetBody(v *StartTensorboardResponseBody) *Sta
 }
 
 type StopJobResponseBody struct {
-	// 作业Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求Id
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5213,80 +3789,7 @@ func (s *StopJobResponse) SetBody(v *StopJobResponseBody) *StopJobResponse {
 	return s
 }
 
-type StopJobsRequest struct {
-	// 作业ID列表
-	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
-}
-
-func (s StopJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StopJobsRequest) SetJobIds(v []*string) *StopJobsRequest {
-	s.JobIds = v
-	return s
-}
-
-type StopJobsResponseBody struct {
-	// 作业ID列表
-	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s StopJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StopJobsResponseBody) SetJobIds(v []*string) *StopJobsResponseBody {
-	s.JobIds = v
-	return s
-}
-
-func (s *StopJobsResponseBody) SetRequestId(v string) *StopJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type StopJobsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StopJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StopJobsResponse) SetHeaders(v map[string]*string) *StopJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StopJobsResponse) SetStatusCode(v int32) *StopJobsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *StopJobsResponse) SetBody(v *StopJobsResponseBody) *StopJobsResponse {
-	s.Body = v
-	return s
-}
-
 type StopTensorboardRequest struct {
-	// 工作空间ID
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -5304,9 +3807,7 @@ func (s *StopTensorboardRequest) SetWorkspaceId(v string) *StopTensorboardReques
 }
 
 type StopTensorboardResponseBody struct {
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Tensorboad Id
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -5358,7 +3859,6 @@ func (s *StopTensorboardResponse) SetBody(v *StopTensorboardResponseBody) *StopT
 }
 
 type UpdateJobRequest struct {
-	// 设置优先级
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
@@ -5376,9 +3876,7 @@ func (s *UpdateJobRequest) SetPriority(v int32) *UpdateJobRequest {
 }
 
 type UpdateJobResponseBody struct {
-	// 作业ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求ID
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5430,10 +3928,8 @@ func (s *UpdateJobResponse) SetBody(v *UpdateJobResponseBody) *UpdateJobResponse
 }
 
 type UpdateTensorboardRequest struct {
-	// MaxRunningTimeMinutes
-	MaxRunningTimeMinutes *int64 `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
-	// 工作空间ID
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	MaxRunningTimeMinutes *int64  `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	WorkspaceId           *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateTensorboardRequest) String() string {
@@ -5455,9 +3951,7 @@ func (s *UpdateTensorboardRequest) SetWorkspaceId(v string) *UpdateTensorboardRe
 }
 
 type UpdateTensorboardResponseBody struct {
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Tensorboad Id
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -5553,150 +4047,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 		return _result, _err
 	}
 	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateCodeSource(request *CreateCodeSourceRequest) (_result *CreateCodeSourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateCodeSourceResponse{}
-	_body, _err := client.CreateCodeSourceWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateCodeSourceWithOptions(request *CreateCodeSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCodeSourceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CodeBranch)) {
-		body["CodeBranch"] = request.CodeBranch
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CodeRepo)) {
-		body["CodeRepo"] = request.CodeRepo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CodeRepoAccessToken)) {
-		body["CodeRepoAccessToken"] = request.CodeRepoAccessToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CodeRepoUserName)) {
-		body["CodeRepoUserName"] = request.CodeRepoUserName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		body["Description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
-		body["DisplayName"] = request.DisplayName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MountPath)) {
-		body["MountPath"] = request.MountPath
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateCodeSource"),
-		Version:     tea.String("2020-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/codesources"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateCodeSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDataSource(request *CreateDataSourceRequest) (_result *CreateDataSourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateDataSourceResponse{}
-	_body, _err := client.CreateDataSourceWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateDataSourceWithOptions(request *CreateDataSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDataSourceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
-		body["DataSourceType"] = request.DataSourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		body["Description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
-		body["DisplayName"] = request.DisplayName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Endpoint)) {
-		body["Endpoint"] = request.Endpoint
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
-		body["FileSystemId"] = request.FileSystemId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MountPath)) {
-		body["MountPath"] = request.MountPath
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Options)) {
-		body["Options"] = request.Options
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Path)) {
-		body["Path"] = request.Path
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateDataSource"),
-		Version:     tea.String("2020-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/datasources"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
 
@@ -5908,80 +4258,6 @@ func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardReq
 	return _result, _err
 }
 
-func (client *Client) DeleteCodeSource(CodeSourceId *string) (_result *DeleteCodeSourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteCodeSourceResponse{}
-	_body, _err := client.DeleteCodeSourceWithOptions(CodeSourceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteCodeSourceWithOptions(CodeSourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteCodeSourceResponse, _err error) {
-	CodeSourceId = openapiutil.GetEncodeParam(CodeSourceId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteCodeSource"),
-		Version:     tea.String("2020-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/codesources/" + tea.StringValue(CodeSourceId)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteCodeSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteDataSource(DataSourceId *string) (_result *DeleteDataSourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteDataSourceResponse{}
-	_body, _err := client.DeleteDataSourceWithOptions(DataSourceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteDataSourceWithOptions(DataSourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDataSourceResponse, _err error) {
-	DataSourceId = openapiutil.GetEncodeParam(DataSourceId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteDataSource"),
-		Version:     tea.String("2020-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/datasources/" + tea.StringValue(DataSourceId)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) DeleteJob(JobId *string) (_result *DeleteJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6011,52 +4287,6 @@ func (client *Client) DeleteJobWithOptions(JobId *string, headers map[string]*st
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteJobs(request *DeleteJobsRequest) (_result *DeleteJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteJobsResponse{}
-	_body, _err := client.DeleteJobsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteJobsWithOptions(request *DeleteJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
-		body["JobIds"] = request.JobIds
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteJobs"),
-		Version:     tea.String("2020-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/batch/jobs/delete"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteJobsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6104,80 +4334,6 @@ func (client *Client) DeleteTensorboardWithOptions(TensorboardId *string, reques
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTensorboardResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetCodeSource(CodeSourceId *string) (_result *GetCodeSourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetCodeSourceResponse{}
-	_body, _err := client.GetCodeSourceWithOptions(CodeSourceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetCodeSourceWithOptions(CodeSourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCodeSourceResponse, _err error) {
-	CodeSourceId = openapiutil.GetEncodeParam(CodeSourceId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetCodeSource"),
-		Version:     tea.String("2020-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/codesources/" + tea.StringValue(CodeSourceId)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetCodeSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDataSource(DataSourceId *string) (_result *GetDataSourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetDataSourceResponse{}
-	_body, _err := client.GetDataSourceWithOptions(DataSourceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDataSourceWithOptions(DataSourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDataSourceResponse, _err error) {
-	DataSourceId = openapiutil.GetEncodeParam(DataSourceId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDataSource"),
-		Version:     tea.String("2020-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/datasources/" + tea.StringValue(DataSourceId)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetDataSourceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6516,134 +4672,6 @@ func (client *Client) GetTensorboardWithOptions(TensorboardId *string, request *
 	return _result, _err
 }
 
-func (client *Client) ListCodeSources(request *ListCodeSourcesRequest) (_result *ListCodeSourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListCodeSourcesResponse{}
-	_body, _err := client.ListCodeSourcesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListCodeSourcesWithOptions(request *ListCodeSourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCodeSourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
-		query["DisplayName"] = request.DisplayName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Order)) {
-		query["Order"] = request.Order
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
-		query["SortBy"] = request.SortBy
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListCodeSources"),
-		Version:     tea.String("2020-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/codesources"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListCodeSourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDataSources(request *ListDataSourcesRequest) (_result *ListDataSourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListDataSourcesResponse{}
-	_body, _err := client.ListDataSourcesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDataSourcesWithOptions(request *ListDataSourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDataSourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
-		query["DataSourceType"] = request.DataSourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
-		query["DisplayName"] = request.DisplayName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Order)) {
-		query["Order"] = request.Order
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
-		query["SortBy"] = request.SortBy
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListDataSources"),
-		Version:     tea.String("2020-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/datasources"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListDataSourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListEcsSpecsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6698,72 +4726,6 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListEcsSpecsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImagesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListImagesResponse{}
-	_body, _err := client.ListImagesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListImagesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AcceleratorType)) {
-		query["AcceleratorType"] = request.AcceleratorType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Framework)) {
-		query["Framework"] = request.Framework
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImageProviderType)) {
-		query["ImageProviderType"] = request.ImageProviderType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Order)) {
-		query["Order"] = request.Order
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
-		query["SortBy"] = request.SortBy
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
-		query["WorkspaceId"] = request.WorkspaceId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListImages"),
-		Version:     tea.String("2020-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/images"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListImagesResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7062,52 +5024,6 @@ func (client *Client) StopJobWithOptions(JobId *string, headers map[string]*stri
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StopJobs(request *StopJobsRequest) (_result *StopJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StopJobsResponse{}
-	_body, _err := client.StopJobsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StopJobsWithOptions(request *StopJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
-		body["JobIds"] = request.JobIds
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("StopJobs"),
-		Version:     tea.String("2020-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/batch/jobs/stop"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &StopJobsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
