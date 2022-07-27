@@ -6292,9 +6292,9 @@ func (s *EntityDeleteShrinkRequest) SetUserId(v string) *EntityDeleteShrinkReque
 }
 
 type EntityDeleteResponseBody struct {
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Module     *EntityDeleteResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	MorePage   *bool                           `json:"more_page,omitempty" xml:"more_page,omitempty"`
+	RequestId  *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	ResultCode *int32                          `json:"result_code,omitempty" xml:"result_code,omitempty"`
 	ResultMsg  *string                         `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
 	Success    *bool                           `json:"success,omitempty" xml:"success,omitempty"`
@@ -6309,11 +6309,6 @@ func (s EntityDeleteResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *EntityDeleteResponseBody) SetRequestId(v string) *EntityDeleteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *EntityDeleteResponseBody) SetModule(v *EntityDeleteResponseBodyModule) *EntityDeleteResponseBody {
 	s.Module = v
 	return s
@@ -6321,6 +6316,11 @@ func (s *EntityDeleteResponseBody) SetModule(v *EntityDeleteResponseBodyModule) 
 
 func (s *EntityDeleteResponseBody) SetMorePage(v bool) *EntityDeleteResponseBody {
 	s.MorePage = &v
+	return s
+}
+
+func (s *EntityDeleteResponseBody) SetRequestId(v string) *EntityDeleteResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11263,7 +11263,7 @@ type IsvUserSaveResponseBody struct {
 	ResultCode *int32  `json:"result_code,omitempty" xml:"result_code,omitempty"`
 	ResultMsg  *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
 	Success    *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	Traceid    *string `json:"traceid,omitempty" xml:"traceid,omitempty"`
+	TraceId    *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s IsvUserSaveResponseBody) String() string {
@@ -11299,8 +11299,8 @@ func (s *IsvUserSaveResponseBody) SetSuccess(v bool) *IsvUserSaveResponseBody {
 	return s
 }
 
-func (s *IsvUserSaveResponseBody) SetTraceid(v string) *IsvUserSaveResponseBody {
-	s.Traceid = &v
+func (s *IsvUserSaveResponseBody) SetTraceId(v string) *IsvUserSaveResponseBody {
+	s.TraceId = &v
 	return s
 }
 
@@ -13875,6 +13875,193 @@ func (s *TrainOrderQueryResponse) SetBody(v *TrainOrderQueryResponseBody) *Train
 	return s
 }
 
+type UserQueryRequest struct {
+	ModifiedTimeGreaterOrEqualThan *string `json:"modified_time_greater_or_equal_than,omitempty" xml:"modified_time_greater_or_equal_than,omitempty"`
+	ThirdPartCorpId                *string `json:"third_part_corp_id,omitempty" xml:"third_part_corp_id,omitempty"`
+	ThirdPartJobNo                 *string `json:"third_part_job_no,omitempty" xml:"third_part_job_no,omitempty"`
+	TopAppKeyOwnerId               *string `json:"top_app_key_owner_id,omitempty" xml:"top_app_key_owner_id,omitempty"`
+	TopAuthorizedHavanaId          *string `json:"top_authorized_havana_id,omitempty" xml:"top_authorized_havana_id,omitempty"`
+	TopAuthorizedUserNick          *string `json:"top_authorized_user_nick,omitempty" xml:"top_authorized_user_nick,omitempty"`
+}
+
+func (s UserQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UserQueryRequest) SetModifiedTimeGreaterOrEqualThan(v string) *UserQueryRequest {
+	s.ModifiedTimeGreaterOrEqualThan = &v
+	return s
+}
+
+func (s *UserQueryRequest) SetThirdPartCorpId(v string) *UserQueryRequest {
+	s.ThirdPartCorpId = &v
+	return s
+}
+
+func (s *UserQueryRequest) SetThirdPartJobNo(v string) *UserQueryRequest {
+	s.ThirdPartJobNo = &v
+	return s
+}
+
+func (s *UserQueryRequest) SetTopAppKeyOwnerId(v string) *UserQueryRequest {
+	s.TopAppKeyOwnerId = &v
+	return s
+}
+
+func (s *UserQueryRequest) SetTopAuthorizedHavanaId(v string) *UserQueryRequest {
+	s.TopAuthorizedHavanaId = &v
+	return s
+}
+
+func (s *UserQueryRequest) SetTopAuthorizedUserNick(v string) *UserQueryRequest {
+	s.TopAuthorizedUserNick = &v
+	return s
+}
+
+type UserQueryResponseBody struct {
+	RequestId  *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Module     *UserQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	ResultCode *int32                       `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string                      `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool                        `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s UserQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UserQueryResponseBody) SetRequestId(v string) *UserQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UserQueryResponseBody) SetModule(v *UserQueryResponseBodyModule) *UserQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *UserQueryResponseBody) SetResultCode(v int32) *UserQueryResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *UserQueryResponseBody) SetResultMsg(v string) *UserQueryResponseBody {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *UserQueryResponseBody) SetSuccess(v bool) *UserQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UserQueryResponseBody) SetTraceId(v string) *UserQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UserQueryResponseBodyModule struct {
+	HasMore   *bool                               `json:"has_more,omitempty" xml:"has_more,omitempty"`
+	Items     []*UserQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	PageToken *string                             `json:"page_token,omitempty" xml:"page_token,omitempty"`
+	Total     *int64                              `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s UserQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *UserQueryResponseBodyModule) SetHasMore(v bool) *UserQueryResponseBodyModule {
+	s.HasMore = &v
+	return s
+}
+
+func (s *UserQueryResponseBodyModule) SetItems(v []*UserQueryResponseBodyModuleItems) *UserQueryResponseBodyModule {
+	s.Items = v
+	return s
+}
+
+func (s *UserQueryResponseBodyModule) SetPageToken(v string) *UserQueryResponseBodyModule {
+	s.PageToken = &v
+	return s
+}
+
+func (s *UserQueryResponseBodyModule) SetTotal(v int64) *UserQueryResponseBodyModule {
+	s.Total = &v
+	return s
+}
+
+type UserQueryResponseBodyModuleItems struct {
+	EmployeeNick        *string `json:"employee_nick,omitempty" xml:"employee_nick,omitempty"`
+	ThirdPartEmployeeId *string `json:"third_part_employee_id,omitempty" xml:"third_part_employee_id,omitempty"`
+	ThirdPartJobNo      *string `json:"third_part_job_no,omitempty" xml:"third_part_job_no,omitempty"`
+}
+
+func (s UserQueryResponseBodyModuleItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserQueryResponseBodyModuleItems) GoString() string {
+	return s.String()
+}
+
+func (s *UserQueryResponseBodyModuleItems) SetEmployeeNick(v string) *UserQueryResponseBodyModuleItems {
+	s.EmployeeNick = &v
+	return s
+}
+
+func (s *UserQueryResponseBodyModuleItems) SetThirdPartEmployeeId(v string) *UserQueryResponseBodyModuleItems {
+	s.ThirdPartEmployeeId = &v
+	return s
+}
+
+func (s *UserQueryResponseBodyModuleItems) SetThirdPartJobNo(v string) *UserQueryResponseBodyModuleItems {
+	s.ThirdPartJobNo = &v
+	return s
+}
+
+type UserQueryResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UserQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UserQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UserQueryResponse) SetHeaders(v map[string]*string) *UserQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UserQueryResponse) SetStatusCode(v int32) *UserQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UserQueryResponse) SetBody(v *UserQueryResponseBody) *UserQueryResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -15503,8 +15690,8 @@ func (client *Client) EntityDeleteWithOptions(tmpReq *EntityDeleteRequest, heade
 		Action:      tea.String("EntityDelete"),
 		Version:     tea.String("2022-05-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/costcenter/v1/delete-entity"),
-		Method:      tea.String("DELETE"),
+		Pathname:    tea.String("/costcenter/v1/entity/action/delete"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("formData"),
@@ -16955,6 +17142,72 @@ func (client *Client) TrainOrderQueryWithOptions(request *TrainOrderQueryRequest
 		BodyType:    tea.String("json"),
 	}
 	_result = &TrainOrderQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UserQuery(request *UserQueryRequest) (_result *UserQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UserQueryResponse{}
+	_body, _err := client.UserQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UserQueryWithOptions(request *UserQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UserQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ModifiedTimeGreaterOrEqualThan)) {
+		query["modified_time_greater_or_equal_than"] = request.ModifiedTimeGreaterOrEqualThan
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartCorpId)) {
+		query["third_part_corp_id"] = request.ThirdPartCorpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartJobNo)) {
+		query["third_part_job_no"] = request.ThirdPartJobNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopAppKeyOwnerId)) {
+		query["top_app_key_owner_id"] = request.TopAppKeyOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopAuthorizedHavanaId)) {
+		query["top_authorized_havana_id"] = request.TopAuthorizedHavanaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopAuthorizedUserNick)) {
+		query["top_authorized_user_nick"] = request.TopAuthorizedUserNick
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UserQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/v1/user"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UserQueryResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
