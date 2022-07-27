@@ -13,13 +13,9 @@ import (
 )
 
 type AddRepositoryMemberRequest struct {
-	// Codeup访问令牌，使用AK/SK方式访问可以不用填AccessToken
-	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// 成员权限
-	AccessLevel *int32 `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
-	// 需要添加为代码库成员的用户阿里云ID。支持多个，以","分割
-	AliyunPks *string `json:"aliyunPks,omitempty" xml:"aliyunPks,omitempty"`
-	// 企业ID
+	AccessToken    *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	AccessLevel    *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AliyunPks      *string `json:"aliyunPks,omitempty" xml:"aliyunPks,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
 }
 
@@ -52,16 +48,11 @@ func (s *AddRepositoryMemberRequest) SetOrganizationId(v string) *AddRepositoryM
 }
 
 type AddRepositoryMemberResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回结果
-	Result []*AddRepositoryMemberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// 请求状态
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result       []*AddRepositoryMemberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddRepositoryMemberResponseBody) String() string {
@@ -98,18 +89,12 @@ func (s *AddRepositoryMemberResponseBody) SetSuccess(v bool) *AddRepositoryMembe
 }
 
 type AddRepositoryMemberResponseBodyResult struct {
-	// 权限类型
-	AccessLevel *int32 `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
-	// 头像地址
-	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	// 邮箱
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// 云效用户ID
+	AccessLevel  *int32  `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
+	AvatarUrl    *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	ExternUserId *string `json:"ExternUserId,omitempty" xml:"ExternUserId,omitempty"`
-	// Codeup用户Id
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 状态
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s AddRepositoryMemberResponseBodyResult) String() string {
@@ -180,23 +165,16 @@ func (s *AddRepositoryMemberResponse) SetBody(v *AddRepositoryMemberResponseBody
 }
 
 type AddWebhookRequest struct {
-	AccessToken    *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	// webhook描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 使用ssl认证
-	EnableSslVerification *bool `json:"enableSslVerification,omitempty" xml:"enableSslVerification,omitempty"`
-	// 合并请求事件
-	MergeRequestsEvents *bool `json:"mergeRequestsEvents,omitempty" xml:"mergeRequestsEvents,omitempty"`
-	// 评论事件
-	NoteEvents *bool `json:"noteEvents,omitempty" xml:"noteEvents,omitempty"`
-	// 分支推送事件
-	PushEvents  *bool   `json:"pushEvents,omitempty" xml:"pushEvents,omitempty"`
-	SecretToken *string `json:"secretToken,omitempty" xml:"secretToken,omitempty"`
-	// 标签推送事件
-	TagPushEvents *bool `json:"tagPushEvents,omitempty" xml:"tagPushEvents,omitempty"`
-	// hook url
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	AccessToken           *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	OrganizationId        *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	Description           *string `json:"description,omitempty" xml:"description,omitempty"`
+	EnableSslVerification *bool   `json:"enableSslVerification,omitempty" xml:"enableSslVerification,omitempty"`
+	MergeRequestsEvents   *bool   `json:"mergeRequestsEvents,omitempty" xml:"mergeRequestsEvents,omitempty"`
+	NoteEvents            *bool   `json:"noteEvents,omitempty" xml:"noteEvents,omitempty"`
+	PushEvents            *bool   `json:"pushEvents,omitempty" xml:"pushEvents,omitempty"`
+	SecretToken           *string `json:"secretToken,omitempty" xml:"secretToken,omitempty"`
+	TagPushEvents         *bool   `json:"tagPushEvents,omitempty" xml:"tagPushEvents,omitempty"`
+	Url                   *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s AddWebhookRequest) String() string {
@@ -440,15 +418,11 @@ func (s *CreateFlowTagRequest) SetName(v string) *CreateFlowTagRequest {
 }
 
 type CreateFlowTagResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateFlowTagResponseBody) String() string {
@@ -531,16 +505,11 @@ func (s *CreateFlowTagGroupRequest) SetName(v string) *CreateFlowTagGroupRequest
 }
 
 type CreateFlowTagGroupResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 标签分类
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateFlowTagGroupResponseBody) String() string {
@@ -680,9 +649,8 @@ type CreateHostGroupResponseBody struct {
 	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	HostGroupId  *int64  `json:"hostGroupId,omitempty" xml:"hostGroupId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateHostGroupResponseBody) String() string {
@@ -748,18 +716,12 @@ func (s *CreateHostGroupResponse) SetBody(v *CreateHostGroupResponseBody) *Creat
 }
 
 type CreateOAuthTokenRequest struct {
-	// clientId
-	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// client_secret
+	ClientId     *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
 	ClientSecret *string `json:"clientSecret,omitempty" xml:"clientSecret,omitempty"`
-	// 当前grantType=code时必传
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 授权类型：code，token
-	GrantType *string `json:"grantType,omitempty" xml:"grantType,omitempty"`
-	// code = token时必传
-	Login *string `json:"login,omitempty" xml:"login,omitempty"`
-	// 授权范围.例如：read:repo,write:repo
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	Code         *string `json:"code,omitempty" xml:"code,omitempty"`
+	GrantType    *string `json:"grantType,omitempty" xml:"grantType,omitempty"`
+	Login        *string `json:"login,omitempty" xml:"login,omitempty"`
+	Scope        *string `json:"scope,omitempty" xml:"scope,omitempty"`
 }
 
 func (s CreateOAuthTokenRequest) String() string {
@@ -801,8 +763,7 @@ func (s *CreateOAuthTokenRequest) SetScope(v string) *CreateOAuthTokenRequest {
 }
 
 type CreateOAuthTokenResponseBody struct {
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// Id of the request
+	ErrorCode    *string                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string                             `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	RequestId    *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result       *CreateOAuthTokenResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -942,16 +903,11 @@ func (s *CreateProjectRequest) SetTemplateIdentifier(v string) *CreateProjectReq
 }
 
 type CreateProjectResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 项目信息
-	Project *CreateProjectResponseBodyProject `json:"project,omitempty" xml:"project,omitempty" type:"Struct"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode *string                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                           `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	Project   *CreateProjectResponseBodyProject `json:"project,omitempty" xml:"project,omitempty" type:"Struct"`
+	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateProjectResponseBody) String() string {
@@ -988,38 +944,22 @@ func (s *CreateProjectResponseBody) SetSuccess(v bool) *CreateProjectResponseBod
 }
 
 type CreateProjectResponseBodyProject struct {
-	// 空间大类id
-	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
-	// 创建人id
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 自定义编号
-	CustomCode *string `json:"customCode,omitempty" xml:"customCode,omitempty"`
-	// 描述信息
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 图标
-	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	// 项目唯一标识符
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 项目状态
-	LogicalStatus *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
-	// 修改人
-	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// 项目名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 企业id
+	CategoryIdentifier     *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	Creator                *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	CustomCode             *string `json:"customCode,omitempty" xml:"customCode,omitempty"`
+	Description            *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate              *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified            *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Icon                   *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	Identifier             *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	LogicalStatus          *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	Modifier               *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name                   *string `json:"name,omitempty" xml:"name,omitempty"`
 	OrganizationIdentifier *string `json:"organizationIdentifier,omitempty" xml:"organizationIdentifier,omitempty"`
-	// 可见范围
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 状态id
-	StatusIdentifier *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
-	// 状态阶段
-	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
-	// 空间小类id
-	TypeIdentifier *string `json:"typeIdentifier,omitempty" xml:"typeIdentifier,omitempty"`
+	Scope                  *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	StatusIdentifier       *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
+	StatusStageIdentifier  *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	TypeIdentifier         *string `json:"typeIdentifier,omitempty" xml:"typeIdentifier,omitempty"`
 }
 
 func (s CreateProjectResponseBodyProject) String() string {
@@ -1140,43 +1080,27 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 }
 
 type CreateRepositoryRequest struct {
-	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
-	// 代码库头像地址
-	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
-	// 代码库描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// gitignore模板类型
-	GitignoreType *string `json:"gitignoreType,omitempty" xml:"gitignoreType,omitempty"`
-	// 导入时使用的账号
-	ImportAccount *string `json:"importAccount,omitempty" xml:"importAccount,omitempty"`
-	// 使用使用demo库内容进行初始化
-	ImportDemoProject *bool `json:"importDemoProject,omitempty" xml:"importDemoProject,omitempty"`
-	// 导入代码库类型 (GIT: Git库, SVN: SVN库)
-	ImportRepoType *string `json:"importRepoType,omitempty" xml:"importRepoType,omitempty"`
-	// 导入时账号的token
-	ImportToken *string `json:"importToken,omitempty" xml:"importToken,omitempty"`
-	// import_token字段的传输格式，使用明文或rsa加密
+	AccessToken          *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	AvatarUrl            *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Description          *string `json:"description,omitempty" xml:"description,omitempty"`
+	GitignoreType        *string `json:"gitignoreType,omitempty" xml:"gitignoreType,omitempty"`
+	ImportAccount        *string `json:"importAccount,omitempty" xml:"importAccount,omitempty"`
+	ImportDemoProject    *bool   `json:"importDemoProject,omitempty" xml:"importDemoProject,omitempty"`
+	ImportRepoType       *string `json:"importRepoType,omitempty" xml:"importRepoType,omitempty"`
+	ImportToken          *string `json:"importToken,omitempty" xml:"importToken,omitempty"`
 	ImportTokenEncrypted *string `json:"importTokenEncrypted,omitempty" xml:"importTokenEncrypted,omitempty"`
-	// 导入地址（http协议地址）
-	ImportUrl *string `json:"importUrl,omitempty" xml:"importUrl,omitempty"`
-	// 初始化标准智能化服务
-	InitStandardService *bool `json:"initStandardService,omitempty" xml:"initStandardService,omitempty"`
-	// 是否启用加密
-	IsCryptoEnabled *bool `json:"isCryptoEnabled,omitempty" xml:"isCryptoEnabled,omitempty"`
-	// 本地导入代码库的远程地址
-	LocalImportUrl *string `json:"localImportUrl,omitempty" xml:"localImportUrl,omitempty"`
-	// 代码库名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 代码库父路径id
-	NamespaceId *int64 `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
-	// 代码库路径
-	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 自动创建readme类型 (EMPTY: 仅创建README.md, USER_GUIDE: 包含新手引导)
-	ReadmeType       *string `json:"readmeType,omitempty" xml:"readmeType,omitempty"`
-	VisibilityLevel  *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
-	CreateParentPath *bool   `json:"createParentPath,omitempty" xml:"createParentPath,omitempty"`
-	OrganizationId   *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
-	Sync             *bool   `json:"sync,omitempty" xml:"sync,omitempty"`
+	ImportUrl            *string `json:"importUrl,omitempty" xml:"importUrl,omitempty"`
+	InitStandardService  *bool   `json:"initStandardService,omitempty" xml:"initStandardService,omitempty"`
+	IsCryptoEnabled      *bool   `json:"isCryptoEnabled,omitempty" xml:"isCryptoEnabled,omitempty"`
+	LocalImportUrl       *string `json:"localImportUrl,omitempty" xml:"localImportUrl,omitempty"`
+	Name                 *string `json:"name,omitempty" xml:"name,omitempty"`
+	NamespaceId          *int64  `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	Path                 *string `json:"path,omitempty" xml:"path,omitempty"`
+	ReadmeType           *string `json:"readmeType,omitempty" xml:"readmeType,omitempty"`
+	VisibilityLevel      *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	CreateParentPath     *bool   `json:"createParentPath,omitempty" xml:"createParentPath,omitempty"`
+	OrganizationId       *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Sync                 *bool   `json:"sync,omitempty" xml:"sync,omitempty"`
 }
 
 func (s CreateRepositoryRequest) String() string {
@@ -1293,15 +1217,11 @@ func (s *CreateRepositoryRequest) SetSync(v bool) *CreateRepositoryRequest {
 }
 
 type CreateRepositoryResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求ID
-	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *CreateRepositoryResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
-	// 调用是否成功
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode    *string                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                             `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CreateRepositoryResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                               `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateRepositoryResponseBody) String() string {
@@ -1338,44 +1258,25 @@ func (s *CreateRepositoryResponseBody) SetSuccess(v bool) *CreateRepositoryRespo
 }
 
 type CreateRepositoryResponseBodyResult struct {
-	// 从SVN导入
-	ImportFromSvn *bool `json:"Import_from_svn,omitempty" xml:"Import_from_svn,omitempty"`
-	// 归档标识
-	Archived *bool `json:"archived,omitempty" xml:"archived,omitempty"`
-	// 代码库头像地址
-	AvatarUrl *string `json:"avatar_url,omitempty" xml:"avatar_url,omitempty"`
-	// 创建时间
-	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 创建者id
-	CreatorId *int64 `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// 默认分支
-	DefaultBranch *string `json:"defaultBranch,omitempty" xml:"defaultBranch,omitempty"`
-	// demo库标识
-	DemoProject *bool `json:"demoProject,omitempty" xml:"demoProject,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// http地址
-	HttpUrlToRepo *string `json:"httpUrlToRepo,omitempty" xml:"httpUrlToRepo,omitempty"`
-	// id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 最后活跃时间
-	LastActivityAt *string `json:"lastActivityAt,omitempty" xml:"lastActivityAt,omitempty"`
-	// 名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 名称（含父路径）
-	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
-	// 父路径信息
-	Namespace *CreateRepositoryResponseBodyResultNamespace `json:"namespace,omitempty" xml:"namespace,omitempty" type:"Struct"`
-	// 路径
-	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 路径（含父路径）
-	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
-	// ssh地址
-	SshUrlToRepo *string `json:"sshUrlToRepo,omitempty" xml:"sshUrlToRepo,omitempty"`
-	// 可见性。0：私有，10：内部公开
-	VisibilityLevel *string `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
-	// web url
-	WebUrl *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+	ImportFromSvn     *bool                                        `json:"Import_from_svn,omitempty" xml:"Import_from_svn,omitempty"`
+	Archived          *bool                                        `json:"archived,omitempty" xml:"archived,omitempty"`
+	AvatarUrl         *string                                      `json:"avatar_url,omitempty" xml:"avatar_url,omitempty"`
+	CreatedAt         *string                                      `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatorId         *int64                                       `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	DefaultBranch     *string                                      `json:"defaultBranch,omitempty" xml:"defaultBranch,omitempty"`
+	DemoProject       *bool                                        `json:"demoProject,omitempty" xml:"demoProject,omitempty"`
+	Description       *string                                      `json:"description,omitempty" xml:"description,omitempty"`
+	HttpUrlToRepo     *string                                      `json:"httpUrlToRepo,omitempty" xml:"httpUrlToRepo,omitempty"`
+	Id                *int64                                       `json:"id,omitempty" xml:"id,omitempty"`
+	LastActivityAt    *string                                      `json:"lastActivityAt,omitempty" xml:"lastActivityAt,omitempty"`
+	Name              *string                                      `json:"name,omitempty" xml:"name,omitempty"`
+	NameWithNamespace *string                                      `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	Namespace         *CreateRepositoryResponseBodyResultNamespace `json:"namespace,omitempty" xml:"namespace,omitempty" type:"Struct"`
+	Path              *string                                      `json:"path,omitempty" xml:"path,omitempty"`
+	PathWithNamespace *string                                      `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	SshUrlToRepo      *string                                      `json:"sshUrlToRepo,omitempty" xml:"sshUrlToRepo,omitempty"`
+	VisibilityLevel   *string                                      `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	WebUrl            *string                                      `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
 }
 
 func (s CreateRepositoryResponseBodyResult) String() string {
@@ -1482,25 +1383,15 @@ func (s *CreateRepositoryResponseBodyResult) SetWebUrl(v string) *CreateReposito
 }
 
 type CreateRepositoryResponseBodyResultNamespace struct {
-	// 头像地址
-	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	// 创建时间
-	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 归属者id
-	OwnerId *int64 `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
-	// 路径
-	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 公开性
-	Public *bool `json:"public,omitempty" xml:"public,omitempty"`
-	// 更新时间
-	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// 可见性。0：私有，10：内部公开
+	Avatar          *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	CreatedAt       *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id              *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	OwnerId         *int64  `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	Path            *string `json:"path,omitempty" xml:"path,omitempty"`
+	Public          *bool   `json:"public,omitempty" xml:"public,omitempty"`
+	UpdatedAt       *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 	VisibilityLevel *string `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
 }
 
@@ -1592,10 +1483,8 @@ func (s *CreateRepositoryResponse) SetBody(v *CreateRepositoryResponseBody) *Cre
 }
 
 type CreateResourceMemberRequest struct {
-	// 用户id
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// 角色部署组 deployGroup   user  成员，使用权限   admin 管理员，使用编辑权限 流水线 pipeline   admin 查看、运行、编辑权限   member  运行权限   viewer 查看权限
-	RoleName *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
+	RoleName  *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
 }
 
 func (s CreateResourceMemberRequest) String() string {
@@ -1617,14 +1506,10 @@ func (s *CreateResourceMemberRequest) SetRoleName(v string) *CreateResourceMembe
 }
 
 type CreateResourceMemberResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateResourceMemberResponseBody) String() string {
@@ -1685,16 +1570,11 @@ func (s *CreateResourceMemberResponse) SetBody(v *CreateResourceMemberResponseBo
 }
 
 type CreateSprintRequest struct {
-	// 结束时间
-	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// 迭代名
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 项目id
-	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 负责人列表
-	StaffIds []*string `json:"staffIds,omitempty" xml:"staffIds,omitempty" type:"Repeated"`
-	// 开始时间
-	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	EndDate         *string   `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	Name            *string   `json:"name,omitempty" xml:"name,omitempty"`
+	SpaceIdentifier *string   `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	StaffIds        []*string `json:"staffIds,omitempty" xml:"staffIds,omitempty" type:"Repeated"`
+	StartDate       *string   `json:"startDate,omitempty" xml:"startDate,omitempty"`
 }
 
 func (s CreateSprintRequest) String() string {
@@ -1731,16 +1611,11 @@ func (s *CreateSprintRequest) SetStartDate(v string) *CreateSprintRequest {
 }
 
 type CreateSprintResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 迭代信息
-	Sprint *CreateSprintResponseBodySprint `json:"sprint,omitempty" xml:"sprint,omitempty" type:"Struct"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode *string                         `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                         `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	RequestId *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Sprint    *CreateSprintResponseBodySprint `json:"sprint,omitempty" xml:"sprint,omitempty" type:"Struct"`
+	Success   *bool                           `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateSprintResponseBody) String() string {
@@ -1777,30 +1652,18 @@ func (s *CreateSprintResponseBody) SetSuccess(v bool) *CreateSprintResponseBody 
 }
 
 type CreateSprintResponseBodySprint struct {
-	// 创建人id
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 描述信息
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 结束时间
-	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 迭代唯一标识符
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 修改人
-	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// 迭代名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 可见范围
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 项目id
+	Creator         *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	EndDate         *int64  `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	GmtCreate       *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified     *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier      *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Modifier        *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	Scope           *string `json:"scope,omitempty" xml:"scope,omitempty"`
 	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 开始时间
-	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	// 状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	StartDate       *int64  `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s CreateSprintResponseBodySprint) String() string {
@@ -1901,16 +1764,11 @@ func (s *CreateSprintResponse) SetBody(v *CreateSprintResponseBody) *CreateSprin
 }
 
 type CreateSshKeyResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 企业公钥
-	SshKey *CreateSshKeyResponseBodySshKey `json:"sshKey,omitempty" xml:"sshKey,omitempty" type:"Struct"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode    *string                         `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                         `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SshKey       *CreateSshKeyResponseBodySshKey `json:"sshKey,omitempty" xml:"sshKey,omitempty" type:"Struct"`
+	Success      *bool                           `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateSshKeyResponseBody) String() string {
@@ -1947,9 +1805,7 @@ func (s *CreateSshKeyResponseBody) SetSuccess(v bool) *CreateSshKeyResponseBody 
 }
 
 type CreateSshKeyResponseBodySshKey struct {
-	// 企业公钥id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 企业公钥
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	PublicKey *string `json:"publicKey,omitempty" xml:"publicKey,omitempty"`
 }
 
@@ -2001,12 +1857,9 @@ func (s *CreateSshKeyResponse) SetBody(v *CreateSshKeyResponseBody) *CreateSshKe
 }
 
 type CreateVariableGroupRequest struct {
-	// 变量组描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 变量组名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 变量信息json字符串 isEncrypted 是否加密 name 变量名称 value 变量值
-	Variables *string `json:"variables,omitempty" xml:"variables,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Variables   *string `json:"variables,omitempty" xml:"variables,omitempty"`
 }
 
 func (s CreateVariableGroupRequest) String() string {
@@ -2033,16 +1886,11 @@ func (s *CreateVariableGroupRequest) SetVariables(v string) *CreateVariableGroup
 }
 
 type CreateVariableGroupResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 新建的变量组id
-	VariableGroupId *int64 `json:"variableGroupId,omitempty" xml:"variableGroupId,omitempty"`
+	ErrorCode       *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage    *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success         *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	VariableGroupId *int64  `json:"variableGroupId,omitempty" xml:"variableGroupId,omitempty"`
 }
 
 func (s CreateVariableGroupResponseBody) String() string {
@@ -2108,36 +1956,21 @@ func (s *CreateVariableGroupResponse) SetBody(v *CreateVariableGroupResponseBody
 }
 
 type CreateWorkitemRequest struct {
-	// 工作项负责人的account id，或者企业中的用户名
-	AssignedTo *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
-	// 工作项的类型id，比如：Bug、Task对应id
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// 工作项内容
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 内容格式
-	DescriptionFormat *string `json:"descriptionFormat,omitempty" xml:"descriptionFormat,omitempty"`
-	// 自定义字段
-	FieldValueList []*CreateWorkitemRequestFieldValueList `json:"fieldValueList,omitempty" xml:"fieldValueList,omitempty" type:"Repeated"`
-	// 所属父工作项的唯一标识
-	Parent *string `json:"parent,omitempty" xml:"parent,omitempty"`
-	// 参与人account id列表，或者企业名称列表
-	Participant []*string `json:"participant,omitempty" xml:"participant,omitempty" type:"Repeated"`
-	// 项目id
-	Space *string `json:"space,omitempty" xml:"space,omitempty"`
-	// 项目id
-	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 资源类型
-	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
-	// 要关联迭代
-	Sprint []*string `json:"sprint,omitempty" xml:"sprint,omitempty" type:"Repeated"`
-	// 标题
-	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// 抄送人account id列表
-	Tracker []*string `json:"tracker,omitempty" xml:"tracker,omitempty" type:"Repeated"`
-	// 验证者account id列表，或者企业名称列表
-	Verifier []*string `json:"verifier,omitempty" xml:"verifier,omitempty" type:"Repeated"`
-	// 工作项小类型id
-	WorkitemType *string `json:"workitemType,omitempty" xml:"workitemType,omitempty"`
+	AssignedTo        *string                                `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
+	Category          *string                                `json:"category,omitempty" xml:"category,omitempty"`
+	Description       *string                                `json:"description,omitempty" xml:"description,omitempty"`
+	DescriptionFormat *string                                `json:"descriptionFormat,omitempty" xml:"descriptionFormat,omitempty"`
+	FieldValueList    []*CreateWorkitemRequestFieldValueList `json:"fieldValueList,omitempty" xml:"fieldValueList,omitempty" type:"Repeated"`
+	Parent            *string                                `json:"parent,omitempty" xml:"parent,omitempty"`
+	Participant       []*string                              `json:"participant,omitempty" xml:"participant,omitempty" type:"Repeated"`
+	Space             *string                                `json:"space,omitempty" xml:"space,omitempty"`
+	SpaceIdentifier   *string                                `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	SpaceType         *string                                `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	Sprint            []*string                              `json:"sprint,omitempty" xml:"sprint,omitempty" type:"Repeated"`
+	Subject           *string                                `json:"subject,omitempty" xml:"subject,omitempty"`
+	Tracker           []*string                              `json:"tracker,omitempty" xml:"tracker,omitempty" type:"Repeated"`
+	Verifier          []*string                              `json:"verifier,omitempty" xml:"verifier,omitempty" type:"Repeated"`
+	WorkitemType      *string                                `json:"workitemType,omitempty" xml:"workitemType,omitempty"`
 }
 
 func (s CreateWorkitemRequest) String() string {
@@ -2224,11 +2057,8 @@ func (s *CreateWorkitemRequest) SetWorkitemType(v string) *CreateWorkitemRequest
 }
 
 type CreateWorkitemRequestFieldValueList struct {
-	// 字段唯一标识
-	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
-	// 字段值，写入时使用
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// 工作项的唯一标识
+	FieldIdentifier    *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	Value              *string `json:"value,omitempty" xml:"value,omitempty"`
 	WorkitemIdentifier *string `json:"workitemIdentifier,omitempty" xml:"workitemIdentifier,omitempty"`
 }
 
@@ -2256,16 +2086,11 @@ func (s *CreateWorkitemRequestFieldValueList) SetWorkitemIdentifier(v string) *C
 }
 
 type CreateWorkitemResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 工作项信息
-	Workitem *CreateWorkitemResponseBodyWorkitem `json:"workitem,omitempty" xml:"workitem,omitempty" type:"Struct"`
+	ErrorCode *string                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                             `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	Workitem  *CreateWorkitemResponseBodyWorkitem `json:"workitem,omitempty" xml:"workitem,omitempty" type:"Struct"`
 }
 
 func (s CreateWorkitemResponseBody) String() string {
@@ -2302,47 +2127,26 @@ func (s *CreateWorkitemResponseBody) SetWorkitem(v *CreateWorkitemResponseBodyWo
 }
 
 type CreateWorkitemResponseBodyWorkitem struct {
-	// 负责人
-	AssignedTo *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
-	// 工作项的类型id
-	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
-	// 创建人
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 工作项内容
-	Document *string `json:"document,omitempty" xml:"document,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 工作项唯一标识
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 逻辑状态
-	LogicalStatus *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
-	// 修改人
-	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// 父工作项id
-	ParentIdentifier *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
-	// 编号
-	SerialNumber *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
-	// 所属项目id
-	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 所属项目名称
-	SpaceName *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
-	// 项目类型
-	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
-	// 迭代的id
-	SprintIdentifier *string `json:"sprintIdentifier,omitempty" xml:"sprintIdentifier,omitempty"`
-	// 状态名称
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 状态唯一标识id
-	StatusIdentifier *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
-	// 状态阶段id
-	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
-	// 工作项标题
-	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// 状态更新时间
-	UpdateStatusAt *int64 `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
-	// 工作项类型id
+	AssignedTo             *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
+	CategoryIdentifier     *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	Creator                *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Document               *string `json:"document,omitempty" xml:"document,omitempty"`
+	GmtCreate              *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified            *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier             *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	LogicalStatus          *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	Modifier               *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	ParentIdentifier       *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	SerialNumber           *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
+	SpaceIdentifier        *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	SpaceName              *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
+	SpaceType              *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	SprintIdentifier       *string `json:"sprintIdentifier,omitempty" xml:"sprintIdentifier,omitempty"`
+	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
+	StatusIdentifier       *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
+	StatusStageIdentifier  *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	Subject                *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	UpdateStatusAt         *int64  `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
 	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
 }
 
@@ -2489,22 +2293,14 @@ func (s *CreateWorkitemResponse) SetBody(v *CreateWorkitemResponseBody) *CreateW
 }
 
 type CreateWorkspaceRequest struct {
-	// 代码来源URL（当前仅支持云效 Codeup 来源）
-	CodeUrl *string `json:"codeUrl,omitempty" xml:"codeUrl,omitempty"`
-	// 代码版本，支持 commitSHA、分支、标签
-	CodeVersion *string `json:"codeVersion,omitempty" xml:"codeVersion,omitempty"`
-	// 打开空间默认打开的文件相对路径
-	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
-	// 工作空间名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求来源（用于统计，云产品集成时需要传入）
-	RequestFrom *string `json:"requestFrom,omitempty" xml:"requestFrom,omitempty"`
-	// 资源标识，提供给非标代码源作为空间复用的唯一标识
+	CodeUrl            *string `json:"codeUrl,omitempty" xml:"codeUrl,omitempty"`
+	CodeVersion        *string `json:"codeVersion,omitempty" xml:"codeVersion,omitempty"`
+	FilePath           *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
+	RequestFrom        *string `json:"requestFrom,omitempty" xml:"requestFrom,omitempty"`
 	ResourceIdentifier *string `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty"`
-	// 工作空间复用标识，按照"用户+技术栈+代码地址+版本"进行复用 true - 复用 false - 不复用，每次均为新创建
-	Reuse *bool `json:"reuse,omitempty" xml:"reuse,omitempty"`
-	// 技术栈
-	WorkspaceTemplate *string `json:"workspaceTemplate,omitempty" xml:"workspaceTemplate,omitempty"`
+	Reuse              *bool   `json:"reuse,omitempty" xml:"reuse,omitempty"`
+	WorkspaceTemplate  *string `json:"workspaceTemplate,omitempty" xml:"workspaceTemplate,omitempty"`
 }
 
 func (s CreateWorkspaceRequest) String() string {
@@ -2556,16 +2352,11 @@ func (s *CreateWorkspaceRequest) SetWorkspaceTemplate(v string) *CreateWorkspace
 }
 
 type CreateWorkspaceResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 请求是否成功
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 工作空间信息
-	Workspace *CreateWorkspaceResponseBodyWorkspace `json:"workspace,omitempty" xml:"workspace,omitempty" type:"Struct"`
+	ErrorCode    *string                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	Workspace    *CreateWorkspaceResponseBodyWorkspace `json:"workspace,omitempty" xml:"workspace,omitempty" type:"Struct"`
 }
 
 func (s CreateWorkspaceResponseBody) String() string {
@@ -2602,18 +2393,12 @@ func (s *CreateWorkspaceResponseBody) SetWorkspace(v *CreateWorkspaceResponseBod
 }
 
 type CreateWorkspaceResponseBodyWorkspace struct {
-	// 创建时间戳
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 创建者，阿里云PK
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 工作空间唯一标识，字符串形式，可在云效DevStudio访问空间链接中获取
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 工作空间名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 空间状态，枚举：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 工作空间模板
-	Template *string `json:"template,omitempty" xml:"template,omitempty"`
+	Creator    *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Id         *string `json:"id,omitempty" xml:"id,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	Template   *string `json:"template,omitempty" xml:"template,omitempty"`
 }
 
 func (s CreateWorkspaceResponseBodyWorkspace) String() string {
@@ -2684,14 +2469,10 @@ func (s *CreateWorkspaceResponse) SetBody(v *CreateWorkspaceResponseBody) *Creat
 }
 
 type DeleteFlowTagResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteFlowTagResponseBody) String() string {
@@ -2752,14 +2533,10 @@ func (s *DeleteFlowTagResponse) SetBody(v *DeleteFlowTagResponseBody) *DeleteFlo
 }
 
 type DeleteFlowTagGroupResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteFlowTagGroupResponseBody) String() string {
@@ -2820,14 +2597,10 @@ func (s *DeleteFlowTagGroupResponse) SetBody(v *DeleteFlowTagGroupResponseBody) 
 }
 
 type DeleteHostGroupResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteHostGroupResponseBody) String() string {
@@ -2888,14 +2661,10 @@ func (s *DeleteHostGroupResponse) SetBody(v *DeleteHostGroupResponseBody) *Delet
 }
 
 type DeletePipelineResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeletePipelineResponseBody) String() string {
@@ -2973,16 +2742,11 @@ func (s *DeleteProjectRequest) SetIdentifier(v string) *DeleteProjectRequest {
 }
 
 type DeleteProjectResponseBody struct {
-	// 错误码
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
+	ErrorMsg  *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Result    *bool   `json:"result,omitempty" xml:"result,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteProjectResponseBody) String() string {
@@ -3048,14 +2812,10 @@ func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeletePro
 }
 
 type DeleteResourceMemberResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteResourceMemberResponseBody) String() string {
@@ -3116,14 +2876,10 @@ func (s *DeleteResourceMemberResponse) SetBody(v *DeleteResourceMemberResponseBo
 }
 
 type DeleteVariableGroupResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteVariableGroupResponseBody) String() string {
@@ -3184,14 +2940,10 @@ func (s *DeleteVariableGroupResponse) SetBody(v *DeleteVariableGroupResponseBody
 }
 
 type FrozenWorkspaceResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 请求是否成功
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s FrozenWorkspaceResponseBody) String() string {
@@ -3392,11 +3144,8 @@ func (s *GetCodeupOrganizationResponse) SetBody(v *GetCodeupOrganizationResponse
 }
 
 type GetCustomFieldOptionRequest struct {
-	// 项目id
-	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 类型
-	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
-	// 工作项类型id
+	SpaceIdentifier        *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	SpaceType              *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
 	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
 }
 
@@ -3424,16 +3173,11 @@ func (s *GetCustomFieldOptionRequest) SetWorkitemTypeIdentifier(v string) *GetCu
 }
 
 type GetCustomFieldOptionResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 字段值信息
-	Fileds []*GetCustomFieldOptionResponseBodyFileds `json:"fileds,omitempty" xml:"fileds,omitempty" type:"Repeated"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode *string                                   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                                   `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	Fileds    []*GetCustomFieldOptionResponseBodyFileds `json:"fileds,omitempty" xml:"fileds,omitempty" type:"Repeated"`
+	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetCustomFieldOptionResponseBody) String() string {
@@ -3470,20 +3214,13 @@ func (s *GetCustomFieldOptionResponseBody) SetSuccess(v bool) *GetCustomFieldOpt
 }
 
 type GetCustomFieldOptionResponseBodyFileds struct {
-	// 展示的值
-	DisplayValue *string `json:"displayValue,omitempty" xml:"displayValue,omitempty"`
-	// 字段唯一标识
+	DisplayValue    *string `json:"displayValue,omitempty" xml:"displayValue,omitempty"`
 	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
-	// 迭代唯一标识符
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 展示级别，数字范围1~9，数字越大，颜色越浅
-	Level *int64 `json:"level,omitempty" xml:"level,omitempty"`
-	// 待选值顺序
-	Position *int64 `json:"position,omitempty" xml:"position,omitempty"`
-	// 字段中文名称
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// 字段英文名称
-	ValueEn *string `json:"valueEn,omitempty" xml:"valueEn,omitempty"`
+	Identifier      *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Level           *int64  `json:"level,omitempty" xml:"level,omitempty"`
+	Position        *int64  `json:"position,omitempty" xml:"position,omitempty"`
+	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueEn         *string `json:"valueEn,omitempty" xml:"valueEn,omitempty"`
 }
 
 func (s GetCustomFieldOptionResponseBodyFileds) String() string {
@@ -3559,14 +3296,10 @@ func (s *GetCustomFieldOptionResponse) SetBody(v *GetCustomFieldOptionResponseBo
 }
 
 type GetFileLastCommitRequest struct {
-	// 个人访问令牌
-	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
-	// 文件路径
-	Filepath *string `json:"filepath,omitempty" xml:"filepath,omitempty"`
-	// 云效企业ID
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Filepath       *string `json:"filepath,omitempty" xml:"filepath,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
-	// 分支名称、标签名称或Commit ID
-	Sha *string `json:"sha,omitempty" xml:"sha,omitempty"`
+	Sha            *string `json:"sha,omitempty" xml:"sha,omitempty"`
 }
 
 func (s GetFileLastCommitRequest) String() string {
@@ -3598,16 +3331,11 @@ func (s *GetFileLastCommitRequest) SetSha(v string) *GetFileLastCommitRequest {
 }
 
 type GetFileLastCommitResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 响应结果
-	Result *GetFileLastCommitResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// 请求结果
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result       *GetFileLastCommitResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success      *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetFileLastCommitResponseBody) String() string {
@@ -3644,32 +3372,19 @@ func (s *GetFileLastCommitResponseBody) SetSuccess(v bool) *GetFileLastCommitRes
 }
 
 type GetFileLastCommitResponseBodyResult struct {
-	// 作者提交时间
-	AuthorDate *string `json:"AuthorDate,omitempty" xml:"AuthorDate,omitempty"`
-	// 提交者邮箱
-	AuthorEmail *string `json:"AuthorEmail,omitempty" xml:"AuthorEmail,omitempty"`
-	// 作者姓名
-	AuthorName *string `json:"AuthorName,omitempty" xml:"AuthorName,omitempty"`
-	// 提交者提交时间
-	CommittedDate *string `json:"CommittedDate,omitempty" xml:"CommittedDate,omitempty"`
-	// 提交者邮箱
-	CommitterEmail *string `json:"CommitterEmail,omitempty" xml:"CommitterEmail,omitempty"`
-	// 提交者姓名
-	CommitterName *string `json:"CommitterName,omitempty" xml:"CommitterName,omitempty"`
-	// 创建时间
-	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// Commit ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 提交内容
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 父提交ID
-	ParentIds []*string `json:"ParentIds,omitempty" xml:"ParentIds,omitempty" type:"Repeated"`
-	// Commit短ID
-	ShortId *string `json:"ShortId,omitempty" xml:"ShortId,omitempty"`
-	// 签名
-	Signature *GetFileLastCommitResponseBodyResultSignature `json:"Signature,omitempty" xml:"Signature,omitempty" type:"Struct"`
-	// 标题，提交的第一行内容
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	AuthorDate     *string                                       `json:"AuthorDate,omitempty" xml:"AuthorDate,omitempty"`
+	AuthorEmail    *string                                       `json:"AuthorEmail,omitempty" xml:"AuthorEmail,omitempty"`
+	AuthorName     *string                                       `json:"AuthorName,omitempty" xml:"AuthorName,omitempty"`
+	CommittedDate  *string                                       `json:"CommittedDate,omitempty" xml:"CommittedDate,omitempty"`
+	CommitterEmail *string                                       `json:"CommitterEmail,omitempty" xml:"CommitterEmail,omitempty"`
+	CommitterName  *string                                       `json:"CommitterName,omitempty" xml:"CommitterName,omitempty"`
+	CreatedAt      *string                                       `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	Id             *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	ParentIds      []*string                                     `json:"ParentIds,omitempty" xml:"ParentIds,omitempty" type:"Repeated"`
+	ShortId        *string                                       `json:"ShortId,omitempty" xml:"ShortId,omitempty"`
+	Signature      *GetFileLastCommitResponseBodyResultSignature `json:"Signature,omitempty" xml:"Signature,omitempty" type:"Struct"`
+	Title          *string                                       `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetFileLastCommitResponseBodyResult) String() string {
@@ -3746,9 +3461,7 @@ func (s *GetFileLastCommitResponseBodyResult) SetTitle(v string) *GetFileLastCom
 }
 
 type GetFileLastCommitResponseBodyResultSignature struct {
-	// GPG密钥ID
-	GpgKeyId *string `json:"GpgKeyId,omitempty" xml:"GpgKeyId,omitempty"`
-	// 验证状态
+	GpgKeyId           *string `json:"GpgKeyId,omitempty" xml:"GpgKeyId,omitempty"`
 	VerificationStatus *string `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
 }
 
@@ -3800,15 +3513,11 @@ func (s *GetFileLastCommitResponse) SetBody(v *GetFileLastCommitResponseBody) *G
 }
 
 type GetFlowTagGroupResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	FlowTagGroup *GetFlowTagGroupResponseBodyFlowTagGroup `json:"flowTagGroup,omitempty" xml:"flowTagGroup,omitempty" type:"Struct"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetFlowTagGroupResponseBody) String() string {
@@ -3956,15 +3665,11 @@ func (s *GetFlowTagGroupResponse) SetBody(v *GetFlowTagGroupResponseBody) *GetFl
 }
 
 type GetHostGroupResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string                            `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string                            `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	HostGroup    *GetHostGroupResponseBodyHostGroup `json:"hostGroup,omitempty" xml:"hostGroup,omitempty" type:"Struct"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                              `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetHostGroupResponseBody) String() string {
@@ -4196,16 +3901,11 @@ func (s *GetHostGroupResponse) SetBody(v *GetHostGroupResponseBody) *GetHostGrou
 }
 
 type GetOrganizationMemberResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 成员
-	Member *GetOrganizationMemberResponseBodyMember `json:"member,omitempty" xml:"member,omitempty" type:"Struct"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode    *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Member       *GetOrganizationMemberResponseBodyMember `json:"member,omitempty" xml:"member,omitempty" type:"Struct"`
+	RequestId    *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetOrganizationMemberResponseBody) String() string {
@@ -4242,32 +3942,19 @@ func (s *GetOrganizationMemberResponseBody) SetSuccess(v bool) *GetOrganizationM
 }
 
 type GetOrganizationMemberResponseBodyMember struct {
-	// 阿里云用户PK
-	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// 生日
-	Birthday *int64 `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	// 部门名称列表
-	DeptLists []*string `json:"deptLists,omitempty" xml:"deptLists,omitempty" type:"Repeated"`
-	// 邮箱
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// 入职时间
-	HiredDate *int64 `json:"hiredDate,omitempty" xml:"hiredDate,omitempty"`
-	// 第三方信息
-	Identities *GetOrganizationMemberResponseBodyMemberIdentities `json:"identities,omitempty" xml:"identities,omitempty" type:"Struct"`
-	// 加入云效企业时间
-	JoinTime *int64 `json:"joinTime,omitempty" xml:"joinTime,omitempty"`
-	// 最近一次访问时间
-	LastVisitTime *int64 `json:"lastVisitTime,omitempty" xml:"lastVisitTime,omitempty"`
-	// 手机号
-	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
-	// 企业成员名
-	OrganizationMemberName *string `json:"organizationMemberName,omitempty" xml:"organizationMemberName,omitempty"`
-	// 企业角色Id
-	OrganizationRoleId *string `json:"organizationRoleId,omitempty" xml:"organizationRoleId,omitempty"`
-	// 企业角色名字
-	OrganizationRoleName *string `json:"organizationRoleName,omitempty" xml:"organizationRoleName,omitempty"`
-	// 用户状态
-	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	AccountId              *string                                            `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	Birthday               *int64                                             `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	DeptLists              []*string                                          `json:"deptLists,omitempty" xml:"deptLists,omitempty" type:"Repeated"`
+	Email                  *string                                            `json:"email,omitempty" xml:"email,omitempty"`
+	HiredDate              *int64                                             `json:"hiredDate,omitempty" xml:"hiredDate,omitempty"`
+	Identities             *GetOrganizationMemberResponseBodyMemberIdentities `json:"identities,omitempty" xml:"identities,omitempty" type:"Struct"`
+	JoinTime               *int64                                             `json:"joinTime,omitempty" xml:"joinTime,omitempty"`
+	LastVisitTime          *int64                                             `json:"lastVisitTime,omitempty" xml:"lastVisitTime,omitempty"`
+	Mobile                 *string                                            `json:"mobile,omitempty" xml:"mobile,omitempty"`
+	OrganizationMemberName *string                                            `json:"organizationMemberName,omitempty" xml:"organizationMemberName,omitempty"`
+	OrganizationRoleId     *string                                            `json:"organizationRoleId,omitempty" xml:"organizationRoleId,omitempty"`
+	OrganizationRoleName   *string                                            `json:"organizationRoleName,omitempty" xml:"organizationRoleName,omitempty"`
+	State                  *string                                            `json:"state,omitempty" xml:"state,omitempty"`
 }
 
 func (s GetOrganizationMemberResponseBodyMember) String() string {
@@ -4344,10 +4031,8 @@ func (s *GetOrganizationMemberResponseBodyMember) SetState(v string) *GetOrganiz
 }
 
 type GetOrganizationMemberResponseBodyMemberIdentities struct {
-	// 第三方系统的用户 id
 	ExternUid *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
-	// 第三方系统
-	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	Provider  *string `json:"provider,omitempty" xml:"provider,omitempty"`
 }
 
 func (s GetOrganizationMemberResponseBodyMemberIdentities) String() string {
@@ -4398,16 +4083,11 @@ func (s *GetOrganizationMemberResponse) SetBody(v *GetOrganizationMemberResponse
 }
 
 type GetPipelineResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 流水线
-	Pipeline *GetPipelineResponseBodyPipeline `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode    *string                          `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                          `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Pipeline     *GetPipelineResponseBodyPipeline `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
+	RequestId    *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                            `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetPipelineResponseBody) String() string {
@@ -4444,26 +4124,16 @@ func (s *GetPipelineResponseBody) SetSuccess(v bool) *GetPipelineResponseBody {
 }
 
 type GetPipelineResponseBodyPipeline struct {
-	// 创建时间
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 创建者阿里云账号id
-	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
-	// 环境id 0 日常环境  1预发环境 2正式环境
-	EnvId *int32 `json:"envId,omitempty" xml:"envId,omitempty"`
-	// 环境名称
-	EnvName *string `json:"envName,omitempty" xml:"envName,omitempty"`
-	// 流水线分组id
-	GroupId *int64 `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// 更新人阿里云账号id
-	ModifierAccountId *string `json:"modifierAccountId,omitempty" xml:"modifierAccountId,omitempty"`
-	// 流水线名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 流水线配置
-	PipelineConfig *GetPipelineResponseBodyPipelinePipelineConfig `json:"pipelineConfig,omitempty" xml:"pipelineConfig,omitempty" type:"Struct"`
-	// 标签
-	TagList []*GetPipelineResponseBodyPipelineTagList `json:"tagList,omitempty" xml:"tagList,omitempty" type:"Repeated"`
-	// 更新时间
-	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	CreateTime        *int64                                         `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreatorAccountId  *string                                        `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
+	EnvId             *int32                                         `json:"envId,omitempty" xml:"envId,omitempty"`
+	EnvName           *string                                        `json:"envName,omitempty" xml:"envName,omitempty"`
+	GroupId           *int64                                         `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	ModifierAccountId *string                                        `json:"modifierAccountId,omitempty" xml:"modifierAccountId,omitempty"`
+	Name              *string                                        `json:"name,omitempty" xml:"name,omitempty"`
+	PipelineConfig    *GetPipelineResponseBodyPipelinePipelineConfig `json:"pipelineConfig,omitempty" xml:"pipelineConfig,omitempty" type:"Struct"`
+	TagList           []*GetPipelineResponseBodyPipelineTagList      `json:"tagList,omitempty" xml:"tagList,omitempty" type:"Repeated"`
+	UpdateTime        *int64                                         `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetPipelineResponseBodyPipeline) String() string {
@@ -4525,12 +4195,9 @@ func (s *GetPipelineResponseBodyPipeline) SetUpdateTime(v int64) *GetPipelineRes
 }
 
 type GetPipelineResponseBodyPipelinePipelineConfig struct {
-	// 流水线配置信息
-	Flow *string `json:"flow,omitempty" xml:"flow,omitempty"`
-	// 流水线环境变量等
-	Settings *string `json:"settings,omitempty" xml:"settings,omitempty"`
-	// 代码源
-	Sources []*GetPipelineResponseBodyPipelinePipelineConfigSources `json:"sources,omitempty" xml:"sources,omitempty" type:"Repeated"`
+	Flow     *string                                                 `json:"flow,omitempty" xml:"flow,omitempty"`
+	Settings *string                                                 `json:"settings,omitempty" xml:"settings,omitempty"`
+	Sources  []*GetPipelineResponseBodyPipelinePipelineConfigSources `json:"sources,omitempty" xml:"sources,omitempty" type:"Repeated"`
 }
 
 func (s GetPipelineResponseBodyPipelinePipelineConfig) String() string {
@@ -4557,12 +4224,9 @@ func (s *GetPipelineResponseBodyPipelinePipelineConfig) SetSources(v []*GetPipel
 }
 
 type GetPipelineResponseBodyPipelinePipelineConfigSources struct {
-	// 代码数据
 	Data *GetPipelineResponseBodyPipelinePipelineConfigSourcesData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// 代码源唯一标识
-	Sign *string `json:"sign,omitempty" xml:"sign,omitempty"`
-	// 代码源类型aliyunGit 阿里云代码库 customGitlab  自建git giteeGit 码云 codeup Codeup git 通用git gitlab gitlab bitbucket bitbucket githubOAuth github
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Sign *string                                                   `json:"sign,omitempty" xml:"sign,omitempty"`
+	Type *string                                                   `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetPipelineResponseBodyPipelinePipelineConfigSources) String() string {
@@ -4589,38 +4253,22 @@ func (s *GetPipelineResponseBodyPipelinePipelineConfigSources) SetType(v string)
 }
 
 type GetPipelineResponseBodyPipelinePipelineConfigSourcesData struct {
-	// 分支
-	Branch *string `json:"branch,omitempty" xml:"branch,omitempty"`
-	// 克隆深度
-	CloneDepth *int64 `json:"cloneDepth,omitempty" xml:"cloneDepth,omitempty"`
-	// Credential Id
-	CredentialId *int64 `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// Credential Label
-	CredentialLabel *string `json:"credentialLabel,omitempty" xml:"credentialLabel,omitempty"`
-	// Credential Type
-	CredentialType *string `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
-	// 触发事件
-	Events []*string `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	// 是否分支模式
-	IsBranchMode *bool `json:"isBranchMode,omitempty" xml:"isBranchMode,omitempty"`
-	// 是否设置clone深度
-	IsCloneDepth *bool `json:"isCloneDepth,omitempty" xml:"isCloneDepth,omitempty"`
-	// 是否子模块
-	IsSubmodule *bool `json:"isSubmodule,omitempty" xml:"isSubmodule,omitempty"`
-	// 是否提交触发
-	IsTrigger *bool `json:"isTrigger,omitempty" xml:"isTrigger,omitempty"`
-	// 代码源显示标签
-	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// github命名空间
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// 代码库地址
-	Repo *string `json:"repo,omitempty" xml:"repo,omitempty"`
-	// 服务连接Id
-	ServiceConnectionId *int64 `json:"serviceConnectionId,omitempty" xml:"serviceConnectionId,omitempty"`
-	// 触发过滤条件
-	TriggerFilter *string `json:"triggerFilter,omitempty" xml:"triggerFilter,omitempty"`
-	// webhhook地址
-	Webhook *string `json:"webhook,omitempty" xml:"webhook,omitempty"`
+	Branch              *string   `json:"branch,omitempty" xml:"branch,omitempty"`
+	CloneDepth          *int64    `json:"cloneDepth,omitempty" xml:"cloneDepth,omitempty"`
+	CredentialId        *int64    `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+	CredentialLabel     *string   `json:"credentialLabel,omitempty" xml:"credentialLabel,omitempty"`
+	CredentialType      *string   `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
+	Events              []*string `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	IsBranchMode        *bool     `json:"isBranchMode,omitempty" xml:"isBranchMode,omitempty"`
+	IsCloneDepth        *bool     `json:"isCloneDepth,omitempty" xml:"isCloneDepth,omitempty"`
+	IsSubmodule         *bool     `json:"isSubmodule,omitempty" xml:"isSubmodule,omitempty"`
+	IsTrigger           *bool     `json:"isTrigger,omitempty" xml:"isTrigger,omitempty"`
+	Label               *string   `json:"label,omitempty" xml:"label,omitempty"`
+	Namespace           *string   `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Repo                *string   `json:"repo,omitempty" xml:"repo,omitempty"`
+	ServiceConnectionId *int64    `json:"serviceConnectionId,omitempty" xml:"serviceConnectionId,omitempty"`
+	TriggerFilter       *string   `json:"triggerFilter,omitempty" xml:"triggerFilter,omitempty"`
+	Webhook             *string   `json:"webhook,omitempty" xml:"webhook,omitempty"`
 }
 
 func (s GetPipelineResponseBodyPipelinePipelineConfigSourcesData) String() string {
@@ -4712,9 +4360,7 @@ func (s *GetPipelineResponseBodyPipelinePipelineConfigSourcesData) SetWebhook(v 
 }
 
 type GetPipelineResponseBodyPipelineTagList struct {
-	// 标签id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 标签名称
+	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -4789,15 +4435,11 @@ func (s *GetPipelineArtifactUrlRequest) SetFilePath(v string) *GetPipelineArtifa
 }
 
 type GetPipelineArtifactUrlResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	FileUrl      *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetPipelineArtifactUrlResponseBody) String() string {
@@ -4880,15 +4522,11 @@ func (s *GetPipelineEmasArtifactUrlRequest) SetServiceConnectionId(v int64) *Get
 }
 
 type GetPipelineEmasArtifactUrlResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	FileUrl      *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetPipelineEmasArtifactUrlResponseBody) String() string {
@@ -4954,16 +4592,11 @@ func (s *GetPipelineEmasArtifactUrlResponse) SetBody(v *GetPipelineEmasArtifactU
 }
 
 type GetPipelineRunResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 流水线运行实例
-	PipelineRun *GetPipelineRunResponseBodyPipelineRun `json:"pipelineRun,omitempty" xml:"pipelineRun,omitempty" type:"Struct"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode    *string                                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	PipelineRun  *GetPipelineRunResponseBodyPipelineRun `json:"pipelineRun,omitempty" xml:"pipelineRun,omitempty" type:"Struct"`
+	RequestId    *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetPipelineRunResponseBody) String() string {
@@ -5000,28 +4633,17 @@ func (s *GetPipelineRunResponseBody) SetSuccess(v bool) *GetPipelineRunResponseB
 }
 
 type GetPipelineRunResponseBodyPipelineRun struct {
-	// 创建时间
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 创建者阿里云账号id
-	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
-	// 更新人阿里云账号id
-	ModifierAccountId *string `json:"modifierAccountId,omitempty" xml:"modifierAccountId,omitempty"`
-	// 流水线Id
-	PipelineId *int64 `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
-	// 流水线运行实例id
-	PipelineRunId *int64 `json:"pipelineRunId,omitempty" xml:"pipelineRunId,omitempty"`
-	// 代码源
-	Sources []*GetPipelineRunResponseBodyPipelineRunSources `json:"sources,omitempty" xml:"sources,omitempty" type:"Repeated"`
-	// 阶段拓扑信息
-	StageGroup [][]*string `json:"stageGroup,omitempty" xml:"stageGroup,omitempty" type:"Repeated"`
-	// 阶段信息
-	Stages []*GetPipelineRunResponseBodyPipelineRunStages `json:"stages,omitempty" xml:"stages,omitempty" type:"Repeated"`
-	// 状态 FAIL 运行失败 SUCCESS 运行成功 RUNNING 运行中
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 触发模式 1人工触发 2定时触发 3代码提交触发
-	TriggerMode *int32 `json:"triggerMode,omitempty" xml:"triggerMode,omitempty"`
-	// 更新时间
-	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	CreateTime        *int64                                          `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreatorAccountId  *string                                         `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
+	ModifierAccountId *string                                         `json:"modifierAccountId,omitempty" xml:"modifierAccountId,omitempty"`
+	PipelineId        *int64                                          `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
+	PipelineRunId     *int64                                          `json:"pipelineRunId,omitempty" xml:"pipelineRunId,omitempty"`
+	Sources           []*GetPipelineRunResponseBodyPipelineRunSources `json:"sources,omitempty" xml:"sources,omitempty" type:"Repeated"`
+	StageGroup        [][]*string                                     `json:"stageGroup,omitempty" xml:"stageGroup,omitempty" type:"Repeated"`
+	Stages            []*GetPipelineRunResponseBodyPipelineRunStages  `json:"stages,omitempty" xml:"stages,omitempty" type:"Repeated"`
+	Status            *string                                         `json:"status,omitempty" xml:"status,omitempty"`
+	TriggerMode       *int32                                          `json:"triggerMode,omitempty" xml:"triggerMode,omitempty"`
+	UpdateTime        *int64                                          `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetPipelineRunResponseBodyPipelineRun) String() string {
@@ -5088,12 +4710,9 @@ func (s *GetPipelineRunResponseBodyPipelineRun) SetUpdateTime(v int64) *GetPipel
 }
 
 type GetPipelineRunResponseBodyPipelineRunSources struct {
-	// 代码源信息
 	Data *GetPipelineRunResponseBodyPipelineRunSourcesData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// 代码源唯一标识
-	Sign *string `json:"sign,omitempty" xml:"sign,omitempty"`
-	// 代码库类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Sign *string                                           `json:"sign,omitempty" xml:"sign,omitempty"`
+	Type *string                                           `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetPipelineRunResponseBodyPipelineRunSources) String() string {
@@ -5120,12 +4739,9 @@ func (s *GetPipelineRunResponseBodyPipelineRunSources) SetType(v string) *GetPip
 }
 
 type GetPipelineRunResponseBodyPipelineRunSourcesData struct {
-	// 分支
-	Branch *string `json:"branch,omitempty" xml:"branch,omitempty"`
-	// 提交信息 json数据
+	Branch  *string `json:"branch,omitempty" xml:"branch,omitempty"`
 	Commint *string `json:"commint,omitempty" xml:"commint,omitempty"`
-	// 代码库地址
-	Repo *string `json:"repo,omitempty" xml:"repo,omitempty"`
+	Repo    *string `json:"repo,omitempty" xml:"repo,omitempty"`
 }
 
 func (s GetPipelineRunResponseBodyPipelineRunSourcesData) String() string {
@@ -5152,9 +4768,7 @@ func (s *GetPipelineRunResponseBodyPipelineRunSourcesData) SetRepo(v string) *Ge
 }
 
 type GetPipelineRunResponseBodyPipelineRunStages struct {
-	// 阶段名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 阶段详情
+	Name      *string                                               `json:"name,omitempty" xml:"name,omitempty"`
 	StageInfo *GetPipelineRunResponseBodyPipelineRunStagesStageInfo `json:"stageInfo,omitempty" xml:"stageInfo,omitempty" type:"Struct"`
 }
 
@@ -5177,16 +4791,11 @@ func (s *GetPipelineRunResponseBodyPipelineRunStages) SetStageInfo(v *GetPipelin
 }
 
 type GetPipelineRunResponseBodyPipelineRunStagesStageInfo struct {
-	// 结束时间
-	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 任务
-	Jobs []*GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
-	// 阶段名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 开始时间
-	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	EndTime   *int64                                                      `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Jobs      []*GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
+	Name      *string                                                     `json:"name,omitempty" xml:"name,omitempty"`
+	StartTime *int64                                                      `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status    *string                                                     `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetPipelineRunResponseBodyPipelineRunStagesStageInfo) String() string {
@@ -5223,20 +4832,13 @@ func (s *GetPipelineRunResponseBodyPipelineRunStagesStageInfo) SetStatus(v strin
 }
 
 type GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobs struct {
-	// 后续操作
-	Actions []*GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// 结束时间
-	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 任务Id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 任务名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 触发参数
-	Params *string `json:"params,omitempty" xml:"params,omitempty"`
-	// 开始时间
-	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Actions   []*GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	EndTime   *int64                                                             `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Id        *int64                                                             `json:"id,omitempty" xml:"id,omitempty"`
+	Name      *string                                                            `json:"name,omitempty" xml:"name,omitempty"`
+	Params    *string                                                            `json:"params,omitempty" xml:"params,omitempty"`
+	StartTime *int64                                                             `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status    *string                                                            `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobs) String() string {
@@ -5283,12 +4885,9 @@ func (s *GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobs) SetStatus(v s
 }
 
 type GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions struct {
-	// 是否可用
-	Disable *bool `json:"disable,omitempty" xml:"disable,omitempty"`
-	// API参数
-	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
-	// API名称
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Disable *bool       `json:"disable,omitempty" xml:"disable,omitempty"`
+	Params  interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	Type    *string     `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions) String() string {
@@ -5304,7 +4903,7 @@ func (s *GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions) SetDis
 	return s
 }
 
-func (s *GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions) SetParams(v map[string]interface{}) *GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions {
+func (s *GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions) SetParams(v interface{}) *GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions {
 	s.Params = v
 	return s
 }
@@ -5361,15 +4960,11 @@ func (s *GetPipelineScanReportUrlRequest) SetReportPath(v string) *GetPipelineSc
 }
 
 type GetPipelineScanReportUrlResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	ReportUrl    *string `json:"reportUrl,omitempty" xml:"reportUrl,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetPipelineScanReportUrlResponseBody) String() string {
@@ -5435,12 +5030,11 @@ func (s *GetPipelineScanReportUrlResponse) SetBody(v *GetPipelineScanReportUrlRe
 }
 
 type GetProjectInfoResponseBody struct {
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 项目信息
-	Project   *GetProjectInfoResponseBodyProject `json:"project,omitempty" xml:"project,omitempty" type:"Struct"`
-	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode    *string                            `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                            `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Project      *GetProjectInfoResponseBodyProject `json:"project,omitempty" xml:"project,omitempty" type:"Struct"`
+	RequestId    *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                              `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetProjectInfoResponseBody) String() string {
@@ -5661,14 +5255,10 @@ func (s *GetProjectInfoResponse) SetBody(v *GetProjectInfoResponseBody) *GetProj
 }
 
 type GetProjectMemberRequest struct {
-	// accessToken（选填），使用AK方式调用时无需填accessToken
-	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// 企业ID
+	AccessToken    *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	// 代码仓库Id
-	RepositoryId *int64 `json:"repositoryId,omitempty" xml:"repositoryId,omitempty"`
-	// 用户阿里云PK
-	UserAliyunPk *string `json:"userAliyunPk,omitempty" xml:"userAliyunPk,omitempty"`
+	RepositoryId   *int64  `json:"repositoryId,omitempty" xml:"repositoryId,omitempty"`
+	UserAliyunPk   *string `json:"userAliyunPk,omitempty" xml:"userAliyunPk,omitempty"`
 }
 
 func (s GetProjectMemberRequest) String() string {
@@ -5811,11 +5401,8 @@ func (s *GetProjectMemberResponse) SetBody(v *GetProjectMemberResponseBody) *Get
 }
 
 type GetRepositoryRequest struct {
-	// 个人访问令牌
-	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
-	// 代码库ID或路径
-	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
-	// 企业ID
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Identity       *string `json:"identity,omitempty" xml:"identity,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
 }
 
@@ -5843,16 +5430,11 @@ func (s *GetRepositoryRequest) SetOrganizationId(v string) *GetRepositoryRequest
 }
 
 type GetRepositoryResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 代码库信息
-	Repository *GetRepositoryResponseBodyRepository `json:"repository,omitempty" xml:"repository,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 请求是否成功
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode    *string                              `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                              `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Repository   *GetRepositoryResponseBodyRepository `json:"repository,omitempty" xml:"repository,omitempty" type:"Struct"`
+	RequestId    *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetRepositoryResponseBody) String() string {
@@ -5889,42 +5471,24 @@ func (s *GetRepositoryResponseBody) SetSuccess(v bool) *GetRepositoryResponseBod
 }
 
 type GetRepositoryResponseBodyRepository struct {
-	// 归档标识
-	Archive *bool `json:"archive,omitempty" xml:"archive,omitempty"`
-	// 代码库头像地址
-	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
-	// 创建时间
-	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 创建者ID
-	CreatorId *int64 `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// 默认分支
-	DefaultBranch *string `json:"defaultBranch,omitempty" xml:"defaultBranch,omitempty"`
-	// DEMO库标识
-	DemoProjectStatus *bool `json:"demoProjectStatus,omitempty" xml:"demoProjectStatus,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// HTTP克隆地址
-	HttpUrlToRepository *string `json:"httpUrlToRepository,omitempty" xml:"httpUrlToRepository,omitempty"`
-	// 代码库ID
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 最后活跃时间
-	LastActivityAt *string `json:"lastActivityAt,omitempty" xml:"lastActivityAt,omitempty"`
-	// 名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 名称（含父名称）
-	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
-	// 父空间
-	Namespace *GetRepositoryResponseBodyRepositoryNamespace `json:"namespace,omitempty" xml:"namespace,omitempty" type:"Struct"`
-	// 路径
-	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 路径（含父路径）
-	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
-	// SSH克隆地址
-	SshUrlToRepository *string `json:"sshUrlToRepository,omitempty" xml:"sshUrlToRepository,omitempty"`
-	// 可见性。0：私有，10：内部公开
-	VisibilityLevel *int32 `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
-	// 页面访问地址
-	WebUrl *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+	Archive             *bool                                         `json:"archive,omitempty" xml:"archive,omitempty"`
+	AvatarUrl           *string                                       `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	CreatedAt           *string                                       `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatorId           *int64                                        `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	DefaultBranch       *string                                       `json:"defaultBranch,omitempty" xml:"defaultBranch,omitempty"`
+	DemoProjectStatus   *bool                                         `json:"demoProjectStatus,omitempty" xml:"demoProjectStatus,omitempty"`
+	Description         *string                                       `json:"description,omitempty" xml:"description,omitempty"`
+	HttpUrlToRepository *string                                       `json:"httpUrlToRepository,omitempty" xml:"httpUrlToRepository,omitempty"`
+	Id                  *int64                                        `json:"id,omitempty" xml:"id,omitempty"`
+	LastActivityAt      *string                                       `json:"lastActivityAt,omitempty" xml:"lastActivityAt,omitempty"`
+	Name                *string                                       `json:"name,omitempty" xml:"name,omitempty"`
+	NameWithNamespace   *string                                       `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	Namespace           *GetRepositoryResponseBodyRepositoryNamespace `json:"namespace,omitempty" xml:"namespace,omitempty" type:"Struct"`
+	Path                *string                                       `json:"path,omitempty" xml:"path,omitempty"`
+	PathWithNamespace   *string                                       `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	SshUrlToRepository  *string                                       `json:"sshUrlToRepository,omitempty" xml:"sshUrlToRepository,omitempty"`
+	VisibilityLevel     *int32                                        `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	WebUrl              *string                                       `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
 }
 
 func (s GetRepositoryResponseBodyRepository) String() string {
@@ -6026,24 +5590,15 @@ func (s *GetRepositoryResponseBodyRepository) SetWebUrl(v string) *GetRepository
 }
 
 type GetRepositoryResponseBodyRepositoryNamespace struct {
-	// 头像地址
-	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	// 创建时间
-	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 归属者ID
-	OwnerId *int64 `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
-	// 路径
-	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 更新时间
-	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// 可见性。0：私有，10：内部公开
-	VisibilityLevel *int32 `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	Avatar          *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	CreatedAt       *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id              *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	OwnerId         *int64  `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	Path            *string `json:"path,omitempty" xml:"path,omitempty"`
+	UpdatedAt       *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	VisibilityLevel *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
 }
 
 func (s GetRepositoryResponseBodyRepositoryNamespace) String() string {
@@ -6129,12 +5684,11 @@ func (s *GetRepositoryResponse) SetBody(v *GetRepositoryResponseBody) *GetReposi
 }
 
 type GetSprintInfoResponseBody struct {
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 迭代信息
-	Sprint  *GetSprintInfoResponseBodySprint `json:"sprint,omitempty" xml:"sprint,omitempty" type:"Struct"`
-	Success *bool                            `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode    *string                          `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                          `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Sprint       *GetSprintInfoResponseBodySprint `json:"sprint,omitempty" xml:"sprint,omitempty" type:"Struct"`
+	Success      *bool                            `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetSprintInfoResponseBody) String() string {
@@ -6171,30 +5725,18 @@ func (s *GetSprintInfoResponseBody) SetSuccess(v bool) *GetSprintInfoResponseBod
 }
 
 type GetSprintInfoResponseBodySprint struct {
-	// 创建人id
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 描述信息
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 结束时间
-	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 迭代唯一标识符
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 修改人
-	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// 迭代名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 可见范围
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 项目id
+	Creator         *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	EndDate         *int64  `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	GmtCreate       *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified     *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier      *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Modifier        *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	Scope           *string `json:"scope,omitempty" xml:"scope,omitempty"`
 	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 开始时间
-	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	// 状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	StartDate       *int64  `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetSprintInfoResponseBodySprint) String() string {
@@ -6295,16 +5837,11 @@ func (s *GetSprintInfoResponse) SetBody(v *GetSprintInfoResponseBody) *GetSprint
 }
 
 type GetVMDeployOrderResponseBody struct {
-	// 部署单
-	DeployOrder *GetVMDeployOrderResponseBodyDeployOrder `json:"deployOrder,omitempty" xml:"deployOrder,omitempty" type:"Struct"`
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	DeployOrder  *GetVMDeployOrderResponseBodyDeployOrder `json:"deployOrder,omitempty" xml:"deployOrder,omitempty" type:"Struct"`
+	ErrorCode    *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetVMDeployOrderResponseBody) String() string {
@@ -6341,26 +5878,16 @@ func (s *GetVMDeployOrderResponseBody) SetSuccess(v bool) *GetVMDeployOrderRespo
 }
 
 type GetVMDeployOrderResponseBodyDeployOrder struct {
-	// 后续action
-	Actions []*GetVMDeployOrderResponseBodyDeployOrderActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// 创建时时间
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 创建人
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 当前发布批次
-	CurrentBatch *int32 `json:"currentBatch,omitempty" xml:"currentBatch,omitempty"`
-	// 部署机器信息
+	Actions           []*GetVMDeployOrderResponseBodyDeployOrderActions         `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	CreateTime        *int64                                                    `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Creator           *string                                                   `json:"creator,omitempty" xml:"creator,omitempty"`
+	CurrentBatch      *int32                                                    `json:"currentBatch,omitempty" xml:"currentBatch,omitempty"`
 	DeployMachineInfo *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo `json:"deployMachineInfo,omitempty" xml:"deployMachineInfo,omitempty" type:"Struct"`
-	// 部署单ID
-	DeployOrderId *string `json:"deployOrderId,omitempty" xml:"deployOrderId,omitempty"`
-	// 错误码
-	ExceptionCode *string `json:"exceptionCode,omitempty" xml:"exceptionCode,omitempty"`
-	// 发布状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 总发布批次
-	TotalBatch *int32 `json:"totalBatch,omitempty" xml:"totalBatch,omitempty"`
-	// 修改时间
-	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	DeployOrderId     *string                                                   `json:"deployOrderId,omitempty" xml:"deployOrderId,omitempty"`
+	ExceptionCode     *string                                                   `json:"exceptionCode,omitempty" xml:"exceptionCode,omitempty"`
+	Status            *string                                                   `json:"status,omitempty" xml:"status,omitempty"`
+	TotalBatch        *int32                                                    `json:"totalBatch,omitempty" xml:"totalBatch,omitempty"`
+	UpdateTime        *int64                                                    `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetVMDeployOrderResponseBodyDeployOrder) String() string {
@@ -6422,12 +5949,9 @@ func (s *GetVMDeployOrderResponseBodyDeployOrder) SetUpdateTime(v int64) *GetVMD
 }
 
 type GetVMDeployOrderResponseBodyDeployOrderActions struct {
-	// 是否可用
-	Disable *bool `json:"disable,omitempty" xml:"disable,omitempty"`
-	// 参数
-	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
-	// Action
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Disable *bool       `json:"disable,omitempty" xml:"disable,omitempty"`
+	Params  interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	Type    *string     `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetVMDeployOrderResponseBodyDeployOrderActions) String() string {
@@ -6443,7 +5967,7 @@ func (s *GetVMDeployOrderResponseBodyDeployOrderActions) SetDisable(v bool) *Get
 	return s
 }
 
-func (s *GetVMDeployOrderResponseBodyDeployOrderActions) SetParams(v map[string]interface{}) *GetVMDeployOrderResponseBodyDeployOrderActions {
+func (s *GetVMDeployOrderResponseBodyDeployOrderActions) SetParams(v interface{}) *GetVMDeployOrderResponseBodyDeployOrderActions {
 	s.Params = v
 	return s
 }
@@ -6454,12 +5978,9 @@ func (s *GetVMDeployOrderResponseBodyDeployOrderActions) SetType(v string) *GetV
 }
 
 type GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo struct {
-	// 发布批次
-	BatchNum *int32 `json:"batchNum,omitempty" xml:"batchNum,omitempty"`
-	// 部署机器列表
+	BatchNum       *int32                                                                    `json:"batchNum,omitempty" xml:"batchNum,omitempty"`
 	DeployMachines []*GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines `json:"deployMachines,omitempty" xml:"deployMachines,omitempty" type:"Repeated"`
-	// 主机组ID
-	HostGroupId *int64 `json:"hostGroupId,omitempty" xml:"hostGroupId,omitempty"`
+	HostGroupId    *int64                                                                    `json:"hostGroupId,omitempty" xml:"hostGroupId,omitempty"`
 }
 
 func (s GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo) String() string {
@@ -6486,22 +6007,14 @@ func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo) SetHostGroupI
 }
 
 type GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines struct {
-	// 后续action
-	Actions []*GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// 部署批次
-	BatchNum *int32 `json:"batchNum,omitempty" xml:"batchNum,omitempty"`
-	// 机器状态
-	ClientStatus *string `json:"clientStatus,omitempty" xml:"clientStatus,omitempty"`
-	// 开始时间
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 机器IP
-	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	// 机器sn
-	MachineSn *string `json:"machineSn,omitempty" xml:"machineSn,omitempty"`
-	// 部署状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 修改时间
-	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Actions      []*GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	BatchNum     *int32                                                                           `json:"batchNum,omitempty" xml:"batchNum,omitempty"`
+	ClientStatus *string                                                                          `json:"clientStatus,omitempty" xml:"clientStatus,omitempty"`
+	CreateTime   *int64                                                                           `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Ip           *string                                                                          `json:"ip,omitempty" xml:"ip,omitempty"`
+	MachineSn    *string                                                                          `json:"machineSn,omitempty" xml:"machineSn,omitempty"`
+	Status       *string                                                                          `json:"status,omitempty" xml:"status,omitempty"`
+	UpdateTime   *int64                                                                           `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines) String() string {
@@ -6553,12 +6066,9 @@ func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines)
 }
 
 type GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions struct {
-	// 是否可用
-	Disable *bool `json:"disable,omitempty" xml:"disable,omitempty"`
-	// 参数
-	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
-	// Action
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Disable *bool       `json:"disable,omitempty" xml:"disable,omitempty"`
+	Params  interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	Type    *string     `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions) String() string {
@@ -6574,7 +6084,7 @@ func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesA
 	return s
 }
 
-func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions) SetParams(v map[string]interface{}) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions {
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions) SetParams(v interface{}) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions {
 	s.Params = v
 	return s
 }
@@ -6614,15 +6124,10 @@ func (s *GetVMDeployOrderResponse) SetBody(v *GetVMDeployOrderResponseBody) *Get
 }
 
 type GetVariableGroupResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 变量组
+	ErrorCode     *string                                    `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage  *string                                    `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId     *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success       *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
 	VariableGroup *GetVariableGroupResponseBodyVariableGroup `json:"variableGroup,omitempty" xml:"variableGroup,omitempty" type:"Struct"`
 }
 
@@ -6660,24 +6165,15 @@ func (s *GetVariableGroupResponseBody) SetVariableGroup(v *GetVariableGroupRespo
 }
 
 type GetVariableGroupResponseBodyVariableGroup struct {
-	// 创建人阿里云账号id
-	CcreatorAccountId *string `json:"ccreatorAccountId,omitempty" xml:"ccreatorAccountId,omitempty"`
-	// 创建时间
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 变量组描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 变量组id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 更新人阿里云账号id
-	ModifierAccountId *string `json:"modifierAccountId,omitempty" xml:"modifierAccountId,omitempty"`
-	// 变量组名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 关联的流水线
-	RelatedPipelines []*GetVariableGroupResponseBodyVariableGroupRelatedPipelines `json:"relatedPipelines,omitempty" xml:"relatedPipelines,omitempty" type:"Repeated"`
-	// 更新时间
-	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// 变量
-	Variables []*GetVariableGroupResponseBodyVariableGroupVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
+	CcreatorAccountId *string                                                      `json:"ccreatorAccountId,omitempty" xml:"ccreatorAccountId,omitempty"`
+	CreateTime        *int64                                                       `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description       *string                                                      `json:"description,omitempty" xml:"description,omitempty"`
+	Id                *int64                                                       `json:"id,omitempty" xml:"id,omitempty"`
+	ModifierAccountId *string                                                      `json:"modifierAccountId,omitempty" xml:"modifierAccountId,omitempty"`
+	Name              *string                                                      `json:"name,omitempty" xml:"name,omitempty"`
+	RelatedPipelines  []*GetVariableGroupResponseBodyVariableGroupRelatedPipelines `json:"relatedPipelines,omitempty" xml:"relatedPipelines,omitempty" type:"Repeated"`
+	UpdateTime        *int64                                                       `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Variables         []*GetVariableGroupResponseBodyVariableGroupVariables        `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
 
 func (s GetVariableGroupResponseBodyVariableGroup) String() string {
@@ -6734,9 +6230,7 @@ func (s *GetVariableGroupResponseBodyVariableGroup) SetVariables(v []*GetVariabl
 }
 
 type GetVariableGroupResponseBodyVariableGroupRelatedPipelines struct {
-	// 关联的流水线Id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 关联的流水线名称
+	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -6759,12 +6253,9 @@ func (s *GetVariableGroupResponseBodyVariableGroupRelatedPipelines) SetName(v st
 }
 
 type GetVariableGroupResponseBodyVariableGroupVariables struct {
-	// 是否加密
-	IsEncrypted *bool `json:"isEncrypted,omitempty" xml:"isEncrypted,omitempty"`
-	// 变量名
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 变量值
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	IsEncrypted *bool   `json:"isEncrypted,omitempty" xml:"isEncrypted,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Value       *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s GetVariableGroupResponseBodyVariableGroupVariables) String() string {
@@ -6820,16 +6311,11 @@ func (s *GetVariableGroupResponse) SetBody(v *GetVariableGroupResponseBody) *Get
 }
 
 type GetWorkItemActivityResponseBody struct {
-	// 动态信息
 	Activities []*GetWorkItemActivityResponseBodyActivities `json:"activities,omitempty" xml:"activities,omitempty" type:"Repeated"`
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode  *string                                      `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg   *string                                      `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	RequestId  *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success    *bool                                        `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetWorkItemActivityResponseBody) String() string {
@@ -6866,22 +6352,14 @@ func (s *GetWorkItemActivityResponseBody) SetSuccess(v bool) *GetWorkItemActivit
 }
 
 type GetWorkItemActivityResponseBodyActivities struct {
-	// 动作类型
-	ActionType *string `json:"actionType,omitempty" xml:"actionType,omitempty"`
-	// 事件id
-	EventId *int64 `json:"eventId,omitempty" xml:"eventId,omitempty"`
-	// 事件时间
-	EventTime *int64 `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
-	// 事件类型
-	EventType *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
-	// 操作者
-	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// 父事件id
-	ParentEventId *int64 `json:"parentEventId,omitempty" xml:"parentEventId,omitempty"`
-	// 修改属性
-	Property *GetWorkItemActivityResponseBodyActivitiesProperty `json:"property,omitempty" xml:"property,omitempty" type:"Struct"`
-	// 操作对象
-	ResourceIdentifier *string `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty"`
+	ActionType         *string                                            `json:"actionType,omitempty" xml:"actionType,omitempty"`
+	EventId            *int64                                             `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	EventTime          *int64                                             `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
+	EventType          *string                                            `json:"eventType,omitempty" xml:"eventType,omitempty"`
+	Operator           *string                                            `json:"operator,omitempty" xml:"operator,omitempty"`
+	ParentEventId      *int64                                             `json:"parentEventId,omitempty" xml:"parentEventId,omitempty"`
+	Property           *GetWorkItemActivityResponseBodyActivitiesProperty `json:"property,omitempty" xml:"property,omitempty" type:"Struct"`
+	ResourceIdentifier *string                                            `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty"`
 }
 
 func (s GetWorkItemActivityResponseBodyActivities) String() string {
@@ -6933,14 +6411,10 @@ func (s *GetWorkItemActivityResponseBodyActivities) SetResourceIdentifier(v stri
 }
 
 type GetWorkItemActivityResponseBodyActivitiesProperty struct {
-	// 属性的展示名
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 资源id
+	DisplayName        *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	PropertyIdentifier *string `json:"propertyIdentifier,omitempty" xml:"propertyIdentifier,omitempty"`
-	// 属性key
-	PropertyName *string `json:"propertyName,omitempty" xml:"propertyName,omitempty"`
-	// 类型
-	PropertyType *string `json:"propertyType,omitempty" xml:"propertyType,omitempty"`
+	PropertyName       *string `json:"propertyName,omitempty" xml:"propertyName,omitempty"`
+	PropertyType       *string `json:"propertyType,omitempty" xml:"propertyType,omitempty"`
 }
 
 func (s GetWorkItemActivityResponseBodyActivitiesProperty) String() string {
@@ -7001,16 +6475,11 @@ func (s *GetWorkItemActivityResponse) SetBody(v *GetWorkItemActivityResponseBody
 }
 
 type GetWorkItemInfoResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 工作项信息
-	Workitem *GetWorkItemInfoResponseBodyWorkitem `json:"workitem,omitempty" xml:"workitem,omitempty" type:"Struct"`
+	ErrorCode    *string                              `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                              `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+	Workitem     *GetWorkItemInfoResponseBodyWorkitem `json:"workitem,omitempty" xml:"workitem,omitempty" type:"Struct"`
 }
 
 func (s GetWorkItemInfoResponseBody) String() string {
@@ -7047,58 +6516,32 @@ func (s *GetWorkItemInfoResponseBody) SetWorkitem(v *GetWorkItemInfoResponseBody
 }
 
 type GetWorkItemInfoResponseBodyWorkitem struct {
-	// 负责人
-	AssignedTo *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
-	// 工作项的类型id
-	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
-	// 创建人
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 自定义字段列表
-	CustomFields []*GetWorkItemInfoResponseBodyWorkitemCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
-	// 工作项内容
-	Document *string `json:"document,omitempty" xml:"document,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 工作项唯一标识
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 逻辑状态
-	LogicalStatus *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
-	// 修改人
-	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// 父工作项id
-	ParentIdentifier *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
-	// 参与人account id列表
-	Participant []*string `json:"participant,omitempty" xml:"participant,omitempty" type:"Repeated"`
-	// 编号
-	SerialNumber *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
-	// 所属项目id
-	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 所属项目名称
-	SpaceName *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
-	// 项目类型
-	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
-	// 关联的迭代id
-	Sprint []*string `json:"sprint,omitempty" xml:"sprint,omitempty" type:"Repeated"`
-	// 状态名称
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 状态id
-	StatusIdentifier *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
-	// 状态阶段id
-	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
-	// 工作项标题
-	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// 标签id列表
-	Tag []*string `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// 抄送人的account id列表
-	Tracker []*string `json:"tracker,omitempty" xml:"tracker,omitempty" type:"Repeated"`
-	// 状态更新时间
-	UpdateStatusAt *int64 `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
-	// 验证者的account id列表
-	Verifier []*string `json:"verifier,omitempty" xml:"verifier,omitempty" type:"Repeated"`
-	// 工作项类型id
-	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
+	AssignedTo             *string                                            `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
+	CategoryIdentifier     *string                                            `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	Creator                *string                                            `json:"creator,omitempty" xml:"creator,omitempty"`
+	CustomFields           []*GetWorkItemInfoResponseBodyWorkitemCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
+	Document               *string                                            `json:"document,omitempty" xml:"document,omitempty"`
+	GmtCreate              *int64                                             `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified            *int64                                             `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier             *string                                            `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	LogicalStatus          *string                                            `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	Modifier               *string                                            `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	ParentIdentifier       *string                                            `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	Participant            []*string                                          `json:"participant,omitempty" xml:"participant,omitempty" type:"Repeated"`
+	SerialNumber           *string                                            `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
+	SpaceIdentifier        *string                                            `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	SpaceName              *string                                            `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
+	SpaceType              *string                                            `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	Sprint                 []*string                                          `json:"sprint,omitempty" xml:"sprint,omitempty" type:"Repeated"`
+	Status                 *string                                            `json:"status,omitempty" xml:"status,omitempty"`
+	StatusIdentifier       *string                                            `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
+	StatusStageIdentifier  *string                                            `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	Subject                *string                                            `json:"subject,omitempty" xml:"subject,omitempty"`
+	Tag                    []*string                                          `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+	Tracker                []*string                                          `json:"tracker,omitempty" xml:"tracker,omitempty" type:"Repeated"`
+	UpdateStatusAt         *int64                                             `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
+	Verifier               []*string                                          `json:"verifier,omitempty" xml:"verifier,omitempty" type:"Repeated"`
+	WorkitemTypeIdentifier *string                                            `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
 }
 
 func (s GetWorkItemInfoResponseBodyWorkitem) String() string {
@@ -7240,24 +6683,15 @@ func (s *GetWorkItemInfoResponseBodyWorkitem) SetWorkitemTypeIdentifier(v string
 }
 
 type GetWorkItemInfoResponseBodyWorkitemCustomFields struct {
-	// 字段的className，便于数据查询
-	FieldClassName *string `json:"fieldClassName,omitempty" xml:"fieldClassName,omitempty"`
-	// 字段格式，便于查询数据
-	FieldFormat *string `json:"fieldFormat,omitempty" xml:"fieldFormat,omitempty"`
-	// 字段的唯一标识
-	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
-	// 展示级别，数字范围1~9，数字越大，颜色越浅。
-	Level *int64 `json:"level,omitempty" xml:"level,omitempty"`
-	// 值对象列表
-	ObjectValue *string `json:"objectValue,omitempty" xml:"objectValue,omitempty"`
-	// 自定义字段值的position
-	Position *int64 `json:"position,omitempty" xml:"position,omitempty"`
-	// 字段值，写入时使用
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// 值对象列表，查询时使用
-	ValueList []*GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList `json:"valueList,omitempty" xml:"valueList,omitempty" type:"Repeated"`
-	// 工作项的唯一标识
-	WorkitemIdentifier *string `json:"workitemIdentifier,omitempty" xml:"workitemIdentifier,omitempty"`
+	FieldClassName     *string                                                     `json:"fieldClassName,omitempty" xml:"fieldClassName,omitempty"`
+	FieldFormat        *string                                                     `json:"fieldFormat,omitempty" xml:"fieldFormat,omitempty"`
+	FieldIdentifier    *string                                                     `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	Level              *int64                                                      `json:"level,omitempty" xml:"level,omitempty"`
+	ObjectValue        *string                                                     `json:"objectValue,omitempty" xml:"objectValue,omitempty"`
+	Position           *int64                                                      `json:"position,omitempty" xml:"position,omitempty"`
+	Value              *string                                                     `json:"value,omitempty" xml:"value,omitempty"`
+	ValueList          []*GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList `json:"valueList,omitempty" xml:"valueList,omitempty" type:"Repeated"`
+	WorkitemIdentifier *string                                                     `json:"workitemIdentifier,omitempty" xml:"workitemIdentifier,omitempty"`
 }
 
 func (s GetWorkItemInfoResponseBodyWorkitemCustomFields) String() string {
@@ -7314,16 +6748,11 @@ func (s *GetWorkItemInfoResponseBodyWorkitemCustomFields) SetWorkitemIdentifier(
 }
 
 type GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList struct {
-	// 根据语言环境获取当前展示的值
 	DisplayValue *string `json:"displayValue,omitempty" xml:"displayValue,omitempty"`
-	// 字段值为对象类型时，值所对应的对象的唯一标识 例如：option表中的id
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 展示级别，数字范围1~9，数字越大，颜色越浅。
-	Level *int64 `json:"level,omitempty" xml:"level,omitempty"`
-	// 字段值
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// 字段英文值，目前只有列表类有英文值
-	ValueEn *string `json:"valueEn,omitempty" xml:"valueEn,omitempty"`
+	Identifier   *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Level        *int64  `json:"level,omitempty" xml:"level,omitempty"`
+	Value        *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueEn      *string `json:"valueEn,omitempty" xml:"valueEn,omitempty"`
 }
 
 func (s GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList) String() string {
@@ -7389,7 +6818,6 @@ func (s *GetWorkItemInfoResponse) SetBody(v *GetWorkItemInfoResponseBody) *GetWo
 }
 
 type GetWorkItemWorkFlowInfoRequest struct {
-	// 项目id
 	ConfigurationId *string `json:"configurationId,omitempty" xml:"configurationId,omitempty"`
 }
 
@@ -7407,16 +6835,11 @@ func (s *GetWorkItemWorkFlowInfoRequest) SetConfigurationId(v string) *GetWorkIt
 }
 
 type GetWorkItemWorkFlowInfoResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 工作项信息
-	Workflow *GetWorkItemWorkFlowInfoResponseBodyWorkflow `json:"workflow,omitempty" xml:"workflow,omitempty" type:"Struct"`
+	ErrorCode    *string                                      `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                      `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                        `json:"success,omitempty" xml:"success,omitempty"`
+	Workflow     *GetWorkItemWorkFlowInfoResponseBodyWorkflow `json:"workflow,omitempty" xml:"workflow,omitempty" type:"Struct"`
 }
 
 func (s GetWorkItemWorkFlowInfoResponseBody) String() string {
@@ -7453,36 +6876,21 @@ func (s *GetWorkItemWorkFlowInfoResponseBody) SetWorkflow(v *GetWorkItemWorkFlow
 }
 
 type GetWorkItemWorkFlowInfoResponseBodyWorkflow struct {
-	// 创建人
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 工作流的默认状态
-	DefaultStatusIdentifier *string `json:"defaultStatusIdentifier,omitempty" xml:"defaultStatusIdentifier,omitempty"`
-	// 工作流的描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 工作流唯一标识
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 修改人
-	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// 工作流名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 工作流所属的团队空间或项目的identifier
-	OwnerSpaceIdentifier *string `json:"ownerSpaceIdentifier,omitempty" xml:"ownerSpaceIdentifier,omitempty"`
-	// 工作流所属的团队项目类型
-	OwnerSpaceType *string `json:"ownerSpaceType,omitempty" xml:"ownerSpaceType,omitempty"`
-	// 资源类型
-	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 工作流来源
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// 工作流的状态顺序
-	StatusOrder *string `json:"statusOrder,omitempty" xml:"statusOrder,omitempty"`
-	// 状态列表
-	Statuses []*GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses `json:"statuses,omitempty" xml:"statuses,omitempty" type:"Repeated"`
-	// 工作流的流转步骤
-	WorkflowActions []*GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions `json:"workflowActions,omitempty" xml:"workflowActions,omitempty" type:"Repeated"`
+	Creator                 *string                                                       `json:"creator,omitempty" xml:"creator,omitempty"`
+	DefaultStatusIdentifier *string                                                       `json:"defaultStatusIdentifier,omitempty" xml:"defaultStatusIdentifier,omitempty"`
+	Description             *string                                                       `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate               *int64                                                        `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified             *int64                                                        `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier              *string                                                       `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Modifier                *string                                                       `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name                    *string                                                       `json:"name,omitempty" xml:"name,omitempty"`
+	OwnerSpaceIdentifier    *string                                                       `json:"ownerSpaceIdentifier,omitempty" xml:"ownerSpaceIdentifier,omitempty"`
+	OwnerSpaceType          *string                                                       `json:"ownerSpaceType,omitempty" xml:"ownerSpaceType,omitempty"`
+	ResourceType            *string                                                       `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Source                  *string                                                       `json:"source,omitempty" xml:"source,omitempty"`
+	StatusOrder             *string                                                       `json:"statusOrder,omitempty" xml:"statusOrder,omitempty"`
+	Statuses                []*GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses        `json:"statuses,omitempty" xml:"statuses,omitempty" type:"Repeated"`
+	WorkflowActions         []*GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions `json:"workflowActions,omitempty" xml:"workflowActions,omitempty" type:"Repeated"`
 }
 
 func (s GetWorkItemWorkFlowInfoResponseBodyWorkflow) String() string {
@@ -7569,28 +6977,17 @@ func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetWorkflowActions(v []*Ge
 }
 
 type GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses struct {
-	// 创建人
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 描述信息
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 状态唯一标识
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 修改人
-	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// 状态名
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 资源来源
-	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 状态来源
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// 阶段信息-阶段的唯一标识
+	Creator                 *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Description             *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate               *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified             *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier              *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Modifier                *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name                    *string `json:"name,omitempty" xml:"name,omitempty"`
+	ResourceType            *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Source                  *string `json:"source,omitempty" xml:"source,omitempty"`
 	WorkflowStageIdentifier *string `json:"workflowStageIdentifier,omitempty" xml:"workflowStageIdentifier,omitempty"`
-	// 阶段信息-名称
-	WorkflowStageName *string `json:"workflowStageName,omitempty" xml:"workflowStageName,omitempty"`
+	WorkflowStageName       *string `json:"workflowStageName,omitempty" xml:"workflowStageName,omitempty"`
 }
 
 func (s GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) String() string {
@@ -7657,16 +7054,11 @@ func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) SetWorkflowStageNa
 }
 
 type GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions struct {
-	// 流转步骤的id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// action的名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// action对应的下个状态的信息id
+	Id                           *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name                         *string `json:"name,omitempty" xml:"name,omitempty"`
 	NextWorkflowStatusIdentifier *string `json:"nextWorkflowStatusIdentifier,omitempty" xml:"nextWorkflowStatusIdentifier,omitempty"`
-	// action对应的工作流
-	WorkflowIdentifier *string `json:"workflowIdentifier,omitempty" xml:"workflowIdentifier,omitempty"`
-	// action对应的当前状态id
-	WorkflowStatusIdentifier *string `json:"workflowStatusIdentifier,omitempty" xml:"workflowStatusIdentifier,omitempty"`
+	WorkflowIdentifier           *string `json:"workflowIdentifier,omitempty" xml:"workflowIdentifier,omitempty"`
+	WorkflowStatusIdentifier     *string `json:"workflowStatusIdentifier,omitempty" xml:"workflowStatusIdentifier,omitempty"`
 }
 
 func (s GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions) String() string {
@@ -7732,16 +7124,11 @@ func (s *GetWorkItemWorkFlowInfoResponse) SetBody(v *GetWorkItemWorkFlowInfoResp
 }
 
 type GetWorkspaceResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 请求是否成功
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 工作空间信息
-	Workspace *GetWorkspaceResponseBodyWorkspace `json:"workspace,omitempty" xml:"workspace,omitempty" type:"Struct"`
+	ErrorCode    *string                            `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                            `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+	Workspace    *GetWorkspaceResponseBodyWorkspace `json:"workspace,omitempty" xml:"workspace,omitempty" type:"Struct"`
 }
 
 func (s GetWorkspaceResponseBody) String() string {
@@ -7778,24 +7165,15 @@ func (s *GetWorkspaceResponseBody) SetWorkspace(v *GetWorkspaceResponseBodyWorks
 }
 
 type GetWorkspaceResponseBodyWorkspace struct {
-	// 代码来源URL
-	CodeUrl *string `json:"codeUrl,omitempty" xml:"codeUrl,omitempty"`
-	// 代码版本，支持 commitSHA、分支、标签
+	CodeUrl     *string `json:"codeUrl,omitempty" xml:"codeUrl,omitempty"`
 	CodeVersion *string `json:"codeVersion,omitempty" xml:"codeVersion,omitempty"`
-	// 创建时间戳
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 工作空间唯一标识，字符串形式，可在云效DevStudio访问空间链接中获取
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 工作空间名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 机器规格
-	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// 空间状态，枚举：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 工作空间模板
-	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-	// 用户阿里云PK
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Id          *string `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Spec        *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
+	Template    *string `json:"template,omitempty" xml:"template,omitempty"`
+	UserId      *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetWorkspaceResponseBodyWorkspace) String() string {
@@ -7881,16 +7259,11 @@ func (s *GetWorkspaceResponse) SetBody(v *GetWorkspaceResponseBody) *GetWorkspac
 }
 
 type ListFlowTagGroupsResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 标签分类
+	ErrorCode     *string                                       `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage  *string                                       `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	FlowTagGroups []*ListFlowTagGroupsResponseBodyFlowTagGroups `json:"flowTagGroups,omitempty" xml:"flowTagGroups,omitempty" type:"Repeated"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId     *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success       *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListFlowTagGroupsResponseBody) String() string {
@@ -7927,14 +7300,10 @@ func (s *ListFlowTagGroupsResponseBody) SetSuccess(v bool) *ListFlowTagGroupsRes
 }
 
 type ListFlowTagGroupsResponseBodyFlowTagGroups struct {
-	// 创建人
 	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
-	// 标签分类id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 修改人
+	Id               *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	ModiferAccountId *string `json:"modiferAccountId,omitempty" xml:"modiferAccountId,omitempty"`
-	// 标签分类名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListFlowTagGroupsResponseBodyFlowTagGroups) String() string {
@@ -7995,24 +7364,15 @@ func (s *ListFlowTagGroupsResponse) SetBody(v *ListFlowTagGroupsResponseBody) *L
 }
 
 type ListHostGroupsRequest struct {
-	// 主机组结束时间
-	CreateEndTime *int64 `json:"createEndTime,omitempty" xml:"createEndTime,omitempty"`
-	// 主机组创建时间
-	CreateStartTime *int64 `json:"createStartTime,omitempty" xml:"createStartTime,omitempty"`
-	// 创建阿里云账号id，多个逗号分割
+	CreateEndTime     *int64  `json:"createEndTime,omitempty" xml:"createEndTime,omitempty"`
+	CreateStartTime   *int64  `json:"createStartTime,omitempty" xml:"createStartTime,omitempty"`
 	CreatorAccountIds *string `json:"creatorAccountIds,omitempty" xml:"creatorAccountIds,omitempty"`
-	// 主机组id，多个逗号分割
-	Ids *string `json:"ids,omitempty" xml:"ids,omitempty"`
-	// 结果返回个数
-	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 主机组名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 分页token
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 排序顺序
-	PageOrder *string `json:"pageOrder,omitempty" xml:"pageOrder,omitempty"`
-	// 排序条件ID
-	PageSort *string `json:"pageSort,omitempty" xml:"pageSort,omitempty"`
+	Ids               *string `json:"ids,omitempty" xml:"ids,omitempty"`
+	MaxResults        *int64  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	NextToken         *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	PageOrder         *string `json:"pageOrder,omitempty" xml:"pageOrder,omitempty"`
+	PageSort          *string `json:"pageSort,omitempty" xml:"pageSort,omitempty"`
 }
 
 func (s ListHostGroupsRequest) String() string {
@@ -8069,20 +7429,13 @@ func (s *ListHostGroupsRequest) SetPageSort(v string) *ListHostGroupsRequest {
 }
 
 type ListHostGroupsResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 主机组
-	HostGroups []*ListHostGroupsResponseBodyHostGroups `json:"hostGroups,omitempty" xml:"hostGroups,omitempty" type:"Repeated"`
-	// 分页token,空表示最后一页
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 总数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	ErrorCode    *string                                 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                 `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	HostGroups   []*ListHostGroupsResponseBodyHostGroups `json:"hostGroups,omitempty" xml:"hostGroups,omitempty" type:"Repeated"`
+	NextToken    *string                                 `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId    *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount   *int64                                  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListHostGroupsResponseBody) String() string {
@@ -8129,34 +7482,20 @@ func (s *ListHostGroupsResponseBody) SetTotalCount(v int64) *ListHostGroupsRespo
 }
 
 type ListHostGroupsResponseBodyHostGroups struct {
-	// 阿里云区域
-	AliyunRegion *string `json:"aliyunRegion,omitempty" xml:"aliyunRegion,omitempty"`
-	// 主机时间
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 创建人阿里云账号id
-	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// ecs标签Key
-	EcsLabelKey *string `json:"ecsLabelKey,omitempty" xml:"ecsLabelKey,omitempty"`
-	// Ecs标签值
-	EcsLabelValue *string `json:"ecsLabelValue,omitempty" xml:"ecsLabelValue,omitempty"`
-	// 主机类型
-	EcsType *string `json:"ecsType,omitempty" xml:"ecsType,omitempty"`
-	// 主机个数
-	HostNum *int64 `json:"hostNum,omitempty" xml:"hostNum,omitempty"`
-	// 323232
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 修改人阿里云账号id
-	ModifierAccountId *string `json:"modifierAccountId,omitempty" xml:"modifierAccountId,omitempty"`
-	// 部署组名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 服务连接Id
-	ServiceConnectionId *int64 `json:"serviceConnectionId,omitempty" xml:"serviceConnectionId,omitempty"`
-	// 类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// 更新时间
-	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	AliyunRegion        *string `json:"aliyunRegion,omitempty" xml:"aliyunRegion,omitempty"`
+	CreateTime          *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreatorAccountId    *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
+	Description         *string `json:"description,omitempty" xml:"description,omitempty"`
+	EcsLabelKey         *string `json:"ecsLabelKey,omitempty" xml:"ecsLabelKey,omitempty"`
+	EcsLabelValue       *string `json:"ecsLabelValue,omitempty" xml:"ecsLabelValue,omitempty"`
+	EcsType             *string `json:"ecsType,omitempty" xml:"ecsType,omitempty"`
+	HostNum             *int64  `json:"hostNum,omitempty" xml:"hostNum,omitempty"`
+	Id                  *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	ModifierAccountId   *string `json:"modifierAccountId,omitempty" xml:"modifierAccountId,omitempty"`
+	Name                *string `json:"name,omitempty" xml:"name,omitempty"`
+	ServiceConnectionId *int64  `json:"serviceConnectionId,omitempty" xml:"serviceConnectionId,omitempty"`
+	Type                *string `json:"type,omitempty" xml:"type,omitempty"`
+	UpdateTime          *int64  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListHostGroupsResponseBodyHostGroups) String() string {
@@ -8326,20 +7665,13 @@ func (s *ListOrganizationMembersRequest) SetState(v string) *ListOrganizationMem
 }
 
 type ListOrganizationMembersResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 成员列表
-	Members []*ListOrganizationMembersResponseBodyMembers `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
-	// 分页Token
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 总数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	ErrorCode    *string                                       `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                       `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Members      []*ListOrganizationMembersResponseBodyMembers `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+	NextToken    *string                                       `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId    *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount   *int64                                        `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListOrganizationMembersResponseBody) String() string {
@@ -8386,32 +7718,19 @@ func (s *ListOrganizationMembersResponseBody) SetTotalCount(v int64) *ListOrgani
 }
 
 type ListOrganizationMembersResponseBodyMembers struct {
-	// 阿里云用户ID
-	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// 生日
-	Birthday *int64 `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	// 部门名称列表
-	DeptLists []*string `json:"deptLists,omitempty" xml:"deptLists,omitempty" type:"Repeated"`
-	// 邮箱
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// 入职时间
-	HiredDate *int64 `json:"hiredDate,omitempty" xml:"hiredDate,omitempty"`
-	// 第三方信息
-	Identities *ListOrganizationMembersResponseBodyMembersIdentities `json:"identities,omitempty" xml:"identities,omitempty" type:"Struct"`
-	// 加入云效企业时间
-	JoinTime *int64 `json:"joinTime,omitempty" xml:"joinTime,omitempty"`
-	// 最近一次访问时间
-	LastVisitTime *int64 `json:"lastVisitTime,omitempty" xml:"lastVisitTime,omitempty"`
-	// 手机号
-	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
-	// 企业成员名
-	OrganizationMemberName *string `json:"organizationMemberName,omitempty" xml:"organizationMemberName,omitempty"`
-	// 企业角色Id
-	OrganizationRoleId *string `json:"organizationRoleId,omitempty" xml:"organizationRoleId,omitempty"`
-	// 企业角色名字
-	OrganizationRoleName *string `json:"organizationRoleName,omitempty" xml:"organizationRoleName,omitempty"`
-	// 用户状态
-	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	AccountId              *string                                               `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	Birthday               *int64                                                `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	DeptLists              []*string                                             `json:"deptLists,omitempty" xml:"deptLists,omitempty" type:"Repeated"`
+	Email                  *string                                               `json:"email,omitempty" xml:"email,omitempty"`
+	HiredDate              *int64                                                `json:"hiredDate,omitempty" xml:"hiredDate,omitempty"`
+	Identities             *ListOrganizationMembersResponseBodyMembersIdentities `json:"identities,omitempty" xml:"identities,omitempty" type:"Struct"`
+	JoinTime               *int64                                                `json:"joinTime,omitempty" xml:"joinTime,omitempty"`
+	LastVisitTime          *int64                                                `json:"lastVisitTime,omitempty" xml:"lastVisitTime,omitempty"`
+	Mobile                 *string                                               `json:"mobile,omitempty" xml:"mobile,omitempty"`
+	OrganizationMemberName *string                                               `json:"organizationMemberName,omitempty" xml:"organizationMemberName,omitempty"`
+	OrganizationRoleId     *string                                               `json:"organizationRoleId,omitempty" xml:"organizationRoleId,omitempty"`
+	OrganizationRoleName   *string                                               `json:"organizationRoleName,omitempty" xml:"organizationRoleName,omitempty"`
+	State                  *string                                               `json:"state,omitempty" xml:"state,omitempty"`
 }
 
 func (s ListOrganizationMembersResponseBodyMembers) String() string {
@@ -8488,10 +7807,8 @@ func (s *ListOrganizationMembersResponseBodyMembers) SetState(v string) *ListOrg
 }
 
 type ListOrganizationMembersResponseBodyMembersIdentities struct {
-	// 第三方系统的用户Id
 	ExternUid *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
-	// 第三方系统
-	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	Provider  *string `json:"provider,omitempty" xml:"provider,omitempty"`
 }
 
 func (s ListOrganizationMembersResponseBodyMembersIdentities) String() string {
@@ -8577,17 +7894,13 @@ func (s *ListPipelineJobHistorysRequest) SetNextToken(v string) *ListPipelineJob
 }
 
 type ListPipelineJobHistorysResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string                                    `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string                                    `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	Jobs         []*ListPipelineJobHistorysResponseBodyJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
 	NextToken    *string                                    `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success    *bool  `json:"success,omitempty" xml:"success,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	RequestId    *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount   *int32                                     `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListPipelineJobHistorysResponseBody) String() string {
@@ -8745,15 +8058,11 @@ func (s *ListPipelineJobsRequest) SetCategory(v string) *ListPipelineJobsRequest
 }
 
 type ListPipelineJobsResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string                             `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	Jobs         []*ListPipelineJobsResponseBodyJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                               `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListPipelineJobsResponseBody) String() string {
@@ -8854,18 +8163,12 @@ func (s *ListPipelineJobsResponse) SetBody(v *ListPipelineJobsResponseBody) *Lis
 }
 
 type ListPipelineRunsRequest struct {
-	// 结束时间
-	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 最大返回数量
-	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 分页Token
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 开始时间
-	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 状态 状态 FAIL 运行失败 SUCCESS 运行成功 RUNNING 运行中
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 触发模式 1人工触发 2定时触发 3代码提交触发
-	TriggerMode *int32 `json:"triggerMode,omitempty" xml:"triggerMode,omitempty"`
+	EndTime     *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	MaxResults  *int64  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken   *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	StartTime   *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
+	TriggerMode *int32  `json:"triggerMode,omitempty" xml:"triggerMode,omitempty"`
 }
 
 func (s ListPipelineRunsRequest) String() string {
@@ -8907,20 +8210,13 @@ func (s *ListPipelineRunsRequest) SetTriggerMode(v int32) *ListPipelineRunsReque
 }
 
 type ListPipelineRunsResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 下一个分页token，为空时，表示没有下一页
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 流水线运行实例
+	ErrorCode    *string                                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                     `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	NextToken    *string                                     `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	PipelineRuns []*ListPipelineRunsResponseBodyPipelineRuns `json:"pipelineRuns,omitempty" xml:"pipelineRuns,omitempty" type:"Repeated"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 总数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	RequestId    *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                       `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount   *int64                                      `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListPipelineRunsResponseBody) String() string {
@@ -8967,20 +8263,13 @@ func (s *ListPipelineRunsResponseBody) SetTotalCount(v int64) *ListPipelineRunsR
 }
 
 type ListPipelineRunsResponseBodyPipelineRuns struct {
-	// 运行人阿里云账号id
 	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
-	// 结束时间
-	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 流水线id
-	PipelineId *int64 `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
-	// 流水线实例id
-	PipelineRunId *int64 `json:"pipelineRunId,omitempty" xml:"pipelineRunId,omitempty"`
-	// 开始时间
-	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 运行状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 触发模式
-	TriggerMode *int64 `json:"triggerMode,omitempty" xml:"triggerMode,omitempty"`
+	EndTime          *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	PipelineId       *int64  `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
+	PipelineRunId    *int64  `json:"pipelineRunId,omitempty" xml:"pipelineRunId,omitempty"`
+	StartTime        *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
+	TriggerMode      *int64  `json:"triggerMode,omitempty" xml:"triggerMode,omitempty"`
 }
 
 func (s ListPipelineRunsResponseBodyPipelineRuns) String() string {
@@ -9056,26 +8345,16 @@ func (s *ListPipelineRunsResponse) SetBody(v *ListPipelineRunsResponseBody) *Lis
 }
 
 type ListPipelinesRequest struct {
-	// 创建结束时间
-	CreateEndTime *int64 `json:"createEndTime,omitempty" xml:"createEndTime,omitempty"`
-	// 创建开始时间
-	CreateStartTime *int64 `json:"createStartTime,omitempty" xml:"createStartTime,omitempty"`
-	// 创建人阿里云账号Id
+	CreateEndTime     *int64  `json:"createEndTime,omitempty" xml:"createEndTime,omitempty"`
+	CreateStartTime   *int64  `json:"createStartTime,omitempty" xml:"createStartTime,omitempty"`
 	CreatorAccountIds *string `json:"creatorAccountIds,omitempty" xml:"creatorAccountIds,omitempty"`
-	// 执行人阿里云账号id
 	ExecuteAccountIds *string `json:"executeAccountIds,omitempty" xml:"executeAccountIds,omitempty"`
-	// 执行结束时间
-	ExecuteEndTime *int64 `json:"executeEndTime,omitempty" xml:"executeEndTime,omitempty"`
-	// 执行开始时间
-	ExecuteStartTime *int64 `json:"executeStartTime,omitempty" xml:"executeStartTime,omitempty"`
-	// 返回的总数
-	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 分页Token
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 流水线名称
-	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
-	// 状态列表，多个逗号分割
-	StatusList *string `json:"statusList,omitempty" xml:"statusList,omitempty"`
+	ExecuteEndTime    *int64  `json:"executeEndTime,omitempty" xml:"executeEndTime,omitempty"`
+	ExecuteStartTime  *int64  `json:"executeStartTime,omitempty" xml:"executeStartTime,omitempty"`
+	MaxResults        *int64  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken         *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	PipelineName      *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
+	StatusList        *string `json:"statusList,omitempty" xml:"statusList,omitempty"`
 }
 
 func (s ListPipelinesRequest) String() string {
@@ -9137,20 +8416,13 @@ func (s *ListPipelinesRequest) SetStatusList(v string) *ListPipelinesRequest {
 }
 
 type ListPipelinesResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 分页Token
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 流水线
-	Pipelines []*ListPipelinesResponseBodyPipelines `json:"pipelines,omitempty" xml:"pipelines,omitempty" type:"Repeated"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 总数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	ErrorCode    *string                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	NextToken    *string                               `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Pipelines    []*ListPipelinesResponseBodyPipelines `json:"pipelines,omitempty" xml:"pipelines,omitempty" type:"Repeated"`
+	RequestId    *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount   *int64                                `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListPipelinesResponseBody) String() string {
@@ -9197,14 +8469,10 @@ func (s *ListPipelinesResponseBody) SetTotalCount(v int64) *ListPipelinesRespons
 }
 
 type ListPipelinesResponseBodyPipelines struct {
-	// 创建时间
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 创建人阿里云账号id
+	CreateTime       *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
-	// 流水线id
-	PipelineId *int64 `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
-	// 流水线名称
-	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
+	PipelineId       *int64  `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
+	PipelineName     *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
 }
 
 func (s ListPipelinesResponseBodyPipelines) String() string {
@@ -9282,16 +8550,11 @@ func (s *ListProjectMembersRequest) SetTargetType(v string) *ListProjectMembersR
 }
 
 type ListProjectMembersResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// member信息
-	Members []*ListProjectMembersResponseBodyMembers `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                                  `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	Members   []*ListProjectMembersResponseBodyMembers `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListProjectMembersResponseBody) String() string {
@@ -9328,44 +8591,25 @@ func (s *ListProjectMembersResponseBody) SetSuccess(v bool) *ListProjectMembersR
 }
 
 type ListProjectMembersResponseBodyMembers struct {
-	// 登陆账号
-	Account *string `json:"account,omitempty" xml:"account,omitempty"`
-	// 用户头像
-	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	// 钉钉id
-	DingTalkId *string `json:"dingTalkId,omitempty" xml:"dingTalkId,omitempty"`
-	// 展示名
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 展示昵称
-	DisplayNickName *string `json:"displayNickName,omitempty" xml:"displayNickName,omitempty"`
-	// 展示真名
-	DisplayRealName *string `json:"displayRealName,omitempty" xml:"displayRealName,omitempty"`
-	// 部门信息
-	Division *ListProjectMembersResponseBodyMembersDivision `json:"division,omitempty" xml:"division,omitempty" type:"Struct"`
-	// 邮箱
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// 性别
-	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
-	// 用户唯一 标识符
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 手机号
-	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
-	// 英文名
-	NameEn *string `json:"nameEn,omitempty" xml:"nameEn,omitempty"`
-	// 昵称
-	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	// 昵称拼音
-	NickNamePinyin *string `json:"nickNamePinyin,omitempty" xml:"nickNamePinyin,omitempty"`
-	// 企业信息
+	Account              *string                                                    `json:"account,omitempty" xml:"account,omitempty"`
+	Avatar               *string                                                    `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	DingTalkId           *string                                                    `json:"dingTalkId,omitempty" xml:"dingTalkId,omitempty"`
+	DisplayName          *string                                                    `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	DisplayNickName      *string                                                    `json:"displayNickName,omitempty" xml:"displayNickName,omitempty"`
+	DisplayRealName      *string                                                    `json:"displayRealName,omitempty" xml:"displayRealName,omitempty"`
+	Division             *ListProjectMembersResponseBodyMembersDivision             `json:"division,omitempty" xml:"division,omitempty" type:"Struct"`
+	Email                *string                                                    `json:"email,omitempty" xml:"email,omitempty"`
+	Gender               *string                                                    `json:"gender,omitempty" xml:"gender,omitempty"`
+	Identifier           *string                                                    `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Mobile               *string                                                    `json:"mobile,omitempty" xml:"mobile,omitempty"`
+	NameEn               *string                                                    `json:"nameEn,omitempty" xml:"nameEn,omitempty"`
+	NickName             *string                                                    `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	NickNamePinyin       *string                                                    `json:"nickNamePinyin,omitempty" xml:"nickNamePinyin,omitempty"`
 	OrganizationUserInfo *ListProjectMembersResponseBodyMembersOrganizationUserInfo `json:"organizationUserInfo,omitempty" xml:"organizationUserInfo,omitempty" type:"Struct"`
-	// 真名
-	RealName *string `json:"realName,omitempty" xml:"realName,omitempty"`
-	// 真名拼音
-	RealNamePinyin *string `json:"realNamePinyin,omitempty" xml:"realNamePinyin,omitempty"`
-	// 用户类型
-	Stamp *string `json:"stamp,omitempty" xml:"stamp,omitempty"`
-	// 角色id
-	TbRoleId *string `json:"tbRoleId,omitempty" xml:"tbRoleId,omitempty"`
+	RealName             *string                                                    `json:"realName,omitempty" xml:"realName,omitempty"`
+	RealNamePinyin       *string                                                    `json:"realNamePinyin,omitempty" xml:"realNamePinyin,omitempty"`
+	Stamp                *string                                                    `json:"stamp,omitempty" xml:"stamp,omitempty"`
+	TbRoleId             *string                                                    `json:"tbRoleId,omitempty" xml:"tbRoleId,omitempty"`
 }
 
 func (s ListProjectMembersResponseBodyMembers) String() string {
@@ -9472,7 +8716,6 @@ func (s *ListProjectMembersResponseBodyMembers) SetTbRoleId(v string) *ListProje
 }
 
 type ListProjectMembersResponseBodyMembersDivision struct {
-	// 部门唯一标识
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
 }
 
@@ -9490,7 +8733,6 @@ func (s *ListProjectMembersResponseBodyMembersDivision) SetIdentifier(v string) 
 }
 
 type ListProjectMembersResponseBodyMembersOrganizationUserInfo struct {
-	// 企业唯一标识符
 	OrganizationIdentifier *string `json:"organizationIdentifier,omitempty" xml:"organizationIdentifier,omitempty"`
 }
 
@@ -9537,7 +8779,6 @@ func (s *ListProjectMembersResponse) SetBody(v *ListProjectMembersResponseBody) 
 }
 
 type ListProjectTemplatesRequest struct {
-	// 模板类型
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
 }
 
@@ -9555,15 +8796,10 @@ func (s *ListProjectTemplatesRequest) SetCategory(v string) *ListProjectTemplate
 }
 
 type ListProjectTemplatesResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 项目模板信息
+	ErrorCode *string                                      `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                                      `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	RequestId *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                        `json:"success,omitempty" xml:"success,omitempty"`
 	Templates []*ListProjectTemplatesResponseBodyTemplates `json:"templates,omitempty" xml:"templates,omitempty" type:"Repeated"`
 }
 
@@ -9601,32 +8837,21 @@ func (s *ListProjectTemplatesResponseBody) SetTemplates(v []*ListProjectTemplate
 }
 
 type ListProjectTemplatesResponseBodyTemplates struct {
-	CopyFrom *string `json:"copyFrom,omitempty" xml:"copyFrom,omitempty"`
-	// 创建人id
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 描述信息
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 模板封面
-	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	// 模板唯一标识符
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 修改人
-	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// 模板名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 模板英文名称
-	NameEn *string `json:"nameEn,omitempty" xml:"nameEn,omitempty"`
-	// 所属资源类型
+	CopyFrom         *string `json:"copyFrom,omitempty" xml:"copyFrom,omitempty"`
+	Creator          *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate        *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified      *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Icon             *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	Identifier       *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Modifier         *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+	NameEn           *string `json:"nameEn,omitempty" xml:"nameEn,omitempty"`
 	ResourceCategory *string `json:"resourceCategory,omitempty" xml:"resourceCategory,omitempty"`
 	ResourceType     *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	SpaceIdentifier  *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
 	SpaceType        *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
-	// 模板类型 0-system/4-custom/16-instance
-	Type *int64 `json:"type,omitempty" xml:"type,omitempty"`
+	Type             *int64  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListProjectTemplatesResponseBodyTemplates) String() string {
@@ -9742,9 +8967,7 @@ func (s *ListProjectTemplatesResponse) SetBody(v *ListProjectTemplatesResponseBo
 }
 
 type ListProjectWorkitemTypesRequest struct {
-	// 工作项类型
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// 空间类型
+	Category  *string `json:"category,omitempty" xml:"category,omitempty"`
 	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
 }
 
@@ -9767,15 +8990,10 @@ func (s *ListProjectWorkitemTypesRequest) SetSpaceType(v string) *ListProjectWor
 }
 
 type ListProjectWorkitemTypesResponseBody struct {
-	// 错误返回码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误返回信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// openapi平台的request id
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 接口是否正常返回
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 工作项类型
+	ErrorCode     *string                                              `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage  *string                                              `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId     *string                                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success       *bool                                                `json:"success,omitempty" xml:"success,omitempty"`
 	WorkitemTypes []*ListProjectWorkitemTypesResponseBodyWorkitemTypes `json:"workitemTypes,omitempty" xml:"workitemTypes,omitempty" type:"Repeated"`
 }
 
@@ -9813,30 +9031,18 @@ func (s *ListProjectWorkitemTypesResponseBody) SetWorkitemTypes(v []*ListProject
 }
 
 type ListProjectWorkitemTypesResponseBodyWorkitemTypes struct {
-	// 添加到项目中的添加人
-	AddUser *string `json:"addUser,omitempty" xml:"addUser,omitempty"`
-	// 工作项类型
+	AddUser            *string `json:"addUser,omitempty" xml:"addUser,omitempty"`
 	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
-	// 工作项类型创建人
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 在项目中是否为默认类型
-	DefaultType *bool `json:"defaultType,omitempty" xml:"defaultType,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 是否启用
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// 添加到项目中的时间
-	GmtAdd *int64 `json:"gmtAdd,omitempty" xml:"gmtAdd,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 工作项类型id
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 工作项类型的名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 工作项类型的英文名称
-	NameEn *string `json:"nameEn,omitempty" xml:"nameEn,omitempty"`
-	// 是否系统默认
-	SystemDefault *bool `json:"systemDefault,omitempty" xml:"systemDefault,omitempty"`
+	Creator            *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	DefaultType        *bool   `json:"defaultType,omitempty" xml:"defaultType,omitempty"`
+	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
+	Enable             *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	GmtAdd             *int64  `json:"gmtAdd,omitempty" xml:"gmtAdd,omitempty"`
+	GmtCreate          *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	Identifier         *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
+	NameEn             *string `json:"nameEn,omitempty" xml:"nameEn,omitempty"`
+	SystemDefault      *bool   `json:"systemDefault,omitempty" xml:"systemDefault,omitempty"`
 }
 
 func (s ListProjectWorkitemTypesResponseBodyWorkitemTypes) String() string {
@@ -9937,16 +9143,12 @@ func (s *ListProjectWorkitemTypesResponse) SetBody(v *ListProjectWorkitemTypesRe
 }
 
 type ListProjectsRequest struct {
-	// 项目类型
 	Category        *string `json:"category,omitempty" xml:"category,omitempty"`
 	Conditions      *string `json:"conditions,omitempty" xml:"conditions,omitempty"`
 	ExtraConditions *string `json:"extraConditions,omitempty" xml:"extraConditions,omitempty"`
-	// 每页最大返回数量，0-200，默认值20
-	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 分页中的起始序列
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 公开类型
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	MaxResults      *int64  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken       *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Scope           *string `json:"scope,omitempty" xml:"scope,omitempty"`
 }
 
 func (s ListProjectsRequest) String() string {
@@ -9988,22 +9190,14 @@ func (s *ListProjectsRequest) SetScope(v string) *ListProjectsRequest {
 }
 
 type ListProjectsResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 每页数量
-	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 分页Token，没有下一页则为空
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 项目信息
-	Projects []*ListProjectsResponseBodyProjects `json:"projects,omitempty" xml:"projects,omitempty" type:"Repeated"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 总数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	ErrorCode  *string                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg   *string                             `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	MaxResults *int64                              `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken  *string                             `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Projects   []*ListProjectsResponseBodyProjects `json:"projects,omitempty" xml:"projects,omitempty" type:"Repeated"`
+	RequestId  *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success    *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount *int64                              `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListProjectsResponseBody) String() string {
@@ -10055,32 +9249,19 @@ func (s *ListProjectsResponseBody) SetTotalCount(v int64) *ListProjectsResponseB
 }
 
 type ListProjectsResponseBodyProjects struct {
-	// 类型
-	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
-	// 创建人
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 自定义编号
-	CustomCode *string `json:"customCode,omitempty" xml:"customCode,omitempty"`
-	// 删除时间
-	DeleteTime *int64 `json:"deleteTime,omitempty" xml:"deleteTime,omitempty"`
-	// 描述信息
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 项目封面
-	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	// 项目唯一标识符
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 逻辑状态
-	LogicalStatus *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
-	// 项目名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 公开还是私有
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 状态阶段
+	CategoryIdentifier    *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	Creator               *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	CustomCode            *string `json:"customCode,omitempty" xml:"customCode,omitempty"`
+	DeleteTime            *int64  `json:"deleteTime,omitempty" xml:"deleteTime,omitempty"`
+	Description           *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate             *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	Icon                  *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	Identifier            *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	LogicalStatus         *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	Name                  *string `json:"name,omitempty" xml:"name,omitempty"`
+	Scope                 *string `json:"scope,omitempty" xml:"scope,omitempty"`
 	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
-	// 类型id
-	TypeIdentifier *string `json:"typeIdentifier,omitempty" xml:"typeIdentifier,omitempty"`
+	TypeIdentifier        *string `json:"typeIdentifier,omitempty" xml:"typeIdentifier,omitempty"`
 }
 
 func (s ListProjectsResponseBodyProjects) String() string {
@@ -10186,22 +9367,14 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 }
 
 type ListRepositoriesRequest struct {
-	// accessToken
-	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
-	// 是否列出归档项目
-	Archived *bool `json:"archived,omitempty" xml:"archived,omitempty"`
-	// 排序字段
-	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	// 企业ID
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Archived       *bool   `json:"archived,omitempty" xml:"archived,omitempty"`
+	OrderBy        *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
-	// 页码
-	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页大小
-	PerPage *int64 `json:"perPage,omitempty" xml:"perPage,omitempty"`
-	// 搜索关键字
-	Search *string `json:"search,omitempty" xml:"search,omitempty"`
-	// 排序方式 (desc: 降序, asc: 升序)
-	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
+	Page           *int64  `json:"page,omitempty" xml:"page,omitempty"`
+	PerPage        *int64  `json:"perPage,omitempty" xml:"perPage,omitempty"`
+	Search         *string `json:"search,omitempty" xml:"search,omitempty"`
+	Sort           *string `json:"sort,omitempty" xml:"sort,omitempty"`
 }
 
 func (s ListRepositoriesRequest) String() string {
@@ -10253,17 +9426,12 @@ func (s *ListRepositoriesRequest) SetSort(v string) *ListRepositoriesRequest {
 }
 
 type ListRepositoriesResponseBody struct {
-	// 错误码
-	ErrorCode *int32 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求requestId
-	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    []*ListRepositoriesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	// 调用是否成功
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 总数量
-	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	ErrorCode    *int32                                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListRepositoriesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                                `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListRepositoriesResponseBody) String() string {
@@ -10305,42 +9473,24 @@ func (s *ListRepositoriesResponseBody) SetTotal(v int64) *ListRepositoriesRespon
 }
 
 type ListRepositoriesResponseBodyResult struct {
-	// 代码库Id
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 当前用户在该代码库上的权限类型
-	AccessLevel *int32 `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
-	// 代码库是否归档
-	Archive *bool `json:"archive,omitempty" xml:"archive,omitempty"`
-	// 头像地址
-	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
-	// 创建时间
-	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 代码库描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 代码库导入状态
-	ImportStatus *string `json:"importStatus,omitempty" xml:"importStatus,omitempty"`
-	// 最后活跃时间
-	LastActivityAt *string `json:"lastActivityAt,omitempty" xml:"lastActivityAt,omitempty"`
-	// 代码库名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 代码库完整名称（含完整组名称）
+	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	AccessLevel       *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	Archive           *bool   `json:"archive,omitempty" xml:"archive,omitempty"`
+	AvatarUrl         *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	CreatedAt         *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	ImportStatus      *string `json:"importStatus,omitempty" xml:"importStatus,omitempty"`
+	LastActivityAt    *string `json:"lastActivityAt,omitempty" xml:"lastActivityAt,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
 	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
-	// 上级路径的id
-	NamespaceId *int64 `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
-	// 代码库路径
-	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 代码库完整路径（含完整组路径）
+	NamespaceId       *int64  `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	Path              *string `json:"path,omitempty" xml:"path,omitempty"`
 	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
-	// 是否被收藏
-	Star *bool `json:"star,omitempty" xml:"star,omitempty"`
-	// 被收藏的数量
-	StarCount *int64 `json:"starCount,omitempty" xml:"starCount,omitempty"`
-	// 更新时间
-	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// 可见性;0标识私有的/10标识企业内公开
-	VisibilityLevel *string `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
-	// 页面访问时的URL
-	WebUrl *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+	Star              *bool   `json:"star,omitempty" xml:"star,omitempty"`
+	StarCount         *int64  `json:"starCount,omitempty" xml:"starCount,omitempty"`
+	UpdatedAt         *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	VisibilityLevel   *string `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	WebUrl            *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
 }
 
 func (s ListRepositoriesResponseBodyResult) String() string {
@@ -10471,9 +9621,7 @@ func (s *ListRepositoriesResponse) SetBody(v *ListRepositoriesResponseBody) *Lis
 }
 
 type ListRepositoryMemberWithInheritedRequest struct {
-	// accessToken
-	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
-	// 企业Id
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
 }
 
@@ -10684,14 +9832,10 @@ func (s *ListRepositoryMemberWithInheritedResponse) SetBody(v *ListRepositoryMem
 }
 
 type ListRepositoryWebhookRequest struct {
-	// accessToken
-	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
-	// 企业Id
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
-	// 页码
-	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页数据量
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Page           *int64  `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize       *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListRepositoryWebhookRequest) String() string {
@@ -10882,16 +10026,11 @@ func (s *ListRepositoryWebhookResponse) SetBody(v *ListRepositoryWebhookResponse
 }
 
 type ListResourceMembersResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 成员
+	ErrorCode       *string                                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage    *string                                           `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId       *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	ResourceMembers []*ListResourceMembersResponseBodyResourceMembers `json:"resourceMembers,omitempty" xml:"resourceMembers,omitempty" type:"Repeated"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success         *bool                                             `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListResourceMembersResponseBody) String() string {
@@ -10928,12 +10067,9 @@ func (s *ListResourceMembersResponseBody) SetSuccess(v bool) *ListResourceMember
 }
 
 type ListResourceMembersResponseBodyResourceMembers struct {
-	// 账号id
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// 角色
-	RoleName *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
-	// 用户名称
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	RoleName  *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ListResourceMembersResponseBodyResourceMembers) String() string {
@@ -10989,7 +10125,6 @@ func (s *ListResourceMembersResponse) SetBody(v *ListResourceMembersResponseBody
 }
 
 type ListServiceConnectionsRequest struct {
-	// aliyun_code  阿里云代码 Codeup       Codeup  Gitee        码云 github       Github ack       容器服务Kubernetes(ACK) docker_register_aliyun    容器镜像服务(ACR) ecs          对象存储(OSS) edas          企业级分布式应用(EDAS) emas         移动研发平台(EMAS) fc            阿里云函数计算(FC) kubernetes     自建k8s集群 oss            对象存储(OSS) PACKAGES       制品仓库 ros   资源编排服务(ROS) sae       Serverless应用引擎(SAE)
 	SericeConnectionType *string `json:"sericeConnectionType,omitempty" xml:"sericeConnectionType,omitempty"`
 }
 
@@ -11007,16 +10142,11 @@ func (s *ListServiceConnectionsRequest) SetSericeConnectionType(v string) *ListS
 }
 
 type ListServiceConnectionsResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 服务连接
+	ErrorCode          *string                                                 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage       *string                                                 `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId          *string                                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	ServiceConnections []*ListServiceConnectionsResponseBodyServiceConnections `json:"serviceConnections,omitempty" xml:"serviceConnections,omitempty" type:"Repeated"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success            *bool                                                   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListServiceConnectionsResponseBody) String() string {
@@ -11053,16 +10183,11 @@ func (s *ListServiceConnectionsResponseBody) SetSuccess(v bool) *ListServiceConn
 }
 
 type ListServiceConnectionsResponseBodyServiceConnections struct {
-	// 创建时间
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 服务连接Id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 服务连接名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 拥有者阿里云账号id
-	OwnerAccountId *int64 `json:"ownerAccountId,omitempty" xml:"ownerAccountId,omitempty"`
-	// 服务连接类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	CreateTime     *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Id             *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+	OwnerAccountId *int64  `json:"ownerAccountId,omitempty" xml:"ownerAccountId,omitempty"`
+	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListServiceConnectionsResponseBodyServiceConnections) String() string {
@@ -11128,14 +10253,10 @@ func (s *ListServiceConnectionsResponse) SetBody(v *ListServiceConnectionsRespon
 }
 
 type ListSprintsRequest struct {
-	// 每页最大返回数量，0-200，默认值20
-	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 分页中的起始序列
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 项目id
+	MaxResults      *int64  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken       *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 类型
-	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	SpaceType       *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
 }
 
 func (s ListSprintsRequest) String() string {
@@ -11167,22 +10288,14 @@ func (s *ListSprintsRequest) SetSpaceType(v string) *ListSprintsRequest {
 }
 
 type ListSprintsResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 每页数量
-	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 分页Token，没有下一页则为空
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 迭代信息
-	Sprints []*ListSprintsResponseBodySprints `json:"sprints,omitempty" xml:"sprints,omitempty" type:"Repeated"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 总数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	ErrorCode  *string                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg   *string                           `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	MaxResults *int64                            `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken  *string                           `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId  *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Sprints    []*ListSprintsResponseBodySprints `json:"sprints,omitempty" xml:"sprints,omitempty" type:"Repeated"`
+	Success    *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount *int64                            `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListSprintsResponseBody) String() string {
@@ -11234,30 +10347,18 @@ func (s *ListSprintsResponseBody) SetTotalCount(v int64) *ListSprintsResponseBod
 }
 
 type ListSprintsResponseBodySprints struct {
-	// 创建人id
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 描述信息
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 结束时间
-	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 迭代唯一标识符
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 修改人
-	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// 迭代名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 可见范围
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 项目id
+	Creator         *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	EndDate         *int64  `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	GmtCreate       *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified     *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier      *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Modifier        *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	Scope           *string `json:"scope,omitempty" xml:"scope,omitempty"`
 	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 开始时间
-	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	// 状态，未开始:Todo, 进行中:Doing, 已完成:Done
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	StartDate       *int64  `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListSprintsResponseBodySprints) String() string {
@@ -11358,14 +10459,10 @@ func (s *ListSprintsResponse) SetBody(v *ListSprintsResponseBody) *ListSprintsRe
 }
 
 type ListVariableGroupsRequest struct {
-	// 最大返回数，默认30
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 分页token，上一次请求的出参nextToken
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 排序顺序
-	PageOrder *string `json:"pageOrder,omitempty" xml:"pageOrder,omitempty"`
-	// 排序条件
-	PageSort *string `json:"pageSort,omitempty" xml:"pageSort,omitempty"`
+	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	PageOrder  *string `json:"pageOrder,omitempty" xml:"pageOrder,omitempty"`
+	PageSort   *string `json:"pageSort,omitempty" xml:"pageSort,omitempty"`
 }
 
 func (s ListVariableGroupsRequest) String() string {
@@ -11397,19 +10494,12 @@ func (s *ListVariableGroupsRequest) SetPageSort(v string) *ListVariableGroupsReq
 }
 
 type ListVariableGroupsResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 下一次查询的token，为空表示最后一页
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 变量组总数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
-	// 变量组
+	ErrorCode      *string                                         `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage   *string                                         `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	NextToken      *string                                         `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId      *string                                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                                           `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount     *int64                                          `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 	VariableGroups []*ListVariableGroupsResponseBodyVariableGroups `json:"variableGroups,omitempty" xml:"variableGroups,omitempty" type:"Repeated"`
 }
 
@@ -11457,24 +10547,15 @@ func (s *ListVariableGroupsResponseBody) SetVariableGroups(v []*ListVariableGrou
 }
 
 type ListVariableGroupsResponseBodyVariableGroups struct {
-	// 创建时间
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 创建人阿里云账号id
-	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
-	// 变量组描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 变量组id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 更新人阿里云账号id
-	ModifierAccountId *string `json:"modifierAccountId,omitempty" xml:"modifierAccountId,omitempty"`
-	// 变量组名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 关联的流水线
-	RelatedPipelines []*ListVariableGroupsResponseBodyVariableGroupsRelatedPipelines `json:"relatedPipelines,omitempty" xml:"relatedPipelines,omitempty" type:"Repeated"`
-	// 更新时间
-	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// 变量
-	Variables []*ListVariableGroupsResponseBodyVariableGroupsVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
+	CreateTime        *int64                                                          `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreatorAccountId  *string                                                         `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
+	Description       *string                                                         `json:"description,omitempty" xml:"description,omitempty"`
+	Id                *int64                                                          `json:"id,omitempty" xml:"id,omitempty"`
+	ModifierAccountId *string                                                         `json:"modifierAccountId,omitempty" xml:"modifierAccountId,omitempty"`
+	Name              *string                                                         `json:"name,omitempty" xml:"name,omitempty"`
+	RelatedPipelines  []*ListVariableGroupsResponseBodyVariableGroupsRelatedPipelines `json:"relatedPipelines,omitempty" xml:"relatedPipelines,omitempty" type:"Repeated"`
+	UpdateTime        *int64                                                          `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Variables         []*ListVariableGroupsResponseBodyVariableGroupsVariables        `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
 
 func (s ListVariableGroupsResponseBodyVariableGroups) String() string {
@@ -11531,9 +10612,7 @@ func (s *ListVariableGroupsResponseBodyVariableGroups) SetVariables(v []*ListVar
 }
 
 type ListVariableGroupsResponseBodyVariableGroupsRelatedPipelines struct {
-	// 关联的流水线Id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 关联的流水线名称
+	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -11556,12 +10635,9 @@ func (s *ListVariableGroupsResponseBodyVariableGroupsRelatedPipelines) SetName(v
 }
 
 type ListVariableGroupsResponseBodyVariableGroupsVariables struct {
-	// 是否加密
-	IsEncrypted *bool `json:"isEncrypted,omitempty" xml:"isEncrypted,omitempty"`
-	// 变量名
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 变量值
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	IsEncrypted *bool   `json:"isEncrypted,omitempty" xml:"isEncrypted,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Value       *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ListVariableGroupsResponseBodyVariableGroupsVariables) String() string {
@@ -11617,11 +10693,8 @@ func (s *ListVariableGroupsResponse) SetBody(v *ListVariableGroupsResponseBody) 
 }
 
 type ListWorkItemAllFieldsRequest struct {
-	// 项目id
-	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 资源类型
-	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
-	// 工作项类型id，工作项类型的列表和id可以从ListProjectWorkitemType中获取
+	SpaceIdentifier        *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	SpaceType              *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
 	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
 }
 
@@ -11649,16 +10722,11 @@ func (s *ListWorkItemAllFieldsRequest) SetWorkitemTypeIdentifier(v string) *List
 }
 
 type ListWorkItemAllFieldsResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 字段信息
-	Fields []*ListWorkItemAllFieldsResponseBodyFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode *string                                    `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                                    `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	Fields    []*ListWorkItemAllFieldsResponseBodyFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListWorkItemAllFieldsResponseBody) String() string {
@@ -11695,40 +10763,23 @@ func (s *ListWorkItemAllFieldsResponseBody) SetSuccess(v bool) *ListWorkItemAllF
 }
 
 type ListWorkItemAllFieldsResponseBodyFields struct {
-	// 字段类型
-	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
-	// 创建人id
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 默认值
-	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
-	// 描述信息
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 字段格式
-	Format *string `json:"format,omitempty" xml:"format,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 字段唯一标识符
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 是否必填
-	IsRequired *bool `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
-	// 创建时是否展示
-	IsShowWhenCreate *bool `json:"isShowWhenCreate,omitempty" xml:"isShowWhenCreate,omitempty"`
-	// 是否是系统必须字段，比如：负责人、状态等。
-	IsSystemRequired *bool `json:"isSystemRequired,omitempty" xml:"isSystemRequired,omitempty"`
-	// 联动的服务，比如：迭代 迭代服务开启/关闭，这个字段字段加进/剔除出对应的模板； 字段模板里，这类字段不能手动添加或删除
-	LinkWithService *string `json:"linkWithService,omitempty" xml:"linkWithService,omitempty"`
-	// 修改人
-	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// 字段名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 待选值
-	Options []*ListWorkItemAllFieldsResponseBodyFieldsOptions `json:"options,omitempty" xml:"options,omitempty" type:"Repeated"`
-	// 区分不同的适用对象
-	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 区分不同的类型，如系统字段、用户自定义字段
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	ClassName        *string                                           `json:"className,omitempty" xml:"className,omitempty"`
+	Creator          *string                                           `json:"creator,omitempty" xml:"creator,omitempty"`
+	DefaultValue     *string                                           `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
+	Description      *string                                           `json:"description,omitempty" xml:"description,omitempty"`
+	Format           *string                                           `json:"format,omitempty" xml:"format,omitempty"`
+	GmtCreate        *int64                                            `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified      *int64                                            `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier       *string                                           `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	IsRequired       *bool                                             `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	IsShowWhenCreate *bool                                             `json:"isShowWhenCreate,omitempty" xml:"isShowWhenCreate,omitempty"`
+	IsSystemRequired *bool                                             `json:"isSystemRequired,omitempty" xml:"isSystemRequired,omitempty"`
+	LinkWithService  *string                                           `json:"linkWithService,omitempty" xml:"linkWithService,omitempty"`
+	Modifier         *string                                           `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name             *string                                           `json:"name,omitempty" xml:"name,omitempty"`
+	Options          []*ListWorkItemAllFieldsResponseBodyFieldsOptions `json:"options,omitempty" xml:"options,omitempty" type:"Repeated"`
+	ResourceType     *string                                           `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Type             *string                                           `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListWorkItemAllFieldsResponseBodyFields) String() string {
@@ -11825,20 +10876,13 @@ func (s *ListWorkItemAllFieldsResponseBodyFields) SetType(v string) *ListWorkIte
 }
 
 type ListWorkItemAllFieldsResponseBodyFieldsOptions struct {
-	// 根据语言环境获取当前展示的值
-	DisplayValue *string `json:"displayValue,omitempty" xml:"displayValue,omitempty"`
-	// 字段唯一标识
+	DisplayValue    *string `json:"displayValue,omitempty" xml:"displayValue,omitempty"`
 	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
-	// 待选值的唯一标识
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 展示级别，数字范围1~9，数字越大，颜色越浅。
-	Level *int64 `json:"level,omitempty" xml:"level,omitempty"`
-	// 待选值顺序
-	Position *int64 `json:"position,omitempty" xml:"position,omitempty"`
-	// 待选值中文名称
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// 待选值英文名称
-	ValueEn *string `json:"valueEn,omitempty" xml:"valueEn,omitempty"`
+	Identifier      *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Level           *int64  `json:"level,omitempty" xml:"level,omitempty"`
+	Position        *int64  `json:"position,omitempty" xml:"position,omitempty"`
+	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueEn         *string `json:"valueEn,omitempty" xml:"valueEn,omitempty"`
 }
 
 func (s ListWorkItemAllFieldsResponseBodyFieldsOptions) String() string {
@@ -11914,14 +10958,10 @@ func (s *ListWorkItemAllFieldsResponse) SetBody(v *ListWorkItemAllFieldsResponse
 }
 
 type ListWorkItemWorkFlowStatusRequest struct {
-	// 项目id
-	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 空间类型
-	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
-	// 工作项大类型
+	SpaceIdentifier            *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	SpaceType                  *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
 	WorkitemCategoryIdentifier *string `json:"workitemCategoryIdentifier,omitempty" xml:"workitemCategoryIdentifier,omitempty"`
-	// 工作项小类型id
-	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
+	WorkitemTypeIdentifier     *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
 }
 
 func (s ListWorkItemWorkFlowStatusRequest) String() string {
@@ -11953,16 +10993,11 @@ func (s *ListWorkItemWorkFlowStatusRequest) SetWorkitemTypeIdentifier(v string) 
 }
 
 type ListWorkItemWorkFlowStatusResponseBody struct {
-	// 错误返回码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误返回信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// openapi平台的request id
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 工作流状态
-	Statuses []*ListWorkItemWorkFlowStatusResponseBodyStatuses `json:"statuses,omitempty" xml:"statuses,omitempty" type:"Repeated"`
-	// 接口是否正常返回
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode    *string                                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                           `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Statuses     []*ListWorkItemWorkFlowStatusResponseBodyStatuses `json:"statuses,omitempty" xml:"statuses,omitempty" type:"Repeated"`
+	Success      *bool                                             `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListWorkItemWorkFlowStatusResponseBody) String() string {
@@ -11999,28 +11034,17 @@ func (s *ListWorkItemWorkFlowStatusResponseBody) SetSuccess(v bool) *ListWorkIte
 }
 
 type ListWorkItemWorkFlowStatusResponseBodyStatuses struct {
-	// 状态的创建人
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 更新时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 工作流状态id
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 修改人
-	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// 工作流状态名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 状态作用的资源类型
-	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 状态来源
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// 阶段信息-阶段的唯一标识
+	Creator                 *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Description             *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate               *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified             *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier              *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Modifier                *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name                    *string `json:"name,omitempty" xml:"name,omitempty"`
+	ResourceType            *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Source                  *string `json:"source,omitempty" xml:"source,omitempty"`
 	WorkflowStageIdentifier *string `json:"workflowStageIdentifier,omitempty" xml:"workflowStageIdentifier,omitempty"`
-	// 阶段信息-名称
-	WorkflowStageName *string `json:"workflowStageName,omitempty" xml:"workflowStageName,omitempty"`
+	WorkflowStageName       *string `json:"workflowStageName,omitempty" xml:"workflowStageName,omitempty"`
 }
 
 func (s ListWorkItemWorkFlowStatusResponseBodyStatuses) String() string {
@@ -12116,17 +11140,11 @@ func (s *ListWorkItemWorkFlowStatusResponse) SetBody(v *ListWorkItemWorkFlowStat
 }
 
 type ListWorkitemTimeResponseBody struct {
-	// 接口返回code
-	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 工时信息
+	Code         *int64                                      `json:"code,omitempty" xml:"code,omitempty"`
+	ErrorCode    *string                                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg     *string                                     `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	RequestId    *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                       `json:"success,omitempty" xml:"success,omitempty"`
 	WorkitemTime []*ListWorkitemTimeResponseBodyWorkitemTime `json:"workitemTime,omitempty" xml:"workitemTime,omitempty" type:"Repeated"`
 }
 
@@ -12169,25 +11187,15 @@ func (s *ListWorkitemTimeResponseBody) SetWorkitemTime(v []*ListWorkitemTimeResp
 }
 
 type ListWorkitemTimeResponseBodyWorkitemTime struct {
-	// 实际工时，小时为单位
-	ActualTime *int64 `json:"actualTime,omitempty" xml:"actualTime,omitempty"`
-	// 工时描述信息
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 工时记录的创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 结束时间
-	GmtEnd *int64 `json:"gmtEnd,omitempty" xml:"gmtEnd,omitempty"`
-	// 工时记录的修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 开始时间
-	GmtStart *int64 `json:"gmtStart,omitempty" xml:"gmtStart,omitempty"`
-	// 工时唯一标识
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 登记人的account Id
-	RecordUser *string `json:"recordUser,omitempty" xml:"recordUser,omitempty"`
-	// 工时类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// 工作项id，唯一标识
+	ActualTime         *int64  `json:"actualTime,omitempty" xml:"actualTime,omitempty"`
+	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate          *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtEnd             *int64  `json:"gmtEnd,omitempty" xml:"gmtEnd,omitempty"`
+	GmtModified        *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	GmtStart           *int64  `json:"gmtStart,omitempty" xml:"gmtStart,omitempty"`
+	Identifier         *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	RecordUser         *string `json:"recordUser,omitempty" xml:"recordUser,omitempty"`
+	Type               *string `json:"type,omitempty" xml:"type,omitempty"`
 	WorkitemIdentifier *string `json:"workitemIdentifier,omitempty" xml:"workitemIdentifier,omitempty"`
 }
 
@@ -12279,26 +11287,16 @@ func (s *ListWorkitemTimeResponse) SetBody(v *ListWorkitemTimeResponseBody) *Lis
 }
 
 type ListWorkitemsRequest struct {
-	// 工作项类型，需求为Req，缺陷为Bug，任务为Task，风险为Risk
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// 过滤条件
-	Conditions *string `json:"conditions,omitempty" xml:"conditions,omitempty"`
-	// 额外条件
+	Category        *string `json:"category,omitempty" xml:"category,omitempty"`
+	Conditions      *string `json:"conditions,omitempty" xml:"conditions,omitempty"`
 	ExtraConditions *string `json:"extraConditions,omitempty" xml:"extraConditions,omitempty"`
-	// 分组条件
-	GroupCondition *string `json:"groupCondition,omitempty" xml:"groupCondition,omitempty"`
-	// 每页最大返回数量，0-200，默认值20
-	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 分页中的起始序列
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 排序顺序
-	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	// 查询类型
-	SearchType *string `json:"searchType,omitempty" xml:"searchType,omitempty"`
-	// 项目id
+	GroupCondition  *string `json:"groupCondition,omitempty" xml:"groupCondition,omitempty"`
+	MaxResults      *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken       *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	OrderBy         *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	SearchType      *string `json:"searchType,omitempty" xml:"searchType,omitempty"`
 	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 项目类型
-	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	SpaceType       *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
 }
 
 func (s ListWorkitemsRequest) String() string {
@@ -12360,22 +11358,14 @@ func (s *ListWorkitemsRequest) SetSpaceType(v string) *ListWorkitemsRequest {
 }
 
 type ListWorkitemsResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 每页数量
-	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 分页Token，没有下一页则为空
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 总数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
-	// 工作项信息
-	Workitems []*ListWorkitemsResponseBodyWorkitems `json:"workitems,omitempty" xml:"workitems,omitempty" type:"Repeated"`
+	ErrorCode  *string                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg   *string                               `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	MaxResults *int64                                `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken  *string                               `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId  *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success    *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount *int64                                `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Workitems  []*ListWorkitemsResponseBodyWorkitems `json:"workitems,omitempty" xml:"workitems,omitempty" type:"Repeated"`
 }
 
 func (s ListWorkitemsResponseBody) String() string {
@@ -12427,47 +11417,26 @@ func (s *ListWorkitemsResponseBody) SetWorkitems(v []*ListWorkitemsResponseBodyW
 }
 
 type ListWorkitemsResponseBodyWorkitems struct {
-	// 负责人aliyunPk
-	AssignedTo *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
-	// 工作项的类型id
-	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
-	// 创建人aliyunPK
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 工作项内容
-	Document *string `json:"document,omitempty" xml:"document,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 工作项唯一标识
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 逻辑状态
-	LogicalStatus *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
-	// 修改人aliyunPK
-	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// 父工作项id
-	ParentIdentifier *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
-	// 编号
-	SerialNumber *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
-	// 所属项目id
-	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 所属项目名称
-	SpaceName *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
-	// 项目类型
-	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
-	// 迭代id
-	SprintIdentifier *string `json:"sprintIdentifier,omitempty" xml:"sprintIdentifier,omitempty"`
-	// 状态名称
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 状态唯一标识
-	StatusIdentifier *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
-	// 状态阶段id
-	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
-	// 工作项标题
-	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// 状态更新时间
-	UpdateStatusAt *int64 `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
-	// 工作项类型id
+	AssignedTo             *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
+	CategoryIdentifier     *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	Creator                *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Document               *string `json:"document,omitempty" xml:"document,omitempty"`
+	GmtCreate              *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified            *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier             *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	LogicalStatus          *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	Modifier               *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	ParentIdentifier       *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	SerialNumber           *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
+	SpaceIdentifier        *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	SpaceName              *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
+	SpaceType              *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	SprintIdentifier       *string `json:"sprintIdentifier,omitempty" xml:"sprintIdentifier,omitempty"`
+	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
+	StatusIdentifier       *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
+	StatusStageIdentifier  *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	Subject                *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	UpdateStatusAt         *int64  `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
 	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
 }
 
@@ -12614,13 +11583,9 @@ func (s *ListWorkitemsResponse) SetBody(v *ListWorkitemsResponseBody) *ListWorki
 }
 
 type ListWorkspacesRequest struct {
-	// 本次读取的最大数据记录数量，默认10，最大100
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 用来标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 枚举值：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
-	StatusList []*string `json:"statusList,omitempty" xml:"statusList,omitempty" type:"Repeated"`
-	// 空间模板列表
+	MaxResults            *int32    `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken             *string   `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	StatusList            []*string `json:"statusList,omitempty" xml:"statusList,omitempty" type:"Repeated"`
 	WorkspaceTemplateList []*string `json:"workspaceTemplateList,omitempty" xml:"workspaceTemplateList,omitempty" type:"Repeated"`
 }
 
@@ -12653,13 +11618,9 @@ func (s *ListWorkspacesRequest) SetWorkspaceTemplateList(v []*string) *ListWorks
 }
 
 type ListWorkspacesShrinkRequest struct {
-	// 本次读取的最大数据记录数量，默认10，最大100
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 用来标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 枚举值：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
-	StatusListShrink *string `json:"statusList,omitempty" xml:"statusList,omitempty"`
-	// 空间模板列表
+	MaxResults                  *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken                   *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	StatusListShrink            *string `json:"statusList,omitempty" xml:"statusList,omitempty"`
 	WorkspaceTemplateListShrink *string `json:"workspaceTemplateList,omitempty" xml:"workspaceTemplateList,omitempty"`
 }
 
@@ -12692,22 +11653,14 @@ func (s *ListWorkspacesShrinkRequest) SetWorkspaceTemplateListShrink(v string) *
 }
 
 type ListWorkspacesResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// MaxResults本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 请求是否成功
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
-	// 工作空间列表
-	Workspaces []*ListWorkspacesResponseBodyWorkspaces `json:"workspaces,omitempty" xml:"workspaces,omitempty" type:"Repeated"`
+	ErrorCode    *string                                 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                 `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	MaxResults   *int32                                  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken    *string                                 `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId    *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount   *int32                                  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Workspaces   []*ListWorkspacesResponseBodyWorkspaces `json:"workspaces,omitempty" xml:"workspaces,omitempty" type:"Repeated"`
 }
 
 func (s ListWorkspacesResponseBody) String() string {
@@ -12759,24 +11712,15 @@ func (s *ListWorkspacesResponseBody) SetWorkspaces(v []*ListWorkspacesResponseBo
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {
-	// 代码来源URL
-	CodeUrl *string `json:"codeUrl,omitempty" xml:"codeUrl,omitempty"`
-	// 代码版本，支持 commitSHA、分支、标签
+	CodeUrl     *string `json:"codeUrl,omitempty" xml:"codeUrl,omitempty"`
 	CodeVersion *string `json:"codeVersion,omitempty" xml:"codeVersion,omitempty"`
-	// 创建时间戳
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 工作空间唯一标识，字符串形式，可在云效DevStudio访问空间链接中获取
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 工作空间名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 机器规格
-	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// 空间状态，枚举：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 工作空间模板
-	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-	// 用户阿里云PK
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Id          *string `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Spec        *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
+	Template    *string `json:"template,omitempty" xml:"template,omitempty"`
+	UserId      *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s ListWorkspacesResponseBodyWorkspaces) String() string {
@@ -12955,16 +11899,11 @@ func (s *LogPipelineJobRunResponse) SetBody(v *LogPipelineJobRunResponseBody) *L
 }
 
 type LogVMDeployMachineResponseBody struct {
-	// 部署单
 	DeployMachineLog *LogVMDeployMachineResponseBodyDeployMachineLog `json:"deployMachineLog,omitempty" xml:"deployMachineLog,omitempty" type:"Struct"`
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode        *string                                         `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage     *string                                         `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId        *string                                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success          *bool                                           `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s LogVMDeployMachineResponseBody) String() string {
@@ -13001,16 +11940,11 @@ func (s *LogVMDeployMachineResponseBody) SetSuccess(v bool) *LogVMDeployMachineR
 }
 
 type LogVMDeployMachineResponseBodyDeployMachineLog struct {
-	// 部署地域
-	AliyunRegion *string `json:"aliyunRegion,omitempty" xml:"aliyunRegion,omitempty"`
-	// 部署开始时间
-	DeployBeginTime *int64 `json:"deployBeginTime,omitempty" xml:"deployBeginTime,omitempty"`
-	// 部署结束时间
-	DeployEndTime *int64 `json:"deployEndTime,omitempty" xml:"deployEndTime,omitempty"`
-	// 部署日志
-	DeployLog *string `json:"deployLog,omitempty" xml:"deployLog,omitempty"`
-	// 部署日志路径
-	DeployLogPath *string `json:"deployLogPath,omitempty" xml:"deployLogPath,omitempty"`
+	AliyunRegion    *string `json:"aliyunRegion,omitempty" xml:"aliyunRegion,omitempty"`
+	DeployBeginTime *int64  `json:"deployBeginTime,omitempty" xml:"deployBeginTime,omitempty"`
+	DeployEndTime   *int64  `json:"deployEndTime,omitempty" xml:"deployEndTime,omitempty"`
+	DeployLog       *string `json:"deployLog,omitempty" xml:"deployLog,omitempty"`
+	DeployLogPath   *string `json:"deployLogPath,omitempty" xml:"deployLogPath,omitempty"`
 }
 
 func (s LogVMDeployMachineResponseBodyDeployMachineLog) String() string {
@@ -13076,14 +12010,10 @@ func (s *LogVMDeployMachineResponse) SetBody(v *LogVMDeployMachineResponseBody) 
 }
 
 type PassPipelineValidateResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s PassPipelineValidateResponseBody) String() string {
@@ -13144,14 +12074,10 @@ func (s *PassPipelineValidateResponse) SetBody(v *PassPipelineValidateResponseBo
 }
 
 type RefusePipelineValidateResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s RefusePipelineValidateResponseBody) String() string {
@@ -13212,14 +12138,10 @@ func (s *RefusePipelineValidateResponse) SetBody(v *RefusePipelineValidateRespon
 }
 
 type ReleaseWorkspaceResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 请求是否成功
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ReleaseWorkspaceResponseBody) String() string {
@@ -13280,16 +12202,11 @@ func (s *ReleaseWorkspaceResponse) SetBody(v *ReleaseWorkspaceResponseBody) *Rel
 }
 
 type ResetSshKeyResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 企业公钥
-	SshKey *ResetSshKeyResponseBodySshKey `json:"sshKey,omitempty" xml:"sshKey,omitempty" type:"Struct"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode    *string                        `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                        `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SshKey       *ResetSshKeyResponseBodySshKey `json:"sshKey,omitempty" xml:"sshKey,omitempty" type:"Struct"`
+	Success      *bool                          `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ResetSshKeyResponseBody) String() string {
@@ -13326,9 +12243,7 @@ func (s *ResetSshKeyResponseBody) SetSuccess(v bool) *ResetSshKeyResponseBody {
 }
 
 type ResetSshKeyResponseBodySshKey struct {
-	// 企业公钥id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 企业公钥
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	PublicKey *string `json:"publicKey,omitempty" xml:"publicKey,omitempty"`
 }
 
@@ -13380,14 +12295,10 @@ func (s *ResetSshKeyResponse) SetBody(v *ResetSshKeyResponseBody) *ResetSshKeyRe
 }
 
 type ResumeVMDeployOrderResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ResumeVMDeployOrderResponseBody) String() string {
@@ -13512,14 +12423,10 @@ func (s *RetryPipelineJobRunResponse) SetBody(v *RetryPipelineJobRunResponseBody
 }
 
 type RetryVMDeployMachineResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s RetryVMDeployMachineResponseBody) String() string {
@@ -13644,14 +12551,10 @@ func (s *SkipPipelineJobRunResponse) SetBody(v *SkipPipelineJobRunResponseBody) 
 }
 
 type SkipVMDeployMachineResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s SkipVMDeployMachineResponseBody) String() string {
@@ -13712,7 +12615,6 @@ func (s *SkipVMDeployMachineResponse) SetBody(v *SkipVMDeployMachineResponseBody
 }
 
 type StartPipelineRunRequest struct {
-	// 流水线运行参数,json字符串 branchModeBranchs  分支模式运行的分支 envs  环境变量 runningBranchs 运行分支 runningTags  运行代码tag comment  运行备注
 	Params *string `json:"params,omitempty" xml:"params,omitempty"`
 }
 
@@ -13730,16 +12632,11 @@ func (s *StartPipelineRunRequest) SetParams(v string) *StartPipelineRunRequest {
 }
 
 type StartPipelineRunResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 流水线运行实例id
-	PipelineRunId *int64 `json:"pipelineRunId,omitempty" xml:"pipelineRunId,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode     *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage  *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	PipelineRunId *int64  `json:"pipelineRunId,omitempty" xml:"pipelineRunId,omitempty"`
+	RequestId     *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success       *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s StartPipelineRunResponseBody) String() string {
@@ -13805,14 +12702,10 @@ func (s *StartPipelineRunResponse) SetBody(v *StartPipelineRunResponseBody) *Sta
 }
 
 type StopPipelineJobRunResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s StopPipelineJobRunResponseBody) String() string {
@@ -13873,14 +12766,10 @@ func (s *StopPipelineJobRunResponse) SetBody(v *StopPipelineJobRunResponseBody) 
 }
 
 type StopPipelineRunResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s StopPipelineRunResponseBody) String() string {
@@ -13941,14 +12830,10 @@ func (s *StopPipelineRunResponse) SetBody(v *StopPipelineRunResponseBody) *StopP
 }
 
 type StopVMDeployOrderResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s StopVMDeployOrderResponseBody) String() string {
@@ -14009,14 +12894,10 @@ func (s *StopVMDeployOrderResponse) SetBody(v *StopVMDeployOrderResponseBody) *S
 }
 
 type TriggerRepositoryMirrorSyncRequest struct {
-	// 个人访问令牌。 使用阿里云AK+SK或使用STS临时授权方式不需要传该字段
-	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
-	// 远程同步库克隆账号
-	Account *string `json:"account,omitempty" xml:"account,omitempty"`
-	// 企业标识，也称企业id，字符串形式，可在云效访问链接中获取，如 https://devops.aliyun.com/organization/
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Account        *string `json:"account,omitempty" xml:"account,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
-	// 远程同步库克隆令牌
-	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	Token          *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s TriggerRepositoryMirrorSyncRequest) String() string {
@@ -14048,16 +12929,11 @@ func (s *TriggerRepositoryMirrorSyncRequest) SetToken(v string) *TriggerReposito
 }
 
 type TriggerRepositoryMirrorSyncResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 响应结果
-	Result *TriggerRepositoryMirrorSyncResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
-	// 请求结果
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode    *string                                        `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                        `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *TriggerRepositoryMirrorSyncResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                          `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s TriggerRepositoryMirrorSyncResponseBody) String() string {
@@ -14094,7 +12970,6 @@ func (s *TriggerRepositoryMirrorSyncResponseBody) SetSuccess(v bool) *TriggerRep
 }
 
 type TriggerRepositoryMirrorSyncResponseBodyResult struct {
-	// 仓库同步触发结果
 	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -14170,14 +13045,10 @@ func (s *UpdateFlowTagRequest) SetName(v string) *UpdateFlowTagRequest {
 }
 
 type UpdateFlowTagResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateFlowTagResponseBody) String() string {
@@ -14255,14 +13126,10 @@ func (s *UpdateFlowTagGroupRequest) SetName(v string) *UpdateFlowTagGroupRequest
 }
 
 type UpdateFlowTagGroupResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateFlowTagGroupResponseBody) String() string {
@@ -14396,9 +13263,8 @@ func (s *UpdateHostGroupRequest) SetType(v string) *UpdateHostGroupRequest {
 type UpdateHostGroupResponseBody struct {
 	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateHostGroupResponseBody) String() string {
@@ -14488,14 +13354,10 @@ func (s *UpdatePipelineBaseInfoRequest) SetTagList(v string) *UpdatePipelineBase
 }
 
 type UpdatePipelineBaseInfoResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdatePipelineBaseInfoResponseBody) String() string {
@@ -14556,16 +13418,11 @@ func (s *UpdatePipelineBaseInfoResponse) SetBody(v *UpdatePipelineBaseInfoRespon
 }
 
 type UpdateProjectMemberRequest struct {
-	// 角色id
-	RoleIdentifier *string `json:"roleIdentifier,omitempty" xml:"roleIdentifier,omitempty"`
-	// 资源id，也就是项目id
+	RoleIdentifier   *string `json:"roleIdentifier,omitempty" xml:"roleIdentifier,omitempty"`
 	TargetIdentifier *string `json:"targetIdentifier,omitempty" xml:"targetIdentifier,omitempty"`
-	// 资源类型
-	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
-	// 用户id
-	UserIdentifier *string `json:"userIdentifier,omitempty" xml:"userIdentifier,omitempty"`
-	// 用户类型
-	UserType *string `json:"userType,omitempty" xml:"userType,omitempty"`
+	TargetType       *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	UserIdentifier   *string `json:"userIdentifier,omitempty" xml:"userIdentifier,omitempty"`
+	UserType         *string `json:"userType,omitempty" xml:"userType,omitempty"`
 }
 
 func (s UpdateProjectMemberRequest) String() string {
@@ -14602,16 +13459,11 @@ func (s *UpdateProjectMemberRequest) SetUserType(v string) *UpdateProjectMemberR
 }
 
 type UpdateProjectMemberResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 成员信息
-	Member *UpdateProjectMemberResponseBodyMember `json:"member,omitempty" xml:"member,omitempty" type:"Struct"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode *string                                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                                `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	Member    *UpdateProjectMemberResponseBodyMember `json:"member,omitempty" xml:"member,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateProjectMemberResponseBody) String() string {
@@ -14648,22 +13500,14 @@ func (s *UpdateProjectMemberResponseBody) SetSuccess(v bool) *UpdateProjectMembe
 }
 
 type UpdateProjectMemberResponseBodyMember struct {
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// id
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 角色id
-	RoleIdentifier *string `json:"roleIdentifier,omitempty" xml:"roleIdentifier,omitempty"`
-	// 资源id，也就是项目id
+	GmtCreate        *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified      *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Id               *string `json:"id,omitempty" xml:"id,omitempty"`
+	RoleIdentifier   *string `json:"roleIdentifier,omitempty" xml:"roleIdentifier,omitempty"`
 	TargetIdentifier *string `json:"targetIdentifier,omitempty" xml:"targetIdentifier,omitempty"`
-	// 资源类型
-	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
-	// 用户id
-	UserIdentifier *string `json:"userIdentifier,omitempty" xml:"userIdentifier,omitempty"`
-	// 用户类型
-	UserType *string `json:"userType,omitempty" xml:"userType,omitempty"`
+	TargetType       *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	UserIdentifier   *string `json:"userIdentifier,omitempty" xml:"userIdentifier,omitempty"`
+	UserType         *string `json:"userType,omitempty" xml:"userType,omitempty"`
 }
 
 func (s UpdateProjectMemberResponseBodyMember) String() string {
@@ -14744,7 +13588,6 @@ func (s *UpdateProjectMemberResponse) SetBody(v *UpdateProjectMemberResponseBody
 }
 
 type UpdateResourceMemberRequest struct {
-	// 角色部署组 deployGroup   user  成员，使用权限   admin 管理员，使用编辑权限   owner 拥有者，所有权限 流水线 pipeline   owner 拥有者，所有权限   admin 查看、运行、编辑权限   member  运行权限   viewer 查看权限
 	RoleName *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
 }
 
@@ -14762,14 +13605,10 @@ func (s *UpdateResourceMemberRequest) SetRoleName(v string) *UpdateResourceMembe
 }
 
 type UpdateResourceMemberResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateResourceMemberResponseBody) String() string {
@@ -14830,12 +13669,9 @@ func (s *UpdateResourceMemberResponse) SetBody(v *UpdateResourceMemberResponseBo
 }
 
 type UpdateVariableGroupRequest struct {
-	// 变量组描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 变量组名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 变量信息json字符串 isEncrypted 是否加密 name 变量名称 value 变量值
-	Variables *string `json:"variables,omitempty" xml:"variables,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Variables   *string `json:"variables,omitempty" xml:"variables,omitempty"`
 }
 
 func (s UpdateVariableGroupRequest) String() string {
@@ -14862,14 +13698,10 @@ func (s *UpdateVariableGroupRequest) SetVariables(v string) *UpdateVariableGroup
 }
 
 type UpdateVariableGroupResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true 接口调用成功，false 接口调用失败
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateVariableGroupResponseBody) String() string {
@@ -14930,13 +13762,9 @@ func (s *UpdateVariableGroupResponse) SetBody(v *UpdateVariableGroupResponseBody
 }
 
 type UpdateWorkItemRequest struct {
-	// 更新字段的类型，标题：subject/自定义字段：customField/状态：status/描述：document/基本字段：basic(包括负责人、迭代、参与人等)
-	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	// 工作项唯一标识id
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 更新的字段名
-	PropertyKey *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
-	// 更新后的值
+	FieldType     *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	Identifier    *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	PropertyKey   *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
 	PropertyValue *string `json:"propertyValue,omitempty" xml:"propertyValue,omitempty"`
 }
 
@@ -14969,16 +13797,11 @@ func (s *UpdateWorkItemRequest) SetPropertyValue(v string) *UpdateWorkItemReques
 }
 
 type UpdateWorkItemResponseBody struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 请求id，每次请求都是唯一值，便于后续排查问题
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// true或者false
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 工作项信息
-	Workitem *UpdateWorkItemResponseBodyWorkitem `json:"workitem,omitempty" xml:"workitem,omitempty" type:"Struct"`
+	ErrorCode    *string                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                             `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	Workitem     *UpdateWorkItemResponseBodyWorkitem `json:"workitem,omitempty" xml:"workitem,omitempty" type:"Struct"`
 }
 
 func (s UpdateWorkItemResponseBody) String() string {
@@ -15015,47 +13838,26 @@ func (s *UpdateWorkItemResponseBody) SetWorkitem(v *UpdateWorkItemResponseBodyWo
 }
 
 type UpdateWorkItemResponseBodyWorkitem struct {
-	// 负责人
-	AssignedTo *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
-	// 工作项的类型id
-	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
-	// 创建人
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 工作项内容
-	Document *string `json:"document,omitempty" xml:"document,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 工作项唯一标识
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 逻辑状态
-	LogicalStatus *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
-	// 修改人
-	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// 父工作项id
-	ParentIdentifier *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
-	// 编号
-	SerialNumber *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
-	// 所属项目id
-	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	// 所属项目名称
-	SpaceName *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
-	// 项目类型
-	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
-	// 迭代id
-	SprintIdentifier *string `json:"sprintIdentifier,omitempty" xml:"sprintIdentifier,omitempty"`
-	// 状态名称
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 状态id
-	StatusIdentifier *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
-	// 状态阶段id
-	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
-	// 工作项标题
-	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// 状态更新时间
-	UpdateStatusAt *int64 `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
-	// 工作项类型id
+	AssignedTo             *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
+	CategoryIdentifier     *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	Creator                *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Document               *string `json:"document,omitempty" xml:"document,omitempty"`
+	GmtCreate              *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified            *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier             *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	LogicalStatus          *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	Modifier               *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	ParentIdentifier       *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	SerialNumber           *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
+	SpaceIdentifier        *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	SpaceName              *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
+	SpaceType              *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	SprintIdentifier       *string `json:"sprintIdentifier,omitempty" xml:"sprintIdentifier,omitempty"`
+	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
+	StatusIdentifier       *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
+	StatusStageIdentifier  *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	Subject                *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	UpdateStatusAt         *int64  `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
 	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
 }
 
