@@ -62,10 +62,9 @@ func (s *AddDesensitizationRuleRequest) SetTid(v int64) *AddDesensitizationRuleR
 type AddDesensitizationRuleResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleId    *int32  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleId       *int32  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddDesensitizationRuleResponseBody) String() string {
@@ -489,7 +488,6 @@ type ChangeColumnSecLevelRequest struct {
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
 	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	IsLogic    *bool   `json:"IsLogic,omitempty" xml:"IsLogic,omitempty"`
-	// 新的敏感等级
 	NewLevel   *string `json:"NewLevel,omitempty" xml:"NewLevel,omitempty"`
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
@@ -969,9 +967,8 @@ type CreateDataCorrectOrderResponseBody struct {
 	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
 	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDataCorrectOrderResponseBody) String() string {
@@ -1233,9 +1230,8 @@ type CreateDataCronClearOrderResponseBody struct {
 	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
 	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDataCronClearOrderResponseBody) String() string {
@@ -1498,9 +1494,8 @@ type CreateDataImportOrderResponseBody struct {
 	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
 	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDataImportOrderResponseBody) String() string {
@@ -1739,9 +1734,8 @@ type CreateFreeLockCorrectOrderResponseBody struct {
 	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
 	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateFreeLockCorrectOrderResponseBody) String() string {
@@ -1997,9 +1991,8 @@ type CreateLogicDatabaseResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	LogicDbId    *int64  `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateLogicDatabaseResponseBody) String() string {
@@ -2284,9 +2277,8 @@ type CreateProxyResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	ProxyId      *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateProxyResponseBody) String() string {
@@ -2396,9 +2388,8 @@ type CreateProxyAccessResponseBody struct {
 	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	ProxyAccessId *int64  `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateProxyAccessResponseBody) String() string {
@@ -2683,9 +2674,8 @@ type CreateSQLReviewOrderResponseBody struct {
 	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
 	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSQLReviewOrderResponseBody) String() string {
@@ -2786,9 +2776,8 @@ func (s *CreateStandardGroupRequest) SetTid(v int64) *CreateStandardGroupRequest
 }
 
 type CreateStandardGroupResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	ErrorCode     *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage  *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StandardGroup *CreateStandardGroupResponseBodyStandardGroup `json:"StandardGroup,omitempty" xml:"StandardGroup,omitempty" type:"Struct"`
 	Success       *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -3111,9 +3100,8 @@ type CreateStructSyncOrderResponseBody struct {
 	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
 	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateStructSyncOrderResponseBody) String() string {
@@ -3217,9 +3205,8 @@ type CreateUploadFileJobResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	JobKey       *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateUploadFileJobResponseBody) String() string {
@@ -3387,9 +3374,8 @@ type CreateUploadOSSFileJobResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	JobKey       *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateUploadOSSFileJobResponseBody) String() string {
@@ -3800,9 +3786,8 @@ func (s *DeleteLogicDatabaseRequest) SetTid(v int64) *DeleteLogicDatabaseRequest
 type DeleteLogicDatabaseResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteLogicDatabaseResponseBody) String() string {
@@ -3981,9 +3966,8 @@ func (s *DeleteProxyRequest) SetTid(v int64) *DeleteProxyRequest {
 type DeleteProxyResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteProxyResponseBody) String() string {
@@ -4069,9 +4053,8 @@ func (s *DeleteProxyAccessRequest) SetTid(v int64) *DeleteProxyAccessRequest {
 type DeleteProxyAccessResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteProxyAccessResponseBody) String() string {
@@ -4465,9 +4448,8 @@ func (s *EditLogicDatabaseShrinkRequest) SetTid(v int64) *EditLogicDatabaseShrin
 type EditLogicDatabaseResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EditLogicDatabaseResponseBody) String() string {
@@ -5030,9 +5012,8 @@ func (s *ExecuteStructSyncRequest) SetTid(v int64) *ExecuteStructSyncRequest {
 type ExecuteStructSyncResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ExecuteStructSyncResponseBody) String() string {
@@ -5421,9 +5402,8 @@ type GetDBTaskSQLJobLogResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Log          *string `json:"Log,omitempty" xml:"Log,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDBTaskSQLJobLogResponseBody) String() string {
@@ -5515,9 +5495,8 @@ type GetDBTopologyResponseBody struct {
 	DBTopology   *GetDBTopologyResponseBodyDBTopology `json:"DBTopology,omitempty" xml:"DBTopology,omitempty" type:"Struct"`
 	ErrorCode    *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDBTopologyResponseBody) String() string {
@@ -6193,9 +6172,8 @@ type GetDataCorrectSQLFileResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataCorrectSQLFileResponseBody) String() string {
@@ -6287,9 +6265,8 @@ type GetDataCorrectTaskDetailResponseBody struct {
 	DataCorrectTaskDetail *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail `json:"DataCorrectTaskDetail,omitempty" xml:"DataCorrectTaskDetail,omitempty" type:"Struct"`
 	ErrorCode             *string                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage          *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success               *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataCorrectTaskDetailResponseBody) String() string {
@@ -6428,10 +6405,9 @@ type GetDataCronClearTaskDetailListResponseBody struct {
 	DataCronClearTaskDetailList []*GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList `json:"DataCronClearTaskDetailList,omitempty" xml:"DataCronClearTaskDetailList,omitempty" type:"Repeated"`
 	ErrorCode                   *string                                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage                *string                                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId                   *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                     *bool                                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount                  *int64                                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetDataCronClearTaskDetailListResponseBody) String() string {
@@ -8645,9 +8621,8 @@ type GetOwnerApplyOrderDetailResponseBody struct {
 	ErrorCode             *string                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage          *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	OwnerApplyOrderDetail *GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetail `json:"OwnerApplyOrderDetail,omitempty" xml:"OwnerApplyOrderDetail,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success               *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOwnerApplyOrderDetailResponseBody) String() string {
@@ -8838,9 +8813,8 @@ type GetPermApplyOrderDetailResponseBody struct {
 	ErrorCode            *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage         *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	PermApplyOrderDetail *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail `json:"PermApplyOrderDetail,omitempty" xml:"PermApplyOrderDetail,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailResponseBody) String() string {
@@ -9409,15 +9383,15 @@ type GetProxyResponseBody struct {
 	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	HttpsPort     *int32  `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
 	InstanceId    *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MysqlPort     *int32  `json:"MysqlPort,omitempty" xml:"MysqlPort,omitempty"`
 	PrivateEnable *bool   `json:"PrivateEnable,omitempty" xml:"PrivateEnable,omitempty"`
 	PrivateHost   *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
+	ProtocolPort  *int32  `json:"ProtocolPort,omitempty" xml:"ProtocolPort,omitempty"`
+	ProtocolType  *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	ProxyId       *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
 	PublicEnable  *bool   `json:"PublicEnable,omitempty" xml:"PublicEnable,omitempty"`
 	PublicHost    *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetProxyResponseBody) String() string {
@@ -9458,11 +9432,6 @@ func (s *GetProxyResponseBody) SetInstanceId(v int64) *GetProxyResponseBody {
 	return s
 }
 
-func (s *GetProxyResponseBody) SetMysqlPort(v int32) *GetProxyResponseBody {
-	s.MysqlPort = &v
-	return s
-}
-
 func (s *GetProxyResponseBody) SetPrivateEnable(v bool) *GetProxyResponseBody {
 	s.PrivateEnable = &v
 	return s
@@ -9470,6 +9439,16 @@ func (s *GetProxyResponseBody) SetPrivateEnable(v bool) *GetProxyResponseBody {
 
 func (s *GetProxyResponseBody) SetPrivateHost(v string) *GetProxyResponseBody {
 	s.PrivateHost = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetProtocolPort(v int32) *GetProxyResponseBody {
+	s.ProtocolPort = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetProtocolType(v string) *GetProxyResponseBody {
+	s.ProtocolType = &v
 	return s
 }
 
@@ -10024,9 +10003,8 @@ func (s *GetStructSyncExecSqlDetailRequest) SetTid(v int64) *GetStructSyncExecSq
 }
 
 type GetStructSyncExecSqlDetailResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	ErrorCode               *string                                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage            *string                                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId               *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StructSyncExecSqlDetail *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail `json:"StructSyncExecSqlDetail,omitempty" xml:"StructSyncExecSqlDetail,omitempty" type:"Struct"`
 	Success                 *bool                                                          `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -10159,9 +10137,8 @@ func (s *GetStructSyncJobAnalyzeResultRequest) SetTid(v int64) *GetStructSyncJob
 }
 
 type GetStructSyncJobAnalyzeResultResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	ErrorCode                  *string                                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage               *string                                                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId                  *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StructSyncJobAnalyzeResult *GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResult `json:"StructSyncJobAnalyzeResult,omitempty" xml:"StructSyncJobAnalyzeResult,omitempty" type:"Struct"`
 	Success                    *bool                                                                `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -10328,9 +10305,8 @@ func (s *GetStructSyncJobDetailRequest) SetTid(v int64) *GetStructSyncJobDetailR
 }
 
 type GetStructSyncJobDetailResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	ErrorCode           *string                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string                                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StructSyncJobDetail *GetStructSyncJobDetailResponseBodyStructSyncJobDetail `json:"StructSyncJobDetail,omitempty" xml:"StructSyncJobDetail,omitempty" type:"Struct"`
 	Success             *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -10481,9 +10457,8 @@ func (s *GetStructSyncOrderDetailRequest) SetTid(v int64) *GetStructSyncOrderDet
 }
 
 type GetStructSyncOrderDetailResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	ErrorCode             *string                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage          *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StructSyncOrderDetail *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail `json:"StructSyncOrderDetail,omitempty" xml:"StructSyncOrderDetail,omitempty" type:"Struct"`
 	Success               *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -11006,9 +10981,8 @@ func (s *GetTableTopologyRequest) SetTid(v int64) *GetTableTopologyRequest {
 }
 
 type GetTableTopologyResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	ErrorCode     *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage  *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success       *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
 	TableTopology *GetTableTopologyResponseBodyTableTopology `json:"TableTopology,omitempty" xml:"TableTopology,omitempty" type:"Struct"`
@@ -11761,9 +11735,8 @@ func (s *GetUserUploadFileJobRequest) SetTid(v int64) *GetUserUploadFileJobReque
 }
 
 type GetUserUploadFileJobResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	ErrorCode           *string                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string                                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId           *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success             *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
 	UploadFileJobDetail *GetUserUploadFileJobResponseBodyUploadFileJobDetail `json:"UploadFileJobDetail,omitempty" xml:"UploadFileJobDetail,omitempty" type:"Struct"`
@@ -12099,9 +12072,8 @@ type InspectProxyAccessSecretResponseBody struct {
 	AccessSecret *string `json:"AccessSecret,omitempty" xml:"AccessSecret,omitempty"`
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InspectProxyAccessSecretResponseBody) String() string {
@@ -12585,10 +12557,9 @@ type ListDBTaskSQLJobResponseBody struct {
 	DBTaskSQLJobList []*ListDBTaskSQLJobResponseBodyDBTaskSQLJobList `json:"DBTaskSQLJobList,omitempty" xml:"DBTaskSQLJobList,omitempty" type:"Repeated"`
 	ErrorCode        *string                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage     *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId        *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount       *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDBTaskSQLJobResponseBody) String() string {
@@ -12774,10 +12745,9 @@ type ListDBTaskSQLJobDetailResponseBody struct {
 	DBTaskSQLJobDetailList []*ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList `json:"DBTaskSQLJobDetailList,omitempty" xml:"DBTaskSQLJobDetailList,omitempty" type:"Repeated"`
 	ErrorCode              *string                                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage           *string                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId              *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount             *int64                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDBTaskSQLJobDetailResponseBody) String() string {
@@ -12969,9 +12939,8 @@ type ListDDLPublishRecordsResponseBody struct {
 	DDLPublishRecordList []*ListDDLPublishRecordsResponseBodyDDLPublishRecordList `json:"DDLPublishRecordList,omitempty" xml:"DDLPublishRecordList,omitempty" type:"Repeated"`
 	ErrorCode            *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage         *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDDLPublishRecordsResponseBody) String() string {
@@ -13246,9 +13215,8 @@ type ListDataCorrectPreCheckDBResponseBody struct {
 	ErrorCode      *string                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage   *string                                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	PreCheckDBList []*ListDataCorrectPreCheckDBResponseBodyPreCheckDBList `json:"PreCheckDBList,omitempty" xml:"PreCheckDBList,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDataCorrectPreCheckDBResponseBody) String() string {
@@ -13387,9 +13355,8 @@ type ListDataCorrectPreCheckSQLResponseBody struct {
 	ErrorCode       *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage    *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	PreCheckSQLList []*ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList `json:"PreCheckSQLList,omitempty" xml:"PreCheckSQLList,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId       *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success         *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDataCorrectPreCheckSQLResponseBody) String() string {
@@ -14142,14 +14109,11 @@ func (s *ListDesensitizationRuleRequest) SetTid(v int64) *ListDesensitizationRul
 
 type ListDesensitizationRuleResponseBody struct {
 	DesensitizationRuleList []*ListDesensitizationRuleResponseBodyDesensitizationRuleList `json:"DesensitizationRuleList,omitempty" xml:"DesensitizationRuleList,omitempty" type:"Repeated"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	ErrorCode               *string                                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage            *string                                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId               *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                 *bool                                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount              *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDesensitizationRuleResponseBody) String() string {
@@ -16532,9 +16496,8 @@ type ListProxiesResponseBody struct {
 	ErrorCode    *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	ProxyList    []*ListProxiesResponseBodyProxyList `json:"ProxyList,omitempty" xml:"ProxyList,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListProxiesResponseBody) String() string {
@@ -16575,9 +16538,10 @@ type ListProxiesResponseBodyProxyList struct {
 	CreatorName   *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
 	HttpsPort     *int32  `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
 	InstanceId    *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MysqlPort     *int32  `json:"MysqlPort,omitempty" xml:"MysqlPort,omitempty"`
 	PrivateEnable *bool   `json:"PrivateEnable,omitempty" xml:"PrivateEnable,omitempty"`
 	PrivateHost   *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
+	ProtocolPort  *int32  `json:"ProtocolPort,omitempty" xml:"ProtocolPort,omitempty"`
+	ProtocolType  *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	ProxyId       *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
 	PublicEnable  *bool   `json:"PublicEnable,omitempty" xml:"PublicEnable,omitempty"`
 	PublicHost    *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
@@ -16611,11 +16575,6 @@ func (s *ListProxiesResponseBodyProxyList) SetInstanceId(v int64) *ListProxiesRe
 	return s
 }
 
-func (s *ListProxiesResponseBodyProxyList) SetMysqlPort(v int32) *ListProxiesResponseBodyProxyList {
-	s.MysqlPort = &v
-	return s
-}
-
 func (s *ListProxiesResponseBodyProxyList) SetPrivateEnable(v bool) *ListProxiesResponseBodyProxyList {
 	s.PrivateEnable = &v
 	return s
@@ -16623,6 +16582,16 @@ func (s *ListProxiesResponseBodyProxyList) SetPrivateEnable(v bool) *ListProxies
 
 func (s *ListProxiesResponseBodyProxyList) SetPrivateHost(v string) *ListProxiesResponseBodyProxyList {
 	s.PrivateHost = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetProtocolPort(v int32) *ListProxiesResponseBodyProxyList {
+	s.ProtocolPort = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetProtocolType(v string) *ListProxiesResponseBodyProxyList {
+	s.ProtocolType = &v
 	return s
 }
 
@@ -16697,9 +16666,8 @@ type ListProxyAccessesResponseBody struct {
 	ErrorCode       *string                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage    *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	ProxyAccessList []*ListProxyAccessesResponseBodyProxyAccessList `json:"ProxyAccessList,omitempty" xml:"ProxyAccessList,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId       *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success         *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListProxyAccessesResponseBody) String() string {
@@ -18020,9 +17988,8 @@ func (s *ListStandardGroupsRequest) SetTid(v int64) *ListStandardGroupsRequest {
 }
 
 type ListStandardGroupsResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	ErrorCode         *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage      *string                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StandardGroupList []*ListStandardGroupsResponseBodyStandardGroupList `json:"StandardGroupList,omitempty" xml:"StandardGroupList,omitempty" type:"Repeated"`
 	Success           *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -19998,9 +19965,8 @@ func (s *ModifyDataCorrectExecSQLRequest) SetTid(v int64) *ModifyDataCorrectExec
 type ModifyDataCorrectExecSQLResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyDataCorrectExecSQLResponseBody) String() string {
@@ -20122,10 +20088,9 @@ func (s *ModifyDesensitizationStrategyRequest) SetTid(v int64) *ModifyDesensitiz
 type ModifyDesensitizationStrategyResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result       *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyDesensitizationStrategyResponseBody) String() string {
@@ -20315,9 +20280,8 @@ func (s *PauseDataCorrectSQLJobRequest) SetType(v string) *PauseDataCorrectSQLJo
 type PauseDataCorrectSQLJobResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PauseDataCorrectSQLJobResponseBody) String() string {
@@ -20826,9 +20790,8 @@ func (s *RestartDataCorrectSQLJobRequest) SetType(v string) *RestartDataCorrectS
 type RestartDataCorrectSQLJobResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RestartDataCorrectSQLJobResponseBody) String() string {
@@ -20914,9 +20877,8 @@ func (s *RetryDataCorrectPreCheckRequest) SetTid(v int64) *RetryDataCorrectPreCh
 type RetryDataCorrectPreCheckResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RetryDataCorrectPreCheckResponseBody) String() string {
@@ -21901,9 +21863,8 @@ func (s *SubmitStructSyncOrderApprovalRequest) SetTid(v int64) *SubmitStructSync
 }
 
 type SubmitStructSyncOrderApprovalResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	ErrorCode          *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage       *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	WorkflowInstanceId *int64  `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
