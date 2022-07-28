@@ -13,32 +13,19 @@ import (
 )
 
 type Instance struct {
-	// 实例所在的宿主机IP
-	HostIP *string `json:"HostIP,omitempty" xml:"HostIP,omitempty"`
-	// 实例所在的宿主机名字
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 实例的内网IP
-	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
-	// 实例的名字
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// 实例的网络端口
-	InstancePort *int32 `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
-	// 实例上一次退出的状态
-	LastState []map[string]interface{} `json:"LastState,omitempty" xml:"LastState,omitempty" type:"Repeated"`
-	// 实例的命名空间
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// 实例已经启动完成的进程数
-	ReadyProcesses *int32 `json:"ReadyProcesses,omitempty" xml:"ReadyProcesses,omitempty"`
-	// 实例当前状态的标识
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// 实例重启次数
-	RestartCount *int32 `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
-	// 实例的启动时间
-	StartAt *string `json:"StartAt,omitempty" xml:"StartAt,omitempty"`
-	// 实例状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 实例总的进程数
-	TotalProcesses *int32 `json:"TotalProcesses,omitempty" xml:"TotalProcesses,omitempty"`
+	HostIP         *string                  `json:"HostIP,omitempty" xml:"HostIP,omitempty"`
+	HostName       *string                  `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InnerIP        *string                  `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
+	InstanceName   *string                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstancePort   *int32                   `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
+	LastState      []map[string]interface{} `json:"LastState,omitempty" xml:"LastState,omitempty" type:"Repeated"`
+	Namespace      *string                  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ReadyProcesses *int32                   `json:"ReadyProcesses,omitempty" xml:"ReadyProcesses,omitempty"`
+	Reason         *string                  `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	RestartCount   *int32                   `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+	StartAt        *string                  `json:"StartAt,omitempty" xml:"StartAt,omitempty"`
+	Status         *string                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalProcesses *int32                   `json:"TotalProcesses,omitempty" xml:"TotalProcesses,omitempty"`
 }
 
 func (s Instance) String() string {
@@ -115,32 +102,19 @@ func (s *Instance) SetTotalProcesses(v int32) *Instance {
 }
 
 type Resource struct {
-	// 资源组所在的集群
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 资源组CPU数量
-	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	// 资源组创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 资源组自定义数据
-	ExtraData map[string]interface{} `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	// 资源组GPU个数
-	GpuCount *int32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
-	// 资源组实例个数
-	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// 资源组摘要信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 资源组按量付费实例个数
-	PostPaidInstanceCount *int32 `json:"PostPaidInstanceCount,omitempty" xml:"PostPaidInstanceCount,omitempty"`
-	// 资源组预付费实例个数
-	PrePaidInstanceCount *int32 `json:"PrePaidInstanceCount,omitempty" xml:"PrePaidInstanceCount,omitempty"`
-	// 资源组ID
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 资源组名字
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// 资源组的状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 资源组更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	ClusterId             *string                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CpuCount              *int32                 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
+	CreateTime            *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExtraData             map[string]interface{} `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	GpuCount              *int32                 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	InstanceCount         *int32                 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	Message               *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	PostPaidInstanceCount *int32                 `json:"PostPaidInstanceCount,omitempty" xml:"PostPaidInstanceCount,omitempty"`
+	PrePaidInstanceCount  *int32                 `json:"PrePaidInstanceCount,omitempty" xml:"PrePaidInstanceCount,omitempty"`
+	ResourceId            *string                `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName          *string                `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Status                *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime            *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s Resource) String() string {
@@ -217,36 +191,21 @@ func (s *Resource) SetUpdateTime(v string) *Resource {
 }
 
 type ResourceInstance struct {
-	// 实例是否自动续费
-	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// 实例的计费类型
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// 实例的创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 实例过期时间
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// 实例的Cpu个数
-	InstanceCpuCount *int32 `json:"InstanceCpuCount,omitempty" xml:"InstanceCpuCount,omitempty"`
-	// 实例的Gpu个数
-	InstanceGpuCount *int32 `json:"InstanceGpuCount,omitempty" xml:"InstanceGpuCount,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实例IP
-	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	// 实例的内存大小
-	InstanceMemory *string `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
-	// 实例名称
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// 实例状态
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// 实例的机型
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// 实例被使用的CPU数量
-	InstanceUsedCpu *float32 `json:"InstanceUsedCpu,omitempty" xml:"InstanceUsedCpu,omitempty"`
-	// 实例被使用的GPU数量
-	InstanceUsedGpu *int32 `json:"InstanceUsedGpu,omitempty" xml:"InstanceUsedGpu,omitempty"`
-	// 实例被使用的内存大小
-	InstanceUsedMemory *string `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
+	AutoRenewal        *bool    `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	ChargeType         *string  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreateTime         *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpiredTime        *string  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	InstanceCpuCount   *int32   `json:"InstanceCpuCount,omitempty" xml:"InstanceCpuCount,omitempty"`
+	InstanceGpuCount   *int32   `json:"InstanceGpuCount,omitempty" xml:"InstanceGpuCount,omitempty"`
+	InstanceId         *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIp         *string  `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
+	InstanceMemory     *string  `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
+	InstanceName       *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceStatus     *string  `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceType       *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceUsedCpu    *float32 `json:"InstanceUsedCpu,omitempty" xml:"InstanceUsedCpu,omitempty"`
+	InstanceUsedGpu    *int32   `json:"InstanceUsedGpu,omitempty" xml:"InstanceUsedGpu,omitempty"`
+	InstanceUsedMemory *string  `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
 }
 
 func (s ResourceInstance) String() string {
@@ -333,30 +292,18 @@ func (s *ResourceInstance) SetInstanceUsedMemory(v string) *ResourceInstance {
 }
 
 type ResourceInstanceWorker struct {
-	// CpuLimit
-	CpuLimit *int32 `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	// CpuRequest
-	CpuRequest *int32 `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
-	// GpuLimit
-	GpuLimit *int32 `json:"GpuLimit,omitempty" xml:"GpuLimit,omitempty"`
-	// GpuRequest
-	GpuRequest *int32 `json:"GpuRequest,omitempty" xml:"GpuRequest,omitempty"`
-	// MemoryLimit
-	MemoryLimit *int32 `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	// MemoryRquest
-	MemoryRquest *int32 `json:"MemoryRquest,omitempty" xml:"MemoryRquest,omitempty"`
-	// pod名
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 是否ready
-	Ready *bool `json:"Ready,omitempty" xml:"Ready,omitempty"`
-	// RestartCount
-	RestartCount *int32 `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
-	// 服务名
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// StartTime
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// pod状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CpuLimit     *int32  `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	CpuRequest   *int32  `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
+	GpuLimit     *int32  `json:"GpuLimit,omitempty" xml:"GpuLimit,omitempty"`
+	GpuRequest   *int32  `json:"GpuRequest,omitempty" xml:"GpuRequest,omitempty"`
+	MemoryLimit  *int32  `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	MemoryRquest *int32  `json:"MemoryRquest,omitempty" xml:"MemoryRquest,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Ready        *bool   `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	RestartCount *int32  `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ResourceInstanceWorker) String() string {
@@ -428,62 +375,34 @@ func (s *ResourceInstanceWorker) SetStatus(v string) *ResourceInstanceWorker {
 }
 
 type Service struct {
-	// 服务的请求Token
-	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// 服务创建账号的UID
-	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// 每个实例申请的cpu
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// 服务的创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 当前运行的模型版本
-	CurrentVersion *int32 `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	// 每个实例申请的gpu
-	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// 服务的数据镜像
-	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// 服务的公网endpoint
+	AccessToken      *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	CallerUid        *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	Cpu              *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CurrentVersion   *int32  `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	Gpu              *int32  `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	Image            *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
-	// 服务内网endpoint
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	// 服务最新版本号
-	LatestVersion *int32 `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	// 每个worker需要的内存大小，单位为M
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// 服务的摘要信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 服务所在的命名空间
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// 服务创建账号的主账号UID
-	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	// 被挂起的服务的实例个数
-	PendingInstance *int32 `json:"PendingInstance,omitempty" xml:"PendingInstance,omitempty"`
-	// 服务的状态信息
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// 服务所在的区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务所在的资源组
-	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// 正在运行的服务的实例个数
-	RunningInstance *int32 `json:"RunningInstance,omitempty" xml:"RunningInstance,omitempty"`
-	// 服务的配置信息
-	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
-	// 服务ID
-	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// 服务的名字
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// 服务的部署来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 服务的状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 服务的所有实例总个数
-	TotalInstance *int32 `json:"TotalInstance,omitempty" xml:"TotalInstance,omitempty"`
-	// 服务的更新时间
-	Updatetime *string `json:"Updatetime,omitempty" xml:"Updatetime,omitempty"`
-	// 服务灰度发布的权重值
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	LatestVersion    *int32  `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	Memory           *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Namespace        *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ParentUid        *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	PendingInstance  *int32  `json:"PendingInstance,omitempty" xml:"PendingInstance,omitempty"`
+	Reason           *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resource         *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	RunningInstance  *int32  `json:"RunningInstance,omitempty" xml:"RunningInstance,omitempty"`
+	ServiceConfig    *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	ServiceId        *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Source           *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalInstance    *int32  `json:"TotalInstance,omitempty" xml:"TotalInstance,omitempty"`
+	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Weight           *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s Service) String() string {
@@ -624,8 +543,8 @@ func (s *Service) SetTotalInstance(v int32) *Service {
 	return s
 }
 
-func (s *Service) SetUpdatetime(v string) *Service {
-	s.Updatetime = &v
+func (s *Service) SetUpdateTime(v string) *Service {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -716,14 +635,10 @@ func (s *CreateBenchmarkTaskResponse) SetBody(v *CreateBenchmarkTaskResponseBody
 }
 
 type CreateResourceRequest struct {
-	// 是否自动续费
-	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// 付费类型，预付费PrePaid，后付费PostPaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// 实例数量
-	EcsInstanceCount *int32 `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
-	// 实例机型，对应ecs机型
-	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	AutoRenewal      *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	EcsInstanceCount *int32  `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
+	EcsInstanceType  *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
 }
 
 func (s CreateResourceRequest) String() string {
@@ -755,15 +670,10 @@ func (s *CreateResourceRequest) SetEcsInstanceType(v string) *CreateResourceRequ
 }
 
 type CreateResourceResponseBody struct {
-	// 资源组所在集群ID
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 资源组的Owner UID
-	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源组ID
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 资源组名称
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	OwnerUid     *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
@@ -830,16 +740,11 @@ func (s *CreateResourceResponse) SetBody(v *CreateResourceResponseBody) *CreateR
 }
 
 type CreateResourceInstancesRequest struct {
-	// 是否自动续费
-	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// 付费类型，预付费PrePaid，后付费PostPaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// 新创建的实例个数，(0, 100]
-	EcsInstanceCount *int32 `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
-	// 实例机型，对应ecs机型
-	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	// 用户自这义数据，小于 16KB
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	AutoRenewal      *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	EcsInstanceCount *int32  `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
+	EcsInstanceType  *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	UserData         *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateResourceInstancesRequest) String() string {
@@ -876,8 +781,7 @@ func (s *CreateResourceInstancesRequest) SetUserData(v string) *CreateResourceIn
 }
 
 type CreateResourceInstancesResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -929,9 +833,7 @@ func (s *CreateResourceInstancesResponse) SetBody(v *CreateResourceInstancesResp
 }
 
 type CreateResourceLogRequest struct {
-	// sls日志库
-	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// 资源组对应的sls日志管理项目
+	LogStore    *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -954,8 +856,7 @@ func (s *CreateResourceLogRequest) SetProjectName(v string) *CreateResourceLogRe
 }
 
 type CreateResourceLogResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1027,11 +928,10 @@ type CreateServiceResponseBody struct {
 	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
 	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Id of the request
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceId        *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateServiceResponseBody) String() string {
@@ -1107,11 +1007,8 @@ func (s *CreateServiceResponse) SetBody(v *CreateServiceResponseBody) *CreateSer
 }
 
 type CreateServiceAutoScalerRequest struct {
-	// 最大 replica 数，需要大于MinReplica
-	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// 最小 replica 数，需要大于0
-	Min *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
-	// map 类型的策略定义
+	Max        *int32                                    `json:"Max,omitempty" xml:"Max,omitempty"`
+	Min        *int32                                    `json:"Min,omitempty" xml:"Min,omitempty"`
 	Strategies *CreateServiceAutoScalerRequestStrategies `json:"Strategies,omitempty" xml:"Strategies,omitempty" type:"Struct"`
 }
 
@@ -1139,9 +1036,7 @@ func (s *CreateServiceAutoScalerRequest) SetStrategies(v *CreateServiceAutoScale
 }
 
 type CreateServiceAutoScalerRequestStrategies struct {
-	// 最大 replica 数，需要大于MinReplica
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// 每个实例支持的最大qps数，超出即扩容
 	Qps *float32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
 }
 
@@ -1164,8 +1059,7 @@ func (s *CreateServiceAutoScalerRequestStrategies) SetQps(v float32) *CreateServ
 }
 
 type CreateServiceAutoScalerResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1217,10 +1111,8 @@ func (s *CreateServiceAutoScalerResponse) SetBody(v *CreateServiceAutoScalerResp
 }
 
 type CreateServiceCronScalerRequest struct {
-	// 需要排除的时间点的cron表达式
-	ExcludeDates []*string `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
-	// 定时伸缩任务描述
-	ScaleJobs []*CreateServiceCronScalerRequestScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
+	ExcludeDates []*string                                  `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
+	ScaleJobs    []*CreateServiceCronScalerRequestScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
 }
 
 func (s CreateServiceCronScalerRequest) String() string {
@@ -1242,11 +1134,9 @@ func (s *CreateServiceCronScalerRequest) SetScaleJobs(v []*CreateServiceCronScal
 }
 
 type CreateServiceCronScalerRequestScaleJobs struct {
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 要执行伸缩任务的cron表达式
-	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// 执行伸缩任务的目标replica
-	TargetSize *int32 `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Schedule   *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	TargetSize *int32  `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
 }
 
 func (s CreateServiceCronScalerRequestScaleJobs) String() string {
@@ -1273,9 +1163,7 @@ func (s *CreateServiceCronScalerRequestScaleJobs) SetTargetSize(v int32) *Create
 }
 
 type CreateServiceCronScalerResponseBody struct {
-	// 操作成功消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1327,9 +1215,7 @@ func (s *CreateServiceCronScalerResponse) SetBody(v *CreateServiceCronScalerResp
 }
 
 type CreateServiceMirrorRequest struct {
-	// 比例 [0, 100]
-	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	// 服务实例列表
+	Ratio  *int32    `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
 	Target []*string `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
 }
 
@@ -1352,8 +1238,7 @@ func (s *CreateServiceMirrorRequest) SetTarget(v []*string) *CreateServiceMirror
 }
 
 type CreateServiceMirrorResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1400,88 +1285,6 @@ func (s *CreateServiceMirrorResponse) SetStatusCode(v int32) *CreateServiceMirro
 }
 
 func (s *CreateServiceMirrorResponse) SetBody(v *CreateServiceMirrorResponseBody) *CreateServiceMirrorResponse {
-	s.Body = v
-	return s
-}
-
-type CreateStressRequest struct {
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateStressRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStressRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStressRequest) SetBody(v string) *CreateStressRequest {
-	s.Body = &v
-	return s
-}
-
-type CreateStressResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Region  *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateStressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStressResponseBody) SetMessage(v string) *CreateStressResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateStressResponseBody) SetName(v string) *CreateStressResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateStressResponseBody) SetRegion(v string) *CreateStressResponseBody {
-	s.Region = &v
-	return s
-}
-
-func (s *CreateStressResponseBody) SetRequestId(v string) *CreateStressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateStressResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateStressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStressResponse) SetHeaders(v map[string]*string) *CreateStressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateStressResponse) SetStatusCode(v int32) *CreateStressResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateStressResponse) SetBody(v *CreateStressResponseBody) *CreateStressResponse {
 	s.Body = v
 	return s
 }
@@ -1539,8 +1342,7 @@ func (s *DeleteBenchmarkTaskResponse) SetBody(v *DeleteBenchmarkTaskResponseBody
 }
 
 type DeleteResourceResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1592,8 +1394,7 @@ func (s *DeleteResourceResponse) SetBody(v *DeleteResourceResponseBody) *DeleteR
 }
 
 type DeleteResourceDLinkResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1668,8 +1469,7 @@ func (s *DeleteResourceInstancesRequest) SetInstanceList(v string) *DeleteResour
 }
 
 type DeleteResourceInstancesResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1721,8 +1521,7 @@ func (s *DeleteResourceInstancesResponse) SetBody(v *DeleteResourceInstancesResp
 }
 
 type DeleteResourceLogResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1774,8 +1573,7 @@ func (s *DeleteResourceLogResponse) SetBody(v *DeleteResourceLogResponseBody) *D
 }
 
 type DeleteServiceResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1827,8 +1625,7 @@ func (s *DeleteServiceResponse) SetBody(v *DeleteServiceResponseBody) *DeleteSer
 }
 
 type DeleteServiceAutoScalerResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1880,8 +1677,7 @@ func (s *DeleteServiceAutoScalerResponse) SetBody(v *DeleteServiceAutoScalerResp
 }
 
 type DeleteServiceCronScalerResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1933,7 +1729,6 @@ func (s *DeleteServiceCronScalerResponse) SetBody(v *DeleteServiceCronScalerResp
 }
 
 type DeleteServiceInstancesRequest struct {
-	// 删除的实例列表，多个实例名字之间逗号隔开
 	InstanceList *string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty"`
 }
 
@@ -1951,8 +1746,7 @@ func (s *DeleteServiceInstancesRequest) SetInstanceList(v string) *DeleteService
 }
 
 type DeleteServiceInstancesResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2004,8 +1798,7 @@ func (s *DeleteServiceInstancesResponse) SetBody(v *DeleteServiceInstancesRespon
 }
 
 type DeleteServiceMirrorResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2052,58 +1845,6 @@ func (s *DeleteServiceMirrorResponse) SetStatusCode(v int32) *DeleteServiceMirro
 }
 
 func (s *DeleteServiceMirrorResponse) SetBody(v *DeleteServiceMirrorResponseBody) *DeleteServiceMirrorResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteStressResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteStressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteStressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteStressResponseBody) SetMessage(v string) *DeleteStressResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteStressResponseBody) SetRequestId(v string) *DeleteStressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteStressResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteStressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteStressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteStressResponse) SetHeaders(v map[string]*string) *DeleteStressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteStressResponse) SetStatusCode(v int32) *DeleteStressResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteStressResponse) SetBody(v *DeleteStressResponseBody) *DeleteStressResponse {
 	s.Body = v
 	return s
 }
@@ -2403,18 +2144,12 @@ func (s *DescribeResourceResponse) SetBody(v *DescribeResourceResponseBody) *Des
 }
 
 type DescribeResourceDLinkResponseBody struct {
-	// 已打通直连的副VSwitch ID
-	AuxVSwitchList []*string `json:"AuxVSwitchList,omitempty" xml:"AuxVSwitchList,omitempty" type:"Repeated"`
-	// 要打通的客户端的网段信息，会将该网段加入到服务端的回包路由中，与VSwitchIdList可二选一
-	DestinationCIDRs *string `json:"DestinationCIDRs,omitempty" xml:"DestinationCIDRs,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 已打通直连的安全组
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// 已打通直连的主VSwitch ID
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// 已打通直接的Vpc ID
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AuxVSwitchList   []*string `json:"AuxVSwitchList,omitempty" xml:"AuxVSwitchList,omitempty" type:"Repeated"`
+	DestinationCIDRs *string   `json:"DestinationCIDRs,omitempty" xml:"DestinationCIDRs,omitempty"`
+	RequestId        *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityGroupId  *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId        *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId            *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeResourceDLinkResponseBody) String() string {
@@ -2485,16 +2220,11 @@ func (s *DescribeResourceDLinkResponse) SetBody(v *DescribeResourceDLinkResponse
 }
 
 type DescribeResourceLogResponseBody struct {
-	// sls日志库
-	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// sls日志信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 资源组对应的sls日志管理项目
+	LogStore    *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源组状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeResourceLogResponseBody) String() string {
@@ -2590,16 +2320,11 @@ func (s *DescribeServiceResponse) SetBody(v *Service) *DescribeServiceResponse {
 
 type DescribeServiceAutoScalerResponseBody struct {
 	CurrentValues map[string]interface{} `json:"CurrentValues,omitempty" xml:"CurrentValues,omitempty"`
-	// 服务最大实例数
-	MaxReplica *int32 `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
-	// 服务最小实例数
-	MinReplica *int32 `json:"MinReplica,omitempty" xml:"MinReplica,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务名字
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// 扩缩控制器控制策略
-	Strategies map[string]interface{} `json:"Strategies,omitempty" xml:"Strategies,omitempty"`
+	MaxReplica    *int32                 `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
+	MinReplica    *int32                 `json:"MinReplica,omitempty" xml:"MinReplica,omitempty"`
+	RequestId     *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceName   *string                `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Strategies    map[string]interface{} `json:"Strategies,omitempty" xml:"Strategies,omitempty"`
 }
 
 func (s DescribeServiceAutoScalerResponseBody) String() string {
@@ -2787,17 +2512,11 @@ func (s *DescribeServiceCronScalerResponse) SetBody(v *DescribeServiceCronScaler
 }
 
 type DescribeServiceLogRequest struct {
-	// 查询的结束时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 要查询的机器ip
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 查询的关键字
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 请求的页码（默认为1）
-	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// 每页的大小（默认为500）
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 查询的开始时间
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Keyword   *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNum   *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2840,16 +2559,11 @@ func (s *DescribeServiceLogRequest) SetStartTime(v string) *DescribeServiceLogRe
 }
 
 type DescribeServiceLogResponseBody struct {
-	// 返回的日志信息
-	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// 当前页码
-	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总计数量
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// 总计页码
-	TotalPageNum *int64 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	Logs         []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	PageNum      *int64    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageNum *int64    `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s DescribeServiceLogResponseBody) String() string {
@@ -2915,14 +2629,10 @@ func (s *DescribeServiceLogResponse) SetBody(v *DescribeServiceLogResponseBody) 
 }
 
 type DescribeServiceMirrorResponseBody struct {
-	// 比例[0,100]
-	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务名字
+	Ratio       *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// 设置流量镜像对服务列表
-	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Target      *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
 func (s DescribeServiceMirrorResponseBody) String() string {
@@ -2978,113 +2688,6 @@ func (s *DescribeServiceMirrorResponse) SetStatusCode(v int32) *DescribeServiceM
 }
 
 func (s *DescribeServiceMirrorResponse) SetBody(v *DescribeServiceMirrorResponseBody) *DescribeServiceMirrorResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeStressResponseBody struct {
-	AvailableAgent *int64  `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
-	CallerUid      *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	DesiredAgent   *int64  `json:"DesiredAgent,omitempty" xml:"DesiredAgent,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ParentUid      *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// Id of the request
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StressName  *string `json:"StressName,omitempty" xml:"StressName,omitempty"`
-	Token       *string `json:"Token,omitempty" xml:"Token,omitempty"`
-}
-
-func (s DescribeStressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStressResponseBody) SetAvailableAgent(v int64) *DescribeStressResponseBody {
-	s.AvailableAgent = &v
-	return s
-}
-
-func (s *DescribeStressResponseBody) SetCallerUid(v string) *DescribeStressResponseBody {
-	s.CallerUid = &v
-	return s
-}
-
-func (s *DescribeStressResponseBody) SetDesiredAgent(v int64) *DescribeStressResponseBody {
-	s.DesiredAgent = &v
-	return s
-}
-
-func (s *DescribeStressResponseBody) SetMessage(v string) *DescribeStressResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeStressResponseBody) SetParentUid(v string) *DescribeStressResponseBody {
-	s.ParentUid = &v
-	return s
-}
-
-func (s *DescribeStressResponseBody) SetReason(v string) *DescribeStressResponseBody {
-	s.Reason = &v
-	return s
-}
-
-func (s *DescribeStressResponseBody) SetRequestId(v string) *DescribeStressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeStressResponseBody) SetServiceName(v string) *DescribeStressResponseBody {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *DescribeStressResponseBody) SetStatus(v string) *DescribeStressResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeStressResponseBody) SetStressName(v string) *DescribeStressResponseBody {
-	s.StressName = &v
-	return s
-}
-
-func (s *DescribeStressResponseBody) SetToken(v string) *DescribeStressResponseBody {
-	s.Token = &v
-	return s
-}
-
-type DescribeStressResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeStressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStressResponse) SetHeaders(v map[string]*string) *DescribeStressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeStressResponse) SetStatusCode(v int32) *DescribeStressResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeStressResponse) SetBody(v *DescribeStressResponseBody) *DescribeStressResponse {
 	s.Body = v
 	return s
 }
@@ -3230,16 +2833,11 @@ func (s *ListResourceInstanceWorkerRequest) SetPageSize(v int32) *ListResourceIn
 }
 
 type ListResourceInstanceWorkerResponseBody struct {
-	// 当前页码
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// pod列表
-	Pods []*ResourceInstanceWorker `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// pod总数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Pods       []*ResourceInstanceWorker `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
+	RequestId  *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListResourceInstanceWorkerResponseBody) String() string {
@@ -3305,14 +2903,9 @@ func (s *ListResourceInstanceWorkerResponse) SetBody(v *ListResourceInstanceWork
 }
 
 type ListResourceInstancesRequest struct {
-	// 付费类型
-	// PrePaid预付费
-	// PostPaid后付费
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// 请求的页码（默认为1）
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页的大小（默认为100）
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListResourceInstancesRequest) String() string {
@@ -3342,9 +2935,8 @@ type ListResourceInstancesResponseBody struct {
 	Instances  []*ResourceInstance `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	PageNumber *int32              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListResourceInstancesResponseBody) String() string {
@@ -3410,10 +3002,8 @@ func (s *ListResourceInstancesResponse) SetBody(v *ListResourceInstancesResponse
 }
 
 type ListResourceServicesRequest struct {
-	// 请求的页码（默认为1）
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页的大小（默认为100）
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListResourceServicesRequest) String() string {
@@ -3435,9 +3025,8 @@ func (s *ListResourceServicesRequest) SetPageSize(v int32) *ListResourceServices
 }
 
 type ListResourceServicesResponseBody struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	PageNumber *int32     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Services   []*Service `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 	TotalCount *int32     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -3506,10 +3095,8 @@ func (s *ListResourceServicesResponse) SetBody(v *ListResourceServicesResponseBo
 }
 
 type ListResourcesRequest struct {
-	// 请求的页码（默认为1）
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页的大小（默认为100）
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListResourcesRequest) String() string {
@@ -3531,9 +3118,8 @@ func (s *ListResourcesRequest) SetPageSize(v int32) *ListResourcesRequest {
 }
 
 type ListResourcesResponseBody struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	PageNumber *int32      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources  []*Resource `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	TotalCount *int32      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -3602,10 +3188,8 @@ func (s *ListResourcesResponse) SetBody(v *ListResourcesResponseBody) *ListResou
 }
 
 type ListServiceInstancesRequest struct {
-	// 请求的页码（默认为1）
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页的大小（默认为100）
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListServiceInstancesRequest) String() string {
@@ -3630,9 +3214,8 @@ type ListServiceInstancesResponseBody struct {
 	Instances  []*Instance `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	PageNumber *int32      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListServiceInstancesResponseBody) String() string {
@@ -3698,16 +3281,11 @@ func (s *ListServiceInstancesResponse) SetBody(v *ListServiceInstancesResponseBo
 }
 
 type ListServicesRequest struct {
-	// 模糊匹配字段（只支持按服务名字模糊匹配）
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// 排序方式（默认降序）
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 请求的页码（默认为1）
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页的大小（默认为100）
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 排序字段 （时间戳类型默认倒序排序）
-	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Filter     *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Sort       *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 
 func (s ListServicesRequest) String() string {
@@ -3744,9 +3322,8 @@ func (s *ListServicesRequest) SetSort(v string) *ListServicesRequest {
 }
 
 type ListServicesResponseBody struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	PageNumber *int32     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Services   []*Service `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 	TotalCount *int32     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -3814,119 +3391,7 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 	return s
 }
 
-type ListStressesResponseBody struct {
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Stresses  []*ListStressesResponseBodyStresses `json:"Stresses,omitempty" xml:"Stresses,omitempty" type:"Repeated"`
-}
-
-func (s ListStressesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListStressesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListStressesResponseBody) SetRequestId(v string) *ListStressesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListStressesResponseBody) SetStresses(v []*ListStressesResponseBodyStresses) *ListStressesResponseBody {
-	s.Stresses = v
-	return s
-}
-
-type ListStressesResponseBodyStresses struct {
-	AvailableAgent *int64  `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StressName     *string `json:"StressName,omitempty" xml:"StressName,omitempty"`
-	UpdateTime     *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-}
-
-func (s ListStressesResponseBodyStresses) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListStressesResponseBodyStresses) GoString() string {
-	return s.String()
-}
-
-func (s *ListStressesResponseBodyStresses) SetAvailableAgent(v int64) *ListStressesResponseBodyStresses {
-	s.AvailableAgent = &v
-	return s
-}
-
-func (s *ListStressesResponseBodyStresses) SetCreateTime(v string) *ListStressesResponseBodyStresses {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListStressesResponseBodyStresses) SetMessage(v string) *ListStressesResponseBodyStresses {
-	s.Message = &v
-	return s
-}
-
-func (s *ListStressesResponseBodyStresses) SetRegion(v string) *ListStressesResponseBodyStresses {
-	s.Region = &v
-	return s
-}
-
-func (s *ListStressesResponseBodyStresses) SetServiceName(v string) *ListStressesResponseBodyStresses {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *ListStressesResponseBodyStresses) SetStatus(v string) *ListStressesResponseBodyStresses {
-	s.Status = &v
-	return s
-}
-
-func (s *ListStressesResponseBodyStresses) SetStressName(v string) *ListStressesResponseBodyStresses {
-	s.StressName = &v
-	return s
-}
-
-func (s *ListStressesResponseBodyStresses) SetUpdateTime(v string) *ListStressesResponseBodyStresses {
-	s.UpdateTime = &v
-	return s
-}
-
-type ListStressesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListStressesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListStressesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListStressesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListStressesResponse) SetHeaders(v map[string]*string) *ListStressesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListStressesResponse) SetStatusCode(v int32) *ListStressesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListStressesResponse) SetBody(v *ListStressesResponseBody) *ListStressesResponse {
-	s.Body = v
-	return s
-}
-
 type ReleaseServiceRequest struct {
-	// 灰度权重，范围 [0, 100]
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -3944,8 +3409,7 @@ func (s *ReleaseServiceRequest) SetWeight(v int32) *ReleaseServiceRequest {
 }
 
 type ReleaseServiceResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3992,58 +3456,6 @@ func (s *ReleaseServiceResponse) SetStatusCode(v int32) *ReleaseServiceResponse 
 }
 
 func (s *ReleaseServiceResponse) SetBody(v *ReleaseServiceResponseBody) *ReleaseServiceResponse {
-	s.Body = v
-	return s
-}
-
-type ReportStressResponseBody struct {
-	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ReportStressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReportStressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ReportStressResponseBody) SetReportUrl(v string) *ReportStressResponseBody {
-	s.ReportUrl = &v
-	return s
-}
-
-func (s *ReportStressResponseBody) SetRequestId(v string) *ReportStressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ReportStressResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReportStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ReportStressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReportStressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ReportStressResponse) SetHeaders(v map[string]*string) *ReportStressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ReportStressResponse) SetStatusCode(v int32) *ReportStressResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ReportStressResponse) SetBody(v *ReportStressResponseBody) *ReportStressResponse {
 	s.Body = v
 	return s
 }
@@ -4101,8 +3513,7 @@ func (s *StartBenchmarkTaskResponse) SetBody(v *StartBenchmarkTaskResponseBody) 
 }
 
 type StartServiceResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4149,58 +3560,6 @@ func (s *StartServiceResponse) SetStatusCode(v int32) *StartServiceResponse {
 }
 
 func (s *StartServiceResponse) SetBody(v *StartServiceResponseBody) *StartServiceResponse {
-	s.Body = v
-	return s
-}
-
-type StartStressResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s StartStressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartStressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StartStressResponseBody) SetMessage(v string) *StartStressResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *StartStressResponseBody) SetRequestId(v string) *StartStressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type StartStressResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StartStressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartStressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StartStressResponse) SetHeaders(v map[string]*string) *StartStressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StartStressResponse) SetStatusCode(v int32) *StartStressResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *StartStressResponse) SetBody(v *StartStressResponseBody) *StartStressResponse {
 	s.Body = v
 	return s
 }
@@ -4258,8 +3617,7 @@ func (s *StopBenchmarkTaskResponse) SetBody(v *StopBenchmarkTaskResponseBody) *S
 }
 
 type StopServiceResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4306,64 +3664,6 @@ func (s *StopServiceResponse) SetStatusCode(v int32) *StopServiceResponse {
 }
 
 func (s *StopServiceResponse) SetBody(v *StopServiceResponseBody) *StopServiceResponse {
-	s.Body = v
-	return s
-}
-
-type StopStressResponseBody struct {
-	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s StopStressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopStressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StopStressResponseBody) SetCode(v int64) *StopStressResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *StopStressResponseBody) SetMessage(v string) *StopStressResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *StopStressResponseBody) SetRequestId(v string) *StopStressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type StopStressResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StopStressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopStressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StopStressResponse) SetHeaders(v map[string]*string) *StopStressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StopStressResponse) SetStatusCode(v int32) *StopStressResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *StopStressResponse) SetBody(v *StopStressResponseBody) *StopStressResponse {
 	s.Body = v
 	return s
 }
@@ -4438,7 +3738,6 @@ func (s *UpdateBenchmarkTaskResponse) SetBody(v *UpdateBenchmarkTaskResponseBody
 }
 
 type UpdateResourceRequest struct {
-	// 新的资源组名称
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
@@ -4456,7 +3755,6 @@ func (s *UpdateResourceRequest) SetResourceName(v string) *UpdateResourceRequest
 }
 
 type UpdateResourceResponseBody struct {
-	// Id of the request
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
@@ -4515,14 +3813,10 @@ func (s *UpdateResourceResponse) SetBody(v *UpdateResourceResponseBody) *UpdateR
 }
 
 type UpdateResourceDLinkRequest struct {
-	// 要打通的客户端的网段信息，会将该网段加入到服务端的回包路由中，与VSwitchIdList可二选一
-	DestinationCIDRs *string `json:"DestinationCIDRs,omitempty" xml:"DestinationCIDRs,omitempty"`
-	// 客户端ECS归属的安全组
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// 对端的主VSwitchID，会在该vswitch中创建ENI
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// 要打通的客户端的vswitch列表，会将这些vswitch对应的网段加入到服务端的回包路由中
-	VSwitchIdList []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
+	DestinationCIDRs *string   `json:"DestinationCIDRs,omitempty" xml:"DestinationCIDRs,omitempty"`
+	SecurityGroupId  *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId        *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchIdList    []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
 }
 
 func (s UpdateResourceDLinkRequest) String() string {
@@ -4554,8 +3848,7 @@ func (s *UpdateResourceDLinkRequest) SetVSwitchIdList(v []*string) *UpdateResour
 }
 
 type UpdateResourceDLinkResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4624,9 +3917,7 @@ func (s *UpdateServiceRequest) SetBody(v string) *UpdateServiceRequest {
 }
 
 type UpdateServiceResponseBody struct {
-	// 请求返回消息。
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID。
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4678,11 +3969,8 @@ func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateSer
 }
 
 type UpdateServiceAutoScalerRequest struct {
-	// 最大 replica 数，需要大于MinReplica
-	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// 最小 replica 数，需要大于0
-	Min *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
-	// map 类型的策略定义
+	Max        *int32                                    `json:"Max,omitempty" xml:"Max,omitempty"`
+	Min        *int32                                    `json:"Min,omitempty" xml:"Min,omitempty"`
 	Strategies *UpdateServiceAutoScalerRequestStrategies `json:"Strategies,omitempty" xml:"Strategies,omitempty" type:"Struct"`
 }
 
@@ -4710,9 +3998,7 @@ func (s *UpdateServiceAutoScalerRequest) SetStrategies(v *UpdateServiceAutoScale
 }
 
 type UpdateServiceAutoScalerRequestStrategies struct {
-	// 最大 replica 数，需要大于MinReplica
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// 每个实例支持的最大qps数，超出即扩容
 	Qps *float32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
 }
 
@@ -4735,8 +4021,7 @@ func (s *UpdateServiceAutoScalerRequestStrategies) SetQps(v float32) *UpdateServ
 }
 
 type UpdateServiceAutoScalerResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4788,10 +4073,8 @@ func (s *UpdateServiceAutoScalerResponse) SetBody(v *UpdateServiceAutoScalerResp
 }
 
 type UpdateServiceCronScalerRequest struct {
-	// 需要排除的时间点的cron表达式
-	ExcludeDates []*string `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
-	// 定时伸缩任务描述
-	ScaleJobs []*UpdateServiceCronScalerRequestScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
+	ExcludeDates []*string                                  `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
+	ScaleJobs    []*UpdateServiceCronScalerRequestScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
 }
 
 func (s UpdateServiceCronScalerRequest) String() string {
@@ -4813,11 +4096,9 @@ func (s *UpdateServiceCronScalerRequest) SetScaleJobs(v []*UpdateServiceCronScal
 }
 
 type UpdateServiceCronScalerRequestScaleJobs struct {
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 要执行伸缩任务的cron表达式
-	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// 执行伸缩任务的目标replica
-	TargetSize *int32 `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Schedule   *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	TargetSize *int32  `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
 }
 
 func (s UpdateServiceCronScalerRequestScaleJobs) String() string {
@@ -4844,8 +4125,7 @@ func (s *UpdateServiceCronScalerRequestScaleJobs) SetTargetSize(v int32) *Update
 }
 
 type UpdateServiceCronScalerResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4897,9 +4177,7 @@ func (s *UpdateServiceCronScalerResponse) SetBody(v *UpdateServiceCronScalerResp
 }
 
 type UpdateServiceMirrorRequest struct {
-	// 比例 [0, 100]
-	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	// 服务实例列表
+	Ratio  *int32    `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
 	Target []*string `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
 }
 
@@ -4922,8 +4200,7 @@ func (s *UpdateServiceMirrorRequest) SetTarget(v []*string) *UpdateServiceMirror
 }
 
 type UpdateServiceMirrorResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4992,8 +4269,7 @@ func (s *UpdateServiceVersionRequest) SetVersion(v int32) *UpdateServiceVersionR
 }
 
 type UpdateServiceVersionResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5040,75 +4316,6 @@ func (s *UpdateServiceVersionResponse) SetStatusCode(v int32) *UpdateServiceVers
 }
 
 func (s *UpdateServiceVersionResponse) SetBody(v *UpdateServiceVersionResponseBody) *UpdateServiceVersionResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateStressRequest struct {
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UpdateStressRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateStressRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateStressRequest) SetBody(v string) *UpdateStressRequest {
-	s.Body = &v
-	return s
-}
-
-type UpdateStressResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateStressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateStressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateStressResponseBody) SetMessage(v string) *UpdateStressResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateStressResponseBody) SetRequestId(v string) *UpdateStressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateStressResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateStressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateStressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateStressResponse) SetHeaders(v map[string]*string) *UpdateStressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateStressResponse) SetStatusCode(v int32) *UpdateStressResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateStressResponse) SetBody(v *UpdateStressResponseBody) *UpdateStressResponse {
 	s.Body = v
 	return s
 }
@@ -5593,47 +4800,6 @@ func (client *Client) CreateServiceMirrorWithOptions(ClusterId *string, ServiceN
 	return _result, _err
 }
 
-func (client *Client) CreateStress(request *CreateStressRequest) (_result *CreateStressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateStressResponse{}
-	_body, _err := client.CreateStressWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateStressWithOptions(request *CreateStressRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateStressResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    request.Body,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateStress"),
-		Version:     tea.String("2021-07-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/stress"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateStressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) DeleteBenchmarkTask(ClusterId *string, TaskName *string) (_result *DeleteBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6030,44 +5196,6 @@ func (client *Client) DeleteServiceMirrorWithOptions(ClusterId *string, ServiceN
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteServiceMirrorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteStress(ClusterId *string, StressName *string) (_result *DeleteStressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteStressResponse{}
-	_body, _err := client.DeleteStressWithOptions(ClusterId, StressName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteStressWithOptions(ClusterId *string, StressName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteStressResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	StressName = openapiutil.GetEncodeParam(StressName)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteStress"),
-		Version:     tea.String("2021-07-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/stress/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(StressName)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteStressResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6486,44 +5614,6 @@ func (client *Client) DescribeServiceMirrorWithOptions(ClusterId *string, Servic
 	return _result, _err
 }
 
-func (client *Client) DescribeStress(ClusterId *string, StressName *string) (_result *DescribeStressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeStressResponse{}
-	_body, _err := client.DescribeStressWithOptions(ClusterId, StressName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeStressWithOptions(ClusterId *string, StressName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeStressResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	StressName = openapiutil.GetEncodeParam(StressName)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeStress"),
-		Version:     tea.String("2021-07-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/stress/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(StressName)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeStressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) ListBenchmarkTask() (_result *ListBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6885,42 +5975,6 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListStresses() (_result *ListStressesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListStressesResponse{}
-	_body, _err := client.ListStressesWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListStressesWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListStressesResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListStresses"),
-		Version:     tea.String("2021-07-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/stress"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListStressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) ReleaseService(ClusterId *string, ServiceName *string, request *ReleaseServiceRequest) (_result *ReleaseServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6961,44 +6015,6 @@ func (client *Client) ReleaseServiceWithOptions(ClusterId *string, ServiceName *
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReleaseServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ReportStress(ClusterId *string, StressName *string) (_result *ReportStressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ReportStressResponse{}
-	_body, _err := client.ReportStressWithOptions(ClusterId, StressName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ReportStressWithOptions(ClusterId *string, StressName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReportStressResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	StressName = openapiutil.GetEncodeParam(StressName)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ReportStress"),
-		Version:     tea.String("2021-07-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/stress/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(StressName) + "/report"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ReportStressResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7083,44 +6099,6 @@ func (client *Client) StartServiceWithOptions(ClusterId *string, ServiceName *st
 	return _result, _err
 }
 
-func (client *Client) StartStress(ClusterId *string, StressName *string) (_result *StartStressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StartStressResponse{}
-	_body, _err := client.StartStressWithOptions(ClusterId, StressName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StartStressWithOptions(ClusterId *string, StressName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartStressResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	StressName = openapiutil.GetEncodeParam(StressName)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("StartStress"),
-		Version:     tea.String("2021-07-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/stress/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(StressName) + "/start"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &StartStressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) StopBenchmarkTask(ClusterId *string, TaskName *string) (_result *StopBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7189,44 +6167,6 @@ func (client *Client) StopServiceWithOptions(ClusterId *string, ServiceName *str
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StopStress(ClusterId *string, StressName *string) (_result *StopStressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StopStressResponse{}
-	_body, _err := client.StopStressWithOptions(ClusterId, StressName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StopStressWithOptions(ClusterId *string, StressName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopStressResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	StressName = openapiutil.GetEncodeParam(StressName)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("StopStress"),
-		Version:     tea.String("2021-07-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/stress/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(StressName) + "/stop"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &StopStressResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7629,49 +6569,6 @@ func (client *Client) UpdateServiceVersionWithOptions(ClusterId *string, Service
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateServiceVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateStress(ClusterId *string, StressName *string, request *UpdateStressRequest) (_result *UpdateStressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateStressResponse{}
-	_body, _err := client.UpdateStressWithOptions(ClusterId, StressName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateStressWithOptions(ClusterId *string, StressName *string, request *UpdateStressRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateStressResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	StressName = openapiutil.GetEncodeParam(StressName)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    request.Body,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateStress"),
-		Version:     tea.String("2021-07-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/stress/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(StressName)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateStressResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
