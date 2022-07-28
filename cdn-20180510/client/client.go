@@ -3278,6 +3278,7 @@ type DescribeCdnDomainConfigsResponseBodyDomainConfigsDomainConfig struct {
 	ConfigId     *string                                                                    `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	FunctionArgs *DescribeCdnDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Struct"`
 	FunctionName *string                                                                    `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	ParentId     *string                                                                    `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	Status       *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3301,6 +3302,11 @@ func (s *DescribeCdnDomainConfigsResponseBodyDomainConfigsDomainConfig) SetFunct
 
 func (s *DescribeCdnDomainConfigsResponseBodyDomainConfigsDomainConfig) SetFunctionName(v string) *DescribeCdnDomainConfigsResponseBodyDomainConfigsDomainConfig {
 	s.FunctionName = &v
+	return s
+}
+
+func (s *DescribeCdnDomainConfigsResponseBodyDomainConfigsDomainConfig) SetParentId(v string) *DescribeCdnDomainConfigsResponseBodyDomainConfigsDomainConfig {
+	s.ParentId = &v
 	return s
 }
 
