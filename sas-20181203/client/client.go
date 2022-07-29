@@ -12,6 +12,93 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddInstallCodeRequest struct {
+	ExpiredDate *int64  `json:"ExpiredDate,omitempty" xml:"ExpiredDate,omitempty"`
+	GroupId     *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OnlyImage   *bool   `json:"OnlyImage,omitempty" xml:"OnlyImage,omitempty"`
+	Os          *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	VendorName  *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
+}
+
+func (s AddInstallCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddInstallCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddInstallCodeRequest) SetExpiredDate(v int64) *AddInstallCodeRequest {
+	s.ExpiredDate = &v
+	return s
+}
+
+func (s *AddInstallCodeRequest) SetGroupId(v int64) *AddInstallCodeRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *AddInstallCodeRequest) SetOnlyImage(v bool) *AddInstallCodeRequest {
+	s.OnlyImage = &v
+	return s
+}
+
+func (s *AddInstallCodeRequest) SetOs(v string) *AddInstallCodeRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *AddInstallCodeRequest) SetVendorName(v string) *AddInstallCodeRequest {
+	s.VendorName = &v
+	return s
+}
+
+type AddInstallCodeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddInstallCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddInstallCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddInstallCodeResponseBody) SetRequestId(v string) *AddInstallCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddInstallCodeResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddInstallCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddInstallCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddInstallCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddInstallCodeResponse) SetHeaders(v map[string]*string) *AddInstallCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddInstallCodeResponse) SetStatusCode(v int32) *AddInstallCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddInstallCodeResponse) SetBody(v *AddInstallCodeResponseBody) *AddInstallCodeResponse {
+	s.Body = v
+	return s
+}
+
 type AddVpcHoneyPotRequest struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -6170,6 +6257,104 @@ func (s *DescribeCloudProductFieldStatisticsResponse) SetBody(v *DescribeCloudPr
 	return s
 }
 
+type DescribeCommonOverallConfigRequest struct {
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCommonOverallConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommonOverallConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommonOverallConfigRequest) SetSourceIp(v string) *DescribeCommonOverallConfigRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeCommonOverallConfigRequest) SetType(v string) *DescribeCommonOverallConfigRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeCommonOverallConfigResponseBody struct {
+	OverallConfig *DescribeCommonOverallConfigResponseBodyOverallConfig `json:"OverallConfig,omitempty" xml:"OverallConfig,omitempty" type:"Struct"`
+	RequestId     *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCommonOverallConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommonOverallConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommonOverallConfigResponseBody) SetOverallConfig(v *DescribeCommonOverallConfigResponseBodyOverallConfig) *DescribeCommonOverallConfigResponseBody {
+	s.OverallConfig = v
+	return s
+}
+
+func (s *DescribeCommonOverallConfigResponseBody) SetRequestId(v string) *DescribeCommonOverallConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCommonOverallConfigResponseBodyOverallConfig struct {
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCommonOverallConfigResponseBodyOverallConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommonOverallConfigResponseBodyOverallConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommonOverallConfigResponseBodyOverallConfig) SetConfig(v string) *DescribeCommonOverallConfigResponseBodyOverallConfig {
+	s.Config = &v
+	return s
+}
+
+func (s *DescribeCommonOverallConfigResponseBodyOverallConfig) SetType(v string) *DescribeCommonOverallConfigResponseBodyOverallConfig {
+	s.Type = &v
+	return s
+}
+
+type DescribeCommonOverallConfigResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCommonOverallConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCommonOverallConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommonOverallConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommonOverallConfigResponse) SetHeaders(v map[string]*string) *DescribeCommonOverallConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCommonOverallConfigResponse) SetStatusCode(v int32) *DescribeCommonOverallConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCommonOverallConfigResponse) SetBody(v *DescribeCommonOverallConfigResponseBody) *DescribeCommonOverallConfigResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeConcernNecessityRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
@@ -8327,6 +8512,7 @@ type DescribeFieldStatisticsResponseBodyGroupedFields struct {
 	NewInstanceCount         *int32 `json:"NewInstanceCount,omitempty" xml:"NewInstanceCount,omitempty"`
 	NotRunningStatusCount    *int32 `json:"NotRunningStatusCount,omitempty" xml:"NotRunningStatusCount,omitempty"`
 	OfflineInstanceCount     *int32 `json:"OfflineInstanceCount,omitempty" xml:"OfflineInstanceCount,omitempty"`
+	OutMachineInstanceCount  *int32 `json:"OutMachineInstanceCount,omitempty" xml:"OutMachineInstanceCount,omitempty"`
 	PauseInstanceCount       *int32 `json:"PauseInstanceCount,omitempty" xml:"PauseInstanceCount,omitempty"`
 	RegionCount              *int32 `json:"RegionCount,omitempty" xml:"RegionCount,omitempty"`
 	RiskInstanceCount        *int32 `json:"RiskInstanceCount,omitempty" xml:"RiskInstanceCount,omitempty"`
@@ -8406,6 +8592,11 @@ func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetNotRunningStatusCo
 
 func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetOfflineInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
 	s.OfflineInstanceCount = &v
+	return s
+}
+
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetOutMachineInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
+	s.OutMachineInstanceCount = &v
 	return s
 }
 
@@ -20445,6 +20636,104 @@ func (s *DescribeSuspEventsResponse) SetBody(v *DescribeSuspEventsResponseBody) 
 	return s
 }
 
+type DescribeSuspiciousOverallConfigRequest struct {
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeSuspiciousOverallConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSuspiciousOverallConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSuspiciousOverallConfigRequest) SetSourceIp(v string) *DescribeSuspiciousOverallConfigRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeSuspiciousOverallConfigRequest) SetType(v string) *DescribeSuspiciousOverallConfigRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeSuspiciousOverallConfigResponseBody struct {
+	OverallConfig *DescribeSuspiciousOverallConfigResponseBodyOverallConfig `json:"OverallConfig,omitempty" xml:"OverallConfig,omitempty" type:"Struct"`
+	RequestId     *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSuspiciousOverallConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSuspiciousOverallConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSuspiciousOverallConfigResponseBody) SetOverallConfig(v *DescribeSuspiciousOverallConfigResponseBodyOverallConfig) *DescribeSuspiciousOverallConfigResponseBody {
+	s.OverallConfig = v
+	return s
+}
+
+func (s *DescribeSuspiciousOverallConfigResponseBody) SetRequestId(v string) *DescribeSuspiciousOverallConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSuspiciousOverallConfigResponseBodyOverallConfig struct {
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeSuspiciousOverallConfigResponseBodyOverallConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSuspiciousOverallConfigResponseBodyOverallConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSuspiciousOverallConfigResponseBodyOverallConfig) SetConfig(v string) *DescribeSuspiciousOverallConfigResponseBodyOverallConfig {
+	s.Config = &v
+	return s
+}
+
+func (s *DescribeSuspiciousOverallConfigResponseBodyOverallConfig) SetType(v string) *DescribeSuspiciousOverallConfigResponseBodyOverallConfig {
+	s.Type = &v
+	return s
+}
+
+type DescribeSuspiciousOverallConfigResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSuspiciousOverallConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSuspiciousOverallConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSuspiciousOverallConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSuspiciousOverallConfigResponse) SetHeaders(v map[string]*string) *DescribeSuspiciousOverallConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSuspiciousOverallConfigResponse) SetStatusCode(v int32) *DescribeSuspiciousOverallConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSuspiciousOverallConfigResponse) SetBody(v *DescribeSuspiciousOverallConfigResponseBody) *DescribeSuspiciousOverallConfigResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSuspiciousUUIDConfigRequest struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -20976,6 +21265,58 @@ func (s *DescribeUuidsByVulNamesResponse) SetStatusCode(v int32) *DescribeUuidsB
 }
 
 func (s *DescribeUuidsByVulNamesResponse) SetBody(v *DescribeUuidsByVulNamesResponseBody) *DescribeUuidsByVulNamesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVendorListResponseBody struct {
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VendorNameList []*string `json:"VendorNameList,omitempty" xml:"VendorNameList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVendorListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVendorListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVendorListResponseBody) SetRequestId(v string) *DescribeVendorListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVendorListResponseBody) SetVendorNameList(v []*string) *DescribeVendorListResponseBody {
+	s.VendorNameList = v
+	return s
+}
+
+type DescribeVendorListResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVendorListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeVendorListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVendorListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVendorListResponse) SetHeaders(v map[string]*string) *DescribeVendorListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVendorListResponse) SetStatusCode(v int32) *DescribeVendorListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVendorListResponse) SetBody(v *DescribeVendorListResponseBody) *DescribeVendorListResponse {
 	s.Body = v
 	return s
 }
@@ -28463,6 +28804,168 @@ func (s *OperateAgentClientInstallResponse) SetBody(v *OperateAgentClientInstall
 	return s
 }
 
+type OperateCommonOverallConfigRequest struct {
+	Config   *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s OperateCommonOverallConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateCommonOverallConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OperateCommonOverallConfigRequest) SetConfig(v string) *OperateCommonOverallConfigRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *OperateCommonOverallConfigRequest) SetSourceIp(v string) *OperateCommonOverallConfigRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *OperateCommonOverallConfigRequest) SetType(v string) *OperateCommonOverallConfigRequest {
+	s.Type = &v
+	return s
+}
+
+type OperateCommonOverallConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s OperateCommonOverallConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateCommonOverallConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OperateCommonOverallConfigResponseBody) SetRequestId(v string) *OperateCommonOverallConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type OperateCommonOverallConfigResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OperateCommonOverallConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OperateCommonOverallConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateCommonOverallConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OperateCommonOverallConfigResponse) SetHeaders(v map[string]*string) *OperateCommonOverallConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OperateCommonOverallConfigResponse) SetStatusCode(v int32) *OperateCommonOverallConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OperateCommonOverallConfigResponse) SetBody(v *OperateCommonOverallConfigResponseBody) *OperateCommonOverallConfigResponse {
+	s.Body = v
+	return s
+}
+
+type OperateSuspiciousOverallConfigRequest struct {
+	Config       *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NoTargetAsOn *bool   `json:"NoTargetAsOn,omitempty" xml:"NoTargetAsOn,omitempty"`
+	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s OperateSuspiciousOverallConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateSuspiciousOverallConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OperateSuspiciousOverallConfigRequest) SetConfig(v string) *OperateSuspiciousOverallConfigRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *OperateSuspiciousOverallConfigRequest) SetLang(v string) *OperateSuspiciousOverallConfigRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *OperateSuspiciousOverallConfigRequest) SetNoTargetAsOn(v bool) *OperateSuspiciousOverallConfigRequest {
+	s.NoTargetAsOn = &v
+	return s
+}
+
+func (s *OperateSuspiciousOverallConfigRequest) SetSourceIp(v string) *OperateSuspiciousOverallConfigRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *OperateSuspiciousOverallConfigRequest) SetType(v string) *OperateSuspiciousOverallConfigRequest {
+	s.Type = &v
+	return s
+}
+
+type OperateSuspiciousOverallConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s OperateSuspiciousOverallConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateSuspiciousOverallConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OperateSuspiciousOverallConfigResponseBody) SetRequestId(v string) *OperateSuspiciousOverallConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type OperateSuspiciousOverallConfigResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OperateSuspiciousOverallConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OperateSuspiciousOverallConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateSuspiciousOverallConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OperateSuspiciousOverallConfigResponse) SetHeaders(v map[string]*string) *OperateSuspiciousOverallConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OperateSuspiciousOverallConfigResponse) SetStatusCode(v int32) *OperateSuspiciousOverallConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OperateSuspiciousOverallConfigResponse) SetBody(v *OperateSuspiciousOverallConfigResponseBody) *OperateSuspiciousOverallConfigResponse {
+	s.Body = v
+	return s
+}
+
 type OperateSuspiciousTargetConfigRequest struct {
 	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	SourceIp         *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
@@ -30483,6 +30986,66 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddInstallCodeWithOptions(request *AddInstallCodeRequest, runtime *util.RuntimeOptions) (_result *AddInstallCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExpiredDate)) {
+		query["ExpiredDate"] = request.ExpiredDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OnlyImage)) {
+		query["OnlyImage"] = request.OnlyImage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Os)) {
+		query["Os"] = request.Os
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VendorName)) {
+		query["VendorName"] = request.VendorName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddInstallCode"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddInstallCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddInstallCode(request *AddInstallCodeRequest) (_result *AddInstallCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddInstallCodeResponse{}
+	_body, _err := client.AddInstallCodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32859,6 +33422,54 @@ func (client *Client) DescribeCloudProductFieldStatistics() (_result *DescribeCl
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudProductFieldStatisticsResponse{}
 	_body, _err := client.DescribeCloudProductFieldStatisticsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCommonOverallConfigWithOptions(request *DescribeCommonOverallConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeCommonOverallConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCommonOverallConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCommonOverallConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCommonOverallConfig(request *DescribeCommonOverallConfigRequest) (_result *DescribeCommonOverallConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCommonOverallConfigResponse{}
+	_body, _err := client.DescribeCommonOverallConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37468,6 +38079,54 @@ func (client *Client) DescribeSuspEvents(request *DescribeSuspEventsRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DescribeSuspiciousOverallConfigWithOptions(request *DescribeSuspiciousOverallConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeSuspiciousOverallConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSuspiciousOverallConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSuspiciousOverallConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSuspiciousOverallConfig(request *DescribeSuspiciousOverallConfigRequest) (_result *DescribeSuspiciousOverallConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSuspiciousOverallConfigResponse{}
+	_body, _err := client.DescribeSuspiciousOverallConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeSuspiciousUUIDConfigWithOptions(request *DescribeSuspiciousUUIDConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeSuspiciousUUIDConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37742,6 +38401,39 @@ func (client *Client) DescribeUuidsByVulNames(request *DescribeUuidsByVulNamesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUuidsByVulNamesResponse{}
 	_body, _err := client.DescribeUuidsByVulNamesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVendorListWithOptions(runtime *util.RuntimeOptions) (_result *DescribeVendorListResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVendorList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVendorListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVendorList() (_result *DescribeVendorListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVendorListResponse{}
+	_body, _err := client.DescribeVendorListWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41215,6 +41907,118 @@ func (client *Client) OperateAgentClientInstall(request *OperateAgentClientInsta
 	runtime := &util.RuntimeOptions{}
 	_result = &OperateAgentClientInstallResponse{}
 	_body, _err := client.OperateAgentClientInstallWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) OperateCommonOverallConfigWithOptions(request *OperateCommonOverallConfigRequest, runtime *util.RuntimeOptions) (_result *OperateCommonOverallConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OperateCommonOverallConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OperateCommonOverallConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OperateCommonOverallConfig(request *OperateCommonOverallConfigRequest) (_result *OperateCommonOverallConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OperateCommonOverallConfigResponse{}
+	_body, _err := client.OperateCommonOverallConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) OperateSuspiciousOverallConfigWithOptions(request *OperateSuspiciousOverallConfigRequest, runtime *util.RuntimeOptions) (_result *OperateSuspiciousOverallConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoTargetAsOn)) {
+		query["NoTargetAsOn"] = request.NoTargetAsOn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OperateSuspiciousOverallConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OperateSuspiciousOverallConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OperateSuspiciousOverallConfig(request *OperateSuspiciousOverallConfigRequest) (_result *OperateSuspiciousOverallConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OperateSuspiciousOverallConfigResponse{}
+	_body, _err := client.OperateSuspiciousOverallConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
