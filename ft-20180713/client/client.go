@@ -13,9 +13,9 @@ import (
 )
 
 type BatchAuditTest01Request struct {
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	BatchAuditTest01 *string `json:"BatchAuditTest01,omitempty" xml:"BatchAuditTest01,omitempty"`
 	Demo01           *string `json:"Demo01,omitempty" xml:"Demo01,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Test010101       *bool   `json:"Test010101,omitempty" xml:"Test010101,omitempty"`
 }
 
@@ -25,11 +25,6 @@ func (s BatchAuditTest01Request) String() string {
 
 func (s BatchAuditTest01Request) GoString() string {
 	return s.String()
-}
-
-func (s *BatchAuditTest01Request) SetName(v string) *BatchAuditTest01Request {
-	s.Name = &v
-	return s
 }
 
 func (s *BatchAuditTest01Request) SetBatchAuditTest01(v string) *BatchAuditTest01Request {
@@ -42,15 +37,20 @@ func (s *BatchAuditTest01Request) SetDemo01(v string) *BatchAuditTest01Request {
 	return s
 }
 
+func (s *BatchAuditTest01Request) SetName(v string) *BatchAuditTest01Request {
+	s.Name = &v
+	return s
+}
+
 func (s *BatchAuditTest01Request) SetTest010101(v bool) *BatchAuditTest01Request {
 	s.Test010101 = &v
 	return s
 }
 
 type BatchAuditTest01ResponseBody struct {
+	Demo01    *BatchAuditTest01ResponseBodyDemo01 `json:"Demo01,omitempty" xml:"Demo01,omitempty" type:"Struct"`
 	Name      *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Demo01    *BatchAuditTest01ResponseBodyDemo01 `json:"Demo01,omitempty" xml:"Demo01,omitempty" type:"Struct"`
 }
 
 func (s BatchAuditTest01ResponseBody) String() string {
@@ -61,6 +61,11 @@ func (s BatchAuditTest01ResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *BatchAuditTest01ResponseBody) SetDemo01(v *BatchAuditTest01ResponseBodyDemo01) *BatchAuditTest01ResponseBody {
+	s.Demo01 = v
+	return s
+}
+
 func (s *BatchAuditTest01ResponseBody) SetName(v string) *BatchAuditTest01ResponseBody {
 	s.Name = &v
 	return s
@@ -68,11 +73,6 @@ func (s *BatchAuditTest01ResponseBody) SetName(v string) *BatchAuditTest01Respon
 
 func (s *BatchAuditTest01ResponseBody) SetRequestId(v string) *BatchAuditTest01ResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *BatchAuditTest01ResponseBody) SetDemo01(v *BatchAuditTest01ResponseBodyDemo01) *BatchAuditTest01ResponseBody {
-	s.Demo01 = v
 	return s
 }
 
@@ -128,8 +128,9 @@ func (s *BatchAuditTest01ResponseBodyDemo01Demo011Demo011) SetDemo0111(v string)
 }
 
 type BatchAuditTest01Response struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchAuditTest01ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchAuditTest01ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BatchAuditTest01Response) String() string {
@@ -142,6 +143,11 @@ func (s BatchAuditTest01Response) GoString() string {
 
 func (s *BatchAuditTest01Response) SetHeaders(v map[string]*string) *BatchAuditTest01Response {
 	s.Headers = v
+	return s
+}
+
+func (s *BatchAuditTest01Response) SetStatusCode(v int32) *BatchAuditTest01Response {
+	s.StatusCode = &v
 	return s
 }
 
@@ -191,8 +197,9 @@ func (s *FTApiAliasApiResponseBody) SetRequestId(v string) *FTApiAliasApiRespons
 }
 
 type FTApiAliasApiResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FTApiAliasApiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FTApiAliasApiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FTApiAliasApiResponse) String() string {
@@ -205,6 +212,11 @@ func (s FTApiAliasApiResponse) GoString() string {
 
 func (s *FTApiAliasApiResponse) SetHeaders(v map[string]*string) *FTApiAliasApiResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FTApiAliasApiResponse) SetStatusCode(v int32) *FTApiAliasApiResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -237,9 +249,9 @@ func (s *FtDynamicAddressDubboRequest) SetStringValue(v string) *FtDynamicAddres
 }
 
 type FtDynamicAddressDubboResponseBody struct {
+	IntValue    *int32  `json:"IntValue,omitempty" xml:"IntValue,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StringValue *string `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
-	IntValue    *int32  `json:"IntValue,omitempty" xml:"IntValue,omitempty"`
 }
 
 func (s FtDynamicAddressDubboResponseBody) String() string {
@@ -248,6 +260,11 @@ func (s FtDynamicAddressDubboResponseBody) String() string {
 
 func (s FtDynamicAddressDubboResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *FtDynamicAddressDubboResponseBody) SetIntValue(v int32) *FtDynamicAddressDubboResponseBody {
+	s.IntValue = &v
+	return s
 }
 
 func (s *FtDynamicAddressDubboResponseBody) SetRequestId(v string) *FtDynamicAddressDubboResponseBody {
@@ -260,14 +277,10 @@ func (s *FtDynamicAddressDubboResponseBody) SetStringValue(v string) *FtDynamicA
 	return s
 }
 
-func (s *FtDynamicAddressDubboResponseBody) SetIntValue(v int32) *FtDynamicAddressDubboResponseBody {
-	s.IntValue = &v
-	return s
-}
-
 type FtDynamicAddressDubboResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FtDynamicAddressDubboResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FtDynamicAddressDubboResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FtDynamicAddressDubboResponse) String() string {
@@ -280,6 +293,11 @@ func (s FtDynamicAddressDubboResponse) GoString() string {
 
 func (s *FtDynamicAddressDubboResponse) SetHeaders(v map[string]*string) *FtDynamicAddressDubboResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FtDynamicAddressDubboResponse) SetStatusCode(v int32) *FtDynamicAddressDubboResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -306,8 +324,9 @@ func (s *FtDynamicAddressHsfResponseBody) SetRequestId(v string) *FtDynamicAddre
 }
 
 type FtDynamicAddressHsfResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FtDynamicAddressHsfResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FtDynamicAddressHsfResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FtDynamicAddressHsfResponse) String() string {
@@ -323,17 +342,22 @@ func (s *FtDynamicAddressHsfResponse) SetHeaders(v map[string]*string) *FtDynami
 	return s
 }
 
+func (s *FtDynamicAddressHsfResponse) SetStatusCode(v int32) *FtDynamicAddressHsfResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *FtDynamicAddressHsfResponse) SetBody(v *FtDynamicAddressHsfResponseBody) *FtDynamicAddressHsfResponse {
 	s.Body = v
 	return s
 }
 
 type FtDynamicAddressHttpVpcRequest struct {
-	StringValue  map[string]interface{} `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
+	BooleanParam *bool                  `json:"BooleanParam,omitempty" xml:"BooleanParam,omitempty"`
 	DefaultValue map[string]interface{} `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
 	OtherParam   map[string]interface{} `json:"OtherParam,omitempty" xml:"OtherParam,omitempty"`
-	BooleanParam *bool                  `json:"BooleanParam,omitempty" xml:"BooleanParam,omitempty"`
 	P1           *string                `json:"P1,omitempty" xml:"P1,omitempty"`
+	StringValue  map[string]interface{} `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
 }
 
 func (s FtDynamicAddressHttpVpcRequest) String() string {
@@ -344,8 +368,8 @@ func (s FtDynamicAddressHttpVpcRequest) GoString() string {
 	return s.String()
 }
 
-func (s *FtDynamicAddressHttpVpcRequest) SetStringValue(v map[string]interface{}) *FtDynamicAddressHttpVpcRequest {
-	s.StringValue = v
+func (s *FtDynamicAddressHttpVpcRequest) SetBooleanParam(v bool) *FtDynamicAddressHttpVpcRequest {
+	s.BooleanParam = &v
 	return s
 }
 
@@ -359,22 +383,22 @@ func (s *FtDynamicAddressHttpVpcRequest) SetOtherParam(v map[string]interface{})
 	return s
 }
 
-func (s *FtDynamicAddressHttpVpcRequest) SetBooleanParam(v bool) *FtDynamicAddressHttpVpcRequest {
-	s.BooleanParam = &v
-	return s
-}
-
 func (s *FtDynamicAddressHttpVpcRequest) SetP1(v string) *FtDynamicAddressHttpVpcRequest {
 	s.P1 = &v
 	return s
 }
 
+func (s *FtDynamicAddressHttpVpcRequest) SetStringValue(v map[string]interface{}) *FtDynamicAddressHttpVpcRequest {
+	s.StringValue = v
+	return s
+}
+
 type FtDynamicAddressHttpVpcShrinkRequest struct {
-	StringValueShrink  *string `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
+	BooleanParam       *bool   `json:"BooleanParam,omitempty" xml:"BooleanParam,omitempty"`
 	DefaultValueShrink *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
 	OtherParamShrink   *string `json:"OtherParam,omitempty" xml:"OtherParam,omitempty"`
-	BooleanParam       *bool   `json:"BooleanParam,omitempty" xml:"BooleanParam,omitempty"`
 	P1                 *string `json:"P1,omitempty" xml:"P1,omitempty"`
+	StringValueShrink  *string `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
 }
 
 func (s FtDynamicAddressHttpVpcShrinkRequest) String() string {
@@ -385,8 +409,8 @@ func (s FtDynamicAddressHttpVpcShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *FtDynamicAddressHttpVpcShrinkRequest) SetStringValueShrink(v string) *FtDynamicAddressHttpVpcShrinkRequest {
-	s.StringValueShrink = &v
+func (s *FtDynamicAddressHttpVpcShrinkRequest) SetBooleanParam(v bool) *FtDynamicAddressHttpVpcShrinkRequest {
+	s.BooleanParam = &v
 	return s
 }
 
@@ -400,19 +424,19 @@ func (s *FtDynamicAddressHttpVpcShrinkRequest) SetOtherParamShrink(v string) *Ft
 	return s
 }
 
-func (s *FtDynamicAddressHttpVpcShrinkRequest) SetBooleanParam(v bool) *FtDynamicAddressHttpVpcShrinkRequest {
-	s.BooleanParam = &v
-	return s
-}
-
 func (s *FtDynamicAddressHttpVpcShrinkRequest) SetP1(v string) *FtDynamicAddressHttpVpcShrinkRequest {
 	s.P1 = &v
 	return s
 }
 
+func (s *FtDynamicAddressHttpVpcShrinkRequest) SetStringValueShrink(v string) *FtDynamicAddressHttpVpcShrinkRequest {
+	s.StringValueShrink = &v
+	return s
+}
+
 type FtDynamicAddressHttpVpcResponseBody struct {
-	ServiceRpcSign *string `json:"ServiceRpcSign,omitempty" xml:"ServiceRpcSign,omitempty"`
 	Params         *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	ServiceRpcSign *string `json:"ServiceRpcSign,omitempty" xml:"ServiceRpcSign,omitempty"`
 }
 
 func (s FtDynamicAddressHttpVpcResponseBody) String() string {
@@ -423,19 +447,20 @@ func (s FtDynamicAddressHttpVpcResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *FtDynamicAddressHttpVpcResponseBody) SetServiceRpcSign(v string) *FtDynamicAddressHttpVpcResponseBody {
-	s.ServiceRpcSign = &v
-	return s
-}
-
 func (s *FtDynamicAddressHttpVpcResponseBody) SetParams(v string) *FtDynamicAddressHttpVpcResponseBody {
 	s.Params = &v
 	return s
 }
 
+func (s *FtDynamicAddressHttpVpcResponseBody) SetServiceRpcSign(v string) *FtDynamicAddressHttpVpcResponseBody {
+	s.ServiceRpcSign = &v
+	return s
+}
+
 type FtDynamicAddressHttpVpcResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FtDynamicAddressHttpVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FtDynamicAddressHttpVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FtDynamicAddressHttpVpcResponse) String() string {
@@ -448,6 +473,11 @@ func (s FtDynamicAddressHttpVpcResponse) GoString() string {
 
 func (s *FtDynamicAddressHttpVpcResponse) SetHeaders(v map[string]*string) *FtDynamicAddressHttpVpcResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FtDynamicAddressHttpVpcResponse) SetStatusCode(v int32) *FtDynamicAddressHttpVpcResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -474,8 +504,8 @@ func (s *FtEagleEyeRequest) SetName(v string) *FtEagleEyeRequest {
 }
 
 type FtEagleEyeResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	EagleEyeTraceId *string `json:"eagleEyeTraceId,omitempty" xml:"eagleEyeTraceId,omitempty"`
 }
 
@@ -487,13 +517,13 @@ func (s FtEagleEyeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *FtEagleEyeResponseBody) SetRequestId(v string) *FtEagleEyeResponseBody {
-	s.RequestId = &v
+func (s *FtEagleEyeResponseBody) SetName(v string) *FtEagleEyeResponseBody {
+	s.Name = &v
 	return s
 }
 
-func (s *FtEagleEyeResponseBody) SetName(v string) *FtEagleEyeResponseBody {
-	s.Name = &v
+func (s *FtEagleEyeResponseBody) SetRequestId(v string) *FtEagleEyeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -503,8 +533,9 @@ func (s *FtEagleEyeResponseBody) SetEagleEyeTraceId(v string) *FtEagleEyeRespons
 }
 
 type FtEagleEyeResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FtEagleEyeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FtEagleEyeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FtEagleEyeResponse) String() string {
@@ -517,6 +548,11 @@ func (s FtEagleEyeResponse) GoString() string {
 
 func (s *FtEagleEyeResponse) SetHeaders(v map[string]*string) *FtEagleEyeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FtEagleEyeResponse) SetStatusCode(v int32) *FtEagleEyeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -566,8 +602,9 @@ func (s *FtFlowSpecialResponseBody) SetRequestId(v string) *FtFlowSpecialRespons
 }
 
 type FtFlowSpecialResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FtFlowSpecialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FtFlowSpecialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FtFlowSpecialResponse) String() string {
@@ -580,6 +617,11 @@ func (s FtFlowSpecialResponse) GoString() string {
 
 func (s *FtFlowSpecialResponse) SetHeaders(v map[string]*string) *FtFlowSpecialResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FtFlowSpecialResponse) SetStatusCode(v int32) *FtFlowSpecialResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -629,8 +671,9 @@ func (s *FtGatedLaunchPolicy4ResponseBody) SetRequestId(v string) *FtGatedLaunch
 }
 
 type FtGatedLaunchPolicy4Response struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FtGatedLaunchPolicy4ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FtGatedLaunchPolicy4ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FtGatedLaunchPolicy4Response) String() string {
@@ -643,6 +686,11 @@ func (s FtGatedLaunchPolicy4Response) GoString() string {
 
 func (s *FtGatedLaunchPolicy4Response) SetHeaders(v map[string]*string) *FtGatedLaunchPolicy4Response {
 	s.Headers = v
+	return s
+}
+
+func (s *FtGatedLaunchPolicy4Response) SetStatusCode(v int32) *FtGatedLaunchPolicy4Response {
+	s.StatusCode = &v
 	return s
 }
 
@@ -692,8 +740,9 @@ func (s *FtIpFlowControlResponseBody) SetRequestId(v string) *FtIpFlowControlRes
 }
 
 type FtIpFlowControlResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FtIpFlowControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FtIpFlowControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FtIpFlowControlResponse) String() string {
@@ -709,14 +758,19 @@ func (s *FtIpFlowControlResponse) SetHeaders(v map[string]*string) *FtIpFlowCont
 	return s
 }
 
+func (s *FtIpFlowControlResponse) SetStatusCode(v int32) *FtIpFlowControlResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *FtIpFlowControlResponse) SetBody(v *FtIpFlowControlResponseBody) *FtIpFlowControlResponse {
 	s.Body = v
 	return s
 }
 
 type FtParamListRequest struct {
-	Name *string                   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Disk []*FtParamListRequestDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
+	Name *string                   `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s FtParamListRequest) String() string {
@@ -727,19 +781,19 @@ func (s FtParamListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *FtParamListRequest) SetName(v string) *FtParamListRequest {
-	s.Name = &v
-	return s
-}
-
 func (s *FtParamListRequest) SetDisk(v []*FtParamListRequestDisk) *FtParamListRequest {
 	s.Disk = v
 	return s
 }
 
+func (s *FtParamListRequest) SetName(v string) *FtParamListRequest {
+	s.Name = &v
+	return s
+}
+
 type FtParamListRequestDisk struct {
-	Type []*string `json:"Type,omitempty" xml:"Type,omitempty" type:"Repeated"`
 	Size []*string `json:"Size,omitempty" xml:"Size,omitempty" type:"Repeated"`
+	Type []*string `json:"Type,omitempty" xml:"Type,omitempty" type:"Repeated"`
 }
 
 func (s FtParamListRequestDisk) String() string {
@@ -750,13 +804,13 @@ func (s FtParamListRequestDisk) GoString() string {
 	return s.String()
 }
 
-func (s *FtParamListRequestDisk) SetType(v []*string) *FtParamListRequestDisk {
-	s.Type = v
+func (s *FtParamListRequestDisk) SetSize(v []*string) *FtParamListRequestDisk {
+	s.Size = v
 	return s
 }
 
-func (s *FtParamListRequestDisk) SetSize(v []*string) *FtParamListRequestDisk {
-	s.Size = v
+func (s *FtParamListRequestDisk) SetType(v []*string) *FtParamListRequestDisk {
+	s.Type = v
 	return s
 }
 
@@ -784,8 +838,9 @@ func (s *FtParamListResponseBody) SetRequestId(v string) *FtParamListResponseBod
 }
 
 type FtParamListResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FtParamListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FtParamListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FtParamListResponse) String() string {
@@ -798,6 +853,11 @@ func (s FtParamListResponse) GoString() string {
 
 func (s *FtParamListResponse) SetHeaders(v map[string]*string) *FtParamListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FtParamListResponse) SetStatusCode(v int32) *FtParamListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -841,9 +901,9 @@ func (s *TestFlowStrategy01ShrinkRequest) SetNamesShrink(v string) *TestFlowStra
 }
 
 type TestFlowStrategy01ResponseBody struct {
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	List      []*string `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	Names     []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s TestFlowStrategy01ResponseBody) String() string {
@@ -852,11 +912,6 @@ func (s TestFlowStrategy01ResponseBody) String() string {
 
 func (s TestFlowStrategy01ResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *TestFlowStrategy01ResponseBody) SetRequestId(v string) *TestFlowStrategy01ResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *TestFlowStrategy01ResponseBody) SetList(v []*string) *TestFlowStrategy01ResponseBody {
@@ -869,9 +924,15 @@ func (s *TestFlowStrategy01ResponseBody) SetNames(v []*string) *TestFlowStrategy
 	return s
 }
 
+func (s *TestFlowStrategy01ResponseBody) SetRequestId(v string) *TestFlowStrategy01ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type TestFlowStrategy01Response struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TestFlowStrategy01ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TestFlowStrategy01ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TestFlowStrategy01Response) String() string {
@@ -887,16 +948,21 @@ func (s *TestFlowStrategy01Response) SetHeaders(v map[string]*string) *TestFlowS
 	return s
 }
 
+func (s *TestFlowStrategy01Response) SetStatusCode(v int32) *TestFlowStrategy01Response {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *TestFlowStrategy01Response) SetBody(v *TestFlowStrategy01ResponseBody) *TestFlowStrategy01Response {
 	s.Body = v
 	return s
 }
 
 type TestHttpApiRequest struct {
-	StringValue  map[string]interface{} `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
+	BooleanParam *bool                  `json:"BooleanParam,omitempty" xml:"BooleanParam,omitempty"`
 	DefaultValue map[string]interface{} `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
 	OtherParam   map[string]interface{} `json:"OtherParam,omitempty" xml:"OtherParam,omitempty"`
-	BooleanParam *bool                  `json:"BooleanParam,omitempty" xml:"BooleanParam,omitempty"`
+	StringValue  map[string]interface{} `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
 }
 
 func (s TestHttpApiRequest) String() string {
@@ -907,8 +973,8 @@ func (s TestHttpApiRequest) GoString() string {
 	return s.String()
 }
 
-func (s *TestHttpApiRequest) SetStringValue(v map[string]interface{}) *TestHttpApiRequest {
-	s.StringValue = v
+func (s *TestHttpApiRequest) SetBooleanParam(v bool) *TestHttpApiRequest {
+	s.BooleanParam = &v
 	return s
 }
 
@@ -922,16 +988,16 @@ func (s *TestHttpApiRequest) SetOtherParam(v map[string]interface{}) *TestHttpAp
 	return s
 }
 
-func (s *TestHttpApiRequest) SetBooleanParam(v bool) *TestHttpApiRequest {
-	s.BooleanParam = &v
+func (s *TestHttpApiRequest) SetStringValue(v map[string]interface{}) *TestHttpApiRequest {
+	s.StringValue = v
 	return s
 }
 
 type TestHttpApiShrinkRequest struct {
-	StringValueShrink  *string `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
+	BooleanParam       *bool   `json:"BooleanParam,omitempty" xml:"BooleanParam,omitempty"`
 	DefaultValueShrink *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
 	OtherParamShrink   *string `json:"OtherParam,omitempty" xml:"OtherParam,omitempty"`
-	BooleanParam       *bool   `json:"BooleanParam,omitempty" xml:"BooleanParam,omitempty"`
+	StringValueShrink  *string `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
 }
 
 func (s TestHttpApiShrinkRequest) String() string {
@@ -942,8 +1008,8 @@ func (s TestHttpApiShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *TestHttpApiShrinkRequest) SetStringValueShrink(v string) *TestHttpApiShrinkRequest {
-	s.StringValueShrink = &v
+func (s *TestHttpApiShrinkRequest) SetBooleanParam(v bool) *TestHttpApiShrinkRequest {
+	s.BooleanParam = &v
 	return s
 }
 
@@ -957,14 +1023,14 @@ func (s *TestHttpApiShrinkRequest) SetOtherParamShrink(v string) *TestHttpApiShr
 	return s
 }
 
-func (s *TestHttpApiShrinkRequest) SetBooleanParam(v bool) *TestHttpApiShrinkRequest {
-	s.BooleanParam = &v
+func (s *TestHttpApiShrinkRequest) SetStringValueShrink(v string) *TestHttpApiShrinkRequest {
+	s.StringValueShrink = &v
 	return s
 }
 
 type TestHttpApiResponseBody struct {
-	ServiceRpcSign *string `json:"ServiceRpcSign,omitempty" xml:"ServiceRpcSign,omitempty"`
 	Params         *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	ServiceRpcSign *string `json:"ServiceRpcSign,omitempty" xml:"ServiceRpcSign,omitempty"`
 }
 
 func (s TestHttpApiResponseBody) String() string {
@@ -975,19 +1041,20 @@ func (s TestHttpApiResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *TestHttpApiResponseBody) SetServiceRpcSign(v string) *TestHttpApiResponseBody {
-	s.ServiceRpcSign = &v
-	return s
-}
-
 func (s *TestHttpApiResponseBody) SetParams(v string) *TestHttpApiResponseBody {
 	s.Params = &v
 	return s
 }
 
+func (s *TestHttpApiResponseBody) SetServiceRpcSign(v string) *TestHttpApiResponseBody {
+	s.ServiceRpcSign = &v
+	return s
+}
+
 type TestHttpApiResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TestHttpApiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TestHttpApiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TestHttpApiResponse) String() string {
@@ -1000,6 +1067,11 @@ func (s TestHttpApiResponse) GoString() string {
 
 func (s *TestHttpApiResponse) SetHeaders(v map[string]*string) *TestHttpApiResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TestHttpApiResponse) SetStatusCode(v int32) *TestHttpApiResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1023,6 +1095,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-2-pop":          tea.String("ft.aliyuncs.com"),
@@ -1111,11 +1184,41 @@ func (client *Client) BatchAuditTest01WithOptions(request *BatchAuditTest01Reque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BatchAuditTest01)) {
+		query["BatchAuditTest01"] = request.BatchAuditTest01
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Demo01)) {
+		query["Demo01"] = request.Demo01
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Test010101)) {
+		body["Test010101"] = request.Test010101
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchAuditTest01"),
+		Version:     tea.String("2018-07-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BatchAuditTest01Response{}
-	_body, _err := client.DoRPCRequest(tea.String("BatchAuditTest01"), tea.String("2018-07-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1139,11 +1242,27 @@ func (client *Client) FTApiAliasApiWithOptions(request *FTApiAliasApiRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FTApiAliasApi"),
+		Version:     tea.String("2018-07-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FTApiAliasApiResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("FTApiAliasApi"), tea.String("2018-07-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1167,11 +1286,31 @@ func (client *Client) FtDynamicAddressDubboWithOptions(request *FtDynamicAddress
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IntValue)) {
+		query["IntValue"] = request.IntValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StringValue)) {
+		query["StringValue"] = request.StringValue
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FtDynamicAddressDubbo"),
+		Version:     tea.String("2018-07-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FtDynamicAddressDubboResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("FtDynamicAddressDubbo"), tea.String("2018-07-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1192,8 +1331,19 @@ func (client *Client) FtDynamicAddressDubbo(request *FtDynamicAddressDubboReques
 
 func (client *Client) FtDynamicAddressHsfWithOptions(runtime *util.RuntimeOptions) (_result *FtDynamicAddressHsfResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("FtDynamicAddressHsf"),
+		Version:     tea.String("2018-07-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &FtDynamicAddressHsfResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("FtDynamicAddressHsf"), tea.String("2018-07-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1219,10 +1369,6 @@ func (client *Client) FtDynamicAddressHttpVpcWithOptions(tmpReq *FtDynamicAddres
 	}
 	request := &FtDynamicAddressHttpVpcShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.StringValue)) {
-		request.StringValueShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StringValue, tea.String("StringValue"), tea.String("json"))
-	}
-
 	if !tea.BoolValue(util.IsUnset(tmpReq.DefaultValue)) {
 		request.DefaultValueShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultValue, tea.String("DefaultValue"), tea.String("json"))
 	}
@@ -1231,11 +1377,47 @@ func (client *Client) FtDynamicAddressHttpVpcWithOptions(tmpReq *FtDynamicAddres
 		request.OtherParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OtherParam, tea.String("OtherParam"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.StringValue)) {
+		request.StringValueShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StringValue, tea.String("StringValue"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BooleanParam)) {
+		query["BooleanParam"] = request.BooleanParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultValueShrink)) {
+		query["DefaultValue"] = request.DefaultValueShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtherParamShrink)) {
+		query["OtherParam"] = request.OtherParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.P1)) {
+		query["P1"] = request.P1
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StringValueShrink)) {
+		query["StringValue"] = request.StringValueShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FtDynamicAddressHttpVpc"),
+		Version:     tea.String("2018-07-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FtDynamicAddressHttpVpcResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("FtDynamicAddressHttpVpc"), tea.String("2018-07-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1259,11 +1441,27 @@ func (client *Client) FtEagleEyeWithOptions(request *FtEagleEyeRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FtEagleEye"),
+		Version:     tea.String("2018-07-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FtEagleEyeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("FtEagleEye"), tea.String("2018-07-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1287,11 +1485,27 @@ func (client *Client) FtFlowSpecialWithOptions(request *FtFlowSpecialRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FtFlowSpecial"),
+		Version:     tea.String("2018-07-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FtFlowSpecialResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("FtFlowSpecial"), tea.String("2018-07-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1315,11 +1529,27 @@ func (client *Client) FtGatedLaunchPolicy4WithOptions(request *FtGatedLaunchPoli
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsGatedLaunch)) {
+		query["IsGatedLaunch"] = request.IsGatedLaunch
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FtGatedLaunchPolicy4"),
+		Version:     tea.String("2018-07-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FtGatedLaunchPolicy4Response{}
-	_body, _err := client.DoRPCRequest(tea.String("FtGatedLaunchPolicy4"), tea.String("2018-07-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1343,11 +1573,27 @@ func (client *Client) FtIpFlowControlWithOptions(request *FtIpFlowControlRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FtIpFlowControl"),
+		Version:     tea.String("2018-07-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FtIpFlowControlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("FtIpFlowControl"), tea.String("2018-07-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1371,11 +1617,31 @@ func (client *Client) FtParamListWithOptions(request *FtParamListRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Disk)) {
+		query["Disk"] = request.Disk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FtParamList"),
+		Version:     tea.String("2018-07-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FtParamListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("FtParamList"), tea.String("2018-07-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1405,11 +1671,27 @@ func (client *Client) TestFlowStrategy01WithOptions(tmpReq *TestFlowStrategy01Re
 		request.NamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Names, tea.String("Names"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamesShrink)) {
+		body["Names"] = request.NamesShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TestFlowStrategy01"),
+		Version:     tea.String("2018-07-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TestFlowStrategy01Response{}
-	_body, _err := client.DoRPCRequest(tea.String("TestFlowStrategy01"), tea.String("2018-07-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1435,10 +1717,6 @@ func (client *Client) TestHttpApiWithOptions(tmpReq *TestHttpApiRequest, runtime
 	}
 	request := &TestHttpApiShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.StringValue)) {
-		request.StringValueShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StringValue, tea.String("StringValue"), tea.String("json"))
-	}
-
 	if !tea.BoolValue(util.IsUnset(tmpReq.DefaultValue)) {
 		request.DefaultValueShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultValue, tea.String("DefaultValue"), tea.String("json"))
 	}
@@ -1447,11 +1725,43 @@ func (client *Client) TestHttpApiWithOptions(tmpReq *TestHttpApiRequest, runtime
 		request.OtherParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OtherParam, tea.String("OtherParam"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.StringValue)) {
+		request.StringValueShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StringValue, tea.String("StringValue"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BooleanParam)) {
+		query["BooleanParam"] = request.BooleanParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultValueShrink)) {
+		query["DefaultValue"] = request.DefaultValueShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtherParamShrink)) {
+		query["OtherParam"] = request.OtherParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StringValueShrink)) {
+		query["StringValue"] = request.StringValueShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TestHttpApi"),
+		Version:     tea.String("2018-07-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TestHttpApiResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TestHttpApi"), tea.String("2018-07-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
