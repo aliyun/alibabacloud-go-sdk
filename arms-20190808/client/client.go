@@ -12,6 +12,131 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CallChainInfo struct {
+	AdditionalInfo *string                           `json:"AdditionalInfo,omitempty" xml:"AdditionalInfo,omitempty"`
+	AppName        *string                           `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType        *string                           `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	Children       []*CallChainInfo                  `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	HaveSpan       *bool                             `json:"HaveSpan,omitempty" xml:"HaveSpan,omitempty"`
+	LogMap         map[string]map[string]interface{} `json:"LogMap,omitempty" xml:"LogMap,omitempty"`
+	LogTime        *int64                            `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	ParentSpanId   *string                           `json:"ParentSpanId,omitempty" xml:"ParentSpanId,omitempty"`
+	Pid            *string                           `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	RegionId       *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResultCode     *string                           `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	Rpc            *string                           `json:"Rpc,omitempty" xml:"Rpc,omitempty"`
+	RpcId          *string                           `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	RpcType        *int64                            `json:"RpcType,omitempty" xml:"RpcType,omitempty"`
+	ServerIp       *string                           `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	Span           *int64                            `json:"Span,omitempty" xml:"Span,omitempty"`
+	SpanId         *string                           `json:"SpanId,omitempty" xml:"SpanId,omitempty"`
+	TagMap         map[string]*string                `json:"TagMap,omitempty" xml:"TagMap,omitempty"`
+	TraceId        *string                           `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s CallChainInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CallChainInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CallChainInfo) SetAdditionalInfo(v string) *CallChainInfo {
+	s.AdditionalInfo = &v
+	return s
+}
+
+func (s *CallChainInfo) SetAppName(v string) *CallChainInfo {
+	s.AppName = &v
+	return s
+}
+
+func (s *CallChainInfo) SetAppType(v string) *CallChainInfo {
+	s.AppType = &v
+	return s
+}
+
+func (s *CallChainInfo) SetChildren(v []*CallChainInfo) *CallChainInfo {
+	s.Children = v
+	return s
+}
+
+func (s *CallChainInfo) SetHaveSpan(v bool) *CallChainInfo {
+	s.HaveSpan = &v
+	return s
+}
+
+func (s *CallChainInfo) SetLogMap(v map[string]map[string]interface{}) *CallChainInfo {
+	s.LogMap = v
+	return s
+}
+
+func (s *CallChainInfo) SetLogTime(v int64) *CallChainInfo {
+	s.LogTime = &v
+	return s
+}
+
+func (s *CallChainInfo) SetParentSpanId(v string) *CallChainInfo {
+	s.ParentSpanId = &v
+	return s
+}
+
+func (s *CallChainInfo) SetPid(v string) *CallChainInfo {
+	s.Pid = &v
+	return s
+}
+
+func (s *CallChainInfo) SetRegionId(v string) *CallChainInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CallChainInfo) SetResultCode(v string) *CallChainInfo {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *CallChainInfo) SetRpc(v string) *CallChainInfo {
+	s.Rpc = &v
+	return s
+}
+
+func (s *CallChainInfo) SetRpcId(v string) *CallChainInfo {
+	s.RpcId = &v
+	return s
+}
+
+func (s *CallChainInfo) SetRpcType(v int64) *CallChainInfo {
+	s.RpcType = &v
+	return s
+}
+
+func (s *CallChainInfo) SetServerIp(v string) *CallChainInfo {
+	s.ServerIp = &v
+	return s
+}
+
+func (s *CallChainInfo) SetSpan(v int64) *CallChainInfo {
+	s.Span = &v
+	return s
+}
+
+func (s *CallChainInfo) SetSpanId(v string) *CallChainInfo {
+	s.SpanId = &v
+	return s
+}
+
+func (s *CallChainInfo) SetTagMap(v map[string]*string) *CallChainInfo {
+	s.TagMap = v
+	return s
+}
+
+func (s *CallChainInfo) SetTraceId(v string) *CallChainInfo {
+	s.TraceId = &v
+	return s
+}
+
 type AddAliClusterIdsToPrometheusGlobalViewRequest struct {
 	ClusterIds          *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
 	GlobalViewClusterId *string `json:"GlobalViewClusterId,omitempty" xml:"GlobalViewClusterId,omitempty"`
@@ -516,6 +641,87 @@ func (s *AddPrometheusGlobalViewByAliClusterIdsResponse) SetBody(v *AddPrometheu
 	return s
 }
 
+type AddPrometheusInstanceRequest struct {
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AddPrometheusInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddPrometheusInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddPrometheusInstanceRequest) SetName(v string) *AddPrometheusInstanceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddPrometheusInstanceRequest) SetRegionId(v string) *AddPrometheusInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AddPrometheusInstanceRequest) SetType(v string) *AddPrometheusInstanceRequest {
+	s.Type = &v
+	return s
+}
+
+type AddPrometheusInstanceResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddPrometheusInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddPrometheusInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddPrometheusInstanceResponseBody) SetData(v string) *AddPrometheusInstanceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddPrometheusInstanceResponseBody) SetRequestId(v string) *AddPrometheusInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddPrometheusInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddPrometheusInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddPrometheusInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddPrometheusInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddPrometheusInstanceResponse) SetHeaders(v map[string]*string) *AddPrometheusInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddPrometheusInstanceResponse) SetStatusCode(v int32) *AddPrometheusInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddPrometheusInstanceResponse) SetBody(v *AddPrometheusInstanceResponseBody) *AddPrometheusInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type AddRecordingRuleRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -546,8 +752,7 @@ func (s *AddRecordingRuleRequest) SetRuleYaml(v string) *AddRecordingRuleRequest
 }
 
 type AddRecordingRuleResponseBody struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1256,111 +1461,6 @@ func (s *CreateAlertContactGroupResponse) SetBody(v *CreateAlertContactGroupResp
 	return s
 }
 
-type CreateAppRequest struct {
-	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName  *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Config   *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Source   *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s CreateAppRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAppRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAppRequest) SetAppId(v string) *CreateAppRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *CreateAppRequest) SetAppName(v string) *CreateAppRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *CreateAppRequest) SetConfig(v string) *CreateAppRequest {
-	s.Config = &v
-	return s
-}
-
-func (s *CreateAppRequest) SetLanguage(v string) *CreateAppRequest {
-	s.Language = &v
-	return s
-}
-
-func (s *CreateAppRequest) SetRegionId(v string) *CreateAppRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateAppRequest) SetSource(v string) *CreateAppRequest {
-	s.Source = &v
-	return s
-}
-
-func (s *CreateAppRequest) SetType(v string) *CreateAppRequest {
-	s.Type = &v
-	return s
-}
-
-type CreateAppResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateAppResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAppResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAppResponseBody) SetData(v string) *CreateAppResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CreateAppResponseBody) SetRequestId(v string) *CreateAppResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateAppResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateAppResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAppResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAppResponse) SetHeaders(v map[string]*string) *CreateAppResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateAppResponse) SetStatusCode(v int32) *CreateAppResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse {
-	s.Body = v
-	return s
-}
-
 type CreateDispatchRuleRequest struct {
 	DispatchRule *string `json:"DispatchRule,omitempty" xml:"DispatchRule,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1436,16 +1536,153 @@ func (s *CreateDispatchRuleResponse) SetBody(v *CreateDispatchRuleResponseBody) 
 	return s
 }
 
+type CreateIntegrationRequest struct {
+	AutoRecover            *bool   `json:"AutoRecover,omitempty" xml:"AutoRecover,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IntegrationName        *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
+	IntegrationProductType *string `json:"IntegrationProductType,omitempty" xml:"IntegrationProductType,omitempty"`
+	RecoverTime            *int64  `json:"RecoverTime,omitempty" xml:"RecoverTime,omitempty"`
+}
+
+func (s CreateIntegrationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIntegrationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIntegrationRequest) SetAutoRecover(v bool) *CreateIntegrationRequest {
+	s.AutoRecover = &v
+	return s
+}
+
+func (s *CreateIntegrationRequest) SetDescription(v string) *CreateIntegrationRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateIntegrationRequest) SetIntegrationName(v string) *CreateIntegrationRequest {
+	s.IntegrationName = &v
+	return s
+}
+
+func (s *CreateIntegrationRequest) SetIntegrationProductType(v string) *CreateIntegrationRequest {
+	s.IntegrationProductType = &v
+	return s
+}
+
+func (s *CreateIntegrationRequest) SetRecoverTime(v int64) *CreateIntegrationRequest {
+	s.RecoverTime = &v
+	return s
+}
+
+type CreateIntegrationResponseBody struct {
+	Integration *CreateIntegrationResponseBodyIntegration `json:"Integration,omitempty" xml:"Integration,omitempty" type:"Struct"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateIntegrationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIntegrationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIntegrationResponseBody) SetIntegration(v *CreateIntegrationResponseBodyIntegration) *CreateIntegrationResponseBody {
+	s.Integration = v
+	return s
+}
+
+func (s *CreateIntegrationResponseBody) SetRequestId(v string) *CreateIntegrationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateIntegrationResponseBodyIntegration struct {
+	AutoRecover            *bool   `json:"AutoRecover,omitempty" xml:"AutoRecover,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IntegrationId          *int64  `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
+	IntegrationName        *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
+	IntegrationProductType *string `json:"IntegrationProductType,omitempty" xml:"IntegrationProductType,omitempty"`
+	RecoverTime            *int64  `json:"RecoverTime,omitempty" xml:"RecoverTime,omitempty"`
+}
+
+func (s CreateIntegrationResponseBodyIntegration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIntegrationResponseBodyIntegration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIntegrationResponseBodyIntegration) SetAutoRecover(v bool) *CreateIntegrationResponseBodyIntegration {
+	s.AutoRecover = &v
+	return s
+}
+
+func (s *CreateIntegrationResponseBodyIntegration) SetDescription(v string) *CreateIntegrationResponseBodyIntegration {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateIntegrationResponseBodyIntegration) SetIntegrationId(v int64) *CreateIntegrationResponseBodyIntegration {
+	s.IntegrationId = &v
+	return s
+}
+
+func (s *CreateIntegrationResponseBodyIntegration) SetIntegrationName(v string) *CreateIntegrationResponseBodyIntegration {
+	s.IntegrationName = &v
+	return s
+}
+
+func (s *CreateIntegrationResponseBodyIntegration) SetIntegrationProductType(v string) *CreateIntegrationResponseBodyIntegration {
+	s.IntegrationProductType = &v
+	return s
+}
+
+func (s *CreateIntegrationResponseBodyIntegration) SetRecoverTime(v int64) *CreateIntegrationResponseBodyIntegration {
+	s.RecoverTime = &v
+	return s
+}
+
+type CreateIntegrationResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateIntegrationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateIntegrationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIntegrationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIntegrationResponse) SetHeaders(v map[string]*string) *CreateIntegrationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIntegrationResponse) SetStatusCode(v int32) *CreateIntegrationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateIntegrationResponse) SetBody(v *CreateIntegrationResponseBody) *CreateIntegrationResponse {
+	s.Body = v
+	return s
+}
+
 type CreateOrUpdateAlertRuleRequest struct {
-	AlertCheckType *string `json:"AlertCheckType,omitempty" xml:"AlertCheckType,omitempty"`
-	AlertGroup     *int64  `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	// 告警规则ID
-	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
-	// 告警规则名称
-	AlertName        *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	AlertRuleContent *string `json:"AlertRuleContent,omitempty" xml:"AlertRuleContent,omitempty"`
-	AlertStatus      *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	// 告警规则类型
+	AlertCheckType        *string `json:"AlertCheckType,omitempty" xml:"AlertCheckType,omitempty"`
+	AlertGroup            *int64  `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	AlertId               *int64  `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	AlertName             *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertRuleContent      *string `json:"AlertRuleContent,omitempty" xml:"AlertRuleContent,omitempty"`
+	AlertStatus           *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
 	AlertType             *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	Annotations           *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
 	AutoAddNewApplication *bool   `json:"AutoAddNewApplication,omitempty" xml:"AutoAddNewApplication,omitempty"`
@@ -1460,8 +1697,7 @@ type CreateOrUpdateAlertRuleRequest struct {
 	NotifyStrategy        *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
 	Pids                  *string `json:"Pids,omitempty" xml:"Pids,omitempty"`
 	PromQL                *string `json:"PromQL,omitempty" xml:"PromQL,omitempty"`
-	// 地域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateOrUpdateAlertRuleRequest) String() string {
@@ -1579,8 +1815,7 @@ func (s *CreateOrUpdateAlertRuleRequest) SetRegionId(v string) *CreateOrUpdateAl
 
 type CreateOrUpdateAlertRuleResponseBody struct {
 	AlertRule *CreateOrUpdateAlertRuleResponseBodyAlertRule `json:"AlertRule,omitempty" xml:"AlertRule,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateOrUpdateAlertRuleResponseBody) String() string {
@@ -1602,54 +1837,30 @@ func (s *CreateOrUpdateAlertRuleResponseBody) SetRequestId(v string) *CreateOrUp
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
-	// Prometheus告警-告警检查类型
-	AlertCheckType *string `json:"AlertCheckType,omitempty" xml:"AlertCheckType,omitempty"`
-	// Prometheus告警-告警分组ID
-	AlertGroup *int64 `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	// 告警规则ID
-	AlertId *float32 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
-	// 告警规则名称
-	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// 应用监控/前端监控-告警规则内容
-	AlertRuleContent *CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent `json:"AlertRuleContent,omitempty" xml:"AlertRuleContent,omitempty" type:"Struct"`
-	// 告警规则状态
-	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	// 告警规则类型
-	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// Prometheus告警-Annotation
-	Annotations []*CreateOrUpdateAlertRuleResponseBodyAlertRuleAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
-	// 应用监控/前端监控-是否开启新创建应用追加到此告警规则
-	AutoAddNewApplication *bool `json:"AutoAddNewApplication,omitempty" xml:"AutoAddNewApplication,omitempty"`
-	// Prometheus告警-集群ID
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 创建时间
-	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Prometheus告警-持续时间
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 扩展字段
-	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// 应用监控/前端监控-告警条件-过滤项
-	Filters *CreateOrUpdateAlertRuleResponseBodyAlertRuleFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
-	// Prometheus告警-Label
-	Labels []*CreateOrUpdateAlertRuleResponseBodyAlertRuleLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// Prometheus告警-等级
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// Prometheus告警-告警内容
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 应用监控/前端监控-告警指标类型
-	MetricsType *string `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
-	// 通知策略ID
-	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
-	// 应用监控/前端监控-告警关联应用ID
-	Pids []*string `json:"Pids,omitempty" xml:"Pids,omitempty" type:"Repeated"`
-	// Prometheus告警-PromQL语句
-	PromQL *string `json:"PromQL,omitempty" xml:"PromQL,omitempty"`
-	// 地域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 更新时间
-	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// 用户UID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AlertCheckType        *string                                                       `json:"AlertCheckType,omitempty" xml:"AlertCheckType,omitempty"`
+	AlertGroup            *int64                                                        `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	AlertId               *float32                                                      `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	AlertName             *string                                                       `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertRuleContent      *CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent `json:"AlertRuleContent,omitempty" xml:"AlertRuleContent,omitempty" type:"Struct"`
+	AlertStatus           *string                                                       `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
+	AlertType             *string                                                       `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	Annotations           []*CreateOrUpdateAlertRuleResponseBodyAlertRuleAnnotations    `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
+	AutoAddNewApplication *bool                                                         `json:"AutoAddNewApplication,omitempty" xml:"AutoAddNewApplication,omitempty"`
+	ClusterId             *string                                                       `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreatedTime           *int64                                                        `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Duration              *string                                                       `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Extend                *string                                                       `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	Filters               *CreateOrUpdateAlertRuleResponseBodyAlertRuleFilters          `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
+	Labels                []*CreateOrUpdateAlertRuleResponseBodyAlertRuleLabels         `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Level                 *string                                                       `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message               *string                                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	MetricsType           *string                                                       `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
+	NotifyStrategy        *string                                                       `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	Pids                  []*string                                                     `json:"Pids,omitempty" xml:"Pids,omitempty" type:"Repeated"`
+	PromQL                *string                                                       `json:"PromQL,omitempty" xml:"PromQL,omitempty"`
+	RegionId              *string                                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UpdatedTime           *int64                                                        `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	UserId                *string                                                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateOrUpdateAlertRuleResponseBodyAlertRule) String() string {
@@ -1781,10 +1992,8 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRule) SetUserId(v string) *Crea
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent struct {
-	// 应用监控/前端监控-告警条件
 	AlertRuleItems []*CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContentAlertRuleItems `json:"AlertRuleItems,omitempty" xml:"AlertRuleItems,omitempty" type:"Repeated"`
-	// 应用监控/前端监控-多个告警条件触发逻辑
-	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	Condition      *string                                                                       `json:"Condition,omitempty" xml:"Condition,omitempty"`
 }
 
 func (s CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent) String() string {
@@ -1806,16 +2015,11 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent) SetCondit
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContentAlertRuleItems struct {
-	// 应用监控/前端监控-聚合方式
-	Aggregate *string `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
-	// 应用监控/前端监控-具体告警条件的指标
-	MetricKey *string `json:"MetricKey,omitempty" xml:"MetricKey,omitempty"`
-	// 应用监控/前端监控-最近N分钟
-	N *float32 `json:"N,omitempty" xml:"N,omitempty"`
-	// 应用监控/前端监控-判断条件
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 应用监控/前端监控-阈值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Aggregate *string  `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
+	MetricKey *string  `json:"MetricKey,omitempty" xml:"MetricKey,omitempty"`
+	N         *float32 `json:"N,omitempty" xml:"N,omitempty"`
+	Operator  *string  `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value     *string  `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContentAlertRuleItems) String() string {
@@ -1852,9 +2056,7 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContentAlertRuleIt
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRuleAnnotations struct {
-	// 键
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 值
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1982,9 +2184,7 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersDimFilters) SetFilte
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRuleLabels struct {
-	// 键
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 值
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2036,14 +2236,11 @@ func (s *CreateOrUpdateAlertRuleResponse) SetBody(v *CreateOrUpdateAlertRuleResp
 }
 
 type CreateOrUpdateContactRequest struct {
-	// 告警联系人ID
-	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	// 告警联系人名称
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// 告警联系人邮箱
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// 告警联系人手机号码
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	ContactId         *int64  `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	ContactName       *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	Email             *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Phone             *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	ReissueSendNotice *int64  `json:"ReissueSendNotice,omitempty" xml:"ReissueSendNotice,omitempty"`
 }
 
 func (s CreateOrUpdateContactRequest) String() string {
@@ -2074,10 +2271,14 @@ func (s *CreateOrUpdateContactRequest) SetPhone(v string) *CreateOrUpdateContact
 	return s
 }
 
+func (s *CreateOrUpdateContactRequest) SetReissueSendNotice(v int64) *CreateOrUpdateContactRequest {
+	s.ReissueSendNotice = &v
+	return s
+}
+
 type CreateOrUpdateContactResponseBody struct {
 	AlertContact *CreateOrUpdateContactResponseBodyAlertContact `json:"AlertContact,omitempty" xml:"AlertContact,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateOrUpdateContactResponseBody) String() string {
@@ -2099,16 +2300,12 @@ func (s *CreateOrUpdateContactResponseBody) SetRequestId(v string) *CreateOrUpda
 }
 
 type CreateOrUpdateContactResponseBodyAlertContact struct {
-	// 告警联系人ID
-	ContactId *float32 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	// 告警联系人名称
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// 告警联系人邮箱
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// 手机号码验证标识
-	IsVerify *bool `json:"IsVerify,omitempty" xml:"IsVerify,omitempty"`
-	// 告警联系人手机号
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	ContactId         *float32 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	ContactName       *string  `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	Email             *string  `json:"Email,omitempty" xml:"Email,omitempty"`
+	IsVerify          *bool    `json:"IsVerify,omitempty" xml:"IsVerify,omitempty"`
+	Phone             *string  `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	ReissueSendNotice *int64   `json:"ReissueSendNotice,omitempty" xml:"ReissueSendNotice,omitempty"`
 }
 
 func (s CreateOrUpdateContactResponseBodyAlertContact) String() string {
@@ -2144,6 +2341,11 @@ func (s *CreateOrUpdateContactResponseBodyAlertContact) SetPhone(v string) *Crea
 	return s
 }
 
+func (s *CreateOrUpdateContactResponseBodyAlertContact) SetReissueSendNotice(v int64) *CreateOrUpdateContactResponseBodyAlertContact {
+	s.ReissueSendNotice = &v
+	return s
+}
+
 type CreateOrUpdateContactResponse struct {
 	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -2174,12 +2376,9 @@ func (s *CreateOrUpdateContactResponse) SetBody(v *CreateOrUpdateContactResponse
 }
 
 type CreateOrUpdateContactGroupRequest struct {
-	// 告警联系人组ID
-	ContactGroupId *int64 `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
-	// 告警联系人组名称
+	ContactGroupId   *int64  `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
-	// 告警联系人ids
-	ContactIds *string `json:"ContactIds,omitempty" xml:"ContactIds,omitempty"`
+	ContactIds       *string `json:"ContactIds,omitempty" xml:"ContactIds,omitempty"`
 }
 
 func (s CreateOrUpdateContactGroupRequest) String() string {
@@ -2207,8 +2406,7 @@ func (s *CreateOrUpdateContactGroupRequest) SetContactIds(v string) *CreateOrUpd
 
 type CreateOrUpdateContactGroupResponseBody struct {
 	AlertContactGroup *CreateOrUpdateContactGroupResponseBodyAlertContactGroup `json:"AlertContactGroup,omitempty" xml:"AlertContactGroup,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateOrUpdateContactGroupResponseBody) String() string {
@@ -2230,12 +2428,9 @@ func (s *CreateOrUpdateContactGroupResponseBody) SetRequestId(v string) *CreateO
 }
 
 type CreateOrUpdateContactGroupResponseBodyAlertContactGroup struct {
-	// 告警联系人组ID
-	ContactGroupId *float32 `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
-	// 告警联系人组名称
-	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
-	// 告警联系人ids
-	ContactIds *string `json:"ContactIds,omitempty" xml:"ContactIds,omitempty"`
+	ContactGroupId   *float32 `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
+	ContactGroupName *string  `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
+	ContactIds       *string  `json:"ContactIds,omitempty" xml:"ContactIds,omitempty"`
 }
 
 func (s CreateOrUpdateContactGroupResponseBodyAlertContactGroup) String() string {
@@ -2357,8 +2552,7 @@ func (s *CreateOrUpdateEventBridgeIntegrationRequest) SetSource(v string) *Creat
 
 type CreateOrUpdateEventBridgeIntegrationResponseBody struct {
 	EventBridgeIntegration *CreateOrUpdateEventBridgeIntegrationResponseBodyEventBridgeIntegration `json:"EventBridgeIntegration,omitempty" xml:"EventBridgeIntegration,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId              *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateOrUpdateEventBridgeIntegrationResponseBody) String() string {
@@ -2474,18 +2668,15 @@ func (s *CreateOrUpdateEventBridgeIntegrationResponse) SetBody(v *CreateOrUpdate
 }
 
 type CreateOrUpdateIMRobotRequest struct {
-	// 是否发送每日统计信息
-	DailyNoc *bool `json:"DailyNoc,omitempty" xml:"DailyNoc,omitempty"`
-	// 每日统计发送时间
-	DailyNocTime *string `json:"DailyNocTime,omitempty" xml:"DailyNocTime,omitempty"`
-	// 告警机器人地址
-	RobotAddress *string `json:"RobotAddress,omitempty" xml:"RobotAddress,omitempty"`
-	// 告警机器人ID
-	RobotId *int64 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
-	// 告警机器人名称
-	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
-	// 告警机器人类型:dingding/wechat
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	CardTemplate   *string `json:"CardTemplate,omitempty" xml:"CardTemplate,omitempty"`
+	DailyNoc       *bool   `json:"DailyNoc,omitempty" xml:"DailyNoc,omitempty"`
+	DailyNocTime   *string `json:"DailyNocTime,omitempty" xml:"DailyNocTime,omitempty"`
+	EnableOutgoing *bool   `json:"EnableOutgoing,omitempty" xml:"EnableOutgoing,omitempty"`
+	RobotAddress   *string `json:"RobotAddress,omitempty" xml:"RobotAddress,omitempty"`
+	RobotId        *int64  `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	RobotName      *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
+	Token          *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateOrUpdateIMRobotRequest) String() string {
@@ -2496,6 +2687,11 @@ func (s CreateOrUpdateIMRobotRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateOrUpdateIMRobotRequest) SetCardTemplate(v string) *CreateOrUpdateIMRobotRequest {
+	s.CardTemplate = &v
+	return s
+}
+
 func (s *CreateOrUpdateIMRobotRequest) SetDailyNoc(v bool) *CreateOrUpdateIMRobotRequest {
 	s.DailyNoc = &v
 	return s
@@ -2503,6 +2699,11 @@ func (s *CreateOrUpdateIMRobotRequest) SetDailyNoc(v bool) *CreateOrUpdateIMRobo
 
 func (s *CreateOrUpdateIMRobotRequest) SetDailyNocTime(v string) *CreateOrUpdateIMRobotRequest {
 	s.DailyNocTime = &v
+	return s
+}
+
+func (s *CreateOrUpdateIMRobotRequest) SetEnableOutgoing(v bool) *CreateOrUpdateIMRobotRequest {
+	s.EnableOutgoing = &v
 	return s
 }
 
@@ -2521,6 +2722,11 @@ func (s *CreateOrUpdateIMRobotRequest) SetRobotName(v string) *CreateOrUpdateIMR
 	return s
 }
 
+func (s *CreateOrUpdateIMRobotRequest) SetToken(v string) *CreateOrUpdateIMRobotRequest {
+	s.Token = &v
+	return s
+}
+
 func (s *CreateOrUpdateIMRobotRequest) SetType(v string) *CreateOrUpdateIMRobotRequest {
 	s.Type = &v
 	return s
@@ -2528,8 +2734,7 @@ func (s *CreateOrUpdateIMRobotRequest) SetType(v string) *CreateOrUpdateIMRobotR
 
 type CreateOrUpdateIMRobotResponseBody struct {
 	AlertRobot *CreateOrUpdateIMRobotResponseBodyAlertRobot `json:"AlertRobot,omitempty" xml:"AlertRobot,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateOrUpdateIMRobotResponseBody) String() string {
@@ -2551,18 +2756,15 @@ func (s *CreateOrUpdateIMRobotResponseBody) SetRequestId(v string) *CreateOrUpda
 }
 
 type CreateOrUpdateIMRobotResponseBodyAlertRobot struct {
-	// 是否发送每日统计信息
-	DailyNoc *bool `json:"DailyNoc,omitempty" xml:"DailyNoc,omitempty"`
-	// 每日统计发送时间
-	DailyNocTime *string `json:"DailyNocTime,omitempty" xml:"DailyNocTime,omitempty"`
-	// 告警机器人地址
-	RobotAddress *string `json:"RobotAddress,omitempty" xml:"RobotAddress,omitempty"`
-	// 告警机器人ID
-	RobotId *float32 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
-	// 告警机器人名称
-	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
-	// 告警机器人类型:dingding/wechat
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	CardTemplate   *string  `json:"CardTemplate,omitempty" xml:"CardTemplate,omitempty"`
+	DailyNoc       *bool    `json:"DailyNoc,omitempty" xml:"DailyNoc,omitempty"`
+	DailyNocTime   *string  `json:"DailyNocTime,omitempty" xml:"DailyNocTime,omitempty"`
+	EnableOutgoing *bool    `json:"EnableOutgoing,omitempty" xml:"EnableOutgoing,omitempty"`
+	RobotAddress   *string  `json:"RobotAddress,omitempty" xml:"RobotAddress,omitempty"`
+	RobotId        *float32 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	RobotName      *string  `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
+	Token          *string  `json:"Token,omitempty" xml:"Token,omitempty"`
+	Type           *string  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateOrUpdateIMRobotResponseBodyAlertRobot) String() string {
@@ -2573,6 +2775,11 @@ func (s CreateOrUpdateIMRobotResponseBodyAlertRobot) GoString() string {
 	return s.String()
 }
 
+func (s *CreateOrUpdateIMRobotResponseBodyAlertRobot) SetCardTemplate(v string) *CreateOrUpdateIMRobotResponseBodyAlertRobot {
+	s.CardTemplate = &v
+	return s
+}
+
 func (s *CreateOrUpdateIMRobotResponseBodyAlertRobot) SetDailyNoc(v bool) *CreateOrUpdateIMRobotResponseBodyAlertRobot {
 	s.DailyNoc = &v
 	return s
@@ -2580,6 +2787,11 @@ func (s *CreateOrUpdateIMRobotResponseBodyAlertRobot) SetDailyNoc(v bool) *Creat
 
 func (s *CreateOrUpdateIMRobotResponseBodyAlertRobot) SetDailyNocTime(v string) *CreateOrUpdateIMRobotResponseBodyAlertRobot {
 	s.DailyNocTime = &v
+	return s
+}
+
+func (s *CreateOrUpdateIMRobotResponseBodyAlertRobot) SetEnableOutgoing(v bool) *CreateOrUpdateIMRobotResponseBodyAlertRobot {
+	s.EnableOutgoing = &v
 	return s
 }
 
@@ -2595,6 +2807,11 @@ func (s *CreateOrUpdateIMRobotResponseBodyAlertRobot) SetRobotId(v float32) *Cre
 
 func (s *CreateOrUpdateIMRobotResponseBodyAlertRobot) SetRobotName(v string) *CreateOrUpdateIMRobotResponseBodyAlertRobot {
 	s.RobotName = &v
+	return s
+}
+
+func (s *CreateOrUpdateIMRobotResponseBodyAlertRobot) SetToken(v string) *CreateOrUpdateIMRobotResponseBodyAlertRobot {
+	s.Token = &v
 	return s
 }
 
@@ -2633,28 +2850,18 @@ func (s *CreateOrUpdateIMRobotResponse) SetBody(v *CreateOrUpdateIMRobotResponse
 }
 
 type CreateOrUpdateNotificationPolicyRequest struct {
-	// 升级规则ID
-	EscalationPolicyId *int64 `json:"EscalationPolicyId,omitempty" xml:"EscalationPolicyId,omitempty"`
-	// 分组规则
-	GroupRule *string `json:"GroupRule,omitempty" xml:"GroupRule,omitempty"`
-	// 通知策略ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 集成ID
-	IntegrationId *int64 `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
-	// 事件匹配规则列表
-	MatchingRules *string `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty"`
-	// 通知策略名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 通知规则,通知对象，必填
-	NotifyRule *string `json:"NotifyRule,omitempty" xml:"NotifyRule,omitempty"`
-	// 通知模板
-	NotifyTemplate *string `json:"NotifyTemplate,omitempty" xml:"NotifyTemplate,omitempty"`
-	// 是否重复通知,不填默认为true，需要必填重复通知时间间隔；false，需要必填升级规则ID
-	Repeat *bool `json:"Repeat,omitempty" xml:"Repeat,omitempty"`
-	// 重复通知时间间隔,单位：s
-	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
-	// 是否发送恢,不填默认为：true复通知
-	SendRecoverMessage *bool `json:"SendRecoverMessage,omitempty" xml:"SendRecoverMessage,omitempty"`
+	EscalationPolicyId *int64  `json:"EscalationPolicyId,omitempty" xml:"EscalationPolicyId,omitempty"`
+	GroupRule          *string `json:"GroupRule,omitempty" xml:"GroupRule,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IntegrationId      *int64  `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
+	MatchingRules      *string `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NotifyRule         *string `json:"NotifyRule,omitempty" xml:"NotifyRule,omitempty"`
+	NotifyTemplate     *string `json:"NotifyTemplate,omitempty" xml:"NotifyTemplate,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Repeat             *bool   `json:"Repeat,omitempty" xml:"Repeat,omitempty"`
+	RepeatInterval     *int64  `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
+	SendRecoverMessage *bool   `json:"SendRecoverMessage,omitempty" xml:"SendRecoverMessage,omitempty"`
 }
 
 func (s CreateOrUpdateNotificationPolicyRequest) String() string {
@@ -2705,6 +2912,11 @@ func (s *CreateOrUpdateNotificationPolicyRequest) SetNotifyTemplate(v string) *C
 	return s
 }
 
+func (s *CreateOrUpdateNotificationPolicyRequest) SetRegionId(v string) *CreateOrUpdateNotificationPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *CreateOrUpdateNotificationPolicyRequest) SetRepeat(v bool) *CreateOrUpdateNotificationPolicyRequest {
 	s.Repeat = &v
 	return s
@@ -2721,10 +2933,8 @@ func (s *CreateOrUpdateNotificationPolicyRequest) SetSendRecoverMessage(v bool) 
 }
 
 type CreateOrUpdateNotificationPolicyResponseBody struct {
-	// 通知策略对象
 	NotificationPolicy *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy `json:"NotificationPolicy,omitempty" xml:"NotificationPolicy,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId          *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateOrUpdateNotificationPolicyResponseBody) String() string {
@@ -2746,28 +2956,17 @@ func (s *CreateOrUpdateNotificationPolicyResponseBody) SetRequestId(v string) *C
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy struct {
-	// 升级规则ID
-	EscalationPolicyId *int64 `json:"EscalationPolicyId,omitempty" xml:"EscalationPolicyId,omitempty"`
-	// 分组规则
-	GroupRule *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyGroupRule `json:"GroupRule,omitempty" xml:"GroupRule,omitempty" type:"Struct"`
-	// 通知策略ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 集成ID
-	IntegrationId *int64 `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
-	// 事件匹配规则列表
-	MatchingRules []*CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingRules `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty" type:"Repeated"`
-	// 通知策略名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 通知规则
-	NotifyRule *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRule `json:"NotifyRule,omitempty" xml:"NotifyRule,omitempty" type:"Struct"`
-	// 通知模板
-	NotifyTemplate *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyTemplate `json:"NotifyTemplate,omitempty" xml:"NotifyTemplate,omitempty" type:"Struct"`
-	// 是否重复通知
-	Repeat *bool `json:"Repeat,omitempty" xml:"Repeat,omitempty"`
-	// 重复通知时间间隔
-	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
-	// 是否发送恢复通知
-	SendRecoverMessage *bool `json:"SendRecoverMessage,omitempty" xml:"SendRecoverMessage,omitempty"`
+	EscalationPolicyId *int64                                                                         `json:"EscalationPolicyId,omitempty" xml:"EscalationPolicyId,omitempty"`
+	GroupRule          *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyGroupRule       `json:"GroupRule,omitempty" xml:"GroupRule,omitempty" type:"Struct"`
+	Id                 *int64                                                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	IntegrationId      *int64                                                                         `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
+	MatchingRules      []*CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingRules `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty" type:"Repeated"`
+	Name               *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	NotifyRule         *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRule      `json:"NotifyRule,omitempty" xml:"NotifyRule,omitempty" type:"Struct"`
+	NotifyTemplate     *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyTemplate  `json:"NotifyTemplate,omitempty" xml:"NotifyTemplate,omitempty" type:"Struct"`
+	Repeat             *bool                                                                          `json:"Repeat,omitempty" xml:"Repeat,omitempty"`
+	RepeatInterval     *int64                                                                         `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
+	SendRecoverMessage *bool                                                                          `json:"SendRecoverMessage,omitempty" xml:"SendRecoverMessage,omitempty"`
 }
 
 func (s CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy) String() string {
@@ -2834,11 +3033,8 @@ func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy) SetSend
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyGroupRule struct {
-	// 分组间隔时间，选填，默认是30s
-	GroupInterval *int64 `json:"GroupInterval,omitempty" xml:"GroupInterval,omitempty"`
-	// 分组等待时间，选填，默认是5秒
-	GroupWait *int64 `json:"GroupWait,omitempty" xml:"GroupWait,omitempty"`
-	// 分组字段,为空则不分组，默认按照alertname分组
+	GroupInterval  *int64    `json:"GroupInterval,omitempty" xml:"GroupInterval,omitempty"`
+	GroupWait      *int64    `json:"GroupWait,omitempty" xml:"GroupWait,omitempty"`
 	GroupingFields []*string `json:"GroupingFields,omitempty" xml:"GroupingFields,omitempty" type:"Repeated"`
 }
 
@@ -2883,12 +3079,9 @@ func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingR
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingRulesMatchingConditions struct {
-	// 条件字段
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 对应关系
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 条件字段值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingRulesMatchingConditions) String() string {
@@ -2915,14 +3108,10 @@ func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingR
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRule struct {
-	// 通知渠道
-	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
-	// 通知时间段结束时间
-	NotifyEndTime *string `json:"NotifyEndTime,omitempty" xml:"NotifyEndTime,omitempty"`
-	// 通知对象
-	NotifyObjects []*CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRuleNotifyObjects `json:"NotifyObjects,omitempty" xml:"NotifyObjects,omitempty" type:"Repeated"`
-	// 通知时间段开始时间
-	NotifyStartTime *string `json:"NotifyStartTime,omitempty" xml:"NotifyStartTime,omitempty"`
+	NotifyChannels  []*string                                                                                `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
+	NotifyEndTime   *string                                                                                  `json:"NotifyEndTime,omitempty" xml:"NotifyEndTime,omitempty"`
+	NotifyObjects   []*CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRuleNotifyObjects `json:"NotifyObjects,omitempty" xml:"NotifyObjects,omitempty" type:"Repeated"`
+	NotifyStartTime *string                                                                                  `json:"NotifyStartTime,omitempty" xml:"NotifyStartTime,omitempty"`
 }
 
 func (s CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRule) String() string {
@@ -2954,11 +3143,8 @@ func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRul
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRuleNotifyObjects struct {
-	// 通知对象ID
-	NotifyObjectId *int64 `json:"NotifyObjectId,omitempty" xml:"NotifyObjectId,omitempty"`
-	// 通知对象名称
+	NotifyObjectId   *int64  `json:"NotifyObjectId,omitempty" xml:"NotifyObjectId,omitempty"`
 	NotifyObjectName *string `json:"NotifyObjectName,omitempty" xml:"NotifyObjectName,omitempty"`
-	// 通知对象类型，CONTACT, CONTACT_GROUP, ARMS_CONTACT, DING_ROBOT
 	NotifyObjectType *string `json:"NotifyObjectType,omitempty" xml:"NotifyObjectType,omitempty"`
 }
 
@@ -2986,24 +3172,15 @@ func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRul
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyTemplate struct {
-	// 邮件内容
-	EmailContent *string `json:"EmailContent,omitempty" xml:"EmailContent,omitempty"`
-	// 恢复告警邮件内容
+	EmailContent        *string `json:"EmailContent,omitempty" xml:"EmailContent,omitempty"`
 	EmailRecoverContent *string `json:"EmailRecoverContent,omitempty" xml:"EmailRecoverContent,omitempty"`
-	// 恢复告警邮件标题
-	EmailRecoverTitle *string `json:"EmailRecoverTitle,omitempty" xml:"EmailRecoverTitle,omitempty"`
-	// 邮件标题
-	EmailTitle *string `json:"EmailTitle,omitempty" xml:"EmailTitle,omitempty"`
-	// 机器人告警内容
-	RobotContent *string `json:"RobotContent,omitempty" xml:"RobotContent,omitempty"`
-	// 短信内容
-	SmsContent *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
-	// 恢复告警短信内容
-	SmsRecoverContent *string `json:"SmsRecoverContent,omitempty" xml:"SmsRecoverContent,omitempty"`
-	// 智能语音告警内容
-	TtsContent *string `json:"TtsContent,omitempty" xml:"TtsContent,omitempty"`
-	// 智能语音恢复告警内容
-	TtsRecoverContent *string `json:"TtsRecoverContent,omitempty" xml:"TtsRecoverContent,omitempty"`
+	EmailRecoverTitle   *string `json:"EmailRecoverTitle,omitempty" xml:"EmailRecoverTitle,omitempty"`
+	EmailTitle          *string `json:"EmailTitle,omitempty" xml:"EmailTitle,omitempty"`
+	RobotContent        *string `json:"RobotContent,omitempty" xml:"RobotContent,omitempty"`
+	SmsContent          *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
+	SmsRecoverContent   *string `json:"SmsRecoverContent,omitempty" xml:"SmsRecoverContent,omitempty"`
+	TtsContent          *string `json:"TtsContent,omitempty" xml:"TtsContent,omitempty"`
+	TtsRecoverContent   *string `json:"TtsRecoverContent,omitempty" xml:"TtsRecoverContent,omitempty"`
 }
 
 func (s CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyTemplate) String() string {
@@ -3089,12 +3266,10 @@ func (s *CreateOrUpdateNotificationPolicyResponse) SetBody(v *CreateOrUpdateNoti
 }
 
 type CreateOrUpdateSilencePolicyRequest struct {
-	// 静默策略ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 分派规则
+	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	MatchingRules *string `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty"`
-	// 静默策略名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateOrUpdateSilencePolicyRequest) String() string {
@@ -3120,10 +3295,13 @@ func (s *CreateOrUpdateSilencePolicyRequest) SetName(v string) *CreateOrUpdateSi
 	return s
 }
 
+func (s *CreateOrUpdateSilencePolicyRequest) SetRegionId(v string) *CreateOrUpdateSilencePolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
 type CreateOrUpdateSilencePolicyResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 静默策略对象
+	RequestId     *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SilencePolicy *CreateOrUpdateSilencePolicyResponseBodySilencePolicy `json:"SilencePolicy,omitempty" xml:"SilencePolicy,omitempty" type:"Struct"`
 }
 
@@ -3146,12 +3324,9 @@ func (s *CreateOrUpdateSilencePolicyResponseBody) SetSilencePolicy(v *CreateOrUp
 }
 
 type CreateOrUpdateSilencePolicyResponseBodySilencePolicy struct {
-	// 静默策略ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 分派规则
+	Id            *int64                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
 	MatchingRules []*CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRules `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty" type:"Repeated"`
-	// 静默策略名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name          *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateOrUpdateSilencePolicyResponseBodySilencePolicy) String() string {
@@ -3178,7 +3353,6 @@ func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicy) SetName(v string)
 }
 
 type CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRules struct {
-	// 分派条件
 	MatchingConditions []*CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRulesMatchingConditions `json:"MatchingConditions,omitempty" xml:"MatchingConditions,omitempty" type:"Repeated"`
 }
 
@@ -3196,12 +3370,9 @@ func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRules) SetM
 }
 
 type CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRulesMatchingConditions struct {
-	// 条件字段
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 对应关系
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 条件字段值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRulesMatchingConditions) String() string {
@@ -3257,21 +3428,13 @@ func (s *CreateOrUpdateSilencePolicyResponse) SetBody(v *CreateOrUpdateSilencePo
 }
 
 type CreateOrUpdateWebhookContactRequest struct {
-	// http请求头
-	BizHeaders *string `json:"BizHeaders,omitempty" xml:"BizHeaders,omitempty"`
-	// http请求参数
-	BizParams *string `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
-	// 告警通知模板
-	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	// Http请求方法
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// 告警恢复模板
+	BizHeaders  *string `json:"BizHeaders,omitempty" xml:"BizHeaders,omitempty"`
+	BizParams   *string `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
+	Body        *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	Method      *string `json:"Method,omitempty" xml:"Method,omitempty"`
 	RecoverBody *string `json:"RecoverBody,omitempty" xml:"RecoverBody,omitempty"`
-	// Url
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 告警webhook ID
-	WebhookId *int64 `json:"WebhookId,omitempty" xml:"WebhookId,omitempty"`
-	// 告警webhook名称
+	Url         *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	WebhookId   *int64  `json:"WebhookId,omitempty" xml:"WebhookId,omitempty"`
 	WebhookName *string `json:"WebhookName,omitempty" xml:"WebhookName,omitempty"`
 }
 
@@ -3324,7 +3487,6 @@ func (s *CreateOrUpdateWebhookContactRequest) SetWebhookName(v string) *CreateOr
 }
 
 type CreateOrUpdateWebhookContactResponseBody struct {
-	// Id of the request
 	RequestId      *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	WebhookContact *CreateOrUpdateWebhookContactResponseBodyWebhookContact `json:"WebhookContact,omitempty" xml:"WebhookContact,omitempty" type:"Struct"`
 }
@@ -3348,11 +3510,9 @@ func (s *CreateOrUpdateWebhookContactResponseBody) SetWebhookContact(v *CreateOr
 }
 
 type CreateOrUpdateWebhookContactResponseBodyWebhookContact struct {
-	Webhook *CreateOrUpdateWebhookContactResponseBodyWebhookContactWebhook `json:"Webhook,omitempty" xml:"Webhook,omitempty" type:"Struct"`
-	// 告警webhook ID
-	WebhookId *float32 `json:"WebhookId,omitempty" xml:"WebhookId,omitempty"`
-	// 告警webhook名称
-	WebhookName *string `json:"WebhookName,omitempty" xml:"WebhookName,omitempty"`
+	Webhook     *CreateOrUpdateWebhookContactResponseBodyWebhookContactWebhook `json:"Webhook,omitempty" xml:"Webhook,omitempty" type:"Struct"`
+	WebhookId   *float32                                                       `json:"WebhookId,omitempty" xml:"WebhookId,omitempty"`
+	WebhookName *string                                                        `json:"WebhookName,omitempty" xml:"WebhookName,omitempty"`
 }
 
 func (s CreateOrUpdateWebhookContactResponseBodyWebhookContact) String() string {
@@ -3379,18 +3539,12 @@ func (s *CreateOrUpdateWebhookContactResponseBodyWebhookContact) SetWebhookName(
 }
 
 type CreateOrUpdateWebhookContactResponseBodyWebhookContactWebhook struct {
-	// http请求头
-	BizHeaders *string `json:"BizHeaders,omitempty" xml:"BizHeaders,omitempty"`
-	// http请求参数
-	BizParams *string `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
-	// 告警通知模板
-	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	// Http请求方法
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// 告警恢复模板
+	BizHeaders  *string `json:"BizHeaders,omitempty" xml:"BizHeaders,omitempty"`
+	BizParams   *string `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
+	Body        *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	Method      *string `json:"Method,omitempty" xml:"Method,omitempty"`
 	RecoverBody *string `json:"RecoverBody,omitempty" xml:"RecoverBody,omitempty"`
-	// url
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Url         *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s CreateOrUpdateWebhookContactResponseBodyWebhookContactWebhook) String() string {
@@ -3822,6 +3976,500 @@ func (s *CreateRetcodeAppResponse) SetBody(v *CreateRetcodeAppResponseBody) *Cre
 	return s
 }
 
+type CreateSyntheticTaskRequest struct {
+	CommonParam    *CreateSyntheticTaskRequestCommonParam    `json:"CommonParam,omitempty" xml:"CommonParam,omitempty" type:"Struct"`
+	ExtendInterval *CreateSyntheticTaskRequestExtendInterval `json:"ExtendInterval,omitempty" xml:"ExtendInterval,omitempty" type:"Struct"`
+	IntervalTime   *string                                   `json:"IntervalTime,omitempty" xml:"IntervalTime,omitempty"`
+	IntervalType   *string                                   `json:"IntervalType,omitempty" xml:"IntervalType,omitempty"`
+	IpType         *int64                                    `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	MonitorList    []*CreateSyntheticTaskRequestMonitorList  `json:"MonitorList,omitempty" xml:"MonitorList,omitempty" type:"Repeated"`
+	Net            *CreateSyntheticTaskRequestNet            `json:"Net,omitempty" xml:"Net,omitempty" type:"Struct"`
+	RegionId       *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskName       *string                                   `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType       *int64                                    `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Url            *string                                   `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s CreateSyntheticTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequest) SetCommonParam(v *CreateSyntheticTaskRequestCommonParam) *CreateSyntheticTaskRequest {
+	s.CommonParam = v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequest) SetExtendInterval(v *CreateSyntheticTaskRequestExtendInterval) *CreateSyntheticTaskRequest {
+	s.ExtendInterval = v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequest) SetIntervalTime(v string) *CreateSyntheticTaskRequest {
+	s.IntervalTime = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequest) SetIntervalType(v string) *CreateSyntheticTaskRequest {
+	s.IntervalType = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequest) SetIpType(v int64) *CreateSyntheticTaskRequest {
+	s.IpType = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequest) SetMonitorList(v []*CreateSyntheticTaskRequestMonitorList) *CreateSyntheticTaskRequest {
+	s.MonitorList = v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequest) SetNet(v *CreateSyntheticTaskRequestNet) *CreateSyntheticTaskRequest {
+	s.Net = v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequest) SetRegionId(v string) *CreateSyntheticTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequest) SetTaskName(v string) *CreateSyntheticTaskRequest {
+	s.TaskName = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequest) SetTaskType(v int64) *CreateSyntheticTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequest) SetUrl(v string) *CreateSyntheticTaskRequest {
+	s.Url = &v
+	return s
+}
+
+type CreateSyntheticTaskRequestCommonParam struct {
+	AlarmFlag          *string                                           `json:"AlarmFlag,omitempty" xml:"AlarmFlag,omitempty"`
+	AlertList          []*CreateSyntheticTaskRequestCommonParamAlertList `json:"AlertList,omitempty" xml:"AlertList,omitempty" type:"Repeated"`
+	AlertNotifierId    *string                                           `json:"AlertNotifierId,omitempty" xml:"AlertNotifierId,omitempty"`
+	AlertPolicyId      *string                                           `json:"AlertPolicyId,omitempty" xml:"AlertPolicyId,omitempty"`
+	MonitorSamples     *int64                                            `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	StartExecutionTime *int64                                            `json:"StartExecutionTime,omitempty" xml:"StartExecutionTime,omitempty"`
+}
+
+func (s CreateSyntheticTaskRequestCommonParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequestCommonParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequestCommonParam) SetAlarmFlag(v string) *CreateSyntheticTaskRequestCommonParam {
+	s.AlarmFlag = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestCommonParam) SetAlertList(v []*CreateSyntheticTaskRequestCommonParamAlertList) *CreateSyntheticTaskRequestCommonParam {
+	s.AlertList = v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestCommonParam) SetAlertNotifierId(v string) *CreateSyntheticTaskRequestCommonParam {
+	s.AlertNotifierId = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestCommonParam) SetAlertPolicyId(v string) *CreateSyntheticTaskRequestCommonParam {
+	s.AlertPolicyId = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestCommonParam) SetMonitorSamples(v int64) *CreateSyntheticTaskRequestCommonParam {
+	s.MonitorSamples = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestCommonParam) SetStartExecutionTime(v int64) *CreateSyntheticTaskRequestCommonParam {
+	s.StartExecutionTime = &v
+	return s
+}
+
+type CreateSyntheticTaskRequestCommonParamAlertList struct {
+	IsCritical *int64  `json:"IsCritical,omitempty" xml:"IsCritical,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Symbols    *int64  `json:"Symbols,omitempty" xml:"Symbols,omitempty"`
+}
+
+func (s CreateSyntheticTaskRequestCommonParamAlertList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequestCommonParamAlertList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequestCommonParamAlertList) SetIsCritical(v int64) *CreateSyntheticTaskRequestCommonParamAlertList {
+	s.IsCritical = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestCommonParamAlertList) SetName(v string) *CreateSyntheticTaskRequestCommonParamAlertList {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestCommonParamAlertList) SetSymbols(v int64) *CreateSyntheticTaskRequestCommonParamAlertList {
+	s.Symbols = &v
+	return s
+}
+
+type CreateSyntheticTaskRequestExtendInterval struct {
+	Days        []*int64 `json:"Days,omitempty" xml:"Days,omitempty" type:"Repeated"`
+	EndHour     *int64   `json:"EndHour,omitempty" xml:"EndHour,omitempty"`
+	EndMinute   *int64   `json:"EndMinute,omitempty" xml:"EndMinute,omitempty"`
+	EndTime     *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartHour   *int64   `json:"StartHour,omitempty" xml:"StartHour,omitempty"`
+	StartMinute *int64   `json:"StartMinute,omitempty" xml:"StartMinute,omitempty"`
+	StartTime   *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s CreateSyntheticTaskRequestExtendInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequestExtendInterval) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequestExtendInterval) SetDays(v []*int64) *CreateSyntheticTaskRequestExtendInterval {
+	s.Days = v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestExtendInterval) SetEndHour(v int64) *CreateSyntheticTaskRequestExtendInterval {
+	s.EndHour = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestExtendInterval) SetEndMinute(v int64) *CreateSyntheticTaskRequestExtendInterval {
+	s.EndMinute = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestExtendInterval) SetEndTime(v string) *CreateSyntheticTaskRequestExtendInterval {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestExtendInterval) SetStartHour(v int64) *CreateSyntheticTaskRequestExtendInterval {
+	s.StartHour = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestExtendInterval) SetStartMinute(v int64) *CreateSyntheticTaskRequestExtendInterval {
+	s.StartMinute = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestExtendInterval) SetStartTime(v string) *CreateSyntheticTaskRequestExtendInterval {
+	s.StartTime = &v
+	return s
+}
+
+type CreateSyntheticTaskRequestMonitorList struct {
+	CityCode     *int64 `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	MonitorType  *int64 `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	NetServiceId *int64 `json:"NetServiceId,omitempty" xml:"NetServiceId,omitempty"`
+}
+
+func (s CreateSyntheticTaskRequestMonitorList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequestMonitorList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequestMonitorList) SetCityCode(v int64) *CreateSyntheticTaskRequestMonitorList {
+	s.CityCode = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestMonitorList) SetMonitorType(v int64) *CreateSyntheticTaskRequestMonitorList {
+	s.MonitorType = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestMonitorList) SetNetServiceId(v int64) *CreateSyntheticTaskRequestMonitorList {
+	s.NetServiceId = &v
+	return s
+}
+
+type CreateSyntheticTaskRequestNet struct {
+	NetDNSNs             *string `json:"NetDNSNs,omitempty" xml:"NetDNSNs,omitempty"`
+	NetDNSQueryMethod    *int64  `json:"NetDNSQueryMethod,omitempty" xml:"NetDNSQueryMethod,omitempty"`
+	NetDNSServer         *int64  `json:"NetDNSServer,omitempty" xml:"NetDNSServer,omitempty"`
+	NetDNSSwitch         *int64  `json:"NetDNSSwitch,omitempty" xml:"NetDNSSwitch,omitempty"`
+	NetDNSTimeout        *int64  `json:"NetDNSTimeout,omitempty" xml:"NetDNSTimeout,omitempty"`
+	NetDigSwitch         *int64  `json:"NetDigSwitch,omitempty" xml:"NetDigSwitch,omitempty"`
+	NetICMPActive        *int64  `json:"NetICMPActive,omitempty" xml:"NetICMPActive,omitempty"`
+	NetICMPInterval      *int64  `json:"NetICMPInterval,omitempty" xml:"NetICMPInterval,omitempty"`
+	NetICMPNum           *int64  `json:"NetICMPNum,omitempty" xml:"NetICMPNum,omitempty"`
+	NetICMPSize          *int64  `json:"NetICMPSize,omitempty" xml:"NetICMPSize,omitempty"`
+	NetICMPSwitch        *int64  `json:"NetICMPSwitch,omitempty" xml:"NetICMPSwitch,omitempty"`
+	NetTraceRouteNum     *int64  `json:"NetTraceRouteNum,omitempty" xml:"NetTraceRouteNum,omitempty"`
+	NetTraceRouteSwitch  *int64  `json:"NetTraceRouteSwitch,omitempty" xml:"NetTraceRouteSwitch,omitempty"`
+	NetTraceRouteTimeout *int64  `json:"NetTraceRouteTimeout,omitempty" xml:"NetTraceRouteTimeout,omitempty"`
+	WhiteList            *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+}
+
+func (s CreateSyntheticTaskRequestNet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequestNet) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetDNSNs(v string) *CreateSyntheticTaskRequestNet {
+	s.NetDNSNs = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetDNSQueryMethod(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetDNSQueryMethod = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetDNSServer(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetDNSServer = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetDNSSwitch(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetDNSSwitch = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetDNSTimeout(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetDNSTimeout = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetDigSwitch(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetDigSwitch = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetICMPActive(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetICMPActive = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetICMPInterval(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetICMPInterval = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetICMPNum(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetICMPNum = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetICMPSize(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetICMPSize = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetICMPSwitch(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetICMPSwitch = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetTraceRouteNum(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetTraceRouteNum = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetTraceRouteSwitch(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetTraceRouteSwitch = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetTraceRouteTimeout(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetTraceRouteTimeout = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetWhiteList(v string) *CreateSyntheticTaskRequestNet {
+	s.WhiteList = &v
+	return s
+}
+
+type CreateSyntheticTaskShrinkRequest struct {
+	CommonParamShrink    *string `json:"CommonParam,omitempty" xml:"CommonParam,omitempty"`
+	ExtendIntervalShrink *string `json:"ExtendInterval,omitempty" xml:"ExtendInterval,omitempty"`
+	IntervalTime         *string `json:"IntervalTime,omitempty" xml:"IntervalTime,omitempty"`
+	IntervalType         *string `json:"IntervalType,omitempty" xml:"IntervalType,omitempty"`
+	IpType               *int64  `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	MonitorListShrink    *string `json:"MonitorList,omitempty" xml:"MonitorList,omitempty"`
+	NetShrink            *string `json:"Net,omitempty" xml:"Net,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType             *int64  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Url                  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s CreateSyntheticTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetCommonParamShrink(v string) *CreateSyntheticTaskShrinkRequest {
+	s.CommonParamShrink = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetExtendIntervalShrink(v string) *CreateSyntheticTaskShrinkRequest {
+	s.ExtendIntervalShrink = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetIntervalTime(v string) *CreateSyntheticTaskShrinkRequest {
+	s.IntervalTime = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetIntervalType(v string) *CreateSyntheticTaskShrinkRequest {
+	s.IntervalType = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetIpType(v int64) *CreateSyntheticTaskShrinkRequest {
+	s.IpType = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetMonitorListShrink(v string) *CreateSyntheticTaskShrinkRequest {
+	s.MonitorListShrink = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetNetShrink(v string) *CreateSyntheticTaskShrinkRequest {
+	s.NetShrink = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetRegionId(v string) *CreateSyntheticTaskShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetTaskName(v string) *CreateSyntheticTaskShrinkRequest {
+	s.TaskName = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetTaskType(v int64) *CreateSyntheticTaskShrinkRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetUrl(v string) *CreateSyntheticTaskShrinkRequest {
+	s.Url = &v
+	return s
+}
+
+type CreateSyntheticTaskResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateSyntheticTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Msg       *string                              `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSyntheticTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskResponseBody) SetCode(v string) *CreateSyntheticTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskResponseBody) SetData(v *CreateSyntheticTaskResponseBodyData) *CreateSyntheticTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateSyntheticTaskResponseBody) SetMsg(v string) *CreateSyntheticTaskResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskResponseBody) SetRequestId(v string) *CreateSyntheticTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSyntheticTaskResponseBodyData struct {
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateSyntheticTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskResponseBodyData) SetTaskId(v int64) *CreateSyntheticTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type CreateSyntheticTaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSyntheticTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSyntheticTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskResponse) SetHeaders(v map[string]*string) *CreateSyntheticTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSyntheticTaskResponse) SetStatusCode(v int32) *CreateSyntheticTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskResponse) SetBody(v *CreateSyntheticTaskResponseBody) *CreateSyntheticTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateWebhookRequest struct {
 	Body        *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
@@ -4159,7 +4807,6 @@ func (s *DeleteAlertContactGroupResponse) SetBody(v *DeleteAlertContactGroupResp
 }
 
 type DeleteAlertRuleRequest struct {
-	// 告警规则ID
 	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
 }
 
@@ -4177,8 +4824,7 @@ func (s *DeleteAlertRuleRequest) SetAlertId(v int64) *DeleteAlertRuleRequest {
 }
 
 type DeleteAlertRuleResponseBody struct {
-	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Id of the request
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4328,8 +4974,7 @@ func (s *DeleteCmsExporterRequest) SetRegionId(v string) *DeleteCmsExporterReque
 }
 
 type DeleteCmsExporterResponseBody struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4381,7 +5026,6 @@ func (s *DeleteCmsExporterResponse) SetBody(v *DeleteCmsExporterResponseBody) *D
 }
 
 type DeleteContactRequest struct {
-	// 告警联系人ID
 	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
 }
 
@@ -4399,8 +5043,7 @@ func (s *DeleteContactRequest) SetContactId(v int64) *DeleteContactRequest {
 }
 
 type DeleteContactResponseBody struct {
-	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Id of the request
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4452,7 +5095,6 @@ func (s *DeleteContactResponse) SetBody(v *DeleteContactResponseBody) *DeleteCon
 }
 
 type DeleteContactGroupRequest struct {
-	// 告警联系人组ID
 	ContactGroupId *int64 `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
 }
 
@@ -4470,8 +5112,7 @@ func (s *DeleteContactGroupRequest) SetContactGroupId(v int64) *DeleteContactGro
 }
 
 type DeleteContactGroupResponseBody struct {
-	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Id of the request
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4615,8 +5256,7 @@ func (s *DeleteEventBridgeIntegrationRequest) SetId(v int64) *DeleteEventBridgeI
 }
 
 type DeleteEventBridgeIntegrationResponseBody struct {
-	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Id of the request
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4749,7 +5389,6 @@ func (s *DeleteGrafanaResourceResponse) SetBody(v *DeleteGrafanaResourceResponse
 }
 
 type DeleteIMRobotRequest struct {
-	// 告警机器人ID
 	RobotId *int64 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
 }
 
@@ -4767,8 +5406,7 @@ func (s *DeleteIMRobotRequest) SetRobotId(v int64) *DeleteIMRobotRequest {
 }
 
 type DeleteIMRobotResponseBody struct {
-	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Id of the request
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4849,8 +5487,7 @@ func (s *DeleteIntegrationRequest) SetRegionId(v string) *DeleteIntegrationReque
 }
 
 type DeleteIntegrationResponseBody struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4901,8 +5538,76 @@ func (s *DeleteIntegrationResponse) SetBody(v *DeleteIntegrationResponseBody) *D
 	return s
 }
 
+type DeleteIntegrationsRequest struct {
+	IntegrationId *int64 `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
+}
+
+func (s DeleteIntegrationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIntegrationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIntegrationsRequest) SetIntegrationId(v int64) *DeleteIntegrationsRequest {
+	s.IntegrationId = &v
+	return s
+}
+
+type DeleteIntegrationsResponseBody struct {
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteIntegrationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIntegrationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIntegrationsResponseBody) SetIsSuccess(v bool) *DeleteIntegrationsResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *DeleteIntegrationsResponseBody) SetRequestId(v string) *DeleteIntegrationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteIntegrationsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteIntegrationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteIntegrationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIntegrationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIntegrationsResponse) SetHeaders(v map[string]*string) *DeleteIntegrationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIntegrationsResponse) SetStatusCode(v int32) *DeleteIntegrationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteIntegrationsResponse) SetBody(v *DeleteIntegrationsResponseBody) *DeleteIntegrationsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteNotificationPolicyRequest struct {
-	// 通知策略ID
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -4920,8 +5625,7 @@ func (s *DeleteNotificationPolicyRequest) SetId(v int64) *DeleteNotificationPoli
 }
 
 type DeleteNotificationPolicyResponseBody struct {
-	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Id of the request
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5267,7 +5971,6 @@ func (s *DeleteScenarioResponse) SetBody(v *DeleteScenarioResponseBody) *DeleteS
 }
 
 type DeleteSilencePolicyRequest struct {
-	// 静默策略ID
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -5285,9 +5988,7 @@ func (s *DeleteSilencePolicyRequest) SetId(v int64) *DeleteSilencePolicyRequest 
 }
 
 type DeleteSilencePolicyResponseBody struct {
-	// 删除静默策略是否成功
-	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Id of the request
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5334,6 +6035,116 @@ func (s *DeleteSilencePolicyResponse) SetStatusCode(v int32) *DeleteSilencePolic
 }
 
 func (s *DeleteSilencePolicyResponse) SetBody(v *DeleteSilencePolicyResponseBody) *DeleteSilencePolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSourceMapRequest struct {
+	FidList  []*string `json:"FidList,omitempty" xml:"FidList,omitempty" type:"Repeated"`
+	Pid      *string   `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteSourceMapRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSourceMapRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSourceMapRequest) SetFidList(v []*string) *DeleteSourceMapRequest {
+	s.FidList = v
+	return s
+}
+
+func (s *DeleteSourceMapRequest) SetPid(v string) *DeleteSourceMapRequest {
+	s.Pid = &v
+	return s
+}
+
+func (s *DeleteSourceMapRequest) SetRegionId(v string) *DeleteSourceMapRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteSourceMapShrinkRequest struct {
+	FidListShrink *string `json:"FidList,omitempty" xml:"FidList,omitempty"`
+	Pid           *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteSourceMapShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSourceMapShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSourceMapShrinkRequest) SetFidListShrink(v string) *DeleteSourceMapShrinkRequest {
+	s.FidListShrink = &v
+	return s
+}
+
+func (s *DeleteSourceMapShrinkRequest) SetPid(v string) *DeleteSourceMapShrinkRequest {
+	s.Pid = &v
+	return s
+}
+
+func (s *DeleteSourceMapShrinkRequest) SetRegionId(v string) *DeleteSourceMapShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteSourceMapResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSourceMapResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSourceMapResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSourceMapResponseBody) SetData(v string) *DeleteSourceMapResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteSourceMapResponseBody) SetRequestId(v string) *DeleteSourceMapResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteSourceMapResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSourceMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSourceMapResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSourceMapResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSourceMapResponse) SetHeaders(v map[string]*string) *DeleteSourceMapResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSourceMapResponse) SetStatusCode(v int32) *DeleteSourceMapResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSourceMapResponse) SetBody(v *DeleteSourceMapResponseBody) *DeleteSourceMapResponse {
 	s.Body = v
 	return s
 }
@@ -5426,7 +6237,6 @@ func (s *DeleteTraceAppResponse) SetBody(v *DeleteTraceAppResponseBody) *DeleteT
 }
 
 type DeleteWebhookContactRequest struct {
-	// 告警webhookID
 	WebhookId *int64 `json:"WebhookId,omitempty" xml:"WebhookId,omitempty"`
 }
 
@@ -5444,8 +6254,7 @@ func (s *DeleteWebhookContactRequest) SetWebhookId(v int64) *DeleteWebhookContac
 }
 
 type DeleteWebhookContactResponseBody struct {
-	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Id of the request
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5497,12 +6306,10 @@ func (s *DeleteWebhookContactResponse) SetBody(v *DeleteWebhookContactResponseBo
 }
 
 type DescribeContactGroupsRequest struct {
-	// 告警联系人组名称
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
-	// 是否返回联系人分组中包含的所有联系人。默认不返回所有联系人。
-	IsDetail *bool  `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
-	Page     *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	Size     *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	IsDetail         *bool   `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
+	Page             *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size             *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeContactGroupsRequest) String() string {
@@ -5534,10 +6341,8 @@ func (s *DescribeContactGroupsRequest) SetSize(v int64) *DescribeContactGroupsRe
 }
 
 type DescribeContactGroupsResponseBody struct {
-	// 分页对象
-	PageBean *DescribeContactGroupsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageBean  *DescribeContactGroupsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeContactGroupsResponseBody) String() string {
@@ -5559,14 +6364,10 @@ func (s *DescribeContactGroupsResponseBody) SetRequestId(v string) *DescribeCont
 }
 
 type DescribeContactGroupsResponseBodyPageBean struct {
-	// 告警联系人组列表
 	AlertContactGroups []*DescribeContactGroupsResponseBodyPageBeanAlertContactGroups `json:"AlertContactGroups,omitempty" xml:"AlertContactGroups,omitempty" type:"Repeated"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 每一页数目
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// 总数
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Page               *int64                                                         `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size               *int64                                                         `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total              *int64                                                         `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeContactGroupsResponseBodyPageBean) String() string {
@@ -5598,12 +6399,9 @@ func (s *DescribeContactGroupsResponseBodyPageBean) SetTotal(v int64) *DescribeC
 }
 
 type DescribeContactGroupsResponseBodyPageBeanAlertContactGroups struct {
-	// 告警联系人组ID
-	ContactGroupId *float32 `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
-	// 告警联系人组名称
-	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
-	// 联系人对象
-	Contacts []*DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
+	ContactGroupId   *float32                                                               `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
+	ContactGroupName *string                                                                `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
+	Contacts         []*DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
 }
 
 func (s DescribeContactGroupsResponseBodyPageBeanAlertContactGroups) String() string {
@@ -5630,14 +6428,10 @@ func (s *DescribeContactGroupsResponseBodyPageBeanAlertContactGroups) SetContact
 }
 
 type DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts struct {
-	// 联系人ID
-	ContactId *float32 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	// 联系人名称
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// 联系人邮箱
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// 联系人手机号码
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	ContactId   *float32 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	ContactName *string  `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	Email       *string  `json:"Email,omitempty" xml:"Email,omitempty"`
+	Phone       *string  `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 
 func (s DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts) String() string {
@@ -5698,14 +6492,11 @@ func (s *DescribeContactGroupsResponse) SetBody(v *DescribeContactGroupsResponse
 }
 
 type DescribeContactsRequest struct {
-	// 告警联系人名称
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// 告警联系人邮箱
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Page  *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 告警联系人手机号码
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	Size  *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Page        *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	Phone       *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeContactsRequest) String() string {
@@ -5742,10 +6533,8 @@ func (s *DescribeContactsRequest) SetSize(v int64) *DescribeContactsRequest {
 }
 
 type DescribeContactsResponseBody struct {
-	// 分页对象
-	PageBean *DescribeContactsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageBean  *DescribeContactsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeContactsResponseBody) String() string {
@@ -5767,14 +6556,10 @@ func (s *DescribeContactsResponseBody) SetRequestId(v string) *DescribeContactsR
 }
 
 type DescribeContactsResponseBodyPageBean struct {
-	// 告警联系人列表
 	AlertContacts []*DescribeContactsResponseBodyPageBeanAlertContacts `json:"AlertContacts,omitempty" xml:"AlertContacts,omitempty" type:"Repeated"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 每一页大小
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// 总数
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Page          *int64                                               `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size          *int64                                               `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total         *int64                                               `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeContactsResponseBodyPageBean) String() string {
@@ -5806,16 +6591,12 @@ func (s *DescribeContactsResponseBodyPageBean) SetTotal(v int64) *DescribeContac
 }
 
 type DescribeContactsResponseBodyPageBeanAlertContacts struct {
-	// 告警联系人ID
-	ContactId *float32 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	// 告警联系人名称
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// 告警联系人邮箱
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// 手机号码是否验证标识
-	IsVerify *bool `json:"IsVerify,omitempty" xml:"IsVerify,omitempty"`
-	// 告警联系人手机号码
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	ContactId         *float32 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	ContactName       *string  `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	Email             *string  `json:"Email,omitempty" xml:"Email,omitempty"`
+	IsVerify          *bool    `json:"IsVerify,omitempty" xml:"IsVerify,omitempty"`
+	Phone             *string  `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	ReissueSendNotice *int64   `json:"ReissueSendNotice,omitempty" xml:"ReissueSendNotice,omitempty"`
 }
 
 func (s DescribeContactsResponseBodyPageBeanAlertContacts) String() string {
@@ -5848,6 +6629,11 @@ func (s *DescribeContactsResponseBodyPageBeanAlertContacts) SetIsVerify(v bool) 
 
 func (s *DescribeContactsResponseBodyPageBeanAlertContacts) SetPhone(v string) *DescribeContactsResponseBodyPageBeanAlertContacts {
 	s.Phone = &v
+	return s
+}
+
+func (s *DescribeContactsResponseBodyPageBeanAlertContacts) SetReissueSendNotice(v int64) *DescribeContactsResponseBodyPageBeanAlertContacts {
+	s.ReissueSendNotice = &v
 	return s
 }
 
@@ -6171,8 +6957,7 @@ func (s *DescribeDispatchRuleResponse) SetBody(v *DescribeDispatchRuleResponseBo
 }
 
 type DescribeIMRobotsRequest struct {
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 告警机器人名称
+	Page      *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
 	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
 	Size      *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
@@ -6201,10 +6986,8 @@ func (s *DescribeIMRobotsRequest) SetSize(v int64) *DescribeIMRobotsRequest {
 }
 
 type DescribeIMRobotsResponseBody struct {
-	// 分页对象
-	PageBean *DescribeIMRobotsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageBean  *DescribeIMRobotsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeIMRobotsResponseBody) String() string {
@@ -6227,12 +7010,9 @@ func (s *DescribeIMRobotsResponseBody) SetRequestId(v string) *DescribeIMRobotsR
 
 type DescribeIMRobotsResponseBodyPageBean struct {
 	AlertIMRobots []*DescribeIMRobotsResponseBodyPageBeanAlertIMRobots `json:"AlertIMRobots,omitempty" xml:"AlertIMRobots,omitempty" type:"Repeated"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 每一页数目
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// 总数
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Page          *int64                                               `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size          *int64                                               `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total         *int64                                               `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeIMRobotsResponseBodyPageBean) String() string {
@@ -6264,18 +7044,12 @@ func (s *DescribeIMRobotsResponseBodyPageBean) SetTotal(v int64) *DescribeIMRobo
 }
 
 type DescribeIMRobotsResponseBodyPageBeanAlertIMRobots struct {
-	// 是否发送每日统计信息
-	DailyNoc *bool `json:"DailyNoc,omitempty" xml:"DailyNoc,omitempty"`
-	// 每日统计发送时间
-	DailyNocTime *string `json:"DailyNocTime,omitempty" xml:"DailyNocTime,omitempty"`
-	// 告警机器人地址
-	RobotAddr *string `json:"RobotAddr,omitempty" xml:"RobotAddr,omitempty"`
-	// 告警机器人ID
-	RobotId *float32 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
-	// 告警机器人名称
-	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
-	// 告警机器人类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	DailyNoc     *bool    `json:"DailyNoc,omitempty" xml:"DailyNoc,omitempty"`
+	DailyNocTime *string  `json:"DailyNocTime,omitempty" xml:"DailyNocTime,omitempty"`
+	RobotAddr    *string  `json:"RobotAddr,omitempty" xml:"RobotAddr,omitempty"`
+	RobotId      *float32 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	RobotName    *string  `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
+	Type         *string  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeIMRobotsResponseBodyPageBeanAlertIMRobots) String() string {
@@ -6613,9 +7387,8 @@ func (s *DescribeTraceLicenseKeyResponse) SetBody(v *DescribeTraceLicenseKeyResp
 }
 
 type DescribeWebhookContactsRequest struct {
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// 告警webhook名称
+	Page        *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 	WebhookName *string `json:"WebhookName,omitempty" xml:"WebhookName,omitempty"`
 }
 
@@ -6643,10 +7416,8 @@ func (s *DescribeWebhookContactsRequest) SetWebhookName(v string) *DescribeWebho
 }
 
 type DescribeWebhookContactsResponseBody struct {
-	// 分页对象
-	PageBean *DescribeWebhookContactsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageBean  *DescribeWebhookContactsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeWebhookContactsResponseBody) String() string {
@@ -6668,13 +7439,9 @@ func (s *DescribeWebhookContactsResponseBody) SetRequestId(v string) *DescribeWe
 }
 
 type DescribeWebhookContactsResponseBodyPageBean struct {
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 每一页数目
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// 总数
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// 告警webhook联系人列表
+	Page            *int64                                                        `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size            *int64                                                        `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total           *int64                                                        `json:"Total,omitempty" xml:"Total,omitempty"`
 	WebhookContacts []*DescribeWebhookContactsResponseBodyPageBeanWebhookContacts `json:"WebhookContacts,omitempty" xml:"WebhookContacts,omitempty" type:"Repeated"`
 }
 
@@ -6707,12 +7474,9 @@ func (s *DescribeWebhookContactsResponseBodyPageBean) SetWebhookContacts(v []*De
 }
 
 type DescribeWebhookContactsResponseBodyPageBeanWebhookContacts struct {
-	// webhook对象
-	Webhook *DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook `json:"Webhook,omitempty" xml:"Webhook,omitempty" type:"Struct"`
-	// 告警webhookID
-	WebhookId *float32 `json:"WebhookId,omitempty" xml:"WebhookId,omitempty"`
-	// 告警webhook名称
-	WebhookName *string `json:"WebhookName,omitempty" xml:"WebhookName,omitempty"`
+	Webhook     *DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook `json:"Webhook,omitempty" xml:"Webhook,omitempty" type:"Struct"`
+	WebhookId   *float32                                                           `json:"WebhookId,omitempty" xml:"WebhookId,omitempty"`
+	WebhookName *string                                                            `json:"WebhookName,omitempty" xml:"WebhookName,omitempty"`
 }
 
 func (s DescribeWebhookContactsResponseBodyPageBeanWebhookContacts) String() string {
@@ -6739,18 +7503,12 @@ func (s *DescribeWebhookContactsResponseBodyPageBeanWebhookContacts) SetWebhookN
 }
 
 type DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook struct {
-	// HTTP请求头
-	BizHeaders map[string]interface{} `json:"BizHeaders,omitempty" xml:"BizHeaders,omitempty"`
-	// HTTP请求参数
-	BizParams map[string]interface{} `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
-	// 告警通知模板
-	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	// http请求方式
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// 告警恢复模板
-	RecoverBody *string `json:"RecoverBody,omitempty" xml:"RecoverBody,omitempty"`
-	// Url
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	BizHeaders  map[string]interface{} `json:"BizHeaders,omitempty" xml:"BizHeaders,omitempty"`
+	BizParams   map[string]interface{} `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
+	Body        *string                `json:"Body,omitempty" xml:"Body,omitempty"`
+	Method      *string                `json:"Method,omitempty" xml:"Method,omitempty"`
+	RecoverBody *string                `json:"RecoverBody,omitempty" xml:"RecoverBody,omitempty"`
+	Url         *string                `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook) String() string {
@@ -6890,20 +7648,13 @@ func (s *GetAgentDownloadUrlResponse) SetBody(v *GetAgentDownloadUrlResponseBody
 }
 
 type GetAlertRulesRequest struct {
-	// 告警规则ID
-	AlertIds *string `json:"AlertIds,omitempty" xml:"AlertIds,omitempty"`
-	// 告警规则名称
-	AlertNames *string `json:"AlertNames,omitempty" xml:"AlertNames,omitempty"`
-	// 告警规则运行状态
+	AlertIds    *string `json:"AlertIds,omitempty" xml:"AlertIds,omitempty"`
+	AlertNames  *string `json:"AlertNames,omitempty" xml:"AlertNames,omitempty"`
 	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	// 告警规则类型
-	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 地域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 每一页大小
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	AlertType   *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	Page        *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s GetAlertRulesRequest) String() string {
@@ -6950,10 +7701,8 @@ func (s *GetAlertRulesRequest) SetSize(v int64) *GetAlertRulesRequest {
 }
 
 type GetAlertRulesResponseBody struct {
-	// 分页对象
-	PageBean *GetAlertRulesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageBean  *GetAlertRulesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAlertRulesResponseBody) String() string {
@@ -6975,14 +7724,10 @@ func (s *GetAlertRulesResponseBody) SetRequestId(v string) *GetAlertRulesRespons
 }
 
 type GetAlertRulesResponseBodyPageBean struct {
-	// 告警规则列表
 	AlertRules []*GetAlertRulesResponseBodyPageBeanAlertRules `json:"AlertRules,omitempty" xml:"AlertRules,omitempty" type:"Repeated"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 每一页大小
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// 总数
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Page       *int64                                         `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size       *int64                                         `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total      *int64                                         `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetAlertRulesResponseBodyPageBean) String() string {
@@ -7014,54 +7759,30 @@ func (s *GetAlertRulesResponseBodyPageBean) SetTotal(v int64) *GetAlertRulesResp
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRules struct {
-	// Prometheus告警-告警检查类型
-	AlertCheckType *string `json:"AlertCheckType,omitempty" xml:"AlertCheckType,omitempty"`
-	// Prometheus告警-告警分组ID
-	AlertGroup *int64 `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	// 告警规则ID
-	AlertId *float32 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
-	// 告警规则名称
-	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// 应用监控/前端监控-告警规则内容
-	AlertRuleContent *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent `json:"AlertRuleContent,omitempty" xml:"AlertRuleContent,omitempty" type:"Struct"`
-	// 告警规则状态
-	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	// 告警规则类型
-	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// Prometheus告警-Annotation
-	Annotations []*GetAlertRulesResponseBodyPageBeanAlertRulesAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
-	// 应用监控/前端监控-是否开启新创建应用追加到此告警规则
-	AutoAddNewApplication *bool `json:"AutoAddNewApplication,omitempty" xml:"AutoAddNewApplication,omitempty"`
-	// Prometheus告警-集群ID
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 创建时间
-	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Prometheus告警-持续时间
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 扩展字段
-	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// 应用监控/前端监控-告警条件-过滤项
-	Filters *GetAlertRulesResponseBodyPageBeanAlertRulesFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
-	// Prometheus告警-Label
-	Labels []*GetAlertRulesResponseBodyPageBeanAlertRulesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// Prometheus告警-等级
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// Prometheus告警-告警内容
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 应用监控/前端监控-告警指标类型
-	MetricsType *string `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
-	// 通知策略ID
-	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
-	// 应用监控/前端监控-告警关联应用ID
-	Pids []*string `json:"Pids,omitempty" xml:"Pids,omitempty" type:"Repeated"`
-	// Prometheus告警-PromQL语句
-	PromQL *string `json:"PromQL,omitempty" xml:"PromQL,omitempty"`
-	// 地域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 更新时间
-	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// 用户UID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AlertCheckType        *string                                                      `json:"AlertCheckType,omitempty" xml:"AlertCheckType,omitempty"`
+	AlertGroup            *int64                                                       `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	AlertId               *float32                                                     `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	AlertName             *string                                                      `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertRuleContent      *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent `json:"AlertRuleContent,omitempty" xml:"AlertRuleContent,omitempty" type:"Struct"`
+	AlertStatus           *string                                                      `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
+	AlertType             *string                                                      `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	Annotations           []*GetAlertRulesResponseBodyPageBeanAlertRulesAnnotations    `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
+	AutoAddNewApplication *bool                                                        `json:"AutoAddNewApplication,omitempty" xml:"AutoAddNewApplication,omitempty"`
+	ClusterId             *string                                                      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreatedTime           *int64                                                       `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Duration              *string                                                      `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Extend                *string                                                      `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	Filters               *GetAlertRulesResponseBodyPageBeanAlertRulesFilters          `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
+	Labels                []*GetAlertRulesResponseBodyPageBeanAlertRulesLabels         `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Level                 *string                                                      `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message               *string                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	MetricsType           *string                                                      `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
+	NotifyStrategy        *string                                                      `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	Pids                  []*string                                                    `json:"Pids,omitempty" xml:"Pids,omitempty" type:"Repeated"`
+	PromQL                *string                                                      `json:"PromQL,omitempty" xml:"PromQL,omitempty"`
+	RegionId              *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UpdatedTime           *int64                                                       `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	UserId                *string                                                      `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetAlertRulesResponseBodyPageBeanAlertRules) String() string {
@@ -7193,10 +7914,8 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRules) SetUserId(v string) *GetAl
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent struct {
-	// 应用监控/前端监控-告警条件
 	AlertRuleItems []*GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems `json:"AlertRuleItems,omitempty" xml:"AlertRuleItems,omitempty" type:"Repeated"`
-	// 应用监控/前端监控-多个告警条件触发逻辑
-	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	Condition      *string                                                                      `json:"Condition,omitempty" xml:"Condition,omitempty"`
 }
 
 func (s GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent) String() string {
@@ -7218,16 +7937,11 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent) SetConditi
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems struct {
-	// 应用监控/前端监控-聚合方式
-	Aggregate *string `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
-	// 应用监控/前端监控-具体告警条件的指标
-	MetricKey *string `json:"MetricKey,omitempty" xml:"MetricKey,omitempty"`
-	// 应用监控/前端监控-最近N分钟
-	N *float32 `json:"N,omitempty" xml:"N,omitempty"`
-	// 应用监控/前端监控-判断条件
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 应用监控/前端监控-阈值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Aggregate *string  `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
+	MetricKey *string  `json:"MetricKey,omitempty" xml:"MetricKey,omitempty"`
+	N         *float32 `json:"N,omitempty" xml:"N,omitempty"`
+	Operator  *string  `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value     *string  `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems) String() string {
@@ -7264,9 +7978,7 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleIte
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesAnnotations struct {
-	// 键
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 值
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7394,9 +8106,7 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRulesFiltersDimFilters) SetFilter
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesLabels struct {
-	// 键
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 值
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7680,190 +8390,77 @@ func (s *GetAuthTokenResponse) SetBody(v *GetAuthTokenResponseBody) *GetAuthToke
 	return s
 }
 
-type GetClusterInfoForArmsRequest struct {
+type GetClusterAllUrlRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Md5       *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
-func (s GetClusterInfoForArmsRequest) String() string {
+func (s GetClusterAllUrlRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetClusterInfoForArmsRequest) GoString() string {
+func (s GetClusterAllUrlRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetClusterInfoForArmsRequest) SetClusterId(v string) *GetClusterInfoForArmsRequest {
+func (s *GetClusterAllUrlRequest) SetClusterId(v string) *GetClusterAllUrlRequest {
 	s.ClusterId = &v
 	return s
 }
 
-func (s *GetClusterInfoForArmsRequest) SetMd5(v string) *GetClusterInfoForArmsRequest {
-	s.Md5 = &v
-	return s
-}
-
-func (s *GetClusterInfoForArmsRequest) SetRegionId(v string) *GetClusterInfoForArmsRequest {
+func (s *GetClusterAllUrlRequest) SetRegionId(v string) *GetClusterAllUrlRequest {
 	s.RegionId = &v
 	return s
 }
 
-func (s *GetClusterInfoForArmsRequest) SetUserId(v string) *GetClusterInfoForArmsRequest {
-	s.UserId = &v
-	return s
-}
-
-type GetClusterInfoForArmsResponseBody struct {
-	Data *GetClusterInfoForArmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+type GetClusterAllUrlResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s GetClusterInfoForArmsResponseBody) String() string {
+func (s GetClusterAllUrlResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetClusterInfoForArmsResponseBody) GoString() string {
+func (s GetClusterAllUrlResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetClusterInfoForArmsResponseBody) SetData(v *GetClusterInfoForArmsResponseBodyData) *GetClusterInfoForArmsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetClusterInfoForArmsResponseBody) SetRequestId(v string) *GetClusterInfoForArmsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetClusterInfoForArmsResponseBodyData struct {
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-}
-
-func (s GetClusterInfoForArmsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetClusterInfoForArmsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetClusterInfoForArmsResponseBodyData) SetClusterName(v string) *GetClusterInfoForArmsResponseBodyData {
-	s.ClusterName = &v
-	return s
-}
-
-type GetClusterInfoForArmsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetClusterInfoForArmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetClusterInfoForArmsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetClusterInfoForArmsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetClusterInfoForArmsResponse) SetHeaders(v map[string]*string) *GetClusterInfoForArmsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetClusterInfoForArmsResponse) SetStatusCode(v int32) *GetClusterInfoForArmsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetClusterInfoForArmsResponse) SetBody(v *GetClusterInfoForArmsResponseBody) *GetClusterInfoForArmsResponse {
-	s.Body = v
-	return s
-}
-
-type GetEstimateFeeInfoRequest struct {
-	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
-	UsageCn      *int64  `json:"UsageCn,omitempty" xml:"UsageCn,omitempty"`
-	UsageFn      *int64  `json:"UsageFn,omitempty" xml:"UsageFn,omitempty"`
-}
-
-func (s GetEstimateFeeInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEstimateFeeInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetEstimateFeeInfoRequest) SetTargetUserId(v string) *GetEstimateFeeInfoRequest {
-	s.TargetUserId = &v
-	return s
-}
-
-func (s *GetEstimateFeeInfoRequest) SetUsageCn(v int64) *GetEstimateFeeInfoRequest {
-	s.UsageCn = &v
-	return s
-}
-
-func (s *GetEstimateFeeInfoRequest) SetUsageFn(v int64) *GetEstimateFeeInfoRequest {
-	s.UsageFn = &v
-	return s
-}
-
-type GetEstimateFeeInfoResponseBody struct {
-	// data
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetEstimateFeeInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEstimateFeeInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetEstimateFeeInfoResponseBody) SetData(v string) *GetEstimateFeeInfoResponseBody {
+func (s *GetClusterAllUrlResponseBody) SetData(v string) *GetClusterAllUrlResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *GetEstimateFeeInfoResponseBody) SetRequestId(v string) *GetEstimateFeeInfoResponseBody {
+func (s *GetClusterAllUrlResponseBody) SetRequestId(v string) *GetClusterAllUrlResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type GetEstimateFeeInfoResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEstimateFeeInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type GetClusterAllUrlResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetClusterAllUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s GetEstimateFeeInfoResponse) String() string {
+func (s GetClusterAllUrlResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetEstimateFeeInfoResponse) GoString() string {
+func (s GetClusterAllUrlResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetEstimateFeeInfoResponse) SetHeaders(v map[string]*string) *GetEstimateFeeInfoResponse {
+func (s *GetClusterAllUrlResponse) SetHeaders(v map[string]*string) *GetClusterAllUrlResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetEstimateFeeInfoResponse) SetStatusCode(v int32) *GetEstimateFeeInfoResponse {
+func (s *GetClusterAllUrlResponse) SetStatusCode(v int32) *GetClusterAllUrlResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *GetEstimateFeeInfoResponse) SetBody(v *GetEstimateFeeInfoResponseBody) *GetEstimateFeeInfoResponse {
+func (s *GetClusterAllUrlResponse) SetBody(v *GetClusterAllUrlResponseBody) *GetClusterAllUrlResponse {
 	s.Body = v
 	return s
 }
@@ -7985,7 +8582,6 @@ func (s *GetIntegrationStateRequest) SetRegionId(v string) *GetIntegrationStateR
 }
 
 type GetIntegrationStateResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	State     *bool   `json:"State,omitempty" xml:"State,omitempty"`
 }
@@ -8299,6 +8895,372 @@ func (s *GetMultipleTraceResponse) SetBody(v *GetMultipleTraceResponseBody) *Get
 	return s
 }
 
+type GetOnCallSchedulesDetailRequest struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetOnCallSchedulesDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnCallSchedulesDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnCallSchedulesDetailRequest) SetEndTime(v string) *GetOnCallSchedulesDetailRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailRequest) SetId(v int64) *GetOnCallSchedulesDetailRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailRequest) SetStartTime(v string) *GetOnCallSchedulesDetailRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetOnCallSchedulesDetailResponseBody struct {
+	Data      *GetOnCallSchedulesDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetOnCallSchedulesDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnCallSchedulesDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnCallSchedulesDetailResponseBody) SetData(v *GetOnCallSchedulesDetailResponseBodyData) *GetOnCallSchedulesDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBody) SetRequestId(v string) *GetOnCallSchedulesDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetOnCallSchedulesDetailResponseBodyData struct {
+	AlertRobotId              *int64                                                               `json:"AlertRobotId,omitempty" xml:"AlertRobotId,omitempty"`
+	Description               *string                                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id                        *int64                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name                      *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	RenderedFinnalEntries     []*GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries     `json:"RenderedFinnalEntries,omitempty" xml:"RenderedFinnalEntries,omitempty" type:"Repeated"`
+	RenderedLayerEntries      [][]*GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries    `json:"RenderedLayerEntries,omitempty" xml:"RenderedLayerEntries,omitempty" type:"Repeated"`
+	RenderedSubstitudeEntries []*GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries `json:"RenderedSubstitudeEntries,omitempty" xml:"RenderedSubstitudeEntries,omitempty" type:"Repeated"`
+	ScheduleLayers            []*GetOnCallSchedulesDetailResponseBodyDataScheduleLayers            `json:"ScheduleLayers,omitempty" xml:"ScheduleLayers,omitempty" type:"Repeated"`
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyData) SetAlertRobotId(v int64) *GetOnCallSchedulesDetailResponseBodyData {
+	s.AlertRobotId = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyData) SetDescription(v string) *GetOnCallSchedulesDetailResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyData) SetId(v int64) *GetOnCallSchedulesDetailResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyData) SetName(v string) *GetOnCallSchedulesDetailResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyData) SetRenderedFinnalEntries(v []*GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries) *GetOnCallSchedulesDetailResponseBodyData {
+	s.RenderedFinnalEntries = v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyData) SetRenderedLayerEntries(v [][]*GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries) *GetOnCallSchedulesDetailResponseBodyData {
+	s.RenderedLayerEntries = v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyData) SetRenderedSubstitudeEntries(v []*GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries) *GetOnCallSchedulesDetailResponseBodyData {
+	s.RenderedSubstitudeEntries = v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyData) SetScheduleLayers(v []*GetOnCallSchedulesDetailResponseBodyDataScheduleLayers) *GetOnCallSchedulesDetailResponseBodyData {
+	s.ScheduleLayers = v
+	return s
+}
+
+type GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries struct {
+	End           *string                                                                     `json:"End,omitempty" xml:"End,omitempty"`
+	SimpleContact *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact `json:"SimpleContact,omitempty" xml:"SimpleContact,omitempty" type:"Struct"`
+	Start         *string                                                                     `json:"Start,omitempty" xml:"Start,omitempty"`
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries) SetEnd(v string) *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries {
+	s.End = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries) SetSimpleContact(v *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact) *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries {
+	s.SimpleContact = v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries) SetStart(v string) *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries {
+	s.Start = &v
+	return s
+}
+
+type GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact) SetId(v int64) *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact) SetName(v string) *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact {
+	s.Name = &v
+	return s
+}
+
+type GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries struct {
+	Start         *string                                                                    `json:"Start,omitempty" xml:"Start,omitempty"`
+	End           *string                                                                    `json:"End,omitempty" xml:"End,omitempty"`
+	SimpleContact *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact `json:"SimpleContact,omitempty" xml:"SimpleContact,omitempty" type:"Struct"`
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries) SetStart(v string) *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries {
+	s.Start = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries) SetEnd(v string) *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries {
+	s.End = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries) SetSimpleContact(v *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact) *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries {
+	s.SimpleContact = v
+	return s
+}
+
+type GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact) SetId(v int64) *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact) SetName(v string) *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact {
+	s.Name = &v
+	return s
+}
+
+type GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries struct {
+	End           *string                                                                         `json:"End,omitempty" xml:"End,omitempty"`
+	SimpleContact *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact `json:"SimpleContact,omitempty" xml:"SimpleContact,omitempty" type:"Struct"`
+	Start         *string                                                                         `json:"Start,omitempty" xml:"Start,omitempty"`
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries) SetEnd(v string) *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries {
+	s.End = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries) SetSimpleContact(v *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact) *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries {
+	s.SimpleContact = v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries) SetStart(v string) *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries {
+	s.Start = &v
+	return s
+}
+
+type GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact) SetId(v int64) *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact) SetName(v string) *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact {
+	s.Name = &v
+	return s
+}
+
+type GetOnCallSchedulesDetailResponseBodyDataScheduleLayers struct {
+	ContactIds   []*int64                                                              `json:"ContactIds,omitempty" xml:"ContactIds,omitempty" type:"Repeated"`
+	Restrictions []*GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions `json:"Restrictions,omitempty" xml:"Restrictions,omitempty" type:"Repeated"`
+	RotationType *string                                                               `json:"RotationType,omitempty" xml:"RotationType,omitempty"`
+	ShiftLength  *int64                                                                `json:"ShiftLength,omitempty" xml:"ShiftLength,omitempty"`
+	StartTime    *string                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataScheduleLayers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataScheduleLayers) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataScheduleLayers) SetContactIds(v []*int64) *GetOnCallSchedulesDetailResponseBodyDataScheduleLayers {
+	s.ContactIds = v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataScheduleLayers) SetRestrictions(v []*GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions) *GetOnCallSchedulesDetailResponseBodyDataScheduleLayers {
+	s.Restrictions = v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataScheduleLayers) SetRotationType(v string) *GetOnCallSchedulesDetailResponseBodyDataScheduleLayers {
+	s.RotationType = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataScheduleLayers) SetShiftLength(v int64) *GetOnCallSchedulesDetailResponseBodyDataScheduleLayers {
+	s.ShiftLength = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataScheduleLayers) SetStartTime(v string) *GetOnCallSchedulesDetailResponseBodyDataScheduleLayers {
+	s.StartTime = &v
+	return s
+}
+
+type GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions struct {
+	EndTimeOfDay    *string `json:"EndTimeOfDay,omitempty" xml:"EndTimeOfDay,omitempty"`
+	RestrictionType *string `json:"RestrictionType,omitempty" xml:"RestrictionType,omitempty"`
+	StartTimeOfDay  *string `json:"StartTimeOfDay,omitempty" xml:"StartTimeOfDay,omitempty"`
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions) SetEndTimeOfDay(v string) *GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions {
+	s.EndTimeOfDay = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions) SetRestrictionType(v string) *GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions {
+	s.RestrictionType = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions) SetStartTimeOfDay(v string) *GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions {
+	s.StartTimeOfDay = &v
+	return s
+}
+
+type GetOnCallSchedulesDetailResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOnCallSchedulesDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOnCallSchedulesDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnCallSchedulesDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnCallSchedulesDetailResponse) SetHeaders(v map[string]*string) *GetOnCallSchedulesDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponse) SetStatusCode(v int32) *GetOnCallSchedulesDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOnCallSchedulesDetailResponse) SetBody(v *GetOnCallSchedulesDetailResponseBody) *GetOnCallSchedulesDetailResponse {
+	s.Body = v
+	return s
+}
+
 type GetPrometheusApiTokenRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -8467,8 +9429,7 @@ func (s *GetRecordingRuleRequest) SetRegionId(v string) *GetRecordingRuleRequest
 }
 
 type GetRecordingRuleResponseBody struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8584,6 +9545,146 @@ func (s *GetRetcodeShareUrlResponse) SetStatusCode(v int32) *GetRetcodeShareUrlR
 }
 
 func (s *GetRetcodeShareUrlResponse) SetBody(v *GetRetcodeShareUrlResponseBody) *GetRetcodeShareUrlResponse {
+	s.Body = v
+	return s
+}
+
+type GetSourceMapInfoRequest struct {
+	AscendingSequence *bool   `json:"AscendingSequence,omitempty" xml:"AscendingSequence,omitempty"`
+	Edition           *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	ID                *string `json:"ID,omitempty" xml:"ID,omitempty"`
+	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	OrderField        *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetSourceMapInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourceMapInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourceMapInfoRequest) SetAscendingSequence(v bool) *GetSourceMapInfoRequest {
+	s.AscendingSequence = &v
+	return s
+}
+
+func (s *GetSourceMapInfoRequest) SetEdition(v string) *GetSourceMapInfoRequest {
+	s.Edition = &v
+	return s
+}
+
+func (s *GetSourceMapInfoRequest) SetID(v string) *GetSourceMapInfoRequest {
+	s.ID = &v
+	return s
+}
+
+func (s *GetSourceMapInfoRequest) SetKeyword(v string) *GetSourceMapInfoRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *GetSourceMapInfoRequest) SetOrderField(v string) *GetSourceMapInfoRequest {
+	s.OrderField = &v
+	return s
+}
+
+func (s *GetSourceMapInfoRequest) SetRegionId(v string) *GetSourceMapInfoRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetSourceMapInfoResponseBody struct {
+	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceMapList []*GetSourceMapInfoResponseBodySourceMapList `json:"SourceMapList,omitempty" xml:"SourceMapList,omitempty" type:"Repeated"`
+}
+
+func (s GetSourceMapInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourceMapInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourceMapInfoResponseBody) SetRequestId(v string) *GetSourceMapInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSourceMapInfoResponseBody) SetSourceMapList(v []*GetSourceMapInfoResponseBodySourceMapList) *GetSourceMapInfoResponseBody {
+	s.SourceMapList = v
+	return s
+}
+
+type GetSourceMapInfoResponseBodySourceMapList struct {
+	Fid        *string `json:"Fid,omitempty" xml:"Fid,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Size       *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	UploadTime *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
+	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetSourceMapInfoResponseBodySourceMapList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourceMapInfoResponseBodySourceMapList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourceMapInfoResponseBodySourceMapList) SetFid(v string) *GetSourceMapInfoResponseBodySourceMapList {
+	s.Fid = &v
+	return s
+}
+
+func (s *GetSourceMapInfoResponseBodySourceMapList) SetFileName(v string) *GetSourceMapInfoResponseBodySourceMapList {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetSourceMapInfoResponseBodySourceMapList) SetSize(v string) *GetSourceMapInfoResponseBodySourceMapList {
+	s.Size = &v
+	return s
+}
+
+func (s *GetSourceMapInfoResponseBodySourceMapList) SetUploadTime(v string) *GetSourceMapInfoResponseBodySourceMapList {
+	s.UploadTime = &v
+	return s
+}
+
+func (s *GetSourceMapInfoResponseBodySourceMapList) SetVersion(v string) *GetSourceMapInfoResponseBodySourceMapList {
+	s.Version = &v
+	return s
+}
+
+type GetSourceMapInfoResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSourceMapInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSourceMapInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourceMapInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourceMapInfoResponse) SetHeaders(v map[string]*string) *GetSourceMapInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSourceMapInfoResponse) SetStatusCode(v int32) *GetSourceMapInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSourceMapInfoResponse) SetBody(v *GetSourceMapInfoResponseBody) *GetSourceMapInfoResponse {
 	s.Body = v
 	return s
 }
@@ -8765,6 +9866,140 @@ func (s *GetStackResponse) SetStatusCode(v int32) *GetStackResponse {
 }
 
 func (s *GetStackResponse) SetBody(v *GetStackResponseBody) *GetStackResponse {
+	s.Body = v
+	return s
+}
+
+type GetSyntheticTaskMonitorsRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetSyntheticTaskMonitorsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskMonitorsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskMonitorsRequest) SetRegionId(v string) *GetSyntheticTaskMonitorsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetSyntheticTaskMonitorsResponseBody struct {
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetSyntheticTaskMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Msg       *string                                     `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSyntheticTaskMonitorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskMonitorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskMonitorsResponseBody) SetCode(v string) *GetSyntheticTaskMonitorsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSyntheticTaskMonitorsResponseBody) SetData(v []*GetSyntheticTaskMonitorsResponseBodyData) *GetSyntheticTaskMonitorsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSyntheticTaskMonitorsResponseBody) SetMsg(v string) *GetSyntheticTaskMonitorsResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetSyntheticTaskMonitorsResponseBody) SetRequestId(v string) *GetSyntheticTaskMonitorsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSyntheticTaskMonitorsResponseBodyData struct {
+	Busy           *int64  `json:"Busy,omitempty" xml:"Busy,omitempty"`
+	City           *string `json:"City,omitempty" xml:"City,omitempty"`
+	CityCode       *int64  `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	ClientType     *int64  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	District       *string `json:"District,omitempty" xml:"District,omitempty"`
+	NetServiceId   *int64  `json:"NetServiceId,omitempty" xml:"NetServiceId,omitempty"`
+	NetServiceName *string `json:"NetServiceName,omitempty" xml:"NetServiceName,omitempty"`
+}
+
+func (s GetSyntheticTaskMonitorsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskMonitorsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskMonitorsResponseBodyData) SetBusy(v int64) *GetSyntheticTaskMonitorsResponseBodyData {
+	s.Busy = &v
+	return s
+}
+
+func (s *GetSyntheticTaskMonitorsResponseBodyData) SetCity(v string) *GetSyntheticTaskMonitorsResponseBodyData {
+	s.City = &v
+	return s
+}
+
+func (s *GetSyntheticTaskMonitorsResponseBodyData) SetCityCode(v int64) *GetSyntheticTaskMonitorsResponseBodyData {
+	s.CityCode = &v
+	return s
+}
+
+func (s *GetSyntheticTaskMonitorsResponseBodyData) SetClientType(v int64) *GetSyntheticTaskMonitorsResponseBodyData {
+	s.ClientType = &v
+	return s
+}
+
+func (s *GetSyntheticTaskMonitorsResponseBodyData) SetDistrict(v string) *GetSyntheticTaskMonitorsResponseBodyData {
+	s.District = &v
+	return s
+}
+
+func (s *GetSyntheticTaskMonitorsResponseBodyData) SetNetServiceId(v int64) *GetSyntheticTaskMonitorsResponseBodyData {
+	s.NetServiceId = &v
+	return s
+}
+
+func (s *GetSyntheticTaskMonitorsResponseBodyData) SetNetServiceName(v string) *GetSyntheticTaskMonitorsResponseBodyData {
+	s.NetServiceName = &v
+	return s
+}
+
+type GetSyntheticTaskMonitorsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSyntheticTaskMonitorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSyntheticTaskMonitorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskMonitorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskMonitorsResponse) SetHeaders(v map[string]*string) *GetSyntheticTaskMonitorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSyntheticTaskMonitorsResponse) SetStatusCode(v int32) *GetSyntheticTaskMonitorsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSyntheticTaskMonitorsResponse) SetBody(v *GetSyntheticTaskMonitorsResponseBody) *GetSyntheticTaskMonitorsResponse {
 	s.Body = v
 	return s
 }
@@ -9172,87 +10407,6 @@ func (s *GetTraceAppResponse) SetBody(v *GetTraceAppResponseBody) *GetTraceAppRe
 	return s
 }
 
-type GetUserCommercialStatusRequest struct {
-	ParentId     *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s GetUserCommercialStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserCommercialStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserCommercialStatusRequest) SetParentId(v string) *GetUserCommercialStatusRequest {
-	s.ParentId = &v
-	return s
-}
-
-func (s *GetUserCommercialStatusRequest) SetTargetUserId(v string) *GetUserCommercialStatusRequest {
-	s.TargetUserId = &v
-	return s
-}
-
-func (s *GetUserCommercialStatusRequest) SetUserId(v string) *GetUserCommercialStatusRequest {
-	s.UserId = &v
-	return s
-}
-
-type GetUserCommercialStatusResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetUserCommercialStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserCommercialStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserCommercialStatusResponseBody) SetData(v string) *GetUserCommercialStatusResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *GetUserCommercialStatusResponseBody) SetRequestId(v string) *GetUserCommercialStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetUserCommercialStatusResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserCommercialStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserCommercialStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserCommercialStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserCommercialStatusResponse) SetHeaders(v map[string]*string) *GetUserCommercialStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserCommercialStatusResponse) SetStatusCode(v int32) *GetUserCommercialStatusResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetUserCommercialStatusResponse) SetBody(v *GetUserCommercialStatusResponseBody) *GetUserCommercialStatusResponse {
-	s.Body = v
-	return s
-}
-
 type ImportAppAlertRulesRequest struct {
 	ContactGroupIds     *string `json:"ContactGroupIds,omitempty" xml:"ContactGroupIds,omitempty"`
 	IsAutoStart         *bool   `json:"IsAutoStart,omitempty" xml:"IsAutoStart,omitempty"`
@@ -9353,10 +10507,11 @@ func (s *ImportAppAlertRulesResponse) SetBody(v *ImportAppAlertRulesResponseBody
 }
 
 type InstallCmsExporterRequest struct {
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CmsArgs   *string `json:"CmsArgs,omitempty" xml:"CmsArgs,omitempty"`
-	EnableTag *bool   `json:"EnableTag,omitempty" xml:"EnableTag,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CmsArgs    *string `json:"CmsArgs,omitempty" xml:"CmsArgs,omitempty"`
+	DirectArgs *string `json:"DirectArgs,omitempty" xml:"DirectArgs,omitempty"`
+	EnableTag  *bool   `json:"EnableTag,omitempty" xml:"EnableTag,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s InstallCmsExporterRequest) String() string {
@@ -9377,6 +10532,11 @@ func (s *InstallCmsExporterRequest) SetCmsArgs(v string) *InstallCmsExporterRequ
 	return s
 }
 
+func (s *InstallCmsExporterRequest) SetDirectArgs(v string) *InstallCmsExporterRequest {
+	s.DirectArgs = &v
+	return s
+}
+
 func (s *InstallCmsExporterRequest) SetEnableTag(v bool) *InstallCmsExporterRequest {
 	s.EnableTag = &v
 	return s
@@ -9388,8 +10548,7 @@ func (s *InstallCmsExporterRequest) SetRegionId(v string) *InstallCmsExporterReq
 }
 
 type InstallCmsExporterResponseBody struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9494,10 +10653,9 @@ func (s *InstallManagedPrometheusRequest) SetVpcId(v string) *InstallManagedProm
 }
 
 type InstallManagedPrometheusResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -9817,28 +10975,17 @@ func (s *ListActivatedAlertsResponse) SetBody(v *ListActivatedAlertsResponseBody
 }
 
 type ListAlertsRequest struct {
-	// 告警名称
-	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// 通知策略ID
-	DispatchRuleId *int64 `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
-	// 查询告警发送历史记录的开始时间，时间格式：YYYY-MM-DD HH:mm:ss
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 集成类型
+	AlertName       *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	DispatchRuleId  *int64  `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 告警等级(P1~P6)
-	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// 默认不查活动记录，showActivities=true才查，只查最近3天的内容
-	ShowActivities *bool `json:"ShowActivities,omitempty" xml:"ShowActivities,omitempty"`
-	// 默认不查事件，showEvents=true才查
-	ShowEvents *bool `json:"ShowEvents,omitempty" xml:"ShowEvents,omitempty"`
-	// 每页展示数目
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// 查询告警发送历史记录的开始时间，时间格式：YYYY-MM-DD HH:mm:ss
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 告警状态(0 - 待处理， 1 - 处理中， 2 - 已处理)
-	State *int64 `json:"State,omitempty" xml:"State,omitempty"`
+	Page            *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	Severity        *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	ShowActivities  *bool   `json:"ShowActivities,omitempty" xml:"ShowActivities,omitempty"`
+	ShowEvents      *bool   `json:"ShowEvents,omitempty" xml:"ShowEvents,omitempty"`
+	Size            *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State           *int64  `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListAlertsRequest) String() string {
@@ -9905,10 +11052,8 @@ func (s *ListAlertsRequest) SetState(v int64) *ListAlertsRequest {
 }
 
 type ListAlertsResponseBody struct {
-	// 返回结构体
-	PageBean *ListAlertsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageBean  *ListAlertsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAlertsResponseBody) String() string {
@@ -9930,14 +11075,10 @@ func (s *ListAlertsResponseBody) SetRequestId(v string) *ListAlertsResponseBody 
 }
 
 type ListAlertsResponseBodyPageBean struct {
-	// 告警发送历史信息组
 	ListAlerts []*ListAlertsResponseBodyPageBeanListAlerts `json:"ListAlerts,omitempty" xml:"ListAlerts,omitempty" type:"Repeated"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 每页展示数目
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// 总数
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Page       *int64                                      `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size       *int64                                      `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total      *int64                                      `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListAlertsResponseBodyPageBean) String() string {
@@ -9969,24 +11110,15 @@ func (s *ListAlertsResponseBodyPageBean) SetTotal(v int64) *ListAlertsResponseBo
 }
 
 type ListAlertsResponseBodyPageBeanListAlerts struct {
-	// 活动列表
-	Activities []*ListAlertsResponseBodyPageBeanListAlertsActivities `json:"Activities,omitempty" xml:"Activities,omitempty" type:"Repeated"`
-	// 事件列表
-	AlertEvents []*ListAlertsResponseBodyPageBeanListAlertsAlertEvents `json:"AlertEvents,omitempty" xml:"AlertEvents,omitempty" type:"Repeated"`
-	// 告警ID
-	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
-	// 告警名称
-	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 通知策略ID
-	DispatchRuleId *float32 `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
-	// 通知策略名称
-	DispatchRuleName *string `json:"DispatchRuleName,omitempty" xml:"DispatchRuleName,omitempty"`
-	// 告警等级(P1~P6)
-	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// 告警状态(0 - 待处理， 1 - 处理中， 2 - 已处理)
-	State *int64 `json:"State,omitempty" xml:"State,omitempty"`
+	Activities       []*ListAlertsResponseBodyPageBeanListAlertsActivities  `json:"Activities,omitempty" xml:"Activities,omitempty" type:"Repeated"`
+	AlertEvents      []*ListAlertsResponseBodyPageBeanListAlertsAlertEvents `json:"AlertEvents,omitempty" xml:"AlertEvents,omitempty" type:"Repeated"`
+	AlertId          *int64                                                 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	AlertName        *string                                                `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	CreateTime       *string                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DispatchRuleId   *float32                                               `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
+	DispatchRuleName *string                                                `json:"DispatchRuleName,omitempty" xml:"DispatchRuleName,omitempty"`
+	Severity         *string                                                `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	State            *int64                                                 `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListAlertsResponseBodyPageBeanListAlerts) String() string {
@@ -10043,16 +11175,11 @@ func (s *ListAlertsResponseBodyPageBeanListAlerts) SetState(v int64) *ListAlerts
 }
 
 type ListAlertsResponseBodyPageBeanListAlertsActivities struct {
-	// 通知内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 描述
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 处理人名称
 	HandlerName *string `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
-	// 时间
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// 活动类型
-	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Time        *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Type        *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAlertsResponseBodyPageBeanListAlertsActivities) String() string {
@@ -10089,30 +11216,18 @@ func (s *ListAlertsResponseBodyPageBeanListAlertsActivities) SetType(v int64) *L
 }
 
 type ListAlertsResponseBodyPageBeanListAlertsAlertEvents struct {
-	// 事件名称
-	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// 注释列表
-	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
-	// 事件描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 事件地址
-	GeneratorURL *string `json:"GeneratorURL,omitempty" xml:"GeneratorURL,omitempty"`
-	// 集成名称
+	AlertName       *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	Annotations     *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GeneratorURL    *string `json:"GeneratorURL,omitempty" xml:"GeneratorURL,omitempty"`
 	IntegrationName *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
-	// 集成类型
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
-	// 标签列表
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 事件接受时间
-	ReceiveTime *string `json:"ReceiveTime,omitempty" xml:"ReceiveTime,omitempty"`
-	// 事件等级
-	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 告警状态Active("Active"),      * Inhibited("Inhibited"),      * Silenced("Silenced"),      * Resolved("Resolved")
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	Labels          *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	ReceiveTime     *string `json:"ReceiveTime,omitempty" xml:"ReceiveTime,omitempty"`
+	Severity        *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State           *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListAlertsResponseBodyPageBeanListAlertsAlertEvents) String() string {
@@ -10424,9 +11539,8 @@ func (s *ListCmsInstancesRequest) SetRegionId(v string) *ListCmsInstancesRequest
 }
 
 type ListCmsInstancesResponseBody struct {
-	Data *ListCmsInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListCmsInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListCmsInstancesResponseBody) String() string {
@@ -10476,6 +11590,7 @@ type ListCmsInstancesResponseBodyDataProducts struct {
 	Instance *string `json:"Instance,omitempty" xml:"Instance,omitempty"`
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Prod     *string `json:"Prod,omitempty" xml:"Prod,omitempty"`
+	Source   *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	State    *string `json:"State,omitempty" xml:"State,omitempty"`
 	Time     *string `json:"Time,omitempty" xml:"Time,omitempty"`
 	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -10512,6 +11627,11 @@ func (s *ListCmsInstancesResponseBodyDataProducts) SetName(v string) *ListCmsIns
 
 func (s *ListCmsInstancesResponseBodyDataProducts) SetProd(v string) *ListCmsInstancesResponseBodyDataProducts {
 	s.Prod = &v
+	return s
+}
+
+func (s *ListCmsInstancesResponseBodyDataProducts) SetSource(v string) *ListCmsInstancesResponseBodyDataProducts {
+	s.Source = &v
 	return s
 }
 
@@ -10914,6 +12034,7 @@ type ListDashboardsByNameRequest struct {
 	DashBoardVersion *string `json:"DashBoardVersion,omitempty" xml:"DashBoardVersion,omitempty"`
 	DataSourceType   *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	GroupName        *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	OnlyQuery        *bool   `json:"OnlyQuery,omitempty" xml:"OnlyQuery,omitempty"`
 	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -10953,6 +12074,11 @@ func (s *ListDashboardsByNameRequest) SetDataSourceType(v string) *ListDashboard
 
 func (s *ListDashboardsByNameRequest) SetGroupName(v string) *ListDashboardsByNameRequest {
 	s.GroupName = &v
+	return s
+}
+
+func (s *ListDashboardsByNameRequest) SetOnlyQuery(v bool) *ListDashboardsByNameRequest {
+	s.OnlyQuery = &v
 	return s
 }
 
@@ -11130,10 +12256,8 @@ func (s *ListDispatchRuleResponse) SetBody(v *ListDispatchRuleResponseBody) *Lis
 
 type ListEscalationPoliciesRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 每页展示数目
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Page *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s ListEscalationPoliciesRequest) String() string {
@@ -11160,10 +12284,8 @@ func (s *ListEscalationPoliciesRequest) SetSize(v int64) *ListEscalationPolicies
 }
 
 type ListEscalationPoliciesResponseBody struct {
-	// 分页对象
-	PageBean *ListEscalationPoliciesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageBean  *ListEscalationPoliciesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListEscalationPoliciesResponseBody) String() string {
@@ -11186,12 +12308,9 @@ func (s *ListEscalationPoliciesResponseBody) SetRequestId(v string) *ListEscalat
 
 type ListEscalationPoliciesResponseBodyPageBean struct {
 	EscalationPolicies []*ListEscalationPoliciesResponseBodyPageBeanEscalationPolicies `json:"EscalationPolicies,omitempty" xml:"EscalationPolicies,omitempty" type:"Repeated"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 每页展示数目
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// 总数
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Page               *int64                                                          `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size               *int64                                                          `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total              *int64                                                          `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListEscalationPoliciesResponseBodyPageBean) String() string {
@@ -11304,9 +12423,8 @@ func (s *ListEventBridgeIntegrationsRequest) SetSize(v int64) *ListEventBridgeIn
 }
 
 type ListEventBridgeIntegrationsResponseBody struct {
-	PageBean *ListEventBridgeIntegrationsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageBean  *ListEventBridgeIntegrationsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListEventBridgeIntegrationsResponseBody) String() string {
@@ -11420,15 +12538,398 @@ func (s *ListEventBridgeIntegrationsResponse) SetBody(v *ListEventBridgeIntegrat
 	return s
 }
 
+type ListInsightsEventsRequest struct {
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InsightsTypes *string `json:"InsightsTypes,omitempty" xml:"InsightsTypes,omitempty"`
+	Pid           *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListInsightsEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInsightsEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInsightsEventsRequest) SetEndTime(v string) *ListInsightsEventsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListInsightsEventsRequest) SetInsightsTypes(v string) *ListInsightsEventsRequest {
+	s.InsightsTypes = &v
+	return s
+}
+
+func (s *ListInsightsEventsRequest) SetPid(v string) *ListInsightsEventsRequest {
+	s.Pid = &v
+	return s
+}
+
+func (s *ListInsightsEventsRequest) SetRegionId(v string) *ListInsightsEventsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListInsightsEventsRequest) SetStartTime(v string) *ListInsightsEventsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListInsightsEventsResponseBody struct {
+	InsightsEvents []*ListInsightsEventsResponseBodyInsightsEvents `json:"InsightsEvents,omitempty" xml:"InsightsEvents,omitempty" type:"Repeated"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListInsightsEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInsightsEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInsightsEventsResponseBody) SetInsightsEvents(v []*ListInsightsEventsResponseBodyInsightsEvents) *ListInsightsEventsResponseBody {
+	s.InsightsEvents = v
+	return s
+}
+
+func (s *ListInsightsEventsResponseBody) SetRequestId(v string) *ListInsightsEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListInsightsEventsResponseBodyInsightsEvents struct {
+	Date  *int64  `json:"Date,omitempty" xml:"Date,omitempty"`
+	Desc  *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Pid   *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListInsightsEventsResponseBodyInsightsEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInsightsEventsResponseBodyInsightsEvents) GoString() string {
+	return s.String()
+}
+
+func (s *ListInsightsEventsResponseBodyInsightsEvents) SetDate(v int64) *ListInsightsEventsResponseBodyInsightsEvents {
+	s.Date = &v
+	return s
+}
+
+func (s *ListInsightsEventsResponseBodyInsightsEvents) SetDesc(v string) *ListInsightsEventsResponseBodyInsightsEvents {
+	s.Desc = &v
+	return s
+}
+
+func (s *ListInsightsEventsResponseBodyInsightsEvents) SetLevel(v string) *ListInsightsEventsResponseBodyInsightsEvents {
+	s.Level = &v
+	return s
+}
+
+func (s *ListInsightsEventsResponseBodyInsightsEvents) SetPid(v string) *ListInsightsEventsResponseBodyInsightsEvents {
+	s.Pid = &v
+	return s
+}
+
+func (s *ListInsightsEventsResponseBodyInsightsEvents) SetTitle(v string) *ListInsightsEventsResponseBodyInsightsEvents {
+	s.Title = &v
+	return s
+}
+
+func (s *ListInsightsEventsResponseBodyInsightsEvents) SetType(v string) *ListInsightsEventsResponseBodyInsightsEvents {
+	s.Type = &v
+	return s
+}
+
+type ListInsightsEventsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInsightsEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInsightsEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInsightsEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInsightsEventsResponse) SetHeaders(v map[string]*string) *ListInsightsEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInsightsEventsResponse) SetStatusCode(v int32) *ListInsightsEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInsightsEventsResponse) SetBody(v *ListInsightsEventsResponseBody) *ListInsightsEventsResponse {
+	s.Body = v
+	return s
+}
+
+type ListIntegrationRequest struct {
+	IntegrationName        *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
+	IntegrationProductType *string `json:"IntegrationProductType,omitempty" xml:"IntegrationProductType,omitempty"`
+	IsDetail               *bool   `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
+	Page                   *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size                   *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s ListIntegrationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntegrationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntegrationRequest) SetIntegrationName(v string) *ListIntegrationRequest {
+	s.IntegrationName = &v
+	return s
+}
+
+func (s *ListIntegrationRequest) SetIntegrationProductType(v string) *ListIntegrationRequest {
+	s.IntegrationProductType = &v
+	return s
+}
+
+func (s *ListIntegrationRequest) SetIsDetail(v bool) *ListIntegrationRequest {
+	s.IsDetail = &v
+	return s
+}
+
+func (s *ListIntegrationRequest) SetPage(v int64) *ListIntegrationRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListIntegrationRequest) SetSize(v int64) *ListIntegrationRequest {
+	s.Size = &v
+	return s
+}
+
+type ListIntegrationResponseBody struct {
+	PageInfo  *ListIntegrationResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListIntegrationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntegrationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntegrationResponseBody) SetPageInfo(v *ListIntegrationResponseBodyPageInfo) *ListIntegrationResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *ListIntegrationResponseBody) SetRequestId(v string) *ListIntegrationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListIntegrationResponseBodyPageInfo struct {
+	Iintegrations []*ListIntegrationResponseBodyPageInfoIintegrations `json:"Iintegrations,omitempty" xml:"Iintegrations,omitempty" type:"Repeated"`
+	Page          *int64                                              `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size          *int64                                              `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total         *int64                                              `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListIntegrationResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntegrationResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntegrationResponseBodyPageInfo) SetIintegrations(v []*ListIntegrationResponseBodyPageInfoIintegrations) *ListIntegrationResponseBodyPageInfo {
+	s.Iintegrations = v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfo) SetPage(v int64) *ListIntegrationResponseBodyPageInfo {
+	s.Page = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfo) SetSize(v int64) *ListIntegrationResponseBodyPageInfo {
+	s.Size = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfo) SetTotal(v int64) *ListIntegrationResponseBodyPageInfo {
+	s.Total = &v
+	return s
+}
+
+type ListIntegrationResponseBodyPageInfoIintegrations struct {
+	ApiEndpoint            *string                                                            `json:"ApiEndpoint,omitempty" xml:"ApiEndpoint,omitempty"`
+	CreateTime             *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	IntegrationDetail      *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail `json:"IntegrationDetail,omitempty" xml:"IntegrationDetail,omitempty" type:"Struct"`
+	IntegrationId          *int64                                                             `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
+	IntegrationName        *string                                                            `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
+	IntegrationProductType *string                                                            `json:"IntegrationProductType,omitempty" xml:"IntegrationProductType,omitempty"`
+	Liveness               *string                                                            `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	ShortToken             *string                                                            `json:"ShortToken,omitempty" xml:"ShortToken,omitempty"`
+	State                  *bool                                                              `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListIntegrationResponseBodyPageInfoIintegrations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntegrationResponseBodyPageInfoIintegrations) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetApiEndpoint(v string) *ListIntegrationResponseBodyPageInfoIintegrations {
+	s.ApiEndpoint = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetCreateTime(v string) *ListIntegrationResponseBodyPageInfoIintegrations {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetIntegrationDetail(v *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) *ListIntegrationResponseBodyPageInfoIintegrations {
+	s.IntegrationDetail = v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetIntegrationId(v int64) *ListIntegrationResponseBodyPageInfoIintegrations {
+	s.IntegrationId = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetIntegrationName(v string) *ListIntegrationResponseBodyPageInfoIintegrations {
+	s.IntegrationName = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetIntegrationProductType(v string) *ListIntegrationResponseBodyPageInfoIintegrations {
+	s.IntegrationProductType = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetLiveness(v string) *ListIntegrationResponseBodyPageInfoIintegrations {
+	s.Liveness = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetShortToken(v string) *ListIntegrationResponseBodyPageInfoIintegrations {
+	s.ShortToken = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetState(v bool) *ListIntegrationResponseBodyPageInfoIintegrations {
+	s.State = &v
+	return s
+}
+
+type ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail struct {
+	AutoRecover                *bool                    `json:"AutoRecover,omitempty" xml:"AutoRecover,omitempty"`
+	Description                *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	DuplicateKey               *string                  `json:"DuplicateKey,omitempty" xml:"DuplicateKey,omitempty"`
+	ExtendedFieldRedefineRules []map[string]interface{} `json:"ExtendedFieldRedefineRules,omitempty" xml:"ExtendedFieldRedefineRules,omitempty" type:"Repeated"`
+	FieldRedefineRules         []map[string]interface{} `json:"FieldRedefineRules,omitempty" xml:"FieldRedefineRules,omitempty" type:"Repeated"`
+	RecoverTime                *int64                   `json:"RecoverTime,omitempty" xml:"RecoverTime,omitempty"`
+	Stat                       []*int64                 `json:"Stat,omitempty" xml:"Stat,omitempty" type:"Repeated"`
+}
+
+func (s ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetAutoRecover(v bool) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+	s.AutoRecover = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetDescription(v string) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+	s.Description = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetDuplicateKey(v string) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+	s.DuplicateKey = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetExtendedFieldRedefineRules(v []map[string]interface{}) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+	s.ExtendedFieldRedefineRules = v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetFieldRedefineRules(v []map[string]interface{}) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+	s.FieldRedefineRules = v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetRecoverTime(v int64) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+	s.RecoverTime = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetStat(v []*int64) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+	s.Stat = v
+	return s
+}
+
+type ListIntegrationResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIntegrationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListIntegrationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntegrationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntegrationResponse) SetHeaders(v map[string]*string) *ListIntegrationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIntegrationResponse) SetStatusCode(v int32) *ListIntegrationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIntegrationResponse) SetBody(v *ListIntegrationResponseBody) *ListIntegrationResponse {
+	s.Body = v
+	return s
+}
+
 type ListNotificationPoliciesRequest struct {
-	// 是否查询详情信息
-	IsDetail *bool `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
-	// 通知策略名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 每页展示数目
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	IsDetail *bool   `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Page     *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Size     *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s ListNotificationPoliciesRequest) String() string {
@@ -11454,16 +12955,19 @@ func (s *ListNotificationPoliciesRequest) SetPage(v int64) *ListNotificationPoli
 	return s
 }
 
+func (s *ListNotificationPoliciesRequest) SetRegionId(v string) *ListNotificationPoliciesRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListNotificationPoliciesRequest) SetSize(v int64) *ListNotificationPoliciesRequest {
 	s.Size = &v
 	return s
 }
 
 type ListNotificationPoliciesResponseBody struct {
-	// 分页对象
-	PageBean *ListNotificationPoliciesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageBean  *ListNotificationPoliciesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListNotificationPoliciesResponseBody) String() string {
@@ -11485,14 +12989,10 @@ func (s *ListNotificationPoliciesResponseBody) SetRequestId(v string) *ListNotif
 }
 
 type ListNotificationPoliciesResponseBodyPageBean struct {
-	// 通知策略对象
 	NotificationPolicies []*ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies `json:"NotificationPolicies,omitempty" xml:"NotificationPolicies,omitempty" type:"Repeated"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 每页展示数目
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// 总数
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Page                 *int64                                                              `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size                 *int64                                                              `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total                *int64                                                              `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListNotificationPoliciesResponseBodyPageBean) String() string {
@@ -11524,28 +13024,17 @@ func (s *ListNotificationPoliciesResponseBodyPageBean) SetTotal(v int64) *ListNo
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies struct {
-	// 升级规则ID
-	EscalationPolicyId *int64 `json:"EscalationPolicyId,omitempty" xml:"EscalationPolicyId,omitempty"`
-	// 分组规则
-	GroupRule *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRule `json:"GroupRule,omitempty" xml:"GroupRule,omitempty" type:"Struct"`
-	// 通知策略ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 集成ID
-	IntegrationId *int64 `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
-	// 事件匹配规则列表
-	MatchingRules []*ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRules `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty" type:"Repeated"`
-	// 通知策略名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 通知规则
-	NotifyRule *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRule `json:"NotifyRule,omitempty" xml:"NotifyRule,omitempty" type:"Struct"`
-	// 通知模板
-	NotifyTemplate *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTemplate `json:"NotifyTemplate,omitempty" xml:"NotifyTemplate,omitempty" type:"Struct"`
-	// 是否重复通知
-	Repeat *bool `json:"Repeat,omitempty" xml:"Repeat,omitempty"`
-	// 重复通知时间间隔
-	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
-	// 是否发送恢复通知
-	SendRecoverMessage *bool `json:"SendRecoverMessage,omitempty" xml:"SendRecoverMessage,omitempty"`
+	EscalationPolicyId *int64                                                                           `json:"EscalationPolicyId,omitempty" xml:"EscalationPolicyId,omitempty"`
+	GroupRule          *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRule       `json:"GroupRule,omitempty" xml:"GroupRule,omitempty" type:"Struct"`
+	Id                 *int64                                                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	IntegrationId      *int64                                                                           `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
+	MatchingRules      []*ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRules `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty" type:"Repeated"`
+	Name               *string                                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	NotifyRule         *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRule      `json:"NotifyRule,omitempty" xml:"NotifyRule,omitempty" type:"Struct"`
+	NotifyTemplate     *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTemplate  `json:"NotifyTemplate,omitempty" xml:"NotifyTemplate,omitempty" type:"Struct"`
+	Repeat             *bool                                                                            `json:"Repeat,omitempty" xml:"Repeat,omitempty"`
+	RepeatInterval     *int64                                                                           `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
+	SendRecoverMessage *bool                                                                            `json:"SendRecoverMessage,omitempty" xml:"SendRecoverMessage,omitempty"`
 }
 
 func (s ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) String() string {
@@ -11612,11 +13101,8 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) SetSe
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRule struct {
-	// 分组间隔时间，选填，默认是30s
-	GroupInterval *int64 `json:"GroupInterval,omitempty" xml:"GroupInterval,omitempty"`
-	// 分组等待时间，选填，默认是5秒
-	GroupWait *int64 `json:"GroupWait,omitempty" xml:"GroupWait,omitempty"`
-	// 分组字段,为空则不分组，默认按照alertname分组
+	GroupInterval  *int64    `json:"GroupInterval,omitempty" xml:"GroupInterval,omitempty"`
+	GroupWait      *int64    `json:"GroupWait,omitempty" xml:"GroupWait,omitempty"`
 	GroupingFields []*string `json:"GroupingFields,omitempty" xml:"GroupingFields,omitempty" type:"Repeated"`
 }
 
@@ -11644,7 +13130,6 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRu
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRules struct {
-	// 匹配条件
 	MatchingConditions []*ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRulesMatchingConditions `json:"MatchingConditions,omitempty" xml:"MatchingConditions,omitempty" type:"Repeated"`
 }
 
@@ -11662,12 +13147,9 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchin
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRulesMatchingConditions struct {
-	// 条件字段
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 对应关系
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 条件字段值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRulesMatchingConditions) String() string {
@@ -11694,14 +13176,10 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchin
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRule struct {
-	// 通知渠道
-	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
-	// 通知时间段结束时间
-	NotifyEndTime *string `json:"NotifyEndTime,omitempty" xml:"NotifyEndTime,omitempty"`
-	// 通知对象
-	NotifyObjects []*ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRuleNotifyObjects `json:"NotifyObjects,omitempty" xml:"NotifyObjects,omitempty" type:"Repeated"`
-	// 通知时间段开始时间
-	NotifyStartTime *string `json:"NotifyStartTime,omitempty" xml:"NotifyStartTime,omitempty"`
+	NotifyChannels  []*string                                                                                  `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
+	NotifyEndTime   *string                                                                                    `json:"NotifyEndTime,omitempty" xml:"NotifyEndTime,omitempty"`
+	NotifyObjects   []*ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRuleNotifyObjects `json:"NotifyObjects,omitempty" xml:"NotifyObjects,omitempty" type:"Repeated"`
+	NotifyStartTime *string                                                                                    `json:"NotifyStartTime,omitempty" xml:"NotifyStartTime,omitempty"`
 }
 
 func (s ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRule) String() string {
@@ -11733,11 +13211,8 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyR
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRuleNotifyObjects struct {
-	// 通知对象ID
-	NotifyObjectId *int64 `json:"NotifyObjectId,omitempty" xml:"NotifyObjectId,omitempty"`
-	// 通知对象名称
+	NotifyObjectId   *int64  `json:"NotifyObjectId,omitempty" xml:"NotifyObjectId,omitempty"`
 	NotifyObjectName *string `json:"NotifyObjectName,omitempty" xml:"NotifyObjectName,omitempty"`
-	// 通知对象类型，CONTACT, CONTACT_GROUP, ARMS_CONTACT, DING_ROBOT
 	NotifyObjectType *string `json:"NotifyObjectType,omitempty" xml:"NotifyObjectType,omitempty"`
 }
 
@@ -11765,24 +13240,15 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyR
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTemplate struct {
-	// 邮件内容
-	EmailContent *string `json:"EmailContent,omitempty" xml:"EmailContent,omitempty"`
-	// 恢复告警邮件内容
+	EmailContent        *string `json:"EmailContent,omitempty" xml:"EmailContent,omitempty"`
 	EmailRecoverContent *string `json:"EmailRecoverContent,omitempty" xml:"EmailRecoverContent,omitempty"`
-	// 恢复告警邮件标题
-	EmailRecoverTitle *string `json:"EmailRecoverTitle,omitempty" xml:"EmailRecoverTitle,omitempty"`
-	// 邮件标题
-	EmailTitle *string `json:"EmailTitle,omitempty" xml:"EmailTitle,omitempty"`
-	// 机器人告警内容
-	RobotContent *string `json:"RobotContent,omitempty" xml:"RobotContent,omitempty"`
-	// 短信内容
-	SmsContent *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
-	// 恢复告警短信内容
-	SmsRecoverContent *string `json:"SmsRecoverContent,omitempty" xml:"SmsRecoverContent,omitempty"`
-	// 智能语音告警内容
-	TtsContent *string `json:"TtsContent,omitempty" xml:"TtsContent,omitempty"`
-	// 智能语音恢复告警内容
-	TtsRecoverContent *string `json:"TtsRecoverContent,omitempty" xml:"TtsRecoverContent,omitempty"`
+	EmailRecoverTitle   *string `json:"EmailRecoverTitle,omitempty" xml:"EmailRecoverTitle,omitempty"`
+	EmailTitle          *string `json:"EmailTitle,omitempty" xml:"EmailTitle,omitempty"`
+	RobotContent        *string `json:"RobotContent,omitempty" xml:"RobotContent,omitempty"`
+	SmsContent          *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
+	SmsRecoverContent   *string `json:"SmsRecoverContent,omitempty" xml:"SmsRecoverContent,omitempty"`
+	TtsContent          *string `json:"TtsContent,omitempty" xml:"TtsContent,omitempty"`
+	TtsRecoverContent   *string `json:"TtsRecoverContent,omitempty" xml:"TtsRecoverContent,omitempty"`
 }
 
 func (s ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTemplate) String() string {
@@ -11868,12 +13334,9 @@ func (s *ListNotificationPoliciesResponse) SetBody(v *ListNotificationPoliciesRe
 }
 
 type ListOnCallSchedulesRequest struct {
-	// 排班策略名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 展示数目
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Page *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s ListOnCallSchedulesRequest) String() string {
@@ -11900,10 +13363,8 @@ func (s *ListOnCallSchedulesRequest) SetSize(v int64) *ListOnCallSchedulesReques
 }
 
 type ListOnCallSchedulesResponseBody struct {
-	// 分页对象
-	PageBean *ListOnCallSchedulesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageBean  *ListOnCallSchedulesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListOnCallSchedulesResponseBody) String() string {
@@ -11926,12 +13387,9 @@ func (s *ListOnCallSchedulesResponseBody) SetRequestId(v string) *ListOnCallSche
 
 type ListOnCallSchedulesResponseBodyPageBean struct {
 	OnCallSchedules []*ListOnCallSchedulesResponseBodyPageBeanOnCallSchedules `json:"OnCallSchedules,omitempty" xml:"OnCallSchedules,omitempty" type:"Repeated"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 每页展示数目
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// 总数
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Page            *int64                                                    `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size            *int64                                                    `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total           *int64                                                    `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListOnCallSchedulesResponseBodyPageBean) String() string {
@@ -11963,12 +13421,9 @@ func (s *ListOnCallSchedulesResponseBodyPageBean) SetTotal(v int64) *ListOnCallS
 }
 
 type ListOnCallSchedulesResponseBodyPageBeanOnCallSchedules struct {
-	// 排班策略描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 排班策略ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 排班策略名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListOnCallSchedulesResponseBodyPageBeanOnCallSchedules) String() string {
@@ -12500,6 +13955,81 @@ func (s *ListPrometheusGlobalViewResponse) SetBody(v *ListPrometheusGlobalViewRe
 	return s
 }
 
+type ListPrometheusInstancesRequest struct {
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ShowGlobalView *bool   `json:"ShowGlobalView,omitempty" xml:"ShowGlobalView,omitempty"`
+}
+
+func (s ListPrometheusInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrometheusInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrometheusInstancesRequest) SetRegionId(v string) *ListPrometheusInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListPrometheusInstancesRequest) SetShowGlobalView(v bool) *ListPrometheusInstancesRequest {
+	s.ShowGlobalView = &v
+	return s
+}
+
+type ListPrometheusInstancesResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListPrometheusInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrometheusInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrometheusInstancesResponseBody) SetData(v string) *ListPrometheusInstancesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ListPrometheusInstancesResponseBody) SetRequestId(v string) *ListPrometheusInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListPrometheusInstancesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPrometheusInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPrometheusInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrometheusInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrometheusInstancesResponse) SetHeaders(v map[string]*string) *ListPrometheusInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPrometheusInstancesResponse) SetStatusCode(v int32) *ListPrometheusInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPrometheusInstancesResponse) SetBody(v *ListPrometheusInstancesResponseBody) *ListPrometheusInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type ListRetcodeAppsRequest struct {
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -12769,14 +14299,11 @@ func (s *ListScenarioResponse) SetBody(v *ListScenarioResponseBody) *ListScenari
 }
 
 type ListSilencePoliciesRequest struct {
-	// 是否查询详情信息
-	IsDetail *bool `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
-	// 静默策略名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 每页战术数目
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	IsDetail *bool   `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Page     *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Size     *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s ListSilencePoliciesRequest) String() string {
@@ -12802,16 +14329,19 @@ func (s *ListSilencePoliciesRequest) SetPage(v int64) *ListSilencePoliciesReques
 	return s
 }
 
+func (s *ListSilencePoliciesRequest) SetRegionId(v string) *ListSilencePoliciesRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListSilencePoliciesRequest) SetSize(v int64) *ListSilencePoliciesRequest {
 	s.Size = &v
 	return s
 }
 
 type ListSilencePoliciesResponseBody struct {
-	// 分页对象
-	PageBean *ListSilencePoliciesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageBean  *ListSilencePoliciesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListSilencePoliciesResponseBody) String() string {
@@ -12833,14 +14363,10 @@ func (s *ListSilencePoliciesResponseBody) SetRequestId(v string) *ListSilencePol
 }
 
 type ListSilencePoliciesResponseBodyPageBean struct {
-	// 页数
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 静默策略列表
+	Page            *int64                                                    `json:"Page,omitempty" xml:"Page,omitempty"`
 	SilencePolicies []*ListSilencePoliciesResponseBodyPageBeanSilencePolicies `json:"SilencePolicies,omitempty" xml:"SilencePolicies,omitempty" type:"Repeated"`
-	// 每页数目
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// 总数
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Size            *int64                                                    `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total           *int64                                                    `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListSilencePoliciesResponseBodyPageBean) String() string {
@@ -12872,12 +14398,9 @@ func (s *ListSilencePoliciesResponseBodyPageBean) SetTotal(v int64) *ListSilence
 }
 
 type ListSilencePoliciesResponseBodyPageBeanSilencePolicies struct {
-	// 静默策略ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 事件匹配规则列表
+	Id            *int64                                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
 	MatchingRules []*ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRules `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty" type:"Repeated"`
-	// 静默策略名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name          *string                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListSilencePoliciesResponseBodyPageBeanSilencePolicies) String() string {
@@ -12904,7 +14427,6 @@ func (s *ListSilencePoliciesResponseBodyPageBeanSilencePolicies) SetName(v strin
 }
 
 type ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRules struct {
-	// 匹配条件
 	MatchingConditions []*ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRulesMatchingConditions `json:"MatchingConditions,omitempty" xml:"MatchingConditions,omitempty" type:"Repeated"`
 }
 
@@ -12922,12 +14444,9 @@ func (s *ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRules) Se
 }
 
 type ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRulesMatchingConditions struct {
-	// 条件字段
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 对应关系
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 条件字段值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRulesMatchingConditions) String() string {
@@ -12978,159 +14497,6 @@ func (s *ListSilencePoliciesResponse) SetStatusCode(v int32) *ListSilencePolicie
 }
 
 func (s *ListSilencePoliciesResponse) SetBody(v *ListSilencePoliciesResponseBody) *ListSilencePoliciesResponse {
-	s.Body = v
-	return s
-}
-
-type ListTagResourcesRequest struct {
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s ListTagResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
-	s.Tag = v
-	return s
-}
-
-type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListTagResourcesRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
-	s.Value = &v
-	return s
-}
-
-type ListTagResourcesResponseBody struct {
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TagResource
-	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
-}
-
-func (s ListTagResourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
-	s.TagResources = v
-	return s
-}
-
-type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-}
-
-func (s ListTagResourcesResponseBodyTagResources) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesResponseBodyTagResources) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
-	s.TagKey = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
-	s.TagValue = &v
-	return s
-}
-
-type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListTagResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -13323,8 +14689,7 @@ func (s *ManageGetRecordingRuleRequest) SetRegionId(v string) *ManageGetRecordin
 }
 
 type ManageGetRecordingRuleResponseBody struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13411,8 +14776,7 @@ func (s *ManageRecordingRuleRequest) SetRuleYaml(v string) *ManageRecordingRuleR
 }
 
 type ManageRecordingRuleResponseBody struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13528,81 +14892,6 @@ func (s *OpenArmsDefaultSLRResponse) SetStatusCode(v int32) *OpenArmsDefaultSLRR
 }
 
 func (s *OpenArmsDefaultSLRResponse) SetBody(v *OpenArmsDefaultSLRResponseBody) *OpenArmsDefaultSLRResponse {
-	s.Body = v
-	return s
-}
-
-type OpenArmsServiceRequest struct {
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s OpenArmsServiceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OpenArmsServiceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *OpenArmsServiceRequest) SetOwnerId(v int64) *OpenArmsServiceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *OpenArmsServiceRequest) SetType(v string) *OpenArmsServiceRequest {
-	s.Type = &v
-	return s
-}
-
-type OpenArmsServiceResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s OpenArmsServiceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OpenArmsServiceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *OpenArmsServiceResponseBody) SetOrderId(v string) *OpenArmsServiceResponseBody {
-	s.OrderId = &v
-	return s
-}
-
-func (s *OpenArmsServiceResponseBody) SetRequestId(v string) *OpenArmsServiceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type OpenArmsServiceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *OpenArmsServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s OpenArmsServiceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OpenArmsServiceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *OpenArmsServiceResponse) SetHeaders(v map[string]*string) *OpenArmsServiceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *OpenArmsServiceResponse) SetStatusCode(v int32) *OpenArmsServiceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *OpenArmsServiceResponse) SetBody(v *OpenArmsServiceResponseBody) *OpenArmsServiceResponse {
 	s.Body = v
 	return s
 }
@@ -13840,246 +15129,6 @@ func (s *OpenXtraceDefaultSLRResponse) SetStatusCode(v int32) *OpenXtraceDefault
 }
 
 func (s *OpenXtraceDefaultSLRResponse) SetBody(v *OpenXtraceDefaultSLRResponseBody) *OpenXtraceDefaultSLRResponse {
-	s.Body = v
-	return s
-}
-
-type QueryDatasetRequest struct {
-	DatasetId     *int64                             `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	DateStr       *string                            `json:"DateStr,omitempty" xml:"DateStr,omitempty"`
-	Dimensions    []*QueryDatasetRequestDimensions   `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	HungryMode    *bool                              `json:"HungryMode,omitempty" xml:"HungryMode,omitempty"`
-	IntervalInSec *int32                             `json:"IntervalInSec,omitempty" xml:"IntervalInSec,omitempty"`
-	IsDrillDown   *bool                              `json:"IsDrillDown,omitempty" xml:"IsDrillDown,omitempty"`
-	Limit         *int32                             `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	MaxTime       *int64                             `json:"MaxTime,omitempty" xml:"MaxTime,omitempty"`
-	Measures      []*string                          `json:"Measures,omitempty" xml:"Measures,omitempty" type:"Repeated"`
-	MinTime       *int64                             `json:"MinTime,omitempty" xml:"MinTime,omitempty"`
-	OptionalDims  []*QueryDatasetRequestOptionalDims `json:"OptionalDims,omitempty" xml:"OptionalDims,omitempty" type:"Repeated"`
-	OrderByKey    *string                            `json:"OrderByKey,omitempty" xml:"OrderByKey,omitempty"`
-	ProxyUserId   *string                            `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
-	ReduceTail    *bool                              `json:"ReduceTail,omitempty" xml:"ReduceTail,omitempty"`
-	RequiredDims  []*QueryDatasetRequestRequiredDims `json:"RequiredDims,omitempty" xml:"RequiredDims,omitempty" type:"Repeated"`
-}
-
-func (s QueryDatasetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDatasetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDatasetRequest) SetDatasetId(v int64) *QueryDatasetRequest {
-	s.DatasetId = &v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetDateStr(v string) *QueryDatasetRequest {
-	s.DateStr = &v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetDimensions(v []*QueryDatasetRequestDimensions) *QueryDatasetRequest {
-	s.Dimensions = v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetHungryMode(v bool) *QueryDatasetRequest {
-	s.HungryMode = &v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetIntervalInSec(v int32) *QueryDatasetRequest {
-	s.IntervalInSec = &v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetIsDrillDown(v bool) *QueryDatasetRequest {
-	s.IsDrillDown = &v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetLimit(v int32) *QueryDatasetRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetMaxTime(v int64) *QueryDatasetRequest {
-	s.MaxTime = &v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetMeasures(v []*string) *QueryDatasetRequest {
-	s.Measures = v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetMinTime(v int64) *QueryDatasetRequest {
-	s.MinTime = &v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetOptionalDims(v []*QueryDatasetRequestOptionalDims) *QueryDatasetRequest {
-	s.OptionalDims = v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetOrderByKey(v string) *QueryDatasetRequest {
-	s.OrderByKey = &v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetProxyUserId(v string) *QueryDatasetRequest {
-	s.ProxyUserId = &v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetReduceTail(v bool) *QueryDatasetRequest {
-	s.ReduceTail = &v
-	return s
-}
-
-func (s *QueryDatasetRequest) SetRequiredDims(v []*QueryDatasetRequestRequiredDims) *QueryDatasetRequest {
-	s.RequiredDims = v
-	return s
-}
-
-type QueryDatasetRequestDimensions struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s QueryDatasetRequestDimensions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDatasetRequestDimensions) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDatasetRequestDimensions) SetKey(v string) *QueryDatasetRequestDimensions {
-	s.Key = &v
-	return s
-}
-
-func (s *QueryDatasetRequestDimensions) SetType(v string) *QueryDatasetRequestDimensions {
-	s.Type = &v
-	return s
-}
-
-func (s *QueryDatasetRequestDimensions) SetValue(v string) *QueryDatasetRequestDimensions {
-	s.Value = &v
-	return s
-}
-
-type QueryDatasetRequestOptionalDims struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s QueryDatasetRequestOptionalDims) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDatasetRequestOptionalDims) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDatasetRequestOptionalDims) SetKey(v string) *QueryDatasetRequestOptionalDims {
-	s.Key = &v
-	return s
-}
-
-func (s *QueryDatasetRequestOptionalDims) SetType(v string) *QueryDatasetRequestOptionalDims {
-	s.Type = &v
-	return s
-}
-
-func (s *QueryDatasetRequestOptionalDims) SetValue(v string) *QueryDatasetRequestOptionalDims {
-	s.Value = &v
-	return s
-}
-
-type QueryDatasetRequestRequiredDims struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s QueryDatasetRequestRequiredDims) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDatasetRequestRequiredDims) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDatasetRequestRequiredDims) SetKey(v string) *QueryDatasetRequestRequiredDims {
-	s.Key = &v
-	return s
-}
-
-func (s *QueryDatasetRequestRequiredDims) SetType(v string) *QueryDatasetRequestRequiredDims {
-	s.Type = &v
-	return s
-}
-
-func (s *QueryDatasetRequestRequiredDims) SetValue(v string) *QueryDatasetRequestRequiredDims {
-	s.Value = &v
-	return s
-}
-
-type QueryDatasetResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s QueryDatasetResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDatasetResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDatasetResponseBody) SetData(v string) *QueryDatasetResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *QueryDatasetResponseBody) SetRequestId(v string) *QueryDatasetResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type QueryDatasetResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryDatasetResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDatasetResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDatasetResponse) SetHeaders(v map[string]*string) *QueryDatasetResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryDatasetResponse) SetStatusCode(v int32) *QueryDatasetResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *QueryDatasetResponse) SetBody(v *QueryDatasetResponseBody) *QueryDatasetResponse {
 	s.Body = v
 	return s
 }
@@ -17219,10 +18268,8 @@ func (s *SearchTracesByPageResponse) SetBody(v *SearchTracesByPageResponseBody) 
 }
 
 type SendTTSVerifyLinkRequest struct {
-	// 告警联系人ID
-	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	// 告警联系人手机号码
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	ContactId *int64  `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	Phone     *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 
 func (s SendTTSVerifyLinkRequest) String() string {
@@ -17244,8 +18291,7 @@ func (s *SendTTSVerifyLinkRequest) SetPhone(v string) *SendTTSVerifyLinkRequest 
 }
 
 type SendTTSVerifyLinkResponseBody struct {
-	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Id of the request
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17521,111 +18567,6 @@ func (s *StopAlertResponse) SetBody(v *StopAlertResponseBody) *StopAlertResponse
 	return s
 }
 
-type TagResourcesRequest struct {
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s TagResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
-func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
-	s.Tag = v
-	return s
-}
-
-type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s TagResourcesRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourcesRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
-	s.Value = &v
-	return s
-}
-
-type TagResourcesResponseBody struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s TagResourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourcesResponseBody) SetData(v string) *TagResourcesResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s TagResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
-	s.Body = v
-	return s
-}
-
 type TurnOnSecondSwitchRequest struct {
 	Pid              *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	ProxyUserId      *string `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
@@ -17656,8 +18597,7 @@ func (s *TurnOnSecondSwitchRequest) SetReleaseStartTime(v int64) *TurnOnSecondSw
 }
 
 type TurnOnSecondSwitchResponseBody struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17744,10 +18684,9 @@ func (s *UninstallManagedPrometheusRequest) SetVpcId(v string) *UninstallManaged
 }
 
 type UninstallManagedPrometheusResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -17885,94 +18824,6 @@ func (s *UninstallPromClusterResponse) SetStatusCode(v int32) *UninstallPromClus
 }
 
 func (s *UninstallPromClusterResponse) SetBody(v *UninstallPromClusterResponseBody) *UninstallPromClusterResponse {
-	s.Body = v
-	return s
-}
-
-type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
-}
-
-func (s UntagResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UntagResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
-	s.All = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
-	s.TagKey = v
-	return s
-}
-
-type UntagResourcesResponseBody struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UntagResourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UntagResourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UntagResourcesResponseBody) SetData(v string) *UntagResourcesResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UntagResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UntagResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -18339,6 +19190,248 @@ func (s *UpdateDispatchRuleResponse) SetStatusCode(v int32) *UpdateDispatchRuleR
 }
 
 func (s *UpdateDispatchRuleResponse) SetBody(v *UpdateDispatchRuleResponseBody) *UpdateDispatchRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateIntegrationRequest struct {
+	ApiEndpoint                *string `json:"ApiEndpoint,omitempty" xml:"ApiEndpoint,omitempty"`
+	AutoRecover                *bool   `json:"AutoRecover,omitempty" xml:"AutoRecover,omitempty"`
+	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DuplicateKey               *string `json:"DuplicateKey,omitempty" xml:"DuplicateKey,omitempty"`
+	ExtendedFieldRedefineRules *string `json:"ExtendedFieldRedefineRules,omitempty" xml:"ExtendedFieldRedefineRules,omitempty"`
+	FieldRedefineRules         *string `json:"FieldRedefineRules,omitempty" xml:"FieldRedefineRules,omitempty"`
+	IntegrationId              *int64  `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
+	IntegrationName            *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
+	IntegrationProductType     *string `json:"IntegrationProductType,omitempty" xml:"IntegrationProductType,omitempty"`
+	Liveness                   *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	RecoverTime                *int64  `json:"RecoverTime,omitempty" xml:"RecoverTime,omitempty"`
+	ShortToken                 *string `json:"ShortToken,omitempty" xml:"ShortToken,omitempty"`
+	Stat                       *string `json:"Stat,omitempty" xml:"Stat,omitempty"`
+	State                      *bool   `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s UpdateIntegrationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIntegrationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIntegrationRequest) SetApiEndpoint(v string) *UpdateIntegrationRequest {
+	s.ApiEndpoint = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetAutoRecover(v bool) *UpdateIntegrationRequest {
+	s.AutoRecover = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetDescription(v string) *UpdateIntegrationRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetDuplicateKey(v string) *UpdateIntegrationRequest {
+	s.DuplicateKey = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetExtendedFieldRedefineRules(v string) *UpdateIntegrationRequest {
+	s.ExtendedFieldRedefineRules = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetFieldRedefineRules(v string) *UpdateIntegrationRequest {
+	s.FieldRedefineRules = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetIntegrationId(v int64) *UpdateIntegrationRequest {
+	s.IntegrationId = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetIntegrationName(v string) *UpdateIntegrationRequest {
+	s.IntegrationName = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetIntegrationProductType(v string) *UpdateIntegrationRequest {
+	s.IntegrationProductType = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetLiveness(v string) *UpdateIntegrationRequest {
+	s.Liveness = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetRecoverTime(v int64) *UpdateIntegrationRequest {
+	s.RecoverTime = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetShortToken(v string) *UpdateIntegrationRequest {
+	s.ShortToken = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetStat(v string) *UpdateIntegrationRequest {
+	s.Stat = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetState(v bool) *UpdateIntegrationRequest {
+	s.State = &v
+	return s
+}
+
+type UpdateIntegrationResponseBody struct {
+	Integration *UpdateIntegrationResponseBodyIntegration `json:"Integration,omitempty" xml:"Integration,omitempty" type:"Struct"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIntegrationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIntegrationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIntegrationResponseBody) SetIntegration(v *UpdateIntegrationResponseBodyIntegration) *UpdateIntegrationResponseBody {
+	s.Integration = v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBody) SetRequestId(v string) *UpdateIntegrationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIntegrationResponseBodyIntegration struct {
+	ApiEndpoint                *string                  `json:"ApiEndpoint,omitempty" xml:"ApiEndpoint,omitempty"`
+	AutoRecover                *bool                    `json:"AutoRecover,omitempty" xml:"AutoRecover,omitempty"`
+	Description                *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	DuplicateKey               *string                  `json:"DuplicateKey,omitempty" xml:"DuplicateKey,omitempty"`
+	ExtendedFieldRedefineRules []map[string]interface{} `json:"ExtendedFieldRedefineRules,omitempty" xml:"ExtendedFieldRedefineRules,omitempty" type:"Repeated"`
+	FieldRedefineRules         []map[string]interface{} `json:"FieldRedefineRules,omitempty" xml:"FieldRedefineRules,omitempty" type:"Repeated"`
+	IntegrationId              *int64                   `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
+	IntegrationName            *string                  `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
+	IntegrationProductType     *string                  `json:"IntegrationProductType,omitempty" xml:"IntegrationProductType,omitempty"`
+	Liveness                   *string                  `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	RecoverTime                *int64                   `json:"RecoverTime,omitempty" xml:"RecoverTime,omitempty"`
+	ShortToken                 *string                  `json:"ShortToken,omitempty" xml:"ShortToken,omitempty"`
+	Stat                       []*int64                 `json:"Stat,omitempty" xml:"Stat,omitempty" type:"Repeated"`
+	State                      *bool                    `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s UpdateIntegrationResponseBodyIntegration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIntegrationResponseBodyIntegration) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetApiEndpoint(v string) *UpdateIntegrationResponseBodyIntegration {
+	s.ApiEndpoint = &v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetAutoRecover(v bool) *UpdateIntegrationResponseBodyIntegration {
+	s.AutoRecover = &v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetDescription(v string) *UpdateIntegrationResponseBodyIntegration {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetDuplicateKey(v string) *UpdateIntegrationResponseBodyIntegration {
+	s.DuplicateKey = &v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetExtendedFieldRedefineRules(v []map[string]interface{}) *UpdateIntegrationResponseBodyIntegration {
+	s.ExtendedFieldRedefineRules = v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetFieldRedefineRules(v []map[string]interface{}) *UpdateIntegrationResponseBodyIntegration {
+	s.FieldRedefineRules = v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetIntegrationId(v int64) *UpdateIntegrationResponseBodyIntegration {
+	s.IntegrationId = &v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetIntegrationName(v string) *UpdateIntegrationResponseBodyIntegration {
+	s.IntegrationName = &v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetIntegrationProductType(v string) *UpdateIntegrationResponseBodyIntegration {
+	s.IntegrationProductType = &v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetLiveness(v string) *UpdateIntegrationResponseBodyIntegration {
+	s.Liveness = &v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetRecoverTime(v int64) *UpdateIntegrationResponseBodyIntegration {
+	s.RecoverTime = &v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetShortToken(v string) *UpdateIntegrationResponseBodyIntegration {
+	s.ShortToken = &v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetStat(v []*int64) *UpdateIntegrationResponseBodyIntegration {
+	s.Stat = v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetState(v bool) *UpdateIntegrationResponseBodyIntegration {
+	s.State = &v
+	return s
+}
+
+type UpdateIntegrationResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateIntegrationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateIntegrationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIntegrationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIntegrationResponse) SetHeaders(v map[string]*string) *UpdateIntegrationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIntegrationResponse) SetStatusCode(v int32) *UpdateIntegrationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateIntegrationResponse) SetBody(v *UpdateIntegrationResponseBody) *UpdateIntegrationResponse {
 	s.Body = v
 	return s
 }
@@ -18725,6 +19818,7 @@ func (s *UpdateWebhookResponse) SetBody(v *UpdateWebhookResponseBody) *UpdateWeb
 }
 
 type UploadRequest struct {
+	Edition  *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	File     *string `json:"File,omitempty" xml:"File,omitempty"`
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	Pid      *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
@@ -18738,6 +19832,11 @@ func (s UploadRequest) String() string {
 
 func (s UploadRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UploadRequest) SetEdition(v string) *UploadRequest {
+	s.Edition = &v
+	return s
 }
 
 func (s *UploadRequest) SetFile(v string) *UploadRequest {
@@ -18766,12 +19865,8 @@ func (s *UploadRequest) SetVersion(v string) *UploadRequest {
 }
 
 type UploadResponseBody struct {
-	Fid      *string `json:"Fid,omitempty" xml:"Fid,omitempty"`
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UploadTime *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
-	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UploadResult *UploadResponseBodyUploadResult `json:"UploadResult,omitempty" xml:"UploadResult,omitempty" type:"Struct"`
 }
 
 func (s UploadResponseBody) String() string {
@@ -18782,28 +19877,42 @@ func (s UploadResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UploadResponseBody) SetFid(v string) *UploadResponseBody {
-	s.Fid = &v
-	return s
-}
-
-func (s *UploadResponseBody) SetFileName(v string) *UploadResponseBody {
-	s.FileName = &v
-	return s
-}
-
 func (s *UploadResponseBody) SetRequestId(v string) *UploadResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *UploadResponseBody) SetUploadTime(v string) *UploadResponseBody {
-	s.UploadTime = &v
+func (s *UploadResponseBody) SetUploadResult(v *UploadResponseBodyUploadResult) *UploadResponseBody {
+	s.UploadResult = v
 	return s
 }
 
-func (s *UploadResponseBody) SetVersion(v string) *UploadResponseBody {
-	s.Version = &v
+type UploadResponseBodyUploadResult struct {
+	Fid        *string `json:"Fid,omitempty" xml:"Fid,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	UploadTime *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
+}
+
+func (s UploadResponseBodyUploadResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadResponseBodyUploadResult) GoString() string {
+	return s.String()
+}
+
+func (s *UploadResponseBodyUploadResult) SetFid(v string) *UploadResponseBodyUploadResult {
+	s.Fid = &v
+	return s
+}
+
+func (s *UploadResponseBodyUploadResult) SetFileName(v string) *UploadResponseBodyUploadResult {
+	s.FileName = &v
+	return s
+}
+
+func (s *UploadResponseBodyUploadResult) SetUploadTime(v string) *UploadResponseBodyUploadResult {
+	s.UploadTime = &v
 	return s
 }
 
@@ -19179,6 +20288,58 @@ func (client *Client) AddPrometheusGlobalViewByAliClusterIds(request *AddPrometh
 	runtime := &util.RuntimeOptions{}
 	_result = &AddPrometheusGlobalViewByAliClusterIdsResponse{}
 	_body, _err := client.AddPrometheusGlobalViewByAliClusterIdsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddPrometheusInstanceWithOptions(request *AddPrometheusInstanceRequest, runtime *util.RuntimeOptions) (_result *AddPrometheusInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddPrometheusInstance"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddPrometheusInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddPrometheusInstance(request *AddPrometheusInstanceRequest) (_result *AddPrometheusInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddPrometheusInstanceResponse{}
+	_body, _err := client.AddPrometheusInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19600,74 +20761,6 @@ func (client *Client) CreateAlertContactGroup(request *CreateAlertContactGroupRe
 	return _result, _err
 }
 
-func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *util.RuntimeOptions) (_result *CreateAppResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AppName)) {
-		query["AppName"] = request.AppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Config)) {
-		query["Config"] = request.Config
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Language)) {
-		query["Language"] = request.Language
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Source)) {
-		query["Source"] = request.Source
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateApp"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateAppResponse{}
-	_body, _err := client.CreateAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateDispatchRuleWithOptions(request *CreateDispatchRuleRequest, runtime *util.RuntimeOptions) (_result *CreateDispatchRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19709,6 +20802,66 @@ func (client *Client) CreateDispatchRule(request *CreateDispatchRuleRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDispatchRuleResponse{}
 	_body, _err := client.CreateDispatchRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateIntegrationWithOptions(request *CreateIntegrationRequest, runtime *util.RuntimeOptions) (_result *CreateIntegrationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRecover)) {
+		body["AutoRecover"] = request.AutoRecover
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntegrationName)) {
+		body["IntegrationName"] = request.IntegrationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntegrationProductType)) {
+		body["IntegrationProductType"] = request.IntegrationProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecoverTime)) {
+		body["RecoverTime"] = request.RecoverTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIntegration"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateIntegrationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateIntegration(request *CreateIntegrationRequest) (_result *CreateIntegrationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateIntegrationResponse{}
+	_body, _err := client.CreateIntegrationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19860,6 +21013,10 @@ func (client *Client) CreateOrUpdateContactWithOptions(request *CreateOrUpdateCo
 
 	if !tea.BoolValue(util.IsUnset(request.Phone)) {
 		body["Phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReissueSendNotice)) {
+		body["ReissueSendNotice"] = request.ReissueSendNotice
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20030,12 +21187,20 @@ func (client *Client) CreateOrUpdateIMRobotWithOptions(request *CreateOrUpdateIM
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CardTemplate)) {
+		body["CardTemplate"] = request.CardTemplate
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DailyNoc)) {
 		body["DailyNoc"] = request.DailyNoc
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DailyNocTime)) {
 		body["DailyNocTime"] = request.DailyNocTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableOutgoing)) {
+		body["EnableOutgoing"] = request.EnableOutgoing
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RobotAddress)) {
@@ -20048,6 +21213,10 @@ func (client *Client) CreateOrUpdateIMRobotWithOptions(request *CreateOrUpdateIM
 
 	if !tea.BoolValue(util.IsUnset(request.RobotName)) {
 		body["RobotName"] = request.RobotName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		body["Token"] = request.Token
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -20126,6 +21295,10 @@ func (client *Client) CreateOrUpdateNotificationPolicyWithOptions(request *Creat
 		body["NotifyTemplate"] = request.NotifyTemplate
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Repeat)) {
 		body["Repeat"] = request.Repeat
 	}
@@ -20188,6 +21361,10 @@ func (client *Client) CreateOrUpdateSilencePolicyWithOptions(request *CreateOrUp
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20425,6 +21602,108 @@ func (client *Client) CreateRetcodeApp(request *CreateRetcodeAppRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRetcodeAppResponse{}
 	_body, _err := client.CreateRetcodeAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSyntheticTaskWithOptions(tmpReq *CreateSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *CreateSyntheticTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateSyntheticTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CommonParam))) {
+		request.CommonParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CommonParam), tea.String("CommonParam"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ExtendInterval))) {
+		request.ExtendIntervalShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ExtendInterval), tea.String("ExtendInterval"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.MonitorList)) {
+		request.MonitorListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MonitorList, tea.String("MonitorList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Net))) {
+		request.NetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Net), tea.String("Net"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommonParamShrink)) {
+		query["CommonParam"] = request.CommonParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendIntervalShrink)) {
+		query["ExtendInterval"] = request.ExtendIntervalShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntervalTime)) {
+		query["IntervalTime"] = request.IntervalTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntervalType)) {
+		query["IntervalType"] = request.IntervalType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpType)) {
+		query["IpType"] = request.IpType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorListShrink)) {
+		query["MonitorList"] = request.MonitorListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetShrink)) {
+		query["Net"] = request.NetShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSyntheticTask"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSyntheticTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSyntheticTask(request *CreateSyntheticTaskRequest) (_result *CreateSyntheticTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSyntheticTaskResponse{}
+	_body, _err := client.CreateSyntheticTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21118,6 +22397,46 @@ func (client *Client) DeleteIntegration(request *DeleteIntegrationRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DeleteIntegrationsWithOptions(request *DeleteIntegrationsRequest, runtime *util.RuntimeOptions) (_result *DeleteIntegrationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIntegrations"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteIntegrationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteIntegrations(request *DeleteIntegrationsRequest) (_result *DeleteIntegrationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteIntegrationsResponse{}
+	_body, _err := client.DeleteIntegrationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteNotificationPolicyWithOptions(request *DeleteNotificationPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteNotificationPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21387,6 +22706,64 @@ func (client *Client) DeleteSilencePolicy(request *DeleteSilencePolicyRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSilencePolicyResponse{}
 	_body, _err := client.DeleteSilencePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSourceMapWithOptions(tmpReq *DeleteSourceMapRequest, runtime *util.RuntimeOptions) (_result *DeleteSourceMapResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteSourceMapShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FidList)) {
+		request.FidListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FidList, tea.String("FidList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FidListShrink)) {
+		query["FidList"] = request.FidListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pid)) {
+		query["Pid"] = request.Pid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSourceMap"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSourceMapResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSourceMap(request *DeleteSourceMapRequest) (_result *DeleteSourceMapResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSourceMapResponse{}
+	_body, _err := client.DeleteSourceMapWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22062,7 +23439,7 @@ func (client *Client) GetAuthToken(request *GetAuthTokenRequest) (_result *GetAu
 	return _result, _err
 }
 
-func (client *Client) GetClusterInfoForArmsWithOptions(request *GetClusterInfoForArmsRequest, runtime *util.RuntimeOptions) (_result *GetClusterInfoForArmsResponse, _err error) {
+func (client *Client) GetClusterAllUrlWithOptions(request *GetClusterAllUrlRequest, runtime *util.RuntimeOptions) (_result *GetClusterAllUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -22072,23 +23449,15 @@ func (client *Client) GetClusterInfoForArmsWithOptions(request *GetClusterInfoFo
 		query["ClusterId"] = request.ClusterId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Md5)) {
-		query["Md5"] = request.Md5
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		query["UserId"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetClusterInfoForArms"),
+		Action:      tea.String("GetClusterAllUrl"),
 		Version:     tea.String("2019-08-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -22098,7 +23467,7 @@ func (client *Client) GetClusterInfoForArmsWithOptions(request *GetClusterInfoFo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetClusterInfoForArmsResponse{}
+	_result = &GetClusterAllUrlResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22107,50 +23476,10 @@ func (client *Client) GetClusterInfoForArmsWithOptions(request *GetClusterInfoFo
 	return _result, _err
 }
 
-func (client *Client) GetClusterInfoForArms(request *GetClusterInfoForArmsRequest) (_result *GetClusterInfoForArmsResponse, _err error) {
+func (client *Client) GetClusterAllUrl(request *GetClusterAllUrlRequest) (_result *GetClusterAllUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetClusterInfoForArmsResponse{}
-	_body, _err := client.GetClusterInfoForArmsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetEstimateFeeInfoWithOptions(request *GetEstimateFeeInfoRequest, runtime *util.RuntimeOptions) (_result *GetEstimateFeeInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetEstimateFeeInfo"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetEstimateFeeInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetEstimateFeeInfo(request *GetEstimateFeeInfoRequest) (_result *GetEstimateFeeInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetEstimateFeeInfoResponse{}
-	_body, _err := client.GetEstimateFeeInfoWithOptions(request, runtime)
+	_result = &GetClusterAllUrlResponse{}
+	_body, _err := client.GetClusterAllUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22307,6 +23636,46 @@ func (client *Client) GetMultipleTrace(request *GetMultipleTraceRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMultipleTraceResponse{}
 	_body, _err := client.GetMultipleTraceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOnCallSchedulesDetailWithOptions(request *GetOnCallSchedulesDetailRequest, runtime *util.RuntimeOptions) (_result *GetOnCallSchedulesDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOnCallSchedulesDetail"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOnCallSchedulesDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOnCallSchedulesDetail(request *GetOnCallSchedulesDetailRequest) (_result *GetOnCallSchedulesDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOnCallSchedulesDetailResponse{}
+	_body, _err := client.GetOnCallSchedulesDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22498,6 +23867,70 @@ func (client *Client) GetRetcodeShareUrl(request *GetRetcodeShareUrlRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) GetSourceMapInfoWithOptions(request *GetSourceMapInfoRequest, runtime *util.RuntimeOptions) (_result *GetSourceMapInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AscendingSequence)) {
+		query["AscendingSequence"] = request.AscendingSequence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Edition)) {
+		query["Edition"] = request.Edition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ID)) {
+		query["ID"] = request.ID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderField)) {
+		query["OrderField"] = request.OrderField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSourceMapInfo"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSourceMapInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSourceMapInfo(request *GetSourceMapInfoRequest) (_result *GetSourceMapInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSourceMapInfoResponse{}
+	_body, _err := client.GetSourceMapInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *util.RuntimeOptions) (_result *GetStackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22555,6 +23988,50 @@ func (client *Client) GetStack(request *GetStackRequest) (_result *GetStackRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &GetStackResponse{}
 	_body, _err := client.GetStackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSyntheticTaskMonitorsWithOptions(request *GetSyntheticTaskMonitorsRequest, runtime *util.RuntimeOptions) (_result *GetSyntheticTaskMonitorsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSyntheticTaskMonitors"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSyntheticTaskMonitorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSyntheticTaskMonitors(request *GetSyntheticTaskMonitorsRequest) (_result *GetSyntheticTaskMonitorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSyntheticTaskMonitorsResponse{}
+	_body, _err := client.GetSyntheticTaskMonitorsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22666,58 +24143,6 @@ func (client *Client) GetTraceApp(request *GetTraceAppRequest) (_result *GetTrac
 	return _result, _err
 }
 
-func (client *Client) GetUserCommercialStatusWithOptions(request *GetUserCommercialStatusRequest, runtime *util.RuntimeOptions) (_result *GetUserCommercialStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
-		query["ParentId"] = request.ParentId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetUserId)) {
-		query["TargetUserId"] = request.TargetUserId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		query["UserId"] = request.UserId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetUserCommercialStatus"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetUserCommercialStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetUserCommercialStatus(request *GetUserCommercialStatusRequest) (_result *GetUserCommercialStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetUserCommercialStatusResponse{}
-	_body, _err := client.GetUserCommercialStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ImportAppAlertRulesWithOptions(request *ImportAppAlertRulesRequest, runtime *util.RuntimeOptions) (_result *ImportAppAlertRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22794,6 +24219,10 @@ func (client *Client) InstallCmsExporterWithOptions(request *InstallCmsExporterR
 
 	if !tea.BoolValue(util.IsUnset(request.CmsArgs)) {
 		query["CmsArgs"] = request.CmsArgs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectArgs)) {
+		query["DirectArgs"] = request.DirectArgs
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableTag)) {
@@ -23240,6 +24669,10 @@ func (client *Client) ListDashboardsByNameWithOptions(request *ListDashboardsByN
 		query["GroupName"] = request.GroupName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OnlyQuery)) {
+		query["OnlyQuery"] = request.OnlyQuery
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
 		query["ProductCode"] = request.ProductCode
 	}
@@ -23414,6 +24847,106 @@ func (client *Client) ListEventBridgeIntegrations(request *ListEventBridgeIntegr
 	return _result, _err
 }
 
+func (client *Client) ListInsightsEventsWithOptions(request *ListInsightsEventsRequest, runtime *util.RuntimeOptions) (_result *ListInsightsEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InsightsTypes)) {
+		query["InsightsTypes"] = request.InsightsTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pid)) {
+		query["Pid"] = request.Pid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInsightsEvents"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInsightsEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInsightsEvents(request *ListInsightsEventsRequest) (_result *ListInsightsEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInsightsEventsResponse{}
+	_body, _err := client.ListInsightsEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListIntegrationWithOptions(request *ListIntegrationRequest, runtime *util.RuntimeOptions) (_result *ListIntegrationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIntegration"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIntegrationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListIntegration(request *ListIntegrationRequest) (_result *ListIntegrationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIntegrationResponse{}
+	_body, _err := client.ListIntegrationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListNotificationPoliciesWithOptions(request *ListNotificationPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListNotificationPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23430,6 +24963,10 @@ func (client *Client) ListNotificationPoliciesWithOptions(request *ListNotificat
 
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
@@ -23666,6 +25203,54 @@ func (client *Client) ListPrometheusGlobalView(request *ListPrometheusGlobalView
 	return _result, _err
 }
 
+func (client *Client) ListPrometheusInstancesWithOptions(request *ListPrometheusInstancesRequest, runtime *util.RuntimeOptions) (_result *ListPrometheusInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowGlobalView)) {
+		query["ShowGlobalView"] = request.ShowGlobalView
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPrometheusInstances"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPrometheusInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPrometheusInstances(request *ListPrometheusInstancesRequest) (_result *ListPrometheusInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPrometheusInstancesResponse{}
+	_body, _err := client.ListPrometheusInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListRetcodeAppsWithOptions(request *ListRetcodeAppsRequest, runtime *util.RuntimeOptions) (_result *ListRetcodeAppsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23792,6 +25377,10 @@ func (client *Client) ListSilencePoliciesWithOptions(request *ListSilencePolicie
 		query["Page"] = request.Page
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
 		query["Size"] = request.Size
 	}
@@ -23823,62 +25412,6 @@ func (client *Client) ListSilencePolicies(request *ListSilencePoliciesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSilencePoliciesResponse{}
 	_body, _err := client.ListSilencePoliciesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["NextToken"] = request.NextToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
-		query["Tag"] = request.Tag
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListTagResources"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24082,54 +25615,6 @@ func (client *Client) OpenArmsDefaultSLR(request *OpenArmsDefaultSLRRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) OpenArmsServiceWithOptions(request *OpenArmsServiceRequest, runtime *util.RuntimeOptions) (_result *OpenArmsServiceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("OpenArmsService"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &OpenArmsServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) OpenArmsService(request *OpenArmsServiceRequest) (_result *OpenArmsServiceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &OpenArmsServiceResponse{}
-	_body, _err := client.OpenArmsServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) OpenArmsServiceSecondVersionWithOptions(request *OpenArmsServiceSecondVersionRequest, runtime *util.RuntimeOptions) (_result *OpenArmsServiceSecondVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24275,106 +25760,6 @@ func (client *Client) OpenXtraceDefaultSLR(request *OpenXtraceDefaultSLRRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenXtraceDefaultSLRResponse{}
 	_body, _err := client.OpenXtraceDefaultSLRWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) QueryDatasetWithOptions(request *QueryDatasetRequest, runtime *util.RuntimeOptions) (_result *QueryDatasetResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
-		query["DatasetId"] = request.DatasetId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DateStr)) {
-		query["DateStr"] = request.DateStr
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Dimensions)) {
-		query["Dimensions"] = request.Dimensions
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.HungryMode)) {
-		query["HungryMode"] = request.HungryMode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IntervalInSec)) {
-		query["IntervalInSec"] = request.IntervalInSec
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IsDrillDown)) {
-		query["IsDrillDown"] = request.IsDrillDown
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Limit)) {
-		query["Limit"] = request.Limit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxTime)) {
-		query["MaxTime"] = request.MaxTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Measures)) {
-		query["Measures"] = request.Measures
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MinTime)) {
-		query["MinTime"] = request.MinTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OptionalDims)) {
-		query["OptionalDims"] = request.OptionalDims
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderByKey)) {
-		query["OrderByKey"] = request.OrderByKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProxyUserId)) {
-		query["ProxyUserId"] = request.ProxyUserId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ReduceTail)) {
-		query["ReduceTail"] = request.ReduceTail
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RequiredDims)) {
-		query["RequiredDims"] = request.RequiredDims
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryDataset"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryDatasetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryDataset(request *QueryDatasetRequest) (_result *QueryDatasetResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryDatasetResponse{}
-	_body, _err := client.QueryDatasetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25630,58 +27015,6 @@ func (client *Client) StopAlert(request *StopAlertRequest) (_result *StopAlertRe
 	return _result, _err
 }
 
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
-		query["Tag"] = request.Tag
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("TagResources"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) TurnOnSecondSwitchWithOptions(request *TurnOnSecondSwitchRequest, runtime *util.RuntimeOptions) (_result *TurnOnSecondSwitchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25819,62 +27152,6 @@ func (client *Client) UninstallPromCluster(request *UninstallPromClusterRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UninstallPromClusterResponse{}
 	_body, _err := client.UninstallPromClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.All)) {
-		query["All"] = request.All
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
-		query["TagKey"] = request.TagKey
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UntagResources"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26114,6 +27391,102 @@ func (client *Client) UpdateDispatchRule(request *UpdateDispatchRuleRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) UpdateIntegrationWithOptions(request *UpdateIntegrationRequest, runtime *util.RuntimeOptions) (_result *UpdateIntegrationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiEndpoint)) {
+		body["ApiEndpoint"] = request.ApiEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRecover)) {
+		body["AutoRecover"] = request.AutoRecover
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DuplicateKey)) {
+		body["DuplicateKey"] = request.DuplicateKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendedFieldRedefineRules)) {
+		body["ExtendedFieldRedefineRules"] = request.ExtendedFieldRedefineRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldRedefineRules)) {
+		body["FieldRedefineRules"] = request.FieldRedefineRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntegrationId)) {
+		body["IntegrationId"] = request.IntegrationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntegrationName)) {
+		body["IntegrationName"] = request.IntegrationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntegrationProductType)) {
+		body["IntegrationProductType"] = request.IntegrationProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Liveness)) {
+		body["Liveness"] = request.Liveness
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecoverTime)) {
+		body["RecoverTime"] = request.RecoverTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShortToken)) {
+		body["ShortToken"] = request.ShortToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stat)) {
+		body["Stat"] = request.Stat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		body["State"] = request.State
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIntegration"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateIntegrationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateIntegration(request *UpdateIntegrationRequest) (_result *UpdateIntegrationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIntegrationResponse{}
+	_body, _err := client.UpdateIntegrationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdatePrometheusAlertRuleWithOptions(request *UpdatePrometheusAlertRuleRequest, runtime *util.RuntimeOptions) (_result *UpdatePrometheusAlertRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26284,6 +27657,10 @@ func (client *Client) UploadWithOptions(request *UploadRequest, runtime *util.Ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Edition)) {
+		query["Edition"] = request.Edition
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FileName)) {
 		query["FileName"] = request.FileName
 	}
