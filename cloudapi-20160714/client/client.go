@@ -459,9 +459,10 @@ func (s *BatchAbolishApisRequest) SetSecurityToken(v string) *BatchAbolishApisRe
 }
 
 type BatchAbolishApisRequestApi struct {
-	ApiUid  *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	ApiUid    *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	StageId   *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s BatchAbolishApisRequestApi) String() string {
@@ -484,6 +485,11 @@ func (s *BatchAbolishApisRequestApi) SetGroupId(v string) *BatchAbolishApisReque
 
 func (s *BatchAbolishApisRequestApi) SetStageId(v string) *BatchAbolishApisRequestApi {
 	s.StageId = &v
+	return s
+}
+
+func (s *BatchAbolishApisRequestApi) SetStageName(v string) *BatchAbolishApisRequestApi {
+	s.StageName = &v
 	return s
 }
 
@@ -9946,20 +9952,13 @@ func (s *DescribeApisResponse) SetBody(v *DescribeApisResponseBody) *DescribeApi
 }
 
 type DescribeApisByAppRequest struct {
-	// API名称
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// API的ID
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// APP的ID
-	AppId       *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// API的请求HTTP Method
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// 当前页码
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页条目
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// API请求路径
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiUid        *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Method        *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Path          *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -10019,14 +10018,10 @@ func (s *DescribeApisByAppRequest) SetSecurityToken(v string) *DescribeApisByApp
 
 type DescribeApisByAppResponseBody struct {
 	AppApiRelationInfos *DescribeApisByAppResponseBodyAppApiRelationInfos `json:"AppApiRelationInfos,omitempty" xml:"AppApiRelationInfos,omitempty" type:"Struct"`
-	// 当前页码
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页条目
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总条目数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber          *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId           *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount          *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeApisByAppResponseBody) String() string {
@@ -10080,31 +10075,19 @@ func (s *DescribeApisByAppResponseBodyAppApiRelationInfos) SetAppApiRelationInfo
 }
 
 type DescribeApisByAppResponseBodyAppApiRelationInfosAppApiRelationInfo struct {
-	// API的ID
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// API名称
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// 授权有效时间
-	AuthVaildTime *string `json:"AuthVaildTime,omitempty" xml:"AuthVaildTime,omitempty"`
-	// 授权来源
+	ApiId               *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName             *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	AuthVaildTime       *string `json:"AuthVaildTime,omitempty" xml:"AuthVaildTime,omitempty"`
 	AuthorizationSource *string `json:"AuthorizationSource,omitempty" xml:"AuthorizationSource,omitempty"`
-	// 授权时间
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 分组ID
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 分组名称
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// API的请求HTTP Method
-	Method   *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// API的请求路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 地区ID
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 环境名称
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	CreatedTime         *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId             *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName           *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Method              *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Operator            *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Path                *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageName           *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeApisByAppResponseBodyAppApiRelationInfosAppApiRelationInfo) String() string {
@@ -18076,21 +18059,14 @@ func (s *DescribeUpdateVpcInfoTaskResponse) SetBody(v *DescribeUpdateVpcInfoTask
 }
 
 type DescribeVpcAccessesRequest struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// VPC授权名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 当前页码
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页展示条目
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 端口号
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Vpc授权ID
-	VpcAccessId *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
-	// Vpc ID
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcAccessId   *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeVpcAccessesRequest) String() string {
@@ -18200,21 +18176,13 @@ func (s *DescribeVpcAccessesResponseBodyVpcAccessAttributes) SetVpcAccessAttribu
 }
 
 type DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute struct {
-	// VPC授权的创建时间
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// VPC授权的描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// VPC中的后端服务信息
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// VPC授权名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// VPC中的后端服务端口
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 地域id
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// vpc授权ID
-	VpcAccessId *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
-	// VPC的ID
+	CreatedTime       *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port              *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcAccessId       *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
 	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VpcTargetHostName *string `json:"VpcTargetHostName,omitempty" xml:"VpcTargetHostName,omitempty"`
 }
