@@ -14,12 +14,9 @@ import (
 )
 
 type ConsumerGroup struct {
-	// 消费者名称。
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 是否有序消费
-	Order *bool `json:"order,omitempty" xml:"order,omitempty"`
-	// 消费超时时长，单位为妙
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	Order   *bool   `json:"order,omitempty" xml:"order,omitempty"`
+	Timeout *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s ConsumerGroup) String() string {
@@ -46,9 +43,7 @@ func (s *ConsumerGroup) SetTimeout(v int32) *ConsumerGroup {
 }
 
 type EncryptConf struct {
-	// enable
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// 加密算法，只支持default和m4。当 enable 为 true 时，此项必选。
+	Enable      *bool               `json:"enable,omitempty" xml:"enable,omitempty"`
 	EncryptType *string             `json:"encrypt_type,omitempty" xml:"encrypt_type,omitempty"`
 	UserCmkInfo *EncryptUserCmkConf `json:"user_cmk_info,omitempty" xml:"user_cmk_info,omitempty"`
 }
@@ -77,11 +72,8 @@ func (s *EncryptConf) SetUserCmkInfo(v *EncryptUserCmkConf) *EncryptConf {
 }
 
 type EncryptUserCmkConf struct {
-	// arn
-	Arn *string `json:"arn,omitempty" xml:"arn,omitempty"`
-	// cmk_key_id
+	Arn      *string `json:"arn,omitempty" xml:"arn,omitempty"`
 	CmkKeyId *string `json:"cmk_key_id,omitempty" xml:"cmk_key_id,omitempty"`
-	// region_id
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
 }
 
@@ -109,22 +101,14 @@ func (s *EncryptUserCmkConf) SetRegionId(v string) *EncryptUserCmkConf {
 }
 
 type LogtailConfig struct {
-	// logtail 配置的名称。
-	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
-	// 创建时间，unix 时间戳。
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// logtail 输入的详细配置。
-	InputDetail map[string]interface{} `json:"inputDetail,omitempty" xml:"inputDetail,omitempty"`
-	// logtail 读取日志的输入类型。
-	InputType *string `json:"inputType,omitempty" xml:"inputType,omitempty"`
-	// 最后一次修改时间，unix 时间戳。
-	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// 日志样例，可以用于自动生成正则捕获字段。
-	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
-	// logtail 输出的详细配置。
-	OutputDetail *LogtailConfigOutputDetail `json:"outputDetail,omitempty" xml:"outputDetail,omitempty" type:"Struct"`
-	// logtail 输出的目标类型。这里固定选择 LogService。
-	OutputType *string `json:"outputType,omitempty" xml:"outputType,omitempty"`
+	ConfigName     *string                    `json:"configName,omitempty" xml:"configName,omitempty"`
+	CreateTime     *int64                     `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	InputDetail    map[string]interface{}     `json:"inputDetail,omitempty" xml:"inputDetail,omitempty"`
+	InputType      *string                    `json:"inputType,omitempty" xml:"inputType,omitempty"`
+	LastModifyTime *int64                     `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	LogSample      *string                    `json:"logSample,omitempty" xml:"logSample,omitempty"`
+	OutputDetail   *LogtailConfigOutputDetail `json:"outputDetail,omitempty" xml:"outputDetail,omitempty" type:"Struct"`
+	OutputType     *string                    `json:"outputType,omitempty" xml:"outputType,omitempty"`
 }
 
 func (s LogtailConfig) String() string {
@@ -176,12 +160,9 @@ func (s *LogtailConfig) SetOutputType(v string) *LogtailConfig {
 }
 
 type LogtailConfigOutputDetail struct {
-	// 日志项目的 endpoint。
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// 输出的目标 logstore 名称。
+	Endpoint     *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	// 地域。
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	Region       *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
 func (s LogtailConfigOutputDetail) String() string {
@@ -208,16 +189,11 @@ func (s *LogtailConfigOutputDetail) SetRegion(v string) *LogtailConfigOutputDeta
 }
 
 type SavedSearch struct {
-	// displayName
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// logstore
-	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// savedsearchName
+	DisplayName     *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Logstore        *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
 	SavedsearchName *string `json:"savedsearchName,omitempty" xml:"savedsearchName,omitempty"`
-	// searchQuery
-	SearchQuery *string `json:"searchQuery,omitempty" xml:"searchQuery,omitempty"`
-	// topic
-	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	SearchQuery     *string `json:"searchQuery,omitempty" xml:"searchQuery,omitempty"`
+	Topic           *string `json:"topic,omitempty" xml:"topic,omitempty"`
 }
 
 func (s SavedSearch) String() string {
@@ -254,16 +230,11 @@ func (s *SavedSearch) SetTopic(v string) *SavedSearch {
 }
 
 type Chart struct {
-	// action
-	Action map[string]interface{} `json:"action,omitempty" xml:"action,omitempty"`
-	// 图表的显示配置
-	Display *ChartDisplay `json:"display,omitempty" xml:"display,omitempty" type:"Struct"`
-	// 查询配置
-	Search *ChartSearch `json:"search,omitempty" xml:"search,omitempty" type:"Struct"`
-	// 图表标题。支持大小写英文字母、数字、下划线_、连字符-，连字符与下划线不能作为名称开头与结尾，长度必须在[2,64] 之间。
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 图表的类型。
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Action  map[string]interface{} `json:"action,omitempty" xml:"action,omitempty"`
+	Display map[string]interface{} `json:"display,omitempty" xml:"display,omitempty"`
+	Search  map[string]interface{} `json:"search,omitempty" xml:"search,omitempty"`
+	Title   *string                `json:"title,omitempty" xml:"title,omitempty"`
+	Type    *string                `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s Chart) String() string {
@@ -279,12 +250,12 @@ func (s *Chart) SetAction(v map[string]interface{}) *Chart {
 	return s
 }
 
-func (s *Chart) SetDisplay(v *ChartDisplay) *Chart {
+func (s *Chart) SetDisplay(v map[string]interface{}) *Chart {
 	s.Display = v
 	return s
 }
 
-func (s *Chart) SetSearch(v *ChartSearch) *Chart {
+func (s *Chart) SetSearch(v map[string]interface{}) *Chart {
 	s.Search = v
 	return s
 }
@@ -299,116 +270,12 @@ func (s *Chart) SetType(v string) *Chart {
 	return s
 }
 
-type ChartDisplay struct {
-	// 高度
-	Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
-	// 宽度
-	Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
-	// x 轴
-	XAxis []*string `json:"xAxis,omitempty" xml:"xAxis,omitempty" type:"Repeated"`
-	// x 坐标
-	XPos *int64 `json:"xPos,omitempty" xml:"xPos,omitempty"`
-	// y 轴
-	YAxis []*string `json:"yAxis,omitempty" xml:"yAxis,omitempty" type:"Repeated"`
-	// y 坐标
-	YPos *int64 `json:"yPos,omitempty" xml:"yPos,omitempty"`
-}
-
-func (s ChartDisplay) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChartDisplay) GoString() string {
-	return s.String()
-}
-
-func (s *ChartDisplay) SetHeight(v int64) *ChartDisplay {
-	s.Height = &v
-	return s
-}
-
-func (s *ChartDisplay) SetWidth(v int64) *ChartDisplay {
-	s.Width = &v
-	return s
-}
-
-func (s *ChartDisplay) SetXAxis(v []*string) *ChartDisplay {
-	s.XAxis = v
-	return s
-}
-
-func (s *ChartDisplay) SetXPos(v int64) *ChartDisplay {
-	s.XPos = &v
-	return s
-}
-
-func (s *ChartDisplay) SetYAxis(v []*string) *ChartDisplay {
-	s.YAxis = v
-	return s
-}
-
-func (s *ChartDisplay) SetYPos(v int64) *ChartDisplay {
-	s.YPos = &v
-	return s
-}
-
-type ChartSearch struct {
-	// 结束时间
-	End *string `json:"end,omitempty" xml:"end,omitempty"`
-	// logstore 名称
-	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// 查询语句
-	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// 开始时间
-	Start *string `json:"start,omitempty" xml:"start,omitempty"`
-	// topic
-	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
-}
-
-func (s ChartSearch) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChartSearch) GoString() string {
-	return s.String()
-}
-
-func (s *ChartSearch) SetEnd(v string) *ChartSearch {
-	s.End = &v
-	return s
-}
-
-func (s *ChartSearch) SetLogstore(v string) *ChartSearch {
-	s.Logstore = &v
-	return s
-}
-
-func (s *ChartSearch) SetQuery(v string) *ChartSearch {
-	s.Query = &v
-	return s
-}
-
-func (s *ChartSearch) SetStart(v string) *ChartSearch {
-	s.Start = &v
-	return s
-}
-
-func (s *ChartSearch) SetTopic(v string) *ChartSearch {
-	s.Topic = &v
-	return s
-}
-
 type Dashboard struct {
-	// 属性值，可用于修改仪表盘的布局等属性，例如 "type": "free" 自由布局， "type":"grid" 网格布局。
-	Attribute map[string]*string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	// 仪表盘内包含的图表。
-	Charts []*Chart `json:"charts,omitempty" xml:"charts,omitempty" type:"Repeated"`
-	// 仪表盘ID。同一个Project下，仪表盘ID唯一，不可重复。
-	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
-	// 描述信息。
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 仪表盘的展示名称。
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Attribute     map[string]*string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	Charts        []*Chart           `json:"charts,omitempty" xml:"charts,omitempty" type:"Repeated"`
+	DashboardName *string            `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
+	Description   *string            `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string            `json:"displayName,omitempty" xml:"displayName,omitempty"`
 }
 
 func (s Dashboard) String() string {
@@ -445,20 +312,13 @@ func (s *Dashboard) SetDisplayName(v string) *Dashboard {
 }
 
 type EtlJob struct {
-	// 是否启用
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// 任务名称
-	EtlJobName *string `json:"etlJobName,omitempty" xml:"etlJobName,omitempty"`
-	// 运行函数配置
-	FunctionConfig *EtlJobFunctionConfig `json:"functionConfig,omitempty" xml:"functionConfig,omitempty" type:"Struct"`
-	// 参数列表
+	Enable            *bool                  `json:"enable,omitempty" xml:"enable,omitempty"`
+	EtlJobName        *string                `json:"etlJobName,omitempty" xml:"etlJobName,omitempty"`
+	FunctionConfig    *EtlJobFunctionConfig  `json:"functionConfig,omitempty" xml:"functionConfig,omitempty" type:"Struct"`
 	FunctionParameter map[string]interface{} `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
-	// 日志配置
-	LogConfig *EtlJobLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
-	// 配置数据来源
-	SourceConfig *EtlJobSourceConfig `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty" type:"Struct"`
-	// 触发器配置
-	TriggerConfig *EtlJobTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Struct"`
+	LogConfig         *EtlJobLogConfig       `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
+	SourceConfig      *EtlJobSourceConfig    `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty" type:"Struct"`
+	TriggerConfig     *EtlJobTriggerConfig   `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Struct"`
 }
 
 func (s EtlJob) String() string {
@@ -505,20 +365,13 @@ func (s *EtlJob) SetTriggerConfig(v *EtlJobTriggerConfig) *EtlJob {
 }
 
 type EtlJobFunctionConfig struct {
-	// 账户 id
-	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// endpoint
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// 函数名
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// 函数 provider，可选值为 FunctionCompute 、CloudProdLogDispatch。当值为 FunctionCompute 时，endpoint、accountid 、regionName 、serviceName 、functionName 必选。
+	AccountId        *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	Endpoint         *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	FunctionName     *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
 	FunctionProvider *string `json:"functionProvider,omitempty" xml:"functionProvider,omitempty"`
-	// 地域
-	RegionName *string `json:"regionName,omitempty" xml:"regionName,omitempty"`
-	// 角色授权
-	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// 服务名
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	RegionName       *string `json:"regionName,omitempty" xml:"regionName,omitempty"`
+	RoleArn          *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	ServiceName      *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s EtlJobFunctionConfig) String() string {
@@ -565,12 +418,9 @@ func (s *EtlJobFunctionConfig) SetServiceName(v string) *EtlJobFunctionConfig {
 }
 
 type EtlJobLogConfig struct {
-	// endpoint
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// logstore 名称
+	Endpoint     *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	// project 名称
-	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	ProjectName  *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
 }
 
 func (s EtlJobLogConfig) String() string {
@@ -597,7 +447,6 @@ func (s *EtlJobLogConfig) SetProjectName(v string) *EtlJobLogConfig {
 }
 
 type EtlJobSourceConfig struct {
-	// logstore 名称
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
 }
 
@@ -615,16 +464,11 @@ func (s *EtlJobSourceConfig) SetLogstoreName(v string) *EtlJobSourceConfig {
 }
 
 type EtlJobTriggerConfig struct {
-	// 最大重试次数，必须在[0,100] 之间
-	MaxRetryTime *int32 `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
-	// 角色授权配置
-	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// 开始位置，可选 latest、at-unixtime， 默认 latest。
+	MaxRetryTime     *int32  `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
+	RoleArn          *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
 	StartingPosition *string `json:"startingPosition,omitempty" xml:"startingPosition,omitempty"`
-	// 开始时间
-	StartingUnixtime *int64 `json:"startingUnixtime,omitempty" xml:"startingUnixtime,omitempty"`
-	// 触发间隔，单位为秒，必须在 [3,600] 之间
-	TriggerInterval *int32 `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
+	StartingUnixtime *int64  `json:"startingUnixtime,omitempty" xml:"startingUnixtime,omitempty"`
+	TriggerInterval  *int32  `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
 }
 
 func (s EtlJobTriggerConfig) String() string {
@@ -661,15 +505,10 @@ func (s *EtlJobTriggerConfig) SetTriggerInterval(v int32) *EtlJobTriggerConfig {
 }
 
 type EtlMeta struct {
-	// 是否启用
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// key
-	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	// 名字
-	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	// tag
-	EtlMetaTag *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
-	// value
+	Enable       *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	EtlMetaKey   *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
+	EtlMetaName  *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
+	EtlMetaTag   *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
 	EtlMetaValue *string `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
 }
 
@@ -707,12 +546,9 @@ func (s *EtlMeta) SetEtlMetaValue(v string) *EtlMeta {
 }
 
 type ExternalStore struct {
-	// 外部存储的名称。
-	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
-	// 参数
-	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
-	// 类型。可选 rds-vpc 或者 oss
-	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
+	ExternalStoreName *string                `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
+	Parameter         map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	StoreType         *string                `json:"storeType,omitempty" xml:"storeType,omitempty"`
 }
 
 func (s ExternalStore) String() string {
@@ -739,10 +575,8 @@ func (s *ExternalStore) SetStoreType(v string) *ExternalStore {
 }
 
 type Logging struct {
-	// logging 配置项
 	LoggingDetails []*LoggingLoggingDetails `json:"loggingDetails,omitempty" xml:"loggingDetails,omitempty" type:"Repeated"`
-	// project 名称。
-	LoggingProject *string `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
+	LoggingProject *string                  `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
 }
 
 func (s Logging) String() string {
@@ -764,10 +598,8 @@ func (s *Logging) SetLoggingProject(v string) *Logging {
 }
 
 type LoggingLoggingDetails struct {
-	// logstore 名称。
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// logging 类型。
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s LoggingLoggingDetails) String() string {
@@ -789,30 +621,18 @@ func (s *LoggingLoggingDetails) SetType(v string) *LoggingLoggingDetails {
 }
 
 type Logstore struct {
-	// 接收日志后，自动添加客户端外网IP和日志到达时间
-	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
-	// 是否开启 shard 自动分裂。当写入数据量超过已有分区（Shard）写入服务能力且持续5分钟以上时，开启自动分裂功能可自动根据数据量增加分区数量
-	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	// 创建时间。
-	CreateTime *int32 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// WebTracking功能支持快速采集各种浏览器以及iOS/Android/APP访问信息，默认关闭
-	EnableTracking *bool `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
-	// Encrypt configuration
-	EncryptConf *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
-	// 必须在 (30, ttl) 之间
-	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
-	// 最后修改时间。
-	LastModifyTime *int32 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// logstore 的名称。
-	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	// 最大 shard 数量。
-	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	// shard 数量。
-	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
-	// telemetryType
-	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
-	// 数据保存的天数。
-	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	AppendMeta     *bool        `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
+	AutoSplit      *bool        `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	CreateTime     *int32       `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	EnableTracking *bool        `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
+	EncryptConf    *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
+	HotTtl         *int32       `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	LastModifyTime *int32       `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	LogstoreName   *string      `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	MaxSplitShard  *int32       `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	ShardCount     *int32       `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	TelemetryType  *string      `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
+	Ttl            *int32       `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s Logstore) String() string {
@@ -884,14 +704,10 @@ func (s *Logstore) SetTtl(v int32) *Logstore {
 }
 
 type Machine struct {
-	// 机器 ip 地址。
-	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	// 最后一次心跳时间。Unix时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
-	LastHeartbeatTime *int64 `json:"lastHeartbeatTime,omitempty" xml:"lastHeartbeatTime,omitempty"`
-	// 机器的唯一标识。
-	MachineUniqueid *string `json:"machine-uniqueid,omitempty" xml:"machine-uniqueid,omitempty"`
-	// 机器的用户自定义标识。
-	UserdefinedId *string `json:"userdefined-id,omitempty" xml:"userdefined-id,omitempty"`
+	Ip                *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	LastHeartbeatTime *int64  `json:"lastHeartbeatTime,omitempty" xml:"lastHeartbeatTime,omitempty"`
+	MachineUniqueid   *string `json:"machine-uniqueid,omitempty" xml:"machine-uniqueid,omitempty"`
+	UserdefinedId     *string `json:"userdefined-id,omitempty" xml:"userdefined-id,omitempty"`
 }
 
 func (s Machine) String() string {
@@ -923,16 +739,11 @@ func (s *Machine) SetUserdefinedId(v string) *Machine {
 }
 
 type MachineGroup struct {
-	// 机器组属性。
-	GroupAttribute *MachineGroupGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
-	// 机器组名称。
-	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// 机器组种类。目前固定为空字符串。
-	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	// 机器组标识种类，支持 IP 标识或者用户自定义标识，即 ip 、userdefined。
-	MachineIdentifyType *string `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
-	// 机器组标识列表。
-	MachineList []*string `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
+	GroupAttribute      *MachineGroupGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
+	GroupName           *string                     `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	GroupType           *string                     `json:"groupType,omitempty" xml:"groupType,omitempty"`
+	MachineIdentifyType *string                     `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
+	MachineList         []*string                   `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
 }
 
 func (s MachineGroup) String() string {
@@ -969,10 +780,8 @@ func (s *MachineGroup) SetMachineList(v []*string) *MachineGroup {
 }
 
 type MachineGroupGroupAttribute struct {
-	// 机器组所依赖的外部管理系统标识。
 	ExternalName *string `json:"externalName,omitempty" xml:"externalName,omitempty"`
-	// 机器组的日志主题。
-	GroupTopic *string `json:"groupTopic,omitempty" xml:"groupTopic,omitempty"`
+	GroupTopic   *string `json:"groupTopic,omitempty" xml:"groupTopic,omitempty"`
 }
 
 func (s MachineGroupGroupAttribute) String() string {
@@ -994,20 +803,13 @@ func (s *MachineGroupGroupAttribute) SetGroupTopic(v string) *MachineGroupGroupA
 }
 
 type Project struct {
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 最后更新时间
+	CreateTime     *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
 	LastModifyTime *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// owner
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// Project名称
-	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// 所在区域
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// 状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Owner          *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	ProjectName    *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	Region         *string `json:"region,omitempty" xml:"region,omitempty"`
+	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s Project) String() string {
@@ -1054,16 +856,11 @@ func (s *Project) SetStatus(v string) *Project {
 }
 
 type Shard struct {
-	// Shard的创建时间。Unix时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
-	CreateTime *int32 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 指定Shard范围的结束值，Shard范围中不包含该值。即 shard 包含MD5值在 [inclusiveBeginKey, exclusiveEndKey) 之间的日志。
-	ExclusiveEndKey *string `json:"exclusiveEndKey,omitempty" xml:"exclusiveEndKey,omitempty"`
-	// 指定Shard范围的起始值，Shard范围中包含该值。即 shard 包含MD5值在 [inclusiveBeginKey, exclusiveEndKey) 之间的日志。
+	CreateTime        *int32  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	ExclusiveEndKey   *string `json:"exclusiveEndKey,omitempty" xml:"exclusiveEndKey,omitempty"`
 	InclusiveBeginKey *string `json:"inclusiveBeginKey,omitempty" xml:"inclusiveBeginKey,omitempty"`
-	// shard id
-	ShardID *int32 `json:"shardID,omitempty" xml:"shardID,omitempty"`
-	// shard 的读写状态，readwrite 或者 readonly。
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	ShardID           *int32  `json:"shardID,omitempty" xml:"shardID,omitempty"`
+	Status            *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s Shard) String() string {
@@ -1140,13 +937,9 @@ func (s *BatchCreateEtlMetaRequest) SetEtlMetaList(v []*BatchCreateEtlMetaReques
 }
 
 type BatchCreateEtlMetaRequestEtlMetaList struct {
-	// 是否启用
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
-	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	// 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
-	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,128]之间。
+	Enable       *bool                  `json:"enable,omitempty" xml:"enable,omitempty"`
+	EtlMetaKey   *string                `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
+	EtlMetaName  *string                `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
 	EtlMetaTag   *string                `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
 	EtlMetaValue map[string]interface{} `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
 }
@@ -1208,15 +1001,11 @@ func (s *BatchCreateEtlMetaResponse) SetStatusCode(v int32) *BatchCreateEtlMetaR
 }
 
 type BatchModifyEtlMetaStatusRequest struct {
-	// 当 range 的值为 "list" 时有效，匹配list中的 metaKey
 	EtlMetaKeyList []*string `json:"etlMetaKeyList,omitempty" xml:"etlMetaKeyList,omitempty" type:"Repeated"`
 	EtlMetaName    *string   `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	// 匹配的 tag，当 tag 为 "__all_etl_meta_tag_match__" 时表示全部匹配。
-	EtlMetaTag *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
-	// 操作作用的范围，可选 all 代表匹配全部，list 按名单列表匹配 key 两种模式。
-	Range *string `json:"range,omitempty" xml:"range,omitempty"`
-	// 操作类型，支持启用、禁用、删除三种，即 batch_enable、batch_disable、batch_delete。
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	EtlMetaTag     *string   `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
+	Range          *string   `json:"range,omitempty" xml:"range,omitempty"`
+	Type           *string   `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s BatchModifyEtlMetaStatusRequest) String() string {
@@ -1293,13 +1082,9 @@ func (s *BatchUpdateEtlMetaRequest) SetEtlMetaList(v *BatchUpdateEtlMetaRequestE
 }
 
 type BatchUpdateEtlMetaRequestEtlMetaList struct {
-	// 是否启用。etlMetaTag、etlMetaValue、enable 至少需要存在一个。
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
-	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	// 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
-	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,128]之间。
+	Enable       *bool                  `json:"enable,omitempty" xml:"enable,omitempty"`
+	EtlMetaKey   *string                `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
+	EtlMetaName  *string                `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
 	EtlMetaTag   *string                `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
 	EtlMetaValue map[string]interface{} `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
 }
@@ -1453,13 +1238,9 @@ func (s *CreateDomainResponse) SetStatusCode(v int32) *CreateDomainResponse {
 }
 
 type CreateEtlMetaRequest struct {
-	// 是否启用
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
-	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	// 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
-	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,128]之间。
+	Enable       *bool                  `json:"enable,omitempty" xml:"enable,omitempty"`
+	EtlMetaKey   *string                `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
+	EtlMetaName  *string                `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
 	EtlMetaTag   *string                `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
 	EtlMetaValue map[string]interface{} `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
 }
@@ -1521,19 +1302,13 @@ func (s *CreateEtlMetaResponse) SetStatusCode(v int32) *CreateEtlMetaResponse {
 }
 
 type CreateIndexRequest struct {
-	Keys map[string]*KeysValue `json:"keys,omitempty" xml:"keys,omitempty"`
-	// 配置全文索引
-	Line *CreateIndexRequestLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
-	// 开启日志聚类，开启后白名单与黑名单至多生效其中一个。
-	LogReduce *bool `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
-	// 日志聚类的聚类字段黑名单
-	LogReduceBlackList []*string `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
-	// 日志聚类的聚类字段白名单
-	LogReduceWhiteList []*string `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
-	// 统计字段的最大长度
-	MaxTextLen *int32 `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
-	// 保存时间，单位为天
-	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	Keys               map[string]*KeysValue   `json:"keys,omitempty" xml:"keys,omitempty"`
+	Line               *CreateIndexRequestLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
+	LogReduce          *bool                   `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
+	LogReduceBlackList []*string               `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
+	LogReduceWhiteList []*string               `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
+	MaxTextLen         *int32                  `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
+	Ttl                *int32                  `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s CreateIndexRequest) String() string {
@@ -1580,16 +1355,11 @@ func (s *CreateIndexRequest) SetTtl(v int32) *CreateIndexRequest {
 }
 
 type CreateIndexRequestLine struct {
-	// 大小写敏感
-	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// 包含中文
-	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
-	// 排除的字段列表，不能与include_keys同时指定。
-	ExcludeKeys []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
-	// 包含的字段列表，不能与exclude_keys同时指定。
-	IncludeKeys []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
-	// 分词符列表。可以设置一个分词参数，指定这个字段按照哪一种方式分词。
-	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	Chn           *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
+	ExcludeKeys   []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
+	IncludeKeys   []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
+	Token         []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
 }
 
 func (s CreateIndexRequestLine) String() string {
@@ -1743,10 +1513,8 @@ func (s *CreateLogStoreResponse) SetStatusCode(v int32) *CreateLogStoreResponse 
 }
 
 type CreateLoggingRequest struct {
-	// 服务日志配置列表。
 	LoggingDetails []*CreateLoggingRequestLoggingDetails `json:"loggingDetails,omitempty" xml:"loggingDetails,omitempty" type:"Repeated"`
-	// 服务日志要保存到的 project 名称。
-	LoggingProject *string `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
+	LoggingProject *string                               `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
 }
 
 func (s CreateLoggingRequest) String() string {
@@ -1768,10 +1536,8 @@ func (s *CreateLoggingRequest) SetLoggingProject(v string) *CreateLoggingRequest
 }
 
 type CreateLoggingRequestLoggingDetails struct {
-	// 该种类服务日志要保存到的 logstore 名称。
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// 服务日志的种类。可选 "consumergroup_log"、 "logtail_alarm"、"operation_log"、"logtail_profile"、"metering"、"logtail_status"、"scheduled_sql_alert"、 "etl_alert" 等。
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateLoggingRequestLoggingDetails) String() string {
@@ -1816,16 +1582,11 @@ func (s *CreateLoggingResponse) SetStatusCode(v int32) *CreateLoggingResponse {
 }
 
 type CreateMachineGroupRequest struct {
-	// 机器组属性。
-	GroupAttribute *CreateMachineGroupRequestGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
-	// 机器组名称。
-	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// 机器组类型，可选值，默认为空。
-	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	// 机器组标识种类，支持 ip 、userdefined 两种。
-	MachineIdentifyType *string `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
-	// 机器列表。
-	MachineList []*string `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
+	GroupAttribute      *CreateMachineGroupRequestGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
+	GroupName           *string                                  `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	GroupType           *string                                  `json:"groupType,omitempty" xml:"groupType,omitempty"`
+	MachineIdentifyType *string                                  `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
+	MachineList         []*string                                `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
 }
 
 func (s CreateMachineGroupRequest) String() string {
@@ -1862,10 +1623,8 @@ func (s *CreateMachineGroupRequest) SetMachineList(v []*string) *CreateMachineGr
 }
 
 type CreateMachineGroupRequestGroupAttribute struct {
-	// 机器组所依赖的外部管理系统标识。
 	ExternalName *string `json:"externalName,omitempty" xml:"externalName,omitempty"`
-	// 机器组的日志主题。
-	GroupTopic *string `json:"groupTopic,omitempty" xml:"groupTopic,omitempty"`
+	GroupTopic   *string `json:"groupTopic,omitempty" xml:"groupTopic,omitempty"`
 }
 
 func (s CreateMachineGroupRequestGroupAttribute) String() string {
@@ -1905,6 +1664,385 @@ func (s *CreateMachineGroupResponse) SetHeaders(v map[string]*string) *CreateMac
 }
 
 func (s *CreateMachineGroupResponse) SetStatusCode(v int32) *CreateMachineGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateOdpsShipperRequest struct {
+	ShipperName         *string                                      `json:"shipperName,omitempty" xml:"shipperName,omitempty"`
+	TargetConfiguration *CreateOdpsShipperRequestTargetConfiguration `json:"targetConfiguration,omitempty" xml:"targetConfiguration,omitempty" type:"Struct"`
+	TargetType          *string                                      `json:"targetType,omitempty" xml:"targetType,omitempty"`
+}
+
+func (s CreateOdpsShipperRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOdpsShipperRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOdpsShipperRequest) SetShipperName(v string) *CreateOdpsShipperRequest {
+	s.ShipperName = &v
+	return s
+}
+
+func (s *CreateOdpsShipperRequest) SetTargetConfiguration(v *CreateOdpsShipperRequestTargetConfiguration) *CreateOdpsShipperRequest {
+	s.TargetConfiguration = v
+	return s
+}
+
+func (s *CreateOdpsShipperRequest) SetTargetType(v string) *CreateOdpsShipperRequest {
+	s.TargetType = &v
+	return s
+}
+
+type CreateOdpsShipperRequestTargetConfiguration struct {
+	BufferInterval      *int32    `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
+	Enable              *bool     `json:"enable,omitempty" xml:"enable,omitempty"`
+	Fields              []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	OdpsEndpoint        *string   `json:"odpsEndpoint,omitempty" xml:"odpsEndpoint,omitempty"`
+	OdpsProject         *string   `json:"odpsProject,omitempty" xml:"odpsProject,omitempty"`
+	OdpsTable           *string   `json:"odpsTable,omitempty" xml:"odpsTable,omitempty"`
+	PartitionColumn     []*string `json:"partitionColumn,omitempty" xml:"partitionColumn,omitempty" type:"Repeated"`
+	PartitionTimeFormat *string   `json:"partitionTimeFormat,omitempty" xml:"partitionTimeFormat,omitempty"`
+}
+
+func (s CreateOdpsShipperRequestTargetConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOdpsShipperRequestTargetConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOdpsShipperRequestTargetConfiguration) SetBufferInterval(v int32) *CreateOdpsShipperRequestTargetConfiguration {
+	s.BufferInterval = &v
+	return s
+}
+
+func (s *CreateOdpsShipperRequestTargetConfiguration) SetEnable(v bool) *CreateOdpsShipperRequestTargetConfiguration {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateOdpsShipperRequestTargetConfiguration) SetFields(v []*string) *CreateOdpsShipperRequestTargetConfiguration {
+	s.Fields = v
+	return s
+}
+
+func (s *CreateOdpsShipperRequestTargetConfiguration) SetOdpsEndpoint(v string) *CreateOdpsShipperRequestTargetConfiguration {
+	s.OdpsEndpoint = &v
+	return s
+}
+
+func (s *CreateOdpsShipperRequestTargetConfiguration) SetOdpsProject(v string) *CreateOdpsShipperRequestTargetConfiguration {
+	s.OdpsProject = &v
+	return s
+}
+
+func (s *CreateOdpsShipperRequestTargetConfiguration) SetOdpsTable(v string) *CreateOdpsShipperRequestTargetConfiguration {
+	s.OdpsTable = &v
+	return s
+}
+
+func (s *CreateOdpsShipperRequestTargetConfiguration) SetPartitionColumn(v []*string) *CreateOdpsShipperRequestTargetConfiguration {
+	s.PartitionColumn = v
+	return s
+}
+
+func (s *CreateOdpsShipperRequestTargetConfiguration) SetPartitionTimeFormat(v string) *CreateOdpsShipperRequestTargetConfiguration {
+	s.PartitionTimeFormat = &v
+	return s
+}
+
+type CreateOdpsShipperResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateOdpsShipperResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOdpsShipperResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOdpsShipperResponse) SetHeaders(v map[string]*string) *CreateOdpsShipperResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOdpsShipperResponse) SetStatusCode(v int32) *CreateOdpsShipperResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateOssExternalStoreRequest struct {
+	ExternalStoreName *string                                 `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
+	Parameter         *CreateOssExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
+	StoreType         *string                                 `json:"storeType,omitempty" xml:"storeType,omitempty"`
+}
+
+func (s CreateOssExternalStoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOssExternalStoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOssExternalStoreRequest) SetExternalStoreName(v string) *CreateOssExternalStoreRequest {
+	s.ExternalStoreName = &v
+	return s
+}
+
+func (s *CreateOssExternalStoreRequest) SetParameter(v *CreateOssExternalStoreRequestParameter) *CreateOssExternalStoreRequest {
+	s.Parameter = v
+	return s
+}
+
+func (s *CreateOssExternalStoreRequest) SetStoreType(v string) *CreateOssExternalStoreRequest {
+	s.StoreType = &v
+	return s
+}
+
+type CreateOssExternalStoreRequestParameter struct {
+	Accessid  *string                                          `json:"accessid,omitempty" xml:"accessid,omitempty"`
+	Accesskey *string                                          `json:"accesskey,omitempty" xml:"accesskey,omitempty"`
+	Bucket    *string                                          `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Columns   []*CreateOssExternalStoreRequestParameterColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	Endpoint  *string                                          `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Objects   []*string                                        `json:"objects,omitempty" xml:"objects,omitempty" type:"Repeated"`
+}
+
+func (s CreateOssExternalStoreRequestParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOssExternalStoreRequestParameter) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOssExternalStoreRequestParameter) SetAccessid(v string) *CreateOssExternalStoreRequestParameter {
+	s.Accessid = &v
+	return s
+}
+
+func (s *CreateOssExternalStoreRequestParameter) SetAccesskey(v string) *CreateOssExternalStoreRequestParameter {
+	s.Accesskey = &v
+	return s
+}
+
+func (s *CreateOssExternalStoreRequestParameter) SetBucket(v string) *CreateOssExternalStoreRequestParameter {
+	s.Bucket = &v
+	return s
+}
+
+func (s *CreateOssExternalStoreRequestParameter) SetColumns(v []*CreateOssExternalStoreRequestParameterColumns) *CreateOssExternalStoreRequestParameter {
+	s.Columns = v
+	return s
+}
+
+func (s *CreateOssExternalStoreRequestParameter) SetEndpoint(v string) *CreateOssExternalStoreRequestParameter {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateOssExternalStoreRequestParameter) SetObjects(v []*string) *CreateOssExternalStoreRequestParameter {
+	s.Objects = v
+	return s
+}
+
+type CreateOssExternalStoreRequestParameterColumns struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateOssExternalStoreRequestParameterColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOssExternalStoreRequestParameterColumns) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOssExternalStoreRequestParameterColumns) SetName(v string) *CreateOssExternalStoreRequestParameterColumns {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOssExternalStoreRequestParameterColumns) SetType(v string) *CreateOssExternalStoreRequestParameterColumns {
+	s.Type = &v
+	return s
+}
+
+type CreateOssExternalStoreResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateOssExternalStoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOssExternalStoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOssExternalStoreResponse) SetHeaders(v map[string]*string) *CreateOssExternalStoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOssExternalStoreResponse) SetStatusCode(v int32) *CreateOssExternalStoreResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateOssShipperRequest struct {
+	ShipperName         *string                                     `json:"shipperName,omitempty" xml:"shipperName,omitempty"`
+	TargetConfiguration *CreateOssShipperRequestTargetConfiguration `json:"targetConfiguration,omitempty" xml:"targetConfiguration,omitempty" type:"Struct"`
+	TargetType          *string                                     `json:"targetType,omitempty" xml:"targetType,omitempty"`
+}
+
+func (s CreateOssShipperRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOssShipperRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOssShipperRequest) SetShipperName(v string) *CreateOssShipperRequest {
+	s.ShipperName = &v
+	return s
+}
+
+func (s *CreateOssShipperRequest) SetTargetConfiguration(v *CreateOssShipperRequestTargetConfiguration) *CreateOssShipperRequest {
+	s.TargetConfiguration = v
+	return s
+}
+
+func (s *CreateOssShipperRequest) SetTargetType(v string) *CreateOssShipperRequest {
+	s.TargetType = &v
+	return s
+}
+
+type CreateOssShipperRequestTargetConfiguration struct {
+	BufferInterval *int32                                             `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
+	BufferSize     *int32                                             `json:"bufferSize,omitempty" xml:"bufferSize,omitempty"`
+	CompressType   *string                                            `json:"compressType,omitempty" xml:"compressType,omitempty"`
+	Enable         *bool                                              `json:"enable,omitempty" xml:"enable,omitempty"`
+	OssBucket      *string                                            `json:"ossBucket,omitempty" xml:"ossBucket,omitempty"`
+	OssPrefix      *string                                            `json:"ossPrefix,omitempty" xml:"ossPrefix,omitempty"`
+	PathFormat     *string                                            `json:"pathFormat,omitempty" xml:"pathFormat,omitempty"`
+	RoleArn        *string                                            `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Storage        *CreateOssShipperRequestTargetConfigurationStorage `json:"storage,omitempty" xml:"storage,omitempty" type:"Struct"`
+	TimeZone       *string                                            `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+}
+
+func (s CreateOssShipperRequestTargetConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOssShipperRequestTargetConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOssShipperRequestTargetConfiguration) SetBufferInterval(v int32) *CreateOssShipperRequestTargetConfiguration {
+	s.BufferInterval = &v
+	return s
+}
+
+func (s *CreateOssShipperRequestTargetConfiguration) SetBufferSize(v int32) *CreateOssShipperRequestTargetConfiguration {
+	s.BufferSize = &v
+	return s
+}
+
+func (s *CreateOssShipperRequestTargetConfiguration) SetCompressType(v string) *CreateOssShipperRequestTargetConfiguration {
+	s.CompressType = &v
+	return s
+}
+
+func (s *CreateOssShipperRequestTargetConfiguration) SetEnable(v bool) *CreateOssShipperRequestTargetConfiguration {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateOssShipperRequestTargetConfiguration) SetOssBucket(v string) *CreateOssShipperRequestTargetConfiguration {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *CreateOssShipperRequestTargetConfiguration) SetOssPrefix(v string) *CreateOssShipperRequestTargetConfiguration {
+	s.OssPrefix = &v
+	return s
+}
+
+func (s *CreateOssShipperRequestTargetConfiguration) SetPathFormat(v string) *CreateOssShipperRequestTargetConfiguration {
+	s.PathFormat = &v
+	return s
+}
+
+func (s *CreateOssShipperRequestTargetConfiguration) SetRoleArn(v string) *CreateOssShipperRequestTargetConfiguration {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *CreateOssShipperRequestTargetConfiguration) SetStorage(v *CreateOssShipperRequestTargetConfigurationStorage) *CreateOssShipperRequestTargetConfiguration {
+	s.Storage = v
+	return s
+}
+
+func (s *CreateOssShipperRequestTargetConfiguration) SetTimeZone(v string) *CreateOssShipperRequestTargetConfiguration {
+	s.TimeZone = &v
+	return s
+}
+
+type CreateOssShipperRequestTargetConfigurationStorage struct {
+	Detail map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
+	Format *string                `json:"format,omitempty" xml:"format,omitempty"`
+}
+
+func (s CreateOssShipperRequestTargetConfigurationStorage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOssShipperRequestTargetConfigurationStorage) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOssShipperRequestTargetConfigurationStorage) SetDetail(v map[string]interface{}) *CreateOssShipperRequestTargetConfigurationStorage {
+	s.Detail = v
+	return s
+}
+
+func (s *CreateOssShipperRequestTargetConfigurationStorage) SetFormat(v string) *CreateOssShipperRequestTargetConfigurationStorage {
+	s.Format = &v
+	return s
+}
+
+type CreateOssShipperResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateOssShipperResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOssShipperResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOssShipperResponse) SetHeaders(v map[string]*string) *CreateOssShipperResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOssShipperResponse) SetStatusCode(v int32) *CreateOssShipperResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -1951,6 +2089,123 @@ func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectR
 }
 
 func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateRdsExternalStoreRequest struct {
+	ExternalStoreName *string                                 `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
+	Parameter         *CreateRdsExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
+	StoreType         *string                                 `json:"storeType,omitempty" xml:"storeType,omitempty"`
+}
+
+func (s CreateRdsExternalStoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRdsExternalStoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRdsExternalStoreRequest) SetExternalStoreName(v string) *CreateRdsExternalStoreRequest {
+	s.ExternalStoreName = &v
+	return s
+}
+
+func (s *CreateRdsExternalStoreRequest) SetParameter(v *CreateRdsExternalStoreRequestParameter) *CreateRdsExternalStoreRequest {
+	s.Parameter = v
+	return s
+}
+
+func (s *CreateRdsExternalStoreRequest) SetStoreType(v string) *CreateRdsExternalStoreRequest {
+	s.StoreType = &v
+	return s
+}
+
+type CreateRdsExternalStoreRequestParameter struct {
+	Db         *string `json:"db,omitempty" xml:"db,omitempty"`
+	Host       *string `json:"host,omitempty" xml:"host,omitempty"`
+	InstanceId *string `json:"instance-id,omitempty" xml:"instance-id,omitempty"`
+	Password   *string `json:"password,omitempty" xml:"password,omitempty"`
+	Port       *string `json:"port,omitempty" xml:"port,omitempty"`
+	Region     *string `json:"region,omitempty" xml:"region,omitempty"`
+	Table      *string `json:"table,omitempty" xml:"table,omitempty"`
+	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
+	VpcId      *string `json:"vpc-id,omitempty" xml:"vpc-id,omitempty"`
+}
+
+func (s CreateRdsExternalStoreRequestParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRdsExternalStoreRequestParameter) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRdsExternalStoreRequestParameter) SetDb(v string) *CreateRdsExternalStoreRequestParameter {
+	s.Db = &v
+	return s
+}
+
+func (s *CreateRdsExternalStoreRequestParameter) SetHost(v string) *CreateRdsExternalStoreRequestParameter {
+	s.Host = &v
+	return s
+}
+
+func (s *CreateRdsExternalStoreRequestParameter) SetInstanceId(v string) *CreateRdsExternalStoreRequestParameter {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRdsExternalStoreRequestParameter) SetPassword(v string) *CreateRdsExternalStoreRequestParameter {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateRdsExternalStoreRequestParameter) SetPort(v string) *CreateRdsExternalStoreRequestParameter {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateRdsExternalStoreRequestParameter) SetRegion(v string) *CreateRdsExternalStoreRequestParameter {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateRdsExternalStoreRequestParameter) SetTable(v string) *CreateRdsExternalStoreRequestParameter {
+	s.Table = &v
+	return s
+}
+
+func (s *CreateRdsExternalStoreRequestParameter) SetUsername(v string) *CreateRdsExternalStoreRequestParameter {
+	s.Username = &v
+	return s
+}
+
+func (s *CreateRdsExternalStoreRequestParameter) SetVpcId(v string) *CreateRdsExternalStoreRequestParameter {
+	s.VpcId = &v
+	return s
+}
+
+type CreateRdsExternalStoreResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateRdsExternalStoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRdsExternalStoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRdsExternalStoreResponse) SetHeaders(v map[string]*string) *CreateRdsExternalStoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRdsExternalStoreResponse) SetStatusCode(v int32) *CreateRdsExternalStoreResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -2066,12 +2321,9 @@ func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
 }
 
 type DeleteEtlMetaRequest struct {
-	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
-	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	// 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
+	EtlMetaKey  *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
 	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	// 此处固定为 "__all_etl_meta_tag_match__"
-	EtlMetaTag *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
+	EtlMetaTag  *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
 }
 
 func (s DeleteEtlMetaRequest) String() string {
@@ -2116,6 +2368,29 @@ func (s *DeleteEtlMetaResponse) SetHeaders(v map[string]*string) *DeleteEtlMetaR
 }
 
 func (s *DeleteEtlMetaResponse) SetStatusCode(v int32) *DeleteEtlMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteExternalStoreResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteExternalStoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExternalStoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExternalStoreResponse) SetHeaders(v map[string]*string) *DeleteExternalStoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteExternalStoreResponse) SetStatusCode(v int32) *DeleteExternalStoreResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -2258,11 +2533,32 @@ func (s *DeleteSavedSearchResponse) SetStatusCode(v int32) *DeleteSavedSearchRes
 	return s
 }
 
+type DeleteShipperResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteShipperResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteShipperResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteShipperResponse) SetHeaders(v map[string]*string) *DeleteShipperResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteShipperResponse) SetStatusCode(v int32) *DeleteShipperResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type GetAppliedConfigsResponseBody struct {
-	// Logtail配置名称列表。
 	Configs []*string `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// Logtail配置数量。
-	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	Count   *int32    `json:"count,omitempty" xml:"count,omitempty"`
 }
 
 func (s GetAppliedConfigsResponseBody) String() string {
@@ -2312,10 +2608,59 @@ func (s *GetAppliedConfigsResponse) SetBody(v *GetAppliedConfigsResponseBody) *G
 	return s
 }
 
+type GetAppliedMachineGroupsResponseBody struct {
+	Count         *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	Machinegroups []*string `json:"machinegroups,omitempty" xml:"machinegroups,omitempty" type:"Repeated"`
+}
+
+func (s GetAppliedMachineGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppliedMachineGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppliedMachineGroupsResponseBody) SetCount(v int32) *GetAppliedMachineGroupsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *GetAppliedMachineGroupsResponseBody) SetMachinegroups(v []*string) *GetAppliedMachineGroupsResponseBody {
+	s.Machinegroups = v
+	return s
+}
+
+type GetAppliedMachineGroupsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAppliedMachineGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAppliedMachineGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppliedMachineGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppliedMachineGroupsResponse) SetHeaders(v map[string]*string) *GetAppliedMachineGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAppliedMachineGroupsResponse) SetStatusCode(v int32) *GetAppliedMachineGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAppliedMachineGroupsResponse) SetBody(v *GetAppliedMachineGroupsResponseBody) *GetAppliedMachineGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type GetCheckPointRequest struct {
-	// Shard ID。
-	// 如果指定的Shard不存在，则返回空列表。
-	// 如果不指定Shard，则返回所有Shard的checkpoint。
 	Shard *int32 `json:"shard,omitempty" xml:"shard,omitempty"`
 }
 
@@ -2362,14 +2707,10 @@ func (s *GetCheckPointResponse) SetBody(v []*GetCheckPointResponseBody) *GetChec
 }
 
 type GetCheckPointResponseBody struct {
-	// shard id。
-	Shard *int32 `json:"shard,omitempty" xml:"shard,omitempty"`
-	// checkpoint 值。
+	Shard      *int32  `json:"shard,omitempty" xml:"shard,omitempty"`
 	Checkpoint *string `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
-	// checkpoint最后的更新时间。Unix时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
-	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// 消费者。
-	Consumer *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
+	UpdateTime *int64  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Consumer   *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
 }
 
 func (s GetCheckPointResponseBody) String() string {
@@ -2401,16 +2742,11 @@ func (s *GetCheckPointResponseBody) SetConsumer(v string) *GetCheckPointResponse
 }
 
 type GetContextLogsRequest struct {
-	// 指定起始日志往前（上文）的日志条数，取值范围为(0,100]。
-	BackLines *int64 `json:"back_lines,omitempty" xml:"back_lines,omitempty"`
-	// 指定起始日志往后（下文）的日志条数，取值范围为(0,100]。
-	ForwardLines *int64 `json:"forward_lines,omitempty" xml:"forward_lines,omitempty"`
-	// 起始日志所属的LogGroup的唯一身份标识。
-	PackId *string `json:"pack_id,omitempty" xml:"pack_id,omitempty"`
-	// 起始日志在对应LogGroup内的唯一上下文结构标识。
-	PackMeta *string `json:"pack_meta,omitempty" xml:"pack_meta,omitempty"`
-	// Logstore中数据的类型。该接口中该参数固定为context_log。
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	BackLines    *int64  `json:"back_lines,omitempty" xml:"back_lines,omitempty"`
+	ForwardLines *int64  `json:"forward_lines,omitempty" xml:"forward_lines,omitempty"`
+	PackId       *string `json:"pack_id,omitempty" xml:"pack_id,omitempty"`
+	PackMeta     *string `json:"pack_meta,omitempty" xml:"pack_meta,omitempty"`
+	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetContextLogsRequest) String() string {
@@ -2447,18 +2783,11 @@ func (s *GetContextLogsRequest) SetType(v string) *GetContextLogsRequest {
 }
 
 type GetContextLogsResponseBody struct {
-	// 向前查询到的日志条数。
-	BackLines *int64 `json:"back_lines,omitempty" xml:"back_lines,omitempty"`
-	// 向后查询到的日志条数。
-	ForwardLines *int64 `json:"forward_lines,omitempty" xml:"forward_lines,omitempty"`
-	// 获取到的日志，按上下文顺序排列。当根据指定起始日志查询不到上下文日志时，此参数为空。
-	Logs []map[string]interface{} `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
-	// 查询的结果是否完整。
-	// Complete：查询已经完成，返回结果为完整结果。
-	// Incomplete：查询已经完成，返回结果为不完整结果，需要重复请求以获得完整结果。
-	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
-	// 返回的总日志条数，包含请求参数中所指定的起始日志。
-	TotalLines *int64 `json:"total_lines,omitempty" xml:"total_lines,omitempty"`
+	BackLines    *int64                   `json:"back_lines,omitempty" xml:"back_lines,omitempty"`
+	ForwardLines *int64                   `json:"forward_lines,omitempty" xml:"forward_lines,omitempty"`
+	Logs         []map[string]interface{} `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
+	Progress     *string                  `json:"progress,omitempty" xml:"progress,omitempty"`
+	TotalLines   *int64                   `json:"total_lines,omitempty" xml:"total_lines,omitempty"`
 }
 
 func (s GetContextLogsResponseBody) String() string {
@@ -2524,9 +2853,7 @@ func (s *GetContextLogsResponse) SetBody(v *GetContextLogsResponseBody) *GetCont
 }
 
 type GetCursorRequest struct {
-	// 时间点（Unix时间戳）或者字符串begin、end。
 	From *string `json:"from,omitempty" xml:"from,omitempty"`
-	// 这里固定为 cursor。
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -2549,7 +2876,6 @@ func (s *GetCursorRequest) SetType(v string) *GetCursorRequest {
 }
 
 type GetCursorResponseBody struct {
-	// 游标位置。
 	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
 }
 
@@ -2596,10 +2922,8 @@ func (s *GetCursorResponse) SetBody(v *GetCursorResponseBody) *GetCursorResponse
 }
 
 type GetCursorTimeRequest struct {
-	// 游标。
 	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
-	// 固定为 cursor_time 。
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetCursorTimeRequest) String() string {
@@ -2621,7 +2945,6 @@ func (s *GetCursorTimeRequest) SetType(v string) *GetCursorTimeRequest {
 }
 
 type GetCursorTimeResponseBody struct {
-	// Cursor的服务端时间。Unix时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
 	CursorTime *string `json:"cursor_time,omitempty" xml:"cursor_time,omitempty"`
 }
 
@@ -2670,7 +2993,6 @@ func (s *GetCursorTimeResponse) SetBody(v *GetCursorTimeResponseBody) *GetCursor
 type GetEtlMetaRequest struct {
 	ElMetaName *string `json:"elMetaName,omitempty" xml:"elMetaName,omitempty"`
 	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	// 此处固定为 "__all_etl_meta_tag_match__"。
 	EtlMetaTag *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
 }
 
@@ -2749,21 +3071,41 @@ func (s *GetEtlMetaResponse) SetBody(v *GetEtlMetaResponseBody) *GetEtlMetaRespo
 	return s
 }
 
+type GetExternalStoreResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExternalStore     `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetExternalStoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExternalStoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetExternalStoreResponse) SetHeaders(v map[string]*string) *GetExternalStoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetExternalStoreResponse) SetStatusCode(v int32) *GetExternalStoreResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetExternalStoreResponse) SetBody(v *ExternalStore) *GetExternalStoreResponse {
+	s.Body = v
+	return s
+}
+
 type GetHistogramsRequest struct {
-	// 查询开始时间点。UNIX时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
-	//
-	// 时间区间遵循“左闭右开”原则，即该时间区间包括区间开始时间点，但不包括区间结束时间点。如果from和to的值相同，则为无效区间，函数直接返回错误。
-	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
-	// 查询语句。仅支持查询语句，不支持分析语句。关于查询语句的详细语法，请参见查询语法。
+	From  *int64  `json:"from,omitempty" xml:"from,omitempty"`
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// 查询结束时间点。UNIX时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
-	//
-	// 时间区间遵循“左闭右开”原则，即该时间区间包括区间开始时间点，但不包括区间结束时间点。如果from和to的值相同，则为无效区间，函数直接返回错误。
-	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
-	// 日志主题。
+	To    *int64  `json:"to,omitempty" xml:"to,omitempty"`
 	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
-	// Logstore中数据的类型。该接口中固定取值为histogram。
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetHistogramsRequest) String() string {
@@ -2829,21 +3171,9 @@ func (s *GetHistogramsResponse) SetBody(v []*GetHistogramsResponseBody) *GetHist
 }
 
 type GetHistogramsResponseBody struct {
-	// 子时间区间的开始时间点。UNIX时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
-	//
-	// 时间区间遵循“左闭右开”原则，即该时间区间包括区间开始时间点，但不包括区间结束时间点。如果from和to的值相同，则为无效区间，函数直接返回错误。
-	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
-	// 子时间区间的结束时间点。UNIX时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
-	//
-	// 时间区间遵循“左闭右开”原则，即该时间区间包括区间开始时间点，但不包括区间结束时间点。如果from和to的值相同，则为无效区间，函数直接返回错误。
-	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
-	// 该子时间区间内查询到的日志条数。
-	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// 当前查询结果在该子时间区间内的结果是否完整。
-	//
-	// Complete：查询已经完成，返回结果为完整结果。
-	//
-	// Incomplete：查询已经完成，返回结果为不完整结果，需要重复请求以获得完整结果。
+	From     *int64  `json:"from,omitempty" xml:"from,omitempty"`
+	To       *int64  `json:"to,omitempty" xml:"to,omitempty"`
+	Count    *int64  `json:"count,omitempty" xml:"count,omitempty"`
 	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
 }
 
@@ -2876,26 +3206,16 @@ func (s *GetHistogramsResponseBody) SetProgress(v string) *GetHistogramsResponse
 }
 
 type GetIndexResponseBody struct {
-	// 索引模式
-	IndexMode *string `json:"index_mode,omitempty" xml:"index_mode,omitempty"`
-	// 字段索引配置。key为字段名称，value为索引配置。
-	Keys map[string]*KeysValue `json:"keys,omitempty" xml:"keys,omitempty"`
-	// 上次修改时间
-	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// 配置全文索引。
-	Line *GetIndexResponseBodyLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
-	// 是否开启日志聚类.
-	LogReduce *bool `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
-	// 日志聚类的聚类字段过滤黑名单，仅当日志聚类开启时有效。
-	LogReduceBlackList []*string `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
-	// 日志聚类的聚类字段过滤白名单，仅当日志聚类开启时有效。
-	LogReduceWhiteList []*string `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
-	// 日志服务默认字段值的最大长度为2048字节，即2 KB。如果您需要修改字段值的最大长度，可设置统计字段（text）最大长度，取值范围为64~16384字节。
-	MaxTextLen *int32 `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
-	// 存储类型，目前固定取值为pg。
-	Storage *string `json:"storage,omitempty" xml:"storage,omitempty"`
-	// 索引文件生命周期，支持7天、30天、90天。
-	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	IndexMode          *string                   `json:"index_mode,omitempty" xml:"index_mode,omitempty"`
+	Keys               map[string]*KeysValue     `json:"keys,omitempty" xml:"keys,omitempty"`
+	LastModifyTime     *int64                    `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	Line               *GetIndexResponseBodyLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
+	LogReduce          *bool                     `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
+	LogReduceBlackList []*string                 `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
+	LogReduceWhiteList []*string                 `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
+	MaxTextLen         *int32                    `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
+	Storage            *string                   `json:"storage,omitempty" xml:"storage,omitempty"`
+	Ttl                *int32                    `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s GetIndexResponseBody) String() string {
@@ -2957,16 +3277,11 @@ func (s *GetIndexResponseBody) SetTtl(v int32) *GetIndexResponseBody {
 }
 
 type GetIndexResponseBodyLine struct {
-	// 大小写敏感
-	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// 是否包含中文。
-	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
-	// 排除的字段列表。
-	ExcludeKeys []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
-	// 包含的字段列表。
-	IncludeKeys []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
-	// 分词符列表。
-	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	Chn           *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
+	ExcludeKeys   []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
+	IncludeKeys   []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
+	Token         []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
 }
 
 func (s GetIndexResponseBodyLine) String() string {
@@ -3090,46 +3405,15 @@ func (s *GetLoggingResponse) SetBody(v *Logging) *GetLoggingResponse {
 }
 
 type GetLogsRequest struct {
-	// 查询开始时间点。该时间是指写入日志数据时指定的日志时间。
-	//
-	// 请求参数from和to定义的时间区间遵循左闭右开原则，即该时间区间包括区间开始时间点，但不包括区间结束时间点。如果from和to的值相同，则为无效区间，函数直接返回错误。
-	// Unix时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
-	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
-	// 仅当query参数为查询语句时，该参数有效，表示请求返回的最大日志条数。最小值为0，最大值为100，默认值为100。
-	Line *int64 `json:"line,omitempty" xml:"line,omitempty"`
-	// 仅当query参数为查询语句时，该参数有效，表示查询开始行。默认值为0。
-	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// 用于指定返回结果是否按日志时间戳降序返回日志，精确到分钟级别。
-	//
-	// true：按照日志时间戳降序返回日志。
-	// false（默认值）：按照日志时间戳升序返回日志。
-	// 注意
-	// 当query参数为查询语句时，参数reverse有效，用于指定返回日志排序方式。
-	// 当query参数为查询和分析语句时，参数reverse无效，由SQL分析语句中order by语法指定排序方式。如果order by为asc（默认），则为升序；如果order by为desc，则为降序。
-	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	// 查询语句或者分析语句。更多信息，请参见查询概述和分析概述。
-	//
-	// 在query参数的分析语句中加上set session parallel_sql=true;，表示使用SQL独享版。例如* | set session parallel_sql=true; select count(*) as pv 。
-	//
-	// 说明 当query参数中有分析语句（SQL语句）时，该接口的line参数和offset参数无效，建议设置为0，需通过SQL语句的LIMIT语法实现翻页。更多信息，请参见分页显示查询分析结果。
-	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// 用于指定返回结果是否按日志时间戳降序返回日志，精确到分钟级别。
-	//
-	// true：按照日志时间戳降序返回日志。
-	// false（默认值）：按照日志时间戳升序返回日志。
-	// 注意
-	// 当query参数为查询语句时，参数reverse有效，用于指定返回日志排序方式。
-	// 当query参数为查询和分析语句时，参数reverse无效，由SQL分析语句中order by语法指定排序方式。如果order by为asc（默认），则为升序；如果order by为desc，则为降序。
-	Reverse *bool `json:"reverse,omitempty" xml:"reverse,omitempty"`
-	// 查询结束时间点。该时间是指写入日志数据时指定的日志时间。
-	//
-	// 请求参数from和to定义的时间区间遵循左闭右开原则，即该时间区间包括区间开始时间点，但不包括区间结束时间点。如果from和to的值相同，则为无效区间，函数直接返回错误。
-	// Unix时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
-	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
-	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
-	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
-	// 查询Logstore数据的类型。在该接口中固定取值为log。
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	From     *int64  `json:"from,omitempty" xml:"from,omitempty"`
+	Line     *int64  `json:"line,omitempty" xml:"line,omitempty"`
+	Offset   *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
+	PowerSql *bool   `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
+	Query    *string `json:"query,omitempty" xml:"query,omitempty"`
+	Reverse  *bool   `json:"reverse,omitempty" xml:"reverse,omitempty"`
+	To       *int64  `json:"to,omitempty" xml:"to,omitempty"`
+	Topic    *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetLogsRequest) String() string {
@@ -3273,14 +3557,8 @@ func (s *GetProjectResponse) SetBody(v *Project) *GetProjectResponse {
 }
 
 type GetProjectLogsRequest struct {
-	// 是否使用SQL独享版。更多信息，请参见开启SQL独享版。
-	//
-	// true：使用SQL独享版。
-	// false（默认值）：使用SQL普通版。
-	// 除通过powerSql参数配置SQL独享版外，您还可以使用query参数。
-	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	// 标准SQL语句。例如日志库名称为nginx-moni，查询时间区间在2022-03-01 10:41:40到2022-03-01 10:56:40之间的访问数量。
-	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	PowerSql *bool   `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
+	Query    *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 
 func (s GetProjectLogsRequest) String() string {
@@ -3359,6 +3637,269 @@ func (s *GetSavedSearchResponse) SetBody(v *SavedSearch) *GetSavedSearchResponse
 	return s
 }
 
+type GetShipperConfigResponseBody struct {
+	CreateTime          *int64                 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	LastModifyTime      *int64                 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	ShipperName         *string                `json:"shipperName,omitempty" xml:"shipperName,omitempty"`
+	TargetConfiguration map[string]interface{} `json:"targetConfiguration,omitempty" xml:"targetConfiguration,omitempty"`
+	TargetType          *string                `json:"targetType,omitempty" xml:"targetType,omitempty"`
+}
+
+func (s GetShipperConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShipperConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetShipperConfigResponseBody) SetCreateTime(v int64) *GetShipperConfigResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetShipperConfigResponseBody) SetLastModifyTime(v int64) *GetShipperConfigResponseBody {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *GetShipperConfigResponseBody) SetShipperName(v string) *GetShipperConfigResponseBody {
+	s.ShipperName = &v
+	return s
+}
+
+func (s *GetShipperConfigResponseBody) SetTargetConfiguration(v map[string]interface{}) *GetShipperConfigResponseBody {
+	s.TargetConfiguration = v
+	return s
+}
+
+func (s *GetShipperConfigResponseBody) SetTargetType(v string) *GetShipperConfigResponseBody {
+	s.TargetType = &v
+	return s
+}
+
+type GetShipperConfigResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetShipperConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetShipperConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShipperConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetShipperConfigResponse) SetHeaders(v map[string]*string) *GetShipperConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetShipperConfigResponse) SetStatusCode(v int32) *GetShipperConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetShipperConfigResponse) SetBody(v *GetShipperConfigResponseBody) *GetShipperConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetShipperStatusRequest struct {
+	From   *int64  `json:"from,omitempty" xml:"from,omitempty"`
+	Offset *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	To     *int64  `json:"to,omitempty" xml:"to,omitempty"`
+}
+
+func (s GetShipperStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShipperStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetShipperStatusRequest) SetFrom(v int64) *GetShipperStatusRequest {
+	s.From = &v
+	return s
+}
+
+func (s *GetShipperStatusRequest) SetOffset(v int32) *GetShipperStatusRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *GetShipperStatusRequest) SetSize(v int32) *GetShipperStatusRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *GetShipperStatusRequest) SetStatus(v string) *GetShipperStatusRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *GetShipperStatusRequest) SetTo(v int64) *GetShipperStatusRequest {
+	s.To = &v
+	return s
+}
+
+type GetShipperStatusResponseBody struct {
+	Count      *int64                                  `json:"count,omitempty" xml:"count,omitempty"`
+	Statistics *GetShipperStatusResponseBodyStatistics `json:"statistics,omitempty" xml:"statistics,omitempty" type:"Struct"`
+	Tasks      *GetShipperStatusResponseBodyTasks      `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Struct"`
+	Total      *int64                                  `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s GetShipperStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShipperStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetShipperStatusResponseBody) SetCount(v int64) *GetShipperStatusResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *GetShipperStatusResponseBody) SetStatistics(v *GetShipperStatusResponseBodyStatistics) *GetShipperStatusResponseBody {
+	s.Statistics = v
+	return s
+}
+
+func (s *GetShipperStatusResponseBody) SetTasks(v *GetShipperStatusResponseBodyTasks) *GetShipperStatusResponseBody {
+	s.Tasks = v
+	return s
+}
+
+func (s *GetShipperStatusResponseBody) SetTotal(v int64) *GetShipperStatusResponseBody {
+	s.Total = &v
+	return s
+}
+
+type GetShipperStatusResponseBodyStatistics struct {
+	Fail    *int64 `json:"fail,omitempty" xml:"fail,omitempty"`
+	Running *int64 `json:"running,omitempty" xml:"running,omitempty"`
+	Success *int64 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetShipperStatusResponseBodyStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShipperStatusResponseBodyStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetShipperStatusResponseBodyStatistics) SetFail(v int64) *GetShipperStatusResponseBodyStatistics {
+	s.Fail = &v
+	return s
+}
+
+func (s *GetShipperStatusResponseBodyStatistics) SetRunning(v int64) *GetShipperStatusResponseBodyStatistics {
+	s.Running = &v
+	return s
+}
+
+func (s *GetShipperStatusResponseBodyStatistics) SetSuccess(v int64) *GetShipperStatusResponseBodyStatistics {
+	s.Success = &v
+	return s
+}
+
+type GetShipperStatusResponseBodyTasks struct {
+	Id                      *string `json:"id,omitempty" xml:"id,omitempty"`
+	TaskCode                *string `json:"taskCode,omitempty" xml:"taskCode,omitempty"`
+	TaskCreateTime          *int64  `json:"taskCreateTime,omitempty" xml:"taskCreateTime,omitempty"`
+	TaskDataLines           *int32  `json:"taskDataLines,omitempty" xml:"taskDataLines,omitempty"`
+	TaskFinishTime          *int64  `json:"taskFinishTime,omitempty" xml:"taskFinishTime,omitempty"`
+	TaskLastDataReceiveTime *int64  `json:"taskLastDataReceiveTime,omitempty" xml:"taskLastDataReceiveTime,omitempty"`
+	TaskMessage             *string `json:"taskMessage,omitempty" xml:"taskMessage,omitempty"`
+	TaskStatus              *string `json:"taskStatus,omitempty" xml:"taskStatus,omitempty"`
+}
+
+func (s GetShipperStatusResponseBodyTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShipperStatusResponseBodyTasks) GoString() string {
+	return s.String()
+}
+
+func (s *GetShipperStatusResponseBodyTasks) SetId(v string) *GetShipperStatusResponseBodyTasks {
+	s.Id = &v
+	return s
+}
+
+func (s *GetShipperStatusResponseBodyTasks) SetTaskCode(v string) *GetShipperStatusResponseBodyTasks {
+	s.TaskCode = &v
+	return s
+}
+
+func (s *GetShipperStatusResponseBodyTasks) SetTaskCreateTime(v int64) *GetShipperStatusResponseBodyTasks {
+	s.TaskCreateTime = &v
+	return s
+}
+
+func (s *GetShipperStatusResponseBodyTasks) SetTaskDataLines(v int32) *GetShipperStatusResponseBodyTasks {
+	s.TaskDataLines = &v
+	return s
+}
+
+func (s *GetShipperStatusResponseBodyTasks) SetTaskFinishTime(v int64) *GetShipperStatusResponseBodyTasks {
+	s.TaskFinishTime = &v
+	return s
+}
+
+func (s *GetShipperStatusResponseBodyTasks) SetTaskLastDataReceiveTime(v int64) *GetShipperStatusResponseBodyTasks {
+	s.TaskLastDataReceiveTime = &v
+	return s
+}
+
+func (s *GetShipperStatusResponseBodyTasks) SetTaskMessage(v string) *GetShipperStatusResponseBodyTasks {
+	s.TaskMessage = &v
+	return s
+}
+
+func (s *GetShipperStatusResponseBodyTasks) SetTaskStatus(v string) *GetShipperStatusResponseBodyTasks {
+	s.TaskStatus = &v
+	return s
+}
+
+type GetShipperStatusResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetShipperStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetShipperStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShipperStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetShipperStatusResponse) SetHeaders(v map[string]*string) *GetShipperStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetShipperStatusResponse) SetStatusCode(v int32) *GetShipperStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetShipperStatusResponse) SetBody(v *GetShipperStatusResponseBody) *GetShipperStatusResponse {
+	s.Body = v
+	return s
+}
+
 type ListConsumerGroupResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -3389,7 +3930,6 @@ func (s *ListConsumerGroupResponse) SetBody(v []*ConsumerGroup) *ListConsumerGro
 }
 
 type ListDomainsRequest struct {
-	// 用于搜索匹配的自定义域名
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	Offset     *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
 	Size       *int32  `json:"size,omitempty" xml:"size,omitempty"`
@@ -3480,10 +4020,8 @@ type ListEtlMetaRequest struct {
 	EtlMetaKey  *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
 	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
 	EtlMetaTag  *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
-	// 默认值 0。
-	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// 默认值 200.
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Offset      *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size        *int32  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListEtlMetaRequest) String() string {
@@ -3572,10 +4110,8 @@ func (s *ListEtlMetaResponse) SetBody(v *ListEtlMetaResponseBody) *ListEtlMetaRe
 }
 
 type ListEtlMetaNameRequest struct {
-	// 默认值为 0。
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// 默认值 200。
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListEtlMetaNameRequest) String() string {
@@ -3654,10 +4190,96 @@ func (s *ListEtlMetaNameResponse) SetBody(v *ListEtlMetaNameResponseBody) *ListE
 	return s
 }
 
+type ListExternalStoreRequest struct {
+	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
+	Offset            *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Sizs              *int32  `json:"sizs,omitempty" xml:"sizs,omitempty"`
+}
+
+func (s ListExternalStoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalStoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalStoreRequest) SetExternalStoreName(v string) *ListExternalStoreRequest {
+	s.ExternalStoreName = &v
+	return s
+}
+
+func (s *ListExternalStoreRequest) SetOffset(v int32) *ListExternalStoreRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListExternalStoreRequest) SetSizs(v int32) *ListExternalStoreRequest {
+	s.Sizs = &v
+	return s
+}
+
+type ListExternalStoreResponseBody struct {
+	Count          *int32           `json:"count,omitempty" xml:"count,omitempty"`
+	Externalstores []*ExternalStore `json:"externalstores,omitempty" xml:"externalstores,omitempty" type:"Repeated"`
+	Total          *int32           `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListExternalStoreResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalStoreResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalStoreResponseBody) SetCount(v int32) *ListExternalStoreResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListExternalStoreResponseBody) SetExternalstores(v []*ExternalStore) *ListExternalStoreResponseBody {
+	s.Externalstores = v
+	return s
+}
+
+func (s *ListExternalStoreResponseBody) SetTotal(v int32) *ListExternalStoreResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListExternalStoreResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListExternalStoreResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListExternalStoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalStoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalStoreResponse) SetHeaders(v map[string]*string) *ListExternalStoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListExternalStoreResponse) SetStatusCode(v int32) *ListExternalStoreResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListExternalStoreResponse) SetBody(v *ListExternalStoreResponseBody) *ListExternalStoreResponse {
+	s.Body = v
+	return s
+}
+
 type ListLogStoresRequest struct {
-	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	Offset       *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
-	// 默认值为 500。
+	LogstoreName  *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	Offset        *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
 	Size          *int32  `json:"size,omitempty" xml:"size,omitempty"`
 	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
 }
@@ -3743,12 +4365,9 @@ func (s *ListLogStoresResponse) SetBody(v *ListLogStoresResponseBody) *ListLogSt
 }
 
 type ListMachineGroupRequest struct {
-	// 可将 groupName 作为 pattern 匹配名称，只会返回匹配的机器组。例如 test 可以匹配机器组 test-group。
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// 分页请求的起始位置。默认为0。
-	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// 分页查询时，设置的每页行数。默认值为2000。
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Offset    *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size      *int32  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListMachineGroupRequest) String() string {
@@ -3775,12 +4394,9 @@ func (s *ListMachineGroupRequest) SetSize(v int32) *ListMachineGroupRequest {
 }
 
 type ListMachineGroupResponseBody struct {
-	// 当前页返回的机器组数量。
-	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// 机器组名称列表。
+	Count         *int32    `json:"count,omitempty" xml:"count,omitempty"`
 	Machinegroups []*string `json:"machinegroups,omitempty" xml:"machinegroups,omitempty" type:"Repeated"`
-	// 机器组总数量。
-	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+	Total         *int32    `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListMachineGroupResponseBody) String() string {
@@ -3836,10 +4452,8 @@ func (s *ListMachineGroupResponse) SetBody(v *ListMachineGroupResponseBody) *Lis
 }
 
 type ListMachinesRequest struct {
-	// 查询开始行。默认值为0。
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// 分页查询时，设置的每页行数。默认值为2000。
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListMachinesRequest) String() string {
@@ -3861,12 +4475,9 @@ func (s *ListMachinesRequest) SetSize(v int32) *ListMachinesRequest {
 }
 
 type ListMachinesResponseBody struct {
-	// 当前页返回的机器数目。
-	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// 返回的机器信息列表。
+	Count    *int32     `json:"count,omitempty" xml:"count,omitempty"`
 	Machines []*Machine `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
-	// 机器总数。
-	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+	Total    *int32     `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListMachinesResponseBody) String() string {
@@ -3924,8 +4535,7 @@ func (s *ListMachinesResponse) SetBody(v *ListMachinesResponseBody) *ListMachine
 type ListProjectRequest struct {
 	Offset      *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// 默认值为 500。
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Size        *int32  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListProjectRequest) String() string {
@@ -4011,8 +4621,7 @@ func (s *ListProjectResponse) SetBody(v *ListProjectResponseBody) *ListProjectRe
 
 type ListSavedSearchRequest struct {
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// 默认值为 500。
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListSavedSearchRequest) String() string {
@@ -4120,13 +4729,68 @@ func (s *ListShardsResponse) SetBody(v []*Shard) *ListShardsResponse {
 	return s
 }
 
+type ListShipperResponseBody struct {
+	Count   *int64    `json:"count,omitempty" xml:"count,omitempty"`
+	Shipper []*string `json:"shipper,omitempty" xml:"shipper,omitempty" type:"Repeated"`
+	Total   *int64    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListShipperResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShipperResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListShipperResponseBody) SetCount(v int64) *ListShipperResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListShipperResponseBody) SetShipper(v []*string) *ListShipperResponseBody {
+	s.Shipper = v
+	return s
+}
+
+func (s *ListShipperResponseBody) SetTotal(v int64) *ListShipperResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListShipperResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListShipperResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListShipperResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShipperResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListShipperResponse) SetHeaders(v map[string]*string) *ListShipperResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListShipperResponse) SetStatusCode(v int32) *ListShipperResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListShipperResponse) SetBody(v *ListShipperResponseBody) *ListShipperResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
-	// 查询的资源的 id 列表。resource id 与 tags 应至少存在一个。
-	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
-	// 资源类型。目前取值范围：project。
-	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 精确查找时过滤的标签键值对。resource id 与 tags 应至少存在一个。
-	Tags []*ListTagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	ResourceId   []*string                      `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	ResourceType *string                        `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Tags         []*ListTagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -4153,9 +4817,7 @@ func (s *ListTagResourcesRequest) SetTags(v []*ListTagResourcesRequestTags) *Lis
 }
 
 type ListTagResourcesRequestTags struct {
-	// 精确过滤的标签的键。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 精确过滤的标签的值。
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -4178,12 +4840,9 @@ func (s *ListTagResourcesRequestTags) SetValue(v string) *ListTagResourcesReques
 }
 
 type ListTagResourcesShrinkRequest struct {
-	// 查询的资源的 id 列表。resource id 与 tags 应至少存在一个。
 	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// 资源类型。目前取值范围：project。
-	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 精确查找时过滤的标签键值对。resource id 与 tags 应至少存在一个。
-	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	ResourceType     *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	TagsShrink       *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
 func (s ListTagResourcesShrinkRequest) String() string {
@@ -4210,9 +4869,7 @@ func (s *ListTagResourcesShrinkRequest) SetTagsShrink(v string) *ListTagResource
 }
 
 type ListTagResourcesResponseBody struct {
-	// 下一个查询开始Token。
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 返回的标签列表。
+	NextToken    *string                                     `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"tagResources,omitempty" xml:"tagResources,omitempty" type:"Repeated"`
 }
 
@@ -4235,14 +4892,10 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// 资源 id。
-	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// 资源类型。
+	ResourceId   *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 标签的键。
-	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// 标签的值。
-	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+	TagKey       *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	TagValue     *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -4303,7 +4956,6 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type MergeShardsRequest struct {
-	// 固定为 merge。
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
 }
 
@@ -4373,12 +5025,9 @@ func (s *RemoveConfigFromMachineGroupResponse) SetStatusCode(v int32) *RemoveCon
 }
 
 type SplitShardRequest struct {
-	// 这里固定为 split。
-	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 分裂的位置。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 要分裂成的 shard 数量，默认为 2。
-	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	Action     *string `json:"action,omitempty" xml:"action,omitempty"`
+	Key        *string `json:"key,omitempty" xml:"key,omitempty"`
+	ShardCount *int32  `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
 }
 
 func (s SplitShardRequest) String() string {
@@ -4434,12 +5083,9 @@ func (s *SplitShardResponse) SetBody(v []*Shard) *SplitShardResponse {
 }
 
 type TagResourcesRequest struct {
-	// 资源的 id 列表，可以一次为多个同类型资源打上相同的标签。
-	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
-	// 资源的类型。目前取值范围：project。
-	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 标签列表。
-	Tags []*TagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	ResourceId   []*string                  `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	ResourceType *string                    `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Tags         []*TagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -4466,9 +5112,7 @@ func (s *TagResourcesRequest) SetTags(v []*TagResourcesRequestTags) *TagResource
 }
 
 type TagResourcesRequestTags struct {
-	// 标签的 key。
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 标签的 value。
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -4514,14 +5158,10 @@ func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
 }
 
 type UnTagResourcesRequest struct {
-	// 是否删除所有标签，默认为 false，表示仅删除 tags 列表中的标签项。值为 true 时删除资源上绑定的所有标签。
-	All *bool `json:"all,omitempty" xml:"all,omitempty"`
-	// 资源的 id 列表，可以一次为多个同类型资源删除相同的标签。当 all 为 false 时生效。
-	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
-	// 资源的类型。目前取值范围 ： project。
-	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 标签 key 列表。当 all 为 false 时，仅删除列表中的标签。
-	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	All          *bool     `json:"all,omitempty" xml:"all,omitempty"`
+	ResourceId   []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Tags         []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s UnTagResourcesRequest) String() string {
@@ -4576,16 +5216,11 @@ func (s *UnTagResourcesResponse) SetStatusCode(v int32) *UnTagResourcesResponse 
 }
 
 type UpdateCheckPointRequest struct {
-	// checkpoint值。
-	Checkpoint *string `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
-	// shard 的 id。
-	Shard *int32 `json:"shard,omitempty" xml:"shard,omitempty"`
-	// 消费者。
-	Consumer *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
-	// 当不指定消费者时，必须指定forceSuccess为true才能更新checkpoint。
-	ForceSuccess *bool `json:"forceSuccess,omitempty" xml:"forceSuccess,omitempty"`
-	// 固定为 checkpoint。
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Checkpoint   *string `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
+	Shard        *int32  `json:"shard,omitempty" xml:"shard,omitempty"`
+	Consumer     *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
+	ForceSuccess *bool   `json:"forceSuccess,omitempty" xml:"forceSuccess,omitempty"`
+	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s UpdateCheckPointRequest) String() string {
@@ -4691,13 +5326,9 @@ func (s *UpdateConsumerGroupResponse) SetStatusCode(v int32) *UpdateConsumerGrou
 }
 
 type UpdateEtlMetaRequest struct {
-	// 是否启用。etlMetaTag、etlMetaValue、enable 至少需要存在一个。
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
-	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	// 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
-	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,128]之间。
+	Enable       *bool                  `json:"enable,omitempty" xml:"enable,omitempty"`
+	EtlMetaKey   *string                `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
+	EtlMetaName  *string                `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
 	EtlMetaTag   *string                `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
 	EtlMetaValue map[string]interface{} `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
 }
@@ -4759,20 +5390,13 @@ func (s *UpdateEtlMetaResponse) SetStatusCode(v int32) *UpdateEtlMetaResponse {
 }
 
 type UpdateIndexRequest struct {
-	// 字段索引配置，key为字段名称，value为字段索引配置。
-	Keys map[string]*KeysValue `json:"keys,omitempty" xml:"keys,omitempty"`
-	// 配置全文索引。
-	Line *UpdateIndexRequestLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
-	// 开启日志聚类，开启后白名单与黑名单至多生效其中一个。
-	LogReduce *bool `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
-	// 日志聚类的聚类字段黑名单
-	LogReduceBlackList []*string `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
-	// 日志聚类的聚类字段白名单
-	LogReduceWhiteList []*string `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
-	// 统计字段的最大长度
-	MaxTextLen *int32 `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
-	// 保存时间，单位为天
-	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	Keys               map[string]*KeysValue   `json:"keys,omitempty" xml:"keys,omitempty"`
+	Line               *UpdateIndexRequestLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
+	LogReduce          *bool                   `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
+	LogReduceBlackList []*string               `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
+	LogReduceWhiteList []*string               `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
+	MaxTextLen         *int32                  `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
+	Ttl                *int32                  `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s UpdateIndexRequest) String() string {
@@ -4819,16 +5443,11 @@ func (s *UpdateIndexRequest) SetTtl(v int32) *UpdateIndexRequest {
 }
 
 type UpdateIndexRequestLine struct {
-	// 大小写敏感
-	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// 包含中文
-	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
-	// 排除的字段列表，不能与include_keys同时指定。
-	ExcludeKeys []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
-	// 包含的字段列表，不能与exclude_keys同时指定。
-	IncludeKeys []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
-	// 分词符列表。可以设置一个分词参数，指定这个字段按照哪一种方式分词。
-	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	Chn           *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
+	ExcludeKeys   []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
+	IncludeKeys   []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
+	Token         []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
 }
 
 func (s UpdateIndexRequestLine) String() string {
@@ -4982,10 +5601,8 @@ func (s *UpdateLogStoreResponse) SetStatusCode(v int32) *UpdateLogStoreResponse 
 }
 
 type UpdateLoggingRequest struct {
-	// 服务日志配置列表。
 	LoggingDetails []*UpdateLoggingRequestLoggingDetails `json:"loggingDetails,omitempty" xml:"loggingDetails,omitempty" type:"Repeated"`
-	// 服务日志要保存到的 project 名称。
-	LoggingProject *string `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
+	LoggingProject *string                               `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
 }
 
 func (s UpdateLoggingRequest) String() string {
@@ -5007,10 +5624,8 @@ func (s *UpdateLoggingRequest) SetLoggingProject(v string) *UpdateLoggingRequest
 }
 
 type UpdateLoggingRequestLoggingDetails struct {
-	// 该种类服务日志要保存到的 logstore 名称。
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// 服务日志的种类。可选 "consumergroup_log"、 "logtail_alarm"、"operation_log"、"logtail_profile"、"metering"、"logtail_status"、"scheduled_sql_alert"、 "etl_alert" 等。
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s UpdateLoggingRequestLoggingDetails) String() string {
@@ -5055,16 +5670,11 @@ func (s *UpdateLoggingResponse) SetStatusCode(v int32) *UpdateLoggingResponse {
 }
 
 type UpdateMachineGroupRequest struct {
-	// 机器组属性。
-	GroupAttribute *UpdateMachineGroupRequestGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
-	// 机器组名称。
-	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// 机器组类型，可选值，默认为空。
-	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	// 机器组标识种类，支持 ip 、userdefined 两种。
-	MachineIdentifyType *string `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
-	// 机器列表。
-	MachineList []*string `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
+	GroupAttribute      *UpdateMachineGroupRequestGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
+	GroupName           *string                                  `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	GroupType           *string                                  `json:"groupType,omitempty" xml:"groupType,omitempty"`
+	MachineIdentifyType *string                                  `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
+	MachineList         []*string                                `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
 }
 
 func (s UpdateMachineGroupRequest) String() string {
@@ -5101,10 +5711,8 @@ func (s *UpdateMachineGroupRequest) SetMachineList(v []*string) *UpdateMachineGr
 }
 
 type UpdateMachineGroupRequestGroupAttribute struct {
-	// 机器组所依赖的外部管理系统标识。
 	ExternalName *string `json:"externalName,omitempty" xml:"externalName,omitempty"`
-	// 机器组的日志主题。
-	GroupTopic *string `json:"groupTopic,omitempty" xml:"groupTopic,omitempty"`
+	GroupTopic   *string `json:"groupTopic,omitempty" xml:"groupTopic,omitempty"`
 }
 
 func (s UpdateMachineGroupRequestGroupAttribute) String() string {
@@ -5148,8 +5756,386 @@ func (s *UpdateMachineGroupResponse) SetStatusCode(v int32) *UpdateMachineGroupR
 	return s
 }
 
+type UpdateOdpsShipperRequest struct {
+	ShipperName         *string                                      `json:"shipperName,omitempty" xml:"shipperName,omitempty"`
+	TargetConfiguration *UpdateOdpsShipperRequestTargetConfiguration `json:"targetConfiguration,omitempty" xml:"targetConfiguration,omitempty" type:"Struct"`
+	TargetType          *string                                      `json:"targetType,omitempty" xml:"targetType,omitempty"`
+}
+
+func (s UpdateOdpsShipperRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOdpsShipperRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOdpsShipperRequest) SetShipperName(v string) *UpdateOdpsShipperRequest {
+	s.ShipperName = &v
+	return s
+}
+
+func (s *UpdateOdpsShipperRequest) SetTargetConfiguration(v *UpdateOdpsShipperRequestTargetConfiguration) *UpdateOdpsShipperRequest {
+	s.TargetConfiguration = v
+	return s
+}
+
+func (s *UpdateOdpsShipperRequest) SetTargetType(v string) *UpdateOdpsShipperRequest {
+	s.TargetType = &v
+	return s
+}
+
+type UpdateOdpsShipperRequestTargetConfiguration struct {
+	BufferInterval      *int32    `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
+	Enable              *bool     `json:"enable,omitempty" xml:"enable,omitempty"`
+	Fields              []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	OdpsEndpoint        *string   `json:"odpsEndpoint,omitempty" xml:"odpsEndpoint,omitempty"`
+	OdpsProject         *string   `json:"odpsProject,omitempty" xml:"odpsProject,omitempty"`
+	OdpsTable           *string   `json:"odpsTable,omitempty" xml:"odpsTable,omitempty"`
+	PartitionColumn     []*string `json:"partitionColumn,omitempty" xml:"partitionColumn,omitempty" type:"Repeated"`
+	PartitionTimeFormat *string   `json:"partitionTimeFormat,omitempty" xml:"partitionTimeFormat,omitempty"`
+}
+
+func (s UpdateOdpsShipperRequestTargetConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOdpsShipperRequestTargetConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOdpsShipperRequestTargetConfiguration) SetBufferInterval(v int32) *UpdateOdpsShipperRequestTargetConfiguration {
+	s.BufferInterval = &v
+	return s
+}
+
+func (s *UpdateOdpsShipperRequestTargetConfiguration) SetEnable(v bool) *UpdateOdpsShipperRequestTargetConfiguration {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateOdpsShipperRequestTargetConfiguration) SetFields(v []*string) *UpdateOdpsShipperRequestTargetConfiguration {
+	s.Fields = v
+	return s
+}
+
+func (s *UpdateOdpsShipperRequestTargetConfiguration) SetOdpsEndpoint(v string) *UpdateOdpsShipperRequestTargetConfiguration {
+	s.OdpsEndpoint = &v
+	return s
+}
+
+func (s *UpdateOdpsShipperRequestTargetConfiguration) SetOdpsProject(v string) *UpdateOdpsShipperRequestTargetConfiguration {
+	s.OdpsProject = &v
+	return s
+}
+
+func (s *UpdateOdpsShipperRequestTargetConfiguration) SetOdpsTable(v string) *UpdateOdpsShipperRequestTargetConfiguration {
+	s.OdpsTable = &v
+	return s
+}
+
+func (s *UpdateOdpsShipperRequestTargetConfiguration) SetPartitionColumn(v []*string) *UpdateOdpsShipperRequestTargetConfiguration {
+	s.PartitionColumn = v
+	return s
+}
+
+func (s *UpdateOdpsShipperRequestTargetConfiguration) SetPartitionTimeFormat(v string) *UpdateOdpsShipperRequestTargetConfiguration {
+	s.PartitionTimeFormat = &v
+	return s
+}
+
+type UpdateOdpsShipperResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateOdpsShipperResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOdpsShipperResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOdpsShipperResponse) SetHeaders(v map[string]*string) *UpdateOdpsShipperResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateOdpsShipperResponse) SetStatusCode(v int32) *UpdateOdpsShipperResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateOssExternalStoreRequest struct {
+	ExternalStoreName *string                                 `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
+	Parameter         *UpdateOssExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
+	StoreType         *string                                 `json:"storeType,omitempty" xml:"storeType,omitempty"`
+}
+
+func (s UpdateOssExternalStoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOssExternalStoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOssExternalStoreRequest) SetExternalStoreName(v string) *UpdateOssExternalStoreRequest {
+	s.ExternalStoreName = &v
+	return s
+}
+
+func (s *UpdateOssExternalStoreRequest) SetParameter(v *UpdateOssExternalStoreRequestParameter) *UpdateOssExternalStoreRequest {
+	s.Parameter = v
+	return s
+}
+
+func (s *UpdateOssExternalStoreRequest) SetStoreType(v string) *UpdateOssExternalStoreRequest {
+	s.StoreType = &v
+	return s
+}
+
+type UpdateOssExternalStoreRequestParameter struct {
+	Accessid  *string                                          `json:"accessid,omitempty" xml:"accessid,omitempty"`
+	Accesskey *string                                          `json:"accesskey,omitempty" xml:"accesskey,omitempty"`
+	Bucket    *string                                          `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Columns   []*UpdateOssExternalStoreRequestParameterColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	Endpoint  *string                                          `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Objects   []*string                                        `json:"objects,omitempty" xml:"objects,omitempty" type:"Repeated"`
+}
+
+func (s UpdateOssExternalStoreRequestParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOssExternalStoreRequestParameter) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOssExternalStoreRequestParameter) SetAccessid(v string) *UpdateOssExternalStoreRequestParameter {
+	s.Accessid = &v
+	return s
+}
+
+func (s *UpdateOssExternalStoreRequestParameter) SetAccesskey(v string) *UpdateOssExternalStoreRequestParameter {
+	s.Accesskey = &v
+	return s
+}
+
+func (s *UpdateOssExternalStoreRequestParameter) SetBucket(v string) *UpdateOssExternalStoreRequestParameter {
+	s.Bucket = &v
+	return s
+}
+
+func (s *UpdateOssExternalStoreRequestParameter) SetColumns(v []*UpdateOssExternalStoreRequestParameterColumns) *UpdateOssExternalStoreRequestParameter {
+	s.Columns = v
+	return s
+}
+
+func (s *UpdateOssExternalStoreRequestParameter) SetEndpoint(v string) *UpdateOssExternalStoreRequestParameter {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *UpdateOssExternalStoreRequestParameter) SetObjects(v []*string) *UpdateOssExternalStoreRequestParameter {
+	s.Objects = v
+	return s
+}
+
+type UpdateOssExternalStoreRequestParameterColumns struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UpdateOssExternalStoreRequestParameterColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOssExternalStoreRequestParameterColumns) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOssExternalStoreRequestParameterColumns) SetName(v string) *UpdateOssExternalStoreRequestParameterColumns {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateOssExternalStoreRequestParameterColumns) SetType(v string) *UpdateOssExternalStoreRequestParameterColumns {
+	s.Type = &v
+	return s
+}
+
+type UpdateOssExternalStoreResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateOssExternalStoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOssExternalStoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOssExternalStoreResponse) SetHeaders(v map[string]*string) *UpdateOssExternalStoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateOssExternalStoreResponse) SetStatusCode(v int32) *UpdateOssExternalStoreResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateOssShipperRequest struct {
+	ShipperName         *string                                     `json:"shipperName,omitempty" xml:"shipperName,omitempty"`
+	TargetConfiguration *UpdateOssShipperRequestTargetConfiguration `json:"targetConfiguration,omitempty" xml:"targetConfiguration,omitempty" type:"Struct"`
+	TargetType          *string                                     `json:"targetType,omitempty" xml:"targetType,omitempty"`
+}
+
+func (s UpdateOssShipperRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOssShipperRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOssShipperRequest) SetShipperName(v string) *UpdateOssShipperRequest {
+	s.ShipperName = &v
+	return s
+}
+
+func (s *UpdateOssShipperRequest) SetTargetConfiguration(v *UpdateOssShipperRequestTargetConfiguration) *UpdateOssShipperRequest {
+	s.TargetConfiguration = v
+	return s
+}
+
+func (s *UpdateOssShipperRequest) SetTargetType(v string) *UpdateOssShipperRequest {
+	s.TargetType = &v
+	return s
+}
+
+type UpdateOssShipperRequestTargetConfiguration struct {
+	BufferInterval *int32                                             `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
+	BufferSize     *int32                                             `json:"bufferSize,omitempty" xml:"bufferSize,omitempty"`
+	CompressType   *string                                            `json:"compressType,omitempty" xml:"compressType,omitempty"`
+	Enable         *bool                                              `json:"enable,omitempty" xml:"enable,omitempty"`
+	OssBucket      *string                                            `json:"ossBucket,omitempty" xml:"ossBucket,omitempty"`
+	OssPrefix      *string                                            `json:"ossPrefix,omitempty" xml:"ossPrefix,omitempty"`
+	PathFormat     *string                                            `json:"pathFormat,omitempty" xml:"pathFormat,omitempty"`
+	RoleArn        *string                                            `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Storage        *UpdateOssShipperRequestTargetConfigurationStorage `json:"storage,omitempty" xml:"storage,omitempty" type:"Struct"`
+	TimeZone       *string                                            `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+}
+
+func (s UpdateOssShipperRequestTargetConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOssShipperRequestTargetConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOssShipperRequestTargetConfiguration) SetBufferInterval(v int32) *UpdateOssShipperRequestTargetConfiguration {
+	s.BufferInterval = &v
+	return s
+}
+
+func (s *UpdateOssShipperRequestTargetConfiguration) SetBufferSize(v int32) *UpdateOssShipperRequestTargetConfiguration {
+	s.BufferSize = &v
+	return s
+}
+
+func (s *UpdateOssShipperRequestTargetConfiguration) SetCompressType(v string) *UpdateOssShipperRequestTargetConfiguration {
+	s.CompressType = &v
+	return s
+}
+
+func (s *UpdateOssShipperRequestTargetConfiguration) SetEnable(v bool) *UpdateOssShipperRequestTargetConfiguration {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateOssShipperRequestTargetConfiguration) SetOssBucket(v string) *UpdateOssShipperRequestTargetConfiguration {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *UpdateOssShipperRequestTargetConfiguration) SetOssPrefix(v string) *UpdateOssShipperRequestTargetConfiguration {
+	s.OssPrefix = &v
+	return s
+}
+
+func (s *UpdateOssShipperRequestTargetConfiguration) SetPathFormat(v string) *UpdateOssShipperRequestTargetConfiguration {
+	s.PathFormat = &v
+	return s
+}
+
+func (s *UpdateOssShipperRequestTargetConfiguration) SetRoleArn(v string) *UpdateOssShipperRequestTargetConfiguration {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *UpdateOssShipperRequestTargetConfiguration) SetStorage(v *UpdateOssShipperRequestTargetConfigurationStorage) *UpdateOssShipperRequestTargetConfiguration {
+	s.Storage = v
+	return s
+}
+
+func (s *UpdateOssShipperRequestTargetConfiguration) SetTimeZone(v string) *UpdateOssShipperRequestTargetConfiguration {
+	s.TimeZone = &v
+	return s
+}
+
+type UpdateOssShipperRequestTargetConfigurationStorage struct {
+	Detail map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
+	Format *string                `json:"format,omitempty" xml:"format,omitempty"`
+}
+
+func (s UpdateOssShipperRequestTargetConfigurationStorage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOssShipperRequestTargetConfigurationStorage) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOssShipperRequestTargetConfigurationStorage) SetDetail(v map[string]interface{}) *UpdateOssShipperRequestTargetConfigurationStorage {
+	s.Detail = v
+	return s
+}
+
+func (s *UpdateOssShipperRequestTargetConfigurationStorage) SetFormat(v string) *UpdateOssShipperRequestTargetConfigurationStorage {
+	s.Format = &v
+	return s
+}
+
+type UpdateOssShipperResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateOssShipperResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOssShipperResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOssShipperResponse) SetHeaders(v map[string]*string) *UpdateOssShipperResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateOssShipperResponse) SetStatusCode(v int32) *UpdateOssShipperResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateProjectRequest struct {
-	// Project description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
@@ -5185,6 +6171,123 @@ func (s *UpdateProjectResponse) SetHeaders(v map[string]*string) *UpdateProjectR
 }
 
 func (s *UpdateProjectResponse) SetStatusCode(v int32) *UpdateProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateRdsExternalStoreRequest struct {
+	ExternalStoreName *string                                 `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
+	Parameter         *UpdateRdsExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
+	StoreType         *string                                 `json:"storeType,omitempty" xml:"storeType,omitempty"`
+}
+
+func (s UpdateRdsExternalStoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRdsExternalStoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRdsExternalStoreRequest) SetExternalStoreName(v string) *UpdateRdsExternalStoreRequest {
+	s.ExternalStoreName = &v
+	return s
+}
+
+func (s *UpdateRdsExternalStoreRequest) SetParameter(v *UpdateRdsExternalStoreRequestParameter) *UpdateRdsExternalStoreRequest {
+	s.Parameter = v
+	return s
+}
+
+func (s *UpdateRdsExternalStoreRequest) SetStoreType(v string) *UpdateRdsExternalStoreRequest {
+	s.StoreType = &v
+	return s
+}
+
+type UpdateRdsExternalStoreRequestParameter struct {
+	Db         *string `json:"db,omitempty" xml:"db,omitempty"`
+	Host       *string `json:"host,omitempty" xml:"host,omitempty"`
+	InstanceId *string `json:"instance-id,omitempty" xml:"instance-id,omitempty"`
+	Password   *string `json:"password,omitempty" xml:"password,omitempty"`
+	Port       *string `json:"port,omitempty" xml:"port,omitempty"`
+	Region     *string `json:"region,omitempty" xml:"region,omitempty"`
+	Table      *string `json:"table,omitempty" xml:"table,omitempty"`
+	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
+	VpcId      *string `json:"vpc-id,omitempty" xml:"vpc-id,omitempty"`
+}
+
+func (s UpdateRdsExternalStoreRequestParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRdsExternalStoreRequestParameter) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRdsExternalStoreRequestParameter) SetDb(v string) *UpdateRdsExternalStoreRequestParameter {
+	s.Db = &v
+	return s
+}
+
+func (s *UpdateRdsExternalStoreRequestParameter) SetHost(v string) *UpdateRdsExternalStoreRequestParameter {
+	s.Host = &v
+	return s
+}
+
+func (s *UpdateRdsExternalStoreRequestParameter) SetInstanceId(v string) *UpdateRdsExternalStoreRequestParameter {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateRdsExternalStoreRequestParameter) SetPassword(v string) *UpdateRdsExternalStoreRequestParameter {
+	s.Password = &v
+	return s
+}
+
+func (s *UpdateRdsExternalStoreRequestParameter) SetPort(v string) *UpdateRdsExternalStoreRequestParameter {
+	s.Port = &v
+	return s
+}
+
+func (s *UpdateRdsExternalStoreRequestParameter) SetRegion(v string) *UpdateRdsExternalStoreRequestParameter {
+	s.Region = &v
+	return s
+}
+
+func (s *UpdateRdsExternalStoreRequestParameter) SetTable(v string) *UpdateRdsExternalStoreRequestParameter {
+	s.Table = &v
+	return s
+}
+
+func (s *UpdateRdsExternalStoreRequestParameter) SetUsername(v string) *UpdateRdsExternalStoreRequestParameter {
+	s.Username = &v
+	return s
+}
+
+func (s *UpdateRdsExternalStoreRequestParameter) SetVpcId(v string) *UpdateRdsExternalStoreRequestParameter {
+	s.VpcId = &v
+	return s
+}
+
+type UpdateRdsExternalStoreResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateRdsExternalStoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRdsExternalStoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRdsExternalStoreResponse) SetHeaders(v map[string]*string) *UpdateRdsExternalStoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRdsExternalStoreResponse) SetStatusCode(v int32) *UpdateRdsExternalStoreResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -5254,18 +6357,12 @@ func (s *UpdateSavedSearchResponse) SetStatusCode(v int32) *UpdateSavedSearchRes
 }
 
 type KeysValue struct {
-	// 大小写敏感
-	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// 包含中文
-	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
-	// 字段的索引类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// 别名
-	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// 分词符列表。仅当type参数取值为text时，必须设置。
-	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
-	// 开启统计
-	DocValue *bool `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
+	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	Chn           *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
+	Type          *string   `json:"type,omitempty" xml:"type,omitempty"`
+	Alias         *string   `json:"alias,omitempty" xml:"alias,omitempty"`
+	Token         []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	DocValue      *bool     `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
 }
 
 func (s KeysValue) String() string {
@@ -5986,6 +7083,179 @@ func (client *Client) CreateMachineGroupWithOptions(project *string, request *Cr
 	return _result, _err
 }
 
+func (client *Client) CreateOdpsShipper(project *string, logstore *string, request *CreateOdpsShipperRequest) (_result *CreateOdpsShipperResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOdpsShipperResponse{}
+	_body, _err := client.CreateOdpsShipperWithOptions(project, logstore, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOdpsShipperWithOptions(project *string, logstore *string, request *CreateOdpsShipperRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOdpsShipperResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ShipperName)) {
+		body["shipperName"] = request.ShipperName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TargetConfiguration))) {
+		body["targetConfiguration"] = request.TargetConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		body["targetType"] = request.TargetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOdpsShipper"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateOdpsShipperResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOssExternalStore(project *string, request *CreateOssExternalStoreRequest) (_result *CreateOssExternalStoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOssExternalStoreResponse{}
+	_body, _err := client.CreateOssExternalStoreWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOssExternalStoreWithOptions(project *string, request *CreateOssExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOssExternalStoreResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExternalStoreName)) {
+		body["externalStoreName"] = request.ExternalStoreName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Parameter))) {
+		body["parameter"] = request.Parameter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoreType)) {
+		body["storeType"] = request.StoreType
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOssExternalStore"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/externalstores"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateOssExternalStoreResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOssShipper(project *string, logstore *string, request *CreateOssShipperRequest) (_result *CreateOssShipperResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOssShipperResponse{}
+	_body, _err := client.CreateOssShipperWithOptions(project, logstore, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOssShipperWithOptions(project *string, logstore *string, request *CreateOssShipperRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOssShipperResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ShipperName)) {
+		body["shipperName"] = request.ShipperName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TargetConfiguration))) {
+		body["targetConfiguration"] = request.TargetConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		body["targetType"] = request.TargetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOssShipper"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateOssShipperResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6028,6 +7298,63 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, he
 		BodyType:    tea.String("none"),
 	}
 	_result = &CreateProjectResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRdsExternalStore(project *string, request *CreateRdsExternalStoreRequest) (_result *CreateRdsExternalStoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRdsExternalStoreResponse{}
+	_body, _err := client.CreateRdsExternalStoreWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRdsExternalStoreWithOptions(project *string, request *CreateRdsExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRdsExternalStoreResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExternalStoreName)) {
+		body["externalStoreName"] = request.ExternalStoreName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Parameter))) {
+		body["parameter"] = request.Parameter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoreType)) {
+		body["storeType"] = request.StoreType
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRdsExternalStore"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/externalstores"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateRdsExternalStoreResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6231,6 +7558,46 @@ func (client *Client) DeleteEtlMetaWithOptions(project *string, request *DeleteE
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteEtlMetaResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteExternalStore(project *string, externalStoreName *string) (_result *DeleteExternalStoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteExternalStoreResponse{}
+	_body, _err := client.DeleteExternalStoreWithOptions(project, externalStoreName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteExternalStoreWithOptions(project *string, externalStoreName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteExternalStoreResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	externalStoreName = openapiutil.GetEncodeParam(externalStoreName)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteExternalStore"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/externalstores/" + tea.StringValue(externalStoreName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteExternalStoreResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6477,6 +7844,47 @@ func (client *Client) DeleteSavedSearchWithOptions(project *string, savedsearchN
 	return _result, _err
 }
 
+func (client *Client) DeleteShipper(project *string, logstore *string, shipperName *string) (_result *DeleteShipperResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteShipperResponse{}
+	_body, _err := client.DeleteShipperWithOptions(project, logstore, shipperName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteShipperWithOptions(project *string, logstore *string, shipperName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteShipperResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	shipperName = openapiutil.GetEncodeParam(shipperName)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteShipper"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper/" + tea.StringValue(shipperName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteShipperResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetAppliedConfigs(project *string, machineGroup *string) (_result *GetAppliedConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6509,6 +7917,46 @@ func (client *Client) GetAppliedConfigsWithOptions(project *string, machineGroup
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAppliedConfigsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAppliedMachineGroups(project *string, configName *string) (_result *GetAppliedMachineGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAppliedMachineGroupsResponse{}
+	_body, _err := client.GetAppliedMachineGroupsWithOptions(project, configName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAppliedMachineGroupsWithOptions(project *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAppliedMachineGroupsResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	configName = openapiutil.GetEncodeParam(configName)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAppliedMachineGroups"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/configs/" + tea.StringValue(configName) + "/machinegroups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAppliedMachineGroupsResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6793,6 +8241,46 @@ func (client *Client) GetEtlMetaWithOptions(project *string, request *GetEtlMeta
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetEtlMetaResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetExternalStore(project *string, externalStoreName *string) (_result *GetExternalStoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetExternalStoreResponse{}
+	_body, _err := client.GetExternalStoreWithOptions(project, externalStoreName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetExternalStoreWithOptions(project *string, externalStoreName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExternalStoreResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	externalStoreName = openapiutil.GetEncodeParam(externalStoreName)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetExternalStore"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/externalstores/" + tea.StringValue(externalStoreName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetExternalStoreResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7240,6 +8728,114 @@ func (client *Client) GetSavedSearchWithOptions(project *string, savedsearchName
 	return _result, _err
 }
 
+func (client *Client) GetShipperConfig(project *string, logstore *string, shipperName *string) (_result *GetShipperConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetShipperConfigResponse{}
+	_body, _err := client.GetShipperConfigWithOptions(project, logstore, shipperName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetShipperConfigWithOptions(project *string, logstore *string, shipperName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetShipperConfigResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	shipperName = openapiutil.GetEncodeParam(shipperName)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetShipperConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper/" + tea.StringValue(shipperName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetShipperConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetShipperStatus(project *string, logstore *string, shipperName *string, request *GetShipperStatusRequest) (_result *GetShipperStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetShipperStatusResponse{}
+	_body, _err := client.GetShipperStatusWithOptions(project, logstore, shipperName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetShipperStatusWithOptions(project *string, logstore *string, shipperName *string, request *GetShipperStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetShipperStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	shipperName = openapiutil.GetEncodeParam(shipperName)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["from"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		query["to"] = request.To
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetShipperStatus"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper/" + tea.StringValue(shipperName) + "/tasks"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetShipperStatusResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListConsumerGroup(project *string, logstore *string) (_result *ListConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7447,6 +9043,63 @@ func (client *Client) ListEtlMetaNameWithOptions(project *string, request *ListE
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListEtlMetaNameResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListExternalStore(project *string, request *ListExternalStoreRequest) (_result *ListExternalStoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListExternalStoreResponse{}
+	_body, _err := client.ListExternalStoreWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListExternalStoreWithOptions(project *string, request *ListExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListExternalStoreResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExternalStoreName)) {
+		query["externalStoreName"] = request.ExternalStoreName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sizs)) {
+		query["sizs"] = request.Sizs
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListExternalStore"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/externalstores"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListExternalStoreResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7766,6 +9419,46 @@ func (client *Client) ListShardsWithOptions(project *string, logstore *string, h
 		BodyType:    tea.String("array"),
 	}
 	_result = &ListShardsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListShipper(project *string, logstore *string) (_result *ListShipperResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListShipperResponse{}
+	_body, _err := client.ListShipperWithOptions(project, logstore, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListShipperWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListShipperResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListShipper"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListShipperResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8569,6 +10262,182 @@ func (client *Client) UpdateMachineGroupWithOptions(project *string, groupName *
 	return _result, _err
 }
 
+func (client *Client) UpdateOdpsShipper(project *string, logstore *string, shipperName *string, request *UpdateOdpsShipperRequest) (_result *UpdateOdpsShipperResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateOdpsShipperResponse{}
+	_body, _err := client.UpdateOdpsShipperWithOptions(project, logstore, shipperName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateOdpsShipperWithOptions(project *string, logstore *string, shipperName *string, request *UpdateOdpsShipperRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateOdpsShipperResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	shipperName = openapiutil.GetEncodeParam(shipperName)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ShipperName)) {
+		body["shipperName"] = request.ShipperName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TargetConfiguration))) {
+		body["targetConfiguration"] = request.TargetConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		body["targetType"] = request.TargetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateOdpsShipper"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper/" + tea.StringValue(shipperName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateOdpsShipperResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateOssExternalStore(project *string, externalStoreName *string, request *UpdateOssExternalStoreRequest) (_result *UpdateOssExternalStoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateOssExternalStoreResponse{}
+	_body, _err := client.UpdateOssExternalStoreWithOptions(project, externalStoreName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateOssExternalStoreWithOptions(project *string, externalStoreName *string, request *UpdateOssExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateOssExternalStoreResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	externalStoreName = openapiutil.GetEncodeParam(externalStoreName)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExternalStoreName)) {
+		body["externalStoreName"] = request.ExternalStoreName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Parameter))) {
+		body["parameter"] = request.Parameter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoreType)) {
+		body["storeType"] = request.StoreType
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateOssExternalStore"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/externalstores/" + tea.StringValue(externalStoreName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateOssExternalStoreResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateOssShipper(project *string, logstore *string, shipperName *string, request *UpdateOssShipperRequest) (_result *UpdateOssShipperResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateOssShipperResponse{}
+	_body, _err := client.UpdateOssShipperWithOptions(project, logstore, shipperName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateOssShipperWithOptions(project *string, logstore *string, shipperName *string, request *UpdateOssShipperRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateOssShipperResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	shipperName = openapiutil.GetEncodeParam(shipperName)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ShipperName)) {
+		body["shipperName"] = request.ShipperName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TargetConfiguration))) {
+		body["targetConfiguration"] = request.TargetConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		body["targetType"] = request.TargetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateOssShipper"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper/" + tea.StringValue(shipperName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateOssShipperResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) UpdateProject(project *string, request *UpdateProjectRequest) (_result *UpdateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8610,6 +10479,64 @@ func (client *Client) UpdateProjectWithOptions(project *string, request *UpdateP
 		BodyType:    tea.String("none"),
 	}
 	_result = &UpdateProjectResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateRdsExternalStore(project *string, externalStoreName *string, request *UpdateRdsExternalStoreRequest) (_result *UpdateRdsExternalStoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateRdsExternalStoreResponse{}
+	_body, _err := client.UpdateRdsExternalStoreWithOptions(project, externalStoreName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateRdsExternalStoreWithOptions(project *string, externalStoreName *string, request *UpdateRdsExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRdsExternalStoreResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	externalStoreName = openapiutil.GetEncodeParam(externalStoreName)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExternalStoreName)) {
+		body["externalStoreName"] = request.ExternalStoreName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Parameter))) {
+		body["parameter"] = request.Parameter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoreType)) {
+		body["storeType"] = request.StoreType
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRdsExternalStore"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/externalstores/" + tea.StringValue(externalStoreName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateRdsExternalStoreResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
