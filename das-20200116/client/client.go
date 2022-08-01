@@ -3869,6 +3869,378 @@ func (s *DisableAllSqlConcurrencyControlRulesResponse) SetBody(v *DisableAllSqlC
 	return s
 }
 
+type DisableAutoResourceOptimizeRulesRequest struct {
+	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
+	InstanceIds    *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+}
+
+func (s DisableAutoResourceOptimizeRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAutoResourceOptimizeRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAutoResourceOptimizeRulesRequest) SetConsoleContext(v string) *DisableAutoResourceOptimizeRulesRequest {
+	s.ConsoleContext = &v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesRequest) SetInstanceIds(v string) *DisableAutoResourceOptimizeRulesRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+type DisableAutoResourceOptimizeRulesResponseBody struct {
+	Code      *int64                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DisableAutoResourceOptimizeRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DisableAutoResourceOptimizeRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAutoResourceOptimizeRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBody) SetCode(v int64) *DisableAutoResourceOptimizeRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBody) SetData(v *DisableAutoResourceOptimizeRulesResponseBodyData) *DisableAutoResourceOptimizeRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBody) SetMessage(v string) *DisableAutoResourceOptimizeRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBody) SetRequestId(v string) *DisableAutoResourceOptimizeRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBody) SetSuccess(v bool) *DisableAutoResourceOptimizeRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DisableAutoResourceOptimizeRulesResponseBodyData struct {
+	ConfigFailInstanceCount    *int64                                                                       `json:"ConfigFailInstanceCount,omitempty" xml:"ConfigFailInstanceCount,omitempty"`
+	ConfigFailInstanceList     []*DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList    `json:"ConfigFailInstanceList,omitempty" xml:"ConfigFailInstanceList,omitempty" type:"Repeated"`
+	ConfigSuccessInstanceCount *int64                                                                       `json:"ConfigSuccessInstanceCount,omitempty" xml:"ConfigSuccessInstanceCount,omitempty"`
+	ConfigSuccessInstanceList  []*DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList `json:"ConfigSuccessInstanceList,omitempty" xml:"ConfigSuccessInstanceList,omitempty" type:"Repeated"`
+	TotalInstanceCount         *int64                                                                       `json:"TotalInstanceCount,omitempty" xml:"TotalInstanceCount,omitempty"`
+}
+
+func (s DisableAutoResourceOptimizeRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAutoResourceOptimizeRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBodyData) SetConfigFailInstanceCount(v int64) *DisableAutoResourceOptimizeRulesResponseBodyData {
+	s.ConfigFailInstanceCount = &v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBodyData) SetConfigFailInstanceList(v []*DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList) *DisableAutoResourceOptimizeRulesResponseBodyData {
+	s.ConfigFailInstanceList = v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBodyData) SetConfigSuccessInstanceCount(v int64) *DisableAutoResourceOptimizeRulesResponseBodyData {
+	s.ConfigSuccessInstanceCount = &v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBodyData) SetConfigSuccessInstanceList(v []*DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList) *DisableAutoResourceOptimizeRulesResponseBodyData {
+	s.ConfigSuccessInstanceList = v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBodyData) SetTotalInstanceCount(v int64) *DisableAutoResourceOptimizeRulesResponseBodyData {
+	s.TotalInstanceCount = &v
+	return s
+}
+
+type DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList struct {
+	ConfigSuccess *bool   `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList) SetConfigSuccess(v bool) *DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList {
+	s.ConfigSuccess = &v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList) SetErrorMessage(v string) *DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList) SetInstanceId(v string) *DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList {
+	s.InstanceId = &v
+	return s
+}
+
+type DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList struct {
+	ConfigSuccess *bool   `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList) SetConfigSuccess(v bool) *DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList {
+	s.ConfigSuccess = &v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList) SetInstanceId(v string) *DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList {
+	s.InstanceId = &v
+	return s
+}
+
+type DisableAutoResourceOptimizeRulesResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableAutoResourceOptimizeRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableAutoResourceOptimizeRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAutoResourceOptimizeRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponse) SetHeaders(v map[string]*string) *DisableAutoResourceOptimizeRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponse) SetStatusCode(v int32) *DisableAutoResourceOptimizeRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableAutoResourceOptimizeRulesResponse) SetBody(v *DisableAutoResourceOptimizeRulesResponseBody) *DisableAutoResourceOptimizeRulesResponse {
+	s.Body = v
+	return s
+}
+
+type DisableAutoThrottleRulesRequest struct {
+	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
+	InstanceIds    *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+}
+
+func (s DisableAutoThrottleRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAutoThrottleRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAutoThrottleRulesRequest) SetConsoleContext(v string) *DisableAutoThrottleRulesRequest {
+	s.ConsoleContext = &v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesRequest) SetInstanceIds(v string) *DisableAutoThrottleRulesRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+type DisableAutoThrottleRulesResponseBody struct {
+	Code      *int64                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DisableAutoThrottleRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DisableAutoThrottleRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAutoThrottleRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAutoThrottleRulesResponseBody) SetCode(v int64) *DisableAutoThrottleRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesResponseBody) SetData(v *DisableAutoThrottleRulesResponseBodyData) *DisableAutoThrottleRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesResponseBody) SetMessage(v string) *DisableAutoThrottleRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesResponseBody) SetRequestId(v string) *DisableAutoThrottleRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesResponseBody) SetSuccess(v bool) *DisableAutoThrottleRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DisableAutoThrottleRulesResponseBodyData struct {
+	ConfigFailInstanceCount    *int64                                                               `json:"ConfigFailInstanceCount,omitempty" xml:"ConfigFailInstanceCount,omitempty"`
+	ConfigFailInstanceList     []*DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList    `json:"ConfigFailInstanceList,omitempty" xml:"ConfigFailInstanceList,omitempty" type:"Repeated"`
+	ConfigSuccessInstanceCount *int64                                                               `json:"ConfigSuccessInstanceCount,omitempty" xml:"ConfigSuccessInstanceCount,omitempty"`
+	ConfigSuccessInstanceList  []*DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList `json:"ConfigSuccessInstanceList,omitempty" xml:"ConfigSuccessInstanceList,omitempty" type:"Repeated"`
+	TotalInstanceCount         *int64                                                               `json:"TotalInstanceCount,omitempty" xml:"TotalInstanceCount,omitempty"`
+}
+
+func (s DisableAutoThrottleRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAutoThrottleRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAutoThrottleRulesResponseBodyData) SetConfigFailInstanceCount(v int64) *DisableAutoThrottleRulesResponseBodyData {
+	s.ConfigFailInstanceCount = &v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesResponseBodyData) SetConfigFailInstanceList(v []*DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList) *DisableAutoThrottleRulesResponseBodyData {
+	s.ConfigFailInstanceList = v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesResponseBodyData) SetConfigSuccessInstanceCount(v int64) *DisableAutoThrottleRulesResponseBodyData {
+	s.ConfigSuccessInstanceCount = &v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesResponseBodyData) SetConfigSuccessInstanceList(v []*DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList) *DisableAutoThrottleRulesResponseBodyData {
+	s.ConfigSuccessInstanceList = v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesResponseBodyData) SetTotalInstanceCount(v int64) *DisableAutoThrottleRulesResponseBodyData {
+	s.TotalInstanceCount = &v
+	return s
+}
+
+type DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList struct {
+	ConfigSuccess *bool   `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList) SetConfigSuccess(v bool) *DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList {
+	s.ConfigSuccess = &v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList) SetErrorMessage(v string) *DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList) SetInstanceId(v string) *DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList {
+	s.InstanceId = &v
+	return s
+}
+
+type DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList struct {
+	ConfigSuccess *bool   `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList) SetConfigSuccess(v bool) *DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList {
+	s.ConfigSuccess = &v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList) SetInstanceId(v string) *DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList {
+	s.InstanceId = &v
+	return s
+}
+
+type DisableAutoThrottleRulesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableAutoThrottleRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableAutoThrottleRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAutoThrottleRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAutoThrottleRulesResponse) SetHeaders(v map[string]*string) *DisableAutoThrottleRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesResponse) SetStatusCode(v int32) *DisableAutoThrottleRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableAutoThrottleRulesResponse) SetBody(v *DisableAutoThrottleRulesResponseBody) *DisableAutoThrottleRulesResponse {
+	s.Body = v
+	return s
+}
+
 type DisableDasProRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -4835,6 +5207,605 @@ func (s *GetAsyncErrorRequestStatResultResponse) SetStatusCode(v int32) *GetAsyn
 }
 
 func (s *GetAsyncErrorRequestStatResultResponse) SetBody(v *GetAsyncErrorRequestStatResultResponseBody) *GetAsyncErrorRequestStatResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetAutoResourceOptimizeRulesRequest struct {
+	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
+	InstanceIds    *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+}
+
+func (s GetAutoResourceOptimizeRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoResourceOptimizeRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoResourceOptimizeRulesRequest) SetConsoleContext(v string) *GetAutoResourceOptimizeRulesRequest {
+	s.ConsoleContext = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesRequest) SetInstanceIds(v string) *GetAutoResourceOptimizeRulesRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+type GetAutoResourceOptimizeRulesResponseBody struct {
+	Code      *int64                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetAutoResourceOptimizeRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAutoResourceOptimizeRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoResourceOptimizeRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBody) SetCode(v int64) *GetAutoResourceOptimizeRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBody) SetData(v *GetAutoResourceOptimizeRulesResponseBodyData) *GetAutoResourceOptimizeRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBody) SetMessage(v string) *GetAutoResourceOptimizeRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBody) SetRequestId(v string) *GetAutoResourceOptimizeRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBody) SetSuccess(v bool) *GetAutoResourceOptimizeRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAutoResourceOptimizeRulesResponseBodyData struct {
+	EnableAutoResourceOptimizeCount                         *int64                                                                         `json:"EnableAutoResourceOptimizeCount,omitempty" xml:"EnableAutoResourceOptimizeCount,omitempty"`
+	EnableAutoResourceOptimizeList                          []*GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList  `json:"EnableAutoResourceOptimizeList,omitempty" xml:"EnableAutoResourceOptimizeList,omitempty" type:"Repeated"`
+	HasEnableRuleButNotDasProCount                          *int64                                                                         `json:"HasEnableRuleButNotDasProCount,omitempty" xml:"HasEnableRuleButNotDasProCount,omitempty"`
+	HasEnableRuleButNotDasProList                           []*GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList   `json:"HasEnableRuleButNotDasProList,omitempty" xml:"HasEnableRuleButNotDasProList,omitempty" type:"Repeated"`
+	NeverEnableAutoResourceOptimizeOrReleasedInstanceCount  *int64                                                                         `json:"NeverEnableAutoResourceOptimizeOrReleasedInstanceCount,omitempty" xml:"NeverEnableAutoResourceOptimizeOrReleasedInstanceCount,omitempty"`
+	NeverEnableAutoResourceOptimizeOrReleasedInstanceIdList []*string                                                                      `json:"NeverEnableAutoResourceOptimizeOrReleasedInstanceIdList,omitempty" xml:"NeverEnableAutoResourceOptimizeOrReleasedInstanceIdList,omitempty" type:"Repeated"`
+	TotalAutoResourceOptimizeRulesCount                     *int64                                                                         `json:"TotalAutoResourceOptimizeRulesCount,omitempty" xml:"TotalAutoResourceOptimizeRulesCount,omitempty"`
+	TurnOffAutoResourceOptimizeCount                        *int64                                                                         `json:"TurnOffAutoResourceOptimizeCount,omitempty" xml:"TurnOffAutoResourceOptimizeCount,omitempty"`
+	TurnOffAutoResourceOptimizeList                         []*GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList `json:"TurnOffAutoResourceOptimizeList,omitempty" xml:"TurnOffAutoResourceOptimizeList,omitempty" type:"Repeated"`
+}
+
+func (s GetAutoResourceOptimizeRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoResourceOptimizeRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyData) SetEnableAutoResourceOptimizeCount(v int64) *GetAutoResourceOptimizeRulesResponseBodyData {
+	s.EnableAutoResourceOptimizeCount = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyData) SetEnableAutoResourceOptimizeList(v []*GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList) *GetAutoResourceOptimizeRulesResponseBodyData {
+	s.EnableAutoResourceOptimizeList = v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyData) SetHasEnableRuleButNotDasProCount(v int64) *GetAutoResourceOptimizeRulesResponseBodyData {
+	s.HasEnableRuleButNotDasProCount = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyData) SetHasEnableRuleButNotDasProList(v []*GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList) *GetAutoResourceOptimizeRulesResponseBodyData {
+	s.HasEnableRuleButNotDasProList = v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyData) SetNeverEnableAutoResourceOptimizeOrReleasedInstanceCount(v int64) *GetAutoResourceOptimizeRulesResponseBodyData {
+	s.NeverEnableAutoResourceOptimizeOrReleasedInstanceCount = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyData) SetNeverEnableAutoResourceOptimizeOrReleasedInstanceIdList(v []*string) *GetAutoResourceOptimizeRulesResponseBodyData {
+	s.NeverEnableAutoResourceOptimizeOrReleasedInstanceIdList = v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyData) SetTotalAutoResourceOptimizeRulesCount(v int64) *GetAutoResourceOptimizeRulesResponseBodyData {
+	s.TotalAutoResourceOptimizeRulesCount = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyData) SetTurnOffAutoResourceOptimizeCount(v int64) *GetAutoResourceOptimizeRulesResponseBodyData {
+	s.TurnOffAutoResourceOptimizeCount = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyData) SetTurnOffAutoResourceOptimizeList(v []*GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList) *GetAutoResourceOptimizeRulesResponseBodyData {
+	s.TurnOffAutoResourceOptimizeList = v
+	return s
+}
+
+type GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList struct {
+	AutoDefragment          *bool    `json:"AutoDefragment,omitempty" xml:"AutoDefragment,omitempty"`
+	DasProOn                *bool    `json:"DasProOn,omitempty" xml:"DasProOn,omitempty"`
+	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TableFragmentationRatio *float64 `json:"TableFragmentationRatio,omitempty" xml:"TableFragmentationRatio,omitempty"`
+	TableSpaceSize          *float64 `json:"TableSpaceSize,omitempty" xml:"TableSpaceSize,omitempty"`
+	UserId                  *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList) SetAutoDefragment(v bool) *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList {
+	s.AutoDefragment = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList) SetDasProOn(v bool) *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList {
+	s.DasProOn = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList) SetInstanceId(v string) *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList) SetTableFragmentationRatio(v float64) *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList {
+	s.TableFragmentationRatio = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList) SetTableSpaceSize(v float64) *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList {
+	s.TableSpaceSize = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList) SetUserId(v string) *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList {
+	s.UserId = &v
+	return s
+}
+
+type GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList struct {
+	AutoDefragment          *bool    `json:"AutoDefragment,omitempty" xml:"AutoDefragment,omitempty"`
+	DasProOn                *bool    `json:"DasProOn,omitempty" xml:"DasProOn,omitempty"`
+	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TableFragmentationRatio *float64 `json:"TableFragmentationRatio,omitempty" xml:"TableFragmentationRatio,omitempty"`
+	TableSpaceSize          *float64 `json:"TableSpaceSize,omitempty" xml:"TableSpaceSize,omitempty"`
+	UserId                  *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList) SetAutoDefragment(v bool) *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList {
+	s.AutoDefragment = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList) SetDasProOn(v bool) *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList {
+	s.DasProOn = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList) SetInstanceId(v string) *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList) SetTableFragmentationRatio(v float64) *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList {
+	s.TableFragmentationRatio = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList) SetTableSpaceSize(v float64) *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList {
+	s.TableSpaceSize = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList) SetUserId(v string) *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList {
+	s.UserId = &v
+	return s
+}
+
+type GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList struct {
+	AutoDefragment          *bool    `json:"AutoDefragment,omitempty" xml:"AutoDefragment,omitempty"`
+	DasProOn                *bool    `json:"DasProOn,omitempty" xml:"DasProOn,omitempty"`
+	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TableFragmentationRatio *float64 `json:"TableFragmentationRatio,omitempty" xml:"TableFragmentationRatio,omitempty"`
+	TableSpaceSize          *float64 `json:"TableSpaceSize,omitempty" xml:"TableSpaceSize,omitempty"`
+	UserId                  *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList) SetAutoDefragment(v bool) *GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList {
+	s.AutoDefragment = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList) SetDasProOn(v bool) *GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList {
+	s.DasProOn = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList) SetInstanceId(v string) *GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList) SetTableFragmentationRatio(v float64) *GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList {
+	s.TableFragmentationRatio = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList) SetTableSpaceSize(v float64) *GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList {
+	s.TableSpaceSize = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList) SetUserId(v string) *GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList {
+	s.UserId = &v
+	return s
+}
+
+type GetAutoResourceOptimizeRulesResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAutoResourceOptimizeRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAutoResourceOptimizeRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoResourceOptimizeRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoResourceOptimizeRulesResponse) SetHeaders(v map[string]*string) *GetAutoResourceOptimizeRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponse) SetStatusCode(v int32) *GetAutoResourceOptimizeRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAutoResourceOptimizeRulesResponse) SetBody(v *GetAutoResourceOptimizeRulesResponseBody) *GetAutoResourceOptimizeRulesResponse {
+	s.Body = v
+	return s
+}
+
+type GetAutoThrottleRulesRequest struct {
+	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
+	InstanceIds    *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+}
+
+func (s GetAutoThrottleRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoThrottleRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoThrottleRulesRequest) SetConsoleContext(v string) *GetAutoThrottleRulesRequest {
+	s.ConsoleContext = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesRequest) SetInstanceIds(v string) *GetAutoThrottleRulesRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+type GetAutoThrottleRulesResponseBody struct {
+	Code      *int64                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetAutoThrottleRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAutoThrottleRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoThrottleRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoThrottleRulesResponseBody) SetCode(v int64) *GetAutoThrottleRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBody) SetData(v *GetAutoThrottleRulesResponseBodyData) *GetAutoThrottleRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBody) SetMessage(v string) *GetAutoThrottleRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBody) SetRequestId(v string) *GetAutoThrottleRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBody) SetSuccess(v bool) *GetAutoThrottleRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAutoThrottleRulesResponseBodyData struct {
+	EnableAutoThrottleCount                         *int64                                                         `json:"EnableAutoThrottleCount,omitempty" xml:"EnableAutoThrottleCount,omitempty"`
+	EnableAutoThrottleList                          []*GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList  `json:"EnableAutoThrottleList,omitempty" xml:"EnableAutoThrottleList,omitempty" type:"Repeated"`
+	NeverEnableAutoThrottleOrReleasedInstanceCount  *int64                                                         `json:"NeverEnableAutoThrottleOrReleasedInstanceCount,omitempty" xml:"NeverEnableAutoThrottleOrReleasedInstanceCount,omitempty"`
+	NeverEnableAutoThrottleOrReleasedInstanceIdList []*string                                                      `json:"NeverEnableAutoThrottleOrReleasedInstanceIdList,omitempty" xml:"NeverEnableAutoThrottleOrReleasedInstanceIdList,omitempty" type:"Repeated"`
+	TotalAutoThrottleRulesCount                     *int64                                                         `json:"TotalAutoThrottleRulesCount,omitempty" xml:"TotalAutoThrottleRulesCount,omitempty"`
+	TurnOffAutoThrottleCount                        *int64                                                         `json:"TurnOffAutoThrottleCount,omitempty" xml:"TurnOffAutoThrottleCount,omitempty"`
+	TurnOffAutoThrottleList                         []*GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList `json:"TurnOffAutoThrottleList,omitempty" xml:"TurnOffAutoThrottleList,omitempty" type:"Repeated"`
+}
+
+func (s GetAutoThrottleRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoThrottleRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoThrottleRulesResponseBodyData) SetEnableAutoThrottleCount(v int64) *GetAutoThrottleRulesResponseBodyData {
+	s.EnableAutoThrottleCount = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyData) SetEnableAutoThrottleList(v []*GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) *GetAutoThrottleRulesResponseBodyData {
+	s.EnableAutoThrottleList = v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyData) SetNeverEnableAutoThrottleOrReleasedInstanceCount(v int64) *GetAutoThrottleRulesResponseBodyData {
+	s.NeverEnableAutoThrottleOrReleasedInstanceCount = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyData) SetNeverEnableAutoThrottleOrReleasedInstanceIdList(v []*string) *GetAutoThrottleRulesResponseBodyData {
+	s.NeverEnableAutoThrottleOrReleasedInstanceIdList = v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyData) SetTotalAutoThrottleRulesCount(v int64) *GetAutoThrottleRulesResponseBodyData {
+	s.TotalAutoThrottleRulesCount = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyData) SetTurnOffAutoThrottleCount(v int64) *GetAutoThrottleRulesResponseBodyData {
+	s.TurnOffAutoThrottleCount = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyData) SetTurnOffAutoThrottleList(v []*GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) *GetAutoThrottleRulesResponseBodyData {
+	s.TurnOffAutoThrottleList = v
+	return s
+}
+
+type GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList struct {
+	AbnormalDuration       *float64 `json:"AbnormalDuration,omitempty" xml:"AbnormalDuration,omitempty"`
+	ActiveSessions         *int64   `json:"ActiveSessions,omitempty" xml:"ActiveSessions,omitempty"`
+	AllowThrottleEndTime   *string  `json:"AllowThrottleEndTime,omitempty" xml:"AllowThrottleEndTime,omitempty"`
+	AllowThrottleStartTime *string  `json:"AllowThrottleStartTime,omitempty" xml:"AllowThrottleStartTime,omitempty"`
+	AutoKillSession        *bool    `json:"AutoKillSession,omitempty" xml:"AutoKillSession,omitempty"`
+	CpuSessionRelation     *string  `json:"CpuSessionRelation,omitempty" xml:"CpuSessionRelation,omitempty"`
+	CpuUsage               *float64 `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
+	InstanceId             *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxThrottleTime        *float64 `json:"MaxThrottleTime,omitempty" xml:"MaxThrottleTime,omitempty"`
+	UserId                 *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Visible                *bool    `json:"Visible,omitempty" xml:"Visible,omitempty"`
+}
+
+func (s GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) SetAbnormalDuration(v float64) *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList {
+	s.AbnormalDuration = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) SetActiveSessions(v int64) *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList {
+	s.ActiveSessions = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) SetAllowThrottleEndTime(v string) *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList {
+	s.AllowThrottleEndTime = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) SetAllowThrottleStartTime(v string) *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList {
+	s.AllowThrottleStartTime = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) SetAutoKillSession(v bool) *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList {
+	s.AutoKillSession = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) SetCpuSessionRelation(v string) *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList {
+	s.CpuSessionRelation = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) SetCpuUsage(v float64) *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList {
+	s.CpuUsage = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) SetInstanceId(v string) *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) SetMaxThrottleTime(v float64) *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList {
+	s.MaxThrottleTime = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) SetUserId(v string) *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) SetVisible(v bool) *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList {
+	s.Visible = &v
+	return s
+}
+
+type GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList struct {
+	AbnormalDuration       *float64 `json:"AbnormalDuration,omitempty" xml:"AbnormalDuration,omitempty"`
+	ActiveSessions         *int64   `json:"ActiveSessions,omitempty" xml:"ActiveSessions,omitempty"`
+	AllowThrottleEndTime   *string  `json:"AllowThrottleEndTime,omitempty" xml:"AllowThrottleEndTime,omitempty"`
+	AllowThrottleStartTime *string  `json:"AllowThrottleStartTime,omitempty" xml:"AllowThrottleStartTime,omitempty"`
+	AutoKillSession        *bool    `json:"AutoKillSession,omitempty" xml:"AutoKillSession,omitempty"`
+	CpuSessionRelation     *string  `json:"CpuSessionRelation,omitempty" xml:"CpuSessionRelation,omitempty"`
+	CpuUsage               *float64 `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
+	InstanceId             *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxThrottleTime        *float64 `json:"MaxThrottleTime,omitempty" xml:"MaxThrottleTime,omitempty"`
+	UserId                 *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Visible                *bool    `json:"Visible,omitempty" xml:"Visible,omitempty"`
+}
+
+func (s GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) SetAbnormalDuration(v float64) *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList {
+	s.AbnormalDuration = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) SetActiveSessions(v int64) *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList {
+	s.ActiveSessions = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) SetAllowThrottleEndTime(v string) *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList {
+	s.AllowThrottleEndTime = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) SetAllowThrottleStartTime(v string) *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList {
+	s.AllowThrottleStartTime = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) SetAutoKillSession(v bool) *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList {
+	s.AutoKillSession = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) SetCpuSessionRelation(v string) *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList {
+	s.CpuSessionRelation = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) SetCpuUsage(v float64) *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList {
+	s.CpuUsage = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) SetInstanceId(v string) *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) SetMaxThrottleTime(v float64) *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList {
+	s.MaxThrottleTime = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) SetUserId(v string) *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList) SetVisible(v bool) *GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList {
+	s.Visible = &v
+	return s
+}
+
+type GetAutoThrottleRulesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAutoThrottleRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAutoThrottleRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoThrottleRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoThrottleRulesResponse) SetHeaders(v map[string]*string) *GetAutoThrottleRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponse) SetStatusCode(v int32) *GetAutoThrottleRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAutoThrottleRulesResponse) SetBody(v *GetAutoThrottleRulesResponseBody) *GetAutoThrottleRulesResponse {
 	s.Body = v
 	return s
 }
@@ -10328,6 +11299,263 @@ func (s *SyncHDMAliyunResourceResponse) SetBody(v *SyncHDMAliyunResourceResponse
 	return s
 }
 
+type UpdateAutoResourceOptimizeRulesAsyncRequest struct {
+	ConsoleContext          *string  `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
+	InstanceIds             *string  `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	ResultId                *string  `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
+	TableFragmentationRatio *float64 `json:"TableFragmentationRatio,omitempty" xml:"TableFragmentationRatio,omitempty"`
+	TableSpaceSize          *float64 `json:"TableSpaceSize,omitempty" xml:"TableSpaceSize,omitempty"`
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncRequest) SetConsoleContext(v string) *UpdateAutoResourceOptimizeRulesAsyncRequest {
+	s.ConsoleContext = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncRequest) SetInstanceIds(v string) *UpdateAutoResourceOptimizeRulesAsyncRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncRequest) SetResultId(v string) *UpdateAutoResourceOptimizeRulesAsyncRequest {
+	s.ResultId = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncRequest) SetTableFragmentationRatio(v float64) *UpdateAutoResourceOptimizeRulesAsyncRequest {
+	s.TableFragmentationRatio = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncRequest) SetTableSpaceSize(v float64) *UpdateAutoResourceOptimizeRulesAsyncRequest {
+	s.TableSpaceSize = &v
+	return s
+}
+
+type UpdateAutoResourceOptimizeRulesAsyncResponseBody struct {
+	Code      *int64                                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBody) SetCode(v int64) *UpdateAutoResourceOptimizeRulesAsyncResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBody) SetData(v *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData) *UpdateAutoResourceOptimizeRulesAsyncResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBody) SetMessage(v string) *UpdateAutoResourceOptimizeRulesAsyncResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBody) SetRequestId(v string) *UpdateAutoResourceOptimizeRulesAsyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBody) SetSuccess(v bool) *UpdateAutoResourceOptimizeRulesAsyncResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAutoResourceOptimizeRulesAsyncResponseBodyData struct {
+	Complete       *bool                                                               `json:"Complete,omitempty" xml:"Complete,omitempty"`
+	ConfigResponse *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse `json:"ConfigResponse,omitempty" xml:"ConfigResponse,omitempty" type:"Struct"`
+	Fail           *bool                                                               `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	IsFinish       *bool                                                               `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
+	ResultId       *string                                                             `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
+	State          *string                                                             `json:"State,omitempty" xml:"State,omitempty"`
+	Timestamp      *int64                                                              `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData) SetComplete(v bool) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData {
+	s.Complete = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData) SetConfigResponse(v *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData {
+	s.ConfigResponse = v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData) SetFail(v bool) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData {
+	s.Fail = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData) SetIsFinish(v bool) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData {
+	s.IsFinish = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData) SetResultId(v string) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData {
+	s.ResultId = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData) SetState(v string) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData) SetTimestamp(v int64) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+type UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse struct {
+	ConfigFailInstanceCount    *int64                                                                                         `json:"ConfigFailInstanceCount,omitempty" xml:"ConfigFailInstanceCount,omitempty"`
+	ConfigFailInstanceList     []*UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList    `json:"ConfigFailInstanceList,omitempty" xml:"ConfigFailInstanceList,omitempty" type:"Repeated"`
+	ConfigSuccessInstanceCount *int64                                                                                         `json:"ConfigSuccessInstanceCount,omitempty" xml:"ConfigSuccessInstanceCount,omitempty"`
+	ConfigSuccessInstanceList  []*UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList `json:"ConfigSuccessInstanceList,omitempty" xml:"ConfigSuccessInstanceList,omitempty" type:"Repeated"`
+	TotalInstanceCount         *int64                                                                                         `json:"TotalInstanceCount,omitempty" xml:"TotalInstanceCount,omitempty"`
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse) SetConfigFailInstanceCount(v int64) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse {
+	s.ConfigFailInstanceCount = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse) SetConfigFailInstanceList(v []*UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse {
+	s.ConfigFailInstanceList = v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse) SetConfigSuccessInstanceCount(v int64) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse {
+	s.ConfigSuccessInstanceCount = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse) SetConfigSuccessInstanceList(v []*UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse {
+	s.ConfigSuccessInstanceList = v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse) SetTotalInstanceCount(v int64) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse {
+	s.TotalInstanceCount = &v
+	return s
+}
+
+type UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList struct {
+	ConfigSuccess *bool   `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList) SetConfigSuccess(v bool) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList {
+	s.ConfigSuccess = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList) SetErrorMessage(v string) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList) SetInstanceId(v string) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList struct {
+	ConfigSuccess *bool   `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList) SetConfigSuccess(v bool) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList {
+	s.ConfigSuccess = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList) SetInstanceId(v string) *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateAutoResourceOptimizeRulesAsyncResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAutoResourceOptimizeRulesAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoResourceOptimizeRulesAsyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponse) SetHeaders(v map[string]*string) *UpdateAutoResourceOptimizeRulesAsyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponse) SetStatusCode(v int32) *UpdateAutoResourceOptimizeRulesAsyncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAutoResourceOptimizeRulesAsyncResponse) SetBody(v *UpdateAutoResourceOptimizeRulesAsyncResponseBody) *UpdateAutoResourceOptimizeRulesAsyncResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAutoSqlOptimizeStatusRequest struct {
 	Instances *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
 	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -10446,6 +11674,299 @@ func (s *UpdateAutoSqlOptimizeStatusResponse) SetStatusCode(v int32) *UpdateAuto
 }
 
 func (s *UpdateAutoSqlOptimizeStatusResponse) SetBody(v *UpdateAutoSqlOptimizeStatusResponseBody) *UpdateAutoSqlOptimizeStatusResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAutoThrottleRulesAsyncRequest struct {
+	AbnormalDuration       *float64 `json:"AbnormalDuration,omitempty" xml:"AbnormalDuration,omitempty"`
+	ActiveSessions         *int64   `json:"ActiveSessions,omitempty" xml:"ActiveSessions,omitempty"`
+	AllowThrottleEndTime   *string  `json:"AllowThrottleEndTime,omitempty" xml:"AllowThrottleEndTime,omitempty"`
+	AllowThrottleStartTime *string  `json:"AllowThrottleStartTime,omitempty" xml:"AllowThrottleStartTime,omitempty"`
+	AutoKillSession        *bool    `json:"AutoKillSession,omitempty" xml:"AutoKillSession,omitempty"`
+	ConsoleContext         *string  `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
+	CpuSessionRelation     *string  `json:"CpuSessionRelation,omitempty" xml:"CpuSessionRelation,omitempty"`
+	CpuUsage               *float64 `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
+	InstanceIds            *string  `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	MaxThrottleTime        *float64 `json:"MaxThrottleTime,omitempty" xml:"MaxThrottleTime,omitempty"`
+	ResultId               *string  `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
+}
+
+func (s UpdateAutoThrottleRulesAsyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoThrottleRulesAsyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoThrottleRulesAsyncRequest) SetAbnormalDuration(v float64) *UpdateAutoThrottleRulesAsyncRequest {
+	s.AbnormalDuration = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncRequest) SetActiveSessions(v int64) *UpdateAutoThrottleRulesAsyncRequest {
+	s.ActiveSessions = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncRequest) SetAllowThrottleEndTime(v string) *UpdateAutoThrottleRulesAsyncRequest {
+	s.AllowThrottleEndTime = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncRequest) SetAllowThrottleStartTime(v string) *UpdateAutoThrottleRulesAsyncRequest {
+	s.AllowThrottleStartTime = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncRequest) SetAutoKillSession(v bool) *UpdateAutoThrottleRulesAsyncRequest {
+	s.AutoKillSession = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncRequest) SetConsoleContext(v string) *UpdateAutoThrottleRulesAsyncRequest {
+	s.ConsoleContext = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncRequest) SetCpuSessionRelation(v string) *UpdateAutoThrottleRulesAsyncRequest {
+	s.CpuSessionRelation = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncRequest) SetCpuUsage(v float64) *UpdateAutoThrottleRulesAsyncRequest {
+	s.CpuUsage = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncRequest) SetInstanceIds(v string) *UpdateAutoThrottleRulesAsyncRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncRequest) SetMaxThrottleTime(v float64) *UpdateAutoThrottleRulesAsyncRequest {
+	s.MaxThrottleTime = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncRequest) SetResultId(v string) *UpdateAutoThrottleRulesAsyncRequest {
+	s.ResultId = &v
+	return s
+}
+
+type UpdateAutoThrottleRulesAsyncResponseBody struct {
+	Code      *int64                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UpdateAutoThrottleRulesAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAutoThrottleRulesAsyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoThrottleRulesAsyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBody) SetCode(v int64) *UpdateAutoThrottleRulesAsyncResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBody) SetData(v *UpdateAutoThrottleRulesAsyncResponseBodyData) *UpdateAutoThrottleRulesAsyncResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBody) SetMessage(v string) *UpdateAutoThrottleRulesAsyncResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBody) SetRequestId(v string) *UpdateAutoThrottleRulesAsyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBody) SetSuccess(v bool) *UpdateAutoThrottleRulesAsyncResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAutoThrottleRulesAsyncResponseBodyData struct {
+	Complete       *bool                                                       `json:"Complete,omitempty" xml:"Complete,omitempty"`
+	ConfigResponse *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse `json:"ConfigResponse,omitempty" xml:"ConfigResponse,omitempty" type:"Struct"`
+	Fail           *bool                                                       `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	IsFinish       *bool                                                       `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
+	ResultId       *string                                                     `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
+	State          *string                                                     `json:"State,omitempty" xml:"State,omitempty"`
+	Timestamp      *int64                                                      `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s UpdateAutoThrottleRulesAsyncResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoThrottleRulesAsyncResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyData) SetComplete(v bool) *UpdateAutoThrottleRulesAsyncResponseBodyData {
+	s.Complete = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyData) SetConfigResponse(v *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse) *UpdateAutoThrottleRulesAsyncResponseBodyData {
+	s.ConfigResponse = v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyData) SetFail(v bool) *UpdateAutoThrottleRulesAsyncResponseBodyData {
+	s.Fail = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyData) SetIsFinish(v bool) *UpdateAutoThrottleRulesAsyncResponseBodyData {
+	s.IsFinish = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyData) SetResultId(v string) *UpdateAutoThrottleRulesAsyncResponseBodyData {
+	s.ResultId = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyData) SetState(v string) *UpdateAutoThrottleRulesAsyncResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyData) SetTimestamp(v int64) *UpdateAutoThrottleRulesAsyncResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+type UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse struct {
+	ConfigFailInstanceCount    *int64                                                                                 `json:"ConfigFailInstanceCount,omitempty" xml:"ConfigFailInstanceCount,omitempty"`
+	ConfigFailInstanceList     []*UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList    `json:"ConfigFailInstanceList,omitempty" xml:"ConfigFailInstanceList,omitempty" type:"Repeated"`
+	ConfigSuccessInstanceCount *int64                                                                                 `json:"ConfigSuccessInstanceCount,omitempty" xml:"ConfigSuccessInstanceCount,omitempty"`
+	ConfigSuccessInstanceList  []*UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList `json:"ConfigSuccessInstanceList,omitempty" xml:"ConfigSuccessInstanceList,omitempty" type:"Repeated"`
+	TotalInstanceCount         *int64                                                                                 `json:"TotalInstanceCount,omitempty" xml:"TotalInstanceCount,omitempty"`
+}
+
+func (s UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse) SetConfigFailInstanceCount(v int64) *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse {
+	s.ConfigFailInstanceCount = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse) SetConfigFailInstanceList(v []*UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList) *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse {
+	s.ConfigFailInstanceList = v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse) SetConfigSuccessInstanceCount(v int64) *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse {
+	s.ConfigSuccessInstanceCount = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse) SetConfigSuccessInstanceList(v []*UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList) *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse {
+	s.ConfigSuccessInstanceList = v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse) SetTotalInstanceCount(v int64) *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse {
+	s.TotalInstanceCount = &v
+	return s
+}
+
+type UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList struct {
+	ConfigSuccess *bool   `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList) SetConfigSuccess(v bool) *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList {
+	s.ConfigSuccess = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList) SetErrorMessage(v string) *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList) SetInstanceId(v string) *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList struct {
+	ConfigSuccess *bool   `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList) SetConfigSuccess(v bool) *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList {
+	s.ConfigSuccess = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList) SetInstanceId(v string) *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateAutoThrottleRulesAsyncResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAutoThrottleRulesAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAutoThrottleRulesAsyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoThrottleRulesAsyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponse) SetHeaders(v map[string]*string) *UpdateAutoThrottleRulesAsyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponse) SetStatusCode(v int32) *UpdateAutoThrottleRulesAsyncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAutoThrottleRulesAsyncResponse) SetBody(v *UpdateAutoThrottleRulesAsyncResponseBody) *UpdateAutoThrottleRulesAsyncResponse {
 	s.Body = v
 	return s
 }
@@ -11737,6 +13258,102 @@ func (client *Client) DisableAllSqlConcurrencyControlRules(request *DisableAllSq
 	return _result, _err
 }
 
+func (client *Client) DisableAutoResourceOptimizeRulesWithOptions(request *DisableAutoResourceOptimizeRulesRequest, runtime *util.RuntimeOptions) (_result *DisableAutoResourceOptimizeRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
+		query["ConsoleContext"] = request.ConsoleContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableAutoResourceOptimizeRules"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableAutoResourceOptimizeRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableAutoResourceOptimizeRules(request *DisableAutoResourceOptimizeRulesRequest) (_result *DisableAutoResourceOptimizeRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableAutoResourceOptimizeRulesResponse{}
+	_body, _err := client.DisableAutoResourceOptimizeRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DisableAutoThrottleRulesWithOptions(request *DisableAutoThrottleRulesRequest, runtime *util.RuntimeOptions) (_result *DisableAutoThrottleRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
+		query["ConsoleContext"] = request.ConsoleContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableAutoThrottleRules"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableAutoThrottleRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableAutoThrottleRules(request *DisableAutoThrottleRulesRequest) (_result *DisableAutoThrottleRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableAutoThrottleRulesResponse{}
+	_body, _err := client.DisableAutoThrottleRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DisableDasProWithOptions(request *DisableDasProRequest, runtime *util.RuntimeOptions) (_result *DisableDasProResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12130,6 +13747,102 @@ func (client *Client) GetAsyncErrorRequestStatResult(request *GetAsyncErrorReque
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAsyncErrorRequestStatResultResponse{}
 	_body, _err := client.GetAsyncErrorRequestStatResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAutoResourceOptimizeRulesWithOptions(request *GetAutoResourceOptimizeRulesRequest, runtime *util.RuntimeOptions) (_result *GetAutoResourceOptimizeRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
+		query["ConsoleContext"] = request.ConsoleContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAutoResourceOptimizeRules"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAutoResourceOptimizeRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAutoResourceOptimizeRules(request *GetAutoResourceOptimizeRulesRequest) (_result *GetAutoResourceOptimizeRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAutoResourceOptimizeRulesResponse{}
+	_body, _err := client.GetAutoResourceOptimizeRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAutoThrottleRulesWithOptions(request *GetAutoThrottleRulesRequest, runtime *util.RuntimeOptions) (_result *GetAutoThrottleRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
+		query["ConsoleContext"] = request.ConsoleContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAutoThrottleRules"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAutoThrottleRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAutoThrottleRules(request *GetAutoThrottleRulesRequest) (_result *GetAutoThrottleRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAutoThrottleRulesResponse{}
+	_body, _err := client.GetAutoThrottleRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13681,6 +15394,66 @@ func (client *Client) SyncHDMAliyunResource(request *SyncHDMAliyunResourceReques
 	return _result, _err
 }
 
+func (client *Client) UpdateAutoResourceOptimizeRulesAsyncWithOptions(request *UpdateAutoResourceOptimizeRulesAsyncRequest, runtime *util.RuntimeOptions) (_result *UpdateAutoResourceOptimizeRulesAsyncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
+		query["ConsoleContext"] = request.ConsoleContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultId)) {
+		query["ResultId"] = request.ResultId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableFragmentationRatio)) {
+		query["TableFragmentationRatio"] = request.TableFragmentationRatio
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableSpaceSize)) {
+		query["TableSpaceSize"] = request.TableSpaceSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAutoResourceOptimizeRulesAsync"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAutoResourceOptimizeRulesAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAutoResourceOptimizeRulesAsync(request *UpdateAutoResourceOptimizeRulesAsyncRequest) (_result *UpdateAutoResourceOptimizeRulesAsyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAutoResourceOptimizeRulesAsyncResponse{}
+	_body, _err := client.UpdateAutoResourceOptimizeRulesAsyncWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateAutoSqlOptimizeStatusWithOptions(request *UpdateAutoSqlOptimizeStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateAutoSqlOptimizeStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13722,6 +15495,90 @@ func (client *Client) UpdateAutoSqlOptimizeStatus(request *UpdateAutoSqlOptimize
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAutoSqlOptimizeStatusResponse{}
 	_body, _err := client.UpdateAutoSqlOptimizeStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAutoThrottleRulesAsyncWithOptions(request *UpdateAutoThrottleRulesAsyncRequest, runtime *util.RuntimeOptions) (_result *UpdateAutoThrottleRulesAsyncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AbnormalDuration)) {
+		query["AbnormalDuration"] = request.AbnormalDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ActiveSessions)) {
+		query["ActiveSessions"] = request.ActiveSessions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowThrottleEndTime)) {
+		query["AllowThrottleEndTime"] = request.AllowThrottleEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowThrottleStartTime)) {
+		query["AllowThrottleStartTime"] = request.AllowThrottleStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoKillSession)) {
+		query["AutoKillSession"] = request.AutoKillSession
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
+		query["ConsoleContext"] = request.ConsoleContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuSessionRelation)) {
+		query["CpuSessionRelation"] = request.CpuSessionRelation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuUsage)) {
+		query["CpuUsage"] = request.CpuUsage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxThrottleTime)) {
+		query["MaxThrottleTime"] = request.MaxThrottleTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultId)) {
+		query["ResultId"] = request.ResultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAutoThrottleRulesAsync"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAutoThrottleRulesAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAutoThrottleRulesAsync(request *UpdateAutoThrottleRulesAsyncRequest) (_result *UpdateAutoThrottleRulesAsyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAutoThrottleRulesAsyncResponse{}
+	_body, _err := client.UpdateAutoThrottleRulesAsyncWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
