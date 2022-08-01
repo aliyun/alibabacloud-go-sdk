@@ -13,14 +13,10 @@ import (
 )
 
 type CloneFlowJobRequest struct {
-	// 克隆的目标作业ID。您可以调用ListFlowJob查看。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 克隆的目标作业名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 克隆的目标作业所属项目。您可以调用ListFlowProject查看项目的ID。
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CloneFlowJobRequest) String() string {
@@ -52,9 +48,7 @@ func (s *CloneFlowJobRequest) SetRegionId(v string) *CloneFlowJobRequest {
 }
 
 type CloneFlowJobResponseBody struct {
-	// 新产生的作业ID。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 请求ID。
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1067,46 +1061,26 @@ func (s *CreateFlowCategoryResponse) SetBody(v *CreateFlowCategoryResponseBody) 
 }
 
 type CreateFlowJobRequest struct {
-	// 是否临时查询。
-	Adhoc *bool `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
-	// 保留参数。
-	AlertConf *string `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
-	// 保留参数。
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 集群ID。您可以调用ListClusters查看集群的ID。
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 自定义变量。
-	CustomVariables *string `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
-	// 作业的描述。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 环境变量设置。
-	EnvConf *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
-	// 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
-	FailAct *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
-	// 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
-	MonitorConf *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
-	// 作业的名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数设置。
-	ParamConf *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
-	// 作业内容。
-	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// 父目录ID。您可以调用DescribeFlowCategory查看。
-	ParentCategory *string `json:"ParentCategory,omitempty" xml:"ParentCategory,omitempty"`
-	// 项目ID。您可以调用ListFlowProject查看项目的ID。
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 保留参数。
-	ResourceList []*CreateFlowJobRequestResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
-	// 重试策略，保留参数。
-	RetryPolicy *string `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
-	// 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
-	RunConf *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
-	// 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Adhoc           *bool                               `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
+	AlertConf       *string                             `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
+	ClientToken     *string                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterId       *string                             `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CustomVariables *string                             `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
+	Description     *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvConf         *string                             `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
+	FailAct         *string                             `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
+	Mode            *string                             `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	MonitorConf     *string                             `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
+	Name            *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParamConf       *string                             `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
+	Params          *string                             `json:"Params,omitempty" xml:"Params,omitempty"`
+	ParentCategory  *string                             `json:"ParentCategory,omitempty" xml:"ParentCategory,omitempty"`
+	ProjectId       *string                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId        *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceList    []*CreateFlowJobRequestResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	RetryPolicy     *string                             `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
+	RunConf         *string                             `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
+	Type            *string                             `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateFlowJobRequest) String() string {
@@ -1218,10 +1192,8 @@ func (s *CreateFlowJobRequest) SetType(v string) *CreateFlowJobRequest {
 }
 
 type CreateFlowJobRequestResourceList struct {
-	// 保留参数。
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// 保留参数。
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s CreateFlowJobRequestResourceList) String() string {
@@ -1243,9 +1215,7 @@ func (s *CreateFlowJobRequestResourceList) SetPath(v string) *CreateFlowJobReque
 }
 
 type CreateFlowJobResponseBody struct {
-	// 作业ID。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 请求ID。
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1297,16 +1267,11 @@ func (s *CreateFlowJobResponse) SetBody(v *CreateFlowJobResponseBody) *CreateFlo
 }
 
 type CreateFlowProjectRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 项目描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 项目名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 产品类型，固定值DATABRICKS_DATAINSIGHT
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// 地域ID
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源组ID
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProductType     *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1349,9 +1314,7 @@ func (s *CreateFlowProjectRequest) SetResourceGroupId(v string) *CreateFlowProje
 }
 
 type CreateFlowProjectResponseBody struct {
-	// 项目ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 请求ID
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1512,129 +1475,6 @@ func (s *CreateFlowProjectUserResponse) SetBody(v *CreateFlowProjectUserResponse
 	return s
 }
 
-type CreateLibraryRequest struct {
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	LibraryVersion  *string `json:"LibraryVersion,omitempty" xml:"LibraryVersion,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Properties      *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Scope           *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	SourceLocation  *string `json:"SourceLocation,omitempty" xml:"SourceLocation,omitempty"`
-	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s CreateLibraryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLibraryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateLibraryRequest) SetClientToken(v string) *CreateLibraryRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *CreateLibraryRequest) SetLibraryVersion(v string) *CreateLibraryRequest {
-	s.LibraryVersion = &v
-	return s
-}
-
-func (s *CreateLibraryRequest) SetName(v string) *CreateLibraryRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateLibraryRequest) SetProperties(v string) *CreateLibraryRequest {
-	s.Properties = &v
-	return s
-}
-
-func (s *CreateLibraryRequest) SetRegionId(v string) *CreateLibraryRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateLibraryRequest) SetResourceOwnerId(v int64) *CreateLibraryRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *CreateLibraryRequest) SetScope(v string) *CreateLibraryRequest {
-	s.Scope = &v
-	return s
-}
-
-func (s *CreateLibraryRequest) SetSourceLocation(v string) *CreateLibraryRequest {
-	s.SourceLocation = &v
-	return s
-}
-
-func (s *CreateLibraryRequest) SetSourceType(v string) *CreateLibraryRequest {
-	s.SourceType = &v
-	return s
-}
-
-func (s *CreateLibraryRequest) SetType(v string) *CreateLibraryRequest {
-	s.Type = &v
-	return s
-}
-
-type CreateLibraryResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateLibraryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLibraryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateLibraryResponseBody) SetData(v string) *CreateLibraryResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CreateLibraryResponseBody) SetRequestId(v string) *CreateLibraryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateLibraryResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateLibraryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateLibraryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateLibraryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateLibraryResponse) SetHeaders(v map[string]*string) *CreateLibraryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateLibraryResponse) SetStatusCode(v int32) *CreateLibraryResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateLibraryResponse) SetBody(v *CreateLibraryResponseBody) *CreateLibraryResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteFlowRequest struct {
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -1746,10 +1586,8 @@ func (s *DeleteFlowCategoryRequest) SetRegionId(v string) *DeleteFlowCategoryReq
 }
 
 type DeleteFlowCategoryResponseBody struct {
-	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DeleteFlowCategoryResponseBody) String() string {
@@ -1760,23 +1598,13 @@ func (s DeleteFlowCategoryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteFlowCategoryResponseBody) SetFlowId(v string) *DeleteFlowCategoryResponseBody {
-	s.FlowId = &v
-	return s
-}
-
-func (s *DeleteFlowCategoryResponseBody) SetJobId(v string) *DeleteFlowCategoryResponseBody {
-	s.JobId = &v
+func (s *DeleteFlowCategoryResponseBody) SetData(v bool) *DeleteFlowCategoryResponseBody {
+	s.Data = &v
 	return s
 }
 
 func (s *DeleteFlowCategoryResponseBody) SetRequestId(v string) *DeleteFlowCategoryResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteFlowCategoryResponseBody) SetResult(v bool) *DeleteFlowCategoryResponseBody {
-	s.Result = &v
 	return s
 }
 
@@ -1961,87 +1789,6 @@ func (s *DeleteFlowProjectUserResponse) SetStatusCode(v int32) *DeleteFlowProjec
 }
 
 func (s *DeleteFlowProjectUserResponse) SetBody(v *DeleteFlowProjectUserResponseBody) *DeleteFlowProjectUserResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteLibrariesRequest struct {
-	LibraryBizIdList []*string `json:"LibraryBizIdList,omitempty" xml:"LibraryBizIdList,omitempty" type:"Repeated"`
-	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId  *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s DeleteLibrariesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteLibrariesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteLibrariesRequest) SetLibraryBizIdList(v []*string) *DeleteLibrariesRequest {
-	s.LibraryBizIdList = v
-	return s
-}
-
-func (s *DeleteLibrariesRequest) SetRegionId(v string) *DeleteLibrariesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DeleteLibrariesRequest) SetResourceOwnerId(v int64) *DeleteLibrariesRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type DeleteLibrariesResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteLibrariesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteLibrariesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteLibrariesResponseBody) SetData(v bool) *DeleteLibrariesResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DeleteLibrariesResponseBody) SetRequestId(v string) *DeleteLibrariesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteLibrariesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteLibrariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteLibrariesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteLibrariesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteLibrariesResponse) SetHeaders(v map[string]*string) *DeleteLibrariesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteLibrariesResponse) SetStatusCode(v int32) *DeleteLibrariesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteLibrariesResponse) SetBody(v *DeleteLibrariesResponseBody) *DeleteLibrariesResponse {
 	s.Body = v
 	return s
 }
@@ -3502,12 +3249,9 @@ func (s *DescribeFlowCategoryTreeResponse) SetBody(v *DescribeFlowCategoryTreeRe
 }
 
 type DescribeFlowJobRequest struct {
-	// 作业ID。您可以调用ListFlowJob查看作业ID。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeFlowJobRequest) String() string {
@@ -3534,59 +3278,33 @@ func (s *DescribeFlowJobRequest) SetRegionId(v string) *DescribeFlowJobRequest {
 }
 
 type DescribeFlowJobResponseBody struct {
-	// 是否临时查询。
-	Adhoc *string `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
-	// 报警配置。
-	AlertConf *string `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
-	// 作业所在目录ID。
-	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// 自定义变量。
-	CustomVariables *string `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
-	// 作业的描述。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 保留参数。
-	EditLockDetail *string `json:"EditLockDetail,omitempty" xml:"EditLockDetail,omitempty"`
-	// 环境变量设置。
-	EnvConf *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
-	// 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
-	FailAct *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
-	// 创建时间。
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 最后修改时间。
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 作业ID。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Knox的用户密码，执行Zeppelin Notebook时必须提供。
-	KnoxPassword *string `json:"KnoxPassword,omitempty" xml:"KnoxPassword,omitempty"`
-	// Knox的用户名，执行Zeppelin Notebook时必须提供。
-	KnoxUser *string `json:"KnoxUser,omitempty" xml:"KnoxUser,omitempty"`
-	// 最后一次执行的实例ID。
-	LastInstanceId *string `json:"LastInstanceId,omitempty" xml:"LastInstanceId,omitempty"`
-	// 最大重试次数。
-	MaxRetry *int32 `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
-	// 保留参数。
-	MaxRunningTimeSec *int64 `json:"MaxRunningTimeSec,omitempty" xml:"MaxRunningTimeSec,omitempty"`
-	// 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
-	MonitorConf *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
-	// 作业名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数设置。
-	ParamConf *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
-	// 作业内容。
-	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// 请求ID。
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceList *DescribeFlowJobResponseBodyResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Struct"`
-	// 重试间隔 0~300（秒）。
-	RetryInterval *int64 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
-	// 重试策略，保留参数。
-	RetryPolicy *string `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
-	// 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
-	RunConf *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
-	// 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Adhoc             *string                                  `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
+	AlertConf         *string                                  `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
+	CategoryId        *string                                  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CustomVariables   *string                                  `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
+	Description       *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	EditLockDetail    *string                                  `json:"EditLockDetail,omitempty" xml:"EditLockDetail,omitempty"`
+	EnvConf           *string                                  `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
+	FailAct           *string                                  `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
+	GmtCreate         *int64                                   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified       *int64                                   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                *string                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	KnoxPassword      *string                                  `json:"KnoxPassword,omitempty" xml:"KnoxPassword,omitempty"`
+	KnoxUser          *string                                  `json:"KnoxUser,omitempty" xml:"KnoxUser,omitempty"`
+	LastInstanceId    *string                                  `json:"LastInstanceId,omitempty" xml:"LastInstanceId,omitempty"`
+	MaxRetry          *int32                                   `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
+	MaxRunningTimeSec *int64                                   `json:"MaxRunningTimeSec,omitempty" xml:"MaxRunningTimeSec,omitempty"`
+	Mode              *string                                  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	MonitorConf       *string                                  `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
+	Name              *string                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParamConf         *string                                  `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
+	Params            *string                                  `json:"Params,omitempty" xml:"Params,omitempty"`
+	RequestId         *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceList      *DescribeFlowJobResponseBodyResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Struct"`
+	RetryInterval     *int64                                   `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
+	RetryPolicy       *string                                  `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
+	RunConf           *string                                  `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
+	Type              *string                                  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeFlowJobResponseBody) String() string {
@@ -3750,10 +3468,8 @@ func (s *DescribeFlowJobResponseBodyResourceList) SetResource(v []*DescribeFlowJ
 }
 
 type DescribeFlowJobResponseBodyResourceListResource struct {
-	// 保留参数。
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// 保留参数。
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s DescribeFlowJobResponseBodyResourceListResource) String() string {
@@ -4199,382 +3915,10 @@ func (s *DescribeFlowProjectResponse) SetBody(v *DescribeFlowProjectResponseBody
 	return s
 }
 
-type DescribeLibraryDetailRequest struct {
-	LibraryBizId    *string `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s DescribeLibraryDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLibraryDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLibraryDetailRequest) SetLibraryBizId(v string) *DescribeLibraryDetailRequest {
-	s.LibraryBizId = &v
-	return s
-}
-
-func (s *DescribeLibraryDetailRequest) SetRegionId(v string) *DescribeLibraryDetailRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeLibraryDetailRequest) SetResourceOwnerId(v int64) *DescribeLibraryDetailRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type DescribeLibraryDetailResponseBody struct {
-	BizId          *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LibraryVersion *string `json:"LibraryVersion,omitempty" xml:"LibraryVersion,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Properties     *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scope          *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	SourceLocation *string `json:"SourceLocation,omitempty" xml:"SourceLocation,omitempty"`
-	SourceType     *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s DescribeLibraryDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLibraryDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLibraryDetailResponseBody) SetBizId(v string) *DescribeLibraryDetailResponseBody {
-	s.BizId = &v
-	return s
-}
-
-func (s *DescribeLibraryDetailResponseBody) SetCreateTime(v int64) *DescribeLibraryDetailResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeLibraryDetailResponseBody) SetLibraryVersion(v string) *DescribeLibraryDetailResponseBody {
-	s.LibraryVersion = &v
-	return s
-}
-
-func (s *DescribeLibraryDetailResponseBody) SetName(v string) *DescribeLibraryDetailResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeLibraryDetailResponseBody) SetProperties(v string) *DescribeLibraryDetailResponseBody {
-	s.Properties = &v
-	return s
-}
-
-func (s *DescribeLibraryDetailResponseBody) SetRequestId(v string) *DescribeLibraryDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeLibraryDetailResponseBody) SetScope(v string) *DescribeLibraryDetailResponseBody {
-	s.Scope = &v
-	return s
-}
-
-func (s *DescribeLibraryDetailResponseBody) SetSourceLocation(v string) *DescribeLibraryDetailResponseBody {
-	s.SourceLocation = &v
-	return s
-}
-
-func (s *DescribeLibraryDetailResponseBody) SetSourceType(v string) *DescribeLibraryDetailResponseBody {
-	s.SourceType = &v
-	return s
-}
-
-func (s *DescribeLibraryDetailResponseBody) SetType(v string) *DescribeLibraryDetailResponseBody {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeLibraryDetailResponseBody) SetUserId(v string) *DescribeLibraryDetailResponseBody {
-	s.UserId = &v
-	return s
-}
-
-type DescribeLibraryDetailResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLibraryDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeLibraryDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLibraryDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLibraryDetailResponse) SetHeaders(v map[string]*string) *DescribeLibraryDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeLibraryDetailResponse) SetStatusCode(v int32) *DescribeLibraryDetailResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeLibraryDetailResponse) SetBody(v *DescribeLibraryDetailResponseBody) *DescribeLibraryDetailResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeLibraryInstallTaskDetailRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskBizId       *string `json:"TaskBizId,omitempty" xml:"TaskBizId,omitempty"`
-}
-
-func (s DescribeLibraryInstallTaskDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLibraryInstallTaskDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLibraryInstallTaskDetailRequest) SetRegionId(v string) *DescribeLibraryInstallTaskDetailRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailRequest) SetResourceOwnerId(v int64) *DescribeLibraryInstallTaskDetailRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailRequest) SetTaskBizId(v string) *DescribeLibraryInstallTaskDetailRequest {
-	s.TaskBizId = &v
-	return s
-}
-
-type DescribeLibraryInstallTaskDetailResponseBody struct {
-	ClusterBizId *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
-	Detail       *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExecuteTime  *int64  `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	Hostname     *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	LibraryBizId *string `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TaskGroupId  *string `json:"TaskGroupId,omitempty" xml:"TaskGroupId,omitempty"`
-	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskProcess  *int32  `json:"TaskProcess,omitempty" xml:"TaskProcess,omitempty"`
-	TaskStatus   *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskType     *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-}
-
-func (s DescribeLibraryInstallTaskDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLibraryInstallTaskDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponseBody) SetClusterBizId(v string) *DescribeLibraryInstallTaskDetailResponseBody {
-	s.ClusterBizId = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponseBody) SetDetail(v string) *DescribeLibraryInstallTaskDetailResponseBody {
-	s.Detail = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponseBody) SetEndTime(v int64) *DescribeLibraryInstallTaskDetailResponseBody {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponseBody) SetExecuteTime(v int64) *DescribeLibraryInstallTaskDetailResponseBody {
-	s.ExecuteTime = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponseBody) SetHostname(v string) *DescribeLibraryInstallTaskDetailResponseBody {
-	s.Hostname = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponseBody) SetLibraryBizId(v string) *DescribeLibraryInstallTaskDetailResponseBody {
-	s.LibraryBizId = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponseBody) SetRequestId(v string) *DescribeLibraryInstallTaskDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponseBody) SetStartTime(v int64) *DescribeLibraryInstallTaskDetailResponseBody {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponseBody) SetTaskGroupId(v string) *DescribeLibraryInstallTaskDetailResponseBody {
-	s.TaskGroupId = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponseBody) SetTaskId(v string) *DescribeLibraryInstallTaskDetailResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponseBody) SetTaskProcess(v int32) *DescribeLibraryInstallTaskDetailResponseBody {
-	s.TaskProcess = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponseBody) SetTaskStatus(v string) *DescribeLibraryInstallTaskDetailResponseBody {
-	s.TaskStatus = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponseBody) SetTaskType(v string) *DescribeLibraryInstallTaskDetailResponseBody {
-	s.TaskType = &v
-	return s
-}
-
-type DescribeLibraryInstallTaskDetailResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLibraryInstallTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeLibraryInstallTaskDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLibraryInstallTaskDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponse) SetHeaders(v map[string]*string) *DescribeLibraryInstallTaskDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponse) SetStatusCode(v int32) *DescribeLibraryInstallTaskDetailResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeLibraryInstallTaskDetailResponse) SetBody(v *DescribeLibraryInstallTaskDetailResponseBody) *DescribeLibraryInstallTaskDetailResponse {
-	s.Body = v
-	return s
-}
-
-type InstallLibrariesRequest struct {
-	ClusterBizIdList []*string `json:"ClusterBizIdList,omitempty" xml:"ClusterBizIdList,omitempty" type:"Repeated"`
-	LibraryBizId     *string   `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
-	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId  *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s InstallLibrariesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InstallLibrariesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *InstallLibrariesRequest) SetClusterBizIdList(v []*string) *InstallLibrariesRequest {
-	s.ClusterBizIdList = v
-	return s
-}
-
-func (s *InstallLibrariesRequest) SetLibraryBizId(v string) *InstallLibrariesRequest {
-	s.LibraryBizId = &v
-	return s
-}
-
-func (s *InstallLibrariesRequest) SetRegionId(v string) *InstallLibrariesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *InstallLibrariesRequest) SetResourceOwnerId(v int64) *InstallLibrariesRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type InstallLibrariesResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s InstallLibrariesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InstallLibrariesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InstallLibrariesResponseBody) SetData(v string) *InstallLibrariesResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *InstallLibrariesResponseBody) SetRequestId(v string) *InstallLibrariesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type InstallLibrariesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InstallLibrariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s InstallLibrariesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InstallLibrariesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *InstallLibrariesResponse) SetHeaders(v map[string]*string) *InstallLibrariesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *InstallLibrariesResponse) SetStatusCode(v int32) *InstallLibrariesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *InstallLibrariesResponse) SetBody(v *InstallLibrariesResponseBody) *InstallLibrariesResponse {
-	s.Body = v
-	return s
-}
-
 type KillFlowJobRequest struct {
-	// 作业实例ID。您可以调用DescribeFlowJob查看作业实例ID。
 	JobInstanceId *string `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
-	// 项目ID。您可以调用ListFlowProject查看项目的ID。
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s KillFlowJobRequest) String() string {
@@ -4601,9 +3945,7 @@ func (s *KillFlowJobRequest) SetRegionId(v string) *KillFlowJobRequest {
 }
 
 type KillFlowJobResponseBody struct {
-	// 返回执行结果，包含如下：true（执行成功），false（执行失败）
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 请求ID。
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5089,26 +4431,16 @@ func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListCluster
 }
 
 type ListFlowRequest struct {
-	// 集群ID。您可以调用ListClusters查看集群的ID。
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 工作流ID。您可以调用ListFlowInstance查看工作流ID。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 作业ID。您可以调用ListFlowJob查看。
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 工作流名称。您可以调用ListFlowInstance查看。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 页码。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页查询数量。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 是否调度。
-	Periodic *bool `json:"Periodic,omitempty" xml:"Periodic,omitempty"`
-	// 项目ID。您可以调用ListFlowProject查看项目的ID。
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 状态：  STOP_SCHEDULE（停止调度） UNDER_SCHEDULE（调度中）
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Periodic   *bool   `json:"Periodic,omitempty" xml:"Periodic,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListFlowRequest) String() string {
@@ -5170,16 +4502,11 @@ func (s *ListFlowRequest) SetStatus(v string) *ListFlowRequest {
 }
 
 type ListFlowResponseBody struct {
-	// 工作流列表
-	Flow *ListFlowResponseBodyFlow `json:"Flow,omitempty" xml:"Flow,omitempty" type:"Struct"`
-	// 页码。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页数量。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总数。
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Flow       *ListFlowResponseBodyFlow `json:"Flow,omitempty" xml:"Flow,omitempty" type:"Struct"`
+	PageNumber *int32                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total      *int32                    `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListFlowResponseBody) String() string {
@@ -5393,24 +4720,15 @@ func (s *ListFlowResponse) SetBody(v *ListFlowResponseBody) *ListFlowResponse {
 }
 
 type ListFlowJobHistoryRequest struct {
-	// 作业ID。您可以调用ListFlowJob查看作业ID。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 作业实例ID。您可以调用DescribeFlowJob查看作业实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// 当前页码。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页查询时每页行数。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 项目ID。您可以调用ListFlowProject查看项目的ID。
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 状态列表。取值如下：SUBMITTED, RUNNING, SUCCESS, FAILED, KILL_FAILED, KILL_SUCCESS
+	Id         *string   `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobType    *string   `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	PageNumber *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId  *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// 查询的时间范围参数，参数列表：type: range，from: 开始时间（long型时间戳），to: 结束时间（long型时间戳）
-	TimeRange *string `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
+	TimeRange  *string   `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
 }
 
 func (s ListFlowJobHistoryRequest) String() string {
@@ -5467,16 +4785,11 @@ func (s *ListFlowJobHistoryRequest) SetTimeRange(v string) *ListFlowJobHistoryRe
 }
 
 type ListFlowJobHistoryResponseBody struct {
-	// 作业实例列表。
 	NodeInstances *ListFlowJobHistoryResponseBodyNodeInstances `json:"NodeInstances,omitempty" xml:"NodeInstances,omitempty" type:"Struct"`
-	// 当前页码。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页查询时设置的每页行数。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 记录总数。
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	PageNumber    *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total         *int32                                       `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListFlowJobHistoryResponseBody) String() string {
@@ -5530,58 +4843,32 @@ func (s *ListFlowJobHistoryResponseBodyNodeInstances) SetNodeInstance(v []*ListF
 }
 
 type ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance struct {
-	// 集群ID。
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 运行结束时间。
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 环境变量设置。
-	EnvConf *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
-	// 启动器的application的ID。
-	ExternalId *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
-	// 外部信息。例如，运行作业的错误诊断信息。
-	ExternalInfo *string `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty"`
-	// 实例对应的Container的状态：SUBMITTED, RUNNING, SUCCESS, FAIL, KILL_FAIL, KILL_SUCCESS
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EnvConf        *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
+	ExternalId     *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
+	ExternalInfo   *string `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty"`
 	ExternalStatus *string `json:"ExternalStatus,omitempty" xml:"ExternalStatus,omitempty"`
-	// 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
-	FailAct *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
-	// 创建时间。
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 创建时间。
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 保留参数。
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 作业实例ID。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 作业ID。
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 作业名称。
-	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// 作业内容。
-	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
-	// 作业类型。
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// 最大重试次数。
-	MaxRetry *int32 `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
-	// 保留参数。
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// 参数设置。
-	ParamConf *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
-	// 项目ID。
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 重试次数。
-	Retries *int32 `json:"Retries,omitempty" xml:"Retries,omitempty"`
-	// 重试间隔 0-300（秒）。
-	RetryInterval *int64 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
-	// 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
-	RunConf *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
-	// 运行开始时间。
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 实例的执行状态：PREP：准备启动，SUBMITTING：提交中，RUNNING：运行中DONE：已完成，OK：执行成功，FAILED：执行失败，KILLED：已终止，KILL_FAILED：终止失败，START_RETRY：开始重试
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 节点类型：JOB：作业，CLUSTER：集群，START：开始，END：结束
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 是否结束。
-	Pending *bool `json:"pending,omitempty" xml:"pending,omitempty"`
+	FailAct        *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
+	GmtCreate      *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified    *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HostName       *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName        *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobParams      *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
+	JobType        *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MaxRetry       *int32  `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
+	NodeName       *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	ParamConf      *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
+	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Retries        *int32  `json:"Retries,omitempty" xml:"Retries,omitempty"`
+	RetryInterval  *int64  `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
+	RunConf        *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
+	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Pending        *bool   `json:"pending,omitempty" xml:"pending,omitempty"`
 }
 
 func (s ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) String() string {
@@ -5752,23 +5039,15 @@ func (s *ListFlowJobHistoryResponse) SetBody(v *ListFlowJobHistoryResponseBody) 
 }
 
 type ListFlowJobsRequest struct {
-	// 是否为临时查询。用于过滤作业。
-	Adhoc     *bool   `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
-	ExactName *string `json:"ExactName,omitempty" xml:"ExactName,omitempty"`
-	// 作业ID。您可以调用ListFlowJob查看作业ID。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 作业名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 当前页数。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页的作业数量。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 项目ID。您可以调用ListFlowProject查看项目的ID。
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 作业类型。用于过滤作业，支持的类型有：SPARK，SPARK_STREAMING，ZEPPELIN。
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Adhoc      *bool   `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
+	ExactName  *string `json:"ExactName,omitempty" xml:"ExactName,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListFlowJobsRequest) String() string {
@@ -5825,15 +5104,11 @@ func (s *ListFlowJobsRequest) SetType(v string) *ListFlowJobsRequest {
 }
 
 type ListFlowJobsResponseBody struct {
-	JobList *ListFlowJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Struct"`
-	// 当前页数。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页的作业数量。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 作业数量。
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	JobList    *ListFlowJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Struct"`
+	PageNumber *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total      *int32                           `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListFlowJobsResponseBody) String() string {
@@ -5887,47 +5162,27 @@ func (s *ListFlowJobsResponseBodyJobList) SetJob(v []*ListFlowJobsResponseBodyJo
 }
 
 type ListFlowJobsResponseBodyJobListJob struct {
-	// 是否临时查询。
-	Adhoc *string `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
-	// 报警配置。
-	AlertConf *string `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
-	// 作业所在目录ID。
-	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// 自定义变量。
-	CustomVariables *string `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
-	// 作业的描述。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 环境变量设置。
-	EnvConf *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
-	// 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
-	FailAct *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
-	// 创建时间。
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 最后修改时间。
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 作业ID。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 最后一次执行的实例ID。
-	LastInstanceDetail *string `json:"LastInstanceDetail,omitempty" xml:"LastInstanceDetail,omitempty"`
-	// 最大重试次数。
-	MaxRetry *int32 `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
-	// 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
-	MonitorConf *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
-	// 作业名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数设置。
-	ParamConf *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
-	// 作业内容。
-	Params       *string                                         `json:"Params,omitempty" xml:"Params,omitempty"`
-	ResourceList *ListFlowJobsResponseBodyJobListJobResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Struct"`
-	// 重试间隔 0~300（秒）。
-	RetryInterval *int64 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
-	// 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
-	RunConf *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
-	// 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Adhoc              *string                                         `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
+	AlertConf          *string                                         `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
+	CategoryId         *string                                         `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CustomVariables    *string                                         `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
+	Description        *string                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvConf            *string                                         `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
+	FailAct            *string                                         `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
+	GmtCreate          *int64                                          `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *int64                                          `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                 *string                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	LastInstanceDetail *string                                         `json:"LastInstanceDetail,omitempty" xml:"LastInstanceDetail,omitempty"`
+	MaxRetry           *int32                                          `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
+	Mode               *string                                         `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	MonitorConf        *string                                         `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
+	Name               *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParamConf          *string                                         `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
+	Params             *string                                         `json:"Params,omitempty" xml:"Params,omitempty"`
+	ResourceList       *ListFlowJobsResponseBodyJobListJobResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Struct"`
+	RetryInterval      *int64                                          `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
+	RunConf            *string                                         `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
+	Type               *string                                         `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListFlowJobsResponseBodyJobListJob) String() string {
@@ -6061,10 +5316,8 @@ func (s *ListFlowJobsResponseBodyJobListJobResourceList) SetResource(v []*ListFl
 }
 
 type ListFlowJobsResponseBodyJobListJobResourceListResource struct {
-	// 保留参数。
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// 保留参数。
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s ListFlowJobsResponseBodyJobListJobResourceListResource) String() string {
@@ -6284,19 +5537,12 @@ func (s *ListFlowProjectUserResponse) SetBody(v *ListFlowProjectUserResponseBody
 }
 
 type ListFlowProjectsRequest struct {
-	// 项目名称，用于过滤项目
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 页码，用于分页
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页数量
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 产品类型。固定值DATABIRCKS_DATAINSIGHT
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// 项目ID。您可以调用ListFlowProjects查看项目的ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 地域ID
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源组ID
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductType     *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -6344,16 +5590,11 @@ func (s *ListFlowProjectsRequest) SetResourceGroupId(v string) *ListFlowProjects
 }
 
 type ListFlowProjectsResponseBody struct {
-	// 页码
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页数量
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 项目列表
-	Projects *ListFlowProjectsResponseBodyProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总数
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Projects   *ListFlowProjectsResponseBodyProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Struct"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total      *int32                                `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListFlowProjectsResponseBody) String() string {
@@ -6407,18 +5648,12 @@ func (s *ListFlowProjectsResponseBodyProjects) SetProject(v []*ListFlowProjectsR
 }
 
 type ListFlowProjectsResponseBodyProjectsProject struct {
-	// 项目描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 创建时间戳
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间戳
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 项目ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 项目名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 主账号ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListFlowProjectsResponseBodyProjectsProject) String() string {
@@ -6484,905 +5719,6 @@ func (s *ListFlowProjectsResponse) SetStatusCode(v int32) *ListFlowProjectsRespo
 }
 
 func (s *ListFlowProjectsResponse) SetBody(v *ListFlowProjectsResponseBody) *ListFlowProjectsResponse {
-	s.Body = v
-	return s
-}
-
-type ListLibrariesRequest struct {
-	ClusterBizId    *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
-	CurrentSize     *int32  `json:"CurrentSize,omitempty" xml:"CurrentSize,omitempty"`
-	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	OrderField      *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	OrderMode       *string `json:"OrderMode,omitempty" xml:"OrderMode,omitempty"`
-	PageCount       *int32  `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s ListLibrariesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibrariesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibrariesRequest) SetClusterBizId(v string) *ListLibrariesRequest {
-	s.ClusterBizId = &v
-	return s
-}
-
-func (s *ListLibrariesRequest) SetCurrentSize(v int32) *ListLibrariesRequest {
-	s.CurrentSize = &v
-	return s
-}
-
-func (s *ListLibrariesRequest) SetLimit(v int32) *ListLibrariesRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListLibrariesRequest) SetOrderField(v string) *ListLibrariesRequest {
-	s.OrderField = &v
-	return s
-}
-
-func (s *ListLibrariesRequest) SetOrderMode(v string) *ListLibrariesRequest {
-	s.OrderMode = &v
-	return s
-}
-
-func (s *ListLibrariesRequest) SetPageCount(v int32) *ListLibrariesRequest {
-	s.PageCount = &v
-	return s
-}
-
-func (s *ListLibrariesRequest) SetPageNumber(v int32) *ListLibrariesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListLibrariesRequest) SetPageSize(v int32) *ListLibrariesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListLibrariesRequest) SetRegionId(v string) *ListLibrariesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListLibrariesRequest) SetResourceOwnerId(v int64) *ListLibrariesRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type ListLibrariesResponseBody struct {
-	Items      *ListLibrariesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	NextToken  *string                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListLibrariesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibrariesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibrariesResponseBody) SetItems(v *ListLibrariesResponseBodyItems) *ListLibrariesResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *ListLibrariesResponseBody) SetNextToken(v string) *ListLibrariesResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListLibrariesResponseBody) SetPageNumber(v int32) *ListLibrariesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListLibrariesResponseBody) SetPageSize(v int32) *ListLibrariesResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListLibrariesResponseBody) SetRequestId(v string) *ListLibrariesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListLibrariesResponseBody) SetTotalCount(v int32) *ListLibrariesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListLibrariesResponseBodyItems struct {
-	Item []*ListLibrariesResponseBodyItemsItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
-}
-
-func (s ListLibrariesResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibrariesResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibrariesResponseBodyItems) SetItem(v []*ListLibrariesResponseBodyItemsItem) *ListLibrariesResponseBodyItems {
-	s.Item = v
-	return s
-}
-
-type ListLibrariesResponseBodyItemsItem struct {
-	BizId          *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LibraryVersion *string `json:"LibraryVersion,omitempty" xml:"LibraryVersion,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Properties     *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	Scope          *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	SourceLocation *string `json:"SourceLocation,omitempty" xml:"SourceLocation,omitempty"`
-	SourceType     *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s ListLibrariesResponseBodyItemsItem) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibrariesResponseBodyItemsItem) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibrariesResponseBodyItemsItem) SetBizId(v string) *ListLibrariesResponseBodyItemsItem {
-	s.BizId = &v
-	return s
-}
-
-func (s *ListLibrariesResponseBodyItemsItem) SetCreateTime(v int64) *ListLibrariesResponseBodyItemsItem {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListLibrariesResponseBodyItemsItem) SetLibraryVersion(v string) *ListLibrariesResponseBodyItemsItem {
-	s.LibraryVersion = &v
-	return s
-}
-
-func (s *ListLibrariesResponseBodyItemsItem) SetName(v string) *ListLibrariesResponseBodyItemsItem {
-	s.Name = &v
-	return s
-}
-
-func (s *ListLibrariesResponseBodyItemsItem) SetProperties(v string) *ListLibrariesResponseBodyItemsItem {
-	s.Properties = &v
-	return s
-}
-
-func (s *ListLibrariesResponseBodyItemsItem) SetScope(v string) *ListLibrariesResponseBodyItemsItem {
-	s.Scope = &v
-	return s
-}
-
-func (s *ListLibrariesResponseBodyItemsItem) SetSourceLocation(v string) *ListLibrariesResponseBodyItemsItem {
-	s.SourceLocation = &v
-	return s
-}
-
-func (s *ListLibrariesResponseBodyItemsItem) SetSourceType(v string) *ListLibrariesResponseBodyItemsItem {
-	s.SourceType = &v
-	return s
-}
-
-func (s *ListLibrariesResponseBodyItemsItem) SetType(v string) *ListLibrariesResponseBodyItemsItem {
-	s.Type = &v
-	return s
-}
-
-func (s *ListLibrariesResponseBodyItemsItem) SetUserId(v string) *ListLibrariesResponseBodyItemsItem {
-	s.UserId = &v
-	return s
-}
-
-type ListLibrariesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLibrariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListLibrariesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibrariesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibrariesResponse) SetHeaders(v map[string]*string) *ListLibrariesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListLibrariesResponse) SetStatusCode(v int32) *ListLibrariesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListLibrariesResponse) SetBody(v *ListLibrariesResponseBody) *ListLibrariesResponse {
-	s.Body = v
-	return s
-}
-
-type ListLibraryInstallTasksRequest struct {
-	ClusterBizId    *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
-	CurrentSize     *int32  `json:"CurrentSize,omitempty" xml:"CurrentSize,omitempty"`
-	LibraryBizId    *string `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
-	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	OrderField      *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	OrderMode       *string `json:"OrderMode,omitempty" xml:"OrderMode,omitempty"`
-	PageCount       *int32  `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s ListLibraryInstallTasksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibraryInstallTasksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibraryInstallTasksRequest) SetClusterBizId(v string) *ListLibraryInstallTasksRequest {
-	s.ClusterBizId = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksRequest) SetCurrentSize(v int32) *ListLibraryInstallTasksRequest {
-	s.CurrentSize = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksRequest) SetLibraryBizId(v string) *ListLibraryInstallTasksRequest {
-	s.LibraryBizId = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksRequest) SetLimit(v int32) *ListLibraryInstallTasksRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksRequest) SetOrderField(v string) *ListLibraryInstallTasksRequest {
-	s.OrderField = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksRequest) SetOrderMode(v string) *ListLibraryInstallTasksRequest {
-	s.OrderMode = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksRequest) SetPageCount(v int32) *ListLibraryInstallTasksRequest {
-	s.PageCount = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksRequest) SetPageNumber(v int32) *ListLibraryInstallTasksRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksRequest) SetPageSize(v int32) *ListLibraryInstallTasksRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksRequest) SetRegionId(v string) *ListLibraryInstallTasksRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksRequest) SetResourceOwnerId(v int64) *ListLibraryInstallTasksRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type ListLibraryInstallTasksResponseBody struct {
-	Items      *ListLibraryInstallTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	NextToken  *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListLibraryInstallTasksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibraryInstallTasksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibraryInstallTasksResponseBody) SetItems(v *ListLibraryInstallTasksResponseBodyItems) *ListLibraryInstallTasksResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBody) SetNextToken(v string) *ListLibraryInstallTasksResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBody) SetPageNumber(v int32) *ListLibraryInstallTasksResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBody) SetPageSize(v int32) *ListLibraryInstallTasksResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBody) SetRequestId(v string) *ListLibraryInstallTasksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBody) SetTotalCount(v int32) *ListLibraryInstallTasksResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListLibraryInstallTasksResponseBodyItems struct {
-	Item []*ListLibraryInstallTasksResponseBodyItemsItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
-}
-
-func (s ListLibraryInstallTasksResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibraryInstallTasksResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibraryInstallTasksResponseBodyItems) SetItem(v []*ListLibraryInstallTasksResponseBodyItemsItem) *ListLibraryInstallTasksResponseBodyItems {
-	s.Item = v
-	return s
-}
-
-type ListLibraryInstallTasksResponseBodyItemsItem struct {
-	ClusterBizId *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
-	Detail       *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExecuteTime  *int64  `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	Hostname     *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	LibraryBizId *string `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
-	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TaskGroupId  *string `json:"TaskGroupId,omitempty" xml:"TaskGroupId,omitempty"`
-	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskProcess  *int32  `json:"TaskProcess,omitempty" xml:"TaskProcess,omitempty"`
-	TaskStatus   *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskType     *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-}
-
-func (s ListLibraryInstallTasksResponseBodyItemsItem) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibraryInstallTasksResponseBodyItemsItem) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetClusterBizId(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
-	s.ClusterBizId = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetDetail(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
-	s.Detail = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetEndTime(v int64) *ListLibraryInstallTasksResponseBodyItemsItem {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetExecuteTime(v int64) *ListLibraryInstallTasksResponseBodyItemsItem {
-	s.ExecuteTime = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetHostname(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
-	s.Hostname = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetLibraryBizId(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
-	s.LibraryBizId = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetStartTime(v int64) *ListLibraryInstallTasksResponseBodyItemsItem {
-	s.StartTime = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetTaskGroupId(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
-	s.TaskGroupId = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetTaskId(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
-	s.TaskId = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetTaskProcess(v int32) *ListLibraryInstallTasksResponseBodyItemsItem {
-	s.TaskProcess = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetTaskStatus(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
-	s.TaskStatus = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetTaskType(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
-	s.TaskType = &v
-	return s
-}
-
-type ListLibraryInstallTasksResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLibraryInstallTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListLibraryInstallTasksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibraryInstallTasksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibraryInstallTasksResponse) SetHeaders(v map[string]*string) *ListLibraryInstallTasksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponse) SetStatusCode(v int32) *ListLibraryInstallTasksResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListLibraryInstallTasksResponse) SetBody(v *ListLibraryInstallTasksResponseBody) *ListLibraryInstallTasksResponse {
-	s.Body = v
-	return s
-}
-
-type ListLibraryStatusRequest struct {
-	ClusterBizId    *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
-	CurrentSize     *int32  `json:"CurrentSize,omitempty" xml:"CurrentSize,omitempty"`
-	LibraryBizId    *string `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
-	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	OrderField      *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	OrderMode       *string `json:"OrderMode,omitempty" xml:"OrderMode,omitempty"`
-	PageCount       *int32  `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s ListLibraryStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibraryStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibraryStatusRequest) SetClusterBizId(v string) *ListLibraryStatusRequest {
-	s.ClusterBizId = &v
-	return s
-}
-
-func (s *ListLibraryStatusRequest) SetCurrentSize(v int32) *ListLibraryStatusRequest {
-	s.CurrentSize = &v
-	return s
-}
-
-func (s *ListLibraryStatusRequest) SetLibraryBizId(v string) *ListLibraryStatusRequest {
-	s.LibraryBizId = &v
-	return s
-}
-
-func (s *ListLibraryStatusRequest) SetLimit(v int32) *ListLibraryStatusRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListLibraryStatusRequest) SetOrderField(v string) *ListLibraryStatusRequest {
-	s.OrderField = &v
-	return s
-}
-
-func (s *ListLibraryStatusRequest) SetOrderMode(v string) *ListLibraryStatusRequest {
-	s.OrderMode = &v
-	return s
-}
-
-func (s *ListLibraryStatusRequest) SetPageCount(v int32) *ListLibraryStatusRequest {
-	s.PageCount = &v
-	return s
-}
-
-func (s *ListLibraryStatusRequest) SetPageNumber(v int32) *ListLibraryStatusRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListLibraryStatusRequest) SetPageSize(v int32) *ListLibraryStatusRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListLibraryStatusRequest) SetRegionId(v string) *ListLibraryStatusRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListLibraryStatusRequest) SetResourceOwnerId(v int64) *ListLibraryStatusRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type ListLibraryStatusResponseBody struct {
-	Items      *ListLibraryStatusResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageNumber *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListLibraryStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibraryStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibraryStatusResponseBody) SetItems(v *ListLibraryStatusResponseBodyItems) *ListLibraryStatusResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *ListLibraryStatusResponseBody) SetNextToken(v string) *ListLibraryStatusResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListLibraryStatusResponseBody) SetPageNumber(v int32) *ListLibraryStatusResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListLibraryStatusResponseBody) SetPageSize(v int32) *ListLibraryStatusResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListLibraryStatusResponseBody) SetRequestId(v string) *ListLibraryStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListLibraryStatusResponseBody) SetTotalCount(v int32) *ListLibraryStatusResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListLibraryStatusResponseBodyItems struct {
-	Item []*ListLibraryStatusResponseBodyItemsItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
-}
-
-func (s ListLibraryStatusResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibraryStatusResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibraryStatusResponseBodyItems) SetItem(v []*ListLibraryStatusResponseBodyItemsItem) *ListLibraryStatusResponseBodyItems {
-	s.Item = v
-	return s
-}
-
-type ListLibraryStatusResponseBodyItemsItem struct {
-	ClusterBizId *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
-	ClusterName  *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	LibraryBizId *string `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
-	LibraryName  *string `json:"LibraryName,omitempty" xml:"LibraryName,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s ListLibraryStatusResponseBodyItemsItem) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibraryStatusResponseBodyItemsItem) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibraryStatusResponseBodyItemsItem) SetClusterBizId(v string) *ListLibraryStatusResponseBodyItemsItem {
-	s.ClusterBizId = &v
-	return s
-}
-
-func (s *ListLibraryStatusResponseBodyItemsItem) SetClusterName(v string) *ListLibraryStatusResponseBodyItemsItem {
-	s.ClusterName = &v
-	return s
-}
-
-func (s *ListLibraryStatusResponseBodyItemsItem) SetLibraryBizId(v string) *ListLibraryStatusResponseBodyItemsItem {
-	s.LibraryBizId = &v
-	return s
-}
-
-func (s *ListLibraryStatusResponseBodyItemsItem) SetLibraryName(v string) *ListLibraryStatusResponseBodyItemsItem {
-	s.LibraryName = &v
-	return s
-}
-
-func (s *ListLibraryStatusResponseBodyItemsItem) SetStatus(v string) *ListLibraryStatusResponseBodyItemsItem {
-	s.Status = &v
-	return s
-}
-
-type ListLibraryStatusResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLibraryStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListLibraryStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLibraryStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListLibraryStatusResponse) SetHeaders(v map[string]*string) *ListLibraryStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListLibraryStatusResponse) SetStatusCode(v int32) *ListLibraryStatusResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListLibraryStatusResponse) SetBody(v *ListLibraryStatusResponseBody) *ListLibraryStatusResponse {
-	s.Body = v
-	return s
-}
-
-type ListTagResourcesRequest struct {
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 资源组ID
-	ResourceId      []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerId *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType    *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签
-	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s ListTagResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetResourceGroupId(v string) *ListTagResourcesRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetResourceOwnerId(v int64) *ListTagResourcesRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
-	s.Tag = v
-	return s
-}
-
-type ListTagResourcesRequestTag struct {
-	// 标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListTagResourcesRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
-	s.Value = &v
-	return s
-}
-
-type ListTagResourcesResponseBody struct {
-	// 响应码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 响应消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 请求是否成功被处理
-	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
-}
-
-func (s ListTagResourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesResponseBody) SetCode(v string) *ListTagResourcesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBody) SetErrorCode(v string) *ListTagResourcesResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBody) SetMessage(v string) *ListTagResourcesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBody) SetSuccess(v bool) *ListTagResourcesResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
-	s.TagResources = v
-	return s
-}
-
-type ListTagResourcesResponseBodyTagResources struct {
-	// 资源ID
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签键
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// 标签值
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-}
-
-func (s ListTagResourcesResponseBodyTagResources) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesResponseBodyTagResources) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
-	s.TagKey = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
-	s.TagValue = &v
-	return s
-}
-
-type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListTagResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -7571,44 +5907,27 @@ func (s *ModifyFlowForWebResponse) SetBody(v *ModifyFlowForWebResponseBody) *Mod
 }
 
 type ModifyFlowJobRequest struct {
-	// 保留参数。
-	AlertConf *string `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
-	// 集群ID。您可以调用ListClusters查看集群的ID。
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 自定义变量。
-	CustomVariables *string `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
-	// 修改后的作业描述。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 环境变量设置。
-	EnvConf *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
-	// 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
-	FailAct *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
-	// 需要修改的作业的ID。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Knox的用户密码，执行Zeppelin Notebook时必须提供。
-	KnoxPassword *string `json:"KnoxPassword,omitempty" xml:"KnoxPassword,omitempty"`
-	// Knox的用户名，执行Zeppelin Notebook时必须提供。
-	KnoxUser *string `json:"KnoxUser,omitempty" xml:"KnoxUser,omitempty"`
-	// 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
-	MonitorConf *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
-	// 修改后的作业名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数设置。
-	ParamConf *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
-	// 作业内容。如果是spark作业，该参数的内容会作为spark-submit的参数。
-	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// 项目ID。您可以调用ListFlowProject查看项目的ID。
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 保留参数。
-	ResourceList []*ModifyFlowJobRequestResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
-	// 重试策略，保留参数。
-	RetryPolicy *string `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
-	// 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
-	RunConf *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
+	AlertConf       *string                             `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
+	ClusterId       *string                             `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CustomVariables *string                             `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
+	Description     *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvConf         *string                             `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
+	FailAct         *string                             `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
+	Id              *string                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	KnoxPassword    *string                             `json:"KnoxPassword,omitempty" xml:"KnoxPassword,omitempty"`
+	KnoxUser        *string                             `json:"KnoxUser,omitempty" xml:"KnoxUser,omitempty"`
+	MaxRetry        *int32                              `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
+	Mode            *string                             `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	MonitorConf     *string                             `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
+	Name            *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParamConf       *string                             `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
+	Params          *string                             `json:"Params,omitempty" xml:"Params,omitempty"`
+	ProjectId       *string                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId        *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceList    []*ModifyFlowJobRequestResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	RetryInterval   *int64                              `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
+	RetryPolicy     *string                             `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
+	RunConf         *string                             `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
 }
 
 func (s ModifyFlowJobRequest) String() string {
@@ -7664,6 +5983,11 @@ func (s *ModifyFlowJobRequest) SetKnoxUser(v string) *ModifyFlowJobRequest {
 	return s
 }
 
+func (s *ModifyFlowJobRequest) SetMaxRetry(v int32) *ModifyFlowJobRequest {
+	s.MaxRetry = &v
+	return s
+}
+
 func (s *ModifyFlowJobRequest) SetMode(v string) *ModifyFlowJobRequest {
 	s.Mode = &v
 	return s
@@ -7704,6 +6028,11 @@ func (s *ModifyFlowJobRequest) SetResourceList(v []*ModifyFlowJobRequestResource
 	return s
 }
 
+func (s *ModifyFlowJobRequest) SetRetryInterval(v int64) *ModifyFlowJobRequest {
+	s.RetryInterval = &v
+	return s
+}
+
 func (s *ModifyFlowJobRequest) SetRetryPolicy(v string) *ModifyFlowJobRequest {
 	s.RetryPolicy = &v
 	return s
@@ -7715,10 +6044,8 @@ func (s *ModifyFlowJobRequest) SetRunConf(v string) *ModifyFlowJobRequest {
 }
 
 type ModifyFlowJobRequestResourceList struct {
-	// 保留参数。
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// 保留参数。
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s ModifyFlowJobRequestResourceList) String() string {
@@ -7740,9 +6067,7 @@ func (s *ModifyFlowJobRequestResourceList) SetPath(v string) *ModifyFlowJobReque
 }
 
 type ModifyFlowJobResponseBody struct {
-	// API调用结果：true（修改成功），false（修改失败）
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 请求ID。
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7962,14 +6287,10 @@ func (s *ReleaseClusterResponse) SetBody(v *ReleaseClusterResponseBody) *Release
 }
 
 type RerunFlowRequest struct {
-	// 工作流实例ID。您可以调用ListFlowInstance查看工作流实例ID。
 	FlowInstanceId *string `json:"FlowInstanceId,omitempty" xml:"FlowInstanceId,omitempty"`
-	// 项目ID。您可以调用ListFlowProject查看项目的ID。
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 是否只重试失败节点。
-	ReRunFail *bool `json:"ReRunFail,omitempty" xml:"ReRunFail,omitempty"`
-	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ReRunFail      *bool   `json:"ReRunFail,omitempty" xml:"ReRunFail,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RerunFlowRequest) String() string {
@@ -8001,9 +6322,7 @@ func (s *RerunFlowRequest) SetRegionId(v string) *RerunFlowRequest {
 }
 
 type RerunFlowResponseBody struct {
-	// 返回执行结果，包含如下：true: 重试工作流成功，false: 重试工作流失败。
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 请求ID。
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8055,12 +6374,9 @@ func (s *RerunFlowResponse) SetBody(v *RerunFlowResponseBody) *RerunFlowResponse
 }
 
 type ResumeFlowRequest struct {
-	// 工作流实例ID。您可以调用ListFlowInstance查看工作流ID。
 	FlowInstanceId *string `json:"FlowInstanceId,omitempty" xml:"FlowInstanceId,omitempty"`
-	// 项目ID。您可以调用ListFlowProject查看项目的ID。
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 区域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ResumeFlowRequest) String() string {
@@ -8087,9 +6403,7 @@ func (s *ResumeFlowRequest) SetRegionId(v string) *ResumeFlowRequest {
 }
 
 type ResumeFlowResponseBody struct {
-	// 返回执行结果。
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 请求ID。
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8141,14 +6455,10 @@ func (s *ResumeFlowResponse) SetBody(v *ResumeFlowResponseBody) *ResumeFlowRespo
 }
 
 type SubmitFlowRequest struct {
-	// 配置信息{"key":"value"}格式。  本示例中cyctime表示实际调度运行的时间（长整型时间戳）。
-	Conf *string `json:"Conf,omitempty" xml:"Conf,omitempty"`
-	// 工作流ID。您可以调用ListFlowInstance查看工作流ID。
-	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	Conf      *string `json:"Conf,omitempty" xml:"Conf,omitempty"`
+	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SubmitFlowRequest) String() string {
@@ -8180,14 +6490,10 @@ func (s *SubmitFlowRequest) SetRegionId(v string) *SubmitFlowRequest {
 }
 
 type SubmitFlowResponseBody struct {
-	// 过期参数。
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 工作流实例ID。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 过期参数。
+	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitFlowResponseBody) String() string {
@@ -8248,18 +6554,12 @@ func (s *SubmitFlowResponse) SetBody(v *SubmitFlowResponseBody) *SubmitFlowRespo
 }
 
 type SubmitFlowJobRequest struct {
-	// 集群ID。您可以调用ListClusters查看集群的ID。
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 配置参数信息：{"key1":"value1"}。key为params的参数值会覆盖实际作业中运行的内容。
-	Conf *string `json:"Conf,omitempty" xml:"Conf,omitempty"`
-	// 保留参数。
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 作业ID。您可以调用ListFlowJob查看作业ID。
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	Conf      *string `json:"Conf,omitempty" xml:"Conf,omitempty"`
+	HostName  *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SubmitFlowJobRequest) String() string {
@@ -8301,9 +6601,7 @@ func (s *SubmitFlowJobRequest) SetRegionId(v string) *SubmitFlowJobRequest {
 }
 
 type SubmitFlowJobResponseBody struct {
-	// 运行的作业实例ID。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 请求ID。
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8350,460 +6648,6 @@ func (s *SubmitFlowJobResponse) SetStatusCode(v int32) *SubmitFlowJobResponse {
 }
 
 func (s *SubmitFlowJobResponse) SetBody(v *SubmitFlowJobResponseBody) *SubmitFlowJobResponse {
-	s.Body = v
-	return s
-}
-
-type TagResourcesRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 资源ID
-	ResourceId      []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerId *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签列表
-	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s TagResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *TagResourcesRequest) SetResourceGroupId(v string) *TagResourcesRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
-func (s *TagResourcesRequest) SetResourceOwnerId(v int64) *TagResourcesRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
-	s.Tag = v
-	return s
-}
-
-type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s TagResourcesRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourcesRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
-	s.Value = &v
-	return s
-}
-
-type TagResourcesResponseBody struct {
-	// 响应码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 响应消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 请求是否成功被处理
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s TagResourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourcesResponseBody) SetCode(v string) *TagResourcesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *TagResourcesResponseBody) SetErrorCode(v string) *TagResourcesResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *TagResourcesResponseBody) SetMessage(v string) *TagResourcesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *TagResourcesResponseBody) SetSuccess(v bool) *TagResourcesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s TagResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
-	s.Body = v
-	return s
-}
-
-type UninstallLibrariesRequest struct {
-	ClusterBizIdList []*string `json:"ClusterBizIdList,omitempty" xml:"ClusterBizIdList,omitempty" type:"Repeated"`
-	LibraryBizId     *string   `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
-	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId  *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s UninstallLibrariesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UninstallLibrariesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UninstallLibrariesRequest) SetClusterBizIdList(v []*string) *UninstallLibrariesRequest {
-	s.ClusterBizIdList = v
-	return s
-}
-
-func (s *UninstallLibrariesRequest) SetLibraryBizId(v string) *UninstallLibrariesRequest {
-	s.LibraryBizId = &v
-	return s
-}
-
-func (s *UninstallLibrariesRequest) SetRegionId(v string) *UninstallLibrariesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UninstallLibrariesRequest) SetResourceOwnerId(v int64) *UninstallLibrariesRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type UninstallLibrariesResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UninstallLibrariesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UninstallLibrariesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UninstallLibrariesResponseBody) SetData(v string) *UninstallLibrariesResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *UninstallLibrariesResponseBody) SetRequestId(v string) *UninstallLibrariesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UninstallLibrariesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UninstallLibrariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UninstallLibrariesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UninstallLibrariesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UninstallLibrariesResponse) SetHeaders(v map[string]*string) *UninstallLibrariesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UninstallLibrariesResponse) SetStatusCode(v int32) *UninstallLibrariesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UninstallLibrariesResponse) SetBody(v *UninstallLibrariesResponseBody) *UninstallLibrariesResponse {
-	s.Body = v
-	return s
-}
-
-type UntagResourcesRequest struct {
-	// 是否解绑资源的所有标签
-	All             *bool   `json:"All,omitempty" xml:"All,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 集群ID列表
-	ResourceId      []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerId *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 解绑的标签键列表
-	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
-}
-
-func (s UntagResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UntagResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
-	s.All = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetResourceGroupId(v string) *UntagResourcesRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetResourceOwnerId(v int64) *UntagResourcesRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
-	s.TagKey = v
-	return s
-}
-
-type UntagResourcesResponseBody struct {
-	// 响应码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 响应消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 请求是否成功被处理
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UntagResourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UntagResourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UntagResourcesResponseBody) SetCode(v string) *UntagResourcesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UntagResourcesResponseBody) SetErrorCode(v string) *UntagResourcesResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UntagResourcesResponseBody) SetMessage(v string) *UntagResourcesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UntagResourcesResponseBody) SetSuccess(v bool) *UntagResourcesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UntagResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UntagResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateLibraryInstallTaskStatusRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskBizId       *string `json:"TaskBizId,omitempty" xml:"TaskBizId,omitempty"`
-}
-
-func (s UpdateLibraryInstallTaskStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateLibraryInstallTaskStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateLibraryInstallTaskStatusRequest) SetRegionId(v string) *UpdateLibraryInstallTaskStatusRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UpdateLibraryInstallTaskStatusRequest) SetResourceOwnerId(v int64) *UpdateLibraryInstallTaskStatusRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UpdateLibraryInstallTaskStatusRequest) SetStatus(v string) *UpdateLibraryInstallTaskStatusRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *UpdateLibraryInstallTaskStatusRequest) SetTaskBizId(v string) *UpdateLibraryInstallTaskStatusRequest {
-	s.TaskBizId = &v
-	return s
-}
-
-type UpdateLibraryInstallTaskStatusResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateLibraryInstallTaskStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateLibraryInstallTaskStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateLibraryInstallTaskStatusResponseBody) SetData(v bool) *UpdateLibraryInstallTaskStatusResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *UpdateLibraryInstallTaskStatusResponseBody) SetRequestId(v string) *UpdateLibraryInstallTaskStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateLibraryInstallTaskStatusResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateLibraryInstallTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateLibraryInstallTaskStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateLibraryInstallTaskStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateLibraryInstallTaskStatusResponse) SetHeaders(v map[string]*string) *UpdateLibraryInstallTaskStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateLibraryInstallTaskStatusResponse) SetStatusCode(v int32) *UpdateLibraryInstallTaskStatusResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateLibraryInstallTaskStatusResponse) SetBody(v *UpdateLibraryInstallTaskStatusResponseBody) *UpdateLibraryInstallTaskStatusResponse {
 	s.Body = v
 	return s
 }
@@ -9571,86 +7415,6 @@ func (client *Client) CreateFlowProjectUser(request *CreateFlowProjectUserReques
 	return _result, _err
 }
 
-func (client *Client) CreateLibraryWithOptions(request *CreateLibraryRequest, runtime *util.RuntimeOptions) (_result *CreateLibraryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		query["ClientToken"] = request.ClientToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LibraryVersion)) {
-		query["LibraryVersion"] = request.LibraryVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Properties)) {
-		query["Properties"] = request.Properties
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Scope)) {
-		query["Scope"] = request.Scope
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceLocation)) {
-		query["SourceLocation"] = request.SourceLocation
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
-		query["SourceType"] = request.SourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateLibrary"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateLibraryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateLibrary(request *CreateLibraryRequest) (_result *CreateLibraryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateLibraryResponse{}
-	_body, _err := client.CreateLibraryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime *util.RuntimeOptions) (_result *DeleteFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9848,58 +7612,6 @@ func (client *Client) DeleteFlowProjectUser(request *DeleteFlowProjectUserReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFlowProjectUserResponse{}
 	_body, _err := client.DeleteFlowProjectUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteLibrariesWithOptions(request *DeleteLibrariesRequest, runtime *util.RuntimeOptions) (_result *DeleteLibrariesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.LibraryBizIdList)) {
-		query["LibraryBizIdList"] = request.LibraryBizIdList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteLibraries"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteLibrariesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteLibraries(request *DeleteLibrariesRequest) (_result *DeleteLibrariesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteLibrariesResponse{}
-	_body, _err := client.DeleteLibrariesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10220,166 +7932,6 @@ func (client *Client) DescribeFlowProject(request *DescribeFlowProjectRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFlowProjectResponse{}
 	_body, _err := client.DescribeFlowProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeLibraryDetailWithOptions(request *DescribeLibraryDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeLibraryDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.LibraryBizId)) {
-		query["LibraryBizId"] = request.LibraryBizId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeLibraryDetail"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeLibraryDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeLibraryDetail(request *DescribeLibraryDetailRequest) (_result *DescribeLibraryDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeLibraryDetailResponse{}
-	_body, _err := client.DescribeLibraryDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeLibraryInstallTaskDetailWithOptions(request *DescribeLibraryInstallTaskDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeLibraryInstallTaskDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TaskBizId)) {
-		query["TaskBizId"] = request.TaskBizId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeLibraryInstallTaskDetail"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeLibraryInstallTaskDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeLibraryInstallTaskDetail(request *DescribeLibraryInstallTaskDetailRequest) (_result *DescribeLibraryInstallTaskDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeLibraryInstallTaskDetailResponse{}
-	_body, _err := client.DescribeLibraryInstallTaskDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) InstallLibrariesWithOptions(request *InstallLibrariesRequest, runtime *util.RuntimeOptions) (_result *InstallLibrariesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterBizIdList)) {
-		query["ClusterBizIdList"] = request.ClusterBizIdList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LibraryBizId)) {
-		query["LibraryBizId"] = request.LibraryBizId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("InstallLibraries"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &InstallLibrariesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) InstallLibraries(request *InstallLibrariesRequest) (_result *InstallLibrariesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InstallLibrariesResponse{}
-	_body, _err := client.InstallLibrariesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10895,294 +8447,6 @@ func (client *Client) ListFlowProjects(request *ListFlowProjectsRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) ListLibrariesWithOptions(request *ListLibrariesRequest, runtime *util.RuntimeOptions) (_result *ListLibrariesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterBizId)) {
-		query["ClusterBizId"] = request.ClusterBizId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CurrentSize)) {
-		query["CurrentSize"] = request.CurrentSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Limit)) {
-		query["Limit"] = request.Limit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderField)) {
-		query["OrderField"] = request.OrderField
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderMode)) {
-		query["OrderMode"] = request.OrderMode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageCount)) {
-		query["PageCount"] = request.PageCount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListLibraries"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListLibrariesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListLibraries(request *ListLibrariesRequest) (_result *ListLibrariesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListLibrariesResponse{}
-	_body, _err := client.ListLibrariesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListLibraryInstallTasksWithOptions(request *ListLibraryInstallTasksRequest, runtime *util.RuntimeOptions) (_result *ListLibraryInstallTasksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterBizId)) {
-		query["ClusterBizId"] = request.ClusterBizId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CurrentSize)) {
-		query["CurrentSize"] = request.CurrentSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LibraryBizId)) {
-		query["LibraryBizId"] = request.LibraryBizId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Limit)) {
-		query["Limit"] = request.Limit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderField)) {
-		query["OrderField"] = request.OrderField
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderMode)) {
-		query["OrderMode"] = request.OrderMode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageCount)) {
-		query["PageCount"] = request.PageCount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListLibraryInstallTasks"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListLibraryInstallTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListLibraryInstallTasks(request *ListLibraryInstallTasksRequest) (_result *ListLibraryInstallTasksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListLibraryInstallTasksResponse{}
-	_body, _err := client.ListLibraryInstallTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListLibraryStatusWithOptions(request *ListLibraryStatusRequest, runtime *util.RuntimeOptions) (_result *ListLibraryStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterBizId)) {
-		query["ClusterBizId"] = request.ClusterBizId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CurrentSize)) {
-		query["CurrentSize"] = request.CurrentSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LibraryBizId)) {
-		query["LibraryBizId"] = request.LibraryBizId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Limit)) {
-		query["Limit"] = request.Limit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderField)) {
-		query["OrderField"] = request.OrderField
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderMode)) {
-		query["OrderMode"] = request.OrderMode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageCount)) {
-		query["PageCount"] = request.PageCount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListLibraryStatus"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListLibraryStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListLibraryStatus(request *ListLibraryStatusRequest) (_result *ListLibraryStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListLibraryStatusResponse{}
-	_body, _err := client.ListLibraryStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListTagResources"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ModifyFlowForWebWithOptions(request *ModifyFlowForWebRequest, runtime *util.RuntimeOptions) (_result *ModifyFlowForWebResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11345,6 +8609,10 @@ func (client *Client) ModifyFlowJobWithOptions(request *ModifyFlowJobRequest, ru
 		query["KnoxUser"] = request.KnoxUser
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MaxRetry)) {
+		query["MaxRetry"] = request.MaxRetry
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Mode)) {
 		query["Mode"] = request.Mode
 	}
@@ -11375,6 +8643,10 @@ func (client *Client) ModifyFlowJobWithOptions(request *ModifyFlowJobRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceList)) {
 		query["ResourceList"] = request.ResourceList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetryInterval)) {
+		query["RetryInterval"] = request.RetryInterval
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RetryPolicy)) {
@@ -11752,250 +9024,6 @@ func (client *Client) SubmitFlowJob(request *SubmitFlowJobRequest) (_result *Sub
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitFlowJobResponse{}
 	_body, _err := client.SubmitFlowJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
-		query["Tag"] = request.Tag
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("TagResources"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UninstallLibrariesWithOptions(request *UninstallLibrariesRequest, runtime *util.RuntimeOptions) (_result *UninstallLibrariesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterBizIdList)) {
-		query["ClusterBizIdList"] = request.ClusterBizIdList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LibraryBizId)) {
-		query["LibraryBizId"] = request.LibraryBizId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UninstallLibraries"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UninstallLibrariesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UninstallLibraries(request *UninstallLibrariesRequest) (_result *UninstallLibrariesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UninstallLibrariesResponse{}
-	_body, _err := client.UninstallLibrariesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.All)) {
-		query["All"] = request.All
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
-		query["TagKey"] = request.TagKey
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UntagResources"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateLibraryInstallTaskStatusWithOptions(request *UpdateLibraryInstallTaskStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateLibraryInstallTaskStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TaskBizId)) {
-		query["TaskBizId"] = request.TaskBizId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateLibraryInstallTaskStatus"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateLibraryInstallTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateLibraryInstallTaskStatus(request *UpdateLibraryInstallTaskStatusRequest) (_result *UpdateLibraryInstallTaskStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateLibraryInstallTaskStatusResponse{}
-	_body, _err := client.UpdateLibraryInstallTaskStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
