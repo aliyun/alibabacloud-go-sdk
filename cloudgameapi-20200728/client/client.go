@@ -13,12 +13,9 @@ import (
 )
 
 type AdaptGameVersionRequest struct {
-	// 帧率
-	FrameRate *string `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	// 分辨率
+	FrameRate  *string `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// 游戏版本ID
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	VersionId  *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s AdaptGameVersionRequest) String() string {
@@ -45,10 +42,8 @@ func (s *AdaptGameVersionRequest) SetVersionId(v string) *AdaptGameVersionReques
 }
 
 type AdaptGameVersionResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Id of the task
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s AdaptGameVersionResponseBody) String() string {
@@ -99,9 +94,7 @@ func (s *AdaptGameVersionResponse) SetBody(v *AdaptGameVersionResponseBody) *Ada
 }
 
 type AddGameToProjectRequest struct {
-	// 游戏iD
-	GameId *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
-	// 项目ID
+	GameId    *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -124,7 +117,6 @@ func (s *AddGameToProjectRequest) SetProjectId(v string) *AddGameToProjectReques
 }
 
 type AddGameToProjectResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -448,9 +440,8 @@ type CancelGameHangResponseBody struct {
 	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
 	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CancelGameHangResponseBody) String() string {
@@ -597,12 +588,9 @@ func (s *CloseOrderResponse) SetBody(v *CloseOrderResponseBody) *CloseOrderRespo
 }
 
 type CreateGameRequest struct {
-	// 幂等参数，1-64位建议使用uuid
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 游戏名称
-	GameName *string `json:"GameName,omitempty" xml:"GameName,omitempty"`
-	// 平台类型
-	PlatformType *int64 `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	GameName     *string `json:"GameName,omitempty" xml:"GameName,omitempty"`
+	PlatformType *int64  `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
 }
 
 func (s CreateGameRequest) String() string {
@@ -629,9 +617,7 @@ func (s *CreateGameRequest) SetPlatformType(v int64) *CreateGameRequest {
 }
 
 type CreateGameResponseBody struct {
-	// 游戏ID
-	GameId *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
-	// 请求ID
+	GameId    *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -754,10 +740,8 @@ func (s *CreateGameDeployWorkflowRequest) SetVersionName(v string) *CreateGameDe
 }
 
 type CreateGameDeployWorkflowResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务id
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateGameDeployWorkflowResponseBody) String() string {
@@ -1008,9 +992,7 @@ func (s *CreateOrderResponse) SetBody(v *CreateOrderResponseBody) *CreateOrderRe
 }
 
 type CreateProjectRequest struct {
-	// 幂等参数，1-64位建议使用uuid
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 项目名称
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -1033,9 +1015,7 @@ func (s *CreateProjectRequest) SetProjectName(v string) *CreateProjectRequest {
 }
 
 type CreateProjectResponseBody struct {
-	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1185,7 +1165,6 @@ func (s *CreateTokenResponse) SetBody(v *CreateTokenResponseBody) *CreateTokenRe
 }
 
 type DeleteGameRequest struct {
-	// 游戏ID
 	GameId *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
 }
 
@@ -1203,7 +1182,6 @@ func (s *DeleteGameRequest) SetGameId(v string) *DeleteGameRequest {
 }
 
 type DeleteGameResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1249,8 +1227,88 @@ func (s *DeleteGameResponse) SetBody(v *DeleteGameResponseBody) *DeleteGameRespo
 	return s
 }
 
+type DeleteGameArchiveRequest struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ArchiveId *string `json:"ArchiveId,omitempty" xml:"ArchiveId,omitempty"`
+	GameId    *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
+}
+
+func (s DeleteGameArchiveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGameArchiveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGameArchiveRequest) SetAccountId(v string) *DeleteGameArchiveRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *DeleteGameArchiveRequest) SetArchiveId(v string) *DeleteGameArchiveRequest {
+	s.ArchiveId = &v
+	return s
+}
+
+func (s *DeleteGameArchiveRequest) SetGameId(v string) *DeleteGameArchiveRequest {
+	s.GameId = &v
+	return s
+}
+
+type DeleteGameArchiveResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteGameArchiveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGameArchiveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGameArchiveResponseBody) SetRequestId(v string) *DeleteGameArchiveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteGameArchiveResponseBody) SetStatus(v int32) *DeleteGameArchiveResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteGameArchiveResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGameArchiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGameArchiveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGameArchiveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGameArchiveResponse) SetHeaders(v map[string]*string) *DeleteGameArchiveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGameArchiveResponse) SetStatusCode(v int32) *DeleteGameArchiveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGameArchiveResponse) SetBody(v *DeleteGameArchiveResponseBody) *DeleteGameArchiveResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteGameVersionRequest struct {
-	// 游戏版本ID
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -1268,7 +1326,6 @@ func (s *DeleteGameVersionRequest) SetVersionId(v string) *DeleteGameVersionRequ
 }
 
 type DeleteGameVersionResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1315,7 +1372,6 @@ func (s *DeleteGameVersionResponse) SetBody(v *DeleteGameVersionResponseBody) *D
 }
 
 type DeleteProjectRequest struct {
-	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -1333,7 +1389,6 @@ func (s *DeleteProjectRequest) SetProjectId(v string) *DeleteProjectRequest {
 }
 
 type DeleteProjectResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2056,11 +2111,8 @@ func (s *GetGameStockResponse) SetBody(v *GetGameStockResponseBody) *GetGameStoc
 }
 
 type GetGameTrialSurplusDurationRequest struct {
-	// 账号ID
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// 游戏ID
-	GameId *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
-	// 项目ID
+	GameId    *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -2088,11 +2140,8 @@ func (s *GetGameTrialSurplusDurationRequest) SetProjectId(v string) *GetGameTria
 }
 
 type GetGameTrialSurplusDurationResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 状态
-	Status *float32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 剩余试玩时长
+	RequestId       *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status          *float32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	SurplusDuration *float64 `json:"SurplusDuration,omitempty" xml:"SurplusDuration,omitempty"`
 }
 
@@ -2149,7 +2198,6 @@ func (s *GetGameTrialSurplusDurationResponse) SetBody(v *GetGameTrialSurplusDura
 }
 
 type GetGameVersionRequest struct {
-	// 版本ID
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -2167,13 +2215,9 @@ func (s *GetGameVersionRequest) SetVersionId(v string) *GetGameVersionRequest {
 }
 
 type GetGameVersionResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 版本ID
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	// 版本名称
-	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
-	// 版本号
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VersionId     *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	VersionName   *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 	VersionNumber *string `json:"VersionNumber,omitempty" xml:"VersionNumber,omitempty"`
 }
 
@@ -2235,7 +2279,6 @@ func (s *GetGameVersionResponse) SetBody(v *GetGameVersionResponseBody) *GetGame
 }
 
 type GetGameVersionProgressRequest struct {
-	// 任务id
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2256,9 +2299,8 @@ type GetGameVersionProgressResponseBody struct {
 	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
 	Event       *string                `json:"Event,omitempty" xml:"Event,omitempty"`
 	Extra       map[string]interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	RequestId   *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status      *string                `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetGameVersionProgressResponseBody) String() string {
@@ -2750,8 +2792,7 @@ func (s *GetQueuingSizeRequest) SetUserLevel(v int32) *GetQueuingSizeRequest {
 }
 
 type GetQueuingSizeResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Size      *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
@@ -3257,8 +3298,7 @@ type ListContainerStatusResponseBodyDataList struct {
 	PlayerDetailList   []*ListContainerStatusResponseBodyDataListPlayerDetailList `json:"PlayerDetailList,omitempty" xml:"PlayerDetailList,omitempty" type:"Repeated"`
 	ProjectId          *string                                                    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	Tags               *string                                                    `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// 系统时间戳
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Timestamp          *int64                                                     `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s ListContainerStatusResponseBodyDataList) String() string {
@@ -3378,14 +3418,10 @@ func (s *ListContainerStatusResponse) SetBody(v *ListContainerStatusResponseBody
 }
 
 type ListDeployableInstancesRequest struct {
-	// 页码
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页大小
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 项目ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 游戏版本ID
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	VersionId  *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s ListDeployableInstancesRequest) String() string {
@@ -3417,16 +3453,11 @@ func (s *ListDeployableInstancesRequest) SetVersionId(v string) *ListDeployableI
 }
 
 type ListDeployableInstancesResponseBody struct {
-	// 数据列表
-	DataList []*ListDeployableInstancesResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// MaxResults本次请求所返回的最大记录条数
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	DataList   []*ListDeployableInstancesResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	PageNumber *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDeployableInstancesResponseBody) String() string {
@@ -3463,9 +3494,7 @@ func (s *ListDeployableInstancesResponseBody) SetTotalCount(v int64) *ListDeploy
 }
 
 type ListDeployableInstancesResponseBodyDataList struct {
-	// 实例ID
-	CloudGameInstanceId *string `json:"CloudGameInstanceId,omitempty" xml:"CloudGameInstanceId,omitempty"`
-	// 实例名称
+	CloudGameInstanceId   *string `json:"CloudGameInstanceId,omitempty" xml:"CloudGameInstanceId,omitempty"`
 	CloudGameInstanceName *string `json:"CloudGameInstanceName,omitempty" xml:"CloudGameInstanceName,omitempty"`
 }
 
@@ -3542,12 +3571,9 @@ func (s *ListGameServerIpRequest) SetPageSize(v int32) *ListGameServerIpRequest 
 type ListGameServerIpResponseBody struct {
 	Items      []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	PageNumber *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// MaxResults本次请求所返回的最大记录条数
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListGameServerIpResponseBody) String() string {
@@ -3613,12 +3639,9 @@ func (s *ListGameServerIpResponse) SetBody(v *ListGameServerIpResponseBody) *Lis
 }
 
 type ListGameVersionsRequest struct {
-	// 游戏ID
-	GameId *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
-	// 本次读取的最大数据记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	GameId     *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListGameVersionsRequest) String() string {
@@ -3645,16 +3668,11 @@ func (s *ListGameVersionsRequest) SetNextToken(v string) *ListGameVersionsReques
 }
 
 type ListGameVersionsResponseBody struct {
-	// 总记录数
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 数据列表
-	DataList []*ListGameVersionsResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Count      *int64                                  `json:"Count,omitempty" xml:"Count,omitempty"`
+	DataList   []*ListGameVersionsResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	MaxResults *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListGameVersionsResponseBody) String() string {
@@ -3691,11 +3709,8 @@ func (s *ListGameVersionsResponseBody) SetRequestId(v string) *ListGameVersionsR
 }
 
 type ListGameVersionsResponseBodyDataList struct {
-	// 版本ID
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	// 版本名称
-	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
-	// 版本号
+	VersionId     *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	VersionName   *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 	VersionNumber *string `json:"VersionNumber,omitempty" xml:"VersionNumber,omitempty"`
 }
 
@@ -3752,10 +3767,8 @@ func (s *ListGameVersionsResponse) SetBody(v *ListGameVersionsResponseBody) *Lis
 }
 
 type ListGamesRequest struct {
-	// 本次读取的最大数据记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListGamesRequest) String() string {
@@ -3777,16 +3790,11 @@ func (s *ListGamesRequest) SetNextToken(v string) *ListGamesRequest {
 }
 
 type ListGamesResponseBody struct {
-	// 总记录数
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 数据列表
-	DataList []*ListGamesResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Count      *int64                           `json:"Count,omitempty" xml:"Count,omitempty"`
+	DataList   []*ListGamesResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	MaxResults *int32                           `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListGamesResponseBody) String() string {
@@ -3823,12 +3831,9 @@ func (s *ListGamesResponseBody) SetRequestId(v string) *ListGamesResponseBody {
 }
 
 type ListGamesResponseBodyDataList struct {
-	// 游戏ID
-	GameId *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
-	// 游戏名称
-	GameName *string `json:"GameName,omitempty" xml:"GameName,omitempty"`
-	// 平台类型
-	PlatformType *int64 `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
+	GameId       *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
+	GameName     *string `json:"GameName,omitempty" xml:"GameName,omitempty"`
+	PlatformType *int64  `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
 }
 
 func (s ListGamesResponseBodyDataList) String() string {
@@ -3884,16 +3889,11 @@ func (s *ListGamesResponse) SetBody(v *ListGamesResponseBody) *ListGamesResponse
 }
 
 type ListHistoryContainerStatusRequest struct {
-	// 结束时间（Linux时间戳，单位毫秒）
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 上一个游戏会话ID
+	EndTime           *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	LastGameSessionId *string `json:"LastGameSessionId,omitempty" xml:"LastGameSessionId,omitempty"`
-	// 每页数量
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 项目ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 开始时间（Linux时间戳，单位毫秒）
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	PageSize          *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId         *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	StartTime         *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListHistoryContainerStatusRequest) String() string {
@@ -3930,10 +3930,8 @@ func (s *ListHistoryContainerStatusRequest) SetStartTime(v int64) *ListHistoryCo
 }
 
 type ListHistoryContainerStatusResponseBody struct {
-	// 容器状态信息集合
-	DataList []*ListHistoryContainerStatusResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DataList  []*ListHistoryContainerStatusResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListHistoryContainerStatusResponseBody) String() string {
@@ -3955,26 +3953,16 @@ func (s *ListHistoryContainerStatusResponseBody) SetRequestId(v string) *ListHis
 }
 
 type ListHistoryContainerStatusResponseBodyDataList struct {
-	// 主机账号ID
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// 容器退出时间（Linux时间戳，单位毫秒）
-	ContainerQuitTime *int64 `json:"ContainerQuitTime,omitempty" xml:"ContainerQuitTime,omitempty"`
-	// 容器启动时间（Linux时间戳，单位毫秒）
-	ContainerStartTime *int64 `json:"ContainerStartTime,omitempty" xml:"ContainerStartTime,omitempty"`
-	// 容器状态
-	ContainerState *string `json:"ContainerState,omitempty" xml:"ContainerState,omitempty"`
-	// 游戏ID
-	GameId *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
-	// 游戏会话ID
-	GameSessionId *string `json:"GameSessionId,omitempty" xml:"GameSessionId,omitempty"`
-	// 玩家信息集合
-	PlayerDetailList []*ListHistoryContainerStatusResponseBodyDataListPlayerDetailList `json:"PlayerDetailList,omitempty" xml:"PlayerDetailList,omitempty" type:"Repeated"`
-	// 项目ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 自定义标识
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// 系统时间戳
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	AccountId          *string                                                           `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ContainerQuitTime  *int64                                                            `json:"ContainerQuitTime,omitempty" xml:"ContainerQuitTime,omitempty"`
+	ContainerStartTime *int64                                                            `json:"ContainerStartTime,omitempty" xml:"ContainerStartTime,omitempty"`
+	ContainerState     *string                                                           `json:"ContainerState,omitempty" xml:"ContainerState,omitempty"`
+	GameId             *string                                                           `json:"GameId,omitempty" xml:"GameId,omitempty"`
+	GameSessionId      *string                                                           `json:"GameSessionId,omitempty" xml:"GameSessionId,omitempty"`
+	PlayerDetailList   []*ListHistoryContainerStatusResponseBodyDataListPlayerDetailList `json:"PlayerDetailList,omitempty" xml:"PlayerDetailList,omitempty" type:"Repeated"`
+	ProjectId          *string                                                           `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Tags               *string                                                           `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Timestamp          *int64                                                            `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s ListHistoryContainerStatusResponseBodyDataList) String() string {
@@ -4036,12 +4024,9 @@ func (s *ListHistoryContainerStatusResponseBodyDataList) SetTimestamp(v int64) *
 }
 
 type ListHistoryContainerStatusResponseBodyDataListPlayerDetailList struct {
-	// 账号ID
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// 是否主机
-	IsInitiator *bool `json:"IsInitiator,omitempty" xml:"IsInitiator,omitempty"`
-	// 玩家进入游戏时间
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	IsInitiator *bool   `json:"IsInitiator,omitempty" xml:"IsInitiator,omitempty"`
+	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListHistoryContainerStatusResponseBodyDataListPlayerDetailList) String() string {
@@ -4096,11 +4081,161 @@ func (s *ListHistoryContainerStatusResponse) SetBody(v *ListHistoryContainerStat
 	return s
 }
 
+type ListLatestGameArchiveRequest struct {
+	AccountId  *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	GameId     *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TagStatus  *int64  `json:"TagStatus,omitempty" xml:"TagStatus,omitempty"`
+}
+
+func (s ListLatestGameArchiveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLatestGameArchiveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLatestGameArchiveRequest) SetAccountId(v string) *ListLatestGameArchiveRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListLatestGameArchiveRequest) SetGameId(v string) *ListLatestGameArchiveRequest {
+	s.GameId = &v
+	return s
+}
+
+func (s *ListLatestGameArchiveRequest) SetPageNumber(v int64) *ListLatestGameArchiveRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLatestGameArchiveRequest) SetPageSize(v int64) *ListLatestGameArchiveRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLatestGameArchiveRequest) SetTagStatus(v int64) *ListLatestGameArchiveRequest {
+	s.TagStatus = &v
+	return s
+}
+
+type ListLatestGameArchiveResponseBody struct {
+	DataList   []*ListLatestGameArchiveResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	PageNumber *int64                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListLatestGameArchiveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLatestGameArchiveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLatestGameArchiveResponseBody) SetDataList(v []*ListLatestGameArchiveResponseBodyDataList) *ListLatestGameArchiveResponseBody {
+	s.DataList = v
+	return s
+}
+
+func (s *ListLatestGameArchiveResponseBody) SetPageNumber(v int64) *ListLatestGameArchiveResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLatestGameArchiveResponseBody) SetPageSize(v int64) *ListLatestGameArchiveResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLatestGameArchiveResponseBody) SetRequestId(v string) *ListLatestGameArchiveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLatestGameArchiveResponseBody) SetTotalCount(v int64) *ListLatestGameArchiveResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListLatestGameArchiveResponseBodyDataList struct {
+	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ArchiveId   *string `json:"ArchiveId,omitempty" xml:"ArchiveId,omitempty"`
+	ArchiveTime *string `json:"ArchiveTime,omitempty" xml:"ArchiveTime,omitempty"`
+	GameId      *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
+	TagStatus   *int64  `json:"TagStatus,omitempty" xml:"TagStatus,omitempty"`
+}
+
+func (s ListLatestGameArchiveResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLatestGameArchiveResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLatestGameArchiveResponseBodyDataList) SetAccountId(v string) *ListLatestGameArchiveResponseBodyDataList {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListLatestGameArchiveResponseBodyDataList) SetArchiveId(v string) *ListLatestGameArchiveResponseBodyDataList {
+	s.ArchiveId = &v
+	return s
+}
+
+func (s *ListLatestGameArchiveResponseBodyDataList) SetArchiveTime(v string) *ListLatestGameArchiveResponseBodyDataList {
+	s.ArchiveTime = &v
+	return s
+}
+
+func (s *ListLatestGameArchiveResponseBodyDataList) SetGameId(v string) *ListLatestGameArchiveResponseBodyDataList {
+	s.GameId = &v
+	return s
+}
+
+func (s *ListLatestGameArchiveResponseBodyDataList) SetTagStatus(v int64) *ListLatestGameArchiveResponseBodyDataList {
+	s.TagStatus = &v
+	return s
+}
+
+type ListLatestGameArchiveResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLatestGameArchiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLatestGameArchiveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLatestGameArchiveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLatestGameArchiveResponse) SetHeaders(v map[string]*string) *ListLatestGameArchiveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLatestGameArchiveResponse) SetStatusCode(v int32) *ListLatestGameArchiveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLatestGameArchiveResponse) SetBody(v *ListLatestGameArchiveResponseBody) *ListLatestGameArchiveResponse {
+	s.Body = v
+	return s
+}
+
 type ListProjectsRequest struct {
-	// 本次读取的最大数据记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListProjectsRequest) String() string {
@@ -4122,16 +4257,11 @@ func (s *ListProjectsRequest) SetNextToken(v string) *ListProjectsRequest {
 }
 
 type ListProjectsResponseBody struct {
-	// 总记录数
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 数据列表
-	DataList []*ListProjectsResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Count      *int64                              `json:"Count,omitempty" xml:"Count,omitempty"`
+	DataList   []*ListProjectsResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	MaxResults *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListProjectsResponseBody) String() string {
@@ -4168,9 +4298,7 @@ func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseB
 }
 
 type ListProjectsResponseBodyDataList struct {
-	// 项目ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 项目名称
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -4397,12 +4525,11 @@ func (s *QueryGameHangRequest) SetGameSession(v string) *QueryGameHangRequest {
 }
 
 type QueryGameHangResponseBody struct {
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Duration    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
-	Hanging     *bool   `json:"Hanging,omitempty" xml:"Hanging,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Duration           *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	GameSession        *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+	Hanging            *bool   `json:"Hanging,omitempty" xml:"Hanging,omitempty"`
+	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StartHangTimestamp *int64  `json:"StartHangTimestamp,omitempty" xml:"StartHangTimestamp,omitempty"`
 	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -5356,9 +5483,7 @@ func (s *QueryTenantResponse) SetBody(v *QueryTenantResponseBody) *QueryTenantRe
 }
 
 type RemoveGameFromProjectRequest struct {
-	// 游戏iD
-	GameId *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
-	// 项目ID
+	GameId    *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -5381,7 +5506,6 @@ func (s *RemoveGameFromProjectRequest) SetProjectId(v string) *RemoveGameFromPro
 }
 
 type RemoveGameFromProjectResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5427,6 +5551,87 @@ func (s *RemoveGameFromProjectResponse) SetBody(v *RemoveGameFromProjectResponse
 	return s
 }
 
+type RestoreGameArchiveRequest struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ArchiveId *string `json:"ArchiveId,omitempty" xml:"ArchiveId,omitempty"`
+	GameId    *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
+}
+
+func (s RestoreGameArchiveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreGameArchiveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreGameArchiveRequest) SetAccountId(v string) *RestoreGameArchiveRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *RestoreGameArchiveRequest) SetArchiveId(v string) *RestoreGameArchiveRequest {
+	s.ArchiveId = &v
+	return s
+}
+
+func (s *RestoreGameArchiveRequest) SetGameId(v string) *RestoreGameArchiveRequest {
+	s.GameId = &v
+	return s
+}
+
+type RestoreGameArchiveResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s RestoreGameArchiveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreGameArchiveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreGameArchiveResponseBody) SetRequestId(v string) *RestoreGameArchiveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RestoreGameArchiveResponseBody) SetStatus(v int32) *RestoreGameArchiveResponseBody {
+	s.Status = &v
+	return s
+}
+
+type RestoreGameArchiveResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RestoreGameArchiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RestoreGameArchiveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreGameArchiveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreGameArchiveResponse) SetHeaders(v map[string]*string) *RestoreGameArchiveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestoreGameArchiveResponse) SetStatusCode(v int32) *RestoreGameArchiveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestoreGameArchiveResponse) SetBody(v *RestoreGameArchiveResponseBody) *RestoreGameArchiveResponse {
+	s.Body = v
+	return s
+}
+
 type SetGameAliveRequest struct {
 	AccessKey   *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
@@ -5460,9 +5665,8 @@ type SetGameAliveResponseBody struct {
 	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
 	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetGameAliveResponseBody) String() string {
@@ -5557,11 +5761,10 @@ func (s *SetGameHangRequest) SetGameSession(v string) *SetGameHangRequest {
 }
 
 type SetGameHangResponseBody struct {
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Duration    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Duration           *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	GameSession        *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StartHangTimestamp *int64  `json:"StartHangTimestamp,omitempty" xml:"StartHangTimestamp,omitempty"`
 	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -6034,16 +6237,11 @@ func (s *StopGameSessionResponse) SetBody(v *StopGameSessionResponseBody) *StopG
 }
 
 type SubmitDeploymentRequest struct {
-	// 实例ID列表
 	CloudGameInstanceIds *string `json:"CloudGameInstanceIds,omitempty" xml:"CloudGameInstanceIds,omitempty"`
-	// 游戏iD
-	GameId *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
-	// 操作类型
-	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// 项目ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 游戏版本ID
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	GameId               *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
+	OperationType        *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	ProjectId            *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	VersionId            *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s SubmitDeploymentRequest) String() string {
@@ -6080,10 +6278,8 @@ func (s *SubmitDeploymentRequest) SetVersionId(v string) *SubmitDeploymentReques
 }
 
 type SubmitDeploymentResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SubmitDeploymentResponseBody) String() string {
@@ -6623,6 +6819,93 @@ func (s *SubmitInternalPurchaseReadyFlagResponse) SetBody(v *SubmitInternalPurch
 	return s
 }
 
+type UpdateGameArchiveTagStatusRequest struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ArchiveId *string `json:"ArchiveId,omitempty" xml:"ArchiveId,omitempty"`
+	GameId    *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
+	TagStatus *int32  `json:"TagStatus,omitempty" xml:"TagStatus,omitempty"`
+}
+
+func (s UpdateGameArchiveTagStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGameArchiveTagStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGameArchiveTagStatusRequest) SetAccountId(v string) *UpdateGameArchiveTagStatusRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *UpdateGameArchiveTagStatusRequest) SetArchiveId(v string) *UpdateGameArchiveTagStatusRequest {
+	s.ArchiveId = &v
+	return s
+}
+
+func (s *UpdateGameArchiveTagStatusRequest) SetGameId(v string) *UpdateGameArchiveTagStatusRequest {
+	s.GameId = &v
+	return s
+}
+
+func (s *UpdateGameArchiveTagStatusRequest) SetTagStatus(v int32) *UpdateGameArchiveTagStatusRequest {
+	s.TagStatus = &v
+	return s
+}
+
+type UpdateGameArchiveTagStatusResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateGameArchiveTagStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGameArchiveTagStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGameArchiveTagStatusResponseBody) SetRequestId(v string) *UpdateGameArchiveTagStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGameArchiveTagStatusResponseBody) SetStatus(v int32) *UpdateGameArchiveTagStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+type UpdateGameArchiveTagStatusResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGameArchiveTagStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGameArchiveTagStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGameArchiveTagStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGameArchiveTagStatusResponse) SetHeaders(v map[string]*string) *UpdateGameArchiveTagStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGameArchiveTagStatusResponse) SetStatusCode(v int32) *UpdateGameArchiveTagStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGameArchiveTagStatusResponse) SetBody(v *UpdateGameArchiveTagStatusResponseBody) *UpdateGameArchiveTagStatusResponse {
+	s.Body = v
+	return s
+}
+
 type UploadGameVersionByDownloadRequest struct {
 	DownloadType *string `json:"DownloadType,omitempty" xml:"DownloadType,omitempty"`
 	FileType     *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
@@ -6671,10 +6954,8 @@ func (s *UploadGameVersionByDownloadRequest) SetVersionName(v string) *UploadGam
 }
 
 type UploadGameVersionByDownloadResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务id
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UploadGameVersionByDownloadResponseBody) String() string {
@@ -7420,6 +7701,58 @@ func (client *Client) DeleteGame(request *DeleteGameRequest) (_result *DeleteGam
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGameResponse{}
 	_body, _err := client.DeleteGameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGameArchiveWithOptions(request *DeleteGameArchiveRequest, runtime *util.RuntimeOptions) (_result *DeleteGameArchiveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArchiveId)) {
+		query["ArchiveId"] = request.ArchiveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGameArchive"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGameArchiveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGameArchive(request *DeleteGameArchiveRequest) (_result *DeleteGameArchiveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGameArchiveResponse{}
+	_body, _err := client.DeleteGameArchiveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8599,6 +8932,66 @@ func (client *Client) ListHistoryContainerStatus(request *ListHistoryContainerSt
 	return _result, _err
 }
 
+func (client *Client) ListLatestGameArchiveWithOptions(request *ListLatestGameArchiveRequest, runtime *util.RuntimeOptions) (_result *ListLatestGameArchiveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagStatus)) {
+		query["TagStatus"] = request.TagStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLatestGameArchive"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLatestGameArchiveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLatestGameArchive(request *ListLatestGameArchiveRequest) (_result *ListLatestGameArchiveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLatestGameArchiveResponse{}
+	_body, _err := client.ListLatestGameArchiveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9052,6 +9445,58 @@ func (client *Client) RemoveGameFromProject(request *RemoveGameFromProjectReques
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveGameFromProjectResponse{}
 	_body, _err := client.RemoveGameFromProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RestoreGameArchiveWithOptions(request *RestoreGameArchiveRequest, runtime *util.RuntimeOptions) (_result *RestoreGameArchiveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArchiveId)) {
+		query["ArchiveId"] = request.ArchiveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestoreGameArchive"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestoreGameArchiveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RestoreGameArchive(request *RestoreGameArchiveRequest) (_result *RestoreGameArchiveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestoreGameArchiveResponse{}
+	_body, _err := client.RestoreGameArchiveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9646,6 +10091,62 @@ func (client *Client) SubmitInternalPurchaseReadyFlag(request *SubmitInternalPur
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitInternalPurchaseReadyFlagResponse{}
 	_body, _err := client.SubmitInternalPurchaseReadyFlagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGameArchiveTagStatusWithOptions(request *UpdateGameArchiveTagStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateGameArchiveTagStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArchiveId)) {
+		query["ArchiveId"] = request.ArchiveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagStatus)) {
+		query["TagStatus"] = request.TagStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGameArchiveTagStatus"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGameArchiveTagStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGameArchiveTagStatus(request *UpdateGameArchiveTagStatusRequest) (_result *UpdateGameArchiveTagStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGameArchiveTagStatusResponse{}
+	_body, _err := client.UpdateGameArchiveTagStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
