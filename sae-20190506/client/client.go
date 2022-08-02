@@ -751,42 +751,33 @@ func (s *ConfirmPipelineBatchResponse) SetBody(v *ConfirmPipelineBatchResponseBo
 }
 
 type CreateApplicationRequest struct {
-	AcrAssumeRoleArn *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
-	// ACR 企业版实例 ID
-	AcrInstanceId  *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 是否绑定EIP
-	AssociateEip         *bool   `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
-	AutoConfig           *bool   `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
-	Command              *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	CommandArgs          *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	ConfigMapMountDesc   *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
-	Cpu                  *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CustomHostAlias      *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	Deploy               *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
-	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	Envs                 *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImageUrl             *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	JarStartArgs         *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	JarStartOptions      *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	Jdk                  *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	KafkaConfigs         *string `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
-	KafkaEndpoint        *string `json:"KafkaEndpoint,omitempty" xml:"KafkaEndpoint,omitempty"`
-	KafkaInstanceId      *string `json:"KafkaInstanceId,omitempty" xml:"KafkaInstanceId,omitempty"`
-	KafkaLogfileConfig   *string `json:"KafkaLogfileConfig,omitempty" xml:"KafkaLogfileConfig,omitempty"`
-	Liveness             *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	Memory               *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MountDesc            *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
-	MountHost            *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
-	NamespaceId          *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	NasId                *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	OpenCollectToKafka   *bool   `json:"OpenCollectToKafka,omitempty" xml:"OpenCollectToKafka,omitempty"`
-	// OSS使用的AKID
-	OssAkId *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
-	// OSS AKID对应的secret
-	OssAkSecret *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
-	// OSS挂载描述信息
+	AcrAssumeRoleArn              *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	AcrInstanceId                 *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AppDescription                *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	AppName                       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AssociateEip                  *bool   `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
+	AutoConfig                    *bool   `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
+	Command                       *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	CommandArgs                   *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	ConfigMapMountDesc            *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
+	Cpu                           *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CustomHostAlias               *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	Deploy                        *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	EdasContainerVersion          *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	Envs                          *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImageUrl                      *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	JarStartArgs                  *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	JarStartOptions               *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	Jdk                           *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	KafkaConfigs                  *string `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
+	Liveness                      *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	Memory                        *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	MountDesc                     *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
+	MountHost                     *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	NamespaceId                   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NasId                         *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OssAkId                       *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
+	OssAkSecret                   *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
 	OssMountDescs                 *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
 	PackageType                   *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	PackageUrl                    *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
@@ -808,7 +799,6 @@ type CreateApplicationRequest struct {
 	VpcId                         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	WarStartOptions               *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
 	WebContainer                  *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
-	MseFeatureConfig              *string `json:"mseFeatureConfig,omitempty" xml:"mseFeatureConfig,omitempty"`
 }
 
 func (s CreateApplicationRequest) String() string {
@@ -914,21 +904,6 @@ func (s *CreateApplicationRequest) SetKafkaConfigs(v string) *CreateApplicationR
 	return s
 }
 
-func (s *CreateApplicationRequest) SetKafkaEndpoint(v string) *CreateApplicationRequest {
-	s.KafkaEndpoint = &v
-	return s
-}
-
-func (s *CreateApplicationRequest) SetKafkaInstanceId(v string) *CreateApplicationRequest {
-	s.KafkaInstanceId = &v
-	return s
-}
-
-func (s *CreateApplicationRequest) SetKafkaLogfileConfig(v string) *CreateApplicationRequest {
-	s.KafkaLogfileConfig = &v
-	return s
-}
-
 func (s *CreateApplicationRequest) SetLiveness(v string) *CreateApplicationRequest {
 	s.Liveness = &v
 	return s
@@ -956,11 +931,6 @@ func (s *CreateApplicationRequest) SetNamespaceId(v string) *CreateApplicationRe
 
 func (s *CreateApplicationRequest) SetNasId(v string) *CreateApplicationRequest {
 	s.NasId = &v
-	return s
-}
-
-func (s *CreateApplicationRequest) SetOpenCollectToKafka(v bool) *CreateApplicationRequest {
-	s.OpenCollectToKafka = &v
 	return s
 }
 
@@ -1076,11 +1046,6 @@ func (s *CreateApplicationRequest) SetWarStartOptions(v string) *CreateApplicati
 
 func (s *CreateApplicationRequest) SetWebContainer(v string) *CreateApplicationRequest {
 	s.WebContainer = &v
-	return s
-}
-
-func (s *CreateApplicationRequest) SetMseFeatureConfig(v string) *CreateApplicationRequest {
-	s.MseFeatureConfig = &v
 	return s
 }
 
@@ -1616,16 +1581,11 @@ func (s *CreateConfigMapResponse) SetBody(v *CreateConfigMapResponseBody) *Creat
 }
 
 type CreateGreyTagRouteRequest struct {
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 规则名称
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Dubbo规则
-	DubboRules *string `json:"DubboRules,omitempty" xml:"DubboRules,omitempty"`
-	// 规则名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// SpringCloud规则
-	ScRules *string `json:"ScRules,omitempty" xml:"ScRules,omitempty"`
+	DubboRules  *string `json:"DubboRules,omitempty" xml:"DubboRules,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ScRules     *string `json:"ScRules,omitempty" xml:"ScRules,omitempty"`
 }
 
 func (s CreateGreyTagRouteRequest) String() string {
@@ -2378,7 +2338,6 @@ func (s *DeleteConfigMapResponse) SetBody(v *DeleteConfigMapResponseBody) *Delet
 }
 
 type DeleteGreyTagRouteRequest struct {
-	// 规则ID
 	GreyTagRouteId *int64 `json:"GreyTagRouteId,omitempty" xml:"GreyTagRouteId,omitempty"`
 }
 
@@ -2704,11 +2663,9 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 }
 
 type DeployApplicationRequest struct {
-	AcrAssumeRoleArn *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
-	// ACR 企业版实例 ID
-	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 是否绑定EIP
+	AcrAssumeRoleArn                 *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	AcrInstanceId                    *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AppId                            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AssociateEip                     *bool   `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
 	AutoEnableApplicationScalingRule *bool   `json:"AutoEnableApplicationScalingRule,omitempty" xml:"AutoEnableApplicationScalingRule,omitempty"`
 	BatchWaitTime                    *int32  `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
@@ -2719,46 +2676,37 @@ type DeployApplicationRequest struct {
 	CustomHostAlias                  *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
 	EdasContainerVersion             *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
 	EnableAhas                       *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	// 是否开启发布流量灰度规则
-	EnableGreyTagRoute    *bool   `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
-	Envs                  *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImageUrl              *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	JarStartArgs          *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	JarStartOptions       *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	Jdk                   *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	KafkaConfigs          *string `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
-	KafkaEndpoint         *string `json:"KafkaEndpoint,omitempty" xml:"KafkaEndpoint,omitempty"`
-	KafkaInstanceId       *string `json:"KafkaInstanceId,omitempty" xml:"KafkaInstanceId,omitempty"`
-	KafkaLogfileConfig    *string `json:"KafkaLogfileConfig,omitempty" xml:"KafkaLogfileConfig,omitempty"`
-	Liveness              *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	MinReadyInstanceRatio *int32  `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	MinReadyInstances     *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	MountDesc             *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
-	MountHost             *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
-	MseFeatureConfig      *string `json:"MseFeatureConfig,omitempty" xml:"MseFeatureConfig,omitempty"`
-	NasId                 *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	OpenCollectToKafka    *bool   `json:"OpenCollectToKafka,omitempty" xml:"OpenCollectToKafka,omitempty"`
-	// OSS使用的AKID
-	OssAkId *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
-	// OSS AKID对应的secret
-	OssAkSecret *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
-	// OSS挂载描述信息
-	OssMountDescs                 *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
-	PackageUrl                    *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	PackageVersion                *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	PhpArmsConfigLocation         *string `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
-	PhpConfig                     *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
-	PhpConfigLocation             *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
-	PostStart                     *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop                       *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	Readiness                     *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	SlsConfigs                    *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	TerminationGracePeriodSeconds *int32  `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	Timezone                      *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	TomcatConfig                  *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	UpdateStrategy                *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
-	WarStartOptions               *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
-	WebContainer                  *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	EnableGreyTagRoute               *bool   `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	Envs                             *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImageUrl                         *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	JarStartArgs                     *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	JarStartOptions                  *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	Jdk                              *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	KafkaConfigs                     *string `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
+	Liveness                         *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	MinReadyInstanceRatio            *int32  `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	MinReadyInstances                *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
+	MountDesc                        *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
+	MountHost                        *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	NasId                            *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OssAkId                          *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
+	OssAkSecret                      *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
+	OssMountDescs                    *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
+	PackageUrl                       *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PackageVersion                   *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	PhpArmsConfigLocation            *string `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
+	PhpConfig                        *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
+	PhpConfigLocation                *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
+	PostStart                        *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop                          *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	Readiness                        *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	SlsConfigs                       *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	TerminationGracePeriodSeconds    *int32  `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
+	Timezone                         *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	TomcatConfig                     *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
+	UpdateStrategy                   *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
+	WarStartOptions                  *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
+	WebContainer                     *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
 }
 
 func (s DeployApplicationRequest) String() string {
@@ -2869,21 +2817,6 @@ func (s *DeployApplicationRequest) SetKafkaConfigs(v string) *DeployApplicationR
 	return s
 }
 
-func (s *DeployApplicationRequest) SetKafkaEndpoint(v string) *DeployApplicationRequest {
-	s.KafkaEndpoint = &v
-	return s
-}
-
-func (s *DeployApplicationRequest) SetKafkaInstanceId(v string) *DeployApplicationRequest {
-	s.KafkaInstanceId = &v
-	return s
-}
-
-func (s *DeployApplicationRequest) SetKafkaLogfileConfig(v string) *DeployApplicationRequest {
-	s.KafkaLogfileConfig = &v
-	return s
-}
-
 func (s *DeployApplicationRequest) SetLiveness(v string) *DeployApplicationRequest {
 	s.Liveness = &v
 	return s
@@ -2909,18 +2842,8 @@ func (s *DeployApplicationRequest) SetMountHost(v string) *DeployApplicationRequ
 	return s
 }
 
-func (s *DeployApplicationRequest) SetMseFeatureConfig(v string) *DeployApplicationRequest {
-	s.MseFeatureConfig = &v
-	return s
-}
-
 func (s *DeployApplicationRequest) SetNasId(v string) *DeployApplicationRequest {
 	s.NasId = &v
-	return s
-}
-
-func (s *DeployApplicationRequest) SetOpenCollectToKafka(v bool) *DeployApplicationRequest {
-	s.OpenCollectToKafka = &v
 	return s
 }
 
@@ -3126,7 +3049,6 @@ func (s *DeployApplicationResponse) SetBody(v *DeployApplicationResponseBody) *D
 }
 
 type DescribeAppServiceDetailRequest struct {
-	// mse 的 appId
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ServiceGroup   *string `json:"ServiceGroup,omitempty" xml:"ServiceGroup,omitempty"`
 	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
@@ -3491,70 +3413,63 @@ func (s *DescribeApplicationConfigResponseBody) SetTraceId(v string) *DescribeAp
 }
 
 type DescribeApplicationConfigResponseBodyData struct {
-	AcrAssumeRoleArn *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
-	// ACR 企业版实例 ID
-	AcrInstanceId  *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 是否绑定EIP
-	AssociateEip         *bool                                                          `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
-	BatchWaitTime        *int32                                                         `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
-	Command              *string                                                        `json:"Command,omitempty" xml:"Command,omitempty"`
-	CommandArgs          *string                                                        `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	ConfigMapMountDesc   []*DescribeApplicationConfigResponseBodyDataConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
-	Cpu                  *int32                                                         `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CustomHostAlias      *string                                                        `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	EdasContainerVersion *string                                                        `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EnableAhas           *string                                                        `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	// 开启流量灰度
-	EnableGreyTagRoute    *bool                                                 `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
-	Envs                  *string                                               `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImageUrl              *string                                               `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	JarStartArgs          *string                                               `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	JarStartOptions       *string                                               `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	Jdk                   *string                                               `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	KafkaConfigs          *string                                               `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
-	Liveness              *string                                               `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	Memory                *int32                                                `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MinReadyInstanceRatio *int32                                                `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	MinReadyInstances     *int32                                                `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	MountDesc             []*DescribeApplicationConfigResponseBodyDataMountDesc `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
-	MountHost             *string                                               `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
-	// 对应MSE产品侧应用ID
-	MseApplicationId *string `json:"MseApplicationId,omitempty" xml:"MseApplicationId,omitempty"`
-	MseFeatureConfig *string `json:"MseFeatureConfig,omitempty" xml:"MseFeatureConfig,omitempty"`
-	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	NasId            *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	// OSS读写的AK
-	OssAkId *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
-	// OSS读写的secret
-	OssAkSecret *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
-	// OSS挂载描述信息
-	OssMountDescs                 []*DescribeApplicationConfigResponseBodyDataOssMountDescs `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty" type:"Repeated"`
-	PackageType                   *string                                                   `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	PackageUrl                    *string                                                   `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	PackageVersion                *string                                                   `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	PhpArmsConfigLocation         *string                                                   `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
-	PhpConfig                     *string                                                   `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
-	PhpConfigLocation             *string                                                   `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
-	PostStart                     *string                                                   `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop                       *string                                                   `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	ProgrammingLanguage           *string                                                   `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
-	Readiness                     *string                                                   `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	RegionId                      *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Replicas                      *int32                                                    `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	SecurityGroupId               *string                                                   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SlsConfigs                    *string                                                   `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	Tags                          []*DescribeApplicationConfigResponseBodyDataTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TerminationGracePeriodSeconds *int32                                                    `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	Timezone                      *string                                                   `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	TomcatConfig                  *string                                                   `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	UpdateStrategy                *string                                                   `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
-	VSwitchId                     *string                                                   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                         *string                                                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	WarStartOptions               *string                                                   `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
-	WebContainer                  *string                                                   `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	AcrAssumeRoleArn              *string                                                        `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	AcrInstanceId                 *string                                                        `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AppDescription                *string                                                        `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	AppId                         *string                                                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName                       *string                                                        `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AssociateEip                  *bool                                                          `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
+	BatchWaitTime                 *int32                                                         `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
+	Command                       *string                                                        `json:"Command,omitempty" xml:"Command,omitempty"`
+	CommandArgs                   *string                                                        `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	ConfigMapMountDesc            []*DescribeApplicationConfigResponseBodyDataConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
+	Cpu                           *int32                                                         `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CustomHostAlias               *string                                                        `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	EdasContainerVersion          *string                                                        `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EnableAhas                    *string                                                        `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	EnableGreyTagRoute            *bool                                                          `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	Envs                          *string                                                        `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImageUrl                      *string                                                        `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	JarStartArgs                  *string                                                        `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	JarStartOptions               *string                                                        `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	Jdk                           *string                                                        `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	KafkaConfigs                  *string                                                        `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
+	Liveness                      *string                                                        `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	Memory                        *int32                                                         `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	MinReadyInstanceRatio         *int32                                                         `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	MinReadyInstances             *int32                                                         `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
+	MountDesc                     []*DescribeApplicationConfigResponseBodyDataMountDesc          `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
+	MountHost                     *string                                                        `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	MseApplicationId              *string                                                        `json:"MseApplicationId,omitempty" xml:"MseApplicationId,omitempty"`
+	MseFeatureConfig              *string                                                        `json:"MseFeatureConfig,omitempty" xml:"MseFeatureConfig,omitempty"`
+	NamespaceId                   *string                                                        `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NasId                         *string                                                        `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OssAkId                       *string                                                        `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
+	OssAkSecret                   *string                                                        `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
+	OssMountDescs                 []*DescribeApplicationConfigResponseBodyDataOssMountDescs      `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty" type:"Repeated"`
+	PackageType                   *string                                                        `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	PackageUrl                    *string                                                        `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PackageVersion                *string                                                        `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	PhpArmsConfigLocation         *string                                                        `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
+	PhpConfig                     *string                                                        `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
+	PhpConfigLocation             *string                                                        `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
+	PostStart                     *string                                                        `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop                       *string                                                        `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	ProgrammingLanguage           *string                                                        `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	Readiness                     *string                                                        `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	RegionId                      *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Replicas                      *int32                                                         `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	SecurityGroupId               *string                                                        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SlsConfigs                    *string                                                        `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	Tags                          []*DescribeApplicationConfigResponseBodyDataTags               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TerminationGracePeriodSeconds *int32                                                         `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
+	Timezone                      *string                                                        `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	TomcatConfig                  *string                                                        `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
+	UpdateStrategy                *string                                                        `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
+	VSwitchId                     *string                                                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                         *string                                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	WarStartOptions               *string                                                        `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
+	WebContainer                  *string                                                        `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
 }
 
 func (s DescribeApplicationConfigResponseBodyData) String() string {
@@ -3909,14 +3824,10 @@ func (s *DescribeApplicationConfigResponseBodyDataMountDesc) SetNasPath(v string
 }
 
 type DescribeApplicationConfigResponseBodyDataOssMountDescs struct {
-	// Bucket名称
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// Bucket中Oss Key名称
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
-	// 挂载到容器的路径
-	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// 是否只读
-	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+	MountPath  *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
+	ReadOnly   *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
 func (s DescribeApplicationConfigResponseBodyDataOssMountDescs) String() string {
@@ -6848,7 +6759,6 @@ func (s *DescribeEdasContainersResponse) SetBody(v *DescribeEdasContainersRespon
 }
 
 type DescribeGreyTagRouteRequest struct {
-	// 规则ID
 	GreyTagRouteId *int64 `json:"GreyTagRouteId,omitempty" xml:"GreyTagRouteId,omitempty"`
 }
 
@@ -6870,10 +6780,9 @@ type DescribeGreyTagRouteResponseBody struct {
 	Data      *DescribeGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	ErrorCode *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                               `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DescribeGreyTagRouteResponseBody) String() string {
@@ -7026,15 +6935,13 @@ func (s *DescribeGreyTagRouteResponseBodyDataDubboRules) SetVersion(v string) *D
 }
 
 type DescribeGreyTagRouteResponseBodyDataDubboRulesItems struct {
-	Cond  *string `json:"cond,omitempty" xml:"cond,omitempty"`
-	Expr  *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	Index *int32  `json:"index,omitempty" xml:"index,omitempty"`
-	// abandon
+	Cond     *string `json:"cond,omitempty" xml:"cond,omitempty"`
+	Expr     *string `json:"expr,omitempty" xml:"expr,omitempty"`
+	Index    *int32  `json:"index,omitempty" xml:"index,omitempty"`
 	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// abandon
-	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s DescribeGreyTagRouteResponseBodyDataDubboRulesItems) String() string {
@@ -7110,10 +7017,8 @@ func (s *DescribeGreyTagRouteResponseBodyDataScRules) SetPath(v string) *Describ
 }
 
 type DescribeGreyTagRouteResponseBodyDataScRulesItems struct {
-	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
-	// abandon
-	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// abandon
+	Cond     *string `json:"cond,omitempty" xml:"cond,omitempty"`
+	Expr     *string `json:"expr,omitempty" xml:"expr,omitempty"`
 	Index    *int32  `json:"index,omitempty" xml:"index,omitempty"`
 	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
@@ -10549,7 +10454,6 @@ func (s *ListConsumedServicesResponse) SetBody(v *ListConsumedServicesResponseBo
 }
 
 type ListGreyTagRouteRequest struct {
-	// 应用ID
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -10571,10 +10475,9 @@ type ListGreyTagRouteResponseBody struct {
 	Data      *ListGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	ErrorCode *string                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                           `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s ListGreyTagRouteResponseBody) String() string {
@@ -10756,15 +10659,13 @@ func (s *ListGreyTagRouteResponseBodyDataResultDubboRules) SetVersion(v string) 
 }
 
 type ListGreyTagRouteResponseBodyDataResultDubboRulesItems struct {
-	Cond  *string `json:"cond,omitempty" xml:"cond,omitempty"`
-	Expr  *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	Index *int32  `json:"index,omitempty" xml:"index,omitempty"`
-	// abandon
+	Cond     *string `json:"cond,omitempty" xml:"cond,omitempty"`
+	Expr     *string `json:"expr,omitempty" xml:"expr,omitempty"`
+	Index    *int32  `json:"index,omitempty" xml:"index,omitempty"`
 	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// abandon
-	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ListGreyTagRouteResponseBodyDataResultDubboRulesItems) String() string {
@@ -10840,9 +10741,8 @@ func (s *ListGreyTagRouteResponseBodyDataResultScRules) SetPath(v string) *ListG
 }
 
 type ListGreyTagRouteResponseBodyDataResultScRulesItems struct {
-	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
-	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// abandon
+	Cond     *string `json:"cond,omitempty" xml:"cond,omitempty"`
+	Expr     *string `json:"expr,omitempty" xml:"expr,omitempty"`
 	Index    *int32  `json:"index,omitempty" xml:"index,omitempty"`
 	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
@@ -14434,14 +14334,10 @@ func (s *UpdateConfigMapResponse) SetBody(v *UpdateConfigMapResponseBody) *Updat
 }
 
 type UpdateGreyTagRouteRequest struct {
-	// 规则名称
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Dubbo规则
-	DubboRules *string `json:"DubboRules,omitempty" xml:"DubboRules,omitempty"`
-	// 规则ID
-	GreyTagRouteId *int64 `json:"GreyTagRouteId,omitempty" xml:"GreyTagRouteId,omitempty"`
-	// SpringCloud规则
-	ScRules *string `json:"ScRules,omitempty" xml:"ScRules,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DubboRules     *string `json:"DubboRules,omitempty" xml:"DubboRules,omitempty"`
+	GreyTagRouteId *int64  `json:"GreyTagRouteId,omitempty" xml:"GreyTagRouteId,omitempty"`
+	ScRules        *string `json:"ScRules,omitempty" xml:"ScRules,omitempty"`
 }
 
 func (s UpdateGreyTagRouteRequest) String() string {
@@ -15407,18 +15303,6 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["KafkaConfigs"] = request.KafkaConfigs
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.KafkaEndpoint)) {
-		query["KafkaEndpoint"] = request.KafkaEndpoint
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KafkaInstanceId)) {
-		query["KafkaInstanceId"] = request.KafkaInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KafkaLogfileConfig)) {
-		query["KafkaLogfileConfig"] = request.KafkaLogfileConfig
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Liveness)) {
 		query["Liveness"] = request.Liveness
 	}
@@ -15441,10 +15325,6 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.NasId)) {
 		query["NasId"] = request.NasId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OpenCollectToKafka)) {
-		query["OpenCollectToKafka"] = request.OpenCollectToKafka
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PackageType)) {
@@ -15521,10 +15401,6 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.WebContainer)) {
 		query["WebContainer"] = request.WebContainer
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseFeatureConfig)) {
-		query["mseFeatureConfig"] = request.MseFeatureConfig
 	}
 
 	body := map[string]interface{}{}
@@ -16277,18 +16153,6 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 		query["KafkaConfigs"] = request.KafkaConfigs
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.KafkaEndpoint)) {
-		query["KafkaEndpoint"] = request.KafkaEndpoint
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KafkaInstanceId)) {
-		query["KafkaInstanceId"] = request.KafkaInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KafkaLogfileConfig)) {
-		query["KafkaLogfileConfig"] = request.KafkaLogfileConfig
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Liveness)) {
 		query["Liveness"] = request.Liveness
 	}
@@ -16309,16 +16173,8 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 		query["MountHost"] = request.MountHost
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseFeatureConfig)) {
-		query["MseFeatureConfig"] = request.MseFeatureConfig
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NasId)) {
 		query["NasId"] = request.NasId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OpenCollectToKafka)) {
-		query["OpenCollectToKafka"] = request.OpenCollectToKafka
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PackageUrl)) {
