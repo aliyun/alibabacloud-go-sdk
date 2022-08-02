@@ -2770,6 +2770,9 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	Tags                     *GetInstanceListResponseBodyInstanceListInstanceVOTags                     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	TopicNumLimit            *int32                                                                     `json:"TopicNumLimit,omitempty" xml:"TopicNumLimit,omitempty"`
 	UpgradeServiceDetailInfo *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo `json:"UpgradeServiceDetailInfo,omitempty" xml:"UpgradeServiceDetailInfo,omitempty" type:"Struct"`
+	UsedGroupCount           *int32                                                                     `json:"UsedGroupCount,omitempty" xml:"UsedGroupCount,omitempty"`
+	UsedPartitionCount       *int32                                                                     `json:"UsedPartitionCount,omitempty" xml:"UsedPartitionCount,omitempty"`
+	UsedTopicCount           *int32                                                                     `json:"UsedTopicCount,omitempty" xml:"UsedTopicCount,omitempty"`
 	VSwitchId                *string                                                                    `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcId                    *string                                                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	ZoneId                   *string                                                                    `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -2905,6 +2908,21 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetTopicNumLimit(v i
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetUpgradeServiceDetailInfo(v *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.UpgradeServiceDetailInfo = v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetUsedGroupCount(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.UsedGroupCount = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetUsedPartitionCount(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.UsedPartitionCount = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetUsedTopicCount(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.UsedTopicCount = &v
 	return s
 }
 
