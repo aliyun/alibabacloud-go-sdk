@@ -96,7 +96,6 @@ func (s *ListResourceRelationshipsResponseBody) SetResourceRelationships(v []*Li
 
 type ListResourceRelationshipsResponseBodyResourceRelationships struct {
 	AccountId          *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	RelationshipType   *string `json:"RelationshipType,omitempty" xml:"RelationshipType,omitempty"`
 	SourceRegionId     *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	SourceResourceId   *string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
 	SourceResourceType *string `json:"SourceResourceType,omitempty" xml:"SourceResourceType,omitempty"`
@@ -115,11 +114,6 @@ func (s ListResourceRelationshipsResponseBodyResourceRelationships) GoString() s
 
 func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetAccountId(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
 	s.AccountId = &v
-	return s
-}
-
-func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetRelationshipType(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
-	s.RelationshipType = &v
 	return s
 }
 
@@ -154,8 +148,9 @@ func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetTargetRe
 }
 
 type ListResourceRelationshipsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListResourceRelationshipsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListResourceRelationshipsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListResourceRelationshipsResponse) String() string {
@@ -168,6 +163,11 @@ func (s ListResourceRelationshipsResponse) GoString() string {
 
 func (s *ListResourceRelationshipsResponse) SetHeaders(v map[string]*string) *ListResourceRelationshipsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponse) SetStatusCode(v int32) *ListResourceRelationshipsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -434,8 +434,9 @@ func (s *SearchResourcesResponseBodyResourcesTags) SetValue(v string) *SearchRes
 }
 
 type SearchResourcesResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SearchResourcesResponse) String() string {
@@ -448,6 +449,11 @@ func (s SearchResourcesResponse) GoString() string {
 
 func (s *SearchResourcesResponse) SetHeaders(v map[string]*string) *SearchResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SearchResourcesResponse) SetStatusCode(v int32) *SearchResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
