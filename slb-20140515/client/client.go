@@ -1759,6 +1759,7 @@ type CreateLoadBalancerTCPListenerRequest struct {
 	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	ProxyProtocolV2Enabled    *bool   `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
 	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1886,6 +1887,11 @@ func (s *CreateLoadBalancerTCPListenerRequest) SetPersistenceTimeout(v int32) *C
 	return s
 }
 
+func (s *CreateLoadBalancerTCPListenerRequest) SetProxyProtocolV2Enabled(v bool) *CreateLoadBalancerTCPListenerRequest {
+	s.ProxyProtocolV2Enabled = &v
+	return s
+}
+
 func (s *CreateLoadBalancerTCPListenerRequest) SetRegionId(v string) *CreateLoadBalancerTCPListenerRequest {
 	s.RegionId = &v
 	return s
@@ -1982,6 +1988,7 @@ type CreateLoadBalancerUDPListenerRequest struct {
 	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProxyProtocolV2Enabled    *bool   `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
 	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2068,6 +2075,11 @@ func (s *CreateLoadBalancerUDPListenerRequest) SetOwnerAccount(v string) *Create
 
 func (s *CreateLoadBalancerUDPListenerRequest) SetOwnerId(v int64) *CreateLoadBalancerUDPListenerRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetProxyProtocolV2Enabled(v bool) *CreateLoadBalancerUDPListenerRequest {
+	s.ProxyProtocolV2Enabled = &v
 	return s
 }
 
@@ -7292,6 +7304,7 @@ type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
 	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	ProxyProtocolV2Enabled    *bool   `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
 	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
 	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -7415,6 +7428,11 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetMasterSlaveSer
 
 func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetPersistenceTimeout(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
 	s.PersistenceTimeout = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetProxyProtocolV2Enabled(v bool) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.ProxyProtocolV2Enabled = &v
 	return s
 }
 
@@ -7546,6 +7564,7 @@ type DescribeLoadBalancerUDPListenerAttributeResponseBody struct {
 	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	ProxyProtocolV2Enabled    *bool   `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
 	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
 	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -7633,6 +7652,11 @@ func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetListenerPort(v
 
 func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetMasterSlaveServerGroupId(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
 	s.MasterSlaveServerGroupId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetProxyProtocolV2Enabled(v bool) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.ProxyProtocolV2Enabled = &v
 	return s
 }
 
@@ -10632,9 +10656,11 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyLoadBalancerInstanceChargeTypeRequest struct {
+	Bandwidth            *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	InstanceChargeType   *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	InternetChargeType   *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerSpec     *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -10650,6 +10676,11 @@ func (s ModifyLoadBalancerInstanceChargeTypeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyLoadBalancerInstanceChargeTypeRequest) SetBandwidth(v int32) *ModifyLoadBalancerInstanceChargeTypeRequest {
+	s.Bandwidth = &v
+	return s
+}
+
 func (s *ModifyLoadBalancerInstanceChargeTypeRequest) SetInstanceChargeType(v string) *ModifyLoadBalancerInstanceChargeTypeRequest {
 	s.InstanceChargeType = &v
 	return s
@@ -10662,6 +10693,11 @@ func (s *ModifyLoadBalancerInstanceChargeTypeRequest) SetInternetChargeType(v st
 
 func (s *ModifyLoadBalancerInstanceChargeTypeRequest) SetLoadBalancerId(v string) *ModifyLoadBalancerInstanceChargeTypeRequest {
 	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *ModifyLoadBalancerInstanceChargeTypeRequest) SetLoadBalancerSpec(v string) *ModifyLoadBalancerInstanceChargeTypeRequest {
+	s.LoadBalancerSpec = &v
 	return s
 }
 
@@ -13464,6 +13500,7 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	ProxyProtocolV2Enabled    *bool   `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
 	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -13597,6 +13634,11 @@ func (s *SetLoadBalancerTCPListenerAttributeRequest) SetPersistenceTimeout(v int
 	return s
 }
 
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetProxyProtocolV2Enabled(v bool) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.ProxyProtocolV2Enabled = &v
+	return s
+}
+
 func (s *SetLoadBalancerTCPListenerAttributeRequest) SetRegionId(v string) *SetLoadBalancerTCPListenerAttributeRequest {
 	s.RegionId = &v
 	return s
@@ -13699,6 +13741,7 @@ type SetLoadBalancerUDPListenerAttributeRequest struct {
 	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProxyProtocolV2Enabled    *bool   `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
 	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -13790,6 +13833,11 @@ func (s *SetLoadBalancerUDPListenerAttributeRequest) SetOwnerAccount(v string) *
 
 func (s *SetLoadBalancerUDPListenerAttributeRequest) SetOwnerId(v int64) *SetLoadBalancerUDPListenerAttributeRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetProxyProtocolV2Enabled(v bool) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.ProxyProtocolV2Enabled = &v
 	return s
 }
 
@@ -16532,6 +16580,10 @@ func (client *Client) CreateLoadBalancerTCPListenerWithOptions(request *CreateLo
 		query["PersistenceTimeout"] = request.PersistenceTimeout
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProxyProtocolV2Enabled)) {
+		query["ProxyProtocolV2Enabled"] = request.ProxyProtocolV2Enabled
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -16654,6 +16706,10 @@ func (client *Client) CreateLoadBalancerUDPListenerWithOptions(request *CreateLo
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyProtocolV2Enabled)) {
+		query["ProxyProtocolV2Enabled"] = request.ProxyProtocolV2Enabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -19616,6 +19672,10 @@ func (client *Client) ModifyLoadBalancerInstanceChargeTypeWithOptions(request *M
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
 		query["InstanceChargeType"] = request.InstanceChargeType
 	}
@@ -19626,6 +19686,10 @@ func (client *Client) ModifyLoadBalancerInstanceChargeTypeWithOptions(request *M
 
 	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
 		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerSpec)) {
+		query["LoadBalancerSpec"] = request.LoadBalancerSpec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -21436,6 +21500,10 @@ func (client *Client) SetLoadBalancerTCPListenerAttributeWithOptions(request *Se
 		query["PersistenceTimeout"] = request.PersistenceTimeout
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProxyProtocolV2Enabled)) {
+		query["ProxyProtocolV2Enabled"] = request.ProxyProtocolV2Enabled
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -21566,6 +21634,10 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithOptions(request *Se
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyProtocolV2Enabled)) {
+		query["ProxyProtocolV2Enabled"] = request.ProxyProtocolV2Enabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
