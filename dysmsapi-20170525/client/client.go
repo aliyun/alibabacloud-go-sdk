@@ -1191,7 +1191,8 @@ func (s *GetMediaResourceIdResponseBody) SetSuccess(v bool) *GetMediaResourceIdR
 }
 
 type GetMediaResourceIdResponseBodyData struct {
-	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResUrlDownload *string `json:"ResUrlDownload,omitempty" xml:"ResUrlDownload,omitempty"`
+	ResourceId     *int64  `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s GetMediaResourceIdResponseBodyData) String() string {
@@ -1200,6 +1201,11 @@ func (s GetMediaResourceIdResponseBodyData) String() string {
 
 func (s GetMediaResourceIdResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetMediaResourceIdResponseBodyData) SetResUrlDownload(v string) *GetMediaResourceIdResponseBodyData {
+	s.ResUrlDownload = &v
+	return s
 }
 
 func (s *GetMediaResourceIdResponseBodyData) SetResourceId(v int64) *GetMediaResourceIdResponseBodyData {
@@ -2242,7 +2248,9 @@ type QuerySendStatisticsRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SignName             *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 	StartDate            *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	TemplateType         *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s QuerySendStatisticsRequest) String() string {
@@ -2288,8 +2296,18 @@ func (s *QuerySendStatisticsRequest) SetResourceOwnerId(v int64) *QuerySendStati
 	return s
 }
 
+func (s *QuerySendStatisticsRequest) SetSignName(v string) *QuerySendStatisticsRequest {
+	s.SignName = &v
+	return s
+}
+
 func (s *QuerySendStatisticsRequest) SetStartDate(v string) *QuerySendStatisticsRequest {
 	s.StartDate = &v
+	return s
+}
+
+func (s *QuerySendStatisticsRequest) SetTemplateType(v int32) *QuerySendStatisticsRequest {
+	s.TemplateType = &v
 	return s
 }
 
@@ -5299,8 +5317,16 @@ func (client *Client) QuerySendStatisticsWithOptions(request *QuerySendStatistic
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
 		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
 	}
 
 	req := &openapi.OpenApiRequest{
