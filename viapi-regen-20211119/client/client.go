@@ -8,19 +8,21 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	fileform "github.com/alibabacloud-go/tea-fileform/service"
+	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
+	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
+	rpc "github.com/alibabacloud-go/tea-rpc/client"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
+	"io"
 )
 
 type CreateDatasetRequest struct {
-	// 描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 数据集名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 空间id
-	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	WorkspaceId *int64  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateDatasetRequest) String() string {
@@ -838,6 +840,543 @@ func (s *CreateWorkspaceResponse) SetBody(v *CreateWorkspaceResponseBody) *Creat
 	return s
 }
 
+type CustomizeClassifyImageRequest struct {
+	ImageUrl  *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s CustomizeClassifyImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeClassifyImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeClassifyImageRequest) SetImageUrl(v string) *CustomizeClassifyImageRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CustomizeClassifyImageRequest) SetServiceId(v string) *CustomizeClassifyImageRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type CustomizeClassifyImageAdvanceRequest struct {
+	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+	ServiceId      *string   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s CustomizeClassifyImageAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeClassifyImageAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeClassifyImageAdvanceRequest) SetImageUrlObject(v io.Reader) *CustomizeClassifyImageAdvanceRequest {
+	s.ImageUrlObject = v
+	return s
+}
+
+func (s *CustomizeClassifyImageAdvanceRequest) SetServiceId(v string) *CustomizeClassifyImageAdvanceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type CustomizeClassifyImageResponseBody struct {
+	Data      *CustomizeClassifyImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CustomizeClassifyImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeClassifyImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeClassifyImageResponseBody) SetData(v *CustomizeClassifyImageResponseBodyData) *CustomizeClassifyImageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CustomizeClassifyImageResponseBody) SetRequestId(v string) *CustomizeClassifyImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CustomizeClassifyImageResponseBodyData struct {
+	Category *string  `json:"Category,omitempty" xml:"Category,omitempty"`
+	Score    *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s CustomizeClassifyImageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeClassifyImageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeClassifyImageResponseBodyData) SetCategory(v string) *CustomizeClassifyImageResponseBodyData {
+	s.Category = &v
+	return s
+}
+
+func (s *CustomizeClassifyImageResponseBodyData) SetScore(v float32) *CustomizeClassifyImageResponseBodyData {
+	s.Score = &v
+	return s
+}
+
+type CustomizeClassifyImageResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CustomizeClassifyImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CustomizeClassifyImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeClassifyImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeClassifyImageResponse) SetHeaders(v map[string]*string) *CustomizeClassifyImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CustomizeClassifyImageResponse) SetStatusCode(v int32) *CustomizeClassifyImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CustomizeClassifyImageResponse) SetBody(v *CustomizeClassifyImageResponseBody) *CustomizeClassifyImageResponse {
+	s.Body = v
+	return s
+}
+
+type CustomizeDetectImageRequest struct {
+	ImageUrl  *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s CustomizeDetectImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeDetectImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeDetectImageRequest) SetImageUrl(v string) *CustomizeDetectImageRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CustomizeDetectImageRequest) SetServiceId(v string) *CustomizeDetectImageRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type CustomizeDetectImageAdvanceRequest struct {
+	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+	ServiceId      *string   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s CustomizeDetectImageAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeDetectImageAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeDetectImageAdvanceRequest) SetImageUrlObject(v io.Reader) *CustomizeDetectImageAdvanceRequest {
+	s.ImageUrlObject = v
+	return s
+}
+
+func (s *CustomizeDetectImageAdvanceRequest) SetServiceId(v string) *CustomizeDetectImageAdvanceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type CustomizeDetectImageResponseBody struct {
+	Data      *CustomizeDetectImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CustomizeDetectImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeDetectImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeDetectImageResponseBody) SetData(v *CustomizeDetectImageResponseBodyData) *CustomizeDetectImageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CustomizeDetectImageResponseBody) SetRequestId(v string) *CustomizeDetectImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CustomizeDetectImageResponseBodyData struct {
+	Elements []*CustomizeDetectImageResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+}
+
+func (s CustomizeDetectImageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeDetectImageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeDetectImageResponseBodyData) SetElements(v []*CustomizeDetectImageResponseBodyDataElements) *CustomizeDetectImageResponseBodyData {
+	s.Elements = v
+	return s
+}
+
+type CustomizeDetectImageResponseBodyDataElements struct {
+	Boxes    *CustomizeDetectImageResponseBodyDataElementsBoxes `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Struct"`
+	Category *string                                            `json:"Category,omitempty" xml:"Category,omitempty"`
+	Score    *float32                                           `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s CustomizeDetectImageResponseBodyDataElements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeDetectImageResponseBodyDataElements) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeDetectImageResponseBodyDataElements) SetBoxes(v *CustomizeDetectImageResponseBodyDataElementsBoxes) *CustomizeDetectImageResponseBodyDataElements {
+	s.Boxes = v
+	return s
+}
+
+func (s *CustomizeDetectImageResponseBodyDataElements) SetCategory(v string) *CustomizeDetectImageResponseBodyDataElements {
+	s.Category = &v
+	return s
+}
+
+func (s *CustomizeDetectImageResponseBodyDataElements) SetScore(v float32) *CustomizeDetectImageResponseBodyDataElements {
+	s.Score = &v
+	return s
+}
+
+type CustomizeDetectImageResponseBodyDataElementsBoxes struct {
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width  *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	X      *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y      *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s CustomizeDetectImageResponseBodyDataElementsBoxes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeDetectImageResponseBodyDataElementsBoxes) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeDetectImageResponseBodyDataElementsBoxes) SetHeight(v float32) *CustomizeDetectImageResponseBodyDataElementsBoxes {
+	s.Height = &v
+	return s
+}
+
+func (s *CustomizeDetectImageResponseBodyDataElementsBoxes) SetWidth(v float32) *CustomizeDetectImageResponseBodyDataElementsBoxes {
+	s.Width = &v
+	return s
+}
+
+func (s *CustomizeDetectImageResponseBodyDataElementsBoxes) SetX(v float32) *CustomizeDetectImageResponseBodyDataElementsBoxes {
+	s.X = &v
+	return s
+}
+
+func (s *CustomizeDetectImageResponseBodyDataElementsBoxes) SetY(v float32) *CustomizeDetectImageResponseBodyDataElementsBoxes {
+	s.Y = &v
+	return s
+}
+
+type CustomizeDetectImageResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CustomizeDetectImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CustomizeDetectImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeDetectImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeDetectImageResponse) SetHeaders(v map[string]*string) *CustomizeDetectImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CustomizeDetectImageResponse) SetStatusCode(v int32) *CustomizeDetectImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CustomizeDetectImageResponse) SetBody(v *CustomizeDetectImageResponseBody) *CustomizeDetectImageResponse {
+	s.Body = v
+	return s
+}
+
+type CustomizeInstanceSegmentImageRequest struct {
+	ImageUrl  *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s CustomizeInstanceSegmentImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeInstanceSegmentImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeInstanceSegmentImageRequest) SetImageUrl(v string) *CustomizeInstanceSegmentImageRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageRequest) SetServiceId(v string) *CustomizeInstanceSegmentImageRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type CustomizeInstanceSegmentImageAdvanceRequest struct {
+	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+	ServiceId      *string   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s CustomizeInstanceSegmentImageAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeInstanceSegmentImageAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeInstanceSegmentImageAdvanceRequest) SetImageUrlObject(v io.Reader) *CustomizeInstanceSegmentImageAdvanceRequest {
+	s.ImageUrlObject = v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageAdvanceRequest) SetServiceId(v string) *CustomizeInstanceSegmentImageAdvanceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type CustomizeInstanceSegmentImageResponseBody struct {
+	Data      *CustomizeInstanceSegmentImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CustomizeInstanceSegmentImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeInstanceSegmentImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBody) SetData(v *CustomizeInstanceSegmentImageResponseBodyData) *CustomizeInstanceSegmentImageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBody) SetRequestId(v string) *CustomizeInstanceSegmentImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CustomizeInstanceSegmentImageResponseBodyData struct {
+	Elements []*CustomizeInstanceSegmentImageResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+}
+
+func (s CustomizeInstanceSegmentImageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeInstanceSegmentImageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyData) SetElements(v []*CustomizeInstanceSegmentImageResponseBodyDataElements) *CustomizeInstanceSegmentImageResponseBodyData {
+	s.Elements = v
+	return s
+}
+
+type CustomizeInstanceSegmentImageResponseBodyDataElements struct {
+	Boxes    *CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes      `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Struct"`
+	Category *string                                                          `json:"Category,omitempty" xml:"Category,omitempty"`
+	Contours []*CustomizeInstanceSegmentImageResponseBodyDataElementsContours `json:"Contours,omitempty" xml:"Contours,omitempty" type:"Repeated"`
+	Mask     *CustomizeInstanceSegmentImageResponseBodyDataElementsMask       `json:"Mask,omitempty" xml:"Mask,omitempty" type:"Struct"`
+	Score    *float32                                                         `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s CustomizeInstanceSegmentImageResponseBodyDataElements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeInstanceSegmentImageResponseBodyDataElements) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyDataElements) SetBoxes(v *CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes) *CustomizeInstanceSegmentImageResponseBodyDataElements {
+	s.Boxes = v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyDataElements) SetCategory(v string) *CustomizeInstanceSegmentImageResponseBodyDataElements {
+	s.Category = &v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyDataElements) SetContours(v []*CustomizeInstanceSegmentImageResponseBodyDataElementsContours) *CustomizeInstanceSegmentImageResponseBodyDataElements {
+	s.Contours = v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyDataElements) SetMask(v *CustomizeInstanceSegmentImageResponseBodyDataElementsMask) *CustomizeInstanceSegmentImageResponseBodyDataElements {
+	s.Mask = v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyDataElements) SetScore(v float32) *CustomizeInstanceSegmentImageResponseBodyDataElements {
+	s.Score = &v
+	return s
+}
+
+type CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes struct {
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	X      *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y      *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes) SetHeight(v int32) *CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes {
+	s.Height = &v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes) SetWidth(v int32) *CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes {
+	s.Width = &v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes) SetX(v int32) *CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes {
+	s.X = &v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes) SetY(v int32) *CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes {
+	s.Y = &v
+	return s
+}
+
+type CustomizeInstanceSegmentImageResponseBodyDataElementsContours struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s CustomizeInstanceSegmentImageResponseBodyDataElementsContours) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeInstanceSegmentImageResponseBodyDataElementsContours) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyDataElementsContours) SetX(v int32) *CustomizeInstanceSegmentImageResponseBodyDataElementsContours {
+	s.X = &v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyDataElementsContours) SetY(v int32) *CustomizeInstanceSegmentImageResponseBodyDataElementsContours {
+	s.Y = &v
+	return s
+}
+
+type CustomizeInstanceSegmentImageResponseBodyDataElementsMask struct {
+	Counts *string  `json:"Counts,omitempty" xml:"Counts,omitempty"`
+	Sizes  []*int32 `json:"Sizes,omitempty" xml:"Sizes,omitempty" type:"Repeated"`
+}
+
+func (s CustomizeInstanceSegmentImageResponseBodyDataElementsMask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeInstanceSegmentImageResponseBodyDataElementsMask) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyDataElementsMask) SetCounts(v string) *CustomizeInstanceSegmentImageResponseBodyDataElementsMask {
+	s.Counts = &v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageResponseBodyDataElementsMask) SetSizes(v []*int32) *CustomizeInstanceSegmentImageResponseBodyDataElementsMask {
+	s.Sizes = v
+	return s
+}
+
+type CustomizeInstanceSegmentImageResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CustomizeInstanceSegmentImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CustomizeInstanceSegmentImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomizeInstanceSegmentImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CustomizeInstanceSegmentImageResponse) SetHeaders(v map[string]*string) *CustomizeInstanceSegmentImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageResponse) SetStatusCode(v int32) *CustomizeInstanceSegmentImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CustomizeInstanceSegmentImageResponse) SetBody(v *CustomizeInstanceSegmentImageResponseBody) *CustomizeInstanceSegmentImageResponse {
+	s.Body = v
+	return s
+}
+
 type DebugServiceRequest struct {
 	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
@@ -1604,10 +2143,8 @@ func (s *DeleteWorkspaceResponse) SetBody(v *DeleteWorkspaceResponseBody) *Delet
 }
 
 type DownloadFileNameListRequest struct {
-	// 空间id
-	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// 数据集名称
-	Identity *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	DatasetId *int64  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	Identity  *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
 }
 
 func (s DownloadFileNameListRequest) String() string {
@@ -5572,6 +6109,468 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CustomizeClassifyImageWithOptions(request *CustomizeClassifyImageRequest, runtime *util.RuntimeOptions) (_result *CustomizeClassifyImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CustomizeClassifyImage"),
+		Version:     tea.String("2021-11-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CustomizeClassifyImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CustomizeClassifyImage(request *CustomizeClassifyImageRequest) (_result *CustomizeClassifyImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CustomizeClassifyImageResponse{}
+	_body, _err := client.CustomizeClassifyImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CustomizeClassifyImageAdvance(request *CustomizeClassifyImageAdvanceRequest, runtime *util.RuntimeOptions) (_result *CustomizeClassifyImageResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("viapi-regen"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	customizeClassifyImageReq := &CustomizeClassifyImageRequest{}
+	openapiutil.Convert(request, customizeClassifyImageReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		customizeClassifyImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	customizeClassifyImageResp, _err := client.CustomizeClassifyImageWithOptions(customizeClassifyImageReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = customizeClassifyImageResp
+	return _result, _err
+}
+
+func (client *Client) CustomizeDetectImageWithOptions(request *CustomizeDetectImageRequest, runtime *util.RuntimeOptions) (_result *CustomizeDetectImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CustomizeDetectImage"),
+		Version:     tea.String("2021-11-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CustomizeDetectImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CustomizeDetectImage(request *CustomizeDetectImageRequest) (_result *CustomizeDetectImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CustomizeDetectImageResponse{}
+	_body, _err := client.CustomizeDetectImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CustomizeDetectImageAdvance(request *CustomizeDetectImageAdvanceRequest, runtime *util.RuntimeOptions) (_result *CustomizeDetectImageResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("viapi-regen"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	customizeDetectImageReq := &CustomizeDetectImageRequest{}
+	openapiutil.Convert(request, customizeDetectImageReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		customizeDetectImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	customizeDetectImageResp, _err := client.CustomizeDetectImageWithOptions(customizeDetectImageReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = customizeDetectImageResp
+	return _result, _err
+}
+
+func (client *Client) CustomizeInstanceSegmentImageWithOptions(request *CustomizeInstanceSegmentImageRequest, runtime *util.RuntimeOptions) (_result *CustomizeInstanceSegmentImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CustomizeInstanceSegmentImage"),
+		Version:     tea.String("2021-11-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CustomizeInstanceSegmentImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CustomizeInstanceSegmentImage(request *CustomizeInstanceSegmentImageRequest) (_result *CustomizeInstanceSegmentImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CustomizeInstanceSegmentImageResponse{}
+	_body, _err := client.CustomizeInstanceSegmentImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CustomizeInstanceSegmentImageAdvance(request *CustomizeInstanceSegmentImageAdvanceRequest, runtime *util.RuntimeOptions) (_result *CustomizeInstanceSegmentImageResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("viapi-regen"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	customizeInstanceSegmentImageReq := &CustomizeInstanceSegmentImageRequest{}
+	openapiutil.Convert(request, customizeInstanceSegmentImageReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		customizeInstanceSegmentImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	customizeInstanceSegmentImageResp, _err := client.CustomizeInstanceSegmentImageWithOptions(customizeInstanceSegmentImageReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = customizeInstanceSegmentImageResp
 	return _result, _err
 }
 
