@@ -297,6 +297,105 @@ func (s *CheckDBNameResponse) SetBody(v *CheckDBNameResponseBody) *CheckDBNameRe
 	return s
 }
 
+type CloseAITaskRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CloseAITaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseAITaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloseAITaskRequest) SetDBClusterId(v string) *CloseAITaskRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CloseAITaskRequest) SetOwnerAccount(v string) *CloseAITaskRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CloseAITaskRequest) SetOwnerId(v int64) *CloseAITaskRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CloseAITaskRequest) SetRegionId(v string) *CloseAITaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CloseAITaskRequest) SetResourceOwnerAccount(v string) *CloseAITaskRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CloseAITaskRequest) SetResourceOwnerId(v int64) *CloseAITaskRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CloseAITaskResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CloseAITaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseAITaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloseAITaskResponseBody) SetRequestId(v string) *CloseAITaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CloseAITaskResponseBody) SetTaskId(v string) *CloseAITaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CloseAITaskResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CloseAITaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CloseAITaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseAITaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloseAITaskResponse) SetHeaders(v map[string]*string) *CloseAITaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloseAITaskResponse) SetStatusCode(v int32) *CloseAITaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CloseAITaskResponse) SetBody(v *CloseAITaskResponseBody) *CloseAITaskResponse {
+	s.Body = v
+	return s
+}
+
 type CloseDBClusterMigrationRequest struct {
 	ContinueEnableBinlog *bool   `json:"ContinueEnableBinlog,omitempty" xml:"ContinueEnableBinlog,omitempty"`
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
@@ -2958,6 +3057,117 @@ func (s *DeleteParameterGroupResponse) SetStatusCode(v int32) *DeleteParameterGr
 }
 
 func (s *DeleteParameterGroupResponse) SetBody(v *DeleteParameterGroupResponseBody) *DeleteParameterGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAITaskStatusRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeAITaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAITaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAITaskStatusRequest) SetDBClusterId(v string) *DescribeAITaskStatusRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAITaskStatusRequest) SetOwnerAccount(v string) *DescribeAITaskStatusRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeAITaskStatusRequest) SetOwnerId(v int64) *DescribeAITaskStatusRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeAITaskStatusRequest) SetRegionId(v string) *DescribeAITaskStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAITaskStatusRequest) SetResourceOwnerAccount(v string) *DescribeAITaskStatusRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeAITaskStatusRequest) SetResourceOwnerId(v int64) *DescribeAITaskStatusRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeAITaskStatusResponseBody struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusName  *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+}
+
+func (s DescribeAITaskStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAITaskStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAITaskStatusResponseBody) SetDBClusterId(v string) *DescribeAITaskStatusResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAITaskStatusResponseBody) SetRequestId(v string) *DescribeAITaskStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAITaskStatusResponseBody) SetStatus(v string) *DescribeAITaskStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeAITaskStatusResponseBody) SetStatusName(v string) *DescribeAITaskStatusResponseBody {
+	s.StatusName = &v
+	return s
+}
+
+type DescribeAITaskStatusResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAITaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAITaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAITaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAITaskStatusResponse) SetHeaders(v map[string]*string) *DescribeAITaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAITaskStatusResponse) SetStatusCode(v int32) *DescribeAITaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAITaskStatusResponse) SetBody(v *DescribeAITaskStatusResponseBody) *DescribeAITaskStatusResponse {
 	s.Body = v
 	return s
 }
@@ -13659,6 +13869,99 @@ func (s *ModifyDBClusterAuditLogCollectorResponse) SetBody(v *ModifyDBClusterAud
 	return s
 }
 
+type ModifyDBClusterDeletionRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Protection           *bool   `json:"Protection,omitempty" xml:"Protection,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ModifyDBClusterDeletionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterDeletionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterDeletionRequest) SetDBClusterId(v string) *ModifyDBClusterDeletionRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBClusterDeletionRequest) SetOwnerAccount(v string) *ModifyDBClusterDeletionRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBClusterDeletionRequest) SetOwnerId(v int64) *ModifyDBClusterDeletionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBClusterDeletionRequest) SetProtection(v bool) *ModifyDBClusterDeletionRequest {
+	s.Protection = &v
+	return s
+}
+
+func (s *ModifyDBClusterDeletionRequest) SetResourceOwnerAccount(v string) *ModifyDBClusterDeletionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBClusterDeletionRequest) SetResourceOwnerId(v int64) *ModifyDBClusterDeletionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ModifyDBClusterDeletionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBClusterDeletionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterDeletionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterDeletionResponseBody) SetRequestId(v string) *ModifyDBClusterDeletionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBClusterDeletionResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDBClusterDeletionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDBClusterDeletionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterDeletionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterDeletionResponse) SetHeaders(v map[string]*string) *ModifyDBClusterDeletionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBClusterDeletionResponse) SetStatusCode(v int32) *ModifyDBClusterDeletionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBClusterDeletionResponse) SetBody(v *ModifyDBClusterDeletionResponseBody) *ModifyDBClusterDeletionResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDBClusterDescriptionRequest struct {
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
@@ -15785,8 +16088,118 @@ func (s *ModifyPendingMaintenanceActionResponse) SetBody(v *ModifyPendingMainten
 	return s
 }
 
-type RefreshDBClusterStorageUsageRequest struct {
+type OpenAITaskRequest struct {
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Username             *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s OpenAITaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenAITaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenAITaskRequest) SetDBClusterId(v string) *OpenAITaskRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *OpenAITaskRequest) SetOwnerAccount(v string) *OpenAITaskRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *OpenAITaskRequest) SetOwnerId(v int64) *OpenAITaskRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *OpenAITaskRequest) SetPassword(v string) *OpenAITaskRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *OpenAITaskRequest) SetRegionId(v string) *OpenAITaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *OpenAITaskRequest) SetResourceOwnerAccount(v string) *OpenAITaskRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *OpenAITaskRequest) SetResourceOwnerId(v int64) *OpenAITaskRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *OpenAITaskRequest) SetUsername(v string) *OpenAITaskRequest {
+	s.Username = &v
+	return s
+}
+
+type OpenAITaskResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s OpenAITaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenAITaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenAITaskResponseBody) SetRequestId(v string) *OpenAITaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OpenAITaskResponseBody) SetTaskId(v string) *OpenAITaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type OpenAITaskResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenAITaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OpenAITaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenAITaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenAITaskResponse) SetHeaders(v map[string]*string) *OpenAITaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenAITaskResponse) SetStatusCode(v int32) *OpenAITaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OpenAITaskResponse) SetBody(v *OpenAITaskResponseBody) *OpenAITaskResponse {
+	s.Body = v
+	return s
+}
+
+type RefreshDBClusterStorageUsageRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -15800,11 +16213,6 @@ func (s RefreshDBClusterStorageUsageRequest) String() string {
 
 func (s RefreshDBClusterStorageUsageRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RefreshDBClusterStorageUsageRequest) SetDBClusterId(v string) *RefreshDBClusterStorageUsageRequest {
-	s.DBClusterId = &v
-	return s
 }
 
 func (s *RefreshDBClusterStorageUsageRequest) SetOwnerAccount(v string) *RefreshDBClusterStorageUsageRequest {
@@ -17555,6 +17963,70 @@ func (client *Client) CheckDBName(request *CheckDBNameRequest) (_result *CheckDB
 	return _result, _err
 }
 
+func (client *Client) CloseAITaskWithOptions(request *CloseAITaskRequest, runtime *util.RuntimeOptions) (_result *CloseAITaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloseAITask"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CloseAITaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CloseAITask(request *CloseAITaskRequest) (_result *CloseAITaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CloseAITaskResponse{}
+	_body, _err := client.CloseAITaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CloseDBClusterMigrationWithOptions(request *CloseDBClusterMigrationRequest, runtime *util.RuntimeOptions) (_result *CloseDBClusterMigrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19284,6 +19756,46 @@ func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteParameterGroupResponse{}
 	_body, _err := client.DeleteParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAITaskStatusWithOptions(request *DescribeAITaskStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeAITaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAITaskStatus"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAITaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAITaskStatus(request *DescribeAITaskStatusRequest) (_result *DescribeAITaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAITaskStatusResponse{}
+	_body, _err := client.DescribeAITaskStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23235,6 +23747,70 @@ func (client *Client) ModifyDBClusterAuditLogCollector(request *ModifyDBClusterA
 	return _result, _err
 }
 
+func (client *Client) ModifyDBClusterDeletionWithOptions(request *ModifyDBClusterDeletionRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterDeletionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protection)) {
+		query["Protection"] = request.Protection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBClusterDeletion"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBClusterDeletionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDBClusterDeletion(request *ModifyDBClusterDeletionRequest) (_result *ModifyDBClusterDeletionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBClusterDeletionResponse{}
+	_body, _err := client.ModifyDBClusterDeletionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyDBClusterDescriptionWithOptions(request *ModifyDBClusterDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24647,7 +25223,7 @@ func (client *Client) ModifyPendingMaintenanceAction(request *ModifyPendingMaint
 	return _result, _err
 }
 
-func (client *Client) RefreshDBClusterStorageUsageWithOptions(request *RefreshDBClusterStorageUsageRequest, runtime *util.RuntimeOptions) (_result *RefreshDBClusterStorageUsageResponse, _err error) {
+func (client *Client) OpenAITaskWithOptions(request *OpenAITaskRequest, runtime *util.RuntimeOptions) (_result *OpenAITaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -24657,6 +25233,74 @@ func (client *Client) RefreshDBClusterStorageUsageWithOptions(request *RefreshDB
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenAITask"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OpenAITaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OpenAITask(request *OpenAITaskRequest) (_result *OpenAITaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OpenAITaskResponse{}
+	_body, _err := client.OpenAITaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RefreshDBClusterStorageUsageWithOptions(request *RefreshDBClusterStorageUsageRequest, runtime *util.RuntimeOptions) (_result *RefreshDBClusterStorageUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
