@@ -1007,9 +1007,9 @@ func (s *CreateServiceResponse) SetBody(v *CreateServiceResponseBody) *CreateSer
 }
 
 type CreateServiceAutoScalerRequest struct {
-	Max        *int32                                    `json:"Max,omitempty" xml:"Max,omitempty"`
-	Min        *int32                                    `json:"Min,omitempty" xml:"Min,omitempty"`
-	Strategies *CreateServiceAutoScalerRequestStrategies `json:"Strategies,omitempty" xml:"Strategies,omitempty" type:"Struct"`
+	Max        *int32                                    `json:"max,omitempty" xml:"max,omitempty"`
+	Min        *int32                                    `json:"min,omitempty" xml:"min,omitempty"`
+	Strategies *CreateServiceAutoScalerRequestStrategies `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Struct"`
 }
 
 func (s CreateServiceAutoScalerRequest) String() string {
@@ -1036,8 +1036,8 @@ func (s *CreateServiceAutoScalerRequest) SetStrategies(v *CreateServiceAutoScale
 }
 
 type CreateServiceAutoScalerRequestStrategies struct {
-	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Qps *float32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Qps *float32 `json:"qps,omitempty" xml:"qps,omitempty"`
 }
 
 func (s CreateServiceAutoScalerRequestStrategies) String() string {
@@ -2319,6 +2319,7 @@ func (s *DescribeServiceResponse) SetBody(v *Service) *DescribeServiceResponse {
 }
 
 type DescribeServiceAutoScalerResponseBody struct {
+	Behavior      map[string]interface{} `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
 	CurrentValues map[string]interface{} `json:"CurrentValues,omitempty" xml:"CurrentValues,omitempty"`
 	MaxReplica    *int32                 `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
 	MinReplica    *int32                 `json:"MinReplica,omitempty" xml:"MinReplica,omitempty"`
@@ -2333,6 +2334,11 @@ func (s DescribeServiceAutoScalerResponseBody) String() string {
 
 func (s DescribeServiceAutoScalerResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeServiceAutoScalerResponseBody) SetBehavior(v map[string]interface{}) *DescribeServiceAutoScalerResponseBody {
+	s.Behavior = v
+	return s
 }
 
 func (s *DescribeServiceAutoScalerResponseBody) SetCurrentValues(v map[string]interface{}) *DescribeServiceAutoScalerResponseBody {
@@ -3969,9 +3975,9 @@ func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateSer
 }
 
 type UpdateServiceAutoScalerRequest struct {
-	Max        *int32                                    `json:"Max,omitempty" xml:"Max,omitempty"`
-	Min        *int32                                    `json:"Min,omitempty" xml:"Min,omitempty"`
-	Strategies *UpdateServiceAutoScalerRequestStrategies `json:"Strategies,omitempty" xml:"Strategies,omitempty" type:"Struct"`
+	Max        *int32                                    `json:"max,omitempty" xml:"max,omitempty"`
+	Min        *int32                                    `json:"min,omitempty" xml:"min,omitempty"`
+	Strategies *UpdateServiceAutoScalerRequestStrategies `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Struct"`
 }
 
 func (s UpdateServiceAutoScalerRequest) String() string {
@@ -3998,8 +4004,8 @@ func (s *UpdateServiceAutoScalerRequest) SetStrategies(v *UpdateServiceAutoScale
 }
 
 type UpdateServiceAutoScalerRequestStrategies struct {
-	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Qps *float32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Qps *float32 `json:"qps,omitempty" xml:"qps,omitempty"`
 }
 
 func (s UpdateServiceAutoScalerRequestStrategies) String() string {
@@ -4661,15 +4667,15 @@ func (client *Client) CreateServiceAutoScalerWithOptions(ClusterId *string, Serv
 	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Max)) {
-		body["Max"] = request.Max
+		body["max"] = request.Max
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Min)) {
-		body["Min"] = request.Min
+		body["min"] = request.Min
 	}
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Strategies))) {
-		body["Strategies"] = request.Strategies
+		body["strategies"] = request.Strategies
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6390,15 +6396,15 @@ func (client *Client) UpdateServiceAutoScalerWithOptions(ClusterId *string, Serv
 	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Max)) {
-		body["Max"] = request.Max
+		body["max"] = request.Max
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Min)) {
-		body["Min"] = request.Min
+		body["min"] = request.Min
 	}
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Strategies))) {
-		body["Strategies"] = request.Strategies
+		body["strategies"] = request.Strategies
 	}
 
 	req := &openapi.OpenApiRequest{
