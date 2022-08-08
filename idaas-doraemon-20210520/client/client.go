@@ -13,24 +13,15 @@ import (
 )
 
 type CreateAuthenticatorRegistrationRequest struct {
-	// 应用外部Id
-	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	// 认证器类型
-	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	// 客户端SDK生成认证上下文
-	ClientExtendParamsJson *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
-	// 客户端SDK生成认证上下文签名信息
+	ApplicationExternalId      *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
+	AuthenticatorType          *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	ClientExtendParamsJson     *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
 	ClientExtendParamsJsonSign *string `json:"ClientExtendParamsJsonSign,omitempty" xml:"ClientExtendParamsJsonSign,omitempty"`
-	// 注册上下文
-	RegistrationContext *string `json:"RegistrationContext,omitempty" xml:"RegistrationContext,omitempty"`
-	// 服务端配置项，决定认证要求属性
-	ServerExtendParamsJson *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
-	// 用户展示名
-	UserDisplayName *string `json:"UserDisplayName,omitempty" xml:"UserDisplayName,omitempty"`
-	// 用户id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 用户姓名
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	RegistrationContext        *string `json:"RegistrationContext,omitempty" xml:"RegistrationContext,omitempty"`
+	ServerExtendParamsJson     *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
+	UserDisplayName            *string `json:"UserDisplayName,omitempty" xml:"UserDisplayName,omitempty"`
+	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName                   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateAuthenticatorRegistrationRequest) String() string {
@@ -87,11 +78,9 @@ func (s *CreateAuthenticatorRegistrationRequest) SetUserName(v string) *CreateAu
 }
 
 type CreateAuthenticatorRegistrationResponseBody struct {
-	// 防重放挑战码
 	ChallengeBase64 *string `json:"ChallengeBase64,omitempty" xml:"ChallengeBase64,omitempty"`
-	// 创建认证器的Options
-	Options   *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Options         *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAuthenticatorRegistrationResponseBody) String() string {
@@ -147,20 +136,13 @@ func (s *CreateAuthenticatorRegistrationResponse) SetBody(v *CreateAuthenticator
 }
 
 type CreateUserAuthenticateOptionsRequest struct {
-	// 应用外部Id
-	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	// 认证器类型
-	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	// 操作hash，用来和认证绑定
-	BindHashBase64 *string `json:"BindHashBase64,omitempty" xml:"BindHashBase64,omitempty"`
-	// 客户端SDK生成认证上下文
-	ClientExtendParamsJson *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
-	// 客户端SDK生成认证上下文签名信息
+	ApplicationExternalId      *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
+	AuthenticatorType          *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	BindHashBase64             *string `json:"BindHashBase64,omitempty" xml:"BindHashBase64,omitempty"`
+	ClientExtendParamsJson     *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
 	ClientExtendParamsJsonSign *string `json:"ClientExtendParamsJsonSign,omitempty" xml:"ClientExtendParamsJsonSign,omitempty"`
-	// 服务端配置项，决定认证要求属性
-	ServerExtendParamsJson *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
-	// 用户id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ServerExtendParamsJson     *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
+	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateUserAuthenticateOptionsRequest) String() string {
@@ -207,11 +189,9 @@ func (s *CreateUserAuthenticateOptionsRequest) SetUserId(v string) *CreateUserAu
 }
 
 type CreateUserAuthenticateOptionsResponseBody struct {
-	// 防重放挑战码
 	ChallengeBase64 *string `json:"ChallengeBase64,omitempty" xml:"ChallengeBase64,omitempty"`
-	// 创建认证的Options，内容是JSON
-	Options   *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Options         *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateUserAuthenticateOptionsResponseBody) String() string {
@@ -267,12 +247,9 @@ func (s *CreateUserAuthenticateOptionsResponse) SetBody(v *CreateUserAuthenticat
 }
 
 type DeregisterAuthenticatorRequest struct {
-	// 应用外部Id
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	// 认证器uuid
-	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	// 用户id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AuthenticatorUuid     *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeregisterAuthenticatorRequest) String() string {
@@ -509,12 +486,9 @@ func (s *FetchAccessTokenResponse) SetBody(v *FetchAccessTokenResponseBody) *Fet
 }
 
 type GetAuthenticatorRequest struct {
-	// 应用外部Id
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	// 认证器uuid
-	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	// 用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AuthenticatorUuid     *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetAuthenticatorRequest) String() string {
@@ -564,24 +538,16 @@ func (s *GetAuthenticatorResponseBody) SetRequestId(v string) *GetAuthenticatorR
 }
 
 type GetAuthenticatorResponseBodyAuthenticator struct {
-	// 认证器名字
-	AuthenticatorName *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
-	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	// 创建认证器的Options
+	AuthenticatorName   *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
+	AuthenticatorUuid   *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
 	CredentialId        *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
 	CustomAuthenticator *string `json:"CustomAuthenticator,omitempty" xml:"CustomAuthenticator,omitempty"`
-	// 用户最后签名IP
-	LastVerifySourceIp *string `json:"LastVerifySourceIp,omitempty" xml:"LastVerifySourceIp,omitempty"`
-	// 最后验证时间
-	LastVerifyTime *int64 `json:"LastVerifyTime,omitempty" xml:"LastVerifyTime,omitempty"`
-	// 用户最后签名userAgent
+	LastVerifySourceIp  *string `json:"LastVerifySourceIp,omitempty" xml:"LastVerifySourceIp,omitempty"`
+	LastVerifyTime      *int64  `json:"LastVerifyTime,omitempty" xml:"LastVerifyTime,omitempty"`
 	LastVerifyUserAgent *string `json:"LastVerifyUserAgent,omitempty" xml:"LastVerifyUserAgent,omitempty"`
-	// 用户注册IP
-	RegisterSourceIp *string `json:"RegisterSourceIp,omitempty" xml:"RegisterSourceIp,omitempty"`
-	// 注册时间
-	RegisterTime *int64 `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
-	// 认证器类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	RegisterSourceIp    *string `json:"RegisterSourceIp,omitempty" xml:"RegisterSourceIp,omitempty"`
+	RegisterTime        *int64  `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetAuthenticatorResponseBodyAuthenticator) String() string {
@@ -747,8 +713,7 @@ type ListAuthenticationLogsResponseBody struct {
 	PageNumber               *int64                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize                 *int64                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId                *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回列表长度
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount               *int64                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAuthenticationLogsResponseBody) String() string {
@@ -1008,8 +973,7 @@ type ListAuthenticatorOpsLogsResponseBody struct {
 	PageNumber               *int64                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize                 *int64                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId                *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回列表长度
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount               *int64                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAuthenticatorOpsLogsResponseBody) String() string {
@@ -1200,16 +1164,11 @@ func (s *ListAuthenticatorOpsLogsResponse) SetBody(v *ListAuthenticatorOpsLogsRe
 }
 
 type ListAuthenticatorsRequest struct {
-	// 应用外部Id
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	// 认证器类型
-	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	// 当前开始读取的位置，不设置时默认为1
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 本次读取的最大数据记录数量，不指定时使用默认值
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 用户id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AuthenticatorType     *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	PageNumber            *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize              *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListAuthenticatorsRequest) String() string {
@@ -1247,13 +1206,10 @@ func (s *ListAuthenticatorsRequest) SetUserId(v string) *ListAuthenticatorsReque
 
 type ListAuthenticatorsResponseBody struct {
 	Authenticator []*ListAuthenticatorsResponseBodyAuthenticator `json:"Authenticator,omitempty" xml:"Authenticator,omitempty" type:"Repeated"`
-	// 读取到的位置
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页记录数量
-	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 查询结果数据总数
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber    *int64                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int64                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount    *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAuthenticatorsResponseBody) String() string {
@@ -1290,20 +1246,13 @@ func (s *ListAuthenticatorsResponseBody) SetTotalCount(v int64) *ListAuthenticat
 }
 
 type ListAuthenticatorsResponseBodyAuthenticator struct {
-	// 应用ID
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	// 身份认证对应的认证器名称
-	AuthenticatorName *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
-	// 认证器uuid
-	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	// 身份认证ID
-	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// 最后验证时间，如果新注册则为注册时间
-	LastVerifyTime *int64 `json:"LastVerifyTime,omitempty" xml:"LastVerifyTime,omitempty"`
-	// 创建时间
-	RegisterTime *int64 `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
-	// 认证器类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AuthenticatorName     *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
+	AuthenticatorUuid     *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	CredentialId          *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	LastVerifyTime        *int64  `json:"LastVerifyTime,omitempty" xml:"LastVerifyTime,omitempty"`
+	RegisterTime          *int64  `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
+	Type                  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAuthenticatorsResponseBodyAuthenticator) String() string {
@@ -1379,14 +1328,10 @@ func (s *ListAuthenticatorsResponse) SetBody(v *ListAuthenticatorsResponseBody) 
 }
 
 type ListCostUnitOrdersRequest struct {
-	// 开始创建时间
-	BeginDate *string `json:"BeginDate,omitempty" xml:"BeginDate,omitempty"`
-	// 结束创建时间
-	FinalDate *string `json:"FinalDate,omitempty" xml:"FinalDate,omitempty"`
-	// 第几页
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	BeginDate  *string `json:"BeginDate,omitempty" xml:"BeginDate,omitempty"`
+	FinalDate  *string `json:"FinalDate,omitempty" xml:"FinalDate,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListCostUnitOrdersRequest) String() string {
@@ -1459,22 +1404,14 @@ func (s *ListCostUnitOrdersResponseBody) SetTotalPages(v int64) *ListCostUnitOrd
 }
 
 type ListCostUnitOrdersResponseBodyItems struct {
-	// 阿里云订单编号
-	AliOrderCode *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
-	// 阿里云订单实例名称
+	AliOrderCode       *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
 	AliOrderInstanceId *string `json:"AliOrderInstanceId,omitempty" xml:"AliOrderInstanceId,omitempty"`
-	// 创建时间
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 过期时间
-	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// 订单状态。VALID：有效、REFUND：退款、EXPIRED：过期
-	OrderStatus *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
-	// 退款时间，毫秒时间戳，退款时才有值
-	RefundTime *int64 `json:"RefundTime,omitempty" xml:"RefundTime,omitempty"`
-	// 总计 CU 值，单位厘，实际购买 CU 乘以 1000
-	TotalCostUnit *int64 `json:"TotalCostUnit,omitempty" xml:"TotalCostUnit,omitempty"`
-	// 已用 CU 值，单位厘，实际使用 CU 乘以 1000
-	UsedCostUnit *int64 `json:"UsedCostUnit,omitempty" xml:"UsedCostUnit,omitempty"`
+	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpiredTime        *int64  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	OrderStatus        *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	RefundTime         *int64  `json:"RefundTime,omitempty" xml:"RefundTime,omitempty"`
+	TotalCostUnit      *int64  `json:"TotalCostUnit,omitempty" xml:"TotalCostUnit,omitempty"`
+	UsedCostUnit       *int64  `json:"UsedCostUnit,omitempty" xml:"UsedCostUnit,omitempty"`
 }
 
 func (s ListCostUnitOrdersResponseBodyItems) String() string {
@@ -1555,15 +1492,10 @@ func (s *ListCostUnitOrdersResponse) SetBody(v *ListCostUnitOrdersResponseBody) 
 }
 
 type ListOrderConsumeStatisticRecordsRequest struct {
-	// 阿里订单编号
-	AliOrderCode *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
-	// 页码
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页记录数
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 统计时间最大值
+	AliOrderCode     *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StatisticTimeMax *string `json:"StatisticTimeMax,omitempty" xml:"StatisticTimeMax,omitempty"`
-	// 统计时间最小值
 	StatisticTimeMin *string `json:"StatisticTimeMin,omitempty" xml:"StatisticTimeMin,omitempty"`
 }
 
@@ -1601,16 +1533,11 @@ func (s *ListOrderConsumeStatisticRecordsRequest) SetStatisticTimeMin(v string) 
 }
 
 type ListOrderConsumeStatisticRecordsResponseBody struct {
-	// 数据项列表
-	Items []*ListOrderConsumeStatisticRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// 每页记录数
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求 ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数
-	TotalElements *int64 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
-	// 总页数
-	TotalPages *int64 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	Items         []*ListOrderConsumeStatisticRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageSize      *int64                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalElements *int64                                               `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	TotalPages    *int64                                               `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s ListOrderConsumeStatisticRecordsResponseBody) String() string {
@@ -1647,20 +1574,13 @@ func (s *ListOrderConsumeStatisticRecordsResponseBody) SetTotalPages(v int64) *L
 }
 
 type ListOrderConsumeStatisticRecordsResponseBodyItems struct {
-	// 阿里云订单编号
-	AliOrderCode *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
-	// 应用外部标志
+	AliOrderCode          *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	// 计费数目
-	ChargedCount *int64 `json:"ChargedCount,omitempty" xml:"ChargedCount,omitempty"`
-	// 服务码
-	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// 统计日期，时间戳，精确到秒
-	StatisticTime *int64 `json:"StatisticTime,omitempty" xml:"StatisticTime,omitempty"`
-	// 总价
-	TotalPrice *int64 `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty"`
-	// 单价
-	UnitPrice *int64 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
+	ChargedCount          *int64  `json:"ChargedCount,omitempty" xml:"ChargedCount,omitempty"`
+	ServiceCode           *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	StatisticTime         *int64  `json:"StatisticTime,omitempty" xml:"StatisticTime,omitempty"`
+	TotalPrice            *int64  `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty"`
+	UnitPrice             *int64  `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
 }
 
 func (s ListOrderConsumeStatisticRecordsResponseBodyItems) String() string {
@@ -1756,9 +1676,8 @@ type ListPwnedPasswordsResponseBody struct {
 	PageNumber         *int64                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize           *int64                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PwnedPasswordInfos []*ListPwnedPasswordsResponseBodyPwnedPasswordInfos `json:"PwnedPasswordInfos,omitempty" xml:"PwnedPasswordInfos,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId          *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount         *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPwnedPasswordsResponseBody) String() string {
@@ -1847,10 +1766,8 @@ func (s *ListPwnedPasswordsResponse) SetBody(v *ListPwnedPasswordsResponseBody) 
 }
 
 type ListUsersRequest struct {
-	// 应用外部Id
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	// 用户id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListUsersRequest) String() string {
@@ -1872,8 +1789,7 @@ func (s *ListUsersRequest) SetUserId(v string) *ListUsersRequest {
 }
 
 type ListUsersResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 查询结果数据总数
+	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount *int64                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Users      []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -1960,28 +1876,17 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 }
 
 type RegisterAuthenticatorRequest struct {
-	// 应用外部Id
-	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	// 认证器名字
-	AuthenticatorName *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
-	// 认证器类型
-	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	// 客户端SDK生成认证上下文
-	ClientExtendParamsJson *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
-	// 客户端SDK生成认证上下文签名信息
+	ApplicationExternalId      *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
+	AuthenticatorName          *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
+	AuthenticatorType          *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	ClientExtendParamsJson     *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
 	ClientExtendParamsJsonSign *string `json:"ClientExtendParamsJsonSign,omitempty" xml:"ClientExtendParamsJsonSign,omitempty"`
-	// 用户自定义记录审计日志信息
-	LogParams *string `json:"LogParams,omitempty" xml:"LogParams,omitempty"`
-	// 注册上下文
-	RegistrationContext *string `json:"RegistrationContext,omitempty" xml:"RegistrationContext,omitempty"`
-	// 会话绑定的challenge base64标识
-	RequireChallengeBase64 *string `json:"RequireChallengeBase64,omitempty" xml:"RequireChallengeBase64,omitempty"`
-	// 服务端配置项，决定认证要求属性
-	ServerExtendParamsJson *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
-	// 用户id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 用户端来源IP地址，用于审计
-	UserSourceIp *string `json:"UserSourceIp,omitempty" xml:"UserSourceIp,omitempty"`
+	LogParams                  *string `json:"LogParams,omitempty" xml:"LogParams,omitempty"`
+	RegistrationContext        *string `json:"RegistrationContext,omitempty" xml:"RegistrationContext,omitempty"`
+	RequireChallengeBase64     *string `json:"RequireChallengeBase64,omitempty" xml:"RequireChallengeBase64,omitempty"`
+	ServerExtendParamsJson     *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
+	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserSourceIp               *string `json:"UserSourceIp,omitempty" xml:"UserSourceIp,omitempty"`
 }
 
 func (s RegisterAuthenticatorRequest) String() string {
@@ -2048,9 +1953,7 @@ func (s *RegisterAuthenticatorRequest) SetUserSourceIp(v string) *RegisterAuthen
 }
 
 type RegisterAuthenticatorResponseBody struct {
-	// 认证器UUID
 	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	// 仅IFAA认证器注册返回
 	EtasResponseSting *string `json:"EtasResponseSting,omitempty" xml:"EtasResponseSting,omitempty"`
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -2243,14 +2146,10 @@ func (s *ServiceInvokeResponse) SetBody(v *ServiceInvokeResponseBody) *ServiceIn
 }
 
 type UpdateAuthenticatorAttributeRequest struct {
-	// 应用外部Id
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	// 认证器名字
-	AuthenticatorName *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
-	// 认证器uuid
-	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	// 用户id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AuthenticatorName     *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
+	AuthenticatorUuid     *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateAuthenticatorAttributeRequest) String() string {
@@ -2403,30 +2302,18 @@ func (s *VerifyIdTokenResponse) SetBody(v *VerifyIdTokenResponseBody) *VerifyIdT
 }
 
 type VerifyUserAuthenticationRequest struct {
-	// 应用外部Id
-	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	// 认证上下文，由AuthenticatorType决定格式
-	AuthenticationContext *string `json:"AuthenticationContext,omitempty" xml:"AuthenticationContext,omitempty"`
-	// 认证器类型
-	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	// 客户端SDK生成认证上下文
-	ClientExtendParamsJson *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
-	// 客户端SDK生成认证上下文签名信息
+	ApplicationExternalId      *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
+	AuthenticationContext      *string `json:"AuthenticationContext,omitempty" xml:"AuthenticationContext,omitempty"`
+	AuthenticatorType          *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	ClientExtendParamsJson     *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
 	ClientExtendParamsJsonSign *string `json:"ClientExtendParamsJsonSign,omitempty" xml:"ClientExtendParamsJsonSign,omitempty"`
-	// 用户自定义记录审计日志信息
-	LogParams *string `json:"LogParams,omitempty" xml:"LogParams,omitempty"`
-	// 用户自定义记录审计日志标签
-	LogTag *string `json:"LogTag,omitempty" xml:"LogTag,omitempty"`
-	// 认证绑定的操作hash base64标识
-	RequireBindHashBase64 *string `json:"RequireBindHashBase64,omitempty" xml:"RequireBindHashBase64,omitempty"`
-	// 会话绑定的challenge base64标识
-	RequireChallengeBase64 *string `json:"RequireChallengeBase64,omitempty" xml:"RequireChallengeBase64,omitempty"`
-	// 服务端配置项，决定认证要求属性
-	ServerExtendParamsJson *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
-	// 用户id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 用户端来源IP地址，用于审计
-	UserSourceIp *string `json:"UserSourceIp,omitempty" xml:"UserSourceIp,omitempty"`
+	LogParams                  *string `json:"LogParams,omitempty" xml:"LogParams,omitempty"`
+	LogTag                     *string `json:"LogTag,omitempty" xml:"LogTag,omitempty"`
+	RequireBindHashBase64      *string `json:"RequireBindHashBase64,omitempty" xml:"RequireBindHashBase64,omitempty"`
+	RequireChallengeBase64     *string `json:"RequireChallengeBase64,omitempty" xml:"RequireChallengeBase64,omitempty"`
+	ServerExtendParamsJson     *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
+	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserSourceIp               *string `json:"UserSourceIp,omitempty" xml:"UserSourceIp,omitempty"`
 }
 
 func (s VerifyUserAuthenticationRequest) String() string {
@@ -2498,13 +2385,11 @@ func (s *VerifyUserAuthenticationRequest) SetUserSourceIp(v string) *VerifyUserA
 }
 
 type VerifyUserAuthenticationResponseBody struct {
-	// 认证结果
 	AuthenticateResultInfo *VerifyUserAuthenticationResponseBodyAuthenticateResultInfo `json:"AuthenticateResultInfo,omitempty" xml:"AuthenticateResultInfo,omitempty" type:"Struct"`
 	EtasSDKString          *string                                                     `json:"EtasSDKString,omitempty" xml:"EtasSDKString,omitempty"`
 	IdToken                *string                                                     `json:"IdToken,omitempty" xml:"IdToken,omitempty"`
 	RequestId              *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 认证结果，true or false
-	VerifyResult *bool `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	VerifyResult           *bool                                                       `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
 func (s VerifyUserAuthenticationResponseBody) String() string {
@@ -2541,12 +2426,9 @@ func (s *VerifyUserAuthenticationResponseBody) SetVerifyResult(v bool) *VerifyUs
 }
 
 type VerifyUserAuthenticationResponseBodyAuthenticateResultInfo struct {
-	// 这次认证绑定的操作hash
 	BindHashBase64 *string `json:"BindHashBase64,omitempty" xml:"BindHashBase64,omitempty"`
-	// 认证使用的凭据Id
-	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// 认证通过的用户Id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CredentialId   *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s VerifyUserAuthenticationResponseBodyAuthenticateResultInfo) String() string {
