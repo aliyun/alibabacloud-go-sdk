@@ -54,18 +54,12 @@ func (s *AddServersToServerGroupRequest) SetServers(v []*AddServersToServerGroup
 }
 
 type AddServersToServerGroupRequestServers struct {
-	// 服务器描述信息
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 服务器端口
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 服务器id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 服务器ip
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 服务器类型
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// 后端权重
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerType  *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s AddServersToServerGroupRequestServers) String() string {
@@ -107,15 +101,9 @@ func (s *AddServersToServerGroupRequestServers) SetWeight(v int32) *AddServersTo
 }
 
 type AddServersToServerGroupResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServerGroupId  *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
 func (s AddServersToServerGroupResponseBody) String() string {
@@ -126,33 +114,8 @@ func (s AddServersToServerGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AddServersToServerGroupResponseBody) SetCode(v string) *AddServersToServerGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AddServersToServerGroupResponseBody) SetDynamicCode(v string) *AddServersToServerGroupResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *AddServersToServerGroupResponseBody) SetDynamicMessage(v string) *AddServersToServerGroupResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *AddServersToServerGroupResponseBody) SetHttpStatusCode(v int32) *AddServersToServerGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *AddServersToServerGroupResponseBody) SetJobId(v string) *AddServersToServerGroupResponseBody {
 	s.JobId = &v
-	return s
-}
-
-func (s *AddServersToServerGroupResponseBody) SetMessage(v string) *AddServersToServerGroupResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -163,11 +126,6 @@ func (s *AddServersToServerGroupResponseBody) SetRequestId(v string) *AddServers
 
 func (s *AddServersToServerGroupResponseBody) SetServerGroupId(v string) *AddServersToServerGroupResponseBody {
 	s.ServerGroupId = &v
-	return s
-}
-
-func (s *AddServersToServerGroupResponseBody) SetSuccess(v bool) *AddServersToServerGroupResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -206,7 +164,6 @@ type AttachCommonBandwidthPackageToLoadBalancerRequest struct {
 	DryRun             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	LoadBalancerId     *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestContent     *string `json:"RequestContent,omitempty" xml:"RequestContent,omitempty"`
 }
 
 func (s AttachCommonBandwidthPackageToLoadBalancerRequest) String() string {
@@ -242,20 +199,9 @@ func (s *AttachCommonBandwidthPackageToLoadBalancerRequest) SetRegionId(v string
 	return s
 }
 
-func (s *AttachCommonBandwidthPackageToLoadBalancerRequest) SetRequestContent(v string) *AttachCommonBandwidthPackageToLoadBalancerRequest {
-	s.RequestContent = &v
-	return s
-}
-
 type AttachCommonBandwidthPackageToLoadBalancerResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AttachCommonBandwidthPackageToLoadBalancerResponseBody) String() string {
@@ -266,43 +212,13 @@ func (s AttachCommonBandwidthPackageToLoadBalancerResponseBody) GoString() strin
 	return s.String()
 }
 
-func (s *AttachCommonBandwidthPackageToLoadBalancerResponseBody) SetCode(v string) *AttachCommonBandwidthPackageToLoadBalancerResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AttachCommonBandwidthPackageToLoadBalancerResponseBody) SetDynamicCode(v string) *AttachCommonBandwidthPackageToLoadBalancerResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *AttachCommonBandwidthPackageToLoadBalancerResponseBody) SetDynamicMessage(v string) *AttachCommonBandwidthPackageToLoadBalancerResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *AttachCommonBandwidthPackageToLoadBalancerResponseBody) SetHttpStatusCode(v int32) *AttachCommonBandwidthPackageToLoadBalancerResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *AttachCommonBandwidthPackageToLoadBalancerResponseBody) SetJobId(v string) *AttachCommonBandwidthPackageToLoadBalancerResponseBody {
 	s.JobId = &v
 	return s
 }
 
-func (s *AttachCommonBandwidthPackageToLoadBalancerResponseBody) SetMessage(v string) *AttachCommonBandwidthPackageToLoadBalancerResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *AttachCommonBandwidthPackageToLoadBalancerResponseBody) SetRequestId(v string) *AttachCommonBandwidthPackageToLoadBalancerResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *AttachCommonBandwidthPackageToLoadBalancerResponseBody) SetSuccess(v bool) *AttachCommonBandwidthPackageToLoadBalancerResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -336,35 +252,27 @@ func (s *AttachCommonBandwidthPackageToLoadBalancerResponse) SetBody(v *AttachCo
 }
 
 type CreateListenerRequest struct {
-	AlpnEnabled *bool   `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
-	AlpnPolicy  *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
-	// ca 证书列表
-	CaCertificateIds []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
-	CaEnabled        *bool     `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// server证书列表
-	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	ClientToken    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Cps            *int32    `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	DryRun         *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EndPort        *int32    `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
-	// 空闲超时时间
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// 监听描述
-	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// 监听端口
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 监听协议
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// add 必选
-	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ProxyProtocolEnabled *bool   `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecSensorEnabled     *bool   `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
-	// Tclssl监听的安全策略
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// servergroupId
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	StartPort     *int32  `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
+	AlpnEnabled          *bool     `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
+	AlpnPolicy           *string   `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
+	CaCertificateIds     []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
+	CaEnabled            *bool     `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
+	CertificateIds       []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
+	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Cps                  *int32    `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	DryRun               *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EndPort              *int32    `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
+	IdleTimeout          *int32    `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ListenerDescription  *string   `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
+	ListenerPort         *int32    `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ListenerProtocol     *string   `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	LoadBalancerId       *string   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	Mss                  *int32    `json:"Mss,omitempty" xml:"Mss,omitempty"`
+	ProxyProtocolEnabled *bool     `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecSensorEnabled     *bool     `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
+	SecurityPolicyId     *string   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	ServerGroupId        *string   `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	StartPort            *int32    `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
 }
 
 func (s CreateListenerRequest) String() string {
@@ -445,6 +353,11 @@ func (s *CreateListenerRequest) SetLoadBalancerId(v string) *CreateListenerReque
 	return s
 }
 
+func (s *CreateListenerRequest) SetMss(v int32) *CreateListenerRequest {
+	s.Mss = &v
+	return s
+}
+
 func (s *CreateListenerRequest) SetProxyProtocolEnabled(v bool) *CreateListenerRequest {
 	s.ProxyProtocolEnabled = &v
 	return s
@@ -476,15 +389,9 @@ func (s *CreateListenerRequest) SetStartPort(v int32) *CreateListenerRequest {
 }
 
 type CreateListenerResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ListenerId     *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateListenerResponseBody) String() string {
@@ -493,26 +400,6 @@ func (s CreateListenerResponseBody) String() string {
 
 func (s CreateListenerResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CreateListenerResponseBody) SetCode(v string) *CreateListenerResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateListenerResponseBody) SetDynamicCode(v string) *CreateListenerResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *CreateListenerResponseBody) SetDynamicMessage(v string) *CreateListenerResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *CreateListenerResponseBody) SetHttpStatusCode(v int32) *CreateListenerResponseBody {
-	s.HttpStatusCode = &v
-	return s
 }
 
 func (s *CreateListenerResponseBody) SetJobId(v string) *CreateListenerResponseBody {
@@ -525,18 +412,8 @@ func (s *CreateListenerResponseBody) SetListenerId(v string) *CreateListenerResp
 	return s
 }
 
-func (s *CreateListenerResponseBody) SetMessage(v string) *CreateListenerResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *CreateListenerResponseBody) SetRequestId(v string) *CreateListenerResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateListenerResponseBody) SetSuccess(v bool) *CreateListenerResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -573,17 +450,13 @@ type CreateLoadBalancerRequest struct {
 	AddressIpVersion          *string                                             `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	AddressType               *string                                             `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	BandwidthPackageId        *string                                             `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	BizFlag                   *string                                             `json:"BizFlag,omitempty" xml:"BizFlag,omitempty"`
 	ClientToken               *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CrossZoneEnabled          *bool                                               `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
 	DryRun                    *bool                                               `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	LoadBalancerBillingConfig *CreateLoadBalancerRequestLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
 	LoadBalancerName          *string                                             `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	LoadBalancerType          *string                                             `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
 	RegionId                  *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId           *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupIds          []*string                                           `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	TrafficAffinityEnabled    *bool                                               `json:"TrafficAffinityEnabled,omitempty" xml:"TrafficAffinityEnabled,omitempty"`
 	VpcId                     *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	ZoneMappings              []*CreateLoadBalancerRequestZoneMappings            `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
@@ -611,18 +484,8 @@ func (s *CreateLoadBalancerRequest) SetBandwidthPackageId(v string) *CreateLoadB
 	return s
 }
 
-func (s *CreateLoadBalancerRequest) SetBizFlag(v string) *CreateLoadBalancerRequest {
-	s.BizFlag = &v
-	return s
-}
-
 func (s *CreateLoadBalancerRequest) SetClientToken(v string) *CreateLoadBalancerRequest {
 	s.ClientToken = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequest) SetCrossZoneEnabled(v bool) *CreateLoadBalancerRequest {
-	s.CrossZoneEnabled = &v
 	return s
 }
 
@@ -656,16 +519,6 @@ func (s *CreateLoadBalancerRequest) SetResourceGroupId(v string) *CreateLoadBala
 	return s
 }
 
-func (s *CreateLoadBalancerRequest) SetSecurityGroupIds(v []*string) *CreateLoadBalancerRequest {
-	s.SecurityGroupIds = v
-	return s
-}
-
-func (s *CreateLoadBalancerRequest) SetTrafficAffinityEnabled(v bool) *CreateLoadBalancerRequest {
-	s.TrafficAffinityEnabled = &v
-	return s
-}
-
 func (s *CreateLoadBalancerRequest) SetVpcId(v string) *CreateLoadBalancerRequest {
 	s.VpcId = &v
 	return s
@@ -677,7 +530,6 @@ func (s *CreateLoadBalancerRequest) SetZoneMappings(v []*CreateLoadBalancerReque
 }
 
 type CreateLoadBalancerRequestLoadBalancerBillingConfig struct {
-	// PrePay, PostPay
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
 
@@ -695,9 +547,7 @@ func (s *CreateLoadBalancerRequestLoadBalancerBillingConfig) SetPayType(v string
 }
 
 type CreateLoadBalancerRequestZoneMappings struct {
-	// 公网ipId
-	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// 私网ip
+	AllocationId       *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	PrivateIPv4Address *string `json:"PrivateIPv4Address,omitempty" xml:"PrivateIPv4Address,omitempty"`
 	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -732,15 +582,10 @@ func (s *CreateLoadBalancerRequestZoneMappings) SetZoneId(v string) *CreateLoadB
 }
 
 type CreateLoadBalancerResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	LoadbalancerId *string `json:"LoadbalancerId,omitempty" xml:"LoadbalancerId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OrderId        *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateLoadBalancerResponseBody) String() string {
@@ -749,26 +594,6 @@ func (s CreateLoadBalancerResponseBody) String() string {
 
 func (s CreateLoadBalancerResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CreateLoadBalancerResponseBody) SetCode(v string) *CreateLoadBalancerResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateLoadBalancerResponseBody) SetDynamicCode(v string) *CreateLoadBalancerResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *CreateLoadBalancerResponseBody) SetDynamicMessage(v string) *CreateLoadBalancerResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *CreateLoadBalancerResponseBody) SetHttpStatusCode(v int32) *CreateLoadBalancerResponseBody {
-	s.HttpStatusCode = &v
-	return s
 }
 
 func (s *CreateLoadBalancerResponseBody) SetJobId(v string) *CreateLoadBalancerResponseBody {
@@ -781,18 +606,13 @@ func (s *CreateLoadBalancerResponseBody) SetLoadbalancerId(v string) *CreateLoad
 	return s
 }
 
-func (s *CreateLoadBalancerResponseBody) SetMessage(v string) *CreateLoadBalancerResponseBody {
-	s.Message = &v
+func (s *CreateLoadBalancerResponseBody) SetOrderId(v int64) *CreateLoadBalancerResponseBody {
+	s.OrderId = &v
 	return s
 }
 
 func (s *CreateLoadBalancerResponseBody) SetRequestId(v string) *CreateLoadBalancerResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateLoadBalancerResponseBody) SetSuccess(v bool) *CreateLoadBalancerResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -879,15 +699,9 @@ func (s *CreateSecurityPolicyRequest) SetTlsVersions(v []*string) *CreateSecurit
 }
 
 type CreateSecurityPolicyResponseBody struct {
-	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode      *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage   *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode   *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSecurityPolicyResponseBody) String() string {
@@ -898,33 +712,8 @@ func (s CreateSecurityPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateSecurityPolicyResponseBody) SetCode(v string) *CreateSecurityPolicyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateSecurityPolicyResponseBody) SetDynamicCode(v string) *CreateSecurityPolicyResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *CreateSecurityPolicyResponseBody) SetDynamicMessage(v string) *CreateSecurityPolicyResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *CreateSecurityPolicyResponseBody) SetHttpStatusCode(v int32) *CreateSecurityPolicyResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *CreateSecurityPolicyResponseBody) SetJobId(v string) *CreateSecurityPolicyResponseBody {
 	s.JobId = &v
-	return s
-}
-
-func (s *CreateSecurityPolicyResponseBody) SetMessage(v string) *CreateSecurityPolicyResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -935,11 +724,6 @@ func (s *CreateSecurityPolicyResponseBody) SetRequestId(v string) *CreateSecurit
 
 func (s *CreateSecurityPolicyResponseBody) SetSecurityPolicyId(v string) *CreateSecurityPolicyResponseBody {
 	s.SecurityPolicyId = &v
-	return s
-}
-
-func (s *CreateSecurityPolicyResponseBody) SetSuccess(v bool) *CreateSecurityPolicyResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -973,32 +757,20 @@ func (s *CreateSecurityPolicyResponse) SetBody(v *CreateSecurityPolicyResponseBo
 }
 
 type CreateServerGroupRequest struct {
-	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否开启连接优雅中断
-	ConnectionDrainEnabled *bool `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
-	// 连接优雅中断超时时间
-	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	DryRun                 *bool  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 健康检查配置
-	HealthCheckConfig *CreateServerGroupRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
-	// 是否开启会话保持
-	PersistenceEnabled *bool `json:"PersistenceEnabled,omitempty" xml:"PersistenceEnabled,omitempty"`
-	// 会话保持超时时间
-	PersistenceTimeout      *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	PreserveClientIpEnabled *bool  `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
-	// 后端服务器类型
-	Protocol        *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 调度类型
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 服务器组名称
-	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
-	// 服务器组类型
-	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
-	// 服务器组所在vpc的id
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AddressIPVersion        *string                                    `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	ClientToken             *string                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConnectionDrainEnabled  *bool                                      `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
+	ConnectionDrainTimeout  *int32                                     `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
+	DryRun                  *bool                                      `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	HealthCheckConfig       *CreateServerGroupRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
+	PreserveClientIpEnabled *bool                                      `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
+	Protocol                *string                                    `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	RegionId                *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId         *string                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Scheduler               *string                                    `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	ServerGroupName         *string                                    `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
+	ServerGroupType         *string                                    `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
+	VpcId                   *string                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateServerGroupRequest) String() string {
@@ -1036,16 +808,6 @@ func (s *CreateServerGroupRequest) SetDryRun(v bool) *CreateServerGroupRequest {
 
 func (s *CreateServerGroupRequest) SetHealthCheckConfig(v *CreateServerGroupRequestHealthCheckConfig) *CreateServerGroupRequest {
 	s.HealthCheckConfig = v
-	return s
-}
-
-func (s *CreateServerGroupRequest) SetPersistenceEnabled(v bool) *CreateServerGroupRequest {
-	s.PersistenceEnabled = &v
-	return s
-}
-
-func (s *CreateServerGroupRequest) SetPersistenceTimeout(v int32) *CreateServerGroupRequest {
-	s.PersistenceTimeout = &v
 	return s
 }
 
@@ -1090,27 +852,17 @@ func (s *CreateServerGroupRequest) SetVpcId(v string) *CreateServerGroupRequest 
 }
 
 type CreateServerGroupRequestHealthCheckConfig struct {
-	// 健康检查使用的端口
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 健康检查响应的最大超时时间
-	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// 健康检查的域名
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// 是否开启健康检查
-	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// 状态码，多个状态码用逗号分隔
-	HealthCheckHttpCode []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
-	// 健康检查时间间隔
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 健康检查协议类型
-	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// 健康检查的url
-	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
-	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success
-	HealthyThreshold *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	HttpCheckMethod  *string `json:"HttpCheckMethod,omitempty" xml:"HttpCheckMethod,omitempty"`
-	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckConnectPort    *int32    `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckConnectTimeout *int32    `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckDomain         *string   `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckEnabled        *bool     `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckHttpCode       []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
+	HealthCheckInterval       *int32    `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckType           *string   `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	HealthCheckUrl            *string   `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
+	HealthyThreshold          *int32    `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	HttpCheckMethod           *string   `json:"HttpCheckMethod,omitempty" xml:"HttpCheckMethod,omitempty"`
+	UnhealthyThreshold        *int32    `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s CreateServerGroupRequestHealthCheckConfig) String() string {
@@ -1177,15 +929,9 @@ func (s *CreateServerGroupRequestHealthCheckConfig) SetUnhealthyThreshold(v int3
 }
 
 type CreateServerGroupResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServerGroupId  *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
 func (s CreateServerGroupResponseBody) String() string {
@@ -1196,33 +942,8 @@ func (s CreateServerGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateServerGroupResponseBody) SetCode(v string) *CreateServerGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateServerGroupResponseBody) SetDynamicCode(v string) *CreateServerGroupResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *CreateServerGroupResponseBody) SetDynamicMessage(v string) *CreateServerGroupResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *CreateServerGroupResponseBody) SetHttpStatusCode(v int32) *CreateServerGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *CreateServerGroupResponseBody) SetJobId(v string) *CreateServerGroupResponseBody {
 	s.JobId = &v
-	return s
-}
-
-func (s *CreateServerGroupResponseBody) SetMessage(v string) *CreateServerGroupResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -1233,11 +954,6 @@ func (s *CreateServerGroupResponseBody) SetRequestId(v string) *CreateServerGrou
 
 func (s *CreateServerGroupResponseBody) SetServerGroupId(v string) *CreateServerGroupResponseBody {
 	s.ServerGroupId = &v
-	return s
-}
-
-func (s *CreateServerGroupResponseBody) SetSuccess(v bool) *CreateServerGroupResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1273,9 +989,8 @@ func (s *CreateServerGroupResponse) SetBody(v *CreateServerGroupResponseBody) *C
 type DeleteListenerRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// update or delete必选, add在custom中生成
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ListenerId  *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteListenerRequest) String() string {
@@ -1307,14 +1022,8 @@ func (s *DeleteListenerRequest) SetRegionId(v string) *DeleteListenerRequest {
 }
 
 type DeleteListenerResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteListenerResponseBody) String() string {
@@ -1325,43 +1034,13 @@ func (s DeleteListenerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteListenerResponseBody) SetCode(v string) *DeleteListenerResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteListenerResponseBody) SetDynamicCode(v string) *DeleteListenerResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *DeleteListenerResponseBody) SetDynamicMessage(v string) *DeleteListenerResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *DeleteListenerResponseBody) SetHttpStatusCode(v int32) *DeleteListenerResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *DeleteListenerResponseBody) SetJobId(v string) *DeleteListenerResponseBody {
 	s.JobId = &v
 	return s
 }
 
-func (s *DeleteListenerResponseBody) SetMessage(v string) *DeleteListenerResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *DeleteListenerResponseBody) SetRequestId(v string) *DeleteListenerResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteListenerResponseBody) SetSuccess(v bool) *DeleteListenerResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1430,14 +1109,8 @@ func (s *DeleteLoadBalancerRequest) SetRegionId(v string) *DeleteLoadBalancerReq
 }
 
 type DeleteLoadBalancerResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteLoadBalancerResponseBody) String() string {
@@ -1448,43 +1121,13 @@ func (s DeleteLoadBalancerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteLoadBalancerResponseBody) SetCode(v string) *DeleteLoadBalancerResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteLoadBalancerResponseBody) SetDynamicCode(v string) *DeleteLoadBalancerResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *DeleteLoadBalancerResponseBody) SetDynamicMessage(v string) *DeleteLoadBalancerResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *DeleteLoadBalancerResponseBody) SetHttpStatusCode(v int32) *DeleteLoadBalancerResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *DeleteLoadBalancerResponseBody) SetJobId(v string) *DeleteLoadBalancerResponseBody {
 	s.JobId = &v
 	return s
 }
 
-func (s *DeleteLoadBalancerResponseBody) SetMessage(v string) *DeleteLoadBalancerResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *DeleteLoadBalancerResponseBody) SetRequestId(v string) *DeleteLoadBalancerResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteLoadBalancerResponseBody) SetSuccess(v bool) *DeleteLoadBalancerResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1553,15 +1196,7 @@ func (s *DeleteSecurityPolicyRequest) SetSecurityPolicyId(v string) *DeleteSecur
 }
 
 type DeleteSecurityPolicyResponseBody struct {
-	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode      *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage   *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode   *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteSecurityPolicyResponseBody) String() string {
@@ -1572,48 +1207,8 @@ func (s DeleteSecurityPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteSecurityPolicyResponseBody) SetCode(v string) *DeleteSecurityPolicyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteSecurityPolicyResponseBody) SetDynamicCode(v string) *DeleteSecurityPolicyResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *DeleteSecurityPolicyResponseBody) SetDynamicMessage(v string) *DeleteSecurityPolicyResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *DeleteSecurityPolicyResponseBody) SetHttpStatusCode(v int32) *DeleteSecurityPolicyResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DeleteSecurityPolicyResponseBody) SetJobId(v string) *DeleteSecurityPolicyResponseBody {
-	s.JobId = &v
-	return s
-}
-
-func (s *DeleteSecurityPolicyResponseBody) SetMessage(v string) *DeleteSecurityPolicyResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *DeleteSecurityPolicyResponseBody) SetRequestId(v string) *DeleteSecurityPolicyResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteSecurityPolicyResponseBody) SetSecurityPolicyId(v string) *DeleteSecurityPolicyResponseBody {
-	s.SecurityPolicyId = &v
-	return s
-}
-
-func (s *DeleteSecurityPolicyResponseBody) SetSuccess(v bool) *DeleteSecurityPolicyResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1647,10 +1242,9 @@ func (s *DeleteSecurityPolicyResponse) SetBody(v *DeleteSecurityPolicyResponseBo
 }
 
 type DeleteServerGroupRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 服务器组ID
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -1683,16 +1277,8 @@ func (s *DeleteServerGroupRequest) SetServerGroupId(v string) *DeleteServerGroup
 }
 
 type DeleteServerGroupResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务器组ID
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteServerGroupResponseBody) String() string {
@@ -1703,48 +1289,13 @@ func (s DeleteServerGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteServerGroupResponseBody) SetCode(v string) *DeleteServerGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteServerGroupResponseBody) SetDynamicCode(v string) *DeleteServerGroupResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *DeleteServerGroupResponseBody) SetDynamicMessage(v string) *DeleteServerGroupResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *DeleteServerGroupResponseBody) SetHttpStatusCode(v int32) *DeleteServerGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *DeleteServerGroupResponseBody) SetJobId(v string) *DeleteServerGroupResponseBody {
 	s.JobId = &v
 	return s
 }
 
-func (s *DeleteServerGroupResponseBody) SetMessage(v string) *DeleteServerGroupResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *DeleteServerGroupResponseBody) SetRequestId(v string) *DeleteServerGroupResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteServerGroupResponseBody) SetServerGroupId(v string) *DeleteServerGroupResponseBody {
-	s.ServerGroupId = &v
-	return s
-}
-
-func (s *DeleteServerGroupResponseBody) SetSuccess(v bool) *DeleteServerGroupResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1807,14 +1358,8 @@ func (s *DescribeRegionsRequest) SetServiceCode(v string) *DescribeRegionsReques
 }
 
 type DescribeRegionsResponseBody struct {
-	Code           *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string                               `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string                               `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	Regions        []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -1825,31 +1370,6 @@ func (s DescribeRegionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBody) SetCode(v string) *DescribeRegionsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeRegionsResponseBody) SetDynamicCode(v string) *DescribeRegionsResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *DescribeRegionsResponseBody) SetDynamicMessage(v string) *DescribeRegionsResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *DescribeRegionsResponseBody) SetHttpStatusCode(v int32) *DescribeRegionsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DescribeRegionsResponseBody) SetMessage(v string) *DescribeRegionsResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
 	s.Regions = v
 	return s
@@ -1857,11 +1377,6 @@ func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBod
 
 func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRegionsResponseBody) SetSuccess(v bool) *DescribeRegionsResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1959,14 +1474,8 @@ func (s *DescribeZonesRequest) SetServiceCode(v string) *DescribeZonesRequest {
 }
 
 type DescribeZonesResponseBody struct {
-	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string                           `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string                           `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Zones          []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Zones     []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -1977,38 +1486,8 @@ func (s DescribeZonesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeZonesResponseBody) SetCode(v string) *DescribeZonesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeZonesResponseBody) SetDynamicCode(v string) *DescribeZonesResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *DescribeZonesResponseBody) SetDynamicMessage(v string) *DescribeZonesResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *DescribeZonesResponseBody) SetHttpStatusCode(v int32) *DescribeZonesResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DescribeZonesResponseBody) SetMessage(v string) *DescribeZonesResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *DescribeZonesResponseBody) SetRequestId(v string) *DescribeZonesResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeZonesResponseBody) SetSuccess(v bool) *DescribeZonesResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2075,7 +1554,6 @@ type DetachCommonBandwidthPackageFromLoadBalancerRequest struct {
 	DryRun             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	LoadBalancerId     *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestContent     *string `json:"RequestContent,omitempty" xml:"RequestContent,omitempty"`
 }
 
 func (s DetachCommonBandwidthPackageFromLoadBalancerRequest) String() string {
@@ -2111,20 +1589,9 @@ func (s *DetachCommonBandwidthPackageFromLoadBalancerRequest) SetRegionId(v stri
 	return s
 }
 
-func (s *DetachCommonBandwidthPackageFromLoadBalancerRequest) SetRequestContent(v string) *DetachCommonBandwidthPackageFromLoadBalancerRequest {
-	s.RequestContent = &v
-	return s
-}
-
 type DetachCommonBandwidthPackageFromLoadBalancerResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetachCommonBandwidthPackageFromLoadBalancerResponseBody) String() string {
@@ -2135,43 +1602,13 @@ func (s DetachCommonBandwidthPackageFromLoadBalancerResponseBody) GoString() str
 	return s.String()
 }
 
-func (s *DetachCommonBandwidthPackageFromLoadBalancerResponseBody) SetCode(v string) *DetachCommonBandwidthPackageFromLoadBalancerResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DetachCommonBandwidthPackageFromLoadBalancerResponseBody) SetDynamicCode(v string) *DetachCommonBandwidthPackageFromLoadBalancerResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *DetachCommonBandwidthPackageFromLoadBalancerResponseBody) SetDynamicMessage(v string) *DetachCommonBandwidthPackageFromLoadBalancerResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *DetachCommonBandwidthPackageFromLoadBalancerResponseBody) SetHttpStatusCode(v int32) *DetachCommonBandwidthPackageFromLoadBalancerResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *DetachCommonBandwidthPackageFromLoadBalancerResponseBody) SetJobId(v string) *DetachCommonBandwidthPackageFromLoadBalancerResponseBody {
 	s.JobId = &v
 	return s
 }
 
-func (s *DetachCommonBandwidthPackageFromLoadBalancerResponseBody) SetMessage(v string) *DetachCommonBandwidthPackageFromLoadBalancerResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *DetachCommonBandwidthPackageFromLoadBalancerResponseBody) SetRequestId(v string) *DetachCommonBandwidthPackageFromLoadBalancerResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DetachCommonBandwidthPackageFromLoadBalancerResponseBody) SetSuccess(v bool) *DetachCommonBandwidthPackageFromLoadBalancerResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2209,7 +1646,6 @@ type DisableLoadBalancerIpv6InternetRequest struct {
 	DryRun         *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestContent *string `json:"RequestContent,omitempty" xml:"RequestContent,omitempty"`
 }
 
 func (s DisableLoadBalancerIpv6InternetRequest) String() string {
@@ -2240,20 +1676,9 @@ func (s *DisableLoadBalancerIpv6InternetRequest) SetRegionId(v string) *DisableL
 	return s
 }
 
-func (s *DisableLoadBalancerIpv6InternetRequest) SetRequestContent(v string) *DisableLoadBalancerIpv6InternetRequest {
-	s.RequestContent = &v
-	return s
-}
-
 type DisableLoadBalancerIpv6InternetResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DisableLoadBalancerIpv6InternetResponseBody) String() string {
@@ -2264,43 +1689,13 @@ func (s DisableLoadBalancerIpv6InternetResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DisableLoadBalancerIpv6InternetResponseBody) SetCode(v string) *DisableLoadBalancerIpv6InternetResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DisableLoadBalancerIpv6InternetResponseBody) SetDynamicCode(v string) *DisableLoadBalancerIpv6InternetResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *DisableLoadBalancerIpv6InternetResponseBody) SetDynamicMessage(v string) *DisableLoadBalancerIpv6InternetResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *DisableLoadBalancerIpv6InternetResponseBody) SetHttpStatusCode(v int32) *DisableLoadBalancerIpv6InternetResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *DisableLoadBalancerIpv6InternetResponseBody) SetJobId(v string) *DisableLoadBalancerIpv6InternetResponseBody {
 	s.JobId = &v
 	return s
 }
 
-func (s *DisableLoadBalancerIpv6InternetResponseBody) SetMessage(v string) *DisableLoadBalancerIpv6InternetResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *DisableLoadBalancerIpv6InternetResponseBody) SetRequestId(v string) *DisableLoadBalancerIpv6InternetResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DisableLoadBalancerIpv6InternetResponseBody) SetSuccess(v bool) *DisableLoadBalancerIpv6InternetResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2338,7 +1733,6 @@ type EnableLoadBalancerIpv6InternetRequest struct {
 	DryRun         *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestContent *string `json:"RequestContent,omitempty" xml:"RequestContent,omitempty"`
 }
 
 func (s EnableLoadBalancerIpv6InternetRequest) String() string {
@@ -2369,20 +1763,9 @@ func (s *EnableLoadBalancerIpv6InternetRequest) SetRegionId(v string) *EnableLoa
 	return s
 }
 
-func (s *EnableLoadBalancerIpv6InternetRequest) SetRequestContent(v string) *EnableLoadBalancerIpv6InternetRequest {
-	s.RequestContent = &v
-	return s
-}
-
 type EnableLoadBalancerIpv6InternetResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EnableLoadBalancerIpv6InternetResponseBody) String() string {
@@ -2393,43 +1776,13 @@ func (s EnableLoadBalancerIpv6InternetResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *EnableLoadBalancerIpv6InternetResponseBody) SetCode(v string) *EnableLoadBalancerIpv6InternetResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *EnableLoadBalancerIpv6InternetResponseBody) SetDynamicCode(v string) *EnableLoadBalancerIpv6InternetResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *EnableLoadBalancerIpv6InternetResponseBody) SetDynamicMessage(v string) *EnableLoadBalancerIpv6InternetResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *EnableLoadBalancerIpv6InternetResponseBody) SetHttpStatusCode(v int32) *EnableLoadBalancerIpv6InternetResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *EnableLoadBalancerIpv6InternetResponseBody) SetJobId(v string) *EnableLoadBalancerIpv6InternetResponseBody {
 	s.JobId = &v
 	return s
 }
 
-func (s *EnableLoadBalancerIpv6InternetResponseBody) SetMessage(v string) *EnableLoadBalancerIpv6InternetResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *EnableLoadBalancerIpv6InternetResponseBody) SetRequestId(v string) *EnableLoadBalancerIpv6InternetResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *EnableLoadBalancerIpv6InternetResponseBody) SetSuccess(v bool) *EnableLoadBalancerIpv6InternetResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2464,8 +1817,7 @@ func (s *EnableLoadBalancerIpv6InternetResponse) SetBody(v *EnableLoadBalancerIp
 
 type GetJobStatusRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// add 必选
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s GetJobStatusRequest) String() string {
@@ -2487,14 +1839,8 @@ func (s *GetJobStatusRequest) SetJobId(v string) *GetJobStatusRequest {
 }
 
 type GetJobStatusResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetJobStatusResponseBody) String() string {
@@ -2505,31 +1851,6 @@ func (s GetJobStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetJobStatusResponseBody) SetCode(v string) *GetJobStatusResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetJobStatusResponseBody) SetDynamicCode(v string) *GetJobStatusResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *GetJobStatusResponseBody) SetDynamicMessage(v string) *GetJobStatusResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *GetJobStatusResponseBody) SetHttpStatusCode(v int32) *GetJobStatusResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetJobStatusResponseBody) SetMessage(v string) *GetJobStatusResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *GetJobStatusResponseBody) SetRequestId(v string) *GetJobStatusResponseBody {
 	s.RequestId = &v
 	return s
@@ -2537,11 +1858,6 @@ func (s *GetJobStatusResponseBody) SetRequestId(v string) *GetJobStatusResponseB
 
 func (s *GetJobStatusResponseBody) SetStatus(v string) *GetJobStatusResponseBody {
 	s.Status = &v
-	return s
-}
-
-func (s *GetJobStatusResponseBody) SetSuccess(v bool) *GetJobStatusResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2577,9 +1893,8 @@ func (s *GetJobStatusResponse) SetBody(v *GetJobStatusResponseBody) *GetJobStatu
 type GetListenerAttributeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// update or delete必选, add在custom中生成
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ListenerId  *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetListenerAttributeRequest) String() string {
@@ -2611,48 +1926,28 @@ func (s *GetListenerAttributeRequest) SetRegionId(v string) *GetListenerAttribut
 }
 
 type GetListenerAttributeResponseBody struct {
-	// 用户uid
-	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AlpnEnabled *bool   `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
-	AlpnPolicy  *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
-	// ca 证书列表
-	CaCertificateIds []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
-	CaEnabled        *bool     `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// server证书列表
-	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Cps            *int32    `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	DynamicCode    *string   `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string   `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// anyPort监听结束端口
-	EndPort        *string `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 空闲超时时间
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// 监听描述
-	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// 监听id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// 监听端口
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 监听协议 (TCP, UDP, TCPSSL, GENEVE)
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	ListenerStatus   *string `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
-	// 列表id
-	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	Message              *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ProxyProtocolEnabled *string `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
-	// 业务location
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecSensorEnabled *string `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
-	// Tclssl监听的安全策略
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// servergroupId
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// anyPort监听起始端口
-	StartPort *string `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	AlpnEnabled          *bool     `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
+	AlpnPolicy           *string   `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
+	CaCertificateIds     []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
+	CaEnabled            *bool     `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
+	CertificateIds       []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
+	Cps                  *int32    `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	EndPort              *string   `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
+	IdleTimeout          *int32    `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ListenerDescription  *string   `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
+	ListenerId           *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ListenerPort         *int32    `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ListenerProtocol     *string   `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	ListenerStatus       *string   `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
+	LoadBalancerId       *string   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	Mss                  *int32    `json:"Mss,omitempty" xml:"Mss,omitempty"`
+	ProxyProtocolEnabled *string   `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId            *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecSensorEnabled     *string   `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
+	SecurityPolicyId     *string   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	ServerGroupId        *string   `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	StartPort            *string   `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
 }
 
 func (s GetListenerAttributeResponseBody) String() string {
@@ -2661,11 +1956,6 @@ func (s GetListenerAttributeResponseBody) String() string {
 
 func (s GetListenerAttributeResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *GetListenerAttributeResponseBody) SetAliUid(v int64) *GetListenerAttributeResponseBody {
-	s.AliUid = &v
-	return s
 }
 
 func (s *GetListenerAttributeResponseBody) SetAlpnEnabled(v bool) *GetListenerAttributeResponseBody {
@@ -2693,33 +1983,13 @@ func (s *GetListenerAttributeResponseBody) SetCertificateIds(v []*string) *GetLi
 	return s
 }
 
-func (s *GetListenerAttributeResponseBody) SetCode(v string) *GetListenerAttributeResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *GetListenerAttributeResponseBody) SetCps(v int32) *GetListenerAttributeResponseBody {
 	s.Cps = &v
 	return s
 }
 
-func (s *GetListenerAttributeResponseBody) SetDynamicCode(v string) *GetListenerAttributeResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *GetListenerAttributeResponseBody) SetDynamicMessage(v string) *GetListenerAttributeResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
 func (s *GetListenerAttributeResponseBody) SetEndPort(v string) *GetListenerAttributeResponseBody {
 	s.EndPort = &v
-	return s
-}
-
-func (s *GetListenerAttributeResponseBody) SetHttpStatusCode(v int32) *GetListenerAttributeResponseBody {
-	s.HttpStatusCode = &v
 	return s
 }
 
@@ -2758,8 +2028,8 @@ func (s *GetListenerAttributeResponseBody) SetLoadBalancerId(v string) *GetListe
 	return s
 }
 
-func (s *GetListenerAttributeResponseBody) SetMessage(v string) *GetListenerAttributeResponseBody {
-	s.Message = &v
+func (s *GetListenerAttributeResponseBody) SetMss(v int32) *GetListenerAttributeResponseBody {
+	s.Mss = &v
 	return s
 }
 
@@ -2798,11 +2068,6 @@ func (s *GetListenerAttributeResponseBody) SetStartPort(v string) *GetListenerAt
 	return s
 }
 
-func (s *GetListenerAttributeResponseBody) SetSuccess(v bool) *GetListenerAttributeResponseBody {
-	s.Success = &v
-	return s
-}
-
 type GetListenerAttributeResponse struct {
 	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -2836,8 +2101,6 @@ type GetListenerHealthStatusRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Page       *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2864,32 +2127,16 @@ func (s *GetListenerHealthStatusRequest) SetNextToken(v string) *GetListenerHeal
 	return s
 }
 
-func (s *GetListenerHealthStatusRequest) SetPage(v int32) *GetListenerHealthStatusRequest {
-	s.Page = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusRequest) SetPageSize(v int32) *GetListenerHealthStatusRequest {
-	s.PageSize = &v
-	return s
-}
-
 func (s *GetListenerHealthStatusRequest) SetRegionId(v string) *GetListenerHealthStatusRequest {
 	s.RegionId = &v
 	return s
 }
 
 type GetListenerHealthStatusResponseBody struct {
-	Code                 *string                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode          *string                                                    `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage       *string                                                    `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode       *int32                                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	ListenerHealthStatus []*GetListenerHealthStatusResponseBodyListenerHealthStatus `json:"ListenerHealthStatus,omitempty" xml:"ListenerHealthStatus,omitempty" type:"Repeated"`
 	MaxResults           *int32                                                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message              *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	NextToken            *string                                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId            *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success              *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
 	TotalCount           *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2899,26 +2146,6 @@ func (s GetListenerHealthStatusResponseBody) String() string {
 
 func (s GetListenerHealthStatusResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *GetListenerHealthStatusResponseBody) SetCode(v string) *GetListenerHealthStatusResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBody) SetDynamicCode(v string) *GetListenerHealthStatusResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBody) SetDynamicMessage(v string) *GetListenerHealthStatusResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBody) SetHttpStatusCode(v int32) *GetListenerHealthStatusResponseBody {
-	s.HttpStatusCode = &v
-	return s
 }
 
 func (s *GetListenerHealthStatusResponseBody) SetListenerHealthStatus(v []*GetListenerHealthStatusResponseBodyListenerHealthStatus) *GetListenerHealthStatusResponseBody {
@@ -2931,11 +2158,6 @@ func (s *GetListenerHealthStatusResponseBody) SetMaxResults(v int32) *GetListene
 	return s
 }
 
-func (s *GetListenerHealthStatusResponseBody) SetMessage(v string) *GetListenerHealthStatusResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *GetListenerHealthStatusResponseBody) SetNextToken(v string) *GetListenerHealthStatusResponseBody {
 	s.NextToken = &v
 	return s
@@ -2943,11 +2165,6 @@ func (s *GetListenerHealthStatusResponseBody) SetNextToken(v string) *GetListene
 
 func (s *GetListenerHealthStatusResponseBody) SetRequestId(v string) *GetListenerHealthStatusResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBody) SetSuccess(v bool) *GetListenerHealthStatusResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2992,9 +2209,9 @@ func (s *GetListenerHealthStatusResponseBodyListenerHealthStatus) SetServerGroup
 }
 
 type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos struct {
-	AbnormalServers   []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers `json:"AbnormalServers,omitempty" xml:"AbnormalServers,omitempty" type:"Repeated"`
-	HeathCheckEnabled *bool                                                                                     `json:"HeathCheckEnabled,omitempty" xml:"HeathCheckEnabled,omitempty"`
-	ServerGroupId     *string                                                                                   `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	HeathCheckEnabled *bool                                                                                      `json:"HeathCheckEnabled,omitempty" xml:"HeathCheckEnabled,omitempty"`
+	NonNormalServers  []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers `json:"NonNormalServers,omitempty" xml:"NonNormalServers,omitempty" type:"Repeated"`
+	ServerGroupId     *string                                                                                    `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
 func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) String() string {
@@ -3005,13 +2222,13 @@ func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos)
 	return s.String()
 }
 
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) SetAbnormalServers(v []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos {
-	s.AbnormalServers = v
+func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) SetHeathCheckEnabled(v bool) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos {
+	s.HeathCheckEnabled = &v
 	return s
 }
 
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) SetHeathCheckEnabled(v bool) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos {
-	s.HeathCheckEnabled = &v
+func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) SetNonNormalServers(v []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos {
+	s.NonNormalServers = v
 	return s
 }
 
@@ -3020,141 +2237,60 @@ func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos
 	return s
 }
 
-type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers struct {
-	BackendServerModel     *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel     `json:"BackendServerModel,omitempty" xml:"BackendServerModel,omitempty" type:"Struct"`
-	HealthCheckReasonModel *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel `json:"HealthCheckReasonModel,omitempty" xml:"HealthCheckReasonModel,omitempty" type:"Struct"`
-	Status                 *string                                                                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers struct {
+	Port     *int32                                                                                         `json:"Port,omitempty" xml:"Port,omitempty"`
+	Reason   *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
+	ServerId *string                                                                                        `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp *string                                                                                        `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	Status   *string                                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers) String() string {
+func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers) GoString() string {
+func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) GoString() string {
 	return s.String()
 }
 
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers) SetBackendServerModel(v *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers {
-	s.BackendServerModel = v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers) SetHealthCheckReasonModel(v *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers {
-	s.HealthCheckReasonModel = v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers) SetStatus(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers {
-	s.Status = &v
-	return s
-}
-
-type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel struct {
-	// 服务器描述信息
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 服务器端口
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 服务器所属的服务器组ID
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 服务器id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 服务器ip
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 服务器类型
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// 服务器的状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 后端权重
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	// 服务器对应的zoneId
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel) SetDescription(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel {
-	s.Description = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel) SetId(v int64) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel {
-	s.Id = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel) SetPort(v int32) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel {
+func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) SetPort(v int32) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers {
 	s.Port = &v
 	return s
 }
 
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel) SetServerGroupId(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel {
-	s.ServerGroupId = &v
+func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) SetReason(v *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers {
+	s.Reason = v
 	return s
 }
 
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel) SetServerId(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel {
+func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) SetServerId(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers {
 	s.ServerId = &v
 	return s
 }
 
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel) SetServerIp(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel {
+func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) SetServerIp(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers {
 	s.ServerIp = &v
 	return s
 }
 
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel) SetServerType(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel {
-	s.ServerType = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel) SetStatus(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel {
+func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) SetStatus(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers {
 	s.Status = &v
 	return s
 }
 
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel) SetWeight(v int32) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel {
-	s.Weight = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel) SetZoneId(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel {
-	s.ZoneId = &v
-	return s
-}
-
-type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel struct {
-	ActualReturnCode *string `json:"ActualReturnCode,omitempty" xml:"ActualReturnCode,omitempty"`
-	ExpectReturnCode *string `json:"ExpectReturnCode,omitempty" xml:"ExpectReturnCode,omitempty"`
-	// CONNECT_TIMEOUT, CONNECT_FAILED, RECV_RESPONSE_FAILED, RECV_RESPONSE_TIMEOUT, SEND_REQUEST_FAILED, SEND_REQUEST_TIMEOUT, RESPONSE_FORMAT_ERROR, RESPONSE_MISMATCH
+type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason struct {
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 }
 
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel) String() string {
+func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel) GoString() string {
+func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason) GoString() string {
 	return s.String()
 }
 
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel) SetActualReturnCode(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel {
-	s.ActualReturnCode = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel) SetExpectReturnCode(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel {
-	s.ExpectReturnCode = &v
-	return s
-}
-
-func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel) SetReasonCode(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel {
+func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason) SetReasonCode(v string) *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason {
 	s.ReasonCode = &v
 	return s
 }
@@ -3224,36 +2360,26 @@ func (s *GetLoadBalancerAttributeRequest) SetRegionId(v string) *GetLoadBalancer
 }
 
 type GetLoadBalancerAttributeResponseBody struct {
-	AddressIpVersion   *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	AddressType        *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	CapacityUnitCount  *int64  `json:"CapacityUnitCount,omitempty" xml:"CapacityUnitCount,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Cps                *int32  `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossZoneEnable    *bool   `json:"CrossZoneEnable,omitempty" xml:"CrossZoneEnable,omitempty"`
-	DNSName            *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 计费相关属性
+	AddressIpVersion           *string                                                        `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	AddressType                *string                                                        `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	BandwidthPackageId         *string                                                        `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	Cps                        *int32                                                         `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	CreateTime                 *string                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossZoneEnabled           *bool                                                          `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
+	DNSName                    *string                                                        `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
+	Ipv6AddressType            *string                                                        `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
 	LoadBalancerBillingConfig  *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
 	LoadBalancerBusinessStatus *string                                                        `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
 	LoadBalancerId             *string                                                        `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	LoadBalancerName           *string                                                        `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	LoadBalancerStatus         *string                                                        `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
 	LoadBalancerType           *string                                                        `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
-	Message                    *string                                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 实例处于锁定状态列表
-	OperationLocks        []*GetLoadBalancerAttributeResponseBodyOperationLocks `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Repeated"`
-	RegionId              *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId             *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId       *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupIds      []*string                                             `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	Success               *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	TrafficAffinityEnable *bool                                                 `json:"TrafficAffinityEnable,omitempty" xml:"TrafficAffinityEnable,omitempty"`
-	VpcId                 *string                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneMappings          []*GetLoadBalancerAttributeResponseBodyZoneMappings   `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+	OperationLocks             []*GetLoadBalancerAttributeResponseBodyOperationLocks          `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Repeated"`
+	RegionId                   *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId                  *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId            *string                                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	VpcId                      *string                                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneMappings               []*GetLoadBalancerAttributeResponseBodyZoneMappings            `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
 func (s GetLoadBalancerAttributeResponseBody) String() string {
@@ -3279,16 +2405,6 @@ func (s *GetLoadBalancerAttributeResponseBody) SetBandwidthPackageId(v string) *
 	return s
 }
 
-func (s *GetLoadBalancerAttributeResponseBody) SetCapacityUnitCount(v int64) *GetLoadBalancerAttributeResponseBody {
-	s.CapacityUnitCount = &v
-	return s
-}
-
-func (s *GetLoadBalancerAttributeResponseBody) SetCode(v string) *GetLoadBalancerAttributeResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *GetLoadBalancerAttributeResponseBody) SetCps(v int32) *GetLoadBalancerAttributeResponseBody {
 	s.Cps = &v
 	return s
@@ -3299,8 +2415,8 @@ func (s *GetLoadBalancerAttributeResponseBody) SetCreateTime(v string) *GetLoadB
 	return s
 }
 
-func (s *GetLoadBalancerAttributeResponseBody) SetCrossZoneEnable(v bool) *GetLoadBalancerAttributeResponseBody {
-	s.CrossZoneEnable = &v
+func (s *GetLoadBalancerAttributeResponseBody) SetCrossZoneEnabled(v bool) *GetLoadBalancerAttributeResponseBody {
+	s.CrossZoneEnabled = &v
 	return s
 }
 
@@ -3309,18 +2425,8 @@ func (s *GetLoadBalancerAttributeResponseBody) SetDNSName(v string) *GetLoadBala
 	return s
 }
 
-func (s *GetLoadBalancerAttributeResponseBody) SetDynamicCode(v string) *GetLoadBalancerAttributeResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *GetLoadBalancerAttributeResponseBody) SetDynamicMessage(v string) *GetLoadBalancerAttributeResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *GetLoadBalancerAttributeResponseBody) SetHttpStatusCode(v int32) *GetLoadBalancerAttributeResponseBody {
-	s.HttpStatusCode = &v
+func (s *GetLoadBalancerAttributeResponseBody) SetIpv6AddressType(v string) *GetLoadBalancerAttributeResponseBody {
+	s.Ipv6AddressType = &v
 	return s
 }
 
@@ -3354,11 +2460,6 @@ func (s *GetLoadBalancerAttributeResponseBody) SetLoadBalancerType(v string) *Ge
 	return s
 }
 
-func (s *GetLoadBalancerAttributeResponseBody) SetMessage(v string) *GetLoadBalancerAttributeResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *GetLoadBalancerAttributeResponseBody) SetOperationLocks(v []*GetLoadBalancerAttributeResponseBodyOperationLocks) *GetLoadBalancerAttributeResponseBody {
 	s.OperationLocks = v
 	return s
@@ -3379,21 +2480,6 @@ func (s *GetLoadBalancerAttributeResponseBody) SetResourceGroupId(v string) *Get
 	return s
 }
 
-func (s *GetLoadBalancerAttributeResponseBody) SetSecurityGroupIds(v []*string) *GetLoadBalancerAttributeResponseBody {
-	s.SecurityGroupIds = v
-	return s
-}
-
-func (s *GetLoadBalancerAttributeResponseBody) SetSuccess(v bool) *GetLoadBalancerAttributeResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetLoadBalancerAttributeResponseBody) SetTrafficAffinityEnable(v bool) *GetLoadBalancerAttributeResponseBody {
-	s.TrafficAffinityEnable = &v
-	return s
-}
-
 func (s *GetLoadBalancerAttributeResponseBody) SetVpcId(v string) *GetLoadBalancerAttributeResponseBody {
 	s.VpcId = &v
 	return s
@@ -3405,7 +2491,6 @@ func (s *GetLoadBalancerAttributeResponseBody) SetZoneMappings(v []*GetLoadBalan
 }
 
 type GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig struct {
-	// 实例的计费类型
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
 
@@ -3475,14 +2560,11 @@ func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) SetZoneId(v string) *
 }
 
 type GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses struct {
-	// 公网ipId
-	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	EniId        *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	Ipv6Address  *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	// 私网ip
+	AllocationId       *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	EniId              *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
+	Ipv6Address        *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 	PrivateIPv4Address *string `json:"PrivateIPv4Address,omitempty" xml:"PrivateIPv4Address,omitempty"`
-	// 公网ip地址：仅Get的时候有值
-	PublicIPv4Address *string `json:"PublicIPv4Address,omitempty" xml:"PublicIPv4Address,omitempty"`
+	PublicIPv4Address  *string `json:"PublicIPv4Address,omitempty" xml:"PublicIPv4Address,omitempty"`
 }
 
 func (s GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) String() string {
@@ -3596,15 +2678,9 @@ func (s *ListListenerCertificatesRequest) SetRegionId(v string) *ListListenerCer
 
 type ListListenerCertificatesResponseBody struct {
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string   `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string   `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	MaxResults     *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
 	NextToken      *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
 	TotalCount     *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3621,33 +2697,8 @@ func (s *ListListenerCertificatesResponseBody) SetCertificateIds(v []*string) *L
 	return s
 }
 
-func (s *ListListenerCertificatesResponseBody) SetCode(v string) *ListListenerCertificatesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListListenerCertificatesResponseBody) SetDynamicCode(v string) *ListListenerCertificatesResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *ListListenerCertificatesResponseBody) SetDynamicMessage(v string) *ListListenerCertificatesResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *ListListenerCertificatesResponseBody) SetHttpStatusCode(v int32) *ListListenerCertificatesResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *ListListenerCertificatesResponseBody) SetMaxResults(v int32) *ListListenerCertificatesResponseBody {
 	s.MaxResults = &v
-	return s
-}
-
-func (s *ListListenerCertificatesResponseBody) SetMessage(v string) *ListListenerCertificatesResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -3658,11 +2709,6 @@ func (s *ListListenerCertificatesResponseBody) SetNextToken(v string) *ListListe
 
 func (s *ListListenerCertificatesResponseBody) SetRequestId(v string) *ListListenerCertificatesResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListListenerCertificatesResponseBody) SetSuccess(v bool) *ListListenerCertificatesResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -3701,15 +2747,12 @@ func (s *ListListenerCertificatesResponse) SetBody(v *ListListenerCertificatesRe
 }
 
 type ListListenersRequest struct {
-	// 监听唯一标识
-	ListenerIds []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
-	// 监听协议
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// 负载均衡实例标识
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
-	MaxResults      *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ListenerIds      []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
+	ListenerProtocol *string   `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	LoadBalancerIds  []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
+	MaxResults       *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListListenersRequest) String() string {
@@ -3751,17 +2794,11 @@ func (s *ListListenersRequest) SetRegionId(v string) *ListListenersRequest {
 }
 
 type ListListenersResponseBody struct {
-	Code           *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string                               `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string                               `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Listeners      []*ListListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
-	MaxResults     *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken      *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount     *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Listeners  []*ListListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
+	MaxResults *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListListenersResponseBody) String() string {
@@ -3772,26 +2809,6 @@ func (s ListListenersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListListenersResponseBody) SetCode(v string) *ListListenersResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListListenersResponseBody) SetDynamicCode(v string) *ListListenersResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *ListListenersResponseBody) SetDynamicMessage(v string) *ListListenersResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *ListListenersResponseBody) SetHttpStatusCode(v int32) *ListListenersResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *ListListenersResponseBody) SetListeners(v []*ListListenersResponseBodyListeners) *ListListenersResponseBody {
 	s.Listeners = v
 	return s
@@ -3799,11 +2816,6 @@ func (s *ListListenersResponseBody) SetListeners(v []*ListListenersResponseBodyL
 
 func (s *ListListenersResponseBody) SetMaxResults(v int32) *ListListenersResponseBody {
 	s.MaxResults = &v
-	return s
-}
-
-func (s *ListListenersResponseBody) SetMessage(v string) *ListListenersResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -3817,50 +2829,33 @@ func (s *ListListenersResponseBody) SetRequestId(v string) *ListListenersRespons
 	return s
 }
 
-func (s *ListListenersResponseBody) SetSuccess(v bool) *ListListenersResponseBody {
-	s.Success = &v
-	return s
-}
-
 func (s *ListListenersResponseBody) SetTotalCount(v int32) *ListListenersResponseBody {
 	s.TotalCount = &v
 	return s
 }
 
 type ListListenersResponseBodyListeners struct {
-	// 用户uid
-	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AlpnEnabled *string `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
-	AlpnPolicy  *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
-	// ca 证书列表
-	CaCertificateIds []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
-	CaEnabled        *bool     `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// server证书列表
-	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	// anyPort监听结束端口
-	EndPort *string `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
-	// 空闲超时时间
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// 监听描述
-	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// 自己生成后赋值
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// 监听端口
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 监听协议 (TCP, UDP, TCPSSL, GENEVE)
-	ListenerProtocol     *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	ListenerStatus       *string `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
-	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ProxyProtocolEnabled *string `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
-	// 业务location
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecSensorEnabled *string `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
-	// Tclssl监听的安全策略
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// servergroupId
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// anyPort监听起始端口
-	StartPort *string `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
+	AlpnEnabled          *string   `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
+	AlpnPolicy           *string   `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
+	CaCertificateIds     []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
+	CaEnabled            *bool     `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
+	CertificateIds       []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
+	Cps                  *int32    `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	EndPort              *string   `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
+	IdleTimeout          *int32    `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ListenerDescription  *string   `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
+	ListenerId           *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ListenerPort         *int32    `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ListenerProtocol     *string   `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	ListenerStatus       *string   `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
+	LoadBalancerId       *string   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	Mss                  *int32    `json:"Mss,omitempty" xml:"Mss,omitempty"`
+	ProxyProtocolEnabled *string   `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecSensorEnabled     *string   `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
+	SecurityPolicyId     *string   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	ServerGroupId        *string   `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	StartPort            *string   `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
 }
 
 func (s ListListenersResponseBodyListeners) String() string {
@@ -3869,11 +2864,6 @@ func (s ListListenersResponseBodyListeners) String() string {
 
 func (s ListListenersResponseBodyListeners) GoString() string {
 	return s.String()
-}
-
-func (s *ListListenersResponseBodyListeners) SetAliUid(v int64) *ListListenersResponseBodyListeners {
-	s.AliUid = &v
-	return s
 }
 
 func (s *ListListenersResponseBodyListeners) SetAlpnEnabled(v string) *ListListenersResponseBodyListeners {
@@ -3898,6 +2888,11 @@ func (s *ListListenersResponseBodyListeners) SetCaEnabled(v bool) *ListListeners
 
 func (s *ListListenersResponseBodyListeners) SetCertificateIds(v []*string) *ListListenersResponseBodyListeners {
 	s.CertificateIds = v
+	return s
+}
+
+func (s *ListListenersResponseBodyListeners) SetCps(v int32) *ListListenersResponseBodyListeners {
+	s.Cps = &v
 	return s
 }
 
@@ -3938,6 +2933,11 @@ func (s *ListListenersResponseBodyListeners) SetListenerStatus(v string) *ListLi
 
 func (s *ListListenersResponseBodyListeners) SetLoadBalancerId(v string) *ListListenersResponseBodyListeners {
 	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *ListListenersResponseBodyListeners) SetMss(v int32) *ListListenersResponseBodyListeners {
+	s.Mss = &v
 	return s
 }
 
@@ -4001,34 +3001,22 @@ func (s *ListListenersResponse) SetBody(v *ListListenersResponseBody) *ListListe
 }
 
 type ListLoadBalancersRequest struct {
-	// 负载均衡地址 todo 增加校验方法
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// 协议类型
-	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// 地址类型：取值 internet，intranet
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// dns 地址
-	DNSName *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
-	// 实例业务状态
-	LoadBalancerBusinessStatus *string `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
-	// 实例列表
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
-	// 负载均衡实例名称
-	LoadBalancerNames []*string `json:"LoadBalancerNames,omitempty" xml:"LoadBalancerNames,omitempty" type:"Repeated"`
-	// 实例状态
-	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	// 负载均衡类型
-	LoadBalancerType *string `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
-	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 企业资源组标识
-	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*ListLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// 专有网络唯一标识
-	VpcIds []*string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty" type:"Repeated"`
-	// 负载均衡拥有的可用区
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AddressIpVersion           *string                        `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	AddressType                *string                        `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	DNSName                    *string                        `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
+	Ipv6AddressType            *string                        `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
+	LoadBalancerBusinessStatus *string                        `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
+	LoadBalancerIds            []*string                      `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
+	LoadBalancerNames          []*string                      `json:"LoadBalancerNames,omitempty" xml:"LoadBalancerNames,omitempty" type:"Repeated"`
+	LoadBalancerStatus         *string                        `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	LoadBalancerType           *string                        `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
+	MaxResults                 *int32                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                  *string                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId                   *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId            *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag                        []*ListLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VpcIds                     []*string                      `json:"VpcIds,omitempty" xml:"VpcIds,omitempty" type:"Repeated"`
+	ZoneId                     *string                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListLoadBalancersRequest) String() string {
@@ -4037,11 +3025,6 @@ func (s ListLoadBalancersRequest) String() string {
 
 func (s ListLoadBalancersRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListLoadBalancersRequest) SetAddress(v string) *ListLoadBalancersRequest {
-	s.Address = &v
-	return s
 }
 
 func (s *ListLoadBalancersRequest) SetAddressIpVersion(v string) *ListLoadBalancersRequest {
@@ -4056,6 +3039,11 @@ func (s *ListLoadBalancersRequest) SetAddressType(v string) *ListLoadBalancersRe
 
 func (s *ListLoadBalancersRequest) SetDNSName(v string) *ListLoadBalancersRequest {
 	s.DNSName = &v
+	return s
+}
+
+func (s *ListLoadBalancersRequest) SetIpv6AddressType(v string) *ListLoadBalancersRequest {
+	s.Ipv6AddressType = &v
 	return s
 }
 
@@ -4143,17 +3131,11 @@ func (s *ListLoadBalancersRequestTag) SetValue(v string) *ListLoadBalancersReque
 }
 
 type ListLoadBalancersResponseBody struct {
-	Code           *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string                                       `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string                                       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	LoadBalancers  []*ListLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
-	MaxResults     *int32                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken      *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount     *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	LoadBalancers []*ListLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
+	MaxResults    *int32                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount    *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLoadBalancersResponseBody) String() string {
@@ -4164,26 +3146,6 @@ func (s ListLoadBalancersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListLoadBalancersResponseBody) SetCode(v string) *ListLoadBalancersResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListLoadBalancersResponseBody) SetDynamicCode(v string) *ListLoadBalancersResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *ListLoadBalancersResponseBody) SetDynamicMessage(v string) *ListLoadBalancersResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *ListLoadBalancersResponseBody) SetHttpStatusCode(v int32) *ListLoadBalancersResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *ListLoadBalancersResponseBody) SetLoadBalancers(v []*ListLoadBalancersResponseBodyLoadBalancers) *ListLoadBalancersResponseBody {
 	s.LoadBalancers = v
 	return s
@@ -4191,11 +3153,6 @@ func (s *ListLoadBalancersResponseBody) SetLoadBalancers(v []*ListLoadBalancersR
 
 func (s *ListLoadBalancersResponseBody) SetMaxResults(v int32) *ListLoadBalancersResponseBody {
 	s.MaxResults = &v
-	return s
-}
-
-func (s *ListLoadBalancersResponseBody) SetMessage(v string) *ListLoadBalancersResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -4209,43 +3166,32 @@ func (s *ListLoadBalancersResponseBody) SetRequestId(v string) *ListLoadBalancer
 	return s
 }
 
-func (s *ListLoadBalancersResponseBody) SetSuccess(v bool) *ListLoadBalancersResponseBody {
-	s.Success = &v
-	return s
-}
-
 func (s *ListLoadBalancersResponseBody) SetTotalCount(v int32) *ListLoadBalancersResponseBody {
 	s.TotalCount = &v
 	return s
 }
 
 type ListLoadBalancersResponseBodyLoadBalancers struct {
-	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	AddressType      *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// 用户uid
-	AliUid             *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	CapacityUnitCount  *int64  `json:"CapacityUnitCount,omitempty" xml:"CapacityUnitCount,omitempty"`
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossZoneEnabled   *bool   `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
-	DNSName            *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
-	// 计费相关属性
+	AddressIpVersion           *string                                                              `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	AddressType                *string                                                              `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	BandwidthPackageId         *string                                                              `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	CreateTime                 *string                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossZoneEnabled           *bool                                                                `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
+	DNSName                    *string                                                              `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
+	Ipv6AddressType            *string                                                              `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
 	LoadBalancerBillingConfig  *ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
 	LoadBalancerBusinessStatus *string                                                              `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
 	LoadBalancerId             *string                                                              `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	LoadBalancerName           *string                                                              `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	LoadBalancerStatus         *string                                                              `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
 	LoadBalancerType           *string                                                              `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
-	// 实例处于锁定状态列表
-	OperationLocks []*ListLoadBalancersResponseBodyLoadBalancersOperationLocks `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Repeated"`
-	// 业务location
-	RegionId               *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId        *string                                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupIds       []*string                                                 `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	Tags                   []*ListLoadBalancersResponseBodyLoadBalancersTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TrafficAffinityEnabled *bool                                                     `json:"TrafficAffinityEnabled,omitempty" xml:"TrafficAffinityEnabled,omitempty"`
-	VpcId                  *string                                                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneMappings           []*ListLoadBalancersResponseBodyLoadBalancersZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+	OperationLocks             []*ListLoadBalancersResponseBodyLoadBalancersOperationLocks          `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Repeated"`
+	RegionId                   *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId            *string                                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupIds           []*string                                                            `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	Tags                       []*ListLoadBalancersResponseBodyLoadBalancersTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId                      *string                                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneMappings               []*ListLoadBalancersResponseBodyLoadBalancersZoneMappings            `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
 func (s ListLoadBalancersResponseBodyLoadBalancers) String() string {
@@ -4266,18 +3212,8 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetAddressType(v string) *L
 	return s
 }
 
-func (s *ListLoadBalancersResponseBodyLoadBalancers) SetAliUid(v int64) *ListLoadBalancersResponseBodyLoadBalancers {
-	s.AliUid = &v
-	return s
-}
-
 func (s *ListLoadBalancersResponseBodyLoadBalancers) SetBandwidthPackageId(v string) *ListLoadBalancersResponseBodyLoadBalancers {
 	s.BandwidthPackageId = &v
-	return s
-}
-
-func (s *ListLoadBalancersResponseBodyLoadBalancers) SetCapacityUnitCount(v int64) *ListLoadBalancersResponseBodyLoadBalancers {
-	s.CapacityUnitCount = &v
 	return s
 }
 
@@ -4293,6 +3229,11 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetCrossZoneEnabled(v bool)
 
 func (s *ListLoadBalancersResponseBodyLoadBalancers) SetDNSName(v string) *ListLoadBalancersResponseBodyLoadBalancers {
 	s.DNSName = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetIpv6AddressType(v string) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.Ipv6AddressType = &v
 	return s
 }
 
@@ -4351,11 +3292,6 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetTags(v []*ListLoadBalanc
 	return s
 }
 
-func (s *ListLoadBalancersResponseBodyLoadBalancers) SetTrafficAffinityEnabled(v bool) *ListLoadBalancersResponseBodyLoadBalancers {
-	s.TrafficAffinityEnabled = &v
-	return s
-}
-
 func (s *ListLoadBalancersResponseBodyLoadBalancers) SetVpcId(v string) *ListLoadBalancersResponseBodyLoadBalancers {
 	s.VpcId = &v
 	return s
@@ -4367,7 +3303,6 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetZoneMappings(v []*ListLo
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig struct {
-	// 实例的计费类型
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
 
@@ -4460,14 +3395,11 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappings) SetZoneId(v str
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses struct {
-	// 公网ipId
-	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	EniId        *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	Ipv6Address  *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	// 私网ip
+	AllocationId       *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	EniId              *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
+	Ipv6Address        *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 	PrivateIPv4Address *string `json:"PrivateIPv4Address,omitempty" xml:"PrivateIPv4Address,omitempty"`
-	// 公网ip地址：仅Get的时候有值
-	PublicIPv4Address *string `json:"PublicIPv4Address,omitempty" xml:"PublicIPv4Address,omitempty"`
+	PublicIPv4Address  *string `json:"PublicIPv4Address,omitempty" xml:"PublicIPv4Address,omitempty"`
 }
 
 func (s ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses) String() string {
@@ -4609,16 +3541,10 @@ func (s *ListSecurityPolicyRequestTag) SetValue(v string) *ListSecurityPolicyReq
 }
 
 type ListSecurityPolicyResponseBody struct {
-	Code             *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode      *string                                           `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage   *string                                           `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode   *int32                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	MaxResults       *int32                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message          *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	NextToken        *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId        *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityPolicies []*ListSecurityPolicyResponseBodySecurityPolicies `json:"SecurityPolicies,omitempty" xml:"SecurityPolicies,omitempty" type:"Repeated"`
-	Success          *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 	TotalCount       *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4630,33 +3556,8 @@ func (s ListSecurityPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListSecurityPolicyResponseBody) SetCode(v string) *ListSecurityPolicyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListSecurityPolicyResponseBody) SetDynamicCode(v string) *ListSecurityPolicyResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *ListSecurityPolicyResponseBody) SetDynamicMessage(v string) *ListSecurityPolicyResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *ListSecurityPolicyResponseBody) SetHttpStatusCode(v int32) *ListSecurityPolicyResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *ListSecurityPolicyResponseBody) SetMaxResults(v int32) *ListSecurityPolicyResponseBody {
 	s.MaxResults = &v
-	return s
-}
-
-func (s *ListSecurityPolicyResponseBody) SetMessage(v string) *ListSecurityPolicyResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -4675,31 +3576,21 @@ func (s *ListSecurityPolicyResponseBody) SetSecurityPolicies(v []*ListSecurityPo
 	return s
 }
 
-func (s *ListSecurityPolicyResponseBody) SetSuccess(v bool) *ListSecurityPolicyResponseBody {
-	s.Success = &v
-	return s
-}
-
 func (s *ListSecurityPolicyResponseBody) SetTotalCount(v int32) *ListSecurityPolicyResponseBody {
 	s.TotalCount = &v
 	return s
 }
 
 type ListSecurityPolicyResponseBodySecurityPolicies struct {
-	// 加密套件
-	Ciphers *string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty"`
-	// 业务location
-	RegionId         *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RelatedListeners []*ListSecurityPolicyResponseBodySecurityPoliciesRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
-	ResourceGroupId  *string                                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// tls策略ID
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// 名称
-	SecurityPolicyName   *string                                               `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
-	SecurityPolicyStatus *string                                               `json:"SecurityPolicyStatus,omitempty" xml:"SecurityPolicyStatus,omitempty"`
-	Tags                 []*ListSecurityPolicyResponseBodySecurityPoliciesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// tls版本
-	TlsVersion *string `json:"TlsVersion,omitempty" xml:"TlsVersion,omitempty"`
+	Ciphers              *string                                                           `json:"Ciphers,omitempty" xml:"Ciphers,omitempty"`
+	RegionId             *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RelatedListeners     []*ListSecurityPolicyResponseBodySecurityPoliciesRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
+	ResourceGroupId      *string                                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityPolicyId     *string                                                           `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	SecurityPolicyName   *string                                                           `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
+	SecurityPolicyStatus *string                                                           `json:"SecurityPolicyStatus,omitempty" xml:"SecurityPolicyStatus,omitempty"`
+	Tags                 []*ListSecurityPolicyResponseBodySecurityPoliciesTags             `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TlsVersion           *string                                                           `json:"TlsVersion,omitempty" xml:"TlsVersion,omitempty"`
 }
 
 func (s ListSecurityPolicyResponseBodySecurityPolicies) String() string {
@@ -4884,17 +3775,11 @@ func (s *ListServerGroupServersRequest) SetServerIps(v []*string) *ListServerGro
 }
 
 type ListServerGroupServersResponseBody struct {
-	Code           *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string                                      `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string                                      `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	MaxResults     *int32                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken      *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Servers        []*ListServerGroupServersResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
-	Success        *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount     *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults *int32                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Servers    []*ListServerGroupServersResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListServerGroupServersResponseBody) String() string {
@@ -4905,33 +3790,8 @@ func (s ListServerGroupServersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListServerGroupServersResponseBody) SetCode(v string) *ListServerGroupServersResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListServerGroupServersResponseBody) SetDynamicCode(v string) *ListServerGroupServersResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *ListServerGroupServersResponseBody) SetDynamicMessage(v string) *ListServerGroupServersResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *ListServerGroupServersResponseBody) SetHttpStatusCode(v int32) *ListServerGroupServersResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *ListServerGroupServersResponseBody) SetMaxResults(v int32) *ListServerGroupServersResponseBody {
 	s.MaxResults = &v
-	return s
-}
-
-func (s *ListServerGroupServersResponseBody) SetMessage(v string) *ListServerGroupServersResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -4950,34 +3810,21 @@ func (s *ListServerGroupServersResponseBody) SetServers(v []*ListServerGroupServ
 	return s
 }
 
-func (s *ListServerGroupServersResponseBody) SetSuccess(v bool) *ListServerGroupServersResponseBody {
-	s.Success = &v
-	return s
-}
-
 func (s *ListServerGroupServersResponseBody) SetTotalCount(v int32) *ListServerGroupServersResponseBody {
 	s.TotalCount = &v
 	return s
 }
 
 type ListServerGroupServersResponseBodyServers struct {
-	// 服务器描述信息
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 服务器端口
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 服务器id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 服务器ip
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 服务器类型
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// 服务器的状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 后端权重
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	// 服务器对应的zoneId
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ServerId      *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp      *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerType    *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Weight        *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListServerGroupServersResponseBodyServers) String() string {
@@ -5071,8 +3918,7 @@ type ListServerGroupsRequest struct {
 	ServerGroupNames []*string                     `json:"ServerGroupNames,omitempty" xml:"ServerGroupNames,omitempty" type:"Repeated"`
 	ServerGroupType  *string                       `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
 	Tag              []*ListServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// 服务器组所在vpc的id
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId            *string                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListServerGroupsRequest) String() string {
@@ -5152,17 +3998,11 @@ func (s *ListServerGroupsRequestTag) SetValue(v string) *ListServerGroupsRequest
 }
 
 type ListServerGroupsResponseBody struct {
-	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string                                     `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string                                     `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	MaxResults     *int32                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message        *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken      *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServerGroups   []*ListServerGroupsResponseBodyServerGroups `json:"ServerGroups,omitempty" xml:"ServerGroups,omitempty" type:"Repeated"`
-	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount     *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults   *int32                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServerGroups []*ListServerGroupsResponseBodyServerGroups `json:"ServerGroups,omitempty" xml:"ServerGroups,omitempty" type:"Repeated"`
+	TotalCount   *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListServerGroupsResponseBody) String() string {
@@ -5173,33 +4013,8 @@ func (s ListServerGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListServerGroupsResponseBody) SetCode(v string) *ListServerGroupsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListServerGroupsResponseBody) SetDynamicCode(v string) *ListServerGroupsResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *ListServerGroupsResponseBody) SetDynamicMessage(v string) *ListServerGroupsResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *ListServerGroupsResponseBody) SetHttpStatusCode(v int32) *ListServerGroupsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *ListServerGroupsResponseBody) SetMaxResults(v int32) *ListServerGroupsResponseBody {
 	s.MaxResults = &v
-	return s
-}
-
-func (s *ListServerGroupsResponseBody) SetMessage(v string) *ListServerGroupsResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -5218,53 +4033,30 @@ func (s *ListServerGroupsResponseBody) SetServerGroups(v []*ListServerGroupsResp
 	return s
 }
 
-func (s *ListServerGroupsResponseBody) SetSuccess(v bool) *ListServerGroupsResponseBody {
-	s.Success = &v
-	return s
-}
-
 func (s *ListServerGroupsResponseBody) SetTotalCount(v int32) *ListServerGroupsResponseBody {
 	s.TotalCount = &v
 	return s
 }
 
 type ListServerGroupsResponseBodyServerGroups struct {
-	// 服务器组地址类型
-	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	AliUid           *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 连接优雅中断开关
-	ConnectionDrainEnabled *bool `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
-	// 连接优雅中断超时时间
-	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	// 健康检查配置
-	HealthCheck *ListServerGroupsResponseBodyServerGroupsHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
-	// 会话保持开关
-	PersistenceEnabled *bool `json:"PersistenceEnabled,omitempty" xml:"PersistenceEnabled,omitempty"`
-	// 会话保持超时时间
-	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	// 客户端地址保持开关
-	PreserveClientIpEnabled *bool `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
-	// 后端协议
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 业务region
-	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RelatedLoadBalancerIds []*string `json:"RelatedLoadBalancerIds,omitempty" xml:"RelatedLoadBalancerIds,omitempty" type:"Repeated"`
-	// 资源组id
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 调度类型
-	Scheduler   *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	ServerCount *int32  `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
-	// 服务器组id
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 服务器组名称
-	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
-	// 状态
-	ServerGroupStatus *string `json:"ServerGroupStatus,omitempty" xml:"ServerGroupStatus,omitempty"`
-	// 服务器组类型
-	ServerGroupType *string                                         `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
-	Tags            []*ListServerGroupsResponseBodyServerGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// 服务器组的vpcid
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AddressIPVersion        *string                                              `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	AliUid                  *int64                                               `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ConnectionDrainEnabled  *bool                                                `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
+	ConnectionDrainTimeout  *int32                                               `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
+	HealthCheck             *ListServerGroupsResponseBodyServerGroupsHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
+	PreserveClientIpEnabled *bool                                                `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
+	Protocol                *string                                              `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	RegionId                *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RelatedLoadBalancerIds  []*string                                            `json:"RelatedLoadBalancerIds,omitempty" xml:"RelatedLoadBalancerIds,omitempty" type:"Repeated"`
+	ResourceGroupId         *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Scheduler               *string                                              `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	ServerCount             *int32                                               `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
+	ServerGroupId           *string                                              `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	ServerGroupName         *string                                              `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
+	ServerGroupStatus       *string                                              `json:"ServerGroupStatus,omitempty" xml:"ServerGroupStatus,omitempty"`
+	ServerGroupType         *string                                              `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
+	Tags                    []*ListServerGroupsResponseBodyServerGroupsTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId                   *string                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListServerGroupsResponseBodyServerGroups) String() string {
@@ -5297,16 +4089,6 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetConnectionDrainTimeout(v i
 
 func (s *ListServerGroupsResponseBodyServerGroups) SetHealthCheck(v *ListServerGroupsResponseBodyServerGroupsHealthCheck) *ListServerGroupsResponseBodyServerGroups {
 	s.HealthCheck = v
-	return s
-}
-
-func (s *ListServerGroupsResponseBodyServerGroups) SetPersistenceEnabled(v bool) *ListServerGroupsResponseBodyServerGroups {
-	s.PersistenceEnabled = &v
-	return s
-}
-
-func (s *ListServerGroupsResponseBodyServerGroups) SetPersistenceTimeout(v int32) *ListServerGroupsResponseBodyServerGroups {
-	s.PersistenceTimeout = &v
 	return s
 }
 
@@ -5376,27 +4158,17 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetVpcId(v string) *ListServe
 }
 
 type ListServerGroupsResponseBodyServerGroupsHealthCheck struct {
-	// 健康检查使用的端口
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 健康检查响应的最大超时时间
-	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// 健康检查的域名
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// 是否开启健康检查
-	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// 状态码，多个状态码用逗号分隔
-	HealthCheckHttpCode []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
-	// 健康检查时间间隔
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 健康检查协议类型
-	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// 健康检查的url
-	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
-	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success
-	HealthyThreshold *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	HttpCheckMethod  *string `json:"HttpCheckMethod,omitempty" xml:"HttpCheckMethod,omitempty"`
-	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckConnectPort    *int32    `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckConnectTimeout *int32    `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckDomain         *string   `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckEnabled        *bool     `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckHttpCode       []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
+	HealthCheckInterval       *int32    `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckType           *string   `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	HealthCheckUrl            *string   `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
+	HealthyThreshold          *int32    `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	HttpCheckMethod           *string   `json:"HttpCheckMethod,omitempty" xml:"HttpCheckMethod,omitempty"`
+	UnhealthyThreshold        *int32    `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s ListServerGroupsResponseBodyServerGroupsHealthCheck) String() string {
@@ -5574,14 +4346,8 @@ func (s *ListSystemSecurityPolicyRequest) SetResourceOwnerAccount(v string) *Lis
 }
 
 type ListSystemSecurityPolicyResponseBody struct {
-	Code             *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode      *string                                                 `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage   *string                                                 `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode   *int32                                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message          *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityPolicies []*ListSystemSecurityPolicyResponseBodySecurityPolicies `json:"SecurityPolicies,omitempty" xml:"SecurityPolicies,omitempty" type:"Repeated"`
-	Success          *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListSystemSecurityPolicyResponseBody) String() string {
@@ -5590,31 +4356,6 @@ func (s ListSystemSecurityPolicyResponseBody) String() string {
 
 func (s ListSystemSecurityPolicyResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ListSystemSecurityPolicyResponseBody) SetCode(v string) *ListSystemSecurityPolicyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListSystemSecurityPolicyResponseBody) SetDynamicCode(v string) *ListSystemSecurityPolicyResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *ListSystemSecurityPolicyResponseBody) SetDynamicMessage(v string) *ListSystemSecurityPolicyResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *ListSystemSecurityPolicyResponseBody) SetHttpStatusCode(v int32) *ListSystemSecurityPolicyResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListSystemSecurityPolicyResponseBody) SetMessage(v string) *ListSystemSecurityPolicyResponseBody {
-	s.Message = &v
-	return s
 }
 
 func (s *ListSystemSecurityPolicyResponseBody) SetRequestId(v string) *ListSystemSecurityPolicyResponseBody {
@@ -5627,20 +4368,11 @@ func (s *ListSystemSecurityPolicyResponseBody) SetSecurityPolicies(v []*ListSyst
 	return s
 }
 
-func (s *ListSystemSecurityPolicyResponseBody) SetSuccess(v bool) *ListSystemSecurityPolicyResponseBody {
-	s.Success = &v
-	return s
-}
-
 type ListSystemSecurityPolicyResponseBodySecurityPolicies struct {
-	// 加密套件
-	Ciphers *string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty"`
-	// tls策略ID
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// 名称
+	Ciphers            *string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty"`
+	SecurityPolicyId   *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	SecurityPolicyName *string `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
-	// tls版本
-	TlsVersion *string `json:"TlsVersion,omitempty" xml:"TlsVersion,omitempty"`
+	TlsVersion         *string `json:"TlsVersion,omitempty" xml:"TlsVersion,omitempty"`
 }
 
 func (s ListSystemSecurityPolicyResponseBodySecurityPolicies) String() string {
@@ -5953,13 +4685,9 @@ func (s *RemoveServersFromServerGroupRequest) SetServers(v []*RemoveServersFromS
 }
 
 type RemoveServersFromServerGroupRequestServers struct {
-	// 服务器端口
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 服务器id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 服务器ip
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 服务器类型
+	Port       *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId   *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp   *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 }
 
@@ -5992,15 +4720,9 @@ func (s *RemoveServersFromServerGroupRequestServers) SetServerType(v string) *Re
 }
 
 type RemoveServersFromServerGroupResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServerGroupId  *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
 func (s RemoveServersFromServerGroupResponseBody) String() string {
@@ -6011,33 +4733,8 @@ func (s RemoveServersFromServerGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveServersFromServerGroupResponseBody) SetCode(v string) *RemoveServersFromServerGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *RemoveServersFromServerGroupResponseBody) SetDynamicCode(v string) *RemoveServersFromServerGroupResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *RemoveServersFromServerGroupResponseBody) SetDynamicMessage(v string) *RemoveServersFromServerGroupResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *RemoveServersFromServerGroupResponseBody) SetHttpStatusCode(v int32) *RemoveServersFromServerGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *RemoveServersFromServerGroupResponseBody) SetJobId(v string) *RemoveServersFromServerGroupResponseBody {
 	s.JobId = &v
-	return s
-}
-
-func (s *RemoveServersFromServerGroupResponseBody) SetMessage(v string) *RemoveServersFromServerGroupResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -6048,11 +4745,6 @@ func (s *RemoveServersFromServerGroupResponseBody) SetRequestId(v string) *Remov
 
 func (s *RemoveServersFromServerGroupResponseBody) SetServerGroupId(v string) *RemoveServersFromServerGroupResponseBody {
 	s.ServerGroupId = &v
-	return s
-}
-
-func (s *RemoveServersFromServerGroupResponseBody) SetSuccess(v bool) *RemoveServersFromServerGroupResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -6088,10 +4780,8 @@ func (s *RemoveServersFromServerGroupResponse) SetBody(v *RemoveServersFromServe
 type StartListenerRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// update or delete必选, add在custom中生成
-	ListenerId     *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestContent *string `json:"RequestContent,omitempty" xml:"RequestContent,omitempty"`
+	ListenerId  *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StartListenerRequest) String() string {
@@ -6122,20 +4812,9 @@ func (s *StartListenerRequest) SetRegionId(v string) *StartListenerRequest {
 	return s
 }
 
-func (s *StartListenerRequest) SetRequestContent(v string) *StartListenerRequest {
-	s.RequestContent = &v
-	return s
-}
-
 type StartListenerResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StartListenerResponseBody) String() string {
@@ -6146,43 +4825,13 @@ func (s StartListenerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *StartListenerResponseBody) SetCode(v string) *StartListenerResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *StartListenerResponseBody) SetDynamicCode(v string) *StartListenerResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *StartListenerResponseBody) SetDynamicMessage(v string) *StartListenerResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *StartListenerResponseBody) SetHttpStatusCode(v int32) *StartListenerResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *StartListenerResponseBody) SetJobId(v string) *StartListenerResponseBody {
 	s.JobId = &v
 	return s
 }
 
-func (s *StartListenerResponseBody) SetMessage(v string) *StartListenerResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *StartListenerResponseBody) SetRequestId(v string) *StartListenerResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *StartListenerResponseBody) SetSuccess(v bool) *StartListenerResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -6218,10 +4867,8 @@ func (s *StartListenerResponse) SetBody(v *StartListenerResponseBody) *StartList
 type StopListenerRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// update or delete必选, add在custom中生成
-	ListenerId     *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestContent *string `json:"RequestContent,omitempty" xml:"RequestContent,omitempty"`
+	ListenerId  *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StopListenerRequest) String() string {
@@ -6252,20 +4899,9 @@ func (s *StopListenerRequest) SetRegionId(v string) *StopListenerRequest {
 	return s
 }
 
-func (s *StopListenerRequest) SetRequestContent(v string) *StopListenerRequest {
-	s.RequestContent = &v
-	return s
-}
-
 type StopListenerResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StopListenerResponseBody) String() string {
@@ -6276,43 +4912,13 @@ func (s StopListenerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *StopListenerResponseBody) SetCode(v string) *StopListenerResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *StopListenerResponseBody) SetDynamicCode(v string) *StopListenerResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *StopListenerResponseBody) SetDynamicMessage(v string) *StopListenerResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *StopListenerResponseBody) SetHttpStatusCode(v int32) *StopListenerResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *StopListenerResponseBody) SetJobId(v string) *StopListenerResponseBody {
 	s.JobId = &v
 	return s
 }
 
-func (s *StopListenerResponseBody) SetMessage(v string) *StopListenerResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *StopListenerResponseBody) SetRequestId(v string) *StopListenerResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *StopListenerResponseBody) SetSuccess(v bool) *StopListenerResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -6645,28 +5251,23 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateListenerAttributeRequest struct {
-	AlpnEnabled *bool   `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
-	AlpnPolicy  *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
-	// ca 证书列表
-	CaCertificateIds []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
-	CaEnabled        *bool     `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// server证书列表
-	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	ClientToken    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Cps            *int32    `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	DryRun         *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	IdleTimeout    *int32    `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// 监听描述
-	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// update or delete必选, add在custom中生成
-	ListenerId           *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	ProxyProtocolEnabled *bool   `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecSensorEnabled     *bool   `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
-	// https监听的安全策略
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// 实服务组
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	AlpnEnabled          *bool     `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
+	AlpnPolicy           *string   `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
+	CaCertificateIds     []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
+	CaEnabled            *bool     `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
+	CertificateIds       []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
+	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Cps                  *int32    `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	DryRun               *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IdleTimeout          *int32    `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ListenerDescription  *string   `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
+	ListenerId           *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Mss                  *int32    `json:"Mss,omitempty" xml:"Mss,omitempty"`
+	ProxyProtocolEnabled *bool     `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecSensorEnabled     *bool     `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
+	SecurityPolicyId     *string   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	ServerGroupId        *string   `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
 func (s UpdateListenerAttributeRequest) String() string {
@@ -6732,6 +5333,11 @@ func (s *UpdateListenerAttributeRequest) SetListenerId(v string) *UpdateListener
 	return s
 }
 
+func (s *UpdateListenerAttributeRequest) SetMss(v int32) *UpdateListenerAttributeRequest {
+	s.Mss = &v
+	return s
+}
+
 func (s *UpdateListenerAttributeRequest) SetProxyProtocolEnabled(v bool) *UpdateListenerAttributeRequest {
 	s.ProxyProtocolEnabled = &v
 	return s
@@ -6758,14 +5364,8 @@ func (s *UpdateListenerAttributeRequest) SetServerGroupId(v string) *UpdateListe
 }
 
 type UpdateListenerAttributeResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateListenerAttributeResponseBody) String() string {
@@ -6776,43 +5376,13 @@ func (s UpdateListenerAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateListenerAttributeResponseBody) SetCode(v string) *UpdateListenerAttributeResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateListenerAttributeResponseBody) SetDynamicCode(v string) *UpdateListenerAttributeResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *UpdateListenerAttributeResponseBody) SetDynamicMessage(v string) *UpdateListenerAttributeResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *UpdateListenerAttributeResponseBody) SetHttpStatusCode(v int32) *UpdateListenerAttributeResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *UpdateListenerAttributeResponseBody) SetJobId(v string) *UpdateListenerAttributeResponseBody {
 	s.JobId = &v
 	return s
 }
 
-func (s *UpdateListenerAttributeResponseBody) SetMessage(v string) *UpdateListenerAttributeResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *UpdateListenerAttributeResponseBody) SetRequestId(v string) *UpdateListenerAttributeResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateListenerAttributeResponseBody) SetSuccess(v bool) *UpdateListenerAttributeResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -6893,7 +5463,6 @@ func (s *UpdateLoadBalancerAddressTypeConfigRequest) SetZoneMappings(v []*Update
 }
 
 type UpdateLoadBalancerAddressTypeConfigRequestZoneMappings struct {
-	// 公网ipId
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -6923,14 +5492,8 @@ func (s *UpdateLoadBalancerAddressTypeConfigRequestZoneMappings) SetZoneId(v str
 }
 
 type UpdateLoadBalancerAddressTypeConfigResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateLoadBalancerAddressTypeConfigResponseBody) String() string {
@@ -6941,43 +5504,13 @@ func (s UpdateLoadBalancerAddressTypeConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateLoadBalancerAddressTypeConfigResponseBody) SetCode(v string) *UpdateLoadBalancerAddressTypeConfigResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerAddressTypeConfigResponseBody) SetDynamicCode(v string) *UpdateLoadBalancerAddressTypeConfigResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerAddressTypeConfigResponseBody) SetDynamicMessage(v string) *UpdateLoadBalancerAddressTypeConfigResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerAddressTypeConfigResponseBody) SetHttpStatusCode(v int32) *UpdateLoadBalancerAddressTypeConfigResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *UpdateLoadBalancerAddressTypeConfigResponseBody) SetJobId(v string) *UpdateLoadBalancerAddressTypeConfigResponseBody {
 	s.JobId = &v
 	return s
 }
 
-func (s *UpdateLoadBalancerAddressTypeConfigResponseBody) SetMessage(v string) *UpdateLoadBalancerAddressTypeConfigResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *UpdateLoadBalancerAddressTypeConfigResponseBody) SetRequestId(v string) *UpdateLoadBalancerAddressTypeConfigResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerAddressTypeConfigResponseBody) SetSuccess(v bool) *UpdateLoadBalancerAddressTypeConfigResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -7011,15 +5544,13 @@ func (s *UpdateLoadBalancerAddressTypeConfigResponse) SetBody(v *UpdateLoadBalan
 }
 
 type UpdateLoadBalancerAttributeRequest struct {
-	ClientToken            *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Cps                    *int32    `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	CrossZoneEnabled       *bool     `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
-	DryRun                 *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	LoadBalancerId         *string   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	LoadBalancerName       *string   `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityGroupIds       []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	TrafficAffinityEnabled *bool     `json:"TrafficAffinityEnabled,omitempty" xml:"TrafficAffinityEnabled,omitempty"`
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Cps              *int32  `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	CrossZoneEnabled *bool   `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
+	DryRun           *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateLoadBalancerAttributeRequest) String() string {
@@ -7065,25 +5596,9 @@ func (s *UpdateLoadBalancerAttributeRequest) SetRegionId(v string) *UpdateLoadBa
 	return s
 }
 
-func (s *UpdateLoadBalancerAttributeRequest) SetSecurityGroupIds(v []*string) *UpdateLoadBalancerAttributeRequest {
-	s.SecurityGroupIds = v
-	return s
-}
-
-func (s *UpdateLoadBalancerAttributeRequest) SetTrafficAffinityEnabled(v bool) *UpdateLoadBalancerAttributeRequest {
-	s.TrafficAffinityEnabled = &v
-	return s
-}
-
 type UpdateLoadBalancerAttributeResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateLoadBalancerAttributeResponseBody) String() string {
@@ -7094,43 +5609,13 @@ func (s UpdateLoadBalancerAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateLoadBalancerAttributeResponseBody) SetCode(v string) *UpdateLoadBalancerAttributeResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerAttributeResponseBody) SetDynamicCode(v string) *UpdateLoadBalancerAttributeResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerAttributeResponseBody) SetDynamicMessage(v string) *UpdateLoadBalancerAttributeResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerAttributeResponseBody) SetHttpStatusCode(v int32) *UpdateLoadBalancerAttributeResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *UpdateLoadBalancerAttributeResponseBody) SetJobId(v string) *UpdateLoadBalancerAttributeResponseBody {
 	s.JobId = &v
 	return s
 }
 
-func (s *UpdateLoadBalancerAttributeResponseBody) SetMessage(v string) *UpdateLoadBalancerAttributeResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *UpdateLoadBalancerAttributeResponseBody) SetRequestId(v string) *UpdateLoadBalancerAttributeResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerAttributeResponseBody) SetSuccess(v bool) *UpdateLoadBalancerAttributeResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -7205,9 +5690,7 @@ func (s *UpdateLoadBalancerZonesRequest) SetZoneMappings(v []*UpdateLoadBalancer
 }
 
 type UpdateLoadBalancerZonesRequestZoneMappings struct {
-	// 公网ipId
-	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// 私网ip
+	AllocationId       *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	PrivateIPv4Address *string `json:"PrivateIPv4Address,omitempty" xml:"PrivateIPv4Address,omitempty"`
 	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -7242,14 +5725,8 @@ func (s *UpdateLoadBalancerZonesRequestZoneMappings) SetZoneId(v string) *Update
 }
 
 type UpdateLoadBalancerZonesResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateLoadBalancerZonesResponseBody) String() string {
@@ -7260,43 +5737,13 @@ func (s UpdateLoadBalancerZonesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateLoadBalancerZonesResponseBody) SetCode(v string) *UpdateLoadBalancerZonesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerZonesResponseBody) SetDynamicCode(v string) *UpdateLoadBalancerZonesResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerZonesResponseBody) SetDynamicMessage(v string) *UpdateLoadBalancerZonesResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerZonesResponseBody) SetHttpStatusCode(v int32) *UpdateLoadBalancerZonesResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *UpdateLoadBalancerZonesResponseBody) SetJobId(v string) *UpdateLoadBalancerZonesResponseBody {
 	s.JobId = &v
 	return s
 }
 
-func (s *UpdateLoadBalancerZonesResponseBody) SetMessage(v string) *UpdateLoadBalancerZonesResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *UpdateLoadBalancerZonesResponseBody) SetRequestId(v string) *UpdateLoadBalancerZonesResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateLoadBalancerZonesResponseBody) SetSuccess(v bool) *UpdateLoadBalancerZonesResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -7334,7 +5781,6 @@ type UpdateSecurityPolicyAttributeRequest struct {
 	ClientToken        *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun             *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestContent     *string   `json:"RequestContent,omitempty" xml:"RequestContent,omitempty"`
 	SecurityPolicyId   *string   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	SecurityPolicyName *string   `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
 	TlsVersions        []*string `json:"TlsVersions,omitempty" xml:"TlsVersions,omitempty" type:"Repeated"`
@@ -7368,11 +5814,6 @@ func (s *UpdateSecurityPolicyAttributeRequest) SetRegionId(v string) *UpdateSecu
 	return s
 }
 
-func (s *UpdateSecurityPolicyAttributeRequest) SetRequestContent(v string) *UpdateSecurityPolicyAttributeRequest {
-	s.RequestContent = &v
-	return s
-}
-
 func (s *UpdateSecurityPolicyAttributeRequest) SetSecurityPolicyId(v string) *UpdateSecurityPolicyAttributeRequest {
 	s.SecurityPolicyId = &v
 	return s
@@ -7389,15 +5830,9 @@ func (s *UpdateSecurityPolicyAttributeRequest) SetTlsVersions(v []*string) *Upda
 }
 
 type UpdateSecurityPolicyAttributeResponseBody struct {
-	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode      *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage   *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode   *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateSecurityPolicyAttributeResponseBody) String() string {
@@ -7408,33 +5843,8 @@ func (s UpdateSecurityPolicyAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateSecurityPolicyAttributeResponseBody) SetCode(v string) *UpdateSecurityPolicyAttributeResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateSecurityPolicyAttributeResponseBody) SetDynamicCode(v string) *UpdateSecurityPolicyAttributeResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *UpdateSecurityPolicyAttributeResponseBody) SetDynamicMessage(v string) *UpdateSecurityPolicyAttributeResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *UpdateSecurityPolicyAttributeResponseBody) SetHttpStatusCode(v int32) *UpdateSecurityPolicyAttributeResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *UpdateSecurityPolicyAttributeResponseBody) SetJobId(v string) *UpdateSecurityPolicyAttributeResponseBody {
 	s.JobId = &v
-	return s
-}
-
-func (s *UpdateSecurityPolicyAttributeResponseBody) SetMessage(v string) *UpdateSecurityPolicyAttributeResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -7445,11 +5855,6 @@ func (s *UpdateSecurityPolicyAttributeResponseBody) SetRequestId(v string) *Upda
 
 func (s *UpdateSecurityPolicyAttributeResponseBody) SetSecurityPolicyId(v string) *UpdateSecurityPolicyAttributeResponseBody {
 	s.SecurityPolicyId = &v
-	return s
-}
-
-func (s *UpdateSecurityPolicyAttributeResponseBody) SetSuccess(v bool) *UpdateSecurityPolicyAttributeResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -7483,25 +5888,16 @@ func (s *UpdateSecurityPolicyAttributeResponse) SetBody(v *UpdateSecurityPolicyA
 }
 
 type UpdateServerGroupAttributeRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否开启连接优雅中断
-	ConnectionDrainEnabled *bool `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
-	// 连接优雅中断超时时间
-	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	DryRun                 *bool  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 健康检查配置
-	HealthCheckConfig *UpdateServerGroupAttributeRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
-	// 是否开启会话保持
-	PersistenceEnabled *bool `json:"PersistenceEnabled,omitempty" xml:"PersistenceEnabled,omitempty"`
-	// 会话保持超时时间
-	PersistenceTimeout      *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	PreserveClientIpEnabled *bool   `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 调度类型
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 服务器组ID
-	ServerGroupId   *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
+	ClientToken             *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConnectionDrainEnabled  *bool                                               `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
+	ConnectionDrainTimeout  *int32                                              `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
+	DryRun                  *bool                                               `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	HealthCheckConfig       *UpdateServerGroupAttributeRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
+	PreserveClientIpEnabled *bool                                               `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
+	RegionId                *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Scheduler               *string                                             `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	ServerGroupId           *string                                             `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	ServerGroupName         *string                                             `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
 }
 
 func (s UpdateServerGroupAttributeRequest) String() string {
@@ -7537,16 +5933,6 @@ func (s *UpdateServerGroupAttributeRequest) SetHealthCheckConfig(v *UpdateServer
 	return s
 }
 
-func (s *UpdateServerGroupAttributeRequest) SetPersistenceEnabled(v bool) *UpdateServerGroupAttributeRequest {
-	s.PersistenceEnabled = &v
-	return s
-}
-
-func (s *UpdateServerGroupAttributeRequest) SetPersistenceTimeout(v int32) *UpdateServerGroupAttributeRequest {
-	s.PersistenceTimeout = &v
-	return s
-}
-
 func (s *UpdateServerGroupAttributeRequest) SetPreserveClientIpEnabled(v bool) *UpdateServerGroupAttributeRequest {
 	s.PreserveClientIpEnabled = &v
 	return s
@@ -7573,27 +5959,17 @@ func (s *UpdateServerGroupAttributeRequest) SetServerGroupName(v string) *Update
 }
 
 type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
-	// 健康检查使用的端口
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 健康检查响应的最大超时时间
-	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// 健康检查的域名
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// 是否开启健康检查
-	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// 状态码，多个状态码用逗号分隔
-	HealthCheckHttpCode []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
-	// 健康检查时间间隔
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 健康检查协议类型
-	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// 健康检查的url
-	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
-	// 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success
-	HealthyThreshold *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	HttpCheckMethod  *string `json:"HttpCheckMethod,omitempty" xml:"HttpCheckMethod,omitempty"`
-	// 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckConnectPort    *int32    `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckConnectTimeout *int32    `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckDomain         *string   `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	HealthCheckEnabled        *bool     `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckHttpCode       []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
+	HealthCheckInterval       *int32    `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckType           *string   `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	HealthCheckUrl            *string   `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
+	HealthyThreshold          *int32    `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	HttpCheckMethod           *string   `json:"HttpCheckMethod,omitempty" xml:"HttpCheckMethod,omitempty"`
+	UnhealthyThreshold        *int32    `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s UpdateServerGroupAttributeRequestHealthCheckConfig) String() string {
@@ -7660,15 +6036,9 @@ func (s *UpdateServerGroupAttributeRequestHealthCheckConfig) SetUnhealthyThresho
 }
 
 type UpdateServerGroupAttributeResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServerGroupId  *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
 func (s UpdateServerGroupAttributeResponseBody) String() string {
@@ -7679,33 +6049,8 @@ func (s UpdateServerGroupAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateServerGroupAttributeResponseBody) SetCode(v string) *UpdateServerGroupAttributeResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateServerGroupAttributeResponseBody) SetDynamicCode(v string) *UpdateServerGroupAttributeResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *UpdateServerGroupAttributeResponseBody) SetDynamicMessage(v string) *UpdateServerGroupAttributeResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *UpdateServerGroupAttributeResponseBody) SetHttpStatusCode(v int32) *UpdateServerGroupAttributeResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *UpdateServerGroupAttributeResponseBody) SetJobId(v string) *UpdateServerGroupAttributeResponseBody {
 	s.JobId = &v
-	return s
-}
-
-func (s *UpdateServerGroupAttributeResponseBody) SetMessage(v string) *UpdateServerGroupAttributeResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -7716,11 +6061,6 @@ func (s *UpdateServerGroupAttributeResponseBody) SetRequestId(v string) *UpdateS
 
 func (s *UpdateServerGroupAttributeResponseBody) SetServerGroupId(v string) *UpdateServerGroupAttributeResponseBody {
 	s.ServerGroupId = &v
-	return s
-}
-
-func (s *UpdateServerGroupAttributeResponseBody) SetSuccess(v bool) *UpdateServerGroupAttributeResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -7795,18 +6135,12 @@ func (s *UpdateServerGroupServersAttributeRequest) SetServers(v []*UpdateServerG
 }
 
 type UpdateServerGroupServersAttributeRequestServers struct {
-	// 服务器描述信息
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 服务器端口
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 服务器id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 服务器ip
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 服务器类型
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// 后端权重
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerType  *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateServerGroupServersAttributeRequestServers) String() string {
@@ -7848,15 +6182,9 @@ func (s *UpdateServerGroupServersAttributeRequestServers) SetWeight(v int32) *Up
 }
 
 type UpdateServerGroupServersAttributeResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServerGroupId  *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
 func (s UpdateServerGroupServersAttributeResponseBody) String() string {
@@ -7867,33 +6195,8 @@ func (s UpdateServerGroupServersAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateServerGroupServersAttributeResponseBody) SetCode(v string) *UpdateServerGroupServersAttributeResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateServerGroupServersAttributeResponseBody) SetDynamicCode(v string) *UpdateServerGroupServersAttributeResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *UpdateServerGroupServersAttributeResponseBody) SetDynamicMessage(v string) *UpdateServerGroupServersAttributeResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *UpdateServerGroupServersAttributeResponseBody) SetHttpStatusCode(v int32) *UpdateServerGroupServersAttributeResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *UpdateServerGroupServersAttributeResponseBody) SetJobId(v string) *UpdateServerGroupServersAttributeResponseBody {
 	s.JobId = &v
-	return s
-}
-
-func (s *UpdateServerGroupServersAttributeResponseBody) SetMessage(v string) *UpdateServerGroupServersAttributeResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -7904,11 +6207,6 @@ func (s *UpdateServerGroupServersAttributeResponseBody) SetRequestId(v string) *
 
 func (s *UpdateServerGroupServersAttributeResponseBody) SetServerGroupId(v string) *UpdateServerGroupServersAttributeResponseBody {
 	s.ServerGroupId = &v
-	return s
-}
-
-func (s *UpdateServerGroupServersAttributeResponseBody) SetSuccess(v bool) *UpdateServerGroupServersAttributeResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -8010,10 +6308,13 @@ func (client *Client) AddServersToServerGroupWithOptions(request *AddServersToSe
 		body["ServerGroupId"] = request.ServerGroupId
 	}
 
+	bodyFlat := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Servers)) {
-		body["Servers"] = request.Servers
+		bodyFlat["Servers"] = request.Servers
 	}
 
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -8072,10 +6373,6 @@ func (client *Client) AttachCommonBandwidthPackageToLoadBalancerWithOptions(requ
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RequestContent)) {
-		body["RequestContent"] = request.RequestContent
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8174,6 +6471,10 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 		body["LoadBalancerId"] = request.LoadBalancerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Mss)) {
+		body["Mss"] = request.Mss
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProxyProtocolEnabled)) {
 		body["ProxyProtocolEnabled"] = request.ProxyProtocolEnabled
 	}
@@ -8250,16 +6551,8 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		body["BandwidthPackageId"] = request.BandwidthPackageId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.BizFlag)) {
-		body["BizFlag"] = request.BizFlag
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["ClientToken"] = request.ClientToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CrossZoneEnabled)) {
-		body["CrossZoneEnabled"] = request.CrossZoneEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
@@ -8287,20 +6580,12 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIds)) {
-		body["SecurityGroupIds"] = request.SecurityGroupIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TrafficAffinityEnabled)) {
-		body["TrafficAffinityEnabled"] = request.TrafficAffinityEnabled
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
 		body["VpcId"] = request.VpcId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ZoneMappings)) {
-		body["ZoneMappings"] = request.ZoneMappings
+		bodyFlat["ZoneMappings"] = request.ZoneMappings
 	}
 
 	body = tea.ToMap(body,
@@ -8436,14 +6721,6 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 	bodyFlat := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.HealthCheckConfig))) {
 		bodyFlat["HealthCheckConfig"] = request.HealthCheckConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PersistenceEnabled)) {
-		body["PersistenceEnabled"] = request.PersistenceEnabled
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PersistenceTimeout)) {
-		body["PersistenceTimeout"] = request.PersistenceTimeout
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PreserveClientIpEnabled)) {
@@ -8874,10 +7151,6 @@ func (client *Client) DetachCommonBandwidthPackageFromLoadBalancerWithOptions(re
 		body["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RequestContent)) {
-		body["RequestContent"] = request.RequestContent
-	}
-
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -8934,10 +7207,6 @@ func (client *Client) DisableLoadBalancerIpv6InternetWithOptions(request *Disabl
 		body["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RequestContent)) {
-		body["RequestContent"] = request.RequestContent
-	}
-
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -8992,10 +7261,6 @@ func (client *Client) EnableLoadBalancerIpv6InternetWithOptions(request *EnableL
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RequestContent)) {
-		body["RequestContent"] = request.RequestContent
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9152,14 +7417,6 @@ func (client *Client) GetListenerHealthStatusWithOptions(request *GetListenerHea
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["NextToken"] = request.NextToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Page)) {
-		query["Page"] = request.Page
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -9390,10 +7647,6 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Address)) {
-		query["Address"] = request.Address
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.AddressIpVersion)) {
 		query["AddressIpVersion"] = request.AddressIpVersion
 	}
@@ -9404,6 +7657,10 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 
 	if !tea.BoolValue(util.IsUnset(request.DNSName)) {
 		query["DNSName"] = request.DNSName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv6AddressType)) {
+		query["Ipv6AddressType"] = request.Ipv6AddressType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LoadBalancerBusinessStatus)) {
@@ -9925,10 +8182,6 @@ func (client *Client) StartListenerWithOptions(request *StartListenerRequest, ru
 		body["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RequestContent)) {
-		body["RequestContent"] = request.RequestContent
-	}
-
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -9983,10 +8236,6 @@ func (client *Client) StopListenerWithOptions(request *StopListenerRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RequestContent)) {
-		body["RequestContent"] = request.RequestContent
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10211,6 +8460,10 @@ func (client *Client) UpdateListenerAttributeWithOptions(request *UpdateListener
 		body["ListenerId"] = request.ListenerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Mss)) {
+		body["Mss"] = request.Mss
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProxyProtocolEnabled)) {
 		body["ProxyProtocolEnabled"] = request.ProxyProtocolEnabled
 	}
@@ -10363,14 +8616,6 @@ func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoad
 		body["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIds)) {
-		body["SecurityGroupIds"] = request.SecurityGroupIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TrafficAffinityEnabled)) {
-		body["TrafficAffinityEnabled"] = request.TrafficAffinityEnabled
-	}
-
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -10487,10 +8732,6 @@ func (client *Client) UpdateSecurityPolicyAttributeWithOptions(request *UpdateSe
 		body["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RequestContent)) {
-		body["RequestContent"] = request.RequestContent
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyId)) {
 		body["SecurityPolicyId"] = request.SecurityPolicyId
 	}
@@ -10562,14 +8803,6 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 	bodyFlat := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.HealthCheckConfig))) {
 		bodyFlat["HealthCheckConfig"] = request.HealthCheckConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PersistenceEnabled)) {
-		body["PersistenceEnabled"] = request.PersistenceEnabled
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PersistenceTimeout)) {
-		body["PersistenceTimeout"] = request.PersistenceTimeout
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PreserveClientIpEnabled)) {
