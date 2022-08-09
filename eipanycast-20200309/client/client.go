@@ -95,8 +95,9 @@ func (s *AllocateAnycastEipAddressResponseBody) SetRequestId(v string) *Allocate
 }
 
 type AllocateAnycastEipAddressResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AllocateAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AllocateAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AllocateAnycastEipAddressResponse) String() string {
@@ -112,24 +113,26 @@ func (s *AllocateAnycastEipAddressResponse) SetHeaders(v map[string]*string) *Al
 	return s
 }
 
+func (s *AllocateAnycastEipAddressResponse) SetStatusCode(v int32) *AllocateAnycastEipAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AllocateAnycastEipAddressResponse) SetBody(v *AllocateAnycastEipAddressResponseBody) *AllocateAnycastEipAddressResponse {
 	s.Body = v
 	return s
 }
 
 type AssociateAnycastEipAddressRequest struct {
-	AnycastId *string `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
-	// 关联模式，默认模式、普通模式Default/Normal
-	AssociationMode      *string `json:"AssociationMode,omitempty" xml:"AssociationMode,omitempty"`
-	BindInstanceId       *string `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
-	BindInstanceRegionId *string `json:"BindInstanceRegionId,omitempty" xml:"BindInstanceRegionId,omitempty"`
-	BindInstanceType     *string `json:"BindInstanceType,omitempty" xml:"BindInstanceType,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 绑定时关联的pop location，如果是绑定的第一个实例，该参数会忽略，会下发到全部pop点
-	PopLocations []*AssociateAnycastEipAddressRequestPopLocations `json:"PopLocations,omitempty" xml:"PopLocations,omitempty" type:"Repeated"`
-	// 私网ip地址
-	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	AnycastId            *string                                          `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
+	AssociationMode      *string                                          `json:"AssociationMode,omitempty" xml:"AssociationMode,omitempty"`
+	BindInstanceId       *string                                          `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
+	BindInstanceRegionId *string                                          `json:"BindInstanceRegionId,omitempty" xml:"BindInstanceRegionId,omitempty"`
+	BindInstanceType     *string                                          `json:"BindInstanceType,omitempty" xml:"BindInstanceType,omitempty"`
+	ClientToken          *string                                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun               *bool                                            `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	PopLocations         []*AssociateAnycastEipAddressRequestPopLocations `json:"PopLocations,omitempty" xml:"PopLocations,omitempty" type:"Repeated"`
+	PrivateIpAddress     *string                                          `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 }
 
 func (s AssociateAnycastEipAddressRequest) String() string {
@@ -186,7 +189,6 @@ func (s *AssociateAnycastEipAddressRequest) SetPrivateIpAddress(v string) *Assoc
 }
 
 type AssociateAnycastEipAddressRequestPopLocations struct {
-	// pop location
 	PopLocation *string `json:"PopLocation,omitempty" xml:"PopLocation,omitempty"`
 }
 
@@ -221,8 +223,9 @@ func (s *AssociateAnycastEipAddressResponseBody) SetRequestId(v string) *Associa
 }
 
 type AssociateAnycastEipAddressResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AssociateAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssociateAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AssociateAnycastEipAddressResponse) String() string {
@@ -235,6 +238,11 @@ func (s AssociateAnycastEipAddressResponse) GoString() string {
 
 func (s *AssociateAnycastEipAddressResponse) SetHeaders(v map[string]*string) *AssociateAnycastEipAddressResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AssociateAnycastEipAddressResponse) SetStatusCode(v int32) *AssociateAnycastEipAddressResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -374,17 +382,14 @@ func (s *DescribeAnycastEipAddressResponseBody) SetStatus(v string) *DescribeAny
 }
 
 type DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoList struct {
-	// 绑定模式 Normal、Default
-	AssociationMode      *string `json:"AssociationMode,omitempty" xml:"AssociationMode,omitempty"`
-	BindInstanceId       *string `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
-	BindInstanceRegionId *string `json:"BindInstanceRegionId,omitempty" xml:"BindInstanceRegionId,omitempty"`
-	BindInstanceType     *string `json:"BindInstanceType,omitempty" xml:"BindInstanceType,omitempty"`
-	BindTime             *string `json:"BindTime,omitempty" xml:"BindTime,omitempty"`
-	// 关联的pop点
-	PopLocations []*DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoListPopLocations `json:"PopLocations,omitempty" xml:"PopLocations,omitempty" type:"Repeated"`
-	// ip地址
-	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AssociationMode      *string                                                                    `json:"AssociationMode,omitempty" xml:"AssociationMode,omitempty"`
+	BindInstanceId       *string                                                                    `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
+	BindInstanceRegionId *string                                                                    `json:"BindInstanceRegionId,omitempty" xml:"BindInstanceRegionId,omitempty"`
+	BindInstanceType     *string                                                                    `json:"BindInstanceType,omitempty" xml:"BindInstanceType,omitempty"`
+	BindTime             *string                                                                    `json:"BindTime,omitempty" xml:"BindTime,omitempty"`
+	PopLocations         []*DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoListPopLocations `json:"PopLocations,omitempty" xml:"PopLocations,omitempty" type:"Repeated"`
+	PrivateIpAddress     *string                                                                    `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	Status               *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoList) String() string {
@@ -436,7 +441,6 @@ func (s *DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoList) SetStatus(
 }
 
 type DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoListPopLocations struct {
-	// PopLocation
 	PopLocation *string `json:"PopLocation,omitempty" xml:"PopLocation,omitempty"`
 }
 
@@ -454,8 +458,9 @@ func (s *DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoListPopLocations
 }
 
 type DescribeAnycastEipAddressResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAnycastEipAddressResponse) String() string {
@@ -468,6 +473,11 @@ func (s DescribeAnycastEipAddressResponse) GoString() string {
 
 func (s *DescribeAnycastEipAddressResponse) SetHeaders(v map[string]*string) *DescribeAnycastEipAddressResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAnycastEipAddressResponse) SetStatusCode(v int32) *DescribeAnycastEipAddressResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -546,8 +556,9 @@ func (s *DescribeAnycastPopLocationsResponseBodyAnycastPopLocationList) SetRegio
 }
 
 type DescribeAnycastPopLocationsResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAnycastPopLocationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAnycastPopLocationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAnycastPopLocationsResponse) String() string {
@@ -560,6 +571,11 @@ func (s DescribeAnycastPopLocationsResponse) GoString() string {
 
 func (s *DescribeAnycastPopLocationsResponse) SetHeaders(v map[string]*string) *DescribeAnycastPopLocationsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAnycastPopLocationsResponse) SetStatusCode(v int32) *DescribeAnycastPopLocationsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -638,8 +654,9 @@ func (s *DescribeAnycastServerRegionsResponseBodyAnycastServerRegionList) SetReg
 }
 
 type DescribeAnycastServerRegionsResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAnycastServerRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAnycastServerRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAnycastServerRegionsResponse) String() string {
@@ -655,6 +672,11 @@ func (s *DescribeAnycastServerRegionsResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *DescribeAnycastServerRegionsResponse) SetStatusCode(v int32) *DescribeAnycastServerRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeAnycastServerRegionsResponse) SetBody(v *DescribeAnycastServerRegionsResponseBody) *DescribeAnycastServerRegionsResponse {
 	s.Body = v
 	return s
@@ -663,6 +685,7 @@ func (s *DescribeAnycastServerRegionsResponse) SetBody(v *DescribeAnycastServerR
 type ListAnycastEipAddressesRequest struct {
 	AnycastEipAddress  *string   `json:"AnycastEipAddress,omitempty" xml:"AnycastEipAddress,omitempty"`
 	AnycastId          *string   `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
+	AnycastIds         []*string `json:"AnycastIds,omitempty" xml:"AnycastIds,omitempty" type:"Repeated"`
 	BindInstanceIds    []*string `json:"BindInstanceIds,omitempty" xml:"BindInstanceIds,omitempty" type:"Repeated"`
 	BusinessStatus     *string   `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 	InstanceChargeType *string   `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
@@ -689,6 +712,11 @@ func (s *ListAnycastEipAddressesRequest) SetAnycastEipAddress(v string) *ListAny
 
 func (s *ListAnycastEipAddressesRequest) SetAnycastId(v string) *ListAnycastEipAddressesRequest {
 	s.AnycastId = &v
+	return s
+}
+
+func (s *ListAnycastEipAddressesRequest) SetAnycastIds(v []*string) *ListAnycastEipAddressesRequest {
+	s.AnycastIds = v
 	return s
 }
 
@@ -777,7 +805,6 @@ type ListAnycastEipAddressesResponseBodyAnycastList struct {
 	AnycastEipBindInfoList []*ListAnycastEipAddressesResponseBodyAnycastListAnycastEipBindInfoList `json:"AnycastEipBindInfoList,omitempty" xml:"AnycastEipBindInfoList,omitempty" type:"Repeated"`
 	AnycastId              *string                                                                 `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
 	Bandwidth              *int32                                                                  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Bid                    *string                                                                 `json:"Bid,omitempty" xml:"Bid,omitempty"`
 	BusinessStatus         *string                                                                 `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 	CreateTime             *string                                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description            *string                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -786,6 +813,7 @@ type ListAnycastEipAddressesResponseBodyAnycastList struct {
 	IpAddress              *string                                                                 `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	Name                   *string                                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
 	ServiceLocation        *string                                                                 `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
+	ServiceManaged         *int32                                                                  `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	Status                 *string                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -814,11 +842,6 @@ func (s *ListAnycastEipAddressesResponseBodyAnycastList) SetAnycastId(v string) 
 
 func (s *ListAnycastEipAddressesResponseBodyAnycastList) SetBandwidth(v int32) *ListAnycastEipAddressesResponseBodyAnycastList {
 	s.Bandwidth = &v
-	return s
-}
-
-func (s *ListAnycastEipAddressesResponseBodyAnycastList) SetBid(v string) *ListAnycastEipAddressesResponseBodyAnycastList {
-	s.Bid = &v
 	return s
 }
 
@@ -859,6 +882,11 @@ func (s *ListAnycastEipAddressesResponseBodyAnycastList) SetName(v string) *List
 
 func (s *ListAnycastEipAddressesResponseBodyAnycastList) SetServiceLocation(v string) *ListAnycastEipAddressesResponseBodyAnycastList {
 	s.ServiceLocation = &v
+	return s
+}
+
+func (s *ListAnycastEipAddressesResponseBodyAnycastList) SetServiceManaged(v int32) *ListAnycastEipAddressesResponseBodyAnycastList {
+	s.ServiceManaged = &v
 	return s
 }
 
@@ -903,8 +931,9 @@ func (s *ListAnycastEipAddressesResponseBodyAnycastListAnycastEipBindInfoList) S
 }
 
 type ListAnycastEipAddressesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAnycastEipAddressesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAnycastEipAddressesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAnycastEipAddressesResponse) String() string {
@@ -917,6 +946,11 @@ func (s ListAnycastEipAddressesResponse) GoString() string {
 
 func (s *ListAnycastEipAddressesResponse) SetHeaders(v map[string]*string) *ListAnycastEipAddressesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAnycastEipAddressesResponse) SetStatusCode(v int32) *ListAnycastEipAddressesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -972,8 +1006,9 @@ func (s *ModifyAnycastEipAddressAttributeResponseBody) SetRequestId(v string) *M
 }
 
 type ModifyAnycastEipAddressAttributeResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyAnycastEipAddressAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyAnycastEipAddressAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyAnycastEipAddressAttributeResponse) String() string {
@@ -986,6 +1021,11 @@ func (s ModifyAnycastEipAddressAttributeResponse) GoString() string {
 
 func (s *ModifyAnycastEipAddressAttributeResponse) SetHeaders(v map[string]*string) *ModifyAnycastEipAddressAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyAnycastEipAddressAttributeResponse) SetStatusCode(v int32) *ModifyAnycastEipAddressAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1035,8 +1075,9 @@ func (s *ModifyAnycastEipAddressSpecResponseBody) SetRequestId(v string) *Modify
 }
 
 type ModifyAnycastEipAddressSpecResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyAnycastEipAddressSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyAnycastEipAddressSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyAnycastEipAddressSpecResponse) String() string {
@@ -1049,6 +1090,11 @@ func (s ModifyAnycastEipAddressSpecResponse) GoString() string {
 
 func (s *ModifyAnycastEipAddressSpecResponse) SetHeaders(v map[string]*string) *ModifyAnycastEipAddressSpecResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyAnycastEipAddressSpecResponse) SetStatusCode(v int32) *ModifyAnycastEipAddressSpecResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1098,8 +1144,9 @@ func (s *ReleaseAnycastEipAddressResponseBody) SetRequestId(v string) *ReleaseAn
 }
 
 type ReleaseAnycastEipAddressResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReleaseAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReleaseAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReleaseAnycastEipAddressResponse) String() string {
@@ -1112,6 +1159,11 @@ func (s ReleaseAnycastEipAddressResponse) GoString() string {
 
 func (s *ReleaseAnycastEipAddressResponse) SetHeaders(v map[string]*string) *ReleaseAnycastEipAddressResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ReleaseAnycastEipAddressResponse) SetStatusCode(v int32) *ReleaseAnycastEipAddressResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1174,7 +1226,6 @@ func (s *UnassociateAnycastEipAddressRequest) SetPrivateIpAddress(v string) *Una
 }
 
 type UnassociateAnycastEipAddressResponseBody struct {
-	// 私网IP地址
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1192,8 +1243,9 @@ func (s *UnassociateAnycastEipAddressResponseBody) SetRequestId(v string) *Unass
 }
 
 type UnassociateAnycastEipAddressResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UnassociateAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnassociateAnycastEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UnassociateAnycastEipAddressResponse) String() string {
@@ -1209,21 +1261,23 @@ func (s *UnassociateAnycastEipAddressResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *UnassociateAnycastEipAddressResponse) SetStatusCode(v int32) *UnassociateAnycastEipAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UnassociateAnycastEipAddressResponse) SetBody(v *UnassociateAnycastEipAddressResponseBody) *UnassociateAnycastEipAddressResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateAnycastEipAddressAssociationsRequest struct {
-	AnycastId *string `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
-	// 关联模式，默认模式、普通模式Default/Normal
-	AssociationMode *string `json:"AssociationMode,omitempty" xml:"AssociationMode,omitempty"`
-	BindInstanceId  *string `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun          *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 新增关联的pop location
-	PopLocationAddList []*UpdateAnycastEipAddressAssociationsRequestPopLocationAddList `json:"PopLocationAddList,omitempty" xml:"PopLocationAddList,omitempty" type:"Repeated"`
-	// 待删除的关联pop location
+	AnycastId             *string                                                            `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
+	AssociationMode       *string                                                            `json:"AssociationMode,omitempty" xml:"AssociationMode,omitempty"`
+	BindInstanceId        *string                                                            `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
+	ClientToken           *string                                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                *bool                                                              `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	PopLocationAddList    []*UpdateAnycastEipAddressAssociationsRequestPopLocationAddList    `json:"PopLocationAddList,omitempty" xml:"PopLocationAddList,omitempty" type:"Repeated"`
 	PopLocationDeleteList []*UpdateAnycastEipAddressAssociationsRequestPopLocationDeleteList `json:"PopLocationDeleteList,omitempty" xml:"PopLocationDeleteList,omitempty" type:"Repeated"`
 }
 
@@ -1271,7 +1325,6 @@ func (s *UpdateAnycastEipAddressAssociationsRequest) SetPopLocationDeleteList(v 
 }
 
 type UpdateAnycastEipAddressAssociationsRequestPopLocationAddList struct {
-	// pop location
 	PopLocation *string `json:"PopLocation,omitempty" xml:"PopLocation,omitempty"`
 }
 
@@ -1289,7 +1342,6 @@ func (s *UpdateAnycastEipAddressAssociationsRequestPopLocationAddList) SetPopLoc
 }
 
 type UpdateAnycastEipAddressAssociationsRequestPopLocationDeleteList struct {
-	// pop location
 	PopLocation *string `json:"PopLocation,omitempty" xml:"PopLocation,omitempty"`
 }
 
@@ -1324,8 +1376,9 @@ func (s *UpdateAnycastEipAddressAssociationsResponseBody) SetRequestId(v string)
 }
 
 type UpdateAnycastEipAddressAssociationsResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAnycastEipAddressAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAnycastEipAddressAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateAnycastEipAddressAssociationsResponse) String() string {
@@ -1338,6 +1391,11 @@ func (s UpdateAnycastEipAddressAssociationsResponse) GoString() string {
 
 func (s *UpdateAnycastEipAddressAssociationsResponse) SetHeaders(v map[string]*string) *UpdateAnycastEipAddressAssociationsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateAnycastEipAddressAssociationsResponse) SetStatusCode(v int32) *UpdateAnycastEipAddressAssociationsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1399,13 +1457,34 @@ func (client *Client) AllocateAnycastEipAddressWithOptions(request *AllocateAnyc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bandwidth"] = request.Bandwidth
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["InstanceChargeType"] = request.InstanceChargeType
-	query["InternetChargeType"] = request.InternetChargeType
-	query["Name"] = request.Name
-	query["ServiceLocation"] = request.ServiceLocation
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
+		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceLocation)) {
+		query["ServiceLocation"] = request.ServiceLocation
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1446,15 +1525,42 @@ func (client *Client) AssociateAnycastEipAddressWithOptions(request *AssociateAn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnycastId"] = request.AnycastId
-	query["AssociationMode"] = request.AssociationMode
-	query["BindInstanceId"] = request.BindInstanceId
-	query["BindInstanceRegionId"] = request.BindInstanceRegionId
-	query["BindInstanceType"] = request.BindInstanceType
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["PopLocations"] = request.PopLocations
-	query["PrivateIpAddress"] = request.PrivateIpAddress
+	if !tea.BoolValue(util.IsUnset(request.AnycastId)) {
+		query["AnycastId"] = request.AnycastId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssociationMode)) {
+		query["AssociationMode"] = request.AssociationMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindInstanceId)) {
+		query["BindInstanceId"] = request.BindInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindInstanceRegionId)) {
+		query["BindInstanceRegionId"] = request.BindInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindInstanceType)) {
+		query["BindInstanceType"] = request.BindInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PopLocations)) {
+		query["PopLocations"] = request.PopLocations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
+		query["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1495,9 +1601,18 @@ func (client *Client) DescribeAnycastEipAddressWithOptions(request *DescribeAnyc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnycastId"] = request.AnycastId
-	query["BindInstanceId"] = request.BindInstanceId
-	query["Ip"] = request.Ip
+	if !tea.BoolValue(util.IsUnset(request.AnycastId)) {
+		query["AnycastId"] = request.AnycastId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindInstanceId)) {
+		query["BindInstanceId"] = request.BindInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["Ip"] = request.Ip
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1538,7 +1653,10 @@ func (client *Client) DescribeAnycastPopLocationsWithOptions(request *DescribeAn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ServiceLocation"] = request.ServiceLocation
+	if !tea.BoolValue(util.IsUnset(request.ServiceLocation)) {
+		query["ServiceLocation"] = request.ServiceLocation
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1579,7 +1697,10 @@ func (client *Client) DescribeAnycastServerRegionsWithOptions(request *DescribeA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ServiceLocation"] = request.ServiceLocation
+	if !tea.BoolValue(util.IsUnset(request.ServiceLocation)) {
+		query["ServiceLocation"] = request.ServiceLocation
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1620,17 +1741,54 @@ func (client *Client) ListAnycastEipAddressesWithOptions(request *ListAnycastEip
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnycastEipAddress"] = request.AnycastEipAddress
-	query["AnycastId"] = request.AnycastId
-	query["BindInstanceIds"] = request.BindInstanceIds
-	query["BusinessStatus"] = request.BusinessStatus
-	query["InstanceChargeType"] = request.InstanceChargeType
-	query["InternetChargeType"] = request.InternetChargeType
-	query["MaxResults"] = request.MaxResults
-	query["Name"] = request.Name
-	query["NextToken"] = request.NextToken
-	query["ServiceLocation"] = request.ServiceLocation
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.AnycastEipAddress)) {
+		query["AnycastEipAddress"] = request.AnycastEipAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AnycastId)) {
+		query["AnycastId"] = request.AnycastId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AnycastIds)) {
+		query["AnycastIds"] = request.AnycastIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindInstanceIds)) {
+		query["BindInstanceIds"] = request.BindInstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessStatus)) {
+		query["BusinessStatus"] = request.BusinessStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
+		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceLocation)) {
+		query["ServiceLocation"] = request.ServiceLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1671,9 +1829,18 @@ func (client *Client) ModifyAnycastEipAddressAttributeWithOptions(request *Modif
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnycastId"] = request.AnycastId
-	query["Description"] = request.Description
-	query["Name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.AnycastId)) {
+		query["AnycastId"] = request.AnycastId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1714,8 +1881,14 @@ func (client *Client) ModifyAnycastEipAddressSpecWithOptions(request *ModifyAnyc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnycastId"] = request.AnycastId
-	query["Bandwidth"] = request.Bandwidth
+	if !tea.BoolValue(util.IsUnset(request.AnycastId)) {
+		query["AnycastId"] = request.AnycastId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1756,8 +1929,14 @@ func (client *Client) ReleaseAnycastEipAddressWithOptions(request *ReleaseAnycas
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnycastId"] = request.AnycastId
-	query["ClientToken"] = request.ClientToken
+	if !tea.BoolValue(util.IsUnset(request.AnycastId)) {
+		query["AnycastId"] = request.AnycastId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1798,13 +1977,34 @@ func (client *Client) UnassociateAnycastEipAddressWithOptions(request *Unassocia
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnycastId"] = request.AnycastId
-	query["BindInstanceId"] = request.BindInstanceId
-	query["BindInstanceRegionId"] = request.BindInstanceRegionId
-	query["BindInstanceType"] = request.BindInstanceType
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["PrivateIpAddress"] = request.PrivateIpAddress
+	if !tea.BoolValue(util.IsUnset(request.AnycastId)) {
+		query["AnycastId"] = request.AnycastId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindInstanceId)) {
+		query["BindInstanceId"] = request.BindInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindInstanceRegionId)) {
+		query["BindInstanceRegionId"] = request.BindInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindInstanceType)) {
+		query["BindInstanceType"] = request.BindInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
+		query["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1845,13 +2045,34 @@ func (client *Client) UpdateAnycastEipAddressAssociationsWithOptions(request *Up
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnycastId"] = request.AnycastId
-	query["AssociationMode"] = request.AssociationMode
-	query["BindInstanceId"] = request.BindInstanceId
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["PopLocationAddList"] = request.PopLocationAddList
-	query["PopLocationDeleteList"] = request.PopLocationDeleteList
+	if !tea.BoolValue(util.IsUnset(request.AnycastId)) {
+		query["AnycastId"] = request.AnycastId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssociationMode)) {
+		query["AssociationMode"] = request.AssociationMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindInstanceId)) {
+		query["BindInstanceId"] = request.BindInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PopLocationAddList)) {
+		query["PopLocationAddList"] = request.PopLocationAddList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PopLocationDeleteList)) {
+		query["PopLocationDeleteList"] = request.PopLocationDeleteList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
