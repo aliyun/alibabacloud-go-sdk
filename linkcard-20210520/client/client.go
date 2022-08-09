@@ -12,6 +12,392 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddDirectionalCardRequest struct {
+	FileUri      *string   `json:"FileUri,omitempty" xml:"FileUri,omitempty"`
+	GroupId      *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName    *string   `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	OrderList    []*string `json:"OrderList,omitempty" xml:"OrderList,omitempty" type:"Repeated"`
+	TagList      []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	UploadMethod *string   `json:"UploadMethod,omitempty" xml:"UploadMethod,omitempty"`
+	UploadType   *string   `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
+}
+
+func (s AddDirectionalCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDirectionalCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDirectionalCardRequest) SetFileUri(v string) *AddDirectionalCardRequest {
+	s.FileUri = &v
+	return s
+}
+
+func (s *AddDirectionalCardRequest) SetGroupId(v string) *AddDirectionalCardRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *AddDirectionalCardRequest) SetGroupName(v string) *AddDirectionalCardRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *AddDirectionalCardRequest) SetOrderList(v []*string) *AddDirectionalCardRequest {
+	s.OrderList = v
+	return s
+}
+
+func (s *AddDirectionalCardRequest) SetTagList(v []*string) *AddDirectionalCardRequest {
+	s.TagList = v
+	return s
+}
+
+func (s *AddDirectionalCardRequest) SetUploadMethod(v string) *AddDirectionalCardRequest {
+	s.UploadMethod = &v
+	return s
+}
+
+func (s *AddDirectionalCardRequest) SetUploadType(v string) *AddDirectionalCardRequest {
+	s.UploadType = &v
+	return s
+}
+
+type AddDirectionalCardShrinkRequest struct {
+	FileUri         *string `json:"FileUri,omitempty" xml:"FileUri,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName       *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	OrderListShrink *string `json:"OrderList,omitempty" xml:"OrderList,omitempty"`
+	TagListShrink   *string `json:"TagList,omitempty" xml:"TagList,omitempty"`
+	UploadMethod    *string `json:"UploadMethod,omitempty" xml:"UploadMethod,omitempty"`
+	UploadType      *string `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
+}
+
+func (s AddDirectionalCardShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDirectionalCardShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDirectionalCardShrinkRequest) SetFileUri(v string) *AddDirectionalCardShrinkRequest {
+	s.FileUri = &v
+	return s
+}
+
+func (s *AddDirectionalCardShrinkRequest) SetGroupId(v string) *AddDirectionalCardShrinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *AddDirectionalCardShrinkRequest) SetGroupName(v string) *AddDirectionalCardShrinkRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *AddDirectionalCardShrinkRequest) SetOrderListShrink(v string) *AddDirectionalCardShrinkRequest {
+	s.OrderListShrink = &v
+	return s
+}
+
+func (s *AddDirectionalCardShrinkRequest) SetTagListShrink(v string) *AddDirectionalCardShrinkRequest {
+	s.TagListShrink = &v
+	return s
+}
+
+func (s *AddDirectionalCardShrinkRequest) SetUploadMethod(v string) *AddDirectionalCardShrinkRequest {
+	s.UploadMethod = &v
+	return s
+}
+
+func (s *AddDirectionalCardShrinkRequest) SetUploadType(v string) *AddDirectionalCardShrinkRequest {
+	s.UploadType = &v
+	return s
+}
+
+type AddDirectionalCardResponseBody struct {
+	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage     *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddDirectionalCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDirectionalCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDirectionalCardResponseBody) SetCode(v string) *AddDirectionalCardResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddDirectionalCardResponseBody) SetData(v string) *AddDirectionalCardResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddDirectionalCardResponseBody) SetErrorMessage(v string) *AddDirectionalCardResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddDirectionalCardResponseBody) SetLocalizedMessage(v string) *AddDirectionalCardResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *AddDirectionalCardResponseBody) SetRequestId(v string) *AddDirectionalCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddDirectionalCardResponseBody) SetSuccess(v bool) *AddDirectionalCardResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddDirectionalCardResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddDirectionalCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddDirectionalCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDirectionalCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDirectionalCardResponse) SetHeaders(v map[string]*string) *AddDirectionalCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDirectionalCardResponse) SetStatusCode(v int32) *AddDirectionalCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddDirectionalCardResponse) SetBody(v *AddDirectionalCardResponseBody) *AddDirectionalCardResponse {
+	s.Body = v
+	return s
+}
+
+type AddDirectionalGroupRequest struct {
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s AddDirectionalGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDirectionalGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDirectionalGroupRequest) SetGroupName(v string) *AddDirectionalGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+type AddDirectionalGroupResponseBody struct {
+	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage     *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddDirectionalGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDirectionalGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDirectionalGroupResponseBody) SetCode(v string) *AddDirectionalGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddDirectionalGroupResponseBody) SetData(v int64) *AddDirectionalGroupResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddDirectionalGroupResponseBody) SetErrorMessage(v string) *AddDirectionalGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddDirectionalGroupResponseBody) SetLocalizedMessage(v string) *AddDirectionalGroupResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *AddDirectionalGroupResponseBody) SetRequestId(v string) *AddDirectionalGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddDirectionalGroupResponseBody) SetSuccess(v bool) *AddDirectionalGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddDirectionalGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddDirectionalGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddDirectionalGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDirectionalGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDirectionalGroupResponse) SetHeaders(v map[string]*string) *AddDirectionalGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDirectionalGroupResponse) SetStatusCode(v int32) *AddDirectionalGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddDirectionalGroupResponse) SetBody(v *AddDirectionalGroupResponseBody) *AddDirectionalGroupResponse {
+	s.Body = v
+	return s
+}
+
+type BatchAddDirectionalAddressRequest struct {
+	AddressType *string   `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	GroupId     *int64    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ListAddress []*string `json:"ListAddress,omitempty" xml:"ListAddress,omitempty" type:"Repeated"`
+	Source      *string   `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s BatchAddDirectionalAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddDirectionalAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddDirectionalAddressRequest) SetAddressType(v string) *BatchAddDirectionalAddressRequest {
+	s.AddressType = &v
+	return s
+}
+
+func (s *BatchAddDirectionalAddressRequest) SetGroupId(v int64) *BatchAddDirectionalAddressRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *BatchAddDirectionalAddressRequest) SetListAddress(v []*string) *BatchAddDirectionalAddressRequest {
+	s.ListAddress = v
+	return s
+}
+
+func (s *BatchAddDirectionalAddressRequest) SetSource(v string) *BatchAddDirectionalAddressRequest {
+	s.Source = &v
+	return s
+}
+
+type BatchAddDirectionalAddressResponseBody struct {
+	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage     *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BatchAddDirectionalAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddDirectionalAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddDirectionalAddressResponseBody) SetCode(v string) *BatchAddDirectionalAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchAddDirectionalAddressResponseBody) SetData(v bool) *BatchAddDirectionalAddressResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *BatchAddDirectionalAddressResponseBody) SetErrorMessage(v string) *BatchAddDirectionalAddressResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchAddDirectionalAddressResponseBody) SetLocalizedMessage(v string) *BatchAddDirectionalAddressResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *BatchAddDirectionalAddressResponseBody) SetRequestId(v string) *BatchAddDirectionalAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchAddDirectionalAddressResponseBody) SetSuccess(v bool) *BatchAddDirectionalAddressResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchAddDirectionalAddressResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchAddDirectionalAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchAddDirectionalAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddDirectionalAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddDirectionalAddressResponse) SetHeaders(v map[string]*string) *BatchAddDirectionalAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchAddDirectionalAddressResponse) SetStatusCode(v int32) *BatchAddDirectionalAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchAddDirectionalAddressResponse) SetBody(v *BatchAddDirectionalAddressResponseBody) *BatchAddDirectionalAddressResponse {
+	s.Body = v
+	return s
+}
+
 type CardStatisticsResponseBody struct {
 	Code             *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data             *CardStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -1399,6 +1785,7 @@ type GetCredentialPoolStatisticsResponseBodyData struct {
 	EffectiveAvailableFlow *string `json:"EffectiveAvailableFlow,omitempty" xml:"EffectiveAvailableFlow,omitempty"`
 	EffectiveTotalFlow     *string `json:"EffectiveTotalFlow,omitempty" xml:"EffectiveTotalFlow,omitempty"`
 	MonthFeatureFee        *int64  `json:"MonthFeatureFee,omitempty" xml:"MonthFeatureFee,omitempty"`
+	MonthUsedAmount        *int64  `json:"MonthUsedAmount,omitempty" xml:"MonthUsedAmount,omitempty"`
 	PoolAvaiable           *string `json:"PoolAvaiable,omitempty" xml:"PoolAvaiable,omitempty"`
 	PoolGrandTotal         *string `json:"PoolGrandTotal,omitempty" xml:"PoolGrandTotal,omitempty"`
 	PoolGrandTotalUsed     *string `json:"PoolGrandTotalUsed,omitempty" xml:"PoolGrandTotalUsed,omitempty"`
@@ -1452,6 +1839,11 @@ func (s *GetCredentialPoolStatisticsResponseBodyData) SetEffectiveTotalFlow(v st
 
 func (s *GetCredentialPoolStatisticsResponseBodyData) SetMonthFeatureFee(v int64) *GetCredentialPoolStatisticsResponseBodyData {
 	s.MonthFeatureFee = &v
+	return s
+}
+
+func (s *GetCredentialPoolStatisticsResponseBodyData) SetMonthUsedAmount(v int64) *GetCredentialPoolStatisticsResponseBodyData {
+	s.MonthUsedAmount = &v
 	return s
 }
 
@@ -1530,6 +1922,8 @@ type ListCardInfoRequest struct {
 	Iccid              *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 	Imsi               *string `json:"Imsi,omitempty" xml:"Imsi,omitempty"`
 	IsAutoRecharge     *bool   `json:"IsAutoRecharge,omitempty" xml:"IsAutoRecharge,omitempty"`
+	MaxFlow            *string `json:"MaxFlow,omitempty" xml:"MaxFlow,omitempty"`
+	MinFlow            *string `json:"MinFlow,omitempty" xml:"MinFlow,omitempty"`
 	Msisdn             *string `json:"Msisdn,omitempty" xml:"Msisdn,omitempty"`
 	NotifyId           *string `json:"NotifyId,omitempty" xml:"NotifyId,omitempty"`
 	OsStatus           *string `json:"OsStatus,omitempty" xml:"OsStatus,omitempty"`
@@ -1623,6 +2017,16 @@ func (s *ListCardInfoRequest) SetImsi(v string) *ListCardInfoRequest {
 
 func (s *ListCardInfoRequest) SetIsAutoRecharge(v bool) *ListCardInfoRequest {
 	s.IsAutoRecharge = &v
+	return s
+}
+
+func (s *ListCardInfoRequest) SetMaxFlow(v string) *ListCardInfoRequest {
+	s.MaxFlow = &v
+	return s
+}
+
+func (s *ListCardInfoRequest) SetMinFlow(v string) *ListCardInfoRequest {
+	s.MinFlow = &v
 	return s
 }
 
@@ -1781,6 +2185,7 @@ type ListCardInfoResponseBodyDataList struct {
 	CredentialType        *string                                    `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
 	DataLevel             *string                                    `json:"DataLevel,omitempty" xml:"DataLevel,omitempty"`
 	DataType              *string                                    `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DirectionalGroupId    *int64                                     `json:"DirectionalGroupId,omitempty" xml:"DirectionalGroupId,omitempty"`
 	DirectionalGroupName  *string                                    `json:"DirectionalGroupName,omitempty" xml:"DirectionalGroupName,omitempty"`
 	ExpireTime            *string                                    `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	Iccid                 *string                                    `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
@@ -1863,6 +2268,11 @@ func (s *ListCardInfoResponseBodyDataList) SetDataLevel(v string) *ListCardInfoR
 
 func (s *ListCardInfoResponseBodyDataList) SetDataType(v string) *ListCardInfoResponseBodyDataList {
 	s.DataType = &v
+	return s
+}
+
+func (s *ListCardInfoResponseBodyDataList) SetDirectionalGroupId(v int64) *ListCardInfoResponseBodyDataList {
+	s.DirectionalGroupId = &v
 	return s
 }
 
@@ -2014,6 +2424,409 @@ func (s *ListCardInfoResponse) SetStatusCode(v int32) *ListCardInfoResponse {
 }
 
 func (s *ListCardInfoResponse) SetBody(v *ListCardInfoResponseBody) *ListCardInfoResponse {
+	s.Body = v
+	return s
+}
+
+type ListDirectionalAddressRequest struct {
+	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListDirectionalAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectionalAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectionalAddressRequest) SetGroupId(v string) *ListDirectionalAddressRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListDirectionalAddressRequest) SetPageNo(v int32) *ListDirectionalAddressRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListDirectionalAddressRequest) SetPageSize(v int32) *ListDirectionalAddressRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDirectionalAddressResponseBody struct {
+	Code             *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *ListDirectionalAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage     *string                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string                                 `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDirectionalAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectionalAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectionalAddressResponseBody) SetCode(v string) *ListDirectionalAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDirectionalAddressResponseBody) SetData(v *ListDirectionalAddressResponseBodyData) *ListDirectionalAddressResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDirectionalAddressResponseBody) SetErrorMessage(v string) *ListDirectionalAddressResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDirectionalAddressResponseBody) SetLocalizedMessage(v string) *ListDirectionalAddressResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *ListDirectionalAddressResponseBody) SetRequestId(v string) *ListDirectionalAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDirectionalAddressResponseBody) SetSuccess(v bool) *ListDirectionalAddressResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDirectionalAddressResponseBodyData struct {
+	List      []*ListDirectionalAddressResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageCount *int32                                        `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	PageNo    *int32                                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total     *int32                                        `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListDirectionalAddressResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectionalAddressResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectionalAddressResponseBodyData) SetList(v []*ListDirectionalAddressResponseBodyDataList) *ListDirectionalAddressResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListDirectionalAddressResponseBodyData) SetPageCount(v int32) *ListDirectionalAddressResponseBodyData {
+	s.PageCount = &v
+	return s
+}
+
+func (s *ListDirectionalAddressResponseBodyData) SetPageNo(v int32) *ListDirectionalAddressResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListDirectionalAddressResponseBodyData) SetPageSize(v int32) *ListDirectionalAddressResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDirectionalAddressResponseBodyData) SetTotal(v int32) *ListDirectionalAddressResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListDirectionalAddressResponseBodyDataList struct {
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	State       *int32  `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListDirectionalAddressResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectionalAddressResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectionalAddressResponseBodyDataList) SetAddress(v string) *ListDirectionalAddressResponseBodyDataList {
+	s.Address = &v
+	return s
+}
+
+func (s *ListDirectionalAddressResponseBodyDataList) SetAddressType(v string) *ListDirectionalAddressResponseBodyDataList {
+	s.AddressType = &v
+	return s
+}
+
+func (s *ListDirectionalAddressResponseBodyDataList) SetGroupId(v string) *ListDirectionalAddressResponseBodyDataList {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListDirectionalAddressResponseBodyDataList) SetSource(v string) *ListDirectionalAddressResponseBodyDataList {
+	s.Source = &v
+	return s
+}
+
+func (s *ListDirectionalAddressResponseBodyDataList) SetState(v int32) *ListDirectionalAddressResponseBodyDataList {
+	s.State = &v
+	return s
+}
+
+type ListDirectionalAddressResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDirectionalAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDirectionalAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectionalAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectionalAddressResponse) SetHeaders(v map[string]*string) *ListDirectionalAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDirectionalAddressResponse) SetStatusCode(v int32) *ListDirectionalAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDirectionalAddressResponse) SetBody(v *ListDirectionalAddressResponseBody) *ListDirectionalAddressResponse {
+	s.Body = v
+	return s
+}
+
+type ListDirectionalDetailRequest struct {
+	Iccid    *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListDirectionalDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectionalDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectionalDetailRequest) SetIccid(v string) *ListDirectionalDetailRequest {
+	s.Iccid = &v
+	return s
+}
+
+func (s *ListDirectionalDetailRequest) SetPageNo(v int32) *ListDirectionalDetailRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListDirectionalDetailRequest) SetPageSize(v int32) *ListDirectionalDetailRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDirectionalDetailResponseBody struct {
+	Code             *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *ListDirectionalDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage     *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string                                `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDirectionalDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectionalDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectionalDetailResponseBody) SetCode(v string) *ListDirectionalDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBody) SetData(v *ListDirectionalDetailResponseBodyData) *ListDirectionalDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBody) SetErrorMessage(v string) *ListDirectionalDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBody) SetLocalizedMessage(v string) *ListDirectionalDetailResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBody) SetRequestId(v string) *ListDirectionalDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBody) SetSuccess(v bool) *ListDirectionalDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDirectionalDetailResponseBodyData struct {
+	DirectionalGroupId *int64                                                 `json:"DirectionalGroupId,omitempty" xml:"DirectionalGroupId,omitempty"`
+	DirectionalName    *string                                                `json:"DirectionalName,omitempty" xml:"DirectionalName,omitempty"`
+	PaginationResult   *ListDirectionalDetailResponseBodyDataPaginationResult `json:"PaginationResult,omitempty" xml:"PaginationResult,omitempty" type:"Struct"`
+}
+
+func (s ListDirectionalDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectionalDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectionalDetailResponseBodyData) SetDirectionalGroupId(v int64) *ListDirectionalDetailResponseBodyData {
+	s.DirectionalGroupId = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBodyData) SetDirectionalName(v string) *ListDirectionalDetailResponseBodyData {
+	s.DirectionalName = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBodyData) SetPaginationResult(v *ListDirectionalDetailResponseBodyDataPaginationResult) *ListDirectionalDetailResponseBodyData {
+	s.PaginationResult = v
+	return s
+}
+
+type ListDirectionalDetailResponseBodyDataPaginationResult struct {
+	List      []*ListDirectionalDetailResponseBodyDataPaginationResultList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageCount *int32                                                       `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	PageNo    *int32                                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total     *int32                                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListDirectionalDetailResponseBodyDataPaginationResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectionalDetailResponseBodyDataPaginationResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectionalDetailResponseBodyDataPaginationResult) SetList(v []*ListDirectionalDetailResponseBodyDataPaginationResultList) *ListDirectionalDetailResponseBodyDataPaginationResult {
+	s.List = v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBodyDataPaginationResult) SetPageCount(v int32) *ListDirectionalDetailResponseBodyDataPaginationResult {
+	s.PageCount = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBodyDataPaginationResult) SetPageNo(v int32) *ListDirectionalDetailResponseBodyDataPaginationResult {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBodyDataPaginationResult) SetPageSize(v int32) *ListDirectionalDetailResponseBodyDataPaginationResult {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBodyDataPaginationResult) SetTotal(v int32) *ListDirectionalDetailResponseBodyDataPaginationResult {
+	s.Total = &v
+	return s
+}
+
+type ListDirectionalDetailResponseBodyDataPaginationResultList struct {
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListDirectionalDetailResponseBodyDataPaginationResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectionalDetailResponseBodyDataPaginationResultList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectionalDetailResponseBodyDataPaginationResultList) SetAddress(v string) *ListDirectionalDetailResponseBodyDataPaginationResultList {
+	s.Address = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBodyDataPaginationResultList) SetAddressType(v string) *ListDirectionalDetailResponseBodyDataPaginationResultList {
+	s.AddressType = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBodyDataPaginationResultList) SetGroupId(v string) *ListDirectionalDetailResponseBodyDataPaginationResultList {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBodyDataPaginationResultList) SetSource(v string) *ListDirectionalDetailResponseBodyDataPaginationResultList {
+	s.Source = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponseBodyDataPaginationResultList) SetState(v string) *ListDirectionalDetailResponseBodyDataPaginationResultList {
+	s.State = &v
+	return s
+}
+
+type ListDirectionalDetailResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDirectionalDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDirectionalDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectionalDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectionalDetailResponse) SetHeaders(v map[string]*string) *ListDirectionalDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDirectionalDetailResponse) SetStatusCode(v int32) *ListDirectionalDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDirectionalDetailResponse) SetBody(v *ListDirectionalDetailResponseBody) *ListDirectionalDetailResponse {
 	s.Body = v
 	return s
 }
@@ -2552,9 +3365,8 @@ type RenewResponseBody struct {
 	Data             *RenewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	ErrorMessage     *string                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	LocalizedMessage *string                `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId        *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RenewResponseBody) String() string {
@@ -3095,6 +3907,99 @@ func (s *UpdateAutoRechargeSwitchResponse) SetBody(v *UpdateAutoRechargeSwitchRe
 	return s
 }
 
+type VerifyIotCardRequest struct {
+	Iccid *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+}
+
+func (s VerifyIotCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyIotCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyIotCardRequest) SetIccid(v string) *VerifyIotCardRequest {
+	s.Iccid = &v
+	return s
+}
+
+type VerifyIotCardResponseBody struct {
+	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage     *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s VerifyIotCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyIotCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyIotCardResponseBody) SetCode(v string) *VerifyIotCardResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *VerifyIotCardResponseBody) SetData(v bool) *VerifyIotCardResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *VerifyIotCardResponseBody) SetErrorMessage(v string) *VerifyIotCardResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *VerifyIotCardResponseBody) SetLocalizedMessage(v string) *VerifyIotCardResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *VerifyIotCardResponseBody) SetRequestId(v string) *VerifyIotCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VerifyIotCardResponseBody) SetSuccess(v bool) *VerifyIotCardResponseBody {
+	s.Success = &v
+	return s
+}
+
+type VerifyIotCardResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifyIotCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VerifyIotCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyIotCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyIotCardResponse) SetHeaders(v map[string]*string) *VerifyIotCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifyIotCardResponse) SetStatusCode(v int32) *VerifyIotCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VerifyIotCardResponse) SetBody(v *VerifyIotCardResponseBody) *VerifyIotCardResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -3110,6 +4015,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("central")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -3135,6 +4041,184 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddDirectionalCardWithOptions(tmpReq *AddDirectionalCardRequest, runtime *util.RuntimeOptions) (_result *AddDirectionalCardResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddDirectionalCardShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.OrderList)) {
+		request.OrderListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OrderList, tea.String("OrderList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagList)) {
+		request.TagListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagList, tea.String("TagList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileUri)) {
+		query["FileUri"] = request.FileUri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderListShrink)) {
+		query["OrderList"] = request.OrderListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagListShrink)) {
+		query["TagList"] = request.TagListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadMethod)) {
+		query["UploadMethod"] = request.UploadMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadType)) {
+		query["UploadType"] = request.UploadType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddDirectionalCard"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddDirectionalCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddDirectionalCard(request *AddDirectionalCardRequest) (_result *AddDirectionalCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddDirectionalCardResponse{}
+	_body, _err := client.AddDirectionalCardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddDirectionalGroupWithOptions(request *AddDirectionalGroupRequest, runtime *util.RuntimeOptions) (_result *AddDirectionalGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddDirectionalGroup"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddDirectionalGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddDirectionalGroup(request *AddDirectionalGroupRequest) (_result *AddDirectionalGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddDirectionalGroupResponse{}
+	_body, _err := client.AddDirectionalGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchAddDirectionalAddressWithOptions(request *BatchAddDirectionalAddressRequest, runtime *util.RuntimeOptions) (_result *BatchAddDirectionalAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListAddress)) {
+		query["ListAddress"] = request.ListAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchAddDirectionalAddress"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchAddDirectionalAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchAddDirectionalAddress(request *BatchAddDirectionalAddressRequest) (_result *BatchAddDirectionalAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchAddDirectionalAddressResponse{}
+	_body, _err := client.BatchAddDirectionalAddressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3441,6 +4525,14 @@ func (client *Client) ListCardInfoWithOptions(request *ListCardInfoRequest, runt
 		query["IsAutoRecharge"] = request.IsAutoRecharge
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MaxFlow)) {
+		query["MaxFlow"] = request.MaxFlow
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinFlow)) {
+		query["MinFlow"] = request.MinFlow
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Msisdn)) {
 		query["Msisdn"] = request.Msisdn
 	}
@@ -3512,6 +4604,110 @@ func (client *Client) ListCardInfo(request *ListCardInfoRequest) (_result *ListC
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCardInfoResponse{}
 	_body, _err := client.ListCardInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDirectionalAddressWithOptions(request *ListDirectionalAddressRequest, runtime *util.RuntimeOptions) (_result *ListDirectionalAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDirectionalAddress"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDirectionalAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDirectionalAddress(request *ListDirectionalAddressRequest) (_result *ListDirectionalAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDirectionalAddressResponse{}
+	_body, _err := client.ListDirectionalAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDirectionalDetailWithOptions(request *ListDirectionalDetailRequest, runtime *util.RuntimeOptions) (_result *ListDirectionalDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDirectionalDetail"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDirectionalDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDirectionalDetail(request *ListDirectionalDetailRequest) (_result *ListDirectionalDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDirectionalDetailResponse{}
+	_body, _err := client.ListDirectionalDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3912,6 +5108,50 @@ func (client *Client) UpdateAutoRechargeSwitch(request *UpdateAutoRechargeSwitch
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAutoRechargeSwitchResponse{}
 	_body, _err := client.UpdateAutoRechargeSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyIotCardWithOptions(request *VerifyIotCardRequest, runtime *util.RuntimeOptions) (_result *VerifyIotCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyIotCard"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VerifyIotCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyIotCard(request *VerifyIotCardRequest) (_result *VerifyIotCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VerifyIotCardResponse{}
+	_body, _err := client.VerifyIotCardWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
