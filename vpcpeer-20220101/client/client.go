@@ -213,9 +213,8 @@ func (s *CreateVpcPeerConnectionResponse) SetBody(v *CreateVpcPeerConnectionResp
 type DeleteVpcPeerConnectionRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 是否强删
-	Force      *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Force       *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteVpcPeerConnectionRequest) String() string {
@@ -510,13 +509,12 @@ func (s *GetVpcPeerConnectionAttributeResponse) SetBody(v *GetVpcPeerConnectionA
 }
 
 type ListVpcPeerConnectionsRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 根据两端vpcid过滤，不区分发起端和接收端。如果只传入一个，则根据一端过滤
-	VpcId []*string `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Repeated"`
+	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcId      []*string `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Repeated"`
 }
 
 func (s ListVpcPeerConnectionsRequest) String() string {
@@ -558,12 +556,11 @@ func (s *ListVpcPeerConnectionsRequest) SetVpcId(v []*string) *ListVpcPeerConnec
 }
 
 type ListVpcPeerConnectionsShrinkRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 根据两端vpcid过滤，不区分发起端和接收端。如果只传入一个，则根据一端过滤
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	VpcIdShrink *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -1023,7 +1020,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("")
+	client.EndpointRule = tea.String("central")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
