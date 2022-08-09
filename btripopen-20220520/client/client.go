@@ -5182,7 +5182,6 @@ func (s *CorpTokenResponse) SetBody(v *CorpTokenResponseBody) *CorpTokenResponse
 
 type CostCenterDeleteRequest struct {
 	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CostCenterDeleteRequest) String() string {
@@ -5195,11 +5194,6 @@ func (s CostCenterDeleteRequest) GoString() string {
 
 func (s *CostCenterDeleteRequest) SetThirdpartId(v string) *CostCenterDeleteRequest {
 	s.ThirdpartId = &v
-	return s
-}
-
-func (s *CostCenterDeleteRequest) SetUserId(v string) *CostCenterDeleteRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -5291,7 +5285,6 @@ type CostCenterModifyRequest struct {
 	Scope       *int64  `json:"scope,omitempty" xml:"scope,omitempty"`
 	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
 	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
-	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CostCenterModifyRequest) String() string {
@@ -5324,11 +5317,6 @@ func (s *CostCenterModifyRequest) SetThirdpartId(v string) *CostCenterModifyRequ
 
 func (s *CostCenterModifyRequest) SetTitle(v string) *CostCenterModifyRequest {
 	s.Title = &v
-	return s
-}
-
-func (s *CostCenterModifyRequest) SetUserId(v string) *CostCenterModifyRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -5644,14 +5632,12 @@ func (s *CostCenterQueryResponse) SetBody(v *CostCenterQueryResponseBody) *CostC
 }
 
 type CostCenterSaveRequest struct {
-	AlipayId    *string `json:"alipay_id,omitempty" xml:"alipay_id,omitempty"`
 	AlipayNo    *string `json:"alipay_no,omitempty" xml:"alipay_no,omitempty"`
 	CorpId      *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	Number      *string `json:"number,omitempty" xml:"number,omitempty"`
 	Scope       *int64  `json:"scope,omitempty" xml:"scope,omitempty"`
 	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
 	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
-	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CostCenterSaveRequest) String() string {
@@ -5660,11 +5646,6 @@ func (s CostCenterSaveRequest) String() string {
 
 func (s CostCenterSaveRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CostCenterSaveRequest) SetAlipayId(v string) *CostCenterSaveRequest {
-	s.AlipayId = &v
-	return s
 }
 
 func (s *CostCenterSaveRequest) SetAlipayNo(v string) *CostCenterSaveRequest {
@@ -5694,11 +5675,6 @@ func (s *CostCenterSaveRequest) SetThirdpartId(v string) *CostCenterSaveRequest 
 
 func (s *CostCenterSaveRequest) SetTitle(v string) *CostCenterSaveRequest {
 	s.Title = &v
-	return s
-}
-
-func (s *CostCenterSaveRequest) SetUserId(v string) *CostCenterSaveRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -5803,7 +5779,6 @@ func (s *CostCenterSaveResponse) SetBody(v *CostCenterSaveResponseBody) *CostCen
 
 type DepartmentSaveRequest struct {
 	DepartList []*DepartmentSaveRequestDepartList `json:"depart_list,omitempty" xml:"depart_list,omitempty" type:"Repeated"`
-	UserId     *string                            `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s DepartmentSaveRequest) String() string {
@@ -5816,11 +5791,6 @@ func (s DepartmentSaveRequest) GoString() string {
 
 func (s *DepartmentSaveRequest) SetDepartList(v []*DepartmentSaveRequestDepartList) *DepartmentSaveRequest {
 	s.DepartList = v
-	return s
-}
-
-func (s *DepartmentSaveRequest) SetUserId(v string) *DepartmentSaveRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -5879,7 +5849,6 @@ func (s *DepartmentSaveRequestDepartList) SetThirdDepartPid(v string) *Departmen
 
 type DepartmentSaveShrinkRequest struct {
 	DepartListShrink *string `json:"depart_list,omitempty" xml:"depart_list,omitempty"`
-	UserId           *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s DepartmentSaveShrinkRequest) String() string {
@@ -5892,11 +5861,6 @@ func (s DepartmentSaveShrinkRequest) GoString() string {
 
 func (s *DepartmentSaveShrinkRequest) SetDepartListShrink(v string) *DepartmentSaveShrinkRequest {
 	s.DepartListShrink = &v
-	return s
-}
-
-func (s *DepartmentSaveShrinkRequest) SetUserId(v string) *DepartmentSaveShrinkRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -5979,7 +5943,6 @@ func (s *DepartmentSaveResponse) SetBody(v *DepartmentSaveResponseBody) *Departm
 type EntityAddRequest struct {
 	EntityDOList []*EntityAddRequestEntityDOList `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty" type:"Repeated"`
 	ThirdpartId  *string                         `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	UserId       *string                         `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s EntityAddRequest) String() string {
@@ -6000,17 +5963,9 @@ func (s *EntityAddRequest) SetThirdpartId(v string) *EntityAddRequest {
 	return s
 }
 
-func (s *EntityAddRequest) SetUserId(v string) *EntityAddRequest {
-	s.UserId = &v
-	return s
-}
-
 type EntityAddRequestEntityDOList struct {
-	CorpId     *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	UserNum    *int32  `json:"user_num,omitempty" xml:"user_num,omitempty"`
 }
 
 func (s EntityAddRequestEntityDOList) String() string {
@@ -6019,11 +5974,6 @@ func (s EntityAddRequestEntityDOList) String() string {
 
 func (s EntityAddRequestEntityDOList) GoString() string {
 	return s.String()
-}
-
-func (s *EntityAddRequestEntityDOList) SetCorpId(v string) *EntityAddRequestEntityDOList {
-	s.CorpId = &v
-	return s
 }
 
 func (s *EntityAddRequestEntityDOList) SetEntityId(v string) *EntityAddRequestEntityDOList {
@@ -6036,20 +5986,9 @@ func (s *EntityAddRequestEntityDOList) SetEntityType(v string) *EntityAddRequest
 	return s
 }
 
-func (s *EntityAddRequestEntityDOList) SetName(v string) *EntityAddRequestEntityDOList {
-	s.Name = &v
-	return s
-}
-
-func (s *EntityAddRequestEntityDOList) SetUserNum(v int32) *EntityAddRequestEntityDOList {
-	s.UserNum = &v
-	return s
-}
-
 type EntityAddShrinkRequest struct {
 	EntityDOListShrink *string `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty"`
 	ThirdpartId        *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s EntityAddShrinkRequest) String() string {
@@ -6067,11 +6006,6 @@ func (s *EntityAddShrinkRequest) SetEntityDOListShrink(v string) *EntityAddShrin
 
 func (s *EntityAddShrinkRequest) SetThirdpartId(v string) *EntityAddShrinkRequest {
 	s.ThirdpartId = &v
-	return s
-}
-
-func (s *EntityAddShrinkRequest) SetUserId(v string) *EntityAddShrinkRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -6184,7 +6118,6 @@ type EntityDeleteRequest struct {
 	DelAll       *bool                              `json:"del_all,omitempty" xml:"del_all,omitempty"`
 	EntityDOList []*EntityDeleteRequestEntityDOList `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty" type:"Repeated"`
 	ThirdpartId  *string                            `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	UserId       *string                            `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s EntityDeleteRequest) String() string {
@@ -6210,17 +6143,9 @@ func (s *EntityDeleteRequest) SetThirdpartId(v string) *EntityDeleteRequest {
 	return s
 }
 
-func (s *EntityDeleteRequest) SetUserId(v string) *EntityDeleteRequest {
-	s.UserId = &v
-	return s
-}
-
 type EntityDeleteRequestEntityDOList struct {
-	CorpId     *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	UserNum    *int32  `json:"user_num,omitempty" xml:"user_num,omitempty"`
 }
 
 func (s EntityDeleteRequestEntityDOList) String() string {
@@ -6229,11 +6154,6 @@ func (s EntityDeleteRequestEntityDOList) String() string {
 
 func (s EntityDeleteRequestEntityDOList) GoString() string {
 	return s.String()
-}
-
-func (s *EntityDeleteRequestEntityDOList) SetCorpId(v string) *EntityDeleteRequestEntityDOList {
-	s.CorpId = &v
-	return s
 }
 
 func (s *EntityDeleteRequestEntityDOList) SetEntityId(v string) *EntityDeleteRequestEntityDOList {
@@ -6246,21 +6166,10 @@ func (s *EntityDeleteRequestEntityDOList) SetEntityType(v string) *EntityDeleteR
 	return s
 }
 
-func (s *EntityDeleteRequestEntityDOList) SetName(v string) *EntityDeleteRequestEntityDOList {
-	s.Name = &v
-	return s
-}
-
-func (s *EntityDeleteRequestEntityDOList) SetUserNum(v int32) *EntityDeleteRequestEntityDOList {
-	s.UserNum = &v
-	return s
-}
-
 type EntityDeleteShrinkRequest struct {
 	DelAll             *bool   `json:"del_all,omitempty" xml:"del_all,omitempty"`
 	EntityDOListShrink *string `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty"`
 	ThirdpartId        *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s EntityDeleteShrinkRequest) String() string {
@@ -6283,11 +6192,6 @@ func (s *EntityDeleteShrinkRequest) SetEntityDOListShrink(v string) *EntityDelet
 
 func (s *EntityDeleteShrinkRequest) SetThirdpartId(v string) *EntityDeleteShrinkRequest {
 	s.ThirdpartId = &v
-	return s
-}
-
-func (s *EntityDeleteShrinkRequest) SetUserId(v string) *EntityDeleteShrinkRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -6399,7 +6303,6 @@ func (s *EntityDeleteResponse) SetBody(v *EntityDeleteResponseBody) *EntityDelet
 type EntitySetRequest struct {
 	EntityDOList []*EntitySetRequestEntityDOList `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty" type:"Repeated"`
 	ThirdpartId  *string                         `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	UserId       *string                         `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s EntitySetRequest) String() string {
@@ -6420,17 +6323,9 @@ func (s *EntitySetRequest) SetThirdpartId(v string) *EntitySetRequest {
 	return s
 }
 
-func (s *EntitySetRequest) SetUserId(v string) *EntitySetRequest {
-	s.UserId = &v
-	return s
-}
-
 type EntitySetRequestEntityDOList struct {
-	CorpId     *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	UserNum    *int32  `json:"user_num,omitempty" xml:"user_num,omitempty"`
 }
 
 func (s EntitySetRequestEntityDOList) String() string {
@@ -6439,11 +6334,6 @@ func (s EntitySetRequestEntityDOList) String() string {
 
 func (s EntitySetRequestEntityDOList) GoString() string {
 	return s.String()
-}
-
-func (s *EntitySetRequestEntityDOList) SetCorpId(v string) *EntitySetRequestEntityDOList {
-	s.CorpId = &v
-	return s
 }
 
 func (s *EntitySetRequestEntityDOList) SetEntityId(v string) *EntitySetRequestEntityDOList {
@@ -6456,20 +6346,9 @@ func (s *EntitySetRequestEntityDOList) SetEntityType(v string) *EntitySetRequest
 	return s
 }
 
-func (s *EntitySetRequestEntityDOList) SetName(v string) *EntitySetRequestEntityDOList {
-	s.Name = &v
-	return s
-}
-
-func (s *EntitySetRequestEntityDOList) SetUserNum(v int32) *EntitySetRequestEntityDOList {
-	s.UserNum = &v
-	return s
-}
-
 type EntitySetShrinkRequest struct {
 	EntityDOListShrink *string `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty"`
 	ThirdpartId        *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s EntitySetShrinkRequest) String() string {
@@ -6487,11 +6366,6 @@ func (s *EntitySetShrinkRequest) SetEntityDOListShrink(v string) *EntitySetShrin
 
 func (s *EntitySetShrinkRequest) SetThirdpartId(v string) *EntitySetShrinkRequest {
 	s.ThirdpartId = &v
-	return s
-}
-
-func (s *EntitySetShrinkRequest) SetUserId(v string) *EntitySetShrinkRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -10311,13 +10185,11 @@ type InvoiceAddRequest struct {
 	Address     *string `json:"address,omitempty" xml:"address,omitempty"`
 	BankName    *string `json:"bank_name,omitempty" xml:"bank_name,omitempty"`
 	BankNo      *string `json:"bank_no,omitempty" xml:"bank_no,omitempty"`
-	CorpId      *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	TaxNo       *string `json:"tax_no,omitempty" xml:"tax_no,omitempty"`
 	Tel         *string `json:"tel,omitempty" xml:"tel,omitempty"`
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 	Type        *int32  `json:"type,omitempty" xml:"type,omitempty"`
-	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s InvoiceAddRequest) String() string {
@@ -10343,11 +10215,6 @@ func (s *InvoiceAddRequest) SetBankNo(v string) *InvoiceAddRequest {
 	return s
 }
 
-func (s *InvoiceAddRequest) SetCorpId(v string) *InvoiceAddRequest {
-	s.CorpId = &v
-	return s
-}
-
 func (s *InvoiceAddRequest) SetTaxNo(v string) *InvoiceAddRequest {
 	s.TaxNo = &v
 	return s
@@ -10370,11 +10237,6 @@ func (s *InvoiceAddRequest) SetTitle(v string) *InvoiceAddRequest {
 
 func (s *InvoiceAddRequest) SetType(v int32) *InvoiceAddRequest {
 	s.Type = &v
-	return s
-}
-
-func (s *InvoiceAddRequest) SetUserId(v string) *InvoiceAddRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -10462,7 +10324,6 @@ func (s *InvoiceAddResponse) SetBody(v *InvoiceAddResponseBody) *InvoiceAddRespo
 
 type InvoiceDeleteRequest struct {
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
-	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s InvoiceDeleteRequest) String() string {
@@ -10475,11 +10336,6 @@ func (s InvoiceDeleteRequest) GoString() string {
 
 func (s *InvoiceDeleteRequest) SetThirdPartId(v string) *InvoiceDeleteRequest {
 	s.ThirdPartId = &v
-	return s
-}
-
-func (s *InvoiceDeleteRequest) SetUserId(v string) *InvoiceDeleteRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -10569,13 +10425,11 @@ type InvoiceModifyRequest struct {
 	Address     *string `json:"address,omitempty" xml:"address,omitempty"`
 	BankName    *string `json:"bank_name,omitempty" xml:"bank_name,omitempty"`
 	BankNo      *string `json:"bank_no,omitempty" xml:"bank_no,omitempty"`
-	CorpId      *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	TaxNo       *string `json:"tax_no,omitempty" xml:"tax_no,omitempty"`
 	Tel         *string `json:"tel,omitempty" xml:"tel,omitempty"`
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 	Type        *int32  `json:"type,omitempty" xml:"type,omitempty"`
-	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s InvoiceModifyRequest) String() string {
@@ -10601,11 +10455,6 @@ func (s *InvoiceModifyRequest) SetBankNo(v string) *InvoiceModifyRequest {
 	return s
 }
 
-func (s *InvoiceModifyRequest) SetCorpId(v string) *InvoiceModifyRequest {
-	s.CorpId = &v
-	return s
-}
-
 func (s *InvoiceModifyRequest) SetTaxNo(v string) *InvoiceModifyRequest {
 	s.TaxNo = &v
 	return s
@@ -10628,11 +10477,6 @@ func (s *InvoiceModifyRequest) SetTitle(v string) *InvoiceModifyRequest {
 
 func (s *InvoiceModifyRequest) SetType(v int32) *InvoiceModifyRequest {
 	s.Type = &v
-	return s
-}
-
-func (s *InvoiceModifyRequest) SetUserId(v string) *InvoiceModifyRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -10720,10 +10564,8 @@ func (s *InvoiceModifyResponse) SetBody(v *InvoiceModifyResponseBody) *InvoiceMo
 
 type InvoiceRuleSaveRequest struct {
 	AllEmploye  *bool                             `json:"all_employe,omitempty" xml:"all_employe,omitempty"`
-	CorpId      *string                           `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	Entities    []*InvoiceRuleSaveRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
 	ThirdPartId *string                           `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
-	UserId      *string                           `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s InvoiceRuleSaveRequest) String() string {
@@ -10739,11 +10581,6 @@ func (s *InvoiceRuleSaveRequest) SetAllEmploye(v bool) *InvoiceRuleSaveRequest {
 	return s
 }
 
-func (s *InvoiceRuleSaveRequest) SetCorpId(v string) *InvoiceRuleSaveRequest {
-	s.CorpId = &v
-	return s
-}
-
 func (s *InvoiceRuleSaveRequest) SetEntities(v []*InvoiceRuleSaveRequestEntities) *InvoiceRuleSaveRequest {
 	s.Entities = v
 	return s
@@ -10751,11 +10588,6 @@ func (s *InvoiceRuleSaveRequest) SetEntities(v []*InvoiceRuleSaveRequestEntities
 
 func (s *InvoiceRuleSaveRequest) SetThirdPartId(v string) *InvoiceRuleSaveRequest {
 	s.ThirdPartId = &v
-	return s
-}
-
-func (s *InvoiceRuleSaveRequest) SetUserId(v string) *InvoiceRuleSaveRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -10790,10 +10622,8 @@ func (s *InvoiceRuleSaveRequestEntities) SetType(v int32) *InvoiceRuleSaveReques
 
 type InvoiceRuleSaveShrinkRequest struct {
 	AllEmploye     *bool   `json:"all_employe,omitempty" xml:"all_employe,omitempty"`
-	CorpId         *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
 	ThirdPartId    *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
-	UserId         *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s InvoiceRuleSaveShrinkRequest) String() string {
@@ -10809,11 +10639,6 @@ func (s *InvoiceRuleSaveShrinkRequest) SetAllEmploye(v bool) *InvoiceRuleSaveShr
 	return s
 }
 
-func (s *InvoiceRuleSaveShrinkRequest) SetCorpId(v string) *InvoiceRuleSaveShrinkRequest {
-	s.CorpId = &v
-	return s
-}
-
 func (s *InvoiceRuleSaveShrinkRequest) SetEntitiesShrink(v string) *InvoiceRuleSaveShrinkRequest {
 	s.EntitiesShrink = &v
 	return s
@@ -10821,11 +10646,6 @@ func (s *InvoiceRuleSaveShrinkRequest) SetEntitiesShrink(v string) *InvoiceRuleS
 
 func (s *InvoiceRuleSaveShrinkRequest) SetThirdPartId(v string) *InvoiceRuleSaveShrinkRequest {
 	s.ThirdPartId = &v
-	return s
-}
-
-func (s *InvoiceRuleSaveShrinkRequest) SetUserId(v string) *InvoiceRuleSaveShrinkRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -10883,16 +10703,8 @@ func (s *InvoiceRuleSaveResponseBody) SetTraceId(v string) *InvoiceRuleSaveRespo
 }
 
 type InvoiceRuleSaveResponseBodyModule struct {
-	Account                 *string `json:"account,omitempty" xml:"account,omitempty"`
-	AddNum                  *int32  `json:"add_num,omitempty" xml:"add_num,omitempty"`
-	HavanaId                *string `json:"havana_id,omitempty" xml:"havana_id,omitempty"`
-	RemoveNum               *int32  `json:"remove_num,omitempty" xml:"remove_num,omitempty"`
-	SelectedExternalUserNum *int32  `json:"selected_external_user_num,omitempty" xml:"selected_external_user_num,omitempty"`
-	SelectedUserNum         *int32  `json:"selected_user_num,omitempty" xml:"selected_user_num,omitempty"`
-	SuiteKey                *string `json:"suite_key,omitempty" xml:"suite_key,omitempty"`
-	TokenGrantType          *int32  `json:"token_grant_type,omitempty" xml:"token_grant_type,omitempty"`
-	Version                 *int32  `json:"version,omitempty" xml:"version,omitempty"`
-	WithoutAuthority        *bool   `json:"without_authority,omitempty" xml:"without_authority,omitempty"`
+	AddNum    *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
+	RemoveNum *int32 `json:"remove_num,omitempty" xml:"remove_num,omitempty"`
 }
 
 func (s InvoiceRuleSaveResponseBodyModule) String() string {
@@ -10903,53 +10715,13 @@ func (s InvoiceRuleSaveResponseBodyModule) GoString() string {
 	return s.String()
 }
 
-func (s *InvoiceRuleSaveResponseBodyModule) SetAccount(v string) *InvoiceRuleSaveResponseBodyModule {
-	s.Account = &v
-	return s
-}
-
 func (s *InvoiceRuleSaveResponseBodyModule) SetAddNum(v int32) *InvoiceRuleSaveResponseBodyModule {
 	s.AddNum = &v
 	return s
 }
 
-func (s *InvoiceRuleSaveResponseBodyModule) SetHavanaId(v string) *InvoiceRuleSaveResponseBodyModule {
-	s.HavanaId = &v
-	return s
-}
-
 func (s *InvoiceRuleSaveResponseBodyModule) SetRemoveNum(v int32) *InvoiceRuleSaveResponseBodyModule {
 	s.RemoveNum = &v
-	return s
-}
-
-func (s *InvoiceRuleSaveResponseBodyModule) SetSelectedExternalUserNum(v int32) *InvoiceRuleSaveResponseBodyModule {
-	s.SelectedExternalUserNum = &v
-	return s
-}
-
-func (s *InvoiceRuleSaveResponseBodyModule) SetSelectedUserNum(v int32) *InvoiceRuleSaveResponseBodyModule {
-	s.SelectedUserNum = &v
-	return s
-}
-
-func (s *InvoiceRuleSaveResponseBodyModule) SetSuiteKey(v string) *InvoiceRuleSaveResponseBodyModule {
-	s.SuiteKey = &v
-	return s
-}
-
-func (s *InvoiceRuleSaveResponseBodyModule) SetTokenGrantType(v int32) *InvoiceRuleSaveResponseBodyModule {
-	s.TokenGrantType = &v
-	return s
-}
-
-func (s *InvoiceRuleSaveResponseBodyModule) SetVersion(v int32) *InvoiceRuleSaveResponseBodyModule {
-	s.Version = &v
-	return s
-}
-
-func (s *InvoiceRuleSaveResponseBodyModule) SetWithoutAuthority(v bool) *InvoiceRuleSaveResponseBodyModule {
-	s.WithoutAuthority = &v
 	return s
 }
 
@@ -10983,10 +10755,7 @@ func (s *InvoiceRuleSaveResponse) SetBody(v *InvoiceRuleSaveResponseBody) *Invoi
 }
 
 type InvoiceSearchRequest struct {
-	Authority *bool   `json:"authority,omitempty" xml:"authority,omitempty"`
-	CorpId    *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	Title     *string `json:"title,omitempty" xml:"title,omitempty"`
-	UserId    *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s InvoiceSearchRequest) String() string {
@@ -10997,23 +10766,8 @@ func (s InvoiceSearchRequest) GoString() string {
 	return s.String()
 }
 
-func (s *InvoiceSearchRequest) SetAuthority(v bool) *InvoiceSearchRequest {
-	s.Authority = &v
-	return s
-}
-
-func (s *InvoiceSearchRequest) SetCorpId(v string) *InvoiceSearchRequest {
-	s.CorpId = &v
-	return s
-}
-
 func (s *InvoiceSearchRequest) SetTitle(v string) *InvoiceSearchRequest {
 	s.Title = &v
-	return s
-}
-
-func (s *InvoiceSearchRequest) SetUserId(v string) *InvoiceSearchRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -11129,7 +10883,6 @@ func (s *InvoiceSearchResponse) SetBody(v *InvoiceSearchResponseBody) *InvoiceSe
 }
 
 type IsvUserSaveRequest struct {
-	UserId   *string                       `json:"user_Id,omitempty" xml:"user_Id,omitempty"`
 	UserList []*IsvUserSaveRequestUserList `json:"user_list,omitempty" xml:"user_list,omitempty" type:"Repeated"`
 }
 
@@ -11139,11 +10892,6 @@ func (s IsvUserSaveRequest) String() string {
 
 func (s IsvUserSaveRequest) GoString() string {
 	return s.String()
-}
-
-func (s *IsvUserSaveRequest) SetUserId(v string) *IsvUserSaveRequest {
-	s.UserId = &v
-	return s
 }
 
 func (s *IsvUserSaveRequest) SetUserList(v []*IsvUserSaveRequestUserList) *IsvUserSaveRequest {
@@ -11235,7 +10983,6 @@ func (s *IsvUserSaveRequestUserList) SetUserName(v string) *IsvUserSaveRequestUs
 }
 
 type IsvUserSaveShrinkRequest struct {
-	UserId         *string `json:"user_Id,omitempty" xml:"user_Id,omitempty"`
 	UserListShrink *string `json:"user_list,omitempty" xml:"user_list,omitempty"`
 }
 
@@ -11245,11 +10992,6 @@ func (s IsvUserSaveShrinkRequest) String() string {
 
 func (s IsvUserSaveShrinkRequest) GoString() string {
 	return s.String()
-}
-
-func (s *IsvUserSaveShrinkRequest) SetUserId(v string) *IsvUserSaveShrinkRequest {
-	s.UserId = &v
-	return s
 }
 
 func (s *IsvUserSaveShrinkRequest) SetUserListShrink(v string) *IsvUserSaveShrinkRequest {
@@ -13879,9 +13621,6 @@ type UserQueryRequest struct {
 	ModifiedTimeGreaterOrEqualThan *string `json:"modified_time_greater_or_equal_than,omitempty" xml:"modified_time_greater_or_equal_than,omitempty"`
 	ThirdPartCorpId                *string `json:"third_part_corp_id,omitempty" xml:"third_part_corp_id,omitempty"`
 	ThirdPartJobNo                 *string `json:"third_part_job_no,omitempty" xml:"third_part_job_no,omitempty"`
-	TopAppKeyOwnerId               *string `json:"top_app_key_owner_id,omitempty" xml:"top_app_key_owner_id,omitempty"`
-	TopAuthorizedHavanaId          *string `json:"top_authorized_havana_id,omitempty" xml:"top_authorized_havana_id,omitempty"`
-	TopAuthorizedUserNick          *string `json:"top_authorized_user_nick,omitempty" xml:"top_authorized_user_nick,omitempty"`
 }
 
 func (s UserQueryRequest) String() string {
@@ -13904,21 +13643,6 @@ func (s *UserQueryRequest) SetThirdPartCorpId(v string) *UserQueryRequest {
 
 func (s *UserQueryRequest) SetThirdPartJobNo(v string) *UserQueryRequest {
 	s.ThirdPartJobNo = &v
-	return s
-}
-
-func (s *UserQueryRequest) SetTopAppKeyOwnerId(v string) *UserQueryRequest {
-	s.TopAppKeyOwnerId = &v
-	return s
-}
-
-func (s *UserQueryRequest) SetTopAuthorizedHavanaId(v string) *UserQueryRequest {
-	s.TopAuthorizedHavanaId = &v
-	return s
-}
-
-func (s *UserQueryRequest) SetTopAuthorizedUserNick(v string) *UserQueryRequest {
-	s.TopAuthorizedUserNick = &v
 	return s
 }
 
@@ -15292,10 +15016,6 @@ func (client *Client) CostCenterDeleteWithOptions(request *CostCenterDeleteReque
 		query["thirdpart_id"] = request.ThirdpartId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		query["user_id"] = request.UserId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -15356,10 +15076,6 @@ func (client *Client) CostCenterModifyWithOptions(request *CostCenterModifyReque
 
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
 		body["title"] = request.Title
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["user_id"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -15468,10 +15184,6 @@ func (client *Client) CostCenterSaveWithOptions(request *CostCenterSaveRequest, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AlipayId)) {
-		body["alipay_id"] = request.AlipayId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.AlipayNo)) {
 		body["alipay_no"] = request.AlipayNo
 	}
@@ -15494,10 +15206,6 @@ func (client *Client) CostCenterSaveWithOptions(request *CostCenterSaveRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
 		body["title"] = request.Title
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["user_id"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -15550,10 +15258,6 @@ func (client *Client) DepartmentSaveWithOptions(tmpReq *DepartmentSaveRequest, h
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DepartListShrink)) {
 		body["depart_list"] = request.DepartListShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["user_id"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -15610,10 +15314,6 @@ func (client *Client) EntityAddWithOptions(tmpReq *EntityAddRequest, headers map
 
 	if !tea.BoolValue(util.IsUnset(request.ThirdpartId)) {
 		body["thirdpart_id"] = request.ThirdpartId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["user_id"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -15677,10 +15377,6 @@ func (client *Client) EntityDeleteWithOptions(tmpReq *EntityDeleteRequest, heade
 		body["entity_d_o_list"] = request.EntityDOListShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["user_id"] = request.UserId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -15736,10 +15432,6 @@ func (client *Client) EntitySetWithOptions(tmpReq *EntitySetRequest, headers map
 
 	if !tea.BoolValue(util.IsUnset(request.ThirdpartId)) {
 		body["thirdpart_id"] = request.ThirdpartId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["user_id"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -16308,10 +16000,6 @@ func (client *Client) InvoiceAddWithOptions(request *InvoiceAddRequest, headers 
 		body["bank_no"] = request.BankNo
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		body["corp_id"] = request.CorpId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TaxNo)) {
 		body["tax_no"] = request.TaxNo
 	}
@@ -16330,10 +16018,6 @@ func (client *Client) InvoiceAddWithOptions(request *InvoiceAddRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		body["type"] = request.Type
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["user_id"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -16382,15 +16066,9 @@ func (client *Client) InvoiceDeleteWithOptions(request *InvoiceDeleteRequest, he
 		query["third_part_id"] = request.ThirdPartId
 	}
 
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["user_id"] = request.UserId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InvoiceDelete"),
@@ -16400,7 +16078,7 @@ func (client *Client) InvoiceDeleteWithOptions(request *InvoiceDeleteRequest, he
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("formData"),
+		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &InvoiceDeleteResponse{}
@@ -16442,10 +16120,6 @@ func (client *Client) InvoiceModifyWithOptions(request *InvoiceModifyRequest, he
 		body["bank_no"] = request.BankNo
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		body["corp_id"] = request.CorpId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TaxNo)) {
 		body["tax_no"] = request.TaxNo
 	}
@@ -16464,10 +16138,6 @@ func (client *Client) InvoiceModifyWithOptions(request *InvoiceModifyRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		body["type"] = request.Type
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["user_id"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -16522,20 +16192,12 @@ func (client *Client) InvoiceRuleSaveWithOptions(tmpReq *InvoiceRuleSaveRequest,
 		body["all_employe"] = request.AllEmploye
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		body["corp_id"] = request.CorpId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EntitiesShrink)) {
 		body["entities"] = request.EntitiesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ThirdPartId)) {
 		body["third_part_id"] = request.ThirdPartId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["user_id"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -16580,27 +16242,13 @@ func (client *Client) InvoiceSearchWithOptions(request *InvoiceSearchRequest, he
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		query["corp_id"] = request.CorpId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		query["user_id"] = request.UserId
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Authority)) {
-		body["authority"] = request.Authority
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
-		body["title"] = request.Title
+		query["title"] = request.Title
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InvoiceSearch"),
@@ -16610,7 +16258,7 @@ func (client *Client) InvoiceSearchWithOptions(request *InvoiceSearchRequest, he
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("formData"),
+		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &InvoiceSearchResponse{}
@@ -16646,10 +16294,6 @@ func (client *Client) IsvUserSaveWithOptions(tmpReq *IsvUserSaveRequest, headers
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["user_Id"] = request.UserId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.UserListShrink)) {
 		body["user_list"] = request.UserListShrink
 	}
@@ -17178,18 +16822,6 @@ func (client *Client) UserQueryWithOptions(request *UserQueryRequest, headers ma
 
 	if !tea.BoolValue(util.IsUnset(request.ThirdPartJobNo)) {
 		query["third_part_job_no"] = request.ThirdPartJobNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TopAppKeyOwnerId)) {
-		query["top_app_key_owner_id"] = request.TopAppKeyOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TopAuthorizedHavanaId)) {
-		query["top_authorized_havana_id"] = request.TopAuthorizedHavanaId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TopAuthorizedUserNick)) {
-		query["top_authorized_user_nick"] = request.TopAuthorizedUserNick
 	}
 
 	req := &openapi.OpenApiRequest{
