@@ -3411,10 +3411,11 @@ func (s *CreateLoadBalancerUDPListenerResponse) SetBody(v *CreateLoadBalancerUDP
 }
 
 type CreateNatGatewayRequest struct {
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NetworkId   *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetworkId    *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateNatGatewayRequest) String() string {
@@ -3427,6 +3428,11 @@ func (s CreateNatGatewayRequest) GoString() string {
 
 func (s *CreateNatGatewayRequest) SetEnsRegionId(v string) *CreateNatGatewayRequest {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateNatGatewayRequest) SetInstanceType(v string) *CreateNatGatewayRequest {
+	s.InstanceType = &v
 	return s
 }
 
@@ -3670,6 +3676,7 @@ type CreateSnatEntryRequest struct {
 	SnatEntryName   *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
 	SnatIp          *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
 	SourceCIDR      *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+	SourceNetworkId *string `json:"SourceNetworkId,omitempty" xml:"SourceNetworkId,omitempty"`
 	SourceVSwitchId *string `json:"SourceVSwitchId,omitempty" xml:"SourceVSwitchId,omitempty"`
 }
 
@@ -3698,6 +3705,11 @@ func (s *CreateSnatEntryRequest) SetSnatIp(v string) *CreateSnatEntryRequest {
 
 func (s *CreateSnatEntryRequest) SetSourceCIDR(v string) *CreateSnatEntryRequest {
 	s.SourceCIDR = &v
+	return s
+}
+
+func (s *CreateSnatEntryRequest) SetSourceNetworkId(v string) *CreateSnatEntryRequest {
+	s.SourceNetworkId = &v
 	return s
 }
 
@@ -14234,6 +14246,7 @@ type DescribeNatGatewaysResponseBodyNatGateways struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	NetworkId    *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	Spec         *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -14267,6 +14280,11 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) SetNatGatewayId(v string) *
 
 func (s *DescribeNatGatewaysResponseBodyNatGateways) SetNetworkId(v string) *DescribeNatGatewaysResponseBodyNatGateways {
 	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGateways) SetSpec(v string) *DescribeNatGatewaysResponseBodyNatGateways {
+	s.Spec = &v
 	return s
 }
 
@@ -17422,6 +17440,104 @@ func (s *GetDeviceInternetPortResponse) SetBody(v *GetDeviceInternetPortResponse
 	return s
 }
 
+type GetOssStorageAndAccByBucketsRequest struct {
+	BucketList *string `json:"BucketList,omitempty" xml:"BucketList,omitempty"`
+}
+
+func (s GetOssStorageAndAccByBucketsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOssStorageAndAccByBucketsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOssStorageAndAccByBucketsRequest) SetBucketList(v string) *GetOssStorageAndAccByBucketsRequest {
+	s.BucketList = &v
+	return s
+}
+
+type GetOssStorageAndAccByBucketsResponseBody struct {
+	BucketList []*GetOssStorageAndAccByBucketsResponseBodyBucketList `json:"BucketList,omitempty" xml:"BucketList,omitempty" type:"Repeated"`
+	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetOssStorageAndAccByBucketsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOssStorageAndAccByBucketsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOssStorageAndAccByBucketsResponseBody) SetBucketList(v []*GetOssStorageAndAccByBucketsResponseBodyBucketList) *GetOssStorageAndAccByBucketsResponseBody {
+	s.BucketList = v
+	return s
+}
+
+func (s *GetOssStorageAndAccByBucketsResponseBody) SetRequestId(v string) *GetOssStorageAndAccByBucketsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetOssStorageAndAccByBucketsResponseBodyBucketList struct {
+	Acc              *int64  `json:"Acc,omitempty" xml:"Acc,omitempty"`
+	Bucket           *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	StorageUsageByte *int64  `json:"StorageUsageByte,omitempty" xml:"StorageUsageByte,omitempty"`
+}
+
+func (s GetOssStorageAndAccByBucketsResponseBodyBucketList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOssStorageAndAccByBucketsResponseBodyBucketList) GoString() string {
+	return s.String()
+}
+
+func (s *GetOssStorageAndAccByBucketsResponseBodyBucketList) SetAcc(v int64) *GetOssStorageAndAccByBucketsResponseBodyBucketList {
+	s.Acc = &v
+	return s
+}
+
+func (s *GetOssStorageAndAccByBucketsResponseBodyBucketList) SetBucket(v string) *GetOssStorageAndAccByBucketsResponseBodyBucketList {
+	s.Bucket = &v
+	return s
+}
+
+func (s *GetOssStorageAndAccByBucketsResponseBodyBucketList) SetStorageUsageByte(v int64) *GetOssStorageAndAccByBucketsResponseBodyBucketList {
+	s.StorageUsageByte = &v
+	return s
+}
+
+type GetOssStorageAndAccByBucketsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOssStorageAndAccByBucketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOssStorageAndAccByBucketsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOssStorageAndAccByBucketsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOssStorageAndAccByBucketsResponse) SetHeaders(v map[string]*string) *GetOssStorageAndAccByBucketsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOssStorageAndAccByBucketsResponse) SetStatusCode(v int32) *GetOssStorageAndAccByBucketsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOssStorageAndAccByBucketsResponse) SetBody(v *GetOssStorageAndAccByBucketsResponseBody) *GetOssStorageAndAccByBucketsResponse {
+	s.Body = v
+	return s
+}
+
 type ImportKeyPairRequest struct {
 	KeyPairName   *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	PublicKeyBody *string `json:"PublicKeyBody,omitempty" xml:"PublicKeyBody,omitempty"`
@@ -19462,7 +19578,6 @@ func (s *RebootARMServerInstanceResponse) SetBody(v *RebootARMServerInstanceResp
 type RebootInstanceRequest struct {
 	ForceStop  *string `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s RebootInstanceRequest) String() string {
@@ -19480,11 +19595,6 @@ func (s *RebootInstanceRequest) SetForceStop(v string) *RebootInstanceRequest {
 
 func (s *RebootInstanceRequest) SetInstanceId(v string) *RebootInstanceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *RebootInstanceRequest) SetVersion(v string) *RebootInstanceRequest {
-	s.Version = &v
 	return s
 }
 
@@ -19536,6 +19646,81 @@ func (s *RebootInstanceResponse) SetStatusCode(v int32) *RebootInstanceResponse 
 }
 
 func (s *RebootInstanceResponse) SetBody(v *RebootInstanceResponseBody) *RebootInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ReinitInstanceRequest struct {
+	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Password   *string `json:"Password,omitempty" xml:"Password,omitempty"`
+}
+
+func (s ReinitInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReinitInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReinitInstanceRequest) SetImageId(v string) *ReinitInstanceRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ReinitInstanceRequest) SetInstanceId(v string) *ReinitInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ReinitInstanceRequest) SetPassword(v string) *ReinitInstanceRequest {
+	s.Password = &v
+	return s
+}
+
+type ReinitInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReinitInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReinitInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReinitInstanceResponseBody) SetRequestId(v string) *ReinitInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReinitInstanceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReinitInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReinitInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReinitInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReinitInstanceResponse) SetHeaders(v map[string]*string) *ReinitInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReinitInstanceResponse) SetStatusCode(v int32) *ReinitInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReinitInstanceResponse) SetBody(v *ReinitInstanceResponseBody) *ReinitInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -22630,7 +22815,6 @@ func (s *StartEpnInstanceResponse) SetBody(v *StartEpnInstanceResponseBody) *Sta
 
 type StartInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s StartInstanceRequest) String() string {
@@ -22643,11 +22827,6 @@ func (s StartInstanceRequest) GoString() string {
 
 func (s *StartInstanceRequest) SetInstanceId(v string) *StartInstanceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *StartInstanceRequest) SetVersion(v string) *StartInstanceRequest {
-	s.Version = &v
 	return s
 }
 
@@ -25159,6 +25338,10 @@ func (client *Client) CreateNatGatewayWithOptions(request *CreateNatGatewayReque
 		query["EnsRegionId"] = request.EnsRegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -25333,6 +25516,10 @@ func (client *Client) CreateSnatEntryWithOptions(request *CreateSnatEntryRequest
 
 	if !tea.BoolValue(util.IsUnset(request.SourceCIDR)) {
 		query["SourceCIDR"] = request.SourceCIDR
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceNetworkId)) {
+		query["SourceNetworkId"] = request.SourceNetworkId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceVSwitchId)) {
@@ -29863,6 +30050,46 @@ func (client *Client) GetDeviceInternetPort(request *GetDeviceInternetPortReques
 	return _result, _err
 }
 
+func (client *Client) GetOssStorageAndAccByBucketsWithOptions(request *GetOssStorageAndAccByBucketsRequest, runtime *util.RuntimeOptions) (_result *GetOssStorageAndAccByBucketsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOssStorageAndAccByBuckets"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOssStorageAndAccByBucketsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOssStorageAndAccByBuckets(request *GetOssStorageAndAccByBucketsRequest) (_result *GetOssStorageAndAccByBucketsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOssStorageAndAccByBucketsResponse{}
+	_body, _err := client.GetOssStorageAndAccByBucketsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, runtime *util.RuntimeOptions) (_result *ImportKeyPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31121,10 +31348,6 @@ func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, 
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -31152,6 +31375,58 @@ func (client *Client) RebootInstance(request *RebootInstanceRequest) (_result *R
 	runtime := &util.RuntimeOptions{}
 	_result = &RebootInstanceResponse{}
 	_body, _err := client.RebootInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReinitInstanceWithOptions(request *ReinitInstanceRequest, runtime *util.RuntimeOptions) (_result *ReinitInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["Password"] = request.Password
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReinitInstance"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReinitInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReinitInstance(request *ReinitInstanceRequest) (_result *ReinitInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReinitInstanceResponse{}
+	_body, _err := client.ReinitInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32839,10 +33114,6 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
