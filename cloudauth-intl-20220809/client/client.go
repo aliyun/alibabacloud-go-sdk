@@ -12,6 +12,152 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CheckResultRequest struct {
+	ExtraImageControlList         *string `json:"ExtraImageControlList,omitempty" xml:"ExtraImageControlList,omitempty"`
+	IsReturnImage                 *string `json:"IsReturnImage,omitempty" xml:"IsReturnImage,omitempty"`
+	MerchantBizId                 *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	ReturnFiveCategorySpoofResult *string `json:"ReturnFiveCategorySpoofResult,omitempty" xml:"ReturnFiveCategorySpoofResult,omitempty"`
+	TransactionId                 *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s CheckResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckResultRequest) SetExtraImageControlList(v string) *CheckResultRequest {
+	s.ExtraImageControlList = &v
+	return s
+}
+
+func (s *CheckResultRequest) SetIsReturnImage(v string) *CheckResultRequest {
+	s.IsReturnImage = &v
+	return s
+}
+
+func (s *CheckResultRequest) SetMerchantBizId(v string) *CheckResultRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *CheckResultRequest) SetReturnFiveCategorySpoofResult(v string) *CheckResultRequest {
+	s.ReturnFiveCategorySpoofResult = &v
+	return s
+}
+
+func (s *CheckResultRequest) SetTransactionId(v string) *CheckResultRequest {
+	s.TransactionId = &v
+	return s
+}
+
+type CheckResultResponseBody struct {
+	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CheckResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s CheckResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckResultResponseBody) SetCode(v string) *CheckResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CheckResultResponseBody) SetMessage(v string) *CheckResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckResultResponseBody) SetRequestId(v string) *CheckResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckResultResponseBody) SetResult(v *CheckResultResponseBodyResult) *CheckResultResponseBody {
+	s.Result = v
+	return s
+}
+
+type CheckResultResponseBodyResult struct {
+	EkycResult   *string `json:"EkycResult,omitempty" xml:"EkycResult,omitempty"`
+	ExtBasicInfo *string `json:"ExtBasicInfo,omitempty" xml:"ExtBasicInfo,omitempty"`
+	ExtFaceInfo  *string `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty"`
+	ExtIdInfo    *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
+	ExtRiskInfo  *string `json:"ExtRiskInfo,omitempty" xml:"ExtRiskInfo,omitempty"`
+}
+
+func (s CheckResultResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckResultResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CheckResultResponseBodyResult) SetEkycResult(v string) *CheckResultResponseBodyResult {
+	s.EkycResult = &v
+	return s
+}
+
+func (s *CheckResultResponseBodyResult) SetExtBasicInfo(v string) *CheckResultResponseBodyResult {
+	s.ExtBasicInfo = &v
+	return s
+}
+
+func (s *CheckResultResponseBodyResult) SetExtFaceInfo(v string) *CheckResultResponseBodyResult {
+	s.ExtFaceInfo = &v
+	return s
+}
+
+func (s *CheckResultResponseBodyResult) SetExtIdInfo(v string) *CheckResultResponseBodyResult {
+	s.ExtIdInfo = &v
+	return s
+}
+
+func (s *CheckResultResponseBodyResult) SetExtRiskInfo(v string) *CheckResultResponseBodyResult {
+	s.ExtRiskInfo = &v
+	return s
+}
+
+type CheckResultResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckResultResponse) SetHeaders(v map[string]*string) *CheckResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckResultResponse) SetStatusCode(v int32) *CheckResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckResultResponse) SetBody(v *CheckResultResponseBody) *CheckResultResponse {
+	s.Body = v
+	return s
+}
+
 type InitializeRequest struct {
 	DocType        *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	FlowType       *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
@@ -210,6 +356,66 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckResultWithOptions(request *CheckResultRequest, runtime *util.RuntimeOptions) (_result *CheckResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExtraImageControlList)) {
+		query["ExtraImageControlList"] = request.ExtraImageControlList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsReturnImage)) {
+		query["IsReturnImage"] = request.IsReturnImage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnFiveCategorySpoofResult)) {
+		query["ReturnFiveCategorySpoofResult"] = request.ReturnFiveCategorySpoofResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionId)) {
+		query["TransactionId"] = request.TransactionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckResult"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckResult(request *CheckResultRequest) (_result *CheckResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckResultResponse{}
+	_body, _err := client.CheckResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
