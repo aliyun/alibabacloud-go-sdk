@@ -5394,6 +5394,163 @@ func (s *DescribeClusterResourcesResponseBody) SetAutoCreate(v int64) *DescribeC
 	return s
 }
 
+type DescribeClusterTasksResponseBody struct {
+	PageInfo  *DescribeClusterTasksResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Tasks     []*DescribeClusterTasksResponseBodyTasks  `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
+}
+
+func (s DescribeClusterTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterTasksResponseBody) SetPageInfo(v *DescribeClusterTasksResponseBodyPageInfo) *DescribeClusterTasksResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeClusterTasksResponseBody) SetRequestId(v string) *DescribeClusterTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeClusterTasksResponseBody) SetTasks(v []*DescribeClusterTasksResponseBodyTasks) *DescribeClusterTasksResponseBody {
+	s.Tasks = v
+	return s
+}
+
+type DescribeClusterTasksResponseBodyPageInfo struct {
+	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	PageSize   *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	TotalCount *int64 `json:"total_count,omitempty" xml:"total_count,omitempty"`
+}
+
+func (s DescribeClusterTasksResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterTasksResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterTasksResponseBodyPageInfo) SetPageNumber(v int64) *DescribeClusterTasksResponseBodyPageInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeClusterTasksResponseBodyPageInfo) SetPageSize(v int64) *DescribeClusterTasksResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeClusterTasksResponseBodyPageInfo) SetTotalCount(v int64) *DescribeClusterTasksResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeClusterTasksResponseBodyTasks struct {
+	Created  *string                                     `json:"created,omitempty" xml:"created,omitempty"`
+	Error    *DescribeClusterTasksResponseBodyTasksError `json:"error,omitempty" xml:"error,omitempty" type:"Struct"`
+	State    *string                                     `json:"state,omitempty" xml:"state,omitempty"`
+	TaskId   *string                                     `json:"task_id,omitempty" xml:"task_id,omitempty"`
+	TaskType *string                                     `json:"task_type,omitempty" xml:"task_type,omitempty"`
+	Updated  *string                                     `json:"updated,omitempty" xml:"updated,omitempty"`
+}
+
+func (s DescribeClusterTasksResponseBodyTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterTasksResponseBodyTasks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterTasksResponseBodyTasks) SetCreated(v string) *DescribeClusterTasksResponseBodyTasks {
+	s.Created = &v
+	return s
+}
+
+func (s *DescribeClusterTasksResponseBodyTasks) SetError(v *DescribeClusterTasksResponseBodyTasksError) *DescribeClusterTasksResponseBodyTasks {
+	s.Error = v
+	return s
+}
+
+func (s *DescribeClusterTasksResponseBodyTasks) SetState(v string) *DescribeClusterTasksResponseBodyTasks {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeClusterTasksResponseBodyTasks) SetTaskId(v string) *DescribeClusterTasksResponseBodyTasks {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeClusterTasksResponseBodyTasks) SetTaskType(v string) *DescribeClusterTasksResponseBodyTasks {
+	s.TaskType = &v
+	return s
+}
+
+func (s *DescribeClusterTasksResponseBodyTasks) SetUpdated(v string) *DescribeClusterTasksResponseBodyTasks {
+	s.Updated = &v
+	return s
+}
+
+type DescribeClusterTasksResponseBodyTasksError struct {
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s DescribeClusterTasksResponseBodyTasksError) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterTasksResponseBodyTasksError) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterTasksResponseBodyTasksError) SetCode(v string) *DescribeClusterTasksResponseBodyTasksError {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeClusterTasksResponseBodyTasksError) SetMessage(v string) *DescribeClusterTasksResponseBodyTasksError {
+	s.Message = &v
+	return s
+}
+
+type DescribeClusterTasksResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeClusterTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeClusterTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterTasksResponse) SetHeaders(v map[string]*string) *DescribeClusterTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClusterTasksResponse) SetStatusCode(v int32) *DescribeClusterTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeClusterTasksResponse) SetBody(v *DescribeClusterTasksResponseBody) *DescribeClusterTasksResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeClusterUserKubeconfigRequest struct {
 	PrivateIpAddress         *bool  `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	TemporaryDurationMinutes *int64 `json:"TemporaryDurationMinutes,omitempty" xml:"TemporaryDurationMinutes,omitempty"`
@@ -9238,9 +9395,62 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
+type MigrateClusterRequest struct {
+	OssBucketEndpoint *string `json:"oss_bucket_endpoint,omitempty" xml:"oss_bucket_endpoint,omitempty"`
+	OssBucketName     *string `json:"oss_bucket_name,omitempty" xml:"oss_bucket_name,omitempty"`
+}
+
+func (s MigrateClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MigrateClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MigrateClusterRequest) SetOssBucketEndpoint(v string) *MigrateClusterRequest {
+	s.OssBucketEndpoint = &v
+	return s
+}
+
+func (s *MigrateClusterRequest) SetOssBucketName(v string) *MigrateClusterRequest {
+	s.OssBucketName = &v
+	return s
+}
+
+type MigrateClusterResponseBody struct {
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s MigrateClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MigrateClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MigrateClusterResponseBody) SetClusterId(v string) *MigrateClusterResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *MigrateClusterResponseBody) SetRequestId(v string) *MigrateClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MigrateClusterResponseBody) SetTaskId(v string) *MigrateClusterResponseBody {
+	s.TaskId = &v
+	return s
+}
+
 type MigrateClusterResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MigrateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s MigrateClusterResponse) String() string {
@@ -9258,6 +9468,11 @@ func (s *MigrateClusterResponse) SetHeaders(v map[string]*string) *MigrateCluste
 
 func (s *MigrateClusterResponse) SetStatusCode(v int32) *MigrateClusterResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *MigrateClusterResponse) SetBody(v *MigrateClusterResponseBody) *MigrateClusterResponse {
+	s.Body = v
 	return s
 }
 
@@ -9741,6 +9956,7 @@ func (s *ModifyClusterNodePoolRequestManagementUpgradeConfig) SetSurgePercentage
 
 type ModifyClusterNodePoolRequestNodeConfig struct {
 	KubeletConfiguration *ModifyClusterNodePoolRequestNodeConfigKubeletConfiguration `json:"kubelet_configuration,omitempty" xml:"kubelet_configuration,omitempty" type:"Struct"`
+	RolloutPolicy        *ModifyClusterNodePoolRequestNodeConfigRolloutPolicy        `json:"rollout_policy,omitempty" xml:"rollout_policy,omitempty" type:"Struct"`
 }
 
 func (s ModifyClusterNodePoolRequestNodeConfig) String() string {
@@ -9753,6 +9969,11 @@ func (s ModifyClusterNodePoolRequestNodeConfig) GoString() string {
 
 func (s *ModifyClusterNodePoolRequestNodeConfig) SetKubeletConfiguration(v *ModifyClusterNodePoolRequestNodeConfigKubeletConfiguration) *ModifyClusterNodePoolRequestNodeConfig {
 	s.KubeletConfiguration = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestNodeConfig) SetRolloutPolicy(v *ModifyClusterNodePoolRequestNodeConfigRolloutPolicy) *ModifyClusterNodePoolRequestNodeConfig {
+	s.RolloutPolicy = v
 	return s
 }
 
@@ -9842,6 +10063,23 @@ func (s *ModifyClusterNodePoolRequestNodeConfigKubeletConfiguration) SetSerializ
 
 func (s *ModifyClusterNodePoolRequestNodeConfigKubeletConfiguration) SetSystemReserved(v map[string]interface{}) *ModifyClusterNodePoolRequestNodeConfigKubeletConfiguration {
 	s.SystemReserved = v
+	return s
+}
+
+type ModifyClusterNodePoolRequestNodeConfigRolloutPolicy struct {
+	MaxUnavailable *int64 `json:"max_unavailable,omitempty" xml:"max_unavailable,omitempty"`
+}
+
+func (s ModifyClusterNodePoolRequestNodeConfigRolloutPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolRequestNodeConfigRolloutPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequestNodeConfigRolloutPolicy) SetMaxUnavailable(v int64) *ModifyClusterNodePoolRequestNodeConfigRolloutPolicy {
+	s.MaxUnavailable = &v
 	return s
 }
 
@@ -14104,6 +14342,43 @@ func (client *Client) DescribeClusterResourcesWithOptions(ClusterId *string, hea
 	return _result, _err
 }
 
+func (client *Client) DescribeClusterTasks(clusterId *string) (_result *DescribeClusterTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeClusterTasksResponse{}
+	_body, _err := client.DescribeClusterTasksWithOptions(clusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeClusterTasksWithOptions(clusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterTasksResponse, _err error) {
+	clusterId = openapiutil.GetEncodeParam(clusterId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterTasks"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/tasks"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeClusterTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DescribeClusterUserKubeconfig(ClusterId *string, request *DescribeClusterUserKubeconfigRequest) (_result *DescribeClusterUserKubeconfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15571,11 +15846,11 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 	return _result, _err
 }
 
-func (client *Client) MigrateCluster(clusterId *string) (_result *MigrateClusterResponse, _err error) {
+func (client *Client) MigrateCluster(clusterId *string, request *MigrateClusterRequest) (_result *MigrateClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &MigrateClusterResponse{}
-	_body, _err := client.MigrateClusterWithOptions(clusterId, headers, runtime)
+	_body, _err := client.MigrateClusterWithOptions(clusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15583,10 +15858,24 @@ func (client *Client) MigrateCluster(clusterId *string) (_result *MigrateCluster
 	return _result, _err
 }
 
-func (client *Client) MigrateClusterWithOptions(clusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *MigrateClusterResponse, _err error) {
+func (client *Client) MigrateClusterWithOptions(clusterId *string, request *MigrateClusterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *MigrateClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
 	clusterId = openapiutil.GetEncodeParam(clusterId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OssBucketEndpoint)) {
+		body["oss_bucket_endpoint"] = request.OssBucketEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketName)) {
+		body["oss_bucket_name"] = request.OssBucketName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("MigrateCluster"),
@@ -15597,7 +15886,7 @@ func (client *Client) MigrateClusterWithOptions(clusterId *string, headers map[s
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &MigrateClusterResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
