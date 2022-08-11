@@ -16,7 +16,6 @@ import (
 )
 
 type AccelerationInfo struct {
-	// 镜像加速状态，取值 Preparing 或 Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -34,12 +33,9 @@ func (s *AccelerationInfo) SetStatus(v string) *AccelerationInfo {
 }
 
 type AsyncConfigMeta struct {
-	// 异步配置所属函数名称。
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// 异步配置所属服务版本/别名。
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// 异步配置所属服务名称。
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	Qualifier    *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	ServiceName  *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s AsyncConfigMeta) String() string {
@@ -66,7 +62,6 @@ func (s *AsyncConfigMeta) SetServiceName(v string) *AsyncConfigMeta {
 }
 
 type AvailableAZ struct {
-	// az
 	AvailableAZs *string `json:"availableAZs,omitempty" xml:"availableAZs,omitempty"`
 }
 
@@ -84,14 +79,10 @@ func (s *AvailableAZ) SetAvailableAZs(v string) *AvailableAZ {
 }
 
 type CDNEventsTriggerConfig struct {
-	// eventName
-	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// eventVersion
-	EventVersion *string `json:"eventVersion,omitempty" xml:"eventVersion,omitempty"`
-	// filter
-	Filter map[string][]*string `json:"filter,omitempty" xml:"filter,omitempty"`
-	// notes
-	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
+	EventName    *string              `json:"eventName,omitempty" xml:"eventName,omitempty"`
+	EventVersion *string              `json:"eventVersion,omitempty" xml:"eventVersion,omitempty"`
+	Filter       map[string][]*string `json:"filter,omitempty" xml:"filter,omitempty"`
+	Notes        *string              `json:"notes,omitempty" xml:"notes,omitempty"`
 }
 
 func (s CDNEventsTriggerConfig) String() string {
@@ -123,12 +114,9 @@ func (s *CDNEventsTriggerConfig) SetNotes(v string) *CDNEventsTriggerConfig {
 }
 
 type CertConfig struct {
-	// 证书名称
-	CertName *string `json:"certName,omitempty" xml:"certName,omitempty"`
-	// 证书，如果是证书链则依次填写多个证书
+	CertName    *string `json:"certName,omitempty" xml:"certName,omitempty"`
 	Certificate *string `json:"certificate,omitempty" xml:"certificate,omitempty"`
-	// 私钥
-	PrivateKey *string `json:"privateKey,omitempty" xml:"privateKey,omitempty"`
+	PrivateKey  *string `json:"privateKey,omitempty" xml:"privateKey,omitempty"`
 }
 
 func (s CertConfig) String() string {
@@ -155,12 +143,9 @@ func (s *CertConfig) SetPrivateKey(v string) *CertConfig {
 }
 
 type Code struct {
-	// 函数代码包的OSS bucket name
 	OssBucketName *string `json:"ossBucketName,omitempty" xml:"ossBucketName,omitempty"`
-	// 函数代码包的OSS对象名
 	OssObjectName *string `json:"ossObjectName,omitempty" xml:"ossObjectName,omitempty"`
-	// 直接在request body中上传code zip包的base64编码
-	ZipFile *string `json:"zipFile,omitempty" xml:"zipFile,omitempty"`
+	ZipFile       *string `json:"zipFile,omitempty" xml:"zipFile,omitempty"`
 }
 
 func (s Code) String() string {
@@ -187,16 +172,11 @@ func (s *Code) SetZipFile(v string) *Code {
 }
 
 type CustomContainerConfig struct {
-	// 镜像加速类型，取值Default为开启加速，None为关闭加速，默认开启
 	AccelerationType *string `json:"accelerationType,omitempty" xml:"accelerationType,omitempty"`
-	// 容器启动参数
-	Args *string `json:"args,omitempty" xml:"args,omitempty"`
-	// 容器启动命令，等同于 Docker ENTRYPOINT
-	Command *string `json:"command,omitempty" xml:"command,omitempty"`
-	// 容器镜像地址，实例值： registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1
-	Image *string `json:"image,omitempty" xml:"image,omitempty"`
-	// ACR企业版镜像仓库ID，使用ACR企业版镜像时须传入
-	InstanceID *string `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
+	Args             *string `json:"args,omitempty" xml:"args,omitempty"`
+	Command          *string `json:"command,omitempty" xml:"command,omitempty"`
+	Image            *string `json:"image,omitempty" xml:"image,omitempty"`
+	InstanceID       *string `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
 }
 
 func (s CustomContainerConfig) String() string {
@@ -234,16 +214,11 @@ func (s *CustomContainerConfig) SetInstanceID(v string) *CustomContainerConfig {
 
 type CustomContainerConfigInfo struct {
 	AccelerationInfo *AccelerationInfo `json:"accelerationInfo,omitempty" xml:"accelerationInfo,omitempty"`
-	// 镜像加速类型，取值Default为开启加速，None为关闭加速，默认开启
-	AccelerationType *string `json:"accelerationType,omitempty" xml:"accelerationType,omitempty"`
-	// 容器启动参数
-	Args *string `json:"args,omitempty" xml:"args,omitempty"`
-	// 容器启动命令，等同于 Docker ENTRYPOINT
-	Command *string `json:"command,omitempty" xml:"command,omitempty"`
-	// 容器镜像地址，实例值： registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1
-	Image *string `json:"image,omitempty" xml:"image,omitempty"`
-	// ACR企业版镜像仓库ID，使用ACR企业版镜像时须传入
-	InstanceID *string `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
+	AccelerationType *string           `json:"accelerationType,omitempty" xml:"accelerationType,omitempty"`
+	Args             *string           `json:"args,omitempty" xml:"args,omitempty"`
+	Command          *string           `json:"command,omitempty" xml:"command,omitempty"`
+	Image            *string           `json:"image,omitempty" xml:"image,omitempty"`
+	InstanceID       *string           `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
 }
 
 func (s CustomContainerConfigInfo) String() string {
@@ -285,12 +260,9 @@ func (s *CustomContainerConfigInfo) SetInstanceID(v string) *CustomContainerConf
 }
 
 type CustomDNS struct {
-	// DNS resolver 配置参数列表
-	DnsOptions []*DNSOption `json:"dnsOptions,omitempty" xml:"dnsOptions,omitempty" type:"Repeated"`
-	// DNS 服务器的 IP 地址列表
-	NameServers []*string `json:"nameServers,omitempty" xml:"nameServers,omitempty" type:"Repeated"`
-	// DNS 搜索域的列表
-	Searches []*string `json:"searches,omitempty" xml:"searches,omitempty" type:"Repeated"`
+	DnsOptions  []*DNSOption `json:"dnsOptions,omitempty" xml:"dnsOptions,omitempty" type:"Repeated"`
+	NameServers []*string    `json:"nameServers,omitempty" xml:"nameServers,omitempty" type:"Repeated"`
+	Searches    []*string    `json:"searches,omitempty" xml:"searches,omitempty" type:"Repeated"`
 }
 
 func (s CustomDNS) String() string {
@@ -317,9 +289,7 @@ func (s *CustomDNS) SetSearches(v []*string) *CustomDNS {
 }
 
 type CustomRuntimeConfig struct {
-	// 启动入口命令接收的参数
-	Args []*string `json:"args,omitempty" xml:"args,omitempty" type:"Repeated"`
-	// 启动入口命令
+	Args    []*string `json:"args,omitempty" xml:"args,omitempty" type:"Repeated"`
 	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
 }
 
@@ -342,9 +312,7 @@ func (s *CustomRuntimeConfig) SetCommand(v []*string) *CustomRuntimeConfig {
 }
 
 type DNSOption struct {
-	// DNS option 名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// DNS option 值
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -367,7 +335,6 @@ func (s *DNSOption) SetValue(v string) *DNSOption {
 }
 
 type Destination struct {
-	// destination
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
 }
 
@@ -408,9 +375,7 @@ func (s *DestinationConfig) SetOnSuccess(v *Destination) *DestinationConfig {
 }
 
 type Error struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息描述
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 }
 
@@ -433,10 +398,8 @@ func (s *Error) SetErrorMessage(v string) *Error {
 }
 
 type ErrorInfo struct {
-	// 错误信息
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 错误堆栈
-	StackTrace *string `json:"stackTrace,omitempty" xml:"stackTrace,omitempty"`
+	StackTrace   *string `json:"stackTrace,omitempty" xml:"stackTrace,omitempty"`
 }
 
 func (s ErrorInfo) String() string {
@@ -458,13 +421,10 @@ func (s *ErrorInfo) SetStackTrace(v string) *ErrorInfo {
 }
 
 type EventBridgeTriggerConfig struct {
-	// asyncInvocationType
-	AsyncInvocationType *bool `json:"asyncInvocationType,omitempty" xml:"asyncInvocationType,omitempty"`
-	// eventRuleFilterPattern
+	AsyncInvocationType    *bool              `json:"asyncInvocationType,omitempty" xml:"asyncInvocationType,omitempty"`
 	EventRuleFilterPattern *string            `json:"eventRuleFilterPattern,omitempty" xml:"eventRuleFilterPattern,omitempty"`
 	EventSourceConfig      *EventSourceConfig `json:"eventSourceConfig,omitempty" xml:"eventSourceConfig,omitempty"`
-	// triggerEnable
-	TriggerEnable *bool `json:"triggerEnable,omitempty" xml:"triggerEnable,omitempty"`
+	TriggerEnable          *bool              `json:"triggerEnable,omitempty" xml:"triggerEnable,omitempty"`
 }
 
 func (s EventBridgeTriggerConfig) String() string {
@@ -497,8 +457,7 @@ func (s *EventBridgeTriggerConfig) SetTriggerEnable(v bool) *EventBridgeTriggerC
 
 type EventSourceConfig struct {
 	EventSourceParameters *EventSourceParameters `json:"eventSourceParameters,omitempty" xml:"eventSourceParameters,omitempty"`
-	// eventSourceType
-	EventSourceType *string `json:"eventSourceType,omitempty" xml:"eventSourceType,omitempty"`
+	EventSourceType       *string                `json:"eventSourceType,omitempty" xml:"eventSourceType,omitempty"`
 }
 
 func (s EventSourceConfig) String() string {
@@ -549,10 +508,8 @@ func (s *EventSourceParameters) SetSourceRocketMQParameters(v *SourceRocketMQPar
 }
 
 type HTTPTriggerConfig struct {
-	// 认证类型
-	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
-	// 允许的HTTP方法列表
-	Methods []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	AuthType *string   `json:"authType,omitempty" xml:"authType,omitempty"`
+	Methods  []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
 }
 
 func (s HTTPTriggerConfig) String() string {
@@ -597,7 +554,6 @@ func (s *InstanceLifecycleConfig) SetPreStop(v *LifecycleHook) *InstanceLifecycl
 }
 
 type JaegerConfig struct {
-	// endpoint
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 }
 
@@ -615,9 +571,7 @@ func (s *JaegerConfig) SetEndpoint(v string) *JaegerConfig {
 }
 
 type JobConfig struct {
-	// maxRetryTime
-	MaxRetryTime *int64 `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
-	// triggerInterval
+	MaxRetryTime    *int64 `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
 	TriggerInterval *int64 `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
 }
 
@@ -640,10 +594,8 @@ func (s *JobConfig) SetTriggerInterval(v int64) *JobConfig {
 }
 
 type JobLogConfig struct {
-	// logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// project
-	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	Project  *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 
 func (s JobLogConfig) String() string {
@@ -665,26 +617,18 @@ func (s *JobLogConfig) SetProject(v string) *JobLogConfig {
 }
 
 type Layer struct {
-	// 层访问类型
-	Acl *int32 `json:"acl,omitempty" xml:"acl,omitempty"`
-	// arn
-	Arn *string `json:"arn,omitempty" xml:"arn,omitempty"`
-	// 层代码
-	Code *LayerCode `json:"code,omitempty" xml:"code,omitempty"`
-	// 层Checksum
-	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	// 层代码大小
-	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
-	// compatibleRuntime
-	CompatibleRuntime []*string `json:"compatibleRuntime,omitempty" xml:"compatibleRuntime,omitempty" type:"Repeated"`
-	// 层创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 层描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 层名称
-	LayerName *string `json:"layerName,omitempty" xml:"layerName,omitempty"`
-	// 层版本
-	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
+	Acl               *int32     `json:"acl,omitempty" xml:"acl,omitempty"`
+	Arn               *string    `json:"arn,omitempty" xml:"arn,omitempty"`
+	ArnV2             *string    `json:"arnV2,omitempty" xml:"arnV2,omitempty"`
+	Code              *LayerCode `json:"code,omitempty" xml:"code,omitempty"`
+	CodeChecksum      *string    `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
+	CodeSize          *int64     `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	CompatibleRuntime []*string  `json:"compatibleRuntime,omitempty" xml:"compatibleRuntime,omitempty" type:"Repeated"`
+	CreateTime        *string    `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description       *string    `json:"description,omitempty" xml:"description,omitempty"`
+	LayerName         *string    `json:"layerName,omitempty" xml:"layerName,omitempty"`
+	License           *string    `json:"license,omitempty" xml:"license,omitempty"`
+	Version           *int32     `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s Layer) String() string {
@@ -702,6 +646,11 @@ func (s *Layer) SetAcl(v int32) *Layer {
 
 func (s *Layer) SetArn(v string) *Layer {
 	s.Arn = &v
+	return s
+}
+
+func (s *Layer) SetArnV2(v string) *Layer {
+	s.ArnV2 = &v
 	return s
 }
 
@@ -740,15 +689,18 @@ func (s *Layer) SetLayerName(v string) *Layer {
 	return s
 }
 
+func (s *Layer) SetLicense(v string) *Layer {
+	s.License = &v
+	return s
+}
+
 func (s *Layer) SetVersion(v int32) *Layer {
 	s.Version = &v
 	return s
 }
 
 type LayerCode struct {
-	// 层代码位置
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// 层代码类型
+	Location       *string `json:"location,omitempty" xml:"location,omitempty"`
 	RepositoryType *string `json:"repositoryType,omitempty" xml:"repositoryType,omitempty"`
 }
 
@@ -771,10 +723,8 @@ func (s *LayerCode) SetRepositoryType(v string) *LayerCode {
 }
 
 type LifecycleHook struct {
-	// handler name
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// timeout in second
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	Timeout *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s LifecycleHook) String() string {
@@ -796,16 +746,11 @@ func (s *LifecycleHook) SetTimeout(v int32) *LifecycleHook {
 }
 
 type LogConfig struct {
-	// 开启实例级别指标
-	EnableInstanceMetrics *bool `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
-	// 开启请求级别指标
-	EnableRequestMetrics *bool `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
-	// 日志切分规则
-	LogBeginRule *string `json:"logBeginRule,omitempty" xml:"logBeginRule,omitempty"`
-	// 日志库
-	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// 日志项目
-	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	EnableInstanceMetrics *bool   `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
+	EnableRequestMetrics  *bool   `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
+	LogBeginRule          *string `json:"logBeginRule,omitempty" xml:"logBeginRule,omitempty"`
+	Logstore              *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Project               *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 
 func (s LogConfig) String() string {
@@ -842,9 +787,7 @@ func (s *LogConfig) SetProject(v string) *LogConfig {
 }
 
 type LogTriggerConfig struct {
-	// enable
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// functionParameter
+	Enable            *bool              `json:"enable,omitempty" xml:"enable,omitempty"`
 	FunctionParameter map[string]*string `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
 	JobConfig         *JobConfig         `json:"jobConfig,omitempty" xml:"jobConfig,omitempty"`
 	LogConfig         *JobLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
@@ -885,12 +828,9 @@ func (s *LogTriggerConfig) SetSourceConfig(v *SourceConfig) *LogTriggerConfig {
 }
 
 type MeteringConfig struct {
-	// 日志仓库
 	LogConfig *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	// 支付用户
-	PayerId *string `json:"payerId,omitempty" xml:"payerId,omitempty"`
-	// 权限
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	PayerId   *string    `json:"payerId,omitempty" xml:"payerId,omitempty"`
+	Role      *string    `json:"role,omitempty" xml:"role,omitempty"`
 }
 
 func (s MeteringConfig) String() string {
@@ -917,12 +857,9 @@ func (s *MeteringConfig) SetRole(v string) *MeteringConfig {
 }
 
 type MnsTopicTriggerConfig struct {
-	// filterTag
-	FilterTag *string `json:"filterTag,omitempty" xml:"filterTag,omitempty"`
-	// notifyContentFormat
+	FilterTag           *string `json:"filterTag,omitempty" xml:"filterTag,omitempty"`
 	NotifyContentFormat *string `json:"notifyContentFormat,omitempty" xml:"notifyContentFormat,omitempty"`
-	// notifyStrategy
-	NotifyStrategy *string `json:"notifyStrategy,omitempty" xml:"notifyStrategy,omitempty"`
+	NotifyStrategy      *string `json:"notifyStrategy,omitempty" xml:"notifyStrategy,omitempty"`
 }
 
 func (s MnsTopicTriggerConfig) String() string {
@@ -949,12 +886,9 @@ func (s *MnsTopicTriggerConfig) SetNotifyStrategy(v string) *MnsTopicTriggerConf
 }
 
 type NASConfig struct {
-	// groupID
-	GroupId *int32 `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// 挂载点
+	GroupId     *int32                  `json:"groupId,omitempty" xml:"groupId,omitempty"`
 	MountPoints []*NASConfigMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
-	// userID
-	UserId *int32 `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserId      *int32                  `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s NASConfig) String() string {
@@ -981,9 +915,7 @@ func (s *NASConfig) SetUserId(v int32) *NASConfig {
 }
 
 type NASConfigMountPoints struct {
-	// 本地挂载目录
-	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
-	// NAS服务器地址
+	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
 	ServerAddr *string `json:"serverAddr,omitempty" xml:"serverAddr,omitempty"`
 }
 
@@ -1006,7 +938,6 @@ func (s *NASConfigMountPoints) SetServerAddr(v string) *NASConfigMountPoints {
 }
 
 type OSSTriggerConfig struct {
-	// events
 	Events []*string         `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
 	Filter *OSSTriggerFilter `json:"filter,omitempty" xml:"filter,omitempty"`
 }
@@ -1047,9 +978,7 @@ func (s *OSSTriggerFilter) SetKey(v *OSSTriggerKey) *OSSTriggerFilter {
 }
 
 type OSSTriggerKey struct {
-	// prefix
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// suffix
 	Suffix *string `json:"suffix,omitempty" xml:"suffix,omitempty"`
 }
 
@@ -1072,10 +1001,8 @@ func (s *OSSTriggerKey) SetSuffix(v string) *OSSTriggerKey {
 }
 
 type OnDemandConfig struct {
-	// todo
-	MaximumInstanceCount *int64 `json:"maximumInstanceCount,omitempty" xml:"maximumInstanceCount,omitempty"`
-	// 函数详情
-	Resource *string `json:"resource,omitempty" xml:"resource,omitempty"`
+	MaximumInstanceCount *int64  `json:"maximumInstanceCount,omitempty" xml:"maximumInstanceCount,omitempty"`
+	Resource             *string `json:"resource,omitempty" xml:"resource,omitempty"`
 }
 
 func (s OnDemandConfig) String() string {
@@ -1097,17 +1024,11 @@ func (s *OnDemandConfig) SetResource(v string) *OnDemandConfig {
 }
 
 type OpenReservedCapacity struct {
-	// createdTime
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// cu
-	Cu *int64 `json:"cu,omitempty" xml:"cu,omitempty"`
-	// deadline
-	Deadline *string `json:"deadline,omitempty" xml:"deadline,omitempty"`
-	// instanceId
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// isRefunded
-	IsRefunded *string `json:"isRefunded,omitempty" xml:"isRefunded,omitempty"`
-	// lastModifiedTime
+	CreatedTime      *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Cu               *int64  `json:"cu,omitempty" xml:"cu,omitempty"`
+	Deadline         *string `json:"deadline,omitempty" xml:"deadline,omitempty"`
+	InstanceId       *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	IsRefunded       *string `json:"isRefunded,omitempty" xml:"isRefunded,omitempty"`
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 }
 
@@ -1150,9 +1071,7 @@ func (s *OpenReservedCapacity) SetLastModifiedTime(v string) *OpenReservedCapaci
 }
 
 type OutputCodeLocation struct {
-	// location
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// repositoryType
+	Location       *string `json:"location,omitempty" xml:"location,omitempty"`
 	RepositoryType *string `json:"repositoryType,omitempty" xml:"repositoryType,omitempty"`
 }
 
@@ -1175,16 +1094,11 @@ func (s *OutputCodeLocation) SetRepositoryType(v string) *OutputCodeLocation {
 }
 
 type PathConfig struct {
-	// 该路径/方法对应的函数名称
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// 请求方法，不填表示当前路径的所有方法匹配同一函数
-	Methods []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
-	// 请求路径
-	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 该路径/方法对应服务的版本/别名
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// 该路径/方法对应的服务名称
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	FunctionName *string   `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	Methods      []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	Path         *string   `json:"path,omitempty" xml:"path,omitempty"`
+	Qualifier    *string   `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	ServiceName  *string   `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s PathConfig) String() string {
@@ -1220,11 +1134,44 @@ func (s *PathConfig) SetServiceName(v string) *PathConfig {
 	return s
 }
 
+type PolicyItem struct {
+	Key      []byte `json:"key,omitempty" xml:"key,omitempty"`
+	Operator []byte `json:"operator,omitempty" xml:"operator,omitempty"`
+	Type     []byte `json:"type,omitempty" xml:"type,omitempty"`
+	Value    []byte `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s PolicyItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PolicyItem) GoString() string {
+	return s.String()
+}
+
+func (s *PolicyItem) SetKey(v []byte) *PolicyItem {
+	s.Key = v
+	return s
+}
+
+func (s *PolicyItem) SetOperator(v []byte) *PolicyItem {
+	s.Operator = v
+	return s
+}
+
+func (s *PolicyItem) SetType(v []byte) *PolicyItem {
+	s.Type = v
+	return s
+}
+
+func (s *PolicyItem) SetValue(v []byte) *PolicyItem {
+	s.Value = v
+	return s
+}
+
 type PreFreeze struct {
-	// preFreeze handler name
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// handler timeout
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	Timeout *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s PreFreeze) String() string {
@@ -1246,10 +1193,8 @@ func (s *PreFreeze) SetTimeout(v int32) *PreFreeze {
 }
 
 type PreStop struct {
-	// PreStop handler
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// PreStop hander timeout
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	Timeout *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s PreStop) String() string {
@@ -1271,13 +1216,9 @@ func (s *PreStop) SetTimeout(v int32) *PreStop {
 }
 
 type RdsTriggerConfig struct {
-	// concurrency
-	Concurrency *int64 `json:"concurrency,omitempty" xml:"concurrency,omitempty"`
-	// eventFormat
-	EventFormat *string `json:"eventFormat,omitempty" xml:"eventFormat,omitempty"`
-	// retry
-	Retry *int64 `json:"retry,omitempty" xml:"retry,omitempty"`
-	// subscriptionObjects
+	Concurrency         *int64    `json:"concurrency,omitempty" xml:"concurrency,omitempty"`
+	EventFormat         *string   `json:"eventFormat,omitempty" xml:"eventFormat,omitempty"`
+	Retry               *int64    `json:"retry,omitempty" xml:"retry,omitempty"`
 	SubscriptionObjects []*string `json:"subscriptionObjects,omitempty" xml:"subscriptionObjects,omitempty" type:"Repeated"`
 }
 
@@ -1310,10 +1251,8 @@ func (s *RdsTriggerConfig) SetSubscriptionObjects(v []*string) *RdsTriggerConfig
 }
 
 type Resource struct {
-	// resourceArn
-	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
-	// tags
-	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
+	ResourceArn *string            `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
+	Tags        map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
 func (s Resource) String() string {
@@ -1335,7 +1274,6 @@ func (s *Resource) SetTags(v map[string]*string) *Resource {
 }
 
 type RouteConfig struct {
-	// routes
 	Routes []*PathConfig `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
 }
 
@@ -1352,17 +1290,35 @@ func (s *RouteConfig) SetRoutes(v []*PathConfig) *RouteConfig {
 	return s
 }
 
+type RoutePolicy struct {
+	Condition   []byte      `json:"condition,omitempty" xml:"condition,omitempty"`
+	PolicyItems *PolicyItem `json:"policyItems,omitempty" xml:"policyItems,omitempty"`
+}
+
+func (s RoutePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RoutePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *RoutePolicy) SetCondition(v []byte) *RoutePolicy {
+	s.Condition = v
+	return s
+}
+
+func (s *RoutePolicy) SetPolicyItems(v *PolicyItem) *RoutePolicy {
+	s.PolicyItems = v
+	return s
+}
+
 type ScheduledActions struct {
-	// endTime
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// name
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// scheduleExpression
+	EndTime            *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
 	ScheduleExpression *string `json:"scheduleExpression,omitempty" xml:"scheduleExpression,omitempty"`
-	// startTime
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// target
-	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
+	StartTime          *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Target             *int64  `json:"target,omitempty" xml:"target,omitempty"`
 }
 
 func (s ScheduledActions) String() string {
@@ -1399,7 +1355,6 @@ func (s *ScheduledActions) SetTarget(v int64) *ScheduledActions {
 }
 
 type SourceConfig struct {
-	// logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
 }
 
@@ -1417,12 +1372,9 @@ func (s *SourceConfig) SetLogstore(v string) *SourceConfig {
 }
 
 type SourceMNSParameters struct {
-	// IsBase64Decode
-	IsBase64Decode *bool `json:"IsBase64Decode,omitempty" xml:"IsBase64Decode,omitempty"`
-	// QueueName
-	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	IsBase64Decode *bool   `json:"IsBase64Decode,omitempty" xml:"IsBase64Decode,omitempty"`
+	QueueName      *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SourceMNSParameters) String() string {
@@ -1449,13 +1401,9 @@ func (s *SourceMNSParameters) SetRegionId(v string) *SourceMNSParameters {
 }
 
 type SourceRabbitMQParameters struct {
-	// InstanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// QueueName
-	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// VirtualHostName
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	QueueName       *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
 }
 
@@ -1488,20 +1436,13 @@ func (s *SourceRabbitMQParameters) SetVirtualHostName(v string) *SourceRabbitMQP
 }
 
 type SourceRocketMQParameters struct {
-	// GroupID
-	GroupID *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
-	// InstanceId
+	GroupID    *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Offset
-	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Tag
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// Timestamp
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// Topic
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Offset     *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Timestamp  *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s SourceRocketMQParameters) String() string {
@@ -1548,34 +1489,20 @@ func (s *SourceRocketMQParameters) SetTopic(v string) *SourceRocketMQParameters 
 }
 
 type StatefulAsyncInvocation struct {
-	// 异步任务调用失败后的已重试次数。
-	AlreadyRetriedTimes *int64 `json:"alreadyRetriedTimes,omitempty" xml:"alreadyRetriedTimes,omitempty"`
-	// 异步任务的目的状态。
-	DestinationStatus *string `json:"destinationStatus,omitempty" xml:"destinationStatus,omitempty"`
-	// 异步任务的结束时间。
-	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 异步任务事件列表。
-	Events []*StatefulAsyncInvocationEvent `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	// 异步任务所属的函数的名称。
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// 异步任务的执行实例ID。
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 异步任务的错误消息。
-	InvocationErrorMessage *string `json:"invocationErrorMessage,omitempty" xml:"invocationErrorMessage,omitempty"`
-	// 异步任务ID。
-	InvocationId *string `json:"invocationId,omitempty" xml:"invocationId,omitempty"`
-	// 异步任务的任务触发事件。
-	InvocationPayload *string `json:"invocationPayload,omitempty" xml:"invocationPayload,omitempty"`
-	// 异步任务所属的服务的别名或版本。
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// 异步任务的请求ID。
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 异步任务所属的服务的名称。
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// 异步任务的开始时间。
-	StartedTime *int64 `json:"startedTime,omitempty" xml:"startedTime,omitempty"`
-	// 异步任务的执行状态。      Enqueued：异步消息已入队，等待处理。      Succeeded：调用执行成功。      Failed：调用执行失败。      Running：调用执行中。      Stopped：调用执行终止。      Stopping：执行停止中。      Invalid：您的执行因函数被删除等原因处于无效状态（任务未被执行）。      Expired：您为任务配置了最长排队等待的期限。该任务因为超期被丢弃（任务未被执行）。      Retrying：异步调用因执行错误重试中。
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	AlreadyRetriedTimes    *int64                          `json:"alreadyRetriedTimes,omitempty" xml:"alreadyRetriedTimes,omitempty"`
+	DestinationStatus      *string                         `json:"destinationStatus,omitempty" xml:"destinationStatus,omitempty"`
+	EndTime                *int64                          `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Events                 []*StatefulAsyncInvocationEvent `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	FunctionName           *string                         `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	InstanceId             *string                         `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InvocationErrorMessage *string                         `json:"invocationErrorMessage,omitempty" xml:"invocationErrorMessage,omitempty"`
+	InvocationId           *string                         `json:"invocationId,omitempty" xml:"invocationId,omitempty"`
+	InvocationPayload      *string                         `json:"invocationPayload,omitempty" xml:"invocationPayload,omitempty"`
+	Qualifier              *string                         `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	RequestId              *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ServiceName            *string                         `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	StartedTime            *int64                          `json:"startedTime,omitempty" xml:"startedTime,omitempty"`
+	Status                 *string                         `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s StatefulAsyncInvocation) String() string {
@@ -1657,14 +1584,10 @@ func (s *StatefulAsyncInvocation) SetStatus(v string) *StatefulAsyncInvocation {
 }
 
 type StatefulAsyncInvocationEvent struct {
-	// 事件详细数据。
 	EventDetail *string `json:"eventDetail,omitempty" xml:"eventDetail,omitempty"`
-	// 事件ID。
-	EventId *int64 `json:"eventId,omitempty" xml:"eventId,omitempty"`
-	// 事件执行状态。
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 事件时间。
-	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	EventId     *int64  `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
+	Timestamp   *int64  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 }
 
 func (s StatefulAsyncInvocationEvent) String() string {
@@ -1696,12 +1619,9 @@ func (s *StatefulAsyncInvocationEvent) SetTimestamp(v int64) *StatefulAsyncInvoc
 }
 
 type TLSConfig struct {
-	// TLS加密套件列表
 	CipherSuites []*string `json:"cipherSuites,omitempty" xml:"cipherSuites,omitempty" type:"Repeated"`
-	// TLS最大版本号
-	MaxVersion *string `json:"maxVersion,omitempty" xml:"maxVersion,omitempty"`
-	// TLS最小版本号
-	MinVersion *string `json:"minVersion,omitempty" xml:"minVersion,omitempty"`
+	MaxVersion   *string   `json:"maxVersion,omitempty" xml:"maxVersion,omitempty"`
+	MinVersion   *string   `json:"minVersion,omitempty" xml:"minVersion,omitempty"`
 }
 
 func (s TLSConfig) String() string {
@@ -1728,20 +1648,13 @@ func (s *TLSConfig) SetMinVersion(v string) *TLSConfig {
 }
 
 type TargetTrackingPolicies struct {
-	// endTime
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// maxCapacity
-	MaxCapacity *int64 `json:"maxCapacity,omitempty" xml:"maxCapacity,omitempty"`
-	// metricTarget
+	EndTime      *string  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	MaxCapacity  *int64   `json:"maxCapacity,omitempty" xml:"maxCapacity,omitempty"`
 	MetricTarget *float64 `json:"metricTarget,omitempty" xml:"metricTarget,omitempty"`
-	// metricType
-	MetricType *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
-	// minCapacity
-	MinCapacity *int64 `json:"minCapacity,omitempty" xml:"minCapacity,omitempty"`
-	// name
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// startTime
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	MetricType   *string  `json:"metricType,omitempty" xml:"metricType,omitempty"`
+	MinCapacity  *int64   `json:"minCapacity,omitempty" xml:"minCapacity,omitempty"`
+	Name         *string  `json:"name,omitempty" xml:"name,omitempty"`
+	StartTime    *string  `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s TargetTrackingPolicies) String() string {
@@ -1788,12 +1701,9 @@ func (s *TargetTrackingPolicies) SetStartTime(v string) *TargetTrackingPolicies 
 }
 
 type TimeTriggerConfig struct {
-	// cronExpression
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
-	// enable
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// payload
-	Payload *string `json:"payload,omitempty" xml:"payload,omitempty"`
+	Enable         *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	Payload        *string `json:"payload,omitempty" xml:"payload,omitempty"`
 }
 
 func (s TimeTriggerConfig) String() string {
@@ -1820,10 +1730,8 @@ func (s *TimeTriggerConfig) SetPayload(v string) *TimeTriggerConfig {
 }
 
 type TracingConfig struct {
-	// 链路追踪参数。当协议类型为 Jaeger 时，参数为 map[string]string，其中 key 为 "endpoint"，value 为您的链路追踪内网接入点。例如 endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/otlp/traces
 	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
-	// 链路追踪协议类型，目前只支持 Jaeger
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type   *string            `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s TracingConfig) String() string {
@@ -1845,14 +1753,10 @@ func (s *TracingConfig) SetType(v string) *TracingConfig {
 }
 
 type VPCConfig struct {
-	// Role
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// 安全组ID
-	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	// VSwitch ID列表
-	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// VPC ID
-	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	Role            *string   `json:"role,omitempty" xml:"role,omitempty"`
+	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	VSwitchIds      []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
+	VpcId           *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s VPCConfig) String() string {
@@ -1936,14 +1840,12 @@ func (s *CreateAliasHeaders) SetXFcTraceId(v string) *CreateAliasHeaders {
 }
 
 type CreateAliasRequest struct {
-	// 额外版本权重
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
-	// 别名名称
-	AliasName *string `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
-	// 别名描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 版本ID
-	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	AliasName               *string             `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
+	Description             *string             `json:"description,omitempty" xml:"description,omitempty"`
+	ResolvePolicy           *string             `json:"resolvePolicy,omitempty" xml:"resolvePolicy,omitempty"`
+	RoutePolicy             *RoutePolicy        `json:"routePolicy,omitempty" xml:"routePolicy,omitempty"`
+	VersionId               *string             `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s CreateAliasRequest) String() string {
@@ -1969,24 +1871,28 @@ func (s *CreateAliasRequest) SetDescription(v string) *CreateAliasRequest {
 	return s
 }
 
+func (s *CreateAliasRequest) SetResolvePolicy(v string) *CreateAliasRequest {
+	s.ResolvePolicy = &v
+	return s
+}
+
+func (s *CreateAliasRequest) SetRoutePolicy(v *RoutePolicy) *CreateAliasRequest {
+	s.RoutePolicy = v
+	return s
+}
+
 func (s *CreateAliasRequest) SetVersionId(v string) *CreateAliasRequest {
 	s.VersionId = &v
 	return s
 }
 
 type CreateAliasResponseBody struct {
-	// 额外版本权重
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
-	// 别名名称
-	AliasName *string `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 别名描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 上次更新时间
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// 版本ID
-	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	AliasName               *string             `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
+	CreatedTime             *string             `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description             *string             `json:"description,omitempty" xml:"description,omitempty"`
+	LastModifiedTime        *string             `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	VersionId               *string             `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s CreateAliasResponseBody) String() string {
@@ -2133,11 +2039,10 @@ func (s *CreateCustomDomainRequest) SetTlsConfig(v *TLSConfig) *CreateCustomDoma
 }
 
 type CreateCustomDomainResponseBody struct {
-	AccountId   *string     `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	ApiVersion  *string     `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	CertConfig  *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
-	CreatedTime *string     `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// Id of the request
+	AccountId        *string      `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	ApiVersion       *string      `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	CertConfig       *CertConfig  `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	CreatedTime      *string      `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	DomainName       *string      `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	LastModifiedTime *string      `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	Protocol         *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
@@ -2269,37 +2174,25 @@ func (s *CreateFunctionHeaders) SetXFcTraceId(v string) *CreateFunctionHeaders {
 }
 
 type CreateFunctionRequest struct {
-	// 自定义、自定义容器运行时 HTTP Server 的监听端口
-	CaPort                *int32                 `json:"caPort,omitempty" xml:"caPort,omitempty"`
-	Code                  *Code                  `json:"code,omitempty" xml:"code,omitempty"`
-	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// 函数自定义DNS配置
-	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// Custom Runtime函数详细配置
-	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	// 函数描述
-	Description          *string            `json:"description,omitempty" xml:"description,omitempty"`
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// 函数名称
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// function执行的入口，具体格式和语言相关
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// 初始化function运行的超时时间，单位为秒，最小1秒，默认3秒。初始化function超过这个时间后会被终止执行
-	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// 初始化 function 执行的入口，具体格式和语言相关
+	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	Code                    *Code                    `json:"code,omitempty" xml:"code,omitempty"`
+	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	FunctionName            *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	InitializationTimeout   *int32                   `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
 	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
 	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// 层列表
-	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// function的内存规格，单位为MB，为64MB的倍数
-	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// function运行的语言环境，目前支持nodejs6, nodejs8, python2.7, python3, java8
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// function运行的超时时间，单位为秒，最小1秒，默认3秒。function超过这个时间后会被终止执行
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	Layers                  []*string                `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s CreateFunctionRequest) String() string {
@@ -2406,45 +2299,29 @@ func (s *CreateFunctionRequest) SetTimeout(v int32) *CreateFunctionRequest {
 }
 
 type CreateFunctionResponseBody struct {
-	// 自定义、自定义容器运行时 HTTP Server 的监听端口
-	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
-	// function code包的CRC64值
-	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	// 系统返回的function的code包大小，单位为byte Example : 1024
-	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
-	// function创建时间
-	CreatedTime           *string                `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// 函数自定义DNS配置
-	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// Custom Runtime函数详细配置
-	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	// 函数描述
-	Description          *string            `json:"description,omitempty" xml:"description,omitempty"`
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// 系统为每个function生成的唯一ID
-	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
-	// 函数名称
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// function的执行入口
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// 初始化function运行的超时时间，单位为秒，最小1秒，默认3秒。初始化function超过这个时间后会被终止执行
-	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// 初始化 function 执行的入口，具体格式和语言相关
+	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	CodeChecksum            *string                  `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
+	CodeSize                *int64                   `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	CreatedTime             *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	FunctionId              *string                  `json:"functionId,omitempty" xml:"functionId,omitempty"`
+	FunctionName            *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	InitializationTimeout   *int32                   `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
 	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
 	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// function上次修改时间
-	LastModifiedTime *string   `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	Layers           []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// function设置的内存大小，单位为MB
-	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// function运行的语言环境，目前支持nodejs6, nodejs8, python2.7, python3, java8
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// 运行的超时时间，单位为秒
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	LastModifiedTime        *string                  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Layers                  []*string                `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s CreateFunctionResponseBody) String() string {
@@ -2799,18 +2676,14 @@ func (s *CreateServiceHeaders) SetXFcTraceId(v string) *CreateServiceHeaders {
 }
 
 type CreateServiceRequest struct {
-	// 服务描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 公网访问设置
-	InternetAccess *bool      `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LogConfig      *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	NasConfig      *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	// 服务角色
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// 服务名称
-	ServiceName   *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	Description    *string        `json:"description,omitempty" xml:"description,omitempty"`
+	InternetAccess *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LogConfig      *LogConfig     `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	NasConfig      *NASConfig     `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	Role           *string        `json:"role,omitempty" xml:"role,omitempty"`
+	ServiceName    *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	TracingConfig  *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig      *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -2862,25 +2735,17 @@ func (s *CreateServiceRequest) SetVpcConfig(v *VPCConfig) *CreateServiceRequest 
 }
 
 type CreateServiceResponseBody struct {
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 服务描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 公网访问设置
-	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	// 上次更新时间
-	LastModifiedTime *string    `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	LogConfig        *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	NasConfig        *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	// 服务角色
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// 服务ID
-	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 服务名称
-	ServiceName   *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VendorConfig  *VendorConfig  `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
-	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	CreatedTime      *string        `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string        `json:"description,omitempty" xml:"description,omitempty"`
+	InternetAccess   *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LastModifiedTime *string        `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LogConfig        *LogConfig     `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	NasConfig        *NASConfig     `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	Role             *string        `json:"role,omitempty" xml:"role,omitempty"`
+	ServiceId        *string        `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName      *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	TracingConfig    *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig        *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s CreateServiceResponseBody) String() string {
@@ -2938,11 +2803,6 @@ func (s *CreateServiceResponseBody) SetServiceName(v string) *CreateServiceRespo
 
 func (s *CreateServiceResponseBody) SetTracingConfig(v *TracingConfig) *CreateServiceResponseBody {
 	s.TracingConfig = v
-	return s
-}
-
-func (s *CreateServiceResponseBody) SetVendorConfig(v *VendorConfig) *CreateServiceResponseBody {
-	s.VendorConfig = v
 	return s
 }
 
@@ -3016,19 +2876,13 @@ func (s *CreateTriggerHeaders) SetXFcTraceId(v string) *CreateTriggerHeaders {
 }
 
 type CreateTriggerRequest struct {
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// event source，如OSS，使用该role去invoke function
+	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
 	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
-	// service版本
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// event source的Aliyun Resource Name（ARN
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
-	// trigger配置，针对不同的trigger类型，trigger配置会有所不同
-	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
-	// trigger名称
-	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
-	// trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
-	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	Qualifier      *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	SourceArn      *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	TriggerConfig  *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	TriggerName    *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	TriggerType    *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
 }
 
 func (s CreateTriggerRequest) String() string {
@@ -3075,30 +2929,19 @@ func (s *CreateTriggerRequest) SetTriggerType(v string) *CreateTriggerRequest {
 }
 
 type CreateTriggerResponseBody struct {
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 域名名称，使用域名名称拼接上函数计算域名，可以采用HTTP协议调用到触发器对应版本的函数。例如{domainName}.cn-shanghai.fc.aliyuncs.com
-	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	// 调用函数使用的RAM角色的ARN
-	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
-	// 上次修改时间
+	CreatedTime      *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	DomainName       *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	InvocationRole   *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// service版本
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// event source的Aliyun Resource Name（ARN
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
-	// trigger配置对象
-	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
-	TriggerId     *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
-	// trigger名称
-	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
-	// trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
-	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
-	// 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
-	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
-	// 私网域名地址。在VPC可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
-	UrlIntranet *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
+	Qualifier        *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	SourceArn        *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	TriggerConfig    *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	TriggerId        *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
+	TriggerName      *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	TriggerType      *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	UrlInternet      *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	UrlIntranet      *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
 }
 
 func (s CreateTriggerResponseBody) String() string {
@@ -3402,11 +3245,10 @@ func (s *DeleteCustomDomainResponse) SetStatusCode(v int32) *DeleteCustomDomainR
 
 type DeleteFunctionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteFunctionHeaders) String() string {
@@ -3501,7 +3343,6 @@ func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetXFcTraceId(v string) *Delete
 }
 
 type DeleteFunctionAsyncInvokeConfigRequest struct {
-	// 限定符
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -3583,7 +3424,6 @@ func (s *DeleteFunctionOnDemandConfigHeaders) SetXFcTraceId(v string) *DeleteFun
 }
 
 type DeleteFunctionOnDemandConfigRequest struct {
-	// 服务别名或LATEST，不支持版本。
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -3683,11 +3523,10 @@ func (s *DeleteLayerVersionResponse) SetStatusCode(v int32) *DeleteLayerVersionR
 
 type DeleteServiceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteServiceHeaders) String() string {
@@ -3806,11 +3645,10 @@ func (s *DeleteServiceVersionResponse) SetStatusCode(v int32) *DeleteServiceVers
 
 type DeleteTriggerHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteTriggerHeaders) String() string {
@@ -3963,7 +3801,6 @@ func (s *DeregisterEventSourceHeaders) SetXFcTraceId(v string) *DeregisterEventS
 }
 
 type DeregisterEventSourceRequest struct {
-	// 别名或版本
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4039,10 +3876,8 @@ func (s *GetAccountSettingsHeaders) SetXFcTraceId(v string) *GetAccountSettingsH
 }
 
 type GetAccountSettingsResponseBody struct {
-	// 可用区列表
 	AvailableAZs []*string `json:"availableAZs,omitempty" xml:"availableAZs,omitempty" type:"Repeated"`
-	// 默认服务角色
-	DefaultRole *string `json:"defaultRole,omitempty" xml:"defaultRole,omitempty"`
+	DefaultRole  *string   `json:"defaultRole,omitempty" xml:"defaultRole,omitempty"`
 }
 
 func (s GetAccountSettingsResponseBody) String() string {
@@ -4128,18 +3963,14 @@ func (s *GetAliasHeaders) SetXFcTraceId(v string) *GetAliasHeaders {
 }
 
 type GetAliasResponseBody struct {
-	// 额外版本权重
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
-	// 别名名称
-	AliasName *string `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 别名描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 上次更新时间
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// 版本ID
-	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	AliasName               *string             `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
+	CreatedTime             *string             `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description             *string             `json:"description,omitempty" xml:"description,omitempty"`
+	LastModifiedTime        *string             `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	ResolvePolicy           *string             `json:"resolvePolicy,omitempty" xml:"resolvePolicy,omitempty"`
+	RoutePolicy             *RoutePolicy        `json:"routePolicy,omitempty" xml:"routePolicy,omitempty"`
+	VersionId               *string             `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s GetAliasResponseBody) String() string {
@@ -4172,6 +4003,16 @@ func (s *GetAliasResponseBody) SetDescription(v string) *GetAliasResponseBody {
 
 func (s *GetAliasResponseBody) SetLastModifiedTime(v string) *GetAliasResponseBody {
 	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *GetAliasResponseBody) SetResolvePolicy(v string) *GetAliasResponseBody {
+	s.ResolvePolicy = &v
+	return s
+}
+
+func (s *GetAliasResponseBody) SetRoutePolicy(v *RoutePolicy) *GetAliasResponseBody {
+	s.RoutePolicy = v
 	return s
 }
 
@@ -4245,11 +4086,10 @@ func (s *GetCustomDomainHeaders) SetXFcTraceId(v string) *GetCustomDomainHeaders
 }
 
 type GetCustomDomainResponseBody struct {
-	AccountId   *string     `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	ApiVersion  *string     `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	CertConfig  *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
-	CreatedTime *string     `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// Id of the request
+	AccountId        *string      `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	ApiVersion       *string      `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	CertConfig       *CertConfig  `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	CreatedTime      *string      `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	DomainName       *string      `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	LastModifiedTime *string      `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	Protocol         *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
@@ -4375,7 +4215,6 @@ func (s *GetFunctionHeaders) SetXFcTraceId(v string) *GetFunctionHeaders {
 }
 
 type GetFunctionRequest struct {
-	// service版本, 可以是versionId或者aliasName
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4393,46 +4232,29 @@ func (s *GetFunctionRequest) SetQualifier(v string) *GetFunctionRequest {
 }
 
 type GetFunctionResponseBody struct {
-	// 自定义、自定义容器运行时 HTTP Server 的监听端口
-	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
-	// function code包的CRC64值
-	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	// 系统返回的function的code包大小，单位为byte Example : 1024
-	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
-	// function创建时间
-	CreatedTime           *string                    `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	CustomContainerConfig *CustomContainerConfigInfo `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// 函数自定义DNS配置
-	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// Custom Runtime函数详细配置
-	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	// 函数描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 为函数设置的环境变量，可以在函数中获取环境变量的值
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// 系统为每个function生成的唯一ID
-	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
-	// 函数名称
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// function的执行入口
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// 初始化function运行的超时时间，单位为秒，最小1秒，默认3秒。初始化function超过这个时间后会被终止执行
-	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// 初始化 function 执行的入口，具体格式和语言相关
-	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
-	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
-	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
-	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// function上次修改时间
-	LastModifiedTime *string   `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	Layers           []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// function设置的内存大小，单位为MB
-	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// function运行的语言环境，目前支持nodejs6, nodejs8, python2.7, python3, java8
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// 运行的超时时间，单位为秒
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	CaPort                  *int32                     `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	CodeChecksum            *string                    `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
+	CodeSize                *int64                     `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	CreatedTime             *string                    `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CustomContainerConfig   *CustomContainerConfigInfo `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomDNS               *CustomDNS                 `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomRuntimeConfig     *CustomRuntimeConfig       `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	Description             *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	EnvironmentVariables    map[string]*string         `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	FunctionId              *string                    `json:"functionId,omitempty" xml:"functionId,omitempty"`
+	FunctionName            *string                    `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	Handler                 *string                    `json:"handler,omitempty" xml:"handler,omitempty"`
+	InitializationTimeout   *int32                     `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
+	Initializer             *string                    `json:"initializer,omitempty" xml:"initializer,omitempty"`
+	InstanceConcurrency     *int32                     `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
+	InstanceLifecycleConfig *InstanceLifecycleConfig   `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	InstanceSoftConcurrency *int32                     `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
+	InstanceType            *string                    `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	LastModifiedTime        *string                    `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Layers                  []*string                  `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	MemorySize              *int32                     `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	Runtime                 *string                    `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Timeout                 *int32                     `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s GetFunctionResponseBody) String() string {
@@ -4623,7 +4445,6 @@ func (s *GetFunctionAsyncInvokeConfigHeaders) SetXFcTraceId(v string) *GetFuncti
 }
 
 type GetFunctionAsyncInvokeConfigRequest struct {
-	// 限定符
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4641,22 +4462,15 @@ func (s *GetFunctionAsyncInvokeConfigRequest) SetQualifier(v string) *GetFunctio
 }
 
 type GetFunctionAsyncInvokeConfigResponseBody struct {
-	// 创建时间
-	CreatedTime       *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	DestinationConfig *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
-	// 函数名称
-	Function *string `json:"function,omitempty" xml:"function,omitempty"`
-	// 最后更改时间
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// 消息最大存活时长
-	MaxAsyncEventAgeInSeconds *int64 `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
-	// 异步调用失败后的最大重试次数
-	MaxAsyncRetryAttempts *int64 `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
-	// 限定符
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// 服务名称
-	Service            *string `json:"service,omitempty" xml:"service,omitempty"`
-	StatefulInvocation *bool   `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
+	CreatedTime               *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DestinationConfig         *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
+	Function                  *string            `json:"function,omitempty" xml:"function,omitempty"`
+	LastModifiedTime          *string            `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	MaxAsyncEventAgeInSeconds *int64             `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
+	MaxAsyncRetryAttempts     *int64             `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
+	Qualifier                 *string            `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	Service                   *string            `json:"service,omitempty" xml:"service,omitempty"`
+	StatefulInvocation        *bool              `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
 }
 
 func (s GetFunctionAsyncInvokeConfigResponseBody) String() string {
@@ -4777,7 +4591,6 @@ func (s *GetFunctionCodeHeaders) SetXFcTraceId(v string) *GetFunctionCodeHeaders
 }
 
 type GetFunctionCodeRequest struct {
-	// service版本, 可以是versionId或者aliasName
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4795,10 +4608,8 @@ func (s *GetFunctionCodeRequest) SetQualifier(v string) *GetFunctionCodeRequest 
 }
 
 type GetFunctionCodeResponseBody struct {
-	// function code包的CRC64值
 	Checksum *string `json:"checksum,omitempty" xml:"checksum,omitempty"`
-	// 获取function代码的URL
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	Url      *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s GetFunctionCodeResponseBody) String() string {
@@ -4901,9 +4712,8 @@ func (s *GetFunctionOnDemandConfigRequest) SetQualifier(v string) *GetFunctionOn
 }
 
 type GetFunctionOnDemandConfigResponseBody struct {
-	MaximumInstanceCount *int64 `json:"maximumInstanceCount,omitempty" xml:"maximumInstanceCount,omitempty"`
-	// Id of the request
-	Resource *string `json:"resource,omitempty" xml:"resource,omitempty"`
+	MaximumInstanceCount *int64  `json:"maximumInstanceCount,omitempty" xml:"maximumInstanceCount,omitempty"`
+	Resource             *string `json:"resource,omitempty" xml:"resource,omitempty"`
 }
 
 func (s GetFunctionOnDemandConfigResponseBody) String() string {
@@ -5053,7 +4863,6 @@ func (s *GetProvisionConfigHeaders) SetXFcTraceId(v string) *GetProvisionConfigH
 }
 
 type GetProvisionConfigRequest struct {
-	// 别名名称
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -5071,19 +4880,12 @@ func (s *GetProvisionConfigRequest) SetQualifier(v string) *GetProvisionConfigRe
 }
 
 type GetProvisionConfigResponseBody struct {
-	// 是否始终分配CPU给函数实例。
-	AlwaysAllocateCPU *bool `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
-	// 实际资源个数
-	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
-	// 预留实例创建失败时的错误信息
-	CurrentError *string `json:"currentError,omitempty" xml:"currentError,omitempty"`
-	// 资源描述
-	Resource *string `json:"resource,omitempty" xml:"resource,omitempty"`
-	// 定时策略配置
-	ScheduledActions []*ScheduledActions `json:"scheduledActions,omitempty" xml:"scheduledActions,omitempty" type:"Repeated"`
-	// 目标资源个数
-	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
-	// 指标追踪伸缩策略配置
+	AlwaysAllocateCPU      *bool                     `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
+	Current                *int64                    `json:"current,omitempty" xml:"current,omitempty"`
+	CurrentError           *string                   `json:"currentError,omitempty" xml:"currentError,omitempty"`
+	Resource               *string                   `json:"resource,omitempty" xml:"resource,omitempty"`
+	ScheduledActions       []*ScheduledActions       `json:"scheduledActions,omitempty" xml:"scheduledActions,omitempty" type:"Repeated"`
+	Target                 *int64                    `json:"target,omitempty" xml:"target,omitempty"`
 	TargetTrackingPolicies []*TargetTrackingPolicies `json:"targetTrackingPolicies,omitempty" xml:"targetTrackingPolicies,omitempty" type:"Repeated"`
 }
 
@@ -5195,7 +4997,6 @@ func (s *GetResourceTagsHeaders) SetXFcTraceId(v string) *GetResourceTagsHeaders
 }
 
 type GetResourceTagsRequest struct {
-	// Resource ARN 全称或者简称
 	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
 }
 
@@ -5213,10 +5014,8 @@ func (s *GetResourceTagsRequest) SetResourceArn(v string) *GetResourceTagsReques
 }
 
 type GetResourceTagsResponseBody struct {
-	// Resource ARN 全称
-	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
-	// tag 列表
-	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
+	ResourceArn *string            `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
+	Tags        map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
 func (s GetResourceTagsResponseBody) String() string {
@@ -5302,7 +5101,6 @@ func (s *GetServiceHeaders) SetXFcTraceId(v string) *GetServiceHeaders {
 }
 
 type GetServiceRequest struct {
-	// 限定符
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -5320,24 +5118,17 @@ func (s *GetServiceRequest) SetQualifier(v string) *GetServiceRequest {
 }
 
 type GetServiceResponseBody struct {
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 服务描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 公网访问设置
-	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	// 上次更新时间
-	LastModifiedTime *string    `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	LogConfig        *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	NasConfig        *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	// 服务角色
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// 服务ID
-	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 服务名称
-	ServiceName   *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	CreatedTime      *string        `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string        `json:"description,omitempty" xml:"description,omitempty"`
+	InternetAccess   *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LastModifiedTime *string        `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LogConfig        *LogConfig     `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	NasConfig        *NASConfig     `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	Role             *string        `json:"role,omitempty" xml:"role,omitempty"`
+	ServiceId        *string        `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName      *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	TracingConfig    *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig        *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s GetServiceResponseBody) String() string {
@@ -5567,30 +5358,19 @@ func (s *GetTriggerHeaders) SetXFcTraceId(v string) *GetTriggerHeaders {
 }
 
 type GetTriggerResponseBody struct {
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 域名名称，使用域名名称拼接上函数计算域名，可以采用HTTP协议调用到触发器对应版本的函数。例如{domainName}.cn-shanghai.fc.aliyuncs.com
-	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	// 调用函数使用的RAM角色的ARN
-	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
-	// 上次修改时间
+	CreatedTime      *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	DomainName       *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	InvocationRole   *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// service版本
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// event source的Aliyun Resource Name（ARN
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
-	// trigger配置对象
-	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
-	TriggerId     *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
-	// trigger名称
-	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
-	// trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
-	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
-	// 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
-	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
-	// 私网域名地址。在VPC可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
-	UrlIntranet *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
+	Qualifier        *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	SourceArn        *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	TriggerConfig    *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	TriggerId        *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
+	TriggerName      *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	TriggerType      *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	UrlInternet      *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	UrlIntranet      *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
 }
 
 func (s GetTriggerResponseBody) String() string {
@@ -5696,15 +5476,13 @@ func (s *GetTriggerResponse) SetBody(v *GetTriggerResponseBody) *GetTriggerRespo
 }
 
 type InvokeFunctionHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// 调用方式:Sync或者Async，默认值：Sync
-	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	// 请求返回日志类型, Tail 为返回函数日志最后 4KB 数据，None 或空值则返回不带有日志，默认为 None
-	XFcLogType                   *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcStatefulAsyncInvocationId *string `json:"X-Fc-Stateful-Async-Invocation-Id,omitempty" xml:"X-Fc-Stateful-Async-Invocation-Id,omitempty"`
-	XFcTraceId                   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders                map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId                 *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate                      *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType            *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType                   *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcStatefulAsyncInvocationId *string            `json:"X-Fc-Stateful-Async-Invocation-Id,omitempty" xml:"X-Fc-Stateful-Async-Invocation-Id,omitempty"`
+	XFcTraceId                   *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s InvokeFunctionHeaders) String() string {
@@ -5751,9 +5529,7 @@ func (s *InvokeFunctionHeaders) SetXFcTraceId(v string) *InvokeFunctionHeaders {
 }
 
 type InvokeFunctionRequest struct {
-	// 事件（event），binary type。函数计算服务将event传递给用户function来处理
-	Body []byte `json:"body,omitempty" xml:"body,omitempty"`
-	// service版本, 可以是versionId或者aliasName
+	Body      []byte  `json:"body,omitempty" xml:"body,omitempty"`
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -5840,14 +5616,10 @@ func (s *ListAliasesHeaders) SetXFcTraceId(v string) *ListAliasesHeaders {
 }
 
 type ListAliasesRequest struct {
-	// 最多返回个数
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// 下次查询token
+	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 前缀
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// 起始key
-	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
+	Prefix    *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	StartKey  *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
 func (s ListAliasesRequest) String() string {
@@ -5879,10 +5651,8 @@ func (s *ListAliasesRequest) SetStartKey(v string) *ListAliasesRequest {
 }
 
 type ListAliasesResponseBody struct {
-	// 别名列表
-	Aliases []*ListAliasesResponseBodyAliases `json:"aliases,omitempty" xml:"aliases,omitempty" type:"Repeated"`
-	// 下次查询token
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Aliases   []*ListAliasesResponseBodyAliases `json:"aliases,omitempty" xml:"aliases,omitempty" type:"Repeated"`
+	NextToken *string                           `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListAliasesResponseBody) String() string {
@@ -5904,18 +5674,14 @@ func (s *ListAliasesResponseBody) SetNextToken(v string) *ListAliasesResponseBod
 }
 
 type ListAliasesResponseBodyAliases struct {
-	// 额外版本权重
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
-	// 别名名称
-	AliasName *string `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 别名描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 上次更新时间
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// 版本ID
-	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	AliasName               *string             `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
+	CreatedTime             *string             `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description             *string             `json:"description,omitempty" xml:"description,omitempty"`
+	LastModifiedTime        *string             `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	ResolvePolicy           *string             `json:"resolvePolicy,omitempty" xml:"resolvePolicy,omitempty"`
+	RoutePolicy             *RoutePolicy        `json:"routePolicy,omitempty" xml:"routePolicy,omitempty"`
+	VersionId               *string             `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s ListAliasesResponseBodyAliases) String() string {
@@ -5948,6 +5714,16 @@ func (s *ListAliasesResponseBodyAliases) SetDescription(v string) *ListAliasesRe
 
 func (s *ListAliasesResponseBodyAliases) SetLastModifiedTime(v string) *ListAliasesResponseBodyAliases {
 	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *ListAliasesResponseBodyAliases) SetResolvePolicy(v string) *ListAliasesResponseBodyAliases {
+	s.ResolvePolicy = &v
+	return s
+}
+
+func (s *ListAliasesResponseBodyAliases) SetRoutePolicy(v *RoutePolicy) *ListAliasesResponseBodyAliases {
+	s.RoutePolicy = v
 	return s
 }
 
@@ -6208,7 +5984,6 @@ func (s *ListEventSourcesHeaders) SetXFcTraceId(v string) *ListEventSourcesHeade
 }
 
 type ListEventSourcesRequest struct {
-	// 别名或版本
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -6226,7 +6001,6 @@ func (s *ListEventSourcesRequest) SetQualifier(v string) *ListEventSourcesReques
 }
 
 type ListEventSourcesResponseBody struct {
-	// 事件源列表
 	EventSources []*ListEventSourcesResponseBodyEventSources `json:"eventSources,omitempty" xml:"eventSources,omitempty" type:"Repeated"`
 }
 
@@ -6244,10 +6018,8 @@ func (s *ListEventSourcesResponseBody) SetEventSources(v []*ListEventSourcesResp
 }
 
 type ListEventSourcesResponseBodyEventSources struct {
-	// 创建时间
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 事件源资源标识符
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	SourceArn   *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
 }
 
 func (s ListEventSourcesResponseBodyEventSources) String() string {
@@ -6351,9 +6123,7 @@ func (s *ListFunctionAsyncInvokeConfigsHeaders) SetXFcTraceId(v string) *ListFun
 }
 
 type ListFunctionAsyncInvokeConfigsRequest struct {
-	// 最多返回个数
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// 下次查询token
+	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -6376,10 +6146,8 @@ func (s *ListFunctionAsyncInvokeConfigsRequest) SetNextToken(v string) *ListFunc
 }
 
 type ListFunctionAsyncInvokeConfigsResponseBody struct {
-	// 异步配置列表
-	Configs []*ListFunctionAsyncInvokeConfigsResponseBodyConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// 下次查询token
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Configs   []*ListFunctionAsyncInvokeConfigsResponseBodyConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	NextToken *string                                              `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListFunctionAsyncInvokeConfigsResponseBody) String() string {
@@ -6401,22 +6169,15 @@ func (s *ListFunctionAsyncInvokeConfigsResponseBody) SetNextToken(v string) *Lis
 }
 
 type ListFunctionAsyncInvokeConfigsResponseBodyConfigs struct {
-	// 创建时间
-	CreatedTime       *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	DestinationConfig *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
-	// 函数名称
-	Function *string `json:"function,omitempty" xml:"function,omitempty"`
-	// 最后更改时间
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// 消息最大存活时长
-	MaxAsyncEventAgeInSeconds *int64 `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
-	// 异步调用失败后的最大重试次数
-	MaxAsyncRetryAttempts *int64 `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
-	// 限定符
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// 服务名称
-	Service            *string `json:"service,omitempty" xml:"service,omitempty"`
-	StatefulInvocation *bool   `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
+	CreatedTime               *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DestinationConfig         *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
+	Function                  *string            `json:"function,omitempty" xml:"function,omitempty"`
+	LastModifiedTime          *string            `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	MaxAsyncEventAgeInSeconds *int64             `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
+	MaxAsyncRetryAttempts     *int64             `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
+	Qualifier                 *string            `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	Service                   *string            `json:"service,omitempty" xml:"service,omitempty"`
+	StatefulInvocation        *bool              `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
 }
 
 func (s ListFunctionAsyncInvokeConfigsResponseBodyConfigs) String() string {
@@ -6537,16 +6298,11 @@ func (s *ListFunctionsHeaders) SetXFcTraceId(v string) *ListFunctionsHeaders {
 }
 
 type ListFunctionsRequest struct {
-	// 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100。返回结果可能小于指定的数量，但不会多于指定的数量
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的token从返回结果中获取
+	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 限定返回的资源名称必须以prefix作为前缀
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// service版本, 可以是versionId或者aliasName
+	Prefix    *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// 设定结果从startKey之后（包括startKey）按字母排序的第一个开始返回
-	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
+	StartKey  *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
 func (s ListFunctionsRequest) String() string {
@@ -6583,10 +6339,8 @@ func (s *ListFunctionsRequest) SetStartKey(v string) *ListFunctionsRequest {
 }
 
 type ListFunctionsResponseBody struct {
-	// 函数列表
 	Functions []*ListFunctionsResponseBodyFunctions `json:"functions,omitempty" xml:"functions,omitempty" type:"Repeated"`
-	// 用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken *string                               `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListFunctionsResponseBody) String() string {
@@ -6608,42 +6362,27 @@ func (s *ListFunctionsResponseBody) SetNextToken(v string) *ListFunctionsRespons
 }
 
 type ListFunctionsResponseBodyFunctions struct {
-	// 自定义、自定义容器运行时 HTTP Server 的监听端口
-	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
-	// function code包的CRC64值
-	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	// 系统返回的function的code包大小，单位为byte Example : 1024
-	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
-	// function创建时间
-	CreatedTime           *string                `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// 函数描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 为函数设置的环境变量，可以在函数中获取环境变量的值
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// 系统为每个function生成的唯一ID
-	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
-	// 函数名称
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// function的执行入口
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// 初始化function运行的超时时间，单位为秒，最小1秒，默认3秒。初始化function超过这个时间后会被终止执行
-	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// 初始化 function 执行的入口，具体格式和语言相关
+	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	CodeChecksum            *string                  `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
+	CodeSize                *int64                   `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	CreatedTime             *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	FunctionId              *string                  `json:"functionId,omitempty" xml:"functionId,omitempty"`
+	FunctionName            *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	InitializationTimeout   *int32                   `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
 	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
 	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// function上次修改时间
-	LastModifiedTime *string   `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	Layers           []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// function设置的内存大小，单位为MB
-	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// function运行的语言环境，目前支持nodejs6, nodejs8, python2.7, python3, java8
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// 运行的超时时间，单位为秒
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	LastModifiedTime        *string                  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Layers                  []*string                `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s ListFunctionsResponseBodyFunctions) String() string {
@@ -6791,8 +6530,6 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 type ListInstancesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListInstancesHeaders) String() string {
@@ -6813,27 +6550,10 @@ func (s *ListInstancesHeaders) SetXFcAccountId(v string) *ListInstancesHeaders {
 	return s
 }
 
-func (s *ListInstancesHeaders) SetXFcDate(v string) *ListInstancesHeaders {
-	s.XFcDate = &v
-	return s
-}
-
-func (s *ListInstancesHeaders) SetXFcTraceId(v string) *ListInstancesHeaders {
-	s.XFcTraceId = &v
-	return s
-}
-
 type ListInstancesRequest struct {
-	// 实例ID
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
-	// 限定此次返回资源的数量，取值范围[0,1000]。
-	//
-	// 返回结果可以小于指定的数量，但不能多于指定的数量。
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// 服务的版本或别名。默认是LATEST。
-	//
-	// 此处的qualifier同InvokeFunction的qualifier含义一致，即调用ListInstances时指定qualifier=test查询出来的实例，就是调用InvokeFunction时qualifier=test链路上的实例。
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	Limit       *int32    `json:"limit,omitempty" xml:"limit,omitempty"`
+	Qualifier   *string   `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -6877,10 +6597,8 @@ func (s *ListInstancesResponseBody) SetInstances(v []*ListInstancesResponseBodyI
 }
 
 type ListInstancesResponseBodyInstances struct {
-	// 实例ID。
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 实例所属的服务版本。如果是LATEST别名下的函数实例，则返回版本号为0。
-	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	VersionId  *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -6966,9 +6684,7 @@ func (s *ListLayerVersionsHeaders) SetXFcTraceId(v string) *ListLayerVersionsHea
 }
 
 type ListLayerVersionsRequest struct {
-	// 本次读取的最大数据记录数量
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// 起始版本
+	Limit        *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	StartVersion *int32 `json:"startVersion,omitempty" xml:"startVersion,omitempty"`
 }
 
@@ -6991,10 +6707,8 @@ func (s *ListLayerVersionsRequest) SetStartVersion(v int32) *ListLayerVersionsRe
 }
 
 type ListLayerVersionsResponseBody struct {
-	// 层版本列表
-	Layers []*Layer `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// 剩余列表起始版本号
-	NextVersion *int32 `json:"nextVersion,omitempty" xml:"nextVersion,omitempty"`
+	Layers      []*Layer `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	NextVersion *int32   `json:"nextVersion,omitempty" xml:"nextVersion,omitempty"`
 }
 
 func (s ListLayerVersionsResponseBody) String() string {
@@ -7080,14 +6794,12 @@ func (s *ListLayersHeaders) SetXFcTraceId(v string) *ListLayersHeaders {
 }
 
 type ListLayersRequest struct {
-	// 最大返回条目数
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// 下一个层名称
+	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 层名称前缀
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// 起始层名称
-	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
+	Official  *bool   `json:"official,omitempty" xml:"official,omitempty"`
+	Prefix    *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	Public    *bool   `json:"public,omitempty" xml:"public,omitempty"`
+	StartKey  *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
 func (s ListLayersRequest) String() string {
@@ -7108,8 +6820,18 @@ func (s *ListLayersRequest) SetNextToken(v string) *ListLayersRequest {
 	return s
 }
 
+func (s *ListLayersRequest) SetOfficial(v bool) *ListLayersRequest {
+	s.Official = &v
+	return s
+}
+
 func (s *ListLayersRequest) SetPrefix(v string) *ListLayersRequest {
 	s.Prefix = &v
+	return s
+}
+
+func (s *ListLayersRequest) SetPublic(v bool) *ListLayersRequest {
+	s.Public = &v
 	return s
 }
 
@@ -7119,10 +6841,8 @@ func (s *ListLayersRequest) SetStartKey(v string) *ListLayersRequest {
 }
 
 type ListLayersResponseBody struct {
-	// 层列表
-	Layers []*Layer `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// 剩余列表起始层名
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Layers    []*Layer `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	NextToken *string  `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListLayersResponseBody) String() string {
@@ -7208,14 +6928,10 @@ func (s *ListOnDemandConfigsHeaders) SetXFcTraceId(v string) *ListOnDemandConfig
 }
 
 type ListOnDemandConfigsRequest struct {
-	// 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100。返回结果可以小于指定的数量，但不会多于指定的数量。
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的Token从返回结果中获取。
+	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 限定返回的资源名称，名称必须以Prefix作为前缀，例如Prefix是a，则返回的资源名均是以a开始的。
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// 设定结果从startKey之后（包括startKey）按字母排序的第一个开始返回。
-	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
+	Prefix    *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	StartKey  *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
 func (s ListOnDemandConfigsRequest) String() string {
@@ -7247,10 +6963,8 @@ func (s *ListOnDemandConfigsRequest) SetStartKey(v string) *ListOnDemandConfigsR
 }
 
 type ListOnDemandConfigsResponseBody struct {
-	// 预留实例配置
-	Configs []*OnDemandConfig `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// 用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果。
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Configs   []*OnDemandConfig `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	NextToken *string           `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListOnDemandConfigsResponseBody) String() string {
@@ -7336,13 +7050,9 @@ func (s *ListProvisionConfigsHeaders) SetXFcTraceId(v string) *ListProvisionConf
 }
 
 type ListProvisionConfigsRequest struct {
-	// 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100。返回结果可能小于指定的数量，但不会多于指定的数量
-	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的token从返回结果中获取
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 限定返回的资源名称必须属于该qualifier。qualifier只能是aliasName，且必须和serviceName共同使用
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// 限定返回的资源名称必须属于该service
+	Limit       *int64  `json:"limit,omitempty" xml:"limit,omitempty"`
+	NextToken   *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Qualifier   *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
@@ -7375,9 +7085,7 @@ func (s *ListProvisionConfigsRequest) SetServiceName(v string) *ListProvisionCon
 }
 
 type ListProvisionConfigsResponseBody struct {
-	// 下次查询的起始token
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 预留实例列表
+	NextToken        *string                                             `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	ProvisionConfigs []*ListProvisionConfigsResponseBodyProvisionConfigs `json:"provisionConfigs,omitempty" xml:"provisionConfigs,omitempty" type:"Repeated"`
 }
 
@@ -7400,19 +7108,12 @@ func (s *ListProvisionConfigsResponseBody) SetProvisionConfigs(v []*ListProvisio
 }
 
 type ListProvisionConfigsResponseBodyProvisionConfigs struct {
-	// 是否始终分配CPU给函数实例。
-	AlwaysAllocateCPU *bool `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
-	// 实际资源个数
-	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
-	// 预留实例创建失败时的错误信息
-	CurrentError *string `json:"currentError,omitempty" xml:"currentError,omitempty"`
-	// 资源描述
-	Resource *string `json:"resource,omitempty" xml:"resource,omitempty"`
-	// 定时策略配置
-	ScheduledActions []*ScheduledActions `json:"scheduledActions,omitempty" xml:"scheduledActions,omitempty" type:"Repeated"`
-	// 目标资源个数
-	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
-	// 指标追踪伸缩策略配置
+	AlwaysAllocateCPU      *bool                     `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
+	Current                *int64                    `json:"current,omitempty" xml:"current,omitempty"`
+	CurrentError           *string                   `json:"currentError,omitempty" xml:"currentError,omitempty"`
+	Resource               *string                   `json:"resource,omitempty" xml:"resource,omitempty"`
+	ScheduledActions       []*ScheduledActions       `json:"scheduledActions,omitempty" xml:"scheduledActions,omitempty" type:"Repeated"`
+	Target                 *int64                    `json:"target,omitempty" xml:"target,omitempty"`
 	TargetTrackingPolicies []*TargetTrackingPolicies `json:"targetTrackingPolicies,omitempty" xml:"targetTrackingPolicies,omitempty" type:"Repeated"`
 }
 
@@ -7524,7 +7225,6 @@ func (s *ListReservedCapacitiesHeaders) SetXFcTraceId(v string) *ListReservedCap
 }
 
 type ListReservedCapacitiesRequest struct {
-	// 一次返回的数量，取值范围[1, 100]
 	Limit     *string `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
@@ -7548,9 +7248,7 @@ func (s *ListReservedCapacitiesRequest) SetNextToken(v string) *ListReservedCapa
 }
 
 type ListReservedCapacitiesResponseBody struct {
-	// nextToken
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// reservedCapacities
+	NextToken          *string                 `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	ReservedCapacities []*OpenReservedCapacity `json:"reservedCapacities,omitempty" xml:"reservedCapacities,omitempty" type:"Repeated"`
 }
 
@@ -7637,14 +7335,10 @@ func (s *ListServiceVersionsHeaders) SetXFcTraceId(v string) *ListServiceVersion
 }
 
 type ListServiceVersionsRequest struct {
-	// 排序方向
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
-	// 最多返回个数
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// 下次查询token
+	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 起始key
-	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
+	StartKey  *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
 func (s ListServiceVersionsRequest) String() string {
@@ -7676,12 +7370,9 @@ func (s *ListServiceVersionsRequest) SetStartKey(v string) *ListServiceVersionsR
 }
 
 type ListServiceVersionsResponseBody struct {
-	// 排序方向
-	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
-	// 下次查询token
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 版本列表
-	Versions []*ListServiceVersionsResponseBodyVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
+	Direction *string                                    `json:"direction,omitempty" xml:"direction,omitempty"`
+	NextToken *string                                    `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Versions  []*ListServiceVersionsResponseBodyVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
 func (s ListServiceVersionsResponseBody) String() string {
@@ -7708,14 +7399,10 @@ func (s *ListServiceVersionsResponseBody) SetVersions(v []*ListServiceVersionsRe
 }
 
 type ListServiceVersionsResponseBodyVersions struct {
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 版本描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 上次更新时间
+	CreatedTime      *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// 版本ID
-	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	VersionId        *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s ListServiceVersionsResponseBodyVersions) String() string {
@@ -7811,14 +7498,10 @@ func (s *ListServicesHeaders) SetXFcTraceId(v string) *ListServicesHeaders {
 }
 
 type ListServicesRequest struct {
-	// 最多返回个数
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// 下次查询token
+	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 前缀
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// 起始key
-	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
+	Prefix    *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	StartKey  *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
 func (s ListServicesRequest) String() string {
@@ -7850,10 +7533,8 @@ func (s *ListServicesRequest) SetStartKey(v string) *ListServicesRequest {
 }
 
 type ListServicesResponseBody struct {
-	// 下次查询token
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 服务列表
-	Services []*ListServicesResponseBodyServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+	NextToken *string                             `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Services  []*ListServicesResponseBodyServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
 func (s ListServicesResponseBody) String() string {
@@ -7875,24 +7556,17 @@ func (s *ListServicesResponseBody) SetServices(v []*ListServicesResponseBodyServ
 }
 
 type ListServicesResponseBodyServices struct {
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 服务描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 公网访问设置
-	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	// 上次更新时间
-	LastModifiedTime *string    `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	LogConfig        *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	NasConfig        *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	// 服务角色
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// 服务ID
-	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 服务信息
-	ServiceName   *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	CreatedTime      *string        `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string        `json:"description,omitempty" xml:"description,omitempty"`
+	InternetAccess   *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LastModifiedTime *string        `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LogConfig        *LogConfig     `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	NasConfig        *NASConfig     `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	Role             *string        `json:"role,omitempty" xml:"role,omitempty"`
+	ServiceId        *string        `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName      *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	TracingConfig    *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig        *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s ListServicesResponseBodyServices) String() string {
@@ -7989,12 +7663,9 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 
 type ListStatefulAsyncInvocationFunctionsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 您的阿里云账号（主账号）ID。
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// 发起API调用的日期，用于对请求签名。格式为yyyy-mm-ddhh:mm:ss。
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// 用于链路追踪的ID。
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListStatefulAsyncInvocationFunctionsHeaders) String() string {
@@ -8026,9 +7697,7 @@ func (s *ListStatefulAsyncInvocationFunctionsHeaders) SetXFcTraceId(v string) *L
 }
 
 type ListStatefulAsyncInvocationFunctionsRequest struct {
-	// 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100。返回结果可以小于指定的数量，但不会多于指定的数量。
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// 用来标记当前开始读取的位置，置空表示从头开始。第一次查询不需要提供这个参数，后续查询的Token从前一次查询的返回结果中获取。
+	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -8051,10 +7720,8 @@ func (s *ListStatefulAsyncInvocationFunctionsRequest) SetNextToken(v string) *Li
 }
 
 type ListStatefulAsyncInvocationFunctionsResponseBody struct {
-	// 返回的实际数据列表。
-	Data []*AsyncConfigMeta `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 用来表示当前调用返回读取到的位置，空代表数据已经读取完毕。
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Data      []*AsyncConfigMeta `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	NextToken *string            `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListStatefulAsyncInvocationFunctionsResponseBody) String() string {
@@ -8420,14 +8087,10 @@ func (s *ListTriggersHeaders) SetXFcTraceId(v string) *ListTriggersHeaders {
 }
 
 type ListTriggersRequest struct {
-	// 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100。返回结果可能小于指定的数量，但不会多于指定的数量
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的token从返回结果中获取
+	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 限定返回的资源名称必须以prefix作为前缀
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// 设定结果从startKey之后（包括startKey）按字母排序的第一个开始返回
-	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
+	Prefix    *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	StartKey  *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
 func (s ListTriggersRequest) String() string {
@@ -8459,10 +8122,8 @@ func (s *ListTriggersRequest) SetStartKey(v string) *ListTriggersRequest {
 }
 
 type ListTriggersResponseBody struct {
-	// 用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Trigger列表
-	Triggers []*ListTriggersResponseBodyTriggers `json:"triggers,omitempty" xml:"triggers,omitempty" type:"Repeated"`
+	NextToken *string                             `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Triggers  []*ListTriggersResponseBodyTriggers `json:"triggers,omitempty" xml:"triggers,omitempty" type:"Repeated"`
 }
 
 func (s ListTriggersResponseBody) String() string {
@@ -8484,30 +8145,19 @@ func (s *ListTriggersResponseBody) SetTriggers(v []*ListTriggersResponseBodyTrig
 }
 
 type ListTriggersResponseBodyTriggers struct {
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 域名名称，使用域名名称拼接上函数计算域名，可以采用HTTP协议调用到触发器对应版本的函数。例如{domainName}.cn-shanghai.fc.aliyuncs.com
-	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	// 调用函数使用的RAM角色的ARN
-	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
-	// 上次修改时间
+	CreatedTime      *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	DomainName       *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	InvocationRole   *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// service版本
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// event source的Aliyun Resource Name（ARN
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
-	// trigger配置对象
-	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
-	TriggerId     *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
-	// trigger名称
-	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
-	// trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
-	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
-	// 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
-	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
-	// 私网域名地址。在VPC可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
-	UrlIntranet *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
+	Qualifier        *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	SourceArn        *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	TriggerConfig    *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	TriggerId        *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
+	TriggerName      *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	TriggerType      *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	UrlInternet      *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	UrlIntranet      *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
 }
 
 func (s ListTriggersResponseBodyTriggers) String() string {
@@ -8695,11 +8345,10 @@ func (s *ListVpcBindingsResponse) SetBody(v *ListVpcBindingsResponseBody) *ListV
 
 type PublishServiceVersionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 服务的ETag，可通过GetService接口获得。若发布版本时服务的ETag与传入的不一致，则发布版本会失败。
-	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s PublishServiceVersionHeaders) String() string {
@@ -8736,7 +8385,6 @@ func (s *PublishServiceVersionHeaders) SetXFcTraceId(v string) *PublishServiceVe
 }
 
 type PublishServiceVersionRequest struct {
-	// 版本描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
@@ -8754,14 +8402,10 @@ func (s *PublishServiceVersionRequest) SetDescription(v string) *PublishServiceV
 }
 
 type PublishServiceVersionResponseBody struct {
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 版本描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 上次更新时间
+	CreatedTime      *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// 版本ID
-	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	VersionId        *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s PublishServiceVersionResponseBody) String() string {
@@ -8857,14 +8501,11 @@ func (s *PutFunctionAsyncInvokeConfigHeaders) SetXFcTraceId(v string) *PutFuncti
 }
 
 type PutFunctionAsyncInvokeConfigRequest struct {
-	DestinationConfig *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
-	// 消息最大存活时长
-	MaxAsyncEventAgeInSeconds *int64 `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
-	// 异步调用失败后的最大重试次数
-	MaxAsyncRetryAttempts *int64 `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
-	StatefulInvocation    *bool  `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
-	// 别名或版本
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	DestinationConfig         *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
+	MaxAsyncEventAgeInSeconds *int64             `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
+	MaxAsyncRetryAttempts     *int64             `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
+	StatefulInvocation        *bool              `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
+	Qualifier                 *string            `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
 func (s PutFunctionAsyncInvokeConfigRequest) String() string {
@@ -8901,22 +8542,15 @@ func (s *PutFunctionAsyncInvokeConfigRequest) SetQualifier(v string) *PutFunctio
 }
 
 type PutFunctionAsyncInvokeConfigResponseBody struct {
-	// 创建时间
-	CreatedTime       *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	DestinationConfig *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
-	// 函数名称
-	Function *string `json:"function,omitempty" xml:"function,omitempty"`
-	// 最后更改时间
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// 消息最大存活时长
-	MaxAsyncEventAgeInSeconds *int64 `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
-	// 异步调用失败后的最大重试次数
-	MaxAsyncRetryAttempts *int64 `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
-	// 限定符
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// 服务名称
-	Service            *string `json:"service,omitempty" xml:"service,omitempty"`
-	StatefulInvocation *bool   `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
+	CreatedTime               *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DestinationConfig         *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
+	Function                  *string            `json:"function,omitempty" xml:"function,omitempty"`
+	LastModifiedTime          *string            `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	MaxAsyncEventAgeInSeconds *int64             `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
+	MaxAsyncRetryAttempts     *int64             `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
+	Qualifier                 *string            `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	Service                   *string            `json:"service,omitempty" xml:"service,omitempty"`
+	StatefulInvocation        *bool              `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
 }
 
 func (s PutFunctionAsyncInvokeConfigResponseBody) String() string {
@@ -9117,6 +8751,87 @@ func (s *PutFunctionOnDemandConfigResponse) SetBody(v *PutFunctionOnDemandConfig
 	return s
 }
 
+type PutLayerACLHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s PutLayerACLHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutLayerACLHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *PutLayerACLHeaders) SetCommonHeaders(v map[string]*string) *PutLayerACLHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *PutLayerACLHeaders) SetXFcAccountId(v string) *PutLayerACLHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *PutLayerACLHeaders) SetXFcDate(v string) *PutLayerACLHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *PutLayerACLHeaders) SetXFcTraceId(v string) *PutLayerACLHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
+type PutLayerACLRequest struct {
+	Public *bool `json:"public,omitempty" xml:"public,omitempty"`
+}
+
+func (s PutLayerACLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutLayerACLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutLayerACLRequest) SetPublic(v bool) *PutLayerACLRequest {
+	s.Public = &v
+	return s
+}
+
+type PutLayerACLResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *string            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PutLayerACLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutLayerACLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutLayerACLResponse) SetHeaders(v map[string]*string) *PutLayerACLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutLayerACLResponse) SetStatusCode(v int32) *PutLayerACLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutLayerACLResponse) SetBody(v string) *PutLayerACLResponse {
+	s.Body = &v
+	return s
+}
+
 type PutProvisionConfigHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
@@ -9153,16 +8868,11 @@ func (s *PutProvisionConfigHeaders) SetXFcTraceId(v string) *PutProvisionConfigH
 }
 
 type PutProvisionConfigRequest struct {
-	// 当实例进入空闲状态时，是否继续分配CPU。
-	AlwaysAllocateCPU *bool `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
-	// 定时策略配置
-	ScheduledActions []*ScheduledActions `json:"scheduledActions,omitempty" xml:"scheduledActions,omitempty" type:"Repeated"`
-	// 预留的目标资源个数
-	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
-	// 指标追踪伸缩策略配置
+	AlwaysAllocateCPU      *bool                     `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
+	ScheduledActions       []*ScheduledActions       `json:"scheduledActions,omitempty" xml:"scheduledActions,omitempty" type:"Repeated"`
+	Target                 *int64                    `json:"target,omitempty" xml:"target,omitempty"`
 	TargetTrackingPolicies []*TargetTrackingPolicies `json:"targetTrackingPolicies,omitempty" xml:"targetTrackingPolicies,omitempty" type:"Repeated"`
-	// 别名名称
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	Qualifier              *string                   `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
 func (s PutProvisionConfigRequest) String() string {
@@ -9199,17 +8909,11 @@ func (s *PutProvisionConfigRequest) SetQualifier(v string) *PutProvisionConfigRe
 }
 
 type PutProvisionConfigResponseBody struct {
-	// 是否始终分配CPU给函数实例。
-	AlwaysAllocateCPU *bool `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
-	// 实际资源个数
-	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
-	// 资源描述
-	Resource *string `json:"resource,omitempty" xml:"resource,omitempty"`
-	// 定时策略配置
-	ScheduledActions []*ScheduledActions `json:"scheduledActions,omitempty" xml:"scheduledActions,omitempty" type:"Repeated"`
-	// 目标资源个数
-	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
-	// 指标追踪伸缩策略配置
+	AlwaysAllocateCPU      *bool                     `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
+	Current                *int64                    `json:"current,omitempty" xml:"current,omitempty"`
+	Resource               *string                   `json:"resource,omitempty" xml:"resource,omitempty"`
+	ScheduledActions       []*ScheduledActions       `json:"scheduledActions,omitempty" xml:"scheduledActions,omitempty" type:"Repeated"`
+	Target                 *int64                    `json:"target,omitempty" xml:"target,omitempty"`
 	TargetTrackingPolicies []*TargetTrackingPolicies `json:"targetTrackingPolicies,omitempty" xml:"targetTrackingPolicies,omitempty" type:"Repeated"`
 }
 
@@ -9316,9 +9020,7 @@ func (s *RegisterEventSourceHeaders) SetXFcTraceId(v string) *RegisterEventSourc
 }
 
 type RegisterEventSourceRequest struct {
-	// 事件源资源标识符
 	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
-	// 别名或版本
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -9341,10 +9043,8 @@ func (s *RegisterEventSourceRequest) SetQualifier(v string) *RegisterEventSource
 }
 
 type RegisterEventSourceResponseBody struct {
-	// 创建时间
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 事件源资源标识符
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	SourceArn   *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
 }
 
 func (s RegisterEventSourceResponseBody) String() string {
@@ -9586,12 +9286,9 @@ func (s *UntagResourceHeaders) SetXFcTraceId(v string) *UntagResourceHeaders {
 }
 
 type UntagResourceRequest struct {
-	// 删除所有 tag，默认值为 false
-	All *bool `json:"all,omitempty" xml:"all,omitempty"`
-	// 目前只能给 top level 资源 service 进行标签的相关操作, ARN 可以是类似 services/foo 或者 acs:fc:cn-shanghai:123456789:services/foo
-	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
-	// tag key 值列表， 最大为 20，当 all=false， length 至少为 1. 当 length 大于 1 时， 可以忽略 all 值
-	TagKeys []*string `json:"tagKeys,omitempty" xml:"tagKeys,omitempty" type:"Repeated"`
+	All         *bool     `json:"all,omitempty" xml:"all,omitempty"`
+	ResourceArn *string   `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
+	TagKeys     []*string `json:"tagKeys,omitempty" xml:"tagKeys,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourceRequest) String() string {
@@ -9682,12 +9379,11 @@ func (s *UpdateAliasHeaders) SetXFcTraceId(v string) *UpdateAliasHeaders {
 }
 
 type UpdateAliasRequest struct {
-	// 额外版本权重
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
-	// 别名描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 版本ID
-	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	Description             *string             `json:"description,omitempty" xml:"description,omitempty"`
+	ResolvePolicy           *string             `json:"resolvePolicy,omitempty" xml:"resolvePolicy,omitempty"`
+	RoutePolicy             *RoutePolicy        `json:"routePolicy,omitempty" xml:"routePolicy,omitempty"`
+	VersionId               *string             `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s UpdateAliasRequest) String() string {
@@ -9708,24 +9404,28 @@ func (s *UpdateAliasRequest) SetDescription(v string) *UpdateAliasRequest {
 	return s
 }
 
+func (s *UpdateAliasRequest) SetResolvePolicy(v string) *UpdateAliasRequest {
+	s.ResolvePolicy = &v
+	return s
+}
+
+func (s *UpdateAliasRequest) SetRoutePolicy(v *RoutePolicy) *UpdateAliasRequest {
+	s.RoutePolicy = v
+	return s
+}
+
 func (s *UpdateAliasRequest) SetVersionId(v string) *UpdateAliasRequest {
 	s.VersionId = &v
 	return s
 }
 
 type UpdateAliasResponseBody struct {
-	// 额外版本权重
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
-	// 别名名称
-	AliasName *string `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 别名描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 上次更新时间
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// 版本ID
-	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	AliasName               *string             `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
+	CreatedTime             *string             `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description             *string             `json:"description,omitempty" xml:"description,omitempty"`
+	LastModifiedTime        *string             `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	VersionId               *string             `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s UpdateAliasResponseBody) String() string {
@@ -9960,13 +9660,12 @@ func (s *UpdateCustomDomainResponse) SetBody(v *UpdateCustomDomainResponseBody) 
 }
 
 type UpdateFunctionHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch         *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId    *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate         *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcTraceId      *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders   map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	IfMatch         *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId    *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate         *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId      *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UpdateFunctionHeaders) String() string {
@@ -10008,35 +9707,24 @@ func (s *UpdateFunctionHeaders) SetXFcTraceId(v string) *UpdateFunctionHeaders {
 }
 
 type UpdateFunctionRequest struct {
-	InstanceConcurrency *int32 `json:"InstanceConcurrency,omitempty" xml:"InstanceConcurrency,omitempty"`
-	// 自定义、自定义容器运行时 HTTP Server 的监听端口
-	CaPort                *int32                 `json:"caPort,omitempty" xml:"caPort,omitempty"`
-	Code                  *Code                  `json:"code,omitempty" xml:"code,omitempty"`
-	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// 函数自定义DNS配置
-	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// Custom Runtime函数详细配置
-	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	// 函数描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 为函数设置的环境变量，可以在函数中获取环境变量的值
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// function执行的入口，具体格式和语言相关
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// 初始化function运行的超时时间，单位为秒，最小1秒，默认3秒。初始化function超过这个时间后会被终止执行
-	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// 初始化 function 执行的入口，具体格式和语言相关
+	InstanceConcurrency     *int32                   `json:"InstanceConcurrency,omitempty" xml:"InstanceConcurrency,omitempty"`
+	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	Code                    *Code                    `json:"code,omitempty" xml:"code,omitempty"`
+	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	InitializationTimeout   *int32                   `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
 	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
 	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	Layers                  []*string                `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// function的内存规格，单位为MB，为64MB的倍数
-	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// runtime
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// function运行的超时时间，单位为秒，最小1秒，默认3秒。function超过这个时间后会被终止执行
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s UpdateFunctionRequest) String() string {
@@ -10138,45 +9826,28 @@ func (s *UpdateFunctionRequest) SetTimeout(v int32) *UpdateFunctionRequest {
 }
 
 type UpdateFunctionResponseBody struct {
-	// 自定义、自定义容器运行时 HTTP Server 的监听端口
-	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
-	// function code包的CRC64值
-	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	// 系统返回的function的code包大小，单位为byte Example : 1024
-	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
-	// function创建时间
-	CreatedTime           *string                `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// 函数自定义DNS配置
-	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// Custom Runtime函数详细配置
-	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	// 函数描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 为函数设置的环境变量，可以在函数中获取环境变量的值
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// 系统为每个function生成的唯一ID
-	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
-	// 函数名称
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// function的执行入口
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// 初始化function运行的超时时间，单位为秒，最小1秒，默认3秒。初始化function超过这个时间后会被终止执行
-	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// 初始化 function 执行的入口，具体格式和语言相关
+	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	CodeChecksum            *string                  `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
+	CodeSize                *int64                   `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	CreatedTime             *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	FunctionId              *string                  `json:"functionId,omitempty" xml:"functionId,omitempty"`
+	FunctionName            *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	InitializationTimeout   *int32                   `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
 	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
 	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// function上次修改时间
-	LastModifiedTime *string   `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	Layers           []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// function设置的内存大小，单位为MB
-	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// function运行的语言环境，目前支持nodejs6, nodejs8, python2.7, python3, java8
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// 运行的超时时间，单位为秒
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	LastModifiedTime        *string                  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Layers                  []*string                `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s UpdateFunctionResponseBody) String() string {
@@ -10328,11 +9999,10 @@ func (s *UpdateFunctionResponse) SetBody(v *UpdateFunctionResponseBody) *UpdateF
 
 type UpdateServiceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UpdateServiceHeaders) String() string {
@@ -10369,16 +10039,13 @@ func (s *UpdateServiceHeaders) SetXFcTraceId(v string) *UpdateServiceHeaders {
 }
 
 type UpdateServiceRequest struct {
-	// 服务描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 公网访问设置
-	InternetAccess *bool      `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LogConfig      *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	NasConfig      *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	// 服务角色
-	Role          *string        `json:"role,omitempty" xml:"role,omitempty"`
-	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	Description    *string        `json:"description,omitempty" xml:"description,omitempty"`
+	InternetAccess *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LogConfig      *LogConfig     `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	NasConfig      *NASConfig     `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	Role           *string        `json:"role,omitempty" xml:"role,omitempty"`
+	TracingConfig  *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig      *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s UpdateServiceRequest) String() string {
@@ -10425,25 +10092,17 @@ func (s *UpdateServiceRequest) SetVpcConfig(v *VPCConfig) *UpdateServiceRequest 
 }
 
 type UpdateServiceResponseBody struct {
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 服务描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 公网访问设置
-	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	// 上次更新时间
-	LastModifiedTime *string    `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	LogConfig        *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	NasConfig        *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	// 服务角色
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// 服务ID
-	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 服务名称
-	ServiceName   *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VendorConfig  *VendorConfig  `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
-	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	CreatedTime      *string        `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string        `json:"description,omitempty" xml:"description,omitempty"`
+	InternetAccess   *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LastModifiedTime *string        `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LogConfig        *LogConfig     `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	NasConfig        *NASConfig     `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	Role             *string        `json:"role,omitempty" xml:"role,omitempty"`
+	ServiceId        *string        `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName      *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	TracingConfig    *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig        *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s UpdateServiceResponseBody) String() string {
@@ -10504,11 +10163,6 @@ func (s *UpdateServiceResponseBody) SetTracingConfig(v *TracingConfig) *UpdateSe
 	return s
 }
 
-func (s *UpdateServiceResponseBody) SetVendorConfig(v *VendorConfig) *UpdateServiceResponseBody {
-	s.VendorConfig = v
-	return s
-}
-
 func (s *UpdateServiceResponseBody) SetVpcConfig(v *VPCConfig) *UpdateServiceResponseBody {
 	s.VpcConfig = v
 	return s
@@ -10545,11 +10199,10 @@ func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateSer
 
 type UpdateTriggerHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UpdateTriggerHeaders) String() string {
@@ -10586,13 +10239,10 @@ func (s *UpdateTriggerHeaders) SetXFcTraceId(v string) *UpdateTriggerHeaders {
 }
 
 type UpdateTriggerRequest struct {
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// event source，如OSS，使用该role去invoke function
+	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
 	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
-	// service版本
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// trigger配置，针对不同的trigger类型，trigger配置会有所不同
-	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	Qualifier      *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	TriggerConfig  *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
 }
 
 func (s UpdateTriggerRequest) String() string {
@@ -10624,30 +10274,19 @@ func (s *UpdateTriggerRequest) SetTriggerConfig(v string) *UpdateTriggerRequest 
 }
 
 type UpdateTriggerResponseBody struct {
-	// 创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 域名名称，使用域名名称拼接上函数计算域名，可以采用HTTP协议调用到触发器对应版本的函数。例如{domainName}.cn-shanghai.fc.aliyuncs.com
-	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	// 调用函数使用的RAM角色的ARN
-	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
-	// 上次修改时间
+	CreatedTime      *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	DomainName       *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	InvocationRole   *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// service版本
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// event source的Aliyun Resource Name（ARN
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
-	// trigger配置对象
-	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
-	TriggerId     *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
-	// trigger名称
-	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
-	// trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
-	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
-	// 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
-	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
-	// 私网域名地址。在VPC可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
-	UrlIntranet *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
+	Qualifier        *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	SourceArn        *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	TriggerConfig    *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	TriggerId        *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
+	TriggerName      *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	TriggerType      *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	UrlInternet      *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	UrlIntranet      *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
 }
 
 func (s UpdateTriggerResponseBody) String() string {
@@ -10851,6 +10490,14 @@ func (client *Client) CreateAliasWithOptions(serviceName *string, request *Creat
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResolvePolicy)) {
+		body["resolvePolicy"] = request.ResolvePolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.RoutePolicy))) {
+		body["routePolicy"] = request.RoutePolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
@@ -12915,6 +12562,11 @@ func (client *Client) InvokeFunctionWithOptions(serviceName *string, functionNam
 		query["qualifier"] = request.Qualifier
 	}
 
+	body := tea.String("")
+	if !tea.BoolValue(util.IsUnset(request.Body)) {
+		body = util.ToString(request.Body)
+	}
+
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -12947,7 +12599,7 @@ func (client *Client) InvokeFunctionWithOptions(serviceName *string, functionNam
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
-		Body:    util.ToString(request.Body),
+		Body:    body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InvokeFunction"),
@@ -13387,14 +13039,6 @@ func (client *Client) ListInstancesWithOptions(serviceName *string, functionName
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
-		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
-		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
@@ -13513,8 +13157,16 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 		query["nextToken"] = request.NextToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Official)) {
+		query["official"] = request.Official
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
 		query["prefix"] = request.Prefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Public)) {
+		query["public"] = request.Public
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartKey)) {
@@ -14530,6 +14182,70 @@ func (client *Client) PutFunctionOnDemandConfigWithOptions(serviceName *string, 
 	return _result, _err
 }
 
+func (client *Client) PutLayerACL(layerName *string, request *PutLayerACLRequest) (_result *PutLayerACLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &PutLayerACLHeaders{}
+	_result = &PutLayerACLResponse{}
+	_body, _err := client.PutLayerACLWithOptions(layerName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutLayerACLWithOptions(layerName *string, request *PutLayerACLRequest, headers *PutLayerACLHeaders, runtime *util.RuntimeOptions) (_result *PutLayerACLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	layerName = openapiutil.GetEncodeParam(layerName)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Public)) {
+		query["public"] = request.Public
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutLayerACL"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/acl"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("string"),
+	}
+	_result = &PutLayerACLResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) PutProvisionConfig(serviceName *string, functionName *string, request *PutProvisionConfigRequest) (_result *PutProvisionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &PutProvisionConfigHeaders{}
@@ -14914,6 +14630,14 @@ func (client *Client) UpdateAliasWithOptions(serviceName *string, aliasName *str
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResolvePolicy)) {
+		body["resolvePolicy"] = request.ResolvePolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.RoutePolicy))) {
+		body["routePolicy"] = request.RoutePolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
