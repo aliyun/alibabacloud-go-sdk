@@ -8765,10 +8765,8 @@ func (s *GetDISyncTaskMetricInfoRequest) SetStartDate(v int64) *GetDISyncTaskMet
 
 type GetDISyncTaskMetricInfoResponseBody struct {
 	MetricInfo *GetDISyncTaskMetricInfoResponseBodyMetricInfo `json:"MetricInfo,omitempty" xml:"MetricInfo,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// isSuccess
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDISyncTaskMetricInfoResponseBody) String() string {
@@ -11516,8 +11514,7 @@ func (s *GetExtensionRequest) SetExtensionCode(v string) *GetExtensionRequest {
 
 type GetExtensionResponseBody struct {
 	Extension *GetExtensionResponseBodyExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetExtensionResponseBody) String() string {
@@ -12647,8 +12644,7 @@ func (s *GetIDEEventDetailRequest) SetProjectId(v int64) *GetIDEEventDetailReque
 
 type GetIDEEventDetailResponseBody struct {
 	EventDetail *GetIDEEventDetailResponseBodyEventDetail `json:"EventDetail,omitempty" xml:"EventDetail,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetIDEEventDetailResponseBody) String() string {
@@ -16974,13 +16970,14 @@ func (s *GetMetaTableOutputResponse) SetBody(v *GetMetaTableOutputResponseBody) 
 }
 
 type GetMetaTablePartitionRequest struct {
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DatabaseName   *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TableGuid      *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	TableName      *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	ClusterId      *string                                    `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DataSourceType *string                                    `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	DatabaseName   *string                                    `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	PageNumber     *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortCriterion  *GetMetaTablePartitionRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
+	TableGuid      *string                                    `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	TableName      *string                                    `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetMetaTablePartitionRequest) String() string {
@@ -17016,12 +17013,99 @@ func (s *GetMetaTablePartitionRequest) SetPageSize(v int32) *GetMetaTablePartiti
 	return s
 }
 
+func (s *GetMetaTablePartitionRequest) SetSortCriterion(v *GetMetaTablePartitionRequestSortCriterion) *GetMetaTablePartitionRequest {
+	s.SortCriterion = v
+	return s
+}
+
 func (s *GetMetaTablePartitionRequest) SetTableGuid(v string) *GetMetaTablePartitionRequest {
 	s.TableGuid = &v
 	return s
 }
 
 func (s *GetMetaTablePartitionRequest) SetTableName(v string) *GetMetaTablePartitionRequest {
+	s.TableName = &v
+	return s
+}
+
+type GetMetaTablePartitionRequestSortCriterion struct {
+	Order     *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
+}
+
+func (s GetMetaTablePartitionRequestSortCriterion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaTablePartitionRequestSortCriterion) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaTablePartitionRequestSortCriterion) SetOrder(v string) *GetMetaTablePartitionRequestSortCriterion {
+	s.Order = &v
+	return s
+}
+
+func (s *GetMetaTablePartitionRequestSortCriterion) SetSortField(v string) *GetMetaTablePartitionRequestSortCriterion {
+	s.SortField = &v
+	return s
+}
+
+type GetMetaTablePartitionShrinkRequest struct {
+	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DataSourceType      *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	DatabaseName        *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortCriterionShrink *string `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty"`
+	TableGuid           *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	TableName           *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s GetMetaTablePartitionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaTablePartitionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaTablePartitionShrinkRequest) SetClusterId(v string) *GetMetaTablePartitionShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetMetaTablePartitionShrinkRequest) SetDataSourceType(v string) *GetMetaTablePartitionShrinkRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *GetMetaTablePartitionShrinkRequest) SetDatabaseName(v string) *GetMetaTablePartitionShrinkRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *GetMetaTablePartitionShrinkRequest) SetPageNumber(v int32) *GetMetaTablePartitionShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetMetaTablePartitionShrinkRequest) SetPageSize(v int32) *GetMetaTablePartitionShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetMetaTablePartitionShrinkRequest) SetSortCriterionShrink(v string) *GetMetaTablePartitionShrinkRequest {
+	s.SortCriterionShrink = &v
+	return s
+}
+
+func (s *GetMetaTablePartitionShrinkRequest) SetTableGuid(v string) *GetMetaTablePartitionShrinkRequest {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *GetMetaTablePartitionShrinkRequest) SetTableName(v string) *GetMetaTablePartitionShrinkRequest {
 	s.TableName = &v
 	return s
 }
@@ -18867,8 +18951,7 @@ func (s *GetOptionValueForProjectRequest) SetProjectId(v string) *GetOptionValue
 
 type GetOptionValueForProjectResponseBody struct {
 	OptionValue *string `json:"OptionValue,omitempty" xml:"OptionValue,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetOptionValueForProjectResponseBody) String() string {
@@ -23087,8 +23170,7 @@ type ListCurrentTasksForResourceGroupRequest struct {
 	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProjectEnv              *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
 	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
-	// 3-等待资源；4-运行中
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status                  *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCurrentTasksForResourceGroupRequest) String() string {
@@ -23129,9 +23211,8 @@ type ListCurrentTasksForResourceGroupResponseBody struct {
 	ErrorCode      *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage   *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	HttpStatusCode *int32                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCurrentTasksForResourceGroupResponseBody) String() string {
@@ -23316,9 +23397,8 @@ type ListCurrentUsageForResourceGroupResponseBody struct {
 	Data           *ListCurrentUsageForResourceGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	ErrorMessage   *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	HttpStatusCode *int32                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCurrentUsageForResourceGroupResponseBody) String() string {
@@ -26910,9 +26990,8 @@ func (s *ListDeploymentsRequest) SetStatus(v int32) *ListDeploymentsRequest {
 }
 
 type ListDeploymentsResponseBody struct {
-	Data *ListDeploymentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListDeploymentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDeploymentsResponseBody) String() string {
@@ -27081,8 +27160,7 @@ func (s *ListExtensionsRequest) SetPageSize(v int32) *ListExtensionsRequest {
 
 type ListExtensionsResponseBody struct {
 	PagingInfo *ListExtensionsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListExtensionsResponseBody) String() string {
@@ -28130,14 +28208,12 @@ func (s *ListFoldersResponse) SetBody(v *ListFoldersResponseBody) *ListFoldersRe
 }
 
 type ListHistoryTasksForResourceGroupRequest struct {
-	// 最晚当前时间
 	EndTime                 *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PageNumber              *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProjectEnv              *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
 	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
-	// 7天内
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime               *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListHistoryTasksForResourceGroupRequest) String() string {
@@ -28183,9 +28259,8 @@ type ListHistoryTasksForResourceGroupResponseBody struct {
 	ErrorCode      *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage   *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	HttpStatusCode *int32                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListHistoryTasksForResourceGroupResponseBody) String() string {
@@ -29184,13 +29259,11 @@ func (s *ListMetaDBResponse) SetBody(v *ListMetaDBResponseBody) *ListMetaDBRespo
 }
 
 type ListMigrationsRequest struct {
-	// Migration operation type, IMPORT/EXPORT
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
 	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Workspace Id
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId     *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s ListMigrationsRequest) String() string {
@@ -32383,14 +32456,13 @@ type ListQualityRulesResponseBodyDataRules struct {
 	Property                 *string `json:"Property,omitempty" xml:"Property,omitempty"`
 	PropertyKey              *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
 	RuleCheckerRelationId    *int32  `json:"RuleCheckerRelationId,omitempty" xml:"RuleCheckerRelationId,omitempty"`
-	// 规则名称
-	RuleName         *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleType         *int32  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	TableName        *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TemplateId       *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName     *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	Trend            *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
-	WarningThreshold *string `json:"WarningThreshold,omitempty" xml:"WarningThreshold,omitempty"`
+	RuleName                 *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleType                 *int32  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	TableName                *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TemplateId               *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName             *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Trend                    *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
+	WarningThreshold         *string `json:"WarningThreshold,omitempty" xml:"WarningThreshold,omitempty"`
 }
 
 func (s ListQualityRulesResponseBodyDataRules) String() string {
@@ -33224,9 +33296,8 @@ func (s *ListShiftPersonnelsRequest) SetUserType(v string) *ListShiftPersonnelsR
 }
 
 type ListShiftPersonnelsResponseBody struct {
-	Paging *ListShiftPersonnelsResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Paging    *ListShiftPersonnelsResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListShiftPersonnelsResponseBody) String() string {
@@ -33382,9 +33453,8 @@ func (s *ListShiftSchedulesRequest) SetShiftScheduleName(v string) *ListShiftSch
 }
 
 type ListShiftSchedulesResponseBody struct {
-	Paging *ListShiftSchedulesResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Paging    *ListShiftSchedulesResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListShiftSchedulesResponseBody) String() string {
@@ -34281,12 +34351,10 @@ func (s *ListTopicsResponse) SetBody(v *ListTopicsResponseBody) *ListTopicsRespo
 }
 
 type ListUsageForResourceGroupRequest struct {
-	// 最晚当前时间
 	EndTime                 *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ProjectEnv              *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
 	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
-	// 7天内
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime               *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListUsageForResourceGroupRequest) String() string {
@@ -38739,8 +38807,7 @@ type UpdateIDEEventResultRequest struct {
 	CheckResult    *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
 	CheckResultTip *string `json:"CheckResultTip,omitempty" xml:"CheckResultTip,omitempty"`
 	ExtensionCode  *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
-	// 消息UUID
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	MessageId      *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
 func (s UpdateIDEEventResultRequest) String() string {
@@ -38772,7 +38839,6 @@ func (s *UpdateIDEEventResultRequest) SetMessageId(v string) *UpdateIDEEventResu
 }
 
 type UpdateIDEEventResultResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -40739,10 +40805,8 @@ func (s *UpdateWorkbenchEventResultRequest) SetMessageId(v string) *UpdateWorkbe
 }
 
 type UpdateWorkbenchEventResultResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 成功标识
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateWorkbenchEventResultResponseBody) String() string {
@@ -46893,11 +46957,17 @@ func (client *Client) GetMetaTableOutput(request *GetMetaTableOutputRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) GetMetaTablePartitionWithOptions(request *GetMetaTablePartitionRequest, runtime *util.RuntimeOptions) (_result *GetMetaTablePartitionResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetMetaTablePartitionWithOptions(tmpReq *GetMetaTablePartitionRequest, runtime *util.RuntimeOptions) (_result *GetMetaTablePartitionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GetMetaTablePartitionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SortCriterion))) {
+		request.SortCriterionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SortCriterion), tea.String("SortCriterion"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
@@ -46917,6 +46987,10 @@ func (client *Client) GetMetaTablePartitionWithOptions(request *GetMetaTablePart
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortCriterionShrink)) {
+		query["SortCriterion"] = request.SortCriterionShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
