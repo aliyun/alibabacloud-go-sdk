@@ -99,8 +99,9 @@ func (s *ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetS
 }
 
 type ActiveConfigRulesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ActiveConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ActiveConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ActiveConfigRulesResponse) String() string {
@@ -113,6 +114,11 @@ func (s ActiveConfigRulesResponse) GoString() string {
 
 func (s *ActiveConfigRulesResponse) SetHeaders(v map[string]*string) *ActiveConfigRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ActiveConfigRulesResponse) SetStatusCode(v int32) *ActiveConfigRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -208,8 +214,9 @@ func (s *DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetS
 }
 
 type DeleteConfigRulesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteConfigRulesResponse) String() string {
@@ -222,6 +229,11 @@ func (s DeleteConfigRulesResponse) GoString() string {
 
 func (s *DeleteConfigRulesResponse) SetHeaders(v map[string]*string) *DeleteConfigRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteConfigRulesResponse) SetStatusCode(v int32) *DeleteConfigRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -347,8 +359,9 @@ func (s *DescribeComplianceResponseBodyComplianceResultCompliances) SetCount(v i
 }
 
 type DescribeComplianceResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeComplianceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeComplianceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeComplianceResponse) String() string {
@@ -361,6 +374,11 @@ func (s DescribeComplianceResponse) GoString() string {
 
 func (s *DescribeComplianceResponse) SetHeaders(v map[string]*string) *DescribeComplianceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeComplianceResponse) SetStatusCode(v int32) *DescribeComplianceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -509,8 +527,9 @@ func (s *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummary
 }
 
 type DescribeComplianceSummaryResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeComplianceSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeComplianceSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeComplianceSummaryResponse) String() string {
@@ -523,6 +542,11 @@ func (s DescribeComplianceSummaryResponse) GoString() string {
 
 func (s *DescribeComplianceSummaryResponse) SetHeaders(v map[string]*string) *DescribeComplianceSummaryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeComplianceSummaryResponse) SetStatusCode(v int32) *DescribeComplianceSummaryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -942,8 +966,9 @@ func (s *DescribeConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetMessage
 }
 
 type DescribeConfigRuleResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeConfigRuleResponse) String() string {
@@ -956,6 +981,11 @@ func (s DescribeConfigRuleResponse) GoString() string {
 
 func (s *DescribeConfigRuleResponse) SetHeaders(v map[string]*string) *DescribeConfigRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeConfigRuleResponse) SetStatusCode(v int32) *DescribeConfigRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1029,8 +1059,9 @@ func (s *DescribeConfigurationRecorderResponseBodyConfigurationRecorder) SetReso
 }
 
 type DescribeConfigurationRecorderResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeConfigurationRecorderResponse) String() string {
@@ -1043,6 +1074,11 @@ func (s DescribeConfigurationRecorderResponse) GoString() string {
 
 func (s *DescribeConfigurationRecorderResponse) SetHeaders(v map[string]*string) *DescribeConfigurationRecorderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeConfigurationRecorderResponse) SetStatusCode(v int32) *DescribeConfigurationRecorderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1175,8 +1211,9 @@ func (s *DescribeDeliveryChannelsResponseBodyDeliveryChannels) SetStatus(v int32
 }
 
 type DescribeDeliveryChannelsResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDeliveryChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDeliveryChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDeliveryChannelsResponse) String() string {
@@ -1189,6 +1226,11 @@ func (s DescribeDeliveryChannelsResponse) GoString() string {
 
 func (s *DescribeDeliveryChannelsResponse) SetHeaders(v map[string]*string) *DescribeDeliveryChannelsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponse) SetStatusCode(v int32) *DescribeDeliveryChannelsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1339,8 +1381,9 @@ func (s *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetTags
 }
 
 type DescribeDiscoveredResourceResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDiscoveredResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiscoveredResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDiscoveredResourceResponse) String() string {
@@ -1353,6 +1396,11 @@ func (s DescribeDiscoveredResourceResponse) GoString() string {
 
 func (s *DescribeDiscoveredResourceResponse) SetHeaders(v map[string]*string) *DescribeDiscoveredResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceResponse) SetStatusCode(v int32) *DescribeDiscoveredResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1614,8 +1662,9 @@ func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultL
 }
 
 type DescribeEvaluationResultsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeEvaluationResultsResponse) String() string {
@@ -1628,6 +1677,11 @@ func (s DescribeEvaluationResultsResponse) GoString() string {
 
 func (s *DescribeEvaluationResultsResponse) SetHeaders(v map[string]*string) *DescribeEvaluationResultsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponse) SetStatusCode(v int32) *DescribeEvaluationResultsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1778,8 +1832,9 @@ func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) Set
 }
 
 type GetAggregateDiscoveredResourceResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAggregateDiscoveredResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAggregateDiscoveredResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAggregateDiscoveredResourceResponse) String() string {
@@ -1792,6 +1847,11 @@ func (s GetAggregateDiscoveredResourceResponse) GoString() string {
 
 func (s *GetAggregateDiscoveredResourceResponse) SetHeaders(v map[string]*string) *GetAggregateDiscoveredResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponse) SetStatusCode(v int32) *GetAggregateDiscoveredResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1899,8 +1959,9 @@ func (s *GetDiscoveredResourceCountsResponseBodyGroupedResourceCountsGroupedReso
 }
 
 type GetDiscoveredResourceCountsResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDiscoveredResourceCountsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDiscoveredResourceCountsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDiscoveredResourceCountsResponse) String() string {
@@ -1913,6 +1974,11 @@ func (s GetDiscoveredResourceCountsResponse) GoString() string {
 
 func (s *GetDiscoveredResourceCountsResponse) SetHeaders(v map[string]*string) *GetDiscoveredResourceCountsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetDiscoveredResourceCountsResponse) SetStatusCode(v int32) *GetDiscoveredResourceCountsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1997,8 +2063,9 @@ func (s *GetDiscoveredResourceSummaryResponseBodyDiscoveredResourceSummary) SetR
 }
 
 type GetDiscoveredResourceSummaryResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDiscoveredResourceSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDiscoveredResourceSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDiscoveredResourceSummaryResponse) String() string {
@@ -2011,6 +2078,11 @@ func (s GetDiscoveredResourceSummaryResponse) GoString() string {
 
 func (s *GetDiscoveredResourceSummaryResponse) SetHeaders(v map[string]*string) *GetDiscoveredResourceSummaryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetDiscoveredResourceSummaryResponse) SetStatusCode(v int32) *GetDiscoveredResourceSummaryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2226,8 +2298,9 @@ func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComp
 }
 
 type GetResourceComplianceTimelineResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetResourceComplianceTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetResourceComplianceTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetResourceComplianceTimelineResponse) String() string {
@@ -2240,6 +2313,11 @@ func (s GetResourceComplianceTimelineResponse) GoString() string {
 
 func (s *GetResourceComplianceTimelineResponse) SetHeaders(v map[string]*string) *GetResourceComplianceTimelineResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponse) SetStatusCode(v int32) *GetResourceComplianceTimelineResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2449,8 +2527,9 @@ func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeli
 }
 
 type GetResourceConfigurationTimelineResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetResourceConfigurationTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetResourceConfigurationTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetResourceConfigurationTimelineResponse) String() string {
@@ -2463,6 +2542,11 @@ func (s GetResourceConfigurationTimelineResponse) GoString() string {
 
 func (s *GetResourceConfigurationTimelineResponse) SetHeaders(v map[string]*string) *GetResourceConfigurationTimelineResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponse) SetStatusCode(v int32) *GetResourceConfigurationTimelineResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2495,8 +2579,9 @@ func (s *GetSupportedResourceTypesResponseBody) SetResourceTypes(v []*string) *G
 }
 
 type GetSupportedResourceTypesResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSupportedResourceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSupportedResourceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSupportedResourceTypesResponse) String() string {
@@ -2509,6 +2594,11 @@ func (s GetSupportedResourceTypesResponse) GoString() string {
 
 func (s *GetSupportedResourceTypesResponse) SetHeaders(v map[string]*string) *GetSupportedResourceTypesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetSupportedResourceTypesResponse) SetStatusCode(v int32) *GetSupportedResourceTypesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2706,8 +2796,9 @@ func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesD
 }
 
 type ListAggregateDiscoveredResourcesResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAggregateDiscoveredResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAggregateDiscoveredResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAggregateDiscoveredResourcesResponse) String() string {
@@ -2720,6 +2811,11 @@ func (s ListAggregateDiscoveredResourcesResponse) GoString() string {
 
 func (s *ListAggregateDiscoveredResourcesResponse) SetHeaders(v map[string]*string) *ListAggregateDiscoveredResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponse) SetStatusCode(v int32) *ListAggregateDiscoveredResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2865,6 +2961,7 @@ type ListConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	RiskLevel        *int32                                                          `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	SourceIdentifier *string                                                         `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
 	SourceOwner      *string                                                         `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	Tags             []*ListConfigRulesResponseBodyConfigRulesConfigRuleListTags     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListConfigRulesResponseBodyConfigRulesConfigRuleList) String() string {
@@ -2940,6 +3037,11 @@ func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetSourceOwner(v 
 	return s
 }
 
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetTags(v []*ListConfigRulesResponseBodyConfigRulesConfigRuleListTags) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.Tags = v
+	return s
+}
+
 type ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance struct {
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
 	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
@@ -2986,9 +3088,33 @@ func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) SetCompli
 	return s
 }
 
+type ListConfigRulesResponseBodyConfigRulesConfigRuleListTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleListTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleListTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListTags) SetKey(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleListTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListTags) SetValue(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleListTags {
+	s.Value = &v
+	return s
+}
+
 type ListConfigRulesResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListConfigRulesResponse) String() string {
@@ -3001,6 +3127,11 @@ func (s ListConfigRulesResponse) GoString() string {
 
 func (s *ListConfigRulesResponse) SetHeaders(v map[string]*string) *ListConfigRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListConfigRulesResponse) SetStatusCode(v int32) *ListConfigRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3192,8 +3323,9 @@ func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscovered
 }
 
 type ListDiscoveredResourcesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDiscoveredResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDiscoveredResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDiscoveredResourcesResponse) String() string {
@@ -3206,6 +3338,11 @@ func (s ListDiscoveredResourcesResponse) GoString() string {
 
 func (s *ListDiscoveredResourcesResponse) SetHeaders(v map[string]*string) *ListDiscoveredResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponse) SetStatusCode(v int32) *ListDiscoveredResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3296,8 +3433,9 @@ func (s *ListRemediationTemplatesResponseBodyRemediationTemplates) SetTemplateNa
 }
 
 type ListRemediationTemplatesResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRemediationTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRemediationTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRemediationTemplatesResponse) String() string {
@@ -3310,6 +3448,11 @@ func (s ListRemediationTemplatesResponse) GoString() string {
 
 func (s *ListRemediationTemplatesResponse) SetHeaders(v map[string]*string) *ListRemediationTemplatesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListRemediationTemplatesResponse) SetStatusCode(v int32) *ListRemediationTemplatesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3437,8 +3580,9 @@ func (s *PutConfigRuleResponseBody) SetRequestId(v string) *PutConfigRuleRespons
 }
 
 type PutConfigRuleResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutConfigRuleResponse) String() string {
@@ -3451,6 +3595,11 @@ func (s PutConfigRuleResponse) GoString() string {
 
 func (s *PutConfigRuleResponse) SetHeaders(v map[string]*string) *PutConfigRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutConfigRuleResponse) SetStatusCode(v int32) *PutConfigRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3529,8 +3678,9 @@ func (s *PutConfigurationRecorderResponseBodyConfigurationRecorder) SetResourceT
 }
 
 type PutConfigurationRecorderResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutConfigurationRecorderResponse) String() string {
@@ -3543,6 +3693,11 @@ func (s PutConfigurationRecorderResponse) GoString() string {
 
 func (s *PutConfigurationRecorderResponse) SetHeaders(v map[string]*string) *PutConfigurationRecorderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutConfigurationRecorderResponse) SetStatusCode(v int32) *PutConfigurationRecorderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3640,8 +3795,9 @@ func (s *PutDeliveryChannelResponseBody) SetRequestId(v string) *PutDeliveryChan
 }
 
 type PutDeliveryChannelResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutDeliveryChannelResponse) String() string {
@@ -3654,6 +3810,11 @@ func (s PutDeliveryChannelResponse) GoString() string {
 
 func (s *PutDeliveryChannelResponse) SetHeaders(v map[string]*string) *PutDeliveryChannelResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutDeliveryChannelResponse) SetStatusCode(v int32) *PutDeliveryChannelResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3709,8 +3870,9 @@ func (s *PutEvaluationsResponseBody) SetResult(v bool) *PutEvaluationsResponseBo
 }
 
 type PutEvaluationsResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutEvaluationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutEvaluationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutEvaluationsResponse) String() string {
@@ -3723,6 +3885,11 @@ func (s PutEvaluationsResponse) GoString() string {
 
 func (s *PutEvaluationsResponse) SetHeaders(v map[string]*string) *PutEvaluationsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutEvaluationsResponse) SetStatusCode(v int32) *PutEvaluationsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3784,8 +3951,9 @@ func (s *StartConfigRuleEvaluationResponseBody) SetResult(v bool) *StartConfigRu
 }
 
 type StartConfigRuleEvaluationResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartConfigRuleEvaluationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartConfigRuleEvaluationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartConfigRuleEvaluationResponse) String() string {
@@ -3798,6 +3966,11 @@ func (s StartConfigRuleEvaluationResponse) GoString() string {
 
 func (s *StartConfigRuleEvaluationResponse) SetHeaders(v map[string]*string) *StartConfigRuleEvaluationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StartConfigRuleEvaluationResponse) SetStatusCode(v int32) *StartConfigRuleEvaluationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3888,8 +4061,9 @@ func (s *StartConfigurationRecorderResponseBodyConfigurationRecorder) SetResourc
 }
 
 type StartConfigurationRecorderResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartConfigurationRecorderResponse) String() string {
@@ -3902,6 +4076,11 @@ func (s StartConfigurationRecorderResponse) GoString() string {
 
 func (s *StartConfigurationRecorderResponse) SetHeaders(v map[string]*string) *StartConfigurationRecorderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StartConfigurationRecorderResponse) SetStatusCode(v int32) *StartConfigurationRecorderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3997,8 +4176,9 @@ func (s *StopConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetSuc
 }
 
 type StopConfigRulesResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopConfigRulesResponse) String() string {
@@ -4011,6 +4191,11 @@ func (s StopConfigRulesResponse) GoString() string {
 
 func (s *StopConfigRulesResponse) SetHeaders(v map[string]*string) *StopConfigRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StopConfigRulesResponse) SetStatusCode(v int32) *StopConfigRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4163,7 +4348,31 @@ func (client *Client) DescribeComplianceWithOptions(request *DescribeComplianceR
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComplianceType)) {
+		query["ComplianceType"] = request.ComplianceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		query["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiAccount)) {
+		query["MultiAccount"] = request.MultiAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4172,7 +4381,7 @@ func (client *Client) DescribeComplianceWithOptions(request *DescribeComplianceR
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -4203,7 +4412,15 @@ func (client *Client) DescribeComplianceSummaryWithOptions(request *DescribeComp
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiAccount)) {
+		query["MultiAccount"] = request.MultiAccount
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4212,7 +4429,7 @@ func (client *Client) DescribeComplianceSummaryWithOptions(request *DescribeComp
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -4243,7 +4460,19 @@ func (client *Client) DescribeConfigRuleWithOptions(request *DescribeConfigRuleR
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		query["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiAccount)) {
+		query["MultiAccount"] = request.MultiAccount
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4252,7 +4481,7 @@ func (client *Client) DescribeConfigRuleWithOptions(request *DescribeConfigRuleR
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -4285,7 +4514,7 @@ func (client *Client) DescribeConfigurationRecorderWithOptions(runtime *util.Run
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -4316,7 +4545,11 @@ func (client *Client) DescribeDeliveryChannelsWithOptions(request *DescribeDeliv
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelIds)) {
+		query["DeliveryChannelIds"] = request.DeliveryChannelIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4325,7 +4558,7 @@ func (client *Client) DescribeDeliveryChannelsWithOptions(request *DescribeDeliv
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -4356,7 +4589,27 @@ func (client *Client) DescribeDiscoveredResourceWithOptions(request *DescribeDis
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiAccount)) {
+		query["MultiAccount"] = request.MultiAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4365,7 +4618,7 @@ func (client *Client) DescribeDiscoveredResourceWithOptions(request *DescribeDis
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -4476,7 +4729,19 @@ func (client *Client) GetDiscoveredResourceCountsWithOptions(request *GetDiscove
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupByKey)) {
+		query["GroupByKey"] = request.GroupByKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiAccount)) {
+		query["MultiAccount"] = request.MultiAccount
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4485,7 +4750,7 @@ func (client *Client) GetDiscoveredResourceCountsWithOptions(request *GetDiscove
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -4516,7 +4781,15 @@ func (client *Client) GetDiscoveredResourceSummaryWithOptions(request *GetDiscov
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiAccount)) {
+		query["MultiAccount"] = request.MultiAccount
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4525,7 +4798,7 @@ func (client *Client) GetDiscoveredResourceSummaryWithOptions(request *GetDiscov
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -4556,7 +4829,43 @@ func (client *Client) GetResourceComplianceTimelineWithOptions(request *GetResou
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiAccount)) {
+		query["MultiAccount"] = request.MultiAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4565,7 +4874,7 @@ func (client *Client) GetResourceComplianceTimelineWithOptions(request *GetResou
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -4596,7 +4905,43 @@ func (client *Client) GetResourceConfigurationTimelineWithOptions(request *GetRe
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiAccount)) {
+		query["MultiAccount"] = request.MultiAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4605,7 +4950,7 @@ func (client *Client) GetResourceConfigurationTimelineWithOptions(request *GetRe
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -4638,7 +4983,7 @@ func (client *Client) GetSupportedResourceTypesWithOptions(runtime *util.Runtime
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -4741,7 +5086,43 @@ func (client *Client) ListConfigRulesWithOptions(request *ListConfigRulesRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackId)) {
+		query["CompliancePackId"] = request.CompliancePackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComplianceType)) {
+		query["ComplianceType"] = request.ComplianceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleName)) {
+		query["ConfigRuleName"] = request.ConfigRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleState)) {
+		query["ConfigRuleState"] = request.ConfigRuleState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiAccount)) {
+		query["MultiAccount"] = request.MultiAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4750,7 +5131,7 @@ func (client *Client) ListConfigRulesWithOptions(request *ListConfigRulesRequest
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
