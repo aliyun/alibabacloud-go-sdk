@@ -5747,10 +5747,6 @@ func (client *Client) SendBatchSmsWithOptions(request *SendBatchSmsRequest, runt
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PhoneNumberJson)) {
-		query["PhoneNumberJson"] = request.PhoneNumberJson
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -5759,24 +5755,30 @@ func (client *Client) SendBatchSmsWithOptions(request *SendBatchSmsRequest, runt
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SignNameJson)) {
-		query["SignNameJson"] = request.SignNameJson
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SmsUpExtendCodeJson)) {
-		query["SmsUpExtendCodeJson"] = request.SmsUpExtendCodeJson
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
 		query["TemplateCode"] = request.TemplateCode
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumberJson)) {
+		body["PhoneNumberJson"] = request.PhoneNumberJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignNameJson)) {
+		body["SignNameJson"] = request.SignNameJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsUpExtendCodeJson)) {
+		body["SmsUpExtendCodeJson"] = request.SmsUpExtendCodeJson
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateParamJson)) {
-		query["TemplateParamJson"] = request.TemplateParamJson
+		body["TemplateParamJson"] = request.TemplateParamJson
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SendBatchSms"),
