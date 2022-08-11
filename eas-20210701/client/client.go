@@ -380,6 +380,7 @@ type Service struct {
 	Cpu              *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CurrentVersion   *int32  `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	ExtraData        *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
 	Gpu              *int32  `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
 	Image            *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
@@ -394,8 +395,10 @@ type Service struct {
 	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resource         *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ResourceAlias    *string `json:"ResourceAlias,omitempty" xml:"ResourceAlias,omitempty"`
 	RunningInstance  *int32  `json:"RunningInstance,omitempty" xml:"RunningInstance,omitempty"`
 	ServiceConfig    *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	ServiceGroup     *string `json:"ServiceGroup,omitempty" xml:"ServiceGroup,omitempty"`
 	ServiceId        *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	Source           *string `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -435,6 +438,11 @@ func (s *Service) SetCreateTime(v string) *Service {
 
 func (s *Service) SetCurrentVersion(v int32) *Service {
 	s.CurrentVersion = &v
+	return s
+}
+
+func (s *Service) SetExtraData(v string) *Service {
+	s.ExtraData = &v
 	return s
 }
 
@@ -508,6 +516,11 @@ func (s *Service) SetResource(v string) *Service {
 	return s
 }
 
+func (s *Service) SetResourceAlias(v string) *Service {
+	s.ResourceAlias = &v
+	return s
+}
+
 func (s *Service) SetRunningInstance(v int32) *Service {
 	s.RunningInstance = &v
 	return s
@@ -515,6 +528,11 @@ func (s *Service) SetRunningInstance(v int32) *Service {
 
 func (s *Service) SetServiceConfig(v string) *Service {
 	s.ServiceConfig = &v
+	return s
+}
+
+func (s *Service) SetServiceGroup(v string) *Service {
+	s.ServiceGroup = &v
 	return s
 }
 
@@ -3398,7 +3416,8 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 }
 
 type ReleaseServiceRequest struct {
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	TrafficState *string `json:"TrafficState,omitempty" xml:"TrafficState,omitempty"`
+	Weight       *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s ReleaseServiceRequest) String() string {
@@ -3407,6 +3426,11 @@ func (s ReleaseServiceRequest) String() string {
 
 func (s ReleaseServiceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ReleaseServiceRequest) SetTrafficState(v string) *ReleaseServiceRequest {
+	s.TrafficState = &v
+	return s
 }
 
 func (s *ReleaseServiceRequest) SetWeight(v int32) *ReleaseServiceRequest {
@@ -6001,6 +6025,10 @@ func (client *Client) ReleaseServiceWithOptions(ClusterId *string, ServiceName *
 	ClusterId = openapiutil.GetEncodeParam(ClusterId)
 	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TrafficState)) {
+		body["TrafficState"] = request.TrafficState
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Weight)) {
 		body["Weight"] = request.Weight
 	}
