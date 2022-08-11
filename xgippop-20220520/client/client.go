@@ -1225,6 +1225,152 @@ func (s *GetFreeFlowUsageStatisticResponse) SetBody(v *GetFreeFlowUsageStatistic
 	return s
 }
 
+type GetItemListRequest struct {
+	AliUid  *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+}
+
+func (s GetItemListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetItemListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetItemListRequest) SetAliUid(v int64) *GetItemListRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetItemListRequest) SetBizCode(v string) *GetItemListRequest {
+	s.BizCode = &v
+	return s
+}
+
+type GetItemListResponseBody struct {
+	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetItemListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                         `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetItemListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetItemListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetItemListResponseBody) SetCode(v string) *GetItemListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetItemListResponseBody) SetData(v []*GetItemListResponseBodyData) *GetItemListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetItemListResponseBody) SetMessage(v string) *GetItemListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetItemListResponseBody) SetRequestId(v string) *GetItemListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetItemListResponseBody) SetRt(v int64) *GetItemListResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetItemListResponseBody) SetSuccess(v bool) *GetItemListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetItemListResponseBodyData struct {
+	BizCode    *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	BizType    *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	ItemBuyUrl *string `json:"ItemBuyUrl,omitempty" xml:"ItemBuyUrl,omitempty"`
+	ItemCode   *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	ItemName   *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetItemListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetItemListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetItemListResponseBodyData) SetBizCode(v string) *GetItemListResponseBodyData {
+	s.BizCode = &v
+	return s
+}
+
+func (s *GetItemListResponseBodyData) SetBizType(v string) *GetItemListResponseBodyData {
+	s.BizType = &v
+	return s
+}
+
+func (s *GetItemListResponseBodyData) SetItemBuyUrl(v string) *GetItemListResponseBodyData {
+	s.ItemBuyUrl = &v
+	return s
+}
+
+func (s *GetItemListResponseBodyData) SetItemCode(v string) *GetItemListResponseBodyData {
+	s.ItemCode = &v
+	return s
+}
+
+func (s *GetItemListResponseBodyData) SetItemName(v string) *GetItemListResponseBodyData {
+	s.ItemName = &v
+	return s
+}
+
+func (s *GetItemListResponseBodyData) SetName(v string) *GetItemListResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+type GetItemListResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetItemListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetItemListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetItemListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetItemListResponse) SetHeaders(v map[string]*string) *GetItemListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetItemListResponse) SetStatusCode(v int32) *GetItemListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetItemListResponse) SetBody(v *GetItemListResponseBody) *GetItemListResponse {
+	s.Body = v
+	return s
+}
+
 type GetOrderFreeFlowProductStatusRequest struct {
 	AliUid              *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	CustomerFlowOrderId *string `json:"CustomerFlowOrderId,omitempty" xml:"CustomerFlowOrderId,omitempty"`
@@ -3166,6 +3312,189 @@ func (s *SaveApplicationInfoResponse) SetBody(v *SaveApplicationInfoResponseBody
 	return s
 }
 
+type SdkOrderQosProductRequest struct {
+	AliUid       *int64    `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ChannelId    *string   `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CtToken      *string   `json:"CtToken,omitempty" xml:"CtToken,omitempty"`
+	IPv6         *string   `json:"IPv6,omitempty" xml:"IPv6,omitempty"`
+	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpType       *string   `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	MobileNumber *string   `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	Operator     *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	PrivateIpv4  *string   `json:"PrivateIpv4,omitempty" xml:"PrivateIpv4,omitempty"`
+	ProductId    *string   `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	Provice      *string   `json:"Provice,omitempty" xml:"Provice,omitempty"`
+	PublicIpv4   *string   `json:"PublicIpv4,omitempty" xml:"PublicIpv4,omitempty"`
+	QosRequestId *string   `json:"QosRequestId,omitempty" xml:"QosRequestId,omitempty"`
+	TargetIpList []*string `json:"TargetIpList,omitempty" xml:"TargetIpList,omitempty" type:"Repeated"`
+	Token        *string   `json:"Token,omitempty" xml:"Token,omitempty"`
+	UnitNum      *int32    `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+}
+
+func (s SdkOrderQosProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkOrderQosProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SdkOrderQosProductRequest) SetAliUid(v int64) *SdkOrderQosProductRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetChannelId(v string) *SdkOrderQosProductRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetCtToken(v string) *SdkOrderQosProductRequest {
+	s.CtToken = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetIPv6(v string) *SdkOrderQosProductRequest {
+	s.IPv6 = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetInstanceId(v string) *SdkOrderQosProductRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetIpType(v string) *SdkOrderQosProductRequest {
+	s.IpType = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetMobileNumber(v string) *SdkOrderQosProductRequest {
+	s.MobileNumber = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetOperator(v string) *SdkOrderQosProductRequest {
+	s.Operator = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetPrivateIpv4(v string) *SdkOrderQosProductRequest {
+	s.PrivateIpv4 = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetProductId(v string) *SdkOrderQosProductRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetProvice(v string) *SdkOrderQosProductRequest {
+	s.Provice = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetPublicIpv4(v string) *SdkOrderQosProductRequest {
+	s.PublicIpv4 = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetQosRequestId(v string) *SdkOrderQosProductRequest {
+	s.QosRequestId = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetTargetIpList(v []*string) *SdkOrderQosProductRequest {
+	s.TargetIpList = v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetToken(v string) *SdkOrderQosProductRequest {
+	s.Token = &v
+	return s
+}
+
+func (s *SdkOrderQosProductRequest) SetUnitNum(v int32) *SdkOrderQosProductRequest {
+	s.UnitNum = &v
+	return s
+}
+
+type SdkOrderQosProductResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64  `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SdkOrderQosProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkOrderQosProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SdkOrderQosProductResponseBody) SetCode(v string) *SdkOrderQosProductResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SdkOrderQosProductResponseBody) SetData(v string) *SdkOrderQosProductResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SdkOrderQosProductResponseBody) SetMessage(v string) *SdkOrderQosProductResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SdkOrderQosProductResponseBody) SetRequestId(v string) *SdkOrderQosProductResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SdkOrderQosProductResponseBody) SetRt(v int64) *SdkOrderQosProductResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *SdkOrderQosProductResponseBody) SetSuccess(v bool) *SdkOrderQosProductResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SdkOrderQosProductResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SdkOrderQosProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SdkOrderQosProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkOrderQosProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SdkOrderQosProductResponse) SetHeaders(v map[string]*string) *SdkOrderQosProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SdkOrderQosProductResponse) SetStatusCode(v int32) *SdkOrderQosProductResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SdkOrderQosProductResponse) SetBody(v *SdkOrderQosProductResponseBody) *SdkOrderQosProductResponse {
+	s.Body = v
+	return s
+}
+
 type SdkValidateStatusRequest struct {
 	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	CredentialType  *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
@@ -4044,6 +4373,46 @@ func (client *Client) GetFreeFlowUsageStatistic(request *GetFreeFlowUsageStatist
 	return _result, _err
 }
 
+func (client *Client) GetItemListWithOptions(request *GetItemListRequest, runtime *util.RuntimeOptions) (_result *GetItemListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetItemList"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetItemListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetItemList(request *GetItemListRequest) (_result *GetItemListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetItemListResponse{}
+	_body, _err := client.GetItemListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetOrderFreeFlowProductStatusWithOptions(request *GetOrderFreeFlowProductStatusRequest, runtime *util.RuntimeOptions) (_result *GetOrderFreeFlowProductStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4663,6 +5032,110 @@ func (client *Client) SaveApplicationInfo(request *SaveApplicationInfoRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveApplicationInfoResponse{}
 	_body, _err := client.SaveApplicationInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SdkOrderQosProductWithOptions(request *SdkOrderQosProductRequest, runtime *util.RuntimeOptions) (_result *SdkOrderQosProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		query["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CtToken)) {
+		query["CtToken"] = request.CtToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IPv6)) {
+		query["IPv6"] = request.IPv6
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpType)) {
+		query["IpType"] = request.IpType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileNumber)) {
+		query["MobileNumber"] = request.MobileNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operator)) {
+		query["Operator"] = request.Operator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpv4)) {
+		query["PrivateIpv4"] = request.PrivateIpv4
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		query["ProductId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Provice)) {
+		query["Provice"] = request.Provice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicIpv4)) {
+		query["PublicIpv4"] = request.PublicIpv4
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QosRequestId)) {
+		query["QosRequestId"] = request.QosRequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetIpList)) {
+		query["TargetIpList"] = request.TargetIpList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnitNum)) {
+		query["UnitNum"] = request.UnitNum
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SdkOrderQosProduct"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SdkOrderQosProductResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SdkOrderQosProduct(request *SdkOrderQosProductRequest) (_result *SdkOrderQosProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SdkOrderQosProductResponse{}
+	_body, _err := client.SdkOrderQosProductWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
