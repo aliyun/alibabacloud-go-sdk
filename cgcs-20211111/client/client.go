@@ -13,10 +13,8 @@ import (
 )
 
 type CancelReserveTaskRequest struct {
-	// 客户端幂等性 token
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 创建容量预定任务时返回的 taskId
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CancelReserveTaskRequest) String() string {
@@ -38,7 +36,6 @@ func (s *CancelReserveTaskRequest) SetTaskId(v string) *CancelReserveTaskRequest
 }
 
 type CancelReserveTaskResponseBody struct {
-	// pop的requestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -86,6 +83,93 @@ func (s *CancelReserveTaskResponse) SetStatusCode(v int32) *CancelReserveTaskRes
 }
 
 func (s *CancelReserveTaskResponse) SetBody(v *CancelReserveTaskResponseBody) *CancelReserveTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CancelUploadTaskRequest struct {
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s CancelUploadTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelUploadTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelUploadTaskRequest) SetAppId(v string) *CancelUploadTaskRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CancelUploadTaskRequest) SetVersionId(v string) *CancelUploadTaskRequest {
+	s.VersionId = &v
+	return s
+}
+
+type CancelUploadTaskResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelUploadTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelUploadTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelUploadTaskResponseBody) SetCode(v string) *CancelUploadTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelUploadTaskResponseBody) SetData(v bool) *CancelUploadTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CancelUploadTaskResponseBody) SetMessage(v string) *CancelUploadTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelUploadTaskResponseBody) SetRequestId(v string) *CancelUploadTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelUploadTaskResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelUploadTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelUploadTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelUploadTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelUploadTaskResponse) SetHeaders(v map[string]*string) *CancelUploadTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelUploadTaskResponse) SetStatusCode(v int32) *CancelUploadTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelUploadTaskResponse) SetBody(v *CancelUploadTaskResponseBody) *CancelUploadTaskResponse {
 	s.Body = v
 	return s
 }
@@ -299,22 +383,16 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 }
 
 type CreateAppSessionRequest struct {
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用版本
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 客户端ip
-	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// 自定义会话id
-	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	// 自定义用户id
-	CustomUserId   *string `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
-	EnablePostpaid *bool   `json:"EnablePostpaid,omitempty" xml:"EnablePostpaid,omitempty"`
-	// 启动参数
+	AppId           *string                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion      *string                                   `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	ClientIp        *string                                   `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	CustomSessionId *string                                   `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	CustomUserId    *string                                   `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
+	EnablePostpaid  *bool                                     `json:"EnablePostpaid,omitempty" xml:"EnablePostpaid,omitempty"`
+	ProjectId       *string                                   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	StartParameters []*CreateAppSessionRequestStartParameters `json:"StartParameters,omitempty" xml:"StartParameters,omitempty" type:"Repeated"`
-	// 系统信息：如端侧机型等信息
-	SystemInfo []*CreateAppSessionRequestSystemInfo `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Repeated"`
-	Timeout    *int64                               `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	SystemInfo      []*CreateAppSessionRequestSystemInfo      `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Repeated"`
+	Timeout         *int64                                    `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s CreateAppSessionRequest) String() string {
@@ -355,6 +433,11 @@ func (s *CreateAppSessionRequest) SetEnablePostpaid(v bool) *CreateAppSessionReq
 	return s
 }
 
+func (s *CreateAppSessionRequest) SetProjectId(v string) *CreateAppSessionRequest {
+	s.ProjectId = &v
+	return s
+}
+
 func (s *CreateAppSessionRequest) SetStartParameters(v []*CreateAppSessionRequestStartParameters) *CreateAppSessionRequest {
 	s.StartParameters = v
 	return s
@@ -371,7 +454,6 @@ func (s *CreateAppSessionRequest) SetTimeout(v int64) *CreateAppSessionRequest {
 }
 
 type CreateAppSessionRequestStartParameters struct {
-	// key
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -418,16 +500,11 @@ func (s *CreateAppSessionRequestSystemInfo) SetValue(v string) *CreateAppSession
 }
 
 type CreateAppSessionResponseBody struct {
-	// 应用id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用版本
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 自定义会话id
-	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	// 平台会话id
+	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion        *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	CustomSessionId   *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
 	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAppSessionResponseBody) String() string {
@@ -679,10 +756,8 @@ func (s *CreateAppSessionBatchSyncShrinkRequest) SetBatchId(v string) *CreateApp
 }
 
 type CreateAppSessionBatchSyncResponseBody struct {
-	// 自定义会话id
 	BatchId    *string                                            `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	FailedList []*CreateAppSessionBatchSyncResponseBodyFailedList `json:"FailedList,omitempty" xml:"FailedList,omitempty" type:"Repeated"`
-	// 请求id
 	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultList []*CreateAppSessionBatchSyncResponseBodyResultList `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
 }
@@ -768,15 +843,11 @@ func (s *CreateAppSessionBatchSyncResponseBodyFailedListFailedInfo) SetErrorMess
 }
 
 type CreateAppSessionBatchSyncResponseBodyResultList struct {
-	// 应用id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用版本
-	AppVersion *string                                                 `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	BizInfo    *CreateAppSessionBatchSyncResponseBodyResultListBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
-	// 自定义会话id
-	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	// 平台会话id
-	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+	AppId             *string                                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion        *string                                                 `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	BizInfo           *CreateAppSessionBatchSyncResponseBodyResultListBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
+	CustomSessionId   *string                                                 `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	PlatformSessionId *string                                                 `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
 }
 
 func (s CreateAppSessionBatchSyncResponseBodyResultList) String() string {
@@ -912,23 +983,16 @@ func (s *CreateAppSessionBatchSyncResponse) SetBody(v *CreateAppSessionBatchSync
 }
 
 type CreateAppSessionSyncRequest struct {
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用版本
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 客户端ip
-	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// 自定义会话id
-	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	// 自定义用户id
-	CustomUserId *string `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
-	DistrictId   *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 启动参数
+	AppId           *string                                       `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion      *string                                       `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	ClientIp        *string                                       `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	CustomSessionId *string                                       `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	CustomUserId    *string                                       `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
+	DistrictId      *string                                       `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	ProjectId       *string                                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	StartParameters []*CreateAppSessionSyncRequestStartParameters `json:"StartParameters,omitempty" xml:"StartParameters,omitempty" type:"Repeated"`
-	// 系统信息：如端侧机型等信息
-	SystemInfo []*CreateAppSessionSyncRequestSystemInfo `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Repeated"`
-	Tags       []*CreateAppSessionSyncRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SystemInfo      []*CreateAppSessionSyncRequestSystemInfo      `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Repeated"`
+	Tags            []*CreateAppSessionSyncRequestTags            `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateAppSessionSyncRequest) String() string {
@@ -990,9 +1054,7 @@ func (s *CreateAppSessionSyncRequest) SetTags(v []*CreateAppSessionSyncRequestTa
 }
 
 type CreateAppSessionSyncRequestStartParameters struct {
-	// key
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// value
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1061,17 +1123,12 @@ func (s *CreateAppSessionSyncRequestTags) SetValue(v string) *CreateAppSessionSy
 }
 
 type CreateAppSessionSyncResponseBody struct {
-	// 应用id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用版本
-	AppVersion *string                                  `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	BizInfo    *CreateAppSessionSyncResponseBodyBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
-	// 自定义会话id
-	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	// 平台会话id
-	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AppId             *string                                  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion        *string                                  `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	BizInfo           *CreateAppSessionSyncResponseBodyBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
+	CustomSessionId   *string                                  `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	PlatformSessionId *string                                  `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+	RequestId         *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAppSessionSyncResponseBody) String() string {
@@ -1287,20 +1344,13 @@ func (s *CreateAppVersionResponse) SetBody(v *CreateAppVersionResponseBody) *Cre
 }
 
 type CreateCapacityReservationRequest struct {
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用版本ID，如果不填，采用控制台设置的默认版本
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 客户端 token，保持幂等性。
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 大区 id
-	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	// 预期资源ready可服务时间 时间格式 yyyy-mm-dd HH:MM:SS 比如
+	AppId                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion              *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	ClientToken             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DistrictId              *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
 	ExpectResourceReadyTime *string `json:"ExpectResourceReadyTime,omitempty" xml:"ExpectResourceReadyTime,omitempty"`
-	// 预期创建出的容器能支持的 session 数量。GCS 内部会根据适配自动计算出所需要的资源量，以及多种机型的配比。
-	ExpectSessionCapacity *int32 `json:"ExpectSessionCapacity,omitempty" xml:"ExpectSessionCapacity,omitempty"`
-	// 项目ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ExpectSessionCapacity   *int32  `json:"ExpectSessionCapacity,omitempty" xml:"ExpectSessionCapacity,omitempty"`
+	ProjectId               *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s CreateCapacityReservationRequest) String() string {
@@ -1347,12 +1397,9 @@ func (s *CreateCapacityReservationRequest) SetProjectId(v string) *CreateCapacit
 }
 
 type CreateCapacityReservationResponseBody struct {
-	// 当前最大可分配的 session 库存，注意两次调用之间，该库存值可能有变动
-	CurrMaxAllocatableSessionCapacity *int32 `json:"CurrMaxAllocatableSessionCapacity,omitempty" xml:"CurrMaxAllocatableSessionCapacity,omitempty"`
-	// pop的requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 容器创建任务 id
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	CurrMaxAllocatableSessionCapacity *int32  `json:"CurrMaxAllocatableSessionCapacity,omitempty" xml:"CurrMaxAllocatableSessionCapacity,omitempty"`
+	RequestId                         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId                            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateCapacityReservationResponseBody) String() string {
@@ -1403,260 +1450,6 @@ func (s *CreateCapacityReservationResponse) SetStatusCode(v int32) *CreateCapaci
 }
 
 func (s *CreateCapacityReservationResponse) SetBody(v *CreateCapacityReservationResponseBody) *CreateCapacityReservationResponse {
-	s.Body = v
-	return s
-}
-
-type CreateProjectRequest struct {
-	BoundAppIdList []*string `json:"BoundAppIdList,omitempty" xml:"BoundAppIdList,omitempty" type:"Repeated"`
-	// 请求操作人Id
-	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	// 请求操作人类型
-	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	ProjectMemo  *string `json:"ProjectMemo,omitempty" xml:"ProjectMemo,omitempty"`
-	// project name
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// key : districtId
-	ProjectQuotaLimit *CreateProjectRequestProjectQuotaLimit `json:"ProjectQuotaLimit,omitempty" xml:"ProjectQuotaLimit,omitempty" type:"Struct"`
-}
-
-func (s CreateProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProjectRequest) SetBoundAppIdList(v []*string) *CreateProjectRequest {
-	s.BoundAppIdList = v
-	return s
-}
-
-func (s *CreateProjectRequest) SetOperatorId(v string) *CreateProjectRequest {
-	s.OperatorId = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetOperatorType(v string) *CreateProjectRequest {
-	s.OperatorType = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetProjectMemo(v string) *CreateProjectRequest {
-	s.ProjectMemo = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetProjectName(v string) *CreateProjectRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetProjectQuotaLimit(v *CreateProjectRequestProjectQuotaLimit) *CreateProjectRequest {
-	s.ProjectQuotaLimit = v
-	return s
-}
-
-type CreateProjectRequestProjectQuotaLimit struct {
-	// key - districtId
-	DistrictLimitMap map[string]*ProjectQuotaLimitDistrictLimitMapValue `json:"DistrictLimitMap,omitempty" xml:"DistrictLimitMap,omitempty"`
-	// 限制类型 ：目前默认 - ReserveContainer
-	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-}
-
-func (s CreateProjectRequestProjectQuotaLimit) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProjectRequestProjectQuotaLimit) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProjectRequestProjectQuotaLimit) SetDistrictLimitMap(v map[string]*ProjectQuotaLimitDistrictLimitMapValue) *CreateProjectRequestProjectQuotaLimit {
-	s.DistrictLimitMap = v
-	return s
-}
-
-func (s *CreateProjectRequestProjectQuotaLimit) SetLimitType(v string) *CreateProjectRequestProjectQuotaLimit {
-	s.LimitType = &v
-	return s
-}
-
-type CreateProjectShrinkRequest struct {
-	BoundAppIdListShrink *string `json:"BoundAppIdList,omitempty" xml:"BoundAppIdList,omitempty"`
-	// 请求操作人Id
-	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	// 请求操作人类型
-	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	ProjectMemo  *string `json:"ProjectMemo,omitempty" xml:"ProjectMemo,omitempty"`
-	// project name
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// key : districtId
-	ProjectQuotaLimitShrink *string `json:"ProjectQuotaLimit,omitempty" xml:"ProjectQuotaLimit,omitempty"`
-}
-
-func (s CreateProjectShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProjectShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProjectShrinkRequest) SetBoundAppIdListShrink(v string) *CreateProjectShrinkRequest {
-	s.BoundAppIdListShrink = &v
-	return s
-}
-
-func (s *CreateProjectShrinkRequest) SetOperatorId(v string) *CreateProjectShrinkRequest {
-	s.OperatorId = &v
-	return s
-}
-
-func (s *CreateProjectShrinkRequest) SetOperatorType(v string) *CreateProjectShrinkRequest {
-	s.OperatorType = &v
-	return s
-}
-
-func (s *CreateProjectShrinkRequest) SetProjectMemo(v string) *CreateProjectShrinkRequest {
-	s.ProjectMemo = &v
-	return s
-}
-
-func (s *CreateProjectShrinkRequest) SetProjectName(v string) *CreateProjectShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *CreateProjectShrinkRequest) SetProjectQuotaLimitShrink(v string) *CreateProjectShrinkRequest {
-	s.ProjectQuotaLimitShrink = &v
-	return s
-}
-
-type CreateProjectResponseBody struct {
-	// 业务处理结果Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 业务对象
-	Data *CreateProjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 业务处理消息摘要
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 操作请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 业务处理是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProjectResponseBody) SetCode(v string) *CreateProjectResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateProjectResponseBody) SetData(v *CreateProjectResponseBodyData) *CreateProjectResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateProjectResponseBody) SetMessage(v string) *CreateProjectResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateProjectResponseBody) SetRequestId(v string) *CreateProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateProjectResponseBody) SetSuccess(v bool) *CreateProjectResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateProjectResponseBodyData struct {
-	// 业务处理结果Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 业务对象
-	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 业务处理消息摘要
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 操作请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 业务处理是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateProjectResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProjectResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProjectResponseBodyData) SetCode(v string) *CreateProjectResponseBodyData {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateProjectResponseBodyData) SetData(v map[string]interface{}) *CreateProjectResponseBodyData {
-	s.Data = v
-	return s
-}
-
-func (s *CreateProjectResponseBodyData) SetMessage(v string) *CreateProjectResponseBodyData {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateProjectResponseBodyData) SetProjectId(v string) *CreateProjectResponseBodyData {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *CreateProjectResponseBodyData) SetRequestId(v string) *CreateProjectResponseBodyData {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateProjectResponseBodyData) SetSuccess(v bool) *CreateProjectResponseBodyData {
-	s.Success = &v
-	return s
-}
-
-type CreateProjectResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
 	s.Body = v
 	return s
 }
@@ -1795,130 +1588,6 @@ func (s *DeleteAppVersionResponse) SetStatusCode(v int32) *DeleteAppVersionRespo
 }
 
 func (s *DeleteAppVersionResponse) SetBody(v *DeleteAppVersionResponseBody) *DeleteAppVersionResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteProjectRequest struct {
-	// 请求操作人Id
-	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	// 请求操作人类型
-	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	// project Id
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s DeleteProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProjectRequest) SetOperatorId(v string) *DeleteProjectRequest {
-	s.OperatorId = &v
-	return s
-}
-
-func (s *DeleteProjectRequest) SetOperatorType(v string) *DeleteProjectRequest {
-	s.OperatorType = &v
-	return s
-}
-
-func (s *DeleteProjectRequest) SetProjectId(v string) *DeleteProjectRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type DeleteProjectResponseBody struct {
-	// 业务处理结果Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 业务对象
-	Data *DeleteProjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 业务处理消息摘要
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 操作请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 业务处理是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProjectResponseBody) SetCode(v string) *DeleteProjectResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteProjectResponseBody) SetData(v *DeleteProjectResponseBodyData) *DeleteProjectResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DeleteProjectResponseBody) SetMessage(v string) *DeleteProjectResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteProjectResponseBody) SetRequestId(v string) *DeleteProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteProjectResponseBody) SetSuccess(v bool) *DeleteProjectResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteProjectResponseBodyData struct {
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteProjectResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProjectResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProjectResponseBodyData) SetSuccess(v bool) *DeleteProjectResponseBodyData {
-	s.Success = &v
-	return s
-}
-
-type DeleteProjectResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeleteProjectResponse {
 	s.Body = v
 	return s
 }
@@ -2169,11 +1838,9 @@ func (s *GetAppResponse) SetBody(v *GetAppResponseBody) *GetAppResponse {
 }
 
 type GetAppCcuRequest struct {
-	// 自定义会话id
 	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 平台会话id
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s GetAppCcuRequest) String() string {
@@ -2200,10 +1867,9 @@ func (s *GetAppCcuRequest) SetProjectId(v string) *GetAppCcuRequest {
 }
 
 type GetAppCcuResponseBody struct {
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 自定义会话id
-	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	DetailList []*GetAppCcuResponseBodyDetailList `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Repeated"`
+	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Timestamp  *string                            `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s GetAppCcuResponseBody) String() string {
@@ -2214,6 +1880,11 @@ func (s GetAppCcuResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetAppCcuResponseBody) SetDetailList(v []*GetAppCcuResponseBodyDetailList) *GetAppCcuResponseBody {
+	s.DetailList = v
+	return s
+}
+
 func (s *GetAppCcuResponseBody) SetRequestId(v string) *GetAppCcuResponseBody {
 	s.RequestId = &v
 	return s
@@ -2221,6 +1892,41 @@ func (s *GetAppCcuResponseBody) SetRequestId(v string) *GetAppCcuResponseBody {
 
 func (s *GetAppCcuResponseBody) SetTimestamp(v string) *GetAppCcuResponseBody {
 	s.Timestamp = &v
+	return s
+}
+
+type GetAppCcuResponseBodyDetailList struct {
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Ccu        *string `json:"Ccu,omitempty" xml:"Ccu,omitempty"`
+	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s GetAppCcuResponseBodyDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppCcuResponseBodyDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppCcuResponseBodyDetailList) SetAppId(v string) *GetAppCcuResponseBodyDetailList {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetAppCcuResponseBodyDetailList) SetCcu(v string) *GetAppCcuResponseBodyDetailList {
+	s.Ccu = &v
+	return s
+}
+
+func (s *GetAppCcuResponseBodyDetailList) SetDistrictId(v string) *GetAppCcuResponseBodyDetailList {
+	s.DistrictId = &v
+	return s
+}
+
+func (s *GetAppCcuResponseBodyDetailList) SetProjectId(v string) *GetAppCcuResponseBodyDetailList {
+	s.ProjectId = &v
 	return s
 }
 
@@ -2254,9 +1960,7 @@ func (s *GetAppCcuResponse) SetBody(v *GetAppCcuResponseBody) *GetAppCcuResponse
 }
 
 type GetAppSessionRequest struct {
-	// 自定义会话id
-	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	// 平台会话id
+	CustomSessionId   *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
 	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
 }
 
@@ -2279,19 +1983,13 @@ func (s *GetAppSessionRequest) SetPlatformSessionId(v string) *GetAppSessionRequ
 }
 
 type GetAppSessionResponseBody struct {
-	// 应用id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用版本
-	AppVersion *string                           `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	BizInfo    *GetAppSessionResponseBodyBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
-	// 自定义会话id
-	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	// 平台会话id
-	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AppId             *string                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion        *string                           `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	BizInfo           *GetAppSessionResponseBodyBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
+	CustomSessionId   *string                           `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	PlatformSessionId *string                           `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+	RequestId         *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status            *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAppSessionResponseBody) String() string {
@@ -2525,18 +2223,12 @@ func (s *GetAppVersionResponse) SetBody(v *GetAppVersionResponseBody) *GetAppVer
 }
 
 type GetCapacityRequest struct {
-	// 按照 appId 来匹配
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 按照 app 版本来匹配
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 大区 id
 	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	// 第几页，默认从 1 开始
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// 一页大小，默认 20，最大 100
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 项目 id
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	PageNum    *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s GetCapacityRequest) String() string {
@@ -2578,16 +2270,11 @@ func (s *GetCapacityRequest) SetProjectId(v string) *GetCapacityRequest {
 }
 
 type GetCapacityResponseBody struct {
-	// 回满足匹配的
 	Capacities []*GetCapacityResponseBodyCapacities `json:"Capacities,omitempty" xml:"Capacities,omitempty" type:"Repeated"`
-	// 第几页
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// 每页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// pop的requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 满足匹配条件的总量
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	PageNum    *int32                               `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize   *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total      *int32                               `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetCapacityResponseBody) String() string {
@@ -2624,14 +2311,10 @@ func (s *GetCapacityResponseBody) SetTotal(v int32) *GetCapacityResponseBody {
 }
 
 type GetCapacityResponseBodyCapacities struct {
-	// 创建容器时指定的 appId
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 创建容器时指定的版本
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 该容器所属大区 id
-	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	// 可支撑 session 数量
-	SessionCapacity *int32 `json:"SessionCapacity,omitempty" xml:"SessionCapacity,omitempty"`
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion      *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	DistrictId      *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	SessionCapacity *int32  `json:"SessionCapacity,omitempty" xml:"SessionCapacity,omitempty"`
 }
 
 func (s GetCapacityResponseBodyCapacities) String() string {
@@ -2691,195 +2374,7 @@ func (s *GetCapacityResponse) SetBody(v *GetCapacityResponseBody) *GetCapacityRe
 	return s
 }
 
-type GetProjectRequest struct {
-	// 请求操作人Id
-	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	// 请求操作人类型
-	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	// project id
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s GetProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectRequest) SetOperatorId(v string) *GetProjectRequest {
-	s.OperatorId = &v
-	return s
-}
-
-func (s *GetProjectRequest) SetOperatorType(v string) *GetProjectRequest {
-	s.OperatorType = &v
-	return s
-}
-
-func (s *GetProjectRequest) SetProjectId(v string) *GetProjectRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type GetProjectResponseBody struct {
-	// 业务处理结果Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 业务对象
-	Data *GetProjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 业务处理消息摘要
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 操作请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 业务处理是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectResponseBody) SetCode(v string) *GetProjectResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetData(v *GetProjectResponseBodyData) *GetProjectResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetMessage(v string) *GetProjectResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetRequestId(v string) *GetProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetSuccess(v bool) *GetProjectResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetProjectResponseBodyData struct {
-	// 项目关联的应用数量
-	BoundAppNums *int64  `json:"BoundAppNums,omitempty" xml:"BoundAppNums,omitempty"`
-	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectMemo  *string `json:"ProjectMemo,omitempty" xml:"ProjectMemo,omitempty"`
-	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// key : districtId
-	ProjectQuotaLimit *GetProjectResponseBodyDataProjectQuotaLimit `json:"ProjectQuotaLimit,omitempty" xml:"ProjectQuotaLimit,omitempty" type:"Struct"`
-}
-
-func (s GetProjectResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectResponseBodyData) SetBoundAppNums(v int64) *GetProjectResponseBodyData {
-	s.BoundAppNums = &v
-	return s
-}
-
-func (s *GetProjectResponseBodyData) SetGmtCreate(v string) *GetProjectResponseBodyData {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *GetProjectResponseBodyData) SetGmtModified(v string) *GetProjectResponseBodyData {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *GetProjectResponseBodyData) SetProjectId(v string) *GetProjectResponseBodyData {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *GetProjectResponseBodyData) SetProjectMemo(v string) *GetProjectResponseBodyData {
-	s.ProjectMemo = &v
-	return s
-}
-
-func (s *GetProjectResponseBodyData) SetProjectName(v string) *GetProjectResponseBodyData {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetProjectResponseBodyData) SetProjectQuotaLimit(v *GetProjectResponseBodyDataProjectQuotaLimit) *GetProjectResponseBodyData {
-	s.ProjectQuotaLimit = v
-	return s
-}
-
-type GetProjectResponseBodyDataProjectQuotaLimit struct {
-	// key - districtId
-	DistrictLimitMap map[string]*DataProjectQuotaLimitDistrictLimitMapValue `json:"DistrictLimitMap,omitempty" xml:"DistrictLimitMap,omitempty"`
-	// 限制类型 ：目前默认 - ReserveContainer
-	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-}
-
-func (s GetProjectResponseBodyDataProjectQuotaLimit) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectResponseBodyDataProjectQuotaLimit) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectResponseBodyDataProjectQuotaLimit) SetDistrictLimitMap(v map[string]*DataProjectQuotaLimitDistrictLimitMapValue) *GetProjectResponseBodyDataProjectQuotaLimit {
-	s.DistrictLimitMap = v
-	return s
-}
-
-func (s *GetProjectResponseBodyDataProjectQuotaLimit) SetLimitType(v string) *GetProjectResponseBodyDataProjectQuotaLimit {
-	s.LimitType = &v
-	return s
-}
-
-type GetProjectResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectResponse) SetHeaders(v map[string]*string) *GetProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetProjectResponse) SetStatusCode(v int32) *GetProjectResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectResponse {
-	s.Body = v
-	return s
-}
-
 type GetReserveTaskDetailRequest struct {
-	// 创建容量预定任务时返回的 taskId
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2897,26 +2392,16 @@ func (s *GetReserveTaskDetailRequest) SetTaskId(v string) *GetReserveTaskDetailR
 }
 
 type GetReserveTaskDetailResponseBody struct {
-	// 容量预定时的 appId
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 容量预定时的 appVersion
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 当前任务已经生产完成的会话路数
-	CurrCompletedSessionCapacity *int32 `json:"CurrCompletedSessionCapacity,omitempty" xml:"CurrCompletedSessionCapacity,omitempty"`
-	// 容量预定时指定的大区id
-	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	// 容量预定，期望生效时间
-	ExpectResourceReadyTime *string `json:"ExpectResourceReadyTime,omitempty" xml:"ExpectResourceReadyTime,omitempty"`
-	// 容量预定期望的会话路数
-	ExpectSessionCapacity *int32 `json:"ExpectSessionCapacity,omitempty" xml:"ExpectSessionCapacity,omitempty"`
-	// 容量预定时的 projectId
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// pop的requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 容器创建任务 id
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// 任务状态
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	AppId                        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion                   *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	CurrCompletedSessionCapacity *int32  `json:"CurrCompletedSessionCapacity,omitempty" xml:"CurrCompletedSessionCapacity,omitempty"`
+	DistrictId                   *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	ExpectResourceReadyTime      *string `json:"ExpectResourceReadyTime,omitempty" xml:"ExpectResourceReadyTime,omitempty"`
+	ExpectSessionCapacity        *int32  `json:"ExpectSessionCapacity,omitempty" xml:"ExpectSessionCapacity,omitempty"`
+	ProjectId                    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId                       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskStatus                   *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s GetReserveTaskDetailResponseBody) String() string {
@@ -3007,11 +2492,8 @@ func (s *GetReserveTaskDetailResponse) SetBody(v *GetReserveTaskDetailResponseBo
 }
 
 type GetResourcePublicIPsRequest struct {
-	// 第几页，默认从 1 开始
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// 一页大小，默认 20，最大 100
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 项目 id
+	PageNum   *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -3039,16 +2521,11 @@ func (s *GetResourcePublicIPsRequest) SetProjectId(v string) *GetResourcePublicI
 }
 
 type GetResourcePublicIPsResponseBody struct {
-	// ip 列表
-	IpList []*GetResourcePublicIPsResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
-	// 第几页
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// 每页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// pop的requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 满足匹配条件的总量
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	IpList    []*GetResourcePublicIPsResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	PageNum   *int32                                    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize  *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total     *int32                                    `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetResourcePublicIPsResponseBody) String() string {
@@ -3085,9 +2562,7 @@ func (s *GetResourcePublicIPsResponseBody) SetTotal(v int32) *GetResourcePublicI
 }
 
 type GetResourcePublicIPsResponseBodyIpList struct {
-	// ip
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 项目 id
+	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -3134,148 +2609,6 @@ func (s *GetResourcePublicIPsResponse) SetStatusCode(v int32) *GetResourcePublic
 }
 
 func (s *GetResourcePublicIPsResponse) SetBody(v *GetResourcePublicIPsResponseBody) *GetResourcePublicIPsResponse {
-	s.Body = v
-	return s
-}
-
-type GetTenantResponseBody struct {
-	// 业务处理结果Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 业务对象
-	Data *GetTenantResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 业务处理消息摘要
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 操作请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 业务处理是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetTenantResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTenantResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetTenantResponseBody) SetCode(v string) *GetTenantResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetTenantResponseBody) SetData(v *GetTenantResponseBodyData) *GetTenantResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetTenantResponseBody) SetMessage(v string) *GetTenantResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetTenantResponseBody) SetRequestId(v string) *GetTenantResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetTenantResponseBody) SetSuccess(v bool) *GetTenantResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetTenantResponseBodyData struct {
-	// 计收模式
-	ChargeMode *string `json:"ChargeMode,omitempty" xml:"ChargeMode,omitempty"`
-	// 联系人电话
-	ContactsMobile *string `json:"ContactsMobile,omitempty" xml:"ContactsMobile,omitempty"`
-	// 联系人
-	ContactsName *string `json:"ContactsName,omitempty" xml:"ContactsName,omitempty"`
-	// 租户所属行业(Code)
-	IndustryCategory *string `json:"IndustryCategory,omitempty" xml:"IndustryCategory,omitempty"`
-	// 业务场景描述
-	ScenceDesc *string `json:"ScenceDesc,omitempty" xml:"ScenceDesc,omitempty"`
-	// 租户状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 租户ID(AlipayUserId)
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// 租户名称
-	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-}
-
-func (s GetTenantResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTenantResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetTenantResponseBodyData) SetChargeMode(v string) *GetTenantResponseBodyData {
-	s.ChargeMode = &v
-	return s
-}
-
-func (s *GetTenantResponseBodyData) SetContactsMobile(v string) *GetTenantResponseBodyData {
-	s.ContactsMobile = &v
-	return s
-}
-
-func (s *GetTenantResponseBodyData) SetContactsName(v string) *GetTenantResponseBodyData {
-	s.ContactsName = &v
-	return s
-}
-
-func (s *GetTenantResponseBodyData) SetIndustryCategory(v string) *GetTenantResponseBodyData {
-	s.IndustryCategory = &v
-	return s
-}
-
-func (s *GetTenantResponseBodyData) SetScenceDesc(v string) *GetTenantResponseBodyData {
-	s.ScenceDesc = &v
-	return s
-}
-
-func (s *GetTenantResponseBodyData) SetStatus(v string) *GetTenantResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-func (s *GetTenantResponseBodyData) SetTenantId(v string) *GetTenantResponseBodyData {
-	s.TenantId = &v
-	return s
-}
-
-func (s *GetTenantResponseBodyData) SetTenantName(v string) *GetTenantResponseBodyData {
-	s.TenantName = &v
-	return s
-}
-
-type GetTenantResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTenantResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetTenantResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTenantResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetTenantResponse) SetHeaders(v map[string]*string) *GetTenantResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetTenantResponse) SetStatusCode(v int32) *GetTenantResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetTenantResponse) SetBody(v *GetTenantResponseBody) *GetTenantResponse {
 	s.Body = v
 	return s
 }
@@ -3421,14 +2754,10 @@ func (s *ListAppResponse) SetBody(v *ListAppResponseBody) *ListAppResponse {
 }
 
 type ListAppSessionsRequest struct {
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 自定义会话id
-	CustomSessionIds []*string `json:"CustomSessionIds,omitempty" xml:"CustomSessionIds,omitempty" type:"Repeated"`
-	// 页码
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 自定义用户id
+	AppId              *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CustomSessionIds   []*string `json:"CustomSessionIds,omitempty" xml:"CustomSessionIds,omitempty" type:"Repeated"`
+	PageNumber         *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PlatformSessionIds []*string `json:"PlatformSessionIds,omitempty" xml:"PlatformSessionIds,omitempty" type:"Repeated"`
 }
 
@@ -3469,9 +2798,8 @@ type ListAppSessionsResponseBody struct {
 	AppSessions []*ListAppSessionsResponseBodyAppSessions `json:"AppSessions,omitempty" xml:"AppSessions,omitempty" type:"Repeated"`
 	PageNumber  *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize    *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求id
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAppSessionsResponseBody) String() string {
@@ -3508,17 +2836,12 @@ func (s *ListAppSessionsResponseBody) SetTotalCount(v int32) *ListAppSessionsRes
 }
 
 type ListAppSessionsResponseBodyAppSessions struct {
-	// 应用id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用版本
-	AppVersion *string                                        `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	BizInfo    *ListAppSessionsResponseBodyAppSessionsBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
-	// 自定义会话id
-	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	// 平台会话id
-	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AppId             *string                                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion        *string                                        `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	BizInfo           *ListAppSessionsResponseBodyAppSessionsBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
+	CustomSessionId   *string                                        `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	PlatformSessionId *string                                        `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+	Status            *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAppSessionsResponseBodyAppSessions) String() string {
@@ -3931,856 +3254,134 @@ func (s *ModifyAppVersionResponse) SetBody(v *ModifyAppVersionResponseBody) *Mod
 	return s
 }
 
-type ModifyProjectRequest struct {
-	BoundAppIdList []*string `json:"BoundAppIdList,omitempty" xml:"BoundAppIdList,omitempty" type:"Repeated"`
-	// 请求操作人Id
-	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	// 请求操作人类型
-	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	// project Id
-	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectMemo *string `json:"ProjectMemo,omitempty" xml:"ProjectMemo,omitempty"`
-	// project name
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// key : districtId
-	ProjectQuotaLimit *ModifyProjectRequestProjectQuotaLimit `json:"ProjectQuotaLimit,omitempty" xml:"ProjectQuotaLimit,omitempty" type:"Struct"`
-}
-
-func (s ModifyProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyProjectRequest) SetBoundAppIdList(v []*string) *ModifyProjectRequest {
-	s.BoundAppIdList = v
-	return s
-}
-
-func (s *ModifyProjectRequest) SetOperatorId(v string) *ModifyProjectRequest {
-	s.OperatorId = &v
-	return s
-}
-
-func (s *ModifyProjectRequest) SetOperatorType(v string) *ModifyProjectRequest {
-	s.OperatorType = &v
-	return s
-}
-
-func (s *ModifyProjectRequest) SetProjectId(v string) *ModifyProjectRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ModifyProjectRequest) SetProjectMemo(v string) *ModifyProjectRequest {
-	s.ProjectMemo = &v
-	return s
-}
-
-func (s *ModifyProjectRequest) SetProjectName(v string) *ModifyProjectRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ModifyProjectRequest) SetProjectQuotaLimit(v *ModifyProjectRequestProjectQuotaLimit) *ModifyProjectRequest {
-	s.ProjectQuotaLimit = v
-	return s
-}
-
-type ModifyProjectRequestProjectQuotaLimit struct {
-	// key - districtId
-	DistrictLimitMap map[string]*ProjectQuotaLimitDistrictLimitMapValue `json:"DistrictLimitMap,omitempty" xml:"DistrictLimitMap,omitempty"`
-	// 限制类型 ：目前默认 - ReserveContainer
-	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-}
-
-func (s ModifyProjectRequestProjectQuotaLimit) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyProjectRequestProjectQuotaLimit) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyProjectRequestProjectQuotaLimit) SetDistrictLimitMap(v map[string]*ProjectQuotaLimitDistrictLimitMapValue) *ModifyProjectRequestProjectQuotaLimit {
-	s.DistrictLimitMap = v
-	return s
-}
-
-func (s *ModifyProjectRequestProjectQuotaLimit) SetLimitType(v string) *ModifyProjectRequestProjectQuotaLimit {
-	s.LimitType = &v
-	return s
-}
-
-type ModifyProjectShrinkRequest struct {
-	BoundAppIdListShrink *string `json:"BoundAppIdList,omitempty" xml:"BoundAppIdList,omitempty"`
-	// 请求操作人Id
-	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	// 请求操作人类型
-	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	// project Id
-	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectMemo *string `json:"ProjectMemo,omitempty" xml:"ProjectMemo,omitempty"`
-	// project name
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// key : districtId
-	ProjectQuotaLimitShrink *string `json:"ProjectQuotaLimit,omitempty" xml:"ProjectQuotaLimit,omitempty"`
-}
-
-func (s ModifyProjectShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyProjectShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyProjectShrinkRequest) SetBoundAppIdListShrink(v string) *ModifyProjectShrinkRequest {
-	s.BoundAppIdListShrink = &v
-	return s
-}
-
-func (s *ModifyProjectShrinkRequest) SetOperatorId(v string) *ModifyProjectShrinkRequest {
-	s.OperatorId = &v
-	return s
-}
-
-func (s *ModifyProjectShrinkRequest) SetOperatorType(v string) *ModifyProjectShrinkRequest {
-	s.OperatorType = &v
-	return s
-}
-
-func (s *ModifyProjectShrinkRequest) SetProjectId(v string) *ModifyProjectShrinkRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ModifyProjectShrinkRequest) SetProjectMemo(v string) *ModifyProjectShrinkRequest {
-	s.ProjectMemo = &v
-	return s
-}
-
-func (s *ModifyProjectShrinkRequest) SetProjectName(v string) *ModifyProjectShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ModifyProjectShrinkRequest) SetProjectQuotaLimitShrink(v string) *ModifyProjectShrinkRequest {
-	s.ProjectQuotaLimitShrink = &v
-	return s
-}
-
-type ModifyProjectResponseBody struct {
-	// 业务处理结果Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 业务对象
-	Data *ModifyProjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 业务处理消息摘要
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 操作请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 业务处理是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ModifyProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyProjectResponseBody) SetCode(v string) *ModifyProjectResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ModifyProjectResponseBody) SetData(v *ModifyProjectResponseBodyData) *ModifyProjectResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ModifyProjectResponseBody) SetMessage(v string) *ModifyProjectResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ModifyProjectResponseBody) SetRequestId(v string) *ModifyProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyProjectResponseBody) SetSuccess(v bool) *ModifyProjectResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ModifyProjectResponseBodyData struct {
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ModifyProjectResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyProjectResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyProjectResponseBodyData) SetSuccess(v bool) *ModifyProjectResponseBodyData {
-	s.Success = &v
-	return s
-}
-
-type ModifyProjectResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyProjectResponse) SetHeaders(v map[string]*string) *ModifyProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyProjectResponse) SetStatusCode(v int32) *ModifyProjectResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ModifyProjectResponse) SetBody(v *ModifyProjectResponseBody) *ModifyProjectResponse {
-	s.Body = v
-	return s
-}
-
-type PageQueryProjectRequest struct {
-	// projectId or projectName like
-	KeySearch *string `json:"KeySearch,omitempty" xml:"KeySearch,omitempty"`
-	// 请求操作人Id
-	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	// 请求操作人类型
-	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	// 当前页码，默认1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页项数，默认20,最大100
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s PageQueryProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PageQueryProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PageQueryProjectRequest) SetKeySearch(v string) *PageQueryProjectRequest {
-	s.KeySearch = &v
-	return s
-}
-
-func (s *PageQueryProjectRequest) SetOperatorId(v string) *PageQueryProjectRequest {
-	s.OperatorId = &v
-	return s
-}
-
-func (s *PageQueryProjectRequest) SetOperatorType(v string) *PageQueryProjectRequest {
-	s.OperatorType = &v
-	return s
-}
-
-func (s *PageQueryProjectRequest) SetPageNumber(v int32) *PageQueryProjectRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *PageQueryProjectRequest) SetPageSize(v int32) *PageQueryProjectRequest {
-	s.PageSize = &v
-	return s
-}
-
-type PageQueryProjectResponseBody struct {
-	// 业务处理结果Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 业务对象
-	Data *PageQueryProjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 业务处理消息摘要
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 操作请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 业务处理是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s PageQueryProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PageQueryProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PageQueryProjectResponseBody) SetCode(v string) *PageQueryProjectResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *PageQueryProjectResponseBody) SetData(v *PageQueryProjectResponseBodyData) *PageQueryProjectResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *PageQueryProjectResponseBody) SetMessage(v string) *PageQueryProjectResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *PageQueryProjectResponseBody) SetRequestId(v string) *PageQueryProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *PageQueryProjectResponseBody) SetSuccess(v bool) *PageQueryProjectResponseBody {
-	s.Success = &v
-	return s
-}
-
-type PageQueryProjectResponseBodyData struct {
-	// 当前页码，默认1
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页项数，默认20,最大100
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 总页数
-	Pages *int64 `json:"Pages,omitempty" xml:"Pages,omitempty"`
-	// 结果集
-	Records []*PageQueryProjectResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// 总共项数
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s PageQueryProjectResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PageQueryProjectResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *PageQueryProjectResponseBodyData) SetPageNumber(v int64) *PageQueryProjectResponseBodyData {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *PageQueryProjectResponseBodyData) SetPageSize(v int64) *PageQueryProjectResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *PageQueryProjectResponseBodyData) SetPages(v int64) *PageQueryProjectResponseBodyData {
-	s.Pages = &v
-	return s
-}
-
-func (s *PageQueryProjectResponseBodyData) SetRecords(v []*PageQueryProjectResponseBodyDataRecords) *PageQueryProjectResponseBodyData {
-	s.Records = v
-	return s
-}
-
-func (s *PageQueryProjectResponseBodyData) SetTotalCount(v int64) *PageQueryProjectResponseBodyData {
-	s.TotalCount = &v
-	return s
-}
-
-type PageQueryProjectResponseBodyDataRecords struct {
-	// 项目关联的应用数量
-	BoundAppNums *int64  `json:"BoundAppNums,omitempty" xml:"BoundAppNums,omitempty"`
-	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectMemo  *string `json:"ProjectMemo,omitempty" xml:"ProjectMemo,omitempty"`
-	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// key : districtId
-	ProjectQuotaLimit *PageQueryProjectResponseBodyDataRecordsProjectQuotaLimit `json:"ProjectQuotaLimit,omitempty" xml:"ProjectQuotaLimit,omitempty" type:"Struct"`
-}
-
-func (s PageQueryProjectResponseBodyDataRecords) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PageQueryProjectResponseBodyDataRecords) GoString() string {
-	return s.String()
-}
-
-func (s *PageQueryProjectResponseBodyDataRecords) SetBoundAppNums(v int64) *PageQueryProjectResponseBodyDataRecords {
-	s.BoundAppNums = &v
-	return s
-}
-
-func (s *PageQueryProjectResponseBodyDataRecords) SetGmtCreate(v string) *PageQueryProjectResponseBodyDataRecords {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *PageQueryProjectResponseBodyDataRecords) SetGmtModified(v string) *PageQueryProjectResponseBodyDataRecords {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *PageQueryProjectResponseBodyDataRecords) SetProjectId(v string) *PageQueryProjectResponseBodyDataRecords {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *PageQueryProjectResponseBodyDataRecords) SetProjectMemo(v string) *PageQueryProjectResponseBodyDataRecords {
-	s.ProjectMemo = &v
-	return s
-}
-
-func (s *PageQueryProjectResponseBodyDataRecords) SetProjectName(v string) *PageQueryProjectResponseBodyDataRecords {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *PageQueryProjectResponseBodyDataRecords) SetProjectQuotaLimit(v *PageQueryProjectResponseBodyDataRecordsProjectQuotaLimit) *PageQueryProjectResponseBodyDataRecords {
-	s.ProjectQuotaLimit = v
-	return s
-}
-
-type PageQueryProjectResponseBodyDataRecordsProjectQuotaLimit struct {
-	// key - districtId
-	DistrictLimitMap map[string]*DataRecordsProjectQuotaLimitDistrictLimitMapValue `json:"DistrictLimitMap,omitempty" xml:"DistrictLimitMap,omitempty"`
-	// 限制类型 ：目前默认 - ReserveContainer
-	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-}
-
-func (s PageQueryProjectResponseBodyDataRecordsProjectQuotaLimit) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PageQueryProjectResponseBodyDataRecordsProjectQuotaLimit) GoString() string {
-	return s.String()
-}
-
-func (s *PageQueryProjectResponseBodyDataRecordsProjectQuotaLimit) SetDistrictLimitMap(v map[string]*DataRecordsProjectQuotaLimitDistrictLimitMapValue) *PageQueryProjectResponseBodyDataRecordsProjectQuotaLimit {
-	s.DistrictLimitMap = v
-	return s
-}
-
-func (s *PageQueryProjectResponseBodyDataRecordsProjectQuotaLimit) SetLimitType(v string) *PageQueryProjectResponseBodyDataRecordsProjectQuotaLimit {
-	s.LimitType = &v
-	return s
-}
-
-type PageQueryProjectResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PageQueryProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s PageQueryProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PageQueryProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PageQueryProjectResponse) SetHeaders(v map[string]*string) *PageQueryProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PageQueryProjectResponse) SetStatusCode(v int32) *PageQueryProjectResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *PageQueryProjectResponse) SetBody(v *PageQueryProjectResponseBody) *PageQueryProjectResponse {
-	s.Body = v
-	return s
-}
-
-type PageQueryProjectAppsRequest struct {
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 请求操作人Id
-	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	// 请求操作人类型
-	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	// 当前页码，默认1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页项数，默认20,最大100
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// projectId
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s PageQueryProjectAppsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PageQueryProjectAppsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PageQueryProjectAppsRequest) SetAppId(v string) *PageQueryProjectAppsRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *PageQueryProjectAppsRequest) SetOperatorId(v string) *PageQueryProjectAppsRequest {
-	s.OperatorId = &v
-	return s
-}
-
-func (s *PageQueryProjectAppsRequest) SetOperatorType(v string) *PageQueryProjectAppsRequest {
-	s.OperatorType = &v
-	return s
-}
-
-func (s *PageQueryProjectAppsRequest) SetPageNumber(v int32) *PageQueryProjectAppsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *PageQueryProjectAppsRequest) SetPageSize(v int32) *PageQueryProjectAppsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *PageQueryProjectAppsRequest) SetProjectId(v string) *PageQueryProjectAppsRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type PageQueryProjectAppsResponseBody struct {
-	// 业务处理结果Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 业务对象
-	Data *PageQueryProjectAppsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 业务处理消息摘要
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 操作请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 业务处理是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s PageQueryProjectAppsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PageQueryProjectAppsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PageQueryProjectAppsResponseBody) SetCode(v string) *PageQueryProjectAppsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *PageQueryProjectAppsResponseBody) SetData(v *PageQueryProjectAppsResponseBodyData) *PageQueryProjectAppsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *PageQueryProjectAppsResponseBody) SetMessage(v string) *PageQueryProjectAppsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *PageQueryProjectAppsResponseBody) SetRequestId(v string) *PageQueryProjectAppsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *PageQueryProjectAppsResponseBody) SetSuccess(v bool) *PageQueryProjectAppsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type PageQueryProjectAppsResponseBodyData struct {
-	// 当前页码，默认1
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页项数，默认20,最大100
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 总页数
-	Pages *int64 `json:"Pages,omitempty" xml:"Pages,omitempty"`
-	// 结果集
-	Records []*PageQueryProjectAppsResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// 总共项数
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s PageQueryProjectAppsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PageQueryProjectAppsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *PageQueryProjectAppsResponseBodyData) SetPageNumber(v int64) *PageQueryProjectAppsResponseBodyData {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *PageQueryProjectAppsResponseBodyData) SetPageSize(v int64) *PageQueryProjectAppsResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *PageQueryProjectAppsResponseBodyData) SetPages(v int64) *PageQueryProjectAppsResponseBodyData {
-	s.Pages = &v
-	return s
-}
-
-func (s *PageQueryProjectAppsResponseBodyData) SetRecords(v []*PageQueryProjectAppsResponseBodyDataRecords) *PageQueryProjectAppsResponseBodyData {
-	s.Records = v
-	return s
-}
-
-func (s *PageQueryProjectAppsResponseBodyData) SetTotalCount(v int64) *PageQueryProjectAppsResponseBodyData {
-	s.TotalCount = &v
-	return s
-}
-
-type PageQueryProjectAppsResponseBodyDataRecords struct {
+type QueryOfflineTaskProgressRequest struct {
 	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
-func (s PageQueryProjectAppsResponseBodyDataRecords) String() string {
+func (s QueryOfflineTaskProgressRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s PageQueryProjectAppsResponseBodyDataRecords) GoString() string {
+func (s QueryOfflineTaskProgressRequest) GoString() string {
 	return s.String()
 }
 
-func (s *PageQueryProjectAppsResponseBodyDataRecords) SetAppId(v string) *PageQueryProjectAppsResponseBodyDataRecords {
+func (s *QueryOfflineTaskProgressRequest) SetAppId(v string) *QueryOfflineTaskProgressRequest {
 	s.AppId = &v
 	return s
 }
 
-func (s *PageQueryProjectAppsResponseBodyDataRecords) SetAppName(v string) *PageQueryProjectAppsResponseBodyDataRecords {
-	s.AppName = &v
+func (s *QueryOfflineTaskProgressRequest) SetVersionId(v string) *QueryOfflineTaskProgressRequest {
+	s.VersionId = &v
 	return s
 }
 
-func (s *PageQueryProjectAppsResponseBodyDataRecords) SetGmtCreate(v string) *PageQueryProjectAppsResponseBodyDataRecords {
-	s.GmtCreate = &v
-	return s
+type QueryOfflineTaskProgressResponseBody struct {
+	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryOfflineTaskProgressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s *PageQueryProjectAppsResponseBodyDataRecords) SetProjectId(v string) *PageQueryProjectAppsResponseBodyDataRecords {
-	s.ProjectId = &v
-	return s
-}
-
-type PageQueryProjectAppsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PageQueryProjectAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s PageQueryProjectAppsResponse) String() string {
+func (s QueryOfflineTaskProgressResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s PageQueryProjectAppsResponse) GoString() string {
+func (s QueryOfflineTaskProgressResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *PageQueryProjectAppsResponse) SetHeaders(v map[string]*string) *PageQueryProjectAppsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PageQueryProjectAppsResponse) SetStatusCode(v int32) *PageQueryProjectAppsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *PageQueryProjectAppsResponse) SetBody(v *PageQueryProjectAppsResponseBody) *PageQueryProjectAppsResponse {
-	s.Body = v
-	return s
-}
-
-type RefreshDistrictMetaResponseBody struct {
-	// 业务处理结果Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 业务对象
-	Data *RefreshDistrictMetaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 业务处理消息摘要
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 操作请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 业务处理是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s RefreshDistrictMetaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RefreshDistrictMetaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RefreshDistrictMetaResponseBody) SetCode(v string) *RefreshDistrictMetaResponseBody {
+func (s *QueryOfflineTaskProgressResponseBody) SetCode(v string) *QueryOfflineTaskProgressResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *RefreshDistrictMetaResponseBody) SetData(v *RefreshDistrictMetaResponseBodyData) *RefreshDistrictMetaResponseBody {
+func (s *QueryOfflineTaskProgressResponseBody) SetData(v *QueryOfflineTaskProgressResponseBodyData) *QueryOfflineTaskProgressResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *RefreshDistrictMetaResponseBody) SetMessage(v string) *RefreshDistrictMetaResponseBody {
+func (s *QueryOfflineTaskProgressResponseBody) SetMessage(v string) *QueryOfflineTaskProgressResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *RefreshDistrictMetaResponseBody) SetRequestId(v string) *RefreshDistrictMetaResponseBody {
+func (s *QueryOfflineTaskProgressResponseBody) SetRequestId(v string) *QueryOfflineTaskProgressResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *RefreshDistrictMetaResponseBody) SetSuccess(v bool) *RefreshDistrictMetaResponseBody {
-	s.Success = &v
-	return s
+type QueryOfflineTaskProgressResponseBodyData struct {
+	ErrorCode    *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Progress     *float64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
-type RefreshDistrictMetaResponseBodyData struct {
-	// 业务处理结果Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 业务对象
-	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 业务处理消息摘要
-	Message           *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	ProjectQuotaLimit *RefreshDistrictMetaResponseBodyDataProjectQuotaLimit `json:"ProjectQuotaLimit,omitempty" xml:"ProjectQuotaLimit,omitempty" type:"Struct"`
-	// 操作请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 业务处理是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s RefreshDistrictMetaResponseBodyData) String() string {
+func (s QueryOfflineTaskProgressResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RefreshDistrictMetaResponseBodyData) GoString() string {
+func (s QueryOfflineTaskProgressResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *RefreshDistrictMetaResponseBodyData) SetCode(v string) *RefreshDistrictMetaResponseBodyData {
-	s.Code = &v
+func (s *QueryOfflineTaskProgressResponseBodyData) SetErrorCode(v string) *QueryOfflineTaskProgressResponseBodyData {
+	s.ErrorCode = &v
 	return s
 }
 
-func (s *RefreshDistrictMetaResponseBodyData) SetData(v map[string]interface{}) *RefreshDistrictMetaResponseBodyData {
-	s.Data = v
+func (s *QueryOfflineTaskProgressResponseBodyData) SetErrorMessage(v string) *QueryOfflineTaskProgressResponseBodyData {
+	s.ErrorMessage = &v
 	return s
 }
 
-func (s *RefreshDistrictMetaResponseBodyData) SetMessage(v string) *RefreshDistrictMetaResponseBodyData {
-	s.Message = &v
+func (s *QueryOfflineTaskProgressResponseBodyData) SetProgress(v float64) *QueryOfflineTaskProgressResponseBodyData {
+	s.Progress = &v
 	return s
 }
 
-func (s *RefreshDistrictMetaResponseBodyData) SetProjectQuotaLimit(v *RefreshDistrictMetaResponseBodyDataProjectQuotaLimit) *RefreshDistrictMetaResponseBodyData {
-	s.ProjectQuotaLimit = v
+func (s *QueryOfflineTaskProgressResponseBodyData) SetStatus(v string) *QueryOfflineTaskProgressResponseBodyData {
+	s.Status = &v
 	return s
 }
 
-func (s *RefreshDistrictMetaResponseBodyData) SetRequestId(v string) *RefreshDistrictMetaResponseBodyData {
-	s.RequestId = &v
-	return s
+type QueryOfflineTaskProgressResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryOfflineTaskProgressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s *RefreshDistrictMetaResponseBodyData) SetSuccess(v bool) *RefreshDistrictMetaResponseBodyData {
-	s.Success = &v
-	return s
-}
-
-type RefreshDistrictMetaResponseBodyDataProjectQuotaLimit struct {
-	// key - districtId
-	DistrictLimitMap map[string]*DataProjectQuotaLimitDistrictLimitMapValue `json:"DistrictLimitMap,omitempty" xml:"DistrictLimitMap,omitempty"`
-	// 限制类型 ：目前默认 - ReserveContainer
-	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-}
-
-func (s RefreshDistrictMetaResponseBodyDataProjectQuotaLimit) String() string {
+func (s QueryOfflineTaskProgressResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RefreshDistrictMetaResponseBodyDataProjectQuotaLimit) GoString() string {
+func (s QueryOfflineTaskProgressResponse) GoString() string {
 	return s.String()
 }
 
-func (s *RefreshDistrictMetaResponseBodyDataProjectQuotaLimit) SetDistrictLimitMap(v map[string]*DataProjectQuotaLimitDistrictLimitMapValue) *RefreshDistrictMetaResponseBodyDataProjectQuotaLimit {
-	s.DistrictLimitMap = v
-	return s
-}
-
-func (s *RefreshDistrictMetaResponseBodyDataProjectQuotaLimit) SetLimitType(v string) *RefreshDistrictMetaResponseBodyDataProjectQuotaLimit {
-	s.LimitType = &v
-	return s
-}
-
-type RefreshDistrictMetaResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefreshDistrictMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RefreshDistrictMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RefreshDistrictMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RefreshDistrictMetaResponse) SetHeaders(v map[string]*string) *RefreshDistrictMetaResponse {
+func (s *QueryOfflineTaskProgressResponse) SetHeaders(v map[string]*string) *QueryOfflineTaskProgressResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *RefreshDistrictMetaResponse) SetStatusCode(v int32) *RefreshDistrictMetaResponse {
+func (s *QueryOfflineTaskProgressResponse) SetStatusCode(v int32) *QueryOfflineTaskProgressResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *RefreshDistrictMetaResponse) SetBody(v *RefreshDistrictMetaResponseBody) *RefreshDistrictMetaResponse {
+func (s *QueryOfflineTaskProgressResponse) SetBody(v *QueryOfflineTaskProgressResponseBody) *QueryOfflineTaskProgressResponse {
 	s.Body = v
 	return s
 }
 
 type ReleaseCapacityRequest struct {
-	// app id
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 大区 id
-	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	// 期望释放的会话路数
-	ExpectReleaseSessionCapacity *int32 `json:"ExpectReleaseSessionCapacity,omitempty" xml:"ExpectReleaseSessionCapacity,omitempty"`
-	// 项目 id
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	AppId                        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion                   *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	DistrictId                   *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	ExpectReleaseSessionCapacity *int32  `json:"ExpectReleaseSessionCapacity,omitempty" xml:"ExpectReleaseSessionCapacity,omitempty"`
+	ProjectId                    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s ReleaseCapacityRequest) String() string {
@@ -4817,10 +3418,8 @@ func (s *ReleaseCapacityRequest) SetProjectId(v string) *ReleaseCapacityRequest 
 }
 
 type ReleaseCapacityResponseBody struct {
-	// pop的requestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 容器异步释放任务 id
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ReleaseCapacityResponseBody) String() string {
@@ -4871,9 +3470,7 @@ func (s *ReleaseCapacityResponse) SetBody(v *ReleaseCapacityResponseBody) *Relea
 }
 
 type StopAppSessionRequest struct {
-	// 自定义会话id
-	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	// 自定义用户id
+	CustomSessionId   *string                           `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
 	PlatformSessionId *string                           `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
 	StopParam         []*StopAppSessionRequestStopParam `json:"StopParam,omitempty" xml:"StopParam,omitempty" type:"Repeated"`
 }
@@ -4925,9 +3522,7 @@ func (s *StopAppSessionRequestStopParam) SetValue(v interface{}) *StopAppSession
 }
 
 type StopAppSessionShrinkRequest struct {
-	// 自定义会话id
-	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	// 自定义用户id
+	CustomSessionId   *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
 	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
 	StopParamShrink   *string `json:"StopParam,omitempty" xml:"StopParam,omitempty"`
 }
@@ -4956,16 +3551,11 @@ func (s *StopAppSessionShrinkRequest) SetStopParamShrink(v string) *StopAppSessi
 }
 
 type StopAppSessionResponseBody struct {
-	// 应用id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用版本
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 自定义会话id
-	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	// 平台会话id
+	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion        *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	CustomSessionId   *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
 	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StopAppSessionResponseBody) String() string {
@@ -5031,14 +3621,12 @@ func (s *StopAppSessionResponse) SetBody(v *StopAppSessionResponseBody) *StopApp
 }
 
 type StopAppSessionBatchRequest struct {
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 自定义用户id
-	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// 自定义会话id
-	ProjectId *string                                `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	StopParam []*StopAppSessionBatchRequestStopParam `json:"StopParam,omitempty" xml:"StopParam,omitempty" type:"Repeated"`
-	Tags      []*StopAppSessionBatchRequestTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	AppId      *string                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion *string                                `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	BatchId    *string                                `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	ProjectId  *string                                `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	StopParam  []*StopAppSessionBatchRequestStopParam `json:"StopParam,omitempty" xml:"StopParam,omitempty" type:"Repeated"`
+	Tags       []*StopAppSessionBatchRequestTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s StopAppSessionBatchRequest) String() string {
@@ -5126,11 +3714,9 @@ func (s *StopAppSessionBatchRequestTags) SetValue(v string) *StopAppSessionBatch
 }
 
 type StopAppSessionBatchShrinkRequest struct {
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 自定义用户id
-	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// 自定义会话id
+	AppId           *string                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion      *string                                 `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	BatchId         *string                                 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	ProjectId       *string                                 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	StopParamShrink *string                                 `json:"StopParam,omitempty" xml:"StopParam,omitempty"`
 	Tags            []*StopAppSessionBatchShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -5198,13 +3784,9 @@ func (s *StopAppSessionBatchShrinkRequestTags) SetValue(v string) *StopAppSessio
 }
 
 type StopAppSessionBatchResponseBody struct {
-	// 应用id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 自定义会话id
-	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// 平台会话id
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BatchId   *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 请求id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5265,186 +3847,102 @@ func (s *StopAppSessionBatchResponse) SetBody(v *StopAppSessionBatchResponseBody
 	return s
 }
 
-type VersionCheckSameNameServiceRequest struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
+type SubmitOfflineTaskRequest struct {
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppType   *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	Uri       *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
-func (s VersionCheckSameNameServiceRequest) String() string {
+func (s SubmitOfflineTaskRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s VersionCheckSameNameServiceRequest) GoString() string {
+func (s SubmitOfflineTaskRequest) GoString() string {
 	return s.String()
 }
 
-func (s *VersionCheckSameNameServiceRequest) SetAppId(v string) *VersionCheckSameNameServiceRequest {
+func (s *SubmitOfflineTaskRequest) SetAppId(v string) *SubmitOfflineTaskRequest {
 	s.AppId = &v
 	return s
 }
 
-func (s *VersionCheckSameNameServiceRequest) SetAppVersionName(v string) *VersionCheckSameNameServiceRequest {
-	s.AppVersionName = &v
+func (s *SubmitOfflineTaskRequest) SetAppType(v string) *SubmitOfflineTaskRequest {
+	s.AppType = &v
 	return s
 }
 
-type VersionCheckSameNameServiceResponseBody struct {
+func (s *SubmitOfflineTaskRequest) SetUri(v string) *SubmitOfflineTaskRequest {
+	s.Uri = &v
+	return s
+}
+
+func (s *SubmitOfflineTaskRequest) SetVersionId(v string) *SubmitOfflineTaskRequest {
+	s.VersionId = &v
+	return s
+}
+
+type SubmitOfflineTaskResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s VersionCheckSameNameServiceResponseBody) String() string {
+func (s SubmitOfflineTaskResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s VersionCheckSameNameServiceResponseBody) GoString() string {
+func (s SubmitOfflineTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *VersionCheckSameNameServiceResponseBody) SetCode(v string) *VersionCheckSameNameServiceResponseBody {
+func (s *SubmitOfflineTaskResponseBody) SetCode(v string) *SubmitOfflineTaskResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *VersionCheckSameNameServiceResponseBody) SetData(v string) *VersionCheckSameNameServiceResponseBody {
+func (s *SubmitOfflineTaskResponseBody) SetData(v bool) *SubmitOfflineTaskResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *VersionCheckSameNameServiceResponseBody) SetMessage(v string) *VersionCheckSameNameServiceResponseBody {
+func (s *SubmitOfflineTaskResponseBody) SetMessage(v string) *SubmitOfflineTaskResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *VersionCheckSameNameServiceResponseBody) SetRequestId(v string) *VersionCheckSameNameServiceResponseBody {
+func (s *SubmitOfflineTaskResponseBody) SetRequestId(v string) *SubmitOfflineTaskResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type VersionCheckSameNameServiceResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VersionCheckSameNameServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type SubmitOfflineTaskResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitOfflineTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s VersionCheckSameNameServiceResponse) String() string {
+func (s SubmitOfflineTaskResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s VersionCheckSameNameServiceResponse) GoString() string {
+func (s SubmitOfflineTaskResponse) GoString() string {
 	return s.String()
 }
 
-func (s *VersionCheckSameNameServiceResponse) SetHeaders(v map[string]*string) *VersionCheckSameNameServiceResponse {
+func (s *SubmitOfflineTaskResponse) SetHeaders(v map[string]*string) *SubmitOfflineTaskResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *VersionCheckSameNameServiceResponse) SetStatusCode(v int32) *VersionCheckSameNameServiceResponse {
+func (s *SubmitOfflineTaskResponse) SetStatusCode(v int32) *SubmitOfflineTaskResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *VersionCheckSameNameServiceResponse) SetBody(v *VersionCheckSameNameServiceResponseBody) *VersionCheckSameNameServiceResponse {
+func (s *SubmitOfflineTaskResponse) SetBody(v *SubmitOfflineTaskResponseBody) *SubmitOfflineTaskResponse {
 	s.Body = v
-	return s
-}
-
-type ProjectQuotaLimitDistrictLimitMapValue struct {
-	// 大区ID
-	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	// 大区名称
-	DistrictName *string `json:"DistrictName,omitempty" xml:"DistrictName,omitempty"`
-	// 上限
-	MaxLimit *int64 `json:"MaxLimit,omitempty" xml:"MaxLimit,omitempty"`
-}
-
-func (s ProjectQuotaLimitDistrictLimitMapValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ProjectQuotaLimitDistrictLimitMapValue) GoString() string {
-	return s.String()
-}
-
-func (s *ProjectQuotaLimitDistrictLimitMapValue) SetDistrictId(v string) *ProjectQuotaLimitDistrictLimitMapValue {
-	s.DistrictId = &v
-	return s
-}
-
-func (s *ProjectQuotaLimitDistrictLimitMapValue) SetDistrictName(v string) *ProjectQuotaLimitDistrictLimitMapValue {
-	s.DistrictName = &v
-	return s
-}
-
-func (s *ProjectQuotaLimitDistrictLimitMapValue) SetMaxLimit(v int64) *ProjectQuotaLimitDistrictLimitMapValue {
-	s.MaxLimit = &v
-	return s
-}
-
-type DataProjectQuotaLimitDistrictLimitMapValue struct {
-	// 大区ID
-	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	// 大区名称
-	DistrictName *string `json:"DistrictName,omitempty" xml:"DistrictName,omitempty"`
-	// 上限
-	MaxLimit *int64 `json:"MaxLimit,omitempty" xml:"MaxLimit,omitempty"`
-}
-
-func (s DataProjectQuotaLimitDistrictLimitMapValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DataProjectQuotaLimitDistrictLimitMapValue) GoString() string {
-	return s.String()
-}
-
-func (s *DataProjectQuotaLimitDistrictLimitMapValue) SetDistrictId(v string) *DataProjectQuotaLimitDistrictLimitMapValue {
-	s.DistrictId = &v
-	return s
-}
-
-func (s *DataProjectQuotaLimitDistrictLimitMapValue) SetDistrictName(v string) *DataProjectQuotaLimitDistrictLimitMapValue {
-	s.DistrictName = &v
-	return s
-}
-
-func (s *DataProjectQuotaLimitDistrictLimitMapValue) SetMaxLimit(v int64) *DataProjectQuotaLimitDistrictLimitMapValue {
-	s.MaxLimit = &v
-	return s
-}
-
-type DataRecordsProjectQuotaLimitDistrictLimitMapValue struct {
-	// 大区ID
-	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	// 大区名称
-	DistrictName *string `json:"DistrictName,omitempty" xml:"DistrictName,omitempty"`
-	// 上限
-	MaxLimit *int64 `json:"MaxLimit,omitempty" xml:"MaxLimit,omitempty"`
-}
-
-func (s DataRecordsProjectQuotaLimitDistrictLimitMapValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DataRecordsProjectQuotaLimitDistrictLimitMapValue) GoString() string {
-	return s.String()
-}
-
-func (s *DataRecordsProjectQuotaLimitDistrictLimitMapValue) SetDistrictId(v string) *DataRecordsProjectQuotaLimitDistrictLimitMapValue {
-	s.DistrictId = &v
-	return s
-}
-
-func (s *DataRecordsProjectQuotaLimitDistrictLimitMapValue) SetDistrictName(v string) *DataRecordsProjectQuotaLimitDistrictLimitMapValue {
-	s.DistrictName = &v
-	return s
-}
-
-func (s *DataRecordsProjectQuotaLimitDistrictLimitMapValue) SetMaxLimit(v int64) *DataRecordsProjectQuotaLimitDistrictLimitMapValue {
-	s.MaxLimit = &v
 	return s
 }
 
@@ -5536,6 +4034,54 @@ func (client *Client) CancelReserveTask(request *CancelReserveTaskRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelReserveTaskResponse{}
 	_body, _err := client.CancelReserveTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelUploadTaskWithOptions(request *CancelUploadTaskRequest, runtime *util.RuntimeOptions) (_result *CancelUploadTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		body["VersionId"] = request.VersionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelUploadTask"),
+		Version:     tea.String("2021-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelUploadTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelUploadTask(request *CancelUploadTaskRequest) (_result *CancelUploadTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelUploadTaskResponse{}
+	_body, _err := client.CancelUploadTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5673,6 +4219,10 @@ func (client *Client) CreateAppSessionWithOptions(request *CreateAppSessionReque
 
 	if !tea.BoolValue(util.IsUnset(request.EnablePostpaid)) {
 		query["EnablePostpaid"] = request.EnablePostpaid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartParameters)) {
@@ -5971,80 +4521,6 @@ func (client *Client) CreateCapacityReservation(request *CreateCapacityReservati
 	return _result, _err
 }
 
-func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &CreateProjectShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.BoundAppIdList)) {
-		request.BoundAppIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BoundAppIdList, tea.String("BoundAppIdList"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ProjectQuotaLimit))) {
-		request.ProjectQuotaLimitShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ProjectQuotaLimit), tea.String("ProjectQuotaLimit"), tea.String("json"))
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BoundAppIdListShrink)) {
-		body["BoundAppIdList"] = request.BoundAppIdListShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
-		body["OperatorId"] = request.OperatorId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperatorType)) {
-		body["OperatorType"] = request.OperatorType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectMemo)) {
-		body["ProjectMemo"] = request.ProjectMemo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
-		body["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectQuotaLimitShrink)) {
-		body["ProjectQuotaLimit"] = request.ProjectQuotaLimitShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateProject"),
-		Version:     tea.String("2021-11-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateProjectResponse{}
-	_body, _err := client.CreateProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *util.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6126,58 +4602,6 @@ func (client *Client) DeleteAppVersion(request *DeleteAppVersionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppVersionResponse{}
 	_body, _err := client.DeleteAppVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
-		body["OperatorId"] = request.OperatorId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperatorType)) {
-		body["OperatorType"] = request.OperatorType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		body["ProjectId"] = request.ProjectId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteProject"),
-		Version:     tea.String("2021-11-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteProjectResponse{}
-	_body, _err := client.DeleteProjectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6473,58 +4897,6 @@ func (client *Client) GetCapacity(request *GetCapacityRequest) (_result *GetCapa
 	return _result, _err
 }
 
-func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
-		body["OperatorId"] = request.OperatorId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperatorType)) {
-		body["OperatorType"] = request.OperatorType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		body["ProjectId"] = request.ProjectId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProject"),
-		Version:     tea.String("2021-11-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetProjectResponse{}
-	_body, _err := client.GetProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetReserveTaskDetailWithOptions(request *GetReserveTaskDetailRequest, runtime *util.RuntimeOptions) (_result *GetReserveTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6614,39 +4986,6 @@ func (client *Client) GetResourcePublicIPs(request *GetResourcePublicIPsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourcePublicIPsResponse{}
 	_body, _err := client.GetResourcePublicIPsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetTenantWithOptions(runtime *util.RuntimeOptions) (_result *GetTenantResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("GetTenant"),
-		Version:     tea.String("2021-11-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetTenantResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetTenant() (_result *GetTenantResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetTenantResponse{}
-	_body, _err := client.GetTenantWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6914,145 +5253,7 @@ func (client *Client) ModifyAppVersion(request *ModifyAppVersionRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) ModifyProjectWithOptions(tmpReq *ModifyProjectRequest, runtime *util.RuntimeOptions) (_result *ModifyProjectResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &ModifyProjectShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.BoundAppIdList)) {
-		request.BoundAppIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BoundAppIdList, tea.String("BoundAppIdList"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ProjectQuotaLimit))) {
-		request.ProjectQuotaLimitShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ProjectQuotaLimit), tea.String("ProjectQuotaLimit"), tea.String("json"))
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BoundAppIdListShrink)) {
-		body["BoundAppIdList"] = request.BoundAppIdListShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
-		body["OperatorId"] = request.OperatorId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperatorType)) {
-		body["OperatorType"] = request.OperatorType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		body["ProjectId"] = request.ProjectId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectMemo)) {
-		body["ProjectMemo"] = request.ProjectMemo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
-		body["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectQuotaLimitShrink)) {
-		body["ProjectQuotaLimit"] = request.ProjectQuotaLimitShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyProject"),
-		Version:     tea.String("2021-11-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ModifyProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyProject(request *ModifyProjectRequest) (_result *ModifyProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyProjectResponse{}
-	_body, _err := client.ModifyProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) PageQueryProjectWithOptions(request *PageQueryProjectRequest, runtime *util.RuntimeOptions) (_result *PageQueryProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.KeySearch)) {
-		body["KeySearch"] = request.KeySearch
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
-		body["OperatorId"] = request.OperatorId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperatorType)) {
-		body["OperatorType"] = request.OperatorType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		body["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		body["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PageQueryProject"),
-		Version:     tea.String("2021-11-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &PageQueryProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PageQueryProject(request *PageQueryProjectRequest) (_result *PageQueryProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &PageQueryProjectResponse{}
-	_body, _err := client.PageQueryProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) PageQueryProjectAppsWithOptions(request *PageQueryProjectAppsRequest, runtime *util.RuntimeOptions) (_result *PageQueryProjectAppsResponse, _err error) {
+func (client *Client) QueryOfflineTaskProgressWithOptions(request *QueryOfflineTaskProgressRequest, runtime *util.RuntimeOptions) (_result *QueryOfflineTaskProgressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -7062,31 +5263,15 @@ func (client *Client) PageQueryProjectAppsWithOptions(request *PageQueryProjectA
 		body["AppId"] = request.AppId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
-		body["OperatorId"] = request.OperatorId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperatorType)) {
-		body["OperatorType"] = request.OperatorType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		body["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		body["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		body["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		body["VersionId"] = request.VersionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("PageQueryProjectApps"),
+		Action:      tea.String("QueryOfflineTaskProgress"),
 		Version:     tea.String("2021-11-11"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -7096,7 +5281,7 @@ func (client *Client) PageQueryProjectAppsWithOptions(request *PageQueryProjectA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PageQueryProjectAppsResponse{}
+	_result = &QueryOfflineTaskProgressResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7105,43 +5290,10 @@ func (client *Client) PageQueryProjectAppsWithOptions(request *PageQueryProjectA
 	return _result, _err
 }
 
-func (client *Client) PageQueryProjectApps(request *PageQueryProjectAppsRequest) (_result *PageQueryProjectAppsResponse, _err error) {
+func (client *Client) QueryOfflineTaskProgress(request *QueryOfflineTaskProgressRequest) (_result *QueryOfflineTaskProgressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &PageQueryProjectAppsResponse{}
-	_body, _err := client.PageQueryProjectAppsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RefreshDistrictMetaWithOptions(runtime *util.RuntimeOptions) (_result *RefreshDistrictMetaResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("RefreshDistrictMeta"),
-		Version:     tea.String("2021-11-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RefreshDistrictMetaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RefreshDistrictMeta() (_result *RefreshDistrictMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RefreshDistrictMetaResponse{}
-	_body, _err := client.RefreshDistrictMetaWithOptions(runtime)
+	_result = &QueryOfflineTaskProgressResponse{}
+	_body, _err := client.QueryOfflineTaskProgressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7337,7 +5489,7 @@ func (client *Client) StopAppSessionBatch(request *StopAppSessionBatchRequest) (
 	return _result, _err
 }
 
-func (client *Client) VersionCheckSameNameServiceWithOptions(request *VersionCheckSameNameServiceRequest, runtime *util.RuntimeOptions) (_result *VersionCheckSameNameServiceResponse, _err error) {
+func (client *Client) SubmitOfflineTaskWithOptions(request *SubmitOfflineTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitOfflineTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -7347,15 +5499,23 @@ func (client *Client) VersionCheckSameNameServiceWithOptions(request *VersionChe
 		body["AppId"] = request.AppId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.AppVersionName)) {
-		body["AppVersionName"] = request.AppVersionName
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uri)) {
+		body["Uri"] = request.Uri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		body["VersionId"] = request.VersionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("VersionCheckSameNameService"),
+		Action:      tea.String("SubmitOfflineTask"),
 		Version:     tea.String("2021-11-11"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -7365,7 +5525,7 @@ func (client *Client) VersionCheckSameNameServiceWithOptions(request *VersionChe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VersionCheckSameNameServiceResponse{}
+	_result = &SubmitOfflineTaskResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7374,10 +5534,10 @@ func (client *Client) VersionCheckSameNameServiceWithOptions(request *VersionChe
 	return _result, _err
 }
 
-func (client *Client) VersionCheckSameNameService(request *VersionCheckSameNameServiceRequest) (_result *VersionCheckSameNameServiceResponse, _err error) {
+func (client *Client) SubmitOfflineTask(request *SubmitOfflineTaskRequest) (_result *SubmitOfflineTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &VersionCheckSameNameServiceResponse{}
-	_body, _err := client.VersionCheckSameNameServiceWithOptions(request, runtime)
+	_result = &SubmitOfflineTaskResponse{}
+	_body, _err := client.SubmitOfflineTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
