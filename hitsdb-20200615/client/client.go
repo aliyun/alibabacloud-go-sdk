@@ -28,6 +28,7 @@ type CreateLindormInstanceRequest struct {
 	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -123,6 +124,11 @@ func (s *CreateLindormInstanceRequest) SetRegionId(v string) *CreateLindormInsta
 	return s
 }
 
+func (s *CreateLindormInstanceRequest) SetResourceGroupId(v string) *CreateLindormInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateLindormInstanceRequest) SetResourceOwnerAccount(v string) *CreateLindormInstanceRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -203,8 +209,9 @@ func (s *CreateLindormInstanceResponseBody) SetRequestId(v string) *CreateLindor
 }
 
 type CreateLindormInstanceResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateLindormInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateLindormInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateLindormInstanceResponse) String() string {
@@ -217,6 +224,11 @@ func (s CreateLindormInstanceResponse) GoString() string {
 
 func (s *CreateLindormInstanceResponse) SetHeaders(v map[string]*string) *CreateLindormInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateLindormInstanceResponse) SetStatusCode(v int32) *CreateLindormInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -325,8 +337,9 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegi
 }
 
 type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -339,6 +352,11 @@ func (s DescribeRegionsResponse) GoString() string {
 
 func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -430,8 +448,9 @@ func (s *GetInstanceIpWhiteListResponseBody) SetRequestId(v string) *GetInstance
 }
 
 type GetInstanceIpWhiteListResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetInstanceIpWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceIpWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetInstanceIpWhiteListResponse) String() string {
@@ -447,6 +466,11 @@ func (s *GetInstanceIpWhiteListResponse) SetHeaders(v map[string]*string) *GetIn
 	return s
 }
 
+func (s *GetInstanceIpWhiteListResponse) SetStatusCode(v int32) *GetInstanceIpWhiteListResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetInstanceIpWhiteListResponse) SetBody(v *GetInstanceIpWhiteListResponseBody) *GetInstanceIpWhiteListResponse {
 	s.Body = v
 	return s
@@ -456,7 +480,6 @@ type GetLindormInstanceRequest struct {
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -482,11 +505,6 @@ func (s *GetLindormInstanceRequest) SetOwnerAccount(v string) *GetLindormInstanc
 
 func (s *GetLindormInstanceRequest) SetOwnerId(v int64) *GetLindormInstanceRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *GetLindormInstanceRequest) SetRegionId(v string) *GetLindormInstanceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -535,6 +553,7 @@ type GetLindormInstanceResponseBody struct {
 	PayType             *string                                     `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	RegionId            *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId           *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId     *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceType         *string                                     `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	VpcId               *string                                     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VswitchId           *string                                     `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
@@ -694,6 +713,11 @@ func (s *GetLindormInstanceResponseBody) SetRequestId(v string) *GetLindormInsta
 	return s
 }
 
+func (s *GetLindormInstanceResponseBody) SetResourceGroupId(v string) *GetLindormInstanceResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetLindormInstanceResponseBody) SetServiceType(v string) *GetLindormInstanceResponseBody {
 	s.ServiceType = &v
 	return s
@@ -768,8 +792,9 @@ func (s *GetLindormInstanceResponseBodyEngineList) SetVersion(v string) *GetLind
 }
 
 type GetLindormInstanceResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetLindormInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLindormInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetLindormInstanceResponse) String() string {
@@ -782,6 +807,11 @@ func (s GetLindormInstanceResponse) GoString() string {
 
 func (s *GetLindormInstanceResponse) SetHeaders(v map[string]*string) *GetLindormInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetLindormInstanceResponse) SetStatusCode(v int32) *GetLindormInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -931,8 +961,9 @@ func (s *GetLindormInstanceEngineListResponseBodyEngineListNetInfoList) SetPort(
 }
 
 type GetLindormInstanceEngineListResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetLindormInstanceEngineListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLindormInstanceEngineListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetLindormInstanceEngineListResponse) String() string {
@@ -948,6 +979,11 @@ func (s *GetLindormInstanceEngineListResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *GetLindormInstanceEngineListResponse) SetStatusCode(v int32) *GetLindormInstanceEngineListResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetLindormInstanceEngineListResponse) SetBody(v *GetLindormInstanceEngineListResponseBody) *GetLindormInstanceEngineListResponse {
 	s.Body = v
 	return s
@@ -960,6 +996,7 @@ type GetLindormInstanceListRequest struct {
 	PageSize             *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	QueryStr             *string                             `json:"QueryStr,omitempty" xml:"QueryStr,omitempty"`
 	RegionId             *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string                             `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string                             `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -1003,6 +1040,11 @@ func (s *GetLindormInstanceListRequest) SetQueryStr(v string) *GetLindormInstanc
 
 func (s *GetLindormInstanceListRequest) SetRegionId(v string) *GetLindormInstanceListRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetLindormInstanceListRequest) SetResourceGroupId(v string) *GetLindormInstanceListRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1104,6 +1146,7 @@ type GetLindormInstanceListResponseBodyInstanceList struct {
 	AliUid              *int64                                                `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	CreateMilliseconds  *int64                                                `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
 	CreateTime          *string                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableCompute       *bool                                                 `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
 	EnableStream        *bool                                                 `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
 	EngineType          *string                                               `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	ExpireTime          *string                                               `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
@@ -1115,6 +1158,7 @@ type GetLindormInstanceListResponseBodyInstanceList struct {
 	NetworkType         *string                                               `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	PayType             *string                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	RegionId            *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId     *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceType         *string                                               `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	Tags                []*GetLindormInstanceListResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	VpcId               *string                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -1141,6 +1185,11 @@ func (s *GetLindormInstanceListResponseBodyInstanceList) SetCreateMilliseconds(v
 
 func (s *GetLindormInstanceListResponseBodyInstanceList) SetCreateTime(v string) *GetLindormInstanceListResponseBodyInstanceList {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetLindormInstanceListResponseBodyInstanceList) SetEnableCompute(v bool) *GetLindormInstanceListResponseBodyInstanceList {
+	s.EnableCompute = &v
 	return s
 }
 
@@ -1199,6 +1248,11 @@ func (s *GetLindormInstanceListResponseBodyInstanceList) SetRegionId(v string) *
 	return s
 }
 
+func (s *GetLindormInstanceListResponseBodyInstanceList) SetResourceGroupId(v string) *GetLindormInstanceListResponseBodyInstanceList {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetLindormInstanceListResponseBodyInstanceList) SetServiceType(v string) *GetLindormInstanceListResponseBodyInstanceList {
 	s.ServiceType = &v
 	return s
@@ -1243,8 +1297,9 @@ func (s *GetLindormInstanceListResponseBodyInstanceListTags) SetValue(v string) 
 }
 
 type GetLindormInstanceListResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetLindormInstanceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLindormInstanceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetLindormInstanceListResponse) String() string {
@@ -1257,6 +1312,11 @@ func (s GetLindormInstanceListResponse) GoString() string {
 
 func (s *GetLindormInstanceListResponse) SetHeaders(v map[string]*string) *GetLindormInstanceListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetLindormInstanceListResponse) SetStatusCode(v int32) *GetLindormInstanceListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1424,8 +1484,9 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTa
 }
 
 type ListTagResourcesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -1438,6 +1499,11 @@ func (s ListTagResourcesResponse) GoString() string {
 
 func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1511,8 +1577,9 @@ func (s *ReleaseLindormInstanceResponseBody) SetRequestId(v string) *ReleaseLind
 }
 
 type ReleaseLindormInstanceResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReleaseLindormInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReleaseLindormInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReleaseLindormInstanceResponse) String() string {
@@ -1528,6 +1595,11 @@ func (s *ReleaseLindormInstanceResponse) SetHeaders(v map[string]*string) *Relea
 	return s
 }
 
+func (s *ReleaseLindormInstanceResponse) SetStatusCode(v int32) *ReleaseLindormInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ReleaseLindormInstanceResponse) SetBody(v *ReleaseLindormInstanceResponseBody) *ReleaseLindormInstanceResponse {
 	s.Body = v
 	return s
@@ -1536,6 +1608,7 @@ func (s *ReleaseLindormInstanceResponse) SetBody(v *ReleaseLindormInstanceRespon
 type TagResourcesRequest struct {
 	OwnerAccount         *string                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId           []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1559,6 +1632,11 @@ func (s *TagResourcesRequest) SetOwnerAccount(v string) *TagResourcesRequest {
 
 func (s *TagResourcesRequest) SetOwnerId(v int64) *TagResourcesRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1633,8 +1711,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -1647,6 +1726,11 @@ func (s TagResourcesResponse) GoString() string {
 
 func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1738,8 +1822,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -1752,6 +1837,11 @@ func (s UntagResourcesResponse) GoString() string {
 
 func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1837,8 +1927,9 @@ func (s *UpdateInstanceIpWhiteListResponseBody) SetRequestId(v string) *UpdateIn
 }
 
 type UpdateInstanceIpWhiteListResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateInstanceIpWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateInstanceIpWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateInstanceIpWhiteListResponse) String() string {
@@ -1851,6 +1942,11 @@ func (s UpdateInstanceIpWhiteListResponse) GoString() string {
 
 func (s *UpdateInstanceIpWhiteListResponse) SetHeaders(v map[string]*string) *UpdateInstanceIpWhiteListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceIpWhiteListResponse) SetStatusCode(v int32) *UpdateInstanceIpWhiteListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2044,8 +2140,9 @@ func (s *UpgradeLindormInstanceResponseBody) SetRequestId(v string) *UpgradeLind
 }
 
 type UpgradeLindormInstanceResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpgradeLindormInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpgradeLindormInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpgradeLindormInstanceResponse) String() string {
@@ -2058,6 +2155,11 @@ func (s UpgradeLindormInstanceResponse) GoString() string {
 
 func (s *UpgradeLindormInstanceResponse) SetHeaders(v map[string]*string) *UpgradeLindormInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpgradeLindormInstanceResponse) SetStatusCode(v int32) *UpgradeLindormInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2226,6 +2328,10 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -2452,10 +2558,6 @@ func (client *Client) GetLindormInstanceWithOptions(request *GetLindormInstanceR
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -2598,6 +2700,10 @@ func (client *Client) GetLindormInstanceListWithOptions(request *GetLindormInsta
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -2814,6 +2920,10 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
