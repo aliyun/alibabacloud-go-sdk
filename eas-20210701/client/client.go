@@ -401,6 +401,7 @@ type Service struct {
 	ServiceGroup     *string `json:"ServiceGroup,omitempty" xml:"ServiceGroup,omitempty"`
 	ServiceId        *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceUid       *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
 	Source           *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TotalInstance    *int32  `json:"TotalInstance,omitempty" xml:"TotalInstance,omitempty"`
@@ -543,6 +544,11 @@ func (s *Service) SetServiceId(v string) *Service {
 
 func (s *Service) SetServiceName(v string) *Service {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *Service) SetServiceUid(v string) *Service {
+	s.ServiceUid = &v
 	return s
 }
 
