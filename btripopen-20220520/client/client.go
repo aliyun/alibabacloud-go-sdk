@@ -274,6 +274,8 @@ type ApplyAddRequest struct {
 	HotelBudget              *int64                                   `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
 	HotelShare               *ApplyAddRequestHotelShare               `json:"hotel_share,omitempty" xml:"hotel_share,omitempty" type:"Struct"`
 	ItineraryList            []*ApplyAddRequestItineraryList          `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	ItineraryRule            *int32                                   `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
+	ItinerarySetList         []*ApplyAddRequestItinerarySetList       `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
 	LimitTraveler            *int32                                   `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status                   *int32                                   `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartApplyId         *string                                  `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
@@ -352,6 +354,16 @@ func (s *ApplyAddRequest) SetHotelShare(v *ApplyAddRequestHotelShare) *ApplyAddR
 
 func (s *ApplyAddRequest) SetItineraryList(v []*ApplyAddRequestItineraryList) *ApplyAddRequest {
 	s.ItineraryList = v
+	return s
+}
+
+func (s *ApplyAddRequest) SetItineraryRule(v int32) *ApplyAddRequest {
+	s.ItineraryRule = &v
+	return s
+}
+
+func (s *ApplyAddRequest) SetItinerarySetList(v []*ApplyAddRequestItinerarySetList) *ApplyAddRequest {
+	s.ItinerarySetList = v
 	return s
 }
 
@@ -670,6 +682,89 @@ func (s *ApplyAddRequestItineraryList) SetTripWay(v int32) *ApplyAddRequestItine
 	return s
 }
 
+type ApplyAddRequestItinerarySetList struct {
+	ArrDate               *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CityCodeSet           *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	CitySet               *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
+	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	DepDate               *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceId             *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	ItineraryId           *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	Transport             *int32  `json:"transport,omitempty" xml:"transport,omitempty"`
+}
+
+func (s ApplyAddRequestItinerarySetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAddRequestItinerarySetList) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetArrDate(v string) *ApplyAddRequestItinerarySetList {
+	s.ArrDate = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetCityCodeSet(v string) *ApplyAddRequestItinerarySetList {
+	s.CityCodeSet = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetCitySet(v string) *ApplyAddRequestItinerarySetList {
+	s.CitySet = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetCostCenterId(v int64) *ApplyAddRequestItinerarySetList {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetDepDate(v string) *ApplyAddRequestItinerarySetList {
+	s.DepDate = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetInvoiceId(v int64) *ApplyAddRequestItinerarySetList {
+	s.InvoiceId = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetItineraryId(v string) *ApplyAddRequestItinerarySetList {
+	s.ItineraryId = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetProjectCode(v string) *ApplyAddRequestItinerarySetList {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetProjectTitle(v string) *ApplyAddRequestItinerarySetList {
+	s.ProjectTitle = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetThirdPartInvoiceId(v string) *ApplyAddRequestItinerarySetList {
+	s.ThirdPartInvoiceId = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetThirdpartCostCenterId(v string) *ApplyAddRequestItinerarySetList {
+	s.ThirdpartCostCenterId = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetTransport(v int32) *ApplyAddRequestItinerarySetList {
+	s.Transport = &v
+	return s
+}
+
 type ApplyAddRequestTravelerList struct {
 	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
@@ -793,6 +888,8 @@ type ApplyAddShrinkRequest struct {
 	HotelBudget                    *int64  `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
 	HotelShareShrink               *string `json:"hotel_share,omitempty" xml:"hotel_share,omitempty"`
 	ItineraryListShrink            *string `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty"`
+	ItineraryRule                  *int32  `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
+	ItinerarySetListShrink         *string `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty"`
 	LimitTraveler                  *int32  `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status                         *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartApplyId               *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
@@ -871,6 +968,16 @@ func (s *ApplyAddShrinkRequest) SetHotelShareShrink(v string) *ApplyAddShrinkReq
 
 func (s *ApplyAddShrinkRequest) SetItineraryListShrink(v string) *ApplyAddShrinkRequest {
 	s.ItineraryListShrink = &v
+	return s
+}
+
+func (s *ApplyAddShrinkRequest) SetItineraryRule(v int32) *ApplyAddShrinkRequest {
+	s.ItineraryRule = &v
+	return s
+}
+
+func (s *ApplyAddShrinkRequest) SetItinerarySetListShrink(v string) *ApplyAddShrinkRequest {
+	s.ItinerarySetListShrink = &v
 	return s
 }
 
@@ -3284,7 +3391,6 @@ func (s *CarApplyModifyResponse) SetBody(v *CarApplyModifyResponseBody) *CarAppl
 }
 
 type CarApplyQueryRequest struct {
-	CorpId           *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	CreatedEndAt     *string `json:"created_end_at,omitempty" xml:"created_end_at,omitempty"`
 	CreatedStartAt   *string `json:"created_start_at,omitempty" xml:"created_start_at,omitempty"`
 	PageNumber       *int32  `json:"page_number,omitempty" xml:"page_number,omitempty"`
@@ -3299,11 +3405,6 @@ func (s CarApplyQueryRequest) String() string {
 
 func (s CarApplyQueryRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CarApplyQueryRequest) SetCorpId(v string) *CarApplyQueryRequest {
-	s.CorpId = &v
-	return s
 }
 
 func (s *CarApplyQueryRequest) SetCreatedEndAt(v string) *CarApplyQueryRequest {
@@ -4756,7 +4857,6 @@ func (s *CarOrderListQueryResponse) SetBody(v *CarOrderListQueryResponseBody) *C
 type CommonApplyQueryRequest struct {
 	ApplyId     *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	BizCategory *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
-	CorpId      *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -4775,11 +4875,6 @@ func (s *CommonApplyQueryRequest) SetApplyId(v int64) *CommonApplyQueryRequest {
 
 func (s *CommonApplyQueryRequest) SetBizCategory(v int32) *CommonApplyQueryRequest {
 	s.BizCategory = &v
-	return s
-}
-
-func (s *CommonApplyQueryRequest) SetCorpId(v string) *CommonApplyQueryRequest {
-	s.CorpId = &v
 	return s
 }
 
@@ -5403,7 +5498,6 @@ func (s *CostCenterModifyResponse) SetBody(v *CostCenterModifyResponseBody) *Cos
 }
 
 type CostCenterQueryRequest struct {
-	CorpId        *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	NeedOrgEntity *bool   `json:"need_org_entity,omitempty" xml:"need_org_entity,omitempty"`
 	ThirdpartId   *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
 	Title         *string `json:"title,omitempty" xml:"title,omitempty"`
@@ -5416,11 +5510,6 @@ func (s CostCenterQueryRequest) String() string {
 
 func (s CostCenterQueryRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CostCenterQueryRequest) SetCorpId(v string) *CostCenterQueryRequest {
-	s.CorpId = &v
-	return s
 }
 
 func (s *CostCenterQueryRequest) SetNeedOrgEntity(v bool) *CostCenterQueryRequest {
@@ -5633,7 +5722,6 @@ func (s *CostCenterQueryResponse) SetBody(v *CostCenterQueryResponseBody) *CostC
 
 type CostCenterSaveRequest struct {
 	AlipayNo    *string `json:"alipay_no,omitempty" xml:"alipay_no,omitempty"`
-	CorpId      *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	Number      *string `json:"number,omitempty" xml:"number,omitempty"`
 	Scope       *int64  `json:"scope,omitempty" xml:"scope,omitempty"`
 	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
@@ -5650,11 +5738,6 @@ func (s CostCenterSaveRequest) GoString() string {
 
 func (s *CostCenterSaveRequest) SetAlipayNo(v string) *CostCenterSaveRequest {
 	s.AlipayNo = &v
-	return s
-}
-
-func (s *CostCenterSaveRequest) SetCorpId(v string) *CostCenterSaveRequest {
-	s.CorpId = &v
 	return s
 }
 
@@ -6483,7 +6566,6 @@ func (s *EntitySetResponse) SetBody(v *EntitySetResponseBody) *EntitySetResponse
 type ExceedApplySyncRequest struct {
 	ApplyId          *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	BizCategory      *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
-	CorpId           *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	Remark           *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	Status           *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartyFlowId *string `json:"thirdparty_flow_id,omitempty" xml:"thirdparty_flow_id,omitempty"`
@@ -6505,11 +6587,6 @@ func (s *ExceedApplySyncRequest) SetApplyId(v int64) *ExceedApplySyncRequest {
 
 func (s *ExceedApplySyncRequest) SetBizCategory(v int32) *ExceedApplySyncRequest {
 	s.BizCategory = &v
-	return s
-}
-
-func (s *ExceedApplySyncRequest) SetCorpId(v string) *ExceedApplySyncRequest {
-	s.CorpId = &v
 	return s
 }
 
@@ -7205,8 +7282,7 @@ func (s *FlightBillSettlementQueryResponse) SetBody(v *FlightBillSettlementQuery
 }
 
 type FlightExceedApplyQueryRequest struct {
-	ApplyId *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	CorpId  *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 }
 
 func (s FlightExceedApplyQueryRequest) String() string {
@@ -7219,11 +7295,6 @@ func (s FlightExceedApplyQueryRequest) GoString() string {
 
 func (s *FlightExceedApplyQueryRequest) SetApplyId(v int64) *FlightExceedApplyQueryRequest {
 	s.ApplyId = &v
-	return s
-}
-
-func (s *FlightExceedApplyQueryRequest) SetCorpId(v string) *FlightExceedApplyQueryRequest {
-	s.CorpId = &v
 	return s
 }
 
@@ -9387,7 +9458,6 @@ func (s *HotelBillSettlementQueryResponse) SetBody(v *HotelBillSettlementQueryRe
 
 type HotelExceedApplyQueryRequest struct {
 	ApplyId *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	CorpId  *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	UserId  *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -9401,11 +9471,6 @@ func (s HotelExceedApplyQueryRequest) GoString() string {
 
 func (s *HotelExceedApplyQueryRequest) SetApplyId(v int64) *HotelExceedApplyQueryRequest {
 	s.ApplyId = &v
-	return s
-}
-
-func (s *HotelExceedApplyQueryRequest) SetCorpId(v string) *HotelExceedApplyQueryRequest {
-	s.CorpId = &v
 	return s
 }
 
@@ -11199,7 +11264,6 @@ func (s *MonthBillGetResponse) SetBody(v *MonthBillGetResponseBody) *MonthBillGe
 
 type ProjectAddRequest struct {
 	Code                  *string `json:"code,omitempty" xml:"code,omitempty"`
-	CorpId                *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	ProjectName           *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
 	ThirdPartCostCenterId *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
 	ThirdPartId           *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
@@ -11216,11 +11280,6 @@ func (s ProjectAddRequest) GoString() string {
 
 func (s *ProjectAddRequest) SetCode(v string) *ProjectAddRequest {
 	s.Code = &v
-	return s
-}
-
-func (s *ProjectAddRequest) SetCorpId(v string) *ProjectAddRequest {
-	s.CorpId = &v
 	return s
 }
 
@@ -11421,7 +11480,6 @@ func (s *ProjectDeleteResponse) SetBody(v *ProjectDeleteResponseBody) *ProjectDe
 
 type ProjectModifyRequest struct {
 	Code                  *string `json:"code,omitempty" xml:"code,omitempty"`
-	CorpId                *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	ProjectName           *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
 	ThirdPartCostCenterId *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
 	ThirdPartId           *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
@@ -11438,11 +11496,6 @@ func (s ProjectModifyRequest) GoString() string {
 
 func (s *ProjectModifyRequest) SetCode(v string) *ProjectModifyRequest {
 	s.Code = &v
-	return s
-}
-
-func (s *ProjectModifyRequest) SetCorpId(v string) *ProjectModifyRequest {
-	s.CorpId = &v
 	return s
 }
 
@@ -12007,7 +12060,6 @@ func (s *TrainBillSettlementQueryResponse) SetBody(v *TrainBillSettlementQueryRe
 
 type TrainExceedApplyQueryRequest struct {
 	ApplyId *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	CorpId  *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	UserId  *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -12021,11 +12073,6 @@ func (s TrainExceedApplyQueryRequest) GoString() string {
 
 func (s *TrainExceedApplyQueryRequest) SetApplyId(v int64) *TrainExceedApplyQueryRequest {
 	s.ApplyId = &v
-	return s
-}
-
-func (s *TrainExceedApplyQueryRequest) SetCorpId(v string) *TrainExceedApplyQueryRequest {
-	s.CorpId = &v
 	return s
 }
 
@@ -13619,7 +13666,6 @@ func (s *TrainOrderQueryResponse) SetBody(v *TrainOrderQueryResponseBody) *Train
 
 type UserQueryRequest struct {
 	ModifiedTimeGreaterOrEqualThan *string `json:"modified_time_greater_or_equal_than,omitempty" xml:"modified_time_greater_or_equal_than,omitempty"`
-	ThirdPartCorpId                *string `json:"third_part_corp_id,omitempty" xml:"third_part_corp_id,omitempty"`
 	ThirdPartJobNo                 *string `json:"third_part_job_no,omitempty" xml:"third_part_job_no,omitempty"`
 }
 
@@ -13633,11 +13679,6 @@ func (s UserQueryRequest) GoString() string {
 
 func (s *UserQueryRequest) SetModifiedTimeGreaterOrEqualThan(v string) *UserQueryRequest {
 	s.ModifiedTimeGreaterOrEqualThan = &v
-	return s
-}
-
-func (s *UserQueryRequest) SetThirdPartCorpId(v string) *UserQueryRequest {
-	s.ThirdPartCorpId = &v
 	return s
 }
 
@@ -13981,6 +14022,10 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers map[s
 		request.ItineraryListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItineraryList, tea.String("itinerary_list"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.ItinerarySetList)) {
+		request.ItinerarySetListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItinerarySetList, tea.String("itinerary_set_list"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.TravelerList)) {
 		request.TravelerListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TravelerList, tea.String("traveler_list"), tea.String("json"))
 	}
@@ -14032,6 +14077,14 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers map[s
 
 	if !tea.BoolValue(util.IsUnset(request.ItineraryListShrink)) {
 		body["itinerary_list"] = request.ItineraryListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItineraryRule)) {
+		body["itinerary_rule"] = request.ItineraryRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItinerarySetListShrink)) {
+		body["itinerary_set_list"] = request.ItinerarySetListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LimitTraveler)) {
@@ -14624,10 +14677,6 @@ func (client *Client) CarApplyQueryWithOptions(request *CarApplyQueryRequest, he
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		query["corp_id"] = request.CorpId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CreatedEndAt)) {
 		query["created_end_at"] = request.CreatedEndAt
 	}
@@ -14844,10 +14893,6 @@ func (client *Client) CommonApplyQueryWithOptions(request *CommonApplyQueryReque
 
 	if !tea.BoolValue(util.IsUnset(request.BizCategory)) {
 		query["biz_category"] = request.BizCategory
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		query["corp_id"] = request.CorpId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
@@ -15120,31 +15165,25 @@ func (client *Client) CostCenterQueryWithOptions(request *CostCenterQueryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		query["corp_id"] = request.CorpId
-	}
-
-	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.NeedOrgEntity)) {
-		body["need_org_entity"] = request.NeedOrgEntity
+		query["need_org_entity"] = request.NeedOrgEntity
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ThirdpartId)) {
-		body["thirdpart_id"] = request.ThirdpartId
+		query["thirdpart_id"] = request.ThirdpartId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
-		body["title"] = request.Title
+		query["title"] = request.Title
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["user_id"] = request.UserId
+		query["user_id"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CostCenterQuery"),
@@ -15154,7 +15193,7 @@ func (client *Client) CostCenterQueryWithOptions(request *CostCenterQueryRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("formData"),
+		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CostCenterQueryResponse{}
@@ -15186,10 +15225,6 @@ func (client *Client) CostCenterSaveWithOptions(request *CostCenterSaveRequest, 
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AlipayNo)) {
 		body["alipay_no"] = request.AlipayNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		body["corp_id"] = request.CorpId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Number)) {
@@ -15484,10 +15519,6 @@ func (client *Client) ExceedApplySyncWithOptions(request *ExceedApplySyncRequest
 		query["biz_category"] = request.BizCategory
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		query["corp_id"] = request.CorpId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Remark)) {
 		query["remark"] = request.Remark
 	}
@@ -15606,10 +15637,6 @@ func (client *Client) FlightExceedApplyQueryWithOptions(request *FlightExceedApp
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplyId)) {
 		query["apply_id"] = request.ApplyId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		query["corp_id"] = request.CorpId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -15850,10 +15877,6 @@ func (client *Client) HotelExceedApplyQueryWithOptions(request *HotelExceedApply
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplyId)) {
 		query["apply_id"] = request.ApplyId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		query["corp_id"] = request.CorpId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
@@ -16390,10 +16413,6 @@ func (client *Client) ProjectAddWithOptions(request *ProjectAddRequest, headers 
 		body["code"] = request.Code
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		body["corp_id"] = request.CorpId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		body["project_name"] = request.ProjectName
 	}
@@ -16500,10 +16519,6 @@ func (client *Client) ProjectModifyWithOptions(request *ProjectModifyRequest, he
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Code)) {
 		body["code"] = request.Code
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		body["corp_id"] = request.CorpId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
@@ -16624,10 +16639,6 @@ func (client *Client) TrainExceedApplyQueryWithOptions(request *TrainExceedApply
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplyId)) {
 		query["apply_id"] = request.ApplyId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		query["corp_id"] = request.CorpId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
@@ -16814,10 +16825,6 @@ func (client *Client) UserQueryWithOptions(request *UserQueryRequest, headers ma
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ModifiedTimeGreaterOrEqualThan)) {
 		query["modified_time_greater_or_equal_than"] = request.ModifiedTimeGreaterOrEqualThan
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ThirdPartCorpId)) {
-		query["third_part_corp_id"] = request.ThirdPartCorpId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ThirdPartJobNo)) {
