@@ -1077,93 +1077,6 @@ func (s *CreateUploadPolicyResponse) SetBody(v *CreateUploadPolicyResponseBody) 
 	return s
 }
 
-type DecryptContentRequest struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-}
-
-func (s DecryptContentRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DecryptContentRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DecryptContentRequest) SetContent(v string) *DecryptContentRequest {
-	s.Content = &v
-	return s
-}
-
-type DecryptContentResponseBody struct {
-	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DecryptContentResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DecryptContentResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DecryptContentResponseBody) SetCode(v int64) *DecryptContentResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DecryptContentResponseBody) SetContent(v string) *DecryptContentResponseBody {
-	s.Content = &v
-	return s
-}
-
-func (s *DecryptContentResponseBody) SetMessage(v string) *DecryptContentResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DecryptContentResponseBody) SetRequestId(v string) *DecryptContentResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DecryptContentResponseBody) SetSuccess(v bool) *DecryptContentResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DecryptContentResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DecryptContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DecryptContentResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DecryptContentResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DecryptContentResponse) SetHeaders(v map[string]*string) *DecryptContentResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DecryptContentResponse) SetStatusCode(v int32) *DecryptContentResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DecryptContentResponse) SetBody(v *DecryptContentResponseBody) *DecryptContentResponse {
-	s.Body = v
-	return s
-}
-
 type DetailProjectRequest struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
@@ -1873,93 +1786,6 @@ func (s *DropSubSceneResponse) SetStatusCode(v int32) *DropSubSceneResponse {
 }
 
 func (s *DropSubSceneResponse) SetBody(v *DropSubSceneResponseBody) *DropSubSceneResponse {
-	s.Body = v
-	return s
-}
-
-type EncryptContentRequest struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-}
-
-func (s EncryptContentRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EncryptContentRequest) GoString() string {
-	return s.String()
-}
-
-func (s *EncryptContentRequest) SetContent(v string) *EncryptContentRequest {
-	s.Content = &v
-	return s
-}
-
-type EncryptContentResponseBody struct {
-	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s EncryptContentResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EncryptContentResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *EncryptContentResponseBody) SetCode(v int64) *EncryptContentResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *EncryptContentResponseBody) SetContent(v string) *EncryptContentResponseBody {
-	s.Content = &v
-	return s
-}
-
-func (s *EncryptContentResponseBody) SetMessage(v string) *EncryptContentResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *EncryptContentResponseBody) SetRequestId(v string) *EncryptContentResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *EncryptContentResponseBody) SetSuccess(v bool) *EncryptContentResponseBody {
-	s.Success = &v
-	return s
-}
-
-type EncryptContentResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EncryptContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s EncryptContentResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EncryptContentResponse) GoString() string {
-	return s.String()
-}
-
-func (s *EncryptContentResponse) SetHeaders(v map[string]*string) *EncryptContentResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *EncryptContentResponse) SetStatusCode(v int32) *EncryptContentResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *EncryptContentResponse) SetBody(v *EncryptContentResponseBody) *EncryptContentResponse {
 	s.Body = v
 	return s
 }
@@ -6912,6 +6738,93 @@ func (s *SaveHotspotTagListResponse) SetBody(v *SaveHotspotTagListResponseBody) 
 	return s
 }
 
+type SaveMinimapRequest struct {
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s SaveMinimapRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveMinimapRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveMinimapRequest) SetData(v string) *SaveMinimapRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *SaveMinimapRequest) SetSceneId(v string) *SaveMinimapRequest {
+	s.SceneId = &v
+	return s
+}
+
+type SaveMinimapResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SaveMinimapResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveMinimapResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveMinimapResponseBody) SetCode(v int64) *SaveMinimapResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SaveMinimapResponseBody) SetMessage(v string) *SaveMinimapResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SaveMinimapResponseBody) SetRequestId(v string) *SaveMinimapResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveMinimapResponseBody) SetSuccess(v bool) *SaveMinimapResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SaveMinimapResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveMinimapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveMinimapResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveMinimapResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveMinimapResponse) SetHeaders(v map[string]*string) *SaveMinimapResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveMinimapResponse) SetStatusCode(v int32) *SaveMinimapResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveMinimapResponse) SetBody(v *SaveMinimapResponseBody) *SaveMinimapResponse {
+	s.Body = v
+	return s
+}
+
 type SaveModelConfigRequest struct {
 	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
@@ -8394,50 +8307,6 @@ func (client *Client) CreateUploadPolicy(request *CreateUploadPolicyRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) DecryptContentWithOptions(request *DecryptContentRequest, runtime *util.RuntimeOptions) (_result *DecryptContentResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Content)) {
-		query["Content"] = request.Content
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DecryptContent"),
-		Version:     tea.String("2020-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DecryptContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DecryptContent(request *DecryptContentRequest) (_result *DecryptContentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DecryptContentResponse{}
-	_body, _err := client.DecryptContentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DetailProjectWithOptions(request *DetailProjectRequest, runtime *util.RuntimeOptions) (_result *DetailProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8695,50 +8564,6 @@ func (client *Client) DropSubScene(request *DropSubSceneRequest) (_result *DropS
 	runtime := &util.RuntimeOptions{}
 	_result = &DropSubSceneResponse{}
 	_body, _err := client.DropSubSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) EncryptContentWithOptions(request *EncryptContentRequest, runtime *util.RuntimeOptions) (_result *EncryptContentResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Content)) {
-		query["Content"] = request.Content
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("EncryptContent"),
-		Version:     tea.String("2020-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &EncryptContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) EncryptContent(request *EncryptContentRequest) (_result *EncryptContentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &EncryptContentResponse{}
-	_body, _err := client.EncryptContentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10731,6 +10556,54 @@ func (client *Client) SaveHotspotTagList(request *SaveHotspotTagListRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveHotspotTagListResponse{}
 	_body, _err := client.SaveHotspotTagListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SaveMinimapWithOptions(request *SaveMinimapRequest, runtime *util.RuntimeOptions) (_result *SaveMinimapResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveMinimap"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveMinimapResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveMinimap(request *SaveMinimapRequest) (_result *SaveMinimapResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveMinimapResponse{}
+	_body, _err := client.SaveMinimapWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
