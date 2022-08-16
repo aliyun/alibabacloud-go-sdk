@@ -812,6 +812,498 @@ func (s *CreateFileDetectUploadUrlResponse) SetBody(v *CreateFileDetectUploadUrl
 	return s
 }
 
+type CreateHoneypotRequest struct {
+	HoneypotImageId   *string `json:"HoneypotImageId,omitempty" xml:"HoneypotImageId,omitempty"`
+	HoneypotImageName *string `json:"HoneypotImageName,omitempty" xml:"HoneypotImageName,omitempty"`
+	HoneypotName      *string `json:"HoneypotName,omitempty" xml:"HoneypotName,omitempty"`
+	Meta              *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	NodeId            *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s CreateHoneypotRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotRequest) SetHoneypotImageId(v string) *CreateHoneypotRequest {
+	s.HoneypotImageId = &v
+	return s
+}
+
+func (s *CreateHoneypotRequest) SetHoneypotImageName(v string) *CreateHoneypotRequest {
+	s.HoneypotImageName = &v
+	return s
+}
+
+func (s *CreateHoneypotRequest) SetHoneypotName(v string) *CreateHoneypotRequest {
+	s.HoneypotName = &v
+	return s
+}
+
+func (s *CreateHoneypotRequest) SetMeta(v string) *CreateHoneypotRequest {
+	s.Meta = &v
+	return s
+}
+
+func (s *CreateHoneypotRequest) SetNodeId(v string) *CreateHoneypotRequest {
+	s.NodeId = &v
+	return s
+}
+
+type CreateHoneypotResponseBody struct {
+	Code           *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *CreateHoneypotResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateHoneypotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotResponseBody) SetCode(v string) *CreateHoneypotResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateHoneypotResponseBody) SetData(v *CreateHoneypotResponseBodyData) *CreateHoneypotResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateHoneypotResponseBody) SetHttpStatusCode(v int32) *CreateHoneypotResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateHoneypotResponseBody) SetMessage(v string) *CreateHoneypotResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateHoneypotResponseBody) SetRequestId(v string) *CreateHoneypotResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateHoneypotResponseBody) SetSuccess(v bool) *CreateHoneypotResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateHoneypotResponseBodyData struct {
+	ControlNodeName          *string   `json:"ControlNodeName,omitempty" xml:"ControlNodeName,omitempty"`
+	HoneypotId               *string   `json:"HoneypotId,omitempty" xml:"HoneypotId,omitempty"`
+	HoneypotImageDisplayName *string   `json:"HoneypotImageDisplayName,omitempty" xml:"HoneypotImageDisplayName,omitempty"`
+	HoneypotImageName        *string   `json:"HoneypotImageName,omitempty" xml:"HoneypotImageName,omitempty"`
+	HoneypotName             *string   `json:"HoneypotName,omitempty" xml:"HoneypotName,omitempty"`
+	NodeId                   *string   `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	PresetId                 *string   `json:"PresetId,omitempty" xml:"PresetId,omitempty"`
+	State                    []*string `json:"State,omitempty" xml:"State,omitempty" type:"Repeated"`
+}
+
+func (s CreateHoneypotResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotResponseBodyData) SetControlNodeName(v string) *CreateHoneypotResponseBodyData {
+	s.ControlNodeName = &v
+	return s
+}
+
+func (s *CreateHoneypotResponseBodyData) SetHoneypotId(v string) *CreateHoneypotResponseBodyData {
+	s.HoneypotId = &v
+	return s
+}
+
+func (s *CreateHoneypotResponseBodyData) SetHoneypotImageDisplayName(v string) *CreateHoneypotResponseBodyData {
+	s.HoneypotImageDisplayName = &v
+	return s
+}
+
+func (s *CreateHoneypotResponseBodyData) SetHoneypotImageName(v string) *CreateHoneypotResponseBodyData {
+	s.HoneypotImageName = &v
+	return s
+}
+
+func (s *CreateHoneypotResponseBodyData) SetHoneypotName(v string) *CreateHoneypotResponseBodyData {
+	s.HoneypotName = &v
+	return s
+}
+
+func (s *CreateHoneypotResponseBodyData) SetNodeId(v string) *CreateHoneypotResponseBodyData {
+	s.NodeId = &v
+	return s
+}
+
+func (s *CreateHoneypotResponseBodyData) SetPresetId(v string) *CreateHoneypotResponseBodyData {
+	s.PresetId = &v
+	return s
+}
+
+func (s *CreateHoneypotResponseBodyData) SetState(v []*string) *CreateHoneypotResponseBodyData {
+	s.State = v
+	return s
+}
+
+type CreateHoneypotResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHoneypotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHoneypotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotResponse) SetHeaders(v map[string]*string) *CreateHoneypotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHoneypotResponse) SetStatusCode(v int32) *CreateHoneypotResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHoneypotResponse) SetBody(v *CreateHoneypotResponseBody) *CreateHoneypotResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHoneypotNodeRequest struct {
+	AllowHoneypotAccessInternet *bool     `json:"AllowHoneypotAccessInternet,omitempty" xml:"AllowHoneypotAccessInternet,omitempty"`
+	AvailableProbeNum           *int32    `json:"AvailableProbeNum,omitempty" xml:"AvailableProbeNum,omitempty"`
+	NodeName                    *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	SecurityGroupProbeIpList    []*string `json:"SecurityGroupProbeIpList,omitempty" xml:"SecurityGroupProbeIpList,omitempty" type:"Repeated"`
+}
+
+func (s CreateHoneypotNodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotNodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotNodeRequest) SetAllowHoneypotAccessInternet(v bool) *CreateHoneypotNodeRequest {
+	s.AllowHoneypotAccessInternet = &v
+	return s
+}
+
+func (s *CreateHoneypotNodeRequest) SetAvailableProbeNum(v int32) *CreateHoneypotNodeRequest {
+	s.AvailableProbeNum = &v
+	return s
+}
+
+func (s *CreateHoneypotNodeRequest) SetNodeName(v string) *CreateHoneypotNodeRequest {
+	s.NodeName = &v
+	return s
+}
+
+func (s *CreateHoneypotNodeRequest) SetSecurityGroupProbeIpList(v []*string) *CreateHoneypotNodeRequest {
+	s.SecurityGroupProbeIpList = v
+	return s
+}
+
+type CreateHoneypotNodeResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateHoneypotNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotNodeResponseBody) SetCode(v string) *CreateHoneypotNodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateHoneypotNodeResponseBody) SetHttpStatusCode(v int32) *CreateHoneypotNodeResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateHoneypotNodeResponseBody) SetMessage(v string) *CreateHoneypotNodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateHoneypotNodeResponseBody) SetRequestId(v string) *CreateHoneypotNodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateHoneypotNodeResponseBody) SetSuccess(v bool) *CreateHoneypotNodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateHoneypotNodeResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHoneypotNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHoneypotNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotNodeResponse) SetHeaders(v map[string]*string) *CreateHoneypotNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHoneypotNodeResponse) SetStatusCode(v int32) *CreateHoneypotNodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHoneypotNodeResponse) SetBody(v *CreateHoneypotNodeResponseBody) *CreateHoneypotNodeResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHoneypotProbeRequest struct {
+	Arp              *bool                                         `json:"Arp,omitempty" xml:"Arp,omitempty"`
+	BusinessGroupId  *string                                       `json:"BusinessGroupId,omitempty" xml:"BusinessGroupId,omitempty"`
+	ControlNodeId    *string                                       `json:"ControlNodeId,omitempty" xml:"ControlNodeId,omitempty"`
+	DisplayName      *string                                       `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	HoneypotBindList []*CreateHoneypotProbeRequestHoneypotBindList `json:"HoneypotBindList,omitempty" xml:"HoneypotBindList,omitempty" type:"Repeated"`
+	Ping             *bool                                         `json:"Ping,omitempty" xml:"Ping,omitempty"`
+	ProbeType        *string                                       `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
+	ProbeVersion     *string                                       `json:"ProbeVersion,omitempty" xml:"ProbeVersion,omitempty"`
+	ProxyIp          *string                                       `json:"ProxyIp,omitempty" xml:"ProxyIp,omitempty"`
+	Uuid             *string                                       `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	VpcId            *string                                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateHoneypotProbeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotProbeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotProbeRequest) SetArp(v bool) *CreateHoneypotProbeRequest {
+	s.Arp = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequest) SetBusinessGroupId(v string) *CreateHoneypotProbeRequest {
+	s.BusinessGroupId = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequest) SetControlNodeId(v string) *CreateHoneypotProbeRequest {
+	s.ControlNodeId = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequest) SetDisplayName(v string) *CreateHoneypotProbeRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequest) SetHoneypotBindList(v []*CreateHoneypotProbeRequestHoneypotBindList) *CreateHoneypotProbeRequest {
+	s.HoneypotBindList = v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequest) SetPing(v bool) *CreateHoneypotProbeRequest {
+	s.Ping = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequest) SetProbeType(v string) *CreateHoneypotProbeRequest {
+	s.ProbeType = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequest) SetProbeVersion(v string) *CreateHoneypotProbeRequest {
+	s.ProbeVersion = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequest) SetProxyIp(v string) *CreateHoneypotProbeRequest {
+	s.ProxyIp = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequest) SetUuid(v string) *CreateHoneypotProbeRequest {
+	s.Uuid = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequest) SetVpcId(v string) *CreateHoneypotProbeRequest {
+	s.VpcId = &v
+	return s
+}
+
+type CreateHoneypotProbeRequestHoneypotBindList struct {
+	BindPortList []*CreateHoneypotProbeRequestHoneypotBindListBindPortList `json:"BindPortList,omitempty" xml:"BindPortList,omitempty" type:"Repeated"`
+	HoneypotId   *string                                                   `json:"HoneypotId,omitempty" xml:"HoneypotId,omitempty"`
+}
+
+func (s CreateHoneypotProbeRequestHoneypotBindList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotProbeRequestHoneypotBindList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotProbeRequestHoneypotBindList) SetBindPortList(v []*CreateHoneypotProbeRequestHoneypotBindListBindPortList) *CreateHoneypotProbeRequestHoneypotBindList {
+	s.BindPortList = v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequestHoneypotBindList) SetHoneypotId(v string) *CreateHoneypotProbeRequestHoneypotBindList {
+	s.HoneypotId = &v
+	return s
+}
+
+type CreateHoneypotProbeRequestHoneypotBindListBindPortList struct {
+	BindPort   *bool  `json:"BindPort,omitempty" xml:"BindPort,omitempty"`
+	EndPort    *int32 `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
+	Fixed      *bool  `json:"Fixed,omitempty" xml:"Fixed,omitempty"`
+	StartPort  *int32 `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
+	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+}
+
+func (s CreateHoneypotProbeRequestHoneypotBindListBindPortList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotProbeRequestHoneypotBindListBindPortList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotProbeRequestHoneypotBindListBindPortList) SetBindPort(v bool) *CreateHoneypotProbeRequestHoneypotBindListBindPortList {
+	s.BindPort = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequestHoneypotBindListBindPortList) SetEndPort(v int32) *CreateHoneypotProbeRequestHoneypotBindListBindPortList {
+	s.EndPort = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequestHoneypotBindListBindPortList) SetFixed(v bool) *CreateHoneypotProbeRequestHoneypotBindListBindPortList {
+	s.Fixed = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequestHoneypotBindListBindPortList) SetStartPort(v int32) *CreateHoneypotProbeRequestHoneypotBindListBindPortList {
+	s.StartPort = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeRequestHoneypotBindListBindPortList) SetTargetPort(v int32) *CreateHoneypotProbeRequestHoneypotBindListBindPortList {
+	s.TargetPort = &v
+	return s
+}
+
+type CreateHoneypotProbeResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateHoneypotProbeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotProbeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotProbeResponseBody) SetCode(v string) *CreateHoneypotProbeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeResponseBody) SetHttpStatusCode(v int32) *CreateHoneypotProbeResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeResponseBody) SetMessage(v string) *CreateHoneypotProbeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeResponseBody) SetRequestId(v string) *CreateHoneypotProbeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeResponseBody) SetSuccess(v bool) *CreateHoneypotProbeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateHoneypotProbeResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHoneypotProbeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHoneypotProbeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotProbeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotProbeResponse) SetHeaders(v map[string]*string) *CreateHoneypotProbeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHoneypotProbeResponse) SetStatusCode(v int32) *CreateHoneypotProbeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeResponse) SetBody(v *CreateHoneypotProbeResponseBody) *CreateHoneypotProbeResponse {
+	s.Body = v
+	return s
+}
+
 type CreateOrUpdateAssetGroupRequest struct {
 	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -5532,6 +6024,7 @@ type DescribeCheckWarningsRequest struct {
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RiskId      *int64  `json:"RiskId,omitempty" xml:"RiskId,omitempty"`
+	RiskStatus  *int32  `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
 	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Uuid        *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
@@ -5571,6 +6064,11 @@ func (s *DescribeCheckWarningsRequest) SetPageSize(v int32) *DescribeCheckWarnin
 
 func (s *DescribeCheckWarningsRequest) SetRiskId(v int64) *DescribeCheckWarningsRequest {
 	s.RiskId = &v
+	return s
+}
+
+func (s *DescribeCheckWarningsRequest) SetRiskStatus(v int32) *DescribeCheckWarningsRequest {
+	s.RiskStatus = &v
 	return s
 }
 
@@ -23119,6 +23617,7 @@ type DescribeWarningMachinesRequest struct {
 	ContainerFieldName  *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
 	CurrentPage         *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	HaveRisk            *int32  `json:"HaveRisk,omitempty" xml:"HaveRisk,omitempty"`
 	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	MachineName         *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
 	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -23154,6 +23653,11 @@ func (s *DescribeWarningMachinesRequest) SetContainerFieldValue(v string) *Descr
 
 func (s *DescribeWarningMachinesRequest) SetCurrentPage(v int32) *DescribeWarningMachinesRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeWarningMachinesRequest) SetHaveRisk(v int32) *DescribeWarningMachinesRequest {
+	s.HaveRisk = &v
 	return s
 }
 
@@ -23734,6 +24238,242 @@ func (s *DescribeWebLockConfigListResponse) SetStatusCode(v int32) *DescribeWebL
 }
 
 func (s *DescribeWebLockConfigListResponse) SetBody(v *DescribeWebLockConfigListResponseBody) *DescribeWebLockConfigListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWebLockFileEventsRequest struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Dealed      *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	TsBegin     *int64  `json:"TsBegin,omitempty" xml:"TsBegin,omitempty"`
+	TsEnd       *int64  `json:"TsEnd,omitempty" xml:"TsEnd,omitempty"`
+}
+
+func (s DescribeWebLockFileEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebLockFileEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebLockFileEventsRequest) SetCurrentPage(v int32) *DescribeWebLockFileEventsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsRequest) SetDealed(v string) *DescribeWebLockFileEventsRequest {
+	s.Dealed = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsRequest) SetPageSize(v int32) *DescribeWebLockFileEventsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsRequest) SetProcessName(v string) *DescribeWebLockFileEventsRequest {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsRequest) SetRemark(v string) *DescribeWebLockFileEventsRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsRequest) SetTsBegin(v int64) *DescribeWebLockFileEventsRequest {
+	s.TsBegin = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsRequest) SetTsEnd(v int64) *DescribeWebLockFileEventsRequest {
+	s.TsEnd = &v
+	return s
+}
+
+type DescribeWebLockFileEventsResponseBody struct {
+	CurrentPage *int32                                       `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	List        []*DescribeWebLockFileEventsResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageSize    *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeWebLockFileEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebLockFileEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebLockFileEventsResponseBody) SetCurrentPage(v int32) *DescribeWebLockFileEventsResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBody) SetList(v []*DescribeWebLockFileEventsResponseBodyList) *DescribeWebLockFileEventsResponseBody {
+	s.List = v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBody) SetPageSize(v int32) *DescribeWebLockFileEventsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBody) SetRequestId(v string) *DescribeWebLockFileEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBody) SetTotalCount(v int32) *DescribeWebLockFileEventsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeWebLockFileEventsResponseBodyList struct {
+	Count        *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Ds           *int64  `json:"Ds,omitempty" xml:"Ds,omitempty"`
+	EventName    *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	EventStatus  *string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	EventType    *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	GmtEvent     *int64  `json:"GmtEvent,omitempty" xml:"GmtEvent,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp   *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Level        *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	ProcessName  *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessPath  *string `json:"ProcessPath,omitempty" xml:"ProcessPath,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s DescribeWebLockFileEventsResponseBodyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebLockFileEventsResponseBodyList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetCount(v int64) *DescribeWebLockFileEventsResponseBodyList {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetDs(v int64) *DescribeWebLockFileEventsResponseBodyList {
+	s.Ds = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetEventName(v string) *DescribeWebLockFileEventsResponseBodyList {
+	s.EventName = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetEventStatus(v string) *DescribeWebLockFileEventsResponseBodyList {
+	s.EventStatus = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetEventType(v string) *DescribeWebLockFileEventsResponseBodyList {
+	s.EventType = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetGmtEvent(v int64) *DescribeWebLockFileEventsResponseBodyList {
+	s.GmtEvent = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetId(v int64) *DescribeWebLockFileEventsResponseBodyList {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetInstanceName(v string) *DescribeWebLockFileEventsResponseBodyList {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetInternetIp(v string) *DescribeWebLockFileEventsResponseBodyList {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetIntranetIp(v string) *DescribeWebLockFileEventsResponseBodyList {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetIp(v string) *DescribeWebLockFileEventsResponseBodyList {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetLevel(v string) *DescribeWebLockFileEventsResponseBodyList {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetPath(v string) *DescribeWebLockFileEventsResponseBodyList {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetProcessName(v string) *DescribeWebLockFileEventsResponseBodyList {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetProcessPath(v string) *DescribeWebLockFileEventsResponseBodyList {
+	s.ProcessPath = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetStatus(v string) *DescribeWebLockFileEventsResponseBodyList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponseBodyList) SetUuid(v string) *DescribeWebLockFileEventsResponseBodyList {
+	s.Uuid = &v
+	return s
+}
+
+type DescribeWebLockFileEventsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeWebLockFileEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWebLockFileEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebLockFileEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebLockFileEventsResponse) SetHeaders(v map[string]*string) *DescribeWebLockFileEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponse) SetStatusCode(v int32) *DescribeWebLockFileEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWebLockFileEventsResponse) SetBody(v *DescribeWebLockFileEventsResponseBody) *DescribeWebLockFileEventsResponse {
 	s.Body = v
 	return s
 }
@@ -24526,11 +25266,13 @@ func (s *GetFileDetectResultResponseBody) SetResultList(v []*GetFileDetectResult
 }
 
 type GetFileDetectResultResponseBodyResultList struct {
-	Ext       *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	HashKey   *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	Result    *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
-	Score     *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
-	VirusType *string `json:"VirusType,omitempty" xml:"VirusType,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Ext          *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	HashKey      *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+	Result       *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
+	Score        *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
+	VirusType    *string `json:"VirusType,omitempty" xml:"VirusType,omitempty"`
 }
 
 func (s GetFileDetectResultResponseBodyResultList) String() string {
@@ -24539,6 +25281,16 @@ func (s GetFileDetectResultResponseBodyResultList) String() string {
 
 func (s GetFileDetectResultResponseBodyResultList) GoString() string {
 	return s.String()
+}
+
+func (s *GetFileDetectResultResponseBodyResultList) SetErrorCode(v string) *GetFileDetectResultResponseBodyResultList {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetFileDetectResultResponseBodyResultList) SetErrorMessage(v string) *GetFileDetectResultResponseBodyResultList {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *GetFileDetectResultResponseBodyResultList) SetExt(v string) *GetFileDetectResultResponseBodyResultList {
@@ -25858,6 +26610,752 @@ func (s *ListCheckResultResponse) SetStatusCode(v int32) *ListCheckResultRespons
 }
 
 func (s *ListCheckResultResponse) SetBody(v *ListCheckResultResponseBody) *ListCheckResultResponse {
+	s.Body = v
+	return s
+}
+
+type ListHoneypotRequest struct {
+	CurrentPage  *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	HoneypotIds  []*string `json:"HoneypotIds,omitempty" xml:"HoneypotIds,omitempty" type:"Repeated"`
+	HoneypotName *string   `json:"HoneypotName,omitempty" xml:"HoneypotName,omitempty"`
+	NodeId       *string   `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName     *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListHoneypotRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotRequest) SetCurrentPage(v int32) *ListHoneypotRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListHoneypotRequest) SetHoneypotIds(v []*string) *ListHoneypotRequest {
+	s.HoneypotIds = v
+	return s
+}
+
+func (s *ListHoneypotRequest) SetHoneypotName(v string) *ListHoneypotRequest {
+	s.HoneypotName = &v
+	return s
+}
+
+func (s *ListHoneypotRequest) SetNodeId(v string) *ListHoneypotRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListHoneypotRequest) SetNodeName(v string) *ListHoneypotRequest {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ListHoneypotRequest) SetPageSize(v int32) *ListHoneypotRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListHoneypotResponseBody struct {
+	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	List           []*ListHoneypotResponseBodyList   `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageInfo       *ListHoneypotResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListHoneypotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotResponseBody) SetCode(v string) *ListHoneypotResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBody) SetHttpStatusCode(v int32) *ListHoneypotResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBody) SetList(v []*ListHoneypotResponseBodyList) *ListHoneypotResponseBody {
+	s.List = v
+	return s
+}
+
+func (s *ListHoneypotResponseBody) SetMessage(v string) *ListHoneypotResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBody) SetPageInfo(v *ListHoneypotResponseBodyPageInfo) *ListHoneypotResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *ListHoneypotResponseBody) SetRequestId(v string) *ListHoneypotResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBody) SetSuccess(v bool) *ListHoneypotResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListHoneypotResponseBodyList struct {
+	ControlNodeName          *string   `json:"ControlNodeName,omitempty" xml:"ControlNodeName,omitempty"`
+	HoneypotId               *string   `json:"HoneypotId,omitempty" xml:"HoneypotId,omitempty"`
+	HoneypotImageDisplayName *string   `json:"HoneypotImageDisplayName,omitempty" xml:"HoneypotImageDisplayName,omitempty"`
+	HoneypotImageName        *string   `json:"HoneypotImageName,omitempty" xml:"HoneypotImageName,omitempty"`
+	HoneypotName             *string   `json:"HoneypotName,omitempty" xml:"HoneypotName,omitempty"`
+	NodeId                   *string   `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	PresetId                 *string   `json:"PresetId,omitempty" xml:"PresetId,omitempty"`
+	State                    []*string `json:"State,omitempty" xml:"State,omitempty" type:"Repeated"`
+}
+
+func (s ListHoneypotResponseBodyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotResponseBodyList) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotResponseBodyList) SetControlNodeName(v string) *ListHoneypotResponseBodyList {
+	s.ControlNodeName = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBodyList) SetHoneypotId(v string) *ListHoneypotResponseBodyList {
+	s.HoneypotId = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBodyList) SetHoneypotImageDisplayName(v string) *ListHoneypotResponseBodyList {
+	s.HoneypotImageDisplayName = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBodyList) SetHoneypotImageName(v string) *ListHoneypotResponseBodyList {
+	s.HoneypotImageName = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBodyList) SetHoneypotName(v string) *ListHoneypotResponseBodyList {
+	s.HoneypotName = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBodyList) SetNodeId(v string) *ListHoneypotResponseBodyList {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBodyList) SetPresetId(v string) *ListHoneypotResponseBodyList {
+	s.PresetId = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBodyList) SetState(v []*string) *ListHoneypotResponseBodyList {
+	s.State = v
+	return s
+}
+
+type ListHoneypotResponseBodyPageInfo struct {
+	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	LastRowKey  *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListHoneypotResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotResponseBodyPageInfo) SetCount(v int32) *ListHoneypotResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBodyPageInfo) SetCurrentPage(v int32) *ListHoneypotResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBodyPageInfo) SetLastRowKey(v string) *ListHoneypotResponseBodyPageInfo {
+	s.LastRowKey = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBodyPageInfo) SetPageSize(v int32) *ListHoneypotResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBodyPageInfo) SetTotalCount(v int32) *ListHoneypotResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListHoneypotResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListHoneypotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHoneypotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotResponse) SetHeaders(v map[string]*string) *ListHoneypotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHoneypotResponse) SetStatusCode(v int32) *ListHoneypotResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHoneypotResponse) SetBody(v *ListHoneypotResponseBody) *ListHoneypotResponse {
+	s.Body = v
+	return s
+}
+
+type ListHoneypotAlarmEventsRequest struct {
+	CurrentPage   *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Dealed        *string   `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	DstIp         *string   `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
+	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RiskLevelList []*string `json:"RiskLevelList,omitempty" xml:"RiskLevelList,omitempty" type:"Repeated"`
+	SrcIp         *string   `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
+}
+
+func (s ListHoneypotAlarmEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotAlarmEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotAlarmEventsRequest) SetCurrentPage(v int32) *ListHoneypotAlarmEventsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsRequest) SetDealed(v string) *ListHoneypotAlarmEventsRequest {
+	s.Dealed = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsRequest) SetDstIp(v string) *ListHoneypotAlarmEventsRequest {
+	s.DstIp = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsRequest) SetPageSize(v int32) *ListHoneypotAlarmEventsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsRequest) SetRequestId(v string) *ListHoneypotAlarmEventsRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsRequest) SetRiskLevelList(v []*string) *ListHoneypotAlarmEventsRequest {
+	s.RiskLevelList = v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsRequest) SetSrcIp(v string) *ListHoneypotAlarmEventsRequest {
+	s.SrcIp = &v
+	return s
+}
+
+type ListHoneypotAlarmEventsResponseBody struct {
+	HoneypotAlarmEvents []*ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents `json:"HoneypotAlarmEvents,omitempty" xml:"HoneypotAlarmEvents,omitempty" type:"Repeated"`
+	PageInfo            *ListHoneypotAlarmEventsResponseBodyPageInfo              `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListHoneypotAlarmEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotAlarmEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotAlarmEventsResponseBody) SetHoneypotAlarmEvents(v []*ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents) *ListHoneypotAlarmEventsResponseBody {
+	s.HoneypotAlarmEvents = v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBody) SetPageInfo(v *ListHoneypotAlarmEventsResponseBodyPageInfo) *ListHoneypotAlarmEventsResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBody) SetRequestId(v string) *ListHoneypotAlarmEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents struct {
+	AlarmEventId    *int64                                                                  `json:"AlarmEventId,omitempty" xml:"AlarmEventId,omitempty"`
+	AlarmEventName  *string                                                                 `json:"AlarmEventName,omitempty" xml:"AlarmEventName,omitempty"`
+	AlarmEventType  *string                                                                 `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
+	AlarmUniqueInfo *string                                                                 `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	EventCount      *int32                                                                  `json:"EventCount,omitempty" xml:"EventCount,omitempty"`
+	FirstTime       *int64                                                                  `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	LastTime        *int64                                                                  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	MergeFieldList  []*ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList `json:"MergeFieldList,omitempty" xml:"MergeFieldList,omitempty" type:"Repeated"`
+	OperateStatus   *int32                                                                  `json:"OperateStatus,omitempty" xml:"OperateStatus,omitempty"`
+	RiskLevel       *string                                                                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+}
+
+func (s ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents) SetAlarmEventId(v int64) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents {
+	s.AlarmEventId = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents) SetAlarmEventName(v string) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents {
+	s.AlarmEventName = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents) SetAlarmEventType(v string) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents {
+	s.AlarmEventType = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents) SetAlarmUniqueInfo(v string) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents {
+	s.AlarmUniqueInfo = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents) SetEventCount(v int32) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents {
+	s.EventCount = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents) SetFirstTime(v int64) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents {
+	s.FirstTime = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents) SetLastTime(v int64) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents {
+	s.LastTime = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents) SetMergeFieldList(v []*ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents {
+	s.MergeFieldList = v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents) SetOperateStatus(v int32) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents {
+	s.OperateStatus = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents) SetRiskLevel(v string) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents {
+	s.RiskLevel = &v
+	return s
+}
+
+type ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList struct {
+	FieldExtInfo *string `json:"FieldExtInfo,omitempty" xml:"FieldExtInfo,omitempty"`
+	FieldKey     *string `json:"FieldKey,omitempty" xml:"FieldKey,omitempty"`
+	FieldType    *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
+	FieldValue   *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+}
+
+func (s ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList) SetFieldExtInfo(v string) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList {
+	s.FieldExtInfo = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList) SetFieldKey(v string) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList {
+	s.FieldKey = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList) SetFieldType(v string) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList {
+	s.FieldType = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList) SetFieldValue(v string) *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList {
+	s.FieldValue = &v
+	return s
+}
+
+type ListHoneypotAlarmEventsResponseBodyPageInfo struct {
+	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	LastRowKey  *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListHoneypotAlarmEventsResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotAlarmEventsResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyPageInfo) SetCount(v int32) *ListHoneypotAlarmEventsResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyPageInfo) SetCurrentPage(v int32) *ListHoneypotAlarmEventsResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyPageInfo) SetLastRowKey(v string) *ListHoneypotAlarmEventsResponseBodyPageInfo {
+	s.LastRowKey = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyPageInfo) SetNextToken(v string) *ListHoneypotAlarmEventsResponseBodyPageInfo {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyPageInfo) SetPageSize(v int32) *ListHoneypotAlarmEventsResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponseBodyPageInfo) SetTotalCount(v int32) *ListHoneypotAlarmEventsResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListHoneypotAlarmEventsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListHoneypotAlarmEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHoneypotAlarmEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotAlarmEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotAlarmEventsResponse) SetHeaders(v map[string]*string) *ListHoneypotAlarmEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponse) SetStatusCode(v int32) *ListHoneypotAlarmEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHoneypotAlarmEventsResponse) SetBody(v *ListHoneypotAlarmEventsResponseBody) *ListHoneypotAlarmEventsResponse {
+	s.Body = v
+	return s
+}
+
+type ListHoneypotNodeRequest struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	NodeId      *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName    *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListHoneypotNodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotNodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotNodeRequest) SetCurrentPage(v int32) *ListHoneypotNodeRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListHoneypotNodeRequest) SetNodeId(v string) *ListHoneypotNodeRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListHoneypotNodeRequest) SetNodeName(v string) *ListHoneypotNodeRequest {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ListHoneypotNodeRequest) SetPageSize(v int32) *ListHoneypotNodeRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListHoneypotNodeResponseBody struct {
+	Code             *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	HoneypotNodeList []*ListHoneypotNodeResponseBodyHoneypotNodeList `json:"HoneypotNodeList,omitempty" xml:"HoneypotNodeList,omitempty" type:"Repeated"`
+	HttpStatusCode   *int32                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message          *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageInfo         *ListHoneypotNodeResponseBodyPageInfo           `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId        *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListHoneypotNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotNodeResponseBody) SetCode(v string) *ListHoneypotNodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBody) SetHoneypotNodeList(v []*ListHoneypotNodeResponseBodyHoneypotNodeList) *ListHoneypotNodeResponseBody {
+	s.HoneypotNodeList = v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBody) SetHttpStatusCode(v int32) *ListHoneypotNodeResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBody) SetMessage(v string) *ListHoneypotNodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBody) SetPageInfo(v *ListHoneypotNodeResponseBodyPageInfo) *ListHoneypotNodeResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBody) SetRequestId(v string) *ListHoneypotNodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBody) SetSuccess(v bool) *ListHoneypotNodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListHoneypotNodeResponseBodyHoneypotNodeList struct {
+	AllowHoneypotAccessInternet *bool     `json:"AllowHoneypotAccessInternet,omitempty" xml:"AllowHoneypotAccessInternet,omitempty"`
+	CreateTime                  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultNode                 *bool     `json:"DefaultNode,omitempty" xml:"DefaultNode,omitempty"`
+	EcsInstanceId               *string   `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	HoneypotTotalCount          *int32    `json:"HoneypotTotalCount,omitempty" xml:"HoneypotTotalCount,omitempty"`
+	HoneypotUsedCount           *int32    `json:"HoneypotUsedCount,omitempty" xml:"HoneypotUsedCount,omitempty"`
+	NodeId                      *string   `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeIp                      *string   `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	NodeName                    *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeVersion                 *string   `json:"NodeVersion,omitempty" xml:"NodeVersion,omitempty"`
+	ProbeTotalCount             *int32    `json:"ProbeTotalCount,omitempty" xml:"ProbeTotalCount,omitempty"`
+	ProbeUsedCount              *int32    `json:"ProbeUsedCount,omitempty" xml:"ProbeUsedCount,omitempty"`
+	SecurityGroupProbeIpList    []*string `json:"SecurityGroupProbeIpList,omitempty" xml:"SecurityGroupProbeIpList,omitempty" type:"Repeated"`
+	TotalStatus                 *int32    `json:"TotalStatus,omitempty" xml:"TotalStatus,omitempty"`
+}
+
+func (s ListHoneypotNodeResponseBodyHoneypotNodeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotNodeResponseBodyHoneypotNodeList) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetAllowHoneypotAccessInternet(v bool) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.AllowHoneypotAccessInternet = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetCreateTime(v string) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetDefaultNode(v bool) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.DefaultNode = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetEcsInstanceId(v string) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.EcsInstanceId = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetHoneypotTotalCount(v int32) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.HoneypotTotalCount = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetHoneypotUsedCount(v int32) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.HoneypotUsedCount = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetNodeId(v string) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetNodeIp(v string) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.NodeIp = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetNodeName(v string) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetNodeVersion(v string) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.NodeVersion = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetProbeTotalCount(v int32) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.ProbeTotalCount = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetProbeUsedCount(v int32) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.ProbeUsedCount = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetSecurityGroupProbeIpList(v []*string) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.SecurityGroupProbeIpList = v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetTotalStatus(v int32) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.TotalStatus = &v
+	return s
+}
+
+type ListHoneypotNodeResponseBodyPageInfo struct {
+	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	LastRowKey  *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListHoneypotNodeResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotNodeResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotNodeResponseBodyPageInfo) SetCount(v int32) *ListHoneypotNodeResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyPageInfo) SetCurrentPage(v int32) *ListHoneypotNodeResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyPageInfo) SetLastRowKey(v string) *ListHoneypotNodeResponseBodyPageInfo {
+	s.LastRowKey = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyPageInfo) SetPageSize(v int32) *ListHoneypotNodeResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyPageInfo) SetTotalCount(v int32) *ListHoneypotNodeResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListHoneypotNodeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListHoneypotNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHoneypotNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHoneypotNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHoneypotNodeResponse) SetHeaders(v map[string]*string) *ListHoneypotNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHoneypotNodeResponse) SetStatusCode(v int32) *ListHoneypotNodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponse) SetBody(v *ListHoneypotNodeResponseBody) *ListHoneypotNodeResponse {
 	s.Body = v
 	return s
 }
@@ -31435,6 +32933,206 @@ func (client *Client) CreateFileDetectUploadUrl(request *CreateFileDetectUploadU
 	return _result, _err
 }
 
+func (client *Client) CreateHoneypotWithOptions(request *CreateHoneypotRequest, runtime *util.RuntimeOptions) (_result *CreateHoneypotResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HoneypotImageId)) {
+		query["HoneypotImageId"] = request.HoneypotImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HoneypotImageName)) {
+		query["HoneypotImageName"] = request.HoneypotImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HoneypotName)) {
+		query["HoneypotName"] = request.HoneypotName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Meta)) {
+		query["Meta"] = request.Meta
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHoneypot"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHoneypotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHoneypot(request *CreateHoneypotRequest) (_result *CreateHoneypotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHoneypotResponse{}
+	_body, _err := client.CreateHoneypotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateHoneypotNodeWithOptions(request *CreateHoneypotNodeRequest, runtime *util.RuntimeOptions) (_result *CreateHoneypotNodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowHoneypotAccessInternet)) {
+		query["AllowHoneypotAccessInternet"] = request.AllowHoneypotAccessInternet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvailableProbeNum)) {
+		query["AvailableProbeNum"] = request.AvailableProbeNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
+		query["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupProbeIpList)) {
+		query["SecurityGroupProbeIpList"] = request.SecurityGroupProbeIpList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHoneypotNode"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHoneypotNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHoneypotNode(request *CreateHoneypotNodeRequest) (_result *CreateHoneypotNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHoneypotNodeResponse{}
+	_body, _err := client.CreateHoneypotNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateHoneypotProbeWithOptions(request *CreateHoneypotProbeRequest, runtime *util.RuntimeOptions) (_result *CreateHoneypotProbeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Arp)) {
+		query["Arp"] = request.Arp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessGroupId)) {
+		query["BusinessGroupId"] = request.BusinessGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlNodeId)) {
+		query["ControlNodeId"] = request.ControlNodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HoneypotBindList)) {
+		query["HoneypotBindList"] = request.HoneypotBindList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ping)) {
+		query["Ping"] = request.Ping
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProbeType)) {
+		query["ProbeType"] = request.ProbeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProbeVersion)) {
+		query["ProbeVersion"] = request.ProbeVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyIp)) {
+		query["ProxyIp"] = request.ProxyIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHoneypotProbe"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHoneypotProbeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHoneypotProbe(request *CreateHoneypotProbeRequest) (_result *CreateHoneypotProbeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHoneypotProbeResponse{}
+	_body, _err := client.CreateHoneypotProbeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateOrUpdateAssetGroupWithOptions(request *CreateOrUpdateAssetGroupRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateAssetGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33280,6 +34978,10 @@ func (client *Client) DescribeCheckWarningsWithOptions(request *DescribeCheckWar
 
 	if !tea.BoolValue(util.IsUnset(request.RiskId)) {
 		query["RiskId"] = request.RiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskStatus)) {
+		query["RiskStatus"] = request.RiskStatus
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
@@ -38925,6 +40627,10 @@ func (client *Client) DescribeWarningMachinesWithOptions(request *DescribeWarnin
 		query["CurrentPage"] = request.CurrentPage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HaveRisk)) {
+		query["HaveRisk"] = request.HaveRisk
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -39100,6 +40806,74 @@ func (client *Client) DescribeWebLockConfigList(request *DescribeWebLockConfigLi
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebLockConfigListResponse{}
 	_body, _err := client.DescribeWebLockConfigListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeWebLockFileEventsWithOptions(request *DescribeWebLockFileEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeWebLockFileEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dealed)) {
+		query["Dealed"] = request.Dealed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessName)) {
+		query["ProcessName"] = request.ProcessName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TsBegin)) {
+		query["TsBegin"] = request.TsBegin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TsEnd)) {
+		query["TsEnd"] = request.TsEnd
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWebLockFileEvents"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWebLockFileEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeWebLockFileEvents(request *DescribeWebLockFileEventsRequest) (_result *DescribeWebLockFileEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWebLockFileEventsResponse{}
+	_body, _err := client.DescribeWebLockFileEventsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40097,6 +41871,166 @@ func (client *Client) ListCheckResult(request *ListCheckResultRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCheckResultResponse{}
 	_body, _err := client.ListCheckResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListHoneypotWithOptions(request *ListHoneypotRequest, runtime *util.RuntimeOptions) (_result *ListHoneypotResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HoneypotIds)) {
+		query["HoneypotIds"] = request.HoneypotIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HoneypotName)) {
+		query["HoneypotName"] = request.HoneypotName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
+		query["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHoneypot"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHoneypotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHoneypot(request *ListHoneypotRequest) (_result *ListHoneypotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHoneypotResponse{}
+	_body, _err := client.ListHoneypotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListHoneypotAlarmEventsWithOptions(request *ListHoneypotAlarmEventsRequest, runtime *util.RuntimeOptions) (_result *ListHoneypotAlarmEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHoneypotAlarmEvents"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHoneypotAlarmEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHoneypotAlarmEvents(request *ListHoneypotAlarmEventsRequest) (_result *ListHoneypotAlarmEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHoneypotAlarmEventsResponse{}
+	_body, _err := client.ListHoneypotAlarmEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListHoneypotNodeWithOptions(request *ListHoneypotNodeRequest, runtime *util.RuntimeOptions) (_result *ListHoneypotNodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
+		query["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHoneypotNode"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHoneypotNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHoneypotNode(request *ListHoneypotNodeRequest) (_result *ListHoneypotNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHoneypotNodeResponse{}
+	_body, _err := client.ListHoneypotNodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
