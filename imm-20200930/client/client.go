@@ -4740,6 +4740,193 @@ func (s *CreateImageSplicingTaskResponse) SetBody(v *CreateImageSplicingTaskResp
 	return s
 }
 
+type CreateImageToPDFTaskRequest struct {
+	CredentialConfig *CredentialConfig                     `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotifyTopicName  *string                               `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName      *string                               `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sources          []*CreateImageToPDFTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	Tags             map[string]interface{}                `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetURI        *string                               `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData         *string                               `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateImageToPDFTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageToPDFTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageToPDFTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateImageToPDFTaskRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateImageToPDFTaskRequest) SetNotifyTopicName(v string) *CreateImageToPDFTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskRequest) SetProjectName(v string) *CreateImageToPDFTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskRequest) SetSources(v []*CreateImageToPDFTaskRequestSources) *CreateImageToPDFTaskRequest {
+	s.Sources = v
+	return s
+}
+
+func (s *CreateImageToPDFTaskRequest) SetTags(v map[string]interface{}) *CreateImageToPDFTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateImageToPDFTaskRequest) SetTargetURI(v string) *CreateImageToPDFTaskRequest {
+	s.TargetURI = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskRequest) SetUserData(v string) *CreateImageToPDFTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateImageToPDFTaskRequestSources struct {
+	Rotate *int64  `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	URI    *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s CreateImageToPDFTaskRequestSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageToPDFTaskRequestSources) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageToPDFTaskRequestSources) SetRotate(v int64) *CreateImageToPDFTaskRequestSources {
+	s.Rotate = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskRequestSources) SetURI(v string) *CreateImageToPDFTaskRequestSources {
+	s.URI = &v
+	return s
+}
+
+type CreateImageToPDFTaskShrinkRequest struct {
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourcesShrink          *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateImageToPDFTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageToPDFTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageToPDFTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateImageToPDFTaskShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskShrinkRequest) SetNotifyTopicName(v string) *CreateImageToPDFTaskShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskShrinkRequest) SetProjectName(v string) *CreateImageToPDFTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskShrinkRequest) SetSourcesShrink(v string) *CreateImageToPDFTaskShrinkRequest {
+	s.SourcesShrink = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskShrinkRequest) SetTagsShrink(v string) *CreateImageToPDFTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskShrinkRequest) SetTargetURI(v string) *CreateImageToPDFTaskShrinkRequest {
+	s.TargetURI = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskShrinkRequest) SetUserData(v string) *CreateImageToPDFTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateImageToPDFTaskResponseBody struct {
+	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateImageToPDFTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageToPDFTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageToPDFTaskResponseBody) SetEventId(v string) *CreateImageToPDFTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskResponseBody) SetRequestId(v string) *CreateImageToPDFTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskResponseBody) SetTaskId(v string) *CreateImageToPDFTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateImageToPDFTaskResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateImageToPDFTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateImageToPDFTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageToPDFTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageToPDFTaskResponse) SetHeaders(v map[string]*string) *CreateImageToPDFTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateImageToPDFTaskResponse) SetStatusCode(v int32) *CreateImageToPDFTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskResponse) SetBody(v *CreateImageToPDFTaskResponseBody) *CreateImageToPDFTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateMediaConvertTaskRequest struct {
 	CredentialConfig *CredentialConfig                       `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	NotifyTopicName  *string                                 `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
@@ -13123,6 +13310,88 @@ func (client *Client) CreateImageSplicingTask(request *CreateImageSplicingTaskRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateImageSplicingTaskResponse{}
 	_body, _err := client.CreateImageSplicingTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateImageToPDFTaskWithOptions(tmpReq *CreateImageToPDFTaskRequest, runtime *util.RuntimeOptions) (_result *CreateImageToPDFTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateImageToPDFTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Sources)) {
+		request.SourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sources, tea.String("Sources"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourcesShrink)) {
+		query["Sources"] = request.SourcesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetURI)) {
+		query["TargetURI"] = request.TargetURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateImageToPDFTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateImageToPDFTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateImageToPDFTask(request *CreateImageToPDFTaskRequest) (_result *CreateImageToPDFTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateImageToPDFTaskResponse{}
+	_body, _err := client.CreateImageToPDFTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
