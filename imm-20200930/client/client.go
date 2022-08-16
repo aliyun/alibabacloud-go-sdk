@@ -3803,7 +3803,6 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 
 type CreateDetectVideoLabelsTaskRequest struct {
 	CredentialConfig *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	NotifyEndpoint   *string                `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
 	NotifyTopicName  *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName      *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SourceURI        *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
@@ -3821,11 +3820,6 @@ func (s CreateDetectVideoLabelsTaskRequest) GoString() string {
 
 func (s *CreateDetectVideoLabelsTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateDetectVideoLabelsTaskRequest {
 	s.CredentialConfig = v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskRequest) SetNotifyEndpoint(v string) *CreateDetectVideoLabelsTaskRequest {
-	s.NotifyEndpoint = &v
 	return s
 }
 
@@ -3856,7 +3850,6 @@ func (s *CreateDetectVideoLabelsTaskRequest) SetUserData(v string) *CreateDetect
 
 type CreateDetectVideoLabelsTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	NotifyEndpoint         *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
@@ -3874,11 +3867,6 @@ func (s CreateDetectVideoLabelsTaskShrinkRequest) GoString() string {
 
 func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
 	s.CredentialConfigShrink = &v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetNotifyEndpoint(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
-	s.NotifyEndpoint = &v
 	return s
 }
 
@@ -3967,7 +3955,6 @@ func (s *CreateDetectVideoLabelsTaskResponse) SetBody(v *CreateDetectVideoLabels
 
 type CreateFigureClusteringTaskRequest struct {
 	DatasetName     *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	NotifyEndpoint  *string                `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
 	NotifyTopicName *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName     *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -3984,11 +3971,6 @@ func (s CreateFigureClusteringTaskRequest) GoString() string {
 
 func (s *CreateFigureClusteringTaskRequest) SetDatasetName(v string) *CreateFigureClusteringTaskRequest {
 	s.DatasetName = &v
-	return s
-}
-
-func (s *CreateFigureClusteringTaskRequest) SetNotifyEndpoint(v string) *CreateFigureClusteringTaskRequest {
-	s.NotifyEndpoint = &v
 	return s
 }
 
@@ -4014,7 +3996,6 @@ func (s *CreateFigureClusteringTaskRequest) SetUserData(v string) *CreateFigureC
 
 type CreateFigureClusteringTaskShrinkRequest struct {
 	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
 	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -4031,11 +4012,6 @@ func (s CreateFigureClusteringTaskShrinkRequest) GoString() string {
 
 func (s *CreateFigureClusteringTaskShrinkRequest) SetDatasetName(v string) *CreateFigureClusteringTaskShrinkRequest {
 	s.DatasetName = &v
-	return s
-}
-
-func (s *CreateFigureClusteringTaskShrinkRequest) SetNotifyEndpoint(v string) *CreateFigureClusteringTaskShrinkRequest {
-	s.NotifyEndpoint = &v
 	return s
 }
 
@@ -12752,10 +12728,6 @@ func (client *Client) CreateDetectVideoLabelsTaskWithOptions(tmpReq *CreateDetec
 		query["CredentialConfig"] = request.CredentialConfigShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
-		query["NotifyEndpoint"] = request.NotifyEndpoint
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
 		query["NotifyTopicName"] = request.NotifyTopicName
 	}
@@ -12824,10 +12796,6 @@ func (client *Client) CreateFigureClusteringTaskWithOptions(tmpReq *CreateFigure
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
 		query["DatasetName"] = request.DatasetName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
-		query["NotifyEndpoint"] = request.NotifyEndpoint
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
