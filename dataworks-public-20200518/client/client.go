@@ -13855,8 +13855,9 @@ func (s *GetInstanceErrorRankResponse) SetBody(v *GetInstanceErrorRankResponseBo
 }
 
 type GetInstanceLogRequest struct {
-	InstanceId *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	InstanceHistoryId *int64  `json:"InstanceHistoryId,omitempty" xml:"InstanceHistoryId,omitempty"`
+	InstanceId        *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProjectEnv        *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
 }
 
 func (s GetInstanceLogRequest) String() string {
@@ -13865,6 +13866,11 @@ func (s GetInstanceLogRequest) String() string {
 
 func (s GetInstanceLogRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetInstanceLogRequest) SetInstanceHistoryId(v int64) *GetInstanceLogRequest {
+	s.InstanceHistoryId = &v
+	return s
 }
 
 func (s *GetInstanceLogRequest) SetInstanceId(v int64) *GetInstanceLogRequest {
@@ -28412,6 +28418,271 @@ func (s *ListHistoryTasksForResourceGroupResponse) SetBody(v *ListHistoryTasksFo
 	return s
 }
 
+type ListInnerNodesRequest struct {
+	NodeName    *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	OuterNodeId *int64  `json:"OuterNodeId,omitempty" xml:"OuterNodeId,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
+	ProjectEnv  *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ListInnerNodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInnerNodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInnerNodesRequest) SetNodeName(v string) *ListInnerNodesRequest {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ListInnerNodesRequest) SetOuterNodeId(v int64) *ListInnerNodesRequest {
+	s.OuterNodeId = &v
+	return s
+}
+
+func (s *ListInnerNodesRequest) SetPageNumber(v int32) *ListInnerNodesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInnerNodesRequest) SetPageSize(v int32) *ListInnerNodesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInnerNodesRequest) SetProgramType(v string) *ListInnerNodesRequest {
+	s.ProgramType = &v
+	return s
+}
+
+func (s *ListInnerNodesRequest) SetProjectEnv(v string) *ListInnerNodesRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListInnerNodesRequest) SetProjectId(v int64) *ListInnerNodesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type ListInnerNodesResponseBody struct {
+	Paging    *ListInnerNodesResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListInnerNodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInnerNodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInnerNodesResponseBody) SetPaging(v *ListInnerNodesResponseBodyPaging) *ListInnerNodesResponseBody {
+	s.Paging = v
+	return s
+}
+
+func (s *ListInnerNodesResponseBody) SetRequestId(v string) *ListInnerNodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBody) SetSuccess(v bool) *ListInnerNodesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListInnerNodesResponseBodyPaging struct {
+	Nodes      []*ListInnerNodesResponseBodyPagingNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListInnerNodesResponseBodyPaging) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInnerNodesResponseBodyPaging) GoString() string {
+	return s.String()
+}
+
+func (s *ListInnerNodesResponseBodyPaging) SetNodes(v []*ListInnerNodesResponseBodyPagingNodes) *ListInnerNodesResponseBodyPaging {
+	s.Nodes = v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPaging) SetPageNumber(v int32) *ListInnerNodesResponseBodyPaging {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPaging) SetPageSize(v int32) *ListInnerNodesResponseBodyPaging {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPaging) SetTotalCount(v int32) *ListInnerNodesResponseBodyPaging {
+	s.TotalCount = &v
+	return s
+}
+
+type ListInnerNodesResponseBodyPagingNodes struct {
+	BaselineId     *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	BusinessId     *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	Connection     *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
+	CronExpress    *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DqcDescription *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty"`
+	DqcType        *string `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
+	NodeId         *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName       *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ParamValues    *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty"`
+	Priority       *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProgramType    *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
+	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RepeatInterval *int64  `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
+	Repeatability  *bool   `json:"Repeatability,omitempty" xml:"Repeatability,omitempty"`
+	ResGroupName   *string `json:"ResGroupName,omitempty" xml:"ResGroupName,omitempty"`
+	SchedulerType  *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
+}
+
+func (s ListInnerNodesResponseBodyPagingNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInnerNodesResponseBodyPagingNodes) GoString() string {
+	return s.String()
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetBaselineId(v int64) *ListInnerNodesResponseBodyPagingNodes {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetBusinessId(v int64) *ListInnerNodesResponseBodyPagingNodes {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetConnection(v string) *ListInnerNodesResponseBodyPagingNodes {
+	s.Connection = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetCronExpress(v string) *ListInnerNodesResponseBodyPagingNodes {
+	s.CronExpress = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetDescription(v string) *ListInnerNodesResponseBodyPagingNodes {
+	s.Description = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetDqcDescription(v string) *ListInnerNodesResponseBodyPagingNodes {
+	s.DqcDescription = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetDqcType(v string) *ListInnerNodesResponseBodyPagingNodes {
+	s.DqcType = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetNodeId(v int64) *ListInnerNodesResponseBodyPagingNodes {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetNodeName(v string) *ListInnerNodesResponseBodyPagingNodes {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetOwnerId(v string) *ListInnerNodesResponseBodyPagingNodes {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetParamValues(v string) *ListInnerNodesResponseBodyPagingNodes {
+	s.ParamValues = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetPriority(v int32) *ListInnerNodesResponseBodyPagingNodes {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetProgramType(v string) *ListInnerNodesResponseBodyPagingNodes {
+	s.ProgramType = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetProjectId(v int64) *ListInnerNodesResponseBodyPagingNodes {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetRepeatInterval(v int64) *ListInnerNodesResponseBodyPagingNodes {
+	s.RepeatInterval = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetRepeatability(v bool) *ListInnerNodesResponseBodyPagingNodes {
+	s.Repeatability = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetResGroupName(v string) *ListInnerNodesResponseBodyPagingNodes {
+	s.ResGroupName = &v
+	return s
+}
+
+func (s *ListInnerNodesResponseBodyPagingNodes) SetSchedulerType(v string) *ListInnerNodesResponseBodyPagingNodes {
+	s.SchedulerType = &v
+	return s
+}
+
+type ListInnerNodesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInnerNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInnerNodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInnerNodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInnerNodesResponse) SetHeaders(v map[string]*string) *ListInnerNodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInnerNodesResponse) SetStatusCode(v int32) *ListInnerNodesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInnerNodesResponse) SetBody(v *ListInnerNodesResponseBody) *ListInnerNodesResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstanceAmountRequest struct {
 	BeginDate *string `json:"BeginDate,omitempty" xml:"BeginDate,omitempty"`
 	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
@@ -28512,6 +28783,200 @@ func (s *ListInstanceAmountResponse) SetStatusCode(v int32) *ListInstanceAmountR
 }
 
 func (s *ListInstanceAmountResponse) SetBody(v *ListInstanceAmountResponseBody) *ListInstanceAmountResponse {
+	s.Body = v
+	return s
+}
+
+type ListInstanceHistoryRequest struct {
+	InstanceId *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+}
+
+func (s ListInstanceHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryRequest) SetInstanceId(v int64) *ListInstanceHistoryRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryRequest) SetProjectEnv(v string) *ListInstanceHistoryRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+type ListInstanceHistoryResponseBody struct {
+	Instances []*ListInstanceHistoryResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListInstanceHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryResponseBody) SetInstances(v []*ListInstanceHistoryResponseBodyInstances) *ListInstanceHistoryResponseBody {
+	s.Instances = v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBody) SetRequestId(v string) *ListInstanceHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBody) SetSuccess(v bool) *ListInstanceHistoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListInstanceHistoryResponseBodyInstances struct {
+	BeginRunningTime  *int64  `json:"BeginRunningTime,omitempty" xml:"BeginRunningTime,omitempty"`
+	BeginWaitResTime  *int64  `json:"BeginWaitResTime,omitempty" xml:"BeginWaitResTime,omitempty"`
+	BeginWaitTimeTime *int64  `json:"BeginWaitTimeTime,omitempty" xml:"BeginWaitTimeTime,omitempty"`
+	Bizdate           *int64  `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CycTime           *int64  `json:"CycTime,omitempty" xml:"CycTime,omitempty"`
+	DagId             *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagType           *string `json:"DagType,omitempty" xml:"DagType,omitempty"`
+	ErrorMessage      *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FinishTime        *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	InstanceHistoryId *int64  `json:"InstanceHistoryId,omitempty" xml:"InstanceHistoryId,omitempty"`
+	InstanceId        *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ModifyTime        *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	NodeId            *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName          *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskType          *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s ListInstanceHistoryResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetBeginRunningTime(v int64) *ListInstanceHistoryResponseBodyInstances {
+	s.BeginRunningTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetBeginWaitResTime(v int64) *ListInstanceHistoryResponseBodyInstances {
+	s.BeginWaitResTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetBeginWaitTimeTime(v int64) *ListInstanceHistoryResponseBodyInstances {
+	s.BeginWaitTimeTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetBizdate(v int64) *ListInstanceHistoryResponseBodyInstances {
+	s.Bizdate = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetCreateTime(v int64) *ListInstanceHistoryResponseBodyInstances {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetCycTime(v int64) *ListInstanceHistoryResponseBodyInstances {
+	s.CycTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetDagId(v int64) *ListInstanceHistoryResponseBodyInstances {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetDagType(v string) *ListInstanceHistoryResponseBodyInstances {
+	s.DagType = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetErrorMessage(v string) *ListInstanceHistoryResponseBodyInstances {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetFinishTime(v int64) *ListInstanceHistoryResponseBodyInstances {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetInstanceHistoryId(v int64) *ListInstanceHistoryResponseBodyInstances {
+	s.InstanceHistoryId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetInstanceId(v int64) *ListInstanceHistoryResponseBodyInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetModifyTime(v int64) *ListInstanceHistoryResponseBodyInstances {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetNodeId(v int64) *ListInstanceHistoryResponseBodyInstances {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetNodeName(v string) *ListInstanceHistoryResponseBodyInstances {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetStatus(v string) *ListInstanceHistoryResponseBodyInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponseBodyInstances) SetTaskType(v string) *ListInstanceHistoryResponseBodyInstances {
+	s.TaskType = &v
+	return s
+}
+
+type ListInstanceHistoryResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstanceHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInstanceHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryResponse) SetHeaders(v map[string]*string) *ListInstanceHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceHistoryResponse) SetStatusCode(v int32) *ListInstanceHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstanceHistoryResponse) SetBody(v *ListInstanceHistoryResponseBody) *ListInstanceHistoryResponse {
 	s.Body = v
 	return s
 }
@@ -35252,17 +35717,18 @@ func (s *RevokeTablePermissionResponse) SetBody(v *RevokeTablePermissionResponse
 }
 
 type RunCycleDagNodesRequest struct {
-	BizBeginTime   *string `json:"BizBeginTime,omitempty" xml:"BizBeginTime,omitempty"`
-	BizEndTime     *string `json:"BizEndTime,omitempty" xml:"BizEndTime,omitempty"`
-	EndBizDate     *string `json:"EndBizDate,omitempty" xml:"EndBizDate,omitempty"`
-	ExcludeNodeIds *string `json:"ExcludeNodeIds,omitempty" xml:"ExcludeNodeIds,omitempty"`
-	IncludeNodeIds *string `json:"IncludeNodeIds,omitempty" xml:"IncludeNodeIds,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NodeParams     *string `json:"NodeParams,omitempty" xml:"NodeParams,omitempty"`
-	Parallelism    *bool   `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	ProjectEnv     *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	RootNodeId     *int64  `json:"RootNodeId,omitempty" xml:"RootNodeId,omitempty"`
-	StartBizDate   *string `json:"StartBizDate,omitempty" xml:"StartBizDate,omitempty"`
+	BizBeginTime                   *string `json:"BizBeginTime,omitempty" xml:"BizBeginTime,omitempty"`
+	BizEndTime                     *string `json:"BizEndTime,omitempty" xml:"BizEndTime,omitempty"`
+	EndBizDate                     *string `json:"EndBizDate,omitempty" xml:"EndBizDate,omitempty"`
+	ExcludeNodeIds                 *string `json:"ExcludeNodeIds,omitempty" xml:"ExcludeNodeIds,omitempty"`
+	IncludeNodeIds                 *string `json:"IncludeNodeIds,omitempty" xml:"IncludeNodeIds,omitempty"`
+	Name                           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeParams                     *string `json:"NodeParams,omitempty" xml:"NodeParams,omitempty"`
+	Parallelism                    *bool   `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	ProjectEnv                     *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	RootNodeId                     *int64  `json:"RootNodeId,omitempty" xml:"RootNodeId,omitempty"`
+	StartBizDate                   *string `json:"StartBizDate,omitempty" xml:"StartBizDate,omitempty"`
+	StartFutureInstanceImmediately *bool   `json:"StartFutureInstanceImmediately,omitempty" xml:"StartFutureInstanceImmediately,omitempty"`
 }
 
 func (s RunCycleDagNodesRequest) String() string {
@@ -35325,6 +35791,11 @@ func (s *RunCycleDagNodesRequest) SetRootNodeId(v int64) *RunCycleDagNodesReques
 
 func (s *RunCycleDagNodesRequest) SetStartBizDate(v string) *RunCycleDagNodesRequest {
 	s.StartBizDate = &v
+	return s
+}
+
+func (s *RunCycleDagNodesRequest) SetStartFutureInstanceImmediately(v bool) *RunCycleDagNodesRequest {
+	s.StartFutureInstanceImmediately = &v
 	return s
 }
 
@@ -46111,6 +46582,10 @@ func (client *Client) GetInstanceLogWithOptions(request *GetInstanceLogRequest, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceHistoryId)) {
+		body["InstanceHistoryId"] = request.InstanceHistoryId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -49711,6 +50186,74 @@ func (client *Client) ListHistoryTasksForResourceGroup(request *ListHistoryTasks
 	return _result, _err
 }
 
+func (client *Client) ListInnerNodesWithOptions(request *ListInnerNodesRequest, runtime *util.RuntimeOptions) (_result *ListInnerNodesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
+		body["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OuterNodeId)) {
+		body["OuterNodeId"] = request.OuterNodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProgramType)) {
+		body["ProgramType"] = request.ProgramType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInnerNodes"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInnerNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInnerNodes(request *ListInnerNodesRequest) (_result *ListInnerNodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInnerNodesResponse{}
+	_body, _err := client.ListInnerNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListInstanceAmountWithOptions(request *ListInstanceAmountRequest, runtime *util.RuntimeOptions) (_result *ListInstanceAmountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49756,6 +50299,54 @@ func (client *Client) ListInstanceAmount(request *ListInstanceAmountRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstanceAmountResponse{}
 	_body, _err := client.ListInstanceAmountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListInstanceHistoryWithOptions(request *ListInstanceHistoryRequest, runtime *util.RuntimeOptions) (_result *ListInstanceHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceHistory"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInstanceHistory(request *ListInstanceHistoryRequest) (_result *ListInstanceHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInstanceHistoryResponse{}
+	_body, _err := client.ListInstanceHistoryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51811,6 +52402,10 @@ func (client *Client) RunCycleDagNodesWithOptions(request *RunCycleDagNodesReque
 
 	if !tea.BoolValue(util.IsUnset(request.StartBizDate)) {
 		body["StartBizDate"] = request.StartBizDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartFutureInstanceImmediately)) {
+		body["StartFutureInstanceImmediately"] = request.StartFutureInstanceImmediately
 	}
 
 	req := &openapi.OpenApiRequest{
