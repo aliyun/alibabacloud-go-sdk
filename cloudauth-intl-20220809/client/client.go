@@ -271,8 +271,8 @@ func (s *InitializeResponseBody) SetResult(v *InitializeResponseBodyResult) *Ini
 }
 
 type InitializeResponseBodyResult struct {
+	ClientCfg     *string `json:"ClientCfg,omitempty" xml:"ClientCfg,omitempty"`
 	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
-	ClientCfg     *string `json:"clientCfg,omitempty" xml:"clientCfg,omitempty"`
 }
 
 func (s InitializeResponseBodyResult) String() string {
@@ -283,13 +283,13 @@ func (s InitializeResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *InitializeResponseBodyResult) SetTransactionId(v string) *InitializeResponseBodyResult {
-	s.TransactionId = &v
+func (s *InitializeResponseBodyResult) SetClientCfg(v string) *InitializeResponseBodyResult {
+	s.ClientCfg = &v
 	return s
 }
 
-func (s *InitializeResponseBodyResult) SetClientCfg(v string) *InitializeResponseBodyResult {
-	s.ClientCfg = &v
+func (s *InitializeResponseBodyResult) SetTransactionId(v string) *InitializeResponseBodyResult {
+	s.TransactionId = &v
 	return s
 }
 
