@@ -263,35 +263,34 @@ func (s *AddressGetResponse) SetBody(v *AddressGetResponseBody) *AddressGetRespo
 }
 
 type ApplyAddRequest struct {
-	Budget                   *int64                                   `json:"budget,omitempty" xml:"budget,omitempty"`
-	BudgetMerge              *int32                                   `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CorpName                 *string                                  `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId                 *string                                  `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName               *string                                  `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	ExternalTravelerList     []*ApplyAddRequestExternalTravelerList   `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
-	ExternalTravelerStandard *ApplyAddRequestExternalTravelerStandard `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty" type:"Struct"`
-	FlightBudget             *int64                                   `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
-	HotelBudget              *int64                                   `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
-	HotelShare               *ApplyAddRequestHotelShare               `json:"hotel_share,omitempty" xml:"hotel_share,omitempty" type:"Struct"`
-	ItineraryList            []*ApplyAddRequestItineraryList          `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
-	ItineraryRule            *int32                                   `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
-	ItinerarySetList         []*ApplyAddRequestItinerarySetList       `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
-	LimitTraveler            *int32                                   `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
-	Status                   *int32                                   `json:"status,omitempty" xml:"status,omitempty"`
-	ThirdpartApplyId         *string                                  `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	ThirdpartBusinessId      *string                                  `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
-	TogetherBookRule         *int32                                   `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
-	TrainBudget              *int64                                   `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
-	TravelerList             []*ApplyAddRequestTravelerList           `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
-	TravelerStandard         []*ApplyAddRequestTravelerStandard       `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
-	TripCause                *string                                  `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
-	TripDay                  *int32                                   `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
-	TripTitle                *string                                  `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
-	Type                     *int32                                   `json:"type,omitempty" xml:"type,omitempty"`
-	UnionNo                  *string                                  `json:"union_no,omitempty" xml:"union_no,omitempty"`
-	UserId                   *string                                  `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName                 *string                                  `json:"user_name,omitempty" xml:"user_name,omitempty"`
-	VehicleBudget            *int64                                   `json:"vehicle_budget,omitempty" xml:"vehicle_budget,omitempty"`
+	Budget                    *int64                                   `json:"budget,omitempty" xml:"budget,omitempty"`
+	BudgetMerge               *int32                                   `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CorpName                  *string                                  `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId                  *string                                  `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName                *string                                  `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExternalTravelerList      []*ApplyAddRequestExternalTravelerList   `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
+	ExternalTravelerStandard  *ApplyAddRequestExternalTravelerStandard `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty" type:"Struct"`
+	FlightBudget              *int64                                   `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
+	HotelBudget               *int64                                   `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
+	HotelShare                *ApplyAddRequestHotelShare               `json:"hotel_share,omitempty" xml:"hotel_share,omitempty" type:"Struct"`
+	InternationalFlightCabins *string                                  `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
+	ItineraryList             []*ApplyAddRequestItineraryList          `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	LimitTraveler             *int32                                   `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
+	Status                    *int32                                   `json:"status,omitempty" xml:"status,omitempty"`
+	ThirdpartApplyId          *string                                  `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartBusinessId       *string                                  `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	TogetherBookRule          *int32                                   `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
+	TrainBudget               *int64                                   `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
+	TravelerList              []*ApplyAddRequestTravelerList           `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
+	TravelerStandard          []*ApplyAddRequestTravelerStandard       `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
+	TripCause                 *string                                  `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
+	TripDay                   *int32                                   `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	TripTitle                 *string                                  `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
+	Type                      *int32                                   `json:"type,omitempty" xml:"type,omitempty"`
+	UnionNo                   *string                                  `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	UserId                    *string                                  `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName                  *string                                  `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	VehicleBudget             *int64                                   `json:"vehicle_budget,omitempty" xml:"vehicle_budget,omitempty"`
 }
 
 func (s ApplyAddRequest) String() string {
@@ -352,18 +351,13 @@ func (s *ApplyAddRequest) SetHotelShare(v *ApplyAddRequestHotelShare) *ApplyAddR
 	return s
 }
 
+func (s *ApplyAddRequest) SetInternationalFlightCabins(v string) *ApplyAddRequest {
+	s.InternationalFlightCabins = &v
+	return s
+}
+
 func (s *ApplyAddRequest) SetItineraryList(v []*ApplyAddRequestItineraryList) *ApplyAddRequest {
 	s.ItineraryList = v
-	return s
-}
-
-func (s *ApplyAddRequest) SetItineraryRule(v int32) *ApplyAddRequest {
-	s.ItineraryRule = &v
-	return s
-}
-
-func (s *ApplyAddRequest) SetItinerarySetList(v []*ApplyAddRequestItinerarySetList) *ApplyAddRequest {
-	s.ItinerarySetList = v
 	return s
 }
 
@@ -682,89 +676,6 @@ func (s *ApplyAddRequestItineraryList) SetTripWay(v int32) *ApplyAddRequestItine
 	return s
 }
 
-type ApplyAddRequestItinerarySetList struct {
-	ArrDate               *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	CityCodeSet           *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
-	CitySet               *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
-	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	DepDate               *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceId             *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
-	ItineraryId           *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
-	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
-	Transport             *int32  `json:"transport,omitempty" xml:"transport,omitempty"`
-}
-
-func (s ApplyAddRequestItinerarySetList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ApplyAddRequestItinerarySetList) GoString() string {
-	return s.String()
-}
-
-func (s *ApplyAddRequestItinerarySetList) SetArrDate(v string) *ApplyAddRequestItinerarySetList {
-	s.ArrDate = &v
-	return s
-}
-
-func (s *ApplyAddRequestItinerarySetList) SetCityCodeSet(v string) *ApplyAddRequestItinerarySetList {
-	s.CityCodeSet = &v
-	return s
-}
-
-func (s *ApplyAddRequestItinerarySetList) SetCitySet(v string) *ApplyAddRequestItinerarySetList {
-	s.CitySet = &v
-	return s
-}
-
-func (s *ApplyAddRequestItinerarySetList) SetCostCenterId(v int64) *ApplyAddRequestItinerarySetList {
-	s.CostCenterId = &v
-	return s
-}
-
-func (s *ApplyAddRequestItinerarySetList) SetDepDate(v string) *ApplyAddRequestItinerarySetList {
-	s.DepDate = &v
-	return s
-}
-
-func (s *ApplyAddRequestItinerarySetList) SetInvoiceId(v int64) *ApplyAddRequestItinerarySetList {
-	s.InvoiceId = &v
-	return s
-}
-
-func (s *ApplyAddRequestItinerarySetList) SetItineraryId(v string) *ApplyAddRequestItinerarySetList {
-	s.ItineraryId = &v
-	return s
-}
-
-func (s *ApplyAddRequestItinerarySetList) SetProjectCode(v string) *ApplyAddRequestItinerarySetList {
-	s.ProjectCode = &v
-	return s
-}
-
-func (s *ApplyAddRequestItinerarySetList) SetProjectTitle(v string) *ApplyAddRequestItinerarySetList {
-	s.ProjectTitle = &v
-	return s
-}
-
-func (s *ApplyAddRequestItinerarySetList) SetThirdPartInvoiceId(v string) *ApplyAddRequestItinerarySetList {
-	s.ThirdPartInvoiceId = &v
-	return s
-}
-
-func (s *ApplyAddRequestItinerarySetList) SetThirdpartCostCenterId(v string) *ApplyAddRequestItinerarySetList {
-	s.ThirdpartCostCenterId = &v
-	return s
-}
-
-func (s *ApplyAddRequestItinerarySetList) SetTransport(v int32) *ApplyAddRequestItinerarySetList {
-	s.Transport = &v
-	return s
-}
-
 type ApplyAddRequestTravelerList struct {
 	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
@@ -887,9 +798,8 @@ type ApplyAddShrinkRequest struct {
 	FlightBudget                   *int64  `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
 	HotelBudget                    *int64  `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
 	HotelShareShrink               *string `json:"hotel_share,omitempty" xml:"hotel_share,omitempty"`
+	InternationalFlightCabins      *string `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
 	ItineraryListShrink            *string `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty"`
-	ItineraryRule                  *int32  `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
-	ItinerarySetListShrink         *string `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty"`
 	LimitTraveler                  *int32  `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status                         *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartApplyId               *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
@@ -966,18 +876,13 @@ func (s *ApplyAddShrinkRequest) SetHotelShareShrink(v string) *ApplyAddShrinkReq
 	return s
 }
 
+func (s *ApplyAddShrinkRequest) SetInternationalFlightCabins(v string) *ApplyAddShrinkRequest {
+	s.InternationalFlightCabins = &v
+	return s
+}
+
 func (s *ApplyAddShrinkRequest) SetItineraryListShrink(v string) *ApplyAddShrinkRequest {
 	s.ItineraryListShrink = &v
-	return s
-}
-
-func (s *ApplyAddShrinkRequest) SetItineraryRule(v int32) *ApplyAddShrinkRequest {
-	s.ItineraryRule = &v
-	return s
-}
-
-func (s *ApplyAddShrinkRequest) SetItinerarySetListShrink(v string) *ApplyAddShrinkRequest {
-	s.ItinerarySetListShrink = &v
 	return s
 }
 
@@ -1303,6 +1208,7 @@ type ApplyListQueryResponseBodyModuleList struct {
 	GmtModified          *string                                                     `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
 	Id                   *int64                                                      `json:"id,omitempty" xml:"id,omitempty"`
 	ItineraryList        []*ApplyListQueryResponseBodyModuleListItineraryList        `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	ItineraryRule        *int32                                                      `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
 	Status               *int32                                                      `json:"status,omitempty" xml:"status,omitempty"`
 	StatusDesc           *string                                                     `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
 	ThirdpartBusinessId  *string                                                     `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
@@ -1382,6 +1288,11 @@ func (s *ApplyListQueryResponseBodyModuleList) SetId(v int64) *ApplyListQueryRes
 
 func (s *ApplyListQueryResponseBodyModuleList) SetItineraryList(v []*ApplyListQueryResponseBodyModuleListItineraryList) *ApplyListQueryResponseBodyModuleList {
 	s.ItineraryList = v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleList) SetItineraryRule(v int32) *ApplyListQueryResponseBodyModuleList {
+	s.ItineraryRule = &v
 	return s
 }
 
@@ -2528,6 +2439,7 @@ type ApplyQueryResponseBodyModule struct {
 	HotelShare           *ApplyQueryResponseBodyModuleHotelShare             `json:"hotel_share,omitempty" xml:"hotel_share,omitempty" type:"Struct"`
 	Id                   *int64                                              `json:"id,omitempty" xml:"id,omitempty"`
 	ItineraryList        []*ApplyQueryResponseBodyModuleItineraryList        `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	ItineraryRule        *int32                                              `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
 	LimitTraveler        *int32                                              `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status               *int32                                              `json:"status,omitempty" xml:"status,omitempty"`
 	StatusDesc           *string                                             `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
@@ -2631,6 +2543,11 @@ func (s *ApplyQueryResponseBodyModule) SetId(v int64) *ApplyQueryResponseBodyMod
 
 func (s *ApplyQueryResponseBodyModule) SetItineraryList(v []*ApplyQueryResponseBodyModuleItineraryList) *ApplyQueryResponseBodyModule {
 	s.ItineraryList = v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModule) SetItineraryRule(v int32) *ApplyQueryResponseBodyModule {
+	s.ItineraryRule = &v
 	return s
 }
 
@@ -3268,7 +3185,6 @@ func (s *CarApplyAddResponse) SetBody(v *CarApplyAddResponseBody) *CarApplyAddRe
 }
 
 type CarApplyModifyRequest struct {
-	CorpId           *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	OperateTime      *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
 	Remark           *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	Status           *int32  `json:"status,omitempty" xml:"status,omitempty"`
@@ -3282,11 +3198,6 @@ func (s CarApplyModifyRequest) String() string {
 
 func (s CarApplyModifyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CarApplyModifyRequest) SetCorpId(v string) *CarApplyModifyRequest {
-	s.CorpId = &v
-	return s
 }
 
 func (s *CarApplyModifyRequest) SetOperateTime(v string) *CarApplyModifyRequest {
@@ -4423,7 +4334,6 @@ type CarOrderListQueryResponseBodyModule struct {
 	InvoiceTitle         *string                                                 `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
 	IsSpecial            *bool                                                   `json:"is_special,omitempty" xml:"is_special,omitempty"`
 	Memo                 *string                                                 `json:"memo,omitempty" xml:"memo,omitempty"`
-	OrderId              *string                                                 `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	OrderStatus          *int32                                                  `json:"order_status,omitempty" xml:"order_status,omitempty"`
 	PassengerName        *string                                                 `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
 	PayTime              *string                                                 `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
@@ -4584,11 +4494,6 @@ func (s *CarOrderListQueryResponseBodyModule) SetMemo(v string) *CarOrderListQue
 	return s
 }
 
-func (s *CarOrderListQueryResponseBodyModule) SetOrderId(v string) *CarOrderListQueryResponseBodyModule {
-	s.OrderId = &v
-	return s
-}
-
 func (s *CarOrderListQueryResponseBodyModule) SetOrderStatus(v int32) *CarOrderListQueryResponseBodyModule {
 	s.OrderStatus = &v
 	return s
@@ -4717,6 +4622,7 @@ func (s *CarOrderListQueryResponseBodyModule) SetUserName(v string) *CarOrderLis
 type CarOrderListQueryResponseBodyModulePriceInfoList struct {
 	CategoryCode  *int32   `json:"category_code,omitempty" xml:"category_code,omitempty"`
 	CategoryType  *int32   `json:"category_type,omitempty" xml:"category_type,omitempty"`
+	GmtCreate     *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
 	PassengerName *string  `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
 	PayType       *int32   `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
 	PersonPrice   *float64 `json:"person_price,omitempty" xml:"person_price,omitempty"`
@@ -4740,6 +4646,11 @@ func (s *CarOrderListQueryResponseBodyModulePriceInfoList) SetCategoryCode(v int
 
 func (s *CarOrderListQueryResponseBodyModulePriceInfoList) SetCategoryType(v int32) *CarOrderListQueryResponseBodyModulePriceInfoList {
 	s.CategoryType = &v
+	return s
+}
+
+func (s *CarOrderListQueryResponseBodyModulePriceInfoList) SetGmtCreate(v string) *CarOrderListQueryResponseBodyModulePriceInfoList {
+	s.GmtCreate = &v
 	return s
 }
 
@@ -5293,13 +5204,11 @@ func (s *CostCenterDeleteRequest) SetThirdpartId(v string) *CostCenterDeleteRequ
 }
 
 type CostCenterDeleteResponseBody struct {
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Module     map[string]interface{} `json:"module,omitempty" xml:"module,omitempty"`
-	MorePage   *bool                  `json:"more_page,omitempty" xml:"more_page,omitempty"`
-	ResultCode *int32                 `json:"result_code,omitempty" xml:"result_code,omitempty"`
-	ResultMsg  *string                `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
-	Success    *bool                  `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId    *string                `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode *int32  `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CostCenterDeleteResponseBody) String() string {
@@ -5312,16 +5221,6 @@ func (s CostCenterDeleteResponseBody) GoString() string {
 
 func (s *CostCenterDeleteResponseBody) SetRequestId(v string) *CostCenterDeleteResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CostCenterDeleteResponseBody) SetModule(v map[string]interface{}) *CostCenterDeleteResponseBody {
-	s.Module = v
-	return s
-}
-
-func (s *CostCenterDeleteResponseBody) SetMorePage(v bool) *CostCenterDeleteResponseBody {
-	s.MorePage = &v
 	return s
 }
 
@@ -5416,13 +5315,11 @@ func (s *CostCenterModifyRequest) SetTitle(v string) *CostCenterModifyRequest {
 }
 
 type CostCenterModifyResponseBody struct {
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Module     map[string]interface{} `json:"module,omitempty" xml:"module,omitempty"`
-	MorePage   *bool                  `json:"more_page,omitempty" xml:"more_page,omitempty"`
-	ResultCode *int32                 `json:"result_code,omitempty" xml:"result_code,omitempty"`
-	ResultMsg  *string                `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
-	Success    *bool                  `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId    *string                `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode *int32  `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CostCenterModifyResponseBody) String() string {
@@ -5435,16 +5332,6 @@ func (s CostCenterModifyResponseBody) GoString() string {
 
 func (s *CostCenterModifyResponseBody) SetRequestId(v string) *CostCenterModifyResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CostCenterModifyResponseBody) SetModule(v map[string]interface{}) *CostCenterModifyResponseBody {
-	s.Module = v
-	return s
-}
-
-func (s *CostCenterModifyResponseBody) SetMorePage(v bool) *CostCenterModifyResponseBody {
-	s.MorePage = &v
 	return s
 }
 
@@ -5764,7 +5651,6 @@ func (s *CostCenterSaveRequest) SetTitle(v string) *CostCenterSaveRequest {
 type CostCenterSaveResponseBody struct {
 	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Module     *CostCenterSaveResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	MorePage   *bool                             `json:"more_page,omitempty" xml:"more_page,omitempty"`
 	ResultCode *int32                            `json:"result_code,omitempty" xml:"result_code,omitempty"`
 	ResultMsg  *string                           `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
 	Success    *bool                             `json:"success,omitempty" xml:"success,omitempty"`
@@ -5786,11 +5672,6 @@ func (s *CostCenterSaveResponseBody) SetRequestId(v string) *CostCenterSaveRespo
 
 func (s *CostCenterSaveResponseBody) SetModule(v *CostCenterSaveResponseBodyModule) *CostCenterSaveResponseBody {
 	s.Module = v
-	return s
-}
-
-func (s *CostCenterSaveResponseBody) SetMorePage(v bool) *CostCenterSaveResponseBody {
-	s.MorePage = &v
 	return s
 }
 
@@ -6095,7 +5976,6 @@ func (s *EntityAddShrinkRequest) SetThirdpartId(v string) *EntityAddShrinkReques
 type EntityAddResponseBody struct {
 	RequestId  *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Module     *EntityAddResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	MorePage   *bool                        `json:"more_page,omitempty" xml:"more_page,omitempty"`
 	ResultCode *int32                       `json:"result_code,omitempty" xml:"result_code,omitempty"`
 	ResultMsg  *string                      `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
 	Success    *bool                        `json:"success,omitempty" xml:"success,omitempty"`
@@ -6117,11 +5997,6 @@ func (s *EntityAddResponseBody) SetRequestId(v string) *EntityAddResponseBody {
 
 func (s *EntityAddResponseBody) SetModule(v *EntityAddResponseBodyModule) *EntityAddResponseBody {
 	s.Module = v
-	return s
-}
-
-func (s *EntityAddResponseBody) SetMorePage(v bool) *EntityAddResponseBody {
-	s.MorePage = &v
 	return s
 }
 
@@ -9457,8 +9332,7 @@ func (s *HotelBillSettlementQueryResponse) SetBody(v *HotelBillSettlementQueryRe
 }
 
 type HotelExceedApplyQueryRequest struct {
-	ApplyId *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	UserId  *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 }
 
 func (s HotelExceedApplyQueryRequest) String() string {
@@ -9471,11 +9345,6 @@ func (s HotelExceedApplyQueryRequest) GoString() string {
 
 func (s *HotelExceedApplyQueryRequest) SetApplyId(v int64) *HotelExceedApplyQueryRequest {
 	s.ApplyId = &v
-	return s
-}
-
-func (s *HotelExceedApplyQueryRequest) SetUserId(v string) *HotelExceedApplyQueryRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -10307,8 +10176,6 @@ func (s *InvoiceAddRequest) SetType(v int32) *InvoiceAddRequest {
 
 type InvoiceAddResponseBody struct {
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Module     *int64  `json:"module,omitempty" xml:"module,omitempty"`
-	MorePage   *bool   `json:"more_page,omitempty" xml:"more_page,omitempty"`
 	ResultCode *int32  `json:"result_code,omitempty" xml:"result_code,omitempty"`
 	ResultMsg  *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
 	Success    *bool   `json:"success,omitempty" xml:"success,omitempty"`
@@ -10325,16 +10192,6 @@ func (s InvoiceAddResponseBody) GoString() string {
 
 func (s *InvoiceAddResponseBody) SetRequestId(v string) *InvoiceAddResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *InvoiceAddResponseBody) SetModule(v int64) *InvoiceAddResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *InvoiceAddResponseBody) SetMorePage(v bool) *InvoiceAddResponseBody {
-	s.MorePage = &v
 	return s
 }
 
@@ -10406,8 +10263,6 @@ func (s *InvoiceDeleteRequest) SetThirdPartId(v string) *InvoiceDeleteRequest {
 
 type InvoiceDeleteResponseBody struct {
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Module     *bool   `json:"module,omitempty" xml:"module,omitempty"`
-	MorePage   *bool   `json:"more_page,omitempty" xml:"more_page,omitempty"`
 	ResultCode *int32  `json:"result_code,omitempty" xml:"result_code,omitempty"`
 	ResultMsg  *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
 	Success    *bool   `json:"success,omitempty" xml:"success,omitempty"`
@@ -10424,16 +10279,6 @@ func (s InvoiceDeleteResponseBody) GoString() string {
 
 func (s *InvoiceDeleteResponseBody) SetRequestId(v string) *InvoiceDeleteResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *InvoiceDeleteResponseBody) SetModule(v bool) *InvoiceDeleteResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *InvoiceDeleteResponseBody) SetMorePage(v bool) *InvoiceDeleteResponseBody {
-	s.MorePage = &v
 	return s
 }
 
@@ -10547,8 +10392,6 @@ func (s *InvoiceModifyRequest) SetType(v int32) *InvoiceModifyRequest {
 
 type InvoiceModifyResponseBody struct {
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Module     *bool   `json:"module,omitempty" xml:"module,omitempty"`
-	MorePage   *bool   `json:"more_page,omitempty" xml:"more_page,omitempty"`
 	ResultCode *int32  `json:"result_code,omitempty" xml:"result_code,omitempty"`
 	ResultMsg  *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
 	Success    *bool   `json:"success,omitempty" xml:"success,omitempty"`
@@ -10565,16 +10408,6 @@ func (s InvoiceModifyResponseBody) GoString() string {
 
 func (s *InvoiceModifyResponseBody) SetRequestId(v string) *InvoiceModifyResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *InvoiceModifyResponseBody) SetModule(v bool) *InvoiceModifyResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *InvoiceModifyResponseBody) SetMorePage(v bool) *InvoiceModifyResponseBody {
-	s.MorePage = &v
 	return s
 }
 
@@ -10717,7 +10550,6 @@ func (s *InvoiceRuleSaveShrinkRequest) SetThirdPartId(v string) *InvoiceRuleSave
 type InvoiceRuleSaveResponseBody struct {
 	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Module     *InvoiceRuleSaveResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	MorePage   *bool                              `json:"more_page,omitempty" xml:"more_page,omitempty"`
 	ResultCode *int32                             `json:"result_code,omitempty" xml:"result_code,omitempty"`
 	ResultMsg  *string                            `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
 	Success    *bool                              `json:"success,omitempty" xml:"success,omitempty"`
@@ -10739,11 +10571,6 @@ func (s *InvoiceRuleSaveResponseBody) SetRequestId(v string) *InvoiceRuleSaveRes
 
 func (s *InvoiceRuleSaveResponseBody) SetModule(v *InvoiceRuleSaveResponseBodyModule) *InvoiceRuleSaveResponseBody {
 	s.Module = v
-	return s
-}
-
-func (s *InvoiceRuleSaveResponseBody) SetMorePage(v bool) *InvoiceRuleSaveResponseBody {
-	s.MorePage = &v
 	return s
 }
 
@@ -10820,7 +10647,8 @@ func (s *InvoiceRuleSaveResponse) SetBody(v *InvoiceRuleSaveResponseBody) *Invoi
 }
 
 type InvoiceSearchRequest struct {
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	Title  *string `json:"title,omitempty" xml:"title,omitempty"`
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s InvoiceSearchRequest) String() string {
@@ -10836,10 +10664,14 @@ func (s *InvoiceSearchRequest) SetTitle(v string) *InvoiceSearchRequest {
 	return s
 }
 
+func (s *InvoiceSearchRequest) SetUserId(v string) *InvoiceSearchRequest {
+	s.UserId = &v
+	return s
+}
+
 type InvoiceSearchResponseBody struct {
 	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Module     []*InvoiceSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	MorePage   *bool                              `json:"more_page,omitempty" xml:"more_page,omitempty"`
 	ResultCode *int32                             `json:"result_code,omitempty" xml:"result_code,omitempty"`
 	ResultMsg  *string                            `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
 	Success    *bool                              `json:"success,omitempty" xml:"success,omitempty"`
@@ -10861,11 +10693,6 @@ func (s *InvoiceSearchResponseBody) SetRequestId(v string) *InvoiceSearchRespons
 
 func (s *InvoiceSearchResponseBody) SetModule(v []*InvoiceSearchResponseBodyModule) *InvoiceSearchResponseBody {
 	s.Module = v
-	return s
-}
-
-func (s *InvoiceSearchResponseBody) SetMorePage(v bool) *InvoiceSearchResponseBody {
-	s.MorePage = &v
 	return s
 }
 
@@ -12059,8 +11886,7 @@ func (s *TrainBillSettlementQueryResponse) SetBody(v *TrainBillSettlementQueryRe
 }
 
 type TrainExceedApplyQueryRequest struct {
-	ApplyId *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	UserId  *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 }
 
 func (s TrainExceedApplyQueryRequest) String() string {
@@ -12073,11 +11899,6 @@ func (s TrainExceedApplyQueryRequest) GoString() string {
 
 func (s *TrainExceedApplyQueryRequest) SetApplyId(v int64) *TrainExceedApplyQueryRequest {
 	s.ApplyId = &v
-	return s
-}
-
-func (s *TrainExceedApplyQueryRequest) SetUserId(v string) *TrainExceedApplyQueryRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -13299,17 +13120,16 @@ func (s *TrainOrderQueryResponseBodyModuleOrderBaseInfo) SetUserId(v string) *Tr
 }
 
 type TrainOrderQueryResponseBodyModulePassengerInfoList struct {
-	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	CostCenterName        *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
-	CostCenterNumber      *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
-	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectId             *int64  `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
-	ThirdpartProjectId    *string `json:"thirdpart_project_id,omitempty" xml:"thirdpart_project_id,omitempty"`
-	UserId                *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName              *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
-	UserType              *int32  `json:"user_type,omitempty" xml:"user_type,omitempty"`
+	CostCenterId       *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	CostCenterName     *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	CostCenterNumber   *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	ProjectCode        *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectId          *int64  `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	ProjectTitle       *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdpartProjectId *string `json:"thirdpart_project_id,omitempty" xml:"thirdpart_project_id,omitempty"`
+	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName           *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	UserType           *int32  `json:"user_type,omitempty" xml:"user_type,omitempty"`
 }
 
 func (s TrainOrderQueryResponseBodyModulePassengerInfoList) String() string {
@@ -13347,11 +13167,6 @@ func (s *TrainOrderQueryResponseBodyModulePassengerInfoList) SetProjectId(v int6
 
 func (s *TrainOrderQueryResponseBodyModulePassengerInfoList) SetProjectTitle(v string) *TrainOrderQueryResponseBodyModulePassengerInfoList {
 	s.ProjectTitle = &v
-	return s
-}
-
-func (s *TrainOrderQueryResponseBodyModulePassengerInfoList) SetThirdpartCostCenterId(v string) *TrainOrderQueryResponseBodyModulePassengerInfoList {
-	s.ThirdpartCostCenterId = &v
 	return s
 }
 
@@ -14022,16 +13837,17 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers map[s
 		request.ItineraryListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItineraryList, tea.String("itinerary_list"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.ItinerarySetList)) {
-		request.ItinerarySetListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItinerarySetList, tea.String("itinerary_set_list"), tea.String("json"))
-	}
-
 	if !tea.BoolValue(util.IsUnset(tmpReq.TravelerList)) {
 		request.TravelerListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TravelerList, tea.String("traveler_list"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.TravelerStandard)) {
 		request.TravelerStandardShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TravelerStandard, tea.String("traveler_standard"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InternationalFlightCabins)) {
+		query["international_flight_cabins"] = request.InternationalFlightCabins
 	}
 
 	body := map[string]interface{}{}
@@ -14077,14 +13893,6 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers map[s
 
 	if !tea.BoolValue(util.IsUnset(request.ItineraryListShrink)) {
 		body["itinerary_list"] = request.ItineraryListShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ItineraryRule)) {
-		body["itinerary_rule"] = request.ItineraryRule
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ItinerarySetListShrink)) {
-		body["itinerary_set_list"] = request.ItinerarySetListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LimitTraveler)) {
@@ -14153,6 +13961,7 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers map[s
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -14611,10 +14420,6 @@ func (client *Client) CarApplyModifyWithOptions(request *CarApplyModifyRequest, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
-		body["corp_id"] = request.CorpId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.OperateTime)) {
 		body["operate_time"] = request.OperateTime
 	}
@@ -15879,10 +15684,6 @@ func (client *Client) HotelExceedApplyQueryWithOptions(request *HotelExceedApply
 		query["apply_id"] = request.ApplyId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		query["user_id"] = request.UserId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -16269,6 +16070,10 @@ func (client *Client) InvoiceSearchWithOptions(request *InvoiceSearchRequest, he
 		query["title"] = request.Title
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["user_id"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -16639,10 +16444,6 @@ func (client *Client) TrainExceedApplyQueryWithOptions(request *TrainExceedApply
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplyId)) {
 		query["apply_id"] = request.ApplyId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		query["user_id"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
