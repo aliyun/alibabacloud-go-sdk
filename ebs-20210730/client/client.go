@@ -48,7 +48,6 @@ func (s *AddDiskReplicaPairRequest) SetReplicaPairId(v string) *AddDiskReplicaPa
 }
 
 type AddDiskReplicaPairResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -94,7 +93,113 @@ func (s *AddDiskReplicaPairResponse) SetBody(v *AddDiskReplicaPairResponseBody) 
 	return s
 }
 
+type CreateDedicatedBlockStorageClusterRequest struct {
+	Azone    *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
+	Capacity *int64  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	DbscId   *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
+	DbscName *string `json:"DbscName,omitempty" xml:"DbscName,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDedicatedBlockStorageClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDedicatedBlockStorageClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDedicatedBlockStorageClusterRequest) SetAzone(v string) *CreateDedicatedBlockStorageClusterRequest {
+	s.Azone = &v
+	return s
+}
+
+func (s *CreateDedicatedBlockStorageClusterRequest) SetCapacity(v int64) *CreateDedicatedBlockStorageClusterRequest {
+	s.Capacity = &v
+	return s
+}
+
+func (s *CreateDedicatedBlockStorageClusterRequest) SetDbscId(v string) *CreateDedicatedBlockStorageClusterRequest {
+	s.DbscId = &v
+	return s
+}
+
+func (s *CreateDedicatedBlockStorageClusterRequest) SetDbscName(v string) *CreateDedicatedBlockStorageClusterRequest {
+	s.DbscName = &v
+	return s
+}
+
+func (s *CreateDedicatedBlockStorageClusterRequest) SetRegionId(v string) *CreateDedicatedBlockStorageClusterRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDedicatedBlockStorageClusterRequest) SetType(v string) *CreateDedicatedBlockStorageClusterRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateDedicatedBlockStorageClusterResponseBody struct {
+	DbscId    *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
+	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDedicatedBlockStorageClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDedicatedBlockStorageClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDedicatedBlockStorageClusterResponseBody) SetDbscId(v string) *CreateDedicatedBlockStorageClusterResponseBody {
+	s.DbscId = &v
+	return s
+}
+
+func (s *CreateDedicatedBlockStorageClusterResponseBody) SetOrderId(v string) *CreateDedicatedBlockStorageClusterResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateDedicatedBlockStorageClusterResponseBody) SetRequestId(v string) *CreateDedicatedBlockStorageClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDedicatedBlockStorageClusterResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDedicatedBlockStorageClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDedicatedBlockStorageClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDedicatedBlockStorageClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDedicatedBlockStorageClusterResponse) SetHeaders(v map[string]*string) *CreateDedicatedBlockStorageClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDedicatedBlockStorageClusterResponse) SetStatusCode(v int32) *CreateDedicatedBlockStorageClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDedicatedBlockStorageClusterResponse) SetBody(v *CreateDedicatedBlockStorageClusterResponseBody) *CreateDedicatedBlockStorageClusterResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDiskReplicaGroupRequest struct {
+	Bandwidth           *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
@@ -111,6 +216,11 @@ func (s CreateDiskReplicaGroupRequest) String() string {
 
 func (s CreateDiskReplicaGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDiskReplicaGroupRequest) SetBandwidth(v int64) *CreateDiskReplicaGroupRequest {
+	s.Bandwidth = &v
+	return s
 }
 
 func (s *CreateDiskReplicaGroupRequest) SetClientToken(v string) *CreateDiskReplicaGroupRequest {
@@ -388,7 +498,6 @@ func (s *DeleteDiskReplicaGroupRequest) SetReplicaGroupId(v string) *DeleteDiskR
 }
 
 type DeleteDiskReplicaGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -464,7 +573,6 @@ func (s *DeleteDiskReplicaPairRequest) SetReplicaPairId(v string) *DeleteDiskRep
 }
 
 type DeleteDiskReplicaPairResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -510,13 +618,583 @@ func (s *DeleteDiskReplicaPairResponse) SetBody(v *DeleteDiskReplicaPairResponse
 	return s
 }
 
+type DescribeDedicatedBlockStorageClusterDisksRequest struct {
+	DbscId     *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
+	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeDedicatedBlockStorageClusterDisksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDedicatedBlockStorageClusterDisksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksRequest) SetDbscId(v string) *DescribeDedicatedBlockStorageClusterDisksRequest {
+	s.DbscId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksRequest) SetMaxResults(v int64) *DescribeDedicatedBlockStorageClusterDisksRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksRequest) SetNextToken(v string) *DescribeDedicatedBlockStorageClusterDisksRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksRequest) SetRegionId(v string) *DescribeDedicatedBlockStorageClusterDisksRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeDedicatedBlockStorageClusterDisksResponseBody struct {
+	Disks     *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
+	NextToken *string                                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDedicatedBlockStorageClusterDisksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDedicatedBlockStorageClusterDisksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBody) SetDisks(v *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks) *DescribeDedicatedBlockStorageClusterDisksResponseBody {
+	s.Disks = v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBody) SetNextToken(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBody) SetRequestId(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks struct {
+	Disk []*DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks) SetDisk(v []*DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks {
+	s.Disk = v
+	return s
+}
+
+type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk struct {
+	AttachedTime              *string                                                               `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
+	BdfId                     *string                                                               `json:"BdfId,omitempty" xml:"BdfId,omitempty"`
+	Category                  *string                                                               `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeleteAutoSnapshot        *bool                                                                 `json:"DeleteAutoSnapshot,omitempty" xml:"DeleteAutoSnapshot,omitempty"`
+	DeleteWithInstance        *bool                                                                 `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	Description               *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	DetachedTime              *string                                                               `json:"DetachedTime,omitempty" xml:"DetachedTime,omitempty"`
+	Device                    *string                                                               `json:"Device,omitempty" xml:"Device,omitempty"`
+	DiskChargeType            *string                                                               `json:"DiskChargeType,omitempty" xml:"DiskChargeType,omitempty"`
+	DiskId                    *string                                                               `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	DiskName                  *string                                                               `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	EnableAutoSnapshot        *bool                                                                 `json:"EnableAutoSnapshot,omitempty" xml:"EnableAutoSnapshot,omitempty"`
+	Encrypted                 *bool                                                                 `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	IOPS                      *int64                                                                `json:"IOPS,omitempty" xml:"IOPS,omitempty"`
+	ImageId                   *string                                                               `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceId                *string                                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	KMSKeyId                  *string                                                               `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	MountInstanceNum          *int32                                                                `json:"MountInstanceNum,omitempty" xml:"MountInstanceNum,omitempty"`
+	MultiAttach               *string                                                               `json:"MultiAttach,omitempty" xml:"MultiAttach,omitempty"`
+	PerformanceLevel          *string                                                               `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	Portable                  *bool                                                                 `json:"Portable,omitempty" xml:"Portable,omitempty"`
+	RegionId                  *string                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Size                      *int32                                                                `json:"Size,omitempty" xml:"Size,omitempty"`
+	SourceSnapshotId          *string                                                               `json:"SourceSnapshotId,omitempty" xml:"SourceSnapshotId,omitempty"`
+	Status                    *string                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageClusterId          *string                                                               `json:"StorageClusterId,omitempty" xml:"StorageClusterId,omitempty"`
+	StorageSetId              *string                                                               `json:"StorageSetId,omitempty" xml:"StorageSetId,omitempty"`
+	StorageSetPartitionNumber *int32                                                                `json:"StorageSetPartitionNumber,omitempty" xml:"StorageSetPartitionNumber,omitempty"`
+	Tags                      []*DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Type                      *string                                                               `json:"Type,omitempty" xml:"Type,omitempty"`
+	ZoneId                    *string                                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetAttachedTime(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.AttachedTime = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetBdfId(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.BdfId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetCategory(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetDeleteAutoSnapshot(v bool) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.DeleteAutoSnapshot = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetDeleteWithInstance(v bool) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.DeleteWithInstance = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetDescription(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetDetachedTime(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.DetachedTime = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetDevice(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.Device = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetDiskChargeType(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.DiskChargeType = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetDiskId(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetDiskName(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.DiskName = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetEnableAutoSnapshot(v bool) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.EnableAutoSnapshot = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetEncrypted(v bool) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetIOPS(v int64) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.IOPS = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetImageId(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetInstanceId(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetKMSKeyId(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.KMSKeyId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetMountInstanceNum(v int32) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.MountInstanceNum = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetMultiAttach(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.MultiAttach = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetPerformanceLevel(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetPortable(v bool) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.Portable = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetRegionId(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetSize(v int32) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetSourceSnapshotId(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.SourceSnapshotId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetStatus(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetStorageClusterId(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.StorageClusterId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetStorageSetId(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.StorageSetId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetStorageSetPartitionNumber(v int32) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.StorageSetPartitionNumber = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetTags(v []*DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetType(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) SetZoneId(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags) SetTagKey(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags) SetTagValue(v string) *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags {
+	s.TagValue = &v
+	return s
+}
+
+type DescribeDedicatedBlockStorageClusterDisksResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDedicatedBlockStorageClusterDisksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDedicatedBlockStorageClusterDisksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDedicatedBlockStorageClusterDisksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponse) SetHeaders(v map[string]*string) *DescribeDedicatedBlockStorageClusterDisksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponse) SetStatusCode(v int32) *DescribeDedicatedBlockStorageClusterDisksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClusterDisksResponse) SetBody(v *DescribeDedicatedBlockStorageClusterDisksResponseBody) *DescribeDedicatedBlockStorageClusterDisksResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDedicatedBlockStorageClustersRequest struct {
+	AzoneId                        *string   `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
+	Category                       *string   `json:"Category,omitempty" xml:"Category,omitempty"`
+	ClientToken                    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DedicatedBlockStorageClusterId []*string `json:"DedicatedBlockStorageClusterId,omitempty" xml:"DedicatedBlockStorageClusterId,omitempty" type:"Repeated"`
+	MaxResults                     *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                      *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId                       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                         []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDedicatedBlockStorageClustersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDedicatedBlockStorageClustersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDedicatedBlockStorageClustersRequest) SetAzoneId(v string) *DescribeDedicatedBlockStorageClustersRequest {
+	s.AzoneId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersRequest) SetCategory(v string) *DescribeDedicatedBlockStorageClustersRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersRequest) SetClientToken(v string) *DescribeDedicatedBlockStorageClustersRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersRequest) SetDedicatedBlockStorageClusterId(v []*string) *DescribeDedicatedBlockStorageClustersRequest {
+	s.DedicatedBlockStorageClusterId = v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersRequest) SetMaxResults(v int32) *DescribeDedicatedBlockStorageClustersRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersRequest) SetNextToken(v string) *DescribeDedicatedBlockStorageClustersRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersRequest) SetRegionId(v string) *DescribeDedicatedBlockStorageClustersRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersRequest) SetStatus(v []*string) *DescribeDedicatedBlockStorageClustersRequest {
+	s.Status = v
+	return s
+}
+
+type DescribeDedicatedBlockStorageClustersResponseBody struct {
+	DedicatedBlockStorageClusters []*DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters `json:"DedicatedBlockStorageClusters,omitempty" xml:"DedicatedBlockStorageClusters,omitempty" type:"Repeated"`
+	NextToken                     *string                                                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId                     *string                                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDedicatedBlockStorageClustersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDedicatedBlockStorageClustersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBody) SetDedicatedBlockStorageClusters(v []*DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) *DescribeDedicatedBlockStorageClustersResponseBody {
+	s.DedicatedBlockStorageClusters = v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBody) SetNextToken(v string) *DescribeDedicatedBlockStorageClustersResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBody) SetRequestId(v string) *DescribeDedicatedBlockStorageClustersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters struct {
+	Category                             *string                                                                                                             `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreateTime                           *string                                                                                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DedicatedBlockStorageClusterCapacity *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity `json:"DedicatedBlockStorageClusterCapacity,omitempty" xml:"DedicatedBlockStorageClusterCapacity,omitempty" type:"Struct"`
+	DedicatedBlockStorageClusterId       *string                                                                                                             `json:"DedicatedBlockStorageClusterId,omitempty" xml:"DedicatedBlockStorageClusterId,omitempty"`
+	DedicatedBlockStorageClusterName     *string                                                                                                             `json:"DedicatedBlockStorageClusterName,omitempty" xml:"DedicatedBlockStorageClusterName,omitempty"`
+	Description                          *string                                                                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime                          *string                                                                                                             `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	PerformanceLevel                     *string                                                                                                             `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	RegionId                             *string                                                                                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                               *string                                                                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportedCategory                    *string                                                                                                             `json:"SupportedCategory,omitempty" xml:"SupportedCategory,omitempty"`
+	Type                                 *string                                                                                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	ZoneId                               *string                                                                                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetCategory(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetCreateTime(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetDedicatedBlockStorageClusterCapacity(v *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.DedicatedBlockStorageClusterCapacity = v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetDedicatedBlockStorageClusterId(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.DedicatedBlockStorageClusterId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetDedicatedBlockStorageClusterName(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.DedicatedBlockStorageClusterName = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetDescription(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetExpiredTime(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetPerformanceLevel(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetRegionId(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetStatus(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetSupportedCategory(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.SupportedCategory = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetType(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetZoneId(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity struct {
+	AvailableCapacity *int64 `json:"AvailableCapacity,omitempty" xml:"AvailableCapacity,omitempty"`
+	DeliveryCapacity  *int64 `json:"DeliveryCapacity,omitempty" xml:"DeliveryCapacity,omitempty"`
+	TotalCapacity     *int64 `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
+	UsedCapacity      *int64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
+}
+
+func (s DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity) SetAvailableCapacity(v int64) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity {
+	s.AvailableCapacity = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity) SetDeliveryCapacity(v int64) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity {
+	s.DeliveryCapacity = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity) SetTotalCapacity(v int64) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity {
+	s.TotalCapacity = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity) SetUsedCapacity(v int64) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity {
+	s.UsedCapacity = &v
+	return s
+}
+
+type DescribeDedicatedBlockStorageClustersResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDedicatedBlockStorageClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDedicatedBlockStorageClustersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDedicatedBlockStorageClustersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponse) SetHeaders(v map[string]*string) *DescribeDedicatedBlockStorageClustersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponse) SetStatusCode(v int32) *DescribeDedicatedBlockStorageClustersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponse) SetBody(v *DescribeDedicatedBlockStorageClustersResponseBody) *DescribeDedicatedBlockStorageClustersResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDiskReplicaGroupsRequest struct {
 	GroupIds   *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
 	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// production或backup，表示数据从主或备站点获取，默认为production。
-	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	Site       *string `json:"Site,omitempty" xml:"Site,omitempty"`
 }
 
 func (s DescribeDiskReplicaGroupsRequest) String() string {
@@ -555,8 +1233,7 @@ func (s *DescribeDiskReplicaGroupsRequest) SetSite(v string) *DescribeDiskReplic
 type DescribeDiskReplicaGroupsResponseBody struct {
 	NextToken     *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	ReplicaGroups []*DescribeDiskReplicaGroupsResponseBodyReplicaGroups `json:"ReplicaGroups,omitempty" xml:"ReplicaGroups,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDiskReplicaGroupsResponseBody) String() string {
@@ -583,29 +1260,24 @@ func (s *DescribeDiskReplicaGroupsResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeDiskReplicaGroupsResponseBodyReplicaGroups struct {
+	Bandwidth           *int64   `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	Description         *string  `json:"Description,omitempty" xml:"Description,omitempty"`
 	DestinationRegionId *string  `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
 	DestinationZoneId   *string  `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
 	GroupName           *string  `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	LastRecoverPoint    *int64   `json:"LastRecoverPoint,omitempty" xml:"LastRecoverPoint,omitempty"`
 	PairIds             [][]byte `json:"PairIds,omitempty" xml:"PairIds,omitempty" type:"Repeated"`
-	// 复制组中的复制对个数
-	PairNumber *int64 `json:"PairNumber,omitempty" xml:"PairNumber,omitempty"`
-	// 复制组的初始源地域。
-	PrimaryRegion *string `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
-	// 复制组的初始源可用区。
-	PrimaryZone    *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	RPO            *int64  `json:"RPO,omitempty" xml:"RPO,omitempty"`
-	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	// pair信息的后端站点来源，production或backup
-	Site           *string `json:"Site,omitempty" xml:"Site,omitempty"`
-	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
-	SourceZoneId   *string `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
-	// 复制组的初始目的地域。
-	StandbyRegion *string `json:"StandbyRegion,omitempty" xml:"StandbyRegion,omitempty"`
-	// 复制组的初始目的可用区。
-	StandbyZone *string `json:"StandbyZone,omitempty" xml:"StandbyZone,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	PairNumber          *int64   `json:"PairNumber,omitempty" xml:"PairNumber,omitempty"`
+	PrimaryRegion       *string  `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
+	PrimaryZone         *string  `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	RPO                 *int64   `json:"RPO,omitempty" xml:"RPO,omitempty"`
+	ReplicaGroupId      *string  `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
+	Site                *string  `json:"Site,omitempty" xml:"Site,omitempty"`
+	SourceRegionId      *string  `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	SourceZoneId        *string  `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
+	StandbyRegion       *string  `json:"StandbyRegion,omitempty" xml:"StandbyRegion,omitempty"`
+	StandbyZone         *string  `json:"StandbyZone,omitempty" xml:"StandbyZone,omitempty"`
+	Status              *string  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDiskReplicaGroupsResponseBodyReplicaGroups) String() string {
@@ -614,6 +1286,11 @@ func (s DescribeDiskReplicaGroupsResponseBodyReplicaGroups) String() string {
 
 func (s DescribeDiskReplicaGroupsResponseBodyReplicaGroups) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetBandwidth(v int64) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
+	s.Bandwidth = &v
+	return s
 }
 
 func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetDescription(v string) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
@@ -731,25 +1408,14 @@ func (s *DescribeDiskReplicaGroupsResponse) SetBody(v *DescribeDiskReplicaGroups
 }
 
 type DescribeDiskReplicaPairsRequest struct {
-	// 分页查询时每页的最大条目数。取值范围：1~500
-	//
-	// 默认值：10
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token）。取值为上一次调用该接口返回的NextToken参数值，初次调用接口时无需设置该参数。如果设置了NextToken，则请求参数PageSize和PageNumber将失效，且返回数据中的TotalCount无效。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 分页查询时的页码。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页查询时设置的每页行数。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 异步复制关系ID列表。您可以指定一个或多个异步复制关系ID进行查询。格式为：pair-cn-dsa****,pair-cn-asd****。
-	//
-	// 默认值为空，表示查询当前地域下所有的异步复制关系。
-	PairIds  *string `json:"PairIds,omitempty" xml:"PairIds,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 所属复制组id。
+	MaxResults     *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PairIds        *string `json:"PairIds,omitempty" xml:"PairIds,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	// production或backup，表示获取本地为生产站点或灾备站点的复制对数据，默认为production。
-	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	Site           *string `json:"Site,omitempty" xml:"Site,omitempty"`
 }
 
 func (s DescribeDiskReplicaPairsRequest) String() string {
@@ -801,17 +1467,12 @@ func (s *DescribeDiskReplicaPairsRequest) SetSite(v string) *DescribeDiskReplica
 }
 
 type DescribeDiskReplicaPairsResponseBody struct {
-	// 查询凭证（Token）。取值为上一次调用该接口返回的NextToken参数值，初次调用接口时无需设置该参数。如果设置了NextToken，则请求参数PageSize和PageNumber将失效，且返回数据中的TotalCount无效。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 参数页码。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 参数页行数。
+	NextToken    *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber   *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ReplicaPairs []*DescribeDiskReplicaPairsResponseBodyReplicaPairs `json:"ReplicaPairs,omitempty" xml:"ReplicaPairs,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 分页查询时的结果总条数。
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDiskReplicaPairsResponseBody) String() string {
@@ -853,66 +1514,30 @@ func (s *DescribeDiskReplicaPairsResponseBody) SetTotalCount(v int64) *DescribeD
 }
 
 type DescribeDiskReplicaPairsResponseBodyReplicaPairs struct {
-	// 异步复制时使用的带宽。单位为Kbps。
-	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// 付费类型。PREPAY：预付费；POSTPAY：后付费。
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// 创建时间。1970年1月1日0点0分以来的秒数。
+	Bandwidth         *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	ChargeType        *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DestinationDiskId *string `json:"DestinationDiskId,omitempty" xml:"DestinationDiskId,omitempty"`
 	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
-	// 从盘所属的可用区。
 	DestinationZoneId *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
 	ExpiredTime       *int64  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// 最近一次异步复制操作完成的时间。该参数以时间戳的形式提供返回值。单位为秒。
-	LastRecoverPoint *int64  `json:"LastRecoverPoint,omitempty" xml:"LastRecoverPoint,omitempty"`
-	PairName         *string `json:"PairName,omitempty" xml:"PairName,omitempty"`
-	// 复制对的初始源地域。
-	PrimaryRegion *string `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
-	// 复制对的初始源可用区。
-	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	// 复制对的RPO值。单位为秒。
-	RPO *int64 `json:"RPO,omitempty" xml:"RPO,omitempty"`
-	// 所属复制组id。
-	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	// 所属复制组名称。
-	ReplicaGroupName *string `json:"ReplicaGroupName,omitempty" xml:"ReplicaGroupName,omitempty"`
-	ReplicaPairId    *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
-	// 复制对信息的后端站点来源，production或backup。
-	Site         *string `json:"Site,omitempty" xml:"Site,omitempty"`
-	SourceDiskId *string `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty"`
-	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
-	// 主盘所属的可用区。
-	SourceZoneId *string `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
-	// 复制对的初始目的地域。
-	StandbyRegion *string `json:"StandbyRegion,omitempty" xml:"StandbyRegion,omitempty"`
-	// 复制对的初始目的可用区。
-	StandbyZone *string `json:"StandbyZone,omitempty" xml:"StandbyZone,omitempty"`
-	// 异步复制关系的状态。可能值：
-	//
-	// - invalid：失效。该状态表示异步复制关系存在异常。
-	// - creating：创建中。
-	// - created：已创建。
-	// - create_failed：创建失败。
-	// - initial_syncing：初始同步中。异步复制在创建并启动后，主盘数据初次异步复制到从盘的过程中，将处于该状态。
-	// - syncing：同步中。主盘和从盘之间非第一次进行异步复制数据时，将处于该状态。
-	// - manual_syncing：单次同步中。单次同步，同步完成后恢复到stopped状态。如果是第一次单次同步，则同步中也显示为状态manual_syncing。
-	// - normal：正常。当异步复制的当前周期内数据复制完成时，将处于该状态。
-	// - stopping：停止中。
-	// - stopped：已停止。
-	// - stop_failed：停止失败。
-	// - failovering：故障切换中。
-	// - failovered：故障切换完成。
-	// - failover_failed：故障切换失败。
-	// - reprotecting：反向复制操作中。
-	// - reprotect_failed：反向复制失败。
-	// - deleting：删除中。
-	// - delete_failed：删除失败。
-	// - deleted：已删除。
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 复制对的状态提示信息。比如invalid时，可能值：DeviceRemoved：主盘或者从盘被删除。DeviceKeyChanged：主盘或从盘的DeviceKey映射发生变化。
-	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	LastRecoverPoint  *int64  `json:"LastRecoverPoint,omitempty" xml:"LastRecoverPoint,omitempty"`
+	PairName          *string `json:"PairName,omitempty" xml:"PairName,omitempty"`
+	PrimaryRegion     *string `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
+	PrimaryZone       *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	RPO               *int64  `json:"RPO,omitempty" xml:"RPO,omitempty"`
+	ReplicaGroupId    *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
+	ReplicaGroupName  *string `json:"ReplicaGroupName,omitempty" xml:"ReplicaGroupName,omitempty"`
+	ReplicaPairId     *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
+	Site              *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	SourceDiskId      *string `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty"`
+	SourceRegion      *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	SourceZoneId      *string `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
+	StandbyRegion     *string `json:"StandbyRegion,omitempty" xml:"StandbyRegion,omitempty"`
+	StandbyZone       *string `json:"StandbyZone,omitempty" xml:"StandbyZone,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage     *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 }
 
 func (s DescribeDiskReplicaPairsResponseBodyReplicaPairs) String() string {
@@ -1102,9 +1727,8 @@ func (s *DescribeRegionsRequest) SetResourceType(v string) *DescribeRegionsReque
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -1242,7 +1866,6 @@ func (s *FailoverDiskReplicaGroupRequest) SetReplicaGroupId(v string) *FailoverD
 }
 
 type FailoverDiskReplicaGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1318,7 +1941,6 @@ func (s *FailoverDiskReplicaPairRequest) SetReplicaPairId(v string) *FailoverDis
 }
 
 type FailoverDiskReplicaPairResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1364,7 +1986,95 @@ func (s *FailoverDiskReplicaPairResponse) SetBody(v *FailoverDiskReplicaPairResp
 	return s
 }
 
+type ModifyDedicatedBlockStorageClusterAttributeRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DbscId      *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
+	DbscName    *string `json:"DbscName,omitempty" xml:"DbscName,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyDedicatedBlockStorageClusterAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDedicatedBlockStorageClusterAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDedicatedBlockStorageClusterAttributeRequest) SetClientToken(v string) *ModifyDedicatedBlockStorageClusterAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyDedicatedBlockStorageClusterAttributeRequest) SetDbscId(v string) *ModifyDedicatedBlockStorageClusterAttributeRequest {
+	s.DbscId = &v
+	return s
+}
+
+func (s *ModifyDedicatedBlockStorageClusterAttributeRequest) SetDbscName(v string) *ModifyDedicatedBlockStorageClusterAttributeRequest {
+	s.DbscName = &v
+	return s
+}
+
+func (s *ModifyDedicatedBlockStorageClusterAttributeRequest) SetDescription(v string) *ModifyDedicatedBlockStorageClusterAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyDedicatedBlockStorageClusterAttributeRequest) SetRegionId(v string) *ModifyDedicatedBlockStorageClusterAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyDedicatedBlockStorageClusterAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDedicatedBlockStorageClusterAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDedicatedBlockStorageClusterAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDedicatedBlockStorageClusterAttributeResponseBody) SetRequestId(v string) *ModifyDedicatedBlockStorageClusterAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDedicatedBlockStorageClusterAttributeResponse struct {
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDedicatedBlockStorageClusterAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDedicatedBlockStorageClusterAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDedicatedBlockStorageClusterAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDedicatedBlockStorageClusterAttributeResponse) SetHeaders(v map[string]*string) *ModifyDedicatedBlockStorageClusterAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDedicatedBlockStorageClusterAttributeResponse) SetStatusCode(v int32) *ModifyDedicatedBlockStorageClusterAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDedicatedBlockStorageClusterAttributeResponse) SetBody(v *ModifyDedicatedBlockStorageClusterAttributeResponseBody) *ModifyDedicatedBlockStorageClusterAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDiskReplicaGroupRequest struct {
+	Bandwidth      *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -1379,6 +2089,11 @@ func (s ModifyDiskReplicaGroupRequest) String() string {
 
 func (s ModifyDiskReplicaGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDiskReplicaGroupRequest) SetBandwidth(v int64) *ModifyDiskReplicaGroupRequest {
+	s.Bandwidth = &v
+	return s
 }
 
 func (s *ModifyDiskReplicaGroupRequest) SetClientToken(v string) *ModifyDiskReplicaGroupRequest {
@@ -1412,7 +2127,6 @@ func (s *ModifyDiskReplicaGroupRequest) SetReplicaGroupId(v string) *ModifyDiskR
 }
 
 type ModifyDiskReplicaGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1512,7 +2226,6 @@ func (s *ModifyDiskReplicaPairRequest) SetReplicaPairId(v string) *ModifyDiskRep
 }
 
 type ModifyDiskReplicaPairResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1594,7 +2307,6 @@ func (s *RemoveDiskReplicaPairRequest) SetReplicaPairId(v string) *RemoveDiskRep
 }
 
 type RemoveDiskReplicaPairResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1670,7 +2382,6 @@ func (s *ReprotectDiskReplicaGroupRequest) SetReplicaGroupId(v string) *Reprotec
 }
 
 type ReprotectDiskReplicaGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1746,7 +2457,6 @@ func (s *ReprotectDiskReplicaPairRequest) SetReplicaPairId(v string) *ReprotectD
 }
 
 type ReprotectDiskReplicaPairResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1828,7 +2538,6 @@ func (s *StartDiskReplicaGroupRequest) SetReplicaGroupId(v string) *StartDiskRep
 }
 
 type StartDiskReplicaGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1910,7 +2619,6 @@ func (s *StartDiskReplicaPairRequest) SetReplicaPairId(v string) *StartDiskRepli
 }
 
 type StartDiskReplicaPairResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1986,7 +2694,6 @@ func (s *StopDiskReplicaGroupRequest) SetReplicaGroupId(v string) *StopDiskRepli
 }
 
 type StopDiskReplicaGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2062,7 +2769,6 @@ func (s *StopDiskReplicaPairRequest) SetReplicaPairId(v string) *StopDiskReplica
 }
 
 type StopDiskReplicaPairResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2211,12 +2917,80 @@ func (client *Client) AddDiskReplicaPair(request *AddDiskReplicaPairRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) CreateDedicatedBlockStorageClusterWithOptions(request *CreateDedicatedBlockStorageClusterRequest, runtime *util.RuntimeOptions) (_result *CreateDedicatedBlockStorageClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Azone)) {
+		query["Azone"] = request.Azone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Capacity)) {
+		query["Capacity"] = request.Capacity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbscId)) {
+		query["DbscId"] = request.DbscId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbscName)) {
+		query["DbscName"] = request.DbscName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDedicatedBlockStorageCluster"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDedicatedBlockStorageClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDedicatedBlockStorageCluster(request *CreateDedicatedBlockStorageClusterRequest) (_result *CreateDedicatedBlockStorageClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDedicatedBlockStorageClusterResponse{}
+	_body, _err := client.CreateDedicatedBlockStorageClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDiskReplicaGroupWithOptions(request *CreateDiskReplicaGroupRequest, runtime *util.RuntimeOptions) (_result *CreateDiskReplicaGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -2476,6 +3250,134 @@ func (client *Client) DeleteDiskReplicaPair(request *DeleteDiskReplicaPairReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDiskReplicaPairResponse{}
 	_body, _err := client.DeleteDiskReplicaPairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDedicatedBlockStorageClusterDisksWithOptions(request *DescribeDedicatedBlockStorageClusterDisksRequest, runtime *util.RuntimeOptions) (_result *DescribeDedicatedBlockStorageClusterDisksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbscId)) {
+		query["DbscId"] = request.DbscId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDedicatedBlockStorageClusterDisks"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDedicatedBlockStorageClusterDisksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDedicatedBlockStorageClusterDisks(request *DescribeDedicatedBlockStorageClusterDisksRequest) (_result *DescribeDedicatedBlockStorageClusterDisksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDedicatedBlockStorageClusterDisksResponse{}
+	_body, _err := client.DescribeDedicatedBlockStorageClusterDisksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDedicatedBlockStorageClustersWithOptions(request *DescribeDedicatedBlockStorageClustersRequest, runtime *util.RuntimeOptions) (_result *DescribeDedicatedBlockStorageClustersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AzoneId)) {
+		body["AzoneId"] = request.AzoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		body["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DedicatedBlockStorageClusterId)) {
+		body["DedicatedBlockStorageClusterId"] = request.DedicatedBlockStorageClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDedicatedBlockStorageClusters"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDedicatedBlockStorageClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDedicatedBlockStorageClusters(request *DescribeDedicatedBlockStorageClustersRequest) (_result *DescribeDedicatedBlockStorageClustersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDedicatedBlockStorageClustersResponse{}
+	_body, _err := client.DescribeDedicatedBlockStorageClustersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2771,12 +3673,76 @@ func (client *Client) FailoverDiskReplicaPair(request *FailoverDiskReplicaPairRe
 	return _result, _err
 }
 
+func (client *Client) ModifyDedicatedBlockStorageClusterAttributeWithOptions(request *ModifyDedicatedBlockStorageClusterAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyDedicatedBlockStorageClusterAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbscId)) {
+		query["DbscId"] = request.DbscId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbscName)) {
+		query["DbscName"] = request.DbscName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDedicatedBlockStorageClusterAttribute"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDedicatedBlockStorageClusterAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDedicatedBlockStorageClusterAttribute(request *ModifyDedicatedBlockStorageClusterAttributeRequest) (_result *ModifyDedicatedBlockStorageClusterAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDedicatedBlockStorageClusterAttributeResponse{}
+	_body, _err := client.ModifyDedicatedBlockStorageClusterAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyDiskReplicaGroupWithOptions(request *ModifyDiskReplicaGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyDiskReplicaGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
