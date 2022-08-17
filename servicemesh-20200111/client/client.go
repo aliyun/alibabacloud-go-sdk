@@ -117,7 +117,6 @@ func (s *AddVMIntoServiceMeshRequest) SetServiceMeshId(v string) *AddVMIntoServi
 }
 
 type AddVMIntoServiceMeshResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2025,7 +2024,6 @@ func (s *DescribeAhasProRequest) SetRegionId(v string) *DescribeAhasProRequest {
 }
 
 type DescribeAhasProResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -4815,8 +4813,10 @@ func (s *DescribeNodesInstanceTypeResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeNodesInstanceTypeResponseBodyInstanceTypes struct {
+	Key                *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	MultiBufferEnabled *bool   `json:"MultiBufferEnabled,omitempty" xml:"MultiBufferEnabled,omitempty"`
 	NodeType           *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Value              *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeNodesInstanceTypeResponseBodyInstanceTypes) String() string {
@@ -4827,6 +4827,11 @@ func (s DescribeNodesInstanceTypeResponseBodyInstanceTypes) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeNodesInstanceTypeResponseBodyInstanceTypes) SetKey(v string) *DescribeNodesInstanceTypeResponseBodyInstanceTypes {
+	s.Key = &v
+	return s
+}
+
 func (s *DescribeNodesInstanceTypeResponseBodyInstanceTypes) SetMultiBufferEnabled(v bool) *DescribeNodesInstanceTypeResponseBodyInstanceTypes {
 	s.MultiBufferEnabled = &v
 	return s
@@ -4834,6 +4839,11 @@ func (s *DescribeNodesInstanceTypeResponseBodyInstanceTypes) SetMultiBufferEnabl
 
 func (s *DescribeNodesInstanceTypeResponseBodyInstanceTypes) SetNodeType(v string) *DescribeNodesInstanceTypeResponseBodyInstanceTypes {
 	s.NodeType = &v
+	return s
+}
+
+func (s *DescribeNodesInstanceTypeResponseBodyInstanceTypes) SetValue(v string) *DescribeNodesInstanceTypeResponseBodyInstanceTypes {
+	s.Value = &v
 	return s
 }
 
@@ -5011,14 +5021,15 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBody) SetRequestId(v string)
 }
 
 type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus struct {
-	AccessLogProjectStatus      *string                                                                                  `json:"AccessLogProjectStatus,omitempty" xml:"AccessLogProjectStatus,omitempty"`
-	ApiServerEIPStatus          *string                                                                                  `json:"ApiServerEIPStatus,omitempty" xml:"ApiServerEIPStatus,omitempty"`
-	ApiServerLoadBalancerStatus *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus `json:"ApiServerLoadBalancerStatus,omitempty" xml:"ApiServerLoadBalancerStatus,omitempty" type:"Struct"`
-	AuditProjectStatus          *string                                                                                  `json:"AuditProjectStatus,omitempty" xml:"AuditProjectStatus,omitempty"`
-	ControlPlaneProjectStatus   *string                                                                                  `json:"ControlPlaneProjectStatus,omitempty" xml:"ControlPlaneProjectStatus,omitempty"`
-	LogtailStatusRecord         map[string]interface{}                                                                   `json:"LogtailStatusRecord,omitempty" xml:"LogtailStatusRecord,omitempty"`
-	PilotLoadBalancerStatus     *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus     `json:"PilotLoadBalancerStatus,omitempty" xml:"PilotLoadBalancerStatus,omitempty" type:"Struct"`
-	SgStatus                    *string                                                                                  `json:"SgStatus,omitempty" xml:"SgStatus,omitempty"`
+	AccessLogProjectStatus        *string                                                                                    `json:"AccessLogProjectStatus,omitempty" xml:"AccessLogProjectStatus,omitempty"`
+	ApiServerEIPStatus            *string                                                                                    `json:"ApiServerEIPStatus,omitempty" xml:"ApiServerEIPStatus,omitempty"`
+	ApiServerLoadBalancerStatus   *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus   `json:"ApiServerLoadBalancerStatus,omitempty" xml:"ApiServerLoadBalancerStatus,omitempty" type:"Struct"`
+	AuditProjectStatus            *string                                                                                    `json:"AuditProjectStatus,omitempty" xml:"AuditProjectStatus,omitempty"`
+	CanaryPilotLoadBalancerStatus *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus `json:"CanaryPilotLoadBalancerStatus,omitempty" xml:"CanaryPilotLoadBalancerStatus,omitempty" type:"Struct"`
+	ControlPlaneProjectStatus     *string                                                                                    `json:"ControlPlaneProjectStatus,omitempty" xml:"ControlPlaneProjectStatus,omitempty"`
+	LogtailStatusRecord           map[string]interface{}                                                                     `json:"LogtailStatusRecord,omitempty" xml:"LogtailStatusRecord,omitempty"`
+	PilotLoadBalancerStatus       *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus       `json:"PilotLoadBalancerStatus,omitempty" xml:"PilotLoadBalancerStatus,omitempty" type:"Struct"`
+	SgStatus                      *string                                                                                    `json:"SgStatus,omitempty" xml:"SgStatus,omitempty"`
 }
 
 func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) String() string {
@@ -5046,6 +5057,11 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetApiSer
 
 func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetAuditProjectStatus(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus {
 	s.AuditProjectStatus = &v
+	return s
+}
+
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetCanaryPilotLoadBalancerStatus(v *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus {
+	s.CanaryPilotLoadBalancerStatus = v
 	return s
 }
 
@@ -5106,6 +5122,47 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLo
 }
 
 func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus) SetSLBExistStatus(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus {
+	s.SLBExistStatus = &v
+	return s
+}
+
+type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus struct {
+	Locked                    *bool   `json:"Locked,omitempty" xml:"Locked,omitempty"`
+	PayType                   *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Reused                    *bool   `json:"Reused,omitempty" xml:"Reused,omitempty"`
+	SLBBackEndServerNumStatus *string `json:"SLBBackEndServerNumStatus,omitempty" xml:"SLBBackEndServerNumStatus,omitempty"`
+	SLBExistStatus            *string `json:"SLBExistStatus,omitempty" xml:"SLBExistStatus,omitempty"`
+}
+
+func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus) SetLocked(v bool) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus {
+	s.Locked = &v
+	return s
+}
+
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus) SetPayType(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus) SetReused(v bool) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus {
+	s.Reused = &v
+	return s
+}
+
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus) SetSLBBackEndServerNumStatus(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus {
+	s.SLBBackEndServerNumStatus = &v
+	return s
+}
+
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus) SetSLBExistStatus(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus {
 	s.SLBExistStatus = &v
 	return s
 }
@@ -5210,8 +5267,9 @@ func (s *DescribeServiceMeshClustersRequest) SetServiceMeshId(v string) *Describ
 }
 
 type DescribeServiceMeshClustersResponseBody struct {
-	Clusters  []*DescribeServiceMeshClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Clusters         []*DescribeServiceMeshClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	NumberOfClusters *int64                                             `json:"NumberOfClusters,omitempty" xml:"NumberOfClusters,omitempty"`
+	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeServiceMeshClustersResponseBody) String() string {
@@ -5224,6 +5282,11 @@ func (s DescribeServiceMeshClustersResponseBody) GoString() string {
 
 func (s *DescribeServiceMeshClustersResponseBody) SetClusters(v []*DescribeServiceMeshClustersResponseBodyClusters) *DescribeServiceMeshClustersResponseBody {
 	s.Clusters = v
+	return s
+}
+
+func (s *DescribeServiceMeshClustersResponseBody) SetNumberOfClusters(v int64) *DescribeServiceMeshClustersResponseBody {
+	s.NumberOfClusters = &v
 	return s
 }
 
@@ -5879,6 +5942,7 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigEdition) 
 }
 
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration struct {
+	AccessLogExtraConf              *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf              `json:"AccessLogExtraConf,omitempty" xml:"AccessLogExtraConf,omitempty" type:"Struct"`
 	CRAggregationConfiguration      *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationCRAggregationConfiguration      `json:"CRAggregationConfiguration,omitempty" xml:"CRAggregationConfiguration,omitempty" type:"Struct"`
 	CRAggregationEnabled            *bool                                                                                                            `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
 	DiscoverySelectors              []map[string]interface{}                                                                                         `json:"DiscoverySelectors,omitempty" xml:"DiscoverySelectors,omitempty" type:"Repeated"`
@@ -5899,6 +5963,11 @@ func (s DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfi
 
 func (s DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration) SetAccessLogExtraConf(v *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration {
+	s.AccessLogExtraConf = v
+	return s
 }
 
 func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration) SetCRAggregationConfiguration(v *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationCRAggregationConfiguration) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration {
@@ -5958,6 +6027,29 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConf
 
 func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration) SetTerminationDrainDuration(v string) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration {
 	s.TerminationDrainDuration = &v
+	return s
+}
+
+type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf struct {
+	GatewayLifecycle *int32 `json:"GatewayLifecycle,omitempty" xml:"GatewayLifecycle,omitempty"`
+	SidecarLifecycle *int32 `json:"SidecarLifecycle,omitempty" xml:"SidecarLifecycle,omitempty"`
+}
+
+func (s DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf) SetGatewayLifecycle(v int32) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf {
+	s.GatewayLifecycle = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf) SetSidecarLifecycle(v int32) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf {
+	s.SidecarLifecycle = &v
 	return s
 }
 
@@ -7363,7 +7455,6 @@ func (s *DescribeServiceMeshVMsRequest) SetServiceMeshId(v string) *DescribeServ
 }
 
 type DescribeServiceMeshVMsResponseBody struct {
-	// Id of the request
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VMs       []*DescribeServiceMeshVMsResponseBodyVMs `json:"VMs,omitempty" xml:"VMs,omitempty" type:"Repeated"`
 }
@@ -8207,7 +8298,6 @@ func (s *DescribeVMsInServiceMeshRequest) SetServiceMeshId(v string) *DescribeVM
 }
 
 type DescribeVMsInServiceMeshResponseBody struct {
-	// Id of the request
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VMs       []*DescribeVMsInServiceMeshResponseBodyVMs `json:"VMs,omitempty" xml:"VMs,omitempty" type:"Repeated"`
 }
@@ -8336,16 +8426,11 @@ func (s *DescribeVSwitchesRequest) SetVpcId(v string) *DescribeVSwitchesRequest 
 }
 
 type DescribeVSwitchesResponseBody struct {
-	// MaxResults本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// VSwitches
-	VSwitches []*DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	MaxResults *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VSwitches  []*DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVSwitchesResponseBody) String() string {
@@ -8544,16 +8629,11 @@ func (s *DescribeVpcsRequest) SetRegionId(v string) *DescribeVpcsRequest {
 }
 
 type DescribeVpcsResponseBody struct {
-	// MaxResults本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Vpcs
-	Vpcs []*DescribeVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
+	MaxResults *int32                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Vpcs       []*DescribeVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVpcsResponseBody) String() string {
@@ -8671,7 +8751,6 @@ func (s *GetCaCertRequest) SetServiceMeshId(v string) *GetCaCertRequest {
 }
 
 type GetCaCertResponseBody struct {
-	// base64 encode format
 	CaCert    *string `json:"CaCert,omitempty" xml:"CaCert,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -9574,7 +9653,6 @@ func (s *RemoveVMFromServiceMeshRequest) SetServiceMeshId(v string) *RemoveVMFro
 }
 
 type RemoveVMFromServiceMeshResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10782,10 +10860,12 @@ type UpdateMeshFeatureRequest struct {
 	AccessLogEnabled                *bool    `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
 	AccessLogFile                   *string  `json:"AccessLogFile,omitempty" xml:"AccessLogFile,omitempty"`
 	AccessLogFormat                 *string  `json:"AccessLogFormat,omitempty" xml:"AccessLogFormat,omitempty"`
+	AccessLogGatewayLifecycle       *int32   `json:"AccessLogGatewayLifecycle,omitempty" xml:"AccessLogGatewayLifecycle,omitempty"`
 	AccessLogProject                *string  `json:"AccessLogProject,omitempty" xml:"AccessLogProject,omitempty"`
 	AccessLogServiceEnabled         *bool    `json:"AccessLogServiceEnabled,omitempty" xml:"AccessLogServiceEnabled,omitempty"`
 	AccessLogServiceHost            *string  `json:"AccessLogServiceHost,omitempty" xml:"AccessLogServiceHost,omitempty"`
 	AccessLogServicePort            *int32   `json:"AccessLogServicePort,omitempty" xml:"AccessLogServicePort,omitempty"`
+	AccessLogSidecarLifecycle       *int32   `json:"AccessLogSidecarLifecycle,omitempty" xml:"AccessLogSidecarLifecycle,omitempty"`
 	AuditProject                    *string  `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
 	AutoInjectionPolicyEnabled      *bool    `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty"`
 	CRAggregationEnabled            *bool    `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
@@ -10800,6 +10880,7 @@ type UpdateMeshFeatureRequest struct {
 	DiscoverySelectors              *string  `json:"DiscoverySelectors,omitempty" xml:"DiscoverySelectors,omitempty"`
 	DubboFilterEnabled              *bool    `json:"DubboFilterEnabled,omitempty" xml:"DubboFilterEnabled,omitempty"`
 	EnableAudit                     *bool    `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
+	EnableAutoDiagnosis             *bool    `json:"EnableAutoDiagnosis,omitempty" xml:"EnableAutoDiagnosis,omitempty"`
 	EnableCRHistory                 *bool    `json:"EnableCRHistory,omitempty" xml:"EnableCRHistory,omitempty"`
 	EnableNamespacesByDefault       *bool    `json:"EnableNamespacesByDefault,omitempty" xml:"EnableNamespacesByDefault,omitempty"`
 	EnableSDSServer                 *bool    `json:"EnableSDSServer,omitempty" xml:"EnableSDSServer,omitempty"`
@@ -10887,6 +10968,11 @@ func (s *UpdateMeshFeatureRequest) SetAccessLogFormat(v string) *UpdateMeshFeatu
 	return s
 }
 
+func (s *UpdateMeshFeatureRequest) SetAccessLogGatewayLifecycle(v int32) *UpdateMeshFeatureRequest {
+	s.AccessLogGatewayLifecycle = &v
+	return s
+}
+
 func (s *UpdateMeshFeatureRequest) SetAccessLogProject(v string) *UpdateMeshFeatureRequest {
 	s.AccessLogProject = &v
 	return s
@@ -10904,6 +10990,11 @@ func (s *UpdateMeshFeatureRequest) SetAccessLogServiceHost(v string) *UpdateMesh
 
 func (s *UpdateMeshFeatureRequest) SetAccessLogServicePort(v int32) *UpdateMeshFeatureRequest {
 	s.AccessLogServicePort = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetAccessLogSidecarLifecycle(v int32) *UpdateMeshFeatureRequest {
+	s.AccessLogSidecarLifecycle = &v
 	return s
 }
 
@@ -10974,6 +11065,11 @@ func (s *UpdateMeshFeatureRequest) SetDubboFilterEnabled(v bool) *UpdateMeshFeat
 
 func (s *UpdateMeshFeatureRequest) SetEnableAudit(v bool) *UpdateMeshFeatureRequest {
 	s.EnableAudit = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetEnableAutoDiagnosis(v bool) *UpdateMeshFeatureRequest {
+	s.EnableAutoDiagnosis = &v
 	return s
 }
 
@@ -15412,6 +15508,10 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 		body["AccessLogFormat"] = request.AccessLogFormat
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AccessLogGatewayLifecycle)) {
+		body["AccessLogGatewayLifecycle"] = request.AccessLogGatewayLifecycle
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AccessLogProject)) {
 		body["AccessLogProject"] = request.AccessLogProject
 	}
@@ -15426,6 +15526,10 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 
 	if !tea.BoolValue(util.IsUnset(request.AccessLogServicePort)) {
 		body["AccessLogServicePort"] = request.AccessLogServicePort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogSidecarLifecycle)) {
+		body["AccessLogSidecarLifecycle"] = request.AccessLogSidecarLifecycle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AuditProject)) {
@@ -15482,6 +15586,10 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 
 	if !tea.BoolValue(util.IsUnset(request.EnableAudit)) {
 		body["EnableAudit"] = request.EnableAudit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAutoDiagnosis)) {
+		body["EnableAutoDiagnosis"] = request.EnableAutoDiagnosis
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableCRHistory)) {

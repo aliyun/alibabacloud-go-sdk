@@ -1,3 +1,6 @@
+2022-08-17 Version: v2.0.22
+- UpdateMeshFeature support modify service mesh auto diagnosis feature.
+
 2022-07-11 Version: v2.0.21
 - Add UpdateASMNamespaceFromGuestCluster API.
 
