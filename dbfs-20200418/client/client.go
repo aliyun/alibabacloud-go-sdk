@@ -2592,6 +2592,93 @@ func (s *TagDbfsResponse) SetBody(v *TagDbfsResponseBody) *TagDbfsResponse {
 	return s
 }
 
+type UpdateDbfsRequest struct {
+	AdvancedFeatures *string `json:"AdvancedFeatures,omitempty" xml:"AdvancedFeatures,omitempty"`
+	FsId             *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	InstanceType     *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UsedScene        *string `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
+}
+
+func (s UpdateDbfsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDbfsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDbfsRequest) SetAdvancedFeatures(v string) *UpdateDbfsRequest {
+	s.AdvancedFeatures = &v
+	return s
+}
+
+func (s *UpdateDbfsRequest) SetFsId(v string) *UpdateDbfsRequest {
+	s.FsId = &v
+	return s
+}
+
+func (s *UpdateDbfsRequest) SetInstanceType(v string) *UpdateDbfsRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *UpdateDbfsRequest) SetRegionId(v string) *UpdateDbfsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateDbfsRequest) SetUsedScene(v string) *UpdateDbfsRequest {
+	s.UsedScene = &v
+	return s
+}
+
+type UpdateDbfsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDbfsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDbfsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDbfsResponseBody) SetRequestId(v string) *UpdateDbfsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDbfsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDbfsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDbfsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDbfsResponse) SetHeaders(v map[string]*string) *UpdateDbfsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDbfsResponse) SetStatusCode(v int32) *UpdateDbfsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDbfsResponse) SetBody(v *UpdateDbfsResponseBody) *UpdateDbfsResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -3899,6 +3986,66 @@ func (client *Client) TagDbfs(request *TagDbfsRequest) (_result *TagDbfsResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &TagDbfsResponse{}
 	_body, _err := client.TagDbfsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDbfsWithOptions(request *UpdateDbfsRequest, runtime *util.RuntimeOptions) (_result *UpdateDbfsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdvancedFeatures)) {
+		query["AdvancedFeatures"] = request.AdvancedFeatures
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FsId)) {
+		query["FsId"] = request.FsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsedScene)) {
+		query["UsedScene"] = request.UsedScene
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDbfs"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDbfsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDbfs(request *UpdateDbfsRequest) (_result *UpdateDbfsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDbfsResponse{}
+	_body, _err := client.UpdateDbfsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
