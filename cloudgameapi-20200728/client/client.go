@@ -5354,6 +5354,159 @@ func (s *QueryProjectResponse) SetBody(v *QueryProjectResponseBody) *QueryProjec
 	return s
 }
 
+type QuerySessionStatusRequest struct {
+	AccessKey   *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+}
+
+func (s QuerySessionStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySessionStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySessionStatusRequest) SetAccessKey(v string) *QuerySessionStatusRequest {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *QuerySessionStatusRequest) SetGameSession(v string) *QuerySessionStatusRequest {
+	s.GameSession = &v
+	return s
+}
+
+type QuerySessionStatusResponseBody struct {
+	AccountId    *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DispatchTime *int64  `json:"DispatchTime,omitempty" xml:"DispatchTime,omitempty"`
+	GameId       *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
+	GameSession  *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PlayTime     *int64  `json:"PlayTime,omitempty" xml:"PlayTime,omitempty"`
+	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StopTime     *int64  `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TenantId     *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UserLevel    *int32  `json:"UserLevel,omitempty" xml:"UserLevel,omitempty"`
+}
+
+func (s QuerySessionStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySessionStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySessionStatusResponseBody) SetAccountId(v string) *QuerySessionStatusResponseBody {
+	s.AccountId = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetCode(v string) *QuerySessionStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetDispatchTime(v int64) *QuerySessionStatusResponseBody {
+	s.DispatchTime = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetGameId(v string) *QuerySessionStatusResponseBody {
+	s.GameId = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetGameSession(v string) *QuerySessionStatusResponseBody {
+	s.GameSession = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetMessage(v string) *QuerySessionStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetPlayTime(v int64) *QuerySessionStatusResponseBody {
+	s.PlayTime = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetProjectId(v string) *QuerySessionStatusResponseBody {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetRegionId(v string) *QuerySessionStatusResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetRequestId(v string) *QuerySessionStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetStatus(v string) *QuerySessionStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetStopTime(v int64) *QuerySessionStatusResponseBody {
+	s.StopTime = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetSuccess(v bool) *QuerySessionStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetTenantId(v int64) *QuerySessionStatusResponseBody {
+	s.TenantId = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponseBody) SetUserLevel(v int32) *QuerySessionStatusResponseBody {
+	s.UserLevel = &v
+	return s
+}
+
+type QuerySessionStatusResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySessionStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySessionStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySessionStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySessionStatusResponse) SetHeaders(v map[string]*string) *QuerySessionStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySessionStatusResponse) SetStatusCode(v int32) *QuerySessionStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySessionStatusResponse) SetBody(v *QuerySessionStatusResponseBody) *QuerySessionStatusResponse {
+	s.Body = v
+	return s
+}
+
 type QueryTenantRequest struct {
 	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -9345,6 +9498,54 @@ func (client *Client) QueryProject(request *QueryProjectRequest) (_result *Query
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryProjectResponse{}
 	_body, _err := client.QueryProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySessionStatusWithOptions(request *QuerySessionStatusRequest, runtime *util.RuntimeOptions) (_result *QuerySessionStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessKey)) {
+		body["AccessKey"] = request.AccessKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameSession)) {
+		body["GameSession"] = request.GameSession
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySessionStatus"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySessionStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySessionStatus(request *QuerySessionStatusRequest) (_result *QuerySessionStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySessionStatusResponse{}
+	_body, _err := client.QuerySessionStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
