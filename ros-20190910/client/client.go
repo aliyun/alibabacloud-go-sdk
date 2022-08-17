@@ -3505,10 +3505,11 @@ func (s *GetFeatureDetailsResponseBodyTerraform) SetSupportedVersions(v []*GetFe
 }
 
 type GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes struct {
-	CustomTag     []*string `json:"CustomTag,omitempty" xml:"CustomTag,omitempty" type:"Repeated"`
-	EstimateCost  []*string `json:"EstimateCost,omitempty" xml:"EstimateCost,omitempty" type:"Repeated"`
-	ResourceGroup []*string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Repeated"`
-	SystemTag     []*string `json:"SystemTag,omitempty" xml:"SystemTag,omitempty" type:"Repeated"`
+	CustomTag          []*string                                                                       `json:"CustomTag,omitempty" xml:"CustomTag,omitempty" type:"Repeated"`
+	EstimateCost       []*string                                                                       `json:"EstimateCost,omitempty" xml:"EstimateCost,omitempty" type:"Repeated"`
+	ResourceGroup      []*string                                                                       `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Repeated"`
+	StackOperationRisk *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk `json:"StackOperationRisk,omitempty" xml:"StackOperationRisk,omitempty" type:"Struct"`
+	SystemTag          []*string                                                                       `json:"SystemTag,omitempty" xml:"SystemTag,omitempty" type:"Repeated"`
 }
 
 func (s GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) String() string {
@@ -3534,8 +3535,30 @@ func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) SetResour
 	return s
 }
 
+func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) SetStackOperationRisk(v *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk) *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes {
+	s.StackOperationRisk = v
+	return s
+}
+
 func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) SetSystemTag(v []*string) *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes {
 	s.SystemTag = v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk struct {
+	DeleteStack []*string `json:"DeleteStack,omitempty" xml:"DeleteStack,omitempty" type:"Repeated"`
+}
+
+func (s GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk) SetDeleteStack(v []*string) *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk {
+	s.DeleteStack = v
 	return s
 }
 
@@ -9940,7 +9963,6 @@ func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupR
 }
 
 type MoveResourceGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
