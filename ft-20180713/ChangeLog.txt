@@ -1,3 +1,6 @@
+2022-08-17 Version: v5.2.7
+- AMP Version Change.
+
 2022-08-17 Version: v5.2.6
 - AMP version.
 
