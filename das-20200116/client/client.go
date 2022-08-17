@@ -7063,6 +7063,248 @@ func (s *GetFullRequestOriginStatByInstanceIdResponse) SetBody(v *GetFullRequest
 	return s
 }
 
+type GetFullRequestSampleByInstanceIdRequest struct {
+	End        *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Role       *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	SqlId      *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	Start      *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetFullRequestSampleByInstanceIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFullRequestSampleByInstanceIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFullRequestSampleByInstanceIdRequest) SetEnd(v int64) *GetFullRequestSampleByInstanceIdRequest {
+	s.End = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdRequest) SetInstanceId(v string) *GetFullRequestSampleByInstanceIdRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdRequest) SetRole(v string) *GetFullRequestSampleByInstanceIdRequest {
+	s.Role = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdRequest) SetSqlId(v string) *GetFullRequestSampleByInstanceIdRequest {
+	s.SqlId = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdRequest) SetStart(v int64) *GetFullRequestSampleByInstanceIdRequest {
+	s.Start = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdRequest) SetUserId(v string) *GetFullRequestSampleByInstanceIdRequest {
+	s.UserId = &v
+	return s
+}
+
+type GetFullRequestSampleByInstanceIdResponseBody struct {
+	Code      *int64                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetFullRequestSampleByInstanceIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetFullRequestSampleByInstanceIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFullRequestSampleByInstanceIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBody) SetCode(v int64) *GetFullRequestSampleByInstanceIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBody) SetData(v []*GetFullRequestSampleByInstanceIdResponseBodyData) *GetFullRequestSampleByInstanceIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBody) SetMessage(v string) *GetFullRequestSampleByInstanceIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBody) SetRequestId(v string) *GetFullRequestSampleByInstanceIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBody) SetSuccess(v bool) *GetFullRequestSampleByInstanceIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFullRequestSampleByInstanceIdResponseBodyData struct {
+	Database          *string  `json:"Database,omitempty" xml:"Database,omitempty"`
+	Frows             *int64   `json:"Frows,omitempty" xml:"Frows,omitempty"`
+	LockWaitTime      *float64 `json:"LockWaitTime,omitempty" xml:"LockWaitTime,omitempty"`
+	LogicalRead       *float64 `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
+	OriginHost        *string  `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	PhysicalAsyncRead *float64 `json:"PhysicalAsyncRead,omitempty" xml:"PhysicalAsyncRead,omitempty"`
+	PhysicalSyncRead  *float64 `json:"PhysicalSyncRead,omitempty" xml:"PhysicalSyncRead,omitempty"`
+	Rows              *int64   `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	RowsExamined      *int64   `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty"`
+	RowsReturned      *int64   `json:"RowsReturned,omitempty" xml:"RowsReturned,omitempty"`
+	Rt                *float64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	ScanRows          *int64   `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
+	Scnt              *int64   `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
+	Sql               *string  `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	SqlId             *string  `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlType           *string  `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	Timestamp         *int64   `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	UpdateRows        *int64   `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
+	User              *string  `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s GetFullRequestSampleByInstanceIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFullRequestSampleByInstanceIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetDatabase(v string) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.Database = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetFrows(v int64) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.Frows = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetLockWaitTime(v float64) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.LockWaitTime = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetLogicalRead(v float64) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.LogicalRead = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetOriginHost(v string) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.OriginHost = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetPhysicalAsyncRead(v float64) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.PhysicalAsyncRead = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetPhysicalSyncRead(v float64) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.PhysicalSyncRead = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetRows(v int64) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.Rows = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetRowsExamined(v int64) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.RowsExamined = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetRowsReturned(v int64) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.RowsReturned = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetRt(v float64) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetScanRows(v int64) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.ScanRows = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetScnt(v int64) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.Scnt = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetSql(v string) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.Sql = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetSqlId(v string) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.SqlId = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetSqlType(v string) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.SqlType = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetTimestamp(v int64) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetUpdateRows(v int64) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.UpdateRows = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponseBodyData) SetUser(v string) *GetFullRequestSampleByInstanceIdResponseBodyData {
+	s.User = &v
+	return s
+}
+
+type GetFullRequestSampleByInstanceIdResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFullRequestSampleByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFullRequestSampleByInstanceIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFullRequestSampleByInstanceIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponse) SetHeaders(v map[string]*string) *GetFullRequestSampleByInstanceIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponse) SetStatusCode(v int32) *GetFullRequestSampleByInstanceIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFullRequestSampleByInstanceIdResponse) SetBody(v *GetFullRequestSampleByInstanceIdResponseBody) *GetFullRequestSampleByInstanceIdResponse {
+	s.Body = v
+	return s
+}
+
 type GetFullRequestStatResultByInstanceIdRequest struct {
 	Asc        *bool   `json:"Asc,omitempty" xml:"Asc,omitempty"`
 	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
@@ -14243,6 +14485,72 @@ func (client *Client) GetFullRequestOriginStatByInstanceId(request *GetFullReque
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFullRequestOriginStatByInstanceIdResponse{}
 	_body, _err := client.GetFullRequestOriginStatByInstanceIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFullRequestSampleByInstanceIdWithOptions(request *GetFullRequestSampleByInstanceIdRequest, runtime *util.RuntimeOptions) (_result *GetFullRequestSampleByInstanceIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.End)) {
+		body["End"] = request.End
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		body["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		body["Start"] = request.Start
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFullRequestSampleByInstanceId"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFullRequestSampleByInstanceIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFullRequestSampleByInstanceId(request *GetFullRequestSampleByInstanceIdRequest) (_result *GetFullRequestSampleByInstanceIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFullRequestSampleByInstanceIdResponse{}
+	_body, _err := client.GetFullRequestSampleByInstanceIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
