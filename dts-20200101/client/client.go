@@ -20,6 +20,7 @@ import (
 
 type ConfigureDtsJobRequest struct {
 	Checkpoint                      *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	DataCheckConfigure              *string `json:"DataCheckConfigure,omitempty" xml:"DataCheckConfigure,omitempty"`
 	DataInitialization              *bool   `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
 	DataSynchronization             *bool   `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
 	DbList                          *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
@@ -73,6 +74,11 @@ func (s ConfigureDtsJobRequest) GoString() string {
 
 func (s *ConfigureDtsJobRequest) SetCheckpoint(v string) *ConfigureDtsJobRequest {
 	s.Checkpoint = &v
+	return s
+}
+
+func (s *ConfigureDtsJobRequest) SetDataCheckConfigure(v string) *ConfigureDtsJobRequest {
+	s.DataCheckConfigure = &v
 	return s
 }
 
@@ -284,6 +290,7 @@ func (s *ConfigureDtsJobRequest) SetSynchronizationDirection(v string) *Configur
 type ConfigureDtsJobAdvanceRequest struct {
 	FileOssUrlObject                io.Reader `json:"FileOssUrlObject,omitempty" xml:"FileOssUrlObject,omitempty" require:"true"`
 	Checkpoint                      *string   `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	DataCheckConfigure              *string   `json:"DataCheckConfigure,omitempty" xml:"DataCheckConfigure,omitempty"`
 	DataInitialization              *bool     `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
 	DataSynchronization             *bool     `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
 	DbList                          *string   `json:"DbList,omitempty" xml:"DbList,omitempty"`
@@ -341,6 +348,11 @@ func (s *ConfigureDtsJobAdvanceRequest) SetFileOssUrlObject(v io.Reader) *Config
 
 func (s *ConfigureDtsJobAdvanceRequest) SetCheckpoint(v string) *ConfigureDtsJobAdvanceRequest {
 	s.Checkpoint = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetDataCheckConfigure(v string) *ConfigureDtsJobAdvanceRequest {
+	s.DataCheckConfigure = &v
 	return s
 }
 
@@ -2304,20 +2316,15 @@ func (s *ConfigureSynchronizationJobReplicatorCompareResponse) SetBody(v *Config
 }
 
 type CountJobByConditionRequest struct {
-	// 目标端数据库类型
 	DestDbType *string `json:"DestDbType,omitempty" xml:"DestDbType,omitempty"`
-	// 父任务id
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// 查询的值，与Type对应
-	Params   *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 源端数据库类型
-	SrcDbType *string `json:"SrcDbType,omitempty" xml:"SrcDbType,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 查询类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	JobType    *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Params     *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SrcDbType  *string `json:"SrcDbType,omitempty" xml:"SrcDbType,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CountJobByConditionRequest) String() string {
@@ -2374,12 +2381,11 @@ func (s *CountJobByConditionRequest) SetType(v string) *CountJobByConditionReque
 }
 
 type CountJobByConditionResponseBody struct {
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrCode        *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	ErrMessage     *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
+	DynamicCode      *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage   *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode          *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage       *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode   *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	TotalRecordCount *int64  `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
@@ -3053,9 +3059,12 @@ func (s *CreateDtsInstanceResponse) SetBody(v *CreateDtsInstanceResponseBody) *C
 type CreateJobMonitorRuleRequest struct {
 	DelayRuleTime *int64  `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
 	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	NoticeValue   *int32  `json:"NoticeValue,omitempty" xml:"NoticeValue,omitempty"`
+	Period        *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	Phone         *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	State         *string `json:"State,omitempty" xml:"State,omitempty"`
+	Times         *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
 	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3077,6 +3086,16 @@ func (s *CreateJobMonitorRuleRequest) SetDtsJobId(v string) *CreateJobMonitorRul
 	return s
 }
 
+func (s *CreateJobMonitorRuleRequest) SetNoticeValue(v int32) *CreateJobMonitorRuleRequest {
+	s.NoticeValue = &v
+	return s
+}
+
+func (s *CreateJobMonitorRuleRequest) SetPeriod(v int32) *CreateJobMonitorRuleRequest {
+	s.Period = &v
+	return s
+}
+
 func (s *CreateJobMonitorRuleRequest) SetPhone(v string) *CreateJobMonitorRuleRequest {
 	s.Phone = &v
 	return s
@@ -3089,6 +3108,11 @@ func (s *CreateJobMonitorRuleRequest) SetRegionId(v string) *CreateJobMonitorRul
 
 func (s *CreateJobMonitorRuleRequest) SetState(v string) *CreateJobMonitorRuleRequest {
 	s.State = &v
+	return s
+}
+
+func (s *CreateJobMonitorRuleRequest) SetTimes(v int32) *CreateJobMonitorRuleRequest {
+	s.Times = &v
 	return s
 }
 
@@ -4388,21 +4412,270 @@ func (s *DeleteSynchronizationJobResponse) SetBody(v *DeleteSynchronizationJobRe
 	return s
 }
 
-type DescribeClusterOperateLogsRequest struct {
-	// callType=AssumedRoleUser
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// 幂等性验证
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// migration job id
-	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	EndTime  *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// OwnerID
-	OwnerID    *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+type DescribeCheckJobsRequest struct {
+	CheckType  *int32  `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobName    *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 当不传时默认最近返回七天的数据
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeCheckJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCheckJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCheckJobsRequest) SetCheckType(v int32) *DescribeCheckJobsRequest {
+	s.CheckType = &v
+	return s
+}
+
+func (s *DescribeCheckJobsRequest) SetInstanceId(v string) *DescribeCheckJobsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeCheckJobsRequest) SetJobName(v string) *DescribeCheckJobsRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *DescribeCheckJobsRequest) SetPageNumber(v int32) *DescribeCheckJobsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCheckJobsRequest) SetPageSize(v int32) *DescribeCheckJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeCheckJobsResponseBody struct {
+	CheckJobs        []*DescribeCheckJobsResponseBodyCheckJobs `json:"CheckJobs,omitempty" xml:"CheckJobs,omitempty" type:"Repeated"`
+	DynamicCode      *string                                   `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage   *string                                   `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode          *string                                   `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage       *string                                   `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode   *int32                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	PageNumber       *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int64                                    `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	RequestId        *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalRecordCount *int64                                    `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s DescribeCheckJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCheckJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCheckJobsResponseBody) SetCheckJobs(v []*DescribeCheckJobsResponseBodyCheckJobs) *DescribeCheckJobsResponseBody {
+	s.CheckJobs = v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBody) SetDynamicCode(v string) *DescribeCheckJobsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBody) SetDynamicMessage(v string) *DescribeCheckJobsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBody) SetErrCode(v string) *DescribeCheckJobsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBody) SetErrMessage(v string) *DescribeCheckJobsResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBody) SetHttpStatusCode(v int32) *DescribeCheckJobsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBody) SetPageNumber(v int32) *DescribeCheckJobsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBody) SetPageRecordCount(v int64) *DescribeCheckJobsResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBody) SetRequestId(v string) *DescribeCheckJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBody) SetSuccess(v bool) *DescribeCheckJobsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBody) SetTotalRecordCount(v int64) *DescribeCheckJobsResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type DescribeCheckJobsResponseBodyCheckJobs struct {
+	ChargeType    *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CheckPoint    *int64  `json:"CheckPoint,omitempty" xml:"CheckPoint,omitempty"`
+	CheckType     *int32  `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	DiffCount     *int64  `json:"DiffCount,omitempty" xml:"DiffCount,omitempty"`
+	DiffSum       *int64  `json:"DiffSum,omitempty" xml:"DiffSum,omitempty"`
+	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	FinishCount   *int64  `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	JobName       *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobStepId     *string `json:"JobStepId,omitempty" xml:"JobStepId,omitempty"`
+	ParentJobType *string `json:"ParentJobType,omitempty" xml:"ParentJobType,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalCount    *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCheckJobsResponseBodyCheckJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCheckJobsResponseBodyCheckJobs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetChargeType(v string) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetCheckPoint(v int64) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.CheckPoint = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetCheckType(v int32) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.CheckType = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetDiffCount(v int64) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.DiffCount = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetDiffSum(v int64) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.DiffSum = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetDtsInstanceID(v string) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.DtsInstanceID = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetDtsJobId(v string) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetFinishCount(v int64) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.FinishCount = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetGroupId(v string) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetInstanceClass(v string) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetJobName(v string) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.JobName = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetJobStepId(v string) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.JobStepId = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetParentJobType(v string) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.ParentJobType = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetRegionId(v string) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetStatus(v int32) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponseBodyCheckJobs) SetTotalCount(v int64) *DescribeCheckJobsResponseBodyCheckJobs {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCheckJobsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCheckJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCheckJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCheckJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCheckJobsResponse) SetHeaders(v map[string]*string) *DescribeCheckJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCheckJobsResponse) SetStatusCode(v int32) *DescribeCheckJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCheckJobsResponse) SetBody(v *DescribeCheckJobsResponseBody) *DescribeCheckJobsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeClusterOperateLogsRequest struct {
+	AccountId          *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
+	DtsJobId           *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	EndTime            *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerID            *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime          *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeClusterOperateLogsRequest) String() string {
@@ -4459,26 +4732,17 @@ func (s *DescribeClusterOperateLogsRequest) SetStartTime(v int64) *DescribeClust
 }
 
 type DescribeClusterOperateLogsResponseBody struct {
-	// 后端错误码 数字递增
-	Code       *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	DataPoints []*DescribeClusterOperateLogsResponseBodyDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
-	// 动态错误信息，会替换错误码里的"%s"
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// 错误短码 ps：InternalError
-	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// 错误信息（返回给用户）
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// 异常对应的http code
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 当前页码
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 当前每页显示数量
-	PageRecordCount *int32  `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调用结果
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总数
-	TotalRecordCount *int64 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	Code             *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	DataPoints       []*DescribeClusterOperateLogsResponseBodyDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
+	DynamicMessage   *string                                             `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode          *string                                             `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage       *string                                             `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode   *int32                                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	PageNumber       *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                              `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalRecordCount *int64                                              `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeClusterOperateLogsResponseBody) String() string {
@@ -4633,20 +4897,15 @@ func (s *DescribeClusterOperateLogsResponse) SetBody(v *DescribeClusterOperateLo
 }
 
 type DescribeClusterUsedUtilizationRequest struct {
-	// callType=AssumedRoleUser
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// 幂等性验证
+	AccountId          *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// migration job id
-	DtsJobId   *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	Env        *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// OwnerID
-	OwnerID  *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// callType=AssumedRoleUser
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	DtsJobId           *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	Env                *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	MetricType         *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	OwnerID            *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityToken      *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeClusterUsedUtilizationRequest) String() string {
@@ -4703,29 +4962,23 @@ func (s *DescribeClusterUsedUtilizationRequest) SetSecurityToken(v string) *Desc
 }
 
 type DescribeClusterUsedUtilizationResponseBody struct {
-	// 后端错误码 数字递增
-	Code               *string  `json:"Code,omitempty" xml:"Code,omitempty"`
-	CpuTotal           *float32 `json:"CpuTotal,omitempty" xml:"CpuTotal,omitempty"`
-	DedicatedClusterId *string  `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	DiskTotal          *float32 `json:"DiskTotal,omitempty" xml:"DiskTotal,omitempty"`
-	DiskUsed           *float32 `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
-	DuTotal            *int32   `json:"DuTotal,omitempty" xml:"DuTotal,omitempty"`
-	DuUsed             *int32   `json:"DuUsed,omitempty" xml:"DuUsed,omitempty"`
-	// 动态错误信息，会替换错误码里的 "%s"
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// 错误短码 ps：InternalError
-	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// 错误信息（返回给用户）
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// 异常对应的http code
+	Code                 *string  `json:"Code,omitempty" xml:"Code,omitempty"`
+	CpuTotal             *float32 `json:"CpuTotal,omitempty" xml:"CpuTotal,omitempty"`
+	DedicatedClusterId   *string  `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
+	DiskTotal            *float32 `json:"DiskTotal,omitempty" xml:"DiskTotal,omitempty"`
+	DiskUsed             *float32 `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
+	DuTotal              *int32   `json:"DuTotal,omitempty" xml:"DuTotal,omitempty"`
+	DuUsed               *int32   `json:"DuUsed,omitempty" xml:"DuUsed,omitempty"`
+	DynamicMessage       *string  `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode              *string  `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage           *string  `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	HttpStatusCode       *int32   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	MemoryTotal          *float32 `json:"MemoryTotal,omitempty" xml:"MemoryTotal,omitempty"`
 	MemoryUsed           *float32 `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
 	MemoryUsedPercentage *float32 `json:"MemoryUsedPercentage,omitempty" xml:"MemoryUsedPercentage,omitempty"`
 	RequestId            *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调用结果
-	Success     *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskRunning *int32 `json:"TaskRunning,omitempty" xml:"TaskRunning,omitempty"`
+	Success              *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskRunning          *int32   `json:"TaskRunning,omitempty" xml:"TaskRunning,omitempty"`
 }
 
 func (s DescribeClusterUsedUtilizationResponseBody) String() string {
@@ -5567,6 +5820,499 @@ func (s *DescribeDTSIPResponse) SetBody(v *DescribeDTSIPResponseBody) *DescribeD
 	return s
 }
 
+type DescribeDataCheckReportUrlRequest struct {
+	DbName    *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	JobStepId *string `json:"JobStepId,omitempty" xml:"JobStepId,omitempty"`
+	TbName    *string `json:"TbName,omitempty" xml:"TbName,omitempty"`
+}
+
+func (s DescribeDataCheckReportUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataCheckReportUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataCheckReportUrlRequest) SetDbName(v string) *DescribeDataCheckReportUrlRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeDataCheckReportUrlRequest) SetJobStepId(v string) *DescribeDataCheckReportUrlRequest {
+	s.JobStepId = &v
+	return s
+}
+
+func (s *DescribeDataCheckReportUrlRequest) SetTbName(v string) *DescribeDataCheckReportUrlRequest {
+	s.TbName = &v
+	return s
+}
+
+type DescribeDataCheckReportUrlResponseBody struct {
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode        *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage     *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeDataCheckReportUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataCheckReportUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataCheckReportUrlResponseBody) SetDynamicMessage(v string) *DescribeDataCheckReportUrlResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DescribeDataCheckReportUrlResponseBody) SetErrCode(v string) *DescribeDataCheckReportUrlResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DescribeDataCheckReportUrlResponseBody) SetErrMessage(v string) *DescribeDataCheckReportUrlResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DescribeDataCheckReportUrlResponseBody) SetHttpStatusCode(v int32) *DescribeDataCheckReportUrlResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeDataCheckReportUrlResponseBody) SetRequestId(v string) *DescribeDataCheckReportUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDataCheckReportUrlResponseBody) SetSuccess(v string) *DescribeDataCheckReportUrlResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeDataCheckReportUrlResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDataCheckReportUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDataCheckReportUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataCheckReportUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataCheckReportUrlResponse) SetHeaders(v map[string]*string) *DescribeDataCheckReportUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDataCheckReportUrlResponse) SetStatusCode(v int32) *DescribeDataCheckReportUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDataCheckReportUrlResponse) SetBody(v *DescribeDataCheckReportUrlResponseBody) *DescribeDataCheckReportUrlResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDataCheckTableDetailsRequest struct {
+	JobStepId  *string `json:"JobStepId,omitempty" xml:"JobStepId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeDataCheckTableDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataCheckTableDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataCheckTableDetailsRequest) SetJobStepId(v string) *DescribeDataCheckTableDetailsRequest {
+	s.JobStepId = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsRequest) SetPageNumber(v int32) *DescribeDataCheckTableDetailsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsRequest) SetPageSize(v int32) *DescribeDataCheckTableDetailsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsRequest) SetStatus(v string) *DescribeDataCheckTableDetailsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsRequest) SetTableName(v string) *DescribeDataCheckTableDetailsRequest {
+	s.TableName = &v
+	return s
+}
+
+type DescribeDataCheckTableDetailsResponseBody struct {
+	DynamicCode    *string                                                  `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string                                                  `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode        *string                                                  `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage     *string                                                  `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode *int32                                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	PageNumber     *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId      *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	TableDetails   []*DescribeDataCheckTableDetailsResponseBodyTableDetails `json:"TableDetails,omitempty" xml:"TableDetails,omitempty" type:"Repeated"`
+	TotalCount     *int64                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDataCheckTableDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataCheckTableDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBody) SetDynamicCode(v string) *DescribeDataCheckTableDetailsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBody) SetDynamicMessage(v string) *DescribeDataCheckTableDetailsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBody) SetErrCode(v string) *DescribeDataCheckTableDetailsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBody) SetErrMessage(v string) *DescribeDataCheckTableDetailsResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBody) SetHttpStatusCode(v int32) *DescribeDataCheckTableDetailsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBody) SetPageNumber(v int32) *DescribeDataCheckTableDetailsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBody) SetRequestId(v string) *DescribeDataCheckTableDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBody) SetSuccess(v bool) *DescribeDataCheckTableDetailsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBody) SetTableDetails(v []*DescribeDataCheckTableDetailsResponseBodyTableDetails) *DescribeDataCheckTableDetailsResponseBody {
+	s.TableDetails = v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBody) SetTotalCount(v int64) *DescribeDataCheckTableDetailsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDataCheckTableDetailsResponseBodyTableDetails struct {
+	BootTime     *string `json:"BootTime,omitempty" xml:"BootTime,omitempty"`
+	DiffCount    *int64  `json:"DiffCount,omitempty" xml:"DiffCount,omitempty"`
+	FinishCount  *int64  `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	SourceDbName *string `json:"SourceDbName,omitempty" xml:"SourceDbName,omitempty"`
+	SourceTbName *string `json:"SourceTbName,omitempty" xml:"SourceTbName,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetDbName *string `json:"TargetDbName,omitempty" xml:"TargetDbName,omitempty"`
+	TargetTbName *string `json:"TargetTbName,omitempty" xml:"TargetTbName,omitempty"`
+	TotalCount   *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDataCheckTableDetailsResponseBodyTableDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataCheckTableDetailsResponseBodyTableDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBodyTableDetails) SetBootTime(v string) *DescribeDataCheckTableDetailsResponseBodyTableDetails {
+	s.BootTime = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBodyTableDetails) SetDiffCount(v int64) *DescribeDataCheckTableDetailsResponseBodyTableDetails {
+	s.DiffCount = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBodyTableDetails) SetFinishCount(v int64) *DescribeDataCheckTableDetailsResponseBodyTableDetails {
+	s.FinishCount = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBodyTableDetails) SetId(v int64) *DescribeDataCheckTableDetailsResponseBodyTableDetails {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBodyTableDetails) SetSourceDbName(v string) *DescribeDataCheckTableDetailsResponseBodyTableDetails {
+	s.SourceDbName = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBodyTableDetails) SetSourceTbName(v string) *DescribeDataCheckTableDetailsResponseBodyTableDetails {
+	s.SourceTbName = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBodyTableDetails) SetStatus(v string) *DescribeDataCheckTableDetailsResponseBodyTableDetails {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBodyTableDetails) SetTargetDbName(v string) *DescribeDataCheckTableDetailsResponseBodyTableDetails {
+	s.TargetDbName = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBodyTableDetails) SetTargetTbName(v string) *DescribeDataCheckTableDetailsResponseBodyTableDetails {
+	s.TargetTbName = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponseBodyTableDetails) SetTotalCount(v int64) *DescribeDataCheckTableDetailsResponseBodyTableDetails {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDataCheckTableDetailsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDataCheckTableDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDataCheckTableDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataCheckTableDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataCheckTableDetailsResponse) SetHeaders(v map[string]*string) *DescribeDataCheckTableDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponse) SetStatusCode(v int32) *DescribeDataCheckTableDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsResponse) SetBody(v *DescribeDataCheckTableDetailsResponseBody) *DescribeDataCheckTableDetailsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDataCheckTableDiffDetailsRequest struct {
+	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	JobStepId  *string `json:"JobStepId,omitempty" xml:"JobStepId,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TbName     *string `json:"TbName,omitempty" xml:"TbName,omitempty"`
+}
+
+func (s DescribeDataCheckTableDiffDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataCheckTableDiffDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataCheckTableDiffDetailsRequest) SetDbName(v string) *DescribeDataCheckTableDiffDetailsRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsRequest) SetJobStepId(v string) *DescribeDataCheckTableDiffDetailsRequest {
+	s.JobStepId = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsRequest) SetPageNumber(v int64) *DescribeDataCheckTableDiffDetailsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsRequest) SetPageSize(v int64) *DescribeDataCheckTableDiffDetailsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsRequest) SetTbName(v string) *DescribeDataCheckTableDiffDetailsRequest {
+	s.TbName = &v
+	return s
+}
+
+type DescribeDataCheckTableDiffDetailsResponseBody struct {
+	DbName         *string                                                     `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DiffCount      *int64                                                      `json:"DiffCount,omitempty" xml:"DiffCount,omitempty"`
+	DiffDetails    []*DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails `json:"DiffDetails,omitempty" xml:"DiffDetails,omitempty" type:"Repeated"`
+	DynamicMessage *string                                                     `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode        *string                                                     `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage     *string                                                     `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode *int32                                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	InstanceId     *string                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId      *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	TbName         *string                                                     `json:"TbName,omitempty" xml:"TbName,omitempty"`
+}
+
+func (s DescribeDataCheckTableDiffDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataCheckTableDiffDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBody) SetDbName(v string) *DescribeDataCheckTableDiffDetailsResponseBody {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBody) SetDiffCount(v int64) *DescribeDataCheckTableDiffDetailsResponseBody {
+	s.DiffCount = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBody) SetDiffDetails(v []*DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails) *DescribeDataCheckTableDiffDetailsResponseBody {
+	s.DiffDetails = v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBody) SetDynamicMessage(v string) *DescribeDataCheckTableDiffDetailsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBody) SetErrCode(v string) *DescribeDataCheckTableDiffDetailsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBody) SetErrMessage(v string) *DescribeDataCheckTableDiffDetailsResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBody) SetHttpStatusCode(v int32) *DescribeDataCheckTableDiffDetailsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBody) SetInstanceId(v string) *DescribeDataCheckTableDiffDetailsResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBody) SetRequestId(v string) *DescribeDataCheckTableDiffDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBody) SetSuccess(v bool) *DescribeDataCheckTableDiffDetailsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBody) SetTbName(v string) *DescribeDataCheckTableDiffDetailsResponseBody {
+	s.TbName = &v
+	return s
+}
+
+type DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails struct {
+	Diff       *string `json:"Diff,omitempty" xml:"Diff,omitempty"`
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails) SetDiff(v string) *DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails {
+	s.Diff = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails) SetGmtCreated(v string) *DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails) SetId(v int64) *DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails {
+	s.Id = &v
+	return s
+}
+
+type DescribeDataCheckTableDiffDetailsResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDataCheckTableDiffDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDataCheckTableDiffDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataCheckTableDiffDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponse) SetHeaders(v map[string]*string) *DescribeDataCheckTableDiffDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponse) SetStatusCode(v int32) *DescribeDataCheckTableDiffDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsResponse) SetBody(v *DescribeDataCheckTableDiffDetailsResponseBody) *DescribeDataCheckTableDiffDetailsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDedicatedClusterRequest struct {
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	OwnerId            *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -6151,164 +6897,10 @@ func (s *DescribeDtsEtlJobVersionInfoResponse) SetBody(v *DescribeDtsEtlJobVersi
 	return s
 }
 
-type DescribeDtsJobConfigRequest struct {
-	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	Module   *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	OwnerId  *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeDtsJobConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDtsJobConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDtsJobConfigRequest) SetDtsJobId(v string) *DescribeDtsJobConfigRequest {
-	s.DtsJobId = &v
-	return s
-}
-
-func (s *DescribeDtsJobConfigRequest) SetModule(v string) *DescribeDtsJobConfigRequest {
-	s.Module = &v
-	return s
-}
-
-func (s *DescribeDtsJobConfigRequest) SetOwnerId(v string) *DescribeDtsJobConfigRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDtsJobConfigRequest) SetRegionId(v string) *DescribeDtsJobConfigRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeDtsJobConfigResponseBody struct {
-	Parameters []*DescribeDtsJobConfigResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeDtsJobConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDtsJobConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDtsJobConfigResponseBody) SetParameters(v []*DescribeDtsJobConfigResponseBodyParameters) *DescribeDtsJobConfigResponseBody {
-	s.Parameters = v
-	return s
-}
-
-func (s *DescribeDtsJobConfigResponseBody) SetRequestId(v string) *DescribeDtsJobConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeDtsJobConfigResponseBodyParameters struct {
-	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 请使用
-	ForceRestart *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	Modifiable   *string `json:"Modifiable,omitempty" xml:"Modifiable,omitempty"`
-	Module       *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RunningValue *string `json:"RunningValue,omitempty" xml:"RunningValue,omitempty"`
-	ValueType    *int32  `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
-}
-
-func (s DescribeDtsJobConfigResponseBodyParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDtsJobConfigResponseBodyParameters) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDtsJobConfigResponseBodyParameters) SetCheckingCode(v string) *DescribeDtsJobConfigResponseBodyParameters {
-	s.CheckingCode = &v
-	return s
-}
-
-func (s *DescribeDtsJobConfigResponseBodyParameters) SetDefaultValue(v string) *DescribeDtsJobConfigResponseBodyParameters {
-	s.DefaultValue = &v
-	return s
-}
-
-func (s *DescribeDtsJobConfigResponseBodyParameters) SetDescription(v string) *DescribeDtsJobConfigResponseBodyParameters {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeDtsJobConfigResponseBodyParameters) SetForceRestart(v string) *DescribeDtsJobConfigResponseBodyParameters {
-	s.ForceRestart = &v
-	return s
-}
-
-func (s *DescribeDtsJobConfigResponseBodyParameters) SetModifiable(v string) *DescribeDtsJobConfigResponseBodyParameters {
-	s.Modifiable = &v
-	return s
-}
-
-func (s *DescribeDtsJobConfigResponseBodyParameters) SetModule(v string) *DescribeDtsJobConfigResponseBodyParameters {
-	s.Module = &v
-	return s
-}
-
-func (s *DescribeDtsJobConfigResponseBodyParameters) SetName(v string) *DescribeDtsJobConfigResponseBodyParameters {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeDtsJobConfigResponseBodyParameters) SetRunningValue(v string) *DescribeDtsJobConfigResponseBodyParameters {
-	s.RunningValue = &v
-	return s
-}
-
-func (s *DescribeDtsJobConfigResponseBodyParameters) SetValueType(v int32) *DescribeDtsJobConfigResponseBodyParameters {
-	s.ValueType = &v
-	return s
-}
-
-type DescribeDtsJobConfigResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDtsJobConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDtsJobConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDtsJobConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDtsJobConfigResponse) SetHeaders(v map[string]*string) *DescribeDtsJobConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDtsJobConfigResponse) SetStatusCode(v int32) *DescribeDtsJobConfigResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDtsJobConfigResponse) SetBody(v *DescribeDtsJobConfigResponseBody) *DescribeDtsJobConfigResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeDtsJobDetailRequest struct {
-	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 是否返回所有的同步子任务
+	DtsInstanceID            *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobId                 *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SyncSubJobHistory        *bool   `json:"SyncSubJobHistory,omitempty" xml:"SyncSubJobHistory,omitempty"`
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 }
@@ -6347,50 +6939,51 @@ func (s *DescribeDtsJobDetailRequest) SetSynchronizationDirection(v string) *Des
 }
 
 type DescribeDtsJobDetailResponseBody struct {
-	AppName                  *string                                               `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTimestamp           *string                                               `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
-	Checkpoint               *int64                                                `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	Code                     *int32                                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	ConsumptionCheckpoint    *string                                               `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	ConsumptionClient        *string                                               `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
-	CreateTime               *string                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DatabaseCount            *int32                                                `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
-	DbObject                 *string                                               `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
-	DedicatedClusterId       *string                                               `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	Delay                    *int64                                                `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	DemoJob                  *bool                                                 `json:"DemoJob,omitempty" xml:"DemoJob,omitempty"`
-	DestNetType              *string                                               `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
-	DestinationEndpoint      *DescribeDtsJobDetailResponseBodyDestinationEndpoint  `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
-	DtsInstanceID            *string                                               `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	DtsJobClass              *string                                               `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	DtsJobDirection          *string                                               `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
-	DtsJobId                 *string                                               `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	DtsJobName               *string                                               `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	DynamicMessage           *string                                               `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	EndTimestamp             *string                                               `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	ErrCode                  *string                                               `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	ErrMessage               *string                                               `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	ErrorMessage             *string                                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	EtlCalculator            *string                                               `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
-	ExpireTime               *string                                               `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	FinishTime               *string                                               `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	GroupId                  *string                                               `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	HttpStatusCode           *int32                                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobType                  *string                                               `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MigrationMode            *DescribeDtsJobDetailResponseBodyMigrationMode        `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
-	PayType                  *string                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RequestId                *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Reserved                 *string                                               `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
-	SourceEndpoint           *DescribeDtsJobDetailResponseBodySourceEndpoint       `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
-	Status                   *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubDistributedJob        []*DescribeDtsJobDetailResponseBodySubDistributedJob  `json:"SubDistributedJob,omitempty" xml:"SubDistributedJob,omitempty" type:"Repeated"`
-	SubSyncJob               []*DescribeDtsJobDetailResponseBodySubSyncJob         `json:"SubSyncJob,omitempty" xml:"SubSyncJob,omitempty" type:"Repeated"`
-	SubscribeTopic           *string                                               `json:"SubscribeTopic,omitempty" xml:"SubscribeTopic,omitempty"`
-	SubscriptionDataType     *DescribeDtsJobDetailResponseBodySubscriptionDataType `json:"SubscriptionDataType,omitempty" xml:"SubscriptionDataType,omitempty" type:"Struct"`
-	SubscriptionHost         *DescribeDtsJobDetailResponseBodySubscriptionHost     `json:"SubscriptionHost,omitempty" xml:"SubscriptionHost,omitempty" type:"Struct"`
-	Success                  *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	SynchronizationDirection *string                                               `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	TaskType                 *string                                               `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	AppName                   *string                                                    `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp            *string                                                    `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                *int64                                                     `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	Code                      *int32                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	ConsumptionCheckpoint     *string                                                    `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient         *string                                                    `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CreateTime                *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataSynchronizationStatus *DescribeDtsJobDetailResponseBodyDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DatabaseCount             *int32                                                     `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
+	DbObject                  *string                                                    `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	DedicatedClusterId        *string                                                    `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
+	Delay                     *int64                                                     `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DemoJob                   *bool                                                      `json:"DemoJob,omitempty" xml:"DemoJob,omitempty"`
+	DestNetType               *string                                                    `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
+	DestinationEndpoint       *DescribeDtsJobDetailResponseBodyDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID             *string                                                    `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass               *string                                                    `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	DtsJobDirection           *string                                                    `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId                  *string                                                    `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName                *string                                                    `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	DynamicMessage            *string                                                    `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	EndTimestamp              *string                                                    `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrCode                   *string                                                    `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage                *string                                                    `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	ErrorMessage              *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	EtlCalculator             *string                                                    `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
+	ExpireTime                *string                                                    `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FinishTime                *string                                                    `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	GroupId                   *string                                                    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	HttpStatusCode            *int32                                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	JobType                   *string                                                    `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MigrationMode             *DescribeDtsJobDetailResponseBodyMigrationMode             `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	PayType                   *string                                                    `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RequestId                 *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Reserved                  *string                                                    `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	SourceEndpoint            *DescribeDtsJobDetailResponseBodySourceEndpoint            `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
+	Status                    *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubDistributedJob         []*DescribeDtsJobDetailResponseBodySubDistributedJob       `json:"SubDistributedJob,omitempty" xml:"SubDistributedJob,omitempty" type:"Repeated"`
+	SubSyncJob                []*DescribeDtsJobDetailResponseBodySubSyncJob              `json:"SubSyncJob,omitempty" xml:"SubSyncJob,omitempty" type:"Repeated"`
+	SubscribeTopic            *string                                                    `json:"SubscribeTopic,omitempty" xml:"SubscribeTopic,omitempty"`
+	SubscriptionDataType      *DescribeDtsJobDetailResponseBodySubscriptionDataType      `json:"SubscriptionDataType,omitempty" xml:"SubscriptionDataType,omitempty" type:"Struct"`
+	SubscriptionHost          *DescribeDtsJobDetailResponseBodySubscriptionHost          `json:"SubscriptionHost,omitempty" xml:"SubscriptionHost,omitempty" type:"Struct"`
+	Success                   *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	SynchronizationDirection  *string                                                    `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	TaskType                  *string                                                    `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBody) String() string {
@@ -6433,6 +7026,11 @@ func (s *DescribeDtsJobDetailResponseBody) SetConsumptionClient(v string) *Descr
 
 func (s *DescribeDtsJobDetailResponseBody) SetCreateTime(v string) *DescribeDtsJobDetailResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetDataSynchronizationStatus(v *DescribeDtsJobDetailResponseBodyDataSynchronizationStatus) *DescribeDtsJobDetailResponseBody {
+	s.DataSynchronizationStatus = v
 	return s
 }
 
@@ -6618,6 +7216,47 @@ func (s *DescribeDtsJobDetailResponseBody) SetSynchronizationDirection(v string)
 
 func (s *DescribeDtsJobDetailResponseBody) SetTaskType(v string) *DescribeDtsJobDetailResponseBody {
 	s.TaskType = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodyDataSynchronizationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodyDataSynchronizationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodyDataSynchronizationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodyDataSynchronizationStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodyDataSynchronizationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodyDataSynchronizationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodyDataSynchronizationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodyDataSynchronizationStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodyDataSynchronizationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodyDataSynchronizationStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodyDataSynchronizationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodyDataSynchronizationStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodyDataSynchronizationStatus {
+	s.Status = &v
 	return s
 }
 
@@ -6811,37 +7450,34 @@ func (s *DescribeDtsJobDetailResponseBodySourceEndpoint) SetUserName(v string) *
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJob struct {
-	AppName                   *string                                                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTimestamp            *string                                                                     `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
-	Checkpoint                *string                                                                     `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	ConsumptionCheckpoint     *string                                                                     `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	ConsumptionClient         *string                                                                     `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
-	CreateTime                *string                                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataEtlStatus             *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus             `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
-	DataInitializationStatus  *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus  `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	DataSynchronizationStatus *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	DatabaseCount             *int32                                                                      `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
-	DbObject                  *string                                                                     `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
-	Delay                     *int64                                                                      `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	DestNetType               *string                                                                     `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
-	DestinationEndpoint       *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
-	DtsInstanceID             *string                                                                     `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	DtsJobClass               *string                                                                     `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	// 请使用
-	DtsJobDirection *string `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
-	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	DtsJobName      *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	EndTimestamp    *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	ErrorMessage    *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	EtlCalculator   *string `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
-	ExpireTime      *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	FinishTime      *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	IsDemoJob       *bool   `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
-	// 返回结果中新增jobType字段
-	JobType       *string                                                         `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MigrationMode *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
-	// 任务来源 pts任务、dms任务 (PTS, DMS, DTS)
+	AppName                       *string                                                                         `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp                *string                                                                         `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                    *string                                                                         `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	ConsumptionCheckpoint         *string                                                                         `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient             *string                                                                         `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CreateTime                    *string                                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataEtlStatus                 *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus                 `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
+	DataInitializationStatus      *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus      `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus     *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus     `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DatabaseCount                 *int32                                                                          `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
+	DbObject                      *string                                                                         `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	Delay                         *int64                                                                          `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestNetType                   *string                                                                         `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
+	DestinationEndpoint           *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint           `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID                 *string                                                                         `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass                   *string                                                                         `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	DtsJobDirection               *string                                                                         `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId                      *string                                                                         `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName                    *string                                                                         `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	EndTimestamp                  *string                                                                         `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorMessage                  *string                                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	EtlCalculator                 *string                                                                         `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
+	ExpireTime                    *string                                                                         `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FinishTime                    *string                                                                         `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	GroupId                       *string                                                                         `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IsDemoJob                     *bool                                                                           `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
+	JobType                       *string                                                                         `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MigrationMode                 *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
 	OriginType                    *string                                                                         `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
 	PayType                       *string                                                                         `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Performance                   *DescribeDtsJobDetailResponseBodySubDistributedJobPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
@@ -7096,14 +7732,10 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetTaskType(v string
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus) String() string {
@@ -7141,14 +7773,10 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus) SetStat
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus) String() string {
@@ -7186,14 +7814,10 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStat
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus) String() string {
@@ -7230,17 +7854,16 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationSta
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint struct {
-	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
-	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	AliyunUid       *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName      *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID      *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID       *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName        *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
 	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -7349,10 +7972,8 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode) SetStru
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobPerformance struct {
-	// 每秒同步的流量，单位为：MB/s
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// 每秒同步的记录数
-	Rps *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
+	Rps  *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobPerformance) String() string {
@@ -7377,8 +7998,7 @@ type DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus struct {
 	Detail       []*DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
 	ErrorMessage *string                                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Percent      *string                                                                  `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *string                                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus) String() string {
@@ -7410,16 +8030,11 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus) SetSta
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail struct {
-	// 预检查项
-	CheckItem *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
-	// 检查项的描述
+	CheckItem            *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
 	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
-	// 检查结果 (NotStarted: 未启动, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Warning: 警告, Success: 完成)
-	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// 错误原因
-	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// 修复方法
-	RepairMethod *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
+	CheckResult          *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	FailedReason         *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	RepairMethod         *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail) String() string {
@@ -7456,22 +8071,14 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail) 
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobRetryState struct {
-	// 错误信息
-	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// 任务ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 最大重试时间,单位秒
-	MaxRetryTime *int32 `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
-	// 模块名称 reader/store/writer/full/struct
-	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// 已重试次数
-	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	// srcDB/destDB/metaDB/dstore
-	RetryTarget *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
-	// 已重试时间,单位秒
-	RetryTime *int32 `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
-	// 是否重试中
-	Retrying *bool `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
+	ErrMsg       *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MaxRetryTime *int32  `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
+	Module       *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	RetryCount   *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RetryTarget  *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
+	RetryTime    *int32  `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
+	Retrying     *bool   `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobRetryState) String() string {
@@ -7523,37 +8130,34 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState) SetRetryin
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob struct {
-	AppName                   *string                                                                               `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTimestamp            *string                                                                               `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
-	Checkpoint                *string                                                                               `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	ConsumptionCheckpoint     *string                                                                               `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	ConsumptionClient         *string                                                                               `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
-	CreateTime                *string                                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataEtlStatus             *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus             `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
-	DataInitializationStatus  *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus  `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	DataSynchronizationStatus *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	DatabaseCount             *int32                                                                                `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
-	DbObject                  *string                                                                               `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
-	Delay                     *int64                                                                                `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	DestNetType               *string                                                                               `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
-	DestinationEndpoint       *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
-	DtsInstanceID             *string                                                                               `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	DtsJobClass               *string                                                                               `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	// 请使用
-	DtsJobDirection *string `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
-	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	DtsJobName      *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	EndTimestamp    *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	ErrorMessage    *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	EtlCalculator   *string `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
-	ExpireTime      *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	FinishTime      *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	IsDemoJob       *bool   `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
-	// 返回结果中新增jobType字段
-	JobType       *string                                                                   `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MigrationMode *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
-	// 任务来源 pts任务、dms任务 (PTS, DMS, DTS)
+	AppName                       *string                                                                                   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp                *string                                                                                   `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                    *string                                                                                   `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	ConsumptionCheckpoint         *string                                                                                   `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient             *string                                                                                   `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CreateTime                    *string                                                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataEtlStatus                 *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus                 `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
+	DataInitializationStatus      *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus      `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus     *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus     `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DatabaseCount                 *int32                                                                                    `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
+	DbObject                      *string                                                                                   `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	Delay                         *int64                                                                                    `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestNetType                   *string                                                                                   `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
+	DestinationEndpoint           *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint           `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID                 *string                                                                                   `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass                   *string                                                                                   `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	DtsJobDirection               *string                                                                                   `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId                      *string                                                                                   `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName                    *string                                                                                   `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	EndTimestamp                  *string                                                                                   `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorMessage                  *string                                                                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	EtlCalculator                 *string                                                                                   `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
+	ExpireTime                    *string                                                                                   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FinishTime                    *string                                                                                   `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	GroupId                       *string                                                                                   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IsDemoJob                     *bool                                                                                     `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
+	JobType                       *string                                                                                   `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MigrationMode                 *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
 	OriginType                    *string                                                                                   `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
 	PayType                       *string                                                                                   `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Performance                   *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
@@ -7802,14 +8406,10 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetTaskTyp
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus) String() string {
@@ -7847,14 +8447,10 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatu
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus) String() string {
@@ -7892,14 +8488,10 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitiali
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus) String() string {
@@ -7936,17 +8528,16 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchron
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint struct {
-	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
-	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	AliyunUid       *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName      *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID      *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID       *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName        *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
 	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -8055,10 +8646,8 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMod
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance struct {
-	// 每秒同步的流量，单位为：MB/s
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// 每秒同步的记录数
-	Rps *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
+	Rps  *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance) String() string {
@@ -8083,8 +8672,7 @@ type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus s
 	Detail       []*DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
 	ErrorMessage *string                                                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Percent      *string                                                                            `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *string                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus) String() string {
@@ -8116,16 +8704,11 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStat
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail struct {
-	// 预检查项
-	CheckItem *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
-	// 检查项的描述
+	CheckItem            *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
 	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
-	// 检查结果 (NotStarted: 未启动, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Warning: 警告, Success: 完成)
-	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// 错误原因
-	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// 修复方法
-	RepairMethod *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
+	CheckResult          *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	FailedReason         *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	RepairMethod         *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail) String() string {
@@ -8162,22 +8745,14 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStat
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState struct {
-	// 错误信息
-	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// 任务ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 最大重试时间,单位秒
-	MaxRetryTime *int32 `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
-	// 模块名称 reader/store/writer/full/struct
-	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// 已重试次数
-	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	// srcDB/destDB/metaDB/dstore
-	RetryTarget *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
-	// 已重试时间,单位秒
-	RetryTime *int32 `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
-	// 是否重试中
-	Retrying *bool `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
+	ErrMsg       *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MaxRetryTime *int32  `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
+	Module       *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	RetryCount   *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RetryTarget  *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
+	RetryTime    *int32  `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
+	Retrying     *bool   `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState) String() string {
@@ -8229,17 +8804,16 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState) 
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint struct {
-	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
-	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	AliyunUid       *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName      *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID      *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID       *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName        *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
 	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -8314,14 +8888,10 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoi
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus) String() string {
@@ -8410,32 +8980,19 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscription
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList struct {
-	// 用户id
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 标签操作者
-	Creator *int64 `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 主键
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// region_id
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// dts instance id
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 资源类型
+	AliUid       *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Creator      *int64  `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 0为public，1为private (Public, Private, All)
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// 任务所在region，注意一般是dts的目标端region
-	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
-	// 标签类型：系统标签－System，用户标签－Custom (Custom, System, All)
-	TagCategory *string `json:"TagCategory,omitempty" xml:"TagCategory,omitempty"`
-	// 标签键tagkey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// 标签值tagvalue
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	Scope        *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	SrcRegion    *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	TagCategory  *string `json:"TagCategory,omitempty" xml:"TagCategory,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) String() string {
@@ -8512,17 +9069,16 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) Set
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint struct {
-	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
-	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	AliyunUid       *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName      *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID      *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID       *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName        *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
 	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -8597,14 +9153,10 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) SetUse
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus) String() string {
@@ -8693,32 +9245,19 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionHost) SetV
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobTagList struct {
-	// 用户id
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 标签操作者
-	Creator *int64 `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 主键
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// region_id
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// dts instance id
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 资源类型
+	AliUid       *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Creator      *int64  `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 0为public，1为private (Public, Private, All)
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// 任务所在region，注意一般是dts的目标端region
-	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
-	// 标签类型：系统标签－System，用户标签－Custom (Custom, System, All)
-	TagCategory *string `json:"TagCategory,omitempty" xml:"TagCategory,omitempty"`
-	// 标签键tagkey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// 标签值tagvalue
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	Scope        *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	SrcRegion    *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	TagCategory  *string `json:"TagCategory,omitempty" xml:"TagCategory,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubDistributedJobTagList) String() string {
@@ -8795,37 +9334,34 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetTagValue(v
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJob struct {
-	AppName                   *string                                                              `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTimestamp            *string                                                              `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
-	Checkpoint                *string                                                              `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	ConsumptionCheckpoint     *string                                                              `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	ConsumptionClient         *string                                                              `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
-	CreateTime                *string                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataEtlStatus             *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus             `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
-	DataInitializationStatus  *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus  `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	DataSynchronizationStatus *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	DatabaseCount             *int32                                                               `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
-	DbObject                  *string                                                              `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
-	Delay                     *int64                                                               `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	DestNetType               *string                                                              `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
-	DestinationEndpoint       *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
-	DtsInstanceID             *string                                                              `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	DtsJobClass               *string                                                              `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	// 请使用
-	DtsJobDirection *string `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
-	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	DtsJobName      *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	EndTimestamp    *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	ErrorMessage    *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	EtlCalculator   *string `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
-	ExpireTime      *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	FinishTime      *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	IsDemoJob       *bool   `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
-	// 返回结果中新增jobType字段
-	JobType       *string                                                  `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MigrationMode *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
-	// 任务来源 pts任务、dms任务 (PTS, DMS, DTS)
+	AppName                       *string                                                                  `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp                *string                                                                  `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                    *string                                                                  `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	ConsumptionCheckpoint         *string                                                                  `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient             *string                                                                  `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CreateTime                    *string                                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataEtlStatus                 *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus                 `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
+	DataInitializationStatus      *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus      `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus     *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus     `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DatabaseCount                 *int32                                                                   `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
+	DbObject                      *string                                                                  `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	Delay                         *int64                                                                   `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestNetType                   *string                                                                  `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
+	DestinationEndpoint           *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint           `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID                 *string                                                                  `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass                   *string                                                                  `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	DtsJobDirection               *string                                                                  `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId                      *string                                                                  `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName                    *string                                                                  `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	EndTimestamp                  *string                                                                  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorMessage                  *string                                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	EtlCalculator                 *string                                                                  `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
+	ExpireTime                    *string                                                                  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FinishTime                    *string                                                                  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	GroupId                       *string                                                                  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IsDemoJob                     *bool                                                                    `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
+	JobType                       *string                                                                  `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MigrationMode                 *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
 	OriginType                    *string                                                                  `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
 	PayType                       *string                                                                  `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Performance                   *DescribeDtsJobDetailResponseBodySubSyncJobPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
@@ -9080,14 +9616,10 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetTaskType(v string) *Desc
 
 type DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus) String() string {
@@ -9125,14 +9657,10 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus) SetStatus(v st
 
 type DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus) String() string {
@@ -9170,14 +9698,10 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus) Set
 
 type DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus) String() string {
@@ -9214,17 +9738,16 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus) Se
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint struct {
-	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
-	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	AliyunUid       *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName      *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID      *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID       *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName        *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
 	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -9333,10 +9856,8 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode) SetStructureIn
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobPerformance struct {
-	// 每秒同步的流量，单位为：MB/s
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// 每秒同步的记录数
-	Rps *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
+	Rps  *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobPerformance) String() string {
@@ -9361,8 +9882,7 @@ type DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus struct {
 	Detail       []*DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
 	ErrorMessage *string                                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Percent      *string                                                           `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus) String() string {
@@ -9394,16 +9914,11 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus) SetStatus(v s
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail struct {
-	// 预检查项
-	CheckItem *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
-	// 检查项的描述
+	CheckItem            *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
 	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
-	// 检查结果 (NotStarted: 未启动, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Warning: 警告, Success: 完成)
-	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// 错误原因
-	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// 修复方法
-	RepairMethod *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
+	CheckResult          *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	FailedReason         *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	RepairMethod         *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail) String() string {
@@ -9440,22 +9955,14 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail) SetRepa
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobRetryState struct {
-	// 错误信息
-	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// 任务ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 最大重试时间,单位秒
-	MaxRetryTime *int32 `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
-	// 模块名称 reader/store/writer/full/struct
-	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// 已重试次数
-	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	// srcDB/destDB/metaDB/dstore
-	RetryTarget *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
-	// 已重试时间,单位秒
-	RetryTime *int32 `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
-	// 是否重试中
-	Retrying *bool `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
+	ErrMsg       *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MaxRetryTime *int32  `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
+	Module       *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	RetryCount   *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RetryTarget  *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
+	RetryTime    *int32  `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
+	Retrying     *bool   `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobRetryState) String() string {
@@ -9507,37 +10014,34 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobRetryState) SetRetrying(v boo
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobReverseJob struct {
-	AppName                   *string                                                                        `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTimestamp            *string                                                                        `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
-	Checkpoint                *string                                                                        `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	ConsumptionCheckpoint     *string                                                                        `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	ConsumptionClient         *string                                                                        `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
-	CreateTime                *string                                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataEtlStatus             *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus             `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
-	DataInitializationStatus  *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus  `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	DataSynchronizationStatus *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	DatabaseCount             *int32                                                                         `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
-	DbObject                  *string                                                                        `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
-	Delay                     *int64                                                                         `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	DestNetType               *string                                                                        `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
-	DestinationEndpoint       *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
-	DtsInstanceID             *string                                                                        `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	DtsJobClass               *string                                                                        `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	// 请使用
-	DtsJobDirection *string `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
-	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	DtsJobName      *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	EndTimestamp    *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	ErrorMessage    *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	EtlCalculator   *string `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
-	ExpireTime      *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	FinishTime      *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	IsDemoJob       *bool   `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
-	// 返回结果中新增jobType字段
-	JobType       *string                                                            `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MigrationMode *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
-	// 任务来源 pts任务、dms任务 (PTS, DMS, DTS)
+	AppName                       *string                                                                            `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp                *string                                                                            `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                    *string                                                                            `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	ConsumptionCheckpoint         *string                                                                            `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient             *string                                                                            `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CreateTime                    *string                                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataEtlStatus                 *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus                 `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
+	DataInitializationStatus      *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus      `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus     *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus     `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DatabaseCount                 *int32                                                                             `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
+	DbObject                      *string                                                                            `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	Delay                         *int64                                                                             `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestNetType                   *string                                                                            `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
+	DestinationEndpoint           *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint           `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID                 *string                                                                            `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass                   *string                                                                            `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	DtsJobDirection               *string                                                                            `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId                      *string                                                                            `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName                    *string                                                                            `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	EndTimestamp                  *string                                                                            `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorMessage                  *string                                                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	EtlCalculator                 *string                                                                            `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
+	ExpireTime                    *string                                                                            `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FinishTime                    *string                                                                            `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	GroupId                       *string                                                                            `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IsDemoJob                     *bool                                                                              `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
+	JobType                       *string                                                                            `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MigrationMode                 *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
 	OriginType                    *string                                                                            `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
 	PayType                       *string                                                                            `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Performance                   *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
@@ -9786,14 +10290,10 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetTaskType(v str
 
 type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus) String() string {
@@ -9831,14 +10331,10 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus) SetS
 
 type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus) String() string {
@@ -9876,14 +10372,10 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationS
 
 type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus) String() string {
@@ -9920,17 +10412,16 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronization
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint struct {
-	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
-	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	AliyunUid       *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName      *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID      *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID       *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName        *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
 	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -10039,10 +10530,8 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode) SetS
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPerformance struct {
-	// 每秒同步的流量，单位为：MB/s
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// 每秒同步的记录数
-	Rps *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
+	Rps  *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPerformance) String() string {
@@ -10067,8 +10556,7 @@ type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus struct {
 	Detail       []*DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
 	ErrorMessage *string                                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Percent      *string                                                                     `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *string                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus) String() string {
@@ -10100,16 +10588,11 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus) Set
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail struct {
-	// 预检查项
-	CheckItem *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
-	// 检查项的描述
+	CheckItem            *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
 	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
-	// 检查结果 (NotStarted: 未启动, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Warning: 警告, Success: 完成)
-	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// 错误原因
-	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// 修复方法
-	RepairMethod *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
+	CheckResult          *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	FailedReason         *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	RepairMethod         *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail) String() string {
@@ -10146,22 +10629,14 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetai
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState struct {
-	// 错误信息
-	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// 任务ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 最大重试时间,单位秒
-	MaxRetryTime *int32 `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
-	// 模块名称 reader/store/writer/full/struct
-	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// 已重试次数
-	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	// srcDB/destDB/metaDB/dstore
-	RetryTarget *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
-	// 已重试时间,单位秒
-	RetryTime *int32 `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
-	// 是否重试中
-	Retrying *bool `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
+	ErrMsg       *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MaxRetryTime *int32  `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
+	Module       *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	RetryCount   *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RetryTarget  *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
+	RetryTime    *int32  `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
+	Retrying     *bool   `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState) String() string {
@@ -10213,17 +10688,16 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState) SetRetr
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint struct {
-	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
-	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	AliyunUid       *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName      *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID      *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID       *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName        *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
 	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -10298,14 +10772,10 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) Set
 
 type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus) String() string {
@@ -10394,32 +10864,19 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionHost) S
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList struct {
-	// 用户id
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 标签操作者
-	Creator *int64 `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 主键
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// region_id
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// dts instance id
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 资源类型
+	AliUid       *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Creator      *int64  `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 0为public，1为private (Public, Private, All)
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// 任务所在region，注意一般是dts的目标端region
-	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
-	// 标签类型：系统标签－System，用户标签－Custom (Custom, System, All)
-	TagCategory *string `json:"TagCategory,omitempty" xml:"TagCategory,omitempty"`
-	// 标签键tagkey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// 标签值tagvalue
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	Scope        *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	SrcRegion    *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	TagCategory  *string `json:"TagCategory,omitempty" xml:"TagCategory,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) String() string {
@@ -10496,17 +10953,16 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetTagValu
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint struct {
-	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
-	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	AliyunUid       *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName      *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID      *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID       *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName        *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
 	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -10581,14 +11037,10 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) SetUserName(v
 
 type DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 是否显示提升升级规格
-	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// 迁移进度
-	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 已经完成迁移的表数量
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus) String() string {
@@ -10677,32 +11129,19 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionHost) SetVpcHost(
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobTagList struct {
-	// 用户id
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 标签操作者
-	Creator *int64 `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 主键
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// region_id
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// dts instance id
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 资源类型
+	AliUid       *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Creator      *int64  `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 0为public，1为private (Public, Private, All)
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// 任务所在region，注意一般是dts的目标端region
-	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
-	// 标签类型：系统标签－System，用户标签－Custom (Custom, System, All)
-	TagCategory *string `json:"TagCategory,omitempty" xml:"TagCategory,omitempty"`
-	// 标签键tagkey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// 标签值tagvalue
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	Scope        *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	SrcRegion    *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	TagCategory  *string `json:"TagCategory,omitempty" xml:"TagCategory,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBodySubSyncJobTagList) String() string {
@@ -10861,6 +11300,7 @@ func (s *DescribeDtsJobDetailResponse) SetBody(v *DescribeDtsJobDetailResponseBo
 
 type DescribeDtsJobsRequest struct {
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
+	DtsInstanceId      *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	DtsJobId           *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	GroupId            *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	JobType            *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
@@ -10887,6 +11327,11 @@ func (s DescribeDtsJobsRequest) GoString() string {
 
 func (s *DescribeDtsJobsRequest) SetDedicatedClusterId(v string) *DescribeDtsJobsRequest {
 	s.DedicatedClusterId = &v
+	return s
+}
+
+func (s *DescribeDtsJobsRequest) SetDtsInstanceId(v string) *DescribeDtsJobsRequest {
+	s.DtsInstanceId = &v
 	return s
 }
 
@@ -11044,30 +11489,29 @@ func (s *DescribeDtsJobsResponseBody) SetTotalRecordCount(v int32) *DescribeDtsJ
 }
 
 type DescribeDtsJobsResponseBodyDtsJobList struct {
-	AppName                   *string                                                         `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTimestamp            *string                                                         `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
-	Checkpoint                *string                                                         `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	ConsumptionCheckpoint     *string                                                         `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	ConsumptionClient         *string                                                         `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
-	CpuUsage                  *string                                                         `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
-	CreateTime                *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataEtlStatus             *DescribeDtsJobsResponseBodyDtsJobListDataEtlStatus             `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
-	DataInitializationStatus  *DescribeDtsJobsResponseBodyDtsJobListDataInitializationStatus  `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	DataSynchronizationStatus *DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	DbObject                  *string                                                         `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
-	DedicatedClusterId        *string                                                         `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	Delay                     *int64                                                          `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	DestinationEndpoint       *DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
-	DtsInstanceID             *string                                                         `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	DtsJobClass               *string                                                         `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	DtsJobDirection           *string                                                         `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
-	DtsJobId                  *string                                                         `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	DtsJobName                *string                                                         `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	DuUsage                   *int64                                                          `json:"DuUsage,omitempty" xml:"DuUsage,omitempty"`
-	EndTimestamp              *string                                                         `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	ErrorMessage              *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ExpireTime                *string                                                         `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// DTS任务类型
+	AppName                       *string                                                             `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp                *string                                                             `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                    *string                                                             `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	ConsumptionCheckpoint         *string                                                             `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient             *string                                                             `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CpuUsage                      *string                                                             `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
+	CreateTime                    *string                                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataEtlStatus                 *DescribeDtsJobsResponseBodyDtsJobListDataEtlStatus                 `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
+	DataInitializationStatus      *DescribeDtsJobsResponseBodyDtsJobListDataInitializationStatus      `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus     *DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus     `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DbObject                      *string                                                             `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	DedicatedClusterId            *string                                                             `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
+	Delay                         *int64                                                              `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestinationEndpoint           *DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint           `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID                 *string                                                             `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass                   *string                                                             `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	DtsJobDirection               *string                                                             `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId                      *string                                                             `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName                    *string                                                             `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	DuUsage                       *int64                                                              `json:"DuUsage,omitempty" xml:"DuUsage,omitempty"`
+	EndTimestamp                  *string                                                             `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorMessage                  *string                                                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ExpireTime                    *string                                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	JobType                       *string                                                             `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	MemUsage                      *string                                                             `json:"MemUsage,omitempty" xml:"MemUsage,omitempty"`
 	MigrationMode                 *DescribeDtsJobsResponseBodyDtsJobListMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
@@ -12306,27 +12750,26 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListTagList) SetTagValue(v string) *De
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoList struct {
-	AppName                   *string                                                          `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTimestamp            *string                                                          `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
-	Checkpoint                *string                                                          `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	ConsumptionCheckpoint     *string                                                          `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	ConsumptionClient         *string                                                          `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
-	CreateTime                *string                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataEtlStatus             *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus             `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
-	DataInitializationStatus  *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus  `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	DataSynchronizationStatus *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	DbObject                  *string                                                          `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
-	Delay                     *int64                                                           `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	DestinationEndpoint       *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
-	DtsInstanceID             *string                                                          `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	DtsJobClass               *string                                                          `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	DtsJobDirection           *string                                                          `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
-	DtsJobId                  *string                                                          `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	DtsJobName                *string                                                          `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	EndTimestamp              *string                                                          `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	ErrorMessage              *string                                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ExpireTime                *string                                                          `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// DtsJob类型
+	AppName                       *string                                                              `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp                *string                                                              `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                    *string                                                              `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	ConsumptionCheckpoint         *string                                                              `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient             *string                                                              `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CreateTime                    *string                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataEtlStatus                 *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus                 `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
+	DataInitializationStatus      *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus      `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus     *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus     `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DbObject                      *string                                                              `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	Delay                         *int64                                                               `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestinationEndpoint           *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint           `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID                 *string                                                              `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass                   *string                                                              `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	DtsJobDirection               *string                                                              `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId                      *string                                                              `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName                    *string                                                              `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	EndTimestamp                  *string                                                              `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorMessage                  *string                                                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ExpireTime                    *string                                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	JobType                       *string                                                              `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	MigrationMode                 *DescribeDtsJobsResponseBodyEtlDemoListMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
 	OriginType                    *string                                                              `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
@@ -14460,8 +14903,13 @@ func (s *DescribeJobMonitorRuleResponseBody) SetTopics(v []*string) *DescribeJob
 
 type DescribeJobMonitorRuleResponseBodyMonitorRules struct {
 	DelayRuleTime *int64  `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobType       *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	NoticeValue   *int32  `json:"NoticeValue,omitempty" xml:"NoticeValue,omitempty"`
+	Period        *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	Phone         *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	State         *string `json:"State,omitempty" xml:"State,omitempty"`
+	Times         *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
 	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -14478,6 +14926,26 @@ func (s *DescribeJobMonitorRuleResponseBodyMonitorRules) SetDelayRuleTime(v int6
 	return s
 }
 
+func (s *DescribeJobMonitorRuleResponseBodyMonitorRules) SetJobId(v string) *DescribeJobMonitorRuleResponseBodyMonitorRules {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeJobMonitorRuleResponseBodyMonitorRules) SetJobType(v string) *DescribeJobMonitorRuleResponseBodyMonitorRules {
+	s.JobType = &v
+	return s
+}
+
+func (s *DescribeJobMonitorRuleResponseBodyMonitorRules) SetNoticeValue(v int32) *DescribeJobMonitorRuleResponseBodyMonitorRules {
+	s.NoticeValue = &v
+	return s
+}
+
+func (s *DescribeJobMonitorRuleResponseBodyMonitorRules) SetPeriod(v int32) *DescribeJobMonitorRuleResponseBodyMonitorRules {
+	s.Period = &v
+	return s
+}
+
 func (s *DescribeJobMonitorRuleResponseBodyMonitorRules) SetPhone(v string) *DescribeJobMonitorRuleResponseBodyMonitorRules {
 	s.Phone = &v
 	return s
@@ -14485,6 +14953,11 @@ func (s *DescribeJobMonitorRuleResponseBodyMonitorRules) SetPhone(v string) *Des
 
 func (s *DescribeJobMonitorRuleResponseBodyMonitorRules) SetState(v string) *DescribeJobMonitorRuleResponseBodyMonitorRules {
 	s.State = &v
+	return s
+}
+
+func (s *DescribeJobMonitorRuleResponseBodyMonitorRules) SetTimes(v int32) *DescribeJobMonitorRuleResponseBodyMonitorRules {
+	s.Times = &v
 	return s
 }
 
@@ -14523,22 +14996,17 @@ func (s *DescribeJobMonitorRuleResponse) SetBody(v *DescribeJobMonitorRuleRespon
 }
 
 type DescribeMetricListRequest struct {
-	// callType=AssumedRoleUser
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// 幂等性验证
+	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// migration job id
-	DtsJobId   *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Env        *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// NODE, CLUSTER
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// OwnerID
-	OwnerID   *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	Param     *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	Period    *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	DtsJobId    *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Env         *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	MetricName  *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	MetricType  *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	OwnerID     *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	Param       *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	Period      *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
+	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeMetricListRequest) String() string {
@@ -14605,25 +15073,18 @@ func (s *DescribeMetricListRequest) SetStartTime(v int64) *DescribeMetricListReq
 }
 
 type DescribeMetricListResponseBody struct {
-	// 后端错误码 数字递增
-	Code       *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	DataPoints []*DescribeMetricListResponseBodyDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
-	// 动态错误信息，会替换错误码里的"%s"
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// 错误短码 ps：InternalError
-	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// 错误信息（返回给用户）
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// 异常对应的http code
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	MetricName     *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// NODE, CLUSTER
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	Param      *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	Period     *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调用结果
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	DataPoints     []*DescribeMetricListResponseBodyDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
+	DynamicMessage *string                                     `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode        *string                                     `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage     *string                                     `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	MetricName     *string                                     `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	MetricType     *string                                     `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	Param          *string                                     `json:"Param,omitempty" xml:"Param,omitempty"`
+	Period         *int64                                      `json:"Period,omitempty" xml:"Period,omitempty"`
+	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeMetricListResponseBody) String() string {
@@ -16551,140 +17012,6 @@ func (s *DescribeMigrationJobsResponse) SetStatusCode(v int32) *DescribeMigratio
 }
 
 func (s *DescribeMigrationJobsResponse) SetBody(v *DescribeMigrationJobsResponseBody) *DescribeMigrationJobsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeModifyConfigLogRequest struct {
-	DtsJobId  *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeModifyConfigLogRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeModifyConfigLogRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeModifyConfigLogRequest) SetDtsJobId(v string) *DescribeModifyConfigLogRequest {
-	s.DtsJobId = &v
-	return s
-}
-
-func (s *DescribeModifyConfigLogRequest) SetEndTime(v int64) *DescribeModifyConfigLogRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeModifyConfigLogRequest) SetOwnerId(v string) *DescribeModifyConfigLogRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeModifyConfigLogRequest) SetRegionId(v string) *DescribeModifyConfigLogRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeModifyConfigLogRequest) SetStartTime(v int64) *DescribeModifyConfigLogRequest {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeModifyConfigLogResponseBody struct {
-	ModifyConfigLogs []*DescribeModifyConfigLogResponseBodyModifyConfigLogs `json:"ModifyConfigLogs,omitempty" xml:"ModifyConfigLogs,omitempty" type:"Repeated"`
-	RequestId        *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeModifyConfigLogResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeModifyConfigLogResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeModifyConfigLogResponseBody) SetModifyConfigLogs(v []*DescribeModifyConfigLogResponseBodyModifyConfigLogs) *DescribeModifyConfigLogResponseBody {
-	s.ModifyConfigLogs = v
-	return s
-}
-
-func (s *DescribeModifyConfigLogResponseBody) SetRequestId(v string) *DescribeModifyConfigLogResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeModifyConfigLogResponseBodyModifyConfigLogs struct {
-	ModifyTime        *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Module            *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	NewParameterValue *string `json:"NewParameterValue,omitempty" xml:"NewParameterValue,omitempty"`
-	OldParameterValue *string `json:"OldParameterValue,omitempty" xml:"OldParameterValue,omitempty"`
-	ParameterName     *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-}
-
-func (s DescribeModifyConfigLogResponseBodyModifyConfigLogs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeModifyConfigLogResponseBodyModifyConfigLogs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeModifyConfigLogResponseBodyModifyConfigLogs) SetModifyTime(v int64) *DescribeModifyConfigLogResponseBodyModifyConfigLogs {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *DescribeModifyConfigLogResponseBodyModifyConfigLogs) SetModule(v string) *DescribeModifyConfigLogResponseBodyModifyConfigLogs {
-	s.Module = &v
-	return s
-}
-
-func (s *DescribeModifyConfigLogResponseBodyModifyConfigLogs) SetNewParameterValue(v string) *DescribeModifyConfigLogResponseBodyModifyConfigLogs {
-	s.NewParameterValue = &v
-	return s
-}
-
-func (s *DescribeModifyConfigLogResponseBodyModifyConfigLogs) SetOldParameterValue(v string) *DescribeModifyConfigLogResponseBodyModifyConfigLogs {
-	s.OldParameterValue = &v
-	return s
-}
-
-func (s *DescribeModifyConfigLogResponseBodyModifyConfigLogs) SetParameterName(v string) *DescribeModifyConfigLogResponseBodyModifyConfigLogs {
-	s.ParameterName = &v
-	return s
-}
-
-type DescribeModifyConfigLogResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeModifyConfigLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeModifyConfigLogResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeModifyConfigLogResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeModifyConfigLogResponse) SetHeaders(v map[string]*string) *DescribeModifyConfigLogResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeModifyConfigLogResponse) SetStatusCode(v int32) *DescribeModifyConfigLogResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeModifyConfigLogResponse) SetBody(v *DescribeModifyConfigLogResponseBody) *DescribeModifyConfigLogResponse {
 	s.Body = v
 	return s
 }
@@ -21889,14 +22216,12 @@ type ModifyDtsJobRequest struct {
 	DbList                     map[string]interface{} `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	DtsInstanceId              *string                `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	EtlOperatorColumnReference *string                `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
-	// 文件上传后的url
-	FileOssUrl *string `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
-	// 修改任务的方式，当为UPDATE_RESERVED时为修改reserve字段，不传默认修改dbList
-	ModifyTypeEnum *string `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 新增的reserved字段，新增而不是覆盖
-	Reserved                 *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
-	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	FileOssUrl                 *string                `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
+	FilterTableName            *string                `json:"FilterTableName,omitempty" xml:"FilterTableName,omitempty"`
+	ModifyTypeEnum             *string                `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
+	RegionId                   *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Reserved                   *string                `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	SynchronizationDirection   *string                `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 }
 
 func (s ModifyDtsJobRequest) String() string {
@@ -21932,6 +22257,11 @@ func (s *ModifyDtsJobRequest) SetFileOssUrl(v string) *ModifyDtsJobRequest {
 	return s
 }
 
+func (s *ModifyDtsJobRequest) SetFilterTableName(v string) *ModifyDtsJobRequest {
+	s.FilterTableName = &v
+	return s
+}
+
 func (s *ModifyDtsJobRequest) SetModifyTypeEnum(v string) *ModifyDtsJobRequest {
 	s.ModifyTypeEnum = &v
 	return s
@@ -21958,12 +22288,11 @@ type ModifyDtsJobAdvanceRequest struct {
 	DbList                     map[string]interface{} `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	DtsInstanceId              *string                `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	EtlOperatorColumnReference *string                `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
-	// 修改任务的方式，当为UPDATE_RESERVED时为修改reserve字段，不传默认修改dbList
-	ModifyTypeEnum *string `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 新增的reserved字段，新增而不是覆盖
-	Reserved                 *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
-	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	FilterTableName            *string                `json:"FilterTableName,omitempty" xml:"FilterTableName,omitempty"`
+	ModifyTypeEnum             *string                `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
+	RegionId                   *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Reserved                   *string                `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	SynchronizationDirection   *string                `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 }
 
 func (s ModifyDtsJobAdvanceRequest) String() string {
@@ -21999,6 +22328,11 @@ func (s *ModifyDtsJobAdvanceRequest) SetEtlOperatorColumnReference(v string) *Mo
 	return s
 }
 
+func (s *ModifyDtsJobAdvanceRequest) SetFilterTableName(v string) *ModifyDtsJobAdvanceRequest {
+	s.FilterTableName = &v
+	return s
+}
+
 func (s *ModifyDtsJobAdvanceRequest) SetModifyTypeEnum(v string) *ModifyDtsJobAdvanceRequest {
 	s.ModifyTypeEnum = &v
 	return s
@@ -22024,14 +22358,12 @@ type ModifyDtsJobShrinkRequest struct {
 	DbListShrink               *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	DtsInstanceId              *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	EtlOperatorColumnReference *string `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
-	// 文件上传后的url
-	FileOssUrl *string `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
-	// 修改任务的方式，当为UPDATE_RESERVED时为修改reserve字段，不传默认修改dbList
-	ModifyTypeEnum *string `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 新增的reserved字段，新增而不是覆盖
-	Reserved                 *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
-	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	FileOssUrl                 *string `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
+	FilterTableName            *string `json:"FilterTableName,omitempty" xml:"FilterTableName,omitempty"`
+	ModifyTypeEnum             *string `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
+	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Reserved                   *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	SynchronizationDirection   *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 }
 
 func (s ModifyDtsJobShrinkRequest) String() string {
@@ -22064,6 +22396,11 @@ func (s *ModifyDtsJobShrinkRequest) SetEtlOperatorColumnReference(v string) *Mod
 
 func (s *ModifyDtsJobShrinkRequest) SetFileOssUrl(v string) *ModifyDtsJobShrinkRequest {
 	s.FileOssUrl = &v
+	return s
+}
+
+func (s *ModifyDtsJobShrinkRequest) SetFilterTableName(v string) *ModifyDtsJobShrinkRequest {
+	s.FilterTableName = &v
 	return s
 }
 
@@ -24559,6 +24896,7 @@ type SummaryJobDetailRequest struct {
 	DtsJobId                 *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	JobCode                  *string `json:"JobCode,omitempty" xml:"JobCode,omitempty"`
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StructType               *string `json:"StructType,omitempty" xml:"StructType,omitempty"`
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 }
 
@@ -24587,6 +24925,11 @@ func (s *SummaryJobDetailRequest) SetJobCode(v string) *SummaryJobDetailRequest 
 
 func (s *SummaryJobDetailRequest) SetRegionId(v string) *SummaryJobDetailRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SummaryJobDetailRequest) SetStructType(v string) *SummaryJobDetailRequest {
+	s.StructType = &v
 	return s
 }
 
@@ -26182,6 +26525,10 @@ func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest
 		query["Checkpoint"] = request.Checkpoint
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DataCheckConfigure)) {
+		query["DataCheckConfigure"] = request.DataCheckConfigure
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DataInitialization)) {
 		query["DataInitialization"] = request.DataInitialization
 	}
@@ -27632,6 +27979,14 @@ func (client *Client) CreateJobMonitorRuleWithOptions(request *CreateJobMonitorR
 		query["DtsJobId"] = request.DtsJobId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NoticeValue)) {
+		query["NoticeValue"] = request.NoticeValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Phone)) {
 		query["Phone"] = request.Phone
 	}
@@ -27642,6 +27997,10 @@ func (client *Client) CreateJobMonitorRuleWithOptions(request *CreateJobMonitorR
 
 	if !tea.BoolValue(util.IsUnset(request.State)) {
 		query["State"] = request.State
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Times)) {
+		query["Times"] = request.Times
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -28310,6 +28669,66 @@ func (client *Client) DeleteSynchronizationJob(request *DeleteSynchronizationJob
 	return _result, _err
 }
 
+func (client *Client) DescribeCheckJobsWithOptions(request *DescribeCheckJobsRequest, runtime *util.RuntimeOptions) (_result *DescribeCheckJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckType)) {
+		query["CheckType"] = request.CheckType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobName)) {
+		query["JobName"] = request.JobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCheckJobs"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCheckJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCheckJobs(request *DescribeCheckJobsRequest) (_result *DescribeCheckJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCheckJobsResponse{}
+	_body, _err := client.DescribeCheckJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeClusterOperateLogsWithOptions(request *DescribeClusterOperateLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterOperateLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28774,6 +29193,178 @@ func (client *Client) DescribeDTSIP(request *DescribeDTSIPRequest) (_result *Des
 	return _result, _err
 }
 
+func (client *Client) DescribeDataCheckReportUrlWithOptions(request *DescribeDataCheckReportUrlRequest, runtime *util.RuntimeOptions) (_result *DescribeDataCheckReportUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobStepId)) {
+		query["JobStepId"] = request.JobStepId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbName)) {
+		query["TbName"] = request.TbName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataCheckReportUrl"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDataCheckReportUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDataCheckReportUrl(request *DescribeDataCheckReportUrlRequest) (_result *DescribeDataCheckReportUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDataCheckReportUrlResponse{}
+	_body, _err := client.DescribeDataCheckReportUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDataCheckTableDetailsWithOptions(request *DescribeDataCheckTableDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeDataCheckTableDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobStepId)) {
+		query["JobStepId"] = request.JobStepId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataCheckTableDetails"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDataCheckTableDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDataCheckTableDetails(request *DescribeDataCheckTableDetailsRequest) (_result *DescribeDataCheckTableDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDataCheckTableDetailsResponse{}
+	_body, _err := client.DescribeDataCheckTableDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDataCheckTableDiffDetailsWithOptions(request *DescribeDataCheckTableDiffDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeDataCheckTableDiffDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobStepId)) {
+		query["JobStepId"] = request.JobStepId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbName)) {
+		query["TbName"] = request.TbName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataCheckTableDiffDetails"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDataCheckTableDiffDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDataCheckTableDiffDetails(request *DescribeDataCheckTableDiffDetailsRequest) (_result *DescribeDataCheckTableDiffDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDataCheckTableDiffDetailsResponse{}
+	_body, _err := client.DescribeDataCheckTableDiffDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDedicatedClusterWithOptions(request *DescribeDedicatedClusterRequest, runtime *util.RuntimeOptions) (_result *DescribeDedicatedClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28938,62 +29529,6 @@ func (client *Client) DescribeDtsEtlJobVersionInfo(request *DescribeDtsEtlJobVer
 	return _result, _err
 }
 
-func (client *Client) DescribeDtsJobConfigWithOptions(request *DescribeDtsJobConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeDtsJobConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
-		query["DtsJobId"] = request.DtsJobId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Module)) {
-		query["Module"] = request.Module
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDtsJobConfig"),
-		Version:     tea.String("2020-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDtsJobConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDtsJobConfig(request *DescribeDtsJobConfigRequest) (_result *DescribeDtsJobConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDtsJobConfigResponse{}
-	_body, _err := client.DescribeDtsJobConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeDtsJobDetailWithOptions(request *DescribeDtsJobDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeDtsJobDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29062,6 +29597,10 @@ func (client *Client) DescribeDtsJobsWithOptions(request *DescribeDtsJobsRequest
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DedicatedClusterId)) {
 		query["DedicatedClusterId"] = request.DedicatedClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
@@ -29787,66 +30326,6 @@ func (client *Client) DescribeMigrationJobs(request *DescribeMigrationJobsReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMigrationJobsResponse{}
 	_body, _err := client.DescribeMigrationJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeModifyConfigLogWithOptions(request *DescribeModifyConfigLogRequest, runtime *util.RuntimeOptions) (_result *DescribeModifyConfigLogResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
-		query["DtsJobId"] = request.DtsJobId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeModifyConfigLog"),
-		Version:     tea.String("2020-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeModifyConfigLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeModifyConfigLog(request *DescribeModifyConfigLogRequest) (_result *DescribeModifyConfigLogResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeModifyConfigLogResponse{}
-	_body, _err := client.DescribeModifyConfigLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31207,6 +31686,10 @@ func (client *Client) ModifyDtsJobWithOptions(tmpReq *ModifyDtsJobRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.EtlOperatorColumnReference)) {
 		body["EtlOperatorColumnReference"] = request.EtlOperatorColumnReference
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterTableName)) {
+		body["FilterTableName"] = request.FilterTableName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ModifyTypeEnum)) {
@@ -32584,6 +33067,10 @@ func (client *Client) SummaryJobDetailWithOptions(request *SummaryJobDetailReque
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StructType)) {
+		query["StructType"] = request.StructType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
