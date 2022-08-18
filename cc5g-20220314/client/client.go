@@ -220,10 +220,12 @@ type CreateAuthorizationRuleRequest struct {
 	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Destination              *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort          *string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
 	DestinationType          *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Policy                   *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol                 *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	SourceCidr               *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
 	WirelessCloudConnectorId *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
 }
@@ -251,6 +253,11 @@ func (s *CreateAuthorizationRuleRequest) SetDestination(v string) *CreateAuthori
 	return s
 }
 
+func (s *CreateAuthorizationRuleRequest) SetDestinationPort(v string) *CreateAuthorizationRuleRequest {
+	s.DestinationPort = &v
+	return s
+}
+
 func (s *CreateAuthorizationRuleRequest) SetDestinationType(v string) *CreateAuthorizationRuleRequest {
 	s.DestinationType = &v
 	return s
@@ -268,6 +275,11 @@ func (s *CreateAuthorizationRuleRequest) SetName(v string) *CreateAuthorizationR
 
 func (s *CreateAuthorizationRuleRequest) SetPolicy(v string) *CreateAuthorizationRuleRequest {
 	s.Policy = &v
+	return s
+}
+
+func (s *CreateAuthorizationRuleRequest) SetProtocol(v string) *CreateAuthorizationRuleRequest {
+	s.Protocol = &v
 	return s
 }
 
@@ -1672,12 +1684,14 @@ func (s *GetWirelessCloudConnectorResponse) SetBody(v *GetWirelessCloudConnector
 type ListAuthorizationRulesRequest struct {
 	AuthorizationRuleIds     []*string `json:"AuthorizationRuleIds,omitempty" xml:"AuthorizationRuleIds,omitempty" type:"Repeated"`
 	Destination              *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort          *string   `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
 	DestinationType          *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	Dns                      *bool     `json:"Dns,omitempty" xml:"Dns,omitempty"`
 	MaxResults               *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	Names                    []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
 	NextToken                *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Policy                   *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol                 *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	Statuses                 []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 	Type                     *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 	WirelessCloudConnectorId *string   `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
@@ -1698,6 +1712,11 @@ func (s *ListAuthorizationRulesRequest) SetAuthorizationRuleIds(v []*string) *Li
 
 func (s *ListAuthorizationRulesRequest) SetDestination(v string) *ListAuthorizationRulesRequest {
 	s.Destination = &v
+	return s
+}
+
+func (s *ListAuthorizationRulesRequest) SetDestinationPort(v string) *ListAuthorizationRulesRequest {
+	s.DestinationPort = &v
 	return s
 }
 
@@ -1728,6 +1747,11 @@ func (s *ListAuthorizationRulesRequest) SetNextToken(v string) *ListAuthorizatio
 
 func (s *ListAuthorizationRulesRequest) SetPolicy(v string) *ListAuthorizationRulesRequest {
 	s.Policy = &v
+	return s
+}
+
+func (s *ListAuthorizationRulesRequest) SetProtocol(v string) *ListAuthorizationRulesRequest {
+	s.Protocol = &v
 	return s
 }
 
@@ -1792,10 +1816,12 @@ type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Destination         *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort     *string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
 	DestinationType     *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	Dns                 *bool   `json:"Dns,omitempty" xml:"Dns,omitempty"`
 	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	SourceCidr          *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
 	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -1829,6 +1855,11 @@ func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetDestination(v 
 	return s
 }
 
+func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetDestinationPort(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
+	s.DestinationPort = &v
+	return s
+}
+
 func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetDestinationType(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
 	s.DestinationType = &v
 	return s
@@ -1846,6 +1877,11 @@ func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetName(v string)
 
 func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetPolicy(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
 	s.Policy = &v
+	return s
+}
+
+func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetProtocol(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
+	s.Protocol = &v
 	return s
 }
 
@@ -3860,9 +3896,11 @@ type UpdateAuthorizationRuleRequest struct {
 	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Destination              *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort          *string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
 	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Policy                   *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol                 *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	SourceCidr               *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
 	WirelessCloudConnectorId *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
 }
@@ -3895,6 +3933,11 @@ func (s *UpdateAuthorizationRuleRequest) SetDestination(v string) *UpdateAuthori
 	return s
 }
 
+func (s *UpdateAuthorizationRuleRequest) SetDestinationPort(v string) *UpdateAuthorizationRuleRequest {
+	s.DestinationPort = &v
+	return s
+}
+
 func (s *UpdateAuthorizationRuleRequest) SetDryRun(v bool) *UpdateAuthorizationRuleRequest {
 	s.DryRun = &v
 	return s
@@ -3907,6 +3950,11 @@ func (s *UpdateAuthorizationRuleRequest) SetName(v string) *UpdateAuthorizationR
 
 func (s *UpdateAuthorizationRuleRequest) SetPolicy(v string) *UpdateAuthorizationRuleRequest {
 	s.Policy = &v
+	return s
+}
+
+func (s *UpdateAuthorizationRuleRequest) SetProtocol(v string) *UpdateAuthorizationRuleRequest {
+	s.Protocol = &v
 	return s
 }
 
@@ -4581,6 +4629,10 @@ func (client *Client) CreateAuthorizationRuleWithOptions(request *CreateAuthoriz
 		query["Destination"] = request.Destination
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DestinationPort)) {
+		query["DestinationPort"] = request.DestinationPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
 		query["DestinationType"] = request.DestinationType
 	}
@@ -4595,6 +4647,10 @@ func (client *Client) CreateAuthorizationRuleWithOptions(request *CreateAuthoriz
 
 	if !tea.BoolValue(util.IsUnset(request.Policy)) {
 		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceCidr)) {
@@ -6053,6 +6109,10 @@ func (client *Client) UpdateAuthorizationRuleWithOptions(request *UpdateAuthoriz
 		query["Destination"] = request.Destination
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DestinationPort)) {
+		query["DestinationPort"] = request.DestinationPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["DryRun"] = request.DryRun
 	}
@@ -6063,6 +6123,10 @@ func (client *Client) UpdateAuthorizationRuleWithOptions(request *UpdateAuthoriz
 
 	if !tea.BoolValue(util.IsUnset(request.Policy)) {
 		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceCidr)) {
