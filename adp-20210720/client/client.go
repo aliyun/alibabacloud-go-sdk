@@ -13,40 +13,23 @@ import (
 )
 
 type ComponentVersion struct {
-	// appVersion
-	AppVersion *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
-	// componentName
-	ComponentName *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
-	// componentUID
-	ComponentUID *string `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
-	// description
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// documents
-	Documents *string `json:"documents,omitempty" xml:"documents,omitempty"`
-	// imagesMapping
-	ImagesMapping *string `json:"imagesMapping,omitempty" xml:"imagesMapping,omitempty"`
-	// namespace
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// orchestrationType
-	OrchestrationType *string `json:"orchestrationType,omitempty" xml:"orchestrationType,omitempty"`
-	// orchestrationValues
-	OrchestrationValues *string `json:"orchestrationValues,omitempty" xml:"orchestrationValues,omitempty"`
-	// packageURL
-	PackageURL *string `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
-	// parentComponent
-	ParentComponent *bool `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
-	// platforms
-	Platforms []*Platform `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
-	// readme
-	Readme *string `json:"readme,omitempty" xml:"readme,omitempty"`
-	// resources
-	Resources *string `json:"resources,omitempty" xml:"resources,omitempty"`
-	// source
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// uid
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// version
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	AppVersion          *string     `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	ComponentName       *string     `json:"componentName,omitempty" xml:"componentName,omitempty"`
+	ComponentUID        *string     `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
+	Description         *string     `json:"description,omitempty" xml:"description,omitempty"`
+	Documents           *string     `json:"documents,omitempty" xml:"documents,omitempty"`
+	ImagesMapping       *string     `json:"imagesMapping,omitempty" xml:"imagesMapping,omitempty"`
+	Namespace           *string     `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	OrchestrationType   *string     `json:"orchestrationType,omitempty" xml:"orchestrationType,omitempty"`
+	OrchestrationValues *string     `json:"orchestrationValues,omitempty" xml:"orchestrationValues,omitempty"`
+	PackageURL          *string     `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
+	ParentComponent     *bool       `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
+	Platforms           []*Platform `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+	Readme              *string     `json:"readme,omitempty" xml:"readme,omitempty"`
+	Resources           *string     `json:"resources,omitempty" xml:"resources,omitempty"`
+	Source              *string     `json:"source,omitempty" xml:"source,omitempty"`
+	Uid                 *string     `json:"uid,omitempty" xml:"uid,omitempty"`
+	Version             *string     `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ComponentVersion) String() string {
@@ -143,18 +126,12 @@ func (s *ComponentVersion) SetVersion(v string) *ComponentVersion {
 }
 
 type Disk struct {
-	// capacity
-	Capacity *int32 `json:"capacity,omitempty" xml:"capacity,omitempty"`
-	// fsType
-	FsType *string `json:"fsType,omitempty" xml:"fsType,omitempty"`
-	// mountPoint
+	Capacity   *int32  `json:"capacity,omitempty" xml:"capacity,omitempty"`
+	FsType     *string `json:"fsType,omitempty" xml:"fsType,omitempty"`
 	MountPoint *string `json:"mountPoint,omitempty" xml:"mountPoint,omitempty"`
-	// name
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// remain
-	Remain *int32 `json:"remain,omitempty" xml:"remain,omitempty"`
-	// type
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	Remain     *int32  `json:"remain,omitempty" xml:"remain,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s Disk) String() string {
@@ -196,14 +173,10 @@ func (s *Disk) SetType(v string) *Disk {
 }
 
 type ExportPort struct {
-	// 目标IP 段
-	CidrIP *string `json:"cidrIP,omitempty" xml:"cidrIP,omitempty"`
-	// 端口范围，格式：start/end
+	CidrIP    *string `json:"cidrIP,omitempty" xml:"cidrIP,omitempty"`
 	PortRange *string `json:"portRange,omitempty" xml:"portRange,omitempty"`
-	// 协议
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// 为true，则代表deny
-	Unallowed *bool `json:"unallowed,omitempty" xml:"unallowed,omitempty"`
+	Protocol  *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	Unallowed *bool   `json:"unallowed,omitempty" xml:"unallowed,omitempty"`
 }
 
 func (s ExportPort) String() string {
@@ -235,66 +208,36 @@ func (s *ExportPort) SetUnallowed(v bool) *ExportPort {
 }
 
 type FoundationComponentReferenceDetail struct {
-	// appVersion
-	AppVersion *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
-	// category
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// class
-	Class *string `json:"class,omitempty" xml:"class,omitempty"`
-	// componentDescription
-	ComponentDescription *string `json:"componentDescription,omitempty" xml:"componentDescription,omitempty"`
-	// componentName
-	ComponentName *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
-	// componentReferenceUID
-	ComponentReferenceUID *string `json:"componentReferenceUID,omitempty" xml:"componentReferenceUID,omitempty"`
-	// componentUID
-	ComponentUID *string `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
-	// componentVersionDescription
+	AppVersion                  *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	Category                    *string `json:"category,omitempty" xml:"category,omitempty"`
+	Class                       *string `json:"class,omitempty" xml:"class,omitempty"`
+	ComponentDescription        *string `json:"componentDescription,omitempty" xml:"componentDescription,omitempty"`
+	ComponentName               *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
+	ComponentReferenceUID       *string `json:"componentReferenceUID,omitempty" xml:"componentReferenceUID,omitempty"`
+	ComponentUID                *string `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
 	ComponentVersionDescription *string `json:"componentVersionDescription,omitempty" xml:"componentVersionDescription,omitempty"`
-	// componentVersionUID
-	ComponentVersionUID *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
-	// createdAt
-	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// documents
-	Documents *string `json:"documents,omitempty" xml:"documents,omitempty"`
-	// enable
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// imagesMapping
-	ImagesMapping *string `json:"imagesMapping,omitempty" xml:"imagesMapping,omitempty"`
-	// namespace
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// orchestrationType
-	OrchestrationType *string `json:"orchestrationType,omitempty" xml:"orchestrationType,omitempty"`
-	// orchestrationValues
-	OrchestrationValues *string `json:"orchestrationValues,omitempty" xml:"orchestrationValues,omitempty"`
-	// parentComponent
-	ParentComponent *bool `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
-	// parentComponentVersionUID
-	ParentComponentVersionUID *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
-	// priority
-	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
-	// provider
-	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// public
-	Public *bool `json:"public,omitempty" xml:"public,omitempty"`
-	// readme
-	Readme *string `json:"readme,omitempty" xml:"readme,omitempty"`
-	// relationUID
-	RelationUID *string `json:"relationUID,omitempty" xml:"relationUID,omitempty"`
-	// releaseName
-	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-	// resources
-	Resources *string `json:"resources,omitempty" xml:"resources,omitempty"`
-	// sequence
-	Sequence *int32 `json:"sequence,omitempty" xml:"sequence,omitempty"`
-	// singleton
-	Singleton *bool `json:"singleton,omitempty" xml:"singleton,omitempty"`
-	// source
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// values
-	Values *string `json:"values,omitempty" xml:"values,omitempty"`
-	// version
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	ComponentVersionUID         *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	CreatedAt                   *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Documents                   *string `json:"documents,omitempty" xml:"documents,omitempty"`
+	Enable                      *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	ImagesMapping               *string `json:"imagesMapping,omitempty" xml:"imagesMapping,omitempty"`
+	Namespace                   *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	OrchestrationType           *string `json:"orchestrationType,omitempty" xml:"orchestrationType,omitempty"`
+	OrchestrationValues         *string `json:"orchestrationValues,omitempty" xml:"orchestrationValues,omitempty"`
+	ParentComponent             *bool   `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
+	ParentComponentVersionUID   *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
+	Priority                    *int32  `json:"priority,omitempty" xml:"priority,omitempty"`
+	Provider                    *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	Public                      *bool   `json:"public,omitempty" xml:"public,omitempty"`
+	Readme                      *string `json:"readme,omitempty" xml:"readme,omitempty"`
+	RelationUID                 *string `json:"relationUID,omitempty" xml:"relationUID,omitempty"`
+	ReleaseName                 *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+	Resources                   *string `json:"resources,omitempty" xml:"resources,omitempty"`
+	Sequence                    *int32  `json:"sequence,omitempty" xml:"sequence,omitempty"`
+	Singleton                   *bool   `json:"singleton,omitempty" xml:"singleton,omitempty"`
+	Source                      *string `json:"source,omitempty" xml:"source,omitempty"`
+	Values                      *string `json:"values,omitempty" xml:"values,omitempty"`
+	Version                     *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s FoundationComponentReferenceDetail) String() string {
@@ -456,36 +399,21 @@ func (s *FoundationComponentReferenceDetail) SetVersion(v string) *FoundationCom
 }
 
 type FoundationVersion struct {
-	// cluster config schema，用作针对 cluster config 进行校验以及前端可根据改数据进行展示
-	ClusterConfigSchema *string `json:"clusterConfigSchema,omitempty" xml:"clusterConfigSchema,omitempty"`
-	// 支持的 cluster 引擎列表
-	ClusterEngines []*FoundationVersionClusterEngines `json:"clusterEngines,omitempty" xml:"clusterEngines,omitempty" type:"Repeated"`
-	// 默认 cluster config，需要通过base64 进行编码
-	DefaultClusterConfig *string `json:"defaultClusterConfig,omitempty" xml:"defaultClusterConfig,omitempty"`
-	// description
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// documents
-	Documents *string `json:"documents,omitempty" xml:"documents,omitempty"`
-	// 驱动层描述
-	Driver *FoundationVersionDriver `json:"driver,omitempty" xml:"driver,omitempty" type:"Struct"`
-	// 底座功能列表
-	Features []*string `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
-	// 标签
-	Labels *string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// name，目前仅能是 “ADP 底座“
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 打包工具
-	PackageTools []*FoundationVersionPackageTools `json:"packageTools,omitempty" xml:"packageTools,omitempty" type:"Repeated"`
-	// platforms
-	Platforms []*Platform `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
-	// status，ENUM:["Testing","Published","Deprecated"] Published 后，则全平台所有用户可见，请谨慎操作
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// the type of foundation version,ENUM:["trident","ack"]
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// uid
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// version
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	ClusterConfigSchema  *string                            `json:"clusterConfigSchema,omitempty" xml:"clusterConfigSchema,omitempty"`
+	ClusterEngines       []*FoundationVersionClusterEngines `json:"clusterEngines,omitempty" xml:"clusterEngines,omitempty" type:"Repeated"`
+	DefaultClusterConfig *string                            `json:"defaultClusterConfig,omitempty" xml:"defaultClusterConfig,omitempty"`
+	Description          *string                            `json:"description,omitempty" xml:"description,omitempty"`
+	Documents            *string                            `json:"documents,omitempty" xml:"documents,omitempty"`
+	Driver               *FoundationVersionDriver           `json:"driver,omitempty" xml:"driver,omitempty" type:"Struct"`
+	Features             []*string                          `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
+	Labels               *string                            `json:"labels,omitempty" xml:"labels,omitempty"`
+	Name                 *string                            `json:"name,omitempty" xml:"name,omitempty"`
+	PackageTools         []*FoundationVersionPackageTools   `json:"packageTools,omitempty" xml:"packageTools,omitempty" type:"Repeated"`
+	Platforms            []*Platform                        `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+	Status               *string                            `json:"status,omitempty" xml:"status,omitempty"`
+	Type                 *string                            `json:"type,omitempty" xml:"type,omitempty"`
+	Uid                  *string                            `json:"uid,omitempty" xml:"uid,omitempty"`
+	Version              *string                            `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s FoundationVersion) String() string {
@@ -572,14 +500,12 @@ func (s *FoundationVersion) SetVersion(v string) *FoundationVersion {
 }
 
 type FoundationVersionClusterEngines struct {
-	// cluster engine 支持的打包工具定义
-	PackageTools []*FoundationVersionClusterEnginesPackageTools `json:"packageTools,omitempty" xml:"packageTools,omitempty" type:"Repeated"`
-	// cluster engine 的包
-	Packages []*FoundationVersionClusterEnginesPackages `json:"packages,omitempty" xml:"packages,omitempty" type:"Repeated"`
-	// cluster engine 列表
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// cluster engine 版本
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	InfrastructureStatements []*FoundationVersionClusterEnginesInfrastructureStatements `json:"infrastructureStatements,omitempty" xml:"infrastructureStatements,omitempty" type:"Repeated"`
+	NetworkList              []*FoundationVersionClusterEnginesNetworkList              `json:"networkList,omitempty" xml:"networkList,omitempty" type:"Repeated"`
+	PackageTools             []*FoundationVersionClusterEnginesPackageTools             `json:"packageTools,omitempty" xml:"packageTools,omitempty" type:"Repeated"`
+	Packages                 []*FoundationVersionClusterEnginesPackages                 `json:"packages,omitempty" xml:"packages,omitempty" type:"Repeated"`
+	Type                     *string                                                    `json:"type,omitempty" xml:"type,omitempty"`
+	Version                  *string                                                    `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s FoundationVersionClusterEngines) String() string {
@@ -588,6 +514,16 @@ func (s FoundationVersionClusterEngines) String() string {
 
 func (s FoundationVersionClusterEngines) GoString() string {
 	return s.String()
+}
+
+func (s *FoundationVersionClusterEngines) SetInfrastructureStatements(v []*FoundationVersionClusterEnginesInfrastructureStatements) *FoundationVersionClusterEngines {
+	s.InfrastructureStatements = v
+	return s
+}
+
+func (s *FoundationVersionClusterEngines) SetNetworkList(v []*FoundationVersionClusterEnginesNetworkList) *FoundationVersionClusterEngines {
+	s.NetworkList = v
+	return s
 }
 
 func (s *FoundationVersionClusterEngines) SetPackageTools(v []*FoundationVersionClusterEnginesPackageTools) *FoundationVersionClusterEngines {
@@ -610,19 +546,71 @@ func (s *FoundationVersionClusterEngines) SetVersion(v string) *FoundationVersio
 	return s
 }
 
+type FoundationVersionClusterEnginesInfrastructureStatements struct {
+	Default       *bool     `json:"default,omitempty" xml:"default,omitempty"`
+	DistroName    *string   `json:"distroName,omitempty" xml:"distroName,omitempty"`
+	DistroVersion *string   `json:"distroVersion,omitempty" xml:"distroVersion,omitempty"`
+	Platform      *Platform `json:"platform,omitempty" xml:"platform,omitempty"`
+}
+
+func (s FoundationVersionClusterEnginesInfrastructureStatements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FoundationVersionClusterEnginesInfrastructureStatements) GoString() string {
+	return s.String()
+}
+
+func (s *FoundationVersionClusterEnginesInfrastructureStatements) SetDefault(v bool) *FoundationVersionClusterEnginesInfrastructureStatements {
+	s.Default = &v
+	return s
+}
+
+func (s *FoundationVersionClusterEnginesInfrastructureStatements) SetDistroName(v string) *FoundationVersionClusterEnginesInfrastructureStatements {
+	s.DistroName = &v
+	return s
+}
+
+func (s *FoundationVersionClusterEnginesInfrastructureStatements) SetDistroVersion(v string) *FoundationVersionClusterEnginesInfrastructureStatements {
+	s.DistroVersion = &v
+	return s
+}
+
+func (s *FoundationVersionClusterEnginesInfrastructureStatements) SetPlatform(v *Platform) *FoundationVersionClusterEnginesInfrastructureStatements {
+	s.Platform = v
+	return s
+}
+
+type FoundationVersionClusterEnginesNetworkList struct {
+	IpFamilies []*string `json:"ipFamilies,omitempty" xml:"ipFamilies,omitempty" type:"Repeated"`
+	Name       *string   `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s FoundationVersionClusterEnginesNetworkList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FoundationVersionClusterEnginesNetworkList) GoString() string {
+	return s.String()
+}
+
+func (s *FoundationVersionClusterEnginesNetworkList) SetIpFamilies(v []*string) *FoundationVersionClusterEnginesNetworkList {
+	s.IpFamilies = v
+	return s
+}
+
+func (s *FoundationVersionClusterEnginesNetworkList) SetName(v string) *FoundationVersionClusterEnginesNetworkList {
+	s.Name = &v
+	return s
+}
+
 type FoundationVersionClusterEnginesPackageTools struct {
-	// 打包工具image 地址
-	Image *string `json:"image,omitempty" xml:"image,omitempty"`
-	// 安装工具
+	Image               *string                                                           `json:"image,omitempty" xml:"image,omitempty"`
 	InstallToolPackages []*FoundationVersionClusterEnginesPackageToolsInstallToolPackages `json:"installToolPackages,omitempty" xml:"installToolPackages,omitempty" type:"Repeated"`
-	// 打包工具名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 包类型
-	PackageFormat *string `json:"packageFormat,omitempty" xml:"packageFormat,omitempty"`
-	// 打包工具类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// 打包工具版本
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	Name                *string                                                           `json:"name,omitempty" xml:"name,omitempty"`
+	PackageFormat       *string                                                           `json:"packageFormat,omitempty" xml:"packageFormat,omitempty"`
+	Type                *string                                                           `json:"type,omitempty" xml:"type,omitempty"`
+	Version             *string                                                           `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s FoundationVersionClusterEnginesPackageTools) String() string {
@@ -664,12 +652,9 @@ func (s *FoundationVersionClusterEnginesPackageTools) SetVersion(v string) *Foun
 }
 
 type FoundationVersionClusterEnginesPackageToolsInstallToolPackages struct {
-	// 安装工具架构类型
 	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
-	// 安装工具支持的操作系统
-	Os *string `json:"os,omitempty" xml:"os,omitempty"`
-	// 地址
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	Os           *string `json:"os,omitempty" xml:"os,omitempty"`
+	Url          *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s FoundationVersionClusterEnginesPackageToolsInstallToolPackages) String() string {
@@ -696,12 +681,9 @@ func (s *FoundationVersionClusterEnginesPackageToolsInstallToolPackages) SetUrl(
 }
 
 type FoundationVersionClusterEnginesPackages struct {
-	// 包支持的架构
 	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
-	// 包支持的操作系统
-	Os *string `json:"os,omitempty" xml:"os,omitempty"`
-	// 包地址
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	Os           *string `json:"os,omitempty" xml:"os,omitempty"`
+	Url          *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s FoundationVersionClusterEnginesPackages) String() string {
@@ -728,7 +710,6 @@ func (s *FoundationVersionClusterEnginesPackages) SetUrl(v string) *FoundationVe
 }
 
 type FoundationVersionDriver struct {
-	// 驱动层组件
 	Components []*FoundationVersionDriverComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
 }
 
@@ -746,9 +727,7 @@ func (s *FoundationVersionDriver) SetComponents(v []*FoundationVersionDriverComp
 }
 
 type FoundationVersionDriverComponents struct {
-	// 组件名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 组件版本
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -771,9 +750,7 @@ func (s *FoundationVersionDriverComponents) SetVersion(v string) *FoundationVers
 }
 
 type FoundationVersionPackageTools struct {
-	// 工具名
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 工具版本
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -796,56 +773,31 @@ func (s *FoundationVersionPackageTools) SetVersion(v string) *FoundationVersionP
 }
 
 type GetInstanceInfoResponse struct {
-	// annotations
-	Annotations map[string]*string `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	// arch
-	Arch *string `json:"arch,omitempty" xml:"arch,omitempty"`
-	// clusterLabels
-	ClusterLabels map[string]*string `json:"clusterLabels,omitempty" xml:"clusterLabels,omitempty"`
-	// clusterTaints
-	ClusterTaints []*GetInstanceInfoResponseClusterTaints `json:"clusterTaints,omitempty" xml:"clusterTaints,omitempty" type:"Repeated"`
-	// cpu
-	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// dataDisk
-	DataDisk []*Disk `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Repeated"`
-	// hostName
-	HostName *string `json:"hostName,omitempty" xml:"hostName,omitempty"`
-	// identifier
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// imageID
-	ImageID *string `json:"imageID,omitempty" xml:"imageID,omitempty"`
-	// instanceType
-	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// internetBandwidth
-	InternetBandwidth *int32 `json:"internetBandwidth,omitempty" xml:"internetBandwidth,omitempty"`
-	// kernel
-	Kernel *string `json:"kernel,omitempty" xml:"kernel,omitempty"`
-	// labels
-	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// macAddress
-	MacAddress *string `json:"macAddress,omitempty" xml:"macAddress,omitempty"`
-	// memory
-	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// networkCards
-	NetworkCards []*GetInstanceInfoResponseNetworkCards `json:"networkCards,omitempty" xml:"networkCards,omitempty" type:"Repeated"`
-	// os
-	Os *string `json:"os,omitempty" xml:"os,omitempty"`
-	// osVersion
-	OsVersion *string `json:"osVersion,omitempty" xml:"osVersion,omitempty"`
-	// privateIP
-	PrivateIP *string `json:"privateIP,omitempty" xml:"privateIP,omitempty"`
-	// publicIP
-	PublicIP *string `json:"publicIP,omitempty" xml:"publicIP,omitempty"`
-	// rootPassword
-	RootPassword *string `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
-	// systemDisk
-	SystemDisk []*Disk `json:"systemDisk,omitempty" xml:"systemDisk,omitempty" type:"Repeated"`
-	// systemInfo
-	SystemInfo *string `json:"systemInfo,omitempty" xml:"systemInfo,omitempty"`
-	// taints
-	Taints []*GetInstanceInfoResponseTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
-	// uid
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	Annotations       map[string]*string                      `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	Arch              *string                                 `json:"arch,omitempty" xml:"arch,omitempty"`
+	ClusterLabels     map[string]*string                      `json:"clusterLabels,omitempty" xml:"clusterLabels,omitempty"`
+	ClusterTaints     []*GetInstanceInfoResponseClusterTaints `json:"clusterTaints,omitempty" xml:"clusterTaints,omitempty" type:"Repeated"`
+	Cpu               *string                                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	DataDisk          []*Disk                                 `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Repeated"`
+	HostName          *string                                 `json:"hostName,omitempty" xml:"hostName,omitempty"`
+	Identifier        *string                                 `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	ImageID           *string                                 `json:"imageID,omitempty" xml:"imageID,omitempty"`
+	InstanceType      *string                                 `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	InternetBandwidth *int32                                  `json:"internetBandwidth,omitempty" xml:"internetBandwidth,omitempty"`
+	Kernel            *string                                 `json:"kernel,omitempty" xml:"kernel,omitempty"`
+	Labels            map[string]*string                      `json:"labels,omitempty" xml:"labels,omitempty"`
+	MacAddress        *string                                 `json:"macAddress,omitempty" xml:"macAddress,omitempty"`
+	Memory            *string                                 `json:"memory,omitempty" xml:"memory,omitempty"`
+	NetworkCards      []*GetInstanceInfoResponseNetworkCards  `json:"networkCards,omitempty" xml:"networkCards,omitempty" type:"Repeated"`
+	Os                *string                                 `json:"os,omitempty" xml:"os,omitempty"`
+	OsVersion         *string                                 `json:"osVersion,omitempty" xml:"osVersion,omitempty"`
+	PrivateIP         *string                                 `json:"privateIP,omitempty" xml:"privateIP,omitempty"`
+	PublicIP          *string                                 `json:"publicIP,omitempty" xml:"publicIP,omitempty"`
+	RootPassword      *string                                 `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
+	SystemDisk        []*Disk                                 `json:"systemDisk,omitempty" xml:"systemDisk,omitempty" type:"Repeated"`
+	SystemInfo        *string                                 `json:"systemInfo,omitempty" xml:"systemInfo,omitempty"`
+	Taints            []*GetInstanceInfoResponseTaints        `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Uid               *string                                 `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s GetInstanceInfoResponse) String() string {
@@ -982,12 +934,9 @@ func (s *GetInstanceInfoResponse) SetUid(v string) *GetInstanceInfoResponse {
 }
 
 type GetInstanceInfoResponseClusterTaints struct {
-	// effect
 	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// key
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// value
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	Key    *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value  *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s GetInstanceInfoResponseClusterTaints) String() string {
@@ -1014,9 +963,7 @@ func (s *GetInstanceInfoResponseClusterTaints) SetValue(v string) *GetInstanceIn
 }
 
 type GetInstanceInfoResponseNetworkCards struct {
-	// ip
-	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	// name
+	Ip   *string `json:"ip,omitempty" xml:"ip,omitempty"`
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -1039,12 +986,9 @@ func (s *GetInstanceInfoResponseNetworkCards) SetName(v string) *GetInstanceInfo
 }
 
 type GetInstanceInfoResponseTaints struct {
-	// effect
 	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// key
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// value
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	Key    *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value  *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s GetInstanceInfoResponseTaints) String() string {
@@ -1071,18 +1015,12 @@ func (s *GetInstanceInfoResponseTaints) SetValue(v string) *GetInstanceInfoRespo
 }
 
 type GetPayAsYouGoPriceData struct {
-	// ModuleList
-	ModuleList []*GetPayAsYouGoPriceDataModuleList `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Repeated"`
-	// OwnerId
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// ProductCode
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// ProductType
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// Region
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// SubscriptionType
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	ModuleList       []*GetPayAsYouGoPriceDataModuleList `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Repeated"`
+	OwnerId          *string                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProductCode      *string                             `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType      *string                             `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Region           *string                             `json:"Region,omitempty" xml:"Region,omitempty"`
+	SubscriptionType *string                             `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s GetPayAsYouGoPriceData) String() string {
@@ -1124,12 +1062,9 @@ func (s *GetPayAsYouGoPriceData) SetSubscriptionType(v string) *GetPayAsYouGoPri
 }
 
 type GetPayAsYouGoPriceDataModuleList struct {
-	// Config
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// ModuleCode
+	Config     *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// PriceType
-	PriceType *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
+	PriceType  *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
 }
 
 func (s GetPayAsYouGoPriceDataModuleList) String() string {
@@ -1156,62 +1091,34 @@ func (s *GetPayAsYouGoPriceDataModuleList) SetPriceType(v string) *GetPayAsYouGo
 }
 
 type InstanceInfo struct {
-	// annotations
-	Annotations map[string]*string `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	// arch
-	Arch *string `json:"arch,omitempty" xml:"arch,omitempty"`
-	// clusterLabels
-	ClusterLabels map[string]*string `json:"clusterLabels,omitempty" xml:"clusterLabels,omitempty"`
-	// clusterTaints
-	ClusterTaints []*InstanceInfoClusterTaints `json:"clusterTaints,omitempty" xml:"clusterTaints,omitempty" type:"Repeated"`
-	// clusterUID
-	ClusterUID *string `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
-	// cpu
-	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// createdAt
-	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// dataDisk
-	DataDisk []*Disk `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Repeated"`
-	// diskConfigAnnotations
-	DiskConfigAnnotations map[string]*string `json:"diskConfigAnnotations,omitempty" xml:"diskConfigAnnotations,omitempty"`
-	// hostName
-	HostName *string `json:"hostName,omitempty" xml:"hostName,omitempty"`
-	// identifier
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// imageID
-	ImageID *string `json:"imageID,omitempty" xml:"imageID,omitempty"`
-	// instanceType
-	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// internetBandwidth
-	InternetBandwidth *int32 `json:"internetBandwidth,omitempty" xml:"internetBandwidth,omitempty"`
-	// kernel
-	Kernel *string `json:"kernel,omitempty" xml:"kernel,omitempty"`
-	// labels
-	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// macAddress
-	MacAddress *string `json:"macAddress,omitempty" xml:"macAddress,omitempty"`
-	// memory
-	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// networkCards
-	NetworkCards []*InstanceInfoNetworkCards `json:"networkCards,omitempty" xml:"networkCards,omitempty" type:"Repeated"`
-	// os
-	Os *string `json:"os,omitempty" xml:"os,omitempty"`
-	// osVersion
-	OsVersion *string `json:"osVersion,omitempty" xml:"osVersion,omitempty"`
-	// privateIP
-	PrivateIP *string `json:"privateIP,omitempty" xml:"privateIP,omitempty"`
-	// publicIP
-	PublicIP *string `json:"publicIP,omitempty" xml:"publicIP,omitempty"`
-	// rootPassword
-	RootPassword *string `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
-	// systemDisk
-	SystemDisk []*Disk `json:"systemDisk,omitempty" xml:"systemDisk,omitempty" type:"Repeated"`
-	// systemInfo
-	SystemInfo *string `json:"systemInfo,omitempty" xml:"systemInfo,omitempty"`
-	// taints
-	Taints []*InstanceInfoTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
-	// uid
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	Annotations           map[string]*string           `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	Arch                  *string                      `json:"arch,omitempty" xml:"arch,omitempty"`
+	ClusterLabels         map[string]*string           `json:"clusterLabels,omitempty" xml:"clusterLabels,omitempty"`
+	ClusterTaints         []*InstanceInfoClusterTaints `json:"clusterTaints,omitempty" xml:"clusterTaints,omitempty" type:"Repeated"`
+	ClusterUID            *string                      `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
+	Cpu                   *string                      `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	CreatedAt             *string                      `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	DataDisk              []*Disk                      `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Repeated"`
+	DiskConfigAnnotations map[string]*string           `json:"diskConfigAnnotations,omitempty" xml:"diskConfigAnnotations,omitempty"`
+	HostName              *string                      `json:"hostName,omitempty" xml:"hostName,omitempty"`
+	Identifier            *string                      `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	ImageID               *string                      `json:"imageID,omitempty" xml:"imageID,omitempty"`
+	InstanceType          *string                      `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	InternetBandwidth     *int32                       `json:"internetBandwidth,omitempty" xml:"internetBandwidth,omitempty"`
+	Kernel                *string                      `json:"kernel,omitempty" xml:"kernel,omitempty"`
+	Labels                map[string]*string           `json:"labels,omitempty" xml:"labels,omitempty"`
+	MacAddress            *string                      `json:"macAddress,omitempty" xml:"macAddress,omitempty"`
+	Memory                *string                      `json:"memory,omitempty" xml:"memory,omitempty"`
+	NetworkCards          []*InstanceInfoNetworkCards  `json:"networkCards,omitempty" xml:"networkCards,omitempty" type:"Repeated"`
+	Os                    *string                      `json:"os,omitempty" xml:"os,omitempty"`
+	OsVersion             *string                      `json:"osVersion,omitempty" xml:"osVersion,omitempty"`
+	PrivateIP             *string                      `json:"privateIP,omitempty" xml:"privateIP,omitempty"`
+	PublicIP              *string                      `json:"publicIP,omitempty" xml:"publicIP,omitempty"`
+	RootPassword          *string                      `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
+	SystemDisk            []*Disk                      `json:"systemDisk,omitempty" xml:"systemDisk,omitempty" type:"Repeated"`
+	SystemInfo            *string                      `json:"systemInfo,omitempty" xml:"systemInfo,omitempty"`
+	Taints                []*InstanceInfoTaints        `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Uid                   *string                      `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s InstanceInfo) String() string {
@@ -1363,12 +1270,9 @@ func (s *InstanceInfo) SetUid(v string) *InstanceInfo {
 }
 
 type InstanceInfoClusterTaints struct {
-	// effect
 	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// key
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// value
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	Key    *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value  *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s InstanceInfoClusterTaints) String() string {
@@ -1395,9 +1299,7 @@ func (s *InstanceInfoClusterTaints) SetValue(v string) *InstanceInfoClusterTaint
 }
 
 type InstanceInfoNetworkCards struct {
-	// ip
-	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	// name
+	Ip   *string `json:"ip,omitempty" xml:"ip,omitempty"`
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -1420,12 +1322,9 @@ func (s *InstanceInfoNetworkCards) SetName(v string) *InstanceInfoNetworkCards {
 }
 
 type InstanceInfoTaints struct {
-	// effect
 	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// key
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// value
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	Key    *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value  *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s InstanceInfoTaints) String() string {
@@ -1452,10 +1351,8 @@ func (s *InstanceInfoTaints) SetValue(v string) *InstanceInfoTaints {
 }
 
 type Platform struct {
-	// architecture
 	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
-	// os
-	Os *string `json:"os,omitempty" xml:"os,omitempty"`
+	Os           *string `json:"os,omitempty" xml:"os,omitempty"`
 }
 
 func (s Platform) String() string {
@@ -1477,64 +1374,35 @@ func (s *Platform) SetOs(v string) *Platform {
 }
 
 type ProductComponentRelationDetail struct {
-	// appVersion
-	AppVersion *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
-	// category
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// class
-	Class *string `json:"class,omitempty" xml:"class,omitempty"`
-	// componentName
-	ComponentName *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
-	// componentOrchestrationValues
-	ComponentOrchestrationValues *string `json:"componentOrchestrationValues,omitempty" xml:"componentOrchestrationValues,omitempty"`
-	// componentUID
-	ComponentUID *string `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
-	// componentVersionUID
-	ComponentVersionUID *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
-	// createdAt
-	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// description
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// documents
-	Documents *string `json:"documents,omitempty" xml:"documents,omitempty"`
-	// enable
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// imagesMapping
-	ImagesMapping *string `json:"imagesMapping,omitempty" xml:"imagesMapping,omitempty"`
-	// namespace
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// orchestrationType
-	OrchestrationType *string `json:"orchestrationType,omitempty" xml:"orchestrationType,omitempty"`
-	// parentComponent
-	ParentComponent *bool `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
-	// parentComponentVersionRelationUID
+	AppVersion                        *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	Category                          *string `json:"category,omitempty" xml:"category,omitempty"`
+	Class                             *string `json:"class,omitempty" xml:"class,omitempty"`
+	ComponentName                     *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
+	ComponentOrchestrationValues      *string `json:"componentOrchestrationValues,omitempty" xml:"componentOrchestrationValues,omitempty"`
+	ComponentUID                      *string `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
+	ComponentVersionUID               *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	CreatedAt                         *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description                       *string `json:"description,omitempty" xml:"description,omitempty"`
+	Documents                         *string `json:"documents,omitempty" xml:"documents,omitempty"`
+	Enable                            *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	ImagesMapping                     *string `json:"imagesMapping,omitempty" xml:"imagesMapping,omitempty"`
+	Namespace                         *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	OrchestrationType                 *string `json:"orchestrationType,omitempty" xml:"orchestrationType,omitempty"`
+	ParentComponent                   *bool   `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
 	ParentComponentVersionRelationUID *string `json:"parentComponentVersionRelationUID,omitempty" xml:"parentComponentVersionRelationUID,omitempty"`
-	// parentComponentVersionUID
-	ParentComponentVersionUID *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
-	// priority
-	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
-	// productVersionUID
-	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
-	// provider
-	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// public
-	Public *bool `json:"public,omitempty" xml:"public,omitempty"`
-	// readme
-	Readme *string `json:"readme,omitempty" xml:"readme,omitempty"`
-	// relationUID
-	RelationUID *string `json:"relationUID,omitempty" xml:"relationUID,omitempty"`
-	// releaseName
-	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-	// resources
-	Resources *string `json:"resources,omitempty" xml:"resources,omitempty"`
-	// sequence
-	Sequence *int32 `json:"sequence,omitempty" xml:"sequence,omitempty"`
-	// singleton
-	Singleton *bool `json:"singleton,omitempty" xml:"singleton,omitempty"`
-	// source
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// version
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	ParentComponentVersionUID         *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
+	Priority                          *int32  `json:"priority,omitempty" xml:"priority,omitempty"`
+	ProductVersionUID                 *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	Provider                          *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	Public                            *bool   `json:"public,omitempty" xml:"public,omitempty"`
+	Readme                            *string `json:"readme,omitempty" xml:"readme,omitempty"`
+	RelationUID                       *string `json:"relationUID,omitempty" xml:"relationUID,omitempty"`
+	ReleaseName                       *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+	Resources                         *string `json:"resources,omitempty" xml:"resources,omitempty"`
+	Sequence                          *int32  `json:"sequence,omitempty" xml:"sequence,omitempty"`
+	Singleton                         *bool   `json:"singleton,omitempty" xml:"singleton,omitempty"`
+	Source                            *string `json:"source,omitempty" xml:"source,omitempty"`
+	Version                           *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ProductComponentRelationDetail) String() string {
@@ -1691,26 +1559,16 @@ func (s *ProductComponentRelationDetail) SetVersion(v string) *ProductComponentR
 }
 
 type Resource struct {
-	// cpu
-	Cpu *ResourceCpu `json:"cpu,omitempty" xml:"cpu,omitempty" type:"Struct"`
-	// 实例hostname
-	Hostname *string `json:"hostname,omitempty" xml:"hostname,omitempty"`
-	// 资源分组名
-	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 镜像
-	Image *ResourceImage `json:"image,omitempty" xml:"image,omitempty" type:"Struct"`
-	// 实例类型
-	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// memory
-	Memory *ResourceMemory `json:"memory,omitempty" xml:"memory,omitempty" type:"Struct"`
-	// 需要开放的端口
-	Ports []*ExportPort `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
-	// 公网IP 需求
-	PublicIP *ResourcePublicIP `json:"publicIP,omitempty" xml:"publicIP,omitempty" type:"Struct"`
-	// 数量
-	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
-	// 存储需求
-	Storage []*ResourceStorage `json:"storage,omitempty" xml:"storage,omitempty" type:"Repeated"`
+	Cpu          *ResourceCpu       `json:"cpu,omitempty" xml:"cpu,omitempty" type:"Struct"`
+	Hostname     *string            `json:"hostname,omitempty" xml:"hostname,omitempty"`
+	Identifier   *string            `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Image        *ResourceImage     `json:"image,omitempty" xml:"image,omitempty" type:"Struct"`
+	InstanceType *string            `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	Memory       *ResourceMemory    `json:"memory,omitempty" xml:"memory,omitempty" type:"Struct"`
+	Ports        []*ExportPort      `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
+	PublicIP     *ResourcePublicIP  `json:"publicIP,omitempty" xml:"publicIP,omitempty" type:"Struct"`
+	Replica      *int32             `json:"replica,omitempty" xml:"replica,omitempty"`
+	Storage      []*ResourceStorage `json:"storage,omitempty" xml:"storage,omitempty" type:"Repeated"`
 }
 
 func (s Resource) String() string {
@@ -1772,7 +1630,6 @@ func (s *Resource) SetStorage(v []*ResourceStorage) *Resource {
 }
 
 type ResourceCpu struct {
-	// 需要的数量
 	Required *int32 `json:"required,omitempty" xml:"required,omitempty"`
 }
 
@@ -1790,9 +1647,7 @@ func (s *ResourceCpu) SetRequired(v int32) *ResourceCpu {
 }
 
 type ResourceImage struct {
-	// image id
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 名称正则
+	Id        *string `json:"id,omitempty" xml:"id,omitempty"`
 	NameRegex *string `json:"nameRegex,omitempty" xml:"nameRegex,omitempty"`
 }
 
@@ -1815,7 +1670,6 @@ func (s *ResourceImage) SetNameRegex(v string) *ResourceImage {
 }
 
 type ResourceMemory struct {
-	// 需要的内存，单位 G
 	Required *int32 `json:"required,omitempty" xml:"required,omitempty"`
 }
 
@@ -1833,10 +1687,8 @@ func (s *ResourceMemory) SetRequired(v int32) *ResourceMemory {
 }
 
 type ResourcePublicIP struct {
-	// 带宽
 	Bandwidth *int32 `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
-	// 需要的数量
-	Required *int32 `json:"required,omitempty" xml:"required,omitempty"`
+	Required  *int32 `json:"required,omitempty" xml:"required,omitempty"`
 }
 
 func (s ResourcePublicIP) String() string {
@@ -1858,7 +1710,6 @@ func (s *ResourcePublicIP) SetRequired(v int32) *ResourcePublicIP {
 }
 
 type ResourceStorage struct {
-	// 磁盘大小
 	Required *int32 `json:"required,omitempty" xml:"required,omitempty"`
 }
 
@@ -1876,27 +1727,21 @@ func (s *ResourceStorage) SetRequired(v int32) *ResourceStorage {
 }
 
 type AddEnvironmentNodesRequest struct {
-	// 保留业务分区
-	ApplicationDisk *string                               `json:"applicationDisk,omitempty" xml:"applicationDisk,omitempty"`
-	Cpu             *int32                                `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	DataDisk        []*AddEnvironmentNodesRequestDataDisk `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Repeated"`
-	// etcd数据盘
-	EtcdDisk *string                `json:"etcdDisk,omitempty" xml:"etcdDisk,omitempty"`
-	HostName *string                `json:"hostName,omitempty" xml:"hostName,omitempty"`
-	Labels   map[string]interface{} `json:"labels,omitempty" xml:"labels,omitempty"`
-	// master privateId
-	MasterPrivateIPs []*string                               `json:"masterPrivateIPs,omitempty" xml:"masterPrivateIPs,omitempty" type:"Repeated"`
-	Memory           *int32                                  `json:"memory,omitempty" xml:"memory,omitempty"`
-	Os               *string                                 `json:"os,omitempty" xml:"os,omitempty"`
-	RootPassword     *string                                 `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
-	SystemDisk       []*AddEnvironmentNodesRequestSystemDisk `json:"systemDisk,omitempty" xml:"systemDisk,omitempty" type:"Repeated"`
-	Taints           []*AddEnvironmentNodesRequestTaints     `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
-	// k8s管控数据盘
-	TridentSystemDisk *string `json:"tridentSystemDisk,omitempty" xml:"tridentSystemDisk,omitempty"`
-	// k8s管控数据盘大小
-	TridentSystemSizeDisk *int32 `json:"tridentSystemSizeDisk,omitempty" xml:"tridentSystemSizeDisk,omitempty"`
-	// work privateIp
-	WorkerPrivateIPs []*string `json:"workerPrivateIPs,omitempty" xml:"workerPrivateIPs,omitempty" type:"Repeated"`
+	ApplicationDisk       *string                                 `json:"applicationDisk,omitempty" xml:"applicationDisk,omitempty"`
+	Cpu                   *int32                                  `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	DataDisk              []*AddEnvironmentNodesRequestDataDisk   `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Repeated"`
+	EtcdDisk              *string                                 `json:"etcdDisk,omitempty" xml:"etcdDisk,omitempty"`
+	HostName              *string                                 `json:"hostName,omitempty" xml:"hostName,omitempty"`
+	Labels                map[string]interface{}                  `json:"labels,omitempty" xml:"labels,omitempty"`
+	MasterPrivateIPs      []*string                               `json:"masterPrivateIPs,omitempty" xml:"masterPrivateIPs,omitempty" type:"Repeated"`
+	Memory                *int32                                  `json:"memory,omitempty" xml:"memory,omitempty"`
+	Os                    *string                                 `json:"os,omitempty" xml:"os,omitempty"`
+	RootPassword          *string                                 `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
+	SystemDisk            []*AddEnvironmentNodesRequestSystemDisk `json:"systemDisk,omitempty" xml:"systemDisk,omitempty" type:"Repeated"`
+	Taints                []*AddEnvironmentNodesRequestTaints     `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	TridentSystemDisk     *string                                 `json:"tridentSystemDisk,omitempty" xml:"tridentSystemDisk,omitempty"`
+	TridentSystemSizeDisk *int32                                  `json:"tridentSystemSizeDisk,omitempty" xml:"tridentSystemSizeDisk,omitempty"`
+	WorkerPrivateIPs      []*string                               `json:"workerPrivateIPs,omitempty" xml:"workerPrivateIPs,omitempty" type:"Repeated"`
 }
 
 func (s AddEnvironmentNodesRequest) String() string {
@@ -2110,7 +1955,8 @@ func (s *AddEnvironmentNodesResponse) SetBody(v *AddEnvironmentNodesResponseBody
 }
 
 type AddEnvironmentProductVersionsRequest struct {
-	ProductVersionUIDList []*string `json:"productVersionUIDList,omitempty" xml:"productVersionUIDList,omitempty" type:"Repeated"`
+	ProductVersionInfoList []*AddEnvironmentProductVersionsRequestProductVersionInfoList `json:"productVersionInfoList,omitempty" xml:"productVersionInfoList,omitempty" type:"Repeated"`
+	ProductVersionUIDList  []*string                                                     `json:"productVersionUIDList,omitempty" xml:"productVersionUIDList,omitempty" type:"Repeated"`
 }
 
 func (s AddEnvironmentProductVersionsRequest) String() string {
@@ -2121,8 +1967,42 @@ func (s AddEnvironmentProductVersionsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AddEnvironmentProductVersionsRequest) SetProductVersionInfoList(v []*AddEnvironmentProductVersionsRequestProductVersionInfoList) *AddEnvironmentProductVersionsRequest {
+	s.ProductVersionInfoList = v
+	return s
+}
+
 func (s *AddEnvironmentProductVersionsRequest) SetProductVersionUIDList(v []*string) *AddEnvironmentProductVersionsRequest {
 	s.ProductVersionUIDList = v
+	return s
+}
+
+type AddEnvironmentProductVersionsRequestProductVersionInfoList struct {
+	Namespace         *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	SpecUID           *string `json:"specUID,omitempty" xml:"specUID,omitempty"`
+}
+
+func (s AddEnvironmentProductVersionsRequestProductVersionInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEnvironmentProductVersionsRequestProductVersionInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *AddEnvironmentProductVersionsRequestProductVersionInfoList) SetNamespace(v string) *AddEnvironmentProductVersionsRequestProductVersionInfoList {
+	s.Namespace = &v
+	return s
+}
+
+func (s *AddEnvironmentProductVersionsRequestProductVersionInfoList) SetProductVersionUID(v string) *AddEnvironmentProductVersionsRequestProductVersionInfoList {
+	s.ProductVersionUID = &v
+	return s
+}
+
+func (s *AddEnvironmentProductVersionsRequestProductVersionInfoList) SetSpecUID(v string) *AddEnvironmentProductVersionsRequestProductVersionInfoList {
+	s.SpecUID = &v
 	return s
 }
 
@@ -2271,17 +2151,12 @@ func (s *AddProductComponentVersionResponse) SetBody(v *AddProductComponentVersi
 }
 
 type AddProductVersionConfigRequest struct {
-	// 组件uid
-	ComponentVersionUID *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
-	// 配置说明
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 配置信息key
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 父组件uid
+	ComponentVersionUID       *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	Description               *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name                      *string `json:"name,omitempty" xml:"name,omitempty"`
 	ParentComponentVersionUID *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
-	// 配置信息value
-	Value     *string `json:"value,omitempty" xml:"value,omitempty"`
-	ValueType *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
+	Value                     *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueType                 *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
 }
 
 func (s AddProductVersionConfigRequest) String() string {
@@ -2323,11 +2198,10 @@ func (s *AddProductVersionConfigRequest) SetValueType(v string) *AddProductVersi
 }
 
 type AddProductVersionConfigResponseBody struct {
-	Code *string                                  `json:"code,omitempty" xml:"code,omitempty"`
-	Data *AddProductVersionConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Msg  *string                                  `json:"msg,omitempty" xml:"msg,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Code      *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Data      *AddProductVersionConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Msg       *string                                  `json:"msg,omitempty" xml:"msg,omitempty"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s AddProductVersionConfigResponseBody) String() string {
@@ -2359,7 +2233,6 @@ func (s *AddProductVersionConfigResponseBody) SetRequestId(v string) *AddProduct
 }
 
 type AddProductVersionConfigResponseBodyData struct {
-	// product version config uid
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
@@ -2482,8 +2355,7 @@ func (s *AddResourceSnapshotResponse) SetBody(v *AddResourceSnapshotResponseBody
 
 type BatchAddEnvironmentNodesRequest struct {
 	InstanceList []*InstanceInfo `json:"instanceList,omitempty" xml:"instanceList,omitempty" type:"Repeated"`
-	// 是否覆盖
-	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
+	Overwrite    *bool           `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
 }
 
 func (s BatchAddEnvironmentNodesRequest) String() string {
@@ -2574,17 +2446,12 @@ func (s *BatchAddProductVersionConfigRequest) SetProductVersionConfigList(v []*B
 }
 
 type BatchAddProductVersionConfigRequestProductVersionConfigList struct {
-	// 组件uid
-	ComponentVersionUID *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
-	// 配置说明
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 配置信息key
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 父组件uid
+	ComponentVersionUID       *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	Description               *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name                      *string `json:"name,omitempty" xml:"name,omitempty"`
 	ParentComponentVersionUID *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
-	// 配置信息value
-	Value     *string `json:"value,omitempty" xml:"value,omitempty"`
-	ValueType *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
+	Value                     *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueType                 *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
 }
 
 func (s BatchAddProductVersionConfigRequestProductVersionConfigList) String() string {
@@ -2707,10 +2574,9 @@ type CreateEnvironmentRequest struct {
 	Platform          *CreateEnvironmentRequestPlatform `json:"platform,omitempty" xml:"platform,omitempty" type:"Struct"`
 	PlatformList      []*Platform                       `json:"platformList,omitempty" xml:"platformList,omitempty" type:"Repeated"`
 	ProductVersionUID *string                           `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
-	// 环境类型
-	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
-	VendorConfig *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
-	VendorType   *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+	Type              *string                           `json:"type,omitempty" xml:"type,omitempty"`
+	VendorConfig      *string                           `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
+	VendorType        *string                           `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
 }
 
 func (s CreateEnvironmentRequest) String() string {
@@ -2871,20 +2737,16 @@ func (s *CreateEnvironmentResponse) SetBody(v *CreateEnvironmentResponseBody) *C
 }
 
 type CreateEnvironmentLicenseRequest struct {
-	// 企业名称
-	CompanyName *string `json:"companyName,omitempty" xml:"companyName,omitempty"`
-	// 联系方式
-	Contact      *string                                      `json:"contact,omitempty" xml:"contact,omitempty"`
-	LicenseQuota *CreateEnvironmentLicenseRequestLicenseQuota `json:"licenseQuota,omitempty" xml:"licenseQuota,omitempty" type:"Struct"`
-	// 机器指纹信息
-	MachineFingerprint *string `json:"machineFingerprint,omitempty" xml:"machineFingerprint,omitempty"`
-	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
-	ProductVersionUID  *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
-	// 使用场景
-	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
-	Scope    *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 证书类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	CompanyName        *string                                      `json:"companyName,omitempty" xml:"companyName,omitempty"`
+	Contact            *string                                      `json:"contact,omitempty" xml:"contact,omitempty"`
+	Description        *string                                      `json:"description,omitempty" xml:"description,omitempty"`
+	LicenseQuota       *CreateEnvironmentLicenseRequestLicenseQuota `json:"licenseQuota,omitempty" xml:"licenseQuota,omitempty" type:"Struct"`
+	MachineFingerprint *string                                      `json:"machineFingerprint,omitempty" xml:"machineFingerprint,omitempty"`
+	Name               *string                                      `json:"name,omitempty" xml:"name,omitempty"`
+	ProductVersionUID  *string                                      `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	Scenario           *string                                      `json:"scenario,omitempty" xml:"scenario,omitempty"`
+	Scope              *string                                      `json:"scope,omitempty" xml:"scope,omitempty"`
+	Type               *string                                      `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateEnvironmentLicenseRequest) String() string {
@@ -2902,6 +2764,11 @@ func (s *CreateEnvironmentLicenseRequest) SetCompanyName(v string) *CreateEnviro
 
 func (s *CreateEnvironmentLicenseRequest) SetContact(v string) *CreateEnvironmentLicenseRequest {
 	s.Contact = &v
+	return s
+}
+
+func (s *CreateEnvironmentLicenseRequest) SetDescription(v string) *CreateEnvironmentLicenseRequest {
+	s.Description = &v
 	return s
 }
 
@@ -3010,8 +2877,7 @@ func (s *CreateEnvironmentLicenseRequestLicenseQuotaCustomQuotas) SetValue(v str
 }
 
 type CreateEnvironmentLicenseResponseBody struct {
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 业务数据
+	Code *string                                   `json:"code,omitempty" xml:"code,omitempty"`
 	Data *CreateEnvironmentLicenseResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	Msg  *string                                   `json:"msg,omitempty" xml:"msg,omitempty"`
 }
@@ -3040,7 +2906,6 @@ func (s *CreateEnvironmentLicenseResponseBody) SetMsg(v string) *CreateEnvironme
 }
 
 type CreateEnvironmentLicenseResponseBodyData struct {
-	// license uid
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
@@ -3312,18 +3177,12 @@ func (s *CreateProductResponse) SetBody(v *CreateProductResponseBody) *CreatePro
 }
 
 type CreateProductDeploymentRequest struct {
-	// 环境uid
-	EnvironmentUID *string `json:"environmentUID,omitempty" xml:"environmentUID,omitempty"`
-	// 指定产品部署的 namespace，仅 ACK 底座支持
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// 旧产品版本uid
+	EnvironmentUID       *string `json:"environmentUID,omitempty" xml:"environmentUID,omitempty"`
+	Namespace            *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	OldProductVersionUID *string `json:"oldProductVersionUID,omitempty" xml:"oldProductVersionUID,omitempty"`
-	// 部署包配置文件
-	PackageConfig *string `json:"packageConfig,omitempty" xml:"packageConfig,omitempty"`
-	// 部署包uid
-	PackageUID *string `json:"packageUID,omitempty" xml:"packageUID,omitempty"`
-	// 产品版本uid
-	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	PackageConfig        *string `json:"packageConfig,omitempty" xml:"packageConfig,omitempty"`
+	PackageUID           *string `json:"packageUID,omitempty" xml:"packageUID,omitempty"`
+	ProductVersionUID    *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 }
 
 func (s CreateProductDeploymentRequest) String() string {
@@ -3365,12 +3224,9 @@ func (s *CreateProductDeploymentRequest) SetProductVersionUID(v string) *CreateP
 }
 
 type CreateProductDeploymentResponseBody struct {
-	// 错误码
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 数据
+	Code *string                                  `json:"code,omitempty" xml:"code,omitempty"`
 	Data *CreateProductDeploymentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// 错误信息
-	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	Msg  *string                                  `json:"msg,omitempty" xml:"msg,omitempty"`
 }
 
 func (s CreateProductDeploymentResponseBody) String() string {
@@ -3397,7 +3253,6 @@ func (s *CreateProductDeploymentResponseBody) SetMsg(v string) *CreateProductDep
 }
 
 type CreateProductDeploymentResponseBodyData struct {
-	// 部署uid
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
@@ -3444,7 +3299,6 @@ func (s *CreateProductDeploymentResponse) SetBody(v *CreateProductDeploymentResp
 }
 
 type CreateProductVersionRequest struct {
-	// 基于哪个版本克隆
 	BaseProductVersionUID *string `json:"baseProductVersionUID,omitempty" xml:"baseProductVersionUID,omitempty"`
 }
 
@@ -3560,16 +3414,14 @@ func (s *CreateProductVersionPackageHeaders) SetClientToken(v string) *CreatePro
 }
 
 type CreateProductVersionPackageRequest struct {
-	// ENUM["TRIDENT","ACK-D"]
-	ClusterEngineType    *string `json:"clusterEngineType,omitempty" xml:"clusterEngineType,omitempty"`
-	OldProductVersionUID *string `json:"oldProductVersionUID,omitempty" xml:"oldProductVersionUID,omitempty"`
-	// ENUM:["all","base"."application"]
-	PackageContentType *string `json:"packageContentType,omitempty" xml:"packageContentType,omitempty"`
-	// "ENUM value: ["Hopctl", "Sealer"]"
-	PackageToolType *string `json:"packageToolType,omitempty" xml:"packageToolType,omitempty"`
-	// ENUM:["full","upgrade"]
-	PackageType *string `json:"packageType,omitempty" xml:"packageType,omitempty"`
-	Platform    *string `json:"platform,omitempty" xml:"platform,omitempty"`
+	ClusterEngineType         *string `json:"clusterEngineType,omitempty" xml:"clusterEngineType,omitempty"`
+	FoundationReferenceUID    *string `json:"foundationReferenceUID,omitempty" xml:"foundationReferenceUID,omitempty"`
+	OldFoundationReferenceUID *string `json:"oldFoundationReferenceUID,omitempty" xml:"oldFoundationReferenceUID,omitempty"`
+	OldProductVersionUID      *string `json:"oldProductVersionUID,omitempty" xml:"oldProductVersionUID,omitempty"`
+	PackageContentType        *string `json:"packageContentType,omitempty" xml:"packageContentType,omitempty"`
+	PackageToolType           *string `json:"packageToolType,omitempty" xml:"packageToolType,omitempty"`
+	PackageType               *string `json:"packageType,omitempty" xml:"packageType,omitempty"`
+	Platform                  *string `json:"platform,omitempty" xml:"platform,omitempty"`
 }
 
 func (s CreateProductVersionPackageRequest) String() string {
@@ -3582,6 +3434,16 @@ func (s CreateProductVersionPackageRequest) GoString() string {
 
 func (s *CreateProductVersionPackageRequest) SetClusterEngineType(v string) *CreateProductVersionPackageRequest {
 	s.ClusterEngineType = &v
+	return s
+}
+
+func (s *CreateProductVersionPackageRequest) SetFoundationReferenceUID(v string) *CreateProductVersionPackageRequest {
+	s.FoundationReferenceUID = &v
+	return s
+}
+
+func (s *CreateProductVersionPackageRequest) SetOldFoundationReferenceUID(v string) *CreateProductVersionPackageRequest {
+	s.OldFoundationReferenceUID = &v
 	return s
 }
 
@@ -3738,9 +3600,8 @@ func (s *DeleteEnvironmentResponse) SetBody(v *DeleteEnvironmentResponseBody) *D
 }
 
 type DeleteEnvironmentLicenseResponseBody struct {
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// Id of the request
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4080,9 +3941,8 @@ func (s *DeleteProductInstanceConfigResponse) SetBody(v *DeleteProductInstanceCo
 }
 
 type DeleteProductVersionResponseBody struct {
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// Id of the request
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4139,9 +3999,8 @@ func (s *DeleteProductVersionResponse) SetBody(v *DeleteProductVersionResponseBo
 }
 
 type DeleteProductVersionConfigResponseBody struct {
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// Id of the request
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4465,19 +4324,19 @@ func (s *GetComponentVersionResponseBody) SetMsg(v string) *GetComponentVersionR
 }
 
 type GetComponentVersionResponseBodyData struct {
-	ComponentName              *string   `json:"componentName,omitempty" xml:"componentName,omitempty"`
-	ComponentUID               *string   `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
-	Description                *string   `json:"description,omitempty" xml:"description,omitempty"`
-	Documents                  []*string `json:"documents,omitempty" xml:"documents,omitempty" type:"Repeated"`
-	OrchestrationValues        *string   `json:"orchestrationValues,omitempty" xml:"orchestrationValues,omitempty"`
-	PackageURL                 *string   `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
-	ParentComponent            *bool     `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
-	ProductComponentVersionUID *string   `json:"productComponentVersionUID,omitempty" xml:"productComponentVersionUID,omitempty"`
-	Provider                   *string   `json:"provider,omitempty" xml:"provider,omitempty"`
-	Readme                     *string   `json:"readme,omitempty" xml:"readme,omitempty"`
-	Resources                  *string   `json:"resources,omitempty" xml:"resources,omitempty"`
-	Uid                        *string   `json:"uid,omitempty" xml:"uid,omitempty"`
-	Version                    *string   `json:"version,omitempty" xml:"version,omitempty"`
+	ComponentName              *string                                       `json:"componentName,omitempty" xml:"componentName,omitempty"`
+	ComponentUID               *string                                       `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
+	Description                *string                                       `json:"description,omitempty" xml:"description,omitempty"`
+	Documents                  *string                                       `json:"documents,omitempty" xml:"documents,omitempty"`
+	OrchestrationValues        *string                                       `json:"orchestrationValues,omitempty" xml:"orchestrationValues,omitempty"`
+	PackageURL                 *string                                       `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
+	ParentComponent            *bool                                         `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
+	ProductComponentVersionUID *string                                       `json:"productComponentVersionUID,omitempty" xml:"productComponentVersionUID,omitempty"`
+	Provider                   *string                                       `json:"provider,omitempty" xml:"provider,omitempty"`
+	Readme                     *string                                       `json:"readme,omitempty" xml:"readme,omitempty"`
+	Resources                  *GetComponentVersionResponseBodyDataResources `json:"resources,omitempty" xml:"resources,omitempty" type:"Struct"`
+	Uid                        *string                                       `json:"uid,omitempty" xml:"uid,omitempty"`
+	Version                    *string                                       `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetComponentVersionResponseBodyData) String() string {
@@ -4503,8 +4362,8 @@ func (s *GetComponentVersionResponseBodyData) SetDescription(v string) *GetCompo
 	return s
 }
 
-func (s *GetComponentVersionResponseBodyData) SetDocuments(v []*string) *GetComponentVersionResponseBodyData {
-	s.Documents = v
+func (s *GetComponentVersionResponseBodyData) SetDocuments(v string) *GetComponentVersionResponseBodyData {
+	s.Documents = &v
 	return s
 }
 
@@ -4538,8 +4397,8 @@ func (s *GetComponentVersionResponseBodyData) SetReadme(v string) *GetComponentV
 	return s
 }
 
-func (s *GetComponentVersionResponseBodyData) SetResources(v string) *GetComponentVersionResponseBodyData {
-	s.Resources = &v
+func (s *GetComponentVersionResponseBodyData) SetResources(v *GetComponentVersionResponseBodyDataResources) *GetComponentVersionResponseBodyData {
+	s.Resources = v
 	return s
 }
 
@@ -4550,6 +4409,29 @@ func (s *GetComponentVersionResponseBodyData) SetUid(v string) *GetComponentVers
 
 func (s *GetComponentVersionResponseBodyData) SetVersion(v string) *GetComponentVersionResponseBodyData {
 	s.Version = &v
+	return s
+}
+
+type GetComponentVersionResponseBodyDataResources struct {
+	Limits   map[string]interface{} `json:"limits,omitempty" xml:"limits,omitempty"`
+	Requests map[string]interface{} `json:"requests,omitempty" xml:"requests,omitempty"`
+}
+
+func (s GetComponentVersionResponseBodyDataResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetComponentVersionResponseBodyDataResources) GoString() string {
+	return s.String()
+}
+
+func (s *GetComponentVersionResponseBodyDataResources) SetLimits(v map[string]interface{}) *GetComponentVersionResponseBodyDataResources {
+	s.Limits = v
+	return s
+}
+
+func (s *GetComponentVersionResponseBodyDataResources) SetRequests(v map[string]interface{}) *GetComponentVersionResponseBodyDataResources {
+	s.Requests = v
 	return s
 }
 
@@ -4984,11 +4866,9 @@ func (s *GetEnvironmentLicenseShrinkRequest) SetOptionsShrink(v string) *GetEnvi
 }
 
 type GetEnvironmentLicenseResponseBody struct {
-	// 错误码
 	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
 	Data *GetEnvironmentLicenseResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// 错误信息
-	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	Msg  *string                                `json:"msg,omitempty" xml:"msg,omitempty"`
 }
 
 func (s GetEnvironmentLicenseResponseBody) String() string {
@@ -5015,23 +4895,16 @@ func (s *GetEnvironmentLicenseResponseBody) SetMsg(v string) *GetEnvironmentLice
 }
 
 type GetEnvironmentLicenseResponseBodyData struct {
-	// 过期时间
-	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// license内容
-	LicenseKey *string `json:"licenseKey,omitempty" xml:"licenseKey,omitempty"`
-	// license配额
+	ExpireTime        *string                                            `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	LicenseKey        *string                                            `json:"licenseKey,omitempty" xml:"licenseKey,omitempty"`
 	LicenseQuota      *GetEnvironmentLicenseResponseBodyDataLicenseQuota `json:"licenseQuota,omitempty" xml:"licenseQuota,omitempty" type:"Struct"`
 	ProductVersionUID *string                                            `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
-	// 拒绝原因
-	RejectReason *string `json:"rejectReason,omitempty" xml:"rejectReason,omitempty"`
-	Scope        *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	SecretYAML   *string `json:"secretYAML,omitempty" xml:"secretYAML,omitempty"`
-	// 状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// license uid
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	RejectReason      *string                                            `json:"rejectReason,omitempty" xml:"rejectReason,omitempty"`
+	Scope             *string                                            `json:"scope,omitempty" xml:"scope,omitempty"`
+	SecretYAML        *string                                            `json:"secretYAML,omitempty" xml:"secretYAML,omitempty"`
+	Status            *string                                            `json:"status,omitempty" xml:"status,omitempty"`
+	Type              *string                                            `json:"type,omitempty" xml:"type,omitempty"`
+	Uid               *string                                            `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s GetEnvironmentLicenseResponseBodyData) String() string {
@@ -5093,9 +4966,7 @@ func (s *GetEnvironmentLicenseResponseBodyData) SetUid(v string) *GetEnvironment
 }
 
 type GetEnvironmentLicenseResponseBodyDataLicenseQuota struct {
-	// 集群配额
-	ClusterQuota *GetEnvironmentLicenseResponseBodyDataLicenseQuotaClusterQuota `json:"clusterQuota,omitempty" xml:"clusterQuota,omitempty" type:"Struct"`
-	// 组件配额
+	ClusterQuota    *GetEnvironmentLicenseResponseBodyDataLicenseQuotaClusterQuota      `json:"clusterQuota,omitempty" xml:"clusterQuota,omitempty" type:"Struct"`
 	ComponentQuotas []*GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas `json:"componentQuotas,omitempty" xml:"componentQuotas,omitempty" type:"Repeated"`
 	CustomQuotas    []*GetEnvironmentLicenseResponseBodyDataLicenseQuotaCustomQuotas    `json:"customQuotas,omitempty" xml:"customQuotas,omitempty" type:"Repeated"`
 }
@@ -5124,7 +4995,6 @@ func (s *GetEnvironmentLicenseResponseBodyDataLicenseQuota) SetCustomQuotas(v []
 }
 
 type GetEnvironmentLicenseResponseBodyDataLicenseQuotaClusterQuota struct {
-	// cpu核数限制
 	CpuCoreLimit *int64 `json:"cpuCoreLimit,omitempty" xml:"cpuCoreLimit,omitempty"`
 }
 
@@ -5142,12 +5012,9 @@ func (s *GetEnvironmentLicenseResponseBodyDataLicenseQuotaClusterQuota) SetCpuCo
 }
 
 type GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas struct {
-	// 组件名
-	ComponentName *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
-	// 组件来源
+	ComponentName   *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
 	ComponentSource *string `json:"componentSource,omitempty" xml:"componentSource,omitempty"`
-	// 实例数限制
-	InstanceLimit *int64 `json:"instanceLimit,omitempty" xml:"instanceLimit,omitempty"`
+	InstanceLimit   *int64  `json:"instanceLimit,omitempty" xml:"instanceLimit,omitempty"`
 }
 
 func (s GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas) String() string {
@@ -5290,9 +5157,9 @@ func (s *GetEnvironmentNodeResponse) SetBody(v *GetEnvironmentNodeResponseBody) 
 }
 
 type GetFoundationComponentReferenceResponseBody struct {
-	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
-	Data []*FoundationComponentReferenceDetail `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Msg  *string                               `json:"msg,omitempty" xml:"msg,omitempty"`
+	Code *string                                          `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetFoundationComponentReferenceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Msg  *string                                          `json:"msg,omitempty" xml:"msg,omitempty"`
 }
 
 func (s GetFoundationComponentReferenceResponseBody) String() string {
@@ -5308,13 +5175,30 @@ func (s *GetFoundationComponentReferenceResponseBody) SetCode(v string) *GetFoun
 	return s
 }
 
-func (s *GetFoundationComponentReferenceResponseBody) SetData(v []*FoundationComponentReferenceDetail) *GetFoundationComponentReferenceResponseBody {
+func (s *GetFoundationComponentReferenceResponseBody) SetData(v *GetFoundationComponentReferenceResponseBodyData) *GetFoundationComponentReferenceResponseBody {
 	s.Data = v
 	return s
 }
 
 func (s *GetFoundationComponentReferenceResponseBody) SetMsg(v string) *GetFoundationComponentReferenceResponseBody {
 	s.Msg = &v
+	return s
+}
+
+type GetFoundationComponentReferenceResponseBodyData struct {
+	List []*FoundationComponentReferenceDetail `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+}
+
+func (s GetFoundationComponentReferenceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFoundationComponentReferenceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetList(v []*FoundationComponentReferenceDetail) *GetFoundationComponentReferenceResponseBodyData {
+	s.List = v
 	return s
 }
 
@@ -5379,8 +5263,7 @@ func (s *GetFoundationReferenceResponseBody) SetMsg(v string) *GetFoundationRefe
 type GetFoundationReferenceResponseBodyData struct {
 	ClusterConfig        *string `json:"clusterConfig,omitempty" xml:"clusterConfig,omitempty"`
 	FoundationVersionUID *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
-	// foundation reference uid
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	Uid                  *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s GetFoundationReferenceResponseBodyData) String() string {
@@ -5465,24 +5348,16 @@ func (s *GetFoundationVersionResponseBody) SetMsg(v string) *GetFoundationVersio
 }
 
 type GetFoundationVersionResponseBodyData struct {
-	// description
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 底座功能列表
-	Features []*string `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
-	Labels   *string   `json:"labels,omitempty" xml:"labels,omitempty"`
-	// name，目前仅能是 “ADP 底座“
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// platforms
+	Description    *string                                             `json:"description,omitempty" xml:"description,omitempty"`
+	Features       []*string                                           `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
+	Labels         *string                                             `json:"labels,omitempty" xml:"labels,omitempty"`
+	Name           *string                                             `json:"name,omitempty" xml:"name,omitempty"`
 	Platforms      []*Platform                                         `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
 	SiteSurveyTool *GetFoundationVersionResponseBodyDataSiteSurveyTool `json:"siteSurveyTool,omitempty" xml:"siteSurveyTool,omitempty" type:"Struct"`
-	// status，ENUM:["Testing","Published","Deprecated"] Published 后，则全平台所有用户可见，请谨慎操作
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// the type of foundation version,ENUM:["trident","ack"]
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// uid
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// version
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	Status         *string                                             `json:"status,omitempty" xml:"status,omitempty"`
+	Type           *string                                             `json:"type,omitempty" xml:"type,omitempty"`
+	Uid            *string                                             `json:"uid,omitempty" xml:"uid,omitempty"`
+	Version        *string                                             `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetFoundationVersionResponseBodyData) String() string {
@@ -6017,15 +5892,16 @@ func (s *GetProductVersionResponseBody) SetMsg(v string) *GetProductVersionRespo
 }
 
 type GetProductVersionResponseBodyData struct {
-	Description          *string     `json:"description,omitempty" xml:"description,omitempty"`
-	FoundationVersionUID *string     `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
-	PackageURL           *string     `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
-	Platforms            []*Platform `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
-	ProductName          *string     `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductUID           *string     `json:"productUID,omitempty" xml:"productUID,omitempty"`
-	Provider             *string     `json:"provider,omitempty" xml:"provider,omitempty"`
-	Uid                  *string     `json:"uid,omitempty" xml:"uid,omitempty"`
-	Version              *string     `json:"version,omitempty" xml:"version,omitempty"`
+	ContinuousIntegration *bool       `json:"continuousIntegration,omitempty" xml:"continuousIntegration,omitempty"`
+	Description           *string     `json:"description,omitempty" xml:"description,omitempty"`
+	FoundationVersionUID  *string     `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	PackageURL            *string     `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
+	Platforms             []*Platform `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+	ProductName           *string     `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductUID            *string     `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	Provider              *string     `json:"provider,omitempty" xml:"provider,omitempty"`
+	Uid                   *string     `json:"uid,omitempty" xml:"uid,omitempty"`
+	Version               *string     `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetProductVersionResponseBodyData) String() string {
@@ -6034,6 +5910,11 @@ func (s GetProductVersionResponseBodyData) String() string {
 
 func (s GetProductVersionResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetProductVersionResponseBodyData) SetContinuousIntegration(v bool) *GetProductVersionResponseBodyData {
+	s.ContinuousIntegration = &v
+	return s
 }
 
 func (s *GetProductVersionResponseBodyData) SetDescription(v string) *GetProductVersionResponseBodyData {
@@ -6111,7 +5992,6 @@ func (s *GetProductVersionResponse) SetBody(v *GetProductVersionResponseBody) *G
 }
 
 type GetProductVersionDifferencesRequest struct {
-	// 上一个产品版本id
 	PreVersionUID *string `json:"preVersionUID,omitempty" xml:"preVersionUID,omitempty"`
 }
 
@@ -6129,11 +6009,10 @@ func (s *GetProductVersionDifferencesRequest) SetPreVersionUID(v string) *GetPro
 }
 
 type GetProductVersionDifferencesResponseBody struct {
-	Code *string                                         `json:"code,omitempty" xml:"code,omitempty"`
-	Data []*GetProductVersionDifferencesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Msg  *string                                         `json:"msg,omitempty" xml:"msg,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Code      *string                                         `json:"code,omitempty" xml:"code,omitempty"`
+	Data      []*GetProductVersionDifferencesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Msg       *string                                         `json:"msg,omitempty" xml:"msg,omitempty"`
+	RequestId *string                                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetProductVersionDifferencesResponseBody) String() string {
@@ -6165,19 +6044,13 @@ func (s *GetProductVersionDifferencesResponseBody) SetRequestId(v string) *GetPr
 }
 
 type GetProductVersionDifferencesResponseBodyData struct {
-	// 组件名称
 	ComponentName *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
-	// 变更类型，ENUM 类型
-	Difference *string `json:"difference,omitempty" xml:"difference,omitempty"`
-	// 变更描述信息
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 组件之前的版本号
-	PreVersion *string `json:"preVersion,omitempty" xml:"preVersion,omitempty"`
-	// 组件实例名称
-	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-	UpgradeFlag *bool   `json:"upgradeFlag,omitempty" xml:"upgradeFlag,omitempty"`
-	// 组件当前的版本号
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	Difference    *string `json:"difference,omitempty" xml:"difference,omitempty"`
+	Message       *string `json:"message,omitempty" xml:"message,omitempty"`
+	PreVersion    *string `json:"preVersion,omitempty" xml:"preVersion,omitempty"`
+	ReleaseName   *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+	UpgradeFlag   *bool   `json:"upgradeFlag,omitempty" xml:"upgradeFlag,omitempty"`
+	Version       *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetProductVersionDifferencesResponseBodyData) String() string {
@@ -6253,12 +6126,14 @@ func (s *GetProductVersionDifferencesResponse) SetBody(v *GetProductVersionDiffe
 }
 
 type GetProductVersionPackageRequest struct {
-	OldProductVersionUID *string `json:"oldProductVersionUID,omitempty" xml:"oldProductVersionUID,omitempty"`
-	PackageContentType   *string `json:"packageContentType,omitempty" xml:"packageContentType,omitempty"`
-	PackageType          *string `json:"packageType,omitempty" xml:"packageType,omitempty"`
-	PackageUID           *string `json:"packageUID,omitempty" xml:"packageUID,omitempty"`
-	Platform             *string `json:"platform,omitempty" xml:"platform,omitempty"`
-	WithURL              *bool   `json:"withURL,omitempty" xml:"withURL,omitempty"`
+	FoundationReferenceUID    *string `json:"foundationReferenceUID,omitempty" xml:"foundationReferenceUID,omitempty"`
+	OldFoundationReferenceUID *string `json:"oldFoundationReferenceUID,omitempty" xml:"oldFoundationReferenceUID,omitempty"`
+	OldProductVersionUID      *string `json:"oldProductVersionUID,omitempty" xml:"oldProductVersionUID,omitempty"`
+	PackageContentType        *string `json:"packageContentType,omitempty" xml:"packageContentType,omitempty"`
+	PackageType               *string `json:"packageType,omitempty" xml:"packageType,omitempty"`
+	PackageUID                *string `json:"packageUID,omitempty" xml:"packageUID,omitempty"`
+	Platform                  *string `json:"platform,omitempty" xml:"platform,omitempty"`
+	WithURL                   *bool   `json:"withURL,omitempty" xml:"withURL,omitempty"`
 }
 
 func (s GetProductVersionPackageRequest) String() string {
@@ -6267,6 +6142,16 @@ func (s GetProductVersionPackageRequest) String() string {
 
 func (s GetProductVersionPackageRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetProductVersionPackageRequest) SetFoundationReferenceUID(v string) *GetProductVersionPackageRequest {
+	s.FoundationReferenceUID = &v
+	return s
+}
+
+func (s *GetProductVersionPackageRequest) SetOldFoundationReferenceUID(v string) *GetProductVersionPackageRequest {
+	s.OldFoundationReferenceUID = &v
+	return s
 }
 
 func (s *GetProductVersionPackageRequest) SetOldProductVersionUID(v string) *GetProductVersionPackageRequest {
@@ -6418,6 +6303,7 @@ func (s *GetProductVersionPackageResponse) SetBody(v *GetProductVersionPackageRe
 
 type GetResourceSnapshotRequest struct {
 	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	Uid               *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s GetResourceSnapshotRequest) String() string {
@@ -6430,6 +6316,11 @@ func (s GetResourceSnapshotRequest) GoString() string {
 
 func (s *GetResourceSnapshotRequest) SetProductVersionUID(v string) *GetResourceSnapshotRequest {
 	s.ProductVersionUID = &v
+	return s
+}
+
+func (s *GetResourceSnapshotRequest) SetUid(v string) *GetResourceSnapshotRequest {
+	s.Uid = &v
 	return s
 }
 
@@ -6764,10 +6655,8 @@ func (s *GetResourceSnapshotResponse) SetBody(v *GetResourceSnapshotResponseBody
 }
 
 type GetWorkflowStatusRequest struct {
-	// ENUM:["CreateCluster","DeleteCluster","Pack","Deploy","UnbindProductVersion"]
 	WorkflowType *string `json:"workflowType,omitempty" xml:"workflowType,omitempty"`
-	// xuid，根据场景传递env_uid/package_uid/deploy_uid
-	Xuid *string `json:"xuid,omitempty" xml:"xuid,omitempty"`
+	Xuid         *string `json:"xuid,omitempty" xml:"xuid,omitempty"`
 }
 
 func (s GetWorkflowStatusRequest) String() string {
@@ -6841,9 +6730,7 @@ func (s *GetWorkflowStatusResponseBodyData) SetStepStatus(v []*GetWorkflowStatus
 }
 
 type GetWorkflowStatusResponseBodyDataStepStatus struct {
-	// step name
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// step status
+	Name          *string                                                     `json:"name,omitempty" xml:"name,omitempty"`
 	Status        *string                                                     `json:"status,omitempty" xml:"status,omitempty"`
 	WorkflowTasks []*GetWorkflowStatusResponseBodyDataStepStatusWorkflowTasks `json:"workflowTasks,omitempty" xml:"workflowTasks,omitempty" type:"Repeated"`
 }
@@ -6872,9 +6759,7 @@ func (s *GetWorkflowStatusResponseBodyDataStepStatus) SetWorkflowTasks(v []*GetW
 }
 
 type GetWorkflowStatusResponseBodyDataStepStatusWorkflowTasks struct {
-	// task name
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// task status
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -7527,13 +7412,10 @@ func (s *ListComponentsResponse) SetBody(v *ListComponentsResponseBody) *ListCom
 }
 
 type ListEnvironmentLicensesRequest struct {
-	// 页码
-	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// 页大小
+	PageNum  *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
 	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Scope    *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListEnvironmentLicensesRequest) String() string {
@@ -7565,12 +7447,9 @@ func (s *ListEnvironmentLicensesRequest) SetType(v string) *ListEnvironmentLicen
 }
 
 type ListEnvironmentLicensesResponseBody struct {
-	// 错误码
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 业务数据
+	Code *string                                  `json:"code,omitempty" xml:"code,omitempty"`
 	Data *ListEnvironmentLicensesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// 错误信息
-	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	Msg  *string                                  `json:"msg,omitempty" xml:"msg,omitempty"`
 }
 
 func (s ListEnvironmentLicensesResponseBody) String() string {
@@ -7597,14 +7476,10 @@ func (s *ListEnvironmentLicensesResponseBody) SetMsg(v string) *ListEnvironmentL
 }
 
 type ListEnvironmentLicensesResponseBodyData struct {
-	// license列表
-	List []*ListEnvironmentLicensesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// 页码
-	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// 页大小
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 总数
-	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+	List     []*ListEnvironmentLicensesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNum  *int32                                         `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32                                         `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total    *int32                                         `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListEnvironmentLicensesResponseBodyData) String() string {
@@ -7636,22 +7511,15 @@ func (s *ListEnvironmentLicensesResponseBodyData) SetTotal(v int32) *ListEnviron
 }
 
 type ListEnvironmentLicensesResponseBodyDataList struct {
-	// 过期时间
-	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// license内容
-	LicenseKey *string `json:"licenseKey,omitempty" xml:"licenseKey,omitempty"`
-	// license配额
+	ExpireTime        *string                                                  `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	LicenseKey        *string                                                  `json:"licenseKey,omitempty" xml:"licenseKey,omitempty"`
 	LicenseQuota      *ListEnvironmentLicensesResponseBodyDataListLicenseQuota `json:"licenseQuota,omitempty" xml:"licenseQuota,omitempty" type:"Struct"`
 	ProductVersionUID *string                                                  `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
-	// 拒绝原因
-	RejectReason *string `json:"rejectReason,omitempty" xml:"rejectReason,omitempty"`
-	Scope        *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// license uid
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	RejectReason      *string                                                  `json:"rejectReason,omitempty" xml:"rejectReason,omitempty"`
+	Scope             *string                                                  `json:"scope,omitempty" xml:"scope,omitempty"`
+	Status            *string                                                  `json:"status,omitempty" xml:"status,omitempty"`
+	Type              *string                                                  `json:"type,omitempty" xml:"type,omitempty"`
+	Uid               *string                                                  `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s ListEnvironmentLicensesResponseBodyDataList) String() string {
@@ -7708,9 +7576,7 @@ func (s *ListEnvironmentLicensesResponseBodyDataList) SetUid(v string) *ListEnvi
 }
 
 type ListEnvironmentLicensesResponseBodyDataListLicenseQuota struct {
-	// 集群配额
-	ClusterQuota *ListEnvironmentLicensesResponseBodyDataListLicenseQuotaClusterQuota `json:"clusterQuota,omitempty" xml:"clusterQuota,omitempty" type:"Struct"`
-	// 组件配额
+	ClusterQuota    *ListEnvironmentLicensesResponseBodyDataListLicenseQuotaClusterQuota      `json:"clusterQuota,omitempty" xml:"clusterQuota,omitempty" type:"Struct"`
 	ComponentQuotas []*ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas `json:"componentQuotas,omitempty" xml:"componentQuotas,omitempty" type:"Repeated"`
 	CustomQuotas    []*ListEnvironmentLicensesResponseBodyDataListLicenseQuotaCustomQuotas    `json:"customQuotas,omitempty" xml:"customQuotas,omitempty" type:"Repeated"`
 }
@@ -7739,7 +7605,6 @@ func (s *ListEnvironmentLicensesResponseBodyDataListLicenseQuota) SetCustomQuota
 }
 
 type ListEnvironmentLicensesResponseBodyDataListLicenseQuotaClusterQuota struct {
-	// cpu核数限制
 	CpuCoreLimit *int32 `json:"cpuCoreLimit,omitempty" xml:"cpuCoreLimit,omitempty"`
 }
 
@@ -7757,12 +7622,9 @@ func (s *ListEnvironmentLicensesResponseBodyDataListLicenseQuotaClusterQuota) Se
 }
 
 type ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas struct {
-	// 组件名
-	ComponentName *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
-	// 组件来源
+	ComponentName   *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
 	ComponentSource *string `json:"componentSource,omitempty" xml:"componentSource,omitempty"`
-	// 实例数限制
-	InstanceLimit *int32 `json:"instanceLimit,omitempty" xml:"instanceLimit,omitempty"`
+	InstanceLimit   *int32  `json:"instanceLimit,omitempty" xml:"instanceLimit,omitempty"`
 }
 
 func (s ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas) String() string {
@@ -7963,11 +7825,9 @@ func (s *ListEnvironmentNodesResponse) SetBody(v *ListEnvironmentNodesResponseBo
 }
 
 type ListEnvironmentTunnelsResponseBody struct {
-	// 错误码
 	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
 	Data *ListEnvironmentTunnelsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// 错误信息
-	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	Msg  *string                                 `json:"msg,omitempty" xml:"msg,omitempty"`
 }
 
 func (s ListEnvironmentTunnelsResponseBody) String() string {
@@ -8012,8 +7872,7 @@ func (s *ListEnvironmentTunnelsResponseBodyData) SetList(v []*ListEnvironmentTun
 
 type ListEnvironmentTunnelsResponseBodyDataList struct {
 	TunnelConfig *ListEnvironmentTunnelsResponseBodyDataListTunnelConfig `json:"tunnelConfig,omitempty" xml:"tunnelConfig,omitempty" type:"Struct"`
-	// 通道类型
-	TunnelType *string `json:"tunnelType,omitempty" xml:"tunnelType,omitempty"`
+	TunnelType   *string                                                 `json:"tunnelType,omitempty" xml:"tunnelType,omitempty"`
 }
 
 func (s ListEnvironmentTunnelsResponseBodyDataList) String() string {
@@ -8035,18 +7894,12 @@ func (s *ListEnvironmentTunnelsResponseBodyDataList) SetTunnelType(v string) *Li
 }
 
 type ListEnvironmentTunnelsResponseBodyDataListTunnelConfig struct {
-	// 跳板机hostname
 	Hostname *string `json:"hostname,omitempty" xml:"hostname,omitempty"`
-	// 跳板机密码
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// 直连regionId
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// 跳板机ssh端口号
-	SshPort *int32 `json:"sshPort,omitempty" xml:"sshPort,omitempty"`
-	// 跳板机用户名
+	SshPort  *int32  `json:"sshPort,omitempty" xml:"sshPort,omitempty"`
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
-	// 直连vpcId
-	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VpcId    *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s ListEnvironmentTunnelsResponseBodyDataListTunnelConfig) String() string {
@@ -8469,11 +8322,9 @@ func (s *ListFoundationComponentVersionsResponse) SetBody(v *ListFoundationCompo
 
 type ListFoundationReferenceComponentsRequest struct {
 	FoundationReferenceUID *string `json:"foundationReferenceUID,omitempty" xml:"foundationReferenceUID,omitempty"`
-	// foundation version uid
-	FoundationVersionUID *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
-	OnlyEnabled          *bool   `json:"onlyEnabled,omitempty" xml:"onlyEnabled,omitempty"`
-	// 产品版本uid
-	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	FoundationVersionUID   *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	OnlyEnabled            *bool   `json:"onlyEnabled,omitempty" xml:"onlyEnabled,omitempty"`
+	ProductVersionUID      *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 }
 
 func (s ListFoundationReferenceComponentsRequest) String() string {
@@ -8562,6 +8413,35 @@ func (s *ListFoundationReferenceComponentsResponse) SetBody(v *ListFoundationRef
 	return s
 }
 
+type ListFoundationVersionsRequest struct {
+	SortDirect *string `json:"sortDirect,omitempty" xml:"sortDirect,omitempty"`
+	SortKey    *string `json:"sortKey,omitempty" xml:"sortKey,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListFoundationVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoundationVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoundationVersionsRequest) SetSortDirect(v string) *ListFoundationVersionsRequest {
+	s.SortDirect = &v
+	return s
+}
+
+func (s *ListFoundationVersionsRequest) SetSortKey(v string) *ListFoundationVersionsRequest {
+	s.SortKey = &v
+	return s
+}
+
+func (s *ListFoundationVersionsRequest) SetType(v string) *ListFoundationVersionsRequest {
+	s.Type = &v
+	return s
+}
+
 type ListFoundationVersionsResponseBody struct {
 	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
 	Data *ListFoundationVersionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
@@ -8638,7 +8518,6 @@ func (s *ListFoundationVersionsResponse) SetBody(v *ListFoundationVersionsRespon
 }
 
 type ListProductComponentVersionsRequest struct {
-	// 组件类型，不填写则为全部
 	Category   *string `json:"category,omitempty" xml:"category,omitempty"`
 	PageNum    *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
 	PageSize   *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
@@ -8972,7 +8851,6 @@ func (s *ListProductDeploymentsResponse) SetBody(v *ListProductDeploymentsRespon
 }
 
 type ListProductEnvironmentsRequest struct {
-	// 兼容版本产品版本id
 	CompatibleProductVersionUID *string                                    `json:"compatibleProductVersionUID,omitempty" xml:"compatibleProductVersionUID,omitempty"`
 	EnvType                     *string                                    `json:"envType,omitempty" xml:"envType,omitempty"`
 	Platforms                   []*ListProductEnvironmentsRequestPlatforms `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
@@ -9031,7 +8909,6 @@ func (s *ListProductEnvironmentsRequestPlatforms) SetOs(v string) *ListProductEn
 }
 
 type ListProductEnvironmentsShrinkRequest struct {
-	// 兼容版本产品版本id
 	CompatibleProductVersionUID *string `json:"compatibleProductVersionUID,omitempty" xml:"compatibleProductVersionUID,omitempty"`
 	EnvType                     *string `json:"envType,omitempty" xml:"envType,omitempty"`
 	PlatformsShrink             *string `json:"platforms,omitempty" xml:"platforms,omitempty"`
@@ -9331,10 +9208,9 @@ func (s *ListProductFoundationReferencesResponse) SetBody(v *ListProductFoundati
 }
 
 type ListProductInstanceConfigsRequest struct {
-	EnvironmentUID *string `json:"environmentUID,omitempty" xml:"environmentUID,omitempty"`
-	PageNum        *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize       *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 组件和全局类型字段
+	EnvironmentUID    *string `json:"environmentUID,omitempty" xml:"environmentUID,omitempty"`
+	PageNum           *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize          *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	ParamType         *string `json:"paramType,omitempty" xml:"paramType,omitempty"`
 	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 }
@@ -9654,11 +9530,12 @@ func (s *ListProductInstancesResponseBodyData) SetList(v []*ListProductInstances
 }
 
 type ListProductInstancesResponseBodyDataList struct {
-	ProductName       *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductVersion    *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
-	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
-	Status            *string `json:"status,omitempty" xml:"status,omitempty"`
-	Uid               *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	ContinuousDeployment *bool   `json:"continuousDeployment,omitempty" xml:"continuousDeployment,omitempty"`
+	ProductName          *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductVersion       *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	ProductVersionUID    *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	Status               *string `json:"status,omitempty" xml:"status,omitempty"`
+	Uid                  *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s ListProductInstancesResponseBodyDataList) String() string {
@@ -9667,6 +9544,11 @@ func (s ListProductInstancesResponseBodyDataList) String() string {
 
 func (s ListProductInstancesResponseBodyDataList) GoString() string {
 	return s.String()
+}
+
+func (s *ListProductInstancesResponseBodyDataList) SetContinuousDeployment(v bool) *ListProductInstancesResponseBodyDataList {
+	s.ContinuousDeployment = &v
+	return s
 }
 
 func (s *ListProductInstancesResponseBodyDataList) SetProductName(v string) *ListProductInstancesResponseBodyDataList {
@@ -9727,6 +9609,7 @@ type ListProductVersionConfigsRequest struct {
 	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
 	PageNum    *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
 	PageSize   *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Parameter  *string `json:"parameter,omitempty" xml:"parameter,omitempty"`
 }
 
 func (s ListProductVersionConfigsRequest) String() string {
@@ -9749,6 +9632,11 @@ func (s *ListProductVersionConfigsRequest) SetPageNum(v string) *ListProductVers
 
 func (s *ListProductVersionConfigsRequest) SetPageSize(v string) *ListProductVersionConfigsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListProductVersionConfigsRequest) SetParameter(v string) *ListProductVersionConfigsRequest {
+	s.Parameter = &v
 	return s
 }
 
@@ -9923,20 +9811,14 @@ func (s *ListProductVersionConfigsResponse) SetBody(v *ListProductVersionConfigs
 }
 
 type ListProductVersionsRequest struct {
-	PageNum  *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 支持的platform，为空则不过滤
-	Platforms []*ListProductVersionsRequestPlatforms `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
-	// 过滤参数，产品名称
-	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	// 过滤参数，产品uid
-	ProductUID *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
-	// 过滤参数，是否已发布
-	Released *bool `json:"released,omitempty" xml:"released,omitempty"`
-	// 过滤参数，支持的环境类型
-	SupportedFoundationTypes []*string `json:"supportedFoundationTypes,omitempty" xml:"supportedFoundationTypes,omitempty" type:"Repeated"`
-	// 过滤参数，产品版本号
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	PageNum                  *string                                `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize                 *string                                `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Platforms                []*ListProductVersionsRequestPlatforms `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+	ProductName              *string                                `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductUID               *string                                `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	Released                 *bool                                  `json:"released,omitempty" xml:"released,omitempty"`
+	SupportedFoundationTypes []*string                              `json:"supportedFoundationTypes,omitempty" xml:"supportedFoundationTypes,omitempty" type:"Repeated"`
+	Version                  *string                                `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ListProductVersionsRequest) String() string {
@@ -10011,20 +9893,14 @@ func (s *ListProductVersionsRequestPlatforms) SetOs(v string) *ListProductVersio
 }
 
 type ListProductVersionsShrinkRequest struct {
-	PageNum  *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 支持的platform，为空则不过滤
-	PlatformsShrink *string `json:"platforms,omitempty" xml:"platforms,omitempty"`
-	// 过滤参数，产品名称
-	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	// 过滤参数，产品uid
-	ProductUID *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
-	// 过滤参数，是否已发布
-	Released *bool `json:"released,omitempty" xml:"released,omitempty"`
-	// 过滤参数，支持的环境类型
+	PageNum                        *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize                       *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PlatformsShrink                *string `json:"platforms,omitempty" xml:"platforms,omitempty"`
+	ProductName                    *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductUID                     *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	Released                       *bool   `json:"released,omitempty" xml:"released,omitempty"`
 	SupportedFoundationTypesShrink *string `json:"supportedFoundationTypes,omitempty" xml:"supportedFoundationTypes,omitempty"`
-	// 过滤参数，产品版本号
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	Version                        *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ListProductVersionsShrinkRequest) String() string {
@@ -10415,14 +10291,11 @@ func (s *ListProductsResponse) SetBody(v *ListProductsResponseBody) *ListProduct
 
 type ListWorkflowTaskLogsRequest struct {
 	FilterValues []*string `json:"filterValues,omitempty" xml:"filterValues,omitempty" type:"Repeated"`
-	// log 的顺序，positive 代表最新的数据在最后，reverse 代表最新的数据在最前
-	OrderType *string `json:"orderType,omitempty" xml:"orderType,omitempty"`
-	PageNum   *int64  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// 每一页的行数，最大值 100
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// ENUM:["CreateCluster","DeleteCluster","Pack","Deploy"]
-	WorkflowType *string `json:"workflowType,omitempty" xml:"workflowType,omitempty"`
-	Xuid         *string `json:"xuid,omitempty" xml:"xuid,omitempty"`
+	OrderType    *string   `json:"orderType,omitempty" xml:"orderType,omitempty"`
+	PageNum      *int64    `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize     *int64    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	WorkflowType *string   `json:"workflowType,omitempty" xml:"workflowType,omitempty"`
+	Xuid         *string   `json:"xuid,omitempty" xml:"xuid,omitempty"`
 }
 
 func (s ListWorkflowTaskLogsRequest) String() string {
@@ -10465,14 +10338,11 @@ func (s *ListWorkflowTaskLogsRequest) SetXuid(v string) *ListWorkflowTaskLogsReq
 
 type ListWorkflowTaskLogsShrinkRequest struct {
 	FilterValuesShrink *string `json:"filterValues,omitempty" xml:"filterValues,omitempty"`
-	// log 的顺序，positive 代表最新的数据在最后，reverse 代表最新的数据在最前
-	OrderType *string `json:"orderType,omitempty" xml:"orderType,omitempty"`
-	PageNum   *int64  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// 每一页的行数，最大值 100
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// ENUM:["CreateCluster","DeleteCluster","Pack","Deploy"]
-	WorkflowType *string `json:"workflowType,omitempty" xml:"workflowType,omitempty"`
-	Xuid         *string `json:"xuid,omitempty" xml:"xuid,omitempty"`
+	OrderType          *string `json:"orderType,omitempty" xml:"orderType,omitempty"`
+	PageNum            *int64  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize           *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	WorkflowType       *string `json:"workflowType,omitempty" xml:"workflowType,omitempty"`
+	Xuid               *string `json:"xuid,omitempty" xml:"xuid,omitempty"`
 }
 
 func (s ListWorkflowTaskLogsShrinkRequest) String() string {
@@ -10543,7 +10413,6 @@ func (s *ListWorkflowTaskLogsResponseBody) SetMsg(v string) *ListWorkflowTaskLog
 }
 
 type ListWorkflowTaskLogsResponseBodyData struct {
-	// 日志数据
 	List     []*string `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
 	PageNum  *int64    `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
 	PageSize *int64    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
@@ -10608,10 +10477,8 @@ func (s *ListWorkflowTaskLogsResponse) SetBody(v *ListWorkflowTaskLogsResponseBo
 }
 
 type PutEnvironmentTunnelRequest struct {
-	// 通道配置
 	TunnelConfig *PutEnvironmentTunnelRequestTunnelConfig `json:"tunnelConfig,omitempty" xml:"tunnelConfig,omitempty" type:"Struct"`
-	// 通道类型
-	TunnelType *string `json:"tunnelType,omitempty" xml:"tunnelType,omitempty"`
+	TunnelType   *string                                  `json:"tunnelType,omitempty" xml:"tunnelType,omitempty"`
 }
 
 func (s PutEnvironmentTunnelRequest) String() string {
@@ -10633,18 +10500,12 @@ func (s *PutEnvironmentTunnelRequest) SetTunnelType(v string) *PutEnvironmentTun
 }
 
 type PutEnvironmentTunnelRequestTunnelConfig struct {
-	// 跳板机hostname
 	Hostname *string `json:"hostname,omitempty" xml:"hostname,omitempty"`
-	// 跳板机密码
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// 直连地域id
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// 跳板机ssh端口号
-	SshPort *int32 `json:"sshPort,omitempty" xml:"sshPort,omitempty"`
-	// 跳板机用户名
+	SshPort  *int32  `json:"sshPort,omitempty" xml:"sshPort,omitempty"`
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
-	// 直连vpcId
-	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VpcId    *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s PutEnvironmentTunnelRequestTunnelConfig) String() string {
@@ -10686,12 +10547,9 @@ func (s *PutEnvironmentTunnelRequestTunnelConfig) SetVpcId(v string) *PutEnviron
 }
 
 type PutEnvironmentTunnelResponseBody struct {
-	// 错误码
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 数据
+	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
 	Data *PutEnvironmentTunnelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// 错误信息
-	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	Msg  *string                               `json:"msg,omitempty" xml:"msg,omitempty"`
 }
 
 func (s PutEnvironmentTunnelResponseBody) String() string {
@@ -10718,7 +10576,6 @@ func (s *PutEnvironmentTunnelResponseBody) SetMsg(v string) *PutEnvironmentTunne
 }
 
 type PutEnvironmentTunnelResponseBodyData struct {
-	// 通道id，可空
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
@@ -11062,17 +10919,13 @@ func (s *UpdateEnvironmentResponse) SetBody(v *UpdateEnvironmentResponseBody) *U
 }
 
 type UpdateEnvironmentNodeRequest struct {
-	// 保留业务分区
-	ApplicationDisk *string `json:"applicationDisk,omitempty" xml:"applicationDisk,omitempty"`
-	// etcd数据盘
-	EtcdDisk     *string                               `json:"etcdDisk,omitempty" xml:"etcdDisk,omitempty"`
-	Labels       map[string]interface{}                `json:"labels,omitempty" xml:"labels,omitempty"`
-	RootPassword *string                               `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
-	Taints       []*UpdateEnvironmentNodeRequestTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
-	// k8s管控数据盘
-	TridentSystemDisk *string `json:"tridentSystemDisk,omitempty" xml:"tridentSystemDisk,omitempty"`
-	// k8s管控数据盘大小
-	TridentSystemSizeDisk *int32 `json:"tridentSystemSizeDisk,omitempty" xml:"tridentSystemSizeDisk,omitempty"`
+	ApplicationDisk       *string                               `json:"applicationDisk,omitempty" xml:"applicationDisk,omitempty"`
+	EtcdDisk              *string                               `json:"etcdDisk,omitempty" xml:"etcdDisk,omitempty"`
+	Labels                map[string]interface{}                `json:"labels,omitempty" xml:"labels,omitempty"`
+	RootPassword          *string                               `json:"rootPassword,omitempty" xml:"rootPassword,omitempty"`
+	Taints                []*UpdateEnvironmentNodeRequestTaints `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	TridentSystemDisk     *string                               `json:"tridentSystemDisk,omitempty" xml:"tridentSystemDisk,omitempty"`
+	TridentSystemSizeDisk *int32                                `json:"tridentSystemSizeDisk,omitempty" xml:"tridentSystemSizeDisk,omitempty"`
 }
 
 func (s UpdateEnvironmentNodeRequest) String() string {
@@ -11490,9 +11343,8 @@ func (s *UpdateProductResponse) SetBody(v *UpdateProductResponseBody) *UpdatePro
 type UpdateProductComponentVersionRequest struct {
 	ComponentOrchestrationValues *string `json:"componentOrchestrationValues,omitempty" xml:"componentOrchestrationValues,omitempty"`
 	Enable                       *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
-	// 如果该参数不为空，则代表更新组件版本
-	NewComponentVersionUID *string `json:"newComponentVersionUID,omitempty" xml:"newComponentVersionUID,omitempty"`
-	ReleaseName            *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+	NewComponentVersionUID       *string `json:"newComponentVersionUID,omitempty" xml:"newComponentVersionUID,omitempty"`
+	ReleaseName                  *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
 }
 
 func (s UpdateProductComponentVersionRequest) String() string {
@@ -11599,7 +11451,6 @@ func (s *UpdateProductComponentVersionResponse) SetBody(v *UpdateProductComponen
 }
 
 type UpdateProductFoundationVersionRequest struct {
-	// 底座版本uid
 	FoundationVersionUID *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
 }
 
@@ -11669,9 +11520,9 @@ func (s *UpdateProductFoundationVersionResponse) SetBody(v *UpdateProductFoundat
 }
 
 type UpdateProductVersionRequest struct {
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 更新版本号，只允许从latest 更新到其他版本号，更新之后代表已发布
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	ContinuousIntegration *bool   `json:"continuousIntegration,omitempty" xml:"continuousIntegration,omitempty"`
+	Description           *string `json:"description,omitempty" xml:"description,omitempty"`
+	Version               *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s UpdateProductVersionRequest) String() string {
@@ -11680,6 +11531,11 @@ func (s UpdateProductVersionRequest) String() string {
 
 func (s UpdateProductVersionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateProductVersionRequest) SetContinuousIntegration(v bool) *UpdateProductVersionRequest {
+	s.ContinuousIntegration = &v
+	return s
 }
 
 func (s *UpdateProductVersionRequest) SetDescription(v string) *UpdateProductVersionRequest {
@@ -11745,18 +11601,12 @@ func (s *UpdateProductVersionResponse) SetBody(v *UpdateProductVersionResponseBo
 }
 
 type UpdateProductVersionConfigRequest struct {
-	// 子组件versinid
-	ComponentVersionUID *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
-	// 配置说明
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 配置信息key
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 父组件versionid
+	ComponentVersionUID       *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	Description               *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name                      *string `json:"name,omitempty" xml:"name,omitempty"`
 	ParentComponentVersionUID *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
-	// 配置信息value
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// value类型
-	ValueType *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
+	Value                     *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueType                 *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
 }
 
 func (s UpdateProductVersionConfigRequest) String() string {
@@ -11798,9 +11648,8 @@ func (s *UpdateProductVersionConfigRequest) SetValueType(v string) *UpdateProduc
 }
 
 type UpdateProductVersionConfigResponseBody struct {
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// Id of the request
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -11857,10 +11706,8 @@ func (s *UpdateProductVersionConfigResponse) SetBody(v *UpdateProductVersionConf
 }
 
 type ValidateEnvironmentTunnelRequest struct {
-	// 通道配置
 	TunnelConfig *ValidateEnvironmentTunnelRequestTunnelConfig `json:"tunnelConfig,omitempty" xml:"tunnelConfig,omitempty" type:"Struct"`
-	// 通道类型
-	TunnelType *string `json:"tunnelType,omitempty" xml:"tunnelType,omitempty"`
+	TunnelType   *string                                       `json:"tunnelType,omitempty" xml:"tunnelType,omitempty"`
 }
 
 func (s ValidateEnvironmentTunnelRequest) String() string {
@@ -11882,18 +11729,12 @@ func (s *ValidateEnvironmentTunnelRequest) SetTunnelType(v string) *ValidateEnvi
 }
 
 type ValidateEnvironmentTunnelRequestTunnelConfig struct {
-	// 跳板机hostname
 	Hostname *string `json:"hostname,omitempty" xml:"hostname,omitempty"`
-	// 跳板机密码
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// 直连地域id
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// 跳板机ssh端口号
-	SshPort *int32 `json:"sshPort,omitempty" xml:"sshPort,omitempty"`
-	// 跳板机用户名
+	SshPort  *int32  `json:"sshPort,omitempty" xml:"sshPort,omitempty"`
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
-	// 直连vpcId
-	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VpcId    *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s ValidateEnvironmentTunnelRequestTunnelConfig) String() string {
@@ -11935,10 +11776,8 @@ func (s *ValidateEnvironmentTunnelRequestTunnelConfig) SetVpcId(v string) *Valid
 }
 
 type ValidateEnvironmentTunnelResponseBody struct {
-	// 错误码
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误信息
-	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
 }
 
 func (s ValidateEnvironmentTunnelResponseBody) String() string {
@@ -12157,6 +11996,10 @@ func (client *Client) AddEnvironmentProductVersionsWithOptions(uid *string, requ
 	}
 	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductVersionInfoList)) {
+		body["productVersionInfoList"] = request.ProductVersionInfoList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProductVersionUIDList)) {
 		body["productVersionUIDList"] = request.ProductVersionUIDList
 	}
@@ -12562,6 +12405,10 @@ func (client *Client) CreateEnvironmentLicenseWithOptions(uid *string, request *
 		body["contact"] = request.Contact
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.LicenseQuota))) {
 		body["licenseQuota"] = request.LicenseQuota
 	}
@@ -12861,6 +12708,14 @@ func (client *Client) CreateProductVersionPackageWithOptions(uid *string, reques
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterEngineType)) {
 		query["clusterEngineType"] = request.ClusterEngineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FoundationReferenceUID)) {
+		query["foundationReferenceUID"] = request.FoundationReferenceUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OldFoundationReferenceUID)) {
+		query["oldFoundationReferenceUID"] = request.OldFoundationReferenceUID
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OldProductVersionUID)) {
@@ -13898,6 +13753,14 @@ func (client *Client) GetProductVersionPackageWithOptions(uid *string, request *
 	}
 	uid = openapiutil.GetEncodeParam(uid)
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FoundationReferenceUID)) {
+		query["foundationReferenceUID"] = request.FoundationReferenceUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OldFoundationReferenceUID)) {
+		query["oldFoundationReferenceUID"] = request.OldFoundationReferenceUID
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OldProductVersionUID)) {
 		query["oldProductVersionUID"] = request.OldProductVersionUID
 	}
@@ -13966,6 +13829,10 @@ func (client *Client) GetResourceSnapshotWithOptions(request *GetResourceSnapsho
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ProductVersionUID)) {
 		query["productVersionUID"] = request.ProductVersionUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["uid"] = request.Uid
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -14544,11 +14411,11 @@ func (client *Client) ListFoundationReferenceComponentsWithOptions(request *List
 	return _result, _err
 }
 
-func (client *Client) ListFoundationVersions() (_result *ListFoundationVersionsResponse, _err error) {
+func (client *Client) ListFoundationVersions(request *ListFoundationVersionsRequest) (_result *ListFoundationVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListFoundationVersionsResponse{}
-	_body, _err := client.ListFoundationVersionsWithOptions(headers, runtime)
+	_body, _err := client.ListFoundationVersionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14556,9 +14423,27 @@ func (client *Client) ListFoundationVersions() (_result *ListFoundationVersionsR
 	return _result, _err
 }
 
-func (client *Client) ListFoundationVersionsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFoundationVersionsResponse, _err error) {
+func (client *Client) ListFoundationVersionsWithOptions(request *ListFoundationVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFoundationVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SortDirect)) {
+		query["sortDirect"] = request.SortDirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortKey)) {
+		query["sortKey"] = request.SortKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListFoundationVersions"),
@@ -14952,6 +14837,10 @@ func (client *Client) ListProductVersionConfigsWithOptions(uid *string, request 
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameter)) {
+		query["parameter"] = request.Parameter
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -15827,6 +15716,10 @@ func (client *Client) UpdateProductVersionWithOptions(uid *string, request *Upda
 	}
 	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContinuousIntegration)) {
+		body["continuousIntegration"] = request.ContinuousIntegration
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
 	}
