@@ -25580,16 +25580,15 @@ func (s *DescribePublicIpAddressRequest) SetResourceOwnerId(v int64) *DescribePu
 }
 
 type DescribePublicIpAddressResponseBody struct {
-	Code            *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	IpRange         *DescribePublicIpAddressResponseBodyIpRange `json:"IpRange,omitempty" xml:"IpRange,omitempty" type:"Struct"`
-	Message         *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber      *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PublicIpAddress *string                                     `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
-	RegionId        *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId       *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success         *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount      *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Code            *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message         *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber      *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PublicIpAddress []*string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Repeated"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId       *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success         *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount      *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePublicIpAddressResponseBody) String() string {
@@ -25602,11 +25601,6 @@ func (s DescribePublicIpAddressResponseBody) GoString() string {
 
 func (s *DescribePublicIpAddressResponseBody) SetCode(v string) *DescribePublicIpAddressResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *DescribePublicIpAddressResponseBody) SetIpRange(v *DescribePublicIpAddressResponseBodyIpRange) *DescribePublicIpAddressResponseBody {
-	s.IpRange = v
 	return s
 }
 
@@ -25625,8 +25619,8 @@ func (s *DescribePublicIpAddressResponseBody) SetPageSize(v int32) *DescribePubl
 	return s
 }
 
-func (s *DescribePublicIpAddressResponseBody) SetPublicIpAddress(v string) *DescribePublicIpAddressResponseBody {
-	s.PublicIpAddress = &v
+func (s *DescribePublicIpAddressResponseBody) SetPublicIpAddress(v []*string) *DescribePublicIpAddressResponseBody {
+	s.PublicIpAddress = v
 	return s
 }
 
@@ -25647,23 +25641,6 @@ func (s *DescribePublicIpAddressResponseBody) SetSuccess(v bool) *DescribePublic
 
 func (s *DescribePublicIpAddressResponseBody) SetTotalCount(v int32) *DescribePublicIpAddressResponseBody {
 	s.TotalCount = &v
-	return s
-}
-
-type DescribePublicIpAddressResponseBodyIpRange struct {
-	IpRange []*string `json:"IpRange,omitempty" xml:"IpRange,omitempty" type:"Repeated"`
-}
-
-func (s DescribePublicIpAddressResponseBodyIpRange) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePublicIpAddressResponseBodyIpRange) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePublicIpAddressResponseBodyIpRange) SetIpRange(v []*string) *DescribePublicIpAddressResponseBodyIpRange {
-	s.IpRange = v
 	return s
 }
 
