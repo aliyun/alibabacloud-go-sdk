@@ -14,8 +14,7 @@ import (
 
 type CreateOrganizationalUnitHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s CreateOrganizationalUnitHeaders) String() string {
@@ -37,14 +36,10 @@ func (s *CreateOrganizationalUnitHeaders) SetAuthorization(v string) *CreateOrga
 }
 
 type CreateOrganizationalUnitRequest struct {
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 机构外部ID
+	Description                  *string `json:"description,omitempty" xml:"description,omitempty"`
 	OrganizationalUnitExternalId *string `json:"organizationalUnitExternalId,omitempty" xml:"organizationalUnitExternalId,omitempty"`
-	// 机构名称
-	OrganizationalUnitName *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
-	// 父机构ID
-	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	OrganizationalUnitName       *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
+	ParentId                     *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 }
 
 func (s CreateOrganizationalUnitRequest) String() string {
@@ -76,7 +71,6 @@ func (s *CreateOrganizationalUnitRequest) SetParentId(v string) *CreateOrganizat
 }
 
 type CreateOrganizationalUnitResponseBody struct {
-	// 机构ID
 	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
 }
 
@@ -124,8 +118,7 @@ func (s *CreateOrganizationalUnitResponse) SetBody(v *CreateOrganizationalUnitRe
 
 type CreateUserHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s CreateUserHeaders) String() string {
@@ -147,28 +140,17 @@ func (s *CreateUserHeaders) SetAuthorization(v string) *CreateUserHeaders {
 }
 
 type CreateUserRequest struct {
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 账户展示名
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 邮箱
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// 邮箱是否验证，邮箱若设置此字段必须设置，无特殊业务可直接设置为true
-	EmailVerified *bool `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
-	// 密码, 参考密码策略
-	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// 手机号
-	PhoneNumber *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
-	// 手机号是否验证，手机号若设置此字段必须设置，无特殊业务可直接设置为true
-	PhoneNumberVerified *bool `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
-	// 手机地区编号,示例：中国大陆手区号为86，不带 00 或 +, 手机号若设置，此参数必填
-	PhoneRegion *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
-	// 账户主机构ID
+	Description                 *string `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName                 *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Email                       *string `json:"email,omitempty" xml:"email,omitempty"`
+	EmailVerified               *bool   `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	Password                    *string `json:"password,omitempty" xml:"password,omitempty"`
+	PhoneNumber                 *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
+	PhoneNumberVerified         *bool   `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
+	PhoneRegion                 *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
 	PrimaryOrganizationalUnitId *string `json:"primaryOrganizationalUnitId,omitempty" xml:"primaryOrganizationalUnitId,omitempty"`
-	// 账户外部ID
-	UserExternalId *string `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
-	// 账户名
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	UserExternalId              *string `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
+	Username                    *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s CreateUserRequest) String() string {
@@ -235,7 +217,6 @@ func (s *CreateUserRequest) SetUsername(v string) *CreateUserRequest {
 }
 
 type CreateUserResponseBody struct {
-	// 账户ID
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -283,8 +264,7 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 
 type DeleteOrganizationalUnitHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s DeleteOrganizationalUnitHeaders) String() string {
@@ -330,8 +310,7 @@ func (s *DeleteOrganizationalUnitResponse) SetStatusCode(v int32) *DeleteOrganiz
 
 type DeleteUserHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s DeleteUserHeaders) String() string {
@@ -376,7 +355,6 @@ func (s *DeleteUserResponse) SetStatusCode(v int32) *DeleteUserResponse {
 }
 
 type GenerateDeviceCodeRequest struct {
-	// scope范围
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
 }
 
@@ -394,19 +372,12 @@ func (s *GenerateDeviceCodeRequest) SetScope(v string) *GenerateDeviceCodeReques
 }
 
 type GenerateDeviceCodeResponseBody struct {
-	// 设备验证码
-	DeviceCode *string `json:"device_code,omitempty" xml:"device_code,omitempty"`
-	// 过期时间
-	ExpiresAt *int64 `json:"expires_at,omitempty" xml:"expires_at,omitempty"`
-	// device_code和user_code的有效时长，单位秒
-	ExpiresIn *int64 `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
-	// 请求token节点的超时时间，单位秒
-	Interval *int64 `json:"interval,omitempty" xml:"interval,omitempty"`
-	// 终端用户验证码
-	UserCode *string `json:"user_code,omitempty" xml:"user_code,omitempty"`
-	// 验证URI
-	VerificationUri *string `json:"verification_uri,omitempty" xml:"verification_uri,omitempty"`
-	// 包含user_code的完整验证URI
+	DeviceCode              *string `json:"device_code,omitempty" xml:"device_code,omitempty"`
+	ExpiresAt               *int64  `json:"expires_at,omitempty" xml:"expires_at,omitempty"`
+	ExpiresIn               *int64  `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
+	Interval                *int64  `json:"interval,omitempty" xml:"interval,omitempty"`
+	UserCode                *string `json:"user_code,omitempty" xml:"user_code,omitempty"`
+	VerificationUri         *string `json:"verification_uri,omitempty" xml:"verification_uri,omitempty"`
 	VerificationUriComplete *string `json:"verification_uri_complete,omitempty" xml:"verification_uri_complete,omitempty"`
 }
 
@@ -485,26 +456,16 @@ func (s *GenerateDeviceCodeResponse) SetBody(v *GenerateDeviceCodeResponseBody) 
 type GenerateTokenRequest struct {
 	ClientId     *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
 	ClientSecret *string `json:"client_secret,omitempty" xml:"client_secret,omitempty"`
-	// code码
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 验证code
+	Code         *string `json:"code,omitempty" xml:"code,omitempty"`
 	CodeVerifier *string `json:"code_verifier,omitempty" xml:"code_verifier,omitempty"`
-	// 设备码
-	DeviceCode *string `json:"device_code,omitempty" xml:"device_code,omitempty"`
-	// 排除的tag
+	DeviceCode   *string `json:"device_code,omitempty" xml:"device_code,omitempty"`
 	ExclusiveTag *string `json:"exclusive_tag,omitempty" xml:"exclusive_tag,omitempty"`
-	// 授权类型
-	GrantType *string `json:"grant_type,omitempty" xml:"grant_type,omitempty"`
-	// 密码
-	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// 重定向URI
-	RedirectUri *string `json:"redirect_uri,omitempty" xml:"redirect_uri,omitempty"`
-	// 更新token
+	GrantType    *string `json:"grant_type,omitempty" xml:"grant_type,omitempty"`
+	Password     *string `json:"password,omitempty" xml:"password,omitempty"`
+	RedirectUri  *string `json:"redirect_uri,omitempty" xml:"redirect_uri,omitempty"`
 	RefreshToken *string `json:"refresh_token,omitempty" xml:"refresh_token,omitempty"`
-	// scope范围
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 用户名
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	Scope        *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	Username     *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s GenerateTokenRequest) String() string {
@@ -576,18 +537,12 @@ func (s *GenerateTokenRequest) SetUsername(v string) *GenerateTokenRequest {
 }
 
 type GenerateTokenResponseBody struct {
-	// access_token
-	AccessToken *string `json:"access_token,omitempty" xml:"access_token,omitempty"`
-	// 过期时间
-	ExpiresAt *int64 `json:"expires_at,omitempty" xml:"expires_at,omitempty"`
-	// 有效时长，单位秒
-	ExpiresIn *int64 `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
-	// id_token
-	IdToken *string `json:"id_token,omitempty" xml:"id_token,omitempty"`
-	// refresh_token
+	AccessToken  *string `json:"access_token,omitempty" xml:"access_token,omitempty"`
+	ExpiresAt    *int64  `json:"expires_at,omitempty" xml:"expires_at,omitempty"`
+	ExpiresIn    *int64  `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
+	IdToken      *string `json:"id_token,omitempty" xml:"id_token,omitempty"`
 	RefreshToken *string `json:"refresh_token,omitempty" xml:"refresh_token,omitempty"`
-	// token类型，包含Basic,Bearer
-	TokenType *string `json:"token_type,omitempty" xml:"token_type,omitempty"`
+	TokenType    *string `json:"token_type,omitempty" xml:"token_type,omitempty"`
 }
 
 func (s GenerateTokenResponseBody) String() string {
@@ -659,8 +614,7 @@ func (s *GenerateTokenResponse) SetBody(v *GenerateTokenResponseBody) *GenerateT
 
 type GetApplicationProvisioningScopeHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s GetApplicationProvisioningScopeHeaders) String() string {
@@ -682,7 +636,6 @@ func (s *GetApplicationProvisioningScopeHeaders) SetAuthorization(v string) *Get
 }
 
 type GetApplicationProvisioningScopeResponseBody struct {
-	// 机构ID列表
 	OrganizationalUnitIds []*string `json:"organizationalUnitIds,omitempty" xml:"organizationalUnitIds,omitempty" type:"Repeated"`
 }
 
@@ -730,8 +683,7 @@ func (s *GetApplicationProvisioningScopeResponse) SetBody(v *GetApplicationProvi
 
 type GetOrganizationalUnitHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s GetOrganizationalUnitHeaders) String() string {
@@ -753,26 +705,16 @@ func (s *GetOrganizationalUnitHeaders) SetAuthorization(v string) *GetOrganizati
 }
 
 type GetOrganizationalUnitResponseBody struct {
-	// 创建时间，毫秒
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 外部ID
+	CreateTime                   *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description                  *string `json:"description,omitempty" xml:"description,omitempty"`
+	InstanceId                   *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	OrganizationalUnitExternalId *string `json:"organizationalUnitExternalId,omitempty" xml:"organizationalUnitExternalId,omitempty"`
-	// 机构ID
-	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
-	// 机构名称
-	OrganizationalUnitName *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
-	// 来源ID
-	OrganizationalUnitSourceId *string `json:"organizationalUnitSourceId,omitempty" xml:"organizationalUnitSourceId,omitempty"`
-	// 来源类型
+	OrganizationalUnitId         *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
+	OrganizationalUnitName       *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
+	OrganizationalUnitSourceId   *string `json:"organizationalUnitSourceId,omitempty" xml:"organizationalUnitSourceId,omitempty"`
 	OrganizationalUnitSourceType *string `json:"organizationalUnitSourceType,omitempty" xml:"organizationalUnitSourceType,omitempty"`
-	// 父机构ID
-	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// 最近一次更新时间，毫秒
-	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	ParentId                     *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	UpdateTime                   *int64  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetOrganizationalUnitResponseBody) String() string {
@@ -862,10 +804,107 @@ func (s *GetOrganizationalUnitResponse) SetBody(v *GetOrganizationalUnitResponse
 	return s
 }
 
+type GetOrganizationalUnitIdByExternalIdHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetOrganizationalUnitIdByExternalIdHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationalUnitIdByExternalIdHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationalUnitIdByExternalIdHeaders) SetCommonHeaders(v map[string]*string) *GetOrganizationalUnitIdByExternalIdHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetOrganizationalUnitIdByExternalIdHeaders) SetAuthorization(v string) *GetOrganizationalUnitIdByExternalIdHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetOrganizationalUnitIdByExternalIdRequest struct {
+	OrganizationalUnitExternalId *string `json:"organizationalUnitExternalId,omitempty" xml:"organizationalUnitExternalId,omitempty"`
+	OrganizationalUnitSourceId   *string `json:"organizationalUnitSourceId,omitempty" xml:"organizationalUnitSourceId,omitempty"`
+	OrganizationalUnitSourceType *string `json:"organizationalUnitSourceType,omitempty" xml:"organizationalUnitSourceType,omitempty"`
+}
+
+func (s GetOrganizationalUnitIdByExternalIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationalUnitIdByExternalIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationalUnitIdByExternalIdRequest) SetOrganizationalUnitExternalId(v string) *GetOrganizationalUnitIdByExternalIdRequest {
+	s.OrganizationalUnitExternalId = &v
+	return s
+}
+
+func (s *GetOrganizationalUnitIdByExternalIdRequest) SetOrganizationalUnitSourceId(v string) *GetOrganizationalUnitIdByExternalIdRequest {
+	s.OrganizationalUnitSourceId = &v
+	return s
+}
+
+func (s *GetOrganizationalUnitIdByExternalIdRequest) SetOrganizationalUnitSourceType(v string) *GetOrganizationalUnitIdByExternalIdRequest {
+	s.OrganizationalUnitSourceType = &v
+	return s
+}
+
+type GetOrganizationalUnitIdByExternalIdResponseBody struct {
+	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
+}
+
+func (s GetOrganizationalUnitIdByExternalIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationalUnitIdByExternalIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationalUnitIdByExternalIdResponseBody) SetOrganizationalUnitId(v string) *GetOrganizationalUnitIdByExternalIdResponseBody {
+	s.OrganizationalUnitId = &v
+	return s
+}
+
+type GetOrganizationalUnitIdByExternalIdResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOrganizationalUnitIdByExternalIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOrganizationalUnitIdByExternalIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationalUnitIdByExternalIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationalUnitIdByExternalIdResponse) SetHeaders(v map[string]*string) *GetOrganizationalUnitIdByExternalIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOrganizationalUnitIdByExternalIdResponse) SetStatusCode(v int32) *GetOrganizationalUnitIdByExternalIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOrganizationalUnitIdByExternalIdResponse) SetBody(v *GetOrganizationalUnitIdByExternalIdResponseBody) *GetOrganizationalUnitIdByExternalIdResponse {
+	s.Body = v
+	return s
+}
+
 type GetUserHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s GetUserHeaders) String() string {
@@ -887,49 +926,27 @@ func (s *GetUserHeaders) SetAuthorization(v string) *GetUserHeaders {
 }
 
 type GetUserResponseBody struct {
-	// 账户过期时间, 毫秒时间
-	AccountExpireTime *int64 `json:"accountExpireTime,omitempty" xml:"accountExpireTime,omitempty"`
-	// 创建时间, 毫秒时间
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 账号描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 显示名
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 邮箱
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// 邮箱是否验证
-	EmailVerified *bool `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 锁定过期时间, 毫秒时间
-	LockExpireTime *int64 `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
-	// 账户所属组织列表
-	OrganizationalUnits []*GetUserResponseBodyOrganizationalUnits `json:"organizationalUnits,omitempty" xml:"organizationalUnits,omitempty" type:"Repeated"`
-	// 密码是否已设置
-	PasswordSet *bool `json:"passwordSet,omitempty" xml:"passwordSet,omitempty"`
-	// 手机号
-	PhoneNumber *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
-	// 手机号是否验证
-	PhoneNumberVerified *bool `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
-	// 手机地区编号,示例：中国大陆手区号为86，不带 00 或 +
-	PhoneRegion *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
-	// 账户主机构ID
-	PrimaryOrganizationalUnitId *string `json:"primaryOrganizationalUnitId,omitempty" xml:"primaryOrganizationalUnitId,omitempty"`
-	RegisterTime                *int64  `json:"registerTime,omitempty" xml:"registerTime,omitempty"`
-	// 账户状态, enabled:启用,disabled:禁用
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 最近一次更新时间, 毫秒时间
-	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// 外部ID
-	UserExternalId *string `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
-	// 账户ID
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// 来源ID
-	UserSourceId *string `json:"userSourceId,omitempty" xml:"userSourceId,omitempty"`
-	// 来源类型，build_in[自建],ding_talk[钉钉导入],ad[AD导入],ldap[LDAP导入]
-	UserSourceType *string `json:"userSourceType,omitempty" xml:"userSourceType,omitempty"`
-	// 账户名
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	AccountExpireTime           *int64                                    `json:"accountExpireTime,omitempty" xml:"accountExpireTime,omitempty"`
+	CreateTime                  *int64                                    `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description                 *string                                   `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName                 *string                                   `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Email                       *string                                   `json:"email,omitempty" xml:"email,omitempty"`
+	EmailVerified               *bool                                     `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	InstanceId                  *string                                   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	LockExpireTime              *int64                                    `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
+	OrganizationalUnits         []*GetUserResponseBodyOrganizationalUnits `json:"organizationalUnits,omitempty" xml:"organizationalUnits,omitempty" type:"Repeated"`
+	PhoneNumber                 *string                                   `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
+	PhoneNumberVerified         *bool                                     `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
+	PhoneRegion                 *string                                   `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
+	PrimaryOrganizationalUnitId *string                                   `json:"primaryOrganizationalUnitId,omitempty" xml:"primaryOrganizationalUnitId,omitempty"`
+	RegisterTime                *int64                                    `json:"registerTime,omitempty" xml:"registerTime,omitempty"`
+	Status                      *string                                   `json:"status,omitempty" xml:"status,omitempty"`
+	UpdateTime                  *int64                                    `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UserExternalId              *string                                   `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
+	UserId                      *string                                   `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserSourceId                *string                                   `json:"userSourceId,omitempty" xml:"userSourceId,omitempty"`
+	UserSourceType              *string                                   `json:"userSourceType,omitempty" xml:"userSourceType,omitempty"`
+	Username                    *string                                   `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -982,11 +999,6 @@ func (s *GetUserResponseBody) SetLockExpireTime(v int64) *GetUserResponseBody {
 
 func (s *GetUserResponseBody) SetOrganizationalUnits(v []*GetUserResponseBodyOrganizationalUnits) *GetUserResponseBody {
 	s.OrganizationalUnits = v
-	return s
-}
-
-func (s *GetUserResponseBody) SetPasswordSet(v bool) *GetUserResponseBody {
-	s.PasswordSet = &v
 	return s
 }
 
@@ -1051,12 +1063,9 @@ func (s *GetUserResponseBody) SetUsername(v string) *GetUserResponseBody {
 }
 
 type GetUserResponseBodyOrganizationalUnits struct {
-	// 机构ID
-	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
-	// 机构名称
+	OrganizationalUnitId   *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
 	OrganizationalUnitName *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
-	// 是否主机构
-	Primary *bool `json:"primary,omitempty" xml:"primary,omitempty"`
+	Primary                *bool   `json:"primary,omitempty" xml:"primary,omitempty"`
 }
 
 func (s GetUserResponseBodyOrganizationalUnits) String() string {
@@ -1111,10 +1120,279 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 	return s
 }
 
+type GetUserIdByEmailHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetUserIdByEmailHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByEmailHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByEmailHeaders) SetCommonHeaders(v map[string]*string) *GetUserIdByEmailHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetUserIdByEmailHeaders) SetAuthorization(v string) *GetUserIdByEmailHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetUserIdByEmailRequest struct {
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+}
+
+func (s GetUserIdByEmailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByEmailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByEmailRequest) SetEmail(v string) *GetUserIdByEmailRequest {
+	s.Email = &v
+	return s
+}
+
+type GetUserIdByEmailResponseBody struct {
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s GetUserIdByEmailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByEmailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByEmailResponseBody) SetUserId(v string) *GetUserIdByEmailResponseBody {
+	s.UserId = &v
+	return s
+}
+
+type GetUserIdByEmailResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserIdByEmailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserIdByEmailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByEmailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByEmailResponse) SetHeaders(v map[string]*string) *GetUserIdByEmailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserIdByEmailResponse) SetStatusCode(v int32) *GetUserIdByEmailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserIdByEmailResponse) SetBody(v *GetUserIdByEmailResponseBody) *GetUserIdByEmailResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserIdByPhoneNumberHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetUserIdByPhoneNumberHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByPhoneNumberHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByPhoneNumberHeaders) SetCommonHeaders(v map[string]*string) *GetUserIdByPhoneNumberHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetUserIdByPhoneNumberHeaders) SetAuthorization(v string) *GetUserIdByPhoneNumberHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetUserIdByPhoneNumberRequest struct {
+	PhoneNumber *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
+}
+
+func (s GetUserIdByPhoneNumberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByPhoneNumberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByPhoneNumberRequest) SetPhoneNumber(v string) *GetUserIdByPhoneNumberRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+type GetUserIdByPhoneNumberResponseBody struct {
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s GetUserIdByPhoneNumberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByPhoneNumberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByPhoneNumberResponseBody) SetUserId(v string) *GetUserIdByPhoneNumberResponseBody {
+	s.UserId = &v
+	return s
+}
+
+type GetUserIdByPhoneNumberResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserIdByPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserIdByPhoneNumberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByPhoneNumberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByPhoneNumberResponse) SetHeaders(v map[string]*string) *GetUserIdByPhoneNumberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserIdByPhoneNumberResponse) SetStatusCode(v int32) *GetUserIdByPhoneNumberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserIdByPhoneNumberResponse) SetBody(v *GetUserIdByPhoneNumberResponseBody) *GetUserIdByPhoneNumberResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserIdByUserExternalIdHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetUserIdByUserExternalIdHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByUserExternalIdHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByUserExternalIdHeaders) SetCommonHeaders(v map[string]*string) *GetUserIdByUserExternalIdHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetUserIdByUserExternalIdHeaders) SetAuthorization(v string) *GetUserIdByUserExternalIdHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetUserIdByUserExternalIdRequest struct {
+	UserExternalId *string `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
+	UserSourceId   *string `json:"userSourceId,omitempty" xml:"userSourceId,omitempty"`
+	UserSourceType *string `json:"userSourceType,omitempty" xml:"userSourceType,omitempty"`
+}
+
+func (s GetUserIdByUserExternalIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByUserExternalIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByUserExternalIdRequest) SetUserExternalId(v string) *GetUserIdByUserExternalIdRequest {
+	s.UserExternalId = &v
+	return s
+}
+
+func (s *GetUserIdByUserExternalIdRequest) SetUserSourceId(v string) *GetUserIdByUserExternalIdRequest {
+	s.UserSourceId = &v
+	return s
+}
+
+func (s *GetUserIdByUserExternalIdRequest) SetUserSourceType(v string) *GetUserIdByUserExternalIdRequest {
+	s.UserSourceType = &v
+	return s
+}
+
+type GetUserIdByUserExternalIdResponseBody struct {
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s GetUserIdByUserExternalIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByUserExternalIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByUserExternalIdResponseBody) SetUserId(v string) *GetUserIdByUserExternalIdResponseBody {
+	s.UserId = &v
+	return s
+}
+
+type GetUserIdByUserExternalIdResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserIdByUserExternalIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserIdByUserExternalIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByUserExternalIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByUserExternalIdResponse) SetHeaders(v map[string]*string) *GetUserIdByUserExternalIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserIdByUserExternalIdResponse) SetStatusCode(v int32) *GetUserIdByUserExternalIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserIdByUserExternalIdResponse) SetBody(v *GetUserIdByUserExternalIdResponseBody) *GetUserIdByUserExternalIdResponse {
+	s.Body = v
+	return s
+}
+
 type GetUserInfoHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s GetUserInfoHeaders) String() string {
@@ -1164,176 +1442,9 @@ func (s *GetUserInfoResponse) SetBody(v map[string]interface{}) *GetUserInfoResp
 	return s
 }
 
-type GetUserPasswordPolicyHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
-}
-
-func (s GetUserPasswordPolicyHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserPasswordPolicyHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserPasswordPolicyHeaders) SetCommonHeaders(v map[string]*string) *GetUserPasswordPolicyHeaders {
-	s.CommonHeaders = v
-	return s
-}
-
-func (s *GetUserPasswordPolicyHeaders) SetAuthorization(v string) *GetUserPasswordPolicyHeaders {
-	s.Authorization = &v
-	return s
-}
-
-type GetUserPasswordPolicyResponseBody struct {
-	// 密码修改周期, 单位毫秒，-1表示永不过期
-	ActiveCycle *int64 `json:"activeCycle,omitempty" xml:"activeCycle,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 密码最短长度，-1表示不限制
-	MinLength *int32 `json:"minLength,omitempty" xml:"minLength,omitempty"`
-	// 密码复杂项
-	PasswordComplexityItem *GetUserPasswordPolicyResponseBodyPasswordComplexityItem `json:"passwordComplexityItem,omitempty" xml:"passwordComplexityItem,omitempty" type:"Struct"`
-	// 保留最近密码记录数
-	ReservationCount *int32 `json:"reservationCount,omitempty" xml:"reservationCount,omitempty"`
-}
-
-func (s GetUserPasswordPolicyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserPasswordPolicyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserPasswordPolicyResponseBody) SetActiveCycle(v int64) *GetUserPasswordPolicyResponseBody {
-	s.ActiveCycle = &v
-	return s
-}
-
-func (s *GetUserPasswordPolicyResponseBody) SetInstanceId(v string) *GetUserPasswordPolicyResponseBody {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetUserPasswordPolicyResponseBody) SetMinLength(v int32) *GetUserPasswordPolicyResponseBody {
-	s.MinLength = &v
-	return s
-}
-
-func (s *GetUserPasswordPolicyResponseBody) SetPasswordComplexityItem(v *GetUserPasswordPolicyResponseBodyPasswordComplexityItem) *GetUserPasswordPolicyResponseBody {
-	s.PasswordComplexityItem = v
-	return s
-}
-
-func (s *GetUserPasswordPolicyResponseBody) SetReservationCount(v int32) *GetUserPasswordPolicyResponseBody {
-	s.ReservationCount = &v
-	return s
-}
-
-type GetUserPasswordPolicyResponseBodyPasswordComplexityItem struct {
-	// 是否包含小写字母
-	ContainLowerCase *bool `json:"containLowerCase,omitempty" xml:"containLowerCase,omitempty"`
-	// 是否包含数字
-	ContainNumber *bool `json:"containNumber,omitempty" xml:"containNumber,omitempty"`
-	// 是否包含特殊字符
-	ContainSpecialChar *bool `json:"containSpecialChar,omitempty" xml:"containSpecialChar,omitempty"`
-	// 是否包含大写字母
-	ContainUpperCase *bool `json:"containUpperCase,omitempty" xml:"containUpperCase,omitempty"`
-	// 是否进行包含显示名检测
-	DisplayNameCheck *bool `json:"displayNameCheck,omitempty" xml:"displayNameCheck,omitempty"`
-	// 是否进行email检测
-	EmailCheck *bool `json:"emailCheck,omitempty" xml:"emailCheck,omitempty"`
-	// 是否进行包含手机号检测
-	PhoneCheck *bool `json:"phoneCheck,omitempty" xml:"phoneCheck,omitempty"`
-	// 是否进行包含用户名检测
-	UsernameCheck *bool `json:"usernameCheck,omitempty" xml:"usernameCheck,omitempty"`
-}
-
-func (s GetUserPasswordPolicyResponseBodyPasswordComplexityItem) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserPasswordPolicyResponseBodyPasswordComplexityItem) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserPasswordPolicyResponseBodyPasswordComplexityItem) SetContainLowerCase(v bool) *GetUserPasswordPolicyResponseBodyPasswordComplexityItem {
-	s.ContainLowerCase = &v
-	return s
-}
-
-func (s *GetUserPasswordPolicyResponseBodyPasswordComplexityItem) SetContainNumber(v bool) *GetUserPasswordPolicyResponseBodyPasswordComplexityItem {
-	s.ContainNumber = &v
-	return s
-}
-
-func (s *GetUserPasswordPolicyResponseBodyPasswordComplexityItem) SetContainSpecialChar(v bool) *GetUserPasswordPolicyResponseBodyPasswordComplexityItem {
-	s.ContainSpecialChar = &v
-	return s
-}
-
-func (s *GetUserPasswordPolicyResponseBodyPasswordComplexityItem) SetContainUpperCase(v bool) *GetUserPasswordPolicyResponseBodyPasswordComplexityItem {
-	s.ContainUpperCase = &v
-	return s
-}
-
-func (s *GetUserPasswordPolicyResponseBodyPasswordComplexityItem) SetDisplayNameCheck(v bool) *GetUserPasswordPolicyResponseBodyPasswordComplexityItem {
-	s.DisplayNameCheck = &v
-	return s
-}
-
-func (s *GetUserPasswordPolicyResponseBodyPasswordComplexityItem) SetEmailCheck(v bool) *GetUserPasswordPolicyResponseBodyPasswordComplexityItem {
-	s.EmailCheck = &v
-	return s
-}
-
-func (s *GetUserPasswordPolicyResponseBodyPasswordComplexityItem) SetPhoneCheck(v bool) *GetUserPasswordPolicyResponseBodyPasswordComplexityItem {
-	s.PhoneCheck = &v
-	return s
-}
-
-func (s *GetUserPasswordPolicyResponseBodyPasswordComplexityItem) SetUsernameCheck(v bool) *GetUserPasswordPolicyResponseBodyPasswordComplexityItem {
-	s.UsernameCheck = &v
-	return s
-}
-
-type GetUserPasswordPolicyResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserPasswordPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserPasswordPolicyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserPasswordPolicyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserPasswordPolicyResponse) SetHeaders(v map[string]*string) *GetUserPasswordPolicyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserPasswordPolicyResponse) SetStatusCode(v int32) *GetUserPasswordPolicyResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetUserPasswordPolicyResponse) SetBody(v *GetUserPasswordPolicyResponseBody) *GetUserPasswordPolicyResponse {
-	s.Body = v
-	return s
-}
-
 type ListOrganizationalUnitParentIdsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s ListOrganizationalUnitParentIdsHeaders) String() string {
@@ -1355,7 +1466,6 @@ func (s *ListOrganizationalUnitParentIdsHeaders) SetAuthorization(v string) *Lis
 }
 
 type ListOrganizationalUnitParentIdsResponseBody struct {
-	// 父机构ID列表，顺序层级从上到下
 	ParentIds []*string `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
 }
 
@@ -1403,8 +1513,7 @@ func (s *ListOrganizationalUnitParentIdsResponse) SetBody(v *ListOrganizationalU
 
 type ListOrganizationalUnitsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s ListOrganizationalUnitsHeaders) String() string {
@@ -1426,12 +1535,9 @@ func (s *ListOrganizationalUnitsHeaders) SetAuthorization(v string) *ListOrganiz
 }
 
 type ListOrganizationalUnitsRequest struct {
-	// 页码，默认1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 单页大小，默认20
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 父机构ID
-	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ParentId   *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 }
 
 func (s ListOrganizationalUnitsRequest) String() string {
@@ -1458,9 +1564,8 @@ func (s *ListOrganizationalUnitsRequest) SetParentId(v string) *ListOrganization
 }
 
 type ListOrganizationalUnitsResponseBody struct {
-	Data []*ListOrganizationalUnitsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 记录总数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListOrganizationalUnitsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	TotalCount *int64                                     `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListOrganizationalUnitsResponseBody) String() string {
@@ -1482,26 +1587,16 @@ func (s *ListOrganizationalUnitsResponseBody) SetTotalCount(v int64) *ListOrgani
 }
 
 type ListOrganizationalUnitsResponseBodyData struct {
-	// 创建时间，毫秒
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 外部ID
+	CreateTime                   *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description                  *string `json:"description,omitempty" xml:"description,omitempty"`
+	InstanceId                   *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	OrganizationalUnitExternalId *string `json:"organizationalUnitExternalId,omitempty" xml:"organizationalUnitExternalId,omitempty"`
-	// 机构ID
-	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
-	// 机构名称
-	OrganizationalUnitName *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
-	// 来源ID
-	OrganizationalUnitSourceId *string `json:"organizationalUnitSourceId,omitempty" xml:"organizationalUnitSourceId,omitempty"`
-	// 来源类型
+	OrganizationalUnitId         *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
+	OrganizationalUnitName       *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
+	OrganizationalUnitSourceId   *string `json:"organizationalUnitSourceId,omitempty" xml:"organizationalUnitSourceId,omitempty"`
 	OrganizationalUnitSourceType *string `json:"organizationalUnitSourceType,omitempty" xml:"organizationalUnitSourceType,omitempty"`
-	// 父机构ID
-	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// 最近一次更新时间，毫秒
-	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	ParentId                     *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	UpdateTime                   *int64  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListOrganizationalUnitsResponseBodyData) String() string {
@@ -1593,8 +1688,7 @@ func (s *ListOrganizationalUnitsResponse) SetBody(v *ListOrganizationalUnitsResp
 
 type ListUsersHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s ListUsersHeaders) String() string {
@@ -1616,12 +1710,9 @@ func (s *ListUsersHeaders) SetAuthorization(v string) *ListUsersHeaders {
 }
 
 type ListUsersRequest struct {
-	// 机构ID
 	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
-	// 页码，默认1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 单页大小，默认20
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageNumber           *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize             *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListUsersRequest) String() string {
@@ -1648,9 +1739,8 @@ func (s *ListUsersRequest) SetPageSize(v int32) *ListUsersRequest {
 }
 
 type ListUsersResponseBody struct {
-	Data []*ListUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 记录总数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	TotalCount *int64                       `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -1672,45 +1762,25 @@ func (s *ListUsersResponseBody) SetTotalCount(v int64) *ListUsersResponseBody {
 }
 
 type ListUsersResponseBodyData struct {
-	// 账户过期时间, 毫秒时间
-	AccountExpireTime *int64 `json:"accountExpireTime,omitempty" xml:"accountExpireTime,omitempty"`
-	// 创建时间, 毫秒时间
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 账号描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 显示名
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 邮箱
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// 邮箱是否验证
-	EmailVerified *bool `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 锁定过期时间, 毫秒时间
-	LockExpireTime *int64 `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
-	// 密码是否已设置
-	PasswordSet *bool `json:"passwordSet,omitempty" xml:"passwordSet,omitempty"`
-	// 手机号
-	PhoneNumber *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
-	// 手机号是否验证
-	PhoneNumberVerified *bool `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
-	// 手机地区编号,示例：中国大陆手区号为86，不带 00 或 +
-	PhoneRegion  *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
-	RegisterTime *int64  `json:"registerTime,omitempty" xml:"registerTime,omitempty"`
-	// 账户状态, enabled:启用,disabled:禁用
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 最近一次更新时间, 毫秒时间
-	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// 外部ID
-	UserExternalId *string `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
-	// 账户ID
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// 来源ID
-	UserSourceId *string `json:"userSourceId,omitempty" xml:"userSourceId,omitempty"`
-	// 来源类型，build_in[自建],ding_talk[钉钉导入],ad[AD导入],ldap[LDAP导入]
-	UserSourceType *string `json:"userSourceType,omitempty" xml:"userSourceType,omitempty"`
-	// 账户名
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	AccountExpireTime   *int64  `json:"accountExpireTime,omitempty" xml:"accountExpireTime,omitempty"`
+	CreateTime          *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description         *string `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName         *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Email               *string `json:"email,omitempty" xml:"email,omitempty"`
+	EmailVerified       *bool   `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	InstanceId          *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	LockExpireTime      *int64  `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
+	PhoneNumber         *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
+	PhoneNumberVerified *bool   `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
+	PhoneRegion         *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
+	RegisterTime        *int64  `json:"registerTime,omitempty" xml:"registerTime,omitempty"`
+	Status              *string `json:"status,omitempty" xml:"status,omitempty"`
+	UpdateTime          *int64  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UserExternalId      *string `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
+	UserId              *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserSourceId        *string `json:"userSourceId,omitempty" xml:"userSourceId,omitempty"`
+	UserSourceType      *string `json:"userSourceType,omitempty" xml:"userSourceType,omitempty"`
+	Username            *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ListUsersResponseBodyData) String() string {
@@ -1758,11 +1828,6 @@ func (s *ListUsersResponseBodyData) SetInstanceId(v string) *ListUsersResponseBo
 
 func (s *ListUsersResponseBodyData) SetLockExpireTime(v int64) *ListUsersResponseBodyData {
 	s.LockExpireTime = &v
-	return s
-}
-
-func (s *ListUsersResponseBodyData) SetPasswordSet(v bool) *ListUsersResponseBodyData {
-	s.PasswordSet = &v
 	return s
 }
 
@@ -1852,8 +1917,7 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 
 type PatchOrganizationalUnitHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s PatchOrganizationalUnitHeaders) String() string {
@@ -1875,9 +1939,7 @@ func (s *PatchOrganizationalUnitHeaders) SetAuthorization(v string) *PatchOrgani
 }
 
 type PatchOrganizationalUnitRequest struct {
-	// 机构描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 机构名称
+	Description            *string `json:"description,omitempty" xml:"description,omitempty"`
 	OrganizationalUnitName *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
 }
 
@@ -1924,8 +1986,7 @@ func (s *PatchOrganizationalUnitResponse) SetStatusCode(v int32) *PatchOrganizat
 
 type PatchUserHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 认证信息，格式:Bearer access_token
-	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s PatchUserHeaders) String() string {
@@ -1947,20 +2008,13 @@ func (s *PatchUserHeaders) SetAuthorization(v string) *PatchUserHeaders {
 }
 
 type PatchUserRequest struct {
-	// 账户展示名
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 邮箱
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// 邮箱是否验证，邮箱若设置此字段必须设置，无特殊业务可直接设置为true
-	EmailVerified *bool `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
-	// 手机号
-	PhoneNumber *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
-	// 手机号是否验证，手机号若设置此字段必须设置，无特殊业务可直接设置为true
-	PhoneNumberVerified *bool `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
-	// 手机地区编号,示例：中国大陆手区号为86，不带 00 或 +, 手机号若设置，此参数必填
-	PhoneRegion *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
-	// 账户名
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	DisplayName         *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Email               *string `json:"email,omitempty" xml:"email,omitempty"`
+	EmailVerified       *bool   `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	PhoneNumber         *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
+	PhoneNumberVerified *bool   `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
+	PhoneRegion         *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
+	Username            *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s PatchUserRequest) String() string {
@@ -2030,11 +2084,9 @@ func (s *PatchUserResponse) SetStatusCode(v int32) *PatchUserResponse {
 }
 
 type RevokeTokenRequest struct {
-	ClientId     *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
-	ClientSecret *string `json:"client_secret,omitempty" xml:"client_secret,omitempty"`
-	// 撤销的token
-	Token *string `json:"token,omitempty" xml:"token,omitempty"`
-	// token类型
+	ClientId      *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
+	ClientSecret  *string `json:"client_secret,omitempty" xml:"client_secret,omitempty"`
+	Token         *string `json:"token,omitempty" xml:"token,omitempty"`
 	TokenTypeHint *string `json:"token_type_hint,omitempty" xml:"token_type_hint,omitempty"`
 }
 
@@ -2640,6 +2692,71 @@ func (client *Client) GetOrganizationalUnitWithOptions(instanceId *string, appli
 	return _result, _err
 }
 
+func (client *Client) GetOrganizationalUnitIdByExternalId(instanceId *string, applicationId *string, request *GetOrganizationalUnitIdByExternalIdRequest) (_result *GetOrganizationalUnitIdByExternalIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetOrganizationalUnitIdByExternalIdHeaders{}
+	_result = &GetOrganizationalUnitIdByExternalIdResponse{}
+	_body, _err := client.GetOrganizationalUnitIdByExternalIdWithOptions(instanceId, applicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOrganizationalUnitIdByExternalIdWithOptions(instanceId *string, applicationId *string, request *GetOrganizationalUnitIdByExternalIdRequest, headers *GetOrganizationalUnitIdByExternalIdHeaders, runtime *util.RuntimeOptions) (_result *GetOrganizationalUnitIdByExternalIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	instanceId = openapiutil.GetEncodeParam(instanceId)
+	applicationId = openapiutil.GetEncodeParam(applicationId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationalUnitExternalId)) {
+		body["organizationalUnitExternalId"] = request.OrganizationalUnitExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationalUnitSourceId)) {
+		body["organizationalUnitSourceId"] = request.OrganizationalUnitSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationalUnitSourceType)) {
+		body["organizationalUnitSourceType"] = request.OrganizationalUnitSourceType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOrganizationalUnitIdByExternalId"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/organizationalUnits/_/actions/getOrganizationalUnitIdByExternalId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOrganizationalUnitIdByExternalIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetUser(instanceId *string, applicationId *string, userId *string) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUserHeaders{}
@@ -2688,6 +2805,185 @@ func (client *Client) GetUserWithOptions(instanceId *string, applicationId *stri
 	return _result, _err
 }
 
+func (client *Client) GetUserIdByEmail(instanceId *string, applicationId *string, request *GetUserIdByEmailRequest) (_result *GetUserIdByEmailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetUserIdByEmailHeaders{}
+	_result = &GetUserIdByEmailResponse{}
+	_body, _err := client.GetUserIdByEmailWithOptions(instanceId, applicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserIdByEmailWithOptions(instanceId *string, applicationId *string, request *GetUserIdByEmailRequest, headers *GetUserIdByEmailHeaders, runtime *util.RuntimeOptions) (_result *GetUserIdByEmailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	instanceId = openapiutil.GetEncodeParam(instanceId)
+	applicationId = openapiutil.GetEncodeParam(applicationId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		body["email"] = request.Email
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserIdByEmail"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users/_/actions/getUserIdByEmail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserIdByEmailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserIdByPhoneNumber(instanceId *string, applicationId *string, request *GetUserIdByPhoneNumberRequest) (_result *GetUserIdByPhoneNumberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetUserIdByPhoneNumberHeaders{}
+	_result = &GetUserIdByPhoneNumberResponse{}
+	_body, _err := client.GetUserIdByPhoneNumberWithOptions(instanceId, applicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserIdByPhoneNumberWithOptions(instanceId *string, applicationId *string, request *GetUserIdByPhoneNumberRequest, headers *GetUserIdByPhoneNumberHeaders, runtime *util.RuntimeOptions) (_result *GetUserIdByPhoneNumberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	instanceId = openapiutil.GetEncodeParam(instanceId)
+	applicationId = openapiutil.GetEncodeParam(applicationId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["phoneNumber"] = request.PhoneNumber
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserIdByPhoneNumber"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users/_/actions/getUserIdByPhoneNumber"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserIdByPhoneNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserIdByUserExternalId(instanceId *string, applicationId *string, request *GetUserIdByUserExternalIdRequest) (_result *GetUserIdByUserExternalIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetUserIdByUserExternalIdHeaders{}
+	_result = &GetUserIdByUserExternalIdResponse{}
+	_body, _err := client.GetUserIdByUserExternalIdWithOptions(instanceId, applicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserIdByUserExternalIdWithOptions(instanceId *string, applicationId *string, request *GetUserIdByUserExternalIdRequest, headers *GetUserIdByUserExternalIdHeaders, runtime *util.RuntimeOptions) (_result *GetUserIdByUserExternalIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	instanceId = openapiutil.GetEncodeParam(instanceId)
+	applicationId = openapiutil.GetEncodeParam(applicationId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserExternalId)) {
+		body["userExternalId"] = request.UserExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserSourceId)) {
+		body["userSourceId"] = request.UserSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserSourceType)) {
+		body["userSourceType"] = request.UserSourceType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserIdByUserExternalId"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users/_/actions/getUserIdByExternalId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserIdByUserExternalIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetUserInfo(instanceId *string, applicationId *string) (_result *GetUserInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUserInfoHeaders{}
@@ -2727,53 +3023,6 @@ func (client *Client) GetUserInfoWithOptions(instanceId *string, applicationId *
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetUserInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetUserPasswordPolicy(instanceId *string, applicationId *string) (_result *GetUserPasswordPolicyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &GetUserPasswordPolicyHeaders{}
-	_result = &GetUserPasswordPolicyResponse{}
-	_body, _err := client.GetUserPasswordPolicyWithOptions(instanceId, applicationId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetUserPasswordPolicyWithOptions(instanceId *string, applicationId *string, headers *GetUserPasswordPolicyHeaders, runtime *util.RuntimeOptions) (_result *GetUserPasswordPolicyResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
-	realHeaders := make(map[string]*string)
-	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
-		realHeaders = headers.CommonHeaders
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
-		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: realHeaders,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetUserPasswordPolicy"),
-		Version:     tea.String("2022-02-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users/_/actions/getUserPasswordPolicy"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("Anonymous"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetUserPasswordPolicyResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
