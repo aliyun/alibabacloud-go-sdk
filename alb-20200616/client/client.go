@@ -13,14 +13,10 @@ import (
 )
 
 type AddEntriesToAclRequest struct {
-	// 条目信息列表
-	AclEntries []*AddEntriesToAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
-	// AclId
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// 幂等Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// dryRun
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	AclEntries  []*AddEntriesToAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
+	AclId       *string                             `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	ClientToken *string                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool                               `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 }
 
 func (s AddEntriesToAclRequest) String() string {
@@ -52,10 +48,8 @@ func (s *AddEntriesToAclRequest) SetDryRun(v bool) *AddEntriesToAclRequest {
 }
 
 type AddEntriesToAclRequestAclEntries struct {
-	// 描述信息
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 条目
-	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	Entry       *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
 func (s AddEntriesToAclRequestAclEntries) String() string {
@@ -77,9 +71,7 @@ func (s *AddEntriesToAclRequestAclEntries) SetEntry(v string) *AddEntriesToAclRe
 }
 
 type AddEntriesToAclResponseBody struct {
-	// job
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -131,14 +123,10 @@ func (s *AddEntriesToAclResponse) SetBody(v *AddEntriesToAclResponseBody) *AddEn
 }
 
 type AddServersToServerGroupRequest struct {
-	// 幂等Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// dryRun
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 后端服务器Id
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 后端服务器
-	Servers []*AddServersToServerGroupRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	ClientToken   *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun        *bool                                    `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ServerGroupId *string                                  `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	Servers       []*AddServersToServerGroupRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
 }
 
 func (s AddServersToServerGroupRequest) String() string {
@@ -170,18 +158,12 @@ func (s *AddServersToServerGroupRequest) SetServers(v []*AddServersToServerGroup
 }
 
 type AddServersToServerGroupRequestServers struct {
-	// 描述信息
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 后端端口号
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 后端服务器id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 后端服务器ip
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 后端服务器类型
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// 后端服务器权重
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerType  *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s AddServersToServerGroupRequestServers) String() string {
@@ -223,9 +205,7 @@ func (s *AddServersToServerGroupRequestServers) SetWeight(v int32) *AddServersTo
 }
 
 type AddServersToServerGroupResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -277,14 +257,10 @@ func (s *AddServersToServerGroupResponse) SetBody(v *AddServersToServerGroupResp
 }
 
 type ApplyHealthCheckTemplateToServerGroupRequest struct {
-	// 幂等Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// dryRun
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 健康检查模板Id
+	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	HealthCheckTemplateId *string `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
-	// 服务器组Id
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	ServerGroupId         *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
 func (s ApplyHealthCheckTemplateToServerGroupRequest) String() string {
@@ -316,9 +292,7 @@ func (s *ApplyHealthCheckTemplateToServerGroupRequest) SetServerGroupId(v string
 }
 
 type ApplyHealthCheckTemplateToServerGroupResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -370,16 +344,11 @@ func (s *ApplyHealthCheckTemplateToServerGroupResponse) SetBody(v *ApplyHealthCh
 }
 
 type AssociateAclsWithListenerRequest struct {
-	// 访问控制策略Id
-	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
-	// 绑定类型
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 监听Id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	AclIds      []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
+	AclType     *string   `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ListenerId  *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
 func (s AssociateAclsWithListenerRequest) String() string {
@@ -416,9 +385,7 @@ func (s *AssociateAclsWithListenerRequest) SetListenerId(v string) *AssociateAcl
 }
 
 type AssociateAclsWithListenerResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求id
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -470,14 +437,10 @@ func (s *AssociateAclsWithListenerResponse) SetBody(v *AssociateAclsWithListener
 }
 
 type AssociateAdditionalCertificatesWithListenerRequest struct {
-	// 证书列表
 	Certificates []*AssociateAdditionalCertificatesWithListenerRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// 幂等Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// dryRun
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 监听Id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ClientToken  *string                                                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun       *bool                                                             `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ListenerId   *string                                                           `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
 func (s AssociateAdditionalCertificatesWithListenerRequest) String() string {
@@ -509,7 +472,6 @@ func (s *AssociateAdditionalCertificatesWithListenerRequest) SetListenerId(v str
 }
 
 type AssociateAdditionalCertificatesWithListenerRequestCertificates struct {
-	// 证书Id
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -527,9 +489,7 @@ func (s *AssociateAdditionalCertificatesWithListenerRequestCertificates) SetCert
 }
 
 type AssociateAdditionalCertificatesWithListenerResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -581,16 +541,11 @@ func (s *AssociateAdditionalCertificatesWithListenerResponse) SetBody(v *Associa
 }
 
 type AttachCommonBandwidthPackageToLoadBalancerRequest struct {
-	// 带宽包ID
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 实例ID
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 地域ID
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerId     *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AttachCommonBandwidthPackageToLoadBalancerRequest) String() string {
@@ -627,9 +582,7 @@ func (s *AttachCommonBandwidthPackageToLoadBalancerRequest) SetRegionId(v string
 }
 
 type AttachCommonBandwidthPackageToLoadBalancerResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -681,13 +634,9 @@ func (s *AttachCommonBandwidthPackageToLoadBalancerResponse) SetBody(v *AttachCo
 }
 
 type CreateAclRequest struct {
-	// Acl名称
-	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// 幂等Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// dryRun
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 资源组Id
+	AclName         *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun          *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -720,11 +669,8 @@ func (s *CreateAclRequest) SetResourceGroupId(v string) *CreateAclRequest {
 }
 
 type CreateAclResponseBody struct {
-	// AclId
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -781,34 +727,20 @@ func (s *CreateAclResponse) SetBody(v *CreateAclResponseBody) *CreateAclResponse
 }
 
 type CreateHealthCheckTemplateRequest struct {
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// dryRun
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 状态码
-	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
-	// 端口号
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 域名
-	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
-	// 版本
-	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	// 时间间隔
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 方法
-	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// uri
-	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// 协议
-	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// 名称
-	HealthCheckTemplateName *string `json:"HealthCheckTemplateName,omitempty" xml:"HealthCheckTemplateName,omitempty"`
-	// 超时时间
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// 健康阈值
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 不健康阈值
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	ClientToken             *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                  *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	HealthCheckCodes        []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
+	HealthCheckConnectPort  *int32    `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckHost         *string   `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
+	HealthCheckHttpVersion  *string   `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	HealthCheckInterval     *int32    `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckMethod       *string   `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheckPath         *string   `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	HealthCheckProtocol     *string   `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	HealthCheckTemplateName *string   `json:"HealthCheckTemplateName,omitempty" xml:"HealthCheckTemplateName,omitempty"`
+	HealthCheckTimeout      *int32    `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthyThreshold        *int32    `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold      *int32    `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s CreateHealthCheckTemplateRequest) String() string {
@@ -890,10 +822,8 @@ func (s *CreateHealthCheckTemplateRequest) SetUnhealthyThreshold(v int32) *Creat
 }
 
 type CreateHealthCheckTemplateResponseBody struct {
-	// 健康检查模板ID
 	HealthCheckTemplateId *string `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateHealthCheckTemplateResponseBody) String() string {
@@ -944,39 +874,22 @@ func (s *CreateHealthCheckTemplateResponse) SetBody(v *CreateHealthCheckTemplate
 }
 
 type CreateListenerRequest struct {
-	// 监听默认CA证书列表，N当前取值范围为1
-	CaCertificates []*CreateListenerRequestCaCertificates `json:"CaCertificates,omitempty" xml:"CaCertificates,omitempty" type:"Repeated"`
-	// 是否开启双向认证
-	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// 监听默认服务器证书列表，N当前取值范围为1
-	Certificates []*CreateListenerRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 监听默认动作
-	DefaultActions []*CreateListenerRequestDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 是否开启Gzip压缩
-	GzipEnabled *bool `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
-	// 是否开启HTTP/2特性
-	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	// 连接空闲超时时间
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// 监听描述
-	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// 监听端口
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 监听协议
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// 负载均衡标识
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// HTTPS启用QUIC时相关属性
-	QuicConfig *CreateListenerRequestQuicConfig `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
-	// 请求超时时间
-	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// 安全策略
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// XForward字段相关的配置
+	CaCertificates      []*CreateListenerRequestCaCertificates    `json:"CaCertificates,omitempty" xml:"CaCertificates,omitempty" type:"Repeated"`
+	CaEnabled           *bool                                     `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
+	Certificates        []*CreateListenerRequestCertificates      `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	ClientToken         *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DefaultActions      []*CreateListenerRequestDefaultActions    `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
+	DryRun              *bool                                     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	GzipEnabled         *bool                                     `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
+	Http2Enabled        *bool                                     `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	IdleTimeout         *int32                                    `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ListenerDescription *string                                   `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
+	ListenerPort        *int32                                    `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ListenerProtocol    *string                                   `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	LoadBalancerId      *string                                   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	QuicConfig          *CreateListenerRequestQuicConfig          `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
+	RequestTimeout      *int32                                    `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	SecurityPolicyId    *string                                   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	XForwardedForConfig *CreateListenerRequestXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
@@ -1085,7 +998,6 @@ func (s CreateListenerRequestCaCertificates) GoString() string {
 }
 
 type CreateListenerRequestCertificates struct {
-	// 正式标识
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -1103,10 +1015,8 @@ func (s *CreateListenerRequestCertificates) SetCertificateId(v string) *CreateLi
 }
 
 type CreateListenerRequestDefaultActions struct {
-	// 转发组
 	ForwardGroupConfig *CreateListenerRequestDefaultActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// 动作类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type               *string                                                `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateListenerRequestDefaultActions) String() string {
@@ -1128,7 +1038,6 @@ func (s *CreateListenerRequestDefaultActions) SetType(v string) *CreateListenerR
 }
 
 type CreateListenerRequestDefaultActionsForwardGroupConfig struct {
-	// 服务器组列表
 	ServerGroupTuples []*CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -1146,7 +1055,6 @@ func (s *CreateListenerRequestDefaultActionsForwardGroupConfig) SetServerGroupTu
 }
 
 type CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples struct {
-	// 服务器组ID
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -1164,10 +1072,8 @@ func (s *CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples)
 }
 
 type CreateListenerRequestQuicConfig struct {
-	// 需要关联的QUIC监听ID，HTTPS监听时有效，QuicUpgradeEnabled为true时必选
-	QuicListenerId *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
-	// 是否开启quic升级，HTTPS监听时有效
-	QuicUpgradeEnabled *bool `json:"QuicUpgradeEnabled,omitempty" xml:"QuicUpgradeEnabled,omitempty"`
+	QuicListenerId     *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
+	QuicUpgradeEnabled *bool   `json:"QuicUpgradeEnabled,omitempty" xml:"QuicUpgradeEnabled,omitempty"`
 }
 
 func (s CreateListenerRequestQuicConfig) String() string {
@@ -1189,32 +1095,21 @@ func (s *CreateListenerRequestQuicConfig) SetQuicUpgradeEnabled(v bool) *CreateL
 }
 
 type CreateListenerRequestXForwardedForConfig struct {
-	// 自定义HEADER头名称，只有当XForwardedForClientCertClientVerifyEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertClientVerifyAlias *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
-	// 是否通过X-Forwarded-Clientcert-clientverify  头字段获取对访问负载均衡实例客户端证书的校验结果。HTTPS监听有效。
-	XForwardedForClientCertClientVerifyEnabled *bool `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
-	// 自定义HEADER头名称，只有当XForwardedForClientCertFingerprintEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertFingerprintAlias *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
-	// 是否通过X-Forwarded-Clientcert-fingerprint 头字段获取访问负载均衡实例客户端证书的指纹取值，HTTPS监听有效。
-	XForwardedForClientCertFingerprintEnabled *bool `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
-	// 自定义HEADER头名称，只有当XForwardedForClientCertIssuerDNEnabled的值为‘On’的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertIssuerDNAlias *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
-	// 是否通过 X-Forwarded-Clientcert-issuerdn 头字段获取访问负载均衡实例客户端证书的发行者信息。HTTPS监听有效。
-	XForwardedForClientCertIssuerDNEnabled *bool `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
-	// 自定义HEADER头名称，只有当XForwardedForClientCertSubjectDNEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertSubjectDNAlias *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
-	// 是否通过X-Forwarded-Clientcert-subjectdn  头字段获取访问负载均衡实例客户端证书的所有者信息。HTTPS监听有效。
-	XForwardedForClientCertSubjectDNEnabled *bool `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
-	// 是否通过X-Forwarded-Client-Port 头字段获取访问负载均衡实例客户端的端口。HTTPS监听有效。
-	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
-	// 是否开启通过X-Forwarded-For头字段获取来访者真实 IP
-	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
-	// 是否通过X-Forwarded-Proto头字段获取负载均衡实例的监听协议。
-	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
-	// 是否通过SLB-ID头字段获取负载均衡实例ID。
-	XForwardedForSLBIdEnabled *bool `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
-	// 是否通过X-Forwarded-Port 头字段获取负载均衡实例的监听端口。HTTPS监听有效。
-	XForwardedForSLBPortEnabled *bool `json:"XForwardedForSLBPortEnabled,omitempty" xml:"XForwardedForSLBPortEnabled,omitempty"`
+	XForwardedForClientCertClientVerifyAlias   *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
+	XForwardedForClientCertClientVerifyEnabled *bool   `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
+	XForwardedForClientCertFingerprintAlias    *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
+	XForwardedForClientCertFingerprintEnabled  *bool   `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
+	XForwardedForClientCertIssuerDNAlias       *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
+	XForwardedForClientCertIssuerDNEnabled     *bool   `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
+	XForwardedForClientCertSubjectDNAlias      *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
+	XForwardedForClientCertSubjectDNEnabled    *bool   `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
+	XForwardedForClientSourceIpsEnabled        *bool   `json:"XForwardedForClientSourceIpsEnabled,omitempty" xml:"XForwardedForClientSourceIpsEnabled,omitempty"`
+	XForwardedForClientSourceIpsTrusted        *string `json:"XForwardedForClientSourceIpsTrusted,omitempty" xml:"XForwardedForClientSourceIpsTrusted,omitempty"`
+	XForwardedForClientSrcPortEnabled          *bool   `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
+	XForwardedForEnabled                       *bool   `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	XForwardedForProtoEnabled                  *bool   `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
+	XForwardedForSLBIdEnabled                  *bool   `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
+	XForwardedForSLBPortEnabled                *bool   `json:"XForwardedForSLBPortEnabled,omitempty" xml:"XForwardedForSLBPortEnabled,omitempty"`
 }
 
 func (s CreateListenerRequestXForwardedForConfig) String() string {
@@ -1265,6 +1160,16 @@ func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForClientCertSub
 	return s
 }
 
+func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForClientSourceIpsEnabled(v bool) *CreateListenerRequestXForwardedForConfig {
+	s.XForwardedForClientSourceIpsEnabled = &v
+	return s
+}
+
+func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForClientSourceIpsTrusted(v string) *CreateListenerRequestXForwardedForConfig {
+	s.XForwardedForClientSourceIpsTrusted = &v
+	return s
+}
+
 func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForClientSrcPortEnabled(v bool) *CreateListenerRequestXForwardedForConfig {
 	s.XForwardedForClientSrcPortEnabled = &v
 	return s
@@ -1291,12 +1196,9 @@ func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForSLBPortEnable
 }
 
 type CreateListenerResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 监听标识
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateListenerResponseBody) String() string {
@@ -1352,32 +1254,19 @@ func (s *CreateListenerResponse) SetBody(v *CreateListenerResponseBody) *CreateL
 }
 
 type CreateLoadBalancerRequest struct {
-	// 地址模式
-	AddressAllocatedMode *string `json:"AddressAllocatedMode,omitempty" xml:"AddressAllocatedMode,omitempty"`
-	// 协议版本
-	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// 负载均衡的地址类型
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否开启删除保护
-	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitempty" xml:"DeletionProtectionEnabled,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 计费相关配置信息
-	LoadBalancerBillingConfig *CreateLoadBalancerRequestLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
-	// 负载均衡的版本
-	LoadBalancerEdition *string `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
-	// 名称
-	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// 负载均衡修改保护相关信息
+	AddressAllocatedMode         *string                                                `json:"AddressAllocatedMode,omitempty" xml:"AddressAllocatedMode,omitempty"`
+	AddressIpVersion             *string                                                `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	AddressType                  *string                                                `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	ClientToken                  *string                                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeletionProtectionEnabled    *bool                                                  `json:"DeletionProtectionEnabled,omitempty" xml:"DeletionProtectionEnabled,omitempty"`
+	DryRun                       *bool                                                  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerBillingConfig    *CreateLoadBalancerRequestLoadBalancerBillingConfig    `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
+	LoadBalancerEdition          *string                                                `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
+	LoadBalancerName             *string                                                `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	ModificationProtectionConfig *CreateLoadBalancerRequestModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
-	// 资源组
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 负载均衡实例的专有网络ID。
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// 可用区及交换机映射列表
-	ZoneMappings []*CreateLoadBalancerRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+	ResourceGroupId              *string                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	VpcId                        *string                                                `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneMappings                 []*CreateLoadBalancerRequestZoneMappings               `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
 func (s CreateLoadBalancerRequest) String() string {
@@ -1454,8 +1343,8 @@ func (s *CreateLoadBalancerRequest) SetZoneMappings(v []*CreateLoadBalancerReque
 }
 
 type CreateLoadBalancerRequestLoadBalancerBillingConfig struct {
-	// 实例的计费类型
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	PayType            *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
 
 func (s CreateLoadBalancerRequestLoadBalancerBillingConfig) String() string {
@@ -1466,15 +1355,18 @@ func (s CreateLoadBalancerRequestLoadBalancerBillingConfig) GoString() string {
 	return s.String()
 }
 
+func (s *CreateLoadBalancerRequestLoadBalancerBillingConfig) SetBandwidthPackageId(v string) *CreateLoadBalancerRequestLoadBalancerBillingConfig {
+	s.BandwidthPackageId = &v
+	return s
+}
+
 func (s *CreateLoadBalancerRequestLoadBalancerBillingConfig) SetPayType(v string) *CreateLoadBalancerRequestLoadBalancerBillingConfig {
 	s.PayType = &v
 	return s
 }
 
 type CreateLoadBalancerRequestModificationProtectionConfig struct {
-	// 设置修改保护状态的原因
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// 负载均衡修改保护状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1497,10 +1389,8 @@ func (s *CreateLoadBalancerRequestModificationProtectionConfig) SetStatus(v stri
 }
 
 type CreateLoadBalancerRequestZoneMappings struct {
-	// 交换机标识
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// 可用区
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateLoadBalancerRequestZoneMappings) String() string {
@@ -1522,10 +1412,8 @@ func (s *CreateLoadBalancerRequestZoneMappings) SetZoneId(v string) *CreateLoadB
 }
 
 type CreateLoadBalancerResponseBody struct {
-	// 负载均衡实例标识
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateLoadBalancerResponseBody) String() string {
@@ -1576,20 +1464,13 @@ func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) 
 }
 
 type CreateRuleRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 监听标识
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// 转发规则优先级
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 转发规则动作
-	RuleActions []*CreateRuleRequestRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
-	// 转发规则条件
+	ClientToken    *string                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun         *bool                              `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ListenerId     *string                            `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Priority       *int32                             `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RuleActions    []*CreateRuleRequestRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	RuleConditions []*CreateRuleRequestRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
-	// 转发规则名称
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleName       *string                            `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s CreateRuleRequest) String() string {
@@ -1636,24 +1517,15 @@ func (s *CreateRuleRequest) SetRuleName(v string) *CreateRuleRequest {
 }
 
 type CreateRuleRequestRuleActions struct {
-	// 返回固定内容动作配置
 	FixedResponseConfig *CreateRuleRequestRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
-	// 转发组动作配置
-	ForwardGroupConfig *CreateRuleRequestRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// 插入头部动作配置
-	InsertHeaderConfig *CreateRuleRequestRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
-	// 优先级
-	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 重定向动作配置
-	RedirectConfig *CreateRuleRequestRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
-	// 内部重定向动作配置
-	RewriteConfig *CreateRuleRequestRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
-	// 流量限速
-	TrafficLimitConfig *CreateRuleRequestRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
-	// 流量镜像
+	ForwardGroupConfig  *CreateRuleRequestRuleActionsForwardGroupConfig  `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
+	InsertHeaderConfig  *CreateRuleRequestRuleActionsInsertHeaderConfig  `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
+	Order               *int32                                           `json:"Order,omitempty" xml:"Order,omitempty"`
+	RedirectConfig      *CreateRuleRequestRuleActionsRedirectConfig      `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
+	RewriteConfig       *CreateRuleRequestRuleActionsRewriteConfig       `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
+	TrafficLimitConfig  *CreateRuleRequestRuleActionsTrafficLimitConfig  `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
 	TrafficMirrorConfig *CreateRuleRequestRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
-	// 转发规则动作类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type                *string                                          `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateRuleRequestRuleActions) String() string {
@@ -1710,12 +1582,9 @@ func (s *CreateRuleRequestRuleActions) SetType(v string) *CreateRuleRequestRuleA
 }
 
 type CreateRuleRequestRuleActionsFixedResponseConfig struct {
-	// 内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 内容类型
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// HTTP响应码
-	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	HttpCode    *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 }
 
 func (s CreateRuleRequestRuleActionsFixedResponseConfig) String() string {
@@ -1742,10 +1611,8 @@ func (s *CreateRuleRequestRuleActionsFixedResponseConfig) SetHttpCode(v string) 
 }
 
 type CreateRuleRequestRuleActionsForwardGroupConfig struct {
-	// 服务器组之间会话保持
 	ServerGroupStickySession *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession `json:"ServerGroupStickySession,omitempty" xml:"ServerGroupStickySession,omitempty" type:"Struct"`
-	// 转发到的目的服务器组列表
-	ServerGroupTuples []*CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
+	ServerGroupTuples        []*CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples      `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
 func (s CreateRuleRequestRuleActionsForwardGroupConfig) String() string {
@@ -1767,9 +1634,7 @@ func (s *CreateRuleRequestRuleActionsForwardGroupConfig) SetServerGroupTuples(v 
 }
 
 type CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession struct {
-	// 是否开启会话保持
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// 超时时间
+	Enabled *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
@@ -1792,10 +1657,8 @@ func (s *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession)
 }
 
 type CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples struct {
-	// 服务器组标识
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 权重
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Weight        *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples) String() string {
@@ -1817,11 +1680,8 @@ func (s *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples) SetWei
 }
 
 type CreateRuleRequestRuleActionsInsertHeaderConfig struct {
-	// HTTP标头
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// HTTP标头内容
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 取值类型
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -1849,18 +1709,12 @@ func (s *CreateRuleRequestRuleActionsInsertHeaderConfig) SetValueType(v string) 
 }
 
 type CreateRuleRequestRuleActionsRedirectConfig struct {
-	// 要跳转的主机地址
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 跳转方式
+	Host     *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// 要跳转的路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 要跳转的端口
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 要跳转的协议
+	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 要跳转的查询字符串
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Query    *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
 func (s CreateRuleRequestRuleActionsRedirectConfig) String() string {
@@ -1902,11 +1756,8 @@ func (s *CreateRuleRequestRuleActionsRedirectConfig) SetQuery(v string) *CreateR
 }
 
 type CreateRuleRequestRuleActionsRewriteConfig struct {
-	// 主机名
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 查询
+	Host  *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -1934,7 +1785,8 @@ func (s *CreateRuleRequestRuleActionsRewriteConfig) SetQuery(v string) *CreateRu
 }
 
 type CreateRuleRequestRuleActionsTrafficLimitConfig struct {
-	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+	PerIpQps *int32 `json:"PerIpQps,omitempty" xml:"PerIpQps,omitempty"`
+	QPS      *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
 }
 
 func (s CreateRuleRequestRuleActionsTrafficLimitConfig) String() string {
@@ -1945,16 +1797,19 @@ func (s CreateRuleRequestRuleActionsTrafficLimitConfig) GoString() string {
 	return s.String()
 }
 
+func (s *CreateRuleRequestRuleActionsTrafficLimitConfig) SetPerIpQps(v int32) *CreateRuleRequestRuleActionsTrafficLimitConfig {
+	s.PerIpQps = &v
+	return s
+}
+
 func (s *CreateRuleRequestRuleActionsTrafficLimitConfig) SetQPS(v int32) *CreateRuleRequestRuleActionsTrafficLimitConfig {
 	s.QPS = &v
 	return s
 }
 
 type CreateRuleRequestRuleActionsTrafficMirrorConfig struct {
-	// 镜像至服务器组
 	MirrorGroupConfig *CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
-	// 镜像目标类型
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	TargetType        *string                                                           `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s CreateRuleRequestRuleActionsTrafficMirrorConfig) String() string {
@@ -2010,22 +1865,14 @@ func (s *CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerG
 }
 
 type CreateRuleRequestRuleConditions struct {
-	// Cookie条件配置
-	CookieConfig *CreateRuleRequestRuleConditionsCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
-	// HTTP标头条件配置
-	HeaderConfig *CreateRuleRequestRuleConditionsHeaderConfig `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
-	// 主机名条件配置
-	HostConfig *CreateRuleRequestRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-	// HTTP请求方法条件配置
-	MethodConfig *CreateRuleRequestRuleConditionsMethodConfig `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
-	// 路径条件配置
-	PathConfig *CreateRuleRequestRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	// 查询字符串条件配置
+	CookieConfig      *CreateRuleRequestRuleConditionsCookieConfig      `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
+	HeaderConfig      *CreateRuleRequestRuleConditionsHeaderConfig      `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
+	HostConfig        *CreateRuleRequestRuleConditionsHostConfig        `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	MethodConfig      *CreateRuleRequestRuleConditionsMethodConfig      `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
+	PathConfig        *CreateRuleRequestRuleConditionsPathConfig        `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
 	QueryStringConfig *CreateRuleRequestRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
-	// 基于源IP业务流量匹配
-	SourceIpConfig *CreateRuleRequestRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
-	// 条件类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	SourceIpConfig    *CreateRuleRequestRuleConditionsSourceIpConfig    `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
+	Type              *string                                           `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateRuleRequestRuleConditions) String() string {
@@ -2077,7 +1924,6 @@ func (s *CreateRuleRequestRuleConditions) SetType(v string) *CreateRuleRequestRu
 }
 
 type CreateRuleRequestRuleConditionsCookieConfig struct {
-	// Cookie键值对列表
 	Values []*CreateRuleRequestRuleConditionsCookieConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2095,9 +1941,7 @@ func (s *CreateRuleRequestRuleConditionsCookieConfig) SetValues(v []*CreateRuleR
 }
 
 type CreateRuleRequestRuleConditionsCookieConfigValues struct {
-	// Cookie条件键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Cookie条件值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2120,9 +1964,7 @@ func (s *CreateRuleRequestRuleConditionsCookieConfigValues) SetValue(v string) *
 }
 
 type CreateRuleRequestRuleConditionsHeaderConfig struct {
-	// HTTP标头键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// HTTP标头值列表
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2145,7 +1987,6 @@ func (s *CreateRuleRequestRuleConditionsHeaderConfig) SetValues(v []*string) *Cr
 }
 
 type CreateRuleRequestRuleConditionsHostConfig struct {
-	// 主机名列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2163,7 +2004,6 @@ func (s *CreateRuleRequestRuleConditionsHostConfig) SetValues(v []*string) *Crea
 }
 
 type CreateRuleRequestRuleConditionsMethodConfig struct {
-	// HTTP请求方法列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2181,7 +2021,6 @@ func (s *CreateRuleRequestRuleConditionsMethodConfig) SetValues(v []*string) *Cr
 }
 
 type CreateRuleRequestRuleConditionsPathConfig struct {
-	// 路径条件列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2199,7 +2038,6 @@ func (s *CreateRuleRequestRuleConditionsPathConfig) SetValues(v []*string) *Crea
 }
 
 type CreateRuleRequestRuleConditionsQueryStringConfig struct {
-	// 查询字符串条件键值对列表
 	Values []*CreateRuleRequestRuleConditionsQueryStringConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2217,9 +2055,7 @@ func (s *CreateRuleRequestRuleConditionsQueryStringConfig) SetValues(v []*Create
 }
 
 type CreateRuleRequestRuleConditionsQueryStringConfigValues struct {
-	// 查询字符串条件键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 查询字符串条件值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2242,7 +2078,6 @@ func (s *CreateRuleRequestRuleConditionsQueryStringConfigValues) SetValue(v stri
 }
 
 type CreateRuleRequestRuleConditionsSourceIpConfig struct {
-	// 基于源IP业务流量匹配
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2260,12 +2095,9 @@ func (s *CreateRuleRequestRuleConditionsSourceIpConfig) SetValues(v []*string) *
 }
 
 type CreateRuleResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 转发规则标识
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId    *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s CreateRuleResponseBody) String() string {
@@ -2321,14 +2153,10 @@ func (s *CreateRuleResponse) SetBody(v *CreateRuleResponseBody) *CreateRuleRespo
 }
 
 type CreateRulesRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 监听标识
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// 转发规则列表
-	Rules []*CreateRulesRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	ClientToken *string                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool                      `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ListenerId  *string                    `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Rules       []*CreateRulesRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s CreateRulesRequest) String() string {
@@ -2360,16 +2188,11 @@ func (s *CreateRulesRequest) SetRules(v []*CreateRulesRequestRules) *CreateRules
 }
 
 type CreateRulesRequestRules struct {
-	// 转发规则方向
-	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// 转发规则优先级
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 转发规则动作
-	RuleActions []*CreateRulesRequestRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
-	// 转发规则条件
+	Direction      *string                                  `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	Priority       *int32                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RuleActions    []*CreateRulesRequestRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	RuleConditions []*CreateRulesRequestRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
-	// 转发规则名称
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleName       *string                                  `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s CreateRulesRequestRules) String() string {
@@ -2406,24 +2229,15 @@ func (s *CreateRulesRequestRules) SetRuleName(v string) *CreateRulesRequestRules
 }
 
 type CreateRulesRequestRulesRuleActions struct {
-	// 返回固定内容动作配置
 	FixedResponseConfig *CreateRulesRequestRulesRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
-	// 转发组动作配置
-	ForwardGroupConfig *CreateRulesRequestRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// 插入头部动作配置
-	InsertHeaderConfig *CreateRulesRequestRulesRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
-	// 优先级
-	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 重定向动作配置
-	RedirectConfig *CreateRulesRequestRulesRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
-	// 内部重定向动作配置
-	RewriteConfig *CreateRulesRequestRulesRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
-	// 流量限速
-	TrafficLimitConfig *CreateRulesRequestRulesRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
-	// 流量镜像
+	ForwardGroupConfig  *CreateRulesRequestRulesRuleActionsForwardGroupConfig  `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
+	InsertHeaderConfig  *CreateRulesRequestRulesRuleActionsInsertHeaderConfig  `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
+	Order               *int32                                                 `json:"Order,omitempty" xml:"Order,omitempty"`
+	RedirectConfig      *CreateRulesRequestRulesRuleActionsRedirectConfig      `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
+	RewriteConfig       *CreateRulesRequestRulesRuleActionsRewriteConfig       `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
+	TrafficLimitConfig  *CreateRulesRequestRulesRuleActionsTrafficLimitConfig  `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
 	TrafficMirrorConfig *CreateRulesRequestRulesRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
-	// 转发规则动作类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type                *string                                                `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateRulesRequestRulesRuleActions) String() string {
@@ -2480,12 +2294,9 @@ func (s *CreateRulesRequestRulesRuleActions) SetType(v string) *CreateRulesReque
 }
 
 type CreateRulesRequestRulesRuleActionsFixedResponseConfig struct {
-	// 内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 内容类型
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// HTTP响应码
-	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	HttpCode    *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 }
 
 func (s CreateRulesRequestRulesRuleActionsFixedResponseConfig) String() string {
@@ -2512,10 +2323,8 @@ func (s *CreateRulesRequestRulesRuleActionsFixedResponseConfig) SetHttpCode(v st
 }
 
 type CreateRulesRequestRulesRuleActionsForwardGroupConfig struct {
-	// 服务器组之间会话保持
 	ServerGroupStickySession *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession `json:"ServerGroupStickySession,omitempty" xml:"ServerGroupStickySession,omitempty" type:"Struct"`
-	// 转发到的目的服务器组列表
-	ServerGroupTuples []*CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
+	ServerGroupTuples        []*CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples      `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
 func (s CreateRulesRequestRulesRuleActionsForwardGroupConfig) String() string {
@@ -2537,9 +2346,7 @@ func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfig) SetServerGroupTup
 }
 
 type CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession struct {
-	// 是否开启会话保持
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// 超时时间
+	Enabled *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
@@ -2562,10 +2369,8 @@ func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySe
 }
 
 type CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
-	// 服务器组标识
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 权重
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Weight        *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) String() string {
@@ -2587,11 +2392,8 @@ func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) 
 }
 
 type CreateRulesRequestRulesRuleActionsInsertHeaderConfig struct {
-	// HTTP标头
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// HTTP标头内容
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 取值类型
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -2619,18 +2421,12 @@ func (s *CreateRulesRequestRulesRuleActionsInsertHeaderConfig) SetValueType(v st
 }
 
 type CreateRulesRequestRulesRuleActionsRedirectConfig struct {
-	// 要跳转的主机地址
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 跳转方式
+	Host     *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// 要跳转的路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 要跳转的端口
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 要跳转的协议
+	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 要跳转的查询字符串
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Query    *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
 func (s CreateRulesRequestRulesRuleActionsRedirectConfig) String() string {
@@ -2672,11 +2468,8 @@ func (s *CreateRulesRequestRulesRuleActionsRedirectConfig) SetQuery(v string) *C
 }
 
 type CreateRulesRequestRulesRuleActionsRewriteConfig struct {
-	// 主机名
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 查询
+	Host  *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -2704,7 +2497,8 @@ func (s *CreateRulesRequestRulesRuleActionsRewriteConfig) SetQuery(v string) *Cr
 }
 
 type CreateRulesRequestRulesRuleActionsTrafficLimitConfig struct {
-	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+	PerIpQps *int32 `json:"PerIpQps,omitempty" xml:"PerIpQps,omitempty"`
+	QPS      *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
 }
 
 func (s CreateRulesRequestRulesRuleActionsTrafficLimitConfig) String() string {
@@ -2715,16 +2509,19 @@ func (s CreateRulesRequestRulesRuleActionsTrafficLimitConfig) GoString() string 
 	return s.String()
 }
 
+func (s *CreateRulesRequestRulesRuleActionsTrafficLimitConfig) SetPerIpQps(v int32) *CreateRulesRequestRulesRuleActionsTrafficLimitConfig {
+	s.PerIpQps = &v
+	return s
+}
+
 func (s *CreateRulesRequestRulesRuleActionsTrafficLimitConfig) SetQPS(v int32) *CreateRulesRequestRulesRuleActionsTrafficLimitConfig {
 	s.QPS = &v
 	return s
 }
 
 type CreateRulesRequestRulesRuleActionsTrafficMirrorConfig struct {
-	// 镜像至服务器组
 	MirrorGroupConfig *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
-	// 镜像目标类型
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	TargetType        *string                                                                 `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s CreateRulesRequestRulesRuleActionsTrafficMirrorConfig) String() string {
@@ -2780,24 +2577,15 @@ func (s *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigS
 }
 
 type CreateRulesRequestRulesRuleConditions struct {
-	// Cookie条件配置
-	CookieConfig *CreateRulesRequestRulesRuleConditionsCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
-	// HTTP标头条件配置
-	HeaderConfig *CreateRulesRequestRulesRuleConditionsHeaderConfig `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
-	// 主机名条件配置
-	HostConfig *CreateRulesRequestRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-	// HTTP请求方法条件配置
-	MethodConfig *CreateRulesRequestRulesRuleConditionsMethodConfig `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
-	// 路径条件配置
-	PathConfig *CreateRulesRequestRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	// 查询字符串条件配置
-	QueryStringConfig *CreateRulesRequestRulesRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
-	// 返回HTTP标头
+	CookieConfig         *CreateRulesRequestRulesRuleConditionsCookieConfig         `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
+	HeaderConfig         *CreateRulesRequestRulesRuleConditionsHeaderConfig         `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
+	HostConfig           *CreateRulesRequestRulesRuleConditionsHostConfig           `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	MethodConfig         *CreateRulesRequestRulesRuleConditionsMethodConfig         `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
+	PathConfig           *CreateRulesRequestRulesRuleConditionsPathConfig           `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
+	QueryStringConfig    *CreateRulesRequestRulesRuleConditionsQueryStringConfig    `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
 	ResponseHeaderConfig *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
-	// 基于源IP业务流量匹配
-	SourceIpConfig *CreateRulesRequestRulesRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
-	// 条件类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	SourceIpConfig       *CreateRulesRequestRulesRuleConditionsSourceIpConfig       `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
+	Type                 *string                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateRulesRequestRulesRuleConditions) String() string {
@@ -2854,7 +2642,6 @@ func (s *CreateRulesRequestRulesRuleConditions) SetType(v string) *CreateRulesRe
 }
 
 type CreateRulesRequestRulesRuleConditionsCookieConfig struct {
-	// Cookie键值对列表
 	Values []*CreateRulesRequestRulesRuleConditionsCookieConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2872,9 +2659,7 @@ func (s *CreateRulesRequestRulesRuleConditionsCookieConfig) SetValues(v []*Creat
 }
 
 type CreateRulesRequestRulesRuleConditionsCookieConfigValues struct {
-	// Cookie条件键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Cookie条件值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2897,9 +2682,7 @@ func (s *CreateRulesRequestRulesRuleConditionsCookieConfigValues) SetValue(v str
 }
 
 type CreateRulesRequestRulesRuleConditionsHeaderConfig struct {
-	// HTTP标头键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// HTTP标头值列表
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2922,7 +2705,6 @@ func (s *CreateRulesRequestRulesRuleConditionsHeaderConfig) SetValues(v []*strin
 }
 
 type CreateRulesRequestRulesRuleConditionsHostConfig struct {
-	// 主机名列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2940,7 +2722,6 @@ func (s *CreateRulesRequestRulesRuleConditionsHostConfig) SetValues(v []*string)
 }
 
 type CreateRulesRequestRulesRuleConditionsMethodConfig struct {
-	// HTTP请求方法列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2958,7 +2739,6 @@ func (s *CreateRulesRequestRulesRuleConditionsMethodConfig) SetValues(v []*strin
 }
 
 type CreateRulesRequestRulesRuleConditionsPathConfig struct {
-	// 路径条件列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2976,7 +2756,6 @@ func (s *CreateRulesRequestRulesRuleConditionsPathConfig) SetValues(v []*string)
 }
 
 type CreateRulesRequestRulesRuleConditionsQueryStringConfig struct {
-	// 查询字符串条件键值对列表
 	Values []*CreateRulesRequestRulesRuleConditionsQueryStringConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2994,9 +2773,7 @@ func (s *CreateRulesRequestRulesRuleConditionsQueryStringConfig) SetValues(v []*
 }
 
 type CreateRulesRequestRulesRuleConditionsQueryStringConfigValues struct {
-	// 查询字符串条件键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 查询字符串条件值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3019,9 +2796,7 @@ func (s *CreateRulesRequestRulesRuleConditionsQueryStringConfigValues) SetValue(
 }
 
 type CreateRulesRequestRulesRuleConditionsResponseHeaderConfig struct {
-	// 返回HTTP标头键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 返回HTTP标头值
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -3044,7 +2819,6 @@ func (s *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig) SetValues(v 
 }
 
 type CreateRulesRequestRulesRuleConditionsSourceIpConfig struct {
-	// 基于源IP业务流量匹配
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -3062,12 +2836,9 @@ func (s *CreateRulesRequestRulesRuleConditionsSourceIpConfig) SetValues(v []*str
 }
 
 type CreateRulesResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 转发规则标识列表
-	RuleIds []*CreateRulesResponseBodyRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	JobId     *string                           `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleIds   []*CreateRulesResponseBodyRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateRulesResponseBody) String() string {
@@ -3094,10 +2865,8 @@ func (s *CreateRulesResponseBody) SetRuleIds(v []*CreateRulesResponseBodyRuleIds
 }
 
 type CreateRulesResponseBodyRuleIds struct {
-	// 转发规则优先级
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 转发规则标识
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Priority *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s CreateRulesResponseBodyRuleIds) String() string {
@@ -3148,18 +2917,12 @@ func (s *CreateRulesResponse) SetBody(v *CreateRulesResponseBody) *CreateRulesRe
 }
 
 type CreateSecurityPolicyRequest struct {
-	// 加密套件
-	Ciphers []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 资源组id
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 安全策略名称
-	SecurityPolicyName *string `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
-	// tls版本
-	TLSVersions []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
+	Ciphers            []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
+	ClientToken        *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun             *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ResourceGroupId    *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityPolicyName *string   `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
+	TLSVersions        []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
 }
 
 func (s CreateSecurityPolicyRequest) String() string {
@@ -3201,9 +2964,7 @@ func (s *CreateSecurityPolicyRequest) SetTLSVersions(v []*string) *CreateSecurit
 }
 
 type CreateSecurityPolicyResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 安全策略id
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 }
 
@@ -3255,28 +3016,17 @@ func (s *CreateSecurityPolicyResponse) SetBody(v *CreateSecurityPolicyResponseBo
 }
 
 type CreateServerGroupRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 健康检查配置
-	HealthCheckConfig *CreateServerGroupRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
-	// 后端协议类型
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 资源组id
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 调度策略
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 服务器组名称
-	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
-	// 服务器组类型
-	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
-	// 服务器名称
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// 会话保持配置
+	ClientToken         *string                                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun              *bool                                        `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	HealthCheckConfig   *CreateServerGroupRequestHealthCheckConfig   `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
+	Protocol            *string                                      `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	ResourceGroupId     *string                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Scheduler           *string                                      `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	ServerGroupName     *string                                      `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
+	ServerGroupType     *string                                      `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
+	ServiceName         *string                                      `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	StickySessionConfig *CreateServerGroupRequestStickySessionConfig `json:"StickySessionConfig,omitempty" xml:"StickySessionConfig,omitempty" type:"Struct"`
-	// VpcId
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId               *string                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateServerGroupRequest) String() string {
@@ -3343,30 +3093,18 @@ func (s *CreateServerGroupRequest) SetVpcId(v string) *CreateServerGroupRequest 
 }
 
 type CreateServerGroupRequestHealthCheckConfig struct {
-	// 健康检查正常的状态码
-	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
-	// 健康检查端口
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 是否启用健康检查
-	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// 健康检查域名
-	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
-	// 健康检查HTTP协议版本
-	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	// 健康检查间隔
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 健康检查方法
-	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// 健康检查Path
-	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// 健康检查协议类型
-	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// 健康检查超时时间
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// 健康检查成功判定阈值
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 健康检查不成功判定阈值
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckCodes       []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
+	HealthCheckConnectPort *int32    `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckEnabled     *bool     `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckHost        *string   `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
+	HealthCheckHttpVersion *string   `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	HealthCheckInterval    *int32    `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckMethod      *string   `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheckPath        *string   `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	HealthCheckProtocol    *string   `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	HealthCheckTimeout     *int32    `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthyThreshold       *int32    `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold     *int32    `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s CreateServerGroupRequestHealthCheckConfig) String() string {
@@ -3438,14 +3176,10 @@ func (s *CreateServerGroupRequestHealthCheckConfig) SetUnhealthyThreshold(v int3
 }
 
 type CreateServerGroupRequestStickySessionConfig struct {
-	// 服务器上配置的Cookie
-	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// 服务器上配置的Cookie
-	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// 是否启用会话保持
-	StickySessionEnabled *bool `json:"StickySessionEnabled,omitempty" xml:"StickySessionEnabled,omitempty"`
-	// 会话保持类型
-	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	Cookie               *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	CookieTimeout        *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	StickySessionEnabled *bool   `json:"StickySessionEnabled,omitempty" xml:"StickySessionEnabled,omitempty"`
+	StickySessionType    *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 }
 
 func (s CreateServerGroupRequestStickySessionConfig) String() string {
@@ -3477,11 +3211,8 @@ func (s *CreateServerGroupRequestStickySessionConfig) SetStickySessionType(v str
 }
 
 type CreateServerGroupResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务器组id
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -3538,12 +3269,9 @@ func (s *CreateServerGroupResponse) SetBody(v *CreateServerGroupResponseBody) *C
 }
 
 type DeleteAclRequest struct {
-	// 访问控制策略id
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// 幂等Token
+	AclId       *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// DryRun
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 }
 
 func (s DeleteAclRequest) String() string {
@@ -3570,9 +3298,7 @@ func (s *DeleteAclRequest) SetDryRun(v bool) *DeleteAclRequest {
 }
 
 type DeleteAclResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3624,11 +3350,8 @@ func (s *DeleteAclResponse) SetBody(v *DeleteAclResponseBody) *DeleteAclResponse
 }
 
 type DeleteHealthCheckTemplatesRequest struct {
-	// 幂等token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// dryRun
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 健康检查模板Id列表
+	ClientToken            *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                 *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	HealthCheckTemplateIds []*string `json:"HealthCheckTemplateIds,omitempty" xml:"HealthCheckTemplateIds,omitempty" type:"Repeated"`
 }
 
@@ -3656,7 +3379,6 @@ func (s *DeleteHealthCheckTemplatesRequest) SetHealthCheckTemplateIds(v []*strin
 }
 
 type DeleteHealthCheckTemplatesResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3703,12 +3425,9 @@ func (s *DeleteHealthCheckTemplatesResponse) SetBody(v *DeleteHealthCheckTemplat
 }
 
 type DeleteListenerRequest struct {
-	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 监听id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ListenerId  *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
 func (s DeleteListenerRequest) String() string {
@@ -3735,9 +3454,7 @@ func (s *DeleteListenerRequest) SetListenerId(v string) *DeleteListenerRequest {
 }
 
 type DeleteListenerResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3789,11 +3506,8 @@ func (s *DeleteListenerResponse) SetBody(v *DeleteListenerResponseBody) *DeleteL
 }
 
 type DeleteLoadBalancerRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 实例id
+	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun         *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -3821,9 +3535,7 @@ func (s *DeleteLoadBalancerRequest) SetLoadBalancerId(v string) *DeleteLoadBalan
 }
 
 type DeleteLoadBalancerResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3875,12 +3587,9 @@ func (s *DeleteLoadBalancerResponse) SetBody(v *DeleteLoadBalancerResponseBody) 
 }
 
 type DeleteRuleRequest struct {
-	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 转发规则标识
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	RuleId      *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DeleteRuleRequest) String() string {
@@ -3907,9 +3616,7 @@ func (s *DeleteRuleRequest) SetRuleId(v string) *DeleteRuleRequest {
 }
 
 type DeleteRuleResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3961,12 +3668,9 @@ func (s *DeleteRuleResponse) SetBody(v *DeleteRuleResponseBody) *DeleteRuleRespo
 }
 
 type DeleteRulesRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 同一个监听下的转发规则标识列表
-	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	RuleIds     []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 }
 
 func (s DeleteRulesRequest) String() string {
@@ -3993,9 +3697,7 @@ func (s *DeleteRulesRequest) SetRuleIds(v []*string) *DeleteRulesRequest {
 }
 
 type DeleteRulesResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4047,11 +3749,8 @@ func (s *DeleteRulesResponse) SetBody(v *DeleteRulesResponseBody) *DeleteRulesRe
 }
 
 type DeleteSecurityPolicyRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 安全策略Id
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun           *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 }
 
@@ -4079,7 +3778,6 @@ func (s *DeleteSecurityPolicyRequest) SetSecurityPolicyId(v string) *DeleteSecur
 }
 
 type DeleteSecurityPolicyResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4126,11 +3824,8 @@ func (s *DeleteSecurityPolicyResponse) SetBody(v *DeleteSecurityPolicyResponseBo
 }
 
 type DeleteServerGroupRequest struct {
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否DryRun
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 服务器组id
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -4158,9 +3853,7 @@ func (s *DeleteServerGroupRequest) SetServerGroupId(v string) *DeleteServerGroup
 }
 
 type DeleteServerGroupResponseBody struct {
-	// job
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4212,7 +3905,6 @@ func (s *DeleteServerGroupResponse) SetBody(v *DeleteServerGroupResponseBody) *D
 }
 
 type DescribeRegionsRequest struct {
-	// 语言
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 }
 
@@ -4230,10 +3922,8 @@ func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
-	// Region列表
-	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -4255,12 +3945,9 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	// 名称
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// endpoint
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -4316,10 +4003,8 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeZonesResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 可用区列表
-	Zones []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Zones     []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -4341,10 +4026,8 @@ func (s *DescribeZonesResponseBody) SetZones(v []*DescribeZonesResponseBodyZones
 }
 
 type DescribeZonesResponseBodyZones struct {
-	// 可用区名称
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// 可用区id
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeZonesResponseBodyZones) String() string {
@@ -4395,16 +4078,11 @@ func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZ
 }
 
 type DetachCommonBandwidthPackageFromLoadBalancerRequest struct {
-	// 带宽包ID
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 预校验
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 实例ID
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 地域ID
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerId     *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DetachCommonBandwidthPackageFromLoadBalancerRequest) String() string {
@@ -4441,9 +4119,7 @@ func (s *DetachCommonBandwidthPackageFromLoadBalancerRequest) SetRegionId(v stri
 }
 
 type DetachCommonBandwidthPackageFromLoadBalancerResponseBody struct {
-	// 异步任务ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4495,12 +4171,9 @@ func (s *DetachCommonBandwidthPackageFromLoadBalancerResponse) SetBody(v *Detach
 }
 
 type DisableDeletionProtectionRequest struct {
-	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 实例id
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s DisableDeletionProtectionRequest) String() string {
@@ -4527,7 +4200,6 @@ func (s *DisableDeletionProtectionRequest) SetResourceId(v string) *DisableDelet
 }
 
 type DisableDeletionProtectionResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4574,11 +4246,8 @@ func (s *DisableDeletionProtectionResponse) SetBody(v *DisableDeletionProtection
 }
 
 type DisableLoadBalancerAccessLogRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 实例id
+	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun         *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -4606,7 +4275,6 @@ func (s *DisableLoadBalancerAccessLogRequest) SetLoadBalancerId(v string) *Disab
 }
 
 type DisableLoadBalancerAccessLogResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4653,14 +4321,10 @@ func (s *DisableLoadBalancerAccessLogResponse) SetBody(v *DisableLoadBalancerAcc
 }
 
 type DissociateAclsFromListenerRequest struct {
-	// 访问控制策略Id
-	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 监听Id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	AclIds      []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
+	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ListenerId  *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
 func (s DissociateAclsFromListenerRequest) String() string {
@@ -4692,9 +4356,7 @@ func (s *DissociateAclsFromListenerRequest) SetListenerId(v string) *DissociateA
 }
 
 type DissociateAclsFromListenerResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求id
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4746,14 +4408,10 @@ func (s *DissociateAclsFromListenerResponse) SetBody(v *DissociateAclsFromListen
 }
 
 type DissociateAdditionalCertificatesFromListenerRequest struct {
-	// 证书列表
 	Certificates []*DissociateAdditionalCertificatesFromListenerRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// 幂等Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// dryRun
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 监听Id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ClientToken  *string                                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun       *bool                                                              `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ListenerId   *string                                                            `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
 func (s DissociateAdditionalCertificatesFromListenerRequest) String() string {
@@ -4785,7 +4443,6 @@ func (s *DissociateAdditionalCertificatesFromListenerRequest) SetListenerId(v st
 }
 
 type DissociateAdditionalCertificatesFromListenerRequestCertificates struct {
-	// 证书Id
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -4803,9 +4460,7 @@ func (s *DissociateAdditionalCertificatesFromListenerRequestCertificates) SetCer
 }
 
 type DissociateAdditionalCertificatesFromListenerResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4857,12 +4512,9 @@ func (s *DissociateAdditionalCertificatesFromListenerResponse) SetBody(v *Dissoc
 }
 
 type EnableDeletionProtectionRequest struct {
-	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 实例id
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s EnableDeletionProtectionRequest) String() string {
@@ -4889,7 +4541,6 @@ func (s *EnableDeletionProtectionRequest) SetResourceId(v string) *EnableDeletio
 }
 
 type EnableDeletionProtectionResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4936,16 +4587,11 @@ func (s *EnableDeletionProtectionResponse) SetBody(v *EnableDeletionProtectionRe
 }
 
 type EnableLoadBalancerAccessLogRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 实例id
+	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun         *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 日志Project
-	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// 日志Store
-	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	LogProject     *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	LogStore       *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 }
 
 func (s EnableLoadBalancerAccessLogRequest) String() string {
@@ -4982,7 +4628,6 @@ func (s *EnableLoadBalancerAccessLogRequest) SetLogStore(v string) *EnableLoadBa
 }
 
 type EnableLoadBalancerAccessLogResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5029,7 +4674,6 @@ func (s *EnableLoadBalancerAccessLogResponse) SetBody(v *EnableLoadBalancerAcces
 }
 
 type GetHealthCheckTemplateAttributeRequest struct {
-	// 健康检查模板Id
 	HealthCheckTemplateId *string `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
 }
 
@@ -5047,34 +4691,20 @@ func (s *GetHealthCheckTemplateAttributeRequest) SetHealthCheckTemplateId(v stri
 }
 
 type GetHealthCheckTemplateAttributeResponseBody struct {
-	// 状态码
-	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
-	// 端口
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 域名
-	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
-	// 版本
-	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	// 间隔时间
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 方法
-	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// uri
-	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// 协议
-	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// 健康检查模板Id
-	HealthCheckTemplateId *string `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
-	// 名称
-	HealthCheckTemplateName *string `json:"HealthCheckTemplateName,omitempty" xml:"HealthCheckTemplateName,omitempty"`
-	// 超时时间
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// 健康阈值
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 不健康阈值
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckCodes        []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
+	HealthCheckConnectPort  *int32    `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckHost         *string   `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
+	HealthCheckHttpVersion  *string   `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	HealthCheckInterval     *int32    `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckMethod       *string   `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheckPath         *string   `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	HealthCheckProtocol     *string   `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	HealthCheckTemplateId   *string   `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
+	HealthCheckTemplateName *string   `json:"HealthCheckTemplateName,omitempty" xml:"HealthCheckTemplateName,omitempty"`
+	HealthCheckTimeout      *int32    `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthyThreshold        *int32    `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	RequestId               *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UnhealthyThreshold      *int32    `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s GetHealthCheckTemplateAttributeResponseBody) String() string {
@@ -5185,7 +4815,6 @@ func (s *GetHealthCheckTemplateAttributeResponse) SetBody(v *GetHealthCheckTempl
 }
 
 type GetListenerAttributeRequest struct {
-	// 监听标识
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -5203,43 +4832,24 @@ func (s *GetListenerAttributeRequest) SetListenerId(v string) *GetListenerAttrib
 }
 
 type GetListenerAttributeResponseBody struct {
-	// ACL相关配置信息
-	AclConfig *GetListenerAttributeResponseBodyAclConfig `json:"AclConfig,omitempty" xml:"AclConfig,omitempty" type:"Struct"`
-	// 是否开启双向认证
-	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// 监听默认服务器证书列表，N当前取值范围为1
-	Certificates []*GetListenerAttributeResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// 默认动作
-	DefaultActions []*GetListenerAttributeResponseBodyDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
-	// 是否开启Gzip压缩
-	GzipEnabled *bool `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
-	// 是否开启HTTP/2特性
-	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	// 连接空闲超时时间
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// 监听描述
-	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// 监听标识
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// 监听端口
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 监听协议
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// 监听状态
-	ListenerStatus *string `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
-	// 负载均衡标识
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 监听访问日志相关配置
-	LogConfig *GetListenerAttributeResponseBodyLogConfig `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
-	// HTTPS启用QUIC时相关属性
-	QuicConfig *GetListenerAttributeResponseBodyQuicConfig `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 请求超时时间
-	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// 安全策略
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// XForward字段相关的配置
+	AclConfig           *GetListenerAttributeResponseBodyAclConfig           `json:"AclConfig,omitempty" xml:"AclConfig,omitempty" type:"Struct"`
+	CaEnabled           *bool                                                `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
+	Certificates        []*GetListenerAttributeResponseBodyCertificates      `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	DefaultActions      []*GetListenerAttributeResponseBodyDefaultActions    `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
+	GzipEnabled         *bool                                                `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
+	Http2Enabled        *bool                                                `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	IdleTimeout         *int32                                               `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ListenerDescription *string                                              `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
+	ListenerId          *string                                              `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ListenerPort        *int32                                               `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ListenerProtocol    *string                                              `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	ListenerStatus      *string                                              `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
+	LoadBalancerId      *string                                              `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LogConfig           *GetListenerAttributeResponseBodyLogConfig           `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
+	QuicConfig          *GetListenerAttributeResponseBodyQuicConfig          `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
+	RequestId           *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestTimeout      *int32                                               `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	SecurityPolicyId    *string                                              `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	XForwardedForConfig *GetListenerAttributeResponseBodyXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
@@ -5347,10 +4957,8 @@ func (s *GetListenerAttributeResponseBody) SetXForwardedForConfig(v *GetListener
 }
 
 type GetListenerAttributeResponseBodyAclConfig struct {
-	// 监听绑定的访问策略组
 	AclRelations []*GetListenerAttributeResponseBodyAclConfigAclRelations `json:"AclRelations,omitempty" xml:"AclRelations,omitempty" type:"Repeated"`
-	// 访问控制类型
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AclType      *string                                                  `json:"AclType,omitempty" xml:"AclType,omitempty"`
 }
 
 func (s GetListenerAttributeResponseBodyAclConfig) String() string {
@@ -5372,9 +4980,7 @@ func (s *GetListenerAttributeResponseBodyAclConfig) SetAclType(v string) *GetLis
 }
 
 type GetListenerAttributeResponseBodyAclConfigAclRelations struct {
-	// ACL标识
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// ACL与监听关联的状态
+	AclId  *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -5397,7 +5003,6 @@ func (s *GetListenerAttributeResponseBodyAclConfigAclRelations) SetStatus(v stri
 }
 
 type GetListenerAttributeResponseBodyCertificates struct {
-	// 正式标识
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -5415,10 +5020,8 @@ func (s *GetListenerAttributeResponseBodyCertificates) SetCertificateId(v string
 }
 
 type GetListenerAttributeResponseBodyDefaultActions struct {
-	// 转发到服务器组
 	ForwardGroupConfig *GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type               *string                                                           `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetListenerAttributeResponseBodyDefaultActions) String() string {
@@ -5440,7 +5043,6 @@ func (s *GetListenerAttributeResponseBodyDefaultActions) SetType(v string) *GetL
 }
 
 type GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfig struct {
-	// 服务器组列表
 	ServerGroupTuples []*GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -5458,7 +5060,6 @@ func (s *GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfig) SetSe
 }
 
 type GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfigServerGroupTuples struct {
-	// 服务器组ID
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -5476,10 +5077,8 @@ func (s *GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfigServerG
 }
 
 type GetListenerAttributeResponseBodyLogConfig struct {
-	// 访问日志是否开启携带自定义Header
-	AccessLogRecordCustomizedHeadersEnabled *bool `json:"AccessLogRecordCustomizedHeadersEnabled,omitempty" xml:"AccessLogRecordCustomizedHeadersEnabled,omitempty"`
-	// 访问日志Xtrace相关的配置
-	AccessLogTracingConfig *GetListenerAttributeResponseBodyLogConfigAccessLogTracingConfig `json:"AccessLogTracingConfig,omitempty" xml:"AccessLogTracingConfig,omitempty" type:"Struct"`
+	AccessLogRecordCustomizedHeadersEnabled *bool                                                            `json:"AccessLogRecordCustomizedHeadersEnabled,omitempty" xml:"AccessLogRecordCustomizedHeadersEnabled,omitempty"`
+	AccessLogTracingConfig                  *GetListenerAttributeResponseBodyLogConfigAccessLogTracingConfig `json:"AccessLogTracingConfig,omitempty" xml:"AccessLogTracingConfig,omitempty" type:"Struct"`
 }
 
 func (s GetListenerAttributeResponseBodyLogConfig) String() string {
@@ -5501,12 +5100,9 @@ func (s *GetListenerAttributeResponseBodyLogConfig) SetAccessLogTracingConfig(v 
 }
 
 type GetListenerAttributeResponseBodyLogConfigAccessLogTracingConfig struct {
-	// Xtrace功能状态
-	TracingEnabled *bool `json:"TracingEnabled,omitempty" xml:"TracingEnabled,omitempty"`
-	// Xtrace功能状态
-	TracingSample *int32 `json:"TracingSample,omitempty" xml:"TracingSample,omitempty"`
-	// xtrace的类型
-	TracingType *string `json:"TracingType,omitempty" xml:"TracingType,omitempty"`
+	TracingEnabled *bool   `json:"TracingEnabled,omitempty" xml:"TracingEnabled,omitempty"`
+	TracingSample  *int32  `json:"TracingSample,omitempty" xml:"TracingSample,omitempty"`
+	TracingType    *string `json:"TracingType,omitempty" xml:"TracingType,omitempty"`
 }
 
 func (s GetListenerAttributeResponseBodyLogConfigAccessLogTracingConfig) String() string {
@@ -5533,10 +5129,8 @@ func (s *GetListenerAttributeResponseBodyLogConfigAccessLogTracingConfig) SetTra
 }
 
 type GetListenerAttributeResponseBodyQuicConfig struct {
-	// 需要关联的QUIC监听ID，HTTPS监听时有效，QuicUpgradeEnabled为true时必选
-	QuicListenerId *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
-	// 是否开启quic升级，HTTPS监听时有效
-	QuicUpgradeEnabled *bool `json:"QuicUpgradeEnabled,omitempty" xml:"QuicUpgradeEnabled,omitempty"`
+	QuicListenerId     *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
+	QuicUpgradeEnabled *bool   `json:"QuicUpgradeEnabled,omitempty" xml:"QuicUpgradeEnabled,omitempty"`
 }
 
 func (s GetListenerAttributeResponseBodyQuicConfig) String() string {
@@ -5558,32 +5152,21 @@ func (s *GetListenerAttributeResponseBodyQuicConfig) SetQuicUpgradeEnabled(v boo
 }
 
 type GetListenerAttributeResponseBodyXForwardedForConfig struct {
-	// 自定义HEADER头名称，只有当XForwardedForClientCertClientVerifyEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertClientVerifyAlias *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
-	// 是否通过X-Forwarded-Clientcert-clientverify  头字段获取对访问负载均衡实例客户端证书的校验结果。HTTPS监听有效。
-	XForwardedForClientCertClientVerifyEnabled *bool `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
-	// 自定义HEADER头名称，只有当XForwardedForClientCertFingerprintEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertFingerprintAlias *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
-	// 是否通过X-Forwarded-Clientcert-fingerprint 头字段获取访问负载均衡实例客户端证书的指纹取值，HTTPS监听有效。
-	XForwardedForClientCertFingerprintEnabled *bool `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
-	// 自定义HEADER头名称，只有当XForwardedForClientCertIssuerDNEnabled的值为‘On’的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertIssuerDNAlias *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
-	// 是否通过 X-Forwarded-Clientcert-issuerdn 头字段获取访问负载均衡实例客户端证书的发行者信息。HTTPS监听有效。
-	XForwardedForClientCertIssuerDNEnabled *bool `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
-	// 自定义HEADER头名称，只有当XForwardedForClientCertSubjectDNEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertSubjectDNAlias *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
-	// 是否通过X-Forwarded-Clientcert-subjectdn  头字段获取访问负载均衡实例客户端证书的所有者信息。HTTPS监听有效。
-	XForwardedForClientCertSubjectDNEnabled *bool `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
-	// 是否通过X-Forwarded-Client-Port 头字段获取访问负载均衡实例客户端的端口。HTTPS监听有效。
-	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
-	// 是否开启通过X-Forwarded-For头字段获取来访者真实 IP
-	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
-	// 是否通过X-Forwarded-Proto头字段获取负载均衡实例的监听协议。
-	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
-	// 是否通过SLB-ID头字段获取负载均衡实例ID。
-	XForwardedForSLBIdEnabled *bool `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
-	// 是否通过X-Forwarded-Port 头字段获取负载均衡实例的监听端口。HTTPS监听有效。
-	XForwardedForSLBPortEnabled *bool `json:"XForwardedForSLBPortEnabled,omitempty" xml:"XForwardedForSLBPortEnabled,omitempty"`
+	XForwardedForClientCertClientVerifyAlias   *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
+	XForwardedForClientCertClientVerifyEnabled *bool   `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
+	XForwardedForClientCertFingerprintAlias    *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
+	XForwardedForClientCertFingerprintEnabled  *bool   `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
+	XForwardedForClientCertIssuerDNAlias       *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
+	XForwardedForClientCertIssuerDNEnabled     *bool   `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
+	XForwardedForClientCertSubjectDNAlias      *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
+	XForwardedForClientCertSubjectDNEnabled    *bool   `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
+	XForwardedForClientSourceIpsEnabled        *bool   `json:"XForwardedForClientSourceIpsEnabled,omitempty" xml:"XForwardedForClientSourceIpsEnabled,omitempty"`
+	XForwardedForClientSourceIpsTrusted        *string `json:"XForwardedForClientSourceIpsTrusted,omitempty" xml:"XForwardedForClientSourceIpsTrusted,omitempty"`
+	XForwardedForClientSrcPortEnabled          *bool   `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
+	XForwardedForEnabled                       *bool   `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	XForwardedForProtoEnabled                  *bool   `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
+	XForwardedForSLBIdEnabled                  *bool   `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
+	XForwardedForSLBPortEnabled                *bool   `json:"XForwardedForSLBPortEnabled,omitempty" xml:"XForwardedForSLBPortEnabled,omitempty"`
 }
 
 func (s GetListenerAttributeResponseBodyXForwardedForConfig) String() string {
@@ -5631,6 +5214,16 @@ func (s *GetListenerAttributeResponseBodyXForwardedForConfig) SetXForwardedForCl
 
 func (s *GetListenerAttributeResponseBodyXForwardedForConfig) SetXForwardedForClientCertSubjectDNEnabled(v bool) *GetListenerAttributeResponseBodyXForwardedForConfig {
 	s.XForwardedForClientCertSubjectDNEnabled = &v
+	return s
+}
+
+func (s *GetListenerAttributeResponseBodyXForwardedForConfig) SetXForwardedForClientSourceIpsEnabled(v bool) *GetListenerAttributeResponseBodyXForwardedForConfig {
+	s.XForwardedForClientSourceIpsEnabled = &v
+	return s
+}
+
+func (s *GetListenerAttributeResponseBodyXForwardedForConfig) SetXForwardedForClientSourceIpsTrusted(v string) *GetListenerAttributeResponseBodyXForwardedForConfig {
+	s.XForwardedForClientSourceIpsTrusted = &v
 	return s
 }
 
@@ -5689,12 +5282,10 @@ func (s *GetListenerAttributeResponse) SetBody(v *GetListenerAttributeResponseBo
 }
 
 type GetListenerHealthStatusRequest struct {
-	// 是否包含转发规则健康检查结果
-	IncludeRule *bool `json:"IncludeRule,omitempty" xml:"IncludeRule,omitempty"`
-	// 监听Id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	IncludeRule *bool   `json:"IncludeRule,omitempty" xml:"IncludeRule,omitempty"`
+	ListenerId  *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s GetListenerHealthStatusRequest) String() string {
@@ -5726,14 +5317,10 @@ func (s *GetListenerHealthStatusRequest) SetNextToken(v string) *GetListenerHeal
 }
 
 type GetListenerHealthStatusResponseBody struct {
-	// 监听健康检查结果
 	ListenerHealthStatus []*GetListenerHealthStatusResponseBodyListenerHealthStatus `json:"ListenerHealthStatus,omitempty" xml:"ListenerHealthStatus,omitempty" type:"Repeated"`
-	// 下一页标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 转发规则健康检查结果
-	RuleHealthStatus []*GetListenerHealthStatusResponseBodyRuleHealthStatus `json:"RuleHealthStatus,omitempty" xml:"RuleHealthStatus,omitempty" type:"Repeated"`
+	NextToken            *string                                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId            *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleHealthStatus     []*GetListenerHealthStatusResponseBodyRuleHealthStatus     `json:"RuleHealthStatus,omitempty" xml:"RuleHealthStatus,omitempty" type:"Repeated"`
 }
 
 func (s GetListenerHealthStatusResponseBody) String() string {
@@ -5765,13 +5352,9 @@ func (s *GetListenerHealthStatusResponseBody) SetRuleHealthStatus(v []*GetListen
 }
 
 type GetListenerHealthStatusResponseBodyListenerHealthStatus struct {
-	// 监听Id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// 监听的端口号
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 监听的协议
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// 服务器组健康检查结果
+	ListenerId       *string                                                                    `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ListenerPort     *int32                                                                     `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ListenerProtocol *string                                                                    `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	ServerGroupInfos []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos `json:"ServerGroupInfos,omitempty" xml:"ServerGroupInfos,omitempty" type:"Repeated"`
 }
 
@@ -5804,14 +5387,10 @@ func (s *GetListenerHealthStatusResponseBodyListenerHealthStatus) SetServerGroup
 }
 
 type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos struct {
-	// 服务器组使用类型
-	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// 健康检查开启/关闭
-	HealthCheckEnabled *string `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// 处于非正常状态的后端服务器
-	NonNormalServers []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers `json:"NonNormalServers,omitempty" xml:"NonNormalServers,omitempty" type:"Repeated"`
-	// 服务器组ID
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	ActionType         *string                                                                                    `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	HealthCheckEnabled *string                                                                                    `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	NonNormalServers   []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers `json:"NonNormalServers,omitempty" xml:"NonNormalServers,omitempty" type:"Repeated"`
+	ServerGroupId      *string                                                                                    `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
 func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) String() string {
@@ -5843,16 +5422,11 @@ func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos
 }
 
 type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers struct {
-	// 后端服务器端口
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// status为非正常状态时的详细异常原因
-	Reason *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
-	// 后端服务器id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 后端服务器Ip
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 健康检查状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Port     *int32                                                                                         `json:"Port,omitempty" xml:"Port,omitempty"`
+	Reason   *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
+	ServerId *string                                                                                        `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp *string                                                                                        `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	Status   *string                                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers) String() string {
@@ -5889,12 +5463,9 @@ func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos
 }
 
 type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason struct {
-	// 后端实际的返回码信息
-	ActualResponse *string `json:"ActualResponse,omitempty" xml:"ActualResponse,omitempty"`
-	// 用户预期的后端返回码信息
+	ActualResponse   *string `json:"ActualResponse,omitempty" xml:"ActualResponse,omitempty"`
 	ExpectedResponse *string `json:"ExpectedResponse,omitempty" xml:"ExpectedResponse,omitempty"`
-	// 失败reasonCode
-	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonCode       *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 }
 
 func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason) String() string {
@@ -5921,9 +5492,7 @@ func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos
 }
 
 type GetListenerHealthStatusResponseBodyRuleHealthStatus struct {
-	// 转发规则ID
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// 服务器组健康检查结果
+	RuleId           *string                                                                `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	ServerGroupInfos []*GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos `json:"ServerGroupInfos,omitempty" xml:"ServerGroupInfos,omitempty" type:"Repeated"`
 }
 
@@ -5946,14 +5515,10 @@ func (s *GetListenerHealthStatusResponseBodyRuleHealthStatus) SetServerGroupInfo
 }
 
 type GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos struct {
-	// 服务器组使用类型
-	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// 健康检查开启/关闭
-	HealthCheckEnabled *string `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// 处于非正常状态的后端服务器
-	NonNormalServers []*GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers `json:"NonNormalServers,omitempty" xml:"NonNormalServers,omitempty" type:"Repeated"`
-	// 服务器组ID
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	ActionType         *string                                                                                `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	HealthCheckEnabled *string                                                                                `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	NonNormalServers   []*GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers `json:"NonNormalServers,omitempty" xml:"NonNormalServers,omitempty" type:"Repeated"`
+	ServerGroupId      *string                                                                                `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
 func (s GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos) String() string {
@@ -5985,16 +5550,11 @@ func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos) Se
 }
 
 type GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers struct {
-	// 后端服务器端口
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// status为非正常状态时的详细异常原因
-	Reason *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
-	// 后端服务器Id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 后端服务器ID
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 健康检查状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Port     *int32                                                                                     `json:"Port,omitempty" xml:"Port,omitempty"`
+	Reason   *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
+	ServerId *string                                                                                    `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp *string                                                                                    `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	Status   *string                                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers) String() string {
@@ -6031,12 +5591,9 @@ func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonN
 }
 
 type GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason struct {
-	// 后端实际的返回码信息
-	ActualResponse *string `json:"ActualResponse,omitempty" xml:"ActualResponse,omitempty"`
-	// 用户预期的后端返回码信息
+	ActualResponse   *string `json:"ActualResponse,omitempty" xml:"ActualResponse,omitempty"`
 	ExpectedResponse *string `json:"ExpectedResponse,omitempty" xml:"ExpectedResponse,omitempty"`
-	// 失败reasonCode
-	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonCode       *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 }
 
 func (s GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason) String() string {
@@ -6092,7 +5649,6 @@ func (s *GetListenerHealthStatusResponse) SetBody(v *GetListenerHealthStatusResp
 }
 
 type GetLoadBalancerAttributeRequest struct {
-	// 实例标识
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -6110,52 +5666,29 @@ func (s *GetLoadBalancerAttributeRequest) SetLoadBalancerId(v string) *GetLoadBa
 }
 
 type GetLoadBalancerAttributeResponseBody struct {
-	// 访问日志属性
-	AccessLogConfig *GetLoadBalancerAttributeResponseBodyAccessLogConfig `json:"AccessLogConfig,omitempty" xml:"AccessLogConfig,omitempty" type:"Struct"`
-	// 地址分配方式
-	AddressAllocatedMode *string `json:"AddressAllocatedMode,omitempty" xml:"AddressAllocatedMode,omitempty"`
-	// 协议版本
-	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// 地址类型
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// 带宽包ID
-	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// 资源创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// DNS域名
-	DNSName *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
-	// 负载均衡删除保护相关信息
-	DeletionProtectionConfig *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig `json:"DeletionProtectionConfig,omitempty" xml:"DeletionProtectionConfig,omitempty" type:"Struct"`
-	// IPV6地址类型
-	Ipv6AddressType *string `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
-	// 计费相关属性
-	LoadBalancerBillingConfig *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
-	// 实例业务状态
-	LoadBalancerBussinessStatus *string `json:"LoadBalancerBussinessStatus,omitempty" xml:"LoadBalancerBussinessStatus,omitempty"`
-	// 负载均衡的版本
-	LoadBalancerEdition *string `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
-	// 负载均衡标识
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 实例名称
-	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// 锁定原因
-	LoadBalancerOperationLocks []*GetLoadBalancerAttributeResponseBodyLoadBalancerOperationLocks `json:"LoadBalancerOperationLocks,omitempty" xml:"LoadBalancerOperationLocks,omitempty" type:"Repeated"`
-	// 实例状态
-	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	// 负载均衡修改保护相关信息
+	AccessLogConfig              *GetLoadBalancerAttributeResponseBodyAccessLogConfig              `json:"AccessLogConfig,omitempty" xml:"AccessLogConfig,omitempty" type:"Struct"`
+	AddressAllocatedMode         *string                                                           `json:"AddressAllocatedMode,omitempty" xml:"AddressAllocatedMode,omitempty"`
+	AddressIpVersion             *string                                                           `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	AddressType                  *string                                                           `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	BandwidthPackageId           *string                                                           `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	CreateTime                   *string                                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DNSName                      *string                                                           `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
+	DeletionProtectionConfig     *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig     `json:"DeletionProtectionConfig,omitempty" xml:"DeletionProtectionConfig,omitempty" type:"Struct"`
+	Ipv6AddressType              *string                                                           `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
+	LoadBalancerBillingConfig    *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig    `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
+	LoadBalancerBussinessStatus  *string                                                           `json:"LoadBalancerBussinessStatus,omitempty" xml:"LoadBalancerBussinessStatus,omitempty"`
+	LoadBalancerEdition          *string                                                           `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
+	LoadBalancerId               *string                                                           `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerName             *string                                                           `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	LoadBalancerOperationLocks   []*GetLoadBalancerAttributeResponseBodyLoadBalancerOperationLocks `json:"LoadBalancerOperationLocks,omitempty" xml:"LoadBalancerOperationLocks,omitempty" type:"Repeated"`
+	LoadBalancerStatus           *string                                                           `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
 	ModificationProtectionConfig *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
-	// 地域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 企业资源组ID
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 标签列表
-	Tags []*GetLoadBalancerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Vpc网络ID
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// 负载均衡的可用区资源
-	ZoneMappings []*GetLoadBalancerAttributeResponseBodyZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+	RegionId                     *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId                    *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId              *string                                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags                         []*GetLoadBalancerAttributeResponseBodyTags                       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId                        *string                                                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneMappings                 []*GetLoadBalancerAttributeResponseBodyZoneMappings               `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
 func (s GetLoadBalancerAttributeResponseBody) String() string {
@@ -6282,10 +5815,8 @@ func (s *GetLoadBalancerAttributeResponseBody) SetZoneMappings(v []*GetLoadBalan
 }
 
 type GetLoadBalancerAttributeResponseBodyAccessLogConfig struct {
-	// 访问日志投递的logProject
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// 删除保护开启时间
-	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	LogStore   *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 }
 
 func (s GetLoadBalancerAttributeResponseBodyAccessLogConfig) String() string {
@@ -6307,9 +5838,7 @@ func (s *GetLoadBalancerAttributeResponseBodyAccessLogConfig) SetLogStore(v stri
 }
 
 type GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig struct {
-	// 删除保护状态
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// 删除保护开启时间
+	Enabled     *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
 }
 
@@ -6332,7 +5861,6 @@ func (s *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig) SetEnable
 }
 
 type GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig struct {
-	// 实例的计费类型
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
 
@@ -6350,10 +5878,8 @@ func (s *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig) SetPayTy
 }
 
 type GetLoadBalancerAttributeResponseBodyLoadBalancerOperationLocks struct {
-	// 锁定原因
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// 锁定类型
-	LockType *string `json:"LockType,omitempty" xml:"LockType,omitempty"`
+	LockType   *string `json:"LockType,omitempty" xml:"LockType,omitempty"`
 }
 
 func (s GetLoadBalancerAttributeResponseBodyLoadBalancerOperationLocks) String() string {
@@ -6375,9 +5901,7 @@ func (s *GetLoadBalancerAttributeResponseBodyLoadBalancerOperationLocks) SetLock
 }
 
 type GetLoadBalancerAttributeResponseBodyModificationProtectionConfig struct {
-	// 设置修改保护状态的原因
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// 负载均衡修改保护状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -6400,9 +5924,7 @@ func (s *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig) SetSt
 }
 
 type GetLoadBalancerAttributeResponseBodyTags struct {
-	// 实例的标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 实例的标签值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6425,12 +5947,9 @@ func (s *GetLoadBalancerAttributeResponseBodyTags) SetValue(v string) *GetLoadBa
 }
 
 type GetLoadBalancerAttributeResponseBodyZoneMappings struct {
-	// 固定VIP模式下，负载均衡在此可用区中的地址列表
 	LoadBalancerAddresses []*GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses `json:"LoadBalancerAddresses,omitempty" xml:"LoadBalancerAddresses,omitempty" type:"Repeated"`
-	// 交换机标识
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// 可用区标识
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	VSwitchId             *string                                                                  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId                *string                                                                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetLoadBalancerAttributeResponseBodyZoneMappings) String() string {
@@ -6457,9 +5976,7 @@ func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) SetZoneId(v string) *
 }
 
 type GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses struct {
-	// IP地址
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// Ipv6地址
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 }
 
@@ -6511,12 +6028,9 @@ func (s *GetLoadBalancerAttributeResponse) SetBody(v *GetLoadBalancerAttributeRe
 }
 
 type ListAclEntriesRequest struct {
-	// 访问控制策略Id
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// 查询数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	AclId      *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListAclEntriesRequest) String() string {
@@ -6543,16 +6057,11 @@ func (s *ListAclEntriesRequest) SetNextToken(v string) *ListAclEntriesRequest {
 }
 
 type ListAclEntriesResponseBody struct {
-	// 访问控制列表
 	AclEntries []*ListAclEntriesResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
-	// 本次查询返回记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAclEntriesResponseBody) String() string {
@@ -6589,12 +6098,9 @@ func (s *ListAclEntriesResponseBody) SetTotalCount(v int32) *ListAclEntriesRespo
 }
 
 type ListAclEntriesResponseBodyAclEntries struct {
-	// 描述信息
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// IP条目
-	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Entry       *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAclEntriesResponseBodyAclEntries) String() string {
@@ -6650,7 +6156,6 @@ func (s *ListAclEntriesResponse) SetBody(v *ListAclEntriesResponseBody) *ListAcl
 }
 
 type ListAclRelationsRequest struct {
-	// 访问控制策略Id
 	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 }
 
@@ -6668,10 +6173,8 @@ func (s *ListAclRelationsRequest) SetAclIds(v []*string) *ListAclRelationsReques
 }
 
 type ListAclRelationsResponseBody struct {
-	// 访问控制列表
 	AclRelations []*ListAclRelationsResponseBodyAclRelations `json:"AclRelations,omitempty" xml:"AclRelations,omitempty" type:"Repeated"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAclRelationsResponseBody) String() string {
@@ -6693,9 +6196,7 @@ func (s *ListAclRelationsResponseBody) SetRequestId(v string) *ListAclRelationsR
 }
 
 type ListAclRelationsResponseBodyAclRelations struct {
-	// 访问控制策略id
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// 关联的监听
+	AclId            *string                                                     `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	RelatedListeners []*ListAclRelationsResponseBodyAclRelationsRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
 }
 
@@ -6718,16 +6219,11 @@ func (s *ListAclRelationsResponseBodyAclRelations) SetRelatedListeners(v []*List
 }
 
 type ListAclRelationsResponseBodyAclRelationsRelatedListeners struct {
-	// 监听ID
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// 监听端口
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 监听协议
+	ListenerId       *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// 实例ID
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 关联状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAclRelationsResponseBodyAclRelationsRelatedListeners) String() string {
@@ -6793,16 +6289,11 @@ func (s *ListAclRelationsResponse) SetBody(v *ListAclRelationsResponseBody) *Lis
 }
 
 type ListAclsRequest struct {
-	// 访问控制策略Id
-	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
-	// 访问控制策略名称
-	AclNames []*string `json:"AclNames,omitempty" xml:"AclNames,omitempty" type:"Repeated"`
-	// 查询数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 资源组ID
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	AclIds          []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
+	AclNames        []*string `json:"AclNames,omitempty" xml:"AclNames,omitempty" type:"Repeated"`
+	MaxResults      *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListAclsRequest) String() string {
@@ -6839,16 +6330,11 @@ func (s *ListAclsRequest) SetResourceGroupId(v string) *ListAclsRequest {
 }
 
 type ListAclsResponseBody struct {
-	// 访问控制列表
-	Acls []*ListAclsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Repeated"`
-	// 本次查询返回记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Acls       []*ListAclsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Repeated"`
+	MaxResults *int32                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAclsResponseBody) String() string {
@@ -6885,18 +6371,12 @@ func (s *ListAclsResponseBody) SetTotalCount(v int32) *ListAclsResponseBody {
 }
 
 type ListAclsResponseBodyAcls struct {
-	// 访问控制策略id
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// 访问控制策略名称
-	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// 状态
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// IP版本
-	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// 配置管理
-	ConfigManagedEnabled *bool `json:"ConfigManagedEnabled,omitempty" xml:"ConfigManagedEnabled,omitempty"`
-	// 资源组ID
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	AclId                *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName              *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AclStatus            *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	AddressIPVersion     *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	ConfigManagedEnabled *bool   `json:"ConfigManagedEnabled,omitempty" xml:"ConfigManagedEnabled,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListAclsResponseBodyAcls) String() string {
@@ -6967,22 +6447,14 @@ func (s *ListAclsResponse) SetBody(v *ListAclsResponseBody) *ListAclsResponse {
 }
 
 type ListAsynJobsRequest struct {
-	// 操作接口名
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// 任务过滤时间范围-开始时间
-	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// 任务过滤时间范围-结束时间
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 任务ID列表
-	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
-	// 本次读取的最大数据记录数量
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 下一个查询开始Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 资源实例ID列表
-	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	// 资源类型类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ApiName      *string   `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	BeginTime    *int64    `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime      *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	JobIds       []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+	MaxResults   *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceIds  []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListAsynJobsRequest) String() string {
@@ -7034,16 +6506,11 @@ func (s *ListAsynJobsRequest) SetResourceType(v string) *ListAsynJobsRequest {
 }
 
 type ListAsynJobsResponseBody struct {
-	// 任务列表
-	Jobs []*ListAsynJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	// 本次查询返回记录数量
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Jobs       []*ListAsynJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	MaxResults *int64                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAsynJobsResponseBody) String() string {
@@ -7080,26 +6547,16 @@ func (s *ListAsynJobsResponseBody) SetTotalCount(v int64) *ListAsynJobsResponseB
 }
 
 type ListAsynJobsResponseBodyJobs struct {
-	// openapi名称
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// 任务开始时间戳
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 如果Status为失败，则为错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 如果Status为失败，则为错误信息
+	ApiName      *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	CreateTime   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 任务ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 任务结束时间戳
-	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 操作类型
-	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// 关联的资源实例ID
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 关联的资源类型
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime   *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	OperateType  *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAsynJobsResponseBodyJobs) String() string {
@@ -7190,14 +6647,10 @@ func (s *ListAsynJobsResponse) SetBody(v *ListAsynJobsResponseBody) *ListAsynJob
 }
 
 type ListHealthCheckTemplatesRequest struct {
-	// 健康检查模板ID列表
-	HealthCheckTemplateIds []*string `json:"HealthCheckTemplateIds,omitempty" xml:"HealthCheckTemplateIds,omitempty" type:"Repeated"`
-	// 健康检查模板名称列表
+	HealthCheckTemplateIds   []*string `json:"HealthCheckTemplateIds,omitempty" xml:"HealthCheckTemplateIds,omitempty" type:"Repeated"`
 	HealthCheckTemplateNames []*string `json:"HealthCheckTemplateNames,omitempty" xml:"HealthCheckTemplateNames,omitempty" type:"Repeated"`
-	// 查询数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults               *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListHealthCheckTemplatesRequest) String() string {
@@ -7229,16 +6682,11 @@ func (s *ListHealthCheckTemplatesRequest) SetNextToken(v string) *ListHealthChec
 }
 
 type ListHealthCheckTemplatesResponseBody struct {
-	// 健康检查模板
 	HealthCheckTemplates []*ListHealthCheckTemplatesResponseBodyHealthCheckTemplates `json:"HealthCheckTemplates,omitempty" xml:"HealthCheckTemplates,omitempty" type:"Repeated"`
-	// 本次查询返回记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults           *int32                                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string                                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount           *int32                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListHealthCheckTemplatesResponseBody) String() string {
@@ -7275,32 +6723,19 @@ func (s *ListHealthCheckTemplatesResponseBody) SetTotalCount(v int32) *ListHealt
 }
 
 type ListHealthCheckTemplatesResponseBodyHealthCheckTemplates struct {
-	// 状态码
-	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
-	// 端口
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 域名
-	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
-	// 版本
-	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	// 间隔时间
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 方法
-	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// uri
-	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// 协议
-	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// 健康检查模板Id
-	HealthCheckTemplateId *string `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
-	// 名称
-	HealthCheckTemplateName *string `json:"HealthCheckTemplateName,omitempty" xml:"HealthCheckTemplateName,omitempty"`
-	// 超时时间
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// 健康阈值
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 不健康阈值
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckCodes        []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
+	HealthCheckConnectPort  *int32    `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckHost         *string   `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
+	HealthCheckHttpVersion  *string   `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	HealthCheckInterval     *int32    `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckMethod       *string   `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheckPath         *string   `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	HealthCheckProtocol     *string   `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	HealthCheckTemplateId   *string   `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
+	HealthCheckTemplateName *string   `json:"HealthCheckTemplateName,omitempty" xml:"HealthCheckTemplateName,omitempty"`
+	HealthCheckTimeout      *int32    `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthyThreshold        *int32    `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold      *int32    `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s ListHealthCheckTemplatesResponseBodyHealthCheckTemplates) String() string {
@@ -7406,14 +6841,10 @@ func (s *ListHealthCheckTemplatesResponse) SetBody(v *ListHealthCheckTemplatesRe
 }
 
 type ListListenerCertificatesRequest struct {
-	// 证书类型
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// 监听Id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// 查询数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ListenerId      *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListListenerCertificatesRequest) String() string {
@@ -7445,16 +6876,11 @@ func (s *ListListenerCertificatesRequest) SetNextToken(v string) *ListListenerCe
 }
 
 type ListListenerCertificatesResponseBody struct {
-	// 监听SSL证书列表
 	Certificates []*ListListenerCertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// 本次查询返回记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults   *int32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListListenerCertificatesResponseBody) String() string {
@@ -7491,14 +6917,10 @@ func (s *ListListenerCertificatesResponseBody) SetTotalCount(v int32) *ListListe
 }
 
 type ListListenerCertificatesResponseBodyCertificates struct {
-	// 证书Id
-	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// 证书类型
+	CertificateId   *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// 是否为默认证书
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// 证书状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	IsDefault       *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListListenerCertificatesResponseBodyCertificates) String() string {
@@ -7559,16 +6981,11 @@ func (s *ListListenerCertificatesResponse) SetBody(v *ListListenerCertificatesRe
 }
 
 type ListListenersRequest struct {
-	// 监听ID列表，N最大支持20
-	ListenerIds []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
-	// 监听协议
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// 实例ID列表，N最大支持20
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
-	// 本次读取的最大数据记录数量，此参数为可选参数，取值1-100，用户传入为空时，默认为20。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 用来标记当前开始读取的位置，置空表示从头开始。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ListenerIds      []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
+	ListenerProtocol *string   `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	LoadBalancerIds  []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
+	MaxResults       *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListListenersRequest) String() string {
@@ -7605,16 +7022,11 @@ func (s *ListListenersRequest) SetNextToken(v string) *ListListenersRequest {
 }
 
 type ListListenersResponseBody struct {
-	// 监听列表
-	Listeners []*ListListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 用来表示当前调用返回读取到的位置，空代表数据已经读取完毕。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Listeners  []*ListListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
+	MaxResults *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListListenersResponseBody) String() string {
@@ -7651,35 +7063,20 @@ func (s *ListListenersResponseBody) SetTotalCount(v int32) *ListListenersRespons
 }
 
 type ListListenersResponseBodyListeners struct {
-	// 默认动作
-	DefaultActions []*ListListenersResponseBodyListenersDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
-	// 是否开启Gzip压缩
-	GzipEnabled *bool `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
-	// 是否开启HTTP/2特性
-	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	// 连接空闲超时时间
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// 监听描述
-	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// 监听标识
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// 监听端口
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 监听协议
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// 监听状态
-	ListenerStatus *string `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
-	// 负载均衡标识
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 监听访问日志相关配置
-	LogConfig *ListListenersResponseBodyListenersLogConfig `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
-	// HTTPS启用QUIC时相关属性
-	QuicConfig *ListListenersResponseBodyListenersQuicConfig `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
-	// 请求超时时间
-	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// 安全策略
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// XForward字段相关的配置
+	DefaultActions      []*ListListenersResponseBodyListenersDefaultActions    `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
+	GzipEnabled         *bool                                                  `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
+	Http2Enabled        *bool                                                  `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	IdleTimeout         *int32                                                 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ListenerDescription *string                                                `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
+	ListenerId          *string                                                `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ListenerPort        *int32                                                 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	ListenerProtocol    *string                                                `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	ListenerStatus      *string                                                `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
+	LoadBalancerId      *string                                                `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LogConfig           *ListListenersResponseBodyListenersLogConfig           `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
+	QuicConfig          *ListListenersResponseBodyListenersQuicConfig          `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
+	RequestTimeout      *int32                                                 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	SecurityPolicyId    *string                                                `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	XForwardedForConfig *ListListenersResponseBodyListenersXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
@@ -7767,10 +7164,8 @@ func (s *ListListenersResponseBodyListeners) SetXForwardedForConfig(v *ListListe
 }
 
 type ListListenersResponseBodyListenersDefaultActions struct {
-	// 转发到服务器组
 	ForwardGroupConfig *ListListenersResponseBodyListenersDefaultActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type               *string                                                             `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListListenersResponseBodyListenersDefaultActions) String() string {
@@ -7792,7 +7187,6 @@ func (s *ListListenersResponseBodyListenersDefaultActions) SetType(v string) *Li
 }
 
 type ListListenersResponseBodyListenersDefaultActionsForwardGroupConfig struct {
-	// 服务器组列表
 	ServerGroupTuples []*ListListenersResponseBodyListenersDefaultActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -7810,7 +7204,6 @@ func (s *ListListenersResponseBodyListenersDefaultActionsForwardGroupConfig) Set
 }
 
 type ListListenersResponseBodyListenersDefaultActionsForwardGroupConfigServerGroupTuples struct {
-	// 服务器组ID
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -7828,10 +7221,8 @@ func (s *ListListenersResponseBodyListenersDefaultActionsForwardGroupConfigServe
 }
 
 type ListListenersResponseBodyListenersLogConfig struct {
-	// 访问日志是否开启携带自定义Header
-	AccessLogRecordCustomizedHeadersEnabled *bool `json:"AccessLogRecordCustomizedHeadersEnabled,omitempty" xml:"AccessLogRecordCustomizedHeadersEnabled,omitempty"`
-	// 访问日志Xtrace相关的配置
-	AccessLogTracingConfig *ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig `json:"AccessLogTracingConfig,omitempty" xml:"AccessLogTracingConfig,omitempty" type:"Struct"`
+	AccessLogRecordCustomizedHeadersEnabled *bool                                                              `json:"AccessLogRecordCustomizedHeadersEnabled,omitempty" xml:"AccessLogRecordCustomizedHeadersEnabled,omitempty"`
+	AccessLogTracingConfig                  *ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig `json:"AccessLogTracingConfig,omitempty" xml:"AccessLogTracingConfig,omitempty" type:"Struct"`
 }
 
 func (s ListListenersResponseBodyListenersLogConfig) String() string {
@@ -7853,12 +7244,9 @@ func (s *ListListenersResponseBodyListenersLogConfig) SetAccessLogTracingConfig(
 }
 
 type ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig struct {
-	// Xtrace功能状态
-	TracingEnabled *bool `json:"TracingEnabled,omitempty" xml:"TracingEnabled,omitempty"`
-	// Xtrace功能状态
-	TracingSample *int32 `json:"TracingSample,omitempty" xml:"TracingSample,omitempty"`
-	// xtrace的类型
-	TracingType *string `json:"TracingType,omitempty" xml:"TracingType,omitempty"`
+	TracingEnabled *bool   `json:"TracingEnabled,omitempty" xml:"TracingEnabled,omitempty"`
+	TracingSample  *int32  `json:"TracingSample,omitempty" xml:"TracingSample,omitempty"`
+	TracingType    *string `json:"TracingType,omitempty" xml:"TracingType,omitempty"`
 }
 
 func (s ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig) String() string {
@@ -7885,10 +7273,8 @@ func (s *ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig) SetT
 }
 
 type ListListenersResponseBodyListenersQuicConfig struct {
-	// 需要关联的QUIC监听ID，HTTPS监听时有效，QuicUpgradeEnabled为true时必选
-	QuicListenerId *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
-	// 是否开启quic升级，HTTPS监听时有效
-	QuicUpgradeEnabled *bool `json:"QuicUpgradeEnabled,omitempty" xml:"QuicUpgradeEnabled,omitempty"`
+	QuicListenerId     *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
+	QuicUpgradeEnabled *bool   `json:"QuicUpgradeEnabled,omitempty" xml:"QuicUpgradeEnabled,omitempty"`
 }
 
 func (s ListListenersResponseBodyListenersQuicConfig) String() string {
@@ -7910,32 +7296,21 @@ func (s *ListListenersResponseBodyListenersQuicConfig) SetQuicUpgradeEnabled(v b
 }
 
 type ListListenersResponseBodyListenersXForwardedForConfig struct {
-	// 自定义HEADER头名称，只有当XForwardedForClientCertClientVerifyEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertClientVerifyAlias *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
-	// 是否通过X-Forwarded-Clientcert-clientverify  头字段获取对访问负载均衡实例客户端证书的校验结果。HTTPS监听有效。
-	XForwardedForClientCertClientVerifyEnabled *bool `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
-	// 自定义HEADER头名称，只有当XForwardedForClientCertFingerprintEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertFingerprintAlias *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
-	// 是否通过X-Forwarded-Clientcert-fingerprint 头字段获取访问负载均衡实例客户端证书的指纹取值，HTTPS监听有效。
-	XForwardedForClientCertFingerprintEnabled *bool `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
-	// 自定义HEADER头名称，只有当XForwardedForClientCertIssuerDNEnabled的值为‘On’的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertIssuerDNAlias *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
-	// 是否通过 X-Forwarded-Clientcert-issuerdn 头字段获取访问负载均衡实例客户端证书的发行者信息。HTTPS监听有效。
-	XForwardedForClientCertIssuerDNEnabled *bool `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
-	// 自定义HEADER头名称，只有当XForwardedForClientCertSubjectDNEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertSubjectDNAlias *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
-	// 是否通过X-Forwarded-Clientcert-subjectdn  头字段获取访问负载均衡实例客户端证书的所有者信息。HTTPS监听有效。
-	XForwardedForClientCertSubjectDNEnabled *bool `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
-	// 是否通过X-Forwarded-Client-Port 头字段获取访问负载均衡实例客户端的端口。HTTPS监听有效。
-	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
-	// 是否开启通过X-Forwarded-For头字段获取来访者真实 IP
-	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
-	// 是否通过X-Forwarded-Proto头字段获取负载均衡实例的监听协议。
-	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
-	// 是否通过SLB-ID头字段获取负载均衡实例ID。
-	XForwardedForSLBIdEnabled *bool `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
-	// 是否通过X-Forwarded-Port 头字段获取负载均衡实例的监听端口。HTTPS监听有效。
-	XForwardedForSLBPortEnabled *bool `json:"XForwardedForSLBPortEnabled,omitempty" xml:"XForwardedForSLBPortEnabled,omitempty"`
+	XForwardedForClientCertClientVerifyAlias   *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
+	XForwardedForClientCertClientVerifyEnabled *bool   `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
+	XForwardedForClientCertFingerprintAlias    *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
+	XForwardedForClientCertFingerprintEnabled  *bool   `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
+	XForwardedForClientCertIssuerDNAlias       *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
+	XForwardedForClientCertIssuerDNEnabled     *bool   `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
+	XForwardedForClientCertSubjectDNAlias      *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
+	XForwardedForClientCertSubjectDNEnabled    *bool   `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
+	XForwardedForClientSourceIpsEnabled        *bool   `json:"XForwardedForClientSourceIpsEnabled,omitempty" xml:"XForwardedForClientSourceIpsEnabled,omitempty"`
+	XForwardedForClientSourceIpsTrusted        *string `json:"XForwardedForClientSourceIpsTrusted,omitempty" xml:"XForwardedForClientSourceIpsTrusted,omitempty"`
+	XForwardedForClientSrcPortEnabled          *bool   `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
+	XForwardedForEnabled                       *bool   `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	XForwardedForProtoEnabled                  *bool   `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
+	XForwardedForSLBIdEnabled                  *bool   `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
+	XForwardedForSLBPortEnabled                *bool   `json:"XForwardedForSLBPortEnabled,omitempty" xml:"XForwardedForSLBPortEnabled,omitempty"`
 }
 
 func (s ListListenersResponseBodyListenersXForwardedForConfig) String() string {
@@ -7983,6 +7358,16 @@ func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedFor
 
 func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedForClientCertSubjectDNEnabled(v bool) *ListListenersResponseBodyListenersXForwardedForConfig {
 	s.XForwardedForClientCertSubjectDNEnabled = &v
+	return s
+}
+
+func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedForClientSourceIpsEnabled(v bool) *ListListenersResponseBodyListenersXForwardedForConfig {
+	s.XForwardedForClientSourceIpsEnabled = &v
+	return s
+}
+
+func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedForClientSourceIpsTrusted(v string) *ListListenersResponseBodyListenersXForwardedForConfig {
+	s.XForwardedForClientSourceIpsTrusted = &v
 	return s
 }
 
@@ -8041,30 +7426,18 @@ func (s *ListListenersResponse) SetBody(v *ListListenersResponseBody) *ListListe
 }
 
 type ListLoadBalancersRequest struct {
-	// 负载均衡的地址类型
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// 实例业务状态
-	LoadBalancerBussinessStatus *string `json:"LoadBalancerBussinessStatus,omitempty" xml:"LoadBalancerBussinessStatus,omitempty"`
-	// 实例ID列表，N最大支持20
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
-	// 实例Name列表，N最大支持10
-	LoadBalancerNames []*string `json:"LoadBalancerNames,omitempty" xml:"LoadBalancerNames,omitempty" type:"Repeated"`
-	// 实例状态
-	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	// 本次读取的最大数据记录数量，此参数为可选参数，取值1-100，用户传入为空时，默认为20。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 用来标记当前开始读取的位置，置空表示从头开始。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 付费类型
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// 资源组ID
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// tag列表
-	Tag []*ListLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// vpcId列表
-	VpcIds []*string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty" type:"Repeated"`
-	// 可用区ID
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AddressType                 *string                        `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	LoadBalancerBussinessStatus *string                        `json:"LoadBalancerBussinessStatus,omitempty" xml:"LoadBalancerBussinessStatus,omitempty"`
+	LoadBalancerIds             []*string                      `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
+	LoadBalancerNames           []*string                      `json:"LoadBalancerNames,omitempty" xml:"LoadBalancerNames,omitempty" type:"Repeated"`
+	LoadBalancerStatus          *string                        `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	MaxResults                  *int32                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                   *string                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PayType                     *string                        `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ResourceGroupId             *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag                         []*ListLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VpcIds                      []*string                      `json:"VpcIds,omitempty" xml:"VpcIds,omitempty" type:"Repeated"`
+	ZoneId                      *string                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListLoadBalancersRequest) String() string {
@@ -8136,9 +7509,7 @@ func (s *ListLoadBalancersRequest) SetZoneId(v string) *ListLoadBalancersRequest
 }
 
 type ListLoadBalancersRequestTag struct {
-	// 实例的标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 实例的标签值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8161,16 +7532,11 @@ func (s *ListLoadBalancersRequestTag) SetValue(v string) *ListLoadBalancersReque
 }
 
 type ListLoadBalancersResponseBody struct {
-	// 实例列表
 	LoadBalancers []*ListLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 用来表示当前调用返回读取到的位置，空代表数据已经读取完毕。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults    *int32                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount    *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLoadBalancersResponseBody) String() string {
@@ -8207,46 +7573,26 @@ func (s *ListLoadBalancersResponseBody) SetTotalCount(v int32) *ListLoadBalancer
 }
 
 type ListLoadBalancersResponseBodyLoadBalancers struct {
-	// 访问日志属性
-	AccessLogConfig *ListLoadBalancersResponseBodyLoadBalancersAccessLogConfig `json:"AccessLogConfig,omitempty" xml:"AccessLogConfig,omitempty" type:"Struct"`
-	// 地址模式
-	AddressAllocatedMode *string `json:"AddressAllocatedMode,omitempty" xml:"AddressAllocatedMode,omitempty"`
-	// 协议版本
-	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// 地址类型
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// 带宽包ID
-	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// 资源创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// DNS域名
-	DNSName *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
-	// 负载均衡删除保护相关信息
-	DeletionProtectionConfig *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig `json:"DeletionProtectionConfig,omitempty" xml:"DeletionProtectionConfig,omitempty" type:"Struct"`
-	// IPV6地址类型
-	Ipv6AddressType *string `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
-	// 计费相关属性
-	LoadBalancerBillingConfig *ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
-	// 实例业务状态
-	LoadBalancerBussinessStatus *string `json:"LoadBalancerBussinessStatus,omitempty" xml:"LoadBalancerBussinessStatus,omitempty"`
-	// 负载均衡的版本
-	LoadBalancerEdition *string `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
-	// 负载均衡标识
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 实例名称
-	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// 锁定的原因
-	LoadBalancerOperationLocks []*ListLoadBalancersResponseBodyLoadBalancersLoadBalancerOperationLocks `json:"LoadBalancerOperationLocks,omitempty" xml:"LoadBalancerOperationLocks,omitempty" type:"Repeated"`
-	// 实例状态
-	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	// 负载均衡修改保护相关信息
+	AccessLogConfig              *ListLoadBalancersResponseBodyLoadBalancersAccessLogConfig              `json:"AccessLogConfig,omitempty" xml:"AccessLogConfig,omitempty" type:"Struct"`
+	AddressAllocatedMode         *string                                                                 `json:"AddressAllocatedMode,omitempty" xml:"AddressAllocatedMode,omitempty"`
+	AddressIpVersion             *string                                                                 `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	AddressType                  *string                                                                 `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	BandwidthPackageId           *string                                                                 `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	CreateTime                   *string                                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DNSName                      *string                                                                 `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
+	DeletionProtectionConfig     *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig     `json:"DeletionProtectionConfig,omitempty" xml:"DeletionProtectionConfig,omitempty" type:"Struct"`
+	Ipv6AddressType              *string                                                                 `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
+	LoadBalancerBillingConfig    *ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig    `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
+	LoadBalancerBussinessStatus  *string                                                                 `json:"LoadBalancerBussinessStatus,omitempty" xml:"LoadBalancerBussinessStatus,omitempty"`
+	LoadBalancerEdition          *string                                                                 `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
+	LoadBalancerId               *string                                                                 `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerName             *string                                                                 `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	LoadBalancerOperationLocks   []*ListLoadBalancersResponseBodyLoadBalancersLoadBalancerOperationLocks `json:"LoadBalancerOperationLocks,omitempty" xml:"LoadBalancerOperationLocks,omitempty" type:"Repeated"`
+	LoadBalancerStatus           *string                                                                 `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
 	ModificationProtectionConfig *ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
-	// 企业资源组ID
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 标签列表
-	Tags []*ListLoadBalancersResponseBodyLoadBalancersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Vpc网络ID
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ResourceGroupId              *string                                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags                         []*ListLoadBalancersResponseBodyLoadBalancersTags                       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId                        *string                                                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListLoadBalancersResponseBodyLoadBalancers) String() string {
@@ -8358,10 +7704,8 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetVpcId(v string) *ListLoa
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersAccessLogConfig struct {
-	// 访问日志投递的logProject
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// 删除保护开启时间
-	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	LogStore   *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 }
 
 func (s ListLoadBalancersResponseBodyLoadBalancersAccessLogConfig) String() string {
@@ -8383,9 +7727,7 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersAccessLogConfig) SetLogStore(
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig struct {
-	// 删除保护状态
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// 删除保护开启时间
+	Enabled     *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
 }
 
@@ -8408,7 +7750,6 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig) Set
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig struct {
-	// 实例的计费类型
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
 
@@ -8426,10 +7767,8 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig) Se
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersLoadBalancerOperationLocks struct {
-	// 锁定的原因
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// 锁定的类型
-	LockType *string `json:"LockType,omitempty" xml:"LockType,omitempty"`
+	LockType   *string `json:"LockType,omitempty" xml:"LockType,omitempty"`
 }
 
 func (s ListLoadBalancersResponseBodyLoadBalancersLoadBalancerOperationLocks) String() string {
@@ -8451,9 +7790,7 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersLoadBalancerOperationLocks) S
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig struct {
-	// 设置修改保护状态的原因
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// 负载均衡修改保护状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8476,9 +7813,7 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig)
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersTags struct {
-	// 实例的标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 实例的标签值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8530,16 +7865,11 @@ func (s *ListLoadBalancersResponse) SetBody(v *ListLoadBalancersResponseBody) *L
 }
 
 type ListRulesRequest struct {
-	// 监听ID列表
-	ListenerIds []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
-	// 实例ID列表
+	ListenerIds     []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
-	// 本次读取的最大数据记录数量，此参数为可选参数，取值1-100，用户传入为空时，默认为20。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 用来标记当前开始读取的位置，置空表示从头开始。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 转发规则ID列表，N最大支持20
-	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	MaxResults      *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RuleIds         []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 }
 
 func (s ListRulesRequest) String() string {
@@ -8576,16 +7906,11 @@ func (s *ListRulesRequest) SetRuleIds(v []*string) *ListRulesRequest {
 }
 
 type ListRulesResponseBody struct {
-	// 本次请求所返回的最大记录条数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 用来表示当前调用返回读取到的位置，空代表数据已经读取完毕。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 转发规则列表
-	Rules []*ListRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// 本次请求条件下的数据总量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules      []*ListRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRulesResponseBody) String() string {
@@ -8622,22 +7947,14 @@ func (s *ListRulesResponseBody) SetTotalCount(v int32) *ListRulesResponseBody {
 }
 
 type ListRulesResponseBodyRules struct {
-	// 监听ID
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// 实例ID
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 转发规则优先级
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 转发规则动作
-	RuleActions []*ListRulesResponseBodyRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
-	// 转发规则条件
+	ListenerId     *string                                     `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	LoadBalancerId *string                                     `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	Priority       *int32                                      `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RuleActions    []*ListRulesResponseBodyRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	RuleConditions []*ListRulesResponseBodyRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
-	// 转发规则标识
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// 转发规则名称
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// 转发规则状态
-	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+	RuleId         *string                                     `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName       *string                                     `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleStatus     *string                                     `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
 }
 
 func (s ListRulesResponseBodyRules) String() string {
@@ -8689,23 +8006,15 @@ func (s *ListRulesResponseBodyRules) SetRuleStatus(v string) *ListRulesResponseB
 }
 
 type ListRulesResponseBodyRulesRuleActions struct {
-	// 返回固定内容动作配置
 	FixedResponseConfig *ListRulesResponseBodyRulesRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
-	// 转发组动作配置
-	ForwardGroupConfig *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// 插入头部动作配置
-	InsertHeaderConfig *ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
-	// 优先级
-	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 重定向动作配置
-	RedirectConfig *ListRulesResponseBodyRulesRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
-	// 内部重定向动作配置
-	RewriteConfig      *ListRulesResponseBodyRulesRuleActionsRewriteConfig      `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
-	TrafficLimitConfig *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
-	// 流量镜像Action对应的配置，type为TrafficMirror时必填且有效
+	ForwardGroupConfig  *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig  `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
+	InsertHeaderConfig  *ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig  `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
+	Order               *int32                                                    `json:"Order,omitempty" xml:"Order,omitempty"`
+	RedirectConfig      *ListRulesResponseBodyRulesRuleActionsRedirectConfig      `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
+	RewriteConfig       *ListRulesResponseBodyRulesRuleActionsRewriteConfig       `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
+	TrafficLimitConfig  *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig  `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
 	TrafficMirrorConfig *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
-	// 转发规则动作类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type                *string                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListRulesResponseBodyRulesRuleActions) String() string {
@@ -8762,12 +8071,9 @@ func (s *ListRulesResponseBodyRulesRuleActions) SetType(v string) *ListRulesResp
 }
 
 type ListRulesResponseBodyRulesRuleActionsFixedResponseConfig struct {
-	// 内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 内容类型
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// HTTP响应码
-	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	HttpCode    *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 }
 
 func (s ListRulesResponseBodyRulesRuleActionsFixedResponseConfig) String() string {
@@ -8794,7 +8100,6 @@ func (s *ListRulesResponseBodyRulesRuleActionsFixedResponseConfig) SetHttpCode(v
 }
 
 type ListRulesResponseBodyRulesRuleActionsForwardGroupConfig struct {
-	// 转发到的目的服务器组列表
 	ServerGroupTuples []*ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -8812,10 +8117,8 @@ func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig) SetServerGroup
 }
 
 type ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
-	// 服务器组标识
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 当ServerGroupTuple.N数量大于1时，可配置每个服务器组的权重
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Weight        *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples) String() string {
@@ -8837,11 +8140,8 @@ func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuple
 }
 
 type ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig struct {
-	// HTTP标头
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// HTTP标头内容
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 取值类型
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -8869,18 +8169,12 @@ func (s *ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig) SetValueType(v
 }
 
 type ListRulesResponseBodyRulesRuleActionsRedirectConfig struct {
-	// 要跳转的主机地址
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 跳转方式
+	Host     *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// 要跳转的路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 要跳转的端口
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 要跳转的协议
+	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 要跳转的查询字符串
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Query    *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
 func (s ListRulesResponseBodyRulesRuleActionsRedirectConfig) String() string {
@@ -8922,11 +8216,8 @@ func (s *ListRulesResponseBodyRulesRuleActionsRedirectConfig) SetQuery(v string)
 }
 
 type ListRulesResponseBodyRulesRuleActionsRewriteConfig struct {
-	// 主机名
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 查询
+	Host  *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -8954,7 +8245,8 @@ func (s *ListRulesResponseBodyRulesRuleActionsRewriteConfig) SetQuery(v string) 
 }
 
 type ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig struct {
-	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+	PerIpQps *int32 `json:"PerIpQps,omitempty" xml:"PerIpQps,omitempty"`
+	QPS      *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
 }
 
 func (s ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) String() string {
@@ -8965,13 +8257,17 @@ func (s ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) GoString() stri
 	return s.String()
 }
 
+func (s *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) SetPerIpQps(v int32) *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig {
+	s.PerIpQps = &v
+	return s
+}
+
 func (s *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) SetQPS(v int32) *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig {
 	s.QPS = &v
 	return s
 }
 
 type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig struct {
-	// TargetType为服务器组时必选，目标服务器组
 	MirrorGroupConfig *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
 }
 
@@ -9029,22 +8325,14 @@ func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConf
 }
 
 type ListRulesResponseBodyRulesRuleConditions struct {
-	// Cookie条件配置
-	CookieConfig *ListRulesResponseBodyRulesRuleConditionsCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
-	// HTTP标头条件配置
-	HeaderConfig *ListRulesResponseBodyRulesRuleConditionsHeaderConfig `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
-	// 主机名条件配置
-	HostConfig *ListRulesResponseBodyRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-	// HTTP请求方法条件配置
-	MethodConfig *ListRulesResponseBodyRulesRuleConditionsMethodConfig `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
-	// 路径条件配置
-	PathConfig *ListRulesResponseBodyRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	// 查询字符串条件配置
+	CookieConfig      *ListRulesResponseBodyRulesRuleConditionsCookieConfig      `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
+	HeaderConfig      *ListRulesResponseBodyRulesRuleConditionsHeaderConfig      `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
+	HostConfig        *ListRulesResponseBodyRulesRuleConditionsHostConfig        `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	MethodConfig      *ListRulesResponseBodyRulesRuleConditionsMethodConfig      `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
+	PathConfig        *ListRulesResponseBodyRulesRuleConditionsPathConfig        `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
 	QueryStringConfig *ListRulesResponseBodyRulesRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
-	// 源IP业务流量匹配
-	SourceIpConfig *ListRulesResponseBodyRulesRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
-	// 条件类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	SourceIpConfig    *ListRulesResponseBodyRulesRuleConditionsSourceIpConfig    `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
+	Type              *string                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListRulesResponseBodyRulesRuleConditions) String() string {
@@ -9096,7 +8384,6 @@ func (s *ListRulesResponseBodyRulesRuleConditions) SetType(v string) *ListRulesR
 }
 
 type ListRulesResponseBodyRulesRuleConditionsCookieConfig struct {
-	// Cookie键值对列表
 	Values []*ListRulesResponseBodyRulesRuleConditionsCookieConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -9114,9 +8401,7 @@ func (s *ListRulesResponseBodyRulesRuleConditionsCookieConfig) SetValues(v []*Li
 }
 
 type ListRulesResponseBodyRulesRuleConditionsCookieConfigValues struct {
-	// Cookie条件键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Cookie条件值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9139,9 +8424,7 @@ func (s *ListRulesResponseBodyRulesRuleConditionsCookieConfigValues) SetValue(v 
 }
 
 type ListRulesResponseBodyRulesRuleConditionsHeaderConfig struct {
-	// HTTP标头键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// HTTP标头值列表
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -9164,7 +8447,6 @@ func (s *ListRulesResponseBodyRulesRuleConditionsHeaderConfig) SetValues(v []*st
 }
 
 type ListRulesResponseBodyRulesRuleConditionsHostConfig struct {
-	// 主机名列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -9182,7 +8464,6 @@ func (s *ListRulesResponseBodyRulesRuleConditionsHostConfig) SetValues(v []*stri
 }
 
 type ListRulesResponseBodyRulesRuleConditionsMethodConfig struct {
-	// HTTP请求方法列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -9200,7 +8481,6 @@ func (s *ListRulesResponseBodyRulesRuleConditionsMethodConfig) SetValues(v []*st
 }
 
 type ListRulesResponseBodyRulesRuleConditionsPathConfig struct {
-	// 路径条件列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -9218,7 +8498,6 @@ func (s *ListRulesResponseBodyRulesRuleConditionsPathConfig) SetValues(v []*stri
 }
 
 type ListRulesResponseBodyRulesRuleConditionsQueryStringConfig struct {
-	// 查询字符串条件键值对列表
 	Values []*ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -9236,9 +8515,7 @@ func (s *ListRulesResponseBodyRulesRuleConditionsQueryStringConfig) SetValues(v 
 }
 
 type ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues struct {
-	// 查询字符串条件键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 查询字符串条件值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9261,7 +8538,6 @@ func (s *ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues) SetVal
 }
 
 type ListRulesResponseBodyRulesRuleConditionsSourceIpConfig struct {
-	// 需要匹配的源IP列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -9308,15 +8584,10 @@ func (s *ListRulesResponse) SetBody(v *ListRulesResponseBody) *ListRulesResponse
 }
 
 type ListSecurityPoliciesRequest struct {
-	// 查询数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 资源组ID
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 安全策略id
-	SecurityPolicyIds []*string `json:"SecurityPolicyIds,omitempty" xml:"SecurityPolicyIds,omitempty" type:"Repeated"`
-	// 安全策略名称
+	MaxResults          *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken           *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceGroupId     *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityPolicyIds   []*string `json:"SecurityPolicyIds,omitempty" xml:"SecurityPolicyIds,omitempty" type:"Repeated"`
 	SecurityPolicyNames []*string `json:"SecurityPolicyNames,omitempty" xml:"SecurityPolicyNames,omitempty" type:"Repeated"`
 }
 
@@ -9354,16 +8625,11 @@ func (s *ListSecurityPoliciesRequest) SetSecurityPolicyNames(v []*string) *ListS
 }
 
 type ListSecurityPoliciesResponseBody struct {
-	// 本次查询返回记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 安全策略
+	MaxResults       *int32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityPolicies []*ListSecurityPoliciesResponseBodySecurityPolicies `json:"SecurityPolicies,omitempty" xml:"SecurityPolicies,omitempty" type:"Repeated"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount       *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSecurityPoliciesResponseBody) String() string {
@@ -9400,18 +8666,12 @@ func (s *ListSecurityPoliciesResponseBody) SetTotalCount(v int32) *ListSecurityP
 }
 
 type ListSecurityPoliciesResponseBodySecurityPolicies struct {
-	// 加密套件
-	Ciphers []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
-	// 资源组id
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 安全策略id
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// 安全策略名称
-	SecurityPolicyName *string `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
-	// 状态
-	SecurityPolicyStatus *string `json:"SecurityPolicyStatus,omitempty" xml:"SecurityPolicyStatus,omitempty"`
-	// TLS策略
-	TLSVersions []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
+	Ciphers              []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
+	ResourceGroupId      *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityPolicyId     *string   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	SecurityPolicyName   *string   `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
+	SecurityPolicyStatus *string   `json:"SecurityPolicyStatus,omitempty" xml:"SecurityPolicyStatus,omitempty"`
+	TLSVersions          []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
 }
 
 func (s ListSecurityPoliciesResponseBodySecurityPolicies) String() string {
@@ -9482,7 +8742,6 @@ func (s *ListSecurityPoliciesResponse) SetBody(v *ListSecurityPoliciesResponseBo
 }
 
 type ListSecurityPolicyRelationsRequest struct {
-	// 安全策略id
 	SecurityPolicyIds []*string `json:"SecurityPolicyIds,omitempty" xml:"SecurityPolicyIds,omitempty" type:"Repeated"`
 }
 
@@ -9500,9 +8759,7 @@ func (s *ListSecurityPolicyRelationsRequest) SetSecurityPolicyIds(v []*string) *
 }
 
 type ListSecurityPolicyRelationsResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 安全策略关联关系
+	RequestId              *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecrityPolicyRelations []*ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations `json:"SecrityPolicyRelations,omitempty" xml:"SecrityPolicyRelations,omitempty" type:"Repeated"`
 }
 
@@ -9525,10 +8782,8 @@ func (s *ListSecurityPolicyRelationsResponseBody) SetSecrityPolicyRelations(v []
 }
 
 type ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations struct {
-	// 关联的监听列表
 	RelatedListeners []*ListSecurityPolicyRelationsResponseBodySecrityPolicyRelationsRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
-	// 安全策略id
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	SecurityPolicyId *string                                                                          `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 }
 
 func (s ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations) String() string {
@@ -9550,14 +8805,10 @@ func (s *ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations) SetSecur
 }
 
 type ListSecurityPolicyRelationsResponseBodySecrityPolicyRelationsRelatedListeners struct {
-	// 监听id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// 监听端口
-	ListenerPort *int64 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// 监听协议
+	ListenerId       *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ListenerPort     *int64  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// 实例id
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
 func (s ListSecurityPolicyRelationsResponseBodySecrityPolicyRelationsRelatedListeners) String() string {
@@ -9618,11 +8869,8 @@ func (s *ListSecurityPolicyRelationsResponse) SetBody(v *ListSecurityPolicyRelat
 }
 
 type ListServerGroupServersRequest struct {
-	// 查询数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 服务器组id
+	MaxResults    *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	ServerGroupId *string                             `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	ServerIds     []*string                           `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
 	Tag           []*ListServerGroupServersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -9662,9 +8910,7 @@ func (s *ListServerGroupServersRequest) SetTag(v []*ListServerGroupServersReques
 }
 
 type ListServerGroupServersRequestTag struct {
-	// 标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9687,16 +8933,11 @@ func (s *ListServerGroupServersRequestTag) SetValue(v string) *ListServerGroupSe
 }
 
 type ListServerGroupServersResponseBody struct {
-	// 本次查询返回记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 后端服务器
-	Servers []*ListServerGroupServersResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults *int32                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Servers    []*ListServerGroupServersResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListServerGroupServersResponseBody) String() string {
@@ -9733,22 +8974,14 @@ func (s *ListServerGroupServersResponseBody) SetTotalCount(v int32) *ListServerG
 }
 
 type ListServerGroupServersResponseBodyServers struct {
-	// 描述信息
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 端口
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 服务器组id
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 服务器id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 服务器ip
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 后端服务器类型
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 权重
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	ServerId      *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp      *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerType    *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Weight        *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s ListServerGroupServersResponseBodyServers) String() string {
@@ -9829,20 +9062,13 @@ func (s *ListServerGroupServersResponse) SetBody(v *ListServerGroupServersRespon
 }
 
 type ListServerGroupsRequest struct {
-	// 查询数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 资源组ID
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 服务器组Id列表
-	ServerGroupIds []*string `json:"ServerGroupIds,omitempty" xml:"ServerGroupIds,omitempty" type:"Repeated"`
-	// 服务器组名称
-	ServerGroupNames []*string `json:"ServerGroupNames,omitempty" xml:"ServerGroupNames,omitempty" type:"Repeated"`
-	// Tag列表
-	Tag []*ListServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// VpcId
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	MaxResults       *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceGroupId  *string                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServerGroupIds   []*string                     `json:"ServerGroupIds,omitempty" xml:"ServerGroupIds,omitempty" type:"Repeated"`
+	ServerGroupNames []*string                     `json:"ServerGroupNames,omitempty" xml:"ServerGroupNames,omitempty" type:"Repeated"`
+	Tag              []*ListServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VpcId            *string                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListServerGroupsRequest) String() string {
@@ -9889,9 +9115,7 @@ func (s *ListServerGroupsRequest) SetVpcId(v string) *ListServerGroupsRequest {
 }
 
 type ListServerGroupsRequestTag struct {
-	// 标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9914,16 +9138,11 @@ func (s *ListServerGroupsRequestTag) SetValue(v string) *ListServerGroupsRequest
 }
 
 type ListServerGroupsResponseBody struct {
-	// 本次查询返回记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务器组
+	MaxResults   *int32                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ServerGroups []*ListServerGroupsResponseBodyServerGroups `json:"ServerGroups,omitempty" xml:"ServerGroups,omitempty" type:"Repeated"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount   *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListServerGroupsResponseBody) String() string {
@@ -9960,38 +9179,22 @@ func (s *ListServerGroupsResponseBody) SetTotalCount(v int32) *ListServerGroupsR
 }
 
 type ListServerGroupsResponseBodyServerGroups struct {
-	// 是否开启配置管理
-	ConfigManagedEnabled *bool `json:"ConfigManagedEnabled,omitempty" xml:"ConfigManagedEnabled,omitempty"`
-	// 健康检查配置
-	HealthCheckConfig *ListServerGroupsResponseBodyServerGroupsHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
-	// 是否支持Ipv6
-	Ipv6Enabled *bool `json:"Ipv6Enabled,omitempty" xml:"Ipv6Enabled,omitempty"`
-	// 服务器组协议
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 资源组id
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 调度策略
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 服务器组内服务器数量
-	ServerCount *int32 `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
-	// 服务器组Id
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 服务器组名称
-	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
-	// 服务器组状态
-	ServerGroupStatus *string `json:"ServerGroupStatus,omitempty" xml:"ServerGroupStatus,omitempty"`
-	// 服务器组类型
-	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
-	// 服务器名称
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// 会话保持配置
-	StickySessionConfig *ListServerGroupsResponseBodyServerGroupsStickySessionConfig `json:"StickySessionConfig,omitempty" xml:"StickySessionConfig,omitempty" type:"Struct"`
-	// 标签列表
-	Tags []*ListServerGroupsResponseBodyServerGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// 是否开启后端长链接
-	UpstreamKeepaliveEnabled *bool `json:"UpstreamKeepaliveEnabled,omitempty" xml:"UpstreamKeepaliveEnabled,omitempty"`
-	// 服务器组所在VpcId
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ConfigManagedEnabled     *bool                                                        `json:"ConfigManagedEnabled,omitempty" xml:"ConfigManagedEnabled,omitempty"`
+	HealthCheckConfig        *ListServerGroupsResponseBodyServerGroupsHealthCheckConfig   `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
+	Ipv6Enabled              *bool                                                        `json:"Ipv6Enabled,omitempty" xml:"Ipv6Enabled,omitempty"`
+	Protocol                 *string                                                      `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	ResourceGroupId          *string                                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Scheduler                *string                                                      `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	ServerCount              *int32                                                       `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
+	ServerGroupId            *string                                                      `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	ServerGroupName          *string                                                      `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
+	ServerGroupStatus        *string                                                      `json:"ServerGroupStatus,omitempty" xml:"ServerGroupStatus,omitempty"`
+	ServerGroupType          *string                                                      `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
+	ServiceName              *string                                                      `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	StickySessionConfig      *ListServerGroupsResponseBodyServerGroupsStickySessionConfig `json:"StickySessionConfig,omitempty" xml:"StickySessionConfig,omitempty" type:"Struct"`
+	Tags                     []*ListServerGroupsResponseBodyServerGroupsTags              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UpstreamKeepaliveEnabled *bool                                                        `json:"UpstreamKeepaliveEnabled,omitempty" xml:"UpstreamKeepaliveEnabled,omitempty"`
+	VpcId                    *string                                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListServerGroupsResponseBodyServerGroups) String() string {
@@ -10083,30 +9286,18 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetVpcId(v string) *ListServe
 }
 
 type ListServerGroupsResponseBodyServerGroupsHealthCheckConfig struct {
-	// 状态码
-	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
-	// 端口
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 是否启用健康检查
-	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// 域名
-	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
-	// 版本
-	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	// 间隔时间
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 方法
-	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// uri
-	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// 协议
-	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// 超时时间
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// 健康阈值
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 不健康阈值
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckCodes       []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
+	HealthCheckConnectPort *int32    `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckEnabled     *bool     `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckHost        *string   `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
+	HealthCheckHttpVersion *string   `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	HealthCheckInterval    *int32    `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckMethod      *string   `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheckPath        *string   `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	HealthCheckProtocol    *string   `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	HealthCheckTimeout     *int32    `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthyThreshold       *int32    `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold     *int32    `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s ListServerGroupsResponseBodyServerGroupsHealthCheckConfig) String() string {
@@ -10178,14 +9369,10 @@ func (s *ListServerGroupsResponseBodyServerGroupsHealthCheckConfig) SetUnhealthy
 }
 
 type ListServerGroupsResponseBodyServerGroupsStickySessionConfig struct {
-	// Cookie
-	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// Cookie超时时间
-	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// 是否开启会话保持
-	StickySessionEnabled *bool `json:"StickySessionEnabled,omitempty" xml:"StickySessionEnabled,omitempty"`
-	// 会话保持类型
-	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	Cookie               *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	CookieTimeout        *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	StickySessionEnabled *bool   `json:"StickySessionEnabled,omitempty" xml:"StickySessionEnabled,omitempty"`
+	StickySessionType    *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 }
 
 func (s ListServerGroupsResponseBodyServerGroupsStickySessionConfig) String() string {
@@ -10217,9 +9404,7 @@ func (s *ListServerGroupsResponseBodyServerGroupsStickySessionConfig) SetStickyS
 }
 
 type ListServerGroupsResponseBodyServerGroupsTags struct {
-	// 标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10271,9 +9456,7 @@ func (s *ListServerGroupsResponse) SetBody(v *ListServerGroupsResponseBody) *Lis
 }
 
 type ListSystemSecurityPoliciesResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 安全策略
+	RequestId        *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityPolicies []*ListSystemSecurityPoliciesResponseBodySecurityPolicies `json:"SecurityPolicies,omitempty" xml:"SecurityPolicies,omitempty" type:"Repeated"`
 }
 
@@ -10296,12 +9479,9 @@ func (s *ListSystemSecurityPoliciesResponseBody) SetSecurityPolicies(v []*ListSy
 }
 
 type ListSystemSecurityPoliciesResponseBodySecurityPolicies struct {
-	// 加密套件
-	Ciphers []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
-	// 安全策略Id
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// 协议版本
-	TLSVersions []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
+	Ciphers          []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
+	SecurityPolicyId *string   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	TLSVersions      []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
 }
 
 func (s ListSystemSecurityPoliciesResponseBodySecurityPolicies) String() string {
@@ -10357,15 +9537,10 @@ func (s *ListSystemSecurityPoliciesResponse) SetBody(v *ListSystemSecurityPolici
 }
 
 type ListTagKeysRequest struct {
-	// 标签类型
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 具体的标签Key
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 查询数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 资源类型
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -10403,16 +9578,11 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 }
 
 type ListTagKeysResponseBody struct {
-	// 本次查询返回记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 标签Key列表
-	TagKeys []*ListTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults *int32                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagKeys    []*ListTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTagKeysResponseBody) String() string {
@@ -10449,10 +9619,8 @@ func (s *ListTagKeysResponseBody) SetTotalCount(v int32) *ListTagKeysResponseBod
 }
 
 type ListTagKeysResponseBodyTagKeys struct {
-	// 标签类型
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 标签Key
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
 func (s ListTagKeysResponseBodyTagKeys) String() string {
@@ -10503,16 +9671,11 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagResourcesRequest struct {
-	// 查询数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 资源实例Id
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签列表
-	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	MaxResults   *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -10549,9 +9712,7 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// 标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10574,13 +9735,9 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	// 本次查询返回记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 标签值列表
+	MaxResults   *int32                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -10613,14 +9770,10 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// 资源ID
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 资源类型
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签Key
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// 标签Value
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -10681,16 +9834,11 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTagValuesRequest struct {
-	// 查询数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 资源实例Id
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 资源类型
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 具体的标签Key
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
 func (s ListTagValuesRequest) String() string {
@@ -10727,16 +9875,11 @@ func (s *ListTagValuesRequest) SetTagKey(v string) *ListTagValuesRequest {
 }
 
 type ListTagValuesResponseBody struct {
-	// 本次查询返回记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页查询标识
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 标签值列表
-	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagValues  []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
+	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTagValuesResponseBody) String() string {
@@ -10802,12 +9945,9 @@ func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagVa
 }
 
 type MoveResourceGroupRequest struct {
-	// 资源组id
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// 指定资源Id
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s MoveResourceGroupRequest) String() string {
@@ -10834,7 +9974,6 @@ func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupR
 }
 
 type MoveResourceGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10881,14 +10020,10 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type RemoveEntriesFromAclRequest struct {
-	// 访问控制策略Id
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 条目列表
-	Entries []*string `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
+	AclId       *string   `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Entries     []*string `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
 }
 
 func (s RemoveEntriesFromAclRequest) String() string {
@@ -10920,9 +10055,7 @@ func (s *RemoveEntriesFromAclRequest) SetEntries(v []*string) *RemoveEntriesFrom
 }
 
 type RemoveEntriesFromAclResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10974,14 +10107,10 @@ func (s *RemoveEntriesFromAclResponse) SetBody(v *RemoveEntriesFromAclResponseBo
 }
 
 type RemoveServersFromServerGroupRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 后端服务器Id
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 后端服务器
-	Servers []*RemoveServersFromServerGroupRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	ClientToken   *string                                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun        *bool                                         `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ServerGroupId *string                                       `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	Servers       []*RemoveServersFromServerGroupRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
 }
 
 func (s RemoveServersFromServerGroupRequest) String() string {
@@ -11013,13 +10142,9 @@ func (s *RemoveServersFromServerGroupRequest) SetServers(v []*RemoveServersFromS
 }
 
 type RemoveServersFromServerGroupRequestServers struct {
-	// 后端端口号
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 后端服务器id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 后端服务器ip
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 后端服务器类型
+	Port       *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId   *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp   *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 }
 
@@ -11052,9 +10177,7 @@ func (s *RemoveServersFromServerGroupRequestServers) SetServerType(v string) *Re
 }
 
 type RemoveServersFromServerGroupResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11106,16 +10229,11 @@ func (s *RemoveServersFromServerGroupResponse) SetBody(v *RemoveServersFromServe
 }
 
 type ReplaceServersInServerGroupRequest struct {
-	// 待添加后端服务器
-	AddedServers []*ReplaceServersInServerGroupRequestAddedServers `json:"AddedServers,omitempty" xml:"AddedServers,omitempty" type:"Repeated"`
-	// 幂等Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// dryRun
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 待删除后端服务器
+	AddedServers   []*ReplaceServersInServerGroupRequestAddedServers   `json:"AddedServers,omitempty" xml:"AddedServers,omitempty" type:"Repeated"`
+	ClientToken    *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun         *bool                                               `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	RemovedServers []*ReplaceServersInServerGroupRequestRemovedServers `json:"RemovedServers,omitempty" xml:"RemovedServers,omitempty" type:"Repeated"`
-	// 后端服务器Id
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	ServerGroupId  *string                                             `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
 func (s ReplaceServersInServerGroupRequest) String() string {
@@ -11152,18 +10270,12 @@ func (s *ReplaceServersInServerGroupRequest) SetServerGroupId(v string) *Replace
 }
 
 type ReplaceServersInServerGroupRequestAddedServers struct {
-	// 描述信息
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 后端端口号
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 后端服务器id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 后端服务器ip
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 后端服务器类型
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// 后端服务器权重
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerType  *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s ReplaceServersInServerGroupRequestAddedServers) String() string {
@@ -11205,13 +10317,9 @@ func (s *ReplaceServersInServerGroupRequestAddedServers) SetWeight(v int32) *Rep
 }
 
 type ReplaceServersInServerGroupRequestRemovedServers struct {
-	// 端口
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 后端服务器id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 后端服务器ip
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 后端服务器类型
+	Port       *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId   *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp   *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 }
 
@@ -11244,9 +10352,7 @@ func (s *ReplaceServersInServerGroupRequestRemovedServers) SetServerType(v strin
 }
 
 type ReplaceServersInServerGroupResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11298,12 +10404,9 @@ func (s *ReplaceServersInServerGroupResponse) SetBody(v *ReplaceServersInServerG
 }
 
 type StartListenerRequest struct {
-	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 监听id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ListenerId  *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
 func (s StartListenerRequest) String() string {
@@ -11330,9 +10433,7 @@ func (s *StartListenerRequest) SetListenerId(v string) *StartListenerRequest {
 }
 
 type StartListenerResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11384,12 +10485,9 @@ func (s *StartListenerResponse) SetBody(v *StartListenerResponseBody) *StartList
 }
 
 type StopListenerRequest struct {
-	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 监听id
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ListenerId  *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
 func (s StopListenerRequest) String() string {
@@ -11416,9 +10514,7 @@ func (s *StopListenerRequest) SetListenerId(v string) *StopListenerRequest {
 }
 
 type StopListenerResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11470,12 +10566,9 @@ func (s *StopListenerResponse) SetBody(v *StopListenerResponseBody) *StopListene
 }
 
 type TagResourcesRequest struct {
-	// 资源实例Id
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签列表
-	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -11502,9 +10595,7 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	// 标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11527,7 +10618,6 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11574,16 +10664,11 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UnTagResourcesRequest struct {
-	// 是否删除全部
-	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// 资源实例Id
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签列表
-	Tag []*UnTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// 标签键列表
-	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	All          *bool                       `json:"All,omitempty" xml:"All,omitempty"`
+	ResourceId   []*string                   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                     `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*UnTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TagKey       []*string                   `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UnTagResourcesRequest) String() string {
@@ -11620,9 +10705,7 @@ func (s *UnTagResourcesRequest) SetTagKey(v []*string) *UnTagResourcesRequest {
 }
 
 type UnTagResourcesRequestTag struct {
-	// 标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11645,7 +10728,6 @@ func (s *UnTagResourcesRequestTag) SetValue(v string) *UnTagResourcesRequestTag 
 }
 
 type UnTagResourcesResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11692,14 +10774,10 @@ func (s *UnTagResourcesResponse) SetBody(v *UnTagResourcesResponseBody) *UnTagRe
 }
 
 type UpdateAclAttributeRequest struct {
-	// AclId
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// 访问控制策略名称
-	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// 幂等参数
+	AclId       *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName     *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否预校验请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 }
 
 func (s UpdateAclAttributeRequest) String() string {
@@ -11731,7 +10809,6 @@ func (s *UpdateAclAttributeRequest) SetDryRun(v bool) *UpdateAclAttributeRequest
 }
 
 type UpdateAclAttributeResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11778,36 +10855,21 @@ func (s *UpdateAclAttributeResponse) SetBody(v *UpdateAclAttributeResponseBody) 
 }
 
 type UpdateHealthCheckTemplateAttributeRequest struct {
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// dryRun
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 状态码
-	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
-	// 端口号
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 域名
-	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
-	// 版本
-	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	// 时间间隔
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 方法
-	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// uri
-	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// 协议
-	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// 健康检查模板ID
-	HealthCheckTemplateId *string `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
-	// 名称
-	HealthCheckTemplateName *string `json:"HealthCheckTemplateName,omitempty" xml:"HealthCheckTemplateName,omitempty"`
-	// 超时时间
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// 健康阈值
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 不健康阈值
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	ClientToken             *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                  *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	HealthCheckCodes        []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
+	HealthCheckConnectPort  *int32    `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckHost         *string   `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
+	HealthCheckHttpVersion  *string   `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	HealthCheckInterval     *int32    `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckMethod       *string   `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheckPath         *string   `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	HealthCheckProtocol     *string   `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	HealthCheckTemplateId   *string   `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
+	HealthCheckTemplateName *string   `json:"HealthCheckTemplateName,omitempty" xml:"HealthCheckTemplateName,omitempty"`
+	HealthCheckTimeout      *int32    `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthyThreshold        *int32    `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold      *int32    `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s UpdateHealthCheckTemplateAttributeRequest) String() string {
@@ -11894,7 +10956,6 @@ func (s *UpdateHealthCheckTemplateAttributeRequest) SetUnhealthyThreshold(v int3
 }
 
 type UpdateHealthCheckTemplateAttributeResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11941,35 +11002,20 @@ func (s *UpdateHealthCheckTemplateAttributeResponse) SetBody(v *UpdateHealthChec
 }
 
 type UpdateListenerAttributeRequest struct {
-	// 监听默认CA证书列表，N当前取值范围为1
-	CaCertificates []*UpdateListenerAttributeRequestCaCertificates `json:"CaCertificates,omitempty" xml:"CaCertificates,omitempty" type:"Repeated"`
-	// 是否开启双向认证
-	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// 监听默认服务器证书列表，N当前取值范围为1
-	Certificates []*UpdateListenerAttributeRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 监听默认动作
-	DefaultActions []*UpdateListenerAttributeRequestDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 是否开启Gzip压缩
-	GzipEnabled *bool `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
-	// 是否开启HTTP/2特性
-	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	// 连接空闲超时时间
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// 监听描述
-	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// 监听标识
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// HTTPS启用QUIC时相关属性
-	QuicConfig *UpdateListenerAttributeRequestQuicConfig `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
-	// 请求超时时间
-	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// 安全策略
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// XForward字段相关的配置
+	CaCertificates      []*UpdateListenerAttributeRequestCaCertificates    `json:"CaCertificates,omitempty" xml:"CaCertificates,omitempty" type:"Repeated"`
+	CaEnabled           *bool                                              `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
+	Certificates        []*UpdateListenerAttributeRequestCertificates      `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	ClientToken         *string                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DefaultActions      []*UpdateListenerAttributeRequestDefaultActions    `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
+	DryRun              *bool                                              `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	GzipEnabled         *bool                                              `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
+	Http2Enabled        *bool                                              `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	IdleTimeout         *int32                                             `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	ListenerDescription *string                                            `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
+	ListenerId          *string                                            `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	QuicConfig          *UpdateListenerAttributeRequestQuicConfig          `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
+	RequestTimeout      *int32                                             `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	SecurityPolicyId    *string                                            `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	XForwardedForConfig *UpdateListenerAttributeRequestXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
@@ -12068,7 +11114,6 @@ func (s UpdateListenerAttributeRequestCaCertificates) GoString() string {
 }
 
 type UpdateListenerAttributeRequestCertificates struct {
-	// 正式标识
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -12086,10 +11131,8 @@ func (s *UpdateListenerAttributeRequestCertificates) SetCertificateId(v string) 
 }
 
 type UpdateListenerAttributeRequestDefaultActions struct {
-	// 转发组
 	ForwardGroupConfig *UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// 动作类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type               *string                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateListenerAttributeRequestDefaultActions) String() string {
@@ -12111,7 +11154,6 @@ func (s *UpdateListenerAttributeRequestDefaultActions) SetType(v string) *Update
 }
 
 type UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig struct {
-	// 服务器组列表
 	ServerGroupTuples []*UpdateListenerAttributeRequestDefaultActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -12129,7 +11171,6 @@ func (s *UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig) SetServ
 }
 
 type UpdateListenerAttributeRequestDefaultActionsForwardGroupConfigServerGroupTuples struct {
-	// 服务器组ID
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -12147,10 +11188,8 @@ func (s *UpdateListenerAttributeRequestDefaultActionsForwardGroupConfigServerGro
 }
 
 type UpdateListenerAttributeRequestQuicConfig struct {
-	// 需要关联的QUIC监听ID，HTTPS监听时有效，QuicUpgradeEnabled为true时必选
-	QuicListenerId *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
-	// 是否开启quic升级，HTTPS监听时有效
-	QuicUpgradeEnabled *bool `json:"QuicUpgradeEnabled,omitempty" xml:"QuicUpgradeEnabled,omitempty"`
+	QuicListenerId     *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
+	QuicUpgradeEnabled *bool   `json:"QuicUpgradeEnabled,omitempty" xml:"QuicUpgradeEnabled,omitempty"`
 }
 
 func (s UpdateListenerAttributeRequestQuicConfig) String() string {
@@ -12172,32 +11211,21 @@ func (s *UpdateListenerAttributeRequestQuicConfig) SetQuicUpgradeEnabled(v bool)
 }
 
 type UpdateListenerAttributeRequestXForwardedForConfig struct {
-	// 自定义HEADER头名称，只有当XForwardedForClientCertClientVerifyEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertClientVerifyAlias *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
-	// 是否通过X-Forwarded-Clientcert-clientverify  头字段获取对访问负载均衡实例客户端证书的校验结果。HTTPS监听有效。
-	XForwardedForClientCertClientVerifyEnabled *bool `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
-	// 自定义HEADER头名称，只有当XForwardedForClientCertFingerprintEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertFingerprintAlias *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
-	// 是否通过X-Forwarded-Clientcert-fingerprint 头字段获取访问负载均衡实例客户端证书的指纹取值，HTTPS监听有效。
-	XForwardedForClientCertFingerprintEnabled *bool `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
-	// 自定义HEADER头名称，只有当XForwardedForClientCertIssuerDNEnabled的值为‘On’的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertIssuerDNAlias *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
-	// 是否通过 X-Forwarded-Clientcert-issuerdn 头字段获取访问负载均衡实例客户端证书的发行者信息。HTTPS监听有效。
-	XForwardedForClientCertIssuerDNEnabled *bool `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
-	// 自定义HEADER头名称，只有当XForwardedForClientCertSubjectDNEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-	XForwardedForClientCertSubjectDNAlias *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
-	// 是否通过X-Forwarded-Clientcert-subjectdn  头字段获取访问负载均衡实例客户端证书的所有者信息。HTTPS监听有效。
-	XForwardedForClientCertSubjectDNEnabled *bool `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
-	// 是否通过X-Forwarded-Client-Port 头字段获取访问负载均衡实例客户端的端口。HTTPS监听有效。
-	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
-	// 是否开启通过X-Forwarded-For头字段获取来访者真实 IP
-	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
-	// 是否通过X-Forwarded-Proto头字段获取负载均衡实例的监听协议。
-	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
-	// 是否通过SLB-ID头字段获取负载均衡实例ID。
-	XForwardedForSLBIdEnabled *bool `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
-	// 是否通过X-Forwarded-Port 头字段获取负载均衡实例的监听端口。HTTPS监听有效。
-	XForwardedForSLBPortEnabled *bool `json:"XForwardedForSLBPortEnabled,omitempty" xml:"XForwardedForSLBPortEnabled,omitempty"`
+	XForwardedForClientCertClientVerifyAlias   *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
+	XForwardedForClientCertClientVerifyEnabled *bool   `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
+	XForwardedForClientCertFingerprintAlias    *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
+	XForwardedForClientCertFingerprintEnabled  *bool   `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
+	XForwardedForClientCertIssuerDNAlias       *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
+	XForwardedForClientCertIssuerDNEnabled     *bool   `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
+	XForwardedForClientCertSubjectDNAlias      *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
+	XForwardedForClientCertSubjectDNEnabled    *bool   `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
+	XForwardedForClientSourceIpsEnabled        *bool   `json:"XForwardedForClientSourceIpsEnabled,omitempty" xml:"XForwardedForClientSourceIpsEnabled,omitempty"`
+	XForwardedForClientSourceIpsTrusted        *string `json:"XForwardedForClientSourceIpsTrusted,omitempty" xml:"XForwardedForClientSourceIpsTrusted,omitempty"`
+	XForwardedForClientSrcPortEnabled          *bool   `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
+	XForwardedForEnabled                       *bool   `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	XForwardedForProtoEnabled                  *bool   `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
+	XForwardedForSLBIdEnabled                  *bool   `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
+	XForwardedForSLBPortEnabled                *bool   `json:"XForwardedForSLBPortEnabled,omitempty" xml:"XForwardedForSLBPortEnabled,omitempty"`
 }
 
 func (s UpdateListenerAttributeRequestXForwardedForConfig) String() string {
@@ -12248,6 +11276,16 @@ func (s *UpdateListenerAttributeRequestXForwardedForConfig) SetXForwardedForClie
 	return s
 }
 
+func (s *UpdateListenerAttributeRequestXForwardedForConfig) SetXForwardedForClientSourceIpsEnabled(v bool) *UpdateListenerAttributeRequestXForwardedForConfig {
+	s.XForwardedForClientSourceIpsEnabled = &v
+	return s
+}
+
+func (s *UpdateListenerAttributeRequestXForwardedForConfig) SetXForwardedForClientSourceIpsTrusted(v string) *UpdateListenerAttributeRequestXForwardedForConfig {
+	s.XForwardedForClientSourceIpsTrusted = &v
+	return s
+}
+
 func (s *UpdateListenerAttributeRequestXForwardedForConfig) SetXForwardedForClientSrcPortEnabled(v bool) *UpdateListenerAttributeRequestXForwardedForConfig {
 	s.XForwardedForClientSrcPortEnabled = &v
 	return s
@@ -12274,9 +11312,7 @@ func (s *UpdateListenerAttributeRequestXForwardedForConfig) SetXForwardedForSLBP
 }
 
 type UpdateListenerAttributeResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12328,16 +11364,11 @@ func (s *UpdateListenerAttributeResponse) SetBody(v *UpdateListenerAttributeResp
 }
 
 type UpdateListenerLogConfigRequest struct {
-	// 是否开启携带自定义Header
-	AccessLogRecordCustomizedHeadersEnabled *bool `json:"AccessLogRecordCustomizedHeadersEnabled,omitempty" xml:"AccessLogRecordCustomizedHeadersEnabled,omitempty"`
-	// 访问日志xtrace字段相关的配置
-	AccessLogTracingConfig *UpdateListenerLogConfigRequestAccessLogTracingConfig `json:"AccessLogTracingConfig,omitempty" xml:"AccessLogTracingConfig,omitempty" type:"Struct"`
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 监听标识
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	AccessLogRecordCustomizedHeadersEnabled *bool                                                 `json:"AccessLogRecordCustomizedHeadersEnabled,omitempty" xml:"AccessLogRecordCustomizedHeadersEnabled,omitempty"`
+	AccessLogTracingConfig                  *UpdateListenerLogConfigRequestAccessLogTracingConfig `json:"AccessLogTracingConfig,omitempty" xml:"AccessLogTracingConfig,omitempty" type:"Struct"`
+	ClientToken                             *string                                               `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                                  *bool                                                 `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ListenerId                              *string                                               `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
 func (s UpdateListenerLogConfigRequest) String() string {
@@ -12374,12 +11405,9 @@ func (s *UpdateListenerLogConfigRequest) SetListenerId(v string) *UpdateListener
 }
 
 type UpdateListenerLogConfigRequestAccessLogTracingConfig struct {
-	// Xtrace功能状态
-	TracingEnabled *bool `json:"TracingEnabled,omitempty" xml:"TracingEnabled,omitempty"`
-	// xtrace的采样率
-	TracingSample *int32 `json:"TracingSample,omitempty" xml:"TracingSample,omitempty"`
-	// xtrace的类型
-	TracingType *string `json:"TracingType,omitempty" xml:"TracingType,omitempty"`
+	TracingEnabled *bool   `json:"TracingEnabled,omitempty" xml:"TracingEnabled,omitempty"`
+	TracingSample  *int32  `json:"TracingSample,omitempty" xml:"TracingSample,omitempty"`
+	TracingType    *string `json:"TracingType,omitempty" xml:"TracingType,omitempty"`
 }
 
 func (s UpdateListenerLogConfigRequestAccessLogTracingConfig) String() string {
@@ -12406,9 +11434,7 @@ func (s *UpdateListenerLogConfigRequestAccessLogTracingConfig) SetTracingType(v 
 }
 
 type UpdateListenerLogConfigResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12460,16 +11486,11 @@ func (s *UpdateListenerLogConfigResponse) SetBody(v *UpdateListenerLogConfigResp
 }
 
 type UpdateLoadBalancerAddressTypeConfigRequest struct {
-	// 目标网络类型
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 实例id
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 可用区及交换机映射列表
-	ZoneMappings []*UpdateLoadBalancerAddressTypeConfigRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+	AddressType    *string                                                   `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	ClientToken    *string                                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun         *string                                                   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerId *string                                                   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ZoneMappings   []*UpdateLoadBalancerAddressTypeConfigRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
 func (s UpdateLoadBalancerAddressTypeConfigRequest) String() string {
@@ -12506,12 +11527,9 @@ func (s *UpdateLoadBalancerAddressTypeConfigRequest) SetZoneMappings(v []*Update
 }
 
 type UpdateLoadBalancerAddressTypeConfigRequestZoneMappings struct {
-	// 弹性公网IP
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// 交换机标识
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// 可用区
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s UpdateLoadBalancerAddressTypeConfigRequestZoneMappings) String() string {
@@ -12538,9 +11556,7 @@ func (s *UpdateLoadBalancerAddressTypeConfigRequestZoneMappings) SetZoneId(v str
 }
 
 type UpdateLoadBalancerAddressTypeConfigResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12592,15 +11608,10 @@ func (s *UpdateLoadBalancerAddressTypeConfigResponse) SetBody(v *UpdateLoadBalan
 }
 
 type UpdateLoadBalancerAttributeRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 实例id
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 名称
-	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// 负载均衡修改保护相关信息
+	ClientToken                  *string                                                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                       *bool                                                           `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerId               *string                                                         `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerName             *string                                                         `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	ModificationProtectionConfig *UpdateLoadBalancerAttributeRequestModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
 }
 
@@ -12638,9 +11649,7 @@ func (s *UpdateLoadBalancerAttributeRequest) SetModificationProtectionConfig(v *
 }
 
 type UpdateLoadBalancerAttributeRequestModificationProtectionConfig struct {
-	// 设置修改保护状态的原因
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// 负载均衡修改保护状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -12663,9 +11672,7 @@ func (s *UpdateLoadBalancerAttributeRequestModificationProtectionConfig) SetStat
 }
 
 type UpdateLoadBalancerAttributeResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12717,14 +11724,10 @@ func (s *UpdateLoadBalancerAttributeResponse) SetBody(v *UpdateLoadBalancerAttri
 }
 
 type UpdateLoadBalancerEditionRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 实例版本
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun              *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	LoadBalancerEdition *string `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
-	// 实例Id
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerId      *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
 func (s UpdateLoadBalancerEditionRequest) String() string {
@@ -12756,7 +11759,6 @@ func (s *UpdateLoadBalancerEditionRequest) SetLoadBalancerId(v string) *UpdateLo
 }
 
 type UpdateLoadBalancerEditionResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12803,14 +11805,10 @@ func (s *UpdateLoadBalancerEditionResponse) SetBody(v *UpdateLoadBalancerEdition
 }
 
 type UpdateLoadBalancerZonesRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 实例id
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// 可用区及交换机映射列表
-	ZoneMappings []*UpdateLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+	ClientToken    *string                                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun         *bool                                         `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerId *string                                       `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ZoneMappings   []*UpdateLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
 func (s UpdateLoadBalancerZonesRequest) String() string {
@@ -12842,10 +11840,8 @@ func (s *UpdateLoadBalancerZonesRequest) SetZoneMappings(v []*UpdateLoadBalancer
 }
 
 type UpdateLoadBalancerZonesRequestZoneMappings struct {
-	// 交换机标识
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// 可用区
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s UpdateLoadBalancerZonesRequestZoneMappings) String() string {
@@ -12867,9 +11863,7 @@ func (s *UpdateLoadBalancerZonesRequestZoneMappings) SetZoneId(v string) *Update
 }
 
 type UpdateLoadBalancerZonesResponseBody struct {
-	// 异步任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12921,20 +11915,13 @@ func (s *UpdateLoadBalancerZonesResponse) SetBody(v *UpdateLoadBalancerZonesResp
 }
 
 type UpdateRuleAttributeRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 转发规则优先级
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 转发规则动作
-	RuleActions []*UpdateRuleAttributeRequestRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
-	// 转发规则条件
+	ClientToken    *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun         *bool                                       `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Priority       *int32                                      `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RuleActions    []*UpdateRuleAttributeRequestRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	RuleConditions []*UpdateRuleAttributeRequestRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
-	// 转发规则标识
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// 转发规则名称
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleId         *string                                     `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName       *string                                     `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s UpdateRuleAttributeRequest) String() string {
@@ -12981,24 +11968,15 @@ func (s *UpdateRuleAttributeRequest) SetRuleName(v string) *UpdateRuleAttributeR
 }
 
 type UpdateRuleAttributeRequestRuleActions struct {
-	// 返回固定内容动作配置
 	FixedResponseConfig *UpdateRuleAttributeRequestRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
-	// 转发组动作配置
-	ForwardGroupConfig *UpdateRuleAttributeRequestRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// 插入头部动作配置
-	InsertHeaderConfig *UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
-	// 优先级
-	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 重定向动作配置
-	RedirectConfig *UpdateRuleAttributeRequestRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
-	// 内部重定向动作配置
-	RewriteConfig *UpdateRuleAttributeRequestRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
-	// 流量限速
-	TrafficLimitConfig *UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
-	// 流量镜像
+	ForwardGroupConfig  *UpdateRuleAttributeRequestRuleActionsForwardGroupConfig  `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
+	InsertHeaderConfig  *UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig  `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
+	Order               *int32                                                    `json:"Order,omitempty" xml:"Order,omitempty"`
+	RedirectConfig      *UpdateRuleAttributeRequestRuleActionsRedirectConfig      `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
+	RewriteConfig       *UpdateRuleAttributeRequestRuleActionsRewriteConfig       `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
+	TrafficLimitConfig  *UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig  `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
 	TrafficMirrorConfig *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
-	// 转发规则动作类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type                *string                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateRuleAttributeRequestRuleActions) String() string {
@@ -13055,12 +12033,9 @@ func (s *UpdateRuleAttributeRequestRuleActions) SetType(v string) *UpdateRuleAtt
 }
 
 type UpdateRuleAttributeRequestRuleActionsFixedResponseConfig struct {
-	// 内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 内容类型
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// HTTP响应码
-	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	HttpCode    *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 }
 
 func (s UpdateRuleAttributeRequestRuleActionsFixedResponseConfig) String() string {
@@ -13087,10 +12062,8 @@ func (s *UpdateRuleAttributeRequestRuleActionsFixedResponseConfig) SetHttpCode(v
 }
 
 type UpdateRuleAttributeRequestRuleActionsForwardGroupConfig struct {
-	// 服务器组之间会话保持
 	ServerGroupStickySession *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession `json:"ServerGroupStickySession,omitempty" xml:"ServerGroupStickySession,omitempty" type:"Struct"`
-	// 转发到的目的服务器组列表
-	ServerGroupTuples []*UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
+	ServerGroupTuples        []*UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples      `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRuleAttributeRequestRuleActionsForwardGroupConfig) String() string {
@@ -13112,9 +12085,7 @@ func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfig) SetServerGroup
 }
 
 type UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession struct {
-	// 是否开启会话保持
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// 超时时间
+	Enabled *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
@@ -13137,10 +12108,8 @@ func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStick
 }
 
 type UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples struct {
-	// 服务器组标识
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 权重
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Weight        *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples) String() string {
@@ -13162,11 +12131,8 @@ func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuple
 }
 
 type UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig struct {
-	// HTTP标头
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// HTTP标头内容
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 取值类型
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -13194,18 +12160,12 @@ func (s *UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig) SetValueType(v
 }
 
 type UpdateRuleAttributeRequestRuleActionsRedirectConfig struct {
-	// 要跳转的主机地址
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 跳转方式
+	Host     *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// 要跳转的路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 要跳转的端口
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 要跳转的协议
+	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 要跳转的查询字符串
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Query    *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
 func (s UpdateRuleAttributeRequestRuleActionsRedirectConfig) String() string {
@@ -13247,11 +12207,8 @@ func (s *UpdateRuleAttributeRequestRuleActionsRedirectConfig) SetQuery(v string)
 }
 
 type UpdateRuleAttributeRequestRuleActionsRewriteConfig struct {
-	// 主机名
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 查询
+	Host  *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -13279,7 +12236,8 @@ func (s *UpdateRuleAttributeRequestRuleActionsRewriteConfig) SetQuery(v string) 
 }
 
 type UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig struct {
-	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+	PerIpQps *int32 `json:"PerIpQps,omitempty" xml:"PerIpQps,omitempty"`
+	QPS      *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
 }
 
 func (s UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig) String() string {
@@ -13290,16 +12248,19 @@ func (s UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig) GoString() stri
 	return s.String()
 }
 
+func (s *UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig) SetPerIpQps(v int32) *UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig {
+	s.PerIpQps = &v
+	return s
+}
+
 func (s *UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig) SetQPS(v int32) *UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig {
 	s.QPS = &v
 	return s
 }
 
 type UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig struct {
-	// 镜像至服务器组
 	MirrorGroupConfig *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
-	// 镜像目标类型
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	TargetType        *string                                                                    `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig) String() string {
@@ -13355,22 +12316,14 @@ func (s *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConf
 }
 
 type UpdateRuleAttributeRequestRuleConditions struct {
-	// Cookie条件配置
-	CookieConfig *UpdateRuleAttributeRequestRuleConditionsCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
-	// HTTP标头条件配置
-	HeaderConfig *UpdateRuleAttributeRequestRuleConditionsHeaderConfig `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
-	// 主机名条件配置
-	HostConfig *UpdateRuleAttributeRequestRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-	// HTTP请求方法条件配置
-	MethodConfig *UpdateRuleAttributeRequestRuleConditionsMethodConfig `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
-	// 路径条件配置
-	PathConfig *UpdateRuleAttributeRequestRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	// 查询字符串条件配置
+	CookieConfig      *UpdateRuleAttributeRequestRuleConditionsCookieConfig      `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
+	HeaderConfig      *UpdateRuleAttributeRequestRuleConditionsHeaderConfig      `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
+	HostConfig        *UpdateRuleAttributeRequestRuleConditionsHostConfig        `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	MethodConfig      *UpdateRuleAttributeRequestRuleConditionsMethodConfig      `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
+	PathConfig        *UpdateRuleAttributeRequestRuleConditionsPathConfig        `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
 	QueryStringConfig *UpdateRuleAttributeRequestRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
-	// 基于源IP业务流量匹配
-	SourceIpConfig *UpdateRuleAttributeRequestRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
-	// 条件类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	SourceIpConfig    *UpdateRuleAttributeRequestRuleConditionsSourceIpConfig    `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
+	Type              *string                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateRuleAttributeRequestRuleConditions) String() string {
@@ -13422,7 +12375,6 @@ func (s *UpdateRuleAttributeRequestRuleConditions) SetType(v string) *UpdateRule
 }
 
 type UpdateRuleAttributeRequestRuleConditionsCookieConfig struct {
-	// Cookie键值对列表
 	Values []*UpdateRuleAttributeRequestRuleConditionsCookieConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -13440,9 +12392,7 @@ func (s *UpdateRuleAttributeRequestRuleConditionsCookieConfig) SetValues(v []*Up
 }
 
 type UpdateRuleAttributeRequestRuleConditionsCookieConfigValues struct {
-	// Cookie条件键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Cookie条件值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13465,9 +12415,7 @@ func (s *UpdateRuleAttributeRequestRuleConditionsCookieConfigValues) SetValue(v 
 }
 
 type UpdateRuleAttributeRequestRuleConditionsHeaderConfig struct {
-	// HTTP标头键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// HTTP标头值列表
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -13490,7 +12438,6 @@ func (s *UpdateRuleAttributeRequestRuleConditionsHeaderConfig) SetValues(v []*st
 }
 
 type UpdateRuleAttributeRequestRuleConditionsHostConfig struct {
-	// 主机名列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -13508,7 +12455,6 @@ func (s *UpdateRuleAttributeRequestRuleConditionsHostConfig) SetValues(v []*stri
 }
 
 type UpdateRuleAttributeRequestRuleConditionsMethodConfig struct {
-	// HTTP请求方法列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -13526,7 +12472,6 @@ func (s *UpdateRuleAttributeRequestRuleConditionsMethodConfig) SetValues(v []*st
 }
 
 type UpdateRuleAttributeRequestRuleConditionsPathConfig struct {
-	// 路径条件列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -13544,7 +12489,6 @@ func (s *UpdateRuleAttributeRequestRuleConditionsPathConfig) SetValues(v []*stri
 }
 
 type UpdateRuleAttributeRequestRuleConditionsQueryStringConfig struct {
-	// 查询字符串条件键值对列表
 	Values []*UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -13562,9 +12506,7 @@ func (s *UpdateRuleAttributeRequestRuleConditionsQueryStringConfig) SetValues(v 
 }
 
 type UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues struct {
-	// 查询字符串条件键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 查询字符串条件值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13587,7 +12529,6 @@ func (s *UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues) SetVal
 }
 
 type UpdateRuleAttributeRequestRuleConditionsSourceIpConfig struct {
-	// 基于源IP业务流量匹配
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -13605,9 +12546,7 @@ func (s *UpdateRuleAttributeRequestRuleConditionsSourceIpConfig) SetValues(v []*
 }
 
 type UpdateRuleAttributeResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13659,12 +12598,9 @@ func (s *UpdateRuleAttributeResponse) SetBody(v *UpdateRuleAttributeResponseBody
 }
 
 type UpdateRulesAttributeRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 转发规则列表
-	Rules []*UpdateRulesAttributeRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	ClientToken *string                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool                               `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Rules       []*UpdateRulesAttributeRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRulesAttributeRequest) String() string {
@@ -13691,16 +12627,11 @@ func (s *UpdateRulesAttributeRequest) SetRules(v []*UpdateRulesAttributeRequestR
 }
 
 type UpdateRulesAttributeRequestRules struct {
-	// 转发规则优先级
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 转发规则动作
-	RuleActions []*UpdateRulesAttributeRequestRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
-	// 转发规则条件
+	Priority       *int32                                            `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RuleActions    []*UpdateRulesAttributeRequestRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	RuleConditions []*UpdateRulesAttributeRequestRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
-	// 转发规则ID
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// 转发规则名称
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleId         *string                                           `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName       *string                                           `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRules) String() string {
@@ -13737,26 +12668,16 @@ func (s *UpdateRulesAttributeRequestRules) SetRuleName(v string) *UpdateRulesAtt
 }
 
 type UpdateRulesAttributeRequestRulesRuleActions struct {
-	// 返回固定内容动作配置
 	FixedResponseConfig *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
-	// 转发组动作配置
-	ForwardGroupConfig *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// 插入头部动作配置
-	InsertHeaderConfig *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
-	// 优先级
-	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 重定向动作配置
-	RedirectConfig *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
-	// 去除HTTP标头
-	RemoveHeaderConfig *UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig `json:"RemoveHeaderConfig,omitempty" xml:"RemoveHeaderConfig,omitempty" type:"Struct"`
-	// 内部重定向动作配置
-	RewriteConfig *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
-	// 流量限速
-	TrafficLimitConfig *UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
-	// 流量镜像
+	ForwardGroupConfig  *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig  `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
+	InsertHeaderConfig  *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig  `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
+	Order               *int32                                                          `json:"Order,omitempty" xml:"Order,omitempty"`
+	RedirectConfig      *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig      `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
+	RemoveHeaderConfig  *UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig  `json:"RemoveHeaderConfig,omitempty" xml:"RemoveHeaderConfig,omitempty" type:"Struct"`
+	RewriteConfig       *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig       `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
+	TrafficLimitConfig  *UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig  `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
 	TrafficMirrorConfig *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
-	// 转发规则动作类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type                *string                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActions) String() string {
@@ -13818,12 +12739,9 @@ func (s *UpdateRulesAttributeRequestRulesRuleActions) SetType(v string) *UpdateR
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig struct {
-	// 内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 内容类型
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// HTTP响应码
-	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	HttpCode    *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig) String() string {
@@ -13850,10 +12768,8 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig) SetHttp
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig struct {
-	// 服务器组之间会话保持
 	ServerGroupStickySession *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession `json:"ServerGroupStickySession,omitempty" xml:"ServerGroupStickySession,omitempty" type:"Struct"`
-	// 转发到的目的服务器组列表
-	ServerGroupTuples []*UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
+	ServerGroupTuples        []*UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples      `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig) String() string {
@@ -13875,9 +12791,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig) SetServe
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession struct {
-	// 是否开启会话保持
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// 超时时间
+	Enabled *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
@@ -13900,10 +12814,8 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGrou
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
-	// 服务器组标识
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 权重
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Weight        *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) String() string {
@@ -13925,14 +12837,10 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGrou
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig struct {
-	// 是否覆盖请求中的值
-	CoverEnabled *bool `json:"CoverEnabled,omitempty" xml:"CoverEnabled,omitempty"`
-	// HTTP标头
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// HTTP标头内容
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 取值类型
-	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	CoverEnabled *bool   `json:"CoverEnabled,omitempty" xml:"CoverEnabled,omitempty"`
+	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	ValueType    *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig) String() string {
@@ -13964,18 +12872,12 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig) SetValue
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig struct {
-	// 要跳转的主机地址
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 跳转方式
+	Host     *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// 要跳转的路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 要跳转的端口
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 要跳转的协议
+	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 要跳转的查询字符串
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Query    *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) String() string {
@@ -14017,7 +12919,6 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) SetQuery(v s
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig struct {
-	// HTTP标头键
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
@@ -14035,11 +12936,8 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig) SetKey(v
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig struct {
-	// 主机名
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 查询
+	Host  *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -14067,7 +12965,8 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig) SetQuery(v st
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig struct {
-	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+	PerIpQps *int32 `json:"PerIpQps,omitempty" xml:"PerIpQps,omitempty"`
+	QPS      *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig) String() string {
@@ -14078,16 +12977,19 @@ func (s UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig) GoString(
 	return s.String()
 }
 
+func (s *UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig) SetPerIpQps(v int32) *UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig {
+	s.PerIpQps = &v
+	return s
+}
+
 func (s *UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig) SetQPS(v int32) *UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig {
 	s.QPS = &v
 	return s
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig struct {
-	// 镜像至服务器组
 	MirrorGroupConfig *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
-	// 镜像目标类型
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	TargetType        *string                                                                          `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig) String() string {
@@ -14143,26 +13045,16 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGro
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditions struct {
-	// Cookie条件配置
-	CookieConfig *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
-	// HTTP标头条件配置
-	HeaderConfig *UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
-	// 主机名条件配置
-	HostConfig *UpdateRulesAttributeRequestRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-	// HTTP请求方法条件配置
-	MethodConfig *UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
-	// 查询字符串条件配置
-	PathConfig *UpdateRulesAttributeRequestRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	// 查询字符串条件配置
-	QueryStringConfig *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
-	// 返回HTTP标头
-	ResponseHeaderConfig *UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
-	// 返回状态码条件
+	CookieConfig             *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig             `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
+	HeaderConfig             *UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig             `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
+	HostConfig               *UpdateRulesAttributeRequestRulesRuleConditionsHostConfig               `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	MethodConfig             *UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig             `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
+	PathConfig               *UpdateRulesAttributeRequestRulesRuleConditionsPathConfig               `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
+	QueryStringConfig        *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig        `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
+	ResponseHeaderConfig     *UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig     `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
 	ResponseStatusCodeConfig *UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig `json:"ResponseStatusCodeConfig,omitempty" xml:"ResponseStatusCodeConfig,omitempty" type:"Struct"`
-	// 基于源IP业务流量匹配
-	SourceIpConfig *UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
-	// 条件类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	SourceIpConfig           *UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig           `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
+	Type                     *string                                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleConditions) String() string {
@@ -14224,7 +13116,6 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditions) SetType(v string) *Upda
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig struct {
-	// Cookie键值对列表
 	Values []*UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -14242,9 +13133,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig) SetValues(v
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues struct {
-	// Cookie条件键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Cookie条件值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14267,9 +13156,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues) SetVa
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig struct {
-	// HTTP标头键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// HTTP标头值列表
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -14292,7 +13179,6 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig) SetValues(v
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsHostConfig struct {
-	// 主机名列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -14310,7 +13196,6 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsHostConfig) SetValues(v [
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig struct {
-	// HTTP请求方法列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -14328,7 +13213,6 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig) SetValues(v
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsPathConfig struct {
-	// 路径条件列表
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -14346,7 +13230,6 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsPathConfig) SetValues(v [
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig struct {
-	// 查询字符串条件键值对列表
 	Values []*UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -14364,9 +13247,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig) SetVal
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues struct {
-	// 查询字符串条件键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 查询字符串条件值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14389,9 +13270,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues) 
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig struct {
-	// 返回HTTP标头键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 返回HTTP标头值
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -14414,7 +13293,6 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig) Set
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig struct {
-	// 返回状态码条件
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -14449,9 +13327,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig) SetValues
 }
 
 type UpdateRulesAttributeResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14503,18 +13379,12 @@ func (s *UpdateRulesAttributeResponse) SetBody(v *UpdateRulesAttributeResponseBo
 }
 
 type UpdateSecurityPolicyAttributeRequest struct {
-	// 加密套件
-	Ciphers []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 安全策略id
-	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// 安全策略名称
-	SecurityPolicyName *string `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
-	// TLS版本
-	TLSVersions []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
+	Ciphers            []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
+	ClientToken        *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun             *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	SecurityPolicyId   *string   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	SecurityPolicyName *string   `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
+	TLSVersions        []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
 }
 
 func (s UpdateSecurityPolicyAttributeRequest) String() string {
@@ -14556,9 +13426,7 @@ func (s *UpdateSecurityPolicyAttributeRequest) SetTLSVersions(v []*string) *Upda
 }
 
 type UpdateSecurityPolicyAttributeResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14610,21 +13478,13 @@ func (s *UpdateSecurityPolicyAttributeResponse) SetBody(v *UpdateSecurityPolicyA
 }
 
 type UpdateServerGroupAttributeRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 健康检查配置
-	HealthCheckConfig *UpdateServerGroupAttributeRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
-	// 调度策略
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// 服务器组Id
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// Acl名称
-	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
-	// 服务器名称
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// 会话保持配置
+	ClientToken         *string                                               `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun              *bool                                                 `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	HealthCheckConfig   *UpdateServerGroupAttributeRequestHealthCheckConfig   `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
+	Scheduler           *string                                               `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	ServerGroupId       *string                                               `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	ServerGroupName     *string                                               `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
+	ServiceName         *string                                               `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	StickySessionConfig *UpdateServerGroupAttributeRequestStickySessionConfig `json:"StickySessionConfig,omitempty" xml:"StickySessionConfig,omitempty" type:"Struct"`
 }
 
@@ -14677,30 +13537,18 @@ func (s *UpdateServerGroupAttributeRequest) SetStickySessionConfig(v *UpdateServ
 }
 
 type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
-	// 健康检查正常的状态码
-	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
-	// 健康检查端口
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 是否启用健康检查
-	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// 健康检查域名
-	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
-	// 健康检查HTTP协议版本
-	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	// 健康检查间隔
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// 健康检查方法
-	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// 健康检查Path
-	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// 健康检查协议类型
-	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// 健康检查超时时间
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// 健康检查成功判定阈值
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// 健康检查不成功判定阈值
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckCodes       []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
+	HealthCheckConnectPort *int32    `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckEnabled     *bool     `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckHost        *string   `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
+	HealthCheckHttpVersion *string   `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	HealthCheckInterval    *int32    `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckMethod      *string   `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	HealthCheckPath        *string   `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	HealthCheckProtocol    *string   `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	HealthCheckTimeout     *int32    `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	HealthyThreshold       *int32    `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	UnhealthyThreshold     *int32    `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s UpdateServerGroupAttributeRequestHealthCheckConfig) String() string {
@@ -14772,14 +13620,10 @@ func (s *UpdateServerGroupAttributeRequestHealthCheckConfig) SetUnhealthyThresho
 }
 
 type UpdateServerGroupAttributeRequestStickySessionConfig struct {
-	// 服务器上配置的Cookie
-	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// 服务器上配置的Cookie
-	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// 是否启用会话保持
-	StickySessionEnabled *bool `json:"StickySessionEnabled,omitempty" xml:"StickySessionEnabled,omitempty"`
-	// 会话保持类型
-	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	Cookie               *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	CookieTimeout        *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	StickySessionEnabled *bool   `json:"StickySessionEnabled,omitempty" xml:"StickySessionEnabled,omitempty"`
+	StickySessionType    *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 }
 
 func (s UpdateServerGroupAttributeRequestStickySessionConfig) String() string {
@@ -14811,9 +13655,7 @@ func (s *UpdateServerGroupAttributeRequestStickySessionConfig) SetStickySessionT
 }
 
 type UpdateServerGroupAttributeResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14865,14 +13707,10 @@ func (s *UpdateServerGroupAttributeResponse) SetBody(v *UpdateServerGroupAttribu
 }
 
 type UpdateServerGroupServersAttributeRequest struct {
-	// 幂等Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// dryRun
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// 后端服务器Id
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// 后端服务器
-	Servers []*UpdateServerGroupServersAttributeRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	ClientToken   *string                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun        *bool                                              `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ServerGroupId *string                                            `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	Servers       []*UpdateServerGroupServersAttributeRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
 }
 
 func (s UpdateServerGroupServersAttributeRequest) String() string {
@@ -14904,18 +13742,12 @@ func (s *UpdateServerGroupServersAttributeRequest) SetServers(v []*UpdateServerG
 }
 
 type UpdateServerGroupServersAttributeRequestServers struct {
-	// 后端服务器描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 后端端口号
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 后端服务器id
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// 后端服务器ip
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// 后端服务器类型
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// 后端服务器权重
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerType  *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateServerGroupServersAttributeRequestServers) String() string {
@@ -14957,9 +13789,7 @@ func (s *UpdateServerGroupServersAttributeRequestServers) SetWeight(v int32) *Up
 }
 
 type UpdateServerGroupServersAttributeResponseBody struct {
-	// 异步任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
