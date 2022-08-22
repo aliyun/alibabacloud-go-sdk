@@ -656,8 +656,9 @@ func (s *CreateFileDetectResponse) SetBody(v *CreateFileDetectResponseBody) *Cre
 }
 
 type CreateFileDetectUploadUrlRequest struct {
-	HashKeyList []*string `json:"HashKeyList,omitempty" xml:"HashKeyList,omitempty" type:"Repeated"`
-	Type        *int32    `json:"Type,omitempty" xml:"Type,omitempty"`
+	HashKeyContextList []*CreateFileDetectUploadUrlRequestHashKeyContextList `json:"HashKeyContextList,omitempty" xml:"HashKeyContextList,omitempty" type:"Repeated"`
+	HashKeyList        []*string                                             `json:"HashKeyList,omitempty" xml:"HashKeyList,omitempty" type:"Repeated"`
+	Type               *int32                                                `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateFileDetectUploadUrlRequest) String() string {
@@ -668,6 +669,11 @@ func (s CreateFileDetectUploadUrlRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateFileDetectUploadUrlRequest) SetHashKeyContextList(v []*CreateFileDetectUploadUrlRequestHashKeyContextList) *CreateFileDetectUploadUrlRequest {
+	s.HashKeyContextList = v
+	return s
+}
+
 func (s *CreateFileDetectUploadUrlRequest) SetHashKeyList(v []*string) *CreateFileDetectUploadUrlRequest {
 	s.HashKeyList = v
 	return s
@@ -675,6 +681,29 @@ func (s *CreateFileDetectUploadUrlRequest) SetHashKeyList(v []*string) *CreateFi
 
 func (s *CreateFileDetectUploadUrlRequest) SetType(v int32) *CreateFileDetectUploadUrlRequest {
 	s.Type = &v
+	return s
+}
+
+type CreateFileDetectUploadUrlRequestHashKeyContextList struct {
+	FileSize *int32  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	HashKey  *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+}
+
+func (s CreateFileDetectUploadUrlRequestHashKeyContextList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileDetectUploadUrlRequestHashKeyContextList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileDetectUploadUrlRequestHashKeyContextList) SetFileSize(v int32) *CreateFileDetectUploadUrlRequestHashKeyContextList {
+	s.FileSize = &v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlRequestHashKeyContextList) SetHashKey(v string) *CreateFileDetectUploadUrlRequestHashKeyContextList {
+	s.HashKey = &v
 	return s
 }
 
@@ -702,11 +731,13 @@ func (s *CreateFileDetectUploadUrlResponseBody) SetUploadUrlList(v []*CreateFile
 }
 
 type CreateFileDetectUploadUrlResponseBodyUploadUrlList struct {
+	Code        *string                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Context     *CreateFileDetectUploadUrlResponseBodyUploadUrlListContext `json:"Context,omitempty" xml:"Context,omitempty" type:"Struct"`
 	Expire      *string                                                    `json:"Expire,omitempty" xml:"Expire,omitempty"`
 	FileExist   *bool                                                      `json:"FileExist,omitempty" xml:"FileExist,omitempty"`
 	HashKey     *string                                                    `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
 	InternalUrl *string                                                    `json:"InternalUrl,omitempty" xml:"InternalUrl,omitempty"`
+	Message     *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	PublicUrl   *string                                                    `json:"PublicUrl,omitempty" xml:"PublicUrl,omitempty"`
 }
 
@@ -716,6 +747,11 @@ func (s CreateFileDetectUploadUrlResponseBodyUploadUrlList) String() string {
 
 func (s CreateFileDetectUploadUrlResponseBodyUploadUrlList) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlList) SetCode(v string) *CreateFileDetectUploadUrlResponseBodyUploadUrlList {
+	s.Code = &v
+	return s
 }
 
 func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlList) SetContext(v *CreateFileDetectUploadUrlResponseBodyUploadUrlListContext) *CreateFileDetectUploadUrlResponseBodyUploadUrlList {
@@ -740,6 +776,11 @@ func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlList) SetHashKey(v string
 
 func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlList) SetInternalUrl(v string) *CreateFileDetectUploadUrlResponseBodyUploadUrlList {
 	s.InternalUrl = &v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlList) SetMessage(v string) *CreateFileDetectUploadUrlResponseBodyUploadUrlList {
+	s.Message = &v
 	return s
 }
 
@@ -25266,13 +25307,13 @@ func (s *GetFileDetectResultResponseBody) SetResultList(v []*GetFileDetectResult
 }
 
 type GetFileDetectResultResponseBodyResultList struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Ext          *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	HashKey      *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	Result       *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
-	Score        *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
-	VirusType    *string `json:"VirusType,omitempty" xml:"VirusType,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Ext       *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	HashKey   *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result    *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
+	Score     *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
+	VirusType *string `json:"VirusType,omitempty" xml:"VirusType,omitempty"`
 }
 
 func (s GetFileDetectResultResponseBodyResultList) String() string {
@@ -25283,13 +25324,8 @@ func (s GetFileDetectResultResponseBodyResultList) GoString() string {
 	return s.String()
 }
 
-func (s *GetFileDetectResultResponseBodyResultList) SetErrorCode(v string) *GetFileDetectResultResponseBodyResultList {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetFileDetectResultResponseBodyResultList) SetErrorMessage(v string) *GetFileDetectResultResponseBodyResultList {
-	s.ErrorMessage = &v
+func (s *GetFileDetectResultResponseBodyResultList) SetCode(v string) *GetFileDetectResultResponseBodyResultList {
+	s.Code = &v
 	return s
 }
 
@@ -25300,6 +25336,11 @@ func (s *GetFileDetectResultResponseBodyResultList) SetExt(v string) *GetFileDet
 
 func (s *GetFileDetectResultResponseBodyResultList) SetHashKey(v string) *GetFileDetectResultResponseBodyResultList {
 	s.HashKey = &v
+	return s
+}
+
+func (s *GetFileDetectResultResponseBodyResultList) SetMessage(v string) *GetFileDetectResultResponseBodyResultList {
+	s.Message = &v
 	return s
 }
 
@@ -26774,11 +26815,10 @@ func (s *ListHoneypotResponseBodyList) SetState(v []*string) *ListHoneypotRespon
 }
 
 type ListHoneypotResponseBodyPageInfo struct {
-	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	LastRowKey  *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListHoneypotResponseBodyPageInfo) String() string {
@@ -26796,11 +26836,6 @@ func (s *ListHoneypotResponseBodyPageInfo) SetCount(v int32) *ListHoneypotRespon
 
 func (s *ListHoneypotResponseBodyPageInfo) SetCurrentPage(v int32) *ListHoneypotResponseBodyPageInfo {
 	s.CurrentPage = &v
-	return s
-}
-
-func (s *ListHoneypotResponseBodyPageInfo) SetLastRowKey(v string) *ListHoneypotResponseBodyPageInfo {
-	s.LastRowKey = &v
 	return s
 }
 
@@ -27291,11 +27326,10 @@ func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetTotalStatus(v int32) *
 }
 
 type ListHoneypotNodeResponseBodyPageInfo struct {
-	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	LastRowKey  *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListHoneypotNodeResponseBodyPageInfo) String() string {
@@ -27313,11 +27347,6 @@ func (s *ListHoneypotNodeResponseBodyPageInfo) SetCount(v int32) *ListHoneypotNo
 
 func (s *ListHoneypotNodeResponseBodyPageInfo) SetCurrentPage(v int32) *ListHoneypotNodeResponseBodyPageInfo {
 	s.CurrentPage = &v
-	return s
-}
-
-func (s *ListHoneypotNodeResponseBodyPageInfo) SetLastRowKey(v string) *ListHoneypotNodeResponseBodyPageInfo {
-	s.LastRowKey = &v
 	return s
 }
 
@@ -32891,6 +32920,10 @@ func (client *Client) CreateFileDetectUploadUrlWithOptions(request *CreateFileDe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HashKeyContextList)) {
+		query["HashKeyContextList"] = request.HashKeyContextList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.HashKeyList)) {
 		query["HashKeyList"] = request.HashKeyList
 	}
