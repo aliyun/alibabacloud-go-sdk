@@ -5384,6 +5384,29 @@ func (s *CostCenterModifyResponse) SetBody(v *CostCenterModifyResponseBody) *Cos
 	return s
 }
 
+type CostCenterQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s CostCenterQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CostCenterQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CostCenterQueryHeaders) SetCommonHeaders(v map[string]*string) *CostCenterQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CostCenterQueryHeaders) SetXAcsBtripSoCorpToken(v string) *CostCenterQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type CostCenterQueryRequest struct {
 	NeedOrgEntity *bool   `json:"need_org_entity,omitempty" xml:"need_org_entity,omitempty"`
 	ThirdpartId   *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
@@ -14954,7 +14977,7 @@ func (client *Client) CostCenterModifyWithOptions(request *CostCenterModifyReque
 
 func (client *Client) CostCenterQuery(request *CostCenterQueryRequest) (_result *CostCenterQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CostCenterQueryHeaders{}
 	_result = &CostCenterQueryResponse{}
 	_body, _err := client.CostCenterQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -14964,7 +14987,7 @@ func (client *Client) CostCenterQuery(request *CostCenterQueryRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) CostCenterQueryWithOptions(request *CostCenterQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CostCenterQueryResponse, _err error) {
+func (client *Client) CostCenterQueryWithOptions(request *CostCenterQueryRequest, headers *CostCenterQueryHeaders, runtime *util.RuntimeOptions) (_result *CostCenterQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -14986,8 +15009,17 @@ func (client *Client) CostCenterQueryWithOptions(request *CostCenterQueryRequest
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
