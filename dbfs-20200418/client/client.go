@@ -1738,7 +1738,9 @@ func (s *ListDbfsResponse) SetBody(v *ListDbfsResponseBody) *ListDbfsResponse {
 }
 
 type ListDbfsAttachableEcsInstancesRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListDbfsAttachableEcsInstancesRequest) String() string {
@@ -1749,6 +1751,16 @@ func (s ListDbfsAttachableEcsInstancesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDbfsAttachableEcsInstancesRequest) SetPageNumber(v int32) *ListDbfsAttachableEcsInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDbfsAttachableEcsInstancesRequest) SetPageSize(v int32) *ListDbfsAttachableEcsInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
 func (s *ListDbfsAttachableEcsInstancesRequest) SetRegionId(v string) *ListDbfsAttachableEcsInstancesRequest {
 	s.RegionId = &v
 	return s
@@ -1757,6 +1769,7 @@ func (s *ListDbfsAttachableEcsInstancesRequest) SetRegionId(v string) *ListDbfsA
 type ListDbfsAttachableEcsInstancesResponseBody struct {
 	EcsLabelInfo []*ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo `json:"EcsLabelInfo,omitempty" xml:"EcsLabelInfo,omitempty" type:"Repeated"`
 	RequestId    *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDbfsAttachableEcsInstancesResponseBody) String() string {
@@ -1774,6 +1787,11 @@ func (s *ListDbfsAttachableEcsInstancesResponseBody) SetEcsLabelInfo(v []*ListDb
 
 func (s *ListDbfsAttachableEcsInstancesResponseBody) SetRequestId(v string) *ListDbfsAttachableEcsInstancesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListDbfsAttachableEcsInstancesResponseBody) SetTotalCount(v int32) *ListDbfsAttachableEcsInstancesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -3571,6 +3589,14 @@ func (client *Client) ListDbfsAttachableEcsInstancesWithOptions(request *ListDbf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
