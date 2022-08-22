@@ -1738,9 +1738,11 @@ func (s *ListDbfsResponse) SetBody(v *ListDbfsResponseBody) *ListDbfsResponse {
 }
 
 type ListDbfsAttachableEcsInstancesRequest struct {
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListDbfsAttachableEcsInstancesRequest) String() string {
@@ -1749,6 +1751,16 @@ func (s ListDbfsAttachableEcsInstancesRequest) String() string {
 
 func (s ListDbfsAttachableEcsInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListDbfsAttachableEcsInstancesRequest) SetFilterKey(v string) *ListDbfsAttachableEcsInstancesRequest {
+	s.FilterKey = &v
+	return s
+}
+
+func (s *ListDbfsAttachableEcsInstancesRequest) SetFilterValue(v string) *ListDbfsAttachableEcsInstancesRequest {
+	s.FilterValue = &v
+	return s
 }
 
 func (s *ListDbfsAttachableEcsInstancesRequest) SetPageNumber(v int32) *ListDbfsAttachableEcsInstancesRequest {
@@ -3589,6 +3601,14 @@ func (client *Client) ListDbfsAttachableEcsInstancesWithOptions(request *ListDbf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterKey)) {
+		query["FilterKey"] = request.FilterKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterValue)) {
+		query["FilterValue"] = request.FilterValue
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
