@@ -13,10 +13,8 @@ import (
 )
 
 type AssetsAuditAssetResponse struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 响应状态
-	Status *RpcStatus `json:"Status,omitempty" xml:"Status,omitempty"`
+	RequestId *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *RpcStatus `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AssetsAuditAssetResponse) String() string {
@@ -38,12 +36,9 @@ func (s *AssetsAuditAssetResponse) SetStatus(v *RpcStatus) *AssetsAuditAssetResp
 }
 
 type AssetsCreateAssetResponse struct {
-	// 资产信息
-	Asset *CommonAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 响应状态
-	Status *RpcStatus `json:"Status,omitempty" xml:"Status,omitempty"`
+	Asset     *CommonAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
+	RequestId *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *RpcStatus   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AssetsCreateAssetResponse) String() string {
@@ -70,12 +65,9 @@ func (s *AssetsCreateAssetResponse) SetStatus(v *RpcStatus) *AssetsCreateAssetRe
 }
 
 type AssetsDeleteAssetResponse struct {
-	// 资产信息
-	Asset *CommonAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 响应状态
-	Status *RpcStatus `json:"Status,omitempty" xml:"Status,omitempty"`
+	Asset     *CommonAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
+	RequestId *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *RpcStatus   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AssetsDeleteAssetResponse) String() string {
@@ -102,12 +94,9 @@ func (s *AssetsDeleteAssetResponse) SetStatus(v *RpcStatus) *AssetsDeleteAssetRe
 }
 
 type AssetsGetAssetResponse struct {
-	// Asset
-	Asset *CommonAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 响应状态
-	Status *RpcStatus `json:"Status,omitempty" xml:"Status,omitempty"`
+	Asset     *CommonAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
+	RequestId *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *RpcStatus   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AssetsGetAssetResponse) String() string {
@@ -134,19 +123,12 @@ func (s *AssetsGetAssetResponse) SetStatus(v *RpcStatus) *AssetsGetAssetResponse
 }
 
 type AssetsListAssetsRequest struct {
-	// AppId
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Optional. Used to specify a subset of fields that should be
-	// returned by a get operation or modified by an update operation.
-	FieldMask *string `json:"FieldMask,omitempty" xml:"FieldMask,omitempty"`
-	// 每页显示个数，最大支持20，参数为空默认显示个数为10。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页Token Optional.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 参数
-	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// 订阅Topic
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	FieldMask  *string `json:"FieldMask,omitempty" xml:"FieldMask,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Params     *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s AssetsListAssetsRequest) String() string {
@@ -188,14 +170,10 @@ func (s *AssetsListAssetsRequest) SetTopic(v string) *AssetsListAssetsRequest {
 }
 
 type AssetsListAssetsResponse struct {
-	// Asset列表
-	Assets []*CommonAsset `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
-	// 分页Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 响应状态
-	Status *RpcStatus `json:"Status,omitempty" xml:"Status,omitempty"`
+	Assets    []*CommonAsset `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
+	NextToken *string        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *RpcStatus     `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AssetsListAssetsResponse) String() string {
@@ -227,12 +205,9 @@ func (s *AssetsListAssetsResponse) SetStatus(v *RpcStatus) *AssetsListAssetsResp
 }
 
 type AssetsUpdateAssetResponse struct {
-	// 资产信息
-	Asset *CommonAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 响应状态
-	Status *RpcStatus `json:"Status,omitempty" xml:"Status,omitempty"`
+	Asset     *CommonAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
+	RequestId *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *RpcStatus   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AssetsUpdateAssetResponse) String() string {
@@ -259,16 +234,11 @@ func (s *AssetsUpdateAssetResponse) SetStatus(v *RpcStatus) *AssetsUpdateAssetRe
 }
 
 type CommonAddress struct {
-	// 地址
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// 城市
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// 国家
+	City    *string `json:"City,omitempty" xml:"City,omitempty"`
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// 区域
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// zip
-	Zip *string `json:"Zip,omitempty" xml:"Zip,omitempty"`
+	State   *string `json:"State,omitempty" xml:"State,omitempty"`
+	Zip     *string `json:"Zip,omitempty" xml:"Zip,omitempty"`
 }
 
 func (s CommonAddress) String() string {
@@ -305,42 +275,24 @@ func (s *CommonAddress) SetZip(v string) *CommonAddress {
 }
 
 type CommonAsset struct {
-	// 行政区域地址
-	Address *CommonAddress `json:"Address,omitempty" xml:"Address,omitempty"`
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 审核状态
-	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// 作者
-	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
-	// 创建时间
-	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// 资产描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 扩展字段
-	Extends map[string]interface{} `json:"Extends,omitempty" xml:"Extends,omitempty"`
-	// 资产ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 图像资源
-	Images []*CommonMediaResource `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	// 定义Label， eg:type:advertise 支持广告类型的label
-	Labels map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 经纬度地理位置
-	Location *TypeLatLng `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 资产来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 资产状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 概要
-	Synopsis *string `json:"Synopsis,omitempty" xml:"Synopsis,omitempty"`
-	// 标签
-	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 更新时间
-	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
-	// 视频资源
-	Videos []*CommonMediaResource `json:"Videos,omitempty" xml:"Videos,omitempty" type:"Repeated"`
+	Address     *CommonAddress         `json:"Address,omitempty" xml:"Address,omitempty"`
+	AppId       *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AuditStatus *string                `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	Author      *string                `json:"Author,omitempty" xml:"Author,omitempty"`
+	CreatedAt   *string                `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Extends     map[string]interface{} `json:"Extends,omitempty" xml:"Extends,omitempty"`
+	Id          *string                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Images      []*CommonMediaResource `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Labels      map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Location    *TypeLatLng            `json:"Location,omitempty" xml:"Location,omitempty"`
+	Source      *string                `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status      *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Synopsis    *string                `json:"Synopsis,omitempty" xml:"Synopsis,omitempty"`
+	Tags        []*string              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Title       *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+	UpdatedAt   *string                `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	Videos      []*CommonMediaResource `json:"Videos,omitempty" xml:"Videos,omitempty" type:"Repeated"`
 }
 
 func (s CommonAsset) String() string {
@@ -442,18 +394,12 @@ func (s *CommonAsset) SetVideos(v []*CommonMediaResource) *CommonAsset {
 }
 
 type CommonMediaResource struct {
-	// media format
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// media id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// media sha1
-	Sha1 *string `json:"Sha1,omitempty" xml:"Sha1,omitempty"`
-	// media size
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// resource url
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Sha1   *string `json:"Sha1,omitempty" xml:"Sha1,omitempty"`
+	Size   *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s CommonMediaResource) String() string {
@@ -495,38 +441,22 @@ func (s *CommonMediaResource) SetUrl(v string) *CommonMediaResource {
 }
 
 type CommonSimpleAsset struct {
-	// 行政区域地址
-	Address *CommonAddress `json:"Address,omitempty" xml:"Address,omitempty"`
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 审核状态
-	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// 作者
-	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
-	// 资产描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 扩展字段
-	Extends map[string]interface{} `json:"Extends,omitempty" xml:"Extends,omitempty"`
-	// 资产ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 图像资源
-	Image *CommonMediaResource `json:"Image,omitempty" xml:"Image,omitempty"`
-	// 定义Label， eg:type:advertise 支持广告类型的label
-	Labels map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 经纬度地理位置
-	Location *TypeLatLng `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 资产来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 资产状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 概要
-	Synopsis *string `json:"Synopsis,omitempty" xml:"Synopsis,omitempty"`
-	// 标签
-	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 视频资源
-	Video *CommonMediaResource `json:"Video,omitempty" xml:"Video,omitempty"`
+	Address     *CommonAddress         `json:"Address,omitempty" xml:"Address,omitempty"`
+	AppId       *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AuditStatus *string                `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	Author      *string                `json:"Author,omitempty" xml:"Author,omitempty"`
+	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Extends     map[string]interface{} `json:"Extends,omitempty" xml:"Extends,omitempty"`
+	Id          *string                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Image       *CommonMediaResource   `json:"Image,omitempty" xml:"Image,omitempty"`
+	Labels      map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Location    *TypeLatLng            `json:"Location,omitempty" xml:"Location,omitempty"`
+	Source      *string                `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status      *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Synopsis    *string                `json:"Synopsis,omitempty" xml:"Synopsis,omitempty"`
+	Tags        []*string              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Title       *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+	Video       *CommonMediaResource   `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 
 func (s CommonSimpleAsset) String() string {
@@ -618,11 +548,8 @@ func (s *CommonSimpleAsset) SetVideo(v *CommonMediaResource) *CommonSimpleAsset 
 }
 
 type RpcStatus struct {
-	// 错误码
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误详情
-	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// 错误消息
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Detail  *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -650,9 +577,7 @@ func (s *RpcStatus) SetMessage(v string) *RpcStatus {
 }
 
 type TypeLatLng struct {
-	// The latitude in degrees. It must be in the range [-90.0, +90.0].
-	Latitude *float64 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
-	// The longitude in degrees. It must be in the range [-180.0, +180.0].
+	Latitude  *float64 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
 	Longitude *float64 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
 }
 
@@ -675,11 +600,8 @@ func (s *TypeLatLng) SetLongitude(v float64) *TypeLatLng {
 }
 
 type BanAllCommentRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间唯一标识，由调用CreateRoom返回。
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 用户在房间内的唯一标识
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -707,10 +629,8 @@ func (s *BanAllCommentRequest) SetUserId(v string) *BanAllCommentRequest {
 }
 
 type BanAllCommentResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 操作成功标识
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s BanAllCommentResponseBody) String() string {
@@ -761,16 +681,11 @@ func (s *BanAllCommentResponse) SetBody(v *BanAllCommentResponseBody) *BanAllCom
 }
 
 type BanCommentRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 禁言时长（秒）
-	BanCommentTime *int64 `json:"BanCommentTime,omitempty" xml:"BanCommentTime,omitempty"`
-	// 被禁言的用户在房间内的唯一标识
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BanCommentTime *int64  `json:"BanCommentTime,omitempty" xml:"BanCommentTime,omitempty"`
 	BanCommentUser *string `json:"BanCommentUser,omitempty" xml:"BanCommentUser,omitempty"`
-	// 房间唯一标识，由调用CreateRoom返回。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 用户在房间内的唯一标识
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	RoomId         *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s BanCommentRequest) String() string {
@@ -807,10 +722,8 @@ func (s *BanCommentRequest) SetUserId(v string) *BanCommentRequest {
 }
 
 type BanCommentResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 操作是否成功
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s BanCommentResponseBody) String() string {
@@ -861,11 +774,8 @@ func (s *BanCommentResponse) SetBody(v *BanCommentResponseBody) *BanCommentRespo
 }
 
 type CancelBanAllCommentRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间唯一标识，由调用CreateRoom返回。
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 用户在房间内的唯一标识
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -893,10 +803,8 @@ func (s *CancelBanAllCommentRequest) SetUserId(v string) *CancelBanAllCommentReq
 }
 
 type CancelBanAllCommentResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 操作成功标识
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s CancelBanAllCommentResponseBody) String() string {
@@ -947,14 +855,10 @@ func (s *CancelBanAllCommentResponse) SetBody(v *CancelBanAllCommentResponseBody
 }
 
 type CancelBanCommentRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 取消禁言的用户唯一标识
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	BanCommentUser *string `json:"BanCommentUser,omitempty" xml:"BanCommentUser,omitempty"`
-	// 房间唯一标识，由调用CreateRoom返回。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 用户在房间内的唯一标识
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	RoomId         *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CancelBanCommentRequest) String() string {
@@ -986,10 +890,8 @@ func (s *CancelBanCommentRequest) SetUserId(v string) *CancelBanCommentRequest {
 }
 
 type CancelBanCommentResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 操作成功标识
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s CancelBanCommentResponseBody) String() string {
@@ -1040,11 +942,8 @@ func (s *CancelBanCommentResponse) SetBody(v *CancelBanCommentResponseBody) *Can
 }
 
 type CancelUserAdminRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 用户ID
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -1072,7 +971,6 @@ func (s *CancelUserAdminRequest) SetUserId(v string) *CancelUserAdminRequest {
 }
 
 type CancelUserAdminResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1119,14 +1017,10 @@ func (s *CancelUserAdminResponse) SetBody(v *CancelUserAdminResponseBody) *Cance
 }
 
 type CreateClassRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 创建人用户昵称。
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	CreateNickname *string `json:"CreateNickname,omitempty" xml:"CreateNickname,omitempty"`
-	// 创建人用户ID。
-	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// 课堂标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	CreateUserId   *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateClassRequest) String() string {
@@ -1158,10 +1052,8 @@ func (s *CreateClassRequest) SetTitle(v string) *CreateClassRequest {
 }
 
 type CreateClassResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API请求的返回结果结构体。
-	Result *CreateClassResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CreateClassResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CreateClassResponseBody) String() string {
@@ -1183,25 +1075,15 @@ func (s *CreateClassResponseBody) SetResult(v *CreateClassResponseBodyResult) *C
 }
 
 type CreateClassResponseBodyResult struct {
-	// 课堂唯一标识。
-	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	// 连麦会议唯一标识。
-	ConfId *string `json:"ConfId,omitempty" xml:"ConfId,omitempty"`
-	// 创建人昵称。
-	CreateNickname *string `json:"CreateNickname,omitempty" xml:"CreateNickname,omitempty"`
-	// 创建人ID。
-	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// 直播的唯一标识ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 房间ID
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 课堂状态，0:未开始 1:上课中 2:已下课。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 课堂标题。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 白板ID
-	WhiteboardId *string `json:"WhiteboardId,omitempty" xml:"WhiteboardId,omitempty"`
-	// 白板录制ID
+	ClassId            *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	ConfId             *string `json:"ConfId,omitempty" xml:"ConfId,omitempty"`
+	CreateNickname     *string `json:"CreateNickname,omitempty" xml:"CreateNickname,omitempty"`
+	CreateUserId       *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	LiveId             *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RoomId             *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title              *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	WhiteboardId       *string `json:"WhiteboardId,omitempty" xml:"WhiteboardId,omitempty"`
 	WhiteboardRecordId *string `json:"WhiteboardRecordId,omitempty" xml:"WhiteboardRecordId,omitempty"`
 }
 
@@ -1293,22 +1175,14 @@ func (s *CreateClassResponse) SetBody(v *CreateClassResponseBody) *CreateClassRe
 }
 
 type CreateLiveRequest struct {
-	// 主播ID，支持中英文，最大长度128位，缺省时主播为当前创建直播用户。
-	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
-	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 直播推流码率，缺省时默认为3。取值：  -1：流畅lld。 1：标清lsd。 2：高清lhd。 3：超清lud。
-	CodeLevel *int32 `json:"CodeLevel,omitempty" xml:"CodeLevel,omitempty"`
-	// 直播简介，支持中英文，最大长度2048位。
+	AnchorId     *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CodeLevel    *int32  `json:"CodeLevel,omitempty" xml:"CodeLevel,omitempty"`
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// 直播资源的唯一标识ID，缺省时系统自动生成36位随机uuid字符串。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 房间ID，最大长度36个字符，传空值，则随机生成一个房间ID。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 直播标题，支持中英文，最大长度256位。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 创建直播用户。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	LiveId       *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RoomId       *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateLiveRequest) String() string {
@@ -1360,7 +1234,6 @@ func (s *CreateLiveRequest) SetUserId(v string) *CreateLiveRequest {
 }
 
 type CreateLiveResponseBody struct {
-	// 请求ID。
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CreateLiveResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -1384,7 +1257,6 @@ func (s *CreateLiveResponseBody) SetResult(v *CreateLiveResponseBodyResult) *Cre
 }
 
 type CreateLiveResponseBodyResult struct {
-	// 直播的唯一标识ID。
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 }
 
@@ -1431,16 +1303,11 @@ func (s *CreateLiveResponse) SetBody(v *CreateLiveResponseBody) *CreateLiveRespo
 }
 
 type CreateLiveRecordSliceFileRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 片段结束时间，时间戳。
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 自定义文件名称。
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 片段开始时间，时间戳。
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FileName  *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	LiveId    *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s CreateLiveRecordSliceFileRequest) String() string {
@@ -1477,10 +1344,8 @@ func (s *CreateLiveRecordSliceFileRequest) SetStartTime(v int64) *CreateLiveReco
 }
 
 type CreateLiveRecordSliceFileResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 创建场景化直播返回的结果。
-	Result *CreateLiveRecordSliceFileResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CreateLiveRecordSliceFileResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CreateLiveRecordSliceFileResponseBody) String() string {
@@ -1502,7 +1367,6 @@ func (s *CreateLiveRecordSliceFileResponseBody) SetResult(v *CreateLiveRecordSli
 }
 
 type CreateLiveRecordSliceFileResponseBodyResult struct {
-	// 片段录制文件的地址。
 	SliceRecordUrl *string `json:"SliceRecordUrl,omitempty" xml:"SliceRecordUrl,omitempty"`
 }
 
@@ -1549,24 +1413,15 @@ func (s *CreateLiveRecordSliceFileResponse) SetBody(v *CreateLiveRecordSliceFile
 }
 
 type CreateLiveRoomRequest struct {
-	// 主播id，仅支持英文和数字，最大长度36位。
-	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
-	// 主播昵称。
-	AnchorNick *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 封面，支持图片地址链接格式
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 是否开启连麦。
-	EnableLinkMic *bool `json:"EnableLinkMic,omitempty" xml:"EnableLinkMic,omitempty"`
-	// 拓展字段，按需传递，需要额外记录的房间属性。最大支持4096个字节。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 标题，支持中英文，最大长度32位。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 操作人ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AnchorId      *string            `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	AnchorNick    *string            `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
+	AppId         *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CoverUrl      *string            `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	EnableLinkMic *bool              `json:"EnableLinkMic,omitempty" xml:"EnableLinkMic,omitempty"`
+	Extension     map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	Notice        *string            `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	Title         *string            `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserId        *string            `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateLiveRoomRequest) String() string {
@@ -1623,24 +1478,15 @@ func (s *CreateLiveRoomRequest) SetUserId(v string) *CreateLiveRoomRequest {
 }
 
 type CreateLiveRoomShrinkRequest struct {
-	// 主播id，仅支持英文和数字，最大长度36位。
-	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
-	// 主播昵称。
-	AnchorNick *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 封面，支持图片地址链接格式
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 是否开启连麦。
-	EnableLinkMic *bool `json:"EnableLinkMic,omitempty" xml:"EnableLinkMic,omitempty"`
-	// 拓展字段，按需传递，需要额外记录的房间属性。最大支持4096个字节。
+	AnchorId        *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	AnchorNick      *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CoverUrl        *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	EnableLinkMic   *bool   `json:"EnableLinkMic,omitempty" xml:"EnableLinkMic,omitempty"`
 	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 标题，支持中英文，最大长度32位。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 操作人ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Notice          *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateLiveRoomShrinkRequest) String() string {
@@ -1697,10 +1543,8 @@ func (s *CreateLiveRoomShrinkRequest) SetUserId(v string) *CreateLiveRoomShrinkR
 }
 
 type CreateLiveRoomResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 创建场景化直播返回的结果。
-	Result *CreateLiveRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CreateLiveRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CreateLiveRoomResponseBody) String() string {
@@ -1722,38 +1566,22 @@ func (s *CreateLiveRoomResponseBody) SetResult(v *CreateLiveRoomResponseBodyResu
 }
 
 type CreateLiveRoomResponseBodyResult struct {
-	// 主播ID。
-	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
-	// 主播昵称。
-	AnchorNick *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
-	// 应用ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// RTS低延迟播流信息。
-	ArtcInfo *CreateLiveRoomResponseBodyResultArtcInfo `json:"ArtcInfo,omitempty" xml:"ArtcInfo,omitempty" type:"Struct"`
-	// 聊天ID。
-	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
-	// 封面。
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 直播拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 原画HLS播放地址。
-	HlsUrl *string `json:"HlsUrl,omitempty" xml:"HlsUrl,omitempty"`
-	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 直播拉流地址。
-	LiveUrl *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
-	// 公告。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 直播回放地址。
-	PlaybackUrl *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
-	// 活跃插件列表。
+	AnchorId               *string                                                   `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	AnchorNick             *string                                                   `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
+	AppId                  *string                                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ArtcInfo               *CreateLiveRoomResponseBodyResultArtcInfo                 `json:"ArtcInfo,omitempty" xml:"ArtcInfo,omitempty" type:"Struct"`
+	ChatId                 *string                                                   `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
+	CoverUrl               *string                                                   `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	Extension              map[string]*string                                        `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	HlsUrl                 *string                                                   `json:"HlsUrl,omitempty" xml:"HlsUrl,omitempty"`
+	LiveId                 *string                                                   `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveUrl                *string                                                   `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
+	Notice                 *string                                                   `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	PlaybackUrl            *string                                                   `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
 	PluginInstanceInfoList []*CreateLiveRoomResponseBodyResultPluginInstanceInfoList `json:"PluginInstanceInfoList,omitempty" xml:"PluginInstanceInfoList,omitempty" type:"Repeated"`
-	// 直播推流地址。
-	PushUrl *string `json:"PushUrl,omitempty" xml:"PushUrl,omitempty"`
-	// 房间ID。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 标题。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	PushUrl                *string                                                   `json:"PushUrl,omitempty" xml:"PushUrl,omitempty"`
+	RoomId                 *string                                                   `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	Title                  *string                                                   `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateLiveRoomResponseBodyResult) String() string {
@@ -1845,10 +1673,8 @@ func (s *CreateLiveRoomResponseBodyResult) SetTitle(v string) *CreateLiveRoomRes
 }
 
 type CreateLiveRoomResponseBodyResultArtcInfo struct {
-	// RTS转码流地址，推荐web端使用。
 	ArtcH5Url *string `json:"ArtcH5Url,omitempty" xml:"ArtcH5Url,omitempty"`
-	// RTS原码流地址，推荐移动端使用。
-	ArtcUrl *string `json:"ArtcUrl,omitempty" xml:"ArtcUrl,omitempty"`
+	ArtcUrl   *string `json:"ArtcUrl,omitempty" xml:"ArtcUrl,omitempty"`
 }
 
 func (s CreateLiveRoomResponseBodyResultArtcInfo) String() string {
@@ -1870,14 +1696,10 @@ func (s *CreateLiveRoomResponseBodyResultArtcInfo) SetArtcUrl(v string) *CreateL
 }
 
 type CreateLiveRoomResponseBodyResultPluginInstanceInfoList struct {
-	// 插件实例创建时间戳，单位：毫秒。
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 插件拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 插件实例唯一标识。
-	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	CreateTime *int64             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Extension  map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	PluginId   *string            `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginType *string            `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
 }
 
 func (s CreateLiveRoomResponseBodyResultPluginInstanceInfoList) String() string {
@@ -1938,20 +1760,13 @@ func (s *CreateLiveRoomResponse) SetBody(v *CreateLiveRoomResponseBody) *CreateL
 }
 
 type CreateRoomRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 拓展字段，按需传递，需要额外记录的房间属性。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 房间公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位，传空则随机生成一个房间id。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 房主用户id，仅支持英文和数字，最大长度36位。
-	RoomOwnerId *string `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
-	// 房间模板唯一标识，当前支持的取值：default，传空默认为default。
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 房间标题，支持中英文，最大长度32位。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	AppId       *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Extension   map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	Notice      *string            `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	RoomId      *string            `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	RoomOwnerId *string            `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
+	TemplateId  *string            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Title       *string            `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateRoomRequest) String() string {
@@ -1998,20 +1813,13 @@ func (s *CreateRoomRequest) SetTitle(v string) *CreateRoomRequest {
 }
 
 type CreateRoomShrinkRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 拓展字段，按需传递，需要额外记录的房间属性。
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 房间公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位，传空则随机生成一个房间id。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 房主用户id，仅支持英文和数字，最大长度36位。
-	RoomOwnerId *string `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
-	// 房间模板唯一标识，当前支持的取值：default，传空默认为default。
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 房间标题，支持中英文，最大长度32位。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Notice          *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	RoomId          *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	RoomOwnerId     *string `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateRoomShrinkRequest) String() string {
@@ -2058,10 +1866,8 @@ func (s *CreateRoomShrinkRequest) SetTitle(v string) *CreateRoomShrinkRequest {
 }
 
 type CreateRoomResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API请求的返回结果结构体。
-	Result *CreateRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CreateRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CreateRoomResponseBody) String() string {
@@ -2083,7 +1889,6 @@ func (s *CreateRoomResponseBody) SetResult(v *CreateRoomResponseBodyResult) *Cre
 }
 
 type CreateRoomResponseBodyResult struct {
-	// 房间id
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 }
 
@@ -2130,7 +1935,6 @@ func (s *CreateRoomResponse) SetBody(v *CreateRoomResponseBody) *CreateRoomRespo
 }
 
 type CreateSensitiveWordRequest struct {
-	// 用户的应用ID，在控制台创建应用时生成。包含小写字母、数字，长度为6个字符。
 	AppId    *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	WordList []*string `json:"WordList,omitempty" xml:"WordList,omitempty" type:"Repeated"`
 }
@@ -2154,7 +1958,6 @@ func (s *CreateSensitiveWordRequest) SetWordList(v []*string) *CreateSensitiveWo
 }
 
 type CreateSensitiveWordShrinkRequest struct {
-	// 用户的应用ID，在控制台创建应用时生成。包含小写字母、数字，长度为6个字符。
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	WordListShrink *string `json:"WordList,omitempty" xml:"WordList,omitempty"`
 }
@@ -2178,10 +1981,8 @@ func (s *CreateSensitiveWordShrinkRequest) SetWordListShrink(v string) *CreateSe
 }
 
 type CreateSensitiveWordResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调用发送直播间弹幕的返回结果。
-	Result *CreateSensitiveWordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CreateSensitiveWordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CreateSensitiveWordResponseBody) String() string {
@@ -2249,12 +2050,9 @@ func (s *CreateSensitiveWordResponse) SetBody(v *CreateSensitiveWordResponseBody
 }
 
 type DeleteClassRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 课堂唯一标识。
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	// 操作人用户ID，仅支持中英文数字，下划线，中划线，1~36个字符。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteClassRequest) String() string {
@@ -2281,7 +2079,6 @@ func (s *DeleteClassRequest) SetUserId(v string) *DeleteClassRequest {
 }
 
 type DeleteClassResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2328,14 +2125,10 @@ func (s *DeleteClassResponse) SetBody(v *DeleteClassResponseBody) *DeleteClassRe
 }
 
 type DeleteCommentRequest struct {
-	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 需要删除的弹幕id列表
+	AppId         *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	CommentIdList []*string `json:"CommentIdList,omitempty" xml:"CommentIdList,omitempty" type:"Repeated"`
-	// 直播间唯一标识，在调用CreateRoom返回。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 删除的操作人ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	RoomId        *string   `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	UserId        *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteCommentRequest) String() string {
@@ -2367,10 +2160,8 @@ func (s *DeleteCommentRequest) SetUserId(v string) *DeleteCommentRequest {
 }
 
 type DeleteCommentResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调用删除直播间弹幕的返回结果。
-	Result *DeleteCommentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DeleteCommentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DeleteCommentResponseBody) String() string {
@@ -2392,7 +2183,6 @@ func (s *DeleteCommentResponseBody) SetResult(v *DeleteCommentResponseBodyResult
 }
 
 type DeleteCommentResponseBodyResult struct {
-	// 删除的结果
 	DeleteResult *bool `json:"DeleteResult,omitempty" xml:"DeleteResult,omitempty"`
 }
 
@@ -2439,16 +2229,11 @@ func (s *DeleteCommentResponse) SetBody(v *DeleteCommentResponseBody) *DeleteCom
 }
 
 type DeleteCommentByCreatorIdRequest struct {
-	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 需要删除的弹幕id列表
+	AppId         *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	CommentIdList []*string `json:"CommentIdList,omitempty" xml:"CommentIdList,omitempty" type:"Repeated"`
-	// 弹幕的创建者ID。
-	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// 直播间唯一标识，在调用CreateRoom返回。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 删除的操作人ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CreatorId     *string   `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	RoomId        *string   `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	UserId        *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteCommentByCreatorIdRequest) String() string {
@@ -2485,10 +2270,8 @@ func (s *DeleteCommentByCreatorIdRequest) SetUserId(v string) *DeleteCommentByCr
 }
 
 type DeleteCommentByCreatorIdResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调用删除直播间弹幕的返回结果。
-	Result *DeleteCommentByCreatorIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DeleteCommentByCreatorIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DeleteCommentByCreatorIdResponseBody) String() string {
@@ -2510,7 +2293,6 @@ func (s *DeleteCommentByCreatorIdResponseBody) SetResult(v *DeleteCommentByCreat
 }
 
 type DeleteCommentByCreatorIdResponseBodyResult struct {
-	// 删除的结果
 	DeleteResult *bool `json:"DeleteResult,omitempty" xml:"DeleteResult,omitempty"`
 }
 
@@ -2557,14 +2339,10 @@ func (s *DeleteCommentByCreatorIdResponse) SetBody(v *DeleteCommentByCreatorIdRe
 }
 
 type DeleteConferenceRequest struct {
-	// 租户名
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 会议资源的唯一标识ID
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
-	// 房间ID，最大长度36位
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 创建会议用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	RoomId       *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteConferenceRequest) String() string {
@@ -2596,7 +2374,6 @@ func (s *DeleteConferenceRequest) SetUserId(v string) *DeleteConferenceRequest {
 }
 
 type DeleteConferenceResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2643,7 +2420,6 @@ func (s *DeleteConferenceResponse) SetBody(v *DeleteConferenceResponseBody) *Del
 }
 
 type DeleteLiveRequest struct {
-	// 直播资源的唯一标识ID
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 }
 
@@ -2661,7 +2437,6 @@ func (s *DeleteLiveRequest) SetLiveId(v string) *DeleteLiveRequest {
 }
 
 type DeleteLiveResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2707,12 +2482,84 @@ func (s *DeleteLiveResponse) SetBody(v *DeleteLiveResponseBody) *DeleteLiveRespo
 	return s
 }
 
-type DeleteLiveRoomRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 直播ID。
+type DeleteLiveFilesByIdRequest struct {
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 操作人ID。
+}
+
+func (s DeleteLiveFilesByIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveFilesByIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveFilesByIdRequest) SetAppId(v string) *DeleteLiveFilesByIdRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteLiveFilesByIdRequest) SetLiveId(v string) *DeleteLiveFilesByIdRequest {
+	s.LiveId = &v
+	return s
+}
+
+type DeleteLiveFilesByIdResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DeleteLiveFilesByIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveFilesByIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveFilesByIdResponseBody) SetRequestId(v string) *DeleteLiveFilesByIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteLiveFilesByIdResponseBody) SetResult(v bool) *DeleteLiveFilesByIdResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DeleteLiveFilesByIdResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteLiveFilesByIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLiveFilesByIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveFilesByIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveFilesByIdResponse) SetHeaders(v map[string]*string) *DeleteLiveFilesByIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLiveFilesByIdResponse) SetStatusCode(v int32) *DeleteLiveFilesByIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLiveFilesByIdResponse) SetBody(v *DeleteLiveFilesByIdResponseBody) *DeleteLiveFilesByIdResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLiveRoomRequest struct {
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -2740,7 +2587,6 @@ func (s *DeleteLiveRoomRequest) SetUserId(v string) *DeleteLiveRoomRequest {
 }
 
 type DeleteLiveRoomResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2787,9 +2633,7 @@ func (s *DeleteLiveRoomResponse) SetBody(v *DeleteLiveRoomResponseBody) *DeleteL
 }
 
 type DeleteRoomRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 }
 
@@ -2812,7 +2656,6 @@ func (s *DeleteRoomRequest) SetRoomId(v string) *DeleteRoomRequest {
 }
 
 type DeleteRoomResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2859,7 +2702,6 @@ func (s *DeleteRoomResponse) SetBody(v *DeleteRoomResponseBody) *DeleteRoomRespo
 }
 
 type DeleteSensitiveWordRequest struct {
-	// 弹幕发送者的用户ID，最大长度不超过32个字节。
 	AppId    *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	WordList []*string `json:"WordList,omitempty" xml:"WordList,omitempty" type:"Repeated"`
 }
@@ -2883,7 +2725,6 @@ func (s *DeleteSensitiveWordRequest) SetWordList(v []*string) *DeleteSensitiveWo
 }
 
 type DeleteSensitiveWordShrinkRequest struct {
-	// 弹幕发送者的用户ID，最大长度不超过32个字节。
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	WordListShrink *string `json:"WordList,omitempty" xml:"WordList,omitempty"`
 }
@@ -2907,10 +2748,8 @@ func (s *DeleteSensitiveWordShrinkRequest) SetWordListShrink(v string) *DeleteSe
 }
 
 type DeleteSensitiveWordResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调用发送直播间弹幕的返回结果。
-	Result *DeleteSensitiveWordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DeleteSensitiveWordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DeleteSensitiveWordResponseBody) String() string {
@@ -3013,9 +2852,8 @@ func (s *DescribeMeterImpPlayBackTimeByLiveIdRequest) SetStartTs(v int64) *Descr
 }
 
 type DescribeMeterImpPlayBackTimeByLiveIdResponseBody struct {
-	Data []*DescribeMeterImpPlayBackTimeByLiveIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      []*DescribeMeterImpPlayBackTimeByLiveIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMeterImpPlayBackTimeByLiveIdResponseBody) String() string {
@@ -3106,9 +2944,8 @@ func (s *DescribeMeterImpWatchLiveTimeByLiveIdRequest) SetLiveId(v string) *Desc
 }
 
 type DescribeMeterImpWatchLiveTimeByLiveIdResponseBody struct {
-	Data []*DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      []*DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMeterImpWatchLiveTimeByLiveIdResponseBody) String() string {
@@ -3182,14 +3019,10 @@ func (s *DescribeMeterImpWatchLiveTimeByLiveIdResponse) SetBody(v *DescribeMeter
 }
 
 type GetAuthTokenRequest struct {
-	// 用户的应用ID，在控制台创建应用时生成
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 终端设备类型,通过控制台创建和查询
-	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// 终端设备ID
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppKey   *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 用户UserId,在AppId下单独唯一
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetAuthTokenRequest) String() string {
@@ -3221,7 +3054,6 @@ func (s *GetAuthTokenRequest) SetUserId(v string) *GetAuthTokenRequest {
 }
 
 type GetAuthTokenResponseBody struct {
-	// Id of the request
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *GetAuthTokenResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -3245,12 +3077,9 @@ func (s *GetAuthTokenResponseBody) SetResult(v *GetAuthTokenResponseBodyResult) 
 }
 
 type GetAuthTokenResponseBodyResult struct {
-	// 用于长连接建连的token
-	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// 登录token过期时间(毫秒)
-	AccessTokenExpiredTime *int64 `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
-	// 更新Token，若AccessToken过期，则可以使用RefreshToken再次获取新Token
-	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	AccessToken            *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	AccessTokenExpiredTime *int64  `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
+	RefreshToken           *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
 }
 
 func (s GetAuthTokenResponseBodyResult) String() string {
@@ -3306,12 +3135,9 @@ func (s *GetAuthTokenResponse) SetBody(v *GetAuthTokenResponseBody) *GetAuthToke
 }
 
 type GetClassDetailRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 课堂唯一标识，由调用CreateClass返回。
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	// 操作人用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetClassDetailRequest) String() string {
@@ -3338,10 +3164,8 @@ func (s *GetClassDetailRequest) SetUserId(v string) *GetClassDetailRequest {
 }
 
 type GetClassDetailResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API请求的返回结果结构体。
-	Result *GetClassDetailResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetClassDetailResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetClassDetailResponseBody) String() string {
@@ -3363,29 +3187,17 @@ func (s *GetClassDetailResponseBody) SetResult(v *GetClassDetailResponseBodyResu
 }
 
 type GetClassDetailResponseBodyResult struct {
-	// 课堂唯一标识，由调用CreateClass返回。
-	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	// 连麦会议唯一标识。
-	ConfId *string `json:"ConfId,omitempty" xml:"ConfId,omitempty"`
-	// 创建人昵称。
-	CreateNickname *string `json:"CreateNickname,omitempty" xml:"CreateNickname,omitempty"`
-	// 创建人ID。
-	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// 下课时间戳，毫秒。
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 直播的唯一标识ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 房间ID
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 开始上课时间戳，毫秒。
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 课堂状态，0:未开始 1:上课中 2:已下课。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 课堂标题。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 白板ID
-	WhiteboardId *string `json:"WhiteboardId,omitempty" xml:"WhiteboardId,omitempty"`
-	// 白板录制ID
+	ClassId            *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	ConfId             *string `json:"ConfId,omitempty" xml:"ConfId,omitempty"`
+	CreateNickname     *string `json:"CreateNickname,omitempty" xml:"CreateNickname,omitempty"`
+	CreateUserId       *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	EndTime            *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LiveId             *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RoomId             *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	StartTime          *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title              *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	WhiteboardId       *string `json:"WhiteboardId,omitempty" xml:"WhiteboardId,omitempty"`
 	WhiteboardRecordId *string `json:"WhiteboardRecordId,omitempty" xml:"WhiteboardRecordId,omitempty"`
 }
 
@@ -3487,12 +3299,9 @@ func (s *GetClassDetailResponse) SetBody(v *GetClassDetailResponseBody) *GetClas
 }
 
 type GetClassRecordRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 课程唯一标识，由调用CreateClass返回。
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	// 操作人用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetClassRecordRequest) String() string {
@@ -3519,10 +3328,8 @@ func (s *GetClassRecordRequest) SetUserId(v string) *GetClassRecordRequest {
 }
 
 type GetClassRecordResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API请求的返回结果结构体。
-	Result *GetClassRecordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetClassRecordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetClassRecordResponseBody) String() string {
@@ -3590,7 +3397,6 @@ func (s *GetClassRecordResponse) SetBody(v *GetClassRecordResponseBody) *GetClas
 }
 
 type GetConferenceRequest struct {
-	// 会议资源唯一标识。
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
 }
 
@@ -3608,10 +3414,8 @@ func (s *GetConferenceRequest) SetConferenceId(v string) *GetConferenceRequest {
 }
 
 type GetConferenceResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回结果
-	Result *GetConferenceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetConferenceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetConferenceResponseBody) String() string {
@@ -3633,22 +3437,14 @@ func (s *GetConferenceResponseBody) SetResult(v *GetConferenceResponseBodyResult
 }
 
 type GetConferenceResponseBodyResult struct {
-	// 租户名
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 会议资源唯一标识。
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
-	// 会议创建时间戳，单位：毫秒。
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 录制回放地址，m3u8格式，会议结束后10秒才会生成。
-	PlaybackUrl *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
-	// 房间ID。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 会议状态。
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 会议标题。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 创建会议用户。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CreateTime   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	PlaybackUrl  *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
+	RoomId       *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetConferenceResponseBodyResult) String() string {
@@ -3729,7 +3525,6 @@ func (s *GetConferenceResponse) SetBody(v *GetConferenceResponseBody) *GetConfer
 }
 
 type GetLiveRequest struct {
-	// 直播资源的唯一标识ID
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 }
 
@@ -3747,7 +3542,6 @@ func (s *GetLiveRequest) SetLiveId(v string) *GetLiveRequest {
 }
 
 type GetLiveResponseBody struct {
-	// Id of the request
 	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *GetLiveResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -3771,46 +3565,26 @@ func (s *GetLiveResponseBody) SetResult(v *GetLiveResponseBodyResult) *GetLiveRe
 }
 
 type GetLiveResponseBodyResult struct {
-	// 主播ID
-	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
-	// 租户名
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// rts播流信息
-	ArtcInfo *GetLiveResponseBodyResultArtcInfo `json:"ArtcInfo,omitempty" xml:"ArtcInfo,omitempty" type:"Struct"`
-	// 直播推送分辨率 -1:lld 1:lsd 2:lhd 3:lud
-	CodeLevel *int32 `json:"CodeLevel,omitempty" xml:"CodeLevel,omitempty"`
-	// 封面图片
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 直播创建时间（毫秒ms）
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 直播持续时间（毫秒ms）
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 直播结束时间（毫秒ms）
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// hls播放地址
-	HlsUrl *string `json:"HlsUrl,omitempty" xml:"HlsUrl,omitempty"`
-	// 直播简介
-	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// 直播资源的唯一标识ID
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 直播拉流地址
-	LiveUrl *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
-	// 多分辨率多协议播放信息
+	AnchorId        *string                                     `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	AppId           *string                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ArtcInfo        *GetLiveResponseBodyResultArtcInfo          `json:"ArtcInfo,omitempty" xml:"ArtcInfo,omitempty" type:"Struct"`
+	CodeLevel       *int32                                      `json:"CodeLevel,omitempty" xml:"CodeLevel,omitempty"`
+	CoverUrl        *string                                     `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	CreateTime      *int64                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Duration        *int64                                      `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EndTime         *int64                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	HlsUrl          *string                                     `json:"HlsUrl,omitempty" xml:"HlsUrl,omitempty"`
+	Introduction    *string                                     `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	LiveId          *string                                     `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveUrl         *string                                     `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
 	PlayUrlInfoList []*GetLiveResponseBodyResultPlayUrlInfoList `json:"PlayUrlInfoList,omitempty" xml:"PlayUrlInfoList,omitempty" type:"Repeated"`
-	// 直播回放地址
-	PlaybackUrl *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
-	// 直播推流地址
-	PushUrl *string `json:"PushUrl,omitempty" xml:"PushUrl,omitempty"`
-	// 房间id
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 直播状态：Created-已创建，未开播，Living-直播中，End-直播结束
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 直播标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 用户自定义数据存储
-	UserDefineField *string `json:"UserDefineField,omitempty" xml:"UserDefineField,omitempty"`
-	// 创建直播用户
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	PlaybackUrl     *string                                     `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
+	PushUrl         *string                                     `json:"PushUrl,omitempty" xml:"PushUrl,omitempty"`
+	RoomId          *string                                     `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	Status          *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title           *string                                     `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserDefineField *string                                     `json:"UserDefineField,omitempty" xml:"UserDefineField,omitempty"`
+	UserId          *string                                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetLiveResponseBodyResult) String() string {
@@ -3922,10 +3696,8 @@ func (s *GetLiveResponseBodyResult) SetUserId(v string) *GetLiveResponseBodyResu
 }
 
 type GetLiveResponseBodyResultArtcInfo struct {
-	// 原画转码地址
 	ArtcH5Url *string `json:"ArtcH5Url,omitempty" xml:"ArtcH5Url,omitempty"`
-	// 源码地址
-	ArtcUrl *string `json:"ArtcUrl,omitempty" xml:"ArtcUrl,omitempty"`
+	ArtcUrl   *string `json:"ArtcUrl,omitempty" xml:"ArtcUrl,omitempty"`
 }
 
 func (s GetLiveResponseBodyResultArtcInfo) String() string {
@@ -3947,14 +3719,10 @@ func (s *GetLiveResponseBodyResultArtcInfo) SetArtcUrl(v string) *GetLiveRespons
 }
 
 type GetLiveResponseBodyResultPlayUrlInfoList struct {
-	// 直播拉取分辨率 -1:lld 1:lsd 2:lhd 3:lud
-	CodeLevel *int32 `json:"CodeLevel,omitempty" xml:"CodeLevel,omitempty"`
-	// flv拉流地址
-	FlvUrl *string `json:"FlvUrl,omitempty" xml:"FlvUrl,omitempty"`
-	// hls拉流地址
-	HlsUrl *string `json:"HlsUrl,omitempty" xml:"HlsUrl,omitempty"`
-	// rtmp拉流地址
-	RtmpUrl *string `json:"RtmpUrl,omitempty" xml:"RtmpUrl,omitempty"`
+	CodeLevel *int32  `json:"CodeLevel,omitempty" xml:"CodeLevel,omitempty"`
+	FlvUrl    *string `json:"FlvUrl,omitempty" xml:"FlvUrl,omitempty"`
+	HlsUrl    *string `json:"HlsUrl,omitempty" xml:"HlsUrl,omitempty"`
+	RtmpUrl   *string `json:"RtmpUrl,omitempty" xml:"RtmpUrl,omitempty"`
 }
 
 func (s GetLiveResponseBodyResultPlayUrlInfoList) String() string {
@@ -4015,11 +3783,8 @@ func (s *GetLiveResponse) SetBody(v *GetLiveResponseBody) *GetLiveResponse {
 }
 
 type GetLiveRecordRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 直播唯一标识，由调用CreateLiveRoom返回。
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 操作人用户ID。
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -4047,10 +3812,8 @@ func (s *GetLiveRecordRequest) SetUserId(v string) *GetLiveRecordRequest {
 }
 
 type GetLiveRecordResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API请求的返回结果结构体。
-	Result *GetLiveRecordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetLiveRecordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetLiveRecordResponseBody) String() string {
@@ -4118,9 +3881,7 @@ func (s *GetLiveRecordResponse) SetBody(v *GetLiveRecordResponseBody) *GetLiveRe
 }
 
 type GetLiveRoomRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 直播ID。
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 }
 
@@ -4143,10 +3904,8 @@ func (s *GetLiveRoomRequest) SetLiveId(v string) *GetLiveRoomRequest {
 }
 
 type GetLiveRoomResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 创建场景化直播返回的结果。
-	Result *GetLiveRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetLiveRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetLiveRoomResponseBody) String() string {
@@ -4168,64 +3927,35 @@ func (s *GetLiveRoomResponseBody) SetResult(v *GetLiveRoomResponseBodyResult) *G
 }
 
 type GetLiveRoomResponseBodyResult struct {
-	// 主播ID。
-	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
-	// 主播昵称
-	AnchorNick *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
-	// 应用ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// RTS低延迟播流信息。
-	ArtcInfo *GetLiveRoomResponseBodyResultArtcInfo `json:"ArtcInfo,omitempty" xml:"ArtcInfo,omitempty" type:"Struct"`
-	// 聊天ID。
-	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
-	// 连麦会议唯一标识。
-	ConfId *string `json:"ConfId,omitempty" xml:"ConfId,omitempty"`
-	// 封面。
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 直播创建时间，单位：毫秒。
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 是否开启连麦。
-	EnableLinkMic *bool `json:"EnableLinkMic,omitempty" xml:"EnableLinkMic,omitempty"`
-	// 直播结束时间，单位：毫秒。
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 直播拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 原画HLS播放地址。
-	HlsUrl *string `json:"HlsUrl,omitempty" xml:"HlsUrl,omitempty"`
-	// https协议的原画HLS播放地址。
-	HlsUrlHttps *string `json:"HlsUrlHttps,omitempty" xml:"HlsUrlHttps,omitempty"`
-	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 直播拉流地址。
-	LiveUrl *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
-	// https协议的直播拉流地址。
-	LiveUrlHttps *string `json:"LiveUrlHttps,omitempty" xml:"LiveUrlHttps,omitempty"`
-	// 公告。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 在线用户数。
-	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
-	// 直播回放地址。
-	PlaybackUrl *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
-	// https协议的直播回放地址
-	PlaybackUrlHttps *string `json:"PlaybackUrlHttps,omitempty" xml:"PlaybackUrlHttps,omitempty"`
-	// 活跃插件列表。
+	AnchorId               *string                                                `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	AnchorNick             *string                                                `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
+	AppId                  *string                                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ArtcInfo               *GetLiveRoomResponseBodyResultArtcInfo                 `json:"ArtcInfo,omitempty" xml:"ArtcInfo,omitempty" type:"Struct"`
+	ChatId                 *string                                                `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
+	ConfId                 *string                                                `json:"ConfId,omitempty" xml:"ConfId,omitempty"`
+	CoverUrl               *string                                                `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	CreateTime             *int64                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableLinkMic          *bool                                                  `json:"EnableLinkMic,omitempty" xml:"EnableLinkMic,omitempty"`
+	EndTime                *int64                                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Extension              map[string]*string                                     `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	HlsUrl                 *string                                                `json:"HlsUrl,omitempty" xml:"HlsUrl,omitempty"`
+	HlsUrlHttps            *string                                                `json:"HlsUrlHttps,omitempty" xml:"HlsUrlHttps,omitempty"`
+	LiveId                 *string                                                `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveUrl                *string                                                `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
+	LiveUrlHttps           *string                                                `json:"LiveUrlHttps,omitempty" xml:"LiveUrlHttps,omitempty"`
+	Notice                 *string                                                `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	OnlineCount            *int64                                                 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
+	PlaybackUrl            *string                                                `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
+	PlaybackUrlHttps       *string                                                `json:"PlaybackUrlHttps,omitempty" xml:"PlaybackUrlHttps,omitempty"`
 	PluginInstanceInfoList []*GetLiveRoomResponseBodyResultPluginInstanceInfoList `json:"PluginInstanceInfoList,omitempty" xml:"PluginInstanceInfoList,omitempty" type:"Repeated"`
-	// 直播推流地址。
-	PushUrl *string `json:"PushUrl,omitempty" xml:"PushUrl,omitempty"`
-	// 访问用户人次。
-	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
-	// 房间ID。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// rtmp协议的播放地址
-	RtmpUrl *string `json:"RtmpUrl,omitempty" xml:"RtmpUrl,omitempty"`
-	// 直播开始时间，单位：毫秒。
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 直播状态，0-在播 1-下播。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 访问用户数。
-	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	PushUrl                *string                                                `json:"PushUrl,omitempty" xml:"PushUrl,omitempty"`
+	Pv                     *int64                                                 `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	RoomId                 *string                                                `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	RtmpUrl                *string                                                `json:"RtmpUrl,omitempty" xml:"RtmpUrl,omitempty"`
+	StartTime              *int64                                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status                 *int32                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title                  *string                                                `json:"Title,omitempty" xml:"Title,omitempty"`
+	Uv                     *int64                                                 `json:"Uv,omitempty" xml:"Uv,omitempty"`
 }
 
 func (s GetLiveRoomResponseBodyResult) String() string {
@@ -4382,10 +4112,8 @@ func (s *GetLiveRoomResponseBodyResult) SetUv(v int64) *GetLiveRoomResponseBodyR
 }
 
 type GetLiveRoomResponseBodyResultArtcInfo struct {
-	// RTS转码流地址，推荐web端使用。
 	ArtcH5Url *string `json:"ArtcH5Url,omitempty" xml:"ArtcH5Url,omitempty"`
-	// RTS原码流地址，推荐移动端使用。
-	ArtcUrl *string `json:"ArtcUrl,omitempty" xml:"ArtcUrl,omitempty"`
+	ArtcUrl   *string `json:"ArtcUrl,omitempty" xml:"ArtcUrl,omitempty"`
 }
 
 func (s GetLiveRoomResponseBodyResultArtcInfo) String() string {
@@ -4407,14 +4135,10 @@ func (s *GetLiveRoomResponseBodyResultArtcInfo) SetArtcUrl(v string) *GetLiveRoo
 }
 
 type GetLiveRoomResponseBodyResultPluginInstanceInfoList struct {
-	// 插件实例创建时间戳，单位：毫秒。
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 插件拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 插件实例唯一标识。
-	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	CreateTime *int64             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Extension  map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	PluginId   *string            `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginType *string            `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
 }
 
 func (s GetLiveRoomResponseBodyResultPluginInstanceInfoList) String() string {
@@ -4475,9 +4199,7 @@ func (s *GetLiveRoomResponse) SetBody(v *GetLiveRoomResponseBody) *GetLiveRoomRe
 }
 
 type GetLiveRoomStatisticsRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 直播ID。
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 }
 
@@ -4500,10 +4222,8 @@ func (s *GetLiveRoomStatisticsRequest) SetLiveId(v string) *GetLiveRoomStatistic
 }
 
 type GetLiveRoomStatisticsResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 创建场景化直播返回的结果。
-	Result *GetLiveRoomStatisticsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetLiveRoomStatisticsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetLiveRoomStatisticsResponseBody) String() string {
@@ -4525,26 +4245,16 @@ func (s *GetLiveRoomStatisticsResponseBody) SetResult(v *GetLiveRoomStatisticsRe
 }
 
 type GetLiveRoomStatisticsResponseBodyResult struct {
-	// 直播结束时间，单位：毫秒。
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 点赞数。
-	LikeCount *int64 `json:"LikeCount,omitempty" xml:"LikeCount,omitempty"`
-	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 互动消息数。
-	MessageCount *int64 `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
-	// 在线用户数。
-	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
-	// 访问用户人次。
-	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
-	// 直播开始时间，单位：毫秒。
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 直播状态，0-已创建 1-直播中 2-已关闭。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 访问用户数。
-	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
-	// 总观看时长，单位：毫秒。
-	WatchLiveTime *int64 `json:"WatchLiveTime,omitempty" xml:"WatchLiveTime,omitempty"`
+	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LikeCount     *int64  `json:"LikeCount,omitempty" xml:"LikeCount,omitempty"`
+	LiveId        *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	MessageCount  *int64  `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
+	OnlineCount   *int64  `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
+	Pv            *int64  `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Uv            *int64  `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	WatchLiveTime *int64  `json:"WatchLiveTime,omitempty" xml:"WatchLiveTime,omitempty"`
 }
 
 func (s GetLiveRoomStatisticsResponseBodyResult) String() string {
@@ -4635,14 +4345,10 @@ func (s *GetLiveRoomStatisticsResponse) SetBody(v *GetLiveRoomStatisticsResponse
 }
 
 type GetLiveRoomUserStatisticsRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 查询页码，从1开始，传空默认查询第1页。
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	LiveId     *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s GetLiveRoomUserStatisticsRequest) String() string {
@@ -4674,10 +4380,8 @@ func (s *GetLiveRoomUserStatisticsRequest) SetPageSize(v string) *GetLiveRoomUse
 }
 
 type GetLiveRoomUserStatisticsResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 创建场景化直播返回的结果。
-	Result *GetLiveRoomUserStatisticsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetLiveRoomUserStatisticsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetLiveRoomUserStatisticsResponseBody) String() string {
@@ -4699,15 +4403,10 @@ func (s *GetLiveRoomUserStatisticsResponseBody) SetResult(v *GetLiveRoomUserStat
 }
 
 type GetLiveRoomUserStatisticsResponseBodyResult struct {
-	// 是否还有下一页。
-	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 用户总页数。
-	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
-	// 用户总数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// 用户观看数据列表。
+	HasMore            *bool                                                            `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	LiveId             *string                                                          `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	PageTotal          *int32                                                           `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
+	TotalCount         *int32                                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	UserStatisticsList []*GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList `json:"UserStatisticsList,omitempty" xml:"UserStatisticsList,omitempty" type:"Repeated"`
 }
 
@@ -4745,12 +4444,10 @@ func (s *GetLiveRoomUserStatisticsResponseBodyResult) SetUserStatisticsList(v []
 }
 
 type GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList struct {
-	CommentCount *int32 `json:"CommentCount,omitempty" xml:"CommentCount,omitempty"`
-	LikeCount    *int32 `json:"LikeCount,omitempty" xml:"LikeCount,omitempty"`
-	// 用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 观看时长，单位：毫秒。
-	WatchLiveTime *int64 `json:"WatchLiveTime,omitempty" xml:"WatchLiveTime,omitempty"`
+	CommentCount  *int32  `json:"CommentCount,omitempty" xml:"CommentCount,omitempty"`
+	LikeCount     *int32  `json:"LikeCount,omitempty" xml:"LikeCount,omitempty"`
+	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WatchLiveTime *int64  `json:"WatchLiveTime,omitempty" xml:"WatchLiveTime,omitempty"`
 }
 
 func (s GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList) String() string {
@@ -4811,9 +4508,7 @@ func (s *GetLiveRoomUserStatisticsResponse) SetBody(v *GetLiveRoomUserStatistics
 }
 
 type GetRoomRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 }
 
@@ -4836,10 +4531,8 @@ func (s *GetRoomRequest) SetRoomId(v string) *GetRoomRequest {
 }
 
 type GetRoomResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 查询房间信息返回结果。
-	Result *GetRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetRoomResponseBody) String() string {
@@ -4861,7 +4554,6 @@ func (s *GetRoomResponseBody) SetResult(v *GetRoomResponseBodyResult) *GetRoomRe
 }
 
 type GetRoomResponseBodyResult struct {
-	// 房间信息。
 	RoomInfo *GetRoomResponseBodyResultRoomInfo `json:"RoomInfo,omitempty" xml:"RoomInfo,omitempty" type:"Struct"`
 }
 
@@ -4879,32 +4571,19 @@ func (s *GetRoomResponseBodyResult) SetRoomInfo(v *GetRoomResponseBodyResultRoom
 }
 
 type GetRoomResponseBodyResultRoomInfo struct {
-	// 管理员ID列表。
-	AdminIdList []*string `json:"AdminIdList,omitempty" xml:"AdminIdList,omitempty" type:"Repeated"`
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间创建时间戳，单位：毫秒。
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 房间拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 房间公告。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 在线用户数。
-	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
-	// 活跃插件列表。
+	AdminIdList            []*string                                                  `json:"AdminIdList,omitempty" xml:"AdminIdList,omitempty" type:"Repeated"`
+	AppId                  *string                                                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CreateTime             *int64                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Extension              map[string]*string                                         `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	Notice                 *string                                                    `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	OnlineCount            *int64                                                     `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
 	PluginInstanceInfoList []*GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList `json:"PluginInstanceInfoList,omitempty" xml:"PluginInstanceInfoList,omitempty" type:"Repeated"`
-	// 访问用户人次。
-	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
-	// 房间唯一标识。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 房主用户id。
-	RoomOwnerId *string `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
-	// 创建房间使用的模板id。
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 房间标题。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 访问用户数。
-	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	Pv                     *int64                                                     `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	RoomId                 *string                                                    `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	RoomOwnerId            *string                                                    `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
+	TemplateId             *string                                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Title                  *string                                                    `json:"Title,omitempty" xml:"Title,omitempty"`
+	Uv                     *int64                                                     `json:"Uv,omitempty" xml:"Uv,omitempty"`
 }
 
 func (s GetRoomResponseBodyResultRoomInfo) String() string {
@@ -4981,14 +4660,10 @@ func (s *GetRoomResponseBodyResultRoomInfo) SetUv(v int64) *GetRoomResponseBodyR
 }
 
 type GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList struct {
-	// 插件实例创建时间戳，单位：毫秒。
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 插件拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 插件实例唯一标识。
-	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	CreateTime *int64             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Extension  map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	PluginId   *string            `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginType *string            `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
 }
 
 func (s GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) String() string {
@@ -5049,19 +4724,12 @@ func (s *GetRoomResponse) SetBody(v *GetRoomResponseBody) *GetRoomResponse {
 }
 
 type GetStandardRoomJumpUrlRequest struct {
-	// 用户的应用ID，在控制台创建应用时生成
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 终端设备类型,通过控制台创建和查询
-	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// 资源ID：根据业务类型来定，比如直播ID，课堂ID等
-	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// 业务类型：互动直播live，互动课堂class
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// 平台：win, mac, android, ios, web
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppKey   *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	BizId    *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizType  *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// 用户UserId,在AppId下单独唯一
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 用户昵称
+	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
@@ -5109,7 +4777,6 @@ func (s *GetStandardRoomJumpUrlRequest) SetUserNick(v string) *GetStandardRoomJu
 }
 
 type GetStandardRoomJumpUrlResponseBody struct {
-	// Id of the request
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *GetStandardRoomJumpUrlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -5133,7 +4800,6 @@ func (s *GetStandardRoomJumpUrlResponseBody) SetResult(v *GetStandardRoomJumpUrl
 }
 
 type GetStandardRoomJumpUrlResponseBodyResult struct {
-	// 样板间跳转协议地址
 	StandardRoomJumpUrl *string `json:"StandardRoomJumpUrl,omitempty" xml:"StandardRoomJumpUrl,omitempty"`
 }
 
@@ -5180,15 +4846,11 @@ func (s *GetStandardRoomJumpUrlResponse) SetBody(v *GetStandardRoomJumpUrlRespon
 }
 
 type KickRoomUserRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	BlockTime *int64  `json:"BlockTime,omitempty" xml:"BlockTime,omitempty"`
-	// 被踢出房间的用户ID。
-	KickUser *string `json:"KickUser,omitempty" xml:"KickUser,omitempty"`
-	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位，传空则随机生成一个房间id。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 操作人的用户ID，用于表示谁执行了踢人操作。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	KickUser  *string `json:"KickUser,omitempty" xml:"KickUser,omitempty"`
+	RoomId    *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s KickRoomUserRequest) String() string {
@@ -5225,7 +4887,6 @@ func (s *KickRoomUserRequest) SetUserId(v string) *KickRoomUserRequest {
 }
 
 type KickRoomUserResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5272,14 +4933,10 @@ func (s *KickRoomUserResponse) SetBody(v *KickRoomUserResponseBody) *KickRoomUse
 }
 
 type ListClassesRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 查询页码，从1开始，传空默认查询第1页。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 课程状态，0-未开课 1-上课中 2-已下课，不传则返回所有课程。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListClassesRequest) String() string {
@@ -5311,10 +4968,8 @@ func (s *ListClassesRequest) SetStatus(v int32) *ListClassesRequest {
 }
 
 type ListClassesResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 创建课程返回的结果。
-	Result *ListClassesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListClassesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListClassesResponseBody) String() string {
@@ -5336,14 +4991,10 @@ func (s *ListClassesResponseBody) SetResult(v *ListClassesResponseBodyResult) *L
 }
 
 type ListClassesResponseBodyResult struct {
-	// 课程列表信息。
-	ClassList []*ListClassesResponseBodyResultClassList `json:"ClassList,omitempty" xml:"ClassList,omitempty" type:"Repeated"`
-	// 是否还有下一页。
-	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// 课程总页数。
-	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
-	// 课程总数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	ClassList  []*ListClassesResponseBodyResultClassList `json:"ClassList,omitempty" xml:"ClassList,omitempty" type:"Repeated"`
+	HasMore    *bool                                     `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	PageTotal  *int32                                    `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
+	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListClassesResponseBodyResult) String() string {
@@ -5375,29 +5026,17 @@ func (s *ListClassesResponseBodyResult) SetTotalCount(v int32) *ListClassesRespo
 }
 
 type ListClassesResponseBodyResultClassList struct {
-	// 课堂唯一标识，由调用CreateClass返回。
-	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	// 连麦会议唯一标识。
-	ConfId *string `json:"ConfId,omitempty" xml:"ConfId,omitempty"`
-	// 创建人昵称。
-	CreateNickname *string `json:"CreateNickname,omitempty" xml:"CreateNickname,omitempty"`
-	// 创建人ID。
-	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// 下课时间戳，毫秒。
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 直播的唯一标识ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 房间ID
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 开始上课时间戳，毫秒。
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 课堂状态，0:未开始 1:上课中 2:已下课。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 课堂标题。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 白板ID
-	WhiteboardId *string `json:"WhiteboardId,omitempty" xml:"WhiteboardId,omitempty"`
-	// 白板录制ID
+	ClassId            *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	ConfId             *string `json:"ConfId,omitempty" xml:"ConfId,omitempty"`
+	CreateNickname     *string `json:"CreateNickname,omitempty" xml:"CreateNickname,omitempty"`
+	CreateUserId       *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	EndTime            *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LiveId             *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RoomId             *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	StartTime          *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title              *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	WhiteboardId       *string `json:"WhiteboardId,omitempty" xml:"WhiteboardId,omitempty"`
 	WhiteboardRecordId *string `json:"WhiteboardRecordId,omitempty" xml:"WhiteboardRecordId,omitempty"`
 }
 
@@ -5499,20 +5138,13 @@ func (s *ListClassesResponse) SetBody(v *ListClassesResponseBody) *ListClassesRe
 }
 
 type ListCommentsRequest struct {
-	// 用户的应用ID，在控制台创建应用时生成。包含小写字母、数字，长度为6个字符。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 弹幕创建者ID。
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// 查询弹幕消息列表的分页页数。应该从1开始，每次分页拉取时递增。
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// 查询弹幕消息列表的分页大小。最小不得小于1，最大不得超过100。如果超过100，会被截断为前100条。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 房间的唯一标识，在调用CreateRoom时返回。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 查询弹幕消息列表的排序方式。取值仅限0和1，其中0表示按照弹幕消息创建时间递增的顺序拉取，1表示按照弹幕消息创建时间递减的时间拉取。
-	SortType *int32 `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	// 操作人用户ID，表示谁执行了查询弹幕消息列表的操作。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	PageNum   *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RoomId    *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	SortType  *int32  `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListCommentsRequest) String() string {
@@ -5559,10 +5191,8 @@ func (s *ListCommentsRequest) SetUserId(v string) *ListCommentsRequest {
 }
 
 type ListCommentsResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调用查询弹幕消息列表的返回结果。
-	Result *ListCommentsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListCommentsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListCommentsResponseBody) String() string {
@@ -5584,14 +5214,10 @@ func (s *ListCommentsResponseBody) SetResult(v *ListCommentsResponseBodyResult) 
 }
 
 type ListCommentsResponseBodyResult struct {
-	// 弹幕消息列表。
 	CommentVOList []*ListCommentsResponseBodyResultCommentVOList `json:"CommentVOList,omitempty" xml:"CommentVOList,omitempty" type:"Repeated"`
-	// 是否还有下一页数据。true表示还有，false表示没有。
-	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// 分页查询弹幕消息列表的总页数。
-	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
-	// 弹幕消息的总数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	HasMore       *bool                                          `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	PageTotal     *int32                                         `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
+	TotalCount    *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCommentsResponseBodyResult) String() string {
@@ -5623,22 +5249,14 @@ func (s *ListCommentsResponseBodyResult) SetTotalCount(v int32) *ListCommentsRes
 }
 
 type ListCommentsResponseBodyResultCommentVOList struct {
-	// 应用ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 弹幕消息的唯一ID标识。
-	CommentId *string `json:"CommentId,omitempty" xml:"CommentId,omitempty"`
-	// 弹幕消息的内容。
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 弹幕消息的创建时间，Unix时间戳，单位：毫秒。
-	CreateAt *int64 `json:"CreateAt,omitempty" xml:"CreateAt,omitempty"`
-	// 扩展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 房间ID。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 弹幕消息的发送者ID标识。
-	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	// 弹幕消息发送者的昵称。
-	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
+	AppId      *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CommentId  *string            `json:"CommentId,omitempty" xml:"CommentId,omitempty"`
+	Content    *string            `json:"Content,omitempty" xml:"Content,omitempty"`
+	CreateAt   *int64             `json:"CreateAt,omitempty" xml:"CreateAt,omitempty"`
+	Extension  map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	RoomId     *string            `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	SenderId   *string            `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderNick *string            `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
 }
 
 func (s ListCommentsResponseBodyResultCommentVOList) String() string {
@@ -5719,12 +5337,9 @@ func (s *ListCommentsResponse) SetBody(v *ListCommentsResponseBody) *ListComment
 }
 
 type ListConferenceUsersRequest struct {
-	// 会议唯一标识符
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
-	// 查询页码，从第1页开始。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页显示个数，最大显示个数为100。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListConferenceUsersRequest) String() string {
@@ -5751,10 +5366,8 @@ func (s *ListConferenceUsersRequest) SetPageSize(v int32) *ListConferenceUsersRe
 }
 
 type ListConferenceUsersResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回结果
-	Result *ListConferenceUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListConferenceUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListConferenceUsersResponseBody) String() string {
@@ -5776,14 +5389,10 @@ func (s *ListConferenceUsersResponseBody) SetResult(v *ListConferenceUsersRespon
 }
 
 type ListConferenceUsersResponseBodyResult struct {
-	// 会议用户列表。
 	ConferenceUserList []*ListConferenceUsersResponseBodyResultConferenceUserList `json:"ConferenceUserList,omitempty" xml:"ConferenceUserList,omitempty" type:"Repeated"`
-	// 是否还有数据
-	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// 总页数
-	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
-	// 总条目数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	HasMore            *bool                                                      `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	PageTotal          *int32                                                     `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
+	TotalCount         *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListConferenceUsersResponseBodyResult) String() string {
@@ -5815,9 +5424,7 @@ func (s *ListConferenceUsersResponseBodyResult) SetTotalCount(v int32) *ListConf
 }
 
 type ListConferenceUsersResponseBodyResultConferenceUserList struct {
-	// 用户状态。
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 用户ID。
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -5868,15 +5475,126 @@ func (s *ListConferenceUsersResponse) SetBody(v *ListConferenceUsersResponseBody
 	return s
 }
 
+type ListLiveFilesRequest struct {
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+}
+
+func (s ListLiveFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveFilesRequest) SetAppId(v string) *ListLiveFilesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListLiveFilesRequest) SetLiveId(v string) *ListLiveFilesRequest {
+	s.LiveId = &v
+	return s
+}
+
+type ListLiveFilesResponseBody struct {
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListLiveFilesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListLiveFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveFilesResponseBody) SetRequestId(v string) *ListLiveFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLiveFilesResponseBody) SetResult(v *ListLiveFilesResponseBodyResult) *ListLiveFilesResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListLiveFilesResponseBodyResult struct {
+	FileList []*ListLiveFilesResponseBodyResultFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+}
+
+func (s ListLiveFilesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveFilesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveFilesResponseBodyResult) SetFileList(v []*ListLiveFilesResponseBodyResultFileList) *ListLiveFilesResponseBodyResult {
+	s.FileList = v
+	return s
+}
+
+type ListLiveFilesResponseBodyResultFileList struct {
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListLiveFilesResponseBodyResultFileList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveFilesResponseBodyResultFileList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveFilesResponseBodyResultFileList) SetFileName(v string) *ListLiveFilesResponseBodyResultFileList {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListLiveFilesResponseBodyResultFileList) SetUrl(v string) *ListLiveFilesResponseBodyResultFileList {
+	s.Url = &v
+	return s
+}
+
+type ListLiveFilesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLiveFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLiveFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveFilesResponse) SetHeaders(v map[string]*string) *ListLiveFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLiveFilesResponse) SetStatusCode(v int32) *ListLiveFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLiveFilesResponse) SetBody(v *ListLiveFilesResponseBody) *ListLiveFilesResponse {
+	s.Body = v
+	return s
+}
+
 type ListLiveRoomsRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 查询页码，从1开始，传空默认查询第1页。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 直播状态，0-在播 1-下播，不传则返回所有直播。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListLiveRoomsRequest) String() string {
@@ -5908,10 +5626,8 @@ func (s *ListLiveRoomsRequest) SetStatus(v int32) *ListLiveRoomsRequest {
 }
 
 type ListLiveRoomsResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 创建场景化直播返回的结果。
-	Result *ListLiveRoomsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListLiveRoomsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListLiveRoomsResponseBody) String() string {
@@ -5933,14 +5649,10 @@ func (s *ListLiveRoomsResponseBody) SetResult(v *ListLiveRoomsResponseBodyResult
 }
 
 type ListLiveRoomsResponseBodyResult struct {
-	// 是否还有下一页。
-	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// 直播列表信息。
-	LiveList []*ListLiveRoomsResponseBodyResultLiveList `json:"LiveList,omitempty" xml:"LiveList,omitempty" type:"Repeated"`
-	// 直播总页数。
-	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
-	// 直播总数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	HasMore    *bool                                      `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	LiveList   []*ListLiveRoomsResponseBodyResultLiveList `json:"LiveList,omitempty" xml:"LiveList,omitempty" type:"Repeated"`
+	PageTotal  *int32                                     `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
+	TotalCount *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLiveRoomsResponseBodyResult) String() string {
@@ -5972,40 +5684,23 @@ func (s *ListLiveRoomsResponseBodyResult) SetTotalCount(v int32) *ListLiveRoomsR
 }
 
 type ListLiveRoomsResponseBodyResultLiveList struct {
-	// 主播ID。
-	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
-	// 主播昵称。
-	AnchorNick *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
-	// 应用ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 聊天ID。
-	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
-	// 封面。
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 直播的创建时间。单位为ms。
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 直播的结束时间。单位为ms。
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 直播拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 公告。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 在线用户数。
-	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
-	// 访问用户人次。
-	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
-	// 房间ID。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 直播的开始时间。单位为ms。
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 直播状态，0-在播 1-下播。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 访问用户数。
-	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	AnchorId    *string            `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	AnchorNick  *string            `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
+	AppId       *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChatId      *string            `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
+	CoverUrl    *string            `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	CreateTime  *int64             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EndTime     *int64             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Extension   map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	LiveId      *string            `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	Notice      *string            `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	OnlineCount *int64             `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
+	Pv          *int64             `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	RoomId      *string            `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	StartTime   *int64             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status      *int32             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title       *string            `json:"Title,omitempty" xml:"Title,omitempty"`
+	Uv          *int64             `json:"Uv,omitempty" xml:"Uv,omitempty"`
 }
 
 func (s ListLiveRoomsResponseBodyResultLiveList) String() string {
@@ -6131,9 +5826,7 @@ func (s *ListLiveRoomsResponse) SetBody(v *ListLiveRoomsResponseBody) *ListLiveR
 }
 
 type ListLiveRoomsByIdRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 直播ID列表。
+	AppId      *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	LiveIdList []*string `json:"LiveIdList,omitempty" xml:"LiveIdList,omitempty" type:"Repeated"`
 }
 
@@ -6156,9 +5849,7 @@ func (s *ListLiveRoomsByIdRequest) SetLiveIdList(v []*string) *ListLiveRoomsById
 }
 
 type ListLiveRoomsByIdShrinkRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 直播ID列表。
+	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	LiveIdListShrink *string `json:"LiveIdList,omitempty" xml:"LiveIdList,omitempty"`
 }
 
@@ -6181,10 +5872,8 @@ func (s *ListLiveRoomsByIdShrinkRequest) SetLiveIdListShrink(v string) *ListLive
 }
 
 type ListLiveRoomsByIdResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 创建场景化直播返回的结果。
-	Result *ListLiveRoomsByIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListLiveRoomsByIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListLiveRoomsByIdResponseBody) String() string {
@@ -6206,7 +5895,6 @@ func (s *ListLiveRoomsByIdResponseBody) SetResult(v *ListLiveRoomsByIdResponseBo
 }
 
 type ListLiveRoomsByIdResponseBodyResult struct {
-	// 直播列表信息。
 	LiveList []*ListLiveRoomsByIdResponseBodyResultLiveList `json:"LiveList,omitempty" xml:"LiveList,omitempty" type:"Repeated"`
 }
 
@@ -6224,40 +5912,23 @@ func (s *ListLiveRoomsByIdResponseBodyResult) SetLiveList(v []*ListLiveRoomsById
 }
 
 type ListLiveRoomsByIdResponseBodyResultLiveList struct {
-	// 主播ID。
-	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
-	// 主播昵称。
-	AnchorNick *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
-	// 应用ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 聊天ID。
-	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
-	// 封面。
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 直播的创建时间。单位为ms。
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 直播的结束时间。单位为ms。
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 直播拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 公告。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 在线用户数。
-	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
-	// 访问用户人次。
-	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
-	// 房间ID。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 直播的开始时间。单位为ms。
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 直播状态，0-在播 1-下播。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 访问用户数。
-	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	AnchorId    *string            `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	AnchorNick  *string            `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
+	AppId       *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChatId      *string            `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
+	CoverUrl    *string            `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	CreateTime  *int64             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EndTime     *int64             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Extension   map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	LiveId      *string            `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	Notice      *string            `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	OnlineCount *int64             `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
+	Pv          *int64             `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	RoomId      *string            `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	StartTime   *int64             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status      *int32             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title       *string            `json:"Title,omitempty" xml:"Title,omitempty"`
+	Uv          *int64             `json:"Uv,omitempty" xml:"Uv,omitempty"`
 }
 
 func (s ListLiveRoomsByIdResponseBodyResultLiveList) String() string {
@@ -6383,14 +6054,10 @@ func (s *ListLiveRoomsByIdResponse) SetBody(v *ListLiveRoomsByIdResponseBody) *L
 }
 
 type ListRoomUsersRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 查询页码，从1开始，传空默认查询第1页。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 房间ID，最大长度36个字符。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RoomId     *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 }
 
 func (s ListRoomUsersRequest) String() string {
@@ -6422,10 +6089,8 @@ func (s *ListRoomUsersRequest) SetRoomId(v string) *ListRoomUsersRequest {
 }
 
 type ListRoomUsersResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API请求的返回结果结构体。
-	Result *ListRoomUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListRoomUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListRoomUsersResponseBody) String() string {
@@ -6447,14 +6112,10 @@ func (s *ListRoomUsersResponseBody) SetResult(v *ListRoomUsersResponseBodyResult
 }
 
 type ListRoomUsersResponseBodyResult struct {
-	// 是否还有下一页用户列表。
-	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// 该房间的用户总页数。
-	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
-	// 房间用户列表信息。
+	HasMore      *bool                                          `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	PageTotal    *int32                                         `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
 	RoomUserList []*ListRoomUsersResponseBodyResultRoomUserList `json:"RoomUserList,omitempty" xml:"RoomUserList,omitempty" type:"Repeated"`
-	// 该房间的用户总数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount   *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRoomUsersResponseBodyResult) String() string {
@@ -6486,12 +6147,9 @@ func (s *ListRoomUsersResponseBodyResult) SetTotalCount(v int32) *ListRoomUsersR
 }
 
 type ListRoomUsersResponseBodyResultRoomUserList struct {
-	// 用户拓展字段。
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 用户昵称。
-	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
-	// 用户唯一标识。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Nick      *string            `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	UserId    *string            `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListRoomUsersResponseBodyResultRoomUserList) String() string {
@@ -6547,12 +6205,9 @@ func (s *ListRoomUsersResponse) SetBody(v *ListRoomUsersResponseBody) *ListRoomU
 }
 
 type ListRoomsRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 查询页码，从1开始，传空默认查询第1页。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListRoomsRequest) String() string {
@@ -6579,10 +6234,8 @@ func (s *ListRoomsRequest) SetPageSize(v int32) *ListRoomsRequest {
 }
 
 type ListRoomsResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API请求的返回结果结构体。
-	Result *ListRoomsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListRoomsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListRoomsResponseBody) String() string {
@@ -6604,14 +6257,10 @@ func (s *ListRoomsResponseBody) SetResult(v *ListRoomsResponseBodyResult) *ListR
 }
 
 type ListRoomsResponseBodyResult struct {
-	// 是否还有下一页房间列表。
-	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// 该应用的房间总页数。
-	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
-	// 房间列表信息。
+	HasMore      *bool                                      `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	PageTotal    *int32                                     `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
 	RoomInfoList []*ListRoomsResponseBodyResultRoomInfoList `json:"RoomInfoList,omitempty" xml:"RoomInfoList,omitempty" type:"Repeated"`
-	// 该应用的房间总数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount   *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRoomsResponseBodyResult) String() string {
@@ -6643,28 +6292,17 @@ func (s *ListRoomsResponseBodyResult) SetTotalCount(v int32) *ListRoomsResponseB
 }
 
 type ListRoomsResponseBodyResultRoomInfoList struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间创建时间戳，单位：毫秒。
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 房间拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 房间公告。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 用户在线数。
-	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
-	// 活跃插件列表。
+	AppId                  *string                                                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CreateTime             *string                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Extension              map[string]*string                                               `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	Notice                 *string                                                          `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	OnlineCount            *int64                                                           `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
 	PluginInstanceInfoList []*ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList `json:"PluginInstanceInfoList,omitempty" xml:"PluginInstanceInfoList,omitempty" type:"Repeated"`
-	// 房间唯一标识。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 房主用户id。
-	RoomOwnerId *string `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
-	// 创建房间使用的模板id。
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 房间标题。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 用户访问数。
-	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	RoomId                 *string                                                          `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	RoomOwnerId            *string                                                          `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
+	TemplateId             *string                                                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Title                  *string                                                          `json:"Title,omitempty" xml:"Title,omitempty"`
+	Uv                     *int64                                                           `json:"Uv,omitempty" xml:"Uv,omitempty"`
 }
 
 func (s ListRoomsResponseBodyResultRoomInfoList) String() string {
@@ -6731,14 +6369,10 @@ func (s *ListRoomsResponseBodyResultRoomInfoList) SetUv(v int64) *ListRoomsRespo
 }
 
 type ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList struct {
-	// 插件实例创建时间戳，单位：毫秒。
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 插件拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 插件实例唯一标识。
-	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	CreateTime *int64             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Extension  map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	PluginId   *string            `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginType *string            `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
 }
 
 func (s ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) String() string {
@@ -6799,7 +6433,6 @@ func (s *ListRoomsResponse) SetBody(v *ListRoomsResponseBody) *ListRoomsResponse
 }
 
 type ListSensitiveWordRequest struct {
-	// 弹幕发送者的用户ID，最大长度不超过32个字节。
 	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -6829,10 +6462,8 @@ func (s *ListSensitiveWordRequest) SetPageSize(v int32) *ListSensitiveWordReques
 }
 
 type ListSensitiveWordResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调用发送直播间弹幕的返回结果。
-	Result *ListSensitiveWordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListSensitiveWordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListSensitiveWordResponseBody) String() string {
@@ -6906,9 +6537,7 @@ func (s *ListSensitiveWordResponse) SetBody(v *ListSensitiveWordResponseBody) *L
 }
 
 type PublishLiveRequest struct {
-	// 直播资源的唯一标识ID
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 当前用户Id
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -6931,7 +6560,6 @@ func (s *PublishLiveRequest) SetUserId(v string) *PublishLiveRequest {
 }
 
 type PublishLiveResponseBody struct {
-	// Id of the request
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *PublishLiveResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -6955,16 +6583,11 @@ func (s *PublishLiveResponseBody) SetResult(v *PublishLiveResponseBodyResult) *P
 }
 
 type PublishLiveResponseBodyResult struct {
-	// 主播ID
 	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
-	// 直播资源的唯一标识ID
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 直播拉流地址
-	LiveUrl *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
-	// 直播推流地址
-	PushUrl *string `json:"PushUrl,omitempty" xml:"PushUrl,omitempty"`
-	// 直播状态：Created-已创建未开播，Living-直播中，End-直播结束
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	LiveId   *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveUrl  *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
+	PushUrl  *string `json:"PushUrl,omitempty" xml:"PushUrl,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PublishLiveResponseBodyResult) String() string {
@@ -7030,11 +6653,8 @@ func (s *PublishLiveResponse) SetBody(v *PublishLiveResponseBody) *PublishLiveRe
 }
 
 type PublishLiveRoomRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 直播ID。
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 操作人ID。
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -7062,10 +6682,8 @@ func (s *PublishLiveRoomRequest) SetUserId(v string) *PublishLiveRoomRequest {
 }
 
 type PublishLiveRoomResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 创建场景化直播返回的结果。
-	Result *PublishLiveRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *PublishLiveRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s PublishLiveRoomResponseBody) String() string {
@@ -7087,11 +6705,8 @@ func (s *PublishLiveRoomResponseBody) SetResult(v *PublishLiveRoomResponseBodyRe
 }
 
 type PublishLiveRoomResponseBodyResult struct {
-	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 直播拉流地址。
+	LiveId  *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 	LiveUrl *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
-	// 直播推流地址。
 	PushUrl *string `json:"PushUrl,omitempty" xml:"PushUrl,omitempty"`
 }
 
@@ -7148,12 +6763,9 @@ func (s *PublishLiveRoomResponse) SetBody(v *PublishLiveRoomResponseBody) *Publi
 }
 
 type RemoveMemberRequest struct {
-	// 会议唯一标识
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
-	// 邀请者用户ID
-	FromUserId *string `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
-	// 被邀请用户ID
-	ToUserId *string `json:"ToUserId,omitempty" xml:"ToUserId,omitempty"`
+	FromUserId   *string `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
+	ToUserId     *string `json:"ToUserId,omitempty" xml:"ToUserId,omitempty"`
 }
 
 func (s RemoveMemberRequest) String() string {
@@ -7180,7 +6792,6 @@ func (s *RemoveMemberRequest) SetToUserId(v string) *RemoveMemberRequest {
 }
 
 type RemoveMemberResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7227,18 +6838,12 @@ func (s *RemoveMemberResponse) SetBody(v *RemoveMemberResponseBody) *RemoveMembe
 }
 
 type SendCommentRequest struct {
-	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 发送的文本内容。最大的长度不超过256个字节。
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 扩展字段，服务端仅做透传。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 直播间唯一标识，在调用CreateRoom返回。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 弹幕发送者的用户ID，最大长度不超过32个字节。
-	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	// 弹幕消息发送者的昵称。
-	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
+	AppId      *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Content    *string            `json:"Content,omitempty" xml:"Content,omitempty"`
+	Extension  map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	RoomId     *string            `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	SenderId   *string            `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderNick *string            `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
 }
 
 func (s SendCommentRequest) String() string {
@@ -7280,18 +6885,12 @@ func (s *SendCommentRequest) SetSenderNick(v string) *SendCommentRequest {
 }
 
 type SendCommentShrinkRequest struct {
-	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 发送的文本内容。最大的长度不超过256个字节。
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 扩展字段，服务端仅做透传。
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 直播间唯一标识，在调用CreateRoom返回。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 弹幕发送者的用户ID，最大长度不超过32个字节。
-	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	// 弹幕消息发送者的昵称。
-	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
+	RoomId          *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	SenderId        *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderNick      *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
 }
 
 func (s SendCommentShrinkRequest) String() string {
@@ -7333,10 +6932,8 @@ func (s *SendCommentShrinkRequest) SetSenderNick(v string) *SendCommentShrinkReq
 }
 
 type SendCommentResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调用发送直播间弹幕的返回结果。
-	Result *SendCommentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *SendCommentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s SendCommentResponseBody) String() string {
@@ -7358,7 +6955,6 @@ func (s *SendCommentResponseBody) SetResult(v *SendCommentResponseBodyResult) *S
 }
 
 type SendCommentResponseBodyResult struct {
-	// 返回的弹幕数据模型。
 	CommentVO *SendCommentResponseBodyResultCommentVO `json:"CommentVO,omitempty" xml:"CommentVO,omitempty" type:"Struct"`
 }
 
@@ -7376,18 +6972,12 @@ func (s *SendCommentResponseBodyResult) SetCommentVO(v *SendCommentResponseBodyR
 }
 
 type SendCommentResponseBodyResultCommentVO struct {
-	// 弹幕的唯一ID。
-	CommentId *string `json:"CommentId,omitempty" xml:"CommentId,omitempty"`
-	// 弹幕的内容。
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 弹幕的创建时间，Unix时间戳，单位：毫秒。
-	CreateAt *int64 `json:"CreateAt,omitempty" xml:"CreateAt,omitempty"`
-	// 扩展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 弹幕的发送者ID标识。
-	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	// 弹幕发送者的昵称。
-	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
+	CommentId  *string            `json:"CommentId,omitempty" xml:"CommentId,omitempty"`
+	Content    *string            `json:"Content,omitempty" xml:"Content,omitempty"`
+	CreateAt   *int64             `json:"CreateAt,omitempty" xml:"CreateAt,omitempty"`
+	Extension  map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	SenderId   *string            `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderNick *string            `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
 }
 
 func (s SendCommentResponseBodyResultCommentVO) String() string {
@@ -7458,11 +7048,8 @@ func (s *SendCommentResponse) SetBody(v *SendCommentResponseBody) *SendCommentRe
 }
 
 type SendCustomMessageToAllRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 消息体内容。
-	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	// 房间唯一标识，由调用CreateRoom返回。
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Body   *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 }
 
@@ -7490,10 +7077,8 @@ func (s *SendCustomMessageToAllRequest) SetRoomId(v string) *SendCustomMessageTo
 }
 
 type SendCustomMessageToAllResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API请求的返回结果结构体。
-	Result *SendCustomMessageToAllResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *SendCustomMessageToAllResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s SendCustomMessageToAllResponseBody) String() string {
@@ -7515,7 +7100,6 @@ func (s *SendCustomMessageToAllResponseBody) SetResult(v *SendCustomMessageToAll
 }
 
 type SendCustomMessageToAllResponseBodyResult struct {
-	// 消息的唯一ID标识。由数字、大小写字母组成，长度不超过20。
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
@@ -7562,14 +7146,10 @@ func (s *SendCustomMessageToAllResponse) SetBody(v *SendCustomMessageToAllRespon
 }
 
 type SendCustomMessageToUsersRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 消息体内容。
-	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	// 消息指定的接收人ID列表。
+	AppId        *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Body         *string   `json:"Body,omitempty" xml:"Body,omitempty"`
 	ReceiverList []*string `json:"ReceiverList,omitempty" xml:"ReceiverList,omitempty" type:"Repeated"`
-	// 房间唯一标识，由调用CreateRoom返回。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	RoomId       *string   `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 }
 
 func (s SendCustomMessageToUsersRequest) String() string {
@@ -7601,10 +7181,8 @@ func (s *SendCustomMessageToUsersRequest) SetRoomId(v string) *SendCustomMessage
 }
 
 type SendCustomMessageToUsersResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API请求的返回结果结构体。
-	Result *SendCustomMessageToUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *SendCustomMessageToUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s SendCustomMessageToUsersResponseBody) String() string {
@@ -7626,7 +7204,6 @@ func (s *SendCustomMessageToUsersResponseBody) SetResult(v *SendCustomMessageToU
 }
 
 type SendCustomMessageToUsersResponseBodyResult struct {
-	// 消息的唯一ID标识。由数字、大小写字母组成，长度不超过20。
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
@@ -7673,11 +7250,8 @@ func (s *SendCustomMessageToUsersResponse) SetBody(v *SendCustomMessageToUsersRe
 }
 
 type SetUserAdminRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 用户ID
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -7705,7 +7279,6 @@ func (s *SetUserAdminRequest) SetUserId(v string) *SetUserAdminRequest {
 }
 
 type SetUserAdminResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7752,12 +7325,9 @@ func (s *SetUserAdminResponse) SetBody(v *SetUserAdminResponseBody) *SetUserAdmi
 }
 
 type StopClassRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 课堂唯一标识。
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	// 操作者用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s StopClassRequest) String() string {
@@ -7784,7 +7354,6 @@ func (s *StopClassRequest) SetUserId(v string) *StopClassRequest {
 }
 
 type StopClassResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7831,13 +7400,9 @@ func (s *StopClassResponse) SetBody(v *StopClassResponseBody) *StopClassResponse
 }
 
 type StopLiveRequest struct {
-	// 租户名
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 直播资源的唯一标识ID
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 房间ID，最大长度36位
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 创建直播用户ID
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -7870,7 +7435,6 @@ func (s *StopLiveRequest) SetUserId(v string) *StopLiveRequest {
 }
 
 type StopLiveResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7917,11 +7481,8 @@ func (s *StopLiveResponse) SetBody(v *StopLiveResponseBody) *StopLiveResponse {
 }
 
 type StopLiveRoomRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 直播ID。
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 操作人ID。
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -7949,7 +7510,6 @@ func (s *StopLiveRoomRequest) SetUserId(v string) *StopLiveRoomRequest {
 }
 
 type StopLiveRoomResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7996,16 +7556,11 @@ func (s *StopLiveRoomResponse) SetBody(v *StopLiveRoomResponseBody) *StopLiveRoo
 }
 
 type UpdateClassRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 课堂唯一标识。
-	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	// 创建人用户昵称，1~32个字符。
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ClassId        *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
 	CreateNickname *string `json:"CreateNickname,omitempty" xml:"CreateNickname,omitempty"`
-	// 创建人用户ID，仅支持中英文数字，下划线，中划线，1~36个字符。
-	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// 课堂标题，1~32个字符。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	CreateUserId   *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateClassRequest) String() string {
@@ -8042,7 +7597,6 @@ func (s *UpdateClassRequest) SetTitle(v string) *UpdateClassRequest {
 }
 
 type UpdateClassResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8089,12 +7643,9 @@ func (s *UpdateClassResponse) SetBody(v *UpdateClassResponseBody) *UpdateClassRe
 }
 
 type UpdateLiveRequest struct {
-	// 直播简介，支持中英文，最大长度2048位
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// 直播资源的唯一标识ID
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 直播标题，支持中英文，最大长度256位
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	LiveId       *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateLiveRequest) String() string {
@@ -8121,7 +7672,6 @@ func (s *UpdateLiveRequest) SetTitle(v string) *UpdateLiveRequest {
 }
 
 type UpdateLiveResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8168,24 +7718,15 @@ func (s *UpdateLiveResponse) SetBody(v *UpdateLiveResponseBody) *UpdateLiveRespo
 }
 
 type UpdateLiveRoomRequest struct {
-	// 主播id，仅支持英文和数字，最大长度36位。
-	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
-	// 主播昵称。
-	AnchorNick *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 封面，支持图片地址链接格式
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 拓展字段，按需传递，需要额外记录的房间属性。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 标题，支持中英文，最大长度32位。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 操作人ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AnchorId   *string            `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	AnchorNick *string            `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
+	AppId      *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CoverUrl   *string            `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	Extension  map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	LiveId     *string            `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	Notice     *string            `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	Title      *string            `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserId     *string            `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateLiveRoomRequest) String() string {
@@ -8242,24 +7783,15 @@ func (s *UpdateLiveRoomRequest) SetUserId(v string) *UpdateLiveRoomRequest {
 }
 
 type UpdateLiveRoomShrinkRequest struct {
-	// 主播id，仅支持英文和数字，最大长度36位。
-	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
-	// 主播昵称。
-	AnchorNick *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 封面，支持图片地址链接格式
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 拓展字段，按需传递，需要额外记录的房间属性。
+	AnchorId        *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	AnchorNick      *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CoverUrl        *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
 	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 标题，支持中英文，最大长度32位。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 操作人ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	LiveId          *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	Notice          *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateLiveRoomShrinkRequest) String() string {
@@ -8316,7 +7848,6 @@ func (s *UpdateLiveRoomShrinkRequest) SetUserId(v string) *UpdateLiveRoomShrinkR
 }
 
 type UpdateLiveRoomResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8363,18 +7894,12 @@ func (s *UpdateLiveRoomResponse) SetBody(v *UpdateLiveRoomResponseBody) *UpdateL
 }
 
 type UpdateRoomRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 拓展字段，按需传递，需要额外记录的房间属性。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 房间公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 房间唯一标识。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 房主用户id，仅支持英文和数字，最大长度36位。
-	RoomOwnerId *string `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
-	// 房间标题，支持中英文，最大长度32位。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	AppId       *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Extension   map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	Notice      *string            `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	RoomId      *string            `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	RoomOwnerId *string            `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
+	Title       *string            `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateRoomRequest) String() string {
@@ -8416,18 +7941,12 @@ func (s *UpdateRoomRequest) SetTitle(v string) *UpdateRoomRequest {
 }
 
 type UpdateRoomShrinkRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 拓展字段，按需传递，需要额外记录的房间属性。
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 房间公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 房间唯一标识。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 房主用户id，仅支持英文和数字，最大长度36位。
-	RoomOwnerId *string `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
-	// 房间标题，支持中英文，最大长度32位。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Notice          *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	RoomId          *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	RoomOwnerId     *string `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateRoomShrinkRequest) String() string {
@@ -8469,7 +7988,6 @@ func (s *UpdateRoomShrinkRequest) SetTitle(v string) *UpdateRoomShrinkRequest {
 }
 
 type UpdateRoomResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8516,20 +8034,13 @@ func (s *UpdateRoomResponse) SetBody(v *UpdateRoomResponseBody) *UpdateRoomRespo
 }
 
 type UpdateShareScreenLayoutRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 课堂唯一标识，由调用CreateClass返回。
-	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	// 是否开启叠加老师画面
-	EnableOverlay *bool `json:"EnableOverlay,omitempty" xml:"EnableOverlay,omitempty"`
-	// 叠加画面高度，归一化为1
+	AppId         *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ClassId       *string  `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	EnableOverlay *bool    `json:"EnableOverlay,omitempty" xml:"EnableOverlay,omitempty"`
 	OverlayHeight *float32 `json:"OverlayHeight,omitempty" xml:"OverlayHeight,omitempty"`
-	// 叠加画面宽度，归一化为1
-	OverlayWidth *float32 `json:"OverlayWidth,omitempty" xml:"OverlayWidth,omitempty"`
-	// 叠加画面X坐标，归一化为1
-	OverlayX *float32 `json:"OverlayX,omitempty" xml:"OverlayX,omitempty"`
-	// 叠加画面Y坐标，归一化为1
-	OverlayY *float32 `json:"OverlayY,omitempty" xml:"OverlayY,omitempty"`
+	OverlayWidth  *float32 `json:"OverlayWidth,omitempty" xml:"OverlayWidth,omitempty"`
+	OverlayX      *float32 `json:"OverlayX,omitempty" xml:"OverlayX,omitempty"`
+	OverlayY      *float32 `json:"OverlayY,omitempty" xml:"OverlayY,omitempty"`
 }
 
 func (s UpdateShareScreenLayoutRequest) String() string {
@@ -8576,7 +8087,6 @@ func (s *UpdateShareScreenLayoutRequest) SetOverlayY(v float32) *UpdateShareScre
 }
 
 type UpdateShareScreenLayoutResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9606,6 +9116,54 @@ func (client *Client) DeleteLive(request *DeleteLiveRequest) (_result *DeleteLiv
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLiveResponse{}
 	_body, _err := client.DeleteLiveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteLiveFilesByIdWithOptions(request *DeleteLiveFilesByIdRequest, runtime *util.RuntimeOptions) (_result *DeleteLiveFilesByIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LiveId)) {
+		body["LiveId"] = request.LiveId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLiveFilesById"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLiveFilesByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLiveFilesById(request *DeleteLiveFilesByIdRequest) (_result *DeleteLiveFilesByIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLiveFilesByIdResponse{}
+	_body, _err := client.DeleteLiveFilesByIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10668,6 +10226,54 @@ func (client *Client) ListConferenceUsers(request *ListConferenceUsersRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConferenceUsersResponse{}
 	_body, _err := client.ListConferenceUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListLiveFilesWithOptions(request *ListLiveFilesRequest, runtime *util.RuntimeOptions) (_result *ListLiveFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LiveId)) {
+		body["LiveId"] = request.LiveId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLiveFiles"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLiveFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLiveFiles(request *ListLiveFilesRequest) (_result *ListLiveFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLiveFilesResponse{}
+	_body, _err := client.ListLiveFilesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
