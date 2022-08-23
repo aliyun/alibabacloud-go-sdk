@@ -275,6 +275,8 @@ type ApplyAddRequest struct {
 	HotelShare                *ApplyAddRequestHotelShare               `json:"hotel_share,omitempty" xml:"hotel_share,omitempty" type:"Struct"`
 	InternationalFlightCabins *string                                  `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
 	ItineraryList             []*ApplyAddRequestItineraryList          `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	ItineraryRule             *int32                                   `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
+	ItinerarySetList          []*ApplyAddRequestItinerarySetList       `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
 	LimitTraveler             *int32                                   `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status                    *int32                                   `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartApplyId          *string                                  `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
@@ -358,6 +360,16 @@ func (s *ApplyAddRequest) SetInternationalFlightCabins(v string) *ApplyAddReques
 
 func (s *ApplyAddRequest) SetItineraryList(v []*ApplyAddRequestItineraryList) *ApplyAddRequest {
 	s.ItineraryList = v
+	return s
+}
+
+func (s *ApplyAddRequest) SetItineraryRule(v int32) *ApplyAddRequest {
+	s.ItineraryRule = &v
+	return s
+}
+
+func (s *ApplyAddRequest) SetItinerarySetList(v []*ApplyAddRequestItinerarySetList) *ApplyAddRequest {
+	s.ItinerarySetList = v
 	return s
 }
 
@@ -676,6 +688,89 @@ func (s *ApplyAddRequestItineraryList) SetTripWay(v int32) *ApplyAddRequestItine
 	return s
 }
 
+type ApplyAddRequestItinerarySetList struct {
+	ArrDate               *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CityCodeSet           *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	CitySet               *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
+	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	DepDate               *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceId             *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	ItineraryId           *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	TrafficType           *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+}
+
+func (s ApplyAddRequestItinerarySetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAddRequestItinerarySetList) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetArrDate(v string) *ApplyAddRequestItinerarySetList {
+	s.ArrDate = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetCityCodeSet(v string) *ApplyAddRequestItinerarySetList {
+	s.CityCodeSet = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetCitySet(v string) *ApplyAddRequestItinerarySetList {
+	s.CitySet = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetCostCenterId(v int64) *ApplyAddRequestItinerarySetList {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetDepDate(v string) *ApplyAddRequestItinerarySetList {
+	s.DepDate = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetInvoiceId(v int64) *ApplyAddRequestItinerarySetList {
+	s.InvoiceId = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetItineraryId(v string) *ApplyAddRequestItinerarySetList {
+	s.ItineraryId = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetProjectCode(v string) *ApplyAddRequestItinerarySetList {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetProjectTitle(v string) *ApplyAddRequestItinerarySetList {
+	s.ProjectTitle = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetThirdPartInvoiceId(v string) *ApplyAddRequestItinerarySetList {
+	s.ThirdPartInvoiceId = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetThirdpartCostCenterId(v string) *ApplyAddRequestItinerarySetList {
+	s.ThirdpartCostCenterId = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetTrafficType(v int32) *ApplyAddRequestItinerarySetList {
+	s.TrafficType = &v
+	return s
+}
+
 type ApplyAddRequestTravelerList struct {
 	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
@@ -800,6 +895,8 @@ type ApplyAddShrinkRequest struct {
 	HotelShareShrink               *string `json:"hotel_share,omitempty" xml:"hotel_share,omitempty"`
 	InternationalFlightCabins      *string `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
 	ItineraryListShrink            *string `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty"`
+	ItineraryRule                  *int32  `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
+	ItinerarySetListShrink         *string `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty"`
 	LimitTraveler                  *int32  `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status                         *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartApplyId               *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
@@ -883,6 +980,16 @@ func (s *ApplyAddShrinkRequest) SetInternationalFlightCabins(v string) *ApplyAdd
 
 func (s *ApplyAddShrinkRequest) SetItineraryListShrink(v string) *ApplyAddShrinkRequest {
 	s.ItineraryListShrink = &v
+	return s
+}
+
+func (s *ApplyAddShrinkRequest) SetItineraryRule(v int32) *ApplyAddShrinkRequest {
+	s.ItineraryRule = &v
+	return s
+}
+
+func (s *ApplyAddShrinkRequest) SetItinerarySetListShrink(v string) *ApplyAddShrinkRequest {
+	s.ItinerarySetListShrink = &v
 	return s
 }
 
@@ -1209,6 +1316,7 @@ type ApplyListQueryResponseBodyModuleList struct {
 	Id                   *int64                                                      `json:"id,omitempty" xml:"id,omitempty"`
 	ItineraryList        []*ApplyListQueryResponseBodyModuleListItineraryList        `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
 	ItineraryRule        *int32                                                      `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
+	ItinerarySetList     []*ApplyListQueryResponseBodyModuleListItinerarySetList     `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
 	Status               *int32                                                      `json:"status,omitempty" xml:"status,omitempty"`
 	StatusDesc           *string                                                     `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
 	ThirdpartBusinessId  *string                                                     `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
@@ -1293,6 +1401,11 @@ func (s *ApplyListQueryResponseBodyModuleList) SetItineraryList(v []*ApplyListQu
 
 func (s *ApplyListQueryResponseBodyModuleList) SetItineraryRule(v int32) *ApplyListQueryResponseBodyModuleList {
 	s.ItineraryRule = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleList) SetItinerarySetList(v []*ApplyListQueryResponseBodyModuleListItinerarySetList) *ApplyListQueryResponseBodyModuleList {
+	s.ItinerarySetList = v
 	return s
 }
 
@@ -1503,6 +1616,77 @@ func (s *ApplyListQueryResponseBodyModuleListItineraryList) SetTripWay(v int32) 
 	return s
 }
 
+type ApplyListQueryResponseBodyModuleListItinerarySetList struct {
+	ArrDate        *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CityCodeSet    *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	CitySet        *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
+	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	DepDate        *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceName    *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
+	ItineraryId    *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ProjectCode    *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle   *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	TrafficType    *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+}
+
+func (s ApplyListQueryResponseBodyModuleListItinerarySetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyListQueryResponseBodyModuleListItinerarySetList) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetArrDate(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
+	s.ArrDate = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetCityCodeSet(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
+	s.CityCodeSet = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetCitySet(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
+	s.CitySet = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetCostCenterName(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetDepDate(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
+	s.DepDate = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetInvoiceName(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
+	s.InvoiceName = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetItineraryId(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
+	s.ItineraryId = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetProjectCode(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetProjectTitle(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
+	s.ProjectTitle = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetTrafficType(v int32) *ApplyListQueryResponseBodyModuleListItinerarySetList {
+	s.TrafficType = &v
+	return s
+}
+
 type ApplyListQueryResponseBodyModuleListTravelerList struct {
 	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
@@ -1567,6 +1751,8 @@ type ApplyModifyRequest struct {
 	HotelBudget              *int64                                      `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
 	HotelShare               *ApplyModifyRequestHotelShare               `json:"hotel_share,omitempty" xml:"hotel_share,omitempty" type:"Struct"`
 	ItineraryList            []*ApplyModifyRequestItineraryList          `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	ItineraryRule            *int32                                      `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
+	ItinerarySetList         []*ApplyModifyRequestItinerarySetList       `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
 	LimitTraveler            *int32                                      `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status                   *int32                                      `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartApplyId         *string                                     `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
@@ -1644,6 +1830,16 @@ func (s *ApplyModifyRequest) SetHotelShare(v *ApplyModifyRequestHotelShare) *App
 
 func (s *ApplyModifyRequest) SetItineraryList(v []*ApplyModifyRequestItineraryList) *ApplyModifyRequest {
 	s.ItineraryList = v
+	return s
+}
+
+func (s *ApplyModifyRequest) SetItineraryRule(v int32) *ApplyModifyRequest {
+	s.ItineraryRule = &v
+	return s
+}
+
+func (s *ApplyModifyRequest) SetItinerarySetList(v []*ApplyModifyRequestItinerarySetList) *ApplyModifyRequest {
+	s.ItinerarySetList = v
 	return s
 }
 
@@ -1957,6 +2153,89 @@ func (s *ApplyModifyRequestItineraryList) SetTripWay(v int32) *ApplyModifyReques
 	return s
 }
 
+type ApplyModifyRequestItinerarySetList struct {
+	ArrDate               *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CityCodeSet           *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	CitySet               *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
+	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	DepDate               *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceId             *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	ItineraryId           *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	TrafficType           *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+}
+
+func (s ApplyModifyRequestItinerarySetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyModifyRequestItinerarySetList) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyModifyRequestItinerarySetList) SetArrDate(v string) *ApplyModifyRequestItinerarySetList {
+	s.ArrDate = &v
+	return s
+}
+
+func (s *ApplyModifyRequestItinerarySetList) SetCityCodeSet(v string) *ApplyModifyRequestItinerarySetList {
+	s.CityCodeSet = &v
+	return s
+}
+
+func (s *ApplyModifyRequestItinerarySetList) SetCitySet(v string) *ApplyModifyRequestItinerarySetList {
+	s.CitySet = &v
+	return s
+}
+
+func (s *ApplyModifyRequestItinerarySetList) SetCostCenterId(v int64) *ApplyModifyRequestItinerarySetList {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *ApplyModifyRequestItinerarySetList) SetDepDate(v string) *ApplyModifyRequestItinerarySetList {
+	s.DepDate = &v
+	return s
+}
+
+func (s *ApplyModifyRequestItinerarySetList) SetInvoiceId(v int64) *ApplyModifyRequestItinerarySetList {
+	s.InvoiceId = &v
+	return s
+}
+
+func (s *ApplyModifyRequestItinerarySetList) SetItineraryId(v string) *ApplyModifyRequestItinerarySetList {
+	s.ItineraryId = &v
+	return s
+}
+
+func (s *ApplyModifyRequestItinerarySetList) SetProjectCode(v string) *ApplyModifyRequestItinerarySetList {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestItinerarySetList) SetProjectTitle(v string) *ApplyModifyRequestItinerarySetList {
+	s.ProjectTitle = &v
+	return s
+}
+
+func (s *ApplyModifyRequestItinerarySetList) SetThirdPartInvoiceId(v string) *ApplyModifyRequestItinerarySetList {
+	s.ThirdPartInvoiceId = &v
+	return s
+}
+
+func (s *ApplyModifyRequestItinerarySetList) SetThirdpartCostCenterId(v string) *ApplyModifyRequestItinerarySetList {
+	s.ThirdpartCostCenterId = &v
+	return s
+}
+
+func (s *ApplyModifyRequestItinerarySetList) SetTrafficType(v int32) *ApplyModifyRequestItinerarySetList {
+	s.TrafficType = &v
+	return s
+}
+
 type ApplyModifyRequestTravelerList struct {
 	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
@@ -2080,6 +2359,8 @@ type ApplyModifyShrinkRequest struct {
 	HotelBudget                    *int64  `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
 	HotelShareShrink               *string `json:"hotel_share,omitempty" xml:"hotel_share,omitempty"`
 	ItineraryListShrink            *string `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty"`
+	ItineraryRule                  *int32  `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
+	ItinerarySetListShrink         *string `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty"`
 	LimitTraveler                  *int32  `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status                         *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartApplyId               *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
@@ -2157,6 +2438,16 @@ func (s *ApplyModifyShrinkRequest) SetHotelShareShrink(v string) *ApplyModifyShr
 
 func (s *ApplyModifyShrinkRequest) SetItineraryListShrink(v string) *ApplyModifyShrinkRequest {
 	s.ItineraryListShrink = &v
+	return s
+}
+
+func (s *ApplyModifyShrinkRequest) SetItineraryRule(v int32) *ApplyModifyShrinkRequest {
+	s.ItineraryRule = &v
+	return s
+}
+
+func (s *ApplyModifyShrinkRequest) SetItinerarySetListShrink(v string) *ApplyModifyShrinkRequest {
+	s.ItinerarySetListShrink = &v
 	return s
 }
 
@@ -2440,6 +2731,7 @@ type ApplyQueryResponseBodyModule struct {
 	Id                   *int64                                              `json:"id,omitempty" xml:"id,omitempty"`
 	ItineraryList        []*ApplyQueryResponseBodyModuleItineraryList        `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
 	ItineraryRule        *int32                                              `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
+	ItinerarySetList     []*ApplyQueryResponseBodyModuleItinerarySetList     `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
 	LimitTraveler        *int32                                              `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status               *int32                                              `json:"status,omitempty" xml:"status,omitempty"`
 	StatusDesc           *string                                             `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
@@ -2548,6 +2840,11 @@ func (s *ApplyQueryResponseBodyModule) SetItineraryList(v []*ApplyQueryResponseB
 
 func (s *ApplyQueryResponseBodyModule) SetItineraryRule(v int32) *ApplyQueryResponseBodyModule {
 	s.ItineraryRule = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModule) SetItinerarySetList(v []*ApplyQueryResponseBodyModuleItinerarySetList) *ApplyQueryResponseBodyModule {
+	s.ItinerarySetList = v
 	return s
 }
 
@@ -2881,6 +3178,77 @@ func (s *ApplyQueryResponseBodyModuleItineraryList) SetTrafficType(v int32) *App
 
 func (s *ApplyQueryResponseBodyModuleItineraryList) SetTripWay(v int32) *ApplyQueryResponseBodyModuleItineraryList {
 	s.TripWay = &v
+	return s
+}
+
+type ApplyQueryResponseBodyModuleItinerarySetList struct {
+	ArrDate        *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CityCodeSet    *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	CitySet        *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
+	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	DepDate        *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceName    *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
+	ItineraryId    *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ProjectCode    *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle   *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	TrafficType    *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+}
+
+func (s ApplyQueryResponseBodyModuleItinerarySetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyQueryResponseBodyModuleItinerarySetList) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetArrDate(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.ArrDate = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetCityCodeSet(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.CityCodeSet = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetCitySet(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.CitySet = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetCostCenterName(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetDepDate(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.DepDate = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetInvoiceName(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.InvoiceName = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetItineraryId(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.ItineraryId = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetProjectCode(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetProjectTitle(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.ProjectTitle = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetTrafficType(v int32) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.TrafficType = &v
 	return s
 }
 
@@ -13860,6 +14228,10 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers map[s
 		request.ItineraryListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItineraryList, tea.String("itinerary_list"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.ItinerarySetList)) {
+		request.ItinerarySetListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItinerarySetList, tea.String("itinerary_set_list"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.TravelerList)) {
 		request.TravelerListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TravelerList, tea.String("traveler_list"), tea.String("json"))
 	}
@@ -13916,6 +14288,14 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers map[s
 
 	if !tea.BoolValue(util.IsUnset(request.ItineraryListShrink)) {
 		body["itinerary_list"] = request.ItineraryListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItineraryRule)) {
+		body["itinerary_rule"] = request.ItineraryRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItinerarySetListShrink)) {
+		body["itinerary_set_list"] = request.ItinerarySetListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LimitTraveler)) {
@@ -14128,6 +14508,10 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 		request.ItineraryListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItineraryList, tea.String("itinerary_list"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.ItinerarySetList)) {
+		request.ItinerarySetListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItinerarySetList, tea.String("itinerary_set_list"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.TravelerList)) {
 		request.TravelerListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TravelerList, tea.String("traveler_list"), tea.String("json"))
 	}
@@ -14179,6 +14563,14 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 
 	if !tea.BoolValue(util.IsUnset(request.ItineraryListShrink)) {
 		body["itinerary_list"] = request.ItineraryListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItineraryRule)) {
+		body["itinerary_rule"] = request.ItineraryRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItinerarySetListShrink)) {
+		body["itinerary_set_list"] = request.ItinerarySetListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LimitTraveler)) {
