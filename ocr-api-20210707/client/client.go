@@ -14,26 +14,16 @@ import (
 )
 
 type RecognizeAdvancedRequest struct {
-	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 是否按顺序输出文字块。false表示从左往右，从上到下的顺序；true表示从上到下，从左往右的顺序
-	NeedSortPage *bool `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
-	// 是否需要去除印章功能，默认不需要。true：需要 false：不需要
-	NoStamp *bool `json:"NoStamp,omitempty" xml:"NoStamp,omitempty"`
-	// 是否输出单字识别结果
-	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	// 是否需要图案检测功能，默认不需要。true：需要 false：不需要
-	OutputFigure *bool `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	// 是否输出表格识别结果，包含单元格信息
-	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 是否需要分段功能，默认不需要。true：需要 false：不需要
-	Paragraph *bool `json:"Paragraph,omitempty" xml:"Paragraph,omitempty"`
-	// 是否需要成行返回功能，默认不需要
-	Row *bool `json:"Row,omitempty" xml:"Row,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	NeedSortPage   *bool     `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
+	NoStamp        *bool     `json:"NoStamp,omitempty" xml:"NoStamp,omitempty"`
+	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	OutputFigure   *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	Paragraph      *bool     `json:"Paragraph,omitempty" xml:"Paragraph,omitempty"`
+	Row            *bool     `json:"Row,omitempty" xml:"Row,omitempty"`
+	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeAdvancedRequest) String() string {
@@ -95,13 +85,9 @@ func (s *RecognizeAdvancedRequest) SetBody(v io.Reader) *RecognizeAdvancedReques
 }
 
 type RecognizeAdvancedResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -163,9 +149,7 @@ func (s *RecognizeAdvancedResponse) SetBody(v *RecognizeAdvancedResponseBody) *R
 }
 
 type RecognizeAirItineraryRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -252,9 +236,7 @@ func (s *RecognizeAirItineraryResponse) SetBody(v *RecognizeAirItineraryResponse
 }
 
 type RecognizeBankAcceptanceRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -277,13 +259,9 @@ func (s *RecognizeBankAcceptanceRequest) SetBody(v io.Reader) *RecognizeBankAcce
 }
 
 type RecognizeBankAcceptanceResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -345,9 +323,7 @@ func (s *RecognizeBankAcceptanceResponse) SetBody(v *RecognizeBankAcceptanceResp
 }
 
 type RecognizeBankAccountLicenseRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -434,9 +410,7 @@ func (s *RecognizeBankAccountLicenseResponse) SetBody(v *RecognizeBankAccountLic
 }
 
 type RecognizeBankCardRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -523,9 +497,7 @@ func (s *RecognizeBankCardResponse) SetBody(v *RecognizeBankCardResponseBody) *R
 }
 
 type RecognizeBasicRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -611,145 +583,8 @@ func (s *RecognizeBasicResponse) SetBody(v *RecognizeBasicResponseBody) *Recogni
 	return s
 }
 
-type RecognizeBatchRecognizeRequest struct {
-	// 图片名称
-	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// 图片识别op类型
-	ImageOp *string `json:"ImageOp,omitempty" xml:"ImageOp,omitempty"`
-	// 图片存入oss中的key
-	ImageOssKey *string `json:"ImageOssKey,omitempty" xml:"ImageOssKey,omitempty"`
-	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 是否按顺序输出文字块。false表示从左往右，从上到下的顺序；true表示从上到下，从左往右的顺序
-	NeedSortPage *bool `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
-	// 是否输出单字识别结果
-	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	// 是否输出表格识别结果，包含单元格信息
-	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-}
-
-func (s RecognizeBatchRecognizeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeBatchRecognizeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeBatchRecognizeRequest) SetImageName(v string) *RecognizeBatchRecognizeRequest {
-	s.ImageName = &v
-	return s
-}
-
-func (s *RecognizeBatchRecognizeRequest) SetImageOp(v string) *RecognizeBatchRecognizeRequest {
-	s.ImageOp = &v
-	return s
-}
-
-func (s *RecognizeBatchRecognizeRequest) SetImageOssKey(v string) *RecognizeBatchRecognizeRequest {
-	s.ImageOssKey = &v
-	return s
-}
-
-func (s *RecognizeBatchRecognizeRequest) SetNeedRotate(v bool) *RecognizeBatchRecognizeRequest {
-	s.NeedRotate = &v
-	return s
-}
-
-func (s *RecognizeBatchRecognizeRequest) SetNeedSortPage(v bool) *RecognizeBatchRecognizeRequest {
-	s.NeedSortPage = &v
-	return s
-}
-
-func (s *RecognizeBatchRecognizeRequest) SetOutputCharInfo(v bool) *RecognizeBatchRecognizeRequest {
-	s.OutputCharInfo = &v
-	return s
-}
-
-func (s *RecognizeBatchRecognizeRequest) SetOutputTable(v bool) *RecognizeBatchRecognizeRequest {
-	s.OutputTable = &v
-	return s
-}
-
-func (s *RecognizeBatchRecognizeRequest) SetUrl(v string) *RecognizeBatchRecognizeRequest {
-	s.Url = &v
-	return s
-}
-
-type RecognizeBatchRecognizeResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s RecognizeBatchRecognizeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeBatchRecognizeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeBatchRecognizeResponseBody) SetCode(v string) *RecognizeBatchRecognizeResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *RecognizeBatchRecognizeResponseBody) SetData(v string) *RecognizeBatchRecognizeResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *RecognizeBatchRecognizeResponseBody) SetMessage(v string) *RecognizeBatchRecognizeResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *RecognizeBatchRecognizeResponseBody) SetRequestId(v string) *RecognizeBatchRecognizeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type RecognizeBatchRecognizeResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeBatchRecognizeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RecognizeBatchRecognizeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeBatchRecognizeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeBatchRecognizeResponse) SetHeaders(v map[string]*string) *RecognizeBatchRecognizeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RecognizeBatchRecognizeResponse) SetStatusCode(v int32) *RecognizeBatchRecognizeResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *RecognizeBatchRecognizeResponse) SetBody(v *RecognizeBatchRecognizeResponseBody) *RecognizeBatchRecognizeResponse {
-	s.Body = v
-	return s
-}
-
 type RecognizeBirthCertificationRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -836,9 +671,7 @@ func (s *RecognizeBirthCertificationResponse) SetBody(v *RecognizeBirthCertifica
 }
 
 type RecognizeBusShipTicketRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -861,13 +694,9 @@ func (s *RecognizeBusShipTicketRequest) SetBody(v io.Reader) *RecognizeBusShipTi
 }
 
 type RecognizeBusShipTicketResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -929,9 +758,7 @@ func (s *RecognizeBusShipTicketResponse) SetBody(v *RecognizeBusShipTicketRespon
 }
 
 type RecognizeBusinessLicenseRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1018,9 +845,7 @@ func (s *RecognizeBusinessLicenseResponse) SetBody(v *RecognizeBusinessLicenseRe
 }
 
 type RecognizeCarInvoiceRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1107,9 +932,7 @@ func (s *RecognizeCarInvoiceResponse) SetBody(v *RecognizeCarInvoiceResponseBody
 }
 
 type RecognizeCarNumberRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1196,9 +1019,7 @@ func (s *RecognizeCarNumberResponse) SetBody(v *RecognizeCarNumberResponseBody) 
 }
 
 type RecognizeCarVinCodeRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1285,12 +1106,9 @@ func (s *RecognizeCarVinCodeResponse) SetBody(v *RecognizeCarVinCodeResponseBody
 }
 
 type RecognizeChinesePassportRequest struct {
-	// 是否需要图案检测功能，默认需要
-	OutputFigure *bool `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	OutputFigure *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	Url          *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body         io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeChinesePassportRequest) String() string {
@@ -1317,13 +1135,9 @@ func (s *RecognizeChinesePassportRequest) SetBody(v io.Reader) *RecognizeChinese
 }
 
 type RecognizeChinesePassportResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1385,9 +1199,7 @@ func (s *RecognizeChinesePassportResponse) SetBody(v *RecognizeChinesePassportRe
 }
 
 type RecognizeCommonPrintedInvoiceRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1410,13 +1222,9 @@ func (s *RecognizeCommonPrintedInvoiceRequest) SetBody(v io.Reader) *RecognizeCo
 }
 
 type RecognizeCommonPrintedInvoiceResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1478,9 +1286,7 @@ func (s *RecognizeCommonPrintedInvoiceResponse) SetBody(v *RecognizeCommonPrinte
 }
 
 type RecognizeCosmeticProduceLicenseRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1567,11 +1373,9 @@ func (s *RecognizeCosmeticProduceLicenseResponse) SetBody(v *RecognizeCosmeticPr
 }
 
 type RecognizeCovidTestReportRequest struct {
-	MultipleResult *bool `json:"MultipleResult,omitempty" xml:"MultipleResult,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	MultipleResult *bool     `json:"MultipleResult,omitempty" xml:"MultipleResult,omitempty"`
+	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeCovidTestReportRequest) String() string {
@@ -1598,13 +1402,9 @@ func (s *RecognizeCovidTestReportRequest) SetBody(v io.Reader) *RecognizeCovidTe
 }
 
 type RecognizeCovidTestReportResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1666,9 +1466,7 @@ func (s *RecognizeCovidTestReportResponse) SetBody(v *RecognizeCovidTestReportRe
 }
 
 type RecognizeCtwoMedicalDeviceManageLicenseRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1754,95 +1552,149 @@ func (s *RecognizeCtwoMedicalDeviceManageLicenseResponse) SetBody(v *RecognizeCt
 	return s
 }
 
-type RecognizeDeleteExcelRecordRequest struct {
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+type RecognizeDocumentStructureRequest struct {
+	NeedRotate        *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	NeedSortPage      *bool     `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
+	NoStamp           *bool     `json:"NoStamp,omitempty" xml:"NoStamp,omitempty"`
+	OutputCharInfo    *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	OutputTable       *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	Page              *bool     `json:"Page,omitempty" xml:"Page,omitempty"`
+	Paragraph         *bool     `json:"Paragraph,omitempty" xml:"Paragraph,omitempty"`
+	Row               *bool     `json:"Row,omitempty" xml:"Row,omitempty"`
+	Url               *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	UseNewStyleOutput *bool     `json:"UseNewStyleOutput,omitempty" xml:"UseNewStyleOutput,omitempty"`
+	Body              io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
-func (s RecognizeDeleteExcelRecordRequest) String() string {
+func (s RecognizeDocumentStructureRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RecognizeDeleteExcelRecordRequest) GoString() string {
+func (s RecognizeDocumentStructureRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeDeleteExcelRecordRequest) SetId(v string) *RecognizeDeleteExcelRecordRequest {
-	s.Id = &v
+func (s *RecognizeDocumentStructureRequest) SetNeedRotate(v bool) *RecognizeDocumentStructureRequest {
+	s.NeedRotate = &v
 	return s
 }
 
-type RecognizeDeleteExcelRecordResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+func (s *RecognizeDocumentStructureRequest) SetNeedSortPage(v bool) *RecognizeDocumentStructureRequest {
+	s.NeedSortPage = &v
+	return s
+}
+
+func (s *RecognizeDocumentStructureRequest) SetNoStamp(v bool) *RecognizeDocumentStructureRequest {
+	s.NoStamp = &v
+	return s
+}
+
+func (s *RecognizeDocumentStructureRequest) SetOutputCharInfo(v bool) *RecognizeDocumentStructureRequest {
+	s.OutputCharInfo = &v
+	return s
+}
+
+func (s *RecognizeDocumentStructureRequest) SetOutputTable(v bool) *RecognizeDocumentStructureRequest {
+	s.OutputTable = &v
+	return s
+}
+
+func (s *RecognizeDocumentStructureRequest) SetPage(v bool) *RecognizeDocumentStructureRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *RecognizeDocumentStructureRequest) SetParagraph(v bool) *RecognizeDocumentStructureRequest {
+	s.Paragraph = &v
+	return s
+}
+
+func (s *RecognizeDocumentStructureRequest) SetRow(v bool) *RecognizeDocumentStructureRequest {
+	s.Row = &v
+	return s
+}
+
+func (s *RecognizeDocumentStructureRequest) SetUrl(v string) *RecognizeDocumentStructureRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *RecognizeDocumentStructureRequest) SetUseNewStyleOutput(v bool) *RecognizeDocumentStructureRequest {
+	s.UseNewStyleOutput = &v
+	return s
+}
+
+func (s *RecognizeDocumentStructureRequest) SetBody(v io.Reader) *RecognizeDocumentStructureRequest {
+	s.Body = v
+	return s
+}
+
+type RecognizeDocumentStructureResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s RecognizeDeleteExcelRecordResponseBody) String() string {
+func (s RecognizeDocumentStructureResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RecognizeDeleteExcelRecordResponseBody) GoString() string {
+func (s RecognizeDocumentStructureResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeDeleteExcelRecordResponseBody) SetCode(v string) *RecognizeDeleteExcelRecordResponseBody {
+func (s *RecognizeDocumentStructureResponseBody) SetCode(v string) *RecognizeDocumentStructureResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *RecognizeDeleteExcelRecordResponseBody) SetData(v string) *RecognizeDeleteExcelRecordResponseBody {
+func (s *RecognizeDocumentStructureResponseBody) SetData(v string) *RecognizeDocumentStructureResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *RecognizeDeleteExcelRecordResponseBody) SetMessage(v string) *RecognizeDeleteExcelRecordResponseBody {
+func (s *RecognizeDocumentStructureResponseBody) SetMessage(v string) *RecognizeDocumentStructureResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *RecognizeDeleteExcelRecordResponseBody) SetRequestId(v string) *RecognizeDeleteExcelRecordResponseBody {
+func (s *RecognizeDocumentStructureResponseBody) SetRequestId(v string) *RecognizeDocumentStructureResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type RecognizeDeleteExcelRecordResponse struct {
+type RecognizeDocumentStructureResponse struct {
 	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeDeleteExcelRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Body       *RecognizeDocumentStructureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s RecognizeDeleteExcelRecordResponse) String() string {
+func (s RecognizeDocumentStructureResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RecognizeDeleteExcelRecordResponse) GoString() string {
+func (s RecognizeDocumentStructureResponse) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeDeleteExcelRecordResponse) SetHeaders(v map[string]*string) *RecognizeDeleteExcelRecordResponse {
+func (s *RecognizeDocumentStructureResponse) SetHeaders(v map[string]*string) *RecognizeDocumentStructureResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *RecognizeDeleteExcelRecordResponse) SetStatusCode(v int32) *RecognizeDeleteExcelRecordResponse {
+func (s *RecognizeDocumentStructureResponse) SetStatusCode(v int32) *RecognizeDocumentStructureResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *RecognizeDeleteExcelRecordResponse) SetBody(v *RecognizeDeleteExcelRecordResponseBody) *RecognizeDeleteExcelRecordResponse {
+func (s *RecognizeDocumentStructureResponse) SetBody(v *RecognizeDocumentStructureResponseBody) *RecognizeDocumentStructureResponse {
 	s.Body = v
 	return s
 }
 
 type RecognizeDrivingLicenseRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1929,9 +1781,7 @@ func (s *RecognizeDrivingLicenseResponse) SetBody(v *RecognizeDrivingLicenseResp
 }
 
 type RecognizeEduFormulaRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -2018,9 +1868,7 @@ func (s *RecognizeEduFormulaResponse) SetBody(v *RecognizeEduFormulaResponseBody
 }
 
 type RecognizeEduOralCalculationRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -2107,16 +1955,11 @@ func (s *RecognizeEduOralCalculationResponse) SetBody(v *RecognizeEduOralCalcula
 }
 
 type RecognizeEduPaperCutRequest struct {
-	// 切题类型
-	CutType *string `json:"CutType,omitempty" xml:"CutType,omitempty"`
-	// 图片类型
-	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// 年级学科
-	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	CutType   *string   `json:"CutType,omitempty" xml:"CutType,omitempty"`
+	ImageType *string   `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	Subject   *string   `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	Url       *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body      io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduPaperCutRequest) String() string {
@@ -2217,16 +2060,11 @@ func (s *RecognizeEduPaperCutResponse) SetBody(v *RecognizeEduPaperCutResponseBo
 }
 
 type RecognizeEduPaperOcrRequest struct {
-	// 图片类型
-	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// 是否输出原图坐标信息(如果图片被做过旋转，图片校正等处理)
-	OutputOricoord *bool `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
-	// 年级学科
-	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	ImageType      *string   `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	OutputOricoord *bool     `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
+	Subject        *string   `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduPaperOcrRequest) String() string {
@@ -2327,14 +2165,10 @@ func (s *RecognizeEduPaperOcrResponse) SetBody(v *RecognizeEduPaperOcrResponseBo
 }
 
 type RecognizeEduPaperStructedRequest struct {
-	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 学科类型
-	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	NeedRotate *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	Subject    *string   `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	Url        *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body       io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduPaperStructedRequest) String() string {
@@ -2430,12 +2264,9 @@ func (s *RecognizeEduPaperStructedResponse) SetBody(v *RecognizeEduPaperStructed
 }
 
 type RecognizeEduQuestionOcrRequest struct {
-	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	NeedRotate *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	Url        *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body       io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduQuestionOcrRequest) String() string {
@@ -2526,14 +2357,10 @@ func (s *RecognizeEduQuestionOcrResponse) SetBody(v *RecognizeEduQuestionOcrResp
 }
 
 type RecognizeEnglishRequest struct {
-	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 是否输出表格识别结果，包含单元格信息
-	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	NeedRotate  *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	OutputTable *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	Url         *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body        io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEnglishRequest) String() string {
@@ -2629,9 +2456,7 @@ func (s *RecognizeEnglishResponse) SetBody(v *RecognizeEnglishResponseBody) *Rec
 }
 
 type RecognizeEstateCertificationRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -2717,220 +2542,10 @@ func (s *RecognizeEstateCertificationResponse) SetBody(v *RecognizeEstateCertifi
 	return s
 }
 
-type RecognizeExcelExportRequest struct {
-	// 文件名称
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 图片识别op类型
-	ImageOp *string `json:"ImageOp,omitempty" xml:"ImageOp,omitempty"`
-	// 识别图片数量
-	OcrImageCount *int64 `json:"OcrImageCount,omitempty" xml:"OcrImageCount,omitempty"`
-	// 存储图片识别结果集的oss地址
-	OcrResult *string `json:"OcrResult,omitempty" xml:"OcrResult,omitempty"`
-	// 票证类型
-	OcrType *string `json:"OcrType,omitempty" xml:"OcrType,omitempty"`
-}
-
-func (s RecognizeExcelExportRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeExcelExportRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeExcelExportRequest) SetFileName(v string) *RecognizeExcelExportRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *RecognizeExcelExportRequest) SetImageOp(v string) *RecognizeExcelExportRequest {
-	s.ImageOp = &v
-	return s
-}
-
-func (s *RecognizeExcelExportRequest) SetOcrImageCount(v int64) *RecognizeExcelExportRequest {
-	s.OcrImageCount = &v
-	return s
-}
-
-func (s *RecognizeExcelExportRequest) SetOcrResult(v string) *RecognizeExcelExportRequest {
-	s.OcrResult = &v
-	return s
-}
-
-func (s *RecognizeExcelExportRequest) SetOcrType(v string) *RecognizeExcelExportRequest {
-	s.OcrType = &v
-	return s
-}
-
-type RecognizeExcelExportResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s RecognizeExcelExportResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeExcelExportResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeExcelExportResponseBody) SetCode(v string) *RecognizeExcelExportResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *RecognizeExcelExportResponseBody) SetData(v string) *RecognizeExcelExportResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *RecognizeExcelExportResponseBody) SetMessage(v string) *RecognizeExcelExportResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *RecognizeExcelExportResponseBody) SetRequestId(v string) *RecognizeExcelExportResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type RecognizeExcelExportResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeExcelExportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RecognizeExcelExportResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeExcelExportResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeExcelExportResponse) SetHeaders(v map[string]*string) *RecognizeExcelExportResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RecognizeExcelExportResponse) SetStatusCode(v int32) *RecognizeExcelExportResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *RecognizeExcelExportResponse) SetBody(v *RecognizeExcelExportResponseBody) *RecognizeExcelExportResponse {
-	s.Body = v
-	return s
-}
-
-type RecognizeExcelRecordRequest struct {
-	// 页码
-	CurrPage *int64 `json:"CurrPage,omitempty" xml:"CurrPage,omitempty"`
-	// 每页数据
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s RecognizeExcelRecordRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeExcelRecordRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeExcelRecordRequest) SetCurrPage(v int64) *RecognizeExcelRecordRequest {
-	s.CurrPage = &v
-	return s
-}
-
-func (s *RecognizeExcelRecordRequest) SetPageSize(v int64) *RecognizeExcelRecordRequest {
-	s.PageSize = &v
-	return s
-}
-
-type RecognizeExcelRecordResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s RecognizeExcelRecordResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeExcelRecordResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeExcelRecordResponseBody) SetCode(v string) *RecognizeExcelRecordResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *RecognizeExcelRecordResponseBody) SetData(v string) *RecognizeExcelRecordResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *RecognizeExcelRecordResponseBody) SetMessage(v string) *RecognizeExcelRecordResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *RecognizeExcelRecordResponseBody) SetRequestId(v string) *RecognizeExcelRecordResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type RecognizeExcelRecordResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeExcelRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RecognizeExcelRecordResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeExcelRecordResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeExcelRecordResponse) SetHeaders(v map[string]*string) *RecognizeExcelRecordResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RecognizeExcelRecordResponse) SetStatusCode(v int32) *RecognizeExcelRecordResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *RecognizeExcelRecordResponse) SetBody(v *RecognizeExcelRecordResponseBody) *RecognizeExcelRecordResponse {
-	s.Body = v
-	return s
-}
-
 type RecognizeExitEntryPermitToHKRequest struct {
-	// 图案坐标信息输出，针对结构化，如身份证人脸头像
-	OutputFigure *bool `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	OutputFigure *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	Url          *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body         io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeExitEntryPermitToHKRequest) String() string {
@@ -2957,13 +2572,9 @@ func (s *RecognizeExitEntryPermitToHKRequest) SetBody(v io.Reader) *RecognizeExi
 }
 
 type RecognizeExitEntryPermitToHKResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3025,12 +2636,9 @@ func (s *RecognizeExitEntryPermitToHKResponse) SetBody(v *RecognizeExitEntryPerm
 }
 
 type RecognizeExitEntryPermitToMainlandRequest struct {
-	// 图案坐标信息输出，针对结构化，如身份证人脸头像
-	OutputFigure *bool `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	OutputFigure *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	Url          *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body         io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeExitEntryPermitToMainlandRequest) String() string {
@@ -3057,13 +2665,9 @@ func (s *RecognizeExitEntryPermitToMainlandRequest) SetBody(v io.Reader) *Recogn
 }
 
 type RecognizeExitEntryPermitToMainlandResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3125,9 +2729,7 @@ func (s *RecognizeExitEntryPermitToMainlandResponse) SetBody(v *RecognizeExitEnt
 }
 
 type RecognizeFoodManageLicenseRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3214,9 +2816,7 @@ func (s *RecognizeFoodManageLicenseResponse) SetBody(v *RecognizeFoodManageLicen
 }
 
 type RecognizeFoodProduceLicenseRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3303,9 +2903,7 @@ func (s *RecognizeFoodProduceLicenseResponse) SetBody(v *RecognizeFoodProduceLic
 }
 
 type RecognizeGeneralRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3392,18 +2990,12 @@ func (s *RecognizeGeneralResponse) SetBody(v *RecognizeGeneralResponseBody) *Rec
 }
 
 type RecognizeHandwritingRequest struct {
-	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 是否按顺序输出文字块。false表示从左往右，从上到下的顺序；true表示从上到下，从左往右的顺序
-	NeedSortPage *bool `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
-	// 是否输出单字识别结果
-	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	// 是否输出表格识别结果，包含单元格信息
-	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	NeedSortPage   *bool     `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
+	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeHandwritingRequest) String() string {
@@ -3509,9 +3101,7 @@ func (s *RecognizeHandwritingResponse) SetBody(v *RecognizeHandwritingResponseBo
 }
 
 type RecognizeHealthCodeRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3534,13 +3124,9 @@ func (s *RecognizeHealthCodeRequest) SetBody(v io.Reader) *RecognizeHealthCodeRe
 }
 
 type RecognizeHealthCodeResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3602,9 +3188,7 @@ func (s *RecognizeHealthCodeResponse) SetBody(v *RecognizeHealthCodeResponseBody
 }
 
 type RecognizeHotelConsumeRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3691,11 +3275,9 @@ func (s *RecognizeHotelConsumeResponse) SetBody(v *RecognizeHotelConsumeResponse
 }
 
 type RecognizeHouseholdRequest struct {
-	IsResidentPage *bool `json:"IsResidentPage,omitempty" xml:"IsResidentPage,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	IsResidentPage *bool     `json:"IsResidentPage,omitempty" xml:"IsResidentPage,omitempty"`
+	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeHouseholdRequest) String() string {
@@ -3786,12 +3368,9 @@ func (s *RecognizeHouseholdResponse) SetBody(v *RecognizeHouseholdResponseBody) 
 }
 
 type RecognizeIdcardRequest struct {
-	// 是否需要图案检测功能，默认不需要
-	OutputFigure *bool `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	OutputFigure *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	Url          *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body         io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeIdcardRequest) String() string {
@@ -3882,9 +3461,7 @@ func (s *RecognizeIdcardResponse) SetBody(v *RecognizeIdcardResponseBody) *Recog
 }
 
 type RecognizeInvoiceRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3971,16 +3548,11 @@ func (s *RecognizeInvoiceResponse) SetBody(v *RecognizeInvoiceResponseBody) *Rec
 }
 
 type RecognizeJanpaneseRequest struct {
-	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 是否输出单字识别结果
-	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	// 是否输出表格识别结果，包含单元格信息
-	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeJanpaneseRequest) String() string {
@@ -4081,16 +3653,11 @@ func (s *RecognizeJanpaneseResponse) SetBody(v *RecognizeJanpaneseResponseBody) 
 }
 
 type RecognizeKoreanRequest struct {
-	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 是否输出单字识别结果
-	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	// 是否输出表格识别结果，包含单元格信息
-	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeKoreanRequest) String() string {
@@ -4191,16 +3758,11 @@ func (s *RecognizeKoreanResponse) SetBody(v *RecognizeKoreanResponseBody) *Recog
 }
 
 type RecognizeLatinRequest struct {
-	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 是否输出单字识别结果
-	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	// 是否输出表格识别结果，包含单元格信息
-	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeLatinRequest) String() string {
@@ -4301,9 +3863,7 @@ func (s *RecognizeLatinResponse) SetBody(v *RecognizeLatinResponseBody) *Recogni
 }
 
 type RecognizeMedicalDeviceManageLicenseRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4390,9 +3950,7 @@ func (s *RecognizeMedicalDeviceManageLicenseResponse) SetBody(v *RecognizeMedica
 }
 
 type RecognizeMedicalDeviceProduceLicenseRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4479,9 +4037,7 @@ func (s *RecognizeMedicalDeviceProduceLicenseResponse) SetBody(v *RecognizeMedic
 }
 
 type RecognizeMixedInvoicesRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4568,20 +4124,13 @@ func (s *RecognizeMixedInvoicesResponse) SetBody(v *RecognizeMixedInvoicesRespon
 }
 
 type RecognizeMultiLanguageRequest struct {
-	// 识别语种
-	Languages []*string `json:"Languages,omitempty" xml:"Languages,omitempty" type:"Repeated"`
-	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 是否按顺序输出文字块。false表示从左往右，从上到下的顺序；true表示从上到下，从左往右的顺序
-	NeedSortPage *bool `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
-	// 是否输出单字识别结果
-	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	// 是否输出表格识别结果，包含单元格信息
-	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	Languages      []*string `json:"Languages,omitempty" xml:"Languages,omitempty" type:"Repeated"`
+	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	NeedSortPage   *bool     `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
+	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMultiLanguageRequest) String() string {
@@ -4628,20 +4177,13 @@ func (s *RecognizeMultiLanguageRequest) SetBody(v io.Reader) *RecognizeMultiLang
 }
 
 type RecognizeMultiLanguageShrinkRequest struct {
-	// 识别语种
-	LanguagesShrink *string `json:"Languages,omitempty" xml:"Languages,omitempty"`
-	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 是否按顺序输出文字块。false表示从左往右，从上到下的顺序；true表示从上到下，从左往右的顺序
-	NeedSortPage *bool `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
-	// 是否输出单字识别结果
-	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	// 是否输出表格识别结果，包含单元格信息
-	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	LanguagesShrink *string   `json:"Languages,omitempty" xml:"Languages,omitempty"`
+	NeedRotate      *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	NeedSortPage    *bool     `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
+	OutputCharInfo  *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	OutputTable     *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	Url             *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body            io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMultiLanguageShrinkRequest) String() string {
@@ -4752,9 +4294,7 @@ func (s *RecognizeMultiLanguageResponse) SetBody(v *RecognizeMultiLanguageRespon
 }
 
 type RecognizeNonTaxInvoiceRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4841,9 +4381,7 @@ func (s *RecognizeNonTaxInvoiceResponse) SetBody(v *RecognizeNonTaxInvoiceRespon
 }
 
 type RecognizePassportRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4930,9 +4468,7 @@ func (s *RecognizePassportResponse) SetBody(v *RecognizePassportResponseBody) *R
 }
 
 type RecognizePaymentRecordRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5019,9 +4555,7 @@ func (s *RecognizePaymentRecordResponse) SetBody(v *RecognizePaymentRecordRespon
 }
 
 type RecognizePurchaseRecordRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5108,9 +4642,7 @@ func (s *RecognizePurchaseRecordResponse) SetBody(v *RecognizePurchaseRecordResp
 }
 
 type RecognizeQuotaInvoiceRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5197,9 +4729,7 @@ func (s *RecognizeQuotaInvoiceResponse) SetBody(v *RecognizeQuotaInvoiceResponse
 }
 
 type RecognizeRideHailingItineraryRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5222,13 +4752,9 @@ func (s *RecognizeRideHailingItineraryRequest) SetBody(v io.Reader) *RecognizeRi
 }
 
 type RecognizeRideHailingItineraryResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5290,9 +4816,7 @@ func (s *RecognizeRideHailingItineraryResponse) SetBody(v *RecognizeRideHailingI
 }
 
 type RecognizeRollTicketRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5379,16 +4903,11 @@ func (s *RecognizeRollTicketResponse) SetBody(v *RecognizeRollTicketResponseBody
 }
 
 type RecognizeRussianRequest struct {
-	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 是否输出单字识别结果
-	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	// 是否输出表格识别结果，包含单元格信息
-	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeRussianRequest) String() string {
@@ -5489,9 +5008,7 @@ func (s *RecognizeRussianResponse) SetBody(v *RecognizeRussianResponseBody) *Rec
 }
 
 type RecognizeShoppingReceiptRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5514,13 +5031,9 @@ func (s *RecognizeShoppingReceiptRequest) SetBody(v io.Reader) *RecognizeShoppin
 }
 
 type RecognizeShoppingReceiptResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5582,9 +5095,7 @@ func (s *RecognizeShoppingReceiptResponse) SetBody(v *RecognizeShoppingReceiptRe
 }
 
 type RecognizeSocialSecurityCardRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5607,13 +5118,9 @@ func (s *RecognizeSocialSecurityCardRequest) SetBody(v io.Reader) *RecognizeSoci
 }
 
 type RecognizeSocialSecurityCardResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5675,9 +5182,7 @@ func (s *RecognizeSocialSecurityCardResponse) SetBody(v *RecognizeSocialSecurity
 }
 
 type RecognizeSocialSecurityCardVersionIIRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5700,13 +5205,9 @@ func (s *RecognizeSocialSecurityCardVersionIIRequest) SetBody(v io.Reader) *Reco
 }
 
 type RecognizeSocialSecurityCardVersionIIResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5768,16 +5269,11 @@ func (s *RecognizeSocialSecurityCardVersionIIResponse) SetBody(v *RecognizeSocia
 }
 
 type RecognizeTableOcrRequest struct {
-	// 是否无线条
-	LineLess *bool `json:"LineLess,omitempty" xml:"LineLess,omitempty"`
-	// 是否需要自动旋转功能，默认需要
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 是否跳过表格识别，如果没有检测到表格，可以设置"skip_detection":true
-	SkipDetection *bool `json:"SkipDetection,omitempty" xml:"SkipDetection,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	LineLess      *bool     `json:"LineLess,omitempty" xml:"LineLess,omitempty"`
+	NeedRotate    *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	SkipDetection *bool     `json:"SkipDetection,omitempty" xml:"SkipDetection,omitempty"`
+	Url           *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body          io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeTableOcrRequest) String() string {
@@ -5878,9 +5374,7 @@ func (s *RecognizeTableOcrResponse) SetBody(v *RecognizeTableOcrResponseBody) *R
 }
 
 type RecognizeTaxClearanceCertificateRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5903,13 +5397,9 @@ func (s *RecognizeTaxClearanceCertificateRequest) SetBody(v io.Reader) *Recogniz
 }
 
 type RecognizeTaxClearanceCertificateResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5971,9 +5461,7 @@ func (s *RecognizeTaxClearanceCertificateResponse) SetBody(v *RecognizeTaxCleara
 }
 
 type RecognizeTaxiInvoiceRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6060,16 +5548,11 @@ func (s *RecognizeTaxiInvoiceResponse) SetBody(v *RecognizeTaxiInvoiceResponseBo
 }
 
 type RecognizeThaiRequest struct {
-	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
-	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 是否输出单字识别结果
-	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	// 是否输出表格识别结果，包含单元格信息
-	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeThaiRequest) String() string {
@@ -6170,9 +5653,7 @@ func (s *RecognizeThaiResponse) SetBody(v *RecognizeThaiResponseBody) *Recognize
 }
 
 type RecognizeTollInvoiceRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6195,13 +5676,9 @@ func (s *RecognizeTollInvoiceRequest) SetBody(v io.Reader) *RecognizeTollInvoice
 }
 
 type RecognizeTollInvoiceResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6263,9 +5740,7 @@ func (s *RecognizeTollInvoiceResponse) SetBody(v *RecognizeTollInvoiceResponseBo
 }
 
 type RecognizeTradeMarkCertificationRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6352,9 +5827,7 @@ func (s *RecognizeTradeMarkCertificationResponse) SetBody(v *RecognizeTradeMarkC
 }
 
 type RecognizeTrainInvoiceRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6441,9 +5914,7 @@ func (s *RecognizeTrainInvoiceResponse) SetBody(v *RecognizeTrainInvoiceResponse
 }
 
 type RecognizeTravelCardRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6466,13 +5937,9 @@ func (s *RecognizeTravelCardRequest) SetBody(v io.Reader) *RecognizeTravelCardRe
 }
 
 type RecognizeTravelCardResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6534,9 +6001,7 @@ func (s *RecognizeTravelCardResponse) SetBody(v *RecognizeTravelCardResponseBody
 }
 
 type RecognizeUsedCarInvoiceRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6559,13 +6024,9 @@ func (s *RecognizeUsedCarInvoiceRequest) SetBody(v io.Reader) *RecognizeUsedCarI
 }
 
 type RecognizeUsedCarInvoiceResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6627,9 +6088,7 @@ func (s *RecognizeUsedCarInvoiceResponse) SetBody(v *RecognizeUsedCarInvoiceResp
 }
 
 type RecognizeVehicleCertificationRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6652,13 +6111,9 @@ func (s *RecognizeVehicleCertificationRequest) SetBody(v io.Reader) *RecognizeVe
 }
 
 type RecognizeVehicleCertificationResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6720,9 +6175,7 @@ func (s *RecognizeVehicleCertificationResponse) SetBody(v *RecognizeVehicleCerti
 }
 
 type RecognizeVehicleLicenseRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6809,9 +6262,7 @@ func (s *RecognizeVehicleLicenseResponse) SetBody(v *RecognizeVehicleLicenseResp
 }
 
 type RecognizeVehicleRegistrationRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6834,13 +6285,9 @@ func (s *RecognizeVehicleRegistrationRequest) SetBody(v io.Reader) *RecognizeVeh
 }
 
 type RecognizeVehicleRegistrationResponseBody struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误提示
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求唯一 ID
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6902,9 +6349,7 @@ func (s *RecognizeVehicleRegistrationResponse) SetBody(v *RecognizeVehicleRegist
 }
 
 type RecognizeWaybillRequest struct {
-	// 图片链接（长度不超 2048，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 图片二进制字节流，最大10MB
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -7338,78 +6783,6 @@ func (client *Client) RecognizeBasic(request *RecognizeBasicRequest) (_result *R
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeBasicResponse{}
 	_body, _err := client.RecognizeBasicWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RecognizeBatchRecognizeWithOptions(request *RecognizeBatchRecognizeRequest, runtime *util.RuntimeOptions) (_result *RecognizeBatchRecognizeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
-		query["ImageName"] = request.ImageName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImageOp)) {
-		query["ImageOp"] = request.ImageOp
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImageOssKey)) {
-		query["ImageOssKey"] = request.ImageOssKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NeedRotate)) {
-		query["NeedRotate"] = request.NeedRotate
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NeedSortPage)) {
-		query["NeedSortPage"] = request.NeedSortPage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OutputCharInfo)) {
-		query["OutputCharInfo"] = request.OutputCharInfo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OutputTable)) {
-		query["OutputTable"] = request.OutputTable
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Url)) {
-		query["Url"] = request.Url
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RecognizeBatchRecognize"),
-		Version:     tea.String("2021-07-07"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RecognizeBatchRecognizeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RecognizeBatchRecognize(request *RecognizeBatchRecognizeRequest) (_result *RecognizeBatchRecognizeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RecognizeBatchRecognizeResponse{}
-	_body, _err := client.RecognizeBatchRecognizeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7931,21 +7304,59 @@ func (client *Client) RecognizeCtwoMedicalDeviceManageLicense(request *Recognize
 	return _result, _err
 }
 
-func (client *Client) RecognizeDeleteExcelRecordWithOptions(request *RecognizeDeleteExcelRecordRequest, runtime *util.RuntimeOptions) (_result *RecognizeDeleteExcelRecordResponse, _err error) {
+func (client *Client) RecognizeDocumentStructureWithOptions(request *RecognizeDocumentStructureRequest, runtime *util.RuntimeOptions) (_result *RecognizeDocumentStructureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		query["Id"] = request.Id
+	if !tea.BoolValue(util.IsUnset(request.NeedRotate)) {
+		query["NeedRotate"] = request.NeedRotate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedSortPage)) {
+		query["NeedSortPage"] = request.NeedSortPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoStamp)) {
+		query["NoStamp"] = request.NoStamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputCharInfo)) {
+		query["OutputCharInfo"] = request.OutputCharInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputTable)) {
+		query["OutputTable"] = request.OutputTable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Paragraph)) {
+		query["Paragraph"] = request.Paragraph
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Row)) {
+		query["Row"] = request.Row
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseNewStyleOutput)) {
+		query["UseNewStyleOutput"] = request.UseNewStyleOutput
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Query:  openapiutil.Query(query),
+		Body:   request.Body,
+		Stream: request.Body,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("RecognizeDeleteExcelRecord"),
+		Action:      tea.String("RecognizeDocumentStructure"),
 		Version:     tea.String("2021-07-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -7955,7 +7366,7 @@ func (client *Client) RecognizeDeleteExcelRecordWithOptions(request *RecognizeDe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RecognizeDeleteExcelRecordResponse{}
+	_result = &RecognizeDocumentStructureResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7964,10 +7375,10 @@ func (client *Client) RecognizeDeleteExcelRecordWithOptions(request *RecognizeDe
 	return _result, _err
 }
 
-func (client *Client) RecognizeDeleteExcelRecord(request *RecognizeDeleteExcelRecordRequest) (_result *RecognizeDeleteExcelRecordResponse, _err error) {
+func (client *Client) RecognizeDocumentStructure(request *RecognizeDocumentStructureRequest) (_result *RecognizeDocumentStructureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &RecognizeDeleteExcelRecordResponse{}
-	_body, _err := client.RecognizeDeleteExcelRecordWithOptions(request, runtime)
+	_result = &RecognizeDocumentStructureResponse{}
+	_body, _err := client.RecognizeDocumentStructureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8426,114 +7837,6 @@ func (client *Client) RecognizeEstateCertification(request *RecognizeEstateCerti
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeEstateCertificationResponse{}
 	_body, _err := client.RecognizeEstateCertificationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RecognizeExcelExportWithOptions(request *RecognizeExcelExportRequest, runtime *util.RuntimeOptions) (_result *RecognizeExcelExportResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
-		query["FileName"] = request.FileName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImageOp)) {
-		query["ImageOp"] = request.ImageOp
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OcrImageCount)) {
-		query["OcrImageCount"] = request.OcrImageCount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OcrResult)) {
-		query["OcrResult"] = request.OcrResult
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OcrType)) {
-		query["OcrType"] = request.OcrType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RecognizeExcelExport"),
-		Version:     tea.String("2021-07-07"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RecognizeExcelExportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RecognizeExcelExport(request *RecognizeExcelExportRequest) (_result *RecognizeExcelExportResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RecognizeExcelExportResponse{}
-	_body, _err := client.RecognizeExcelExportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RecognizeExcelRecordWithOptions(request *RecognizeExcelRecordRequest, runtime *util.RuntimeOptions) (_result *RecognizeExcelRecordResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CurrPage)) {
-		query["CurrPage"] = request.CurrPage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RecognizeExcelRecord"),
-		Version:     tea.String("2021-07-07"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RecognizeExcelRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RecognizeExcelRecord(request *RecognizeExcelRecordRequest) (_result *RecognizeExcelRecordResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RecognizeExcelRecordResponse{}
-	_body, _err := client.RecognizeExcelRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
