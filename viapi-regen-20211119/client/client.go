@@ -299,9 +299,11 @@ func (s *CreateLabelsetResponse) SetBody(v *CreateLabelsetResponseBody) *CreateL
 }
 
 type CreateServiceRequest struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TrainTaskId *int64  `json:"TrainTaskId,omitempty" xml:"TrainTaskId,omitempty"`
+	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
+	AuthorizedAccount *string `json:"AuthorizedAccount,omitempty" xml:"AuthorizedAccount,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TrainTaskId       *int64  `json:"TrainTaskId,omitempty" xml:"TrainTaskId,omitempty"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -310,6 +312,16 @@ func (s CreateServiceRequest) String() string {
 
 func (s CreateServiceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateServiceRequest) SetAuthorizationType(v string) *CreateServiceRequest {
+	s.AuthorizationType = &v
+	return s
+}
+
+func (s *CreateServiceRequest) SetAuthorizedAccount(v string) *CreateServiceRequest {
+	s.AuthorizedAccount = &v
+	return s
 }
 
 func (s *CreateServiceRequest) SetDescription(v string) *CreateServiceRequest {
@@ -351,6 +363,8 @@ func (s *CreateServiceResponseBody) SetRequestId(v string) *CreateServiceRespons
 }
 
 type CreateServiceResponseBodyData struct {
+	AuthorizationType  *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
+	AuthorizedAccount  *string `json:"AuthorizedAccount,omitempty" xml:"AuthorizedAccount,omitempty"`
 	GmtCreate          *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
@@ -364,6 +378,16 @@ func (s CreateServiceResponseBodyData) String() string {
 
 func (s CreateServiceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *CreateServiceResponseBodyData) SetAuthorizationType(v string) *CreateServiceResponseBodyData {
+	s.AuthorizationType = &v
+	return s
+}
+
+func (s *CreateServiceResponseBodyData) SetAuthorizedAccount(v string) *CreateServiceResponseBodyData {
+	s.AuthorizedAccount = &v
+	return s
 }
 
 func (s *CreateServiceResponseBodyData) SetGmtCreate(v int64) *CreateServiceResponseBodyData {
@@ -537,12 +561,13 @@ func (s *CreateTagTaskResponse) SetBody(v *CreateTagTaskResponseBody) *CreateTag
 }
 
 type CreateTrainTaskRequest struct {
-	DatasetId   *int64  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	LabelId     *int64  `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TrainMode   *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
-	WorkspaceId *int64  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	AdvancedParameters *string `json:"AdvancedParameters,omitempty" xml:"AdvancedParameters,omitempty"`
+	DatasetId          *int64  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	LabelId            *int64  `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TrainMode          *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
+	WorkspaceId        *int64  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateTrainTaskRequest) String() string {
@@ -551,6 +576,11 @@ func (s CreateTrainTaskRequest) String() string {
 
 func (s CreateTrainTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTrainTaskRequest) SetAdvancedParameters(v string) *CreateTrainTaskRequest {
+	s.AdvancedParameters = &v
+	return s
 }
 
 func (s *CreateTrainTaskRequest) SetDatasetId(v int64) *CreateTrainTaskRequest {
@@ -607,18 +637,19 @@ func (s *CreateTrainTaskResponseBody) SetRequestId(v string) *CreateTrainTaskRes
 }
 
 type CreateTrainTaskResponseBodyData struct {
-	DatasetId   *int64  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LabelId     *int64  `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
-	LabelName   *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
-	ModelEffect *string `json:"ModelEffect,omitempty" xml:"ModelEffect,omitempty"`
-	ModelId     *int64  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TrainMode   *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
-	TrainStatus *string `json:"TrainStatus,omitempty" xml:"TrainStatus,omitempty"`
+	AdvancedParameters *string `json:"AdvancedParameters,omitempty" xml:"AdvancedParameters,omitempty"`
+	DatasetId          *int64  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate          *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LabelId            *int64  `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
+	LabelName          *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
+	ModelEffect        *string `json:"ModelEffect,omitempty" xml:"ModelEffect,omitempty"`
+	ModelId            *int64  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	TaskName           *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TrainMode          *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
+	TrainStatus        *string `json:"TrainStatus,omitempty" xml:"TrainStatus,omitempty"`
 }
 
 func (s CreateTrainTaskResponseBodyData) String() string {
@@ -627,6 +658,11 @@ func (s CreateTrainTaskResponseBodyData) String() string {
 
 func (s CreateTrainTaskResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTrainTaskResponseBodyData) SetAdvancedParameters(v string) *CreateTrainTaskResponseBodyData {
+	s.AdvancedParameters = &v
+	return s
 }
 
 func (s *CreateTrainTaskResponseBodyData) SetDatasetId(v int64) *CreateTrainTaskResponseBodyData {
@@ -2320,58 +2356,6 @@ func (s *DownloadLabelFileResponse) SetBody(v *DownloadLabelFileResponseBody) *D
 	return s
 }
 
-type DownloadTemplateResponseBody struct {
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DownloadTemplateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadTemplateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadTemplateResponseBody) SetData(v map[string]interface{}) *DownloadTemplateResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DownloadTemplateResponseBody) SetRequestId(v string) *DownloadTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DownloadTemplateResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DownloadTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DownloadTemplateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadTemplateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadTemplateResponse) SetHeaders(v map[string]*string) *DownloadTemplateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DownloadTemplateResponse) SetStatusCode(v int32) *DownloadTemplateResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DownloadTemplateResponse) SetBody(v *DownloadTemplateResponseBody) *DownloadTemplateResponse {
-	s.Body = v
-	return s
-}
-
 type GetDatasetRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
@@ -2829,7 +2813,6 @@ func (s *GetServiceResponseBody) SetRequestId(v string) *GetServiceResponseBody 
 }
 
 type GetServiceResponseBodyData struct {
-	CurlExample        *string `json:"CurlExample,omitempty" xml:"CurlExample,omitempty"`
 	Errorcodes         *string `json:"Errorcodes,omitempty" xml:"Errorcodes,omitempty"`
 	GmtCreate          *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -2838,6 +2821,7 @@ type GetServiceResponseBodyData struct {
 	OutputExample      *string `json:"OutputExample,omitempty" xml:"OutputExample,omitempty"`
 	OutputParams       *string `json:"OutputParams,omitempty" xml:"OutputParams,omitempty"`
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	ServiceId          *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceName        *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -2848,11 +2832,6 @@ func (s GetServiceResponseBodyData) String() string {
 
 func (s GetServiceResponseBodyData) GoString() string {
 	return s.String()
-}
-
-func (s *GetServiceResponseBodyData) SetCurlExample(v string) *GetServiceResponseBodyData {
-	s.CurlExample = &v
-	return s
 }
 
 func (s *GetServiceResponseBodyData) SetErrorcodes(v string) *GetServiceResponseBodyData {
@@ -2892,6 +2871,11 @@ func (s *GetServiceResponseBodyData) SetOutputParams(v string) *GetServiceRespon
 
 func (s *GetServiceResponseBodyData) SetServiceDescription(v string) *GetServiceResponseBodyData {
 	s.ServiceDescription = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyData) SetServiceId(v string) *GetServiceResponseBodyData {
+	s.ServiceId = &v
 	return s
 }
 
@@ -4666,7 +4650,8 @@ func (s *StartServiceResponse) SetBody(v *StartServiceResponseBody) *StartServic
 }
 
 type StartTrainTaskRequest struct {
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	ForceStartFlag *bool  `json:"ForceStartFlag,omitempty" xml:"ForceStartFlag,omitempty"`
+	Id             *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s StartTrainTaskRequest) String() string {
@@ -4675,6 +4660,11 @@ func (s StartTrainTaskRequest) String() string {
 
 func (s StartTrainTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *StartTrainTaskRequest) SetForceStartFlag(v bool) *StartTrainTaskRequest {
+	s.ForceStartFlag = &v
+	return s
 }
 
 func (s *StartTrainTaskRequest) SetId(v int64) *StartTrainTaskRequest {
@@ -4706,18 +4696,19 @@ func (s *StartTrainTaskResponseBody) SetRequestId(v string) *StartTrainTaskRespo
 }
 
 type StartTrainTaskResponseBodyData struct {
-	DatasetId   *int64  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LabelId     *int64  `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
-	LabelName   *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
-	ModelEffect *string `json:"ModelEffect,omitempty" xml:"ModelEffect,omitempty"`
-	ModelId     *int64  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TrainMode   *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
-	TrainStatus *string `json:"TrainStatus,omitempty" xml:"TrainStatus,omitempty"`
+	CheckResult map[string]interface{} `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	DatasetId   *int64                 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetName *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate   *int64                 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id          *int64                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	LabelId     *int64                 `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
+	LabelName   *string                `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
+	ModelEffect *string                `json:"ModelEffect,omitempty" xml:"ModelEffect,omitempty"`
+	ModelId     *int64                 `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	TaskName    *string                `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TrainMode   *string                `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
+	TrainStatus *string                `json:"TrainStatus,omitempty" xml:"TrainStatus,omitempty"`
 }
 
 func (s StartTrainTaskResponseBodyData) String() string {
@@ -4726,6 +4717,11 @@ func (s StartTrainTaskResponseBodyData) String() string {
 
 func (s StartTrainTaskResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *StartTrainTaskResponseBodyData) SetCheckResult(v map[string]interface{}) *StartTrainTaskResponseBodyData {
+	s.CheckResult = v
+	return s
 }
 
 func (s *StartTrainTaskResponseBodyData) SetDatasetId(v int64) *StartTrainTaskResponseBodyData {
@@ -5324,9 +5320,11 @@ func (s *UpdateLabelsetResponse) SetBody(v *UpdateLabelsetResponseBody) *UpdateL
 }
 
 type UpdateServiceRequest struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
+	AuthorizedAccount *string `json:"AuthorizedAccount,omitempty" xml:"AuthorizedAccount,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateServiceRequest) String() string {
@@ -5335,6 +5333,16 @@ func (s UpdateServiceRequest) String() string {
 
 func (s UpdateServiceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateServiceRequest) SetAuthorizationType(v string) *UpdateServiceRequest {
+	s.AuthorizationType = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetAuthorizedAccount(v string) *UpdateServiceRequest {
+	s.AuthorizedAccount = &v
+	return s
 }
 
 func (s *UpdateServiceRequest) SetDescription(v string) *UpdateServiceRequest {
@@ -5376,6 +5384,8 @@ func (s *UpdateServiceResponseBody) SetRequestId(v string) *UpdateServiceRespons
 }
 
 type UpdateServiceResponseBodyData struct {
+	AuthorizationType  *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
+	AuthorizedAccount  *string `json:"AuthorizedAccount,omitempty" xml:"AuthorizedAccount,omitempty"`
 	GmtCreate          *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
@@ -5388,6 +5398,16 @@ func (s UpdateServiceResponseBodyData) String() string {
 
 func (s UpdateServiceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateServiceResponseBodyData) SetAuthorizationType(v string) *UpdateServiceResponseBodyData {
+	s.AuthorizationType = &v
+	return s
+}
+
+func (s *UpdateServiceResponseBodyData) SetAuthorizedAccount(v string) *UpdateServiceResponseBodyData {
+	s.AuthorizedAccount = &v
+	return s
 }
 
 func (s *UpdateServiceResponseBodyData) SetGmtCreate(v int64) *UpdateServiceResponseBodyData {
@@ -5440,9 +5460,10 @@ func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateSer
 }
 
 type UpdateTrainTaskRequest struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AdvancedParameters *string `json:"AdvancedParameters,omitempty" xml:"AdvancedParameters,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateTrainTaskRequest) String() string {
@@ -5451,6 +5472,11 @@ func (s UpdateTrainTaskRequest) String() string {
 
 func (s UpdateTrainTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateTrainTaskRequest) SetAdvancedParameters(v string) *UpdateTrainTaskRequest {
+	s.AdvancedParameters = &v
+	return s
 }
 
 func (s *UpdateTrainTaskRequest) SetDescription(v string) *UpdateTrainTaskRequest {
@@ -5492,18 +5518,19 @@ func (s *UpdateTrainTaskResponseBody) SetRequestId(v string) *UpdateTrainTaskRes
 }
 
 type UpdateTrainTaskResponseBodyData struct {
-	DatasetId   *int64  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LabelId     *int64  `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
-	LabelName   *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
-	ModelEffect *string `json:"ModelEffect,omitempty" xml:"ModelEffect,omitempty"`
-	ModelId     *int64  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TrainMode   *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
-	TrainStatus *string `json:"TrainStatus,omitempty" xml:"TrainStatus,omitempty"`
+	AdvancedParameters *string `json:"AdvancedParameters,omitempty" xml:"AdvancedParameters,omitempty"`
+	DatasetId          *int64  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate          *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LabelId            *int64  `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
+	LabelName          *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
+	ModelEffect        *string `json:"ModelEffect,omitempty" xml:"ModelEffect,omitempty"`
+	ModelId            *int64  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	TaskName           *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TrainMode          *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
+	TrainStatus        *string `json:"TrainStatus,omitempty" xml:"TrainStatus,omitempty"`
 }
 
 func (s UpdateTrainTaskResponseBodyData) String() string {
@@ -5512,6 +5539,11 @@ func (s UpdateTrainTaskResponseBodyData) String() string {
 
 func (s UpdateTrainTaskResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateTrainTaskResponseBodyData) SetAdvancedParameters(v string) *UpdateTrainTaskResponseBodyData {
+	s.AdvancedParameters = &v
+	return s
 }
 
 func (s *UpdateTrainTaskResponseBodyData) SetDatasetId(v int64) *UpdateTrainTaskResponseBodyData {
@@ -5740,7 +5772,64 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("")
+	client.EndpointRule = tea.String("regional")
+	client.EndpointMap = map[string]*string{
+		"ap-northeast-1":              tea.String("viapi-regen-daily.aliyuncs.com"),
+		"ap-northeast-2-pop":          tea.String("viapi-regen-daily.aliyuncs.com"),
+		"ap-south-1":                  tea.String("viapi-regen-daily.aliyuncs.com"),
+		"ap-southeast-1":              tea.String("viapi-regen-daily.aliyuncs.com"),
+		"ap-southeast-2":              tea.String("viapi-regen-daily.aliyuncs.com"),
+		"ap-southeast-3":              tea.String("viapi-regen-daily.aliyuncs.com"),
+		"ap-southeast-5":              tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-beijing":                  tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-beijing-finance-1":        tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-beijing-finance-pop":      tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-beijing-gov-1":            tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-chengdu":                  tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-edge-1":                   tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-fujian":                   tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-hangzhou-finance":         tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-hangzhou-test-306":        tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-hongkong":                 tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-huhehaote":                tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-north-2-gov-1":            tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-qingdao":                  tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-qingdao-nebula":           tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-shanghai-finance-1":       tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-shanghai-inner":           tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-shenzhen":                 tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-shenzhen-inner":           tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-wuhan":                    tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-wulanchabu":               tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-yushanfang":               tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-zhangbei":                 tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-zhangjiakou":              tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     tea.String("viapi-regen-daily.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       tea.String("viapi-regen-daily.aliyuncs.com"),
+		"eu-central-1":                tea.String("viapi-regen-daily.aliyuncs.com"),
+		"eu-west-1":                   tea.String("viapi-regen-daily.aliyuncs.com"),
+		"eu-west-1-oxs":               tea.String("viapi-regen-daily.aliyuncs.com"),
+		"me-east-1":                   tea.String("viapi-regen-daily.aliyuncs.com"),
+		"rus-west-1-pop":              tea.String("viapi-regen-daily.aliyuncs.com"),
+		"us-east-1":                   tea.String("viapi-regen-daily.aliyuncs.com"),
+		"us-west-1":                   tea.String("viapi-regen-daily.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -5906,6 +5995,14 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, ru
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationType)) {
+		body["AuthorizationType"] = request.AuthorizationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizedAccount)) {
+		body["AuthorizedAccount"] = request.AuthorizedAccount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
 	}
@@ -6002,6 +6099,10 @@ func (client *Client) CreateTrainTaskWithOptions(request *CreateTrainTaskRequest
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdvancedParameters)) {
+		body["AdvancedParameters"] = request.AdvancedParameters
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
 		body["DatasetId"] = request.DatasetId
 	}
@@ -6982,39 +7083,6 @@ func (client *Client) DownloadLabelFile(request *DownloadLabelFileRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) DownloadTemplateWithOptions(runtime *util.RuntimeOptions) (_result *DownloadTemplateResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("DownloadTemplate"),
-		Version:     tea.String("2021-11-19"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DownloadTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DownloadTemplate() (_result *DownloadTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DownloadTemplateResponse{}
-	_body, _err := client.DownloadTemplateWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime *util.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7949,6 +8017,10 @@ func (client *Client) StartTrainTaskWithOptions(request *StartTrainTaskRequest, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ForceStartFlag)) {
+		body["ForceStartFlag"] = request.ForceStartFlag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		body["Id"] = request.Id
 	}
@@ -8193,6 +8265,14 @@ func (client *Client) UpdateServiceWithOptions(request *UpdateServiceRequest, ru
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationType)) {
+		body["AuthorizationType"] = request.AuthorizationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizedAccount)) {
+		body["AuthorizedAccount"] = request.AuthorizedAccount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
 	}
@@ -8245,6 +8325,10 @@ func (client *Client) UpdateTrainTaskWithOptions(request *UpdateTrainTaskRequest
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdvancedParameters)) {
+		body["AdvancedParameters"] = request.AdvancedParameters
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
 	}
