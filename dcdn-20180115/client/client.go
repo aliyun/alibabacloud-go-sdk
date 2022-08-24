@@ -868,6 +868,7 @@ func (s *BatchSetDcdnIpaDomainConfigsResponse) SetBody(v *BatchSetDcdnIpaDomainC
 }
 
 type BatchSetDcdnWafDomainConfigsRequest struct {
+	ClientIpTag   *string `json:"ClientIpTag,omitempty" xml:"ClientIpTag,omitempty"`
 	DefenseStatus *string `json:"DefenseStatus,omitempty" xml:"DefenseStatus,omitempty"`
 	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -879,6 +880,11 @@ func (s BatchSetDcdnWafDomainConfigsRequest) String() string {
 
 func (s BatchSetDcdnWafDomainConfigsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *BatchSetDcdnWafDomainConfigsRequest) SetClientIpTag(v string) *BatchSetDcdnWafDomainConfigsRequest {
+	s.ClientIpTag = &v
+	return s
 }
 
 func (s *BatchSetDcdnWafDomainConfigsRequest) SetDefenseStatus(v string) *BatchSetDcdnWafDomainConfigsRequest {
@@ -1261,135 +1267,6 @@ func (s *CommitStagingRoutineCodeResponse) SetStatusCode(v int32) *CommitStaging
 }
 
 func (s *CommitStagingRoutineCodeResponse) SetBody(v *CommitStagingRoutineCodeResponseBody) *CommitStagingRoutineCodeResponse {
-	s.Body = v
-	return s
-}
-
-type CreateDcdnCertificateSigningRequestRequest struct {
-	City             *string `json:"City,omitempty" xml:"City,omitempty"`
-	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	Country          *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Email            *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
-	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
-	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SANs             *string `json:"SANs,omitempty" xml:"SANs,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s CreateDcdnCertificateSigningRequestRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDcdnCertificateSigningRequestRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDcdnCertificateSigningRequestRequest) SetCity(v string) *CreateDcdnCertificateSigningRequestRequest {
-	s.City = &v
-	return s
-}
-
-func (s *CreateDcdnCertificateSigningRequestRequest) SetCommonName(v string) *CreateDcdnCertificateSigningRequestRequest {
-	s.CommonName = &v
-	return s
-}
-
-func (s *CreateDcdnCertificateSigningRequestRequest) SetCountry(v string) *CreateDcdnCertificateSigningRequestRequest {
-	s.Country = &v
-	return s
-}
-
-func (s *CreateDcdnCertificateSigningRequestRequest) SetEmail(v string) *CreateDcdnCertificateSigningRequestRequest {
-	s.Email = &v
-	return s
-}
-
-func (s *CreateDcdnCertificateSigningRequestRequest) SetOrganization(v string) *CreateDcdnCertificateSigningRequestRequest {
-	s.Organization = &v
-	return s
-}
-
-func (s *CreateDcdnCertificateSigningRequestRequest) SetOrganizationUnit(v string) *CreateDcdnCertificateSigningRequestRequest {
-	s.OrganizationUnit = &v
-	return s
-}
-
-func (s *CreateDcdnCertificateSigningRequestRequest) SetOwnerId(v int64) *CreateDcdnCertificateSigningRequestRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateDcdnCertificateSigningRequestRequest) SetSANs(v string) *CreateDcdnCertificateSigningRequestRequest {
-	s.SANs = &v
-	return s
-}
-
-func (s *CreateDcdnCertificateSigningRequestRequest) SetState(v string) *CreateDcdnCertificateSigningRequestRequest {
-	s.State = &v
-	return s
-}
-
-type CreateDcdnCertificateSigningRequestResponseBody struct {
-	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	Csr        *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	PubMd5     *string `json:"PubMd5,omitempty" xml:"PubMd5,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateDcdnCertificateSigningRequestResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDcdnCertificateSigningRequestResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDcdnCertificateSigningRequestResponseBody) SetCommonName(v string) *CreateDcdnCertificateSigningRequestResponseBody {
-	s.CommonName = &v
-	return s
-}
-
-func (s *CreateDcdnCertificateSigningRequestResponseBody) SetCsr(v string) *CreateDcdnCertificateSigningRequestResponseBody {
-	s.Csr = &v
-	return s
-}
-
-func (s *CreateDcdnCertificateSigningRequestResponseBody) SetPubMd5(v string) *CreateDcdnCertificateSigningRequestResponseBody {
-	s.PubMd5 = &v
-	return s
-}
-
-func (s *CreateDcdnCertificateSigningRequestResponseBody) SetRequestId(v string) *CreateDcdnCertificateSigningRequestResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateDcdnCertificateSigningRequestResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDcdnCertificateSigningRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDcdnCertificateSigningRequestResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDcdnCertificateSigningRequestResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDcdnCertificateSigningRequestResponse) SetHeaders(v map[string]*string) *CreateDcdnCertificateSigningRequestResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDcdnCertificateSigningRequestResponse) SetStatusCode(v int32) *CreateDcdnCertificateSigningRequestResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateDcdnCertificateSigningRequestResponse) SetBody(v *CreateDcdnCertificateSigningRequestResponseBody) *CreateDcdnCertificateSigningRequestResponse {
 	s.Body = v
 	return s
 }
@@ -2145,6 +2022,200 @@ func (s *CreateWasmResponse) SetStatusCode(v int32) *CreateWasmResponse {
 }
 
 func (s *CreateWasmResponse) SetBody(v *CreateWasmResponseBody) *CreateWasmResponse {
+	s.Body = v
+	return s
+}
+
+type DcdnHttpRequestTestToolRequest struct {
+	Args    *string                `json:"Args,omitempty" xml:"Args,omitempty"`
+	Body    *string                `json:"Body,omitempty" xml:"Body,omitempty"`
+	Header  map[string]interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	Host    *string                `json:"Host,omitempty" xml:"Host,omitempty"`
+	Method  *string                `json:"Method,omitempty" xml:"Method,omitempty"`
+	OwnerId *int64                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProxyIp *string                `json:"ProxyIp,omitempty" xml:"ProxyIp,omitempty"`
+	Scheme  *string                `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	Uri     *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s DcdnHttpRequestTestToolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DcdnHttpRequestTestToolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetArgs(v string) *DcdnHttpRequestTestToolRequest {
+	s.Args = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetBody(v string) *DcdnHttpRequestTestToolRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetHeader(v map[string]interface{}) *DcdnHttpRequestTestToolRequest {
+	s.Header = v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetHost(v string) *DcdnHttpRequestTestToolRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetMethod(v string) *DcdnHttpRequestTestToolRequest {
+	s.Method = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetOwnerId(v int64) *DcdnHttpRequestTestToolRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetProxyIp(v string) *DcdnHttpRequestTestToolRequest {
+	s.ProxyIp = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetScheme(v string) *DcdnHttpRequestTestToolRequest {
+	s.Scheme = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetUri(v string) *DcdnHttpRequestTestToolRequest {
+	s.Uri = &v
+	return s
+}
+
+type DcdnHttpRequestTestToolShrinkRequest struct {
+	Args         *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	Body         *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	HeaderShrink *string `json:"Header,omitempty" xml:"Header,omitempty"`
+	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Method       *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProxyIp      *string `json:"ProxyIp,omitempty" xml:"ProxyIp,omitempty"`
+	Scheme       *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s DcdnHttpRequestTestToolShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DcdnHttpRequestTestToolShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetArgs(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.Args = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetBody(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetHeaderShrink(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.HeaderShrink = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetHost(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetMethod(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.Method = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetOwnerId(v int64) *DcdnHttpRequestTestToolShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetProxyIp(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.ProxyIp = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetScheme(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.Scheme = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetUri(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.Uri = &v
+	return s
+}
+
+type DcdnHttpRequestTestToolResponseBody struct {
+	Body       *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	Header     *string `json:"Header,omitempty" xml:"Header,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s DcdnHttpRequestTestToolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DcdnHttpRequestTestToolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DcdnHttpRequestTestToolResponseBody) SetBody(v string) *DcdnHttpRequestTestToolResponseBody {
+	s.Body = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolResponseBody) SetHeader(v string) *DcdnHttpRequestTestToolResponseBody {
+	s.Header = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolResponseBody) SetRequestId(v string) *DcdnHttpRequestTestToolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolResponseBody) SetStatusCode(v int32) *DcdnHttpRequestTestToolResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type DcdnHttpRequestTestToolResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DcdnHttpRequestTestToolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DcdnHttpRequestTestToolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DcdnHttpRequestTestToolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DcdnHttpRequestTestToolResponse) SetHeaders(v map[string]*string) *DcdnHttpRequestTestToolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolResponse) SetStatusCode(v int32) *DcdnHttpRequestTestToolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolResponse) SetBody(v *DcdnHttpRequestTestToolResponseBody) *DcdnHttpRequestTestToolResponse {
 	s.Body = v
 	return s
 }
@@ -3339,11 +3410,13 @@ func (s *DescribeDcdnAclFieldsResponse) SetBody(v *DescribeDcdnAclFieldsResponse
 }
 
 type DescribeDcdnBgpBpsDataRequest struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval  *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Isp       *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DevicePort *string `json:"DevicePort,omitempty" xml:"DevicePort,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Isp        *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDcdnBgpBpsDataRequest) String() string {
@@ -3352,6 +3425,16 @@ func (s DescribeDcdnBgpBpsDataRequest) String() string {
 
 func (s DescribeDcdnBgpBpsDataRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDcdnBgpBpsDataRequest) SetDeviceName(v string) *DescribeDcdnBgpBpsDataRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *DescribeDcdnBgpBpsDataRequest) SetDevicePort(v string) *DescribeDcdnBgpBpsDataRequest {
+	s.DevicePort = &v
+	return s
 }
 
 func (s *DescribeDcdnBgpBpsDataRequest) SetEndTime(v string) *DescribeDcdnBgpBpsDataRequest {
@@ -3994,304 +4077,288 @@ func (s *DescribeDcdnCertificateListResponse) SetBody(v *DescribeDcdnCertificate
 	return s
 }
 
-type DescribeDcdnConfigGroupDetailRequest struct {
-	ConfigGroupId   *string `json:"ConfigGroupId,omitempty" xml:"ConfigGroupId,omitempty"`
-	ConfigGroupName *string `json:"ConfigGroupName,omitempty" xml:"ConfigGroupName,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeDcdnConfigGroupDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnConfigGroupDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnConfigGroupDetailRequest) SetConfigGroupId(v string) *DescribeDcdnConfigGroupDetailRequest {
-	s.ConfigGroupId = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigGroupDetailRequest) SetConfigGroupName(v string) *DescribeDcdnConfigGroupDetailRequest {
-	s.ConfigGroupName = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigGroupDetailRequest) SetOwnerId(v int64) *DescribeDcdnConfigGroupDetailRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DescribeDcdnConfigGroupDetailResponseBody struct {
-	BizName         *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	ConfigGroupId   *string `json:"ConfigGroupId,omitempty" xml:"ConfigGroupId,omitempty"`
-	ConfigGroupName *string `json:"ConfigGroupName,omitempty" xml:"ConfigGroupName,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-}
-
-func (s DescribeDcdnConfigGroupDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnConfigGroupDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnConfigGroupDetailResponseBody) SetBizName(v string) *DescribeDcdnConfigGroupDetailResponseBody {
-	s.BizName = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigGroupDetailResponseBody) SetConfigGroupId(v string) *DescribeDcdnConfigGroupDetailResponseBody {
-	s.ConfigGroupId = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigGroupDetailResponseBody) SetConfigGroupName(v string) *DescribeDcdnConfigGroupDetailResponseBody {
-	s.ConfigGroupName = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigGroupDetailResponseBody) SetCreateTime(v string) *DescribeDcdnConfigGroupDetailResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigGroupDetailResponseBody) SetDescription(v string) *DescribeDcdnConfigGroupDetailResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigGroupDetailResponseBody) SetRequestId(v string) *DescribeDcdnConfigGroupDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigGroupDetailResponseBody) SetUpdateTime(v string) *DescribeDcdnConfigGroupDetailResponseBody {
-	s.UpdateTime = &v
-	return s
-}
-
-type DescribeDcdnConfigGroupDetailResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDcdnConfigGroupDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDcdnConfigGroupDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnConfigGroupDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnConfigGroupDetailResponse) SetHeaders(v map[string]*string) *DescribeDcdnConfigGroupDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDcdnConfigGroupDetailResponse) SetStatusCode(v int32) *DescribeDcdnConfigGroupDetailResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigGroupDetailResponse) SetBody(v *DescribeDcdnConfigGroupDetailResponseBody) *DescribeDcdnConfigGroupDetailResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeDcdnConfigOfVersionRequest struct {
-	FunctionId    *int32  `json:"FunctionId,omitempty" xml:"FunctionId,omitempty"`
-	FunctionName  *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	GroupId       *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+type DescribeDcdnDdosServiceRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	VersionId     *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
-func (s DescribeDcdnConfigOfVersionRequest) String() string {
+func (s DescribeDcdnDdosServiceRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDcdnConfigOfVersionRequest) GoString() string {
+func (s DescribeDcdnDdosServiceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDcdnConfigOfVersionRequest) SetFunctionId(v int32) *DescribeDcdnConfigOfVersionRequest {
-	s.FunctionId = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigOfVersionRequest) SetFunctionName(v string) *DescribeDcdnConfigOfVersionRequest {
-	s.FunctionName = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigOfVersionRequest) SetGroupId(v int64) *DescribeDcdnConfigOfVersionRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigOfVersionRequest) SetOwnerId(v int64) *DescribeDcdnConfigOfVersionRequest {
+func (s *DescribeDcdnDdosServiceRequest) SetOwnerId(v int64) *DescribeDcdnDdosServiceRequest {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *DescribeDcdnConfigOfVersionRequest) SetSecurityToken(v string) *DescribeDcdnConfigOfVersionRequest {
+func (s *DescribeDcdnDdosServiceRequest) SetSecurityToken(v string) *DescribeDcdnDdosServiceRequest {
 	s.SecurityToken = &v
 	return s
 }
 
-func (s *DescribeDcdnConfigOfVersionRequest) SetVersionId(v string) *DescribeDcdnConfigOfVersionRequest {
-	s.VersionId = &v
-	return s
+type DescribeDcdnDdosServiceResponseBody struct {
+	ChangingAffectTime *string `json:"ChangingAffectTime,omitempty" xml:"ChangingAffectTime,omitempty"`
+	ChangingChargeType *string `json:"ChangingChargeType,omitempty" xml:"ChangingChargeType,omitempty"`
+	ChangingDomianNum  *int32  `json:"ChangingDomianNum,omitempty" xml:"ChangingDomianNum,omitempty"`
+	ChangingEdition    *string `json:"ChangingEdition,omitempty" xml:"ChangingEdition,omitempty"`
+	ChangingProtectNum *int32  `json:"ChangingProtectNum,omitempty" xml:"ChangingProtectNum,omitempty"`
+	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	DomianNum          *int32  `json:"DomianNum,omitempty" xml:"DomianNum,omitempty"`
+	Edition            *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	Enabled            *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	EndingTime         *string `json:"EndingTime,omitempty" xml:"EndingTime,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OpeningTime        *string `json:"OpeningTime,omitempty" xml:"OpeningTime,omitempty"`
+	ProtectNum         *int32  `json:"ProtectNum,omitempty" xml:"ProtectNum,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
-type DescribeDcdnConfigOfVersionResponseBody struct {
-	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VersionConfigs *DescribeDcdnConfigOfVersionResponseBodyVersionConfigs `json:"VersionConfigs,omitempty" xml:"VersionConfigs,omitempty" type:"Struct"`
-}
-
-func (s DescribeDcdnConfigOfVersionResponseBody) String() string {
+func (s DescribeDcdnDdosServiceResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDcdnConfigOfVersionResponseBody) GoString() string {
+func (s DescribeDcdnDdosServiceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDcdnConfigOfVersionResponseBody) SetRequestId(v string) *DescribeDcdnConfigOfVersionResponseBody {
+func (s *DescribeDcdnDdosServiceResponseBody) SetChangingAffectTime(v string) *DescribeDcdnDdosServiceResponseBody {
+	s.ChangingAffectTime = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosServiceResponseBody) SetChangingChargeType(v string) *DescribeDcdnDdosServiceResponseBody {
+	s.ChangingChargeType = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosServiceResponseBody) SetChangingDomianNum(v int32) *DescribeDcdnDdosServiceResponseBody {
+	s.ChangingDomianNum = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosServiceResponseBody) SetChangingEdition(v string) *DescribeDcdnDdosServiceResponseBody {
+	s.ChangingEdition = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosServiceResponseBody) SetChangingProtectNum(v int32) *DescribeDcdnDdosServiceResponseBody {
+	s.ChangingProtectNum = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosServiceResponseBody) SetChargeType(v string) *DescribeDcdnDdosServiceResponseBody {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosServiceResponseBody) SetDomianNum(v int32) *DescribeDcdnDdosServiceResponseBody {
+	s.DomianNum = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosServiceResponseBody) SetEdition(v string) *DescribeDcdnDdosServiceResponseBody {
+	s.Edition = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosServiceResponseBody) SetEnabled(v string) *DescribeDcdnDdosServiceResponseBody {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosServiceResponseBody) SetEndingTime(v string) *DescribeDcdnDdosServiceResponseBody {
+	s.EndingTime = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosServiceResponseBody) SetInstanceId(v string) *DescribeDcdnDdosServiceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosServiceResponseBody) SetOpeningTime(v string) *DescribeDcdnDdosServiceResponseBody {
+	s.OpeningTime = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosServiceResponseBody) SetProtectNum(v int32) *DescribeDcdnDdosServiceResponseBody {
+	s.ProtectNum = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosServiceResponseBody) SetRequestId(v string) *DescribeDcdnDdosServiceResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeDcdnConfigOfVersionResponseBody) SetVersionConfigs(v *DescribeDcdnConfigOfVersionResponseBodyVersionConfigs) *DescribeDcdnConfigOfVersionResponseBody {
-	s.VersionConfigs = v
-	return s
-}
-
-type DescribeDcdnConfigOfVersionResponseBodyVersionConfigs struct {
-	VersionConfig []*DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfig `json:"VersionConfig,omitempty" xml:"VersionConfig,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDcdnConfigOfVersionResponseBodyVersionConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnConfigOfVersionResponseBodyVersionConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnConfigOfVersionResponseBodyVersionConfigs) SetVersionConfig(v []*DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfig) *DescribeDcdnConfigOfVersionResponseBodyVersionConfigs {
-	s.VersionConfig = v
-	return s
-}
-
-type DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfig struct {
-	ConfigId     *string                                                                         `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	FunctionArgs *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Struct"`
-	FunctionName *string                                                                         `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	Status       *string                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfig) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfig) SetConfigId(v string) *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfig {
-	s.ConfigId = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfig) SetFunctionArgs(v *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs) *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfig {
-	s.FunctionArgs = v
-	return s
-}
-
-func (s *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfig) SetFunctionName(v string) *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfig {
-	s.FunctionName = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfig) SetStatus(v string) *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfig {
+func (s *DescribeDcdnDdosServiceResponseBody) SetStatus(v string) *DescribeDcdnDdosServiceResponseBody {
 	s.Status = &v
 	return s
 }
 
-type DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs struct {
-	FunctionArg []*DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg `json:"FunctionArg,omitempty" xml:"FunctionArg,omitempty" type:"Repeated"`
+type DescribeDcdnDdosServiceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnDdosServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs) String() string {
+func (s DescribeDcdnDdosServiceResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs) GoString() string {
+func (s DescribeDcdnDdosServiceResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs) SetFunctionArg(v []*DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg) *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs {
-	s.FunctionArg = v
-	return s
-}
-
-type DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg struct {
-	ArgName  *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
-	ArgValue *string `json:"ArgValue,omitempty" xml:"ArgValue,omitempty"`
-}
-
-func (s DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg) SetArgName(v string) *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg {
-	s.ArgName = &v
-	return s
-}
-
-func (s *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg) SetArgValue(v string) *DescribeDcdnConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg {
-	s.ArgValue = &v
-	return s
-}
-
-type DescribeDcdnConfigOfVersionResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDcdnConfigOfVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDcdnConfigOfVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnConfigOfVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnConfigOfVersionResponse) SetHeaders(v map[string]*string) *DescribeDcdnConfigOfVersionResponse {
+func (s *DescribeDcdnDdosServiceResponse) SetHeaders(v map[string]*string) *DescribeDcdnDdosServiceResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DescribeDcdnConfigOfVersionResponse) SetStatusCode(v int32) *DescribeDcdnConfigOfVersionResponse {
+func (s *DescribeDcdnDdosServiceResponse) SetStatusCode(v int32) *DescribeDcdnDdosServiceResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *DescribeDcdnConfigOfVersionResponse) SetBody(v *DescribeDcdnConfigOfVersionResponseBody) *DescribeDcdnConfigOfVersionResponse {
+func (s *DescribeDcdnDdosServiceResponse) SetBody(v *DescribeDcdnDdosServiceResponseBody) *DescribeDcdnDdosServiceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnDdosSpecInfoRequest struct {
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeDcdnDdosSpecInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDdosSpecInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDdosSpecInfoRequest) SetOwnerId(v int64) *DescribeDcdnDdosSpecInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeDcdnDdosSpecInfoResponseBody struct {
+	Edition   *string                                          `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	Enable    *string                                          `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SpecInfos []*DescribeDcdnDdosSpecInfoResponseBodySpecInfos `json:"SpecInfos,omitempty" xml:"SpecInfos,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnDdosSpecInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDdosSpecInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDdosSpecInfoResponseBody) SetEdition(v string) *DescribeDcdnDdosSpecInfoResponseBody {
+	s.Edition = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosSpecInfoResponseBody) SetEnable(v string) *DescribeDcdnDdosSpecInfoResponseBody {
+	s.Enable = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosSpecInfoResponseBody) SetRequestId(v string) *DescribeDcdnDdosSpecInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosSpecInfoResponseBody) SetSpecInfos(v []*DescribeDcdnDdosSpecInfoResponseBodySpecInfos) *DescribeDcdnDdosSpecInfoResponseBody {
+	s.SpecInfos = v
+	return s
+}
+
+type DescribeDcdnDdosSpecInfoResponseBodySpecInfos struct {
+	Configs []*DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	Rule    *string                                                 `json:"Rule,omitempty" xml:"Rule,omitempty"`
+}
+
+func (s DescribeDcdnDdosSpecInfoResponseBodySpecInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDdosSpecInfoResponseBodySpecInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDdosSpecInfoResponseBodySpecInfos) SetConfigs(v []*DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs) *DescribeDcdnDdosSpecInfoResponseBodySpecInfos {
+	s.Configs = v
+	return s
+}
+
+func (s *DescribeDcdnDdosSpecInfoResponseBodySpecInfos) SetRule(v string) *DescribeDcdnDdosSpecInfoResponseBodySpecInfos {
+	s.Rule = &v
+	return s
+}
+
+type DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs struct {
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Expr   *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
+	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs) SetConfig(v string) *DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs {
+	s.Config = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs) SetExpr(v string) *DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs {
+	s.Expr = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs) SetValue(v string) *DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs {
+	s.Value = &v
+	return s
+}
+
+type DescribeDcdnDdosSpecInfoResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnDdosSpecInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnDdosSpecInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDdosSpecInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDdosSpecInfoResponse) SetHeaders(v map[string]*string) *DescribeDcdnDdosSpecInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnDdosSpecInfoResponse) SetStatusCode(v int32) *DescribeDcdnDdosSpecInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosSpecInfoResponse) SetBody(v *DescribeDcdnDdosSpecInfoResponseBody) *DescribeDcdnDdosSpecInfoResponse {
 	s.Body = v
 	return s
 }
@@ -12178,234 +12245,165 @@ func (s *DescribeDcdnDomainWebsocketTrafficDataResponse) SetBody(v *DescribeDcdn
 	return s
 }
 
-type DescribeDcdnEsExceptionDataRequest struct {
+type DescribeDcdnErUsageDataRequest struct {
 	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RuleId    *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RoutineID *string `json:"RoutineID,omitempty" xml:"RoutineID,omitempty"`
+	Spec      *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	SplitBy   *string `json:"SplitBy,omitempty" xml:"SplitBy,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
-func (s DescribeDcdnEsExceptionDataRequest) String() string {
+func (s DescribeDcdnErUsageDataRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDcdnEsExceptionDataRequest) GoString() string {
+func (s DescribeDcdnErUsageDataRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDcdnEsExceptionDataRequest) SetEndTime(v string) *DescribeDcdnEsExceptionDataRequest {
+func (s *DescribeDcdnErUsageDataRequest) SetEndTime(v string) *DescribeDcdnErUsageDataRequest {
 	s.EndTime = &v
 	return s
 }
 
-func (s *DescribeDcdnEsExceptionDataRequest) SetOwnerId(v int64) *DescribeDcdnEsExceptionDataRequest {
+func (s *DescribeDcdnErUsageDataRequest) SetOwnerId(v int64) *DescribeDcdnErUsageDataRequest {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *DescribeDcdnEsExceptionDataRequest) SetRuleId(v string) *DescribeDcdnEsExceptionDataRequest {
-	s.RuleId = &v
+func (s *DescribeDcdnErUsageDataRequest) SetRoutineID(v string) *DescribeDcdnErUsageDataRequest {
+	s.RoutineID = &v
 	return s
 }
 
-func (s *DescribeDcdnEsExceptionDataRequest) SetStartTime(v string) *DescribeDcdnEsExceptionDataRequest {
+func (s *DescribeDcdnErUsageDataRequest) SetSpec(v string) *DescribeDcdnErUsageDataRequest {
+	s.Spec = &v
+	return s
+}
+
+func (s *DescribeDcdnErUsageDataRequest) SetSplitBy(v string) *DescribeDcdnErUsageDataRequest {
+	s.SplitBy = &v
+	return s
+}
+
+func (s *DescribeDcdnErUsageDataRequest) SetStartTime(v string) *DescribeDcdnErUsageDataRequest {
 	s.StartTime = &v
 	return s
 }
 
-type DescribeDcdnEsExceptionDataResponseBody struct {
-	Contents  []*DescribeDcdnEsExceptionDataResponseBodyContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+type DescribeDcdnErUsageDataResponseBody struct {
+	EndTime   *string                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ErAccData *DescribeDcdnErUsageDataResponseBodyErAccData `json:"ErAccData,omitempty" xml:"ErAccData,omitempty" type:"Struct"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime *string                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
-func (s DescribeDcdnEsExceptionDataResponseBody) String() string {
+func (s DescribeDcdnErUsageDataResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDcdnEsExceptionDataResponseBody) GoString() string {
+func (s DescribeDcdnErUsageDataResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDcdnEsExceptionDataResponseBody) SetContents(v []*DescribeDcdnEsExceptionDataResponseBodyContents) *DescribeDcdnEsExceptionDataResponseBody {
-	s.Contents = v
-	return s
-}
-
-func (s *DescribeDcdnEsExceptionDataResponseBody) SetRequestId(v string) *DescribeDcdnEsExceptionDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeDcdnEsExceptionDataResponseBodyContents struct {
-	Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	Name    *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Points  []*string `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDcdnEsExceptionDataResponseBodyContents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnEsExceptionDataResponseBodyContents) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnEsExceptionDataResponseBodyContents) SetColumns(v []*string) *DescribeDcdnEsExceptionDataResponseBodyContents {
-	s.Columns = v
-	return s
-}
-
-func (s *DescribeDcdnEsExceptionDataResponseBodyContents) SetName(v string) *DescribeDcdnEsExceptionDataResponseBodyContents {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeDcdnEsExceptionDataResponseBodyContents) SetPoints(v []*string) *DescribeDcdnEsExceptionDataResponseBodyContents {
-	s.Points = v
-	return s
-}
-
-type DescribeDcdnEsExceptionDataResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDcdnEsExceptionDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDcdnEsExceptionDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnEsExceptionDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnEsExceptionDataResponse) SetHeaders(v map[string]*string) *DescribeDcdnEsExceptionDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDcdnEsExceptionDataResponse) SetStatusCode(v int32) *DescribeDcdnEsExceptionDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDcdnEsExceptionDataResponse) SetBody(v *DescribeDcdnEsExceptionDataResponseBody) *DescribeDcdnEsExceptionDataResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeDcdnEsExecuteDataRequest struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RuleId    *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeDcdnEsExecuteDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnEsExecuteDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnEsExecuteDataRequest) SetEndTime(v string) *DescribeDcdnEsExecuteDataRequest {
+func (s *DescribeDcdnErUsageDataResponseBody) SetEndTime(v string) *DescribeDcdnErUsageDataResponseBody {
 	s.EndTime = &v
 	return s
 }
 
-func (s *DescribeDcdnEsExecuteDataRequest) SetOwnerId(v int64) *DescribeDcdnEsExecuteDataRequest {
-	s.OwnerId = &v
+func (s *DescribeDcdnErUsageDataResponseBody) SetErAccData(v *DescribeDcdnErUsageDataResponseBodyErAccData) *DescribeDcdnErUsageDataResponseBody {
+	s.ErAccData = v
 	return s
 }
 
-func (s *DescribeDcdnEsExecuteDataRequest) SetRuleId(v string) *DescribeDcdnEsExecuteDataRequest {
-	s.RuleId = &v
-	return s
-}
-
-func (s *DescribeDcdnEsExecuteDataRequest) SetStartTime(v string) *DescribeDcdnEsExecuteDataRequest {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeDcdnEsExecuteDataResponseBody struct {
-	Contents  []*DescribeDcdnEsExecuteDataResponseBodyContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeDcdnEsExecuteDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnEsExecuteDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnEsExecuteDataResponseBody) SetContents(v []*DescribeDcdnEsExecuteDataResponseBodyContents) *DescribeDcdnEsExecuteDataResponseBody {
-	s.Contents = v
-	return s
-}
-
-func (s *DescribeDcdnEsExecuteDataResponseBody) SetRequestId(v string) *DescribeDcdnEsExecuteDataResponseBody {
+func (s *DescribeDcdnErUsageDataResponseBody) SetRequestId(v string) *DescribeDcdnErUsageDataResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type DescribeDcdnEsExecuteDataResponseBodyContents struct {
-	Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	Name    *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Points  []*string `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
+func (s *DescribeDcdnErUsageDataResponseBody) SetStartTime(v string) *DescribeDcdnErUsageDataResponseBody {
+	s.StartTime = &v
+	return s
 }
 
-func (s DescribeDcdnEsExecuteDataResponseBodyContents) String() string {
+type DescribeDcdnErUsageDataResponseBodyErAccData struct {
+	ErAccItem []*DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem `json:"ErAccItem,omitempty" xml:"ErAccItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnErUsageDataResponseBodyErAccData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDcdnEsExecuteDataResponseBodyContents) GoString() string {
+func (s DescribeDcdnErUsageDataResponseBodyErAccData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDcdnEsExecuteDataResponseBodyContents) SetColumns(v []*string) *DescribeDcdnEsExecuteDataResponseBodyContents {
-	s.Columns = v
+func (s *DescribeDcdnErUsageDataResponseBodyErAccData) SetErAccItem(v []*DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem) *DescribeDcdnErUsageDataResponseBodyErAccData {
+	s.ErAccItem = v
 	return s
 }
 
-func (s *DescribeDcdnEsExecuteDataResponseBodyContents) SetName(v string) *DescribeDcdnEsExecuteDataResponseBodyContents {
-	s.Name = &v
-	return s
+type DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem struct {
+	ErAcc     *int64  `json:"ErAcc,omitempty" xml:"ErAcc,omitempty"`
+	Routine   *string `json:"Routine,omitempty" xml:"Routine,omitempty"`
+	Spec      *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
-func (s *DescribeDcdnEsExecuteDataResponseBodyContents) SetPoints(v []*string) *DescribeDcdnEsExecuteDataResponseBodyContents {
-	s.Points = v
-	return s
-}
-
-type DescribeDcdnEsExecuteDataResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDcdnEsExecuteDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDcdnEsExecuteDataResponse) String() string {
+func (s DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDcdnEsExecuteDataResponse) GoString() string {
+func (s DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDcdnEsExecuteDataResponse) SetHeaders(v map[string]*string) *DescribeDcdnEsExecuteDataResponse {
+func (s *DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem) SetErAcc(v int64) *DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem {
+	s.ErAcc = &v
+	return s
+}
+
+func (s *DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem) SetRoutine(v string) *DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem {
+	s.Routine = &v
+	return s
+}
+
+func (s *DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem) SetSpec(v string) *DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem {
+	s.Spec = &v
+	return s
+}
+
+func (s *DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem) SetTimeStamp(v string) *DescribeDcdnErUsageDataResponseBodyErAccDataErAccItem {
+	s.TimeStamp = &v
+	return s
+}
+
+type DescribeDcdnErUsageDataResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnErUsageDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnErUsageDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnErUsageDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnErUsageDataResponse) SetHeaders(v map[string]*string) *DescribeDcdnErUsageDataResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DescribeDcdnEsExecuteDataResponse) SetStatusCode(v int32) *DescribeDcdnEsExecuteDataResponse {
+func (s *DescribeDcdnErUsageDataResponse) SetStatusCode(v int32) *DescribeDcdnErUsageDataResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *DescribeDcdnEsExecuteDataResponse) SetBody(v *DescribeDcdnEsExecuteDataResponseBody) *DescribeDcdnEsExecuteDataResponse {
+func (s *DescribeDcdnErUsageDataResponse) SetBody(v *DescribeDcdnErUsageDataResponseBody) *DescribeDcdnErUsageDataResponse {
 	s.Body = v
 	return s
 }
@@ -12928,6 +12926,7 @@ type DescribeDcdnIpaDomainDetailResponseBodyDomainDetail struct {
 	SSLPub          *string                                                     `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
 	Scope           *string                                                     `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	Sources         *DescribeDcdnIpaDomainDetailResponseBodyDomainDetailSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
+	TenantID        *string                                                     `json:"TenantID,omitempty" xml:"TenantID,omitempty"`
 }
 
 func (s DescribeDcdnIpaDomainDetailResponseBodyDomainDetail) String() string {
@@ -12995,6 +12994,11 @@ func (s *DescribeDcdnIpaDomainDetailResponseBodyDomainDetail) SetScope(v string)
 
 func (s *DescribeDcdnIpaDomainDetailResponseBodyDomainDetail) SetSources(v *DescribeDcdnIpaDomainDetailResponseBodyDomainDetailSources) *DescribeDcdnIpaDomainDetailResponseBodyDomainDetail {
 	s.Sources = v
+	return s
+}
+
+func (s *DescribeDcdnIpaDomainDetailResponseBodyDomainDetail) SetTenantID(v string) *DescribeDcdnIpaDomainDetailResponseBodyDomainDetail {
+	s.TenantID = &v
 	return s
 }
 
@@ -13087,6 +13091,157 @@ func (s *DescribeDcdnIpaDomainDetailResponse) SetStatusCode(v int32) *DescribeDc
 }
 
 func (s *DescribeDcdnIpaDomainDetailResponse) SetBody(v *DescribeDcdnIpaDomainDetailResponseBody) *DescribeDcdnIpaDomainDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnIpaDomainMultiUsageDataRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDcdnIpaDomainMultiUsageDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnIpaDomainMultiUsageDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataRequest) SetDomainName(v string) *DescribeDcdnIpaDomainMultiUsageDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataRequest) SetEndTime(v string) *DescribeDcdnIpaDomainMultiUsageDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataRequest) SetOwnerId(v int64) *DescribeDcdnIpaDomainMultiUsageDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataRequest) SetStartTime(v string) *DescribeDcdnIpaDomainMultiUsageDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDcdnIpaDomainMultiUsageDataResponseBody struct {
+	EndTime            *string                                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId          *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime          *string                                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TrafficPerInterval *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval `json:"TrafficPerInterval,omitempty" xml:"TrafficPerInterval,omitempty" type:"Struct"`
+}
+
+func (s DescribeDcdnIpaDomainMultiUsageDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnIpaDomainMultiUsageDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBody) SetEndTime(v string) *DescribeDcdnIpaDomainMultiUsageDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBody) SetRequestId(v string) *DescribeDcdnIpaDomainMultiUsageDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBody) SetStartTime(v string) *DescribeDcdnIpaDomainMultiUsageDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBody) SetTrafficPerInterval(v *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval) *DescribeDcdnIpaDomainMultiUsageDataResponseBody {
+	s.TrafficPerInterval = v
+	return s
+}
+
+type DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval struct {
+	TrafficDataModule []*DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule `json:"TrafficDataModule,omitempty" xml:"TrafficDataModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval) SetTrafficDataModule(v []*DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval {
+	s.TrafficDataModule = v
+	return s
+}
+
+type DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule struct {
+	Area      *string  `json:"Area,omitempty" xml:"Area,omitempty"`
+	Bps       *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	Domain    *string  `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	TimeStamp *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+}
+
+func (s DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) SetArea(v string) *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule {
+	s.Area = &v
+	return s
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) SetBps(v float32) *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule {
+	s.Bps = &v
+	return s
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) SetDomain(v string) *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) SetTimeStamp(v string) *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+type DescribeDcdnIpaDomainMultiUsageDataResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnIpaDomainMultiUsageDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnIpaDomainMultiUsageDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnIpaDomainMultiUsageDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataResponse) SetHeaders(v map[string]*string) *DescribeDcdnIpaDomainMultiUsageDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataResponse) SetStatusCode(v int32) *DescribeDcdnIpaDomainMultiUsageDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnIpaDomainMultiUsageDataResponse) SetBody(v *DescribeDcdnIpaDomainMultiUsageDataResponseBody) *DescribeDcdnIpaDomainMultiUsageDataResponse {
 	s.Body = v
 	return s
 }
@@ -13405,6 +13560,7 @@ type DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData struct {
 	SSLProtocol     *string                                                       `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
 	Sandbox         *string                                                       `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
 	Sources         *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
+	TenantID        *string                                                       `json:"TenantID,omitempty" xml:"TenantID,omitempty"`
 }
 
 func (s DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData) String() string {
@@ -13462,6 +13618,11 @@ func (s *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData) SetSandbox(v str
 
 func (s *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData) SetSources(v *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageDataSources) *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData {
 	s.Sources = v
+	return s
+}
+
+func (s *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData) SetTenantID(v string) *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData {
+	s.TenantID = &v
 	return s
 }
 
@@ -13548,6 +13709,87 @@ func (s *DescribeDcdnIpaUserDomainsResponse) SetStatusCode(v int32) *DescribeDcd
 }
 
 func (s *DescribeDcdnIpaUserDomainsResponse) SetBody(v *DescribeDcdnIpaUserDomainsResponseBody) *DescribeDcdnIpaUserDomainsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnL2VipsByDomainRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeDcdnL2VipsByDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnL2VipsByDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnL2VipsByDomainRequest) SetDomainName(v string) *DescribeDcdnL2VipsByDomainRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnL2VipsByDomainRequest) SetOwnerId(v int64) *DescribeDcdnL2VipsByDomainRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeDcdnL2VipsByDomainResponseBody struct {
+	DomainName *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Vips       []*string `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnL2VipsByDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnL2VipsByDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnL2VipsByDomainResponseBody) SetDomainName(v string) *DescribeDcdnL2VipsByDomainResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnL2VipsByDomainResponseBody) SetRequestId(v string) *DescribeDcdnL2VipsByDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnL2VipsByDomainResponseBody) SetVips(v []*string) *DescribeDcdnL2VipsByDomainResponseBody {
+	s.Vips = v
+	return s
+}
+
+type DescribeDcdnL2VipsByDomainResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnL2VipsByDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnL2VipsByDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnL2VipsByDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnL2VipsByDomainResponse) SetHeaders(v map[string]*string) *DescribeDcdnL2VipsByDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnL2VipsByDomainResponse) SetStatusCode(v int32) *DescribeDcdnL2VipsByDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnL2VipsByDomainResponse) SetBody(v *DescribeDcdnL2VipsByDomainResponseBody) *DescribeDcdnL2VipsByDomainResponse {
 	s.Body = v
 	return s
 }
@@ -16603,6 +16845,7 @@ func (s *DescribeDcdnUserDomainsResponseBodyDomains) SetPageData(v []*DescribeDc
 type DescribeDcdnUserDomainsResponseBodyDomainsPageData struct {
 	Cname           *string                                                    `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	Description     *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	DomainId        *int64                                                     `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	DomainName      *string                                                    `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainStatus    *string                                                    `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	GmtCreated      *string                                                    `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
@@ -16628,6 +16871,11 @@ func (s *DescribeDcdnUserDomainsResponseBodyDomainsPageData) SetCname(v string) 
 
 func (s *DescribeDcdnUserDomainsResponseBodyDomainsPageData) SetDescription(v string) *DescribeDcdnUserDomainsResponseBodyDomainsPageData {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeDcdnUserDomainsResponseBodyDomainsPageData) SetDomainId(v int64) *DescribeDcdnUserDomainsResponseBodyDomainsPageData {
+	s.DomainId = &v
 	return s
 }
 
@@ -18232,6 +18480,7 @@ func (s *DescribeDcdnWafDomainsResponseBody) SetTotalCount(v int32) *DescribeDcd
 }
 
 type DescribeDcdnWafDomainsResponseBodyDomains struct {
+	ClientIpTag *string `json:"ClientIpTag,omitempty" xml:"ClientIpTag,omitempty"`
 	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	PolicyCount *int32  `json:"PolicyCount,omitempty" xml:"PolicyCount,omitempty"`
 }
@@ -18242,6 +18491,11 @@ func (s DescribeDcdnWafDomainsResponseBodyDomains) String() string {
 
 func (s DescribeDcdnWafDomainsResponseBodyDomains) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDcdnWafDomainsResponseBodyDomains) SetClientIpTag(v string) *DescribeDcdnWafDomainsResponseBodyDomains {
+	s.ClientIpTag = &v
+	return s
 }
 
 func (s *DescribeDcdnWafDomainsResponseBodyDomains) SetDomainName(v string) *DescribeDcdnWafDomainsResponseBodyDomains {
@@ -18482,6 +18736,150 @@ func (s *DescribeDcdnWafFilterInfoResponse) SetStatusCode(v int32) *DescribeDcdn
 }
 
 func (s *DescribeDcdnWafFilterInfoResponse) SetBody(v *DescribeDcdnWafFilterInfoResponseBody) *DescribeDcdnWafFilterInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnWafGeoInfoRequest struct {
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeDcdnWafGeoInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafGeoInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafGeoInfoRequest) SetLanguage(v string) *DescribeDcdnWafGeoInfoRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeDcdnWafGeoInfoRequest) SetOwnerId(v int64) *DescribeDcdnWafGeoInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeDcdnWafGeoInfoResponseBody struct {
+	Content   []*DescribeDcdnWafGeoInfoResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDcdnWafGeoInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafGeoInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafGeoInfoResponseBody) SetContent(v []*DescribeDcdnWafGeoInfoResponseBodyContent) *DescribeDcdnWafGeoInfoResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *DescribeDcdnWafGeoInfoResponseBody) SetRequestId(v string) *DescribeDcdnWafGeoInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDcdnWafGeoInfoResponseBodyContent struct {
+	Continents []*DescribeDcdnWafGeoInfoResponseBodyContentContinents `json:"Continents,omitempty" xml:"Continents,omitempty" type:"Repeated"`
+	Type       *string                                                `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeDcdnWafGeoInfoResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafGeoInfoResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafGeoInfoResponseBodyContent) SetContinents(v []*DescribeDcdnWafGeoInfoResponseBodyContentContinents) *DescribeDcdnWafGeoInfoResponseBodyContent {
+	s.Continents = v
+	return s
+}
+
+func (s *DescribeDcdnWafGeoInfoResponseBodyContent) SetType(v string) *DescribeDcdnWafGeoInfoResponseBodyContent {
+	s.Type = &v
+	return s
+}
+
+type DescribeDcdnWafGeoInfoResponseBodyContentContinents struct {
+	Name    *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Regions []*DescribeDcdnWafGeoInfoResponseBodyContentContinentsRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnWafGeoInfoResponseBodyContentContinents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafGeoInfoResponseBodyContentContinents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafGeoInfoResponseBodyContentContinents) SetName(v string) *DescribeDcdnWafGeoInfoResponseBodyContentContinents {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDcdnWafGeoInfoResponseBodyContentContinents) SetRegions(v []*DescribeDcdnWafGeoInfoResponseBodyContentContinentsRegions) *DescribeDcdnWafGeoInfoResponseBodyContentContinents {
+	s.Regions = v
+	return s
+}
+
+type DescribeDcdnWafGeoInfoResponseBodyContentContinentsRegions struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDcdnWafGeoInfoResponseBodyContentContinentsRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafGeoInfoResponseBodyContentContinentsRegions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafGeoInfoResponseBodyContentContinentsRegions) SetName(v string) *DescribeDcdnWafGeoInfoResponseBodyContentContinentsRegions {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDcdnWafGeoInfoResponseBodyContentContinentsRegions) SetValue(v string) *DescribeDcdnWafGeoInfoResponseBodyContentContinentsRegions {
+	s.Value = &v
+	return s
+}
+
+type DescribeDcdnWafGeoInfoResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnWafGeoInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafGeoInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafGeoInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafGeoInfoResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafGeoInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafGeoInfoResponse) SetStatusCode(v int32) *DescribeDcdnWafGeoInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnWafGeoInfoResponse) SetBody(v *DescribeDcdnWafGeoInfoResponseBody) *DescribeDcdnWafGeoInfoResponse {
 	s.Body = v
 	return s
 }
@@ -19467,6 +19865,7 @@ func (s *DescribeDcdnWafServiceRequest) SetSecurityToken(v string) *DescribeDcdn
 
 type DescribeDcdnWafServiceResponseBody struct {
 	Edition            *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	Enabled            *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	OpeningTime        *string `json:"OpeningTime,omitempty" xml:"OpeningTime,omitempty"`
 	RequestBillingType *string `json:"RequestBillingType,omitempty" xml:"RequestBillingType,omitempty"`
 	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -19484,6 +19883,11 @@ func (s DescribeDcdnWafServiceResponseBody) GoString() string {
 
 func (s *DescribeDcdnWafServiceResponseBody) SetEdition(v string) *DescribeDcdnWafServiceResponseBody {
 	s.Edition = &v
+	return s
+}
+
+func (s *DescribeDcdnWafServiceResponseBody) SetEnabled(v string) *DescribeDcdnWafServiceResponseBody {
+	s.Enabled = &v
 	return s
 }
 
@@ -19664,6 +20068,181 @@ func (s *DescribeDcdnWafSpecInfoResponse) SetStatusCode(v int32) *DescribeDcdnWa
 }
 
 func (s *DescribeDcdnWafSpecInfoResponse) SetBody(v *DescribeDcdnWafSpecInfoResponseBody) *DescribeDcdnWafSpecInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnWafUsageDataRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SplitBy    *string `json:"SplitBy,omitempty" xml:"SplitBy,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDcdnWafUsageDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafUsageDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafUsageDataRequest) SetDomainName(v string) *DescribeDcdnWafUsageDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataRequest) SetEndTime(v string) *DescribeDcdnWafUsageDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataRequest) SetInterval(v string) *DescribeDcdnWafUsageDataRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataRequest) SetOwnerId(v int64) *DescribeDcdnWafUsageDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataRequest) SetSplitBy(v string) *DescribeDcdnWafUsageDataRequest {
+	s.SplitBy = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataRequest) SetStartTime(v string) *DescribeDcdnWafUsageDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDcdnWafUsageDataResponseBody struct {
+	EndTime      *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime    *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	WafUsageData *DescribeDcdnWafUsageDataResponseBodyWafUsageData `json:"WafUsageData,omitempty" xml:"WafUsageData,omitempty" type:"Struct"`
+}
+
+func (s DescribeDcdnWafUsageDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafUsageDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafUsageDataResponseBody) SetEndTime(v string) *DescribeDcdnWafUsageDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataResponseBody) SetRequestId(v string) *DescribeDcdnWafUsageDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataResponseBody) SetStartTime(v string) *DescribeDcdnWafUsageDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataResponseBody) SetWafUsageData(v *DescribeDcdnWafUsageDataResponseBodyWafUsageData) *DescribeDcdnWafUsageDataResponseBody {
+	s.WafUsageData = v
+	return s
+}
+
+type DescribeDcdnWafUsageDataResponseBodyWafUsageData struct {
+	WafUsageDataItem []*DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem `json:"WafUsageDataItem,omitempty" xml:"WafUsageDataItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnWafUsageDataResponseBodyWafUsageData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafUsageDataResponseBodyWafUsageData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafUsageDataResponseBodyWafUsageData) SetWafUsageDataItem(v []*DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem) *DescribeDcdnWafUsageDataResponseBodyWafUsageData {
+	s.WafUsageDataItem = v
+	return s
+}
+
+type DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem struct {
+	AccessCnt  *int64  `json:"AccessCnt,omitempty" xml:"AccessCnt,omitempty"`
+	BlockCnt   *int64  `json:"BlockCnt,omitempty" xml:"BlockCnt,omitempty"`
+	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ObserveCnt *int64  `json:"ObserveCnt,omitempty" xml:"ObserveCnt,omitempty"`
+	SecCu      *int64  `json:"SecCu,omitempty" xml:"SecCu,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+}
+
+func (s DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem) SetAccessCnt(v int64) *DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem {
+	s.AccessCnt = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem) SetBlockCnt(v int64) *DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem {
+	s.BlockCnt = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem) SetDomain(v string) *DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem) SetObserveCnt(v int64) *DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem {
+	s.ObserveCnt = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem) SetSecCu(v int64) *DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem {
+	s.SecCu = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem) SetTimeStamp(v string) *DescribeDcdnWafUsageDataResponseBodyWafUsageDataWafUsageDataItem {
+	s.TimeStamp = &v
+	return s
+}
+
+type DescribeDcdnWafUsageDataResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnWafUsageDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafUsageDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafUsageDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafUsageDataResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafUsageDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataResponse) SetStatusCode(v int32) *DescribeDcdnWafUsageDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnWafUsageDataResponse) SetBody(v *DescribeDcdnWafUsageDataResponseBody) *DescribeDcdnWafUsageDataResponse {
 	s.Body = v
 	return s
 }
@@ -21953,186 +22532,6 @@ func (s *RollbackDcdnStagingConfigResponse) SetStatusCode(v int32) *RollbackDcdn
 }
 
 func (s *RollbackDcdnStagingConfigResponse) SetBody(v *RollbackDcdnStagingConfigResponseBody) *RollbackDcdnStagingConfigResponse {
-	s.Body = v
-	return s
-}
-
-type SetDcdnConfigOfVersionRequest struct {
-	ConfigId      *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	FunctionArgs  *string `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty"`
-	FunctionId    *int64  `json:"FunctionId,omitempty" xml:"FunctionId,omitempty"`
-	FunctionName  *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	VersionId     *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-}
-
-func (s SetDcdnConfigOfVersionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDcdnConfigOfVersionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetDcdnConfigOfVersionRequest) SetConfigId(v string) *SetDcdnConfigOfVersionRequest {
-	s.ConfigId = &v
-	return s
-}
-
-func (s *SetDcdnConfigOfVersionRequest) SetFunctionArgs(v string) *SetDcdnConfigOfVersionRequest {
-	s.FunctionArgs = &v
-	return s
-}
-
-func (s *SetDcdnConfigOfVersionRequest) SetFunctionId(v int64) *SetDcdnConfigOfVersionRequest {
-	s.FunctionId = &v
-	return s
-}
-
-func (s *SetDcdnConfigOfVersionRequest) SetFunctionName(v string) *SetDcdnConfigOfVersionRequest {
-	s.FunctionName = &v
-	return s
-}
-
-func (s *SetDcdnConfigOfVersionRequest) SetOwnerAccount(v string) *SetDcdnConfigOfVersionRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *SetDcdnConfigOfVersionRequest) SetOwnerId(v int64) *SetDcdnConfigOfVersionRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *SetDcdnConfigOfVersionRequest) SetSecurityToken(v string) *SetDcdnConfigOfVersionRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *SetDcdnConfigOfVersionRequest) SetVersionId(v string) *SetDcdnConfigOfVersionRequest {
-	s.VersionId = &v
-	return s
-}
-
-type SetDcdnConfigOfVersionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SetDcdnConfigOfVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDcdnConfigOfVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetDcdnConfigOfVersionResponseBody) SetRequestId(v string) *SetDcdnConfigOfVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SetDcdnConfigOfVersionResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetDcdnConfigOfVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetDcdnConfigOfVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDcdnConfigOfVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetDcdnConfigOfVersionResponse) SetHeaders(v map[string]*string) *SetDcdnConfigOfVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetDcdnConfigOfVersionResponse) SetStatusCode(v int32) *SetDcdnConfigOfVersionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SetDcdnConfigOfVersionResponse) SetBody(v *SetDcdnConfigOfVersionResponseBody) *SetDcdnConfigOfVersionResponse {
-	s.Body = v
-	return s
-}
-
-type SetDcdnDomainCSRCertificateRequest struct {
-	DomainName        *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ServerCertificate *string `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty"`
-}
-
-func (s SetDcdnDomainCSRCertificateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDcdnDomainCSRCertificateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetDcdnDomainCSRCertificateRequest) SetDomainName(v string) *SetDcdnDomainCSRCertificateRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *SetDcdnDomainCSRCertificateRequest) SetOwnerId(v int64) *SetDcdnDomainCSRCertificateRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *SetDcdnDomainCSRCertificateRequest) SetServerCertificate(v string) *SetDcdnDomainCSRCertificateRequest {
-	s.ServerCertificate = &v
-	return s
-}
-
-type SetDcdnDomainCSRCertificateResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SetDcdnDomainCSRCertificateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDcdnDomainCSRCertificateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetDcdnDomainCSRCertificateResponseBody) SetRequestId(v string) *SetDcdnDomainCSRCertificateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SetDcdnDomainCSRCertificateResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetDcdnDomainCSRCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetDcdnDomainCSRCertificateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDcdnDomainCSRCertificateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetDcdnDomainCSRCertificateResponse) SetHeaders(v map[string]*string) *SetDcdnDomainCSRCertificateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetDcdnDomainCSRCertificateResponse) SetStatusCode(v int32) *SetDcdnDomainCSRCertificateResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SetDcdnDomainCSRCertificateResponse) SetBody(v *SetDcdnDomainCSRCertificateResponseBody) *SetDcdnDomainCSRCertificateResponse {
 	s.Body = v
 	return s
 }
@@ -24744,6 +25143,10 @@ func (client *Client) BatchSetDcdnWafDomainConfigsWithOptions(request *BatchSetD
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientIpTag)) {
+		body["ClientIpTag"] = request.ClientIpTag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DefenseStatus)) {
 		body["DefenseStatus"] = request.DefenseStatus
 	}
@@ -24978,82 +25381,6 @@ func (client *Client) CommitStagingRoutineCode(request *CommitStagingRoutineCode
 	runtime := &util.RuntimeOptions{}
 	_result = &CommitStagingRoutineCodeResponse{}
 	_body, _err := client.CommitStagingRoutineCodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateDcdnCertificateSigningRequestWithOptions(request *CreateDcdnCertificateSigningRequestRequest, runtime *util.RuntimeOptions) (_result *CreateDcdnCertificateSigningRequestResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.City)) {
-		query["City"] = request.City
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CommonName)) {
-		query["CommonName"] = request.CommonName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Country)) {
-		query["Country"] = request.Country
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Email)) {
-		query["Email"] = request.Email
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Organization)) {
-		query["Organization"] = request.Organization
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrganizationUnit)) {
-		query["OrganizationUnit"] = request.OrganizationUnit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SANs)) {
-		query["SANs"] = request.SANs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.State)) {
-		query["State"] = request.State
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateDcdnCertificateSigningRequest"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateDcdnCertificateSigningRequestResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDcdnCertificateSigningRequest(request *CreateDcdnCertificateSigningRequestRequest) (_result *CreateDcdnCertificateSigningRequestResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDcdnCertificateSigningRequestResponse{}
-	_body, _err := client.CreateDcdnCertificateSigningRequestWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25486,6 +25813,90 @@ func (client *Client) CreateWasm(request *CreateWasmRequest) (_result *CreateWas
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateWasmResponse{}
 	_body, _err := client.CreateWasmWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DcdnHttpRequestTestToolWithOptions(tmpReq *DcdnHttpRequestTestToolRequest, runtime *util.RuntimeOptions) (_result *DcdnHttpRequestTestToolResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DcdnHttpRequestTestToolShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Header)) {
+		request.HeaderShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Header, tea.String("Header"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Args)) {
+		body["Args"] = request.Args
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Body)) {
+		body["Body"] = request.Body
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HeaderShrink)) {
+		body["Header"] = request.HeaderShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		body["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Method)) {
+		body["Method"] = request.Method
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyIp)) {
+		body["ProxyIp"] = request.ProxyIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scheme)) {
+		body["Scheme"] = request.Scheme
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uri)) {
+		body["Uri"] = request.Uri
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DcdnHttpRequestTestTool"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTP"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DcdnHttpRequestTestToolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DcdnHttpRequestTestTool(request *DcdnHttpRequestTestToolRequest) (_result *DcdnHttpRequestTestToolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DcdnHttpRequestTestToolResponse{}
+	_body, _err := client.DcdnHttpRequestTestToolWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26285,6 +26696,14 @@ func (client *Client) DescribeDcdnBgpBpsDataWithOptions(request *DescribeDcdnBgp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevicePort)) {
+		query["DevicePort"] = request.DevicePort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
 	}
@@ -26543,76 +26962,12 @@ func (client *Client) DescribeDcdnCertificateList(request *DescribeDcdnCertifica
 	return _result, _err
 }
 
-func (client *Client) DescribeDcdnConfigGroupDetailWithOptions(request *DescribeDcdnConfigGroupDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnConfigGroupDetailResponse, _err error) {
+func (client *Client) DescribeDcdnDdosServiceWithOptions(request *DescribeDcdnDdosServiceRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnDdosServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConfigGroupId)) {
-		query["ConfigGroupId"] = request.ConfigGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ConfigGroupName)) {
-		query["ConfigGroupName"] = request.ConfigGroupName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDcdnConfigGroupDetail"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDcdnConfigGroupDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDcdnConfigGroupDetail(request *DescribeDcdnConfigGroupDetailRequest) (_result *DescribeDcdnConfigGroupDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDcdnConfigGroupDetailResponse{}
-	_body, _err := client.DescribeDcdnConfigGroupDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDcdnConfigOfVersionWithOptions(request *DescribeDcdnConfigOfVersionRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnConfigOfVersionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FunctionId)) {
-		query["FunctionId"] = request.FunctionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
-		query["FunctionName"] = request.FunctionName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
-		query["GroupId"] = request.GroupId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
@@ -26621,15 +26976,11 @@ func (client *Client) DescribeDcdnConfigOfVersionWithOptions(request *DescribeDc
 		query["SecurityToken"] = request.SecurityToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
-		query["VersionId"] = request.VersionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DescribeDcdnConfigOfVersion"),
+		Action:      tea.String("DescribeDcdnDdosService"),
 		Version:     tea.String("2018-01-15"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -26639,7 +26990,7 @@ func (client *Client) DescribeDcdnConfigOfVersionWithOptions(request *DescribeDc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDcdnConfigOfVersionResponse{}
+	_result = &DescribeDcdnDdosServiceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26648,10 +26999,54 @@ func (client *Client) DescribeDcdnConfigOfVersionWithOptions(request *DescribeDc
 	return _result, _err
 }
 
-func (client *Client) DescribeDcdnConfigOfVersion(request *DescribeDcdnConfigOfVersionRequest) (_result *DescribeDcdnConfigOfVersionResponse, _err error) {
+func (client *Client) DescribeDcdnDdosService(request *DescribeDcdnDdosServiceRequest) (_result *DescribeDcdnDdosServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDcdnConfigOfVersionResponse{}
-	_body, _err := client.DescribeDcdnConfigOfVersionWithOptions(request, runtime)
+	_result = &DescribeDcdnDdosServiceResponse{}
+	_body, _err := client.DescribeDcdnDdosServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnDdosSpecInfoWithOptions(request *DescribeDcdnDdosSpecInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnDdosSpecInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnDdosSpecInfo"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnDdosSpecInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnDdosSpecInfo(request *DescribeDcdnDdosSpecInfoRequest) (_result *DescribeDcdnDdosSpecInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnDdosSpecInfoResponse{}
+	_body, _err := client.DescribeDcdnDdosSpecInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29291,7 +29686,7 @@ func (client *Client) DescribeDcdnDomainWebsocketTrafficData(request *DescribeDc
 	return _result, _err
 }
 
-func (client *Client) DescribeDcdnEsExceptionDataWithOptions(request *DescribeDcdnEsExceptionDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnEsExceptionDataResponse, _err error) {
+func (client *Client) DescribeDcdnErUsageDataWithOptions(request *DescribeDcdnErUsageDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnErUsageDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -29305,8 +29700,16 @@ func (client *Client) DescribeDcdnEsExceptionDataWithOptions(request *DescribeDc
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
-		query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.RoutineID)) {
+		query["RoutineID"] = request.RoutineID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spec)) {
+		query["Spec"] = request.Spec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SplitBy)) {
+		query["SplitBy"] = request.SplitBy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -29317,7 +29720,7 @@ func (client *Client) DescribeDcdnEsExceptionDataWithOptions(request *DescribeDc
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DescribeDcdnEsExceptionData"),
+		Action:      tea.String("DescribeDcdnErUsageData"),
 		Version:     tea.String("2018-01-15"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -29327,7 +29730,7 @@ func (client *Client) DescribeDcdnEsExceptionDataWithOptions(request *DescribeDc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDcdnEsExceptionDataResponse{}
+	_result = &DescribeDcdnErUsageDataResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -29336,66 +29739,10 @@ func (client *Client) DescribeDcdnEsExceptionDataWithOptions(request *DescribeDc
 	return _result, _err
 }
 
-func (client *Client) DescribeDcdnEsExceptionData(request *DescribeDcdnEsExceptionDataRequest) (_result *DescribeDcdnEsExceptionDataResponse, _err error) {
+func (client *Client) DescribeDcdnErUsageData(request *DescribeDcdnErUsageDataRequest) (_result *DescribeDcdnErUsageDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDcdnEsExceptionDataResponse{}
-	_body, _err := client.DescribeDcdnEsExceptionDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDcdnEsExecuteDataWithOptions(request *DescribeDcdnEsExecuteDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnEsExecuteDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
-		query["RuleId"] = request.RuleId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDcdnEsExecuteData"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDcdnEsExecuteDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDcdnEsExecuteData(request *DescribeDcdnEsExecuteDataRequest) (_result *DescribeDcdnEsExecuteDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDcdnEsExecuteDataResponse{}
-	_body, _err := client.DescribeDcdnEsExecuteDataWithOptions(request, runtime)
+	_result = &DescribeDcdnErUsageDataResponse{}
+	_body, _err := client.DescribeDcdnErUsageDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29619,6 +29966,62 @@ func (client *Client) DescribeDcdnIpaDomainDetail(request *DescribeDcdnIpaDomain
 	return _result, _err
 }
 
+func (client *Client) DescribeDcdnIpaDomainMultiUsageDataWithOptions(request *DescribeDcdnIpaDomainMultiUsageDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnIpaDomainMultiUsageDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnIpaDomainMultiUsageData"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnIpaDomainMultiUsageDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnIpaDomainMultiUsageData(request *DescribeDcdnIpaDomainMultiUsageDataRequest) (_result *DescribeDcdnIpaDomainMultiUsageDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnIpaDomainMultiUsageDataResponse{}
+	_body, _err := client.DescribeDcdnIpaDomainMultiUsageDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDcdnIpaServiceWithOptions(request *DescribeDcdnIpaServiceRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnIpaServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29748,6 +30151,54 @@ func (client *Client) DescribeDcdnIpaUserDomains(request *DescribeDcdnIpaUserDom
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnIpaUserDomainsResponse{}
 	_body, _err := client.DescribeDcdnIpaUserDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnL2VipsByDomainWithOptions(request *DescribeDcdnL2VipsByDomainRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnL2VipsByDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnL2VipsByDomain"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnL2VipsByDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnL2VipsByDomain(request *DescribeDcdnL2VipsByDomainRequest) (_result *DescribeDcdnL2VipsByDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnL2VipsByDomainResponse{}
+	_body, _err := client.DescribeDcdnL2VipsByDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31623,6 +32074,54 @@ func (client *Client) DescribeDcdnWafFilterInfo(request *DescribeDcdnWafFilterIn
 	return _result, _err
 }
 
+func (client *Client) DescribeDcdnWafGeoInfoWithOptions(request *DescribeDcdnWafGeoInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafGeoInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafGeoInfo"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafGeoInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafGeoInfo(request *DescribeDcdnWafGeoInfoRequest) (_result *DescribeDcdnWafGeoInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafGeoInfoResponse{}
+	_body, _err := client.DescribeDcdnWafGeoInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDcdnWafPoliciesWithOptions(request *DescribeDcdnWafPoliciesRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32080,6 +32579,70 @@ func (client *Client) DescribeDcdnWafSpecInfo(request *DescribeDcdnWafSpecInfoRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnWafSpecInfoResponse{}
 	_body, _err := client.DescribeDcdnWafSpecInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafUsageDataWithOptions(request *DescribeDcdnWafUsageDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafUsageDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SplitBy)) {
+		query["SplitBy"] = request.SplitBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafUsageData"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafUsageDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafUsageData(request *DescribeDcdnWafUsageDataRequest) (_result *DescribeDcdnWafUsageDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafUsageDataResponse{}
+	_body, _err := client.DescribeDcdnWafUsageDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33394,130 +33957,6 @@ func (client *Client) RollbackDcdnStagingConfig(request *RollbackDcdnStagingConf
 	runtime := &util.RuntimeOptions{}
 	_result = &RollbackDcdnStagingConfigResponse{}
 	_body, _err := client.RollbackDcdnStagingConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SetDcdnConfigOfVersionWithOptions(request *SetDcdnConfigOfVersionRequest, runtime *util.RuntimeOptions) (_result *SetDcdnConfigOfVersionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
-		query["ConfigId"] = request.ConfigId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FunctionArgs)) {
-		query["FunctionArgs"] = request.FunctionArgs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FunctionId)) {
-		query["FunctionId"] = request.FunctionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
-		query["FunctionName"] = request.FunctionName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
-		query["VersionId"] = request.VersionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetDcdnConfigOfVersion"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetDcdnConfigOfVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetDcdnConfigOfVersion(request *SetDcdnConfigOfVersionRequest) (_result *SetDcdnConfigOfVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetDcdnConfigOfVersionResponse{}
-	_body, _err := client.SetDcdnConfigOfVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SetDcdnDomainCSRCertificateWithOptions(request *SetDcdnDomainCSRCertificateRequest, runtime *util.RuntimeOptions) (_result *SetDcdnDomainCSRCertificateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
-		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServerCertificate)) {
-		query["ServerCertificate"] = request.ServerCertificate
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetDcdnDomainCSRCertificate"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetDcdnDomainCSRCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetDcdnDomainCSRCertificate(request *SetDcdnDomainCSRCertificateRequest) (_result *SetDcdnDomainCSRCertificateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetDcdnDomainCSRCertificateResponse{}
-	_body, _err := client.SetDcdnDomainCSRCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
