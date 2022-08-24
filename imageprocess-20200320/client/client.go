@@ -77,9 +77,8 @@ func (s *AnalyzeChestVesselRequestURLList) SetURL(v string) *AnalyzeChestVesselR
 }
 
 type AnalyzeChestVesselResponseBody struct {
-	Data *AnalyzeChestVesselResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *AnalyzeChestVesselResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AnalyzeChestVesselResponseBody) String() string {
@@ -1700,9 +1699,8 @@ func (s *DetectLymphRequestURLList) SetURL(v string) *DetectLymphRequestURLList 
 }
 
 type DetectLymphResponseBody struct {
-	Data *DetectLymphResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectLymphResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectLymphResponseBody) String() string {
@@ -1851,9 +1849,8 @@ func (s *DetectPancRequestURLList) SetURL(v string) *DetectPancRequestURLList {
 }
 
 type DetectPancResponseBody struct {
-	Data *DetectPancResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectPancResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectPancResponseBody) String() string {
@@ -2495,7 +2492,6 @@ func (s *FeedbackSessionRequest) SetSessionId(v string) *FeedbackSessionRequest 
 }
 
 type FeedbackSessionResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3913,9 +3909,8 @@ func (s *SegmentOARRequestURLList) SetURL(v string) *SegmentOARRequestURLList {
 }
 
 type SegmentOARResponseBody struct {
-	Data *SegmentOARResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *SegmentOARResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentOARResponseBody) String() string {
