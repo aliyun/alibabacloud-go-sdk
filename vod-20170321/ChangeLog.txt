@@ -1,3 +1,6 @@
+2022-08-25 Version: v2.16.10
+- Add kms apis.
+
 2022-04-11 Version: v2.16.9
 - Set multiple apis to public.
 
