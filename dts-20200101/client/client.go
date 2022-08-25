@@ -38,6 +38,7 @@ type ConfigureDtsJobRequest struct {
 	DestinationEndpointPort         *string `json:"DestinationEndpointPort,omitempty" xml:"DestinationEndpointPort,omitempty"`
 	DestinationEndpointRegion       *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
 	DestinationEndpointUserName     *string `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
+	DisasterRecoveryJob             *bool   `json:"DisasterRecoveryJob,omitempty" xml:"DisasterRecoveryJob,omitempty"`
 	DtsInstanceId                   *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	DtsJobId                        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	DtsJobName                      *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
@@ -164,6 +165,11 @@ func (s *ConfigureDtsJobRequest) SetDestinationEndpointRegion(v string) *Configu
 
 func (s *ConfigureDtsJobRequest) SetDestinationEndpointUserName(v string) *ConfigureDtsJobRequest {
 	s.DestinationEndpointUserName = &v
+	return s
+}
+
+func (s *ConfigureDtsJobRequest) SetDisasterRecoveryJob(v bool) *ConfigureDtsJobRequest {
+	s.DisasterRecoveryJob = &v
 	return s
 }
 
@@ -308,6 +314,7 @@ type ConfigureDtsJobAdvanceRequest struct {
 	DestinationEndpointPort         *string   `json:"DestinationEndpointPort,omitempty" xml:"DestinationEndpointPort,omitempty"`
 	DestinationEndpointRegion       *string   `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
 	DestinationEndpointUserName     *string   `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
+	DisasterRecoveryJob             *bool     `json:"DisasterRecoveryJob,omitempty" xml:"DisasterRecoveryJob,omitempty"`
 	DtsInstanceId                   *string   `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	DtsJobId                        *string   `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	DtsJobName                      *string   `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
@@ -438,6 +445,11 @@ func (s *ConfigureDtsJobAdvanceRequest) SetDestinationEndpointRegion(v string) *
 
 func (s *ConfigureDtsJobAdvanceRequest) SetDestinationEndpointUserName(v string) *ConfigureDtsJobAdvanceRequest {
 	s.DestinationEndpointUserName = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetDisasterRecoveryJob(v bool) *ConfigureDtsJobAdvanceRequest {
+	s.DisasterRecoveryJob = &v
 	return s
 }
 
@@ -11510,6 +11522,7 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	DtsJobName                    *string                                                             `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
 	DuUsage                       *int64                                                              `json:"DuUsage,omitempty" xml:"DuUsage,omitempty"`
 	EndTimestamp                  *string                                                             `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorDetails                  []*DescribeDtsJobsResponseBodyDtsJobListErrorDetails                `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
 	ErrorMessage                  *string                                                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	ExpireTime                    *string                                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	JobType                       *string                                                             `json:"JobType,omitempty" xml:"JobType,omitempty"`
@@ -11638,6 +11651,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetDuUsage(v int64) *DescribeDts
 
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetEndTimestamp(v string) *DescribeDtsJobsResponseBodyDtsJobList {
 	s.EndTimestamp = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetErrorDetails(v []*DescribeDtsJobsResponseBodyDtsJobListErrorDetails) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.ErrorDetails = v
 	return s
 }
 
@@ -11903,6 +11921,29 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint) SetUserName(v
 	return s
 }
 
+type DescribeDtsJobsResponseBodyDtsJobListErrorDetails struct {
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HelpUrl   *string `json:"HelpUrl,omitempty" xml:"HelpUrl,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyDtsJobListErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyDtsJobListErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListErrorDetails) SetErrorCode(v string) *DescribeDtsJobsResponseBodyDtsJobListErrorDetails {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListErrorDetails) SetHelpUrl(v string) *DescribeDtsJobsResponseBodyDtsJobListErrorDetails {
+	s.HelpUrl = &v
+	return s
+}
+
 type DescribeDtsJobsResponseBodyDtsJobListMigrationMode struct {
 	DataInitialization      *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
 	DataSynchronization     *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
@@ -12088,6 +12129,7 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJob struct {
 	DtsJobId                      *string                                                                       `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	DtsJobName                    *string                                                                       `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
 	DuUsage                       *int64                                                                        `json:"DuUsage,omitempty" xml:"DuUsage,omitempty"`
+	ErrorDetails                  []*DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails                `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
 	ErrorMessage                  *string                                                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	ExpireTime                    *string                                                                       `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	MemUsage                      *string                                                                       `json:"MemUsage,omitempty" xml:"MemUsage,omitempty"`
@@ -12181,6 +12223,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetDtsJobName(v string
 
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetDuUsage(v int64) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
 	s.DuUsage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetErrorDetails(v []*DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
+	s.ErrorDetails = v
 	return s
 }
 
@@ -12383,6 +12430,29 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint) Set
 
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint) SetUserName(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint {
 	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails struct {
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HelpUrl   *string `json:"HelpUrl,omitempty" xml:"HelpUrl,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails) SetErrorCode(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails) SetHelpUrl(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails {
+	s.HelpUrl = &v
 	return s
 }
 
@@ -25475,6 +25545,123 @@ func (s *SuspendSynchronizationJobResponse) SetBody(v *SuspendSynchronizationJob
 	return s
 }
 
+type SwitchPhysicalDtsJobToCloudRequest struct {
+	DtsInstanceId            *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	DtsJobId                 *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+}
+
+func (s SwitchPhysicalDtsJobToCloudRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchPhysicalDtsJobToCloudRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchPhysicalDtsJobToCloudRequest) SetDtsInstanceId(v string) *SwitchPhysicalDtsJobToCloudRequest {
+	s.DtsInstanceId = &v
+	return s
+}
+
+func (s *SwitchPhysicalDtsJobToCloudRequest) SetDtsJobId(v string) *SwitchPhysicalDtsJobToCloudRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *SwitchPhysicalDtsJobToCloudRequest) SetRegionId(v string) *SwitchPhysicalDtsJobToCloudRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SwitchPhysicalDtsJobToCloudRequest) SetSynchronizationDirection(v string) *SwitchPhysicalDtsJobToCloudRequest {
+	s.SynchronizationDirection = &v
+	return s
+}
+
+type SwitchPhysicalDtsJobToCloudResponseBody struct {
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode        *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage     *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SwitchPhysicalDtsJobToCloudResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchPhysicalDtsJobToCloudResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchPhysicalDtsJobToCloudResponseBody) SetDynamicCode(v string) *SwitchPhysicalDtsJobToCloudResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *SwitchPhysicalDtsJobToCloudResponseBody) SetDynamicMessage(v string) *SwitchPhysicalDtsJobToCloudResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *SwitchPhysicalDtsJobToCloudResponseBody) SetErrCode(v string) *SwitchPhysicalDtsJobToCloudResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *SwitchPhysicalDtsJobToCloudResponseBody) SetErrMessage(v string) *SwitchPhysicalDtsJobToCloudResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *SwitchPhysicalDtsJobToCloudResponseBody) SetHttpStatusCode(v int32) *SwitchPhysicalDtsJobToCloudResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SwitchPhysicalDtsJobToCloudResponseBody) SetRequestId(v string) *SwitchPhysicalDtsJobToCloudResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SwitchPhysicalDtsJobToCloudResponseBody) SetSuccess(v bool) *SwitchPhysicalDtsJobToCloudResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SwitchPhysicalDtsJobToCloudResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SwitchPhysicalDtsJobToCloudResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SwitchPhysicalDtsJobToCloudResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchPhysicalDtsJobToCloudResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchPhysicalDtsJobToCloudResponse) SetHeaders(v map[string]*string) *SwitchPhysicalDtsJobToCloudResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SwitchPhysicalDtsJobToCloudResponse) SetStatusCode(v int32) *SwitchPhysicalDtsJobToCloudResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SwitchPhysicalDtsJobToCloudResponse) SetBody(v *SwitchPhysicalDtsJobToCloudResponseBody) *SwitchPhysicalDtsJobToCloudResponse {
+	s.Body = v
+	return s
+}
+
 type SwitchSynchronizationEndpointRequest struct {
 	Endpoint                 *SwitchSynchronizationEndpointRequestEndpoint       `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
 	SourceEndpoint           *SwitchSynchronizationEndpointRequestSourceEndpoint `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
@@ -26591,6 +26778,10 @@ func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest
 
 	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointUserName)) {
 		query["DestinationEndpointUserName"] = request.DestinationEndpointUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisasterRecoveryJob)) {
+		query["DisasterRecoveryJob"] = request.DisasterRecoveryJob
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
@@ -33328,6 +33519,62 @@ func (client *Client) SuspendSynchronizationJob(request *SuspendSynchronizationJ
 	runtime := &util.RuntimeOptions{}
 	_result = &SuspendSynchronizationJobResponse{}
 	_body, _err := client.SuspendSynchronizationJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SwitchPhysicalDtsJobToCloudWithOptions(request *SwitchPhysicalDtsJobToCloudRequest, runtime *util.RuntimeOptions) (_result *SwitchPhysicalDtsJobToCloudResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SwitchPhysicalDtsJobToCloud"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SwitchPhysicalDtsJobToCloudResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SwitchPhysicalDtsJobToCloud(request *SwitchPhysicalDtsJobToCloudRequest) (_result *SwitchPhysicalDtsJobToCloudResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SwitchPhysicalDtsJobToCloudResponse{}
+	_body, _err := client.SwitchPhysicalDtsJobToCloudWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
