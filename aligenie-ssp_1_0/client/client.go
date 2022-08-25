@@ -15626,12 +15626,12 @@ func (s *ScgSearchShrinkRequest) SetTopicId(v string) *ScgSearchShrinkRequest {
 }
 
 type ScgSearchResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNum   *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Code      *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNum   *int32                         `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize  *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ScgSearchResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ScgSearchResponseBody) String() string {
@@ -15667,8 +15667,168 @@ func (s *ScgSearchResponseBody) SetRequestId(v string) *ScgSearchResponseBody {
 	return s
 }
 
-func (s *ScgSearchResponseBody) SetResult(v string) *ScgSearchResponseBody {
-	s.Result = &v
+func (s *ScgSearchResponseBody) SetResult(v []*ScgSearchResponseBodyResult) *ScgSearchResponseBody {
+	s.Result = v
+	return s
+}
+
+type ScgSearchResponseBodyResult struct {
+	Album           *bool                             `json:"Album,omitempty" xml:"Album,omitempty"`
+	AlbumRawId      *string                           `json:"AlbumRawId,omitempty" xml:"AlbumRawId,omitempty"`
+	AlbumType       *int32                            `json:"AlbumType,omitempty" xml:"AlbumType,omitempty"`
+	Alias           []*string                         `json:"Alias,omitempty" xml:"Alias,omitempty" type:"Repeated"`
+	AuthorIds       []*int64                          `json:"AuthorIds,omitempty" xml:"AuthorIds,omitempty" type:"Repeated"`
+	AuthorNames     []*string                         `json:"AuthorNames,omitempty" xml:"AuthorNames,omitempty" type:"Repeated"`
+	Category        *string                           `json:"Category,omitempty" xml:"Category,omitempty"`
+	ContentType     *string                           `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	Cover           *ScgSearchResponseBodyResultCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	IsAudition      *bool                             `json:"IsAudition,omitempty" xml:"IsAudition,omitempty"`
+	IsCharge        *string                           `json:"IsCharge,omitempty" xml:"IsCharge,omitempty"`
+	NeedCharge      *bool                             `json:"NeedCharge,omitempty" xml:"NeedCharge,omitempty"`
+	RawId           *int64                            `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	Singers         *string                           `json:"Singers,omitempty" xml:"Singers,omitempty"`
+	Source          *string                           `json:"Source,omitempty" xml:"Source,omitempty"`
+	SupportAudition *bool                             `json:"SupportAudition,omitempty" xml:"SupportAudition,omitempty"`
+	Title           *string                           `json:"Title,omitempty" xml:"Title,omitempty"`
+	Type            *string                           `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ScgSearchResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScgSearchResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ScgSearchResponseBodyResult) SetAlbum(v bool) *ScgSearchResponseBodyResult {
+	s.Album = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetAlbumRawId(v string) *ScgSearchResponseBodyResult {
+	s.AlbumRawId = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetAlbumType(v int32) *ScgSearchResponseBodyResult {
+	s.AlbumType = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetAlias(v []*string) *ScgSearchResponseBodyResult {
+	s.Alias = v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetAuthorIds(v []*int64) *ScgSearchResponseBodyResult {
+	s.AuthorIds = v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetAuthorNames(v []*string) *ScgSearchResponseBodyResult {
+	s.AuthorNames = v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetCategory(v string) *ScgSearchResponseBodyResult {
+	s.Category = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetContentType(v string) *ScgSearchResponseBodyResult {
+	s.ContentType = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetCover(v *ScgSearchResponseBodyResultCover) *ScgSearchResponseBodyResult {
+	s.Cover = v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetIsAudition(v bool) *ScgSearchResponseBodyResult {
+	s.IsAudition = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetIsCharge(v string) *ScgSearchResponseBodyResult {
+	s.IsCharge = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetNeedCharge(v bool) *ScgSearchResponseBodyResult {
+	s.NeedCharge = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetRawId(v int64) *ScgSearchResponseBodyResult {
+	s.RawId = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetSingers(v string) *ScgSearchResponseBodyResult {
+	s.Singers = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetSource(v string) *ScgSearchResponseBodyResult {
+	s.Source = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetSupportAudition(v bool) *ScgSearchResponseBodyResult {
+	s.SupportAudition = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetTitle(v string) *ScgSearchResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResult) SetType(v string) *ScgSearchResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type ScgSearchResponseBodyResultCover struct {
+	Img       *string `json:"Img,omitempty" xml:"Img,omitempty"`
+	Large     *string `json:"Large,omitempty" xml:"Large,omitempty"`
+	Medium    *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	Small     *string `json:"Small,omitempty" xml:"Small,omitempty"`
+	CanResize *bool   `json:"canResize,omitempty" xml:"canResize,omitempty"`
+}
+
+func (s ScgSearchResponseBodyResultCover) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScgSearchResponseBodyResultCover) GoString() string {
+	return s.String()
+}
+
+func (s *ScgSearchResponseBodyResultCover) SetImg(v string) *ScgSearchResponseBodyResultCover {
+	s.Img = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResultCover) SetLarge(v string) *ScgSearchResponseBodyResultCover {
+	s.Large = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResultCover) SetMedium(v string) *ScgSearchResponseBodyResultCover {
+	s.Medium = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResultCover) SetSmall(v string) *ScgSearchResponseBodyResultCover {
+	s.Small = &v
+	return s
+}
+
+func (s *ScgSearchResponseBodyResultCover) SetCanResize(v bool) *ScgSearchResponseBodyResultCover {
+	s.CanResize = &v
 	return s
 }
 
