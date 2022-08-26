@@ -95,8 +95,9 @@ func (s *ActiveFlowLogResponseBody) SetSuccess(v string) *ActiveFlowLogResponseB
 }
 
 type ActiveFlowLogResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ActiveFlowLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ActiveFlowLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ActiveFlowLogResponse) String() string {
@@ -112,7 +113,176 @@ func (s *ActiveFlowLogResponse) SetHeaders(v map[string]*string) *ActiveFlowLogR
 	return s
 }
 
+func (s *ActiveFlowLogResponse) SetStatusCode(v int32) *ActiveFlowLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ActiveFlowLogResponse) SetBody(v *ActiveFlowLogResponseBody) *ActiveFlowLogResponse {
+	s.Body = v
+	return s
+}
+
+type AddTrafficMatchRuleToTrafficMarkingPolicyRequest struct {
+	ClientToken            *string                                                              `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                 *bool                                                                `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount           *string                                                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64                                                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string                                                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64                                                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TrafficMarkingPolicyId *string                                                              `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
+	TrafficMatchRules      []*AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules `json:"TrafficMatchRules,omitempty" xml:"TrafficMatchRules,omitempty" type:"Repeated"`
+}
+
+func (s AddTrafficMatchRuleToTrafficMarkingPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTrafficMatchRuleToTrafficMarkingPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) SetClientToken(v string) *AddTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) SetDryRun(v bool) *AddTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) SetOwnerAccount(v string) *AddTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) SetOwnerId(v int64) *AddTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) SetResourceOwnerAccount(v string) *AddTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) SetResourceOwnerId(v int64) *AddTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) SetTrafficMarkingPolicyId(v string) *AddTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.TrafficMarkingPolicyId = &v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) SetTrafficMatchRules(v []*AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) *AddTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.TrafficMatchRules = v
+	return s
+}
+
+type AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules struct {
+	DstCidr                     *string  `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
+	DstPortRange                []*int32 `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty" type:"Repeated"`
+	MatchDscp                   *int32   `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
+	Protocol                    *string  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	SrcCidr                     *string  `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
+	SrcPortRange                []*int32 `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty" type:"Repeated"`
+	TrafficMatchRuleDescription *string  `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
+	TrafficMatchRuleName        *string  `json:"TrafficMatchRuleName,omitempty" xml:"TrafficMatchRuleName,omitempty"`
+}
+
+func (s AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) GoString() string {
+	return s.String()
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) SetDstCidr(v string) *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules {
+	s.DstCidr = &v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) SetDstPortRange(v []*int32) *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules {
+	s.DstPortRange = v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) SetMatchDscp(v int32) *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules {
+	s.MatchDscp = &v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) SetProtocol(v string) *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules {
+	s.Protocol = &v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) SetSrcCidr(v string) *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules {
+	s.SrcCidr = &v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) SetSrcPortRange(v []*int32) *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules {
+	s.SrcPortRange = v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) SetTrafficMatchRuleDescription(v string) *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules {
+	s.TrafficMatchRuleDescription = &v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) SetTrafficMatchRuleName(v string) *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules {
+	s.TrafficMatchRuleName = &v
+	return s
+}
+
+type AddTrafficMatchRuleToTrafficMarkingPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddTrafficMatchRuleToTrafficMarkingPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTrafficMatchRuleToTrafficMarkingPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyResponseBody) SetRequestId(v string) *AddTrafficMatchRuleToTrafficMarkingPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddTrafficMatchRuleToTrafficMarkingPolicyResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddTrafficMatchRuleToTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddTrafficMatchRuleToTrafficMarkingPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTrafficMatchRuleToTrafficMarkingPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyResponse) SetHeaders(v map[string]*string) *AddTrafficMatchRuleToTrafficMarkingPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyResponse) SetStatusCode(v int32) *AddTrafficMatchRuleToTrafficMarkingPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyResponse) SetBody(v *AddTrafficMatchRuleToTrafficMarkingPolicyResponseBody) *AddTrafficMatchRuleToTrafficMarkingPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -253,8 +423,9 @@ func (s *AddTraficMatchRuleToTrafficMarkingPolicyResponseBody) SetRequestId(v st
 }
 
 type AddTraficMatchRuleToTrafficMarkingPolicyResponse struct {
-	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddTraficMatchRuleToTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddTraficMatchRuleToTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddTraficMatchRuleToTrafficMarkingPolicyResponse) String() string {
@@ -267,6 +438,11 @@ func (s AddTraficMatchRuleToTrafficMarkingPolicyResponse) GoString() string {
 
 func (s *AddTraficMatchRuleToTrafficMarkingPolicyResponse) SetHeaders(v map[string]*string) *AddTraficMatchRuleToTrafficMarkingPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddTraficMatchRuleToTrafficMarkingPolicyResponse) SetStatusCode(v int32) *AddTraficMatchRuleToTrafficMarkingPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -340,8 +516,9 @@ func (s *AssociateCenBandwidthPackageResponseBody) SetRequestId(v string) *Assoc
 }
 
 type AssociateCenBandwidthPackageResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AssociateCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssociateCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AssociateCenBandwidthPackageResponse) String() string {
@@ -354,6 +531,11 @@ func (s AssociateCenBandwidthPackageResponse) GoString() string {
 
 func (s *AssociateCenBandwidthPackageResponse) SetHeaders(v map[string]*string) *AssociateCenBandwidthPackageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AssociateCenBandwidthPackageResponse) SetStatusCode(v int32) *AssociateCenBandwidthPackageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -439,8 +621,9 @@ func (s *AssociateTransitRouterAttachmentWithRouteTableResponseBody) SetRequestI
 }
 
 type AssociateTransitRouterAttachmentWithRouteTableResponse struct {
-	Headers map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AssociateTransitRouterAttachmentWithRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssociateTransitRouterAttachmentWithRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AssociateTransitRouterAttachmentWithRouteTableResponse) String() string {
@@ -453,6 +636,11 @@ func (s AssociateTransitRouterAttachmentWithRouteTableResponse) GoString() strin
 
 func (s *AssociateTransitRouterAttachmentWithRouteTableResponse) SetHeaders(v map[string]*string) *AssociateTransitRouterAttachmentWithRouteTableResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AssociateTransitRouterAttachmentWithRouteTableResponse) SetStatusCode(v int32) *AssociateTransitRouterAttachmentWithRouteTableResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -544,8 +732,9 @@ func (s *AssociateTransitRouterMulticastDomainResponseBody) SetRequestId(v strin
 }
 
 type AssociateTransitRouterMulticastDomainResponse struct {
-	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AssociateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssociateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AssociateTransitRouterMulticastDomainResponse) String() string {
@@ -558,6 +747,11 @@ func (s AssociateTransitRouterMulticastDomainResponse) GoString() string {
 
 func (s *AssociateTransitRouterMulticastDomainResponse) SetHeaders(v map[string]*string) *AssociateTransitRouterMulticastDomainResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AssociateTransitRouterMulticastDomainResponse) SetStatusCode(v int32) *AssociateTransitRouterMulticastDomainResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -649,8 +843,9 @@ func (s *AttachCenChildInstanceResponseBody) SetRequestId(v string) *AttachCenCh
 }
 
 type AttachCenChildInstanceResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AttachCenChildInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachCenChildInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AttachCenChildInstanceResponse) String() string {
@@ -663,6 +858,11 @@ func (s AttachCenChildInstanceResponse) GoString() string {
 
 func (s *AttachCenChildInstanceResponse) SetHeaders(v map[string]*string) *AttachCenChildInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AttachCenChildInstanceResponse) SetStatusCode(v int32) *AttachCenChildInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -736,8 +936,9 @@ func (s *CheckTransitRouterServiceResponseBody) SetRequestId(v string) *CheckTra
 }
 
 type CheckTransitRouterServiceResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckTransitRouterServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckTransitRouterServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckTransitRouterServiceResponse) String() string {
@@ -750,6 +951,11 @@ func (s CheckTransitRouterServiceResponse) GoString() string {
 
 func (s *CheckTransitRouterServiceResponse) SetHeaders(v map[string]*string) *CheckTransitRouterServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CheckTransitRouterServiceResponse) SetStatusCode(v int32) *CheckTransitRouterServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -841,8 +1047,9 @@ func (s *CreateCenResponseBody) SetRequestId(v string) *CreateCenResponseBody {
 }
 
 type CreateCenResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCenResponse) String() string {
@@ -855,6 +1062,11 @@ func (s CreateCenResponse) GoString() string {
 
 func (s *CreateCenResponse) SetHeaders(v map[string]*string) *CreateCenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateCenResponse) SetStatusCode(v int32) *CreateCenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1000,8 +1212,9 @@ func (s *CreateCenBandwidthPackageResponseBody) SetRequestId(v string) *CreateCe
 }
 
 type CreateCenBandwidthPackageResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCenBandwidthPackageResponse) String() string {
@@ -1014,6 +1227,11 @@ func (s CreateCenBandwidthPackageResponse) GoString() string {
 
 func (s *CreateCenBandwidthPackageResponse) SetHeaders(v map[string]*string) *CreateCenBandwidthPackageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateCenBandwidthPackageResponse) SetStatusCode(v int32) *CreateCenBandwidthPackageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1111,8 +1329,9 @@ func (s *CreateCenChildInstanceRouteEntryToAttachmentResponseBody) SetRequestId(
 }
 
 type CreateCenChildInstanceRouteEntryToAttachmentResponse struct {
-	Headers map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCenChildInstanceRouteEntryToAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCenChildInstanceRouteEntryToAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCenChildInstanceRouteEntryToAttachmentResponse) String() string {
@@ -1125,6 +1344,11 @@ func (s CreateCenChildInstanceRouteEntryToAttachmentResponse) GoString() string 
 
 func (s *CreateCenChildInstanceRouteEntryToAttachmentResponse) SetHeaders(v map[string]*string) *CreateCenChildInstanceRouteEntryToAttachmentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateCenChildInstanceRouteEntryToAttachmentResponse) SetStatusCode(v int32) *CreateCenChildInstanceRouteEntryToAttachmentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1228,8 +1452,9 @@ func (s *CreateCenChildInstanceRouteEntryToCenResponseBody) SetRequestId(v strin
 }
 
 type CreateCenChildInstanceRouteEntryToCenResponse struct {
-	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCenChildInstanceRouteEntryToCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCenChildInstanceRouteEntryToCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCenChildInstanceRouteEntryToCenResponse) String() string {
@@ -1242,6 +1467,11 @@ func (s CreateCenChildInstanceRouteEntryToCenResponse) GoString() string {
 
 func (s *CreateCenChildInstanceRouteEntryToCenResponse) SetHeaders(v map[string]*string) *CreateCenChildInstanceRouteEntryToCenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateCenChildInstanceRouteEntryToCenResponse) SetStatusCode(v int32) *CreateCenChildInstanceRouteEntryToCenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1386,8 +1616,9 @@ func (s *CreateCenInterRegionTrafficQosPolicyResponseBody) SetTrafficQosPolicyId
 }
 
 type CreateCenInterRegionTrafficQosPolicyResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCenInterRegionTrafficQosPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCenInterRegionTrafficQosPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCenInterRegionTrafficQosPolicyResponse) String() string {
@@ -1400,6 +1631,11 @@ func (s CreateCenInterRegionTrafficQosPolicyResponse) GoString() string {
 
 func (s *CreateCenInterRegionTrafficQosPolicyResponse) SetHeaders(v map[string]*string) *CreateCenInterRegionTrafficQosPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosPolicyResponse) SetStatusCode(v int32) *CreateCenInterRegionTrafficQosPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1422,6 +1658,7 @@ type CreateCenRouteMapRequest struct {
 	DestinationInstanceIdsReverseMatch *bool     `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
 	DestinationRouteTableIds           []*string `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Repeated"`
 	MapResult                          *string   `json:"MapResult,omitempty" xml:"MapResult,omitempty"`
+	MatchAddressType                   *string   `json:"MatchAddressType,omitempty" xml:"MatchAddressType,omitempty"`
 	MatchAsns                          []*int64  `json:"MatchAsns,omitempty" xml:"MatchAsns,omitempty" type:"Repeated"`
 	MatchCommunitySet                  []*string `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Repeated"`
 	NextPriority                       *int32    `json:"NextPriority,omitempty" xml:"NextPriority,omitempty"`
@@ -1513,6 +1750,11 @@ func (s *CreateCenRouteMapRequest) SetDestinationRouteTableIds(v []*string) *Cre
 
 func (s *CreateCenRouteMapRequest) SetMapResult(v string) *CreateCenRouteMapRequest {
 	s.MapResult = &v
+	return s
+}
+
+func (s *CreateCenRouteMapRequest) SetMatchAddressType(v string) *CreateCenRouteMapRequest {
+	s.MatchAddressType = &v
 	return s
 }
 
@@ -1635,8 +1877,9 @@ func (s *CreateCenRouteMapResponseBody) SetRouteMapId(v string) *CreateCenRouteM
 }
 
 type CreateCenRouteMapResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCenRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCenRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCenRouteMapResponse) String() string {
@@ -1652,23 +1895,30 @@ func (s *CreateCenRouteMapResponse) SetHeaders(v map[string]*string) *CreateCenR
 	return s
 }
 
+func (s *CreateCenRouteMapResponse) SetStatusCode(v int32) *CreateCenRouteMapResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateCenRouteMapResponse) SetBody(v *CreateCenRouteMapResponseBody) *CreateCenRouteMapResponse {
 	s.Body = v
 	return s
 }
 
 type CreateFlowlogRequest struct {
-	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FlowLogName          *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	LogStoreName         *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProjectName          *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	CenId                     *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FlowLogName               *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	Interval                  *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	LogStoreName              *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProjectName               *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 }
 
 func (s CreateFlowlogRequest) String() string {
@@ -1696,6 +1946,11 @@ func (s *CreateFlowlogRequest) SetDescription(v string) *CreateFlowlogRequest {
 
 func (s *CreateFlowlogRequest) SetFlowLogName(v string) *CreateFlowlogRequest {
 	s.FlowLogName = &v
+	return s
+}
+
+func (s *CreateFlowlogRequest) SetInterval(v int64) *CreateFlowlogRequest {
+	s.Interval = &v
 	return s
 }
 
@@ -1734,6 +1989,11 @@ func (s *CreateFlowlogRequest) SetResourceOwnerId(v int64) *CreateFlowlogRequest
 	return s
 }
 
+func (s *CreateFlowlogRequest) SetTransitRouterAttachmentId(v string) *CreateFlowlogRequest {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
 type CreateFlowlogResponseBody struct {
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1764,8 +2024,9 @@ func (s *CreateFlowlogResponseBody) SetSuccess(v string) *CreateFlowlogResponseB
 }
 
 type CreateFlowlogResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateFlowlogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFlowlogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateFlowlogResponse) String() string {
@@ -1778,6 +2039,11 @@ func (s CreateFlowlogResponse) GoString() string {
 
 func (s *CreateFlowlogResponse) SetHeaders(v map[string]*string) *CreateFlowlogResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateFlowlogResponse) SetStatusCode(v int32) *CreateFlowlogResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1952,8 +2218,9 @@ func (s *CreateTrafficMarkingPolicyResponseBody) SetTrafficMarkingPolicyId(v str
 }
 
 type CreateTrafficMarkingPolicyResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTrafficMarkingPolicyResponse) String() string {
@@ -1966,6 +2233,11 @@ func (s CreateTrafficMarkingPolicyResponse) GoString() string {
 
 func (s *CreateTrafficMarkingPolicyResponse) SetHeaders(v map[string]*string) *CreateTrafficMarkingPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateTrafficMarkingPolicyResponse) SetStatusCode(v int32) *CreateTrafficMarkingPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2075,8 +2347,9 @@ func (s *CreateTransitRouterResponseBody) SetTransitRouterId(v string) *CreateTr
 }
 
 type CreateTransitRouterResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTransitRouterResponse) String() string {
@@ -2089,6 +2362,11 @@ func (s CreateTransitRouterResponse) GoString() string {
 
 func (s *CreateTransitRouterResponse) SetHeaders(v map[string]*string) *CreateTransitRouterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateTransitRouterResponse) SetStatusCode(v int32) *CreateTransitRouterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2198,8 +2476,9 @@ func (s *CreateTransitRouterMulticastDomainResponseBody) SetTransitRouterMultica
 }
 
 type CreateTransitRouterMulticastDomainResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTransitRouterMulticastDomainResponse) String() string {
@@ -2212,6 +2491,11 @@ func (s CreateTransitRouterMulticastDomainResponse) GoString() string {
 
 func (s *CreateTransitRouterMulticastDomainResponse) SetHeaders(v map[string]*string) *CreateTransitRouterMulticastDomainResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainResponse) SetStatusCode(v int32) *CreateTransitRouterMulticastDomainResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2357,8 +2641,9 @@ func (s *CreateTransitRouterPeerAttachmentResponseBody) SetTransitRouterAttachme
 }
 
 type CreateTransitRouterPeerAttachmentResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTransitRouterPeerAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTransitRouterPeerAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTransitRouterPeerAttachmentResponse) String() string {
@@ -2374,7 +2659,147 @@ func (s *CreateTransitRouterPeerAttachmentResponse) SetHeaders(v map[string]*str
 	return s
 }
 
+func (s *CreateTransitRouterPeerAttachmentResponse) SetStatusCode(v int32) *CreateTransitRouterPeerAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateTransitRouterPeerAttachmentResponse) SetBody(v *CreateTransitRouterPeerAttachmentResponseBody) *CreateTransitRouterPeerAttachmentResponse {
+	s.Body = v
+	return s
+}
+
+type CreateTransitRouterPrefixListAssociationRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	NextHop              *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerUid             *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	PrefixListId         *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterId      *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterTableId *string `json:"TransitRouterTableId,omitempty" xml:"TransitRouterTableId,omitempty"`
+}
+
+func (s CreateTransitRouterPrefixListAssociationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterPrefixListAssociationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterPrefixListAssociationRequest) SetClientToken(v string) *CreateTransitRouterPrefixListAssociationRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationRequest) SetDryRun(v bool) *CreateTransitRouterPrefixListAssociationRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationRequest) SetNextHop(v string) *CreateTransitRouterPrefixListAssociationRequest {
+	s.NextHop = &v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationRequest) SetNextHopType(v string) *CreateTransitRouterPrefixListAssociationRequest {
+	s.NextHopType = &v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationRequest) SetOwnerAccount(v string) *CreateTransitRouterPrefixListAssociationRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationRequest) SetOwnerId(v int64) *CreateTransitRouterPrefixListAssociationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationRequest) SetOwnerUid(v int64) *CreateTransitRouterPrefixListAssociationRequest {
+	s.OwnerUid = &v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationRequest) SetPrefixListId(v string) *CreateTransitRouterPrefixListAssociationRequest {
+	s.PrefixListId = &v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationRequest) SetRegionId(v string) *CreateTransitRouterPrefixListAssociationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationRequest) SetResourceOwnerAccount(v string) *CreateTransitRouterPrefixListAssociationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationRequest) SetResourceOwnerId(v int64) *CreateTransitRouterPrefixListAssociationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationRequest) SetTransitRouterId(v string) *CreateTransitRouterPrefixListAssociationRequest {
+	s.TransitRouterId = &v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationRequest) SetTransitRouterTableId(v string) *CreateTransitRouterPrefixListAssociationRequest {
+	s.TransitRouterTableId = &v
+	return s
+}
+
+type CreateTransitRouterPrefixListAssociationResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateTransitRouterPrefixListAssociationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterPrefixListAssociationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterPrefixListAssociationResponseBody) SetRequestId(v string) *CreateTransitRouterPrefixListAssociationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateTransitRouterPrefixListAssociationResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTransitRouterPrefixListAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTransitRouterPrefixListAssociationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterPrefixListAssociationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterPrefixListAssociationResponse) SetHeaders(v map[string]*string) *CreateTransitRouterPrefixListAssociationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationResponse) SetStatusCode(v int32) *CreateTransitRouterPrefixListAssociationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTransitRouterPrefixListAssociationResponse) SetBody(v *CreateTransitRouterPrefixListAssociationResponseBody) *CreateTransitRouterPrefixListAssociationResponse {
 	s.Body = v
 	return s
 }
@@ -2486,8 +2911,9 @@ func (s *CreateTransitRouterRouteEntryResponseBody) SetTransitRouterRouteEntryId
 }
 
 type CreateTransitRouterRouteEntryResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTransitRouterRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTransitRouterRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTransitRouterRouteEntryResponse) String() string {
@@ -2500,6 +2926,11 @@ func (s CreateTransitRouterRouteEntryResponse) GoString() string {
 
 func (s *CreateTransitRouterRouteEntryResponse) SetHeaders(v map[string]*string) *CreateTransitRouterRouteEntryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateTransitRouterRouteEntryResponse) SetStatusCode(v int32) *CreateTransitRouterRouteEntryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2597,8 +3028,9 @@ func (s *CreateTransitRouterRouteTableResponseBody) SetTransitRouterRouteTableId
 }
 
 type CreateTransitRouterRouteTableResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTransitRouterRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTransitRouterRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTransitRouterRouteTableResponse) String() string {
@@ -2611,6 +3043,11 @@ func (s CreateTransitRouterRouteTableResponse) GoString() string {
 
 func (s *CreateTransitRouterRouteTableResponse) SetHeaders(v map[string]*string) *CreateTransitRouterRouteTableResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateTransitRouterRouteTableResponse) SetStatusCode(v int32) *CreateTransitRouterRouteTableResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2738,8 +3175,9 @@ func (s *CreateTransitRouterVbrAttachmentResponseBody) SetTransitRouterAttachmen
 }
 
 type CreateTransitRouterVbrAttachmentResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTransitRouterVbrAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTransitRouterVbrAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTransitRouterVbrAttachmentResponse) String() string {
@@ -2752,6 +3190,11 @@ func (s CreateTransitRouterVbrAttachmentResponse) GoString() string {
 
 func (s *CreateTransitRouterVbrAttachmentResponse) SetHeaders(v map[string]*string) *CreateTransitRouterVbrAttachmentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateTransitRouterVbrAttachmentResponse) SetStatusCode(v int32) *CreateTransitRouterVbrAttachmentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2908,8 +3351,9 @@ func (s *CreateTransitRouterVpcAttachmentResponseBody) SetTransitRouterAttachmen
 }
 
 type CreateTransitRouterVpcAttachmentResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTransitRouterVpcAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTransitRouterVpcAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTransitRouterVpcAttachmentResponse) String() string {
@@ -2925,7 +3369,188 @@ func (s *CreateTransitRouterVpcAttachmentResponse) SetHeaders(v map[string]*stri
 	return s
 }
 
+func (s *CreateTransitRouterVpcAttachmentResponse) SetStatusCode(v int32) *CreateTransitRouterVpcAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateTransitRouterVpcAttachmentResponse) SetBody(v *CreateTransitRouterVpcAttachmentResponseBody) *CreateTransitRouterVpcAttachmentResponse {
+	s.Body = v
+	return s
+}
+
+type CreateTransitRouterVpnAttachmentRequest struct {
+	AutoPublishRouteEnabled            *bool                                          `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
+	CenId                              *string                                        `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ChargeType                         *string                                        `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClientToken                        *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                             *bool                                          `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                       *string                                        `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                            *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                           *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount               *string                                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                    *int64                                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterAttachmentDescription *string                                        `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
+	TransitRouterAttachmentName        *string                                        `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	TransitRouterId                    *string                                        `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	VpnId                              *string                                        `json:"VpnId,omitempty" xml:"VpnId,omitempty"`
+	VpnOwnerId                         *int64                                         `json:"VpnOwnerId,omitempty" xml:"VpnOwnerId,omitempty"`
+	Zone                               []*CreateTransitRouterVpnAttachmentRequestZone `json:"Zone,omitempty" xml:"Zone,omitempty" type:"Repeated"`
+}
+
+func (s CreateTransitRouterVpnAttachmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterVpnAttachmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetAutoPublishRouteEnabled(v bool) *CreateTransitRouterVpnAttachmentRequest {
+	s.AutoPublishRouteEnabled = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetCenId(v string) *CreateTransitRouterVpnAttachmentRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetChargeType(v string) *CreateTransitRouterVpnAttachmentRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetClientToken(v string) *CreateTransitRouterVpnAttachmentRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetDryRun(v bool) *CreateTransitRouterVpnAttachmentRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetOwnerAccount(v string) *CreateTransitRouterVpnAttachmentRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetOwnerId(v int64) *CreateTransitRouterVpnAttachmentRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetRegionId(v string) *CreateTransitRouterVpnAttachmentRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetResourceOwnerAccount(v string) *CreateTransitRouterVpnAttachmentRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetResourceOwnerId(v int64) *CreateTransitRouterVpnAttachmentRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetTransitRouterAttachmentDescription(v string) *CreateTransitRouterVpnAttachmentRequest {
+	s.TransitRouterAttachmentDescription = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetTransitRouterAttachmentName(v string) *CreateTransitRouterVpnAttachmentRequest {
+	s.TransitRouterAttachmentName = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetTransitRouterId(v string) *CreateTransitRouterVpnAttachmentRequest {
+	s.TransitRouterId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetVpnId(v string) *CreateTransitRouterVpnAttachmentRequest {
+	s.VpnId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetVpnOwnerId(v int64) *CreateTransitRouterVpnAttachmentRequest {
+	s.VpnOwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequest) SetZone(v []*CreateTransitRouterVpnAttachmentRequestZone) *CreateTransitRouterVpnAttachmentRequest {
+	s.Zone = v
+	return s
+}
+
+type CreateTransitRouterVpnAttachmentRequestZone struct {
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateTransitRouterVpnAttachmentRequestZone) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterVpnAttachmentRequestZone) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterVpnAttachmentRequestZone) SetZoneId(v string) *CreateTransitRouterVpnAttachmentRequestZone {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateTransitRouterVpnAttachmentResponseBody struct {
+	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+}
+
+func (s CreateTransitRouterVpnAttachmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterVpnAttachmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterVpnAttachmentResponseBody) SetRequestId(v string) *CreateTransitRouterVpnAttachmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentResponseBody) SetTransitRouterAttachmentId(v string) *CreateTransitRouterVpnAttachmentResponseBody {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+type CreateTransitRouterVpnAttachmentResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTransitRouterVpnAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTransitRouterVpnAttachmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterVpnAttachmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterVpnAttachmentResponse) SetHeaders(v map[string]*string) *CreateTransitRouterVpnAttachmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentResponse) SetStatusCode(v int32) *CreateTransitRouterVpnAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpnAttachmentResponse) SetBody(v *CreateTransitRouterVpnAttachmentResponseBody) *CreateTransitRouterVpnAttachmentResponse {
 	s.Body = v
 	return s
 }
@@ -3013,8 +3638,9 @@ func (s *DeactiveFlowLogResponseBody) SetSuccess(v string) *DeactiveFlowLogRespo
 }
 
 type DeactiveFlowLogResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeactiveFlowLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeactiveFlowLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeactiveFlowLogResponse) String() string {
@@ -3027,6 +3653,11 @@ func (s DeactiveFlowLogResponse) GoString() string {
 
 func (s *DeactiveFlowLogResponse) SetHeaders(v map[string]*string) *DeactiveFlowLogResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeactiveFlowLogResponse) SetStatusCode(v int32) *DeactiveFlowLogResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3094,8 +3725,9 @@ func (s *DeleteCenResponseBody) SetRequestId(v string) *DeleteCenResponseBody {
 }
 
 type DeleteCenResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteCenResponse) String() string {
@@ -3108,6 +3740,11 @@ func (s DeleteCenResponse) GoString() string {
 
 func (s *DeleteCenResponse) SetHeaders(v map[string]*string) *DeleteCenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteCenResponse) SetStatusCode(v int32) *DeleteCenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3175,8 +3812,9 @@ func (s *DeleteCenBandwidthPackageResponseBody) SetRequestId(v string) *DeleteCe
 }
 
 type DeleteCenBandwidthPackageResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteCenBandwidthPackageResponse) String() string {
@@ -3189,6 +3827,11 @@ func (s DeleteCenBandwidthPackageResponse) GoString() string {
 
 func (s *DeleteCenBandwidthPackageResponse) SetHeaders(v map[string]*string) *DeleteCenBandwidthPackageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteCenBandwidthPackageResponse) SetStatusCode(v int32) *DeleteCenBandwidthPackageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3286,8 +3929,9 @@ func (s *DeleteCenChildInstanceRouteEntryToAttachmentResponseBody) SetRequestId(
 }
 
 type DeleteCenChildInstanceRouteEntryToAttachmentResponse struct {
-	Headers map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteCenChildInstanceRouteEntryToAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCenChildInstanceRouteEntryToAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteCenChildInstanceRouteEntryToAttachmentResponse) String() string {
@@ -3300,6 +3944,11 @@ func (s DeleteCenChildInstanceRouteEntryToAttachmentResponse) GoString() string 
 
 func (s *DeleteCenChildInstanceRouteEntryToAttachmentResponse) SetHeaders(v map[string]*string) *DeleteCenChildInstanceRouteEntryToAttachmentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteCenChildInstanceRouteEntryToAttachmentResponse) SetStatusCode(v int32) *DeleteCenChildInstanceRouteEntryToAttachmentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3403,8 +4052,9 @@ func (s *DeleteCenChildInstanceRouteEntryToCenResponseBody) SetRequestId(v strin
 }
 
 type DeleteCenChildInstanceRouteEntryToCenResponse struct {
-	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteCenChildInstanceRouteEntryToCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCenChildInstanceRouteEntryToCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteCenChildInstanceRouteEntryToCenResponse) String() string {
@@ -3417,6 +4067,11 @@ func (s DeleteCenChildInstanceRouteEntryToCenResponse) GoString() string {
 
 func (s *DeleteCenChildInstanceRouteEntryToCenResponse) SetHeaders(v map[string]*string) *DeleteCenChildInstanceRouteEntryToCenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteCenChildInstanceRouteEntryToCenResponse) SetStatusCode(v int32) *DeleteCenChildInstanceRouteEntryToCenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3496,8 +4151,9 @@ func (s *DeleteCenInterRegionTrafficQosPolicyResponseBody) SetRequestId(v string
 }
 
 type DeleteCenInterRegionTrafficQosPolicyResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteCenInterRegionTrafficQosPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCenInterRegionTrafficQosPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteCenInterRegionTrafficQosPolicyResponse) String() string {
@@ -3510,6 +4166,11 @@ func (s DeleteCenInterRegionTrafficQosPolicyResponse) GoString() string {
 
 func (s *DeleteCenInterRegionTrafficQosPolicyResponse) SetHeaders(v map[string]*string) *DeleteCenInterRegionTrafficQosPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteCenInterRegionTrafficQosPolicyResponse) SetStatusCode(v int32) *DeleteCenInterRegionTrafficQosPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3589,8 +4250,9 @@ func (s *DeleteCenInterRegionTrafficQosQueueResponseBody) SetRequestId(v string)
 }
 
 type DeleteCenInterRegionTrafficQosQueueResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteCenInterRegionTrafficQosQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCenInterRegionTrafficQosQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteCenInterRegionTrafficQosQueueResponse) String() string {
@@ -3603,6 +4265,11 @@ func (s DeleteCenInterRegionTrafficQosQueueResponse) GoString() string {
 
 func (s *DeleteCenInterRegionTrafficQosQueueResponse) SetHeaders(v map[string]*string) *DeleteCenInterRegionTrafficQosQueueResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteCenInterRegionTrafficQosQueueResponse) SetStatusCode(v int32) *DeleteCenInterRegionTrafficQosQueueResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3682,8 +4349,9 @@ func (s *DeleteCenRouteMapResponseBody) SetRequestId(v string) *DeleteCenRouteMa
 }
 
 type DeleteCenRouteMapResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteCenRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCenRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteCenRouteMapResponse) String() string {
@@ -3696,6 +4364,11 @@ func (s DeleteCenRouteMapResponse) GoString() string {
 
 func (s *DeleteCenRouteMapResponse) SetHeaders(v map[string]*string) *DeleteCenRouteMapResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteCenRouteMapResponse) SetStatusCode(v int32) *DeleteCenRouteMapResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3787,8 +4460,9 @@ func (s *DeleteFlowlogResponseBody) SetSuccess(v string) *DeleteFlowlogResponseB
 }
 
 type DeleteFlowlogResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteFlowlogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFlowlogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteFlowlogResponse) String() string {
@@ -3801,6 +4475,11 @@ func (s DeleteFlowlogResponse) GoString() string {
 
 func (s *DeleteFlowlogResponse) SetHeaders(v map[string]*string) *DeleteFlowlogResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteFlowlogResponse) SetStatusCode(v int32) *DeleteFlowlogResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3892,8 +4571,9 @@ func (s *DeleteRouteServiceInCenResponseBody) SetRequestId(v string) *DeleteRout
 }
 
 type DeleteRouteServiceInCenResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteRouteServiceInCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteRouteServiceInCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteRouteServiceInCenResponse) String() string {
@@ -3906,6 +4586,11 @@ func (s DeleteRouteServiceInCenResponse) GoString() string {
 
 func (s *DeleteRouteServiceInCenResponse) SetHeaders(v map[string]*string) *DeleteRouteServiceInCenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteRouteServiceInCenResponse) SetStatusCode(v int32) *DeleteRouteServiceInCenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3985,8 +4670,9 @@ func (s *DeleteTrafficMarkingPolicyResponseBody) SetRequestId(v string) *DeleteT
 }
 
 type DeleteTrafficMarkingPolicyResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteTrafficMarkingPolicyResponse) String() string {
@@ -3999,6 +4685,11 @@ func (s DeleteTrafficMarkingPolicyResponse) GoString() string {
 
 func (s *DeleteTrafficMarkingPolicyResponse) SetHeaders(v map[string]*string) *DeleteTrafficMarkingPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteTrafficMarkingPolicyResponse) SetStatusCode(v int32) *DeleteTrafficMarkingPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4078,8 +4769,9 @@ func (s *DeleteTransitRouterResponseBody) SetRequestId(v string) *DeleteTransitR
 }
 
 type DeleteTransitRouterResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteTransitRouterResponse) String() string {
@@ -4092,6 +4784,11 @@ func (s DeleteTransitRouterResponse) GoString() string {
 
 func (s *DeleteTransitRouterResponse) SetHeaders(v map[string]*string) *DeleteTransitRouterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteTransitRouterResponse) SetStatusCode(v int32) *DeleteTransitRouterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4171,8 +4868,9 @@ func (s *DeleteTransitRouterMulticastDomainResponseBody) SetRequestId(v string) 
 }
 
 type DeleteTransitRouterMulticastDomainResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteTransitRouterMulticastDomainResponse) String() string {
@@ -4185,6 +4883,11 @@ func (s DeleteTransitRouterMulticastDomainResponse) GoString() string {
 
 func (s *DeleteTransitRouterMulticastDomainResponse) SetHeaders(v map[string]*string) *DeleteTransitRouterMulticastDomainResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteTransitRouterMulticastDomainResponse) SetStatusCode(v int32) *DeleteTransitRouterMulticastDomainResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4264,8 +4967,9 @@ func (s *DeleteTransitRouterPeerAttachmentResponseBody) SetRequestId(v string) *
 }
 
 type DeleteTransitRouterPeerAttachmentResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteTransitRouterPeerAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTransitRouterPeerAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteTransitRouterPeerAttachmentResponse) String() string {
@@ -4281,7 +4985,135 @@ func (s *DeleteTransitRouterPeerAttachmentResponse) SetHeaders(v map[string]*str
 	return s
 }
 
+func (s *DeleteTransitRouterPeerAttachmentResponse) SetStatusCode(v int32) *DeleteTransitRouterPeerAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteTransitRouterPeerAttachmentResponse) SetBody(v *DeleteTransitRouterPeerAttachmentResponseBody) *DeleteTransitRouterPeerAttachmentResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTransitRouterPrefixListAssociationRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	NextHop              *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PrefixListId         *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterId      *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterTableId *string `json:"TransitRouterTableId,omitempty" xml:"TransitRouterTableId,omitempty"`
+}
+
+func (s DeleteTransitRouterPrefixListAssociationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterPrefixListAssociationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationRequest) SetClientToken(v string) *DeleteTransitRouterPrefixListAssociationRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationRequest) SetDryRun(v bool) *DeleteTransitRouterPrefixListAssociationRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationRequest) SetNextHop(v string) *DeleteTransitRouterPrefixListAssociationRequest {
+	s.NextHop = &v
+	return s
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationRequest) SetOwnerAccount(v string) *DeleteTransitRouterPrefixListAssociationRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationRequest) SetOwnerId(v int64) *DeleteTransitRouterPrefixListAssociationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationRequest) SetPrefixListId(v string) *DeleteTransitRouterPrefixListAssociationRequest {
+	s.PrefixListId = &v
+	return s
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationRequest) SetRegionId(v string) *DeleteTransitRouterPrefixListAssociationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationRequest) SetResourceOwnerAccount(v string) *DeleteTransitRouterPrefixListAssociationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationRequest) SetResourceOwnerId(v int64) *DeleteTransitRouterPrefixListAssociationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationRequest) SetTransitRouterId(v string) *DeleteTransitRouterPrefixListAssociationRequest {
+	s.TransitRouterId = &v
+	return s
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationRequest) SetTransitRouterTableId(v string) *DeleteTransitRouterPrefixListAssociationRequest {
+	s.TransitRouterTableId = &v
+	return s
+}
+
+type DeleteTransitRouterPrefixListAssociationResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTransitRouterPrefixListAssociationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterPrefixListAssociationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationResponseBody) SetRequestId(v string) *DeleteTransitRouterPrefixListAssociationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTransitRouterPrefixListAssociationResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTransitRouterPrefixListAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTransitRouterPrefixListAssociationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterPrefixListAssociationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationResponse) SetHeaders(v map[string]*string) *DeleteTransitRouterPrefixListAssociationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationResponse) SetStatusCode(v int32) *DeleteTransitRouterPrefixListAssociationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationResponse) SetBody(v *DeleteTransitRouterPrefixListAssociationResponseBody) *DeleteTransitRouterPrefixListAssociationResponse {
 	s.Body = v
 	return s
 }
@@ -4381,8 +5213,9 @@ func (s *DeleteTransitRouterRouteEntryResponseBody) SetRequestId(v string) *Dele
 }
 
 type DeleteTransitRouterRouteEntryResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteTransitRouterRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTransitRouterRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteTransitRouterRouteEntryResponse) String() string {
@@ -4395,6 +5228,11 @@ func (s DeleteTransitRouterRouteEntryResponse) GoString() string {
 
 func (s *DeleteTransitRouterRouteEntryResponse) SetHeaders(v map[string]*string) *DeleteTransitRouterRouteEntryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteTransitRouterRouteEntryResponse) SetStatusCode(v int32) *DeleteTransitRouterRouteEntryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4474,8 +5312,9 @@ func (s *DeleteTransitRouterRouteTableResponseBody) SetRequestId(v string) *Dele
 }
 
 type DeleteTransitRouterRouteTableResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteTransitRouterRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTransitRouterRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteTransitRouterRouteTableResponse) String() string {
@@ -4488,6 +5327,11 @@ func (s DeleteTransitRouterRouteTableResponse) GoString() string {
 
 func (s *DeleteTransitRouterRouteTableResponse) SetHeaders(v map[string]*string) *DeleteTransitRouterRouteTableResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteTransitRouterRouteTableResponse) SetStatusCode(v int32) *DeleteTransitRouterRouteTableResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4567,8 +5411,9 @@ func (s *DeleteTransitRouterVbrAttachmentResponseBody) SetRequestId(v string) *D
 }
 
 type DeleteTransitRouterVbrAttachmentResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteTransitRouterVbrAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTransitRouterVbrAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteTransitRouterVbrAttachmentResponse) String() string {
@@ -4581,6 +5426,11 @@ func (s DeleteTransitRouterVbrAttachmentResponse) GoString() string {
 
 func (s *DeleteTransitRouterVbrAttachmentResponse) SetHeaders(v map[string]*string) *DeleteTransitRouterVbrAttachmentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteTransitRouterVbrAttachmentResponse) SetStatusCode(v int32) *DeleteTransitRouterVbrAttachmentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4660,8 +5510,9 @@ func (s *DeleteTransitRouterVpcAttachmentResponseBody) SetRequestId(v string) *D
 }
 
 type DeleteTransitRouterVpcAttachmentResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteTransitRouterVpcAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTransitRouterVpcAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteTransitRouterVpcAttachmentResponse) String() string {
@@ -4677,7 +5528,111 @@ func (s *DeleteTransitRouterVpcAttachmentResponse) SetHeaders(v map[string]*stri
 	return s
 }
 
+func (s *DeleteTransitRouterVpcAttachmentResponse) SetStatusCode(v int32) *DeleteTransitRouterVpcAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteTransitRouterVpcAttachmentResponse) SetBody(v *DeleteTransitRouterVpcAttachmentResponseBody) *DeleteTransitRouterVpcAttachmentResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTransitRouterVpnAttachmentRequest struct {
+	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+}
+
+func (s DeleteTransitRouterVpnAttachmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterVpnAttachmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterVpnAttachmentRequest) SetClientToken(v string) *DeleteTransitRouterVpnAttachmentRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteTransitRouterVpnAttachmentRequest) SetDryRun(v bool) *DeleteTransitRouterVpnAttachmentRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteTransitRouterVpnAttachmentRequest) SetOwnerAccount(v string) *DeleteTransitRouterVpnAttachmentRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteTransitRouterVpnAttachmentRequest) SetOwnerId(v int64) *DeleteTransitRouterVpnAttachmentRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteTransitRouterVpnAttachmentRequest) SetResourceOwnerAccount(v string) *DeleteTransitRouterVpnAttachmentRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteTransitRouterVpnAttachmentRequest) SetResourceOwnerId(v int64) *DeleteTransitRouterVpnAttachmentRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteTransitRouterVpnAttachmentRequest) SetTransitRouterAttachmentId(v string) *DeleteTransitRouterVpnAttachmentRequest {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+type DeleteTransitRouterVpnAttachmentResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTransitRouterVpnAttachmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterVpnAttachmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterVpnAttachmentResponseBody) SetRequestId(v string) *DeleteTransitRouterVpnAttachmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTransitRouterVpnAttachmentResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTransitRouterVpnAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTransitRouterVpnAttachmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterVpnAttachmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterVpnAttachmentResponse) SetHeaders(v map[string]*string) *DeleteTransitRouterVpnAttachmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTransitRouterVpnAttachmentResponse) SetStatusCode(v int32) *DeleteTransitRouterVpnAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTransitRouterVpnAttachmentResponse) SetBody(v *DeleteTransitRouterVpnAttachmentResponseBody) *DeleteTransitRouterVpnAttachmentResponse {
 	s.Body = v
 	return s
 }
@@ -4771,8 +5726,9 @@ func (s *DeregisterTransitRouterMulticastGroupMembersResponseBody) SetRequestId(
 }
 
 type DeregisterTransitRouterMulticastGroupMembersResponse struct {
-	Headers map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeregisterTransitRouterMulticastGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeregisterTransitRouterMulticastGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeregisterTransitRouterMulticastGroupMembersResponse) String() string {
@@ -4785,6 +5741,11 @@ func (s DeregisterTransitRouterMulticastGroupMembersResponse) GoString() string 
 
 func (s *DeregisterTransitRouterMulticastGroupMembersResponse) SetHeaders(v map[string]*string) *DeregisterTransitRouterMulticastGroupMembersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersResponse) SetStatusCode(v int32) *DeregisterTransitRouterMulticastGroupMembersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4876,8 +5837,9 @@ func (s *DeregisterTransitRouterMulticastGroupSourcesResponseBody) SetRequestId(
 }
 
 type DeregisterTransitRouterMulticastGroupSourcesResponse struct {
-	Headers map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeregisterTransitRouterMulticastGroupSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeregisterTransitRouterMulticastGroupSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeregisterTransitRouterMulticastGroupSourcesResponse) String() string {
@@ -4890,6 +5852,11 @@ func (s DeregisterTransitRouterMulticastGroupSourcesResponse) GoString() string 
 
 func (s *DeregisterTransitRouterMulticastGroupSourcesResponse) SetHeaders(v map[string]*string) *DeregisterTransitRouterMulticastGroupSourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupSourcesResponse) SetStatusCode(v int32) *DeregisterTransitRouterMulticastGroupSourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5023,8 +5990,9 @@ func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetStatus(v stri
 }
 
 type DescribeCenAttachedChildInstanceAttributeResponse struct {
-	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCenAttachedChildInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCenAttachedChildInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCenAttachedChildInstanceAttributeResponse) String() string {
@@ -5037,6 +6005,11 @@ func (s DescribeCenAttachedChildInstanceAttributeResponse) GoString() string {
 
 func (s *DescribeCenAttachedChildInstanceAttributeResponse) SetHeaders(v map[string]*string) *DescribeCenAttachedChildInstanceAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCenAttachedChildInstanceAttributeResponse) SetStatusCode(v int32) *DescribeCenAttachedChildInstanceAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5222,8 +6195,9 @@ func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstanc
 }
 
 type DescribeCenAttachedChildInstancesResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCenAttachedChildInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCenAttachedChildInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCenAttachedChildInstancesResponse) String() string {
@@ -5236,6 +6210,11 @@ func (s DescribeCenAttachedChildInstancesResponse) GoString() string {
 
 func (s *DescribeCenAttachedChildInstancesResponse) SetHeaders(v map[string]*string) *DescribeCenAttachedChildInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCenAttachedChildInstancesResponse) SetStatusCode(v int32) *DescribeCenAttachedChildInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5591,8 +6570,9 @@ func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidt
 }
 
 type DescribeCenBandwidthPackagesResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCenBandwidthPackagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCenBandwidthPackagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCenBandwidthPackagesResponse) String() string {
@@ -5605,6 +6585,11 @@ func (s DescribeCenBandwidthPackagesResponse) GoString() string {
 
 func (s *DescribeCenBandwidthPackagesResponse) SetHeaders(v map[string]*string) *DescribeCenBandwidthPackagesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCenBandwidthPackagesResponse) SetStatusCode(v int32) *DescribeCenBandwidthPackagesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5970,8 +6955,9 @@ func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRoute
 }
 
 type DescribeCenChildInstanceRouteEntriesResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCenChildInstanceRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCenChildInstanceRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCenChildInstanceRouteEntriesResponse) String() string {
@@ -5984,6 +6970,11 @@ func (s DescribeCenChildInstanceRouteEntriesResponse) GoString() string {
 
 func (s *DescribeCenChildInstanceRouteEntriesResponse) SetHeaders(v map[string]*string) *DescribeCenChildInstanceRouteEntriesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCenChildInstanceRouteEntriesResponse) SetStatusCode(v int32) *DescribeCenChildInstanceRouteEntriesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6081,8 +7072,9 @@ func (s *DescribeCenGeographicSpanRemainingBandwidthResponseBody) SetRequestId(v
 }
 
 type DescribeCenGeographicSpanRemainingBandwidthResponse struct {
-	Headers map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCenGeographicSpanRemainingBandwidthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCenGeographicSpanRemainingBandwidthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCenGeographicSpanRemainingBandwidthResponse) String() string {
@@ -6095,6 +7087,11 @@ func (s DescribeCenGeographicSpanRemainingBandwidthResponse) GoString() string {
 
 func (s *DescribeCenGeographicSpanRemainingBandwidthResponse) SetHeaders(v map[string]*string) *DescribeCenGeographicSpanRemainingBandwidthResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCenGeographicSpanRemainingBandwidthResponse) SetStatusCode(v int32) *DescribeCenGeographicSpanRemainingBandwidthResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6244,8 +7241,9 @@ func (s *DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpa
 }
 
 type DescribeCenGeographicSpansResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCenGeographicSpansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCenGeographicSpansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCenGeographicSpansResponse) String() string {
@@ -6258,6 +7256,11 @@ func (s DescribeCenGeographicSpansResponse) GoString() string {
 
 func (s *DescribeCenGeographicSpansResponse) SetHeaders(v map[string]*string) *DescribeCenGeographicSpansResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCenGeographicSpansResponse) SetStatusCode(v int32) *DescribeCenGeographicSpansResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6431,8 +7434,9 @@ func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidt
 }
 
 type DescribeCenInterRegionBandwidthLimitsResponse struct {
-	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCenInterRegionBandwidthLimitsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCenInterRegionBandwidthLimitsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCenInterRegionBandwidthLimitsResponse) String() string {
@@ -6445,6 +7449,11 @@ func (s DescribeCenInterRegionBandwidthLimitsResponse) GoString() string {
 
 func (s *DescribeCenInterRegionBandwidthLimitsResponse) SetHeaders(v map[string]*string) *DescribeCenInterRegionBandwidthLimitsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCenInterRegionBandwidthLimitsResponse) SetStatusCode(v int32) *DescribeCenInterRegionBandwidthLimitsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6612,8 +7621,9 @@ func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo
 }
 
 type DescribeCenPrivateZoneRoutesResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCenPrivateZoneRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCenPrivateZoneRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCenPrivateZoneRoutesResponse) String() string {
@@ -6626,6 +7636,11 @@ func (s DescribeCenPrivateZoneRoutesResponse) GoString() string {
 
 func (s *DescribeCenPrivateZoneRoutesResponse) SetHeaders(v map[string]*string) *DescribeCenPrivateZoneRoutesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCenPrivateZoneRoutesResponse) SetStatusCode(v int32) *DescribeCenPrivateZoneRoutesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6955,8 +7970,9 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteE
 }
 
 type DescribeCenRegionDomainRouteEntriesResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCenRegionDomainRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCenRegionDomainRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCenRegionDomainRouteEntriesResponse) String() string {
@@ -6969,6 +7985,11 @@ func (s DescribeCenRegionDomainRouteEntriesResponse) GoString() string {
 
 func (s *DescribeCenRegionDomainRouteEntriesResponse) SetHeaders(v map[string]*string) *DescribeCenRegionDomainRouteEntriesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCenRegionDomainRouteEntriesResponse) SetStatusCode(v int32) *DescribeCenRegionDomainRouteEntriesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7126,6 +8147,7 @@ type DescribeCenRouteMapsResponseBodyRouteMapsRouteMap struct {
 	DestinationInstanceIdsReverseMatch *bool                                                                           `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
 	DestinationRouteTableIds           *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds      `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Struct"`
 	MapResult                          *string                                                                         `json:"MapResult,omitempty" xml:"MapResult,omitempty"`
+	MatchAddressType                   *string                                                                         `json:"MatchAddressType,omitempty" xml:"MatchAddressType,omitempty"`
 	MatchAsns                          *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns                     `json:"MatchAsns,omitempty" xml:"MatchAsns,omitempty" type:"Struct"`
 	MatchCommunitySet                  *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet             `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Struct"`
 	NextPriority                       *int32                                                                          `json:"NextPriority,omitempty" xml:"NextPriority,omitempty"`
@@ -7215,6 +8237,11 @@ func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetDestinationRouteT
 
 func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetMapResult(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
 	s.MapResult = &v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetMatchAddressType(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.MatchAddressType = &v
 	return s
 }
 
@@ -7525,8 +8552,9 @@ func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds) S
 }
 
 type DescribeCenRouteMapsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCenRouteMapsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCenRouteMapsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCenRouteMapsResponse) String() string {
@@ -7539,6 +8567,11 @@ func (s DescribeCenRouteMapsResponse) GoString() string {
 
 func (s *DescribeCenRouteMapsResponse) SetHeaders(v map[string]*string) *DescribeCenRouteMapsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponse) SetStatusCode(v int32) *DescribeCenRouteMapsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7736,8 +8769,9 @@ func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck) Set
 }
 
 type DescribeCenVbrHealthCheckResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCenVbrHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCenVbrHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCenVbrHealthCheckResponse) String() string {
@@ -7753,7 +8787,129 @@ func (s *DescribeCenVbrHealthCheckResponse) SetHeaders(v map[string]*string) *De
 	return s
 }
 
+func (s *DescribeCenVbrHealthCheckResponse) SetStatusCode(v int32) *DescribeCenVbrHealthCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeCenVbrHealthCheckResponse) SetBody(v *DescribeCenVbrHealthCheckResponseBody) *DescribeCenVbrHealthCheckResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCenVpcFlowStatisticSwitchRequest struct {
+	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeCenVpcFlowStatisticSwitchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenVpcFlowStatisticSwitchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchRequest) SetCenId(v string) *DescribeCenVpcFlowStatisticSwitchRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchRequest) SetOwnerAccount(v string) *DescribeCenVpcFlowStatisticSwitchRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchRequest) SetOwnerId(v int64) *DescribeCenVpcFlowStatisticSwitchRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchRequest) SetRegionId(v string) *DescribeCenVpcFlowStatisticSwitchRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchRequest) SetResourceOwnerAccount(v string) *DescribeCenVpcFlowStatisticSwitchRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchRequest) SetResourceOwnerId(v int64) *DescribeCenVpcFlowStatisticSwitchRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeCenVpcFlowStatisticSwitchResponseBody struct {
+	CenId       *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	InvalidDate *string `json:"InvalidDate,omitempty" xml:"InvalidDate,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s DescribeCenVpcFlowStatisticSwitchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenVpcFlowStatisticSwitchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchResponseBody) SetCenId(v string) *DescribeCenVpcFlowStatisticSwitchResponseBody {
+	s.CenId = &v
+	return s
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchResponseBody) SetInvalidDate(v string) *DescribeCenVpcFlowStatisticSwitchResponseBody {
+	s.InvalidDate = &v
+	return s
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchResponseBody) SetRegionId(v string) *DescribeCenVpcFlowStatisticSwitchResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchResponseBody) SetRequestId(v string) *DescribeCenVpcFlowStatisticSwitchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchResponseBody) SetState(v string) *DescribeCenVpcFlowStatisticSwitchResponseBody {
+	s.State = &v
+	return s
+}
+
+type DescribeCenVpcFlowStatisticSwitchResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCenVpcFlowStatisticSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCenVpcFlowStatisticSwitchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenVpcFlowStatisticSwitchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchResponse) SetHeaders(v map[string]*string) *DescribeCenVpcFlowStatisticSwitchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchResponse) SetStatusCode(v int32) *DescribeCenVpcFlowStatisticSwitchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCenVpcFlowStatisticSwitchResponse) SetBody(v *DescribeCenVpcFlowStatisticSwitchResponseBody) *DescribeCenVpcFlowStatisticSwitchResponse {
 	s.Body = v
 	return s
 }
@@ -8050,8 +9206,9 @@ func (s *DescribeCensResponseBodyCensCenTagsTag) SetValue(v string) *DescribeCen
 }
 
 type DescribeCensResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCensResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCensResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCensResponse) String() string {
@@ -8064,6 +9221,11 @@ func (s DescribeCensResponse) GoString() string {
 
 func (s *DescribeCensResponse) SetHeaders(v map[string]*string) *DescribeCensResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCensResponse) SetStatusCode(v int32) *DescribeCensResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8177,8 +9339,9 @@ func (s *DescribeChildInstanceRegionsResponseBodyRegionsRegion) SetRegionId(v st
 }
 
 type DescribeChildInstanceRegionsResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeChildInstanceRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeChildInstanceRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeChildInstanceRegionsResponse) String() string {
@@ -8191,6 +9354,11 @@ func (s DescribeChildInstanceRegionsResponse) GoString() string {
 
 func (s *DescribeChildInstanceRegionsResponse) SetHeaders(v map[string]*string) *DescribeChildInstanceRegionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeChildInstanceRegionsResponse) SetStatusCode(v int32) *DescribeChildInstanceRegionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8430,8 +9598,9 @@ func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetStatus(v string) *Descr
 }
 
 type DescribeFlowlogsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeFlowlogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeFlowlogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeFlowlogsResponse) String() string {
@@ -8444,6 +9613,11 @@ func (s DescribeFlowlogsResponse) GoString() string {
 
 func (s *DescribeFlowlogsResponse) SetHeaders(v map[string]*string) *DescribeFlowlogsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeFlowlogsResponse) SetStatusCode(v int32) *DescribeFlowlogsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8581,8 +9755,9 @@ func (s *DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId) SetReg
 }
 
 type DescribeGeographicRegionMembershipResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGeographicRegionMembershipResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGeographicRegionMembershipResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGeographicRegionMembershipResponse) String() string {
@@ -8595,6 +9770,11 @@ func (s DescribeGeographicRegionMembershipResponse) GoString() string {
 
 func (s *DescribeGeographicRegionMembershipResponse) SetHeaders(v map[string]*string) *DescribeGeographicRegionMembershipResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGeographicRegionMembershipResponse) SetStatusCode(v int32) *DescribeGeographicRegionMembershipResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8744,8 +9924,9 @@ func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) SetOrderType(v 
 }
 
 type DescribeGrantRulesToCenResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGrantRulesToCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGrantRulesToCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGrantRulesToCenResponse) String() string {
@@ -8758,6 +9939,11 @@ func (s DescribeGrantRulesToCenResponse) GoString() string {
 
 func (s *DescribeGrantRulesToCenResponse) SetHeaders(v map[string]*string) *DescribeGrantRulesToCenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGrantRulesToCenResponse) SetStatusCode(v int32) *DescribeGrantRulesToCenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9013,8 +10199,9 @@ func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublished
 }
 
 type DescribePublishedRouteEntriesResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribePublishedRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePublishedRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribePublishedRouteEntriesResponse) String() string {
@@ -9027,6 +10214,11 @@ func (s DescribePublishedRouteEntriesResponse) GoString() string {
 
 func (s *DescribePublishedRouteEntriesResponse) SetHeaders(v map[string]*string) *DescribePublishedRouteEntriesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribePublishedRouteEntriesResponse) SetStatusCode(v int32) *DescribePublishedRouteEntriesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9212,8 +10404,9 @@ func (s *DescribeRouteConflictResponseBodyRouteConflictsRouteConflict) SetStatus
 }
 
 type DescribeRouteConflictResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRouteConflictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRouteConflictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRouteConflictResponse) String() string {
@@ -9226,6 +10419,11 @@ func (s DescribeRouteConflictResponse) GoString() string {
 
 func (s *DescribeRouteConflictResponse) SetHeaders(v map[string]*string) *DescribeRouteConflictResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRouteConflictResponse) SetStatusCode(v int32) *DescribeRouteConflictResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9446,8 +10644,9 @@ func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEn
 }
 
 type DescribeRouteServicesInCenResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRouteServicesInCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRouteServicesInCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRouteServicesInCenResponse) String() string {
@@ -9460,6 +10659,11 @@ func (s DescribeRouteServicesInCenResponse) GoString() string {
 
 func (s *DescribeRouteServicesInCenResponse) SetHeaders(v map[string]*string) *DescribeRouteServicesInCenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRouteServicesInCenResponse) SetStatusCode(v int32) *DescribeRouteServicesInCenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9557,8 +10761,9 @@ func (s *DetachCenChildInstanceResponseBody) SetRequestId(v string) *DetachCenCh
 }
 
 type DetachCenChildInstanceResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetachCenChildInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetachCenChildInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetachCenChildInstanceResponse) String() string {
@@ -9571,6 +10776,11 @@ func (s DetachCenChildInstanceResponse) GoString() string {
 
 func (s *DetachCenChildInstanceResponse) SetHeaders(v map[string]*string) *DetachCenChildInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetachCenChildInstanceResponse) SetStatusCode(v int32) *DetachCenChildInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9656,8 +10866,9 @@ func (s *DisableCenVbrHealthCheckResponseBody) SetRequestId(v string) *DisableCe
 }
 
 type DisableCenVbrHealthCheckResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableCenVbrHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableCenVbrHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableCenVbrHealthCheckResponse) String() string {
@@ -9673,7 +10884,111 @@ func (s *DisableCenVbrHealthCheckResponse) SetHeaders(v map[string]*string) *Dis
 	return s
 }
 
+func (s *DisableCenVbrHealthCheckResponse) SetStatusCode(v int32) *DisableCenVbrHealthCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DisableCenVbrHealthCheckResponse) SetBody(v *DisableCenVbrHealthCheckResponseBody) *DisableCenVbrHealthCheckResponse {
+	s.Body = v
+	return s
+}
+
+type DisableCenVpcFlowStatisticRequest struct {
+	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DisableCenVpcFlowStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableCenVpcFlowStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableCenVpcFlowStatisticRequest) SetCenId(v string) *DisableCenVpcFlowStatisticRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *DisableCenVpcFlowStatisticRequest) SetClientToken(v string) *DisableCenVpcFlowStatisticRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DisableCenVpcFlowStatisticRequest) SetOwnerAccount(v string) *DisableCenVpcFlowStatisticRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DisableCenVpcFlowStatisticRequest) SetOwnerId(v int64) *DisableCenVpcFlowStatisticRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DisableCenVpcFlowStatisticRequest) SetRegionId(v string) *DisableCenVpcFlowStatisticRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DisableCenVpcFlowStatisticRequest) SetResourceOwnerAccount(v string) *DisableCenVpcFlowStatisticRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DisableCenVpcFlowStatisticRequest) SetResourceOwnerId(v int64) *DisableCenVpcFlowStatisticRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DisableCenVpcFlowStatisticResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableCenVpcFlowStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableCenVpcFlowStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableCenVpcFlowStatisticResponseBody) SetRequestId(v string) *DisableCenVpcFlowStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableCenVpcFlowStatisticResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableCenVpcFlowStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableCenVpcFlowStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableCenVpcFlowStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableCenVpcFlowStatisticResponse) SetHeaders(v map[string]*string) *DisableCenVpcFlowStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableCenVpcFlowStatisticResponse) SetStatusCode(v int32) *DisableCenVpcFlowStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableCenVpcFlowStatisticResponse) SetBody(v *DisableCenVpcFlowStatisticResponseBody) *DisableCenVpcFlowStatisticResponse {
 	s.Body = v
 	return s
 }
@@ -9755,8 +11070,9 @@ func (s *DisableTransitRouterRouteTablePropagationResponseBody) SetRequestId(v s
 }
 
 type DisableTransitRouterRouteTablePropagationResponse struct {
-	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableTransitRouterRouteTablePropagationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableTransitRouterRouteTablePropagationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableTransitRouterRouteTablePropagationResponse) String() string {
@@ -9769,6 +11085,11 @@ func (s DisableTransitRouterRouteTablePropagationResponse) GoString() string {
 
 func (s *DisableTransitRouterRouteTablePropagationResponse) SetHeaders(v map[string]*string) *DisableTransitRouterRouteTablePropagationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableTransitRouterRouteTablePropagationResponse) SetStatusCode(v int32) *DisableTransitRouterRouteTablePropagationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9860,8 +11181,9 @@ func (s *DisassociateTransitRouterMulticastDomainResponseBody) SetRequestId(v st
 }
 
 type DisassociateTransitRouterMulticastDomainResponse struct {
-	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisassociateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisassociateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisassociateTransitRouterMulticastDomainResponse) String() string {
@@ -9874,6 +11196,11 @@ func (s DisassociateTransitRouterMulticastDomainResponse) GoString() string {
 
 func (s *DisassociateTransitRouterMulticastDomainResponse) SetHeaders(v map[string]*string) *DisassociateTransitRouterMulticastDomainResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisassociateTransitRouterMulticastDomainResponse) SetStatusCode(v int32) *DisassociateTransitRouterMulticastDomainResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9959,8 +11286,9 @@ func (s *DissociateTransitRouterAttachmentFromRouteTableResponseBody) SetRequest
 }
 
 type DissociateTransitRouterAttachmentFromRouteTableResponse struct {
-	Headers map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DissociateTransitRouterAttachmentFromRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DissociateTransitRouterAttachmentFromRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DissociateTransitRouterAttachmentFromRouteTableResponse) String() string {
@@ -9973,6 +11301,11 @@ func (s DissociateTransitRouterAttachmentFromRouteTableResponse) GoString() stri
 
 func (s *DissociateTransitRouterAttachmentFromRouteTableResponse) SetHeaders(v map[string]*string) *DissociateTransitRouterAttachmentFromRouteTableResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DissociateTransitRouterAttachmentFromRouteTableResponse) SetStatusCode(v int32) *DissociateTransitRouterAttachmentFromRouteTableResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10088,8 +11421,9 @@ func (s *EnableCenVbrHealthCheckResponseBody) SetRequestId(v string) *EnableCenV
 }
 
 type EnableCenVbrHealthCheckResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableCenVbrHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableCenVbrHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableCenVbrHealthCheckResponse) String() string {
@@ -10105,7 +11439,117 @@ func (s *EnableCenVbrHealthCheckResponse) SetHeaders(v map[string]*string) *Enab
 	return s
 }
 
+func (s *EnableCenVbrHealthCheckResponse) SetStatusCode(v int32) *EnableCenVbrHealthCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *EnableCenVbrHealthCheckResponse) SetBody(v *EnableCenVbrHealthCheckResponseBody) *EnableCenVbrHealthCheckResponse {
+	s.Body = v
+	return s
+}
+
+type EnableCenVpcFlowStatisticRequest struct {
+	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Days                 *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s EnableCenVpcFlowStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableCenVpcFlowStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableCenVpcFlowStatisticRequest) SetCenId(v string) *EnableCenVpcFlowStatisticRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *EnableCenVpcFlowStatisticRequest) SetClientToken(v string) *EnableCenVpcFlowStatisticRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *EnableCenVpcFlowStatisticRequest) SetDays(v int32) *EnableCenVpcFlowStatisticRequest {
+	s.Days = &v
+	return s
+}
+
+func (s *EnableCenVpcFlowStatisticRequest) SetOwnerAccount(v string) *EnableCenVpcFlowStatisticRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *EnableCenVpcFlowStatisticRequest) SetOwnerId(v int64) *EnableCenVpcFlowStatisticRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *EnableCenVpcFlowStatisticRequest) SetRegionId(v string) *EnableCenVpcFlowStatisticRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *EnableCenVpcFlowStatisticRequest) SetResourceOwnerAccount(v string) *EnableCenVpcFlowStatisticRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *EnableCenVpcFlowStatisticRequest) SetResourceOwnerId(v int64) *EnableCenVpcFlowStatisticRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type EnableCenVpcFlowStatisticResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableCenVpcFlowStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableCenVpcFlowStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableCenVpcFlowStatisticResponseBody) SetRequestId(v string) *EnableCenVpcFlowStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableCenVpcFlowStatisticResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableCenVpcFlowStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableCenVpcFlowStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableCenVpcFlowStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableCenVpcFlowStatisticResponse) SetHeaders(v map[string]*string) *EnableCenVpcFlowStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableCenVpcFlowStatisticResponse) SetStatusCode(v int32) *EnableCenVpcFlowStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableCenVpcFlowStatisticResponse) SetBody(v *EnableCenVpcFlowStatisticResponseBody) *EnableCenVpcFlowStatisticResponse {
 	s.Body = v
 	return s
 }
@@ -10187,8 +11631,9 @@ func (s *EnableTransitRouterRouteTablePropagationResponseBody) SetRequestId(v st
 }
 
 type EnableTransitRouterRouteTablePropagationResponse struct {
-	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableTransitRouterRouteTablePropagationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableTransitRouterRouteTablePropagationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableTransitRouterRouteTablePropagationResponse) String() string {
@@ -10201,6 +11646,11 @@ func (s EnableTransitRouterRouteTablePropagationResponse) GoString() string {
 
 func (s *EnableTransitRouterRouteTablePropagationResponse) SetHeaders(v map[string]*string) *EnableTransitRouterRouteTablePropagationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableTransitRouterRouteTablePropagationResponse) SetStatusCode(v int32) *EnableTransitRouterRouteTablePropagationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10298,8 +11748,9 @@ func (s *GrantInstanceToTransitRouterResponseBody) SetRequestId(v string) *Grant
 }
 
 type GrantInstanceToTransitRouterResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GrantInstanceToTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GrantInstanceToTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GrantInstanceToTransitRouterResponse) String() string {
@@ -10312,6 +11763,11 @@ func (s GrantInstanceToTransitRouterResponse) GoString() string {
 
 func (s *GrantInstanceToTransitRouterResponse) SetHeaders(v map[string]*string) *GrantInstanceToTransitRouterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GrantInstanceToTransitRouterResponse) SetStatusCode(v int32) *GrantInstanceToTransitRouterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10521,8 +11977,9 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTraff
 }
 
 type ListCenInterRegionTrafficQosPoliciesResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListCenInterRegionTrafficQosPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCenInterRegionTrafficQosPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListCenInterRegionTrafficQosPoliciesResponse) String() string {
@@ -10535,6 +11992,11 @@ func (s ListCenInterRegionTrafficQosPoliciesResponse) GoString() string {
 
 func (s *ListCenInterRegionTrafficQosPoliciesResponse) SetHeaders(v map[string]*string) *ListCenInterRegionTrafficQosPoliciesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListCenInterRegionTrafficQosPoliciesResponse) SetStatusCode(v int32) *ListCenInterRegionTrafficQosPoliciesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10667,8 +12129,9 @@ func (s *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) SetVpcId(v string) *L
 }
 
 type ListGrantVSwitchEnisResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGrantVSwitchEnisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGrantVSwitchEnisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListGrantVSwitchEnisResponse) String() string {
@@ -10681,6 +12144,11 @@ func (s ListGrantVSwitchEnisResponse) GoString() string {
 
 func (s *ListGrantVSwitchEnisResponse) SetHeaders(v map[string]*string) *ListGrantVSwitchEnisResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisResponse) SetStatusCode(v int32) *ListGrantVSwitchEnisResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10831,8 +12299,9 @@ func (s *ListGrantVSwitchesToCenResponseBodyVSwitches) SetZoneId(v string) *List
 }
 
 type ListGrantVSwitchesToCenResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGrantVSwitchesToCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGrantVSwitchesToCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListGrantVSwitchesToCenResponse) String() string {
@@ -10845,6 +12314,11 @@ func (s ListGrantVSwitchesToCenResponse) GoString() string {
 
 func (s *ListGrantVSwitchesToCenResponse) SetHeaders(v map[string]*string) *ListGrantVSwitchesToCenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListGrantVSwitchesToCenResponse) SetStatusCode(v int32) *ListGrantVSwitchesToCenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11023,8 +12497,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -11037,6 +12512,11 @@ func (s ListTagResourcesResponse) GoString() string {
 
 func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11282,8 +12762,9 @@ func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatc
 }
 
 type ListTrafficMarkingPoliciesResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTrafficMarkingPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTrafficMarkingPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTrafficMarkingPoliciesResponse) String() string {
@@ -11296,6 +12777,11 @@ func (s ListTrafficMarkingPoliciesResponse) GoString() string {
 
 func (s *ListTrafficMarkingPoliciesResponse) SetHeaders(v map[string]*string) *ListTrafficMarkingPoliciesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTrafficMarkingPoliciesResponse) SetStatusCode(v int32) *ListTrafficMarkingPoliciesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11352,9 +12838,10 @@ func (s *ListTransitRouterAvailableResourceRequest) SetSupportMulticast(v bool) 
 }
 
 type ListTransitRouterAvailableResourceResponseBody struct {
-	MasterZones []*string `json:"MasterZones,omitempty" xml:"MasterZones,omitempty" type:"Repeated"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SlaveZones  []*string `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Repeated"`
+	AvailableZones []*string `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
+	MasterZones    []*string `json:"MasterZones,omitempty" xml:"MasterZones,omitempty" type:"Repeated"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SlaveZones     []*string `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Repeated"`
 }
 
 func (s ListTransitRouterAvailableResourceResponseBody) String() string {
@@ -11363,6 +12850,11 @@ func (s ListTransitRouterAvailableResourceResponseBody) String() string {
 
 func (s ListTransitRouterAvailableResourceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListTransitRouterAvailableResourceResponseBody) SetAvailableZones(v []*string) *ListTransitRouterAvailableResourceResponseBody {
+	s.AvailableZones = v
+	return s
 }
 
 func (s *ListTransitRouterAvailableResourceResponseBody) SetMasterZones(v []*string) *ListTransitRouterAvailableResourceResponseBody {
@@ -11381,8 +12873,9 @@ func (s *ListTransitRouterAvailableResourceResponseBody) SetSlaveZones(v []*stri
 }
 
 type ListTransitRouterAvailableResourceResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransitRouterAvailableResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterAvailableResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTransitRouterAvailableResourceResponse) String() string {
@@ -11395,6 +12888,11 @@ func (s ListTransitRouterAvailableResourceResponse) GoString() string {
 
 func (s *ListTransitRouterAvailableResourceResponse) SetHeaders(v map[string]*string) *ListTransitRouterAvailableResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterAvailableResourceResponse) SetStatusCode(v int32) *ListTransitRouterAvailableResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11587,8 +13085,9 @@ func (s *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMu
 }
 
 type ListTransitRouterMulticastDomainAssociationsResponse struct {
-	Headers map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransitRouterMulticastDomainAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterMulticastDomainAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTransitRouterMulticastDomainAssociationsResponse) String() string {
@@ -11604,7 +13103,147 @@ func (s *ListTransitRouterMulticastDomainAssociationsResponse) SetHeaders(v map[
 	return s
 }
 
+func (s *ListTransitRouterMulticastDomainAssociationsResponse) SetStatusCode(v int32) *ListTransitRouterMulticastDomainAssociationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListTransitRouterMulticastDomainAssociationsResponse) SetBody(v *ListTransitRouterMulticastDomainAssociationsResponseBody) *ListTransitRouterMulticastDomainAssociationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTransitRouterMulticastDomainVSwitchesRequest struct {
+	CenId                *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	MaxResults           *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	VSwitchIds           []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId                *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListTransitRouterMulticastDomainVSwitchesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastDomainVSwitchesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesRequest) SetCenId(v string) *ListTransitRouterMulticastDomainVSwitchesRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesRequest) SetMaxResults(v int32) *ListTransitRouterMulticastDomainVSwitchesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesRequest) SetNextToken(v string) *ListTransitRouterMulticastDomainVSwitchesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesRequest) SetOwnerAccount(v string) *ListTransitRouterMulticastDomainVSwitchesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesRequest) SetOwnerId(v int64) *ListTransitRouterMulticastDomainVSwitchesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesRequest) SetResourceOwnerAccount(v string) *ListTransitRouterMulticastDomainVSwitchesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesRequest) SetResourceOwnerId(v int64) *ListTransitRouterMulticastDomainVSwitchesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesRequest) SetVSwitchIds(v []*string) *ListTransitRouterMulticastDomainVSwitchesRequest {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesRequest) SetVpcId(v string) *ListTransitRouterMulticastDomainVSwitchesRequest {
+	s.VpcId = &v
+	return s
+}
+
+type ListTransitRouterMulticastDomainVSwitchesResponseBody struct {
+	MaxResults *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+}
+
+func (s ListTransitRouterMulticastDomainVSwitchesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastDomainVSwitchesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesResponseBody) SetMaxResults(v int32) *ListTransitRouterMulticastDomainVSwitchesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesResponseBody) SetNextToken(v string) *ListTransitRouterMulticastDomainVSwitchesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesResponseBody) SetRequestId(v string) *ListTransitRouterMulticastDomainVSwitchesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesResponseBody) SetTotalCount(v int32) *ListTransitRouterMulticastDomainVSwitchesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesResponseBody) SetVSwitchIds(v []*string) *ListTransitRouterMulticastDomainVSwitchesResponseBody {
+	s.VSwitchIds = v
+	return s
+}
+
+type ListTransitRouterMulticastDomainVSwitchesResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterMulticastDomainVSwitchesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTransitRouterMulticastDomainVSwitchesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastDomainVSwitchesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesResponse) SetHeaders(v map[string]*string) *ListTransitRouterMulticastDomainVSwitchesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesResponse) SetStatusCode(v int32) *ListTransitRouterMulticastDomainVSwitchesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainVSwitchesResponse) SetBody(v *ListTransitRouterMulticastDomainVSwitchesResponseBody) *ListTransitRouterMulticastDomainVSwitchesResponse {
 	s.Body = v
 	return s
 }
@@ -11769,8 +13408,9 @@ func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDoma
 }
 
 type ListTransitRouterMulticastDomainsResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransitRouterMulticastDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterMulticastDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTransitRouterMulticastDomainsResponse) String() string {
@@ -11783,6 +13423,11 @@ func (s ListTransitRouterMulticastDomainsResponse) GoString() string {
 
 func (s *ListTransitRouterMulticastDomainsResponse) SetHeaders(v map[string]*string) *ListTransitRouterMulticastDomainsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsResponse) SetStatusCode(v int32) *ListTransitRouterMulticastDomainsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12017,8 +13662,9 @@ func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroup
 }
 
 type ListTransitRouterMulticastGroupsResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransitRouterMulticastGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterMulticastGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTransitRouterMulticastGroupsResponse) String() string {
@@ -12031,6 +13677,11 @@ func (s ListTransitRouterMulticastGroupsResponse) GoString() string {
 
 func (s *ListTransitRouterMulticastGroupsResponse) SetHeaders(v map[string]*string) *ListTransitRouterMulticastGroupsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponse) SetStatusCode(v int32) *ListTransitRouterMulticastGroupsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12259,8 +13910,9 @@ func (s *ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments) S
 }
 
 type ListTransitRouterPeerAttachmentsResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransitRouterPeerAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterPeerAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTransitRouterPeerAttachmentsResponse) String() string {
@@ -12276,7 +13928,212 @@ func (s *ListTransitRouterPeerAttachmentsResponse) SetHeaders(v map[string]*stri
 	return s
 }
 
+func (s *ListTransitRouterPeerAttachmentsResponse) SetStatusCode(v int32) *ListTransitRouterPeerAttachmentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListTransitRouterPeerAttachmentsResponse) SetBody(v *ListTransitRouterPeerAttachmentsResponseBody) *ListTransitRouterPeerAttachmentsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTransitRouterPrefixListAssociationRequest struct {
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerUid             *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PrefixListId         *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterId      *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterTableId *string `json:"TransitRouterTableId,omitempty" xml:"TransitRouterTableId,omitempty"`
+}
+
+func (s ListTransitRouterPrefixListAssociationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterPrefixListAssociationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterPrefixListAssociationRequest) SetOwnerAccount(v string) *ListTransitRouterPrefixListAssociationRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationRequest) SetOwnerId(v int64) *ListTransitRouterPrefixListAssociationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationRequest) SetOwnerUid(v int64) *ListTransitRouterPrefixListAssociationRequest {
+	s.OwnerUid = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationRequest) SetPageNumber(v int32) *ListTransitRouterPrefixListAssociationRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationRequest) SetPageSize(v int32) *ListTransitRouterPrefixListAssociationRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationRequest) SetPrefixListId(v string) *ListTransitRouterPrefixListAssociationRequest {
+	s.PrefixListId = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationRequest) SetRegionId(v string) *ListTransitRouterPrefixListAssociationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationRequest) SetResourceOwnerAccount(v string) *ListTransitRouterPrefixListAssociationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationRequest) SetResourceOwnerId(v int64) *ListTransitRouterPrefixListAssociationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationRequest) SetTransitRouterId(v string) *ListTransitRouterPrefixListAssociationRequest {
+	s.TransitRouterId = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationRequest) SetTransitRouterTableId(v string) *ListTransitRouterPrefixListAssociationRequest {
+	s.TransitRouterTableId = &v
+	return s
+}
+
+type ListTransitRouterPrefixListAssociationResponseBody struct {
+	PageNumber  *int32                                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PrefixLists []*ListTransitRouterPrefixListAssociationResponseBodyPrefixLists `json:"PrefixLists,omitempty" xml:"PrefixLists,omitempty" type:"Repeated"`
+	RequestId   *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTransitRouterPrefixListAssociationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterPrefixListAssociationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponseBody) SetPageNumber(v int32) *ListTransitRouterPrefixListAssociationResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponseBody) SetPageSize(v int32) *ListTransitRouterPrefixListAssociationResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponseBody) SetPrefixLists(v []*ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) *ListTransitRouterPrefixListAssociationResponseBody {
+	s.PrefixLists = v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponseBody) SetRequestId(v string) *ListTransitRouterPrefixListAssociationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponseBody) SetTotalCount(v int32) *ListTransitRouterPrefixListAssociationResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTransitRouterPrefixListAssociationResponseBodyPrefixLists struct {
+	NextHop              *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	NextHopInstanceId    *string `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
+	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	OwnerUid             *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	PrefixListId         *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TransitRouterTableId *string `json:"TransitRouterTableId,omitempty" xml:"TransitRouterTableId,omitempty"`
+}
+
+func (s ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) SetNextHop(v string) *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists {
+	s.NextHop = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) SetNextHopInstanceId(v string) *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists {
+	s.NextHopInstanceId = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) SetNextHopType(v string) *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists {
+	s.NextHopType = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) SetOwnerUid(v int64) *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists {
+	s.OwnerUid = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) SetPrefixListId(v string) *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists {
+	s.PrefixListId = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) SetStatus(v string) *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) SetTransitRouterTableId(v string) *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists {
+	s.TransitRouterTableId = &v
+	return s
+}
+
+type ListTransitRouterPrefixListAssociationResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterPrefixListAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTransitRouterPrefixListAssociationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterPrefixListAssociationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponse) SetHeaders(v map[string]*string) *ListTransitRouterPrefixListAssociationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponse) SetStatusCode(v int32) *ListTransitRouterPrefixListAssociationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponse) SetBody(v *ListTransitRouterPrefixListAssociationResponseBody) *ListTransitRouterPrefixListAssociationResponse {
 	s.Body = v
 	return s
 }
@@ -12465,8 +14322,9 @@ func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries) Set
 }
 
 type ListTransitRouterRouteEntriesResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransitRouterRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTransitRouterRouteEntriesResponse) String() string {
@@ -12479,6 +14337,11 @@ func (s ListTransitRouterRouteEntriesResponse) GoString() string {
 
 func (s *ListTransitRouterRouteEntriesResponse) SetHeaders(v map[string]*string) *ListTransitRouterRouteEntriesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterRouteEntriesResponse) SetStatusCode(v int32) *ListTransitRouterRouteEntriesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12629,8 +14492,9 @@ func (s *ListTransitRouterRouteTableAssociationsResponseBodyTransitRouterAssocia
 }
 
 type ListTransitRouterRouteTableAssociationsResponse struct {
-	Headers map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransitRouterRouteTableAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterRouteTableAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTransitRouterRouteTableAssociationsResponse) String() string {
@@ -12643,6 +14507,11 @@ func (s ListTransitRouterRouteTableAssociationsResponse) GoString() string {
 
 func (s *ListTransitRouterRouteTableAssociationsResponse) SetHeaders(v map[string]*string) *ListTransitRouterRouteTableAssociationsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterRouteTableAssociationsResponse) SetStatusCode(v int32) *ListTransitRouterRouteTableAssociationsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12793,8 +14662,9 @@ func (s *ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropaga
 }
 
 type ListTransitRouterRouteTablePropagationsResponse struct {
-	Headers map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransitRouterRouteTablePropagationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterRouteTablePropagationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTransitRouterRouteTablePropagationsResponse) String() string {
@@ -12807,6 +14677,11 @@ func (s ListTransitRouterRouteTablePropagationsResponse) GoString() string {
 
 func (s *ListTransitRouterRouteTablePropagationsResponse) SetHeaders(v map[string]*string) *ListTransitRouterRouteTablePropagationsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterRouteTablePropagationsResponse) SetStatusCode(v int32) *ListTransitRouterRouteTablePropagationsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12981,8 +14856,9 @@ func (s *ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables) SetTr
 }
 
 type ListTransitRouterRouteTablesResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransitRouterRouteTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterRouteTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTransitRouterRouteTablesResponse) String() string {
@@ -12995,6 +14871,11 @@ func (s ListTransitRouterRouteTablesResponse) GoString() string {
 
 func (s *ListTransitRouterRouteTablesResponse) SetHeaders(v map[string]*string) *ListTransitRouterRouteTablesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterRouteTablesResponse) SetStatusCode(v int32) *ListTransitRouterRouteTablesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13193,8 +15074,9 @@ func (s *ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments) Se
 }
 
 type ListTransitRouterVbrAttachmentsResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransitRouterVbrAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterVbrAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTransitRouterVbrAttachmentsResponse) String() string {
@@ -13207,6 +15089,11 @@ func (s ListTransitRouterVbrAttachmentsResponse) GoString() string {
 
 func (s *ListTransitRouterVbrAttachmentsResponse) SetHeaders(v map[string]*string) *ListTransitRouterVbrAttachmentsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterVbrAttachmentsResponse) SetStatusCode(v int32) *ListTransitRouterVbrAttachmentsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13328,6 +15215,7 @@ func (s *ListTransitRouterVpcAttachmentsResponseBody) SetTransitRouterAttachment
 }
 
 type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments struct {
+	ChargeType                         *string                                                                            `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	CreationTime                       *string                                                                            `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	ResourceType                       *string                                                                            `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Status                             *string                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -13347,6 +15235,11 @@ func (s ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) Str
 
 func (s ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) GoString() string {
 	return s.String()
+}
+
+func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) SetChargeType(v string) *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments {
+	s.ChargeType = &v
+	return s
 }
 
 func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) SetCreationTime(v string) *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments {
@@ -13434,8 +15327,9 @@ func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZone
 }
 
 type ListTransitRouterVpcAttachmentsResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransitRouterVpcAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterVpcAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTransitRouterVpcAttachmentsResponse) String() string {
@@ -13451,7 +15345,253 @@ func (s *ListTransitRouterVpcAttachmentsResponse) SetHeaders(v map[string]*strin
 	return s
 }
 
+func (s *ListTransitRouterVpcAttachmentsResponse) SetStatusCode(v int32) *ListTransitRouterVpcAttachmentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListTransitRouterVpcAttachmentsResponse) SetBody(v *ListTransitRouterVpcAttachmentsResponseBody) *ListTransitRouterVpcAttachmentsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTransitRouterVpnAttachmentsRequest struct {
+	CenId                     *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	MaxResults                *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                 *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterId           *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+}
+
+func (s ListTransitRouterVpnAttachmentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterVpnAttachmentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterVpnAttachmentsRequest) SetCenId(v string) *ListTransitRouterVpnAttachmentsRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsRequest) SetMaxResults(v int32) *ListTransitRouterVpnAttachmentsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsRequest) SetNextToken(v string) *ListTransitRouterVpnAttachmentsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsRequest) SetOwnerAccount(v string) *ListTransitRouterVpnAttachmentsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsRequest) SetOwnerId(v int64) *ListTransitRouterVpnAttachmentsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsRequest) SetRegionId(v string) *ListTransitRouterVpnAttachmentsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsRequest) SetResourceOwnerAccount(v string) *ListTransitRouterVpnAttachmentsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsRequest) SetResourceOwnerId(v int64) *ListTransitRouterVpnAttachmentsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsRequest) SetTransitRouterAttachmentId(v string) *ListTransitRouterVpnAttachmentsRequest {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsRequest) SetTransitRouterId(v string) *ListTransitRouterVpnAttachmentsRequest {
+	s.TransitRouterId = &v
+	return s
+}
+
+type ListTransitRouterVpnAttachmentsResponseBody struct {
+	MaxResults               *int32                                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                *string                                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId                *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount               *int32                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TransitRouterAttachments []*ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments `json:"TransitRouterAttachments,omitempty" xml:"TransitRouterAttachments,omitempty" type:"Repeated"`
+}
+
+func (s ListTransitRouterVpnAttachmentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterVpnAttachmentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBody) SetMaxResults(v int32) *ListTransitRouterVpnAttachmentsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBody) SetNextToken(v string) *ListTransitRouterVpnAttachmentsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBody) SetRequestId(v string) *ListTransitRouterVpnAttachmentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBody) SetTotalCount(v int32) *ListTransitRouterVpnAttachmentsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBody) SetTransitRouterAttachments(v []*ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) *ListTransitRouterVpnAttachmentsResponseBody {
+	s.TransitRouterAttachments = v
+	return s
+}
+
+type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments struct {
+	AutoPublishRouteEnabled            *bool                                                                       `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
+	CreationTime                       *string                                                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ResourceType                       *int32                                                                      `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status                             *string                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	TransitRouterAttachmentDescription *string                                                                     `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
+	TransitRouterAttachmentId          *string                                                                     `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterAttachmentName        *string                                                                     `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	TransitRouterId                    *string                                                                     `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	VpnId                              *string                                                                     `json:"VpnId,omitempty" xml:"VpnId,omitempty"`
+	VpnOwnerId                         *int64                                                                      `json:"VpnOwnerId,omitempty" xml:"VpnOwnerId,omitempty"`
+	VpnRegionId                        *string                                                                     `json:"VpnRegionId,omitempty" xml:"VpnRegionId,omitempty"`
+	Zones                              []*ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+}
+
+func (s ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetAutoPublishRouteEnabled(v bool) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+	s.AutoPublishRouteEnabled = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetCreationTime(v string) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetResourceType(v int32) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetStatus(v string) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetTransitRouterAttachmentDescription(v string) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+	s.TransitRouterAttachmentDescription = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetTransitRouterAttachmentId(v string) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetTransitRouterAttachmentName(v string) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+	s.TransitRouterAttachmentName = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetTransitRouterId(v string) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+	s.TransitRouterId = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetVpnId(v string) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+	s.VpnId = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetVpnOwnerId(v int64) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+	s.VpnOwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetVpnRegionId(v string) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+	s.VpnRegionId = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetZones(v []*ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZones) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+	s.Zones = v
+	return s
+}
+
+type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZones struct {
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZones) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZones) SetZoneId(v string) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZones {
+	s.ZoneId = &v
+	return s
+}
+
+type ListTransitRouterVpnAttachmentsResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRouterVpnAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTransitRouterVpnAttachmentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterVpnAttachmentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponse) SetHeaders(v map[string]*string) *ListTransitRouterVpnAttachmentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponse) SetStatusCode(v int32) *ListTransitRouterVpnAttachmentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponse) SetBody(v *ListTransitRouterVpnAttachmentsResponseBody) *ListTransitRouterVpnAttachmentsResponse {
 	s.Body = v
 	return s
 }
@@ -13634,8 +15774,9 @@ func (s *ListTransitRoutersResponseBodyTransitRouters) SetType(v string) *ListTr
 }
 
 type ListTransitRoutersResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransitRoutersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransitRoutersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTransitRoutersResponse) String() string {
@@ -13648,6 +15789,11 @@ func (s ListTransitRoutersResponse) GoString() string {
 
 func (s *ListTransitRoutersResponse) SetHeaders(v map[string]*string) *ListTransitRoutersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRoutersResponse) SetStatusCode(v int32) *ListTransitRoutersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13733,8 +15879,9 @@ func (s *ModifyCenAttributeResponseBody) SetRequestId(v string) *ModifyCenAttrib
 }
 
 type ModifyCenAttributeResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyCenAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyCenAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyCenAttributeResponse) String() string {
@@ -13747,6 +15894,11 @@ func (s ModifyCenAttributeResponse) GoString() string {
 
 func (s *ModifyCenAttributeResponse) SetHeaders(v map[string]*string) *ModifyCenAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyCenAttributeResponse) SetStatusCode(v int32) *ModifyCenAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13826,8 +15978,9 @@ func (s *ModifyCenBandwidthPackageAttributeResponseBody) SetRequestId(v string) 
 }
 
 type ModifyCenBandwidthPackageAttributeResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyCenBandwidthPackageAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyCenBandwidthPackageAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyCenBandwidthPackageAttributeResponse) String() string {
@@ -13840,6 +15993,11 @@ func (s ModifyCenBandwidthPackageAttributeResponse) GoString() string {
 
 func (s *ModifyCenBandwidthPackageAttributeResponse) SetHeaders(v map[string]*string) *ModifyCenBandwidthPackageAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyCenBandwidthPackageAttributeResponse) SetStatusCode(v int32) *ModifyCenBandwidthPackageAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13913,8 +16071,9 @@ func (s *ModifyCenBandwidthPackageSpecResponseBody) SetRequestId(v string) *Modi
 }
 
 type ModifyCenBandwidthPackageSpecResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyCenBandwidthPackageSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyCenBandwidthPackageSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyCenBandwidthPackageSpecResponse) String() string {
@@ -13927,6 +16086,11 @@ func (s ModifyCenBandwidthPackageSpecResponse) GoString() string {
 
 func (s *ModifyCenBandwidthPackageSpecResponse) SetHeaders(v map[string]*string) *ModifyCenBandwidthPackageSpecResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyCenBandwidthPackageSpecResponse) SetStatusCode(v int32) *ModifyCenBandwidthPackageSpecResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13949,6 +16113,7 @@ type ModifyCenRouteMapRequest struct {
 	DestinationInstanceIdsReverseMatch *bool     `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
 	DestinationRouteTableIds           []*string `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Repeated"`
 	MapResult                          *string   `json:"MapResult,omitempty" xml:"MapResult,omitempty"`
+	MatchAddressType                   *string   `json:"MatchAddressType,omitempty" xml:"MatchAddressType,omitempty"`
 	MatchAsns                          []*int32  `json:"MatchAsns,omitempty" xml:"MatchAsns,omitempty" type:"Repeated"`
 	MatchCommunitySet                  []*string `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Repeated"`
 	NextPriority                       *int32    `json:"NextPriority,omitempty" xml:"NextPriority,omitempty"`
@@ -14039,6 +16204,11 @@ func (s *ModifyCenRouteMapRequest) SetDestinationRouteTableIds(v []*string) *Mod
 
 func (s *ModifyCenRouteMapRequest) SetMapResult(v string) *ModifyCenRouteMapRequest {
 	s.MapResult = &v
+	return s
+}
+
+func (s *ModifyCenRouteMapRequest) SetMatchAddressType(v string) *ModifyCenRouteMapRequest {
+	s.MatchAddressType = &v
 	return s
 }
 
@@ -14150,8 +16320,9 @@ func (s *ModifyCenRouteMapResponseBody) SetRequestId(v string) *ModifyCenRouteMa
 }
 
 type ModifyCenRouteMapResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyCenRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyCenRouteMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyCenRouteMapResponse) String() string {
@@ -14164,6 +16335,11 @@ func (s ModifyCenRouteMapResponse) GoString() string {
 
 func (s *ModifyCenRouteMapResponse) SetHeaders(v map[string]*string) *ModifyCenRouteMapResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyCenRouteMapResponse) SetStatusCode(v int32) *ModifyCenRouteMapResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14267,8 +16443,9 @@ func (s *ModifyFlowLogAttributeResponseBody) SetSuccess(v string) *ModifyFlowLog
 }
 
 type ModifyFlowLogAttributeResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyFlowLogAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyFlowLogAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyFlowLogAttributeResponse) String() string {
@@ -14281,6 +16458,11 @@ func (s ModifyFlowLogAttributeResponse) GoString() string {
 
 func (s *ModifyFlowLogAttributeResponse) SetHeaders(v map[string]*string) *ModifyFlowLogAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeResponse) SetStatusCode(v int32) *ModifyFlowLogAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14372,8 +16554,9 @@ func (s *ModifyTransitRouterMulticastDomainResponseBody) SetRequestId(v string) 
 }
 
 type ModifyTransitRouterMulticastDomainResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyTransitRouterMulticastDomainResponse) String() string {
@@ -14386,6 +16569,11 @@ func (s ModifyTransitRouterMulticastDomainResponse) GoString() string {
 
 func (s *ModifyTransitRouterMulticastDomainResponse) SetHeaders(v map[string]*string) *ModifyTransitRouterMulticastDomainResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyTransitRouterMulticastDomainResponse) SetStatusCode(v int32) *ModifyTransitRouterMulticastDomainResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14477,8 +16665,9 @@ func (s *MoveResourceGroupResponseBody) SetRequestId(v string) *MoveResourceGrou
 }
 
 type MoveResourceGroupResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *MoveResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MoveResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s MoveResourceGroupResponse) String() string {
@@ -14491,6 +16680,11 @@ func (s MoveResourceGroupResponse) GoString() string {
 
 func (s *MoveResourceGroupResponse) SetHeaders(v map[string]*string) *MoveResourceGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *MoveResourceGroupResponse) SetStatusCode(v int32) *MoveResourceGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14564,8 +16758,9 @@ func (s *OpenTransitRouterServiceResponseBody) SetRequestId(v string) *OpenTrans
 }
 
 type OpenTransitRouterServiceResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OpenTransitRouterServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenTransitRouterServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s OpenTransitRouterServiceResponse) String() string {
@@ -14578,6 +16773,11 @@ func (s OpenTransitRouterServiceResponse) GoString() string {
 
 func (s *OpenTransitRouterServiceResponse) SetHeaders(v map[string]*string) *OpenTransitRouterServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *OpenTransitRouterServiceResponse) SetStatusCode(v int32) *OpenTransitRouterServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14663,8 +16863,9 @@ func (s *PublishRouteEntriesResponseBody) SetRequestId(v string) *PublishRouteEn
 }
 
 type PublishRouteEntriesResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PublishRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PublishRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PublishRouteEntriesResponse) String() string {
@@ -14677,6 +16878,11 @@ func (s PublishRouteEntriesResponse) GoString() string {
 
 func (s *PublishRouteEntriesResponse) SetHeaders(v map[string]*string) *PublishRouteEntriesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PublishRouteEntriesResponse) SetStatusCode(v int32) *PublishRouteEntriesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14696,6 +16902,7 @@ type RegisterTransitRouterMulticastGroupMembersRequest struct {
 	ResourceOwnerAccount              *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId                   *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TransitRouterMulticastDomainId    *string   `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+	VpcId                             *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s RegisterTransitRouterMulticastGroupMembersRequest) String() string {
@@ -14756,6 +16963,11 @@ func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetTransitRouterMult
 	return s
 }
 
+func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetVpcId(v string) *RegisterTransitRouterMulticastGroupMembersRequest {
+	s.VpcId = &v
+	return s
+}
+
 type RegisterTransitRouterMulticastGroupMembersResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -14774,8 +16986,9 @@ func (s *RegisterTransitRouterMulticastGroupMembersResponseBody) SetRequestId(v 
 }
 
 type RegisterTransitRouterMulticastGroupMembersResponse struct {
-	Headers map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RegisterTransitRouterMulticastGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RegisterTransitRouterMulticastGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RegisterTransitRouterMulticastGroupMembersResponse) String() string {
@@ -14788,6 +17001,11 @@ func (s RegisterTransitRouterMulticastGroupMembersResponse) GoString() string {
 
 func (s *RegisterTransitRouterMulticastGroupMembersResponse) SetHeaders(v map[string]*string) *RegisterTransitRouterMulticastGroupMembersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersResponse) SetStatusCode(v int32) *RegisterTransitRouterMulticastGroupMembersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14806,6 +17024,7 @@ type RegisterTransitRouterMulticastGroupSourcesRequest struct {
 	ResourceOwnerAccount           *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId                *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TransitRouterMulticastDomainId *string   `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+	VpcId                          *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s RegisterTransitRouterMulticastGroupSourcesRequest) String() string {
@@ -14861,6 +17080,11 @@ func (s *RegisterTransitRouterMulticastGroupSourcesRequest) SetTransitRouterMult
 	return s
 }
 
+func (s *RegisterTransitRouterMulticastGroupSourcesRequest) SetVpcId(v string) *RegisterTransitRouterMulticastGroupSourcesRequest {
+	s.VpcId = &v
+	return s
+}
+
 type RegisterTransitRouterMulticastGroupSourcesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -14879,8 +17103,9 @@ func (s *RegisterTransitRouterMulticastGroupSourcesResponseBody) SetRequestId(v 
 }
 
 type RegisterTransitRouterMulticastGroupSourcesResponse struct {
-	Headers map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RegisterTransitRouterMulticastGroupSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RegisterTransitRouterMulticastGroupSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RegisterTransitRouterMulticastGroupSourcesResponse) String() string {
@@ -14893,6 +17118,11 @@ func (s RegisterTransitRouterMulticastGroupSourcesResponse) GoString() string {
 
 func (s *RegisterTransitRouterMulticastGroupSourcesResponse) SetHeaders(v map[string]*string) *RegisterTransitRouterMulticastGroupSourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupSourcesResponse) SetStatusCode(v int32) *RegisterTransitRouterMulticastGroupSourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14978,8 +17208,9 @@ func (s *RemoveTraficMatchRuleFromTrafficMarkingPolicyResponseBody) SetRequestId
 }
 
 type RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse struct {
-	Headers map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveTraficMatchRuleFromTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveTraficMatchRuleFromTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse) String() string {
@@ -14992,6 +17223,11 @@ func (s RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse) GoString() string
 
 func (s *RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse) SetHeaders(v map[string]*string) *RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse) SetStatusCode(v int32) *RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15077,8 +17313,9 @@ func (s *ReplaceTransitRouterRouteTableAssociationResponseBody) SetRequestId(v s
 }
 
 type ReplaceTransitRouterRouteTableAssociationResponse struct {
-	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReplaceTransitRouterRouteTableAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReplaceTransitRouterRouteTableAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReplaceTransitRouterRouteTableAssociationResponse) String() string {
@@ -15091,6 +17328,11 @@ func (s ReplaceTransitRouterRouteTableAssociationResponse) GoString() string {
 
 func (s *ReplaceTransitRouterRouteTableAssociationResponse) SetHeaders(v map[string]*string) *ReplaceTransitRouterRouteTableAssociationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ReplaceTransitRouterRouteTableAssociationResponse) SetStatusCode(v int32) *ReplaceTransitRouterRouteTableAssociationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15194,8 +17436,9 @@ func (s *ResolveAndRouteServiceInCenResponseBody) SetRequestId(v string) *Resolv
 }
 
 type ResolveAndRouteServiceInCenResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ResolveAndRouteServiceInCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResolveAndRouteServiceInCenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ResolveAndRouteServiceInCenResponse) String() string {
@@ -15208,6 +17451,11 @@ func (s ResolveAndRouteServiceInCenResponse) GoString() string {
 
 func (s *ResolveAndRouteServiceInCenResponse) SetHeaders(v map[string]*string) *ResolveAndRouteServiceInCenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ResolveAndRouteServiceInCenResponse) SetStatusCode(v int32) *ResolveAndRouteServiceInCenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15299,8 +17547,9 @@ func (s *RevokeInstanceFromTransitRouterResponseBody) SetRequestId(v string) *Re
 }
 
 type RevokeInstanceFromTransitRouterResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RevokeInstanceFromTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RevokeInstanceFromTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RevokeInstanceFromTransitRouterResponse) String() string {
@@ -15313,6 +17562,11 @@ func (s RevokeInstanceFromTransitRouterResponse) GoString() string {
 
 func (s *RevokeInstanceFromTransitRouterResponse) SetHeaders(v map[string]*string) *RevokeInstanceFromTransitRouterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RevokeInstanceFromTransitRouterResponse) SetStatusCode(v int32) *RevokeInstanceFromTransitRouterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15398,8 +17652,9 @@ func (s *RoutePrivateZoneInCenToVpcResponseBody) SetRequestId(v string) *RoutePr
 }
 
 type RoutePrivateZoneInCenToVpcResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RoutePrivateZoneInCenToVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RoutePrivateZoneInCenToVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RoutePrivateZoneInCenToVpcResponse) String() string {
@@ -15412,6 +17667,11 @@ func (s RoutePrivateZoneInCenToVpcResponse) GoString() string {
 
 func (s *RoutePrivateZoneInCenToVpcResponse) SetHeaders(v map[string]*string) *RoutePrivateZoneInCenToVpcResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RoutePrivateZoneInCenToVpcResponse) SetStatusCode(v int32) *RoutePrivateZoneInCenToVpcResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15497,8 +17757,9 @@ func (s *SetCenInterRegionBandwidthLimitResponseBody) SetRequestId(v string) *Se
 }
 
 type SetCenInterRegionBandwidthLimitResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetCenInterRegionBandwidthLimitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetCenInterRegionBandwidthLimitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetCenInterRegionBandwidthLimitResponse) String() string {
@@ -15511,6 +17772,11 @@ func (s SetCenInterRegionBandwidthLimitResponse) GoString() string {
 
 func (s *SetCenInterRegionBandwidthLimitResponse) SetHeaders(v map[string]*string) *SetCenInterRegionBandwidthLimitResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetCenInterRegionBandwidthLimitResponse) SetStatusCode(v int32) *SetCenInterRegionBandwidthLimitResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15613,8 +17879,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -15627,6 +17894,11 @@ func (s TagResourcesResponse) GoString() string {
 
 func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15706,8 +17978,9 @@ func (s *TempUpgradeCenBandwidthPackageSpecResponseBody) SetRequestId(v string) 
 }
 
 type TempUpgradeCenBandwidthPackageSpecResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TempUpgradeCenBandwidthPackageSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TempUpgradeCenBandwidthPackageSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TempUpgradeCenBandwidthPackageSpecResponse) String() string {
@@ -15720,6 +17993,11 @@ func (s TempUpgradeCenBandwidthPackageSpecResponse) GoString() string {
 
 func (s *TempUpgradeCenBandwidthPackageSpecResponse) SetHeaders(v map[string]*string) *TempUpgradeCenBandwidthPackageSpecResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TempUpgradeCenBandwidthPackageSpecResponse) SetStatusCode(v int32) *TempUpgradeCenBandwidthPackageSpecResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15793,8 +18071,9 @@ func (s *UnassociateCenBandwidthPackageResponseBody) SetRequestId(v string) *Una
 }
 
 type UnassociateCenBandwidthPackageResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UnassociateCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnassociateCenBandwidthPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UnassociateCenBandwidthPackageResponse) String() string {
@@ -15807,6 +18086,11 @@ func (s UnassociateCenBandwidthPackageResponse) GoString() string {
 
 func (s *UnassociateCenBandwidthPackageResponse) SetHeaders(v map[string]*string) *UnassociateCenBandwidthPackageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UnassociateCenBandwidthPackageResponse) SetStatusCode(v int32) *UnassociateCenBandwidthPackageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15880,8 +18164,9 @@ func (s *UnroutePrivateZoneInCenToVpcResponseBody) SetRequestId(v string) *Unrou
 }
 
 type UnroutePrivateZoneInCenToVpcResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UnroutePrivateZoneInCenToVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnroutePrivateZoneInCenToVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UnroutePrivateZoneInCenToVpcResponse) String() string {
@@ -15894,6 +18179,11 @@ func (s UnroutePrivateZoneInCenToVpcResponse) GoString() string {
 
 func (s *UnroutePrivateZoneInCenToVpcResponse) SetHeaders(v map[string]*string) *UnroutePrivateZoneInCenToVpcResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UnroutePrivateZoneInCenToVpcResponse) SetStatusCode(v int32) *UnroutePrivateZoneInCenToVpcResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15979,8 +18269,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -15993,6 +18284,11 @@ func (s UntagResourcesResponse) GoString() string {
 
 func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16084,8 +18380,9 @@ func (s *UpdateCenInterRegionTrafficQosPolicyAttributeResponseBody) SetRequestId
 }
 
 type UpdateCenInterRegionTrafficQosPolicyAttributeResponse struct {
-	Headers map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateCenInterRegionTrafficQosPolicyAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateCenInterRegionTrafficQosPolicyAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateCenInterRegionTrafficQosPolicyAttributeResponse) String() string {
@@ -16098,6 +18395,11 @@ func (s UpdateCenInterRegionTrafficQosPolicyAttributeResponse) GoString() string
 
 func (s *UpdateCenInterRegionTrafficQosPolicyAttributeResponse) SetHeaders(v map[string]*string) *UpdateCenInterRegionTrafficQosPolicyAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateCenInterRegionTrafficQosPolicyAttributeResponse) SetStatusCode(v int32) *UpdateCenInterRegionTrafficQosPolicyAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16201,8 +18503,9 @@ func (s *UpdateCenInterRegionTrafficQosQueueAttributeResponseBody) SetRequestId(
 }
 
 type UpdateCenInterRegionTrafficQosQueueAttributeResponse struct {
-	Headers map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateCenInterRegionTrafficQosQueueAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateCenInterRegionTrafficQosQueueAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateCenInterRegionTrafficQosQueueAttributeResponse) String() string {
@@ -16215,6 +18518,11 @@ func (s UpdateCenInterRegionTrafficQosQueueAttributeResponse) GoString() string 
 
 func (s *UpdateCenInterRegionTrafficQosQueueAttributeResponse) SetHeaders(v map[string]*string) *UpdateCenInterRegionTrafficQosQueueAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateCenInterRegionTrafficQosQueueAttributeResponse) SetStatusCode(v int32) *UpdateCenInterRegionTrafficQosQueueAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16306,8 +18614,9 @@ func (s *UpdateTrafficMarkingPolicyAttributeResponseBody) SetRequestId(v string)
 }
 
 type UpdateTrafficMarkingPolicyAttributeResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateTrafficMarkingPolicyAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTrafficMarkingPolicyAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateTrafficMarkingPolicyAttributeResponse) String() string {
@@ -16320,6 +18629,11 @@ func (s UpdateTrafficMarkingPolicyAttributeResponse) GoString() string {
 
 func (s *UpdateTrafficMarkingPolicyAttributeResponse) SetHeaders(v map[string]*string) *UpdateTrafficMarkingPolicyAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateTrafficMarkingPolicyAttributeResponse) SetStatusCode(v int32) *UpdateTrafficMarkingPolicyAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16417,8 +18731,9 @@ func (s *UpdateTransitRouterResponseBody) SetRequestId(v string) *UpdateTransitR
 }
 
 type UpdateTransitRouterResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateTransitRouterResponse) String() string {
@@ -16431,6 +18746,11 @@ func (s UpdateTransitRouterResponse) GoString() string {
 
 func (s *UpdateTransitRouterResponse) SetHeaders(v map[string]*string) *UpdateTransitRouterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateTransitRouterResponse) SetStatusCode(v int32) *UpdateTransitRouterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16546,8 +18866,9 @@ func (s *UpdateTransitRouterPeerAttachmentAttributeResponseBody) SetRequestId(v 
 }
 
 type UpdateTransitRouterPeerAttachmentAttributeResponse struct {
-	Headers map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateTransitRouterPeerAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTransitRouterPeerAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateTransitRouterPeerAttachmentAttributeResponse) String() string {
@@ -16560,6 +18881,11 @@ func (s UpdateTransitRouterPeerAttachmentAttributeResponse) GoString() string {
 
 func (s *UpdateTransitRouterPeerAttachmentAttributeResponse) SetHeaders(v map[string]*string) *UpdateTransitRouterPeerAttachmentAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateTransitRouterPeerAttachmentAttributeResponse) SetStatusCode(v int32) *UpdateTransitRouterPeerAttachmentAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16651,8 +18977,9 @@ func (s *UpdateTransitRouterRouteEntryResponseBody) SetRequestId(v string) *Upda
 }
 
 type UpdateTransitRouterRouteEntryResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateTransitRouterRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTransitRouterRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateTransitRouterRouteEntryResponse) String() string {
@@ -16665,6 +18992,11 @@ func (s UpdateTransitRouterRouteEntryResponse) GoString() string {
 
 func (s *UpdateTransitRouterRouteEntryResponse) SetHeaders(v map[string]*string) *UpdateTransitRouterRouteEntryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateTransitRouterRouteEntryResponse) SetStatusCode(v int32) *UpdateTransitRouterRouteEntryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16756,8 +19088,9 @@ func (s *UpdateTransitRouterRouteTableResponseBody) SetRequestId(v string) *Upda
 }
 
 type UpdateTransitRouterRouteTableResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateTransitRouterRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTransitRouterRouteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateTransitRouterRouteTableResponse) String() string {
@@ -16770,6 +19103,11 @@ func (s UpdateTransitRouterRouteTableResponse) GoString() string {
 
 func (s *UpdateTransitRouterRouteTableResponse) SetHeaders(v map[string]*string) *UpdateTransitRouterRouteTableResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateTransitRouterRouteTableResponse) SetStatusCode(v int32) *UpdateTransitRouterRouteTableResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16867,8 +19205,9 @@ func (s *UpdateTransitRouterVbrAttachmentAttributeResponseBody) SetRequestId(v s
 }
 
 type UpdateTransitRouterVbrAttachmentAttributeResponse struct {
-	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateTransitRouterVbrAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTransitRouterVbrAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateTransitRouterVbrAttachmentAttributeResponse) String() string {
@@ -16881,6 +19220,11 @@ func (s UpdateTransitRouterVbrAttachmentAttributeResponse) GoString() string {
 
 func (s *UpdateTransitRouterVbrAttachmentAttributeResponse) SetHeaders(v map[string]*string) *UpdateTransitRouterVbrAttachmentAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateTransitRouterVbrAttachmentAttributeResponse) SetStatusCode(v int32) *UpdateTransitRouterVbrAttachmentAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16972,8 +19316,9 @@ func (s *UpdateTransitRouterVpcAttachmentAttributeResponseBody) SetRequestId(v s
 }
 
 type UpdateTransitRouterVpcAttachmentAttributeResponse struct {
-	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateTransitRouterVpcAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTransitRouterVpcAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateTransitRouterVpcAttachmentAttributeResponse) String() string {
@@ -16989,7 +19334,286 @@ func (s *UpdateTransitRouterVpcAttachmentAttributeResponse) SetHeaders(v map[str
 	return s
 }
 
+func (s *UpdateTransitRouterVpcAttachmentAttributeResponse) SetStatusCode(v int32) *UpdateTransitRouterVpcAttachmentAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateTransitRouterVpcAttachmentAttributeResponse) SetBody(v *UpdateTransitRouterVpcAttachmentAttributeResponseBody) *UpdateTransitRouterVpcAttachmentAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTransitRouterVpcAttachmentZonesRequest struct {
+	AddZoneMappings           []*UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings    `json:"AddZoneMappings,omitempty" xml:"AddZoneMappings,omitempty" type:"Repeated"`
+	ClientToken               *string                                                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                    *bool                                                             `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount              *string                                                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64                                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RemoveZoneMappings        []*UpdateTransitRouterVpcAttachmentZonesRequestRemoveZoneMappings `json:"RemoveZoneMappings,omitempty" xml:"RemoveZoneMappings,omitempty" type:"Repeated"`
+	ResourceOwnerAccount      *string                                                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64                                                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterAttachmentId *string                                                           `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+}
+
+func (s UpdateTransitRouterVpcAttachmentZonesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTransitRouterVpcAttachmentZonesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesRequest) SetAddZoneMappings(v []*UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings) *UpdateTransitRouterVpcAttachmentZonesRequest {
+	s.AddZoneMappings = v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesRequest) SetClientToken(v string) *UpdateTransitRouterVpcAttachmentZonesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesRequest) SetDryRun(v bool) *UpdateTransitRouterVpcAttachmentZonesRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesRequest) SetOwnerAccount(v string) *UpdateTransitRouterVpcAttachmentZonesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesRequest) SetOwnerId(v int64) *UpdateTransitRouterVpcAttachmentZonesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesRequest) SetRemoveZoneMappings(v []*UpdateTransitRouterVpcAttachmentZonesRequestRemoveZoneMappings) *UpdateTransitRouterVpcAttachmentZonesRequest {
+	s.RemoveZoneMappings = v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesRequest) SetResourceOwnerAccount(v string) *UpdateTransitRouterVpcAttachmentZonesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesRequest) SetResourceOwnerId(v int64) *UpdateTransitRouterVpcAttachmentZonesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesRequest) SetTransitRouterAttachmentId(v string) *UpdateTransitRouterVpcAttachmentZonesRequest {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+type UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings struct {
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings) SetVSwitchId(v string) *UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings) SetZoneId(v string) *UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings {
+	s.ZoneId = &v
+	return s
+}
+
+type UpdateTransitRouterVpcAttachmentZonesRequestRemoveZoneMappings struct {
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s UpdateTransitRouterVpcAttachmentZonesRequestRemoveZoneMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTransitRouterVpcAttachmentZonesRequestRemoveZoneMappings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesRequestRemoveZoneMappings) SetVSwitchId(v string) *UpdateTransitRouterVpcAttachmentZonesRequestRemoveZoneMappings {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesRequestRemoveZoneMappings) SetZoneId(v string) *UpdateTransitRouterVpcAttachmentZonesRequestRemoveZoneMappings {
+	s.ZoneId = &v
+	return s
+}
+
+type UpdateTransitRouterVpcAttachmentZonesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateTransitRouterVpcAttachmentZonesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTransitRouterVpcAttachmentZonesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesResponseBody) SetRequestId(v string) *UpdateTransitRouterVpcAttachmentZonesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateTransitRouterVpcAttachmentZonesResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTransitRouterVpcAttachmentZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTransitRouterVpcAttachmentZonesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTransitRouterVpcAttachmentZonesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesResponse) SetHeaders(v map[string]*string) *UpdateTransitRouterVpcAttachmentZonesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesResponse) SetStatusCode(v int32) *UpdateTransitRouterVpcAttachmentZonesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentZonesResponse) SetBody(v *UpdateTransitRouterVpcAttachmentZonesResponseBody) *UpdateTransitRouterVpcAttachmentZonesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTransitRouterVpnAttachmentAttributeRequest struct {
+	AutoPublishRouteEnabled            *bool   `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
+	ClientToken                        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount               *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                    *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
+	TransitRouterAttachmentId          *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterAttachmentName        *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+}
+
+func (s UpdateTransitRouterVpnAttachmentAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTransitRouterVpnAttachmentAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeRequest) SetAutoPublishRouteEnabled(v bool) *UpdateTransitRouterVpnAttachmentAttributeRequest {
+	s.AutoPublishRouteEnabled = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeRequest) SetClientToken(v string) *UpdateTransitRouterVpnAttachmentAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeRequest) SetDryRun(v bool) *UpdateTransitRouterVpnAttachmentAttributeRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeRequest) SetOwnerAccount(v string) *UpdateTransitRouterVpnAttachmentAttributeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeRequest) SetOwnerId(v int64) *UpdateTransitRouterVpnAttachmentAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeRequest) SetResourceOwnerAccount(v string) *UpdateTransitRouterVpnAttachmentAttributeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeRequest) SetResourceOwnerId(v int64) *UpdateTransitRouterVpnAttachmentAttributeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeRequest) SetTransitRouterAttachmentDescription(v string) *UpdateTransitRouterVpnAttachmentAttributeRequest {
+	s.TransitRouterAttachmentDescription = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeRequest) SetTransitRouterAttachmentId(v string) *UpdateTransitRouterVpnAttachmentAttributeRequest {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeRequest) SetTransitRouterAttachmentName(v string) *UpdateTransitRouterVpnAttachmentAttributeRequest {
+	s.TransitRouterAttachmentName = &v
+	return s
+}
+
+type UpdateTransitRouterVpnAttachmentAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateTransitRouterVpnAttachmentAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTransitRouterVpnAttachmentAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeResponseBody) SetRequestId(v string) *UpdateTransitRouterVpnAttachmentAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateTransitRouterVpnAttachmentAttributeResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTransitRouterVpnAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTransitRouterVpnAttachmentAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTransitRouterVpnAttachmentAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeResponse) SetHeaders(v map[string]*string) *UpdateTransitRouterVpnAttachmentAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeResponse) SetStatusCode(v int32) *UpdateTransitRouterVpnAttachmentAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpnAttachmentAttributeResponse) SetBody(v *UpdateTransitRouterVpnAttachmentAttributeResponseBody) *UpdateTransitRouterVpnAttachmentAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -17071,8 +19695,9 @@ func (s *WithdrawPublishedRouteEntriesResponseBody) SetRequestId(v string) *With
 }
 
 type WithdrawPublishedRouteEntriesResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *WithdrawPublishedRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *WithdrawPublishedRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s WithdrawPublishedRouteEntriesResponse) String() string {
@@ -17085,6 +19710,11 @@ func (s WithdrawPublishedRouteEntriesResponse) GoString() string {
 
 func (s *WithdrawPublishedRouteEntriesResponse) SetHeaders(v map[string]*string) *WithdrawPublishedRouteEntriesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *WithdrawPublishedRouteEntriesResponse) SetStatusCode(v int32) *WithdrawPublishedRouteEntriesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -17205,6 +19835,78 @@ func (client *Client) ActiveFlowLog(request *ActiveFlowLogRequest) (_result *Act
 	runtime := &util.RuntimeOptions{}
 	_result = &ActiveFlowLogResponse{}
 	_body, _err := client.ActiveFlowLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddTrafficMatchRuleToTrafficMarkingPolicyWithOptions(request *AddTrafficMatchRuleToTrafficMarkingPolicyRequest, runtime *util.RuntimeOptions) (_result *AddTrafficMatchRuleToTrafficMarkingPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyId)) {
+		query["TrafficMarkingPolicyId"] = request.TrafficMarkingPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMatchRules)) {
+		query["TrafficMatchRules"] = request.TrafficMatchRules
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddTrafficMatchRuleToTrafficMarkingPolicy"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddTrafficMatchRuleToTrafficMarkingPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddTrafficMatchRuleToTrafficMarkingPolicy(request *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) (_result *AddTrafficMatchRuleToTrafficMarkingPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddTrafficMatchRuleToTrafficMarkingPolicyResponse{}
+	_body, _err := client.AddTrafficMatchRuleToTrafficMarkingPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18114,6 +20816,10 @@ func (client *Client) CreateCenRouteMapWithOptions(request *CreateCenRouteMapReq
 		query["MapResult"] = request.MapResult
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MatchAddressType)) {
+		query["MatchAddressType"] = request.MatchAddressType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MatchAsns)) {
 		query["MatchAsns"] = request.MatchAsns
 	}
@@ -18246,6 +20952,10 @@ func (client *Client) CreateFlowlogWithOptions(request *CreateFlowlogRequest, ru
 		query["FlowLogName"] = request.FlowLogName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LogStoreName)) {
 		query["LogStoreName"] = request.LogStoreName
 	}
@@ -18272,6 +20982,10 @@ func (client *Client) CreateFlowlogWithOptions(request *CreateFlowlogRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -18672,6 +21386,98 @@ func (client *Client) CreateTransitRouterPeerAttachment(request *CreateTransitRo
 	return _result, _err
 }
 
+func (client *Client) CreateTransitRouterPrefixListAssociationWithOptions(request *CreateTransitRouterPrefixListAssociationRequest, runtime *util.RuntimeOptions) (_result *CreateTransitRouterPrefixListAssociationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextHop)) {
+		query["NextHop"] = request.NextHop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextHopType)) {
+		query["NextHopType"] = request.NextHopType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerUid)) {
+		query["OwnerUid"] = request.OwnerUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrefixListId)) {
+		query["PrefixListId"] = request.PrefixListId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterTableId)) {
+		query["TransitRouterTableId"] = request.TransitRouterTableId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTransitRouterPrefixListAssociation"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTransitRouterPrefixListAssociationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTransitRouterPrefixListAssociation(request *CreateTransitRouterPrefixListAssociationRequest) (_result *CreateTransitRouterPrefixListAssociationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTransitRouterPrefixListAssociationResponse{}
+	_body, _err := client.CreateTransitRouterPrefixListAssociationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateTransitRouterRouteEntryWithOptions(request *CreateTransitRouterRouteEntryRequest, runtime *util.RuntimeOptions) (_result *CreateTransitRouterRouteEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19025,6 +21831,110 @@ func (client *Client) CreateTransitRouterVpcAttachment(request *CreateTransitRou
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTransitRouterVpcAttachmentResponse{}
 	_body, _err := client.CreateTransitRouterVpcAttachmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTransitRouterVpnAttachmentWithOptions(request *CreateTransitRouterVpnAttachmentRequest, runtime *util.RuntimeOptions) (_result *CreateTransitRouterVpnAttachmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPublishRouteEnabled)) {
+		query["AutoPublishRouteEnabled"] = request.AutoPublishRouteEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentDescription)) {
+		query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentName)) {
+		query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpnId)) {
+		query["VpnId"] = request.VpnId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpnOwnerId)) {
+		query["VpnOwnerId"] = request.VpnOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Zone)) {
+		query["Zone"] = request.Zone
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTransitRouterVpnAttachment"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTransitRouterVpnAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTransitRouterVpnAttachment(request *CreateTransitRouterVpnAttachmentRequest) (_result *CreateTransitRouterVpnAttachmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTransitRouterVpnAttachmentResponse{}
+	_body, _err := client.CreateTransitRouterVpnAttachmentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20012,6 +22922,90 @@ func (client *Client) DeleteTransitRouterPeerAttachment(request *DeleteTransitRo
 	return _result, _err
 }
 
+func (client *Client) DeleteTransitRouterPrefixListAssociationWithOptions(request *DeleteTransitRouterPrefixListAssociationRequest, runtime *util.RuntimeOptions) (_result *DeleteTransitRouterPrefixListAssociationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextHop)) {
+		query["NextHop"] = request.NextHop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrefixListId)) {
+		query["PrefixListId"] = request.PrefixListId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterTableId)) {
+		query["TransitRouterTableId"] = request.TransitRouterTableId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTransitRouterPrefixListAssociation"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTransitRouterPrefixListAssociationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTransitRouterPrefixListAssociation(request *DeleteTransitRouterPrefixListAssociationRequest) (_result *DeleteTransitRouterPrefixListAssociationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTransitRouterPrefixListAssociationResponse{}
+	_body, _err := client.DeleteTransitRouterPrefixListAssociationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteTransitRouterRouteEntryWithOptions(request *DeleteTransitRouterRouteEntryRequest, runtime *util.RuntimeOptions) (_result *DeleteTransitRouterRouteEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20293,6 +23287,74 @@ func (client *Client) DeleteTransitRouterVpcAttachment(request *DeleteTransitRou
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTransitRouterVpcAttachmentResponse{}
 	_body, _err := client.DeleteTransitRouterVpcAttachmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTransitRouterVpnAttachmentWithOptions(request *DeleteTransitRouterVpnAttachmentRequest, runtime *util.RuntimeOptions) (_result *DeleteTransitRouterVpnAttachmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTransitRouterVpnAttachment"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTransitRouterVpnAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTransitRouterVpnAttachment(request *DeleteTransitRouterVpnAttachmentRequest) (_result *DeleteTransitRouterVpnAttachmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTransitRouterVpnAttachmentResponse{}
+	_body, _err := client.DeleteTransitRouterVpnAttachmentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21284,6 +24346,70 @@ func (client *Client) DescribeCenVbrHealthCheck(request *DescribeCenVbrHealthChe
 	return _result, _err
 }
 
+func (client *Client) DescribeCenVpcFlowStatisticSwitchWithOptions(request *DescribeCenVpcFlowStatisticSwitchRequest, runtime *util.RuntimeOptions) (_result *DescribeCenVpcFlowStatisticSwitchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCenVpcFlowStatisticSwitch"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCenVpcFlowStatisticSwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCenVpcFlowStatisticSwitch(request *DescribeCenVpcFlowStatisticSwitchRequest) (_result *DescribeCenVpcFlowStatisticSwitchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCenVpcFlowStatisticSwitchResponse{}
+	_body, _err := client.DescribeCenVpcFlowStatisticSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeCensWithOptions(request *DescribeCensRequest, runtime *util.RuntimeOptions) (_result *DescribeCensResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22052,6 +25178,74 @@ func (client *Client) DisableCenVbrHealthCheck(request *DisableCenVbrHealthCheck
 	return _result, _err
 }
 
+func (client *Client) DisableCenVpcFlowStatisticWithOptions(request *DisableCenVpcFlowStatisticRequest, runtime *util.RuntimeOptions) (_result *DisableCenVpcFlowStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableCenVpcFlowStatistic"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableCenVpcFlowStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableCenVpcFlowStatistic(request *DisableCenVpcFlowStatisticRequest) (_result *DisableCenVpcFlowStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableCenVpcFlowStatisticResponse{}
+	_body, _err := client.DisableCenVpcFlowStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DisableTransitRouterRouteTablePropagationWithOptions(request *DisableTransitRouterRouteTablePropagationRequest, runtime *util.RuntimeOptions) (_result *DisableTransitRouterRouteTablePropagationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22357,6 +25551,78 @@ func (client *Client) EnableCenVbrHealthCheck(request *EnableCenVbrHealthCheckRe
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableCenVbrHealthCheckResponse{}
 	_body, _err := client.EnableCenVbrHealthCheckWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableCenVpcFlowStatisticWithOptions(request *EnableCenVpcFlowStatisticRequest, runtime *util.RuntimeOptions) (_result *EnableCenVpcFlowStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Days)) {
+		query["Days"] = request.Days
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableCenVpcFlowStatistic"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableCenVpcFlowStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableCenVpcFlowStatistic(request *EnableCenVpcFlowStatisticRequest) (_result *EnableCenVpcFlowStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableCenVpcFlowStatisticResponse{}
+	_body, _err := client.EnableCenVpcFlowStatisticWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23060,6 +26326,82 @@ func (client *Client) ListTransitRouterMulticastDomainAssociations(request *List
 	return _result, _err
 }
 
+func (client *Client) ListTransitRouterMulticastDomainVSwitchesWithOptions(request *ListTransitRouterMulticastDomainVSwitchesRequest, runtime *util.RuntimeOptions) (_result *ListTransitRouterMulticastDomainVSwitchesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchIds)) {
+		query["VSwitchIds"] = request.VSwitchIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTransitRouterMulticastDomainVSwitches"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTransitRouterMulticastDomainVSwitchesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTransitRouterMulticastDomainVSwitches(request *ListTransitRouterMulticastDomainVSwitchesRequest) (_result *ListTransitRouterMulticastDomainVSwitchesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTransitRouterMulticastDomainVSwitchesResponse{}
+	_body, _err := client.ListTransitRouterMulticastDomainVSwitchesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTransitRouterMulticastDomainsWithOptions(request *ListTransitRouterMulticastDomainsRequest, runtime *util.RuntimeOptions) (_result *ListTransitRouterMulticastDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23317,6 +26659,90 @@ func (client *Client) ListTransitRouterPeerAttachments(request *ListTransitRoute
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTransitRouterPeerAttachmentsResponse{}
 	_body, _err := client.ListTransitRouterPeerAttachmentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTransitRouterPrefixListAssociationWithOptions(request *ListTransitRouterPrefixListAssociationRequest, runtime *util.RuntimeOptions) (_result *ListTransitRouterPrefixListAssociationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerUid)) {
+		query["OwnerUid"] = request.OwnerUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrefixListId)) {
+		query["PrefixListId"] = request.PrefixListId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterTableId)) {
+		query["TransitRouterTableId"] = request.TransitRouterTableId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTransitRouterPrefixListAssociation"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTransitRouterPrefixListAssociationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTransitRouterPrefixListAssociation(request *ListTransitRouterPrefixListAssociationRequest) (_result *ListTransitRouterPrefixListAssociationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTransitRouterPrefixListAssociationResponse{}
+	_body, _err := client.ListTransitRouterPrefixListAssociationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23796,6 +27222,86 @@ func (client *Client) ListTransitRouterVpcAttachments(request *ListTransitRouter
 	return _result, _err
 }
 
+func (client *Client) ListTransitRouterVpnAttachmentsWithOptions(request *ListTransitRouterVpnAttachmentsRequest, runtime *util.RuntimeOptions) (_result *ListTransitRouterVpnAttachmentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTransitRouterVpnAttachments"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTransitRouterVpnAttachmentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTransitRouterVpnAttachments(request *ListTransitRouterVpnAttachmentsRequest) (_result *ListTransitRouterVpnAttachmentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTransitRouterVpnAttachmentsResponse{}
+	_body, _err := client.ListTransitRouterVpnAttachmentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTransitRoutersWithOptions(request *ListTransitRoutersRequest, runtime *util.RuntimeOptions) (_result *ListTransitRoutersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24132,6 +27638,10 @@ func (client *Client) ModifyCenRouteMapWithOptions(request *ModifyCenRouteMapReq
 
 	if !tea.BoolValue(util.IsUnset(request.MapResult)) {
 		query["MapResult"] = request.MapResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchAddressType)) {
+		query["MatchAddressType"] = request.MatchAddressType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MatchAsns)) {
@@ -24650,6 +28160,10 @@ func (client *Client) RegisterTransitRouterMulticastGroupMembersWithOptions(requ
 		query["TransitRouterMulticastDomainId"] = request.TransitRouterMulticastDomainId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24724,6 +28238,10 @@ func (client *Client) RegisterTransitRouterMulticastGroupSourcesWithOptions(requ
 
 	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainId)) {
 		query["TransitRouterMulticastDomainId"] = request.TransitRouterMulticastDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -26253,6 +29771,162 @@ func (client *Client) UpdateTransitRouterVpcAttachmentAttribute(request *UpdateT
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateTransitRouterVpcAttachmentAttributeResponse{}
 	_body, _err := client.UpdateTransitRouterVpcAttachmentAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTransitRouterVpcAttachmentZonesWithOptions(request *UpdateTransitRouterVpcAttachmentZonesRequest, runtime *util.RuntimeOptions) (_result *UpdateTransitRouterVpcAttachmentZonesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddZoneMappings)) {
+		query["AddZoneMappings"] = request.AddZoneMappings
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoveZoneMappings)) {
+		query["RemoveZoneMappings"] = request.RemoveZoneMappings
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTransitRouterVpcAttachmentZones"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTransitRouterVpcAttachmentZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTransitRouterVpcAttachmentZones(request *UpdateTransitRouterVpcAttachmentZonesRequest) (_result *UpdateTransitRouterVpcAttachmentZonesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTransitRouterVpcAttachmentZonesResponse{}
+	_body, _err := client.UpdateTransitRouterVpcAttachmentZonesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTransitRouterVpnAttachmentAttributeWithOptions(request *UpdateTransitRouterVpnAttachmentAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateTransitRouterVpnAttachmentAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPublishRouteEnabled)) {
+		query["AutoPublishRouteEnabled"] = request.AutoPublishRouteEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentDescription)) {
+		query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentName)) {
+		query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTransitRouterVpnAttachmentAttribute"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTransitRouterVpnAttachmentAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTransitRouterVpnAttachmentAttribute(request *UpdateTransitRouterVpnAttachmentAttributeRequest) (_result *UpdateTransitRouterVpnAttachmentAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTransitRouterVpnAttachmentAttributeResponse{}
+	_body, _err := client.UpdateTransitRouterVpnAttachmentAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
