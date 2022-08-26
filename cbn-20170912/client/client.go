@@ -4999,6 +4999,7 @@ type DeleteTransitRouterPrefixListAssociationRequest struct {
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	NextHop              *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PrefixListId         *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
@@ -5029,6 +5030,11 @@ func (s *DeleteTransitRouterPrefixListAssociationRequest) SetDryRun(v bool) *Del
 
 func (s *DeleteTransitRouterPrefixListAssociationRequest) SetNextHop(v string) *DeleteTransitRouterPrefixListAssociationRequest {
 	s.NextHop = &v
+	return s
+}
+
+func (s *DeleteTransitRouterPrefixListAssociationRequest) SetNextHopType(v string) *DeleteTransitRouterPrefixListAssociationRequest {
+	s.NextHopType = &v
 	return s
 }
 
@@ -22938,6 +22944,10 @@ func (client *Client) DeleteTransitRouterPrefixListAssociationWithOptions(reques
 
 	if !tea.BoolValue(util.IsUnset(request.NextHop)) {
 		query["NextHop"] = request.NextHop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextHopType)) {
+		query["NextHopType"] = request.NextHopType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
