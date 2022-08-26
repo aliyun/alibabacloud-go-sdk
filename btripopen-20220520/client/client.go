@@ -128,6 +128,29 @@ func (s *AccessTokenResponse) SetBody(v *AccessTokenResponseBody) *AccessTokenRe
 	return s
 }
 
+type AddressGetHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s AddressGetHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddressGetHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddressGetHeaders) SetCommonHeaders(v map[string]*string) *AddressGetHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddressGetHeaders) SetXAcsBtripSoCorpToken(v string) *AddressGetHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type AddressGetRequest struct {
 	ActionType  *int32  `json:"action_type,omitempty" xml:"action_type,omitempty"`
 	ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
@@ -259,6 +282,209 @@ func (s *AddressGetResponse) SetStatusCode(v int32) *AddressGetResponse {
 
 func (s *AddressGetResponse) SetBody(v *AddressGetResponseBody) *AddressGetResponse {
 	s.Body = v
+	return s
+}
+
+type AirportSearchHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s AirportSearchHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AirportSearchHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AirportSearchHeaders) SetCommonHeaders(v map[string]*string) *AirportSearchHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AirportSearchHeaders) SetXAcsBtripSoCorpToken(v string) *AirportSearchHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type AirportSearchRequest struct {
+	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	Type    *int32  `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s AirportSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AirportSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AirportSearchRequest) SetKeyword(v string) *AirportSearchRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *AirportSearchRequest) SetType(v int32) *AirportSearchRequest {
+	s.Type = &v
+	return s
+}
+
+type AirportSearchResponseBody struct {
+	Module     *AirportSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId  *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResultCode *int32                           `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string                          `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool                            `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string                          `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s AirportSearchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AirportSearchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AirportSearchResponseBody) SetModule(v *AirportSearchResponseBodyModule) *AirportSearchResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *AirportSearchResponseBody) SetRequestId(v string) *AirportSearchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AirportSearchResponseBody) SetResultCode(v int32) *AirportSearchResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *AirportSearchResponseBody) SetResultMsg(v string) *AirportSearchResponseBody {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *AirportSearchResponseBody) SetSuccess(v bool) *AirportSearchResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AirportSearchResponseBody) SetTraceId(v string) *AirportSearchResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type AirportSearchResponseBodyModule struct {
+	Cities []*AirportSearchResponseBodyModuleCities `json:"cities,omitempty" xml:"cities,omitempty" type:"Repeated"`
+	Nearby *bool                                    `json:"nearby,omitempty" xml:"nearby,omitempty"`
+}
+
+func (s AirportSearchResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AirportSearchResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *AirportSearchResponseBodyModule) SetCities(v []*AirportSearchResponseBodyModuleCities) *AirportSearchResponseBodyModule {
+	s.Cities = v
+	return s
+}
+
+func (s *AirportSearchResponseBodyModule) SetNearby(v bool) *AirportSearchResponseBodyModule {
+	s.Nearby = &v
+	return s
+}
+
+type AirportSearchResponseBodyModuleCities struct {
+	Code       *string `json:"code,omitempty" xml:"code,omitempty"`
+	Distance   *int32  `json:"distance,omitempty" xml:"distance,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	TravelName *string `json:"travel_name,omitempty" xml:"travel_name,omitempty"`
+}
+
+func (s AirportSearchResponseBodyModuleCities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AirportSearchResponseBodyModuleCities) GoString() string {
+	return s.String()
+}
+
+func (s *AirportSearchResponseBodyModuleCities) SetCode(v string) *AirportSearchResponseBodyModuleCities {
+	s.Code = &v
+	return s
+}
+
+func (s *AirportSearchResponseBodyModuleCities) SetDistance(v int32) *AirportSearchResponseBodyModuleCities {
+	s.Distance = &v
+	return s
+}
+
+func (s *AirportSearchResponseBodyModuleCities) SetName(v string) *AirportSearchResponseBodyModuleCities {
+	s.Name = &v
+	return s
+}
+
+func (s *AirportSearchResponseBodyModuleCities) SetTravelName(v string) *AirportSearchResponseBodyModuleCities {
+	s.TravelName = &v
+	return s
+}
+
+type AirportSearchResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AirportSearchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AirportSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AirportSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AirportSearchResponse) SetHeaders(v map[string]*string) *AirportSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AirportSearchResponse) SetStatusCode(v int32) *AirportSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AirportSearchResponse) SetBody(v *AirportSearchResponseBody) *AirportSearchResponse {
+	s.Body = v
+	return s
+}
+
+type ApplyAddHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s ApplyAddHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAddHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddHeaders) SetCommonHeaders(v map[string]*string) *ApplyAddHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ApplyAddHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyAddHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -1178,6 +1404,175 @@ func (s *ApplyAddResponse) SetBody(v *ApplyAddResponseBody) *ApplyAddResponse {
 	return s
 }
 
+type ApplyApproveHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s ApplyApproveHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyApproveHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyApproveHeaders) SetCommonHeaders(v map[string]*string) *ApplyApproveHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ApplyApproveHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyApproveHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type ApplyApproveRequest struct {
+	ApplyId     *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	Note        *string `json:"note,omitempty" xml:"note,omitempty"`
+	OperateTime *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
+	Status      *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName    *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s ApplyApproveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyApproveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyApproveRequest) SetApplyId(v string) *ApplyApproveRequest {
+	s.ApplyId = &v
+	return s
+}
+
+func (s *ApplyApproveRequest) SetNote(v string) *ApplyApproveRequest {
+	s.Note = &v
+	return s
+}
+
+func (s *ApplyApproveRequest) SetOperateTime(v string) *ApplyApproveRequest {
+	s.OperateTime = &v
+	return s
+}
+
+func (s *ApplyApproveRequest) SetStatus(v int32) *ApplyApproveRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ApplyApproveRequest) SetUserId(v string) *ApplyApproveRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *ApplyApproveRequest) SetUserName(v string) *ApplyApproveRequest {
+	s.UserName = &v
+	return s
+}
+
+type ApplyApproveResponseBody struct {
+	Module     *string `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId  *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	ResultCode *int32  `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string `json:"trace_id,omitempty" xml:"trace_id,omitempty"`
+}
+
+func (s ApplyApproveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyApproveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyApproveResponseBody) SetModule(v string) *ApplyApproveResponseBody {
+	s.Module = &v
+	return s
+}
+
+func (s *ApplyApproveResponseBody) SetRequestId(v string) *ApplyApproveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApplyApproveResponseBody) SetResultCode(v int32) *ApplyApproveResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *ApplyApproveResponseBody) SetResultMsg(v string) *ApplyApproveResponseBody {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *ApplyApproveResponseBody) SetSuccess(v bool) *ApplyApproveResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ApplyApproveResponseBody) SetTraceId(v string) *ApplyApproveResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ApplyApproveResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ApplyApproveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApplyApproveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyApproveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyApproveResponse) SetHeaders(v map[string]*string) *ApplyApproveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyApproveResponse) SetStatusCode(v int32) *ApplyApproveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyApproveResponse) SetBody(v *ApplyApproveResponseBody) *ApplyApproveResponse {
+	s.Body = v
+	return s
+}
+
+type ApplyListQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s ApplyListQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyListQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyListQueryHeaders) SetCommonHeaders(v map[string]*string) *ApplyListQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ApplyListQueryHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyListQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type ApplyListQueryRequest struct {
 	AllApply         *bool   `json:"all_apply,omitempty" xml:"all_apply,omitempty"`
 	DepartId         *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
@@ -1736,6 +2131,29 @@ func (s *ApplyListQueryResponse) SetStatusCode(v int32) *ApplyListQueryResponse 
 
 func (s *ApplyListQueryResponse) SetBody(v *ApplyListQueryResponseBody) *ApplyListQueryResponse {
 	s.Body = v
+	return s
+}
+
+type ApplyModifyHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s ApplyModifyHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyModifyHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyModifyHeaders) SetCommonHeaders(v map[string]*string) *ApplyModifyHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ApplyModifyHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyModifyHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -2631,6 +3049,29 @@ func (s *ApplyModifyResponse) SetBody(v *ApplyModifyResponseBody) *ApplyModifyRe
 	return s
 }
 
+type ApplyQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s ApplyQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyQueryHeaders) SetCommonHeaders(v map[string]*string) *ApplyQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type ApplyQueryRequest struct {
 	ApplyId          *int32  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ApplyShowId      *string `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
@@ -3375,6 +3816,29 @@ func (s *ApplyQueryResponse) SetBody(v *ApplyQueryResponseBody) *ApplyQueryRespo
 	return s
 }
 
+type CarApplyAddHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s CarApplyAddHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarApplyAddHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CarApplyAddHeaders) SetCommonHeaders(v map[string]*string) *CarApplyAddHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CarApplyAddHeaders) SetXAcsBtripSoCorpToken(v string) *CarApplyAddHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type CarApplyAddRequest struct {
 	Cause                 *string `json:"cause,omitempty" xml:"cause,omitempty"`
 	City                  *string `json:"city,omitempty" xml:"city,omitempty"`
@@ -3552,6 +4016,29 @@ func (s *CarApplyAddResponse) SetBody(v *CarApplyAddResponseBody) *CarApplyAddRe
 	return s
 }
 
+type CarApplyModifyHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s CarApplyModifyHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarApplyModifyHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CarApplyModifyHeaders) SetCommonHeaders(v map[string]*string) *CarApplyModifyHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CarApplyModifyHeaders) SetXAcsBtripSoCorpToken(v string) *CarApplyModifyHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type CarApplyModifyRequest struct {
 	OperateTime      *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
 	Remark           *string `json:"remark,omitempty" xml:"remark,omitempty"`
@@ -3666,6 +4153,29 @@ func (s *CarApplyModifyResponse) SetStatusCode(v int32) *CarApplyModifyResponse 
 
 func (s *CarApplyModifyResponse) SetBody(v *CarApplyModifyResponseBody) *CarApplyModifyResponse {
 	s.Body = v
+	return s
+}
+
+type CarApplyQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s CarApplyQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarApplyQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CarApplyQueryHeaders) SetCommonHeaders(v map[string]*string) *CarApplyQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CarApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *CarApplyQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -4032,6 +4542,29 @@ func (s *CarApplyQueryResponse) SetStatusCode(v int32) *CarApplyQueryResponse {
 
 func (s *CarApplyQueryResponse) SetBody(v *CarApplyQueryResponseBody) *CarApplyQueryResponse {
 	s.Body = v
+	return s
+}
+
+type CarBillSettlementQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s CarBillSettlementQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarBillSettlementQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CarBillSettlementQueryHeaders) SetCommonHeaders(v map[string]*string) *CarBillSettlementQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CarBillSettlementQueryHeaders) SetXAcsBtripSoCorpToken(v string) *CarBillSettlementQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -4543,6 +5076,29 @@ func (s *CarBillSettlementQueryResponse) SetStatusCode(v int32) *CarBillSettleme
 
 func (s *CarBillSettlementQueryResponse) SetBody(v *CarBillSettlementQueryResponseBody) *CarBillSettlementQueryResponse {
 	s.Body = v
+	return s
+}
+
+type CarOrderListQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s CarOrderListQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarOrderListQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CarOrderListQueryHeaders) SetCommonHeaders(v map[string]*string) *CarOrderListQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CarOrderListQueryHeaders) SetXAcsBtripSoCorpToken(v string) *CarOrderListQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -5133,6 +5689,191 @@ func (s *CarOrderListQueryResponse) SetBody(v *CarOrderListQueryResponseBody) *C
 	return s
 }
 
+type CitySearchHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s CitySearchHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CitySearchHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CitySearchHeaders) SetCommonHeaders(v map[string]*string) *CitySearchHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CitySearchHeaders) SetXAcsBtripSoCorpToken(v string) *CitySearchHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type CitySearchRequest struct {
+	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+}
+
+func (s CitySearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CitySearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CitySearchRequest) SetKeyword(v string) *CitySearchRequest {
+	s.Keyword = &v
+	return s
+}
+
+type CitySearchResponseBody struct {
+	Module     *CitySearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId  *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResultCode *int32                        `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string                       `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool                         `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string                       `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s CitySearchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CitySearchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CitySearchResponseBody) SetModule(v *CitySearchResponseBodyModule) *CitySearchResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *CitySearchResponseBody) SetRequestId(v string) *CitySearchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CitySearchResponseBody) SetResultCode(v int32) *CitySearchResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *CitySearchResponseBody) SetResultMsg(v string) *CitySearchResponseBody {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *CitySearchResponseBody) SetSuccess(v bool) *CitySearchResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CitySearchResponseBody) SetTraceId(v string) *CitySearchResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type CitySearchResponseBodyModule struct {
+	Cities []*CitySearchResponseBodyModuleCities `json:"cities,omitempty" xml:"cities,omitempty" type:"Repeated"`
+}
+
+func (s CitySearchResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CitySearchResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *CitySearchResponseBodyModule) SetCities(v []*CitySearchResponseBodyModuleCities) *CitySearchResponseBodyModule {
+	s.Cities = v
+	return s
+}
+
+type CitySearchResponseBodyModuleCities struct {
+	Code   *string `json:"code,omitempty" xml:"code,omitempty"`
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Region *int32  `json:"region,omitempty" xml:"region,omitempty"`
+}
+
+func (s CitySearchResponseBodyModuleCities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CitySearchResponseBodyModuleCities) GoString() string {
+	return s.String()
+}
+
+func (s *CitySearchResponseBodyModuleCities) SetCode(v string) *CitySearchResponseBodyModuleCities {
+	s.Code = &v
+	return s
+}
+
+func (s *CitySearchResponseBodyModuleCities) SetName(v string) *CitySearchResponseBodyModuleCities {
+	s.Name = &v
+	return s
+}
+
+func (s *CitySearchResponseBodyModuleCities) SetRegion(v int32) *CitySearchResponseBodyModuleCities {
+	s.Region = &v
+	return s
+}
+
+type CitySearchResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CitySearchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CitySearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CitySearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CitySearchResponse) SetHeaders(v map[string]*string) *CitySearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CitySearchResponse) SetStatusCode(v int32) *CitySearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CitySearchResponse) SetBody(v *CitySearchResponseBody) *CitySearchResponse {
+	s.Body = v
+	return s
+}
+
+type CommonApplyQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s CommonApplyQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommonApplyQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CommonApplyQueryHeaders) SetCommonHeaders(v map[string]*string) *CommonApplyQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CommonApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *CommonApplyQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type CommonApplyQueryRequest struct {
 	ApplyId     *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	BizCategory *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
@@ -5315,6 +6056,29 @@ func (s *CommonApplyQueryResponse) SetBody(v *CommonApplyQueryResponseBody) *Com
 	return s
 }
 
+type CommonApplySyncHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s CommonApplySyncHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommonApplySyncHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CommonApplySyncHeaders) SetCommonHeaders(v map[string]*string) *CommonApplySyncHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CommonApplySyncHeaders) SetXAcsBtripSoCorpToken(v string) *CommonApplySyncHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type CommonApplySyncRequest struct {
 	ApplyId          *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	BizCategory      *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
@@ -5438,6 +6202,29 @@ func (s *CommonApplySyncResponse) SetBody(v *CommonApplySyncResponseBody) *Commo
 	return s
 }
 
+type CorpTokenHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripAccessToken *string            `json:"x-acs-btrip-access-token,omitempty" xml:"x-acs-btrip-access-token,omitempty"`
+}
+
+func (s CorpTokenHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CorpTokenHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CorpTokenHeaders) SetCommonHeaders(v map[string]*string) *CorpTokenHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CorpTokenHeaders) SetXAcsBtripAccessToken(v string) *CorpTokenHeaders {
+	s.XAcsBtripAccessToken = &v
+	return s
+}
+
 type CorpTokenRequest struct {
 	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	Type   *int32  `json:"type,omitempty" xml:"type,omitempty"`
@@ -5554,6 +6341,29 @@ func (s *CorpTokenResponse) SetBody(v *CorpTokenResponseBody) *CorpTokenResponse
 	return s
 }
 
+type CostCenterDeleteHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s CostCenterDeleteHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CostCenterDeleteHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CostCenterDeleteHeaders) SetCommonHeaders(v map[string]*string) *CostCenterDeleteHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CostCenterDeleteHeaders) SetXAcsBtripSoCorpToken(v string) *CostCenterDeleteHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type CostCenterDeleteRequest struct {
 	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
 }
@@ -5638,6 +6448,29 @@ func (s *CostCenterDeleteResponse) SetStatusCode(v int32) *CostCenterDeleteRespo
 
 func (s *CostCenterDeleteResponse) SetBody(v *CostCenterDeleteResponseBody) *CostCenterDeleteResponse {
 	s.Body = v
+	return s
+}
+
+type CostCenterModifyHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s CostCenterModifyHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CostCenterModifyHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CostCenterModifyHeaders) SetCommonHeaders(v map[string]*string) *CostCenterModifyHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CostCenterModifyHeaders) SetXAcsBtripSoCorpToken(v string) *CostCenterModifyHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -5998,6 +6831,29 @@ func (s *CostCenterQueryResponse) SetBody(v *CostCenterQueryResponseBody) *CostC
 	return s
 }
 
+type CostCenterSaveHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s CostCenterSaveHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CostCenterSaveHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CostCenterSaveHeaders) SetCommonHeaders(v map[string]*string) *CostCenterSaveHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CostCenterSaveHeaders) SetXAcsBtripSoCorpToken(v string) *CostCenterSaveHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type CostCenterSaveRequest struct {
 	AlipayNo    *string `json:"alipay_no,omitempty" xml:"alipay_no,omitempty"`
 	Number      *string `json:"number,omitempty" xml:"number,omitempty"`
@@ -6129,6 +6985,29 @@ func (s *CostCenterSaveResponse) SetStatusCode(v int32) *CostCenterSaveResponse 
 
 func (s *CostCenterSaveResponse) SetBody(v *CostCenterSaveResponseBody) *CostCenterSaveResponse {
 	s.Body = v
+	return s
+}
+
+type DepartmentSaveHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s DepartmentSaveHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DepartmentSaveHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DepartmentSaveHeaders) SetCommonHeaders(v map[string]*string) *DepartmentSaveHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DepartmentSaveHeaders) SetXAcsBtripSoCorpToken(v string) *DepartmentSaveHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -6292,6 +7171,29 @@ func (s *DepartmentSaveResponse) SetStatusCode(v int32) *DepartmentSaveResponse 
 
 func (s *DepartmentSaveResponse) SetBody(v *DepartmentSaveResponseBody) *DepartmentSaveResponse {
 	s.Body = v
+	return s
+}
+
+type EntityAddHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s EntityAddHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EntityAddHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *EntityAddHeaders) SetCommonHeaders(v map[string]*string) *EntityAddHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *EntityAddHeaders) SetXAcsBtripSoCorpToken(v string) *EntityAddHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -6460,6 +7362,29 @@ func (s *EntityAddResponse) SetStatusCode(v int32) *EntityAddResponse {
 
 func (s *EntityAddResponse) SetBody(v *EntityAddResponseBody) *EntityAddResponse {
 	s.Body = v
+	return s
+}
+
+type EntityDeleteHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s EntityDeleteHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EntityDeleteHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *EntityDeleteHeaders) SetCommonHeaders(v map[string]*string) *EntityDeleteHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *EntityDeleteHeaders) SetXAcsBtripSoCorpToken(v string) *EntityDeleteHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -6649,6 +7574,29 @@ func (s *EntityDeleteResponse) SetBody(v *EntityDeleteResponseBody) *EntityDelet
 	return s
 }
 
+type EntitySetHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s EntitySetHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EntitySetHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *EntitySetHeaders) SetCommonHeaders(v map[string]*string) *EntitySetHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *EntitySetHeaders) SetXAcsBtripSoCorpToken(v string) *EntitySetHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type EntitySetRequest struct {
 	EntityDOList []*EntitySetRequestEntityDOList `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty" type:"Repeated"`
 	ThirdpartId  *string                         `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
@@ -6829,6 +7777,29 @@ func (s *EntitySetResponse) SetBody(v *EntitySetResponseBody) *EntitySetResponse
 	return s
 }
 
+type ExceedApplySyncHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s ExceedApplySyncHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExceedApplySyncHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ExceedApplySyncHeaders) SetCommonHeaders(v map[string]*string) *ExceedApplySyncHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ExceedApplySyncHeaders) SetXAcsBtripSoCorpToken(v string) *ExceedApplySyncHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type ExceedApplySyncRequest struct {
 	ApplyId          *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	BizCategory      *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
@@ -6949,6 +7920,29 @@ func (s *ExceedApplySyncResponse) SetStatusCode(v int32) *ExceedApplySyncRespons
 
 func (s *ExceedApplySyncResponse) SetBody(v *ExceedApplySyncResponseBody) *ExceedApplySyncResponse {
 	s.Body = v
+	return s
+}
+
+type FlightBillSettlementQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s FlightBillSettlementQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightBillSettlementQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *FlightBillSettlementQueryHeaders) SetCommonHeaders(v map[string]*string) *FlightBillSettlementQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *FlightBillSettlementQueryHeaders) SetXAcsBtripSoCorpToken(v string) *FlightBillSettlementQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -7547,6 +8541,29 @@ func (s *FlightBillSettlementQueryResponse) SetBody(v *FlightBillSettlementQuery
 	return s
 }
 
+type FlightExceedApplyQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s FlightExceedApplyQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightExceedApplyQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *FlightExceedApplyQueryHeaders) SetCommonHeaders(v map[string]*string) *FlightExceedApplyQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *FlightExceedApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *FlightExceedApplyQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type FlightExceedApplyQueryRequest struct {
 	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 }
@@ -7809,6 +8826,29 @@ func (s *FlightExceedApplyQueryResponse) SetStatusCode(v int32) *FlightExceedApp
 
 func (s *FlightExceedApplyQueryResponse) SetBody(v *FlightExceedApplyQueryResponseBody) *FlightExceedApplyQueryResponse {
 	s.Body = v
+	return s
+}
+
+type FlightOrderListQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s FlightOrderListQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOrderListQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOrderListQueryHeaders) SetCommonHeaders(v map[string]*string) *FlightOrderListQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *FlightOrderListQueryHeaders) SetXAcsBtripSoCorpToken(v string) *FlightOrderListQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -8429,6 +9469,29 @@ func (s *FlightOrderListQueryResponse) SetStatusCode(v int32) *FlightOrderListQu
 
 func (s *FlightOrderListQueryResponse) SetBody(v *FlightOrderListQueryResponseBody) *FlightOrderListQueryResponse {
 	s.Body = v
+	return s
+}
+
+type FlightOrderQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s FlightOrderQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOrderQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOrderQueryHeaders) SetCommonHeaders(v map[string]*string) *FlightOrderQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *FlightOrderQueryHeaders) SetXAcsBtripSoCorpToken(v string) *FlightOrderQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -9235,6 +10298,29 @@ func (s *FlightOrderQueryResponse) SetBody(v *FlightOrderQueryResponseBody) *Fli
 	return s
 }
 
+type HotelBillSettlementQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s HotelBillSettlementQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelBillSettlementQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *HotelBillSettlementQueryHeaders) SetCommonHeaders(v map[string]*string) *HotelBillSettlementQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotelBillSettlementQueryHeaders) SetXAcsBtripSoCorpToken(v string) *HotelBillSettlementQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type HotelBillSettlementQueryRequest struct {
 	PageNo      *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
 	PageSize    *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
@@ -9722,6 +10808,29 @@ func (s *HotelBillSettlementQueryResponse) SetBody(v *HotelBillSettlementQueryRe
 	return s
 }
 
+type HotelExceedApplyQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s HotelExceedApplyQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelExceedApplyQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *HotelExceedApplyQueryHeaders) SetCommonHeaders(v map[string]*string) *HotelExceedApplyQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotelExceedApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *HotelExceedApplyQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type HotelExceedApplyQueryRequest struct {
 	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 }
@@ -9948,6 +11057,29 @@ func (s *HotelExceedApplyQueryResponse) SetStatusCode(v int32) *HotelExceedApply
 
 func (s *HotelExceedApplyQueryResponse) SetBody(v *HotelExceedApplyQueryResponseBody) *HotelExceedApplyQueryResponse {
 	s.Body = v
+	return s
+}
+
+type HotelOrderListQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s HotelOrderListQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderListQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderListQueryHeaders) SetCommonHeaders(v map[string]*string) *HotelOrderListQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotelOrderListQueryHeaders) SetXAcsBtripSoCorpToken(v string) *HotelOrderListQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -10506,6 +11638,659 @@ func (s *HotelOrderListQueryResponse) SetBody(v *HotelOrderListQueryResponseBody
 	return s
 }
 
+type IeFlightBillSettlementQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s IeFlightBillSettlementQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IeFlightBillSettlementQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *IeFlightBillSettlementQueryHeaders) SetCommonHeaders(v map[string]*string) *IeFlightBillSettlementQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryHeaders) SetXAcsBtripSoCorpToken(v string) *IeFlightBillSettlementQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type IeFlightBillSettlementQueryRequest struct {
+	PageNo      *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize    *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	PeriodEnd   *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	PeriodStart *string `json:"period_start,omitempty" xml:"period_start,omitempty"`
+}
+
+func (s IeFlightBillSettlementQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IeFlightBillSettlementQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IeFlightBillSettlementQueryRequest) SetPageNo(v int32) *IeFlightBillSettlementQueryRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryRequest) SetPageSize(v int32) *IeFlightBillSettlementQueryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryRequest) SetPeriodEnd(v string) *IeFlightBillSettlementQueryRequest {
+	s.PeriodEnd = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryRequest) SetPeriodStart(v string) *IeFlightBillSettlementQueryRequest {
+	s.PeriodStart = &v
+	return s
+}
+
+type IeFlightBillSettlementQueryResponseBody struct {
+	Module     *IeFlightBillSettlementQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	MorePage   *bool                                          `json:"more_page,omitempty" xml:"more_page,omitempty"`
+	RequestId  *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResultCode *int32                                         `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string                                        `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool                                          `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string                                        `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s IeFlightBillSettlementQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IeFlightBillSettlementQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IeFlightBillSettlementQueryResponseBody) SetModule(v *IeFlightBillSettlementQueryResponseBodyModule) *IeFlightBillSettlementQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBody) SetMorePage(v bool) *IeFlightBillSettlementQueryResponseBody {
+	s.MorePage = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBody) SetRequestId(v string) *IeFlightBillSettlementQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBody) SetResultCode(v int32) *IeFlightBillSettlementQueryResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBody) SetResultMsg(v string) *IeFlightBillSettlementQueryResponseBody {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBody) SetSuccess(v bool) *IeFlightBillSettlementQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBody) SetTraceId(v string) *IeFlightBillSettlementQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type IeFlightBillSettlementQueryResponseBodyModule struct {
+	Category    *int32                                                   `json:"category,omitempty" xml:"category,omitempty"`
+	CorpId      *string                                                  `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	DataList    []*IeFlightBillSettlementQueryResponseBodyModuleDataList `json:"data_list,omitempty" xml:"data_list,omitempty" type:"Repeated"`
+	PeriodEnd   *string                                                  `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	PeriodStart *string                                                  `json:"period_start,omitempty" xml:"period_start,omitempty"`
+	TotalNum    *int64                                                   `json:"total_num,omitempty" xml:"total_num,omitempty"`
+}
+
+func (s IeFlightBillSettlementQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IeFlightBillSettlementQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModule) SetCategory(v int32) *IeFlightBillSettlementQueryResponseBodyModule {
+	s.Category = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModule) SetCorpId(v string) *IeFlightBillSettlementQueryResponseBodyModule {
+	s.CorpId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModule) SetDataList(v []*IeFlightBillSettlementQueryResponseBodyModuleDataList) *IeFlightBillSettlementQueryResponseBodyModule {
+	s.DataList = v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModule) SetPeriodEnd(v string) *IeFlightBillSettlementQueryResponseBodyModule {
+	s.PeriodEnd = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModule) SetPeriodStart(v string) *IeFlightBillSettlementQueryResponseBodyModule {
+	s.PeriodStart = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *IeFlightBillSettlementQueryResponseBodyModule {
+	s.TotalNum = &v
+	return s
+}
+
+type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
+	AdvanceDay             *int32   `json:"advance_day,omitempty" xml:"advance_day,omitempty"`
+	AirlineCorpCode        *string  `json:"airline_corp_code,omitempty" xml:"airline_corp_code,omitempty"`
+	AirlineCorpName        *string  `json:"airline_corp_name,omitempty" xml:"airline_corp_name,omitempty"`
+	AlipayTradeNo          *string  `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	ApplyId                *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ArrAirportCode         *string  `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	ArrCity                *string  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrDate                *string  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	ArrStation             *string  `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
+	ArrTime                *string  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	BillRecordTime         *string  `json:"bill_record_time,omitempty" xml:"bill_record_time,omitempty"`
+	BookMode               *string  `json:"book_mode,omitempty" xml:"book_mode,omitempty"`
+	BookTime               *string  `json:"book_time,omitempty" xml:"book_time,omitempty"`
+	BookerId               *string  `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
+	BookerJobNo            *string  `json:"booker_job_no,omitempty" xml:"booker_job_no,omitempty"`
+	BookerName             *string  `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
+	BtripCouponFee         *float64 `json:"btrip_coupon_fee,omitempty" xml:"btrip_coupon_fee,omitempty"`
+	Cabin                  *string  `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass             *string  `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CapitalDirection       *string  `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
+	CascadeDepartment      *string  `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
+	ChangeFee              *float64 `json:"change_fee,omitempty" xml:"change_fee,omitempty"`
+	CorpPayOrderFee        *float64 `json:"corp_pay_order_fee,omitempty" xml:"corp_pay_order_fee,omitempty"`
+	CostCenter             *string  `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	CostCenterNumber       *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	Coupon                 *float64 `json:"coupon,omitempty" xml:"coupon,omitempty"`
+	DepAirportCode         *string  `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	Department             *string  `json:"department,omitempty" xml:"department,omitempty"`
+	DepartmentId           *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
+	DeptCity               *string  `json:"dept_city,omitempty" xml:"dept_city,omitempty"`
+	DeptDate               *string  `json:"dept_date,omitempty" xml:"dept_date,omitempty"`
+	DeptStation            *string  `json:"dept_station,omitempty" xml:"dept_station,omitempty"`
+	DeptTime               *string  `json:"dept_time,omitempty" xml:"dept_time,omitempty"`
+	Discount               *string  `json:"discount,omitempty" xml:"discount,omitempty"`
+	FeeType                *string  `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
+	FlightNo               *string  `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	Index                  *string  `json:"index,omitempty" xml:"index,omitempty"`
+	InsuranceFee           *float64 `json:"insurance_fee,omitempty" xml:"insurance_fee,omitempty"`
+	InsuranceNumber        *string  `json:"insurance_number,omitempty" xml:"insurance_number,omitempty"`
+	InvoiceTitle           *string  `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	MostDifferenceDeptTime *string  `json:"most_difference_dept_time,omitempty" xml:"most_difference_dept_time,omitempty"`
+	MostDifferenceDiscount *string  `json:"most_difference_discount,omitempty" xml:"most_difference_discount,omitempty"`
+	MostDifferenceFlightNo *string  `json:"most_difference_flight_no,omitempty" xml:"most_difference_flight_no,omitempty"`
+	MostDifferencePrice    *float64 `json:"most_difference_price,omitempty" xml:"most_difference_price,omitempty"`
+	MostDifferenceReason   *string  `json:"most_difference_reason,omitempty" xml:"most_difference_reason,omitempty"`
+	MostPrice              *float64 `json:"most_price,omitempty" xml:"most_price,omitempty"`
+	NegotiationCouponFee   *float64 `json:"negotiation_coupon_fee,omitempty" xml:"negotiation_coupon_fee,omitempty"`
+	OrderId                *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderStatusDesc        *string  `json:"order_status_desc,omitempty" xml:"order_status_desc,omitempty"`
+	OverApplyId            *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
+	PrimaryId              *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
+	ProjectCode            *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectName            *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	RefundFee              *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
+	Remark                 *string  `json:"remark,omitempty" xml:"remark,omitempty"`
+	RepeatRefund           *string  `json:"repeat_refund,omitempty" xml:"repeat_refund,omitempty"`
+	SealPrice              *float64 `json:"seal_price,omitempty" xml:"seal_price,omitempty"`
+	SegmentType            *string  `json:"segment_type,omitempty" xml:"segment_type,omitempty"`
+	ServiceFee             *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	SettlementFee          *float64 `json:"settlement_fee,omitempty" xml:"settlement_fee,omitempty"`
+	SettlementGrantFee     *float64 `json:"settlement_grant_fee,omitempty" xml:"settlement_grant_fee,omitempty"`
+	SettlementTime         *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
+	SettlementType         *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	Status                 *int32   `json:"status,omitempty" xml:"status,omitempty"`
+	SubOrderId             *string  `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
+	TaxFee                 *float64 `json:"tax_fee,omitempty" xml:"tax_fee,omitempty"`
+	TicketId               *string  `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
+	Trade                  *string  `json:"trade,omitempty" xml:"trade,omitempty"`
+	TravelerId             *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo          *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerName           *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	VoucherType            *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+}
+
+func (s IeFlightBillSettlementQueryResponseBodyModuleDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IeFlightBillSettlementQueryResponseBodyModuleDataList) GoString() string {
+	return s.String()
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetAdvanceDay(v int32) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.AdvanceDay = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetAirlineCorpCode(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.AirlineCorpCode = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetAirlineCorpName(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.AirlineCorpName = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetAlipayTradeNo(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.AlipayTradeNo = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetApplyId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetArrAirportCode(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ArrAirportCode = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetArrCity(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ArrCity = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetArrDate(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ArrDate = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetArrStation(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ArrStation = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetArrTime(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetBillRecordTime(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.BillRecordTime = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetBookMode(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.BookMode = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetBookTime(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.BookTime = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetBookerId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.BookerId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetBookerJobNo(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.BookerJobNo = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetBookerName(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.BookerName = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetBtripCouponFee(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.BtripCouponFee = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetCabin(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.Cabin = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetCabinClass(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetCapitalDirection(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.CapitalDirection = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetCascadeDepartment(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.CascadeDepartment = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetChangeFee(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ChangeFee = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetCorpPayOrderFee(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.CorpPayOrderFee = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetCostCenter(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.CostCenter = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetCostCenterNumber(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.CostCenterNumber = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetCoupon(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.Coupon = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDepAirportCode(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.DepAirportCode = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDepartment(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.Department = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDepartmentId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.DepartmentId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDeptCity(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.DeptCity = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDeptDate(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.DeptDate = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDeptStation(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.DeptStation = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDeptTime(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.DeptTime = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDiscount(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.Discount = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetFeeType(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.FeeType = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetFlightNo(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.FlightNo = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetIndex(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.Index = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetInsuranceFee(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.InsuranceFee = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetInsuranceNumber(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.InsuranceNumber = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetInvoiceTitle(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetMostDifferenceDeptTime(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.MostDifferenceDeptTime = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetMostDifferenceDiscount(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.MostDifferenceDiscount = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetMostDifferenceFlightNo(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.MostDifferenceFlightNo = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetMostDifferencePrice(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.MostDifferencePrice = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetMostDifferenceReason(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.MostDifferenceReason = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetMostPrice(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.MostPrice = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetNegotiationCouponFee(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.NegotiationCouponFee = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetOrderId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.OrderId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetOrderStatusDesc(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.OrderStatusDesc = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetOverApplyId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.OverApplyId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetPrimaryId(v int64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.PrimaryId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetProjectCode(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetProjectName(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetRefundFee(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.RefundFee = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetRemark(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.Remark = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetRepeatRefund(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.RepeatRefund = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetSealPrice(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.SealPrice = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetSegmentType(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.SegmentType = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetServiceFee(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ServiceFee = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetSettlementFee(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.SettlementFee = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetSettlementGrantFee(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.SettlementGrantFee = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetSettlementTime(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.SettlementTime = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetSettlementType(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.SettlementType = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetStatus(v int32) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.Status = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetSubOrderId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.SubOrderId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTaxFee(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.TaxFee = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTicketId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.TicketId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTrade(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.Trade = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTravelerId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTravelerJobNo(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerJobNo = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTravelerName(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerName = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetVoucherType(v int32) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.VoucherType = &v
+	return s
+}
+
+type IeFlightBillSettlementQueryResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *IeFlightBillSettlementQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s IeFlightBillSettlementQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IeFlightBillSettlementQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IeFlightBillSettlementQueryResponse) SetHeaders(v map[string]*string) *IeFlightBillSettlementQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponse) SetStatusCode(v int32) *IeFlightBillSettlementQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponse) SetBody(v *IeFlightBillSettlementQueryResponseBody) *IeFlightBillSettlementQueryResponse {
+	s.Body = v
+	return s
+}
+
+type InvoiceAddHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s InvoiceAddHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceAddHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceAddHeaders) SetCommonHeaders(v map[string]*string) *InvoiceAddHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InvoiceAddHeaders) SetXAcsBtripSoCorpToken(v string) *InvoiceAddHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type InvoiceAddRequest struct {
 	Address     *string `json:"address,omitempty" xml:"address,omitempty"`
 	BankName    *string `json:"bank_name,omitempty" xml:"bank_name,omitempty"`
@@ -10635,6 +12420,29 @@ func (s *InvoiceAddResponse) SetBody(v *InvoiceAddResponseBody) *InvoiceAddRespo
 	return s
 }
 
+type InvoiceDeleteHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s InvoiceDeleteHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceDeleteHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceDeleteHeaders) SetCommonHeaders(v map[string]*string) *InvoiceDeleteHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InvoiceDeleteHeaders) SetXAcsBtripSoCorpToken(v string) *InvoiceDeleteHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type InvoiceDeleteRequest struct {
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
@@ -10719,6 +12527,29 @@ func (s *InvoiceDeleteResponse) SetStatusCode(v int32) *InvoiceDeleteResponse {
 
 func (s *InvoiceDeleteResponse) SetBody(v *InvoiceDeleteResponseBody) *InvoiceDeleteResponse {
 	s.Body = v
+	return s
+}
+
+type InvoiceModifyHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s InvoiceModifyHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceModifyHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceModifyHeaders) SetCommonHeaders(v map[string]*string) *InvoiceModifyHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InvoiceModifyHeaders) SetXAcsBtripSoCorpToken(v string) *InvoiceModifyHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -10848,6 +12679,29 @@ func (s *InvoiceModifyResponse) SetStatusCode(v int32) *InvoiceModifyResponse {
 
 func (s *InvoiceModifyResponse) SetBody(v *InvoiceModifyResponseBody) *InvoiceModifyResponse {
 	s.Body = v
+	return s
+}
+
+type InvoiceRuleSaveHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s InvoiceRuleSaveHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleSaveHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleSaveHeaders) SetCommonHeaders(v map[string]*string) *InvoiceRuleSaveHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InvoiceRuleSaveHeaders) SetXAcsBtripSoCorpToken(v string) *InvoiceRuleSaveHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -11037,6 +12891,29 @@ func (s *InvoiceRuleSaveResponse) SetBody(v *InvoiceRuleSaveResponseBody) *Invoi
 	return s
 }
 
+type InvoiceSearchHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s InvoiceSearchHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceSearchHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceSearchHeaders) SetCommonHeaders(v map[string]*string) *InvoiceSearchHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InvoiceSearchHeaders) SetXAcsBtripSoCorpToken(v string) *InvoiceSearchHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type InvoiceSearchRequest struct {
 	Title  *string `json:"title,omitempty" xml:"title,omitempty"`
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
@@ -11162,6 +13039,29 @@ func (s *InvoiceSearchResponse) SetStatusCode(v int32) *InvoiceSearchResponse {
 
 func (s *InvoiceSearchResponse) SetBody(v *InvoiceSearchResponseBody) *InvoiceSearchResponse {
 	s.Body = v
+	return s
+}
+
+type IsvUserSaveHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s IsvUserSaveHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsvUserSaveHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *IsvUserSaveHeaders) SetCommonHeaders(v map[string]*string) *IsvUserSaveHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *IsvUserSaveHeaders) SetXAcsBtripSoCorpToken(v string) *IsvUserSaveHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -11358,6 +13258,29 @@ func (s *IsvUserSaveResponse) SetBody(v *IsvUserSaveResponseBody) *IsvUserSaveRe
 	return s
 }
 
+type MonthBillGetHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s MonthBillGetHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonthBillGetHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *MonthBillGetHeaders) SetCommonHeaders(v map[string]*string) *MonthBillGetHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *MonthBillGetHeaders) SetXAcsBtripSoCorpToken(v string) *MonthBillGetHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type MonthBillGetRequest struct {
 	BillMonth *string `json:"bill_month,omitempty" xml:"bill_month,omitempty"`
 }
@@ -11477,6 +13400,29 @@ func (s *MonthBillGetResponse) SetStatusCode(v int32) *MonthBillGetResponse {
 
 func (s *MonthBillGetResponse) SetBody(v *MonthBillGetResponseBody) *MonthBillGetResponse {
 	s.Body = v
+	return s
+}
+
+type ProjectAddHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s ProjectAddHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProjectAddHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ProjectAddHeaders) SetCommonHeaders(v map[string]*string) *ProjectAddHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ProjectAddHeaders) SetXAcsBtripSoCorpToken(v string) *ProjectAddHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -11603,6 +13549,29 @@ func (s *ProjectAddResponse) SetBody(v *ProjectAddResponseBody) *ProjectAddRespo
 	return s
 }
 
+type ProjectDeleteHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s ProjectDeleteHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProjectDeleteHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ProjectDeleteHeaders) SetCommonHeaders(v map[string]*string) *ProjectDeleteHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ProjectDeleteHeaders) SetXAcsBtripSoCorpToken(v string) *ProjectDeleteHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type ProjectDeleteRequest struct {
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
@@ -11693,6 +13662,29 @@ func (s *ProjectDeleteResponse) SetStatusCode(v int32) *ProjectDeleteResponse {
 
 func (s *ProjectDeleteResponse) SetBody(v *ProjectDeleteResponseBody) *ProjectDeleteResponse {
 	s.Body = v
+	return s
+}
+
+type ProjectModifyHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s ProjectModifyHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProjectModifyHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ProjectModifyHeaders) SetCommonHeaders(v map[string]*string) *ProjectModifyHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ProjectModifyHeaders) SetXAcsBtripSoCorpToken(v string) *ProjectModifyHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -11810,6 +13802,29 @@ func (s *ProjectModifyResponse) SetStatusCode(v int32) *ProjectModifyResponse {
 
 func (s *ProjectModifyResponse) SetBody(v *ProjectModifyResponseBody) *ProjectModifyResponse {
 	s.Body = v
+	return s
+}
+
+type TrainBillSettlementQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s TrainBillSettlementQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainBillSettlementQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TrainBillSettlementQueryHeaders) SetCommonHeaders(v map[string]*string) *TrainBillSettlementQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TrainBillSettlementQueryHeaders) SetXAcsBtripSoCorpToken(v string) *TrainBillSettlementQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -12276,6 +14291,29 @@ func (s *TrainBillSettlementQueryResponse) SetBody(v *TrainBillSettlementQueryRe
 	return s
 }
 
+type TrainExceedApplyQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s TrainExceedApplyQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainExceedApplyQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TrainExceedApplyQueryHeaders) SetCommonHeaders(v map[string]*string) *TrainExceedApplyQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TrainExceedApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *TrainExceedApplyQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type TrainExceedApplyQueryRequest struct {
 	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 }
@@ -12538,6 +14576,29 @@ func (s *TrainExceedApplyQueryResponse) SetStatusCode(v int32) *TrainExceedApply
 
 func (s *TrainExceedApplyQueryResponse) SetBody(v *TrainExceedApplyQueryResponseBody) *TrainExceedApplyQueryResponse {
 	s.Body = v
+	return s
+}
+
+type TrainOrderListQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s TrainOrderListQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderListQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderListQueryHeaders) SetCommonHeaders(v map[string]*string) *TrainOrderListQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TrainOrderListQueryHeaders) SetXAcsBtripSoCorpToken(v string) *TrainOrderListQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -13135,6 +15196,29 @@ func (s *TrainOrderListQueryResponse) SetStatusCode(v int32) *TrainOrderListQuer
 
 func (s *TrainOrderListQueryResponse) SetBody(v *TrainOrderListQueryResponseBody) *TrainOrderListQueryResponse {
 	s.Body = v
+	return s
+}
+
+type TrainOrderQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s TrainOrderQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryHeaders) SetCommonHeaders(v map[string]*string) *TrainOrderQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TrainOrderQueryHeaders) SetXAcsBtripSoCorpToken(v string) *TrainOrderQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
 	return s
 }
 
@@ -13870,8 +15954,189 @@ func (s *TrainOrderQueryResponse) SetBody(v *TrainOrderQueryResponseBody) *Train
 	return s
 }
 
+type TrainStationSearchHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s TrainStationSearchHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainStationSearchHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TrainStationSearchHeaders) SetCommonHeaders(v map[string]*string) *TrainStationSearchHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TrainStationSearchHeaders) SetXAcsBtripSoCorpToken(v string) *TrainStationSearchHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type TrainStationSearchRequest struct {
+	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+}
+
+func (s TrainStationSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainStationSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TrainStationSearchRequest) SetKeyword(v string) *TrainStationSearchRequest {
+	s.Keyword = &v
+	return s
+}
+
+type TrainStationSearchResponseBody struct {
+	Module     *TrainStationSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId  *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResultCode *int32                                `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string                               `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string                               `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s TrainStationSearchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainStationSearchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TrainStationSearchResponseBody) SetModule(v *TrainStationSearchResponseBodyModule) *TrainStationSearchResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *TrainStationSearchResponseBody) SetRequestId(v string) *TrainStationSearchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TrainStationSearchResponseBody) SetResultCode(v int32) *TrainStationSearchResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *TrainStationSearchResponseBody) SetResultMsg(v string) *TrainStationSearchResponseBody {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *TrainStationSearchResponseBody) SetSuccess(v bool) *TrainStationSearchResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *TrainStationSearchResponseBody) SetTraceId(v string) *TrainStationSearchResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type TrainStationSearchResponseBodyModule struct {
+	Cities []*TrainStationSearchResponseBodyModuleCities `json:"cities,omitempty" xml:"cities,omitempty" type:"Repeated"`
+}
+
+func (s TrainStationSearchResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainStationSearchResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *TrainStationSearchResponseBodyModule) SetCities(v []*TrainStationSearchResponseBodyModuleCities) *TrainStationSearchResponseBodyModule {
+	s.Cities = v
+	return s
+}
+
+type TrainStationSearchResponseBodyModuleCities struct {
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s TrainStationSearchResponseBodyModuleCities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainStationSearchResponseBodyModuleCities) GoString() string {
+	return s.String()
+}
+
+func (s *TrainStationSearchResponseBodyModuleCities) SetCode(v string) *TrainStationSearchResponseBodyModuleCities {
+	s.Code = &v
+	return s
+}
+
+func (s *TrainStationSearchResponseBodyModuleCities) SetName(v string) *TrainStationSearchResponseBodyModuleCities {
+	s.Name = &v
+	return s
+}
+
+type TrainStationSearchResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TrainStationSearchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TrainStationSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainStationSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TrainStationSearchResponse) SetHeaders(v map[string]*string) *TrainStationSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TrainStationSearchResponse) SetStatusCode(v int32) *TrainStationSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TrainStationSearchResponse) SetBody(v *TrainStationSearchResponseBody) *TrainStationSearchResponse {
+	s.Body = v
+	return s
+}
+
+type UserQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s UserQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UserQueryHeaders) SetCommonHeaders(v map[string]*string) *UserQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UserQueryHeaders) SetXAcsBtripSoCorpToken(v string) *UserQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
 type UserQueryRequest struct {
 	ModifiedTimeGreaterOrEqualThan *string `json:"modified_time_greater_or_equal_than,omitempty" xml:"modified_time_greater_or_equal_than,omitempty"`
+	PageSize                       *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	PageToken                      *string `json:"page_token,omitempty" xml:"page_token,omitempty"`
 	ThirdPartJobNo                 *string `json:"third_part_job_no,omitempty" xml:"third_part_job_no,omitempty"`
 }
 
@@ -13885,6 +16150,16 @@ func (s UserQueryRequest) GoString() string {
 
 func (s *UserQueryRequest) SetModifiedTimeGreaterOrEqualThan(v string) *UserQueryRequest {
 	s.ModifiedTimeGreaterOrEqualThan = &v
+	return s
+}
+
+func (s *UserQueryRequest) SetPageSize(v int32) *UserQueryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *UserQueryRequest) SetPageToken(v string) *UserQueryRequest {
+	s.PageToken = &v
 	return s
 }
 
@@ -14133,7 +16408,7 @@ func (client *Client) AccessTokenWithOptions(request *AccessTokenRequest, header
 
 func (client *Client) AddressGet(request *AddressGetRequest) (_result *AddressGetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &AddressGetHeaders{}
 	_result = &AddressGetResponse{}
 	_body, _err := client.AddressGetWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -14143,7 +16418,7 @@ func (client *Client) AddressGet(request *AddressGetRequest) (_result *AddressGe
 	return _result, _err
 }
 
-func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddressGetResponse, _err error) {
+func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers *AddressGetHeaders, runtime *util.RuntimeOptions) (_result *AddressGetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -14169,8 +16444,17 @@ func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers 
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -14193,9 +16477,68 @@ func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers 
 	return _result, _err
 }
 
+func (client *Client) AirportSearch(request *AirportSearchRequest) (_result *AirportSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AirportSearchHeaders{}
+	_result = &AirportSearchResponse{}
+	_body, _err := client.AirportSearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AirportSearchWithOptions(request *AirportSearchRequest, headers *AirportSearchHeaders, runtime *util.RuntimeOptions) (_result *AirportSearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AirportSearch"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/city/v1/airport"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AirportSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ApplyAdd(request *ApplyAddRequest) (_result *ApplyAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ApplyAddHeaders{}
 	_result = &ApplyAddResponse{}
 	_body, _err := client.ApplyAddWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -14205,7 +16548,7 @@ func (client *Client) ApplyAdd(request *ApplyAddRequest) (_result *ApplyAddRespo
 	return _result, _err
 }
 
-func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyAddResponse, _err error) {
+func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *ApplyAddHeaders, runtime *util.RuntimeOptions) (_result *ApplyAddResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
@@ -14362,8 +16705,17 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers map[s
 		body["vehicle_budget"] = request.VehicleBudget
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
@@ -14387,9 +16739,84 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers map[s
 	return _result, _err
 }
 
+func (client *Client) ApplyApprove(request *ApplyApproveRequest) (_result *ApplyApproveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ApplyApproveHeaders{}
+	_result = &ApplyApproveResponse{}
+	_body, _err := client.ApplyApproveWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ApplyApproveWithOptions(request *ApplyApproveRequest, headers *ApplyApproveHeaders, runtime *util.RuntimeOptions) (_result *ApplyApproveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplyId)) {
+		body["apply_id"] = request.ApplyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Note)) {
+		body["note"] = request.Note
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateTime)) {
+		body["operate_time"] = request.OperateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["user_name"] = request.UserName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyApprove"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apply/v1/biz-trip/action/approve"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyApproveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ApplyListQuery(request *ApplyListQueryRequest) (_result *ApplyListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ApplyListQueryHeaders{}
 	_result = &ApplyListQueryResponse{}
 	_body, _err := client.ApplyListQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -14399,7 +16826,7 @@ func (client *Client) ApplyListQuery(request *ApplyListQueryRequest) (_result *A
 	return _result, _err
 }
 
-func (client *Client) ApplyListQueryWithOptions(request *ApplyListQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyListQueryResponse, _err error) {
+func (client *Client) ApplyListQueryWithOptions(request *ApplyListQueryRequest, headers *ApplyListQueryHeaders, runtime *util.RuntimeOptions) (_result *ApplyListQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -14449,8 +16876,17 @@ func (client *Client) ApplyListQueryWithOptions(request *ApplyListQueryRequest, 
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -14475,7 +16911,7 @@ func (client *Client) ApplyListQueryWithOptions(request *ApplyListQueryRequest, 
 
 func (client *Client) ApplyModify(request *ApplyModifyRequest) (_result *ApplyModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ApplyModifyHeaders{}
 	_result = &ApplyModifyResponse{}
 	_body, _err := client.ApplyModifyWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -14485,7 +16921,7 @@ func (client *Client) ApplyModify(request *ApplyModifyRequest) (_result *ApplyMo
 	return _result, _err
 }
 
-func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyModifyResponse, _err error) {
+func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers *ApplyModifyHeaders, runtime *util.RuntimeOptions) (_result *ApplyModifyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
@@ -14633,8 +17069,17 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 		body["vehicle_budget"] = request.VehicleBudget
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -14659,7 +17104,7 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 
 func (client *Client) ApplyQuery(request *ApplyQueryRequest) (_result *ApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ApplyQueryHeaders{}
 	_result = &ApplyQueryResponse{}
 	_body, _err := client.ApplyQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -14669,7 +17114,7 @@ func (client *Client) ApplyQuery(request *ApplyQueryRequest) (_result *ApplyQuer
 	return _result, _err
 }
 
-func (client *Client) ApplyQueryWithOptions(request *ApplyQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyQueryResponse, _err error) {
+func (client *Client) ApplyQueryWithOptions(request *ApplyQueryRequest, headers *ApplyQueryHeaders, runtime *util.RuntimeOptions) (_result *ApplyQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -14691,8 +17136,17 @@ func (client *Client) ApplyQueryWithOptions(request *ApplyQueryRequest, headers 
 		query["type"] = request.Type
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -14717,7 +17171,7 @@ func (client *Client) ApplyQueryWithOptions(request *ApplyQueryRequest, headers 
 
 func (client *Client) CarApplyAdd(request *CarApplyAddRequest) (_result *CarApplyAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CarApplyAddHeaders{}
 	_result = &CarApplyAddResponse{}
 	_body, _err := client.CarApplyAddWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -14727,7 +17181,7 @@ func (client *Client) CarApplyAdd(request *CarApplyAddRequest) (_result *CarAppl
 	return _result, _err
 }
 
-func (client *Client) CarApplyAddWithOptions(request *CarApplyAddRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CarApplyAddResponse, _err error) {
+func (client *Client) CarApplyAddWithOptions(request *CarApplyAddRequest, headers *CarApplyAddHeaders, runtime *util.RuntimeOptions) (_result *CarApplyAddResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -14793,8 +17247,17 @@ func (client *Client) CarApplyAddWithOptions(request *CarApplyAddRequest, header
 		body["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -14819,7 +17282,7 @@ func (client *Client) CarApplyAddWithOptions(request *CarApplyAddRequest, header
 
 func (client *Client) CarApplyModify(request *CarApplyModifyRequest) (_result *CarApplyModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CarApplyModifyHeaders{}
 	_result = &CarApplyModifyResponse{}
 	_body, _err := client.CarApplyModifyWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -14829,7 +17292,7 @@ func (client *Client) CarApplyModify(request *CarApplyModifyRequest) (_result *C
 	return _result, _err
 }
 
-func (client *Client) CarApplyModifyWithOptions(request *CarApplyModifyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CarApplyModifyResponse, _err error) {
+func (client *Client) CarApplyModifyWithOptions(request *CarApplyModifyRequest, headers *CarApplyModifyHeaders, runtime *util.RuntimeOptions) (_result *CarApplyModifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -14855,8 +17318,17 @@ func (client *Client) CarApplyModifyWithOptions(request *CarApplyModifyRequest, 
 		body["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -14881,7 +17353,7 @@ func (client *Client) CarApplyModifyWithOptions(request *CarApplyModifyRequest, 
 
 func (client *Client) CarApplyQuery(request *CarApplyQueryRequest) (_result *CarApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CarApplyQueryHeaders{}
 	_result = &CarApplyQueryResponse{}
 	_body, _err := client.CarApplyQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -14891,7 +17363,7 @@ func (client *Client) CarApplyQuery(request *CarApplyQueryRequest) (_result *Car
 	return _result, _err
 }
 
-func (client *Client) CarApplyQueryWithOptions(request *CarApplyQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CarApplyQueryResponse, _err error) {
+func (client *Client) CarApplyQueryWithOptions(request *CarApplyQueryRequest, headers *CarApplyQueryHeaders, runtime *util.RuntimeOptions) (_result *CarApplyQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -14921,8 +17393,17 @@ func (client *Client) CarApplyQueryWithOptions(request *CarApplyQueryRequest, he
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -14947,7 +17428,7 @@ func (client *Client) CarApplyQueryWithOptions(request *CarApplyQueryRequest, he
 
 func (client *Client) CarBillSettlementQuery(request *CarBillSettlementQueryRequest) (_result *CarBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CarBillSettlementQueryHeaders{}
 	_result = &CarBillSettlementQueryResponse{}
 	_body, _err := client.CarBillSettlementQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -14957,7 +17438,7 @@ func (client *Client) CarBillSettlementQuery(request *CarBillSettlementQueryRequ
 	return _result, _err
 }
 
-func (client *Client) CarBillSettlementQueryWithOptions(request *CarBillSettlementQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CarBillSettlementQueryResponse, _err error) {
+func (client *Client) CarBillSettlementQueryWithOptions(request *CarBillSettlementQueryRequest, headers *CarBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *CarBillSettlementQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -14979,8 +17460,17 @@ func (client *Client) CarBillSettlementQueryWithOptions(request *CarBillSettleme
 		query["period_start"] = request.PeriodStart
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -15005,7 +17495,7 @@ func (client *Client) CarBillSettlementQueryWithOptions(request *CarBillSettleme
 
 func (client *Client) CarOrderListQuery(request *CarOrderListQueryRequest) (_result *CarOrderListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CarOrderListQueryHeaders{}
 	_result = &CarOrderListQueryResponse{}
 	_body, _err := client.CarOrderListQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15015,7 +17505,7 @@ func (client *Client) CarOrderListQuery(request *CarOrderListQueryRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) CarOrderListQueryWithOptions(request *CarOrderListQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CarOrderListQueryResponse, _err error) {
+func (client *Client) CarOrderListQueryWithOptions(request *CarOrderListQueryRequest, headers *CarOrderListQueryHeaders, runtime *util.RuntimeOptions) (_result *CarOrderListQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -15065,8 +17555,17 @@ func (client *Client) CarOrderListQueryWithOptions(request *CarOrderListQueryReq
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -15089,9 +17588,64 @@ func (client *Client) CarOrderListQueryWithOptions(request *CarOrderListQueryReq
 	return _result, _err
 }
 
+func (client *Client) CitySearch(request *CitySearchRequest) (_result *CitySearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CitySearchHeaders{}
+	_result = &CitySearchResponse{}
+	_body, _err := client.CitySearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CitySearchWithOptions(request *CitySearchRequest, headers *CitySearchHeaders, runtime *util.RuntimeOptions) (_result *CitySearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["keyword"] = request.Keyword
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CitySearch"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/city/v1/city"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CitySearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CommonApplyQuery(request *CommonApplyQueryRequest) (_result *CommonApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CommonApplyQueryHeaders{}
 	_result = &CommonApplyQueryResponse{}
 	_body, _err := client.CommonApplyQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15101,7 +17655,7 @@ func (client *Client) CommonApplyQuery(request *CommonApplyQueryRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) CommonApplyQueryWithOptions(request *CommonApplyQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CommonApplyQueryResponse, _err error) {
+func (client *Client) CommonApplyQueryWithOptions(request *CommonApplyQueryRequest, headers *CommonApplyQueryHeaders, runtime *util.RuntimeOptions) (_result *CommonApplyQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -15119,8 +17673,17 @@ func (client *Client) CommonApplyQueryWithOptions(request *CommonApplyQueryReque
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -15145,7 +17708,7 @@ func (client *Client) CommonApplyQueryWithOptions(request *CommonApplyQueryReque
 
 func (client *Client) CommonApplySync(request *CommonApplySyncRequest) (_result *CommonApplySyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CommonApplySyncHeaders{}
 	_result = &CommonApplySyncResponse{}
 	_body, _err := client.CommonApplySyncWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15155,7 +17718,7 @@ func (client *Client) CommonApplySync(request *CommonApplySyncRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) CommonApplySyncWithOptions(request *CommonApplySyncRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CommonApplySyncResponse, _err error) {
+func (client *Client) CommonApplySyncWithOptions(request *CommonApplySyncRequest, headers *CommonApplySyncHeaders, runtime *util.RuntimeOptions) (_result *CommonApplySyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -15185,8 +17748,17 @@ func (client *Client) CommonApplySyncWithOptions(request *CommonApplySyncRequest
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -15211,7 +17783,7 @@ func (client *Client) CommonApplySyncWithOptions(request *CommonApplySyncRequest
 
 func (client *Client) CorpToken(request *CorpTokenRequest) (_result *CorpTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CorpTokenHeaders{}
 	_result = &CorpTokenResponse{}
 	_body, _err := client.CorpTokenWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15221,7 +17793,7 @@ func (client *Client) CorpToken(request *CorpTokenRequest) (_result *CorpTokenRe
 	return _result, _err
 }
 
-func (client *Client) CorpTokenWithOptions(request *CorpTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CorpTokenResponse, _err error) {
+func (client *Client) CorpTokenWithOptions(request *CorpTokenRequest, headers *CorpTokenHeaders, runtime *util.RuntimeOptions) (_result *CorpTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -15235,8 +17807,17 @@ func (client *Client) CorpTokenWithOptions(request *CorpTokenRequest, headers ma
 		query["type"] = request.Type
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripAccessToken)) {
+		realHeaders["x-acs-btrip-access-token"] = util.ToJSONString(headers.XAcsBtripAccessToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -15261,7 +17842,7 @@ func (client *Client) CorpTokenWithOptions(request *CorpTokenRequest, headers ma
 
 func (client *Client) CostCenterDelete(request *CostCenterDeleteRequest) (_result *CostCenterDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CostCenterDeleteHeaders{}
 	_result = &CostCenterDeleteResponse{}
 	_body, _err := client.CostCenterDeleteWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15271,7 +17852,7 @@ func (client *Client) CostCenterDelete(request *CostCenterDeleteRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) CostCenterDeleteWithOptions(request *CostCenterDeleteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CostCenterDeleteResponse, _err error) {
+func (client *Client) CostCenterDeleteWithOptions(request *CostCenterDeleteRequest, headers *CostCenterDeleteHeaders, runtime *util.RuntimeOptions) (_result *CostCenterDeleteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -15281,8 +17862,17 @@ func (client *Client) CostCenterDeleteWithOptions(request *CostCenterDeleteReque
 		query["thirdpart_id"] = request.ThirdpartId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -15307,7 +17897,7 @@ func (client *Client) CostCenterDeleteWithOptions(request *CostCenterDeleteReque
 
 func (client *Client) CostCenterModify(request *CostCenterModifyRequest) (_result *CostCenterModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CostCenterModifyHeaders{}
 	_result = &CostCenterModifyResponse{}
 	_body, _err := client.CostCenterModifyWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15317,7 +17907,7 @@ func (client *Client) CostCenterModify(request *CostCenterModifyRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) CostCenterModifyWithOptions(request *CostCenterModifyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CostCenterModifyResponse, _err error) {
+func (client *Client) CostCenterModifyWithOptions(request *CostCenterModifyRequest, headers *CostCenterModifyHeaders, runtime *util.RuntimeOptions) (_result *CostCenterModifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -15343,8 +17933,17 @@ func (client *Client) CostCenterModifyWithOptions(request *CostCenterModifyReque
 		body["title"] = request.Title
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -15436,7 +18035,7 @@ func (client *Client) CostCenterQueryWithOptions(request *CostCenterQueryRequest
 
 func (client *Client) CostCenterSave(request *CostCenterSaveRequest) (_result *CostCenterSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CostCenterSaveHeaders{}
 	_result = &CostCenterSaveResponse{}
 	_body, _err := client.CostCenterSaveWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15446,7 +18045,7 @@ func (client *Client) CostCenterSave(request *CostCenterSaveRequest) (_result *C
 	return _result, _err
 }
 
-func (client *Client) CostCenterSaveWithOptions(request *CostCenterSaveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CostCenterSaveResponse, _err error) {
+func (client *Client) CostCenterSaveWithOptions(request *CostCenterSaveRequest, headers *CostCenterSaveHeaders, runtime *util.RuntimeOptions) (_result *CostCenterSaveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -15472,8 +18071,17 @@ func (client *Client) CostCenterSaveWithOptions(request *CostCenterSaveRequest, 
 		body["title"] = request.Title
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -15498,7 +18106,7 @@ func (client *Client) CostCenterSaveWithOptions(request *CostCenterSaveRequest, 
 
 func (client *Client) DepartmentSave(request *DepartmentSaveRequest) (_result *DepartmentSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &DepartmentSaveHeaders{}
 	_result = &DepartmentSaveResponse{}
 	_body, _err := client.DepartmentSaveWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15508,7 +18116,7 @@ func (client *Client) DepartmentSave(request *DepartmentSaveRequest) (_result *D
 	return _result, _err
 }
 
-func (client *Client) DepartmentSaveWithOptions(tmpReq *DepartmentSaveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DepartmentSaveResponse, _err error) {
+func (client *Client) DepartmentSaveWithOptions(tmpReq *DepartmentSaveRequest, headers *DepartmentSaveHeaders, runtime *util.RuntimeOptions) (_result *DepartmentSaveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
@@ -15524,8 +18132,17 @@ func (client *Client) DepartmentSaveWithOptions(tmpReq *DepartmentSaveRequest, h
 		body["depart_list"] = request.DepartListShrink
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -15550,7 +18167,7 @@ func (client *Client) DepartmentSaveWithOptions(tmpReq *DepartmentSaveRequest, h
 
 func (client *Client) EntityAdd(request *EntityAddRequest) (_result *EntityAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &EntityAddHeaders{}
 	_result = &EntityAddResponse{}
 	_body, _err := client.EntityAddWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15560,7 +18177,7 @@ func (client *Client) EntityAdd(request *EntityAddRequest) (_result *EntityAddRe
 	return _result, _err
 }
 
-func (client *Client) EntityAddWithOptions(tmpReq *EntityAddRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EntityAddResponse, _err error) {
+func (client *Client) EntityAddWithOptions(tmpReq *EntityAddRequest, headers *EntityAddHeaders, runtime *util.RuntimeOptions) (_result *EntityAddResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
@@ -15580,8 +18197,17 @@ func (client *Client) EntityAddWithOptions(tmpReq *EntityAddRequest, headers map
 		body["thirdpart_id"] = request.ThirdpartId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -15606,7 +18232,7 @@ func (client *Client) EntityAddWithOptions(tmpReq *EntityAddRequest, headers map
 
 func (client *Client) EntityDelete(request *EntityDeleteRequest) (_result *EntityDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &EntityDeleteHeaders{}
 	_result = &EntityDeleteResponse{}
 	_body, _err := client.EntityDeleteWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15616,7 +18242,7 @@ func (client *Client) EntityDelete(request *EntityDeleteRequest) (_result *Entit
 	return _result, _err
 }
 
-func (client *Client) EntityDeleteWithOptions(tmpReq *EntityDeleteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EntityDeleteResponse, _err error) {
+func (client *Client) EntityDeleteWithOptions(tmpReq *EntityDeleteRequest, headers *EntityDeleteHeaders, runtime *util.RuntimeOptions) (_result *EntityDeleteResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
@@ -15641,8 +18267,17 @@ func (client *Client) EntityDeleteWithOptions(tmpReq *EntityDeleteRequest, heade
 		body["entity_d_o_list"] = request.EntityDOListShrink
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
@@ -15668,7 +18303,7 @@ func (client *Client) EntityDeleteWithOptions(tmpReq *EntityDeleteRequest, heade
 
 func (client *Client) EntitySet(request *EntitySetRequest) (_result *EntitySetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &EntitySetHeaders{}
 	_result = &EntitySetResponse{}
 	_body, _err := client.EntitySetWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15678,7 +18313,7 @@ func (client *Client) EntitySet(request *EntitySetRequest) (_result *EntitySetRe
 	return _result, _err
 }
 
-func (client *Client) EntitySetWithOptions(tmpReq *EntitySetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EntitySetResponse, _err error) {
+func (client *Client) EntitySetWithOptions(tmpReq *EntitySetRequest, headers *EntitySetHeaders, runtime *util.RuntimeOptions) (_result *EntitySetResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
@@ -15698,8 +18333,17 @@ func (client *Client) EntitySetWithOptions(tmpReq *EntitySetRequest, headers map
 		body["thirdpart_id"] = request.ThirdpartId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -15724,7 +18368,7 @@ func (client *Client) EntitySetWithOptions(tmpReq *EntitySetRequest, headers map
 
 func (client *Client) ExceedApplySync(request *ExceedApplySyncRequest) (_result *ExceedApplySyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ExceedApplySyncHeaders{}
 	_result = &ExceedApplySyncResponse{}
 	_body, _err := client.ExceedApplySyncWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15734,7 +18378,7 @@ func (client *Client) ExceedApplySync(request *ExceedApplySyncRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) ExceedApplySyncWithOptions(request *ExceedApplySyncRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExceedApplySyncResponse, _err error) {
+func (client *Client) ExceedApplySyncWithOptions(request *ExceedApplySyncRequest, headers *ExceedApplySyncHeaders, runtime *util.RuntimeOptions) (_result *ExceedApplySyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -15764,8 +18408,17 @@ func (client *Client) ExceedApplySyncWithOptions(request *ExceedApplySyncRequest
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -15790,7 +18443,7 @@ func (client *Client) ExceedApplySyncWithOptions(request *ExceedApplySyncRequest
 
 func (client *Client) FlightBillSettlementQuery(request *FlightBillSettlementQueryRequest) (_result *FlightBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &FlightBillSettlementQueryHeaders{}
 	_result = &FlightBillSettlementQueryResponse{}
 	_body, _err := client.FlightBillSettlementQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15800,7 +18453,7 @@ func (client *Client) FlightBillSettlementQuery(request *FlightBillSettlementQue
 	return _result, _err
 }
 
-func (client *Client) FlightBillSettlementQueryWithOptions(request *FlightBillSettlementQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FlightBillSettlementQueryResponse, _err error) {
+func (client *Client) FlightBillSettlementQueryWithOptions(request *FlightBillSettlementQueryRequest, headers *FlightBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *FlightBillSettlementQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -15822,8 +18475,17 @@ func (client *Client) FlightBillSettlementQueryWithOptions(request *FlightBillSe
 		query["period_start"] = request.PeriodStart
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -15848,7 +18510,7 @@ func (client *Client) FlightBillSettlementQueryWithOptions(request *FlightBillSe
 
 func (client *Client) FlightExceedApplyQuery(request *FlightExceedApplyQueryRequest) (_result *FlightExceedApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &FlightExceedApplyQueryHeaders{}
 	_result = &FlightExceedApplyQueryResponse{}
 	_body, _err := client.FlightExceedApplyQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15858,7 +18520,7 @@ func (client *Client) FlightExceedApplyQuery(request *FlightExceedApplyQueryRequ
 	return _result, _err
 }
 
-func (client *Client) FlightExceedApplyQueryWithOptions(request *FlightExceedApplyQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FlightExceedApplyQueryResponse, _err error) {
+func (client *Client) FlightExceedApplyQueryWithOptions(request *FlightExceedApplyQueryRequest, headers *FlightExceedApplyQueryHeaders, runtime *util.RuntimeOptions) (_result *FlightExceedApplyQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -15868,8 +18530,17 @@ func (client *Client) FlightExceedApplyQueryWithOptions(request *FlightExceedApp
 		query["apply_id"] = request.ApplyId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -15894,7 +18565,7 @@ func (client *Client) FlightExceedApplyQueryWithOptions(request *FlightExceedApp
 
 func (client *Client) FlightOrderListQuery(request *FlightOrderListQueryRequest) (_result *FlightOrderListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &FlightOrderListQueryHeaders{}
 	_result = &FlightOrderListQueryResponse{}
 	_body, _err := client.FlightOrderListQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15904,7 +18575,7 @@ func (client *Client) FlightOrderListQuery(request *FlightOrderListQueryRequest)
 	return _result, _err
 }
 
-func (client *Client) FlightOrderListQueryWithOptions(request *FlightOrderListQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FlightOrderListQueryResponse, _err error) {
+func (client *Client) FlightOrderListQueryWithOptions(request *FlightOrderListQueryRequest, headers *FlightOrderListQueryHeaders, runtime *util.RuntimeOptions) (_result *FlightOrderListQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -15954,8 +18625,17 @@ func (client *Client) FlightOrderListQueryWithOptions(request *FlightOrderListQu
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -15980,7 +18660,7 @@ func (client *Client) FlightOrderListQueryWithOptions(request *FlightOrderListQu
 
 func (client *Client) FlightOrderQuery(request *FlightOrderQueryRequest) (_result *FlightOrderQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &FlightOrderQueryHeaders{}
 	_result = &FlightOrderQueryResponse{}
 	_body, _err := client.FlightOrderQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -15990,7 +18670,7 @@ func (client *Client) FlightOrderQuery(request *FlightOrderQueryRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) FlightOrderQueryWithOptions(request *FlightOrderQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FlightOrderQueryResponse, _err error) {
+func (client *Client) FlightOrderQueryWithOptions(request *FlightOrderQueryRequest, headers *FlightOrderQueryHeaders, runtime *util.RuntimeOptions) (_result *FlightOrderQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16004,8 +18684,17 @@ func (client *Client) FlightOrderQueryWithOptions(request *FlightOrderQueryReque
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -16030,7 +18719,7 @@ func (client *Client) FlightOrderQueryWithOptions(request *FlightOrderQueryReque
 
 func (client *Client) HotelBillSettlementQuery(request *HotelBillSettlementQueryRequest) (_result *HotelBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &HotelBillSettlementQueryHeaders{}
 	_result = &HotelBillSettlementQueryResponse{}
 	_body, _err := client.HotelBillSettlementQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16040,7 +18729,7 @@ func (client *Client) HotelBillSettlementQuery(request *HotelBillSettlementQuery
 	return _result, _err
 }
 
-func (client *Client) HotelBillSettlementQueryWithOptions(request *HotelBillSettlementQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *HotelBillSettlementQueryResponse, _err error) {
+func (client *Client) HotelBillSettlementQueryWithOptions(request *HotelBillSettlementQueryRequest, headers *HotelBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *HotelBillSettlementQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16062,8 +18751,17 @@ func (client *Client) HotelBillSettlementQueryWithOptions(request *HotelBillSett
 		query["period_start"] = request.PeriodStart
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -16088,7 +18786,7 @@ func (client *Client) HotelBillSettlementQueryWithOptions(request *HotelBillSett
 
 func (client *Client) HotelExceedApplyQuery(request *HotelExceedApplyQueryRequest) (_result *HotelExceedApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &HotelExceedApplyQueryHeaders{}
 	_result = &HotelExceedApplyQueryResponse{}
 	_body, _err := client.HotelExceedApplyQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16098,7 +18796,7 @@ func (client *Client) HotelExceedApplyQuery(request *HotelExceedApplyQueryReques
 	return _result, _err
 }
 
-func (client *Client) HotelExceedApplyQueryWithOptions(request *HotelExceedApplyQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *HotelExceedApplyQueryResponse, _err error) {
+func (client *Client) HotelExceedApplyQueryWithOptions(request *HotelExceedApplyQueryRequest, headers *HotelExceedApplyQueryHeaders, runtime *util.RuntimeOptions) (_result *HotelExceedApplyQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16108,8 +18806,17 @@ func (client *Client) HotelExceedApplyQueryWithOptions(request *HotelExceedApply
 		query["apply_id"] = request.ApplyId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -16134,7 +18841,7 @@ func (client *Client) HotelExceedApplyQueryWithOptions(request *HotelExceedApply
 
 func (client *Client) HotelOrderListQuery(request *HotelOrderListQueryRequest) (_result *HotelOrderListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &HotelOrderListQueryHeaders{}
 	_result = &HotelOrderListQueryResponse{}
 	_body, _err := client.HotelOrderListQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16144,7 +18851,7 @@ func (client *Client) HotelOrderListQuery(request *HotelOrderListQueryRequest) (
 	return _result, _err
 }
 
-func (client *Client) HotelOrderListQueryWithOptions(request *HotelOrderListQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *HotelOrderListQueryResponse, _err error) {
+func (client *Client) HotelOrderListQueryWithOptions(request *HotelOrderListQueryRequest, headers *HotelOrderListQueryHeaders, runtime *util.RuntimeOptions) (_result *HotelOrderListQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16194,8 +18901,17 @@ func (client *Client) HotelOrderListQueryWithOptions(request *HotelOrderListQuer
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -16218,9 +18934,76 @@ func (client *Client) HotelOrderListQueryWithOptions(request *HotelOrderListQuer
 	return _result, _err
 }
 
+func (client *Client) IeFlightBillSettlementQuery(request *IeFlightBillSettlementQueryRequest) (_result *IeFlightBillSettlementQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &IeFlightBillSettlementQueryHeaders{}
+	_result = &IeFlightBillSettlementQueryResponse{}
+	_body, _err := client.IeFlightBillSettlementQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) IeFlightBillSettlementQueryWithOptions(request *IeFlightBillSettlementQueryRequest, headers *IeFlightBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *IeFlightBillSettlementQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["page_no"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodEnd)) {
+		query["period_end"] = request.PeriodEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodStart)) {
+		query["period_start"] = request.PeriodStart
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IeFlightBillSettlementQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ie-flight/v1/bill-settlement"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IeFlightBillSettlementQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) InvoiceAdd(request *InvoiceAddRequest) (_result *InvoiceAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &InvoiceAddHeaders{}
 	_result = &InvoiceAddResponse{}
 	_body, _err := client.InvoiceAddWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16230,7 +19013,7 @@ func (client *Client) InvoiceAdd(request *InvoiceAddRequest) (_result *InvoiceAd
 	return _result, _err
 }
 
-func (client *Client) InvoiceAddWithOptions(request *InvoiceAddRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InvoiceAddResponse, _err error) {
+func (client *Client) InvoiceAddWithOptions(request *InvoiceAddRequest, headers *InvoiceAddHeaders, runtime *util.RuntimeOptions) (_result *InvoiceAddResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16268,8 +19051,17 @@ func (client *Client) InvoiceAddWithOptions(request *InvoiceAddRequest, headers 
 		body["type"] = request.Type
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -16294,7 +19086,7 @@ func (client *Client) InvoiceAddWithOptions(request *InvoiceAddRequest, headers 
 
 func (client *Client) InvoiceDelete(request *InvoiceDeleteRequest) (_result *InvoiceDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &InvoiceDeleteHeaders{}
 	_result = &InvoiceDeleteResponse{}
 	_body, _err := client.InvoiceDeleteWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16304,7 +19096,7 @@ func (client *Client) InvoiceDelete(request *InvoiceDeleteRequest) (_result *Inv
 	return _result, _err
 }
 
-func (client *Client) InvoiceDeleteWithOptions(request *InvoiceDeleteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InvoiceDeleteResponse, _err error) {
+func (client *Client) InvoiceDeleteWithOptions(request *InvoiceDeleteRequest, headers *InvoiceDeleteHeaders, runtime *util.RuntimeOptions) (_result *InvoiceDeleteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16314,8 +19106,17 @@ func (client *Client) InvoiceDeleteWithOptions(request *InvoiceDeleteRequest, he
 		query["third_part_id"] = request.ThirdPartId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -16340,7 +19141,7 @@ func (client *Client) InvoiceDeleteWithOptions(request *InvoiceDeleteRequest, he
 
 func (client *Client) InvoiceModify(request *InvoiceModifyRequest) (_result *InvoiceModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &InvoiceModifyHeaders{}
 	_result = &InvoiceModifyResponse{}
 	_body, _err := client.InvoiceModifyWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16350,7 +19151,7 @@ func (client *Client) InvoiceModify(request *InvoiceModifyRequest) (_result *Inv
 	return _result, _err
 }
 
-func (client *Client) InvoiceModifyWithOptions(request *InvoiceModifyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InvoiceModifyResponse, _err error) {
+func (client *Client) InvoiceModifyWithOptions(request *InvoiceModifyRequest, headers *InvoiceModifyHeaders, runtime *util.RuntimeOptions) (_result *InvoiceModifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16388,8 +19189,17 @@ func (client *Client) InvoiceModifyWithOptions(request *InvoiceModifyRequest, he
 		body["type"] = request.Type
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -16414,7 +19224,7 @@ func (client *Client) InvoiceModifyWithOptions(request *InvoiceModifyRequest, he
 
 func (client *Client) InvoiceRuleSave(request *InvoiceRuleSaveRequest) (_result *InvoiceRuleSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &InvoiceRuleSaveHeaders{}
 	_result = &InvoiceRuleSaveResponse{}
 	_body, _err := client.InvoiceRuleSaveWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16424,7 +19234,7 @@ func (client *Client) InvoiceRuleSave(request *InvoiceRuleSaveRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) InvoiceRuleSaveWithOptions(tmpReq *InvoiceRuleSaveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InvoiceRuleSaveResponse, _err error) {
+func (client *Client) InvoiceRuleSaveWithOptions(tmpReq *InvoiceRuleSaveRequest, headers *InvoiceRuleSaveHeaders, runtime *util.RuntimeOptions) (_result *InvoiceRuleSaveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
@@ -16448,8 +19258,17 @@ func (client *Client) InvoiceRuleSaveWithOptions(tmpReq *InvoiceRuleSaveRequest,
 		body["third_part_id"] = request.ThirdPartId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -16474,7 +19293,7 @@ func (client *Client) InvoiceRuleSaveWithOptions(tmpReq *InvoiceRuleSaveRequest,
 
 func (client *Client) InvoiceSearch(request *InvoiceSearchRequest) (_result *InvoiceSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &InvoiceSearchHeaders{}
 	_result = &InvoiceSearchResponse{}
 	_body, _err := client.InvoiceSearchWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16484,7 +19303,7 @@ func (client *Client) InvoiceSearch(request *InvoiceSearchRequest) (_result *Inv
 	return _result, _err
 }
 
-func (client *Client) InvoiceSearchWithOptions(request *InvoiceSearchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InvoiceSearchResponse, _err error) {
+func (client *Client) InvoiceSearchWithOptions(request *InvoiceSearchRequest, headers *InvoiceSearchHeaders, runtime *util.RuntimeOptions) (_result *InvoiceSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16498,8 +19317,17 @@ func (client *Client) InvoiceSearchWithOptions(request *InvoiceSearchRequest, he
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -16524,7 +19352,7 @@ func (client *Client) InvoiceSearchWithOptions(request *InvoiceSearchRequest, he
 
 func (client *Client) IsvUserSave(request *IsvUserSaveRequest) (_result *IsvUserSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &IsvUserSaveHeaders{}
 	_result = &IsvUserSaveResponse{}
 	_body, _err := client.IsvUserSaveWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16534,7 +19362,7 @@ func (client *Client) IsvUserSave(request *IsvUserSaveRequest) (_result *IsvUser
 	return _result, _err
 }
 
-func (client *Client) IsvUserSaveWithOptions(tmpReq *IsvUserSaveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *IsvUserSaveResponse, _err error) {
+func (client *Client) IsvUserSaveWithOptions(tmpReq *IsvUserSaveRequest, headers *IsvUserSaveHeaders, runtime *util.RuntimeOptions) (_result *IsvUserSaveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
@@ -16550,8 +19378,17 @@ func (client *Client) IsvUserSaveWithOptions(tmpReq *IsvUserSaveRequest, headers
 		body["user_list"] = request.UserListShrink
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -16576,7 +19413,7 @@ func (client *Client) IsvUserSaveWithOptions(tmpReq *IsvUserSaveRequest, headers
 
 func (client *Client) MonthBillGet(request *MonthBillGetRequest) (_result *MonthBillGetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &MonthBillGetHeaders{}
 	_result = &MonthBillGetResponse{}
 	_body, _err := client.MonthBillGetWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16586,7 +19423,7 @@ func (client *Client) MonthBillGet(request *MonthBillGetRequest) (_result *Month
 	return _result, _err
 }
 
-func (client *Client) MonthBillGetWithOptions(request *MonthBillGetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *MonthBillGetResponse, _err error) {
+func (client *Client) MonthBillGetWithOptions(request *MonthBillGetRequest, headers *MonthBillGetHeaders, runtime *util.RuntimeOptions) (_result *MonthBillGetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16596,8 +19433,17 @@ func (client *Client) MonthBillGetWithOptions(request *MonthBillGetRequest, head
 		query["bill_month"] = request.BillMonth
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -16622,7 +19468,7 @@ func (client *Client) MonthBillGetWithOptions(request *MonthBillGetRequest, head
 
 func (client *Client) ProjectAdd(request *ProjectAddRequest) (_result *ProjectAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ProjectAddHeaders{}
 	_result = &ProjectAddResponse{}
 	_body, _err := client.ProjectAddWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16632,7 +19478,7 @@ func (client *Client) ProjectAdd(request *ProjectAddRequest) (_result *ProjectAd
 	return _result, _err
 }
 
-func (client *Client) ProjectAddWithOptions(request *ProjectAddRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ProjectAddResponse, _err error) {
+func (client *Client) ProjectAddWithOptions(request *ProjectAddRequest, headers *ProjectAddHeaders, runtime *util.RuntimeOptions) (_result *ProjectAddResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16658,8 +19504,17 @@ func (client *Client) ProjectAddWithOptions(request *ProjectAddRequest, headers 
 		body["third_part_invoice_id"] = request.ThirdPartInvoiceId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -16684,7 +19539,7 @@ func (client *Client) ProjectAddWithOptions(request *ProjectAddRequest, headers 
 
 func (client *Client) ProjectDelete(request *ProjectDeleteRequest) (_result *ProjectDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ProjectDeleteHeaders{}
 	_result = &ProjectDeleteResponse{}
 	_body, _err := client.ProjectDeleteWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16694,7 +19549,7 @@ func (client *Client) ProjectDelete(request *ProjectDeleteRequest) (_result *Pro
 	return _result, _err
 }
 
-func (client *Client) ProjectDeleteWithOptions(request *ProjectDeleteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ProjectDeleteResponse, _err error) {
+func (client *Client) ProjectDeleteWithOptions(request *ProjectDeleteRequest, headers *ProjectDeleteHeaders, runtime *util.RuntimeOptions) (_result *ProjectDeleteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16704,8 +19559,17 @@ func (client *Client) ProjectDeleteWithOptions(request *ProjectDeleteRequest, he
 		query["third_part_id"] = request.ThirdPartId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -16730,7 +19594,7 @@ func (client *Client) ProjectDeleteWithOptions(request *ProjectDeleteRequest, he
 
 func (client *Client) ProjectModify(request *ProjectModifyRequest) (_result *ProjectModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ProjectModifyHeaders{}
 	_result = &ProjectModifyResponse{}
 	_body, _err := client.ProjectModifyWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16740,7 +19604,7 @@ func (client *Client) ProjectModify(request *ProjectModifyRequest) (_result *Pro
 	return _result, _err
 }
 
-func (client *Client) ProjectModifyWithOptions(request *ProjectModifyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ProjectModifyResponse, _err error) {
+func (client *Client) ProjectModifyWithOptions(request *ProjectModifyRequest, headers *ProjectModifyHeaders, runtime *util.RuntimeOptions) (_result *ProjectModifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16766,8 +19630,17 @@ func (client *Client) ProjectModifyWithOptions(request *ProjectModifyRequest, he
 		body["third_part_invoice_id"] = request.ThirdPartInvoiceId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -16792,7 +19665,7 @@ func (client *Client) ProjectModifyWithOptions(request *ProjectModifyRequest, he
 
 func (client *Client) TrainBillSettlementQuery(request *TrainBillSettlementQueryRequest) (_result *TrainBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &TrainBillSettlementQueryHeaders{}
 	_result = &TrainBillSettlementQueryResponse{}
 	_body, _err := client.TrainBillSettlementQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16802,7 +19675,7 @@ func (client *Client) TrainBillSettlementQuery(request *TrainBillSettlementQuery
 	return _result, _err
 }
 
-func (client *Client) TrainBillSettlementQueryWithOptions(request *TrainBillSettlementQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TrainBillSettlementQueryResponse, _err error) {
+func (client *Client) TrainBillSettlementQueryWithOptions(request *TrainBillSettlementQueryRequest, headers *TrainBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *TrainBillSettlementQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16824,8 +19697,17 @@ func (client *Client) TrainBillSettlementQueryWithOptions(request *TrainBillSett
 		query["period_start"] = request.PeriodStart
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -16850,7 +19732,7 @@ func (client *Client) TrainBillSettlementQueryWithOptions(request *TrainBillSett
 
 func (client *Client) TrainExceedApplyQuery(request *TrainExceedApplyQueryRequest) (_result *TrainExceedApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &TrainExceedApplyQueryHeaders{}
 	_result = &TrainExceedApplyQueryResponse{}
 	_body, _err := client.TrainExceedApplyQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16860,7 +19742,7 @@ func (client *Client) TrainExceedApplyQuery(request *TrainExceedApplyQueryReques
 	return _result, _err
 }
 
-func (client *Client) TrainExceedApplyQueryWithOptions(request *TrainExceedApplyQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TrainExceedApplyQueryResponse, _err error) {
+func (client *Client) TrainExceedApplyQueryWithOptions(request *TrainExceedApplyQueryRequest, headers *TrainExceedApplyQueryHeaders, runtime *util.RuntimeOptions) (_result *TrainExceedApplyQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16870,8 +19752,17 @@ func (client *Client) TrainExceedApplyQueryWithOptions(request *TrainExceedApply
 		query["apply_id"] = request.ApplyId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -16896,7 +19787,7 @@ func (client *Client) TrainExceedApplyQueryWithOptions(request *TrainExceedApply
 
 func (client *Client) TrainOrderListQuery(request *TrainOrderListQueryRequest) (_result *TrainOrderListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &TrainOrderListQueryHeaders{}
 	_result = &TrainOrderListQueryResponse{}
 	_body, _err := client.TrainOrderListQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16906,7 +19797,7 @@ func (client *Client) TrainOrderListQuery(request *TrainOrderListQueryRequest) (
 	return _result, _err
 }
 
-func (client *Client) TrainOrderListQueryWithOptions(request *TrainOrderListQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TrainOrderListQueryResponse, _err error) {
+func (client *Client) TrainOrderListQueryWithOptions(request *TrainOrderListQueryRequest, headers *TrainOrderListQueryHeaders, runtime *util.RuntimeOptions) (_result *TrainOrderListQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -16956,8 +19847,17 @@ func (client *Client) TrainOrderListQueryWithOptions(request *TrainOrderListQuer
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -16982,7 +19882,7 @@ func (client *Client) TrainOrderListQueryWithOptions(request *TrainOrderListQuer
 
 func (client *Client) TrainOrderQuery(request *TrainOrderQueryRequest) (_result *TrainOrderQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &TrainOrderQueryHeaders{}
 	_result = &TrainOrderQueryResponse{}
 	_body, _err := client.TrainOrderQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -16992,7 +19892,7 @@ func (client *Client) TrainOrderQuery(request *TrainOrderQueryRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) TrainOrderQueryWithOptions(request *TrainOrderQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TrainOrderQueryResponse, _err error) {
+func (client *Client) TrainOrderQueryWithOptions(request *TrainOrderQueryRequest, headers *TrainOrderQueryHeaders, runtime *util.RuntimeOptions) (_result *TrainOrderQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -17006,8 +19906,17 @@ func (client *Client) TrainOrderQueryWithOptions(request *TrainOrderQueryRequest
 		query["user_id"] = request.UserId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
@@ -17030,9 +19939,64 @@ func (client *Client) TrainOrderQueryWithOptions(request *TrainOrderQueryRequest
 	return _result, _err
 }
 
+func (client *Client) TrainStationSearch(request *TrainStationSearchRequest) (_result *TrainStationSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &TrainStationSearchHeaders{}
+	_result = &TrainStationSearchResponse{}
+	_body, _err := client.TrainStationSearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TrainStationSearchWithOptions(request *TrainStationSearchRequest, headers *TrainStationSearchHeaders, runtime *util.RuntimeOptions) (_result *TrainStationSearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["keyword"] = request.Keyword
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TrainStationSearch"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/city/v1/train"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TrainStationSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) UserQuery(request *UserQueryRequest) (_result *UserQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &UserQueryHeaders{}
 	_result = &UserQueryResponse{}
 	_body, _err := client.UserQueryWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -17042,7 +20006,7 @@ func (client *Client) UserQuery(request *UserQueryRequest) (_result *UserQueryRe
 	return _result, _err
 }
 
-func (client *Client) UserQueryWithOptions(request *UserQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UserQueryResponse, _err error) {
+func (client *Client) UserQueryWithOptions(request *UserQueryRequest, headers *UserQueryHeaders, runtime *util.RuntimeOptions) (_result *UserQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -17052,12 +20016,29 @@ func (client *Client) UserQueryWithOptions(request *UserQueryRequest, headers ma
 		query["modified_time_greater_or_equal_than"] = request.ModifiedTimeGreaterOrEqualThan
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageToken)) {
+		query["page_token"] = request.PageToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ThirdPartJobNo)) {
 		query["third_part_job_no"] = request.ThirdPartJobNo
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
