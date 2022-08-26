@@ -23549,24 +23549,25 @@ func (s *DescribeIpv6GatewaysResponse) SetBody(v *DescribeIpv6GatewaysResponseBo
 }
 
 type DescribeNatGatewaysRequest struct {
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	InstanceChargeType   *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NatGatewayId         *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	NatType              *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	NetworkType          *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Spec                 *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	DryRun               *bool                            `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	InstanceChargeType   *string                          `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	Name                 *string                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	NatGatewayId         *string                          `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NatType              *string                          `json:"NatType,omitempty" xml:"NatType,omitempty"`
+	NetworkType          *string                          `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OwnerAccount         *string                          `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Spec                 *string                          `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Status               *string                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag                  []*DescribeNatGatewaysRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VpcId                *string                          `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId               *string                          `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeNatGatewaysRequest) String() string {
@@ -23657,6 +23658,11 @@ func (s *DescribeNatGatewaysRequest) SetStatus(v string) *DescribeNatGatewaysReq
 	return s
 }
 
+func (s *DescribeNatGatewaysRequest) SetTag(v []*DescribeNatGatewaysRequestTag) *DescribeNatGatewaysRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *DescribeNatGatewaysRequest) SetVpcId(v string) *DescribeNatGatewaysRequest {
 	s.VpcId = &v
 	return s
@@ -23664,6 +23670,29 @@ func (s *DescribeNatGatewaysRequest) SetVpcId(v string) *DescribeNatGatewaysRequ
 
 func (s *DescribeNatGatewaysRequest) SetZoneId(v string) *DescribeNatGatewaysRequest {
 	s.ZoneId = &v
+	return s
+}
+
+type DescribeNatGatewaysRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeNatGatewaysRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatGatewaysRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatGatewaysRequestTag) SetKey(v string) *DescribeNatGatewaysRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysRequestTag) SetValue(v string) *DescribeNatGatewaysRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -23752,6 +23781,7 @@ type DescribeNatGatewaysResponseBodyNatGatewaysNatGateway struct {
 	SnatTableIds              *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewaySnatTableIds          `json:"SnatTableIds,omitempty" xml:"SnatTableIds,omitempty" type:"Struct"`
 	Spec                      *string                                                                    `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	Status                    *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                      *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags                  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	VpcId                     *string                                                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -23890,6 +23920,11 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetSpec(v string)
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetStatus(v string) *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetTags(v *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags) *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway {
+	s.Tags = v
 	return s
 }
 
@@ -24063,6 +24098,46 @@ func (s DescribeNatGatewaysResponseBodyNatGatewaysNatGatewaySnatTableIds) GoStri
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewaySnatTableIds) SetSnatTableId(v []*string) *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewaySnatTableIds {
 	s.SnatTableId = v
+	return s
+}
+
+type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags struct {
+	Tag []*DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags) SetTag(v []*DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag) *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag) SetTagKey(v string) *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag) SetTagValue(v string) *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -35879,6 +35954,105 @@ func (s *GetDhcpOptionsSetResponse) SetStatusCode(v int32) *GetDhcpOptionsSetRes
 }
 
 func (s *GetDhcpOptionsSetResponse) SetBody(v *GetDhcpOptionsSetResponseBody) *GetDhcpOptionsSetResponse {
+	s.Body = v
+	return s
+}
+
+type GetFlowLogServiceStatusRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetFlowLogServiceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowLogServiceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowLogServiceStatusRequest) SetClientToken(v string) *GetFlowLogServiceStatusRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetFlowLogServiceStatusRequest) SetOwnerAccount(v string) *GetFlowLogServiceStatusRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetFlowLogServiceStatusRequest) SetOwnerId(v int64) *GetFlowLogServiceStatusRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetFlowLogServiceStatusRequest) SetRegionId(v string) *GetFlowLogServiceStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetFlowLogServiceStatusRequest) SetResourceOwnerAccount(v string) *GetFlowLogServiceStatusRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetFlowLogServiceStatusRequest) SetResourceOwnerId(v int64) *GetFlowLogServiceStatusRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetFlowLogServiceStatusResponseBody struct {
+	Enabled   *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetFlowLogServiceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowLogServiceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowLogServiceStatusResponseBody) SetEnabled(v bool) *GetFlowLogServiceStatusResponseBody {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetFlowLogServiceStatusResponseBody) SetRequestId(v string) *GetFlowLogServiceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetFlowLogServiceStatusResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFlowLogServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFlowLogServiceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowLogServiceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowLogServiceStatusResponse) SetHeaders(v map[string]*string) *GetFlowLogServiceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFlowLogServiceStatusResponse) SetStatusCode(v int32) *GetFlowLogServiceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFlowLogServiceStatusResponse) SetBody(v *GetFlowLogServiceStatusResponseBody) *GetFlowLogServiceStatusResponse {
 	s.Body = v
 	return s
 }
@@ -48346,6 +48520,99 @@ func (s *MoveResourceGroupResponse) SetStatusCode(v int32) *MoveResourceGroupRes
 }
 
 func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *MoveResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
+type OpenFlowLogServiceRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s OpenFlowLogServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenFlowLogServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenFlowLogServiceRequest) SetClientToken(v string) *OpenFlowLogServiceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *OpenFlowLogServiceRequest) SetOwnerAccount(v string) *OpenFlowLogServiceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *OpenFlowLogServiceRequest) SetOwnerId(v int64) *OpenFlowLogServiceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *OpenFlowLogServiceRequest) SetRegionId(v string) *OpenFlowLogServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *OpenFlowLogServiceRequest) SetResourceOwnerAccount(v string) *OpenFlowLogServiceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *OpenFlowLogServiceRequest) SetResourceOwnerId(v int64) *OpenFlowLogServiceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type OpenFlowLogServiceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s OpenFlowLogServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenFlowLogServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenFlowLogServiceResponseBody) SetRequestId(v string) *OpenFlowLogServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type OpenFlowLogServiceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenFlowLogServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OpenFlowLogServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenFlowLogServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenFlowLogServiceResponse) SetHeaders(v map[string]*string) *OpenFlowLogServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenFlowLogServiceResponse) SetStatusCode(v int32) *OpenFlowLogServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OpenFlowLogServiceResponse) SetBody(v *OpenFlowLogServiceResponseBody) *OpenFlowLogServiceResponse {
 	s.Body = v
 	return s
 }
@@ -65903,6 +66170,10 @@ func (client *Client) DescribeNatGatewaysWithOptions(request *DescribeNatGateway
 		query["Status"] = request.Status
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
 		query["VpcId"] = request.VpcId
 	}
@@ -69466,6 +69737,74 @@ func (client *Client) GetDhcpOptionsSet(request *GetDhcpOptionsSetRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDhcpOptionsSetResponse{}
 	_body, _err := client.GetDhcpOptionsSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFlowLogServiceStatusWithOptions(request *GetFlowLogServiceStatusRequest, runtime *util.RuntimeOptions) (_result *GetFlowLogServiceStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFlowLogServiceStatus"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFlowLogServiceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFlowLogServiceStatus(request *GetFlowLogServiceStatusRequest) (_result *GetFlowLogServiceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFlowLogServiceStatusResponse{}
+	_body, _err := client.GetFlowLogServiceStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -75710,6 +76049,74 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &MoveResourceGroupResponse{}
 	_body, _err := client.MoveResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) OpenFlowLogServiceWithOptions(request *OpenFlowLogServiceRequest, runtime *util.RuntimeOptions) (_result *OpenFlowLogServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenFlowLogService"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OpenFlowLogServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OpenFlowLogService(request *OpenFlowLogServiceRequest) (_result *OpenFlowLogServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OpenFlowLogServiceResponse{}
+	_body, _err := client.OpenFlowLogServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
