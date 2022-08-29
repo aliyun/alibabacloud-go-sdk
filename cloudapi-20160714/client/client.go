@@ -6347,6 +6347,7 @@ type DescribeApiGroupResponseBody struct {
 	BasePath             *string                                    `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
 	BillingStatus        *string                                    `json:"BillingStatus,omitempty" xml:"BillingStatus,omitempty"`
 	ClassicVpcSubDomain  *string                                    `json:"ClassicVpcSubDomain,omitempty" xml:"ClassicVpcSubDomain,omitempty"`
+	CloudMarketCommodity *bool                                      `json:"CloudMarketCommodity,omitempty" xml:"CloudMarketCommodity,omitempty"`
 	CmsMonitorGroup      *string                                    `json:"CmsMonitorGroup,omitempty" xml:"CmsMonitorGroup,omitempty"`
 	CompatibleFlags      *string                                    `json:"CompatibleFlags,omitempty" xml:"CompatibleFlags,omitempty"`
 	CreatedTime          *string                                    `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
@@ -6397,6 +6398,11 @@ func (s *DescribeApiGroupResponseBody) SetBillingStatus(v string) *DescribeApiGr
 
 func (s *DescribeApiGroupResponseBody) SetClassicVpcSubDomain(v string) *DescribeApiGroupResponseBody {
 	s.ClassicVpcSubDomain = &v
+	return s
+}
+
+func (s *DescribeApiGroupResponseBody) SetCloudMarketCommodity(v bool) *DescribeApiGroupResponseBody {
+	s.CloudMarketCommodity = &v
 	return s
 }
 
@@ -9707,7 +9713,9 @@ func (s *DescribeApiTrafficDataResponse) SetBody(v *DescribeApiTrafficDataRespon
 
 type DescribeApisRequest struct {
 	ApiId         *string                   `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiMethod     *string                   `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
 	ApiName       *string                   `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiPath       *string                   `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
 	CatalogId     *string                   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
 	EnableTagAuth *bool                     `json:"EnableTagAuth,omitempty" xml:"EnableTagAuth,omitempty"`
 	GroupId       *string                   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -9715,6 +9723,7 @@ type DescribeApisRequest struct {
 	PageSize      *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string                   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	Tag           []*DescribeApisRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UnDeployed    *bool                     `json:"UnDeployed,omitempty" xml:"UnDeployed,omitempty"`
 	Visibility    *string                   `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
@@ -9731,8 +9740,18 @@ func (s *DescribeApisRequest) SetApiId(v string) *DescribeApisRequest {
 	return s
 }
 
+func (s *DescribeApisRequest) SetApiMethod(v string) *DescribeApisRequest {
+	s.ApiMethod = &v
+	return s
+}
+
 func (s *DescribeApisRequest) SetApiName(v string) *DescribeApisRequest {
 	s.ApiName = &v
+	return s
+}
+
+func (s *DescribeApisRequest) SetApiPath(v string) *DescribeApisRequest {
+	s.ApiPath = &v
 	return s
 }
 
@@ -9768,6 +9787,11 @@ func (s *DescribeApisRequest) SetSecurityToken(v string) *DescribeApisRequest {
 
 func (s *DescribeApisRequest) SetTag(v []*DescribeApisRequestTag) *DescribeApisRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *DescribeApisRequest) SetUnDeployed(v bool) *DescribeApisRequest {
+	s.UnDeployed = &v
 	return s
 }
 
@@ -9859,7 +9883,9 @@ func (s *DescribeApisResponseBodyApiSummarys) SetApiSummary(v []*DescribeApisRes
 
 type DescribeApisResponseBodyApiSummarysApiSummary struct {
 	ApiId        *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiMethod    *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
 	ApiName      *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiPath      *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
 	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -9882,8 +9908,18 @@ func (s *DescribeApisResponseBodyApiSummarysApiSummary) SetApiId(v string) *Desc
 	return s
 }
 
+func (s *DescribeApisResponseBodyApiSummarysApiSummary) SetApiMethod(v string) *DescribeApisResponseBodyApiSummarysApiSummary {
+	s.ApiMethod = &v
+	return s
+}
+
 func (s *DescribeApisResponseBodyApiSummarysApiSummary) SetApiName(v string) *DescribeApisResponseBodyApiSummarysApiSummary {
 	s.ApiName = &v
+	return s
+}
+
+func (s *DescribeApisResponseBodyApiSummarysApiSummary) SetApiPath(v string) *DescribeApisResponseBodyApiSummarysApiSummary {
+	s.ApiPath = &v
 	return s
 }
 
@@ -12313,12 +12349,13 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOss
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Port        *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
-	VpcAccessId *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcScheme   *string `json:"VpcScheme,omitempty" xml:"VpcScheme,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port              *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
+	VpcAccessId       *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
+	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcScheme         *string `json:"VpcScheme,omitempty" xml:"VpcScheme,omitempty"`
+	VpcTargetHostName *string `json:"VpcTargetHostName,omitempty" xml:"VpcTargetHostName,omitempty"`
 }
 
 func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) String() string {
@@ -12356,6 +12393,11 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpc
 
 func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) SetVpcScheme(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig {
 	s.VpcScheme = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) SetVpcTargetHostName(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig {
+	s.VpcTargetHostName = &v
 	return s
 }
 
@@ -13771,7 +13813,9 @@ func (s *DescribeDeployedApiResponse) SetBody(v *DescribeDeployedApiResponseBody
 
 type DescribeDeployedApisRequest struct {
 	ApiId         *string                           `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiMethod     *string                           `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
 	ApiName       *string                           `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiPath       *string                           `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
 	EnableTagAuth *bool                             `json:"EnableTagAuth,omitempty" xml:"EnableTagAuth,omitempty"`
 	GroupId       *string                           `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	PageNumber    *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -13794,8 +13838,18 @@ func (s *DescribeDeployedApisRequest) SetApiId(v string) *DescribeDeployedApisRe
 	return s
 }
 
+func (s *DescribeDeployedApisRequest) SetApiMethod(v string) *DescribeDeployedApisRequest {
+	s.ApiMethod = &v
+	return s
+}
+
 func (s *DescribeDeployedApisRequest) SetApiName(v string) *DescribeDeployedApisRequest {
 	s.ApiName = &v
+	return s
+}
+
+func (s *DescribeDeployedApisRequest) SetApiPath(v string) *DescribeDeployedApisRequest {
+	s.ApiPath = &v
 	return s
 }
 
@@ -13917,7 +13971,9 @@ func (s *DescribeDeployedApisResponseBodyDeployedApis) SetDeployedApiItem(v []*D
 
 type DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem struct {
 	ApiId        *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiMethod    *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
 	ApiName      *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiPath      *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
 	DeployedTime *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -13940,8 +13996,18 @@ func (s *DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem) SetApiId(v
 	return s
 }
 
+func (s *DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem) SetApiMethod(v string) *DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem {
+	s.ApiMethod = &v
+	return s
+}
+
 func (s *DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem) SetApiName(v string) *DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem {
 	s.ApiName = &v
+	return s
+}
+
+func (s *DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem) SetApiPath(v string) *DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem {
+	s.ApiPath = &v
 	return s
 }
 
@@ -14490,35 +14556,36 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstanceAttribute(v []*Descr
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
-	AclId                  *string                                                                        `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclName                *string                                                                        `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	AclStatus              *string                                                                        `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	AclType                *string                                                                        `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	ClassicEgressAddress   *string                                                                        `json:"ClassicEgressAddress,omitempty" xml:"ClassicEgressAddress,omitempty"`
-	CreatedTime            *string                                                                        `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	EgressIpv6Enable       *bool                                                                          `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
-	ExpiredTime            *string                                                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	HttpsPolicies          *string                                                                        `json:"HttpsPolicies,omitempty" xml:"HttpsPolicies,omitempty"`
-	InstanceChargeType     *string                                                                        `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceId             *string                                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName           *string                                                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceRpsLimit       *int32                                                                         `json:"InstanceRpsLimit,omitempty" xml:"InstanceRpsLimit,omitempty"`
-	InstanceSpec           *string                                                                        `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	InstanceSpecAttributes *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes `json:"InstanceSpecAttributes,omitempty" xml:"InstanceSpecAttributes,omitempty" type:"Struct"`
-	InstanceType           *string                                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetEgressAddress  *string                                                                        `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
-	RegionId               *string                                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status                 *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportIpv6            *bool                                                                          `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
-	UserVpcId              *string                                                                        `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
-	UserVswitchId          *string                                                                        `json:"UserVswitchId,omitempty" xml:"UserVswitchId,omitempty"`
-	VipTypeList            *string                                                                        `json:"VipTypeList,omitempty" xml:"VipTypeList,omitempty"`
-	VpcEgressAddress       *string                                                                        `json:"VpcEgressAddress,omitempty" xml:"VpcEgressAddress,omitempty"`
-	VpcIntranetEnable      *bool                                                                          `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
-	VpcOwnerId             *int64                                                                         `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
-	VpcSlbIntranetEnable   *bool                                                                          `json:"VpcSlbIntranetEnable,omitempty" xml:"VpcSlbIntranetEnable,omitempty"`
-	ZoneId                 *string                                                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ZoneLocalName          *string                                                                        `json:"ZoneLocalName,omitempty" xml:"ZoneLocalName,omitempty"`
+	AclId                     *string                                                                        `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName                   *string                                                                        `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AclStatus                 *string                                                                        `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	AclType                   *string                                                                        `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	ClassicEgressAddress      *string                                                                        `json:"ClassicEgressAddress,omitempty" xml:"ClassicEgressAddress,omitempty"`
+	CreatedTime               *string                                                                        `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	EgressAddressChangeNotify *bool                                                                          `json:"EgressAddressChangeNotify,omitempty" xml:"EgressAddressChangeNotify,omitempty"`
+	EgressIpv6Enable          *bool                                                                          `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
+	ExpiredTime               *string                                                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	HttpsPolicies             *string                                                                        `json:"HttpsPolicies,omitempty" xml:"HttpsPolicies,omitempty"`
+	InstanceChargeType        *string                                                                        `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceId                *string                                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName              *string                                                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceRpsLimit          *int32                                                                         `json:"InstanceRpsLimit,omitempty" xml:"InstanceRpsLimit,omitempty"`
+	InstanceSpec              *string                                                                        `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InstanceSpecAttributes    *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes `json:"InstanceSpecAttributes,omitempty" xml:"InstanceSpecAttributes,omitempty" type:"Struct"`
+	InstanceType              *string                                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetEgressAddress     *string                                                                        `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
+	RegionId                  *string                                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                    *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportIpv6               *bool                                                                          `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
+	UserVpcId                 *string                                                                        `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
+	UserVswitchId             *string                                                                        `json:"UserVswitchId,omitempty" xml:"UserVswitchId,omitempty"`
+	VipTypeList               *string                                                                        `json:"VipTypeList,omitempty" xml:"VipTypeList,omitempty"`
+	VpcEgressAddress          *string                                                                        `json:"VpcEgressAddress,omitempty" xml:"VpcEgressAddress,omitempty"`
+	VpcIntranetEnable         *bool                                                                          `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
+	VpcOwnerId                *int64                                                                         `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+	VpcSlbIntranetEnable      *bool                                                                          `json:"VpcSlbIntranetEnable,omitempty" xml:"VpcSlbIntranetEnable,omitempty"`
+	ZoneId                    *string                                                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneLocalName             *string                                                                        `json:"ZoneLocalName,omitempty" xml:"ZoneLocalName,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceAttribute) String() string {
@@ -14556,6 +14623,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetClassicEgre
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetCreatedTime(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetEgressAddressChangeNotify(v bool) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.EgressAddressChangeNotify = &v
 	return s
 }
 
@@ -17618,10 +17690,9 @@ func (s *DescribeTrafficControlsResponse) SetBody(v *DescribeTrafficControlsResp
 }
 
 type DescribeTrafficControlsByApiRequest struct {
-	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeTrafficControlsByApiRequest) String() string {
@@ -17639,11 +17710,6 @@ func (s *DescribeTrafficControlsByApiRequest) SetApiId(v string) *DescribeTraffi
 
 func (s *DescribeTrafficControlsByApiRequest) SetGroupId(v string) *DescribeTrafficControlsByApiRequest {
 	s.GroupId = &v
-	return s
-}
-
-func (s *DescribeTrafficControlsByApiRequest) SetSecurityToken(v string) *DescribeTrafficControlsByApiRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -17751,8 +17817,7 @@ func (s *DescribeTrafficControlsByApiResponse) SetBody(v *DescribeTrafficControl
 }
 
 type DescribeUpdateBackendTaskRequest struct {
-	OperationUid  *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OperationUid *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
 }
 
 func (s DescribeUpdateBackendTaskRequest) String() string {
@@ -17765,11 +17830,6 @@ func (s DescribeUpdateBackendTaskRequest) GoString() string {
 
 func (s *DescribeUpdateBackendTaskRequest) SetOperationUid(v string) *DescribeUpdateBackendTaskRequest {
 	s.OperationUid = &v
-	return s
-}
-
-func (s *DescribeUpdateBackendTaskRequest) SetSecurityToken(v string) *DescribeUpdateBackendTaskRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -17908,8 +17968,7 @@ func (s *DescribeUpdateBackendTaskResponse) SetBody(v *DescribeUpdateBackendTask
 }
 
 type DescribeUpdateVpcInfoTaskRequest struct {
-	OperationUid  *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OperationUid *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
 }
 
 func (s DescribeUpdateVpcInfoTaskRequest) String() string {
@@ -17922,11 +17981,6 @@ func (s DescribeUpdateVpcInfoTaskRequest) GoString() string {
 
 func (s *DescribeUpdateVpcInfoTaskRequest) SetOperationUid(v string) *DescribeUpdateVpcInfoTaskRequest {
 	s.OperationUid = &v
-	return s
-}
-
-func (s *DescribeUpdateVpcInfoTaskRequest) SetSecurityToken(v string) *DescribeUpdateVpcInfoTaskRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -18472,9 +18526,8 @@ func (s *DetachPluginResponse) SetBody(v *DetachPluginResponseBody) *DetachPlugi
 }
 
 type DisableInstanceAccessControlRequest struct {
-	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	AclId      *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DisableInstanceAccessControlRequest) String() string {
@@ -18492,11 +18545,6 @@ func (s *DisableInstanceAccessControlRequest) SetAclId(v string) *DisableInstanc
 
 func (s *DisableInstanceAccessControlRequest) SetInstanceId(v string) *DisableInstanceAccessControlRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DisableInstanceAccessControlRequest) SetSecurityToken(v string) *DisableInstanceAccessControlRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -18919,10 +18967,9 @@ func (s *DryRunSwaggerResponse) SetBody(v *DryRunSwaggerResponseBody) *DryRunSwa
 }
 
 type EnableInstanceAccessControlRequest struct {
-	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclType       *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	AclId      *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclType    *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s EnableInstanceAccessControlRequest) String() string {
@@ -18945,11 +18992,6 @@ func (s *EnableInstanceAccessControlRequest) SetAclType(v string) *EnableInstanc
 
 func (s *EnableInstanceAccessControlRequest) SetInstanceId(v string) *EnableInstanceAccessControlRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *EnableInstanceAccessControlRequest) SetSecurityToken(v string) *EnableInstanceAccessControlRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -20225,6 +20267,105 @@ func (s *ModifyApiGroupResponse) SetBody(v *ModifyApiGroupResponseBody) *ModifyA
 	return s
 }
 
+type ModifyApiGroupNetworkPolicyRequest struct {
+	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	HttpsPolicy          *string `json:"HttpsPolicy,omitempty" xml:"HttpsPolicy,omitempty"`
+	InternetEnable       *bool   `json:"InternetEnable,omitempty" xml:"InternetEnable,omitempty"`
+	InternetIPV6Enable   *bool   `json:"InternetIPV6Enable,omitempty" xml:"InternetIPV6Enable,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	VpcIntranetEnable    *bool   `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
+	VpcSlbIntranetEnable *bool   `json:"VpcSlbIntranetEnable,omitempty" xml:"VpcSlbIntranetEnable,omitempty"`
+}
+
+func (s ModifyApiGroupNetworkPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiGroupNetworkPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetGroupId(v string) *ModifyApiGroupNetworkPolicyRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetHttpsPolicy(v string) *ModifyApiGroupNetworkPolicyRequest {
+	s.HttpsPolicy = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetInternetEnable(v bool) *ModifyApiGroupNetworkPolicyRequest {
+	s.InternetEnable = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetInternetIPV6Enable(v bool) *ModifyApiGroupNetworkPolicyRequest {
+	s.InternetIPV6Enable = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetSecurityToken(v string) *ModifyApiGroupNetworkPolicyRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetVpcIntranetEnable(v bool) *ModifyApiGroupNetworkPolicyRequest {
+	s.VpcIntranetEnable = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetVpcSlbIntranetEnable(v bool) *ModifyApiGroupNetworkPolicyRequest {
+	s.VpcSlbIntranetEnable = &v
+	return s
+}
+
+type ModifyApiGroupNetworkPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyApiGroupNetworkPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiGroupNetworkPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiGroupNetworkPolicyResponseBody) SetRequestId(v string) *ModifyApiGroupNetworkPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyApiGroupNetworkPolicyResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyApiGroupNetworkPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyApiGroupNetworkPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiGroupNetworkPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiGroupNetworkPolicyResponse) SetHeaders(v map[string]*string) *ModifyApiGroupNetworkPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyResponse) SetStatusCode(v int32) *ModifyApiGroupNetworkPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyResponse) SetBody(v *ModifyApiGroupNetworkPolicyResponseBody) *ModifyApiGroupNetworkPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyApiGroupVpcWhitelistRequest struct {
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -20603,11 +20744,12 @@ func (s *ModifyBackendModelResponse) SetBody(v *ModifyBackendModelResponseBody) 
 }
 
 type ModifyInstanceSpecRequest struct {
-	AutoPay      *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	ModifyAction *string `json:"ModifyAction,omitempty" xml:"ModifyAction,omitempty"`
-	Token        *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	AutoPay        *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceSpec   *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	ModifyAction   *string `json:"ModifyAction,omitempty" xml:"ModifyAction,omitempty"`
+	SkipWaitSwitch *bool   `json:"SkipWaitSwitch,omitempty" xml:"SkipWaitSwitch,omitempty"`
+	Token          *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s ModifyInstanceSpecRequest) String() string {
@@ -20635,6 +20777,11 @@ func (s *ModifyInstanceSpecRequest) SetInstanceSpec(v string) *ModifyInstanceSpe
 
 func (s *ModifyInstanceSpecRequest) SetModifyAction(v string) *ModifyInstanceSpecRequest {
 	s.ModifyAction = &v
+	return s
+}
+
+func (s *ModifyInstanceSpecRequest) SetSkipWaitSwitch(v bool) *ModifyInstanceSpecRequest {
+	s.SkipWaitSwitch = &v
 	return s
 }
 
@@ -20693,7 +20840,6 @@ type ModifyIpControlRequest struct {
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IpControlId   *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
 	IpControlName *string `json:"IpControlName,omitempty" xml:"IpControlName,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ModifyIpControlRequest) String() string {
@@ -20716,11 +20862,6 @@ func (s *ModifyIpControlRequest) SetIpControlId(v string) *ModifyIpControlReques
 
 func (s *ModifyIpControlRequest) SetIpControlName(v string) *ModifyIpControlRequest {
 	s.IpControlName = &v
-	return s
-}
-
-func (s *ModifyIpControlRequest) SetSecurityToken(v string) *ModifyIpControlRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -21142,7 +21283,6 @@ func (s *ModifyPluginResponse) SetBody(v *ModifyPluginResponseBody) *ModifyPlugi
 }
 
 type ModifySignatureRequest struct {
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	SignatureId     *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
 	SignatureKey    *string `json:"SignatureKey,omitempty" xml:"SignatureKey,omitempty"`
 	SignatureName   *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
@@ -21155,11 +21295,6 @@ func (s ModifySignatureRequest) String() string {
 
 func (s ModifySignatureRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifySignatureRequest) SetSecurityToken(v string) *ModifySignatureRequest {
-	s.SecurityToken = &v
-	return s
 }
 
 func (s *ModifySignatureRequest) SetSignatureId(v string) *ModifySignatureRequest {
@@ -21244,7 +21379,6 @@ type ModifyTrafficControlRequest struct {
 	ApiDefault         *int32  `json:"ApiDefault,omitempty" xml:"ApiDefault,omitempty"`
 	AppDefault         *int32  `json:"AppDefault,omitempty" xml:"AppDefault,omitempty"`
 	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SecurityToken      *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	TrafficControlId   *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
 	TrafficControlUnit *string `json:"TrafficControlUnit,omitempty" xml:"TrafficControlUnit,omitempty"`
@@ -21271,11 +21405,6 @@ func (s *ModifyTrafficControlRequest) SetAppDefault(v int32) *ModifyTrafficContr
 
 func (s *ModifyTrafficControlRequest) SetDescription(v string) *ModifyTrafficControlRequest {
 	s.Description = &v
-	return s
-}
-
-func (s *ModifyTrafficControlRequest) SetSecurityToken(v string) *ModifyTrafficControlRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -21398,9 +21527,8 @@ func (s *OpenApiGatewayServiceResponse) SetBody(v *OpenApiGatewayServiceResponse
 }
 
 type ReactivateDomainRequest struct {
-	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
 func (s ReactivateDomainRequest) String() string {
@@ -21418,11 +21546,6 @@ func (s *ReactivateDomainRequest) SetDomainName(v string) *ReactivateDomainReque
 
 func (s *ReactivateDomainRequest) SetGroupId(v string) *ReactivateDomainRequest {
 	s.GroupId = &v
-	return s
-}
-
-func (s *ReactivateDomainRequest) SetSecurityToken(v string) *ReactivateDomainRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -21473,9 +21596,8 @@ func (s *ReactivateDomainResponse) SetBody(v *ReactivateDomainResponseBody) *Rea
 }
 
 type RemoveAccessControlListEntryRequest struct {
-	AclEntrys     *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
-	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	AclEntrys *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
+	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 }
 
 func (s RemoveAccessControlListEntryRequest) String() string {
@@ -21493,11 +21615,6 @@ func (s *RemoveAccessControlListEntryRequest) SetAclEntrys(v string) *RemoveAcce
 
 func (s *RemoveAccessControlListEntryRequest) SetAclId(v string) *RemoveAccessControlListEntryRequest {
 	s.AclId = &v
-	return s
-}
-
-func (s *RemoveAccessControlListEntryRequest) SetSecurityToken(v string) *RemoveAccessControlListEntryRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -21548,12 +21665,11 @@ func (s *RemoveAccessControlListEntryResponse) SetBody(v *RemoveAccessControlLis
 }
 
 type RemoveApisAuthoritiesRequest struct {
-	ApiIds        *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiIds      *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
+	AppId       *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s RemoveApisAuthoritiesRequest) String() string {
@@ -21581,11 +21697,6 @@ func (s *RemoveApisAuthoritiesRequest) SetDescription(v string) *RemoveApisAutho
 
 func (s *RemoveApisAuthoritiesRequest) SetGroupId(v string) *RemoveApisAuthoritiesRequest {
 	s.GroupId = &v
-	return s
-}
-
-func (s *RemoveApisAuthoritiesRequest) SetSecurityToken(v string) *RemoveApisAuthoritiesRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -21817,7 +21928,6 @@ func (s *RemoveIpControlApisResponse) SetBody(v *RemoveIpControlApisResponseBody
 type RemoveIpControlPolicyItemRequest struct {
 	IpControlId   *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
 	PolicyItemIds *string `json:"PolicyItemIds,omitempty" xml:"PolicyItemIds,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s RemoveIpControlPolicyItemRequest) String() string {
@@ -21835,11 +21945,6 @@ func (s *RemoveIpControlPolicyItemRequest) SetIpControlId(v string) *RemoveIpCon
 
 func (s *RemoveIpControlPolicyItemRequest) SetPolicyItemIds(v string) *RemoveIpControlPolicyItemRequest {
 	s.PolicyItemIds = &v
-	return s
-}
-
-func (s *RemoveIpControlPolicyItemRequest) SetSecurityToken(v string) *RemoveIpControlPolicyItemRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -21890,11 +21995,10 @@ func (s *RemoveIpControlPolicyItemResponse) SetBody(v *RemoveIpControlPolicyItem
 }
 
 type RemoveSignatureApisRequest struct {
-	ApiIds        *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	SignatureId   *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiIds      *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s RemoveSignatureApisRequest) String() string {
@@ -21912,11 +22016,6 @@ func (s *RemoveSignatureApisRequest) SetApiIds(v string) *RemoveSignatureApisReq
 
 func (s *RemoveSignatureApisRequest) SetGroupId(v string) *RemoveSignatureApisRequest {
 	s.GroupId = &v
-	return s
-}
-
-func (s *RemoveSignatureApisRequest) SetSecurityToken(v string) *RemoveSignatureApisRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -21979,7 +22078,6 @@ func (s *RemoveSignatureApisResponse) SetBody(v *RemoveSignatureApisResponseBody
 type RemoveTrafficControlApisRequest struct {
 	ApiIds           *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	GroupId          *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	StageName        *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 }
@@ -21999,11 +22097,6 @@ func (s *RemoveTrafficControlApisRequest) SetApiIds(v string) *RemoveTrafficCont
 
 func (s *RemoveTrafficControlApisRequest) SetGroupId(v string) *RemoveTrafficControlApisRequest {
 	s.GroupId = &v
-	return s
-}
-
-func (s *RemoveTrafficControlApisRequest) SetSecurityToken(v string) *RemoveTrafficControlApisRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -23370,11 +23463,10 @@ func (s *SetIpControlApisResponse) SetBody(v *SetIpControlApisResponseBody) *Set
 }
 
 type SetSignatureApisRequest struct {
-	ApiIds        *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	SignatureId   *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiIds      *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s SetSignatureApisRequest) String() string {
@@ -23392,11 +23484,6 @@ func (s *SetSignatureApisRequest) SetApiIds(v string) *SetSignatureApisRequest {
 
 func (s *SetSignatureApisRequest) SetGroupId(v string) *SetSignatureApisRequest {
 	s.GroupId = &v
-	return s
-}
-
-func (s *SetSignatureApisRequest) SetSecurityToken(v string) *SetSignatureApisRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -23459,7 +23546,6 @@ func (s *SetSignatureApisResponse) SetBody(v *SetSignatureApisResponseBody) *Set
 type SetTrafficControlApisRequest struct {
 	ApiIds           *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	GroupId          *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	StageName        *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 }
@@ -23479,11 +23565,6 @@ func (s *SetTrafficControlApisRequest) SetApiIds(v string) *SetTrafficControlApi
 
 func (s *SetTrafficControlApisRequest) SetGroupId(v string) *SetTrafficControlApisRequest {
 	s.GroupId = &v
-	return s
-}
-
-func (s *SetTrafficControlApisRequest) SetSecurityToken(v string) *SetTrafficControlApisRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -23645,7 +23726,6 @@ func (s *SetVpcAccessResponse) SetBody(v *SetVpcAccessResponseBody) *SetVpcAcces
 type SetWildcardDomainPatternsRequest struct {
 	DomainName             *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	GroupId                *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken          *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	WildcardDomainPatterns *string `json:"WildcardDomainPatterns,omitempty" xml:"WildcardDomainPatterns,omitempty"`
 }
 
@@ -23664,11 +23744,6 @@ func (s *SetWildcardDomainPatternsRequest) SetDomainName(v string) *SetWildcardD
 
 func (s *SetWildcardDomainPatternsRequest) SetGroupId(v string) *SetWildcardDomainPatternsRequest {
 	s.GroupId = &v
-	return s
-}
-
-func (s *SetWildcardDomainPatternsRequest) SetSecurityToken(v string) *SetWildcardDomainPatternsRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -27574,8 +27649,16 @@ func (client *Client) DescribeApisWithOptions(request *DescribeApisRequest, runt
 		query["ApiId"] = request.ApiId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ApiMethod)) {
+		query["ApiMethod"] = request.ApiMethod
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
 		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiPath)) {
+		query["ApiPath"] = request.ApiPath
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CatalogId)) {
@@ -27604,6 +27687,10 @@ func (client *Client) DescribeApisWithOptions(request *DescribeApisRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnDeployed)) {
+		query["UnDeployed"] = request.UnDeployed
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Visibility)) {
@@ -28542,8 +28629,16 @@ func (client *Client) DescribeDeployedApisWithOptions(request *DescribeDeployedA
 		query["ApiId"] = request.ApiId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ApiMethod)) {
+		query["ApiMethod"] = request.ApiMethod
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
 		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiPath)) {
+		query["ApiPath"] = request.ApiPath
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableTagAuth)) {
@@ -29758,10 +29853,6 @@ func (client *Client) DescribeTrafficControlsByApiWithOptions(request *DescribeT
 		query["GroupId"] = request.GroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
 		query["StageName"] = request.StageName
 	}
@@ -29810,10 +29901,6 @@ func (client *Client) DescribeUpdateBackendTaskWithOptions(request *DescribeUpda
 		query["OperationUid"] = request.OperationUid
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29856,10 +29943,6 @@ func (client *Client) DescribeUpdateVpcInfoTaskWithOptions(request *DescribeUpda
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.OperationUid)) {
 		query["OperationUid"] = request.OperationUid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -30090,10 +30173,6 @@ func (client *Client) DisableInstanceAccessControlWithOptions(request *DisableIn
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30216,10 +30295,6 @@ func (client *Client) EnableInstanceAccessControlWithOptions(request *EnableInst
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -30816,6 +30891,74 @@ func (client *Client) ModifyApiGroup(request *ModifyApiGroupRequest) (_result *M
 	return _result, _err
 }
 
+func (client *Client) ModifyApiGroupNetworkPolicyWithOptions(request *ModifyApiGroupNetworkPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyApiGroupNetworkPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsPolicy)) {
+		query["HttpsPolicy"] = request.HttpsPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetEnable)) {
+		query["InternetEnable"] = request.InternetEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetIPV6Enable)) {
+		query["InternetIPV6Enable"] = request.InternetIPV6Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcIntranetEnable)) {
+		query["VpcIntranetEnable"] = request.VpcIntranetEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcSlbIntranetEnable)) {
+		query["VpcSlbIntranetEnable"] = request.VpcSlbIntranetEnable
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApiGroupNetworkPolicy"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApiGroupNetworkPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyApiGroupNetworkPolicy(request *ModifyApiGroupNetworkPolicyRequest) (_result *ModifyApiGroupNetworkPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApiGroupNetworkPolicyResponse{}
+	_body, _err := client.ModifyApiGroupNetworkPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyApiGroupVpcWhitelistWithOptions(request *ModifyApiGroupVpcWhitelistRequest, runtime *util.RuntimeOptions) (_result *ModifyApiGroupVpcWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31078,6 +31221,10 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 		query["ModifyAction"] = request.ModifyAction
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SkipWaitSwitch)) {
+		query["SkipWaitSwitch"] = request.SkipWaitSwitch
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Token)) {
 		query["Token"] = request.Token
 	}
@@ -31132,10 +31279,6 @@ func (client *Client) ModifyIpControlWithOptions(request *ModifyIpControlRequest
 
 	if !tea.BoolValue(util.IsUnset(request.IpControlName)) {
 		query["IpControlName"] = request.IpControlName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -31418,10 +31561,6 @@ func (client *Client) ModifySignatureWithOptions(request *ModifySignatureRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SignatureId)) {
 		query["SignatureId"] = request.SignatureId
 	}
@@ -31488,10 +31627,6 @@ func (client *Client) ModifyTrafficControlWithOptions(request *ModifyTrafficCont
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TrafficControlId)) {
@@ -31591,10 +31726,6 @@ func (client *Client) ReactivateDomainWithOptions(request *ReactivateDomainReque
 		query["GroupId"] = request.GroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -31641,10 +31772,6 @@ func (client *Client) RemoveAccessControlListEntryWithOptions(request *RemoveAcc
 
 	if !tea.BoolValue(util.IsUnset(request.AclId)) {
 		query["AclId"] = request.AclId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -31701,10 +31828,6 @@ func (client *Client) RemoveApisAuthoritiesWithOptions(request *RemoveApisAuthor
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
@@ -31879,10 +32002,6 @@ func (client *Client) RemoveIpControlPolicyItemWithOptions(request *RemoveIpCont
 		query["PolicyItemIds"] = request.PolicyItemIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -31929,10 +32048,6 @@ func (client *Client) RemoveSignatureApisWithOptions(request *RemoveSignatureApi
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SignatureId)) {
@@ -31989,10 +32104,6 @@ func (client *Client) RemoveTrafficControlApisWithOptions(request *RemoveTraffic
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
@@ -32871,10 +32982,6 @@ func (client *Client) SetSignatureApisWithOptions(request *SetSignatureApisReque
 		query["GroupId"] = request.GroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SignatureId)) {
 		query["SignatureId"] = request.SignatureId
 	}
@@ -32929,10 +33036,6 @@ func (client *Client) SetTrafficControlApisWithOptions(request *SetTrafficContro
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StageName)) {
@@ -33057,10 +33160,6 @@ func (client *Client) SetWildcardDomainPatternsWithOptions(request *SetWildcardD
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WildcardDomainPatterns)) {
