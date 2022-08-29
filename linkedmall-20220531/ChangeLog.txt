@@ -1,3 +1,6 @@
+2022-08-29 Version: v1.0.1
+- Modify QueryItemDetail API.
+
 2022-08-29 Version: v1.0.0
 - Modify QueryItemDetail API.
 
