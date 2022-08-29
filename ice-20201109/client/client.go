@@ -135,10 +135,8 @@ func (s *AddCategoryResponse) SetBody(v *AddCategoryResponseBody) *AddCategoryRe
 }
 
 type AddEditingProjectMaterialsRequest struct {
-	// 素材ID
 	MaterialMaps *string `json:"MaterialMaps,omitempty" xml:"MaterialMaps,omitempty"`
-	// 云剪辑工程ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s AddEditingProjectMaterialsRequest) String() string {
@@ -160,13 +158,11 @@ func (s *AddEditingProjectMaterialsRequest) SetProjectId(v string) *AddEditingPr
 }
 
 type AddEditingProjectMaterialsResponseBody struct {
-	LiveMaterials []*AddEditingProjectMaterialsResponseBodyLiveMaterials `json:"LiveMaterials,omitempty" xml:"LiveMaterials,omitempty" type:"Repeated"`
-	// 符合要求的媒资集合
-	MediaInfos       []*AddEditingProjectMaterialsResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
-	ProjectId        *string                                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectMaterials []*string                                           `json:"ProjectMaterials,omitempty" xml:"ProjectMaterials,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LiveMaterials    []*AddEditingProjectMaterialsResponseBodyLiveMaterials `json:"LiveMaterials,omitempty" xml:"LiveMaterials,omitempty" type:"Repeated"`
+	MediaInfos       []*AddEditingProjectMaterialsResponseBodyMediaInfos    `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	ProjectId        *string                                                `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectMaterials []*string                                              `json:"ProjectMaterials,omitempty" xml:"ProjectMaterials,omitempty" type:"Repeated"`
+	RequestId        *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddEditingProjectMaterialsResponseBody) String() string {
@@ -238,12 +234,9 @@ func (s *AddEditingProjectMaterialsResponseBodyLiveMaterials) SetStreamName(v st
 }
 
 type AddEditingProjectMaterialsResponseBodyMediaInfos struct {
-	// FileInfos
-	FileInfoList []*AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// BasicInfo
+	FileInfoList   []*AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	MediaBasicInfo *AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId        *string                                                         `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s AddEditingProjectMaterialsResponseBodyMediaInfos) String() string {
@@ -270,7 +263,6 @@ func (s *AddEditingProjectMaterialsResponseBodyMediaInfos) SetMediaId(v string) 
 }
 
 type AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoList struct {
-	// 文件基础信息，包含时长，大小等
 	FileBasicInfo *AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -288,28 +280,17 @@ func (s *AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) SetFileBa
 }
 
 type AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小（字节）
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration   *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize   *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件oss地址
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 封装格式
+	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl    *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 文件存储区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height     *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width      *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) String() string {
@@ -376,42 +357,24 @@ func (s *AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicIn
 }
 
 type AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo struct {
-	// 媒资业务类型
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 封面地址
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 媒资创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 媒资删除时间
-	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// 内容描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 待注册的媒资在相应系统中的地址
-	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// MediaId
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 标签
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 媒资媒体类型
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 媒资修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 截图
-	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 雪碧图
-	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// 资源状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 转码状态
+	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CoverURL        *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletedTime     *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputURL        *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	MediaId         *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaTags       *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	MediaType       *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	ModifiedTime    *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Snapshots       *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SpriteImages    *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) String() string {
@@ -560,8 +523,7 @@ func (s *AddFavoritePublicMediaRequest) SetMediaIds(v string) *AddFavoritePublic
 
 type AddFavoritePublicMediaResponseBody struct {
 	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddFavoritePublicMediaResponseBody) String() string {
@@ -612,20 +574,14 @@ func (s *AddFavoritePublicMediaResponse) SetBody(v *AddFavoritePublicMediaRespon
 }
 
 type AddTemplateRequest struct {
-	// 参见Timeline模板Config文档
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 模板封面
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 模板名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 预览视频媒资id
-	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
-	// 模板创建来源，默认OpenAPI
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 模板状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板类型，取值范围：Timeline
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	CoverUrl        *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreviewMedia    *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AddTemplateRequest) String() string {
@@ -656,6 +612,11 @@ func (s *AddTemplateRequest) SetPreviewMedia(v string) *AddTemplateRequest {
 	return s
 }
 
+func (s *AddTemplateRequest) SetRelatedMediaids(v string) *AddTemplateRequest {
+	s.RelatedMediaids = &v
+	return s
+}
+
 func (s *AddTemplateRequest) SetSource(v string) *AddTemplateRequest {
 	s.Source = &v
 	return s
@@ -672,10 +633,8 @@ func (s *AddTemplateRequest) SetType(v string) *AddTemplateRequest {
 }
 
 type AddTemplateResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 模板信息
-	Template *AddTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Template  *AddTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
 
 func (s AddTemplateResponseBody) String() string {
@@ -697,24 +656,15 @@ func (s *AddTemplateResponseBody) SetTemplate(v *AddTemplateResponseBodyTemplate
 }
 
 type AddTemplateResponseBodyTemplate struct {
-	// 参见Timeline模板Config文档
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 模板封面
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 模板创建来源
-	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	// 模板修改来源
+	Config         *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	CoverUrl       *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	CreateSource   *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
-	// 模板名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 预览视频媒资id
-	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
-	// 模板状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板Id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreviewMedia   *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AddTemplateResponseBodyTemplate) String() string {
@@ -823,10 +773,8 @@ func (s *BatchGetMediaInfosRequest) SetMediaIds(v string) *BatchGetMediaInfosReq
 }
 
 type BatchGetMediaInfosResponseBody struct {
-	// 符合要求的媒资集合
 	MediaInfos []*BatchGetMediaInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BatchGetMediaInfosResponseBody) String() string {
@@ -848,12 +796,9 @@ func (s *BatchGetMediaInfosResponseBody) SetRequestId(v string) *BatchGetMediaIn
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfos struct {
-	// FileInfos
-	FileInfoList []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// BasicInfo
+	FileInfoList   []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	MediaBasicInfo *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId        *string                                                 `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s BatchGetMediaInfosResponseBodyMediaInfos) String() string {
@@ -880,7 +825,6 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetMediaId(v string) *BatchGe
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosFileInfoList struct {
-	// 文件基础信息，包含时长，大小等
 	FileBasicInfo *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -898,28 +842,17 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) SetFileBasicInfo(
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小（字节）
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration   *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize   *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件oss地址
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 封装格式
+	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl    *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 文件存储区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height     *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width      *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) String() string {
@@ -986,42 +919,24 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetW
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo struct {
-	// 媒资业务类型
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 封面地址
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 媒资创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 媒资删除时间
-	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// 内容描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 待注册的媒资在相应系统中的地址
-	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// MediaId
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 标签
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 媒资媒体类型
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 媒资修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 截图
-	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 雪碧图
-	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// 资源状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 转码状态
+	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CoverURL        *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletedTime     *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputURL        *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	MediaId         *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaTags       *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	MediaType       *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	ModifiedTime    *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Snapshots       *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SpriteImages    *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) String() string {
@@ -1170,8 +1085,7 @@ func (s *CancelFavoritePublicMediaRequest) SetMediaIds(v string) *CancelFavorite
 
 type CancelFavoritePublicMediaResponseBody struct {
 	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CancelFavoritePublicMediaResponseBody) String() string {
@@ -1221,166 +1135,11 @@ func (s *CancelFavoritePublicMediaResponse) SetBody(v *CancelFavoritePublicMedia
 	return s
 }
 
-type CancelUrlUploadJobsRequest struct {
-	JobIds     *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
-	UploadUrls *string `json:"UploadUrls,omitempty" xml:"UploadUrls,omitempty"`
-}
-
-func (s CancelUrlUploadJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelUrlUploadJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CancelUrlUploadJobsRequest) SetJobIds(v string) *CancelUrlUploadJobsRequest {
-	s.JobIds = &v
-	return s
-}
-
-func (s *CancelUrlUploadJobsRequest) SetUploadUrls(v string) *CancelUrlUploadJobsRequest {
-	s.UploadUrls = &v
-	return s
-}
-
-type CancelUrlUploadJobsResponseBody struct {
-	CanceledJobs []*string `json:"CanceledJobs,omitempty" xml:"CanceledJobs,omitempty" type:"Repeated"`
-	NonExists    []*string `json:"NonExists,omitempty" xml:"NonExists,omitempty" type:"Repeated"`
-	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CancelUrlUploadJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelUrlUploadJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CancelUrlUploadJobsResponseBody) SetCanceledJobs(v []*string) *CancelUrlUploadJobsResponseBody {
-	s.CanceledJobs = v
-	return s
-}
-
-func (s *CancelUrlUploadJobsResponseBody) SetNonExists(v []*string) *CancelUrlUploadJobsResponseBody {
-	s.NonExists = v
-	return s
-}
-
-func (s *CancelUrlUploadJobsResponseBody) SetRequestId(v string) *CancelUrlUploadJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CancelUrlUploadJobsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelUrlUploadJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CancelUrlUploadJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelUrlUploadJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CancelUrlUploadJobsResponse) SetHeaders(v map[string]*string) *CancelUrlUploadJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CancelUrlUploadJobsResponse) SetStatusCode(v int32) *CancelUrlUploadJobsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CancelUrlUploadJobsResponse) SetBody(v *CancelUrlUploadJobsResponseBody) *CancelUrlUploadJobsResponse {
-	s.Body = v
-	return s
-}
-
-type CreateAuditRequest struct {
-	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AuditContent *string `json:"AuditContent,omitempty" xml:"AuditContent,omitempty"`
-}
-
-func (s CreateAuditRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAuditRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAuditRequest) SetAppId(v string) *CreateAuditRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *CreateAuditRequest) SetAuditContent(v string) *CreateAuditRequest {
-	s.AuditContent = &v
-	return s
-}
-
-type CreateAuditResponseBody struct {
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateAuditResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAuditResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAuditResponseBody) SetRequestId(v string) *CreateAuditResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateAuditResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAuditResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateAuditResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAuditResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAuditResponse) SetHeaders(v map[string]*string) *CreateAuditResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateAuditResponse) SetStatusCode(v int32) *CreateAuditResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateAuditResponse) SetBody(v *CreateAuditResponseBody) *CreateAuditResponse {
-	s.Body = v
-	return s
-}
-
 type CreateCustomTemplateRequest struct {
-	// 模板名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 模板子类型。
-	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// 模板参数
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Subtype        *int32  `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// 模板类型。
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type           *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateCustomTemplateRequest) String() string {
@@ -1412,10 +1171,8 @@ func (s *CreateCustomTemplateRequest) SetType(v int32) *CreateCustomTemplateRequ
 }
 
 type CreateCustomTemplateResponseBody struct {
-	// 模板信息
 	CustomTemplate *CreateCustomTemplateResponseBodyCustomTemplate `json:"CustomTemplate,omitempty" xml:"CustomTemplate,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCustomTemplateResponseBody) String() string {
@@ -1437,26 +1194,16 @@ func (s *CreateCustomTemplateResponseBody) SetRequestId(v string) *CreateCustomT
 }
 
 type CreateCustomTemplateResponseBodyCustomTemplate struct {
-	// 模板创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 是否默认模板
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// 模板修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 模板状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板子类型名称
-	Subtype *string `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// 模板参数
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	IsDefault      *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	ModifiedTime   *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Subtype        *string `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// 模板Id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板名称
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 模板类型ID
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 模板类型名称
-	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Type           *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	TypeName       *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
 
 func (s CreateCustomTemplateResponseBodyCustomTemplate) String() string {
@@ -1547,24 +1294,15 @@ func (s *CreateCustomTemplateResponse) SetBody(v *CreateCustomTemplateResponseBo
 }
 
 type CreateEditingProjectRequest struct {
-	// 工程业务配置。如果是直播剪辑工程必填OutputMediaConfig.StorageLocation,   Path 不填默认合成的直播片段存储在根路径下 OutputMediaTarget 不填默认oss-object，可以填vod-media 表示存储到vod  OutputMediaTarget 为vod-media 时，Path不生效。
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
-	// 模板素材参数
-	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	// 云剪辑工程封面
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 云剪辑工程描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 工程关联素材，多个素材以逗号（,）分隔；每种类型最多支持10个素材ID
-	MaterialMaps *string `json:"MaterialMaps,omitempty" xml:"MaterialMaps,omitempty"`
-	// 剪辑工程类型，EditingProject: 普通剪辑工程；LiveEditingProject: 直播剪辑工程
-	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
-	// 模板Id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 云剪辑工程时间线，Json格式
-	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	// 云剪辑工程标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	ClipsParam     *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	CoverURL       *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	MaterialMaps   *string `json:"MaterialMaps,omitempty" xml:"MaterialMaps,omitempty"`
+	ProjectType    *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Timeline       *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateEditingProjectRequest) String() string {
@@ -1621,9 +1359,8 @@ func (s *CreateEditingProjectRequest) SetTitle(v string) *CreateEditingProjectRe
 }
 
 type CreateEditingProjectResponseBody struct {
-	Project *CreateEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Project   *CreateEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateEditingProjectResponseBody) String() string {
@@ -1645,41 +1382,24 @@ func (s *CreateEditingProjectResponseBody) SetRequestId(v string) *CreateEditing
 }
 
 type CreateEditingProjectResponseBodyProject struct {
-	// 工程业务配置
-	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
-	// 业务状态，业务状态 /** 预约中 **/ RESERVING(0, "Reserving"), /** 预约取消 **/ RESERVATION_CANCELED(1, "ReservationCanceled"), /** 直播中 **/ BROADCASTING(3, "BroadCasting"), /** 加载失败 **/ LOADING_FAILED(4, "LoadingFailed"), /** 直播结束 **/ LIVE_FINISHED(5, "LiveFinished");
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// 模板素材参数
-	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	// 云剪辑工程封面。
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 云剪辑工程创建方式  -OpenAPI  -AliyunConsole  -WebSDK -LiveEditingOpenAPI -LiveEditingConsole
-	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	// 云剪辑工程创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 云剪辑工程描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 云剪辑工程时长
-	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 云剪辑工程创建方式  -OpenAPI  -AliyunConsole  -WebSDK -LiveEditingOpenAPI -LiveEditingConsole
-	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
-	// 云剪辑工程编辑时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 云剪辑工程ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 剪辑工程类型，EditingProject: 普通剪辑工程；LiveEditingProject: 直播剪辑工程
-	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
-	// 云剪辑工程状态。  所有云剪辑工程状态列表：  -1:Draft  -2:Editing  -3:Producing  -4:Produced  -5:ProduceFailed  -7:Deleted
-	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 云剪辑状态名称，对应状态列表中状态名称。
-	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	// 模板Id
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// 云剪辑工程时间线，Json格式
-	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	// 云剪辑工程标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	BusinessConfig *string  `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
+	BusinessStatus *string  `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	ClipsParam     *string  `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	CoverURL       *string  `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateSource   *string  `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	CreateTime     *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description    *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration       *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ModifiedSource *string  `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	ModifiedTime   *string  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ProjectId      *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectType    *string  `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	Status         *int64   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusName     *string  `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	TemplateId     *string  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType   *string  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	Timeline       *string  `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	Title          *string  `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateEditingProjectResponseBodyProject) String() string {
@@ -1810,9 +1530,7 @@ func (s *CreateEditingProjectResponse) SetBody(v *CreateEditingProjectResponseBo
 }
 
 type CreateLiveRecordTemplateRequest struct {
-	// 资源名称
-	Name []byte `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 录制格式
+	Name         *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
 	RecordFormat []*CreateLiveRecordTemplateRequestRecordFormat `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty" type:"Repeated"`
 }
 
@@ -1824,8 +1542,8 @@ func (s CreateLiveRecordTemplateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLiveRecordTemplateRequest) SetName(v []byte) *CreateLiveRecordTemplateRequest {
-	s.Name = v
+func (s *CreateLiveRecordTemplateRequest) SetName(v string) *CreateLiveRecordTemplateRequest {
+	s.Name = &v
 	return s
 }
 
@@ -1835,15 +1553,11 @@ func (s *CreateLiveRecordTemplateRequest) SetRecordFormat(v []*CreateLiveRecordT
 }
 
 type CreateLiveRecordTemplateRequestRecordFormat struct {
-	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// 格式
-	Format []byte `json:"Format,omitempty" xml:"Format,omitempty"`
-	// Oss对象名
-	OssObjectPrefix []byte `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	// 切片时长
-	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
-	// 切片Oss对象名
-	SliceOssObjectPrefix []byte `json:"SliceOssObjectPrefix,omitempty" xml:"SliceOssObjectPrefix,omitempty"`
+	CycleDuration        *int32  `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	Format               *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	OssObjectPrefix      *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
+	SliceDuration        *int32  `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	SliceOssObjectPrefix *string `json:"SliceOssObjectPrefix,omitempty" xml:"SliceOssObjectPrefix,omitempty"`
 }
 
 func (s CreateLiveRecordTemplateRequestRecordFormat) String() string {
@@ -1859,13 +1573,13 @@ func (s *CreateLiveRecordTemplateRequestRecordFormat) SetCycleDuration(v int32) 
 	return s
 }
 
-func (s *CreateLiveRecordTemplateRequestRecordFormat) SetFormat(v []byte) *CreateLiveRecordTemplateRequestRecordFormat {
-	s.Format = v
+func (s *CreateLiveRecordTemplateRequestRecordFormat) SetFormat(v string) *CreateLiveRecordTemplateRequestRecordFormat {
+	s.Format = &v
 	return s
 }
 
-func (s *CreateLiveRecordTemplateRequestRecordFormat) SetOssObjectPrefix(v []byte) *CreateLiveRecordTemplateRequestRecordFormat {
-	s.OssObjectPrefix = v
+func (s *CreateLiveRecordTemplateRequestRecordFormat) SetOssObjectPrefix(v string) *CreateLiveRecordTemplateRequestRecordFormat {
+	s.OssObjectPrefix = &v
 	return s
 }
 
@@ -1874,15 +1588,13 @@ func (s *CreateLiveRecordTemplateRequestRecordFormat) SetSliceDuration(v int32) 
 	return s
 }
 
-func (s *CreateLiveRecordTemplateRequestRecordFormat) SetSliceOssObjectPrefix(v []byte) *CreateLiveRecordTemplateRequestRecordFormat {
-	s.SliceOssObjectPrefix = v
+func (s *CreateLiveRecordTemplateRequestRecordFormat) SetSliceOssObjectPrefix(v string) *CreateLiveRecordTemplateRequestRecordFormat {
+	s.SliceOssObjectPrefix = &v
 	return s
 }
 
 type CreateLiveRecordTemplateShrinkRequest struct {
-	// 资源名称
-	Name []byte `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 录制格式
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RecordFormatShrink *string `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty"`
 }
 
@@ -1894,8 +1606,8 @@ func (s CreateLiveRecordTemplateShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLiveRecordTemplateShrinkRequest) SetName(v []byte) *CreateLiveRecordTemplateShrinkRequest {
-	s.Name = v
+func (s *CreateLiveRecordTemplateShrinkRequest) SetName(v string) *CreateLiveRecordTemplateShrinkRequest {
+	s.Name = &v
 	return s
 }
 
@@ -1905,9 +1617,8 @@ func (s *CreateLiveRecordTemplateShrinkRequest) SetRecordFormatShrink(v string) 
 }
 
 type CreateLiveRecordTemplateResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源一级ID
-	TemplateId []byte `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s CreateLiveRecordTemplateResponseBody) String() string {
@@ -1923,8 +1634,8 @@ func (s *CreateLiveRecordTemplateResponseBody) SetRequestId(v string) *CreateLiv
 	return s
 }
 
-func (s *CreateLiveRecordTemplateResponseBody) SetTemplateId(v []byte) *CreateLiveRecordTemplateResponseBody {
-	s.TemplateId = v
+func (s *CreateLiveRecordTemplateResponseBody) SetTemplateId(v string) *CreateLiveRecordTemplateResponseBody {
+	s.TemplateId = &v
 	return s
 }
 
@@ -1957,13 +1668,324 @@ func (s *CreateLiveRecordTemplateResponse) SetBody(v *CreateLiveRecordTemplateRe
 	return s
 }
 
+type CreateLiveSnapshotTemplateRequest struct {
+	OverwriteFormat *string `json:"OverwriteFormat,omitempty" xml:"OverwriteFormat,omitempty"`
+	SequenceFormat  *string `json:"SequenceFormat,omitempty" xml:"SequenceFormat,omitempty"`
+	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TimeInterval    *int32  `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
+}
+
+func (s CreateLiveSnapshotTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveSnapshotTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveSnapshotTemplateRequest) SetOverwriteFormat(v string) *CreateLiveSnapshotTemplateRequest {
+	s.OverwriteFormat = &v
+	return s
+}
+
+func (s *CreateLiveSnapshotTemplateRequest) SetSequenceFormat(v string) *CreateLiveSnapshotTemplateRequest {
+	s.SequenceFormat = &v
+	return s
+}
+
+func (s *CreateLiveSnapshotTemplateRequest) SetTemplateName(v string) *CreateLiveSnapshotTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *CreateLiveSnapshotTemplateRequest) SetTimeInterval(v int32) *CreateLiveSnapshotTemplateRequest {
+	s.TimeInterval = &v
+	return s
+}
+
+type CreateLiveSnapshotTemplateResponseBody struct {
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s CreateLiveSnapshotTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveSnapshotTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveSnapshotTemplateResponseBody) SetRequestId(v string) *CreateLiveSnapshotTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateLiveSnapshotTemplateResponseBody) SetTemplateId(v string) *CreateLiveSnapshotTemplateResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateLiveSnapshotTemplateResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateLiveSnapshotTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLiveSnapshotTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveSnapshotTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveSnapshotTemplateResponse) SetHeaders(v map[string]*string) *CreateLiveSnapshotTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLiveSnapshotTemplateResponse) SetStatusCode(v int32) *CreateLiveSnapshotTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLiveSnapshotTemplateResponse) SetBody(v *CreateLiveSnapshotTemplateResponseBody) *CreateLiveSnapshotTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type CreateLiveTranscodeTemplateRequest struct {
+	Name           *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	TemplateConfig *CreateLiveTranscodeTemplateRequestTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty" type:"Struct"`
+	Type           *string                                           `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateLiveTranscodeTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveTranscodeTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveTranscodeTemplateRequest) SetName(v string) *CreateLiveTranscodeTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateRequest) SetTemplateConfig(v *CreateLiveTranscodeTemplateRequestTemplateConfig) *CreateLiveTranscodeTemplateRequest {
+	s.TemplateConfig = v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateRequest) SetType(v string) *CreateLiveTranscodeTemplateRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateLiveTranscodeTemplateRequestTemplateConfig struct {
+	AudioParams *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams `json:"AudioParams,omitempty" xml:"AudioParams,omitempty" type:"Struct"`
+	VideoParams *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams `json:"VideoParams,omitempty" xml:"VideoParams,omitempty" type:"Struct"`
+}
+
+func (s CreateLiveTranscodeTemplateRequestTemplateConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveTranscodeTemplateRequestTemplateConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfig) SetAudioParams(v *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams) *CreateLiveTranscodeTemplateRequestTemplateConfig {
+	s.AudioParams = v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfig) SetVideoParams(v *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams) *CreateLiveTranscodeTemplateRequestTemplateConfig {
+	s.VideoParams = v
+	return s
+}
+
+type CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams struct {
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Channels   *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Codec      *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Profile    *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+}
+
+func (s CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams) SetBitrate(v string) *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams) SetChannels(v string) *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams {
+	s.Channels = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams) SetCodec(v string) *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams {
+	s.Codec = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams) SetProfile(v string) *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams {
+	s.Profile = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams) SetSamplerate(v string) *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams {
+	s.Samplerate = &v
+	return s
+}
+
+type CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams struct {
+	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Codec   *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Fps     *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Gop     *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Height  *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Width   *string `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams) SetBitrate(v string) *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams) SetCodec(v string) *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams {
+	s.Codec = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams) SetFps(v string) *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams {
+	s.Fps = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams) SetGop(v string) *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams {
+	s.Gop = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams) SetHeight(v string) *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams {
+	s.Height = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams) SetProfile(v string) *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams {
+	s.Profile = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams) SetWidth(v string) *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams {
+	s.Width = &v
+	return s
+}
+
+type CreateLiveTranscodeTemplateShrinkRequest struct {
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateLiveTranscodeTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveTranscodeTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveTranscodeTemplateShrinkRequest) SetName(v string) *CreateLiveTranscodeTemplateShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateShrinkRequest) SetTemplateConfigShrink(v string) *CreateLiveTranscodeTemplateShrinkRequest {
+	s.TemplateConfigShrink = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateShrinkRequest) SetType(v string) *CreateLiveTranscodeTemplateShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateLiveTranscodeTemplateResponseBody struct {
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s CreateLiveTranscodeTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveTranscodeTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveTranscodeTemplateResponseBody) SetRequestId(v string) *CreateLiveTranscodeTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateResponseBody) SetTemplateId(v string) *CreateLiveTranscodeTemplateResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateLiveTranscodeTemplateResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateLiveTranscodeTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLiveTranscodeTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveTranscodeTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveTranscodeTemplateResponse) SetHeaders(v map[string]*string) *CreateLiveTranscodeTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateResponse) SetStatusCode(v int32) *CreateLiveTranscodeTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLiveTranscodeTemplateResponse) SetBody(v *CreateLiveTranscodeTemplateResponseBody) *CreateLiveTranscodeTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePipelineRequest struct {
-	// 管道名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 优先级，1-10，默认6。数值越大，优先级越高
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 管道类型。
-	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Priority *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Speed    *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
 }
 
 func (s CreatePipelineRequest) String() string {
@@ -1990,10 +2012,8 @@ func (s *CreatePipelineRequest) SetSpeed(v string) *CreatePipelineRequest {
 }
 
 type CreatePipelineResponseBody struct {
-	// 管道信息
-	Pipeline *CreatePipelineResponseBodyPipeline `json:"Pipeline,omitempty" xml:"Pipeline,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Pipeline  *CreatePipelineResponseBodyPipeline `json:"Pipeline,omitempty" xml:"Pipeline,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePipelineResponseBody) String() string {
@@ -2015,20 +2035,13 @@ func (s *CreatePipelineResponseBody) SetRequestId(v string) *CreatePipelineRespo
 }
 
 type CreatePipelineResponseBodyPipeline struct {
-	// 模板创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 模板修改时间
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 管道名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 管道Id
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 管道优先级
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 管道类型
-	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// 管道状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PipelineId   *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	Priority     *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Speed        *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreatePipelineResponseBodyPipeline) String() string {
@@ -2157,10 +2170,9 @@ func (s *CreateUploadMediaRequest) SetUserData(v string) *CreateUploadMediaReque
 }
 
 type CreateUploadMediaResponseBody struct {
-	FileURL  *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	MediaId  *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
-	// RequestId
+	FileURL       *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	MediaId       *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaURL      *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UploadAddress *string `json:"UploadAddress,omitempty" xml:"UploadAddress,omitempty"`
 	UploadAuth    *string `json:"UploadAuth,omitempty" xml:"UploadAuth,omitempty"`
@@ -2408,7 +2420,6 @@ func (s *DeleteCategoryResponse) SetBody(v *DeleteCategoryResponseBody) *DeleteC
 }
 
 type DeleteCustomTemplateRequest struct {
-	// 模板ID
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -2426,10 +2437,8 @@ func (s *DeleteCustomTemplateRequest) SetTemplateId(v string) *DeleteCustomTempl
 }
 
 type DeleteCustomTemplateResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteCustomTemplateResponseBody) String() string {
@@ -2480,12 +2489,9 @@ func (s *DeleteCustomTemplateResponse) SetBody(v *DeleteCustomTemplateResponseBo
 }
 
 type DeleteEditingProjectMaterialsRequest struct {
-	// 素材ID
-	MaterialIds *string `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty"`
-	// 素材类型
+	MaterialIds  *string `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty"`
 	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
-	// 云剪辑工程ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s DeleteEditingProjectMaterialsRequest) String() string {
@@ -2512,7 +2518,6 @@ func (s *DeleteEditingProjectMaterialsRequest) SetProjectId(v string) *DeleteEdi
 }
 
 type DeleteEditingProjectMaterialsResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2559,7 +2564,6 @@ func (s *DeleteEditingProjectMaterialsResponse) SetBody(v *DeleteEditingProjectM
 }
 
 type DeleteEditingProjectsRequest struct {
-	// 云剪辑工程ID。支持多个云剪辑工程，以逗号分隔。
 	ProjectIds *string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty"`
 }
 
@@ -2577,8 +2581,6 @@ func (s *DeleteEditingProjectsRequest) SetProjectIds(v string) *DeleteEditingPro
 }
 
 type DeleteEditingProjectsResponseBody struct {
-	IgnoredList *string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty"`
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2588,11 +2590,6 @@ func (s DeleteEditingProjectsResponseBody) String() string {
 
 func (s DeleteEditingProjectsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteEditingProjectsResponseBody) SetIgnoredList(v string) *DeleteEditingProjectsResponseBody {
-	s.IgnoredList = &v
-	return s
 }
 
 func (s *DeleteEditingProjectsResponseBody) SetRequestId(v string) *DeleteEditingProjectsResponseBody {
@@ -2629,8 +2626,376 @@ func (s *DeleteEditingProjectsResponse) SetBody(v *DeleteEditingProjectsResponse
 	return s
 }
 
+type DeleteLiveRecordFilesRequest struct {
+	RecordIds  []*string `json:"RecordIds,omitempty" xml:"RecordIds,omitempty" type:"Repeated"`
+	RemoveFile *bool     `json:"RemoveFile,omitempty" xml:"RemoveFile,omitempty"`
+}
+
+func (s DeleteLiveRecordFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveRecordFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveRecordFilesRequest) SetRecordIds(v []*string) *DeleteLiveRecordFilesRequest {
+	s.RecordIds = v
+	return s
+}
+
+func (s *DeleteLiveRecordFilesRequest) SetRemoveFile(v bool) *DeleteLiveRecordFilesRequest {
+	s.RemoveFile = &v
+	return s
+}
+
+type DeleteLiveRecordFilesResponseBody struct {
+	DeleteFileInfoList []*DeleteLiveRecordFilesResponseBodyDeleteFileInfoList `json:"DeleteFileInfoList,omitempty" xml:"DeleteFileInfoList,omitempty" type:"Repeated"`
+	Message            *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteLiveRecordFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveRecordFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveRecordFilesResponseBody) SetDeleteFileInfoList(v []*DeleteLiveRecordFilesResponseBodyDeleteFileInfoList) *DeleteLiveRecordFilesResponseBody {
+	s.DeleteFileInfoList = v
+	return s
+}
+
+func (s *DeleteLiveRecordFilesResponseBody) SetMessage(v string) *DeleteLiveRecordFilesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteLiveRecordFilesResponseBody) SetRequestId(v string) *DeleteLiveRecordFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLiveRecordFilesResponseBodyDeleteFileInfoList struct {
+	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+}
+
+func (s DeleteLiveRecordFilesResponseBodyDeleteFileInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveRecordFilesResponseBodyDeleteFileInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveRecordFilesResponseBodyDeleteFileInfoList) SetCode(v string) *DeleteLiveRecordFilesResponseBodyDeleteFileInfoList {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteLiveRecordFilesResponseBodyDeleteFileInfoList) SetMessage(v string) *DeleteLiveRecordFilesResponseBodyDeleteFileInfoList {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteLiveRecordFilesResponseBodyDeleteFileInfoList) SetRecordId(v string) *DeleteLiveRecordFilesResponseBodyDeleteFileInfoList {
+	s.RecordId = &v
+	return s
+}
+
+type DeleteLiveRecordFilesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteLiveRecordFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLiveRecordFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveRecordFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveRecordFilesResponse) SetHeaders(v map[string]*string) *DeleteLiveRecordFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLiveRecordFilesResponse) SetStatusCode(v int32) *DeleteLiveRecordFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLiveRecordFilesResponse) SetBody(v *DeleteLiveRecordFilesResponseBody) *DeleteLiveRecordFilesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLiveRecordTemplateRequest struct {
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DeleteLiveRecordTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveRecordTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveRecordTemplateRequest) SetTemplateId(v string) *DeleteLiveRecordTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DeleteLiveRecordTemplateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteLiveRecordTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveRecordTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveRecordTemplateResponseBody) SetRequestId(v string) *DeleteLiveRecordTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLiveRecordTemplateResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteLiveRecordTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLiveRecordTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveRecordTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveRecordTemplateResponse) SetHeaders(v map[string]*string) *DeleteLiveRecordTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLiveRecordTemplateResponse) SetStatusCode(v int32) *DeleteLiveRecordTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLiveRecordTemplateResponse) SetBody(v *DeleteLiveRecordTemplateResponseBody) *DeleteLiveRecordTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLiveSnapshotFilesRequest struct {
+	CreateTimestampList []*int64 `json:"CreateTimestampList,omitempty" xml:"CreateTimestampList,omitempty" type:"Repeated"`
+	DeleteOriginalFile  *bool    `json:"DeleteOriginalFile,omitempty" xml:"DeleteOriginalFile,omitempty"`
+	JobId               *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DeleteLiveSnapshotFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveSnapshotFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveSnapshotFilesRequest) SetCreateTimestampList(v []*int64) *DeleteLiveSnapshotFilesRequest {
+	s.CreateTimestampList = v
+	return s
+}
+
+func (s *DeleteLiveSnapshotFilesRequest) SetDeleteOriginalFile(v bool) *DeleteLiveSnapshotFilesRequest {
+	s.DeleteOriginalFile = &v
+	return s
+}
+
+func (s *DeleteLiveSnapshotFilesRequest) SetJobId(v string) *DeleteLiveSnapshotFilesRequest {
+	s.JobId = &v
+	return s
+}
+
+type DeleteLiveSnapshotFilesShrinkRequest struct {
+	CreateTimestampListShrink *string `json:"CreateTimestampList,omitempty" xml:"CreateTimestampList,omitempty"`
+	DeleteOriginalFile        *bool   `json:"DeleteOriginalFile,omitempty" xml:"DeleteOriginalFile,omitempty"`
+	JobId                     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DeleteLiveSnapshotFilesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveSnapshotFilesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveSnapshotFilesShrinkRequest) SetCreateTimestampListShrink(v string) *DeleteLiveSnapshotFilesShrinkRequest {
+	s.CreateTimestampListShrink = &v
+	return s
+}
+
+func (s *DeleteLiveSnapshotFilesShrinkRequest) SetDeleteOriginalFile(v bool) *DeleteLiveSnapshotFilesShrinkRequest {
+	s.DeleteOriginalFile = &v
+	return s
+}
+
+func (s *DeleteLiveSnapshotFilesShrinkRequest) SetJobId(v string) *DeleteLiveSnapshotFilesShrinkRequest {
+	s.JobId = &v
+	return s
+}
+
+type DeleteLiveSnapshotFilesResponseBody struct {
+	DeleteFileResultList []*DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList `json:"DeleteFileResultList,omitempty" xml:"DeleteFileResultList,omitempty" type:"Repeated"`
+	RequestId            *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteLiveSnapshotFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveSnapshotFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveSnapshotFilesResponseBody) SetDeleteFileResultList(v []*DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList) *DeleteLiveSnapshotFilesResponseBody {
+	s.DeleteFileResultList = v
+	return s
+}
+
+func (s *DeleteLiveSnapshotFilesResponseBody) SetRequestId(v string) *DeleteLiveSnapshotFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList struct {
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Result          *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList) SetCreateTimestamp(v int64) *DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList) SetResult(v string) *DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList {
+	s.Result = &v
+	return s
+}
+
+type DeleteLiveSnapshotFilesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteLiveSnapshotFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLiveSnapshotFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveSnapshotFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveSnapshotFilesResponse) SetHeaders(v map[string]*string) *DeleteLiveSnapshotFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLiveSnapshotFilesResponse) SetStatusCode(v int32) *DeleteLiveSnapshotFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLiveSnapshotFilesResponse) SetBody(v *DeleteLiveSnapshotFilesResponseBody) *DeleteLiveSnapshotFilesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLiveSnapshotTemplateRequest struct {
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DeleteLiveSnapshotTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveSnapshotTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveSnapshotTemplateRequest) SetTemplateId(v string) *DeleteLiveSnapshotTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DeleteLiveSnapshotTemplateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteLiveSnapshotTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveSnapshotTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveSnapshotTemplateResponseBody) SetRequestId(v string) *DeleteLiveSnapshotTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLiveSnapshotTemplateResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteLiveSnapshotTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLiveSnapshotTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveSnapshotTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveSnapshotTemplateResponse) SetHeaders(v map[string]*string) *DeleteLiveSnapshotTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLiveSnapshotTemplateResponse) SetStatusCode(v int32) *DeleteLiveSnapshotTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLiveSnapshotTemplateResponse) SetBody(v *DeleteLiveSnapshotTemplateResponseBody) *DeleteLiveSnapshotTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteLiveTranscodeJobRequest struct {
-	// 模板Id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -2648,7 +3013,6 @@ func (s *DeleteLiveTranscodeJobRequest) SetJobId(v string) *DeleteLiveTranscodeJ
 }
 
 type DeleteLiveTranscodeJobResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2695,7 +3059,6 @@ func (s *DeleteLiveTranscodeJobResponse) SetBody(v *DeleteLiveTranscodeJobRespon
 }
 
 type DeleteLiveTranscodeTemplateRequest struct {
-	// 模板Id
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -2713,7 +3076,6 @@ func (s *DeleteLiveTranscodeTemplateRequest) SetTemplateId(v string) *DeleteLive
 }
 
 type DeleteLiveTranscodeTemplateResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2760,10 +3122,9 @@ func (s *DeleteLiveTranscodeTemplateResponse) SetBody(v *DeleteLiveTranscodeTemp
 }
 
 type DeleteMediaInfosRequest struct {
-	// 待注册的媒资在相应系统中的地址
-	InputURLs *string `json:"InputURLs,omitempty" xml:"InputURLs,omitempty"`
-	// ICE 媒资ID
-	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	DeletePhysicalFiles *bool   `json:"DeletePhysicalFiles,omitempty" xml:"DeletePhysicalFiles,omitempty"`
+	InputURLs           *string `json:"InputURLs,omitempty" xml:"InputURLs,omitempty"`
+	MediaIds            *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
 }
 
 func (s DeleteMediaInfosRequest) String() string {
@@ -2772,6 +3133,11 @@ func (s DeleteMediaInfosRequest) String() string {
 
 func (s DeleteMediaInfosRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteMediaInfosRequest) SetDeletePhysicalFiles(v bool) *DeleteMediaInfosRequest {
+	s.DeletePhysicalFiles = &v
+	return s
 }
 
 func (s *DeleteMediaInfosRequest) SetInputURLs(v string) *DeleteMediaInfosRequest {
@@ -2785,10 +3151,9 @@ func (s *DeleteMediaInfosRequest) SetMediaIds(v string) *DeleteMediaInfosRequest
 }
 
 type DeleteMediaInfosResponseBody struct {
-	// 出现获取错误的ID或inputUr
-	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ForbiddenList []*string `json:"ForbiddenList,omitempty" xml:"ForbiddenList,omitempty" type:"Repeated"`
+	IgnoredList   []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
+	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteMediaInfosResponseBody) String() string {
@@ -2797,6 +3162,11 @@ func (s DeleteMediaInfosResponseBody) String() string {
 
 func (s DeleteMediaInfosResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteMediaInfosResponseBody) SetForbiddenList(v []*string) *DeleteMediaInfosResponseBody {
+	s.ForbiddenList = v
+	return s
 }
 
 func (s *DeleteMediaInfosResponseBody) SetIgnoredList(v []*string) *DeleteMediaInfosResponseBody {
@@ -2838,78 +3208,7 @@ func (s *DeleteMediaInfosResponse) SetBody(v *DeleteMediaInfosResponseBody) *Del
 	return s
 }
 
-type DeleteMediaProducingJobsRequest struct {
-	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
-}
-
-func (s DeleteMediaProducingJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMediaProducingJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMediaProducingJobsRequest) SetJobIds(v string) *DeleteMediaProducingJobsRequest {
-	s.JobIds = &v
-	return s
-}
-
-type DeleteMediaProducingJobsResponseBody struct {
-	IgnoreList *string `json:"IgnoreList,omitempty" xml:"IgnoreList,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteMediaProducingJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMediaProducingJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMediaProducingJobsResponseBody) SetIgnoreList(v string) *DeleteMediaProducingJobsResponseBody {
-	s.IgnoreList = &v
-	return s
-}
-
-func (s *DeleteMediaProducingJobsResponseBody) SetRequestId(v string) *DeleteMediaProducingJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteMediaProducingJobsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteMediaProducingJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteMediaProducingJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMediaProducingJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMediaProducingJobsResponse) SetHeaders(v map[string]*string) *DeleteMediaProducingJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteMediaProducingJobsResponse) SetStatusCode(v int32) *DeleteMediaProducingJobsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteMediaProducingJobsResponse) SetBody(v *DeleteMediaProducingJobsResponseBody) *DeleteMediaProducingJobsResponse {
-	s.Body = v
-	return s
-}
-
 type DeletePipelineRequest struct {
-	// 管道ID
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 }
 
@@ -2927,10 +3226,8 @@ func (s *DeletePipelineRequest) SetPipelineId(v string) *DeletePipelineRequest {
 }
 
 type DeletePipelineResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeletePipelineResponseBody) String() string {
@@ -2981,8 +3278,9 @@ func (s *DeletePipelineResponse) SetBody(v *DeletePipelineResponseBody) *DeleteP
 }
 
 type DeletePlayInfoRequest struct {
-	FileURLs *string `json:"FileURLs,omitempty" xml:"FileURLs,omitempty"`
-	MediaId  *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	DeletePhysicalFiles *bool   `json:"DeletePhysicalFiles,omitempty" xml:"DeletePhysicalFiles,omitempty"`
+	FileURLs            *string `json:"FileURLs,omitempty" xml:"FileURLs,omitempty"`
+	MediaId             *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s DeletePlayInfoRequest) String() string {
@@ -2991,6 +3289,11 @@ func (s DeletePlayInfoRequest) String() string {
 
 func (s DeletePlayInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeletePlayInfoRequest) SetDeletePhysicalFiles(v bool) *DeletePlayInfoRequest {
+	s.DeletePhysicalFiles = &v
+	return s
 }
 
 func (s *DeletePlayInfoRequest) SetFileURLs(v string) *DeletePlayInfoRequest {
@@ -3004,8 +3307,9 @@ func (s *DeletePlayInfoRequest) SetMediaId(v string) *DeletePlayInfoRequest {
 }
 
 type DeletePlayInfoResponseBody struct {
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ForbiddenList []*string `json:"ForbiddenList,omitempty" xml:"ForbiddenList,omitempty" type:"Repeated"`
+	IgnoredList   []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
+	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeletePlayInfoResponseBody) String() string {
@@ -3014,6 +3318,16 @@ func (s DeletePlayInfoResponseBody) String() string {
 
 func (s DeletePlayInfoResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeletePlayInfoResponseBody) SetForbiddenList(v []*string) *DeletePlayInfoResponseBody {
+	s.ForbiddenList = v
+	return s
+}
+
+func (s *DeletePlayInfoResponseBody) SetIgnoredList(v []*string) *DeletePlayInfoResponseBody {
+	s.IgnoredList = v
+	return s
 }
 
 func (s *DeletePlayInfoResponseBody) SetRequestId(v string) *DeletePlayInfoResponseBody {
@@ -3051,7 +3365,6 @@ func (s *DeletePlayInfoResponse) SetBody(v *DeletePlayInfoResponseBody) *DeleteP
 }
 
 type DeleteSmartJobRequest struct {
-	// 任务id，多个任务id用英文逗号分割
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -3069,7 +3382,6 @@ func (s *DeleteSmartJobRequest) SetJobId(v string) *DeleteSmartJobRequest {
 }
 
 type DeleteSmartJobResponseBody struct {
-	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3116,7 +3428,6 @@ func (s *DeleteSmartJobResponse) SetBody(v *DeleteSmartJobResponseBody) *DeleteS
 }
 
 type DeleteTemplateRequest struct {
-	// 模板id，多个id用英文逗号隔开
 	TemplateIds *string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty"`
 }
 
@@ -3134,7 +3445,6 @@ func (s *DeleteTemplateRequest) SetTemplateIds(v string) *DeleteTemplateRequest 
 }
 
 type DeleteTemplateResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3180,93 +3490,6 @@ func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteT
 	return s
 }
 
-type DescribeBizUserTypeRequest struct {
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-}
-
-func (s DescribeBizUserTypeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBizUserTypeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBizUserTypeRequest) SetRegion(v string) *DescribeBizUserTypeRequest {
-	s.Region = &v
-	return s
-}
-
-type DescribeBizUserTypeResponseBody struct {
-	Data []*DescribeBizUserTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeBizUserTypeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBizUserTypeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBizUserTypeResponseBody) SetData(v []*DescribeBizUserTypeResponseBodyData) *DescribeBizUserTypeResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeBizUserTypeResponseBody) SetRequestId(v string) *DescribeBizUserTypeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeBizUserTypeResponseBodyData struct {
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-}
-
-func (s DescribeBizUserTypeResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBizUserTypeResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBizUserTypeResponseBodyData) SetProfile(v string) *DescribeBizUserTypeResponseBodyData {
-	s.Profile = &v
-	return s
-}
-
-type DescribeBizUserTypeResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeBizUserTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeBizUserTypeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBizUserTypeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBizUserTypeResponse) SetHeaders(v map[string]*string) *DescribeBizUserTypeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeBizUserTypeResponse) SetStatusCode(v int32) *DescribeBizUserTypeResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeBizUserTypeResponse) SetBody(v *DescribeBizUserTypeResponseBody) *DescribeBizUserTypeResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeFilterConfigsRequest struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -3286,8 +3509,7 @@ func (s *DescribeFilterConfigsRequest) SetType(v string) *DescribeFilterConfigsR
 
 type DescribeFilterConfigsResponseBody struct {
 	FilterConfigs []*DescribeFilterConfigsResponseBodyFilterConfigs `json:"FilterConfigs,omitempty" xml:"FilterConfigs,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeFilterConfigsResponseBody) String() string {
@@ -3312,6 +3534,7 @@ type DescribeFilterConfigsResponseBodyFilterConfigs struct {
 	FilterName  *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
 	ItemConfigs *string `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UuId        *string `json:"UuId,omitempty" xml:"UuId,omitempty"`
 }
 
 func (s DescribeFilterConfigsResponseBodyFilterConfigs) String() string {
@@ -3334,6 +3557,11 @@ func (s *DescribeFilterConfigsResponseBodyFilterConfigs) SetItemConfigs(v string
 
 func (s *DescribeFilterConfigsResponseBodyFilterConfigs) SetType(v string) *DescribeFilterConfigsResponseBodyFilterConfigs {
 	s.Type = &v
+	return s
+}
+
+func (s *DescribeFilterConfigsResponseBodyFilterConfigs) SetUuId(v string) *DescribeFilterConfigsResponseBodyFilterConfigs {
+	s.UuId = &v
 	return s
 }
 
@@ -3362,1038 +3590,6 @@ func (s *DescribeFilterConfigsResponse) SetStatusCode(v int32) *DescribeFilterCo
 }
 
 func (s *DescribeFilterConfigsResponse) SetBody(v *DescribeFilterConfigsResponseBody) *DescribeFilterConfigsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeLivePubExperienceMetricDataRequest struct {
-	BeginTs      *string `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	EndTs        *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	MetricType   *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	Os           *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	PubProtocol  *string `json:"PubProtocol,omitempty" xml:"PubProtocol,omitempty"`
-	TerminalType *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-}
-
-func (s DescribeLivePubExperienceMetricDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLivePubExperienceMetricDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLivePubExperienceMetricDataRequest) SetBeginTs(v string) *DescribeLivePubExperienceMetricDataRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribeLivePubExperienceMetricDataRequest) SetDomain(v string) *DescribeLivePubExperienceMetricDataRequest {
-	s.Domain = &v
-	return s
-}
-
-func (s *DescribeLivePubExperienceMetricDataRequest) SetEndTs(v string) *DescribeLivePubExperienceMetricDataRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeLivePubExperienceMetricDataRequest) SetMetricType(v string) *DescribeLivePubExperienceMetricDataRequest {
-	s.MetricType = &v
-	return s
-}
-
-func (s *DescribeLivePubExperienceMetricDataRequest) SetOs(v string) *DescribeLivePubExperienceMetricDataRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribeLivePubExperienceMetricDataRequest) SetPubProtocol(v string) *DescribeLivePubExperienceMetricDataRequest {
-	s.PubProtocol = &v
-	return s
-}
-
-func (s *DescribeLivePubExperienceMetricDataRequest) SetTerminalType(v string) *DescribeLivePubExperienceMetricDataRequest {
-	s.TerminalType = &v
-	return s
-}
-
-type DescribeLivePubExperienceMetricDataResponseBody struct {
-	MetricList []*DescribeLivePubExperienceMetricDataResponseBodyMetricList `json:"MetricList,omitempty" xml:"MetricList,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeLivePubExperienceMetricDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLivePubExperienceMetricDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLivePubExperienceMetricDataResponseBody) SetMetricList(v []*DescribeLivePubExperienceMetricDataResponseBodyMetricList) *DescribeLivePubExperienceMetricDataResponseBody {
-	s.MetricList = v
-	return s
-}
-
-func (s *DescribeLivePubExperienceMetricDataResponseBody) SetRequestId(v string) *DescribeLivePubExperienceMetricDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeLivePubExperienceMetricDataResponseBodyMetricList struct {
-	AvgScore *float32 `json:"AvgScore,omitempty" xml:"AvgScore,omitempty"`
-	MaxScore *float32 `json:"MaxScore,omitempty" xml:"MaxScore,omitempty"`
-	MinScore *float32 `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
-}
-
-func (s DescribeLivePubExperienceMetricDataResponseBodyMetricList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLivePubExperienceMetricDataResponseBodyMetricList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLivePubExperienceMetricDataResponseBodyMetricList) SetAvgScore(v float32) *DescribeLivePubExperienceMetricDataResponseBodyMetricList {
-	s.AvgScore = &v
-	return s
-}
-
-func (s *DescribeLivePubExperienceMetricDataResponseBodyMetricList) SetMaxScore(v float32) *DescribeLivePubExperienceMetricDataResponseBodyMetricList {
-	s.MaxScore = &v
-	return s
-}
-
-func (s *DescribeLivePubExperienceMetricDataResponseBodyMetricList) SetMinScore(v float32) *DescribeLivePubExperienceMetricDataResponseBodyMetricList {
-	s.MinScore = &v
-	return s
-}
-
-type DescribeLivePubExperienceMetricDataResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLivePubExperienceMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeLivePubExperienceMetricDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLivePubExperienceMetricDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLivePubExperienceMetricDataResponse) SetHeaders(v map[string]*string) *DescribeLivePubExperienceMetricDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeLivePubExperienceMetricDataResponse) SetStatusCode(v int32) *DescribeLivePubExperienceMetricDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeLivePubExperienceMetricDataResponse) SetBody(v *DescribeLivePubExperienceMetricDataResponseBody) *DescribeLivePubExperienceMetricDataResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeLivePubListRequest struct {
-	BeginTs      *string `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	EndTs        *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	MetricType   *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	Os           *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	PageNum      *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PubProtocol  *string `json:"PubProtocol,omitempty" xml:"PubProtocol,omitempty"`
-	TerminalType *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-}
-
-func (s DescribeLivePubListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLivePubListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLivePubListRequest) SetBeginTs(v string) *DescribeLivePubListRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribeLivePubListRequest) SetDomain(v string) *DescribeLivePubListRequest {
-	s.Domain = &v
-	return s
-}
-
-func (s *DescribeLivePubListRequest) SetEndTs(v string) *DescribeLivePubListRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeLivePubListRequest) SetMetricType(v string) *DescribeLivePubListRequest {
-	s.MetricType = &v
-	return s
-}
-
-func (s *DescribeLivePubListRequest) SetOs(v string) *DescribeLivePubListRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribeLivePubListRequest) SetPageNum(v int32) *DescribeLivePubListRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *DescribeLivePubListRequest) SetPageSize(v int32) *DescribeLivePubListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeLivePubListRequest) SetPubProtocol(v string) *DescribeLivePubListRequest {
-	s.PubProtocol = &v
-	return s
-}
-
-func (s *DescribeLivePubListRequest) SetTerminalType(v string) *DescribeLivePubListRequest {
-	s.TerminalType = &v
-	return s
-}
-
-type DescribeLivePubListResponseBody struct {
-	PageNo      *int64                                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize    *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PubInfoList []*DescribeLivePubListResponseBodyPubInfoList `json:"PubInfoList,omitempty" xml:"PubInfoList,omitempty" type:"Repeated"`
-	// Id
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeLivePubListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLivePubListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLivePubListResponseBody) SetPageNo(v int64) *DescribeLivePubListResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBody) SetPageSize(v int64) *DescribeLivePubListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBody) SetPubInfoList(v []*DescribeLivePubListResponseBodyPubInfoList) *DescribeLivePubListResponseBody {
-	s.PubInfoList = v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBody) SetRequestId(v string) *DescribeLivePubListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBody) SetTotalCount(v int64) *DescribeLivePubListResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeLivePubListResponseBodyPubInfoList struct {
-	Area              *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	CpuUsageRate      *string `json:"CpuUsageRate,omitempty" xml:"CpuUsageRate,omitempty"`
-	Domain            *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	EndTs             *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	Fps               *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	Kbps              *string `json:"Kbps,omitempty" xml:"Kbps,omitempty"`
-	PubHeapUpDuration *string `json:"PubHeapUpDuration,omitempty" xml:"PubHeapUpDuration,omitempty"`
-	PubMachineType    *string `json:"PubMachineType,omitempty" xml:"PubMachineType,omitempty"`
-	SecondPlayRate    *string `json:"SecondPlayRate,omitempty" xml:"SecondPlayRate,omitempty"`
-	StartTs           *string `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-	StreamName        *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-}
-
-func (s DescribeLivePubListResponseBodyPubInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLivePubListResponseBodyPubInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLivePubListResponseBodyPubInfoList) SetArea(v string) *DescribeLivePubListResponseBodyPubInfoList {
-	s.Area = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBodyPubInfoList) SetCpuUsageRate(v string) *DescribeLivePubListResponseBodyPubInfoList {
-	s.CpuUsageRate = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBodyPubInfoList) SetDomain(v string) *DescribeLivePubListResponseBodyPubInfoList {
-	s.Domain = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBodyPubInfoList) SetEndTs(v string) *DescribeLivePubListResponseBodyPubInfoList {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBodyPubInfoList) SetFps(v string) *DescribeLivePubListResponseBodyPubInfoList {
-	s.Fps = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBodyPubInfoList) SetKbps(v string) *DescribeLivePubListResponseBodyPubInfoList {
-	s.Kbps = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBodyPubInfoList) SetPubHeapUpDuration(v string) *DescribeLivePubListResponseBodyPubInfoList {
-	s.PubHeapUpDuration = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBodyPubInfoList) SetPubMachineType(v string) *DescribeLivePubListResponseBodyPubInfoList {
-	s.PubMachineType = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBodyPubInfoList) SetSecondPlayRate(v string) *DescribeLivePubListResponseBodyPubInfoList {
-	s.SecondPlayRate = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBodyPubInfoList) SetStartTs(v string) *DescribeLivePubListResponseBodyPubInfoList {
-	s.StartTs = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponseBodyPubInfoList) SetStreamName(v string) *DescribeLivePubListResponseBodyPubInfoList {
-	s.StreamName = &v
-	return s
-}
-
-type DescribeLivePubListResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLivePubListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeLivePubListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLivePubListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLivePubListResponse) SetHeaders(v map[string]*string) *DescribeLivePubListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeLivePubListResponse) SetStatusCode(v int32) *DescribeLivePubListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeLivePubListResponse) SetBody(v *DescribeLivePubListResponseBody) *DescribeLivePubListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeLivePubMetricDataRequest struct {
-	BeginTs         *int64  `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	EndTs           *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	ExperienceLevel *string `json:"ExperienceLevel,omitempty" xml:"ExperienceLevel,omitempty"`
-	MetricType      *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	Os              *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	PubProtocol     *string `json:"PubProtocol,omitempty" xml:"PubProtocol,omitempty"`
-	SdkVersion      *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
-	StreamName      *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	TerminalType    *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-}
-
-func (s DescribeLivePubMetricDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLivePubMetricDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLivePubMetricDataRequest) SetBeginTs(v int64) *DescribeLivePubMetricDataRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribeLivePubMetricDataRequest) SetDomain(v string) *DescribeLivePubMetricDataRequest {
-	s.Domain = &v
-	return s
-}
-
-func (s *DescribeLivePubMetricDataRequest) SetEndTs(v int64) *DescribeLivePubMetricDataRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeLivePubMetricDataRequest) SetExperienceLevel(v string) *DescribeLivePubMetricDataRequest {
-	s.ExperienceLevel = &v
-	return s
-}
-
-func (s *DescribeLivePubMetricDataRequest) SetMetricType(v string) *DescribeLivePubMetricDataRequest {
-	s.MetricType = &v
-	return s
-}
-
-func (s *DescribeLivePubMetricDataRequest) SetOs(v string) *DescribeLivePubMetricDataRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribeLivePubMetricDataRequest) SetPubProtocol(v string) *DescribeLivePubMetricDataRequest {
-	s.PubProtocol = &v
-	return s
-}
-
-func (s *DescribeLivePubMetricDataRequest) SetSdkVersion(v string) *DescribeLivePubMetricDataRequest {
-	s.SdkVersion = &v
-	return s
-}
-
-func (s *DescribeLivePubMetricDataRequest) SetStreamName(v string) *DescribeLivePubMetricDataRequest {
-	s.StreamName = &v
-	return s
-}
-
-func (s *DescribeLivePubMetricDataRequest) SetTerminalType(v string) *DescribeLivePubMetricDataRequest {
-	s.TerminalType = &v
-	return s
-}
-
-type DescribeLivePubMetricDataResponseBody struct {
-	Nodes []*DescribeLivePubMetricDataResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeLivePubMetricDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLivePubMetricDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLivePubMetricDataResponseBody) SetNodes(v []*DescribeLivePubMetricDataResponseBodyNodes) *DescribeLivePubMetricDataResponseBody {
-	s.Nodes = v
-	return s
-}
-
-func (s *DescribeLivePubMetricDataResponseBody) SetRequestId(v string) *DescribeLivePubMetricDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeLivePubMetricDataResponseBodyNodes struct {
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Time     *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-}
-
-func (s DescribeLivePubMetricDataResponseBodyNodes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLivePubMetricDataResponseBodyNodes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLivePubMetricDataResponseBodyNodes) SetDuration(v int64) *DescribeLivePubMetricDataResponseBodyNodes {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeLivePubMetricDataResponseBodyNodes) SetTime(v int64) *DescribeLivePubMetricDataResponseBodyNodes {
-	s.Time = &v
-	return s
-}
-
-type DescribeLivePubMetricDataResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLivePubMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeLivePubMetricDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLivePubMetricDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLivePubMetricDataResponse) SetHeaders(v map[string]*string) *DescribeLivePubMetricDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeLivePubMetricDataResponse) SetStatusCode(v int32) *DescribeLivePubMetricDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeLivePubMetricDataResponse) SetBody(v *DescribeLivePubMetricDataResponseBody) *DescribeLivePubMetricDataResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeLiveSubExperienceMetricDataRequest struct {
-	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTs         *string `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	EndTs           *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	ExperienceLevel *string `json:"ExperienceLevel,omitempty" xml:"ExperienceLevel,omitempty"`
-	MetricType      *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	Os              *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	SubProtocol     *string `json:"SubProtocol,omitempty" xml:"SubProtocol,omitempty"`
-	TerminalType    *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-}
-
-func (s DescribeLiveSubExperienceMetricDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveSubExperienceMetricDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveSubExperienceMetricDataRequest) SetAppName(v string) *DescribeLiveSubExperienceMetricDataRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *DescribeLiveSubExperienceMetricDataRequest) SetBeginTs(v string) *DescribeLiveSubExperienceMetricDataRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribeLiveSubExperienceMetricDataRequest) SetEndTs(v string) *DescribeLiveSubExperienceMetricDataRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeLiveSubExperienceMetricDataRequest) SetExperienceLevel(v string) *DescribeLiveSubExperienceMetricDataRequest {
-	s.ExperienceLevel = &v
-	return s
-}
-
-func (s *DescribeLiveSubExperienceMetricDataRequest) SetMetricType(v string) *DescribeLiveSubExperienceMetricDataRequest {
-	s.MetricType = &v
-	return s
-}
-
-func (s *DescribeLiveSubExperienceMetricDataRequest) SetOs(v string) *DescribeLiveSubExperienceMetricDataRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribeLiveSubExperienceMetricDataRequest) SetSubProtocol(v string) *DescribeLiveSubExperienceMetricDataRequest {
-	s.SubProtocol = &v
-	return s
-}
-
-func (s *DescribeLiveSubExperienceMetricDataRequest) SetTerminalType(v string) *DescribeLiveSubExperienceMetricDataRequest {
-	s.TerminalType = &v
-	return s
-}
-
-type DescribeLiveSubExperienceMetricDataResponseBody struct {
-	MetricList []*DescribeLiveSubExperienceMetricDataResponseBodyMetricList `json:"MetricList,omitempty" xml:"MetricList,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeLiveSubExperienceMetricDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveSubExperienceMetricDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveSubExperienceMetricDataResponseBody) SetMetricList(v []*DescribeLiveSubExperienceMetricDataResponseBodyMetricList) *DescribeLiveSubExperienceMetricDataResponseBody {
-	s.MetricList = v
-	return s
-}
-
-func (s *DescribeLiveSubExperienceMetricDataResponseBody) SetRequestId(v string) *DescribeLiveSubExperienceMetricDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeLiveSubExperienceMetricDataResponseBodyMetricList struct {
-	AvgScore *float32 `json:"AvgScore,omitempty" xml:"AvgScore,omitempty"`
-	MaxScore *float32 `json:"MaxScore,omitempty" xml:"MaxScore,omitempty"`
-	MinScore *float32 `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
-}
-
-func (s DescribeLiveSubExperienceMetricDataResponseBodyMetricList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveSubExperienceMetricDataResponseBodyMetricList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveSubExperienceMetricDataResponseBodyMetricList) SetAvgScore(v float32) *DescribeLiveSubExperienceMetricDataResponseBodyMetricList {
-	s.AvgScore = &v
-	return s
-}
-
-func (s *DescribeLiveSubExperienceMetricDataResponseBodyMetricList) SetMaxScore(v float32) *DescribeLiveSubExperienceMetricDataResponseBodyMetricList {
-	s.MaxScore = &v
-	return s
-}
-
-func (s *DescribeLiveSubExperienceMetricDataResponseBodyMetricList) SetMinScore(v float32) *DescribeLiveSubExperienceMetricDataResponseBodyMetricList {
-	s.MinScore = &v
-	return s
-}
-
-type DescribeLiveSubExperienceMetricDataResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLiveSubExperienceMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeLiveSubExperienceMetricDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveSubExperienceMetricDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveSubExperienceMetricDataResponse) SetHeaders(v map[string]*string) *DescribeLiveSubExperienceMetricDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeLiveSubExperienceMetricDataResponse) SetStatusCode(v int32) *DescribeLiveSubExperienceMetricDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeLiveSubExperienceMetricDataResponse) SetBody(v *DescribeLiveSubExperienceMetricDataResponseBody) *DescribeLiveSubExperienceMetricDataResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeLiveSubListRequest struct {
-	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTs         *string `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	Definition      *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	EndTs           *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	ExperienceLevel *string `json:"ExperienceLevel,omitempty" xml:"ExperienceLevel,omitempty"`
-	ItemConfigs     *string `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
-	MetricType      *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	Os              *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StreamName      *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	SubProtocol     *string `json:"SubProtocol,omitempty" xml:"SubProtocol,omitempty"`
-	TerminalType    *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-}
-
-func (s DescribeLiveSubListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveSubListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveSubListRequest) SetAppName(v string) *DescribeLiveSubListRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *DescribeLiveSubListRequest) SetBeginTs(v string) *DescribeLiveSubListRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribeLiveSubListRequest) SetDefinition(v string) *DescribeLiveSubListRequest {
-	s.Definition = &v
-	return s
-}
-
-func (s *DescribeLiveSubListRequest) SetEndTs(v string) *DescribeLiveSubListRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeLiveSubListRequest) SetExperienceLevel(v string) *DescribeLiveSubListRequest {
-	s.ExperienceLevel = &v
-	return s
-}
-
-func (s *DescribeLiveSubListRequest) SetItemConfigs(v string) *DescribeLiveSubListRequest {
-	s.ItemConfigs = &v
-	return s
-}
-
-func (s *DescribeLiveSubListRequest) SetMetricType(v string) *DescribeLiveSubListRequest {
-	s.MetricType = &v
-	return s
-}
-
-func (s *DescribeLiveSubListRequest) SetNetwork(v string) *DescribeLiveSubListRequest {
-	s.Network = &v
-	return s
-}
-
-func (s *DescribeLiveSubListRequest) SetOs(v string) *DescribeLiveSubListRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribeLiveSubListRequest) SetPageNo(v int32) *DescribeLiveSubListRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribeLiveSubListRequest) SetPageSize(v int32) *DescribeLiveSubListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeLiveSubListRequest) SetStreamName(v string) *DescribeLiveSubListRequest {
-	s.StreamName = &v
-	return s
-}
-
-func (s *DescribeLiveSubListRequest) SetSubProtocol(v string) *DescribeLiveSubListRequest {
-	s.SubProtocol = &v
-	return s
-}
-
-func (s *DescribeLiveSubListRequest) SetTerminalType(v string) *DescribeLiveSubListRequest {
-	s.TerminalType = &v
-	return s
-}
-
-type DescribeLiveSubListResponseBody struct {
-	PageNo   *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubInfoList []*DescribeLiveSubListResponseBodySubInfoList `json:"SubInfoList,omitempty" xml:"SubInfoList,omitempty" type:"Repeated"`
-	TotalCount  *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeLiveSubListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveSubListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveSubListResponseBody) SetPageNo(v int64) *DescribeLiveSubListResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribeLiveSubListResponseBody) SetPageSize(v int64) *DescribeLiveSubListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeLiveSubListResponseBody) SetRequestId(v string) *DescribeLiveSubListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeLiveSubListResponseBody) SetSubInfoList(v []*DescribeLiveSubListResponseBodySubInfoList) *DescribeLiveSubListResponseBody {
-	s.SubInfoList = v
-	return s
-}
-
-func (s *DescribeLiveSubListResponseBody) SetTotalCount(v int64) *DescribeLiveSubListResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeLiveSubListResponseBodySubInfoList struct {
-	CacheDuration      *string `json:"CacheDuration,omitempty" xml:"CacheDuration,omitempty"`
-	CpuUsageRate       *string `json:"CpuUsageRate,omitempty" xml:"CpuUsageRate,omitempty"`
-	FirstFrameDuration *string `json:"FirstFrameDuration,omitempty" xml:"FirstFrameDuration,omitempty"`
-	PlayFps            *string `json:"PlayFps,omitempty" xml:"PlayFps,omitempty"`
-	SecondPlayRate     *string `json:"SecondPlayRate,omitempty" xml:"SecondPlayRate,omitempty"`
-	SubNetBitrate      *string `json:"SubNetBitrate,omitempty" xml:"SubNetBitrate,omitempty"`
-	SubRate            *string `json:"SubRate,omitempty" xml:"SubRate,omitempty"`
-	TraceId            *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	VideoStuck         *string `json:"VideoStuck,omitempty" xml:"VideoStuck,omitempty"`
-}
-
-func (s DescribeLiveSubListResponseBodySubInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveSubListResponseBodySubInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveSubListResponseBodySubInfoList) SetCacheDuration(v string) *DescribeLiveSubListResponseBodySubInfoList {
-	s.CacheDuration = &v
-	return s
-}
-
-func (s *DescribeLiveSubListResponseBodySubInfoList) SetCpuUsageRate(v string) *DescribeLiveSubListResponseBodySubInfoList {
-	s.CpuUsageRate = &v
-	return s
-}
-
-func (s *DescribeLiveSubListResponseBodySubInfoList) SetFirstFrameDuration(v string) *DescribeLiveSubListResponseBodySubInfoList {
-	s.FirstFrameDuration = &v
-	return s
-}
-
-func (s *DescribeLiveSubListResponseBodySubInfoList) SetPlayFps(v string) *DescribeLiveSubListResponseBodySubInfoList {
-	s.PlayFps = &v
-	return s
-}
-
-func (s *DescribeLiveSubListResponseBodySubInfoList) SetSecondPlayRate(v string) *DescribeLiveSubListResponseBodySubInfoList {
-	s.SecondPlayRate = &v
-	return s
-}
-
-func (s *DescribeLiveSubListResponseBodySubInfoList) SetSubNetBitrate(v string) *DescribeLiveSubListResponseBodySubInfoList {
-	s.SubNetBitrate = &v
-	return s
-}
-
-func (s *DescribeLiveSubListResponseBodySubInfoList) SetSubRate(v string) *DescribeLiveSubListResponseBodySubInfoList {
-	s.SubRate = &v
-	return s
-}
-
-func (s *DescribeLiveSubListResponseBodySubInfoList) SetTraceId(v string) *DescribeLiveSubListResponseBodySubInfoList {
-	s.TraceId = &v
-	return s
-}
-
-func (s *DescribeLiveSubListResponseBodySubInfoList) SetVideoStuck(v string) *DescribeLiveSubListResponseBodySubInfoList {
-	s.VideoStuck = &v
-	return s
-}
-
-type DescribeLiveSubListResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLiveSubListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeLiveSubListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveSubListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveSubListResponse) SetHeaders(v map[string]*string) *DescribeLiveSubListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeLiveSubListResponse) SetStatusCode(v int32) *DescribeLiveSubListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeLiveSubListResponse) SetBody(v *DescribeLiveSubListResponseBody) *DescribeLiveSubListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeLiveSubMetricDataRequest struct {
-	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTs         *int64  `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	Definition      *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	EndTs           *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	ExperienceLevel *string `json:"ExperienceLevel,omitempty" xml:"ExperienceLevel,omitempty"`
-	ItemConfigs     *string `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
-	MetricType      *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	Os              *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	SdkVersion      *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
-	StreamName      *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	SubProtocol     *string `json:"SubProtocol,omitempty" xml:"SubProtocol,omitempty"`
-	TerminalType    *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-}
-
-func (s DescribeLiveSubMetricDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveSubMetricDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveSubMetricDataRequest) SetAppName(v string) *DescribeLiveSubMetricDataRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataRequest) SetBeginTs(v int64) *DescribeLiveSubMetricDataRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataRequest) SetDefinition(v string) *DescribeLiveSubMetricDataRequest {
-	s.Definition = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataRequest) SetEndTs(v int64) *DescribeLiveSubMetricDataRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataRequest) SetExperienceLevel(v string) *DescribeLiveSubMetricDataRequest {
-	s.ExperienceLevel = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataRequest) SetItemConfigs(v string) *DescribeLiveSubMetricDataRequest {
-	s.ItemConfigs = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataRequest) SetMetricType(v string) *DescribeLiveSubMetricDataRequest {
-	s.MetricType = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataRequest) SetNetwork(v string) *DescribeLiveSubMetricDataRequest {
-	s.Network = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataRequest) SetOs(v string) *DescribeLiveSubMetricDataRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataRequest) SetSdkVersion(v string) *DescribeLiveSubMetricDataRequest {
-	s.SdkVersion = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataRequest) SetStreamName(v string) *DescribeLiveSubMetricDataRequest {
-	s.StreamName = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataRequest) SetSubProtocol(v string) *DescribeLiveSubMetricDataRequest {
-	s.SubProtocol = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataRequest) SetTerminalType(v string) *DescribeLiveSubMetricDataRequest {
-	s.TerminalType = &v
-	return s
-}
-
-type DescribeLiveSubMetricDataResponseBody struct {
-	Nodes []*DescribeLiveSubMetricDataResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeLiveSubMetricDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveSubMetricDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveSubMetricDataResponseBody) SetNodes(v []*DescribeLiveSubMetricDataResponseBodyNodes) *DescribeLiveSubMetricDataResponseBody {
-	s.Nodes = v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataResponseBody) SetRequestId(v string) *DescribeLiveSubMetricDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeLiveSubMetricDataResponseBodyNodes struct {
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Time     *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-}
-
-func (s DescribeLiveSubMetricDataResponseBodyNodes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveSubMetricDataResponseBodyNodes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveSubMetricDataResponseBodyNodes) SetDuration(v int64) *DescribeLiveSubMetricDataResponseBodyNodes {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataResponseBodyNodes) SetTime(v int64) *DescribeLiveSubMetricDataResponseBodyNodes {
-	s.Time = &v
-	return s
-}
-
-type DescribeLiveSubMetricDataResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLiveSubMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeLiveSubMetricDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLiveSubMetricDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLiveSubMetricDataResponse) SetHeaders(v map[string]*string) *DescribeLiveSubMetricDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataResponse) SetStatusCode(v int32) *DescribeLiveSubMetricDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeLiveSubMetricDataResponse) SetBody(v *DescribeLiveSubMetricDataResponseBody) *DescribeLiveSubMetricDataResponse {
 	s.Body = v
 	return s
 }
@@ -4434,9 +3630,8 @@ func (s *DescribeMeterIceEditUsageRequest) SetStartTs(v int64) *DescribeMeterIce
 }
 
 type DescribeMeterIceEditUsageResponseBody struct {
-	Data []*DescribeMeterIceEditUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      []*DescribeMeterIceEditUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMeterIceEditUsageResponseBody) String() string {
@@ -4551,9 +3746,8 @@ func (s *DescribeMeterIceLiveMediaConvertUsageRequest) SetStartTs(v int64) *Desc
 }
 
 type DescribeMeterIceLiveMediaConvertUsageResponseBody struct {
-	Data []*DescribeMeterIceLiveMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      []*DescribeMeterIceLiveMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMeterIceLiveMediaConvertUsageResponseBody) String() string {
@@ -4668,9 +3862,8 @@ func (s *DescribeMeterIceMediaConvertUHDUsageRequest) SetStartTs(v int64) *Descr
 }
 
 type DescribeMeterIceMediaConvertUHDUsageResponseBody struct {
-	Data []*DescribeMeterIceMediaConvertUHDUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      []*DescribeMeterIceMediaConvertUHDUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMeterIceMediaConvertUHDUsageResponseBody) String() string {
@@ -4785,9 +3978,8 @@ func (s *DescribeMeterIceMediaConvertUsageRequest) SetStartTs(v int64) *Describe
 }
 
 type DescribeMeterIceMediaConvertUsageResponseBody struct {
-	Data []*DescribeMeterIceMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      []*DescribeMeterIceMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMeterIceMediaConvertUsageResponseBody) String() string {
@@ -4902,9 +4094,8 @@ func (s *DescribeMeterIceMpsAiUsageRequest) SetStartTs(v int64) *DescribeMeterIc
 }
 
 type DescribeMeterIceMpsAiUsageResponseBody struct {
-	Data []*DescribeMeterIceMpsAiUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      []*DescribeMeterIceMpsAiUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMeterIceMpsAiUsageResponseBody) String() string {
@@ -4983,174 +4174,1119 @@ func (s *DescribeMeterIceMpsAiUsageResponse) SetBody(v *DescribeMeterIceMpsAiUsa
 	return s
 }
 
-type DescribeMeterIceSummaryRequest struct {
+type DescribeMeterImsEditUsageRequest struct {
+	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+}
+
+func (s DescribeMeterImsEditUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsEditUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsEditUsageRequest) SetEndTs(v int64) *DescribeMeterImsEditUsageRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribeMeterImsEditUsageRequest) SetInterval(v int64) *DescribeMeterImsEditUsageRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeMeterImsEditUsageRequest) SetRegion(v string) *DescribeMeterImsEditUsageRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeMeterImsEditUsageRequest) SetStartTs(v int64) *DescribeMeterImsEditUsageRequest {
+	s.StartTs = &v
+	return s
+}
+
+type DescribeMeterImsEditUsageResponseBody struct {
+	Data      []*DescribeMeterImsEditUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMeterImsEditUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsEditUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsEditUsageResponseBody) SetData(v []*DescribeMeterImsEditUsageResponseBodyData) *DescribeMeterImsEditUsageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeMeterImsEditUsageResponseBody) SetRequestId(v string) *DescribeMeterImsEditUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMeterImsEditUsageResponseBodyData struct {
+	Duration *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Profile  *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Time     *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s DescribeMeterImsEditUsageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsEditUsageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsEditUsageResponseBodyData) SetDuration(v int64) *DescribeMeterImsEditUsageResponseBodyData {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeMeterImsEditUsageResponseBodyData) SetProfile(v string) *DescribeMeterImsEditUsageResponseBodyData {
+	s.Profile = &v
+	return s
+}
+
+func (s *DescribeMeterImsEditUsageResponseBodyData) SetTime(v int64) *DescribeMeterImsEditUsageResponseBodyData {
+	s.Time = &v
+	return s
+}
+
+type DescribeMeterImsEditUsageResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMeterImsEditUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMeterImsEditUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsEditUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsEditUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterImsEditUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMeterImsEditUsageResponse) SetStatusCode(v int32) *DescribeMeterImsEditUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMeterImsEditUsageResponse) SetBody(v *DescribeMeterImsEditUsageResponseBody) *DescribeMeterImsEditUsageResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMeterImsLiveEditUsageRequest struct {
+	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+}
+
+func (s DescribeMeterImsLiveEditUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveEditUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveEditUsageRequest) SetEndTs(v int64) *DescribeMeterImsLiveEditUsageRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveEditUsageRequest) SetInterval(v int64) *DescribeMeterImsLiveEditUsageRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveEditUsageRequest) SetRegion(v string) *DescribeMeterImsLiveEditUsageRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveEditUsageRequest) SetStartTs(v int64) *DescribeMeterImsLiveEditUsageRequest {
+	s.StartTs = &v
+	return s
+}
+
+type DescribeMeterImsLiveEditUsageResponseBody struct {
+	Data      []*DescribeMeterImsLiveEditUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMeterImsLiveEditUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveEditUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveEditUsageResponseBody) SetData(v []*DescribeMeterImsLiveEditUsageResponseBodyData) *DescribeMeterImsLiveEditUsageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeMeterImsLiveEditUsageResponseBody) SetRequestId(v string) *DescribeMeterImsLiveEditUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMeterImsLiveEditUsageResponseBodyData struct {
+	Duration *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Profile  *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Time     *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s DescribeMeterImsLiveEditUsageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveEditUsageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveEditUsageResponseBodyData) SetDuration(v int64) *DescribeMeterImsLiveEditUsageResponseBodyData {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveEditUsageResponseBodyData) SetProfile(v string) *DescribeMeterImsLiveEditUsageResponseBodyData {
+	s.Profile = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveEditUsageResponseBodyData) SetTime(v int64) *DescribeMeterImsLiveEditUsageResponseBodyData {
+	s.Time = &v
+	return s
+}
+
+type DescribeMeterImsLiveEditUsageResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMeterImsLiveEditUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMeterImsLiveEditUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveEditUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveEditUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterImsLiveEditUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMeterImsLiveEditUsageResponse) SetStatusCode(v int32) *DescribeMeterImsLiveEditUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveEditUsageResponse) SetBody(v *DescribeMeterImsLiveEditUsageResponseBody) *DescribeMeterImsLiveEditUsageResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMeterImsLiveMediaConvertUsageRequest struct {
+	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+}
+
+func (s DescribeMeterImsLiveMediaConvertUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveMediaConvertUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveMediaConvertUsageRequest) SetEndTs(v int64) *DescribeMeterImsLiveMediaConvertUsageRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveMediaConvertUsageRequest) SetInterval(v int64) *DescribeMeterImsLiveMediaConvertUsageRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveMediaConvertUsageRequest) SetRegion(v string) *DescribeMeterImsLiveMediaConvertUsageRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveMediaConvertUsageRequest) SetStartTs(v int64) *DescribeMeterImsLiveMediaConvertUsageRequest {
+	s.StartTs = &v
+	return s
+}
+
+type DescribeMeterImsLiveMediaConvertUsageResponseBody struct {
+	Data      []*DescribeMeterImsLiveMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMeterImsLiveMediaConvertUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveMediaConvertUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveMediaConvertUsageResponseBody) SetData(v []*DescribeMeterImsLiveMediaConvertUsageResponseBodyData) *DescribeMeterImsLiveMediaConvertUsageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeMeterImsLiveMediaConvertUsageResponseBody) SetRequestId(v string) *DescribeMeterImsLiveMediaConvertUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMeterImsLiveMediaConvertUsageResponseBodyData struct {
+	Duration      *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	Time          *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s DescribeMeterImsLiveMediaConvertUsageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveMediaConvertUsageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveMediaConvertUsageResponseBodyData) SetDuration(v int64) *DescribeMeterImsLiveMediaConvertUsageResponseBodyData {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveMediaConvertUsageResponseBodyData) SetSpecification(v string) *DescribeMeterImsLiveMediaConvertUsageResponseBodyData {
+	s.Specification = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveMediaConvertUsageResponseBodyData) SetTime(v int64) *DescribeMeterImsLiveMediaConvertUsageResponseBodyData {
+	s.Time = &v
+	return s
+}
+
+type DescribeMeterImsLiveMediaConvertUsageResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMeterImsLiveMediaConvertUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMeterImsLiveMediaConvertUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveMediaConvertUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveMediaConvertUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterImsLiveMediaConvertUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMeterImsLiveMediaConvertUsageResponse) SetStatusCode(v int32) *DescribeMeterImsLiveMediaConvertUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveMediaConvertUsageResponse) SetBody(v *DescribeMeterImsLiveMediaConvertUsageResponseBody) *DescribeMeterImsLiveMediaConvertUsageResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMeterImsLiveRecordUsageRequest struct {
+	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+}
+
+func (s DescribeMeterImsLiveRecordUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveRecordUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveRecordUsageRequest) SetEndTs(v int64) *DescribeMeterImsLiveRecordUsageRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveRecordUsageRequest) SetInterval(v int64) *DescribeMeterImsLiveRecordUsageRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveRecordUsageRequest) SetRegion(v string) *DescribeMeterImsLiveRecordUsageRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveRecordUsageRequest) SetStartTs(v int64) *DescribeMeterImsLiveRecordUsageRequest {
+	s.StartTs = &v
+	return s
+}
+
+type DescribeMeterImsLiveRecordUsageResponseBody struct {
+	Data      []*DescribeMeterImsLiveRecordUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMeterImsLiveRecordUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveRecordUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveRecordUsageResponseBody) SetData(v []*DescribeMeterImsLiveRecordUsageResponseBodyData) *DescribeMeterImsLiveRecordUsageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeMeterImsLiveRecordUsageResponseBody) SetRequestId(v string) *DescribeMeterImsLiveRecordUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMeterImsLiveRecordUsageResponseBodyData struct {
+	Channels *float64 `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Duration *int64   `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Time     *int64   `json:"Time,omitempty" xml:"Time,omitempty"`
+	Type     *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeMeterImsLiveRecordUsageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveRecordUsageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveRecordUsageResponseBodyData) SetChannels(v float64) *DescribeMeterImsLiveRecordUsageResponseBodyData {
+	s.Channels = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveRecordUsageResponseBodyData) SetDuration(v int64) *DescribeMeterImsLiveRecordUsageResponseBodyData {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveRecordUsageResponseBodyData) SetTime(v int64) *DescribeMeterImsLiveRecordUsageResponseBodyData {
+	s.Time = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveRecordUsageResponseBodyData) SetType(v string) *DescribeMeterImsLiveRecordUsageResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type DescribeMeterImsLiveRecordUsageResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMeterImsLiveRecordUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMeterImsLiveRecordUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveRecordUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveRecordUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterImsLiveRecordUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMeterImsLiveRecordUsageResponse) SetStatusCode(v int32) *DescribeMeterImsLiveRecordUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveRecordUsageResponse) SetBody(v *DescribeMeterImsLiveRecordUsageResponseBody) *DescribeMeterImsLiveRecordUsageResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMeterImsLiveSnapshotUsageRequest struct {
+	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+}
+
+func (s DescribeMeterImsLiveSnapshotUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveSnapshotUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveSnapshotUsageRequest) SetEndTs(v int64) *DescribeMeterImsLiveSnapshotUsageRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveSnapshotUsageRequest) SetInterval(v int64) *DescribeMeterImsLiveSnapshotUsageRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveSnapshotUsageRequest) SetRegion(v string) *DescribeMeterImsLiveSnapshotUsageRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveSnapshotUsageRequest) SetStartTs(v int64) *DescribeMeterImsLiveSnapshotUsageRequest {
+	s.StartTs = &v
+	return s
+}
+
+type DescribeMeterImsLiveSnapshotUsageResponseBody struct {
+	Data      []*DescribeMeterImsLiveSnapshotUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMeterImsLiveSnapshotUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveSnapshotUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveSnapshotUsageResponseBody) SetData(v []*DescribeMeterImsLiveSnapshotUsageResponseBodyData) *DescribeMeterImsLiveSnapshotUsageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeMeterImsLiveSnapshotUsageResponseBody) SetRequestId(v string) *DescribeMeterImsLiveSnapshotUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMeterImsLiveSnapshotUsageResponseBodyData struct {
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s DescribeMeterImsLiveSnapshotUsageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveSnapshotUsageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveSnapshotUsageResponseBodyData) SetCount(v int64) *DescribeMeterImsLiveSnapshotUsageResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveSnapshotUsageResponseBodyData) SetTime(v int64) *DescribeMeterImsLiveSnapshotUsageResponseBodyData {
+	s.Time = &v
+	return s
+}
+
+type DescribeMeterImsLiveSnapshotUsageResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMeterImsLiveSnapshotUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMeterImsLiveSnapshotUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsLiveSnapshotUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsLiveSnapshotUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterImsLiveSnapshotUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMeterImsLiveSnapshotUsageResponse) SetStatusCode(v int32) *DescribeMeterImsLiveSnapshotUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMeterImsLiveSnapshotUsageResponse) SetBody(v *DescribeMeterImsLiveSnapshotUsageResponseBody) *DescribeMeterImsLiveSnapshotUsageResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMeterImsMediaConvertUHDUsageRequest struct {
+	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+}
+
+func (s DescribeMeterImsMediaConvertUHDUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsMediaConvertUHDUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsMediaConvertUHDUsageRequest) SetEndTs(v int64) *DescribeMeterImsMediaConvertUHDUsageRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUHDUsageRequest) SetInterval(v string) *DescribeMeterImsMediaConvertUHDUsageRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUHDUsageRequest) SetRegionId(v string) *DescribeMeterImsMediaConvertUHDUsageRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUHDUsageRequest) SetStartTs(v int64) *DescribeMeterImsMediaConvertUHDUsageRequest {
+	s.StartTs = &v
+	return s
+}
+
+type DescribeMeterImsMediaConvertUHDUsageResponseBody struct {
+	Data      []*DescribeMeterImsMediaConvertUHDUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMeterImsMediaConvertUHDUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsMediaConvertUHDUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsMediaConvertUHDUsageResponseBody) SetData(v []*DescribeMeterImsMediaConvertUHDUsageResponseBodyData) *DescribeMeterImsMediaConvertUHDUsageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUHDUsageResponseBody) SetRequestId(v string) *DescribeMeterImsMediaConvertUHDUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMeterImsMediaConvertUHDUsageResponseBodyData struct {
+	Duration      *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	Time          *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s DescribeMeterImsMediaConvertUHDUsageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsMediaConvertUHDUsageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsMediaConvertUHDUsageResponseBodyData) SetDuration(v int64) *DescribeMeterImsMediaConvertUHDUsageResponseBodyData {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUHDUsageResponseBodyData) SetSpecification(v string) *DescribeMeterImsMediaConvertUHDUsageResponseBodyData {
+	s.Specification = &v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUHDUsageResponseBodyData) SetTime(v int64) *DescribeMeterImsMediaConvertUHDUsageResponseBodyData {
+	s.Time = &v
+	return s
+}
+
+type DescribeMeterImsMediaConvertUHDUsageResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMeterImsMediaConvertUHDUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMeterImsMediaConvertUHDUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsMediaConvertUHDUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsMediaConvertUHDUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterImsMediaConvertUHDUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUHDUsageResponse) SetStatusCode(v int32) *DescribeMeterImsMediaConvertUHDUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUHDUsageResponse) SetBody(v *DescribeMeterImsMediaConvertUHDUsageResponseBody) *DescribeMeterImsMediaConvertUHDUsageResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMeterImsMediaConvertUsageRequest struct {
+	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+}
+
+func (s DescribeMeterImsMediaConvertUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsMediaConvertUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsMediaConvertUsageRequest) SetEndTs(v int64) *DescribeMeterImsMediaConvertUsageRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUsageRequest) SetInterval(v int64) *DescribeMeterImsMediaConvertUsageRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUsageRequest) SetRegion(v string) *DescribeMeterImsMediaConvertUsageRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUsageRequest) SetStartTs(v int64) *DescribeMeterImsMediaConvertUsageRequest {
+	s.StartTs = &v
+	return s
+}
+
+type DescribeMeterImsMediaConvertUsageResponseBody struct {
+	Data      []*DescribeMeterImsMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMeterImsMediaConvertUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsMediaConvertUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsMediaConvertUsageResponseBody) SetData(v []*DescribeMeterImsMediaConvertUsageResponseBodyData) *DescribeMeterImsMediaConvertUsageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUsageResponseBody) SetRequestId(v string) *DescribeMeterImsMediaConvertUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMeterImsMediaConvertUsageResponseBodyData struct {
+	Duration      *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	Time          *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s DescribeMeterImsMediaConvertUsageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsMediaConvertUsageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsMediaConvertUsageResponseBodyData) SetDuration(v int64) *DescribeMeterImsMediaConvertUsageResponseBodyData {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUsageResponseBodyData) SetSpecification(v string) *DescribeMeterImsMediaConvertUsageResponseBodyData {
+	s.Specification = &v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUsageResponseBodyData) SetTime(v int64) *DescribeMeterImsMediaConvertUsageResponseBodyData {
+	s.Time = &v
+	return s
+}
+
+type DescribeMeterImsMediaConvertUsageResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMeterImsMediaConvertUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMeterImsMediaConvertUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsMediaConvertUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsMediaConvertUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterImsMediaConvertUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUsageResponse) SetStatusCode(v int32) *DescribeMeterImsMediaConvertUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMeterImsMediaConvertUsageResponse) SetBody(v *DescribeMeterImsMediaConvertUsageResponseBody) *DescribeMeterImsMediaConvertUsageResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMeterImsMpsAiUsageRequest struct {
+	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+}
+
+func (s DescribeMeterImsMpsAiUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsMpsAiUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsMpsAiUsageRequest) SetEndTs(v int64) *DescribeMeterImsMpsAiUsageRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribeMeterImsMpsAiUsageRequest) SetInterval(v int64) *DescribeMeterImsMpsAiUsageRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeMeterImsMpsAiUsageRequest) SetRegion(v string) *DescribeMeterImsMpsAiUsageRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeMeterImsMpsAiUsageRequest) SetStartTs(v int64) *DescribeMeterImsMpsAiUsageRequest {
+	s.StartTs = &v
+	return s
+}
+
+type DescribeMeterImsMpsAiUsageResponseBody struct {
+	Data      []*DescribeMeterImsMpsAiUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMeterImsMpsAiUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsMpsAiUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsMpsAiUsageResponseBody) SetData(v []*DescribeMeterImsMpsAiUsageResponseBodyData) *DescribeMeterImsMpsAiUsageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeMeterImsMpsAiUsageResponseBody) SetRequestId(v string) *DescribeMeterImsMpsAiUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMeterImsMpsAiUsageResponseBodyData struct {
+	Duration *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Time     *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeMeterImsMpsAiUsageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsMpsAiUsageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsMpsAiUsageResponseBodyData) SetDuration(v int64) *DescribeMeterImsMpsAiUsageResponseBodyData {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeMeterImsMpsAiUsageResponseBodyData) SetTime(v int64) *DescribeMeterImsMpsAiUsageResponseBodyData {
+	s.Time = &v
+	return s
+}
+
+func (s *DescribeMeterImsMpsAiUsageResponseBodyData) SetType(v string) *DescribeMeterImsMpsAiUsageResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type DescribeMeterImsMpsAiUsageResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMeterImsMpsAiUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMeterImsMpsAiUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImsMpsAiUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImsMpsAiUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterImsMpsAiUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMeterImsMpsAiUsageResponse) SetStatusCode(v int32) *DescribeMeterImsMpsAiUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMeterImsMpsAiUsageResponse) SetBody(v *DescribeMeterImsMpsAiUsageResponseBody) *DescribeMeterImsMpsAiUsageResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMeterImsSummaryRequest struct {
 	EndTs   *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
 	Region  *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	StartTs *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
 }
 
-func (s DescribeMeterIceSummaryRequest) String() string {
+func (s DescribeMeterImsSummaryRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeMeterIceSummaryRequest) GoString() string {
+func (s DescribeMeterImsSummaryRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMeterIceSummaryRequest) SetEndTs(v int64) *DescribeMeterIceSummaryRequest {
+func (s *DescribeMeterImsSummaryRequest) SetEndTs(v int64) *DescribeMeterImsSummaryRequest {
 	s.EndTs = &v
 	return s
 }
 
-func (s *DescribeMeterIceSummaryRequest) SetRegion(v string) *DescribeMeterIceSummaryRequest {
+func (s *DescribeMeterImsSummaryRequest) SetRegion(v string) *DescribeMeterImsSummaryRequest {
 	s.Region = &v
 	return s
 }
 
-func (s *DescribeMeterIceSummaryRequest) SetStartTs(v int64) *DescribeMeterIceSummaryRequest {
+func (s *DescribeMeterImsSummaryRequest) SetStartTs(v int64) *DescribeMeterImsSummaryRequest {
 	s.StartTs = &v
 	return s
 }
 
-type DescribeMeterIceSummaryResponseBody struct {
-	Data []*DescribeMeterIceSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+type DescribeMeterImsSummaryResponseBody struct {
+	Data      []*DescribeMeterImsSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s DescribeMeterIceSummaryResponseBody) String() string {
+func (s DescribeMeterImsSummaryResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeMeterIceSummaryResponseBody) GoString() string {
+func (s DescribeMeterImsSummaryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMeterIceSummaryResponseBody) SetData(v []*DescribeMeterIceSummaryResponseBodyData) *DescribeMeterIceSummaryResponseBody {
+func (s *DescribeMeterImsSummaryResponseBody) SetData(v []*DescribeMeterImsSummaryResponseBodyData) *DescribeMeterImsSummaryResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *DescribeMeterIceSummaryResponseBody) SetRequestId(v string) *DescribeMeterIceSummaryResponseBody {
+func (s *DescribeMeterImsSummaryResponseBody) SetRequestId(v string) *DescribeMeterImsSummaryResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type DescribeMeterIceSummaryResponseBodyData struct {
+type DescribeMeterImsSummaryResponseBodyData struct {
 	EditingDuration         *string `json:"EditingDuration,omitempty" xml:"EditingDuration,omitempty"`
+	LiveEditDuration        *string `json:"LiveEditDuration,omitempty" xml:"LiveEditDuration,omitempty"`
+	LiveRecordDuration      *string `json:"LiveRecordDuration,omitempty" xml:"LiveRecordDuration,omitempty"`
+	LiveSnapshotCount       *string `json:"LiveSnapshotCount,omitempty" xml:"LiveSnapshotCount,omitempty"`
 	LiveTranscodeDuration   *int64  `json:"LiveTranscodeDuration,omitempty" xml:"LiveTranscodeDuration,omitempty"`
 	MpsAiDuration           *int64  `json:"MpsAiDuration,omitempty" xml:"MpsAiDuration,omitempty"`
 	MpsTranscodeDuration    *int64  `json:"MpsTranscodeDuration,omitempty" xml:"MpsTranscodeDuration,omitempty"`
 	MpsTranscodeUHDDuration *int64  `json:"MpsTranscodeUHDDuration,omitempty" xml:"MpsTranscodeUHDDuration,omitempty"`
 }
 
-func (s DescribeMeterIceSummaryResponseBodyData) String() string {
+func (s DescribeMeterImsSummaryResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeMeterIceSummaryResponseBodyData) GoString() string {
+func (s DescribeMeterImsSummaryResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMeterIceSummaryResponseBodyData) SetEditingDuration(v string) *DescribeMeterIceSummaryResponseBodyData {
+func (s *DescribeMeterImsSummaryResponseBodyData) SetEditingDuration(v string) *DescribeMeterImsSummaryResponseBodyData {
 	s.EditingDuration = &v
 	return s
 }
 
-func (s *DescribeMeterIceSummaryResponseBodyData) SetLiveTranscodeDuration(v int64) *DescribeMeterIceSummaryResponseBodyData {
+func (s *DescribeMeterImsSummaryResponseBodyData) SetLiveEditDuration(v string) *DescribeMeterImsSummaryResponseBodyData {
+	s.LiveEditDuration = &v
+	return s
+}
+
+func (s *DescribeMeterImsSummaryResponseBodyData) SetLiveRecordDuration(v string) *DescribeMeterImsSummaryResponseBodyData {
+	s.LiveRecordDuration = &v
+	return s
+}
+
+func (s *DescribeMeterImsSummaryResponseBodyData) SetLiveSnapshotCount(v string) *DescribeMeterImsSummaryResponseBodyData {
+	s.LiveSnapshotCount = &v
+	return s
+}
+
+func (s *DescribeMeterImsSummaryResponseBodyData) SetLiveTranscodeDuration(v int64) *DescribeMeterImsSummaryResponseBodyData {
 	s.LiveTranscodeDuration = &v
 	return s
 }
 
-func (s *DescribeMeterIceSummaryResponseBodyData) SetMpsAiDuration(v int64) *DescribeMeterIceSummaryResponseBodyData {
+func (s *DescribeMeterImsSummaryResponseBodyData) SetMpsAiDuration(v int64) *DescribeMeterImsSummaryResponseBodyData {
 	s.MpsAiDuration = &v
 	return s
 }
 
-func (s *DescribeMeterIceSummaryResponseBodyData) SetMpsTranscodeDuration(v int64) *DescribeMeterIceSummaryResponseBodyData {
+func (s *DescribeMeterImsSummaryResponseBodyData) SetMpsTranscodeDuration(v int64) *DescribeMeterImsSummaryResponseBodyData {
 	s.MpsTranscodeDuration = &v
 	return s
 }
 
-func (s *DescribeMeterIceSummaryResponseBodyData) SetMpsTranscodeUHDDuration(v int64) *DescribeMeterIceSummaryResponseBodyData {
+func (s *DescribeMeterImsSummaryResponseBodyData) SetMpsTranscodeUHDDuration(v int64) *DescribeMeterImsSummaryResponseBodyData {
 	s.MpsTranscodeUHDDuration = &v
 	return s
 }
 
-type DescribeMeterIceSummaryResponse struct {
+type DescribeMeterImsSummaryResponse struct {
 	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMeterIceSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Body       *DescribeMeterImsSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s DescribeMeterIceSummaryResponse) String() string {
+func (s DescribeMeterImsSummaryResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeMeterIceSummaryResponse) GoString() string {
+func (s DescribeMeterImsSummaryResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMeterIceSummaryResponse) SetHeaders(v map[string]*string) *DescribeMeterIceSummaryResponse {
+func (s *DescribeMeterImsSummaryResponse) SetHeaders(v map[string]*string) *DescribeMeterImsSummaryResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DescribeMeterIceSummaryResponse) SetStatusCode(v int32) *DescribeMeterIceSummaryResponse {
+func (s *DescribeMeterImsSummaryResponse) SetStatusCode(v int32) *DescribeMeterImsSummaryResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *DescribeMeterIceSummaryResponse) SetBody(v *DescribeMeterIceSummaryResponseBody) *DescribeMeterIceSummaryResponse {
+func (s *DescribeMeterImsSummaryResponse) SetBody(v *DescribeMeterImsSummaryResponseBody) *DescribeMeterImsSummaryResponse {
 	s.Body = v
 	return s
 }
 
-type DescribePalyDetailRequest struct {
-	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+type DescribePlayDetailRequest struct {
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
-func (s DescribePalyDetailRequest) String() string {
+func (s DescribePlayDetailRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribePalyDetailRequest) GoString() string {
+func (s DescribePlayDetailRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePalyDetailRequest) SetTraceId(v string) *DescribePalyDetailRequest {
-	s.TraceId = &v
+func (s *DescribePlayDetailRequest) SetSessionId(v string) *DescribePlayDetailRequest {
+	s.SessionId = &v
 	return s
 }
 
-type DescribePalyDetailResponseBody struct {
-	Data []*DescribePalyDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+type DescribePlayDetailResponseBody struct {
+	BaseInfos []*DescribePlayDetailResponseBodyBaseInfos `json:"BaseInfos,omitempty" xml:"BaseInfos,omitempty" type:"Repeated"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s DescribePalyDetailResponseBody) String() string {
+func (s DescribePlayDetailResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribePalyDetailResponseBody) GoString() string {
+func (s DescribePlayDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePalyDetailResponseBody) SetData(v []*DescribePalyDetailResponseBodyData) *DescribePalyDetailResponseBody {
-	s.Data = v
+func (s *DescribePlayDetailResponseBody) SetBaseInfos(v []*DescribePlayDetailResponseBodyBaseInfos) *DescribePlayDetailResponseBody {
+	s.BaseInfos = v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBody) SetRequestId(v string) *DescribePalyDetailResponseBody {
+func (s *DescribePlayDetailResponseBody) SetRequestId(v string) *DescribePlayDetailResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type DescribePalyDetailResponseBodyData struct {
+type DescribePlayDetailResponseBodyBaseInfos struct {
 	AppName               *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	Bps                   *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	BroadcastPace         *string `json:"BroadcastPace,omitempty" xml:"BroadcastPace,omitempty"`
+	ClientIP              *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
 	Codec                 *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
 	DecodeStuckTime       *string `json:"DecodeStuckTime,omitempty" xml:"DecodeStuckTime,omitempty"`
 	Definition            *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
@@ -5159,8 +5295,8 @@ type DescribePalyDetailResponseBodyData struct {
 	IsHardDecode          *string `json:"IsHardDecode,omitempty" xml:"IsHardDecode,omitempty"`
 	Mdat                  *string `json:"Mdat,omitempty" xml:"Mdat,omitempty"`
 	Moov                  *string `json:"Moov,omitempty" xml:"Moov,omitempty"`
-	NetWorkDuration       *string `json:"NetWorkDuration,omitempty" xml:"NetWorkDuration,omitempty"`
 	Network               *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	NetworkDuration       *string `json:"NetworkDuration,omitempty" xml:"NetworkDuration,omitempty"`
 	NetworkStuckTime      *string `json:"NetworkStuckTime,omitempty" xml:"NetworkStuckTime,omitempty"`
 	Os                    *string `json:"Os,omitempty" xml:"Os,omitempty"`
 	PlayTs                *string `json:"PlayTs,omitempty" xml:"PlayTs,omitempty"`
@@ -5173,230 +5309,234 @@ type DescribePalyDetailResponseBodyData struct {
 	TerminalType          *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
 }
 
-func (s DescribePalyDetailResponseBodyData) String() string {
+func (s DescribePlayDetailResponseBodyBaseInfos) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribePalyDetailResponseBodyData) GoString() string {
+func (s DescribePlayDetailResponseBodyBaseInfos) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetAppName(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetAppName(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.AppName = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetBps(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetBps(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.Bps = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetBroadcastPace(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetBroadcastPace(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.BroadcastPace = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetCodec(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetClientIP(v string) *DescribePlayDetailResponseBodyBaseInfos {
+	s.ClientIP = &v
+	return s
+}
+
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetCodec(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.Codec = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetDecodeStuckTime(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetDecodeStuckTime(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.DecodeStuckTime = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetDefinition(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetDefinition(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.Definition = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetFirstFrameDuration(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetFirstFrameDuration(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.FirstFrameDuration = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetFps(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetFps(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.Fps = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetIsHardDecode(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetIsHardDecode(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.IsHardDecode = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetMdat(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetMdat(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.Mdat = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetMoov(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetMoov(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.Moov = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetNetWorkDuration(v string) *DescribePalyDetailResponseBodyData {
-	s.NetWorkDuration = &v
-	return s
-}
-
-func (s *DescribePalyDetailResponseBodyData) SetNetwork(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetNetwork(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.Network = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetNetworkStuckTime(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetNetworkDuration(v string) *DescribePlayDetailResponseBodyBaseInfos {
+	s.NetworkDuration = &v
+	return s
+}
+
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetNetworkStuckTime(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.NetworkStuckTime = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetOs(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetOs(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.Os = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetPlayTs(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetPlayTs(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.PlayTs = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetPlayerLoadDuration(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetPlayerLoadDuration(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.PlayerLoadDuration = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetPlayerPreDealDuration(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetPlayerPreDealDuration(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.PlayerPreDealDuration = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetPlayerReadyDuration(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetPlayerReadyDuration(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.PlayerReadyDuration = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetSdkVersion(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetSdkVersion(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.SdkVersion = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetSessionId(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetSessionId(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.SessionId = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetStatus(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetStatus(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.Status = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponseBodyData) SetTerminalType(v string) *DescribePalyDetailResponseBodyData {
+func (s *DescribePlayDetailResponseBodyBaseInfos) SetTerminalType(v string) *DescribePlayDetailResponseBodyBaseInfos {
 	s.TerminalType = &v
 	return s
 }
 
-type DescribePalyDetailResponse struct {
+type DescribePlayDetailResponse struct {
 	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePalyDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Body       *DescribePlayDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s DescribePalyDetailResponse) String() string {
+func (s DescribePlayDetailResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribePalyDetailResponse) GoString() string {
+func (s DescribePlayDetailResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePalyDetailResponse) SetHeaders(v map[string]*string) *DescribePalyDetailResponse {
+func (s *DescribePlayDetailResponse) SetHeaders(v map[string]*string) *DescribePlayDetailResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DescribePalyDetailResponse) SetStatusCode(v int32) *DescribePalyDetailResponse {
+func (s *DescribePlayDetailResponse) SetStatusCode(v int32) *DescribePlayDetailResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *DescribePalyDetailResponse) SetBody(v *DescribePalyDetailResponseBody) *DescribePalyDetailResponse {
+func (s *DescribePlayDetailResponse) SetBody(v *DescribePlayDetailResponseBody) *DescribePlayDetailResponse {
 	s.Body = v
 	return s
 }
 
-type DescribePalyEventListRequest struct {
-	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TraceId  *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+type DescribePlayEventListRequest struct {
+	PageNo    *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
-func (s DescribePalyEventListRequest) String() string {
+func (s DescribePlayEventListRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribePalyEventListRequest) GoString() string {
+func (s DescribePlayEventListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePalyEventListRequest) SetPageNo(v int32) *DescribePalyEventListRequest {
+func (s *DescribePlayEventListRequest) SetPageNo(v int32) *DescribePlayEventListRequest {
 	s.PageNo = &v
 	return s
 }
 
-func (s *DescribePalyEventListRequest) SetPageSize(v int32) *DescribePalyEventListRequest {
+func (s *DescribePlayEventListRequest) SetPageSize(v int32) *DescribePlayEventListRequest {
 	s.PageSize = &v
 	return s
 }
 
-func (s *DescribePalyEventListRequest) SetTraceId(v string) *DescribePalyEventListRequest {
-	s.TraceId = &v
+func (s *DescribePlayEventListRequest) SetSessionId(v string) *DescribePlayEventListRequest {
+	s.SessionId = &v
 	return s
 }
 
-type DescribePalyEventListResponseBody struct {
-	EventList []*DescribePalyEventListResponseBodyEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
-	PageNo    *int64                                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize  *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCnt  *int64  `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
+type DescribePlayEventListResponseBody struct {
+	EventList  []*DescribePlayEventListResponseBodyEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
+	PageNo     *int64                                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
-func (s DescribePalyEventListResponseBody) String() string {
+func (s DescribePlayEventListResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribePalyEventListResponseBody) GoString() string {
+func (s DescribePlayEventListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePalyEventListResponseBody) SetEventList(v []*DescribePalyEventListResponseBodyEventList) *DescribePalyEventListResponseBody {
+func (s *DescribePlayEventListResponseBody) SetEventList(v []*DescribePlayEventListResponseBodyEventList) *DescribePlayEventListResponseBody {
 	s.EventList = v
 	return s
 }
 
-func (s *DescribePalyEventListResponseBody) SetPageNo(v int64) *DescribePalyEventListResponseBody {
+func (s *DescribePlayEventListResponseBody) SetPageNo(v int64) *DescribePlayEventListResponseBody {
 	s.PageNo = &v
 	return s
 }
 
-func (s *DescribePalyEventListResponseBody) SetPageSize(v int64) *DescribePalyEventListResponseBody {
+func (s *DescribePlayEventListResponseBody) SetPageSize(v int64) *DescribePlayEventListResponseBody {
 	s.PageSize = &v
 	return s
 }
 
-func (s *DescribePalyEventListResponseBody) SetRequestId(v string) *DescribePalyEventListResponseBody {
+func (s *DescribePlayEventListResponseBody) SetRequestId(v string) *DescribePlayEventListResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribePalyEventListResponseBody) SetTotalCnt(v int64) *DescribePalyEventListResponseBody {
-	s.TotalCnt = &v
+func (s *DescribePlayEventListResponseBody) SetTotalCount(v int64) *DescribePlayEventListResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
-type DescribePalyEventListResponseBodyEventList struct {
+type DescribePlayEventListResponseBodyEventList struct {
 	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
 	Duration    *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	EventName   *string  `json:"EventName,omitempty" xml:"EventName,omitempty"`
@@ -5404,394 +5544,64 @@ type DescribePalyEventListResponseBodyEventList struct {
 	Topic       *string  `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
-func (s DescribePalyEventListResponseBodyEventList) String() string {
+func (s DescribePlayEventListResponseBodyEventList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribePalyEventListResponseBodyEventList) GoString() string {
+func (s DescribePlayEventListResponseBodyEventList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePalyEventListResponseBodyEventList) SetDescription(v string) *DescribePalyEventListResponseBodyEventList {
+func (s *DescribePlayEventListResponseBodyEventList) SetDescription(v string) *DescribePlayEventListResponseBodyEventList {
 	s.Description = &v
 	return s
 }
 
-func (s *DescribePalyEventListResponseBodyEventList) SetDuration(v float32) *DescribePalyEventListResponseBodyEventList {
+func (s *DescribePlayEventListResponseBodyEventList) SetDuration(v float32) *DescribePlayEventListResponseBodyEventList {
 	s.Duration = &v
 	return s
 }
 
-func (s *DescribePalyEventListResponseBodyEventList) SetEventName(v string) *DescribePalyEventListResponseBodyEventList {
+func (s *DescribePlayEventListResponseBodyEventList) SetEventName(v string) *DescribePlayEventListResponseBodyEventList {
 	s.EventName = &v
 	return s
 }
 
-func (s *DescribePalyEventListResponseBodyEventList) SetTime(v int64) *DescribePalyEventListResponseBodyEventList {
+func (s *DescribePlayEventListResponseBodyEventList) SetTime(v int64) *DescribePlayEventListResponseBodyEventList {
 	s.Time = &v
 	return s
 }
 
-func (s *DescribePalyEventListResponseBodyEventList) SetTopic(v string) *DescribePalyEventListResponseBodyEventList {
+func (s *DescribePlayEventListResponseBodyEventList) SetTopic(v string) *DescribePlayEventListResponseBodyEventList {
 	s.Topic = &v
 	return s
 }
 
-type DescribePalyEventListResponse struct {
+type DescribePlayEventListResponse struct {
 	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePalyEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Body       *DescribePlayEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s DescribePalyEventListResponse) String() string {
+func (s DescribePlayEventListResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribePalyEventListResponse) GoString() string {
+func (s DescribePlayEventListResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePalyEventListResponse) SetHeaders(v map[string]*string) *DescribePalyEventListResponse {
+func (s *DescribePlayEventListResponse) SetHeaders(v map[string]*string) *DescribePlayEventListResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DescribePalyEventListResponse) SetStatusCode(v int32) *DescribePalyEventListResponse {
+func (s *DescribePlayEventListResponse) SetStatusCode(v int32) *DescribePlayEventListResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *DescribePalyEventListResponse) SetBody(v *DescribePalyEventListResponseBody) *DescribePalyEventListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribePalyListRequest struct {
-	BeginTs   *string `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	EndTs     *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	OrderName *string `json:"OrderName,omitempty" xml:"OrderName,omitempty"`
-	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	PageNo    *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PlayType  *string `json:"PlayType,omitempty" xml:"PlayType,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-}
-
-func (s DescribePalyListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePalyListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePalyListRequest) SetBeginTs(v string) *DescribePalyListRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribePalyListRequest) SetEndTs(v string) *DescribePalyListRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribePalyListRequest) SetOrderName(v string) *DescribePalyListRequest {
-	s.OrderName = &v
-	return s
-}
-
-func (s *DescribePalyListRequest) SetOrderType(v string) *DescribePalyListRequest {
-	s.OrderType = &v
-	return s
-}
-
-func (s *DescribePalyListRequest) SetPageNo(v int32) *DescribePalyListRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribePalyListRequest) SetPageSize(v int32) *DescribePalyListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePalyListRequest) SetPlayType(v string) *DescribePalyListRequest {
-	s.PlayType = &v
-	return s
-}
-
-func (s *DescribePalyListRequest) SetStatus(v string) *DescribePalyListRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribePalyListRequest) SetTraceId(v string) *DescribePalyListRequest {
-	s.TraceId = &v
-	return s
-}
-
-type DescribePalyListResponseBody struct {
-	PageNo   *int64                                  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PlayList []*DescribePalyListResponseBodyPlayList `json:"PlayList,omitempty" xml:"PlayList,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCnt  *int64  `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
-}
-
-func (s DescribePalyListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePalyListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePalyListResponseBody) SetPageNo(v int64) *DescribePalyListResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribePalyListResponseBody) SetPageSize(v int64) *DescribePalyListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePalyListResponseBody) SetPlayList(v []*DescribePalyListResponseBodyPlayList) *DescribePalyListResponseBody {
-	s.PlayList = v
-	return s
-}
-
-func (s *DescribePalyListResponseBody) SetRequestId(v string) *DescribePalyListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribePalyListResponseBody) SetTotalCnt(v int64) *DescribePalyListResponseBody {
-	s.TotalCnt = &v
-	return s
-}
-
-type DescribePalyListResponseBodyPlayList struct {
-	FirstFrameDuration *string `json:"FirstFrameDuration,omitempty" xml:"FirstFrameDuration,omitempty"`
-	PlayDuration       *string `json:"PlayDuration,omitempty" xml:"PlayDuration,omitempty"`
-	PlayType           *string `json:"PlayType,omitempty" xml:"PlayType,omitempty"`
-	SessionId          *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StuckDuration      *string `json:"StuckDuration,omitempty" xml:"StuckDuration,omitempty"`
-	TraceId            *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	VideoDuration      *string `json:"VideoDuration,omitempty" xml:"VideoDuration,omitempty"`
-	VideoId            *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-}
-
-func (s DescribePalyListResponseBodyPlayList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePalyListResponseBodyPlayList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePalyListResponseBodyPlayList) SetFirstFrameDuration(v string) *DescribePalyListResponseBodyPlayList {
-	s.FirstFrameDuration = &v
-	return s
-}
-
-func (s *DescribePalyListResponseBodyPlayList) SetPlayDuration(v string) *DescribePalyListResponseBodyPlayList {
-	s.PlayDuration = &v
-	return s
-}
-
-func (s *DescribePalyListResponseBodyPlayList) SetPlayType(v string) *DescribePalyListResponseBodyPlayList {
-	s.PlayType = &v
-	return s
-}
-
-func (s *DescribePalyListResponseBodyPlayList) SetSessionId(v string) *DescribePalyListResponseBodyPlayList {
-	s.SessionId = &v
-	return s
-}
-
-func (s *DescribePalyListResponseBodyPlayList) SetStatus(v string) *DescribePalyListResponseBodyPlayList {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribePalyListResponseBodyPlayList) SetStuckDuration(v string) *DescribePalyListResponseBodyPlayList {
-	s.StuckDuration = &v
-	return s
-}
-
-func (s *DescribePalyListResponseBodyPlayList) SetTraceId(v string) *DescribePalyListResponseBodyPlayList {
-	s.TraceId = &v
-	return s
-}
-
-func (s *DescribePalyListResponseBodyPlayList) SetVideoDuration(v string) *DescribePalyListResponseBodyPlayList {
-	s.VideoDuration = &v
-	return s
-}
-
-func (s *DescribePalyListResponseBodyPlayList) SetVideoId(v string) *DescribePalyListResponseBodyPlayList {
-	s.VideoId = &v
-	return s
-}
-
-type DescribePalyListResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePalyListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribePalyListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePalyListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePalyListResponse) SetHeaders(v map[string]*string) *DescribePalyListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribePalyListResponse) SetStatusCode(v int32) *DescribePalyListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribePalyListResponse) SetBody(v *DescribePalyListResponseBody) *DescribePalyListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribePlayExperienceMetricDataRequest struct {
-	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTs         *string `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	EndTs           *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	ExperienceLevel *string `json:"ExperienceLevel,omitempty" xml:"ExperienceLevel,omitempty"`
-	Os              *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	TerminalType    *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-}
-
-func (s DescribePlayExperienceMetricDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayExperienceMetricDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayExperienceMetricDataRequest) SetAppName(v string) *DescribePlayExperienceMetricDataRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *DescribePlayExperienceMetricDataRequest) SetBeginTs(v string) *DescribePlayExperienceMetricDataRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribePlayExperienceMetricDataRequest) SetEndTs(v string) *DescribePlayExperienceMetricDataRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribePlayExperienceMetricDataRequest) SetExperienceLevel(v string) *DescribePlayExperienceMetricDataRequest {
-	s.ExperienceLevel = &v
-	return s
-}
-
-func (s *DescribePlayExperienceMetricDataRequest) SetOs(v string) *DescribePlayExperienceMetricDataRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribePlayExperienceMetricDataRequest) SetTerminalType(v string) *DescribePlayExperienceMetricDataRequest {
-	s.TerminalType = &v
-	return s
-}
-
-type DescribePlayExperienceMetricDataResponseBody struct {
-	Data []*DescribePlayExperienceMetricDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribePlayExperienceMetricDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayExperienceMetricDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayExperienceMetricDataResponseBody) SetData(v []*DescribePlayExperienceMetricDataResponseBodyData) *DescribePlayExperienceMetricDataResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribePlayExperienceMetricDataResponseBody) SetRequestId(v string) *DescribePlayExperienceMetricDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribePlayExperienceMetricDataResponseBodyData struct {
-	AvgScore *float32 `json:"AvgScore,omitempty" xml:"AvgScore,omitempty"`
-	MaxScore *float32 `json:"MaxScore,omitempty" xml:"MaxScore,omitempty"`
-	MinScore *float32 `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
-}
-
-func (s DescribePlayExperienceMetricDataResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayExperienceMetricDataResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayExperienceMetricDataResponseBodyData) SetAvgScore(v float32) *DescribePlayExperienceMetricDataResponseBodyData {
-	s.AvgScore = &v
-	return s
-}
-
-func (s *DescribePlayExperienceMetricDataResponseBodyData) SetMaxScore(v float32) *DescribePlayExperienceMetricDataResponseBodyData {
-	s.MaxScore = &v
-	return s
-}
-
-func (s *DescribePlayExperienceMetricDataResponseBodyData) SetMinScore(v float32) *DescribePlayExperienceMetricDataResponseBodyData {
-	s.MinScore = &v
-	return s
-}
-
-type DescribePlayExperienceMetricDataResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePlayExperienceMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribePlayExperienceMetricDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayExperienceMetricDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayExperienceMetricDataResponse) SetHeaders(v map[string]*string) *DescribePlayExperienceMetricDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribePlayExperienceMetricDataResponse) SetStatusCode(v int32) *DescribePlayExperienceMetricDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribePlayExperienceMetricDataResponse) SetBody(v *DescribePlayExperienceMetricDataResponseBody) *DescribePlayExperienceMetricDataResponse {
+func (s *DescribePlayEventListResponse) SetBody(v *DescribePlayEventListResponseBody) *DescribePlayEventListResponse {
 	s.Body = v
 	return s
 }
@@ -5826,9 +5636,8 @@ func (s *DescribePlayFirstFrameDurationMetricDataRequest) SetTraceId(v string) *
 }
 
 type DescribePlayFirstFrameDurationMetricDataResponseBody struct {
-	Nodes []*DescribePlayFirstFrameDurationMetricDataResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Nodes     []*DescribePlayFirstFrameDurationMetricDataResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	RequestId *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePlayFirstFrameDurationMetricDataResponseBody) String() string {
@@ -5850,8 +5659,8 @@ func (s *DescribePlayFirstFrameDurationMetricDataResponseBody) SetRequestId(v st
 }
 
 type DescribePlayFirstFrameDurationMetricDataResponseBodyNodes struct {
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Time     *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribePlayFirstFrameDurationMetricDataResponseBodyNodes) String() string {
@@ -5862,13 +5671,13 @@ func (s DescribePlayFirstFrameDurationMetricDataResponseBodyNodes) GoString() st
 	return s.String()
 }
 
-func (s *DescribePlayFirstFrameDurationMetricDataResponseBodyNodes) SetDuration(v int64) *DescribePlayFirstFrameDurationMetricDataResponseBodyNodes {
-	s.Duration = &v
+func (s *DescribePlayFirstFrameDurationMetricDataResponseBodyNodes) SetX(v int64) *DescribePlayFirstFrameDurationMetricDataResponseBodyNodes {
+	s.X = &v
 	return s
 }
 
-func (s *DescribePlayFirstFrameDurationMetricDataResponseBodyNodes) SetTime(v int64) *DescribePlayFirstFrameDurationMetricDataResponseBodyNodes {
-	s.Time = &v
+func (s *DescribePlayFirstFrameDurationMetricDataResponseBodyNodes) SetY(v int64) *DescribePlayFirstFrameDurationMetricDataResponseBodyNodes {
+	s.Y = &v
 	return s
 }
 
@@ -5897,6 +5706,206 @@ func (s *DescribePlayFirstFrameDurationMetricDataResponse) SetStatusCode(v int32
 }
 
 func (s *DescribePlayFirstFrameDurationMetricDataResponse) SetBody(v *DescribePlayFirstFrameDurationMetricDataResponseBody) *DescribePlayFirstFrameDurationMetricDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePlayListRequest struct {
+	BeginTs   *string `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
+	EndTs     *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	OrderName *string `json:"OrderName,omitempty" xml:"OrderName,omitempty"`
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	PageNo    *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PlayType  *string `json:"PlayType,omitempty" xml:"PlayType,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DescribePlayListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePlayListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePlayListRequest) SetBeginTs(v string) *DescribePlayListRequest {
+	s.BeginTs = &v
+	return s
+}
+
+func (s *DescribePlayListRequest) SetEndTs(v string) *DescribePlayListRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribePlayListRequest) SetOrderName(v string) *DescribePlayListRequest {
+	s.OrderName = &v
+	return s
+}
+
+func (s *DescribePlayListRequest) SetOrderType(v string) *DescribePlayListRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *DescribePlayListRequest) SetPageNo(v int32) *DescribePlayListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribePlayListRequest) SetPageSize(v int32) *DescribePlayListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePlayListRequest) SetPlayType(v string) *DescribePlayListRequest {
+	s.PlayType = &v
+	return s
+}
+
+func (s *DescribePlayListRequest) SetStatus(v string) *DescribePlayListRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribePlayListRequest) SetTraceId(v string) *DescribePlayListRequest {
+	s.TraceId = &v
+	return s
+}
+
+type DescribePlayListResponseBody struct {
+	PageNum   *int64                                  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize  *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PlayList  []*DescribePlayListResponseBodyPlayList `json:"PlayList,omitempty" xml:"PlayList,omitempty" type:"Repeated"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalNum  *int64                                  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s DescribePlayListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePlayListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePlayListResponseBody) SetPageNum(v int64) *DescribePlayListResponseBody {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribePlayListResponseBody) SetPageSize(v int64) *DescribePlayListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePlayListResponseBody) SetPlayList(v []*DescribePlayListResponseBodyPlayList) *DescribePlayListResponseBody {
+	s.PlayList = v
+	return s
+}
+
+func (s *DescribePlayListResponseBody) SetRequestId(v string) *DescribePlayListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePlayListResponseBody) SetTotalNum(v int64) *DescribePlayListResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+type DescribePlayListResponseBodyPlayList struct {
+	FirstFrameDuration *string `json:"FirstFrameDuration,omitempty" xml:"FirstFrameDuration,omitempty"`
+	PlayDuration       *string `json:"PlayDuration,omitempty" xml:"PlayDuration,omitempty"`
+	PlayType           *string `json:"PlayType,omitempty" xml:"PlayType,omitempty"`
+	SessionId          *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StuckDuration      *string `json:"StuckDuration,omitempty" xml:"StuckDuration,omitempty"`
+	TraceId            *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	VideoDuration      *string `json:"VideoDuration,omitempty" xml:"VideoDuration,omitempty"`
+	VideoId            *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+}
+
+func (s DescribePlayListResponseBodyPlayList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePlayListResponseBodyPlayList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePlayListResponseBodyPlayList) SetFirstFrameDuration(v string) *DescribePlayListResponseBodyPlayList {
+	s.FirstFrameDuration = &v
+	return s
+}
+
+func (s *DescribePlayListResponseBodyPlayList) SetPlayDuration(v string) *DescribePlayListResponseBodyPlayList {
+	s.PlayDuration = &v
+	return s
+}
+
+func (s *DescribePlayListResponseBodyPlayList) SetPlayType(v string) *DescribePlayListResponseBodyPlayList {
+	s.PlayType = &v
+	return s
+}
+
+func (s *DescribePlayListResponseBodyPlayList) SetSessionId(v string) *DescribePlayListResponseBodyPlayList {
+	s.SessionId = &v
+	return s
+}
+
+func (s *DescribePlayListResponseBodyPlayList) SetStatus(v string) *DescribePlayListResponseBodyPlayList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribePlayListResponseBodyPlayList) SetStuckDuration(v string) *DescribePlayListResponseBodyPlayList {
+	s.StuckDuration = &v
+	return s
+}
+
+func (s *DescribePlayListResponseBodyPlayList) SetTraceId(v string) *DescribePlayListResponseBodyPlayList {
+	s.TraceId = &v
+	return s
+}
+
+func (s *DescribePlayListResponseBodyPlayList) SetVideoDuration(v string) *DescribePlayListResponseBodyPlayList {
+	s.VideoDuration = &v
+	return s
+}
+
+func (s *DescribePlayListResponseBodyPlayList) SetVideoId(v string) *DescribePlayListResponseBodyPlayList {
+	s.VideoId = &v
+	return s
+}
+
+type DescribePlayListResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePlayListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePlayListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePlayListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePlayListResponse) SetHeaders(v map[string]*string) *DescribePlayListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePlayListResponse) SetStatusCode(v int32) *DescribePlayListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePlayListResponse) SetBody(v *DescribePlayListResponseBody) *DescribePlayListResponse {
 	s.Body = v
 	return s
 }
@@ -5979,9 +5988,9 @@ func (s *DescribePlayMetricDataRequest) SetTerminalType(v string) *DescribePlayM
 }
 
 type DescribePlayMetricDataResponseBody struct {
-	Nodes []*DescribePlayMetricDataResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Nodes       []*DescribePlayMetricDataResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SummaryData *string                                    `json:"SummaryData,omitempty" xml:"SummaryData,omitempty"`
 }
 
 func (s DescribePlayMetricDataResponseBody) String() string {
@@ -6002,9 +6011,14 @@ func (s *DescribePlayMetricDataResponseBody) SetRequestId(v string) *DescribePla
 	return s
 }
 
+func (s *DescribePlayMetricDataResponseBody) SetSummaryData(v string) *DescribePlayMetricDataResponseBody {
+	s.SummaryData = &v
+	return s
+}
+
 type DescribePlayMetricDataResponseBodyNodes struct {
-	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
-	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribePlayMetricDataResponseBodyNodes) String() string {
@@ -6015,12 +6029,12 @@ func (s DescribePlayMetricDataResponseBodyNodes) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePlayMetricDataResponseBodyNodes) SetX(v int64) *DescribePlayMetricDataResponseBodyNodes {
+func (s *DescribePlayMetricDataResponseBodyNodes) SetX(v string) *DescribePlayMetricDataResponseBodyNodes {
 	s.X = &v
 	return s
 }
 
-func (s *DescribePlayMetricDataResponseBodyNodes) SetY(v int64) *DescribePlayMetricDataResponseBodyNodes {
+func (s *DescribePlayMetricDataResponseBodyNodes) SetY(v string) *DescribePlayMetricDataResponseBodyNodes {
 	s.Y = &v
 	return s
 }
@@ -6055,17 +6069,19 @@ func (s *DescribePlayMetricDataResponse) SetBody(v *DescribePlayMetricDataRespon
 }
 
 type DescribePlayQoeListRequest struct {
-	AppName      *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTs      *int64  `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	Definition   *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	EndTs        *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	ItemConfigs  *string `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
-	MetricType   *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	Network      *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	Os           *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	PageNo       *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TerminalType *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
+	AppName      *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTs      *int64    `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
+	Definition   *string   `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	EndTs        *int64    `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	ItemConfigs  *string   `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
+	MetricTypes  []*string `json:"MetricTypes,omitempty" xml:"MetricTypes,omitempty" type:"Repeated"`
+	Network      *string   `json:"Network,omitempty" xml:"Network,omitempty"`
+	OrderName    *string   `json:"OrderName,omitempty" xml:"OrderName,omitempty"`
+	OrderType    *string   `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	Os           *string   `json:"Os,omitempty" xml:"Os,omitempty"`
+	PageNo       *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TerminalType *string   `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
 }
 
 func (s DescribePlayQoeListRequest) String() string {
@@ -6101,13 +6117,23 @@ func (s *DescribePlayQoeListRequest) SetItemConfigs(v string) *DescribePlayQoeLi
 	return s
 }
 
-func (s *DescribePlayQoeListRequest) SetMetricType(v string) *DescribePlayQoeListRequest {
-	s.MetricType = &v
+func (s *DescribePlayQoeListRequest) SetMetricTypes(v []*string) *DescribePlayQoeListRequest {
+	s.MetricTypes = v
 	return s
 }
 
 func (s *DescribePlayQoeListRequest) SetNetwork(v string) *DescribePlayQoeListRequest {
 	s.Network = &v
+	return s
+}
+
+func (s *DescribePlayQoeListRequest) SetOrderName(v string) *DescribePlayQoeListRequest {
+	s.OrderName = &v
+	return s
+}
+
+func (s *DescribePlayQoeListRequest) SetOrderType(v string) *DescribePlayQoeListRequest {
+	s.OrderType = &v
 	return s
 }
 
@@ -6131,13 +6157,101 @@ func (s *DescribePlayQoeListRequest) SetTerminalType(v string) *DescribePlayQoeL
 	return s
 }
 
+type DescribePlayQoeListShrinkRequest struct {
+	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTs           *int64  `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
+	Definition        *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	EndTs             *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	ItemConfigs       *string `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
+	MetricTypesShrink *string `json:"MetricTypes,omitempty" xml:"MetricTypes,omitempty"`
+	Network           *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	OrderName         *string `json:"OrderName,omitempty" xml:"OrderName,omitempty"`
+	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	Os                *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TerminalType      *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
+}
+
+func (s DescribePlayQoeListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePlayQoeListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePlayQoeListShrinkRequest) SetAppName(v string) *DescribePlayQoeListShrinkRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribePlayQoeListShrinkRequest) SetBeginTs(v int64) *DescribePlayQoeListShrinkRequest {
+	s.BeginTs = &v
+	return s
+}
+
+func (s *DescribePlayQoeListShrinkRequest) SetDefinition(v string) *DescribePlayQoeListShrinkRequest {
+	s.Definition = &v
+	return s
+}
+
+func (s *DescribePlayQoeListShrinkRequest) SetEndTs(v int64) *DescribePlayQoeListShrinkRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribePlayQoeListShrinkRequest) SetItemConfigs(v string) *DescribePlayQoeListShrinkRequest {
+	s.ItemConfigs = &v
+	return s
+}
+
+func (s *DescribePlayQoeListShrinkRequest) SetMetricTypesShrink(v string) *DescribePlayQoeListShrinkRequest {
+	s.MetricTypesShrink = &v
+	return s
+}
+
+func (s *DescribePlayQoeListShrinkRequest) SetNetwork(v string) *DescribePlayQoeListShrinkRequest {
+	s.Network = &v
+	return s
+}
+
+func (s *DescribePlayQoeListShrinkRequest) SetOrderName(v string) *DescribePlayQoeListShrinkRequest {
+	s.OrderName = &v
+	return s
+}
+
+func (s *DescribePlayQoeListShrinkRequest) SetOrderType(v string) *DescribePlayQoeListShrinkRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *DescribePlayQoeListShrinkRequest) SetOs(v string) *DescribePlayQoeListShrinkRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *DescribePlayQoeListShrinkRequest) SetPageNo(v int32) *DescribePlayQoeListShrinkRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribePlayQoeListShrinkRequest) SetPageSize(v int32) *DescribePlayQoeListShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePlayQoeListShrinkRequest) SetTerminalType(v string) *DescribePlayQoeListShrinkRequest {
+	s.TerminalType = &v
+	return s
+}
+
 type DescribePlayQoeListResponseBody struct {
 	PageNo      *int64                                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize    *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	QoeInfoList []*DescribePlayQoeListResponseBodyQoeInfoList `json:"QoeInfoList,omitempty" xml:"QoeInfoList,omitempty" type:"Repeated"`
-	// Id
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePlayQoeListResponseBody) String() string {
@@ -6182,7 +6296,7 @@ type DescribePlayQoeListResponseBodyQoeInfoList struct {
 	QoeUVVTime         *float32 `json:"QoeUVVTime,omitempty" xml:"QoeUVVTime,omitempty"`
 	QoeVDuration       *float32 `json:"QoeVDuration,omitempty" xml:"QoeVDuration,omitempty"`
 	QoeVVDuration      *float32 `json:"QoeVVDuration,omitempty" xml:"QoeVVDuration,omitempty"`
-	Vpsid              *string  `json:"Vpsid,omitempty" xml:"Vpsid,omitempty"`
+	TraceId            *string  `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DescribePlayQoeListResponseBodyQoeInfoList) String() string {
@@ -6233,8 +6347,8 @@ func (s *DescribePlayQoeListResponseBodyQoeInfoList) SetQoeVVDuration(v float32)
 	return s
 }
 
-func (s *DescribePlayQoeListResponseBodyQoeInfoList) SetVpsid(v string) *DescribePlayQoeListResponseBodyQoeInfoList {
-	s.Vpsid = &v
+func (s *DescribePlayQoeListResponseBodyQoeInfoList) SetTraceId(v string) *DescribePlayQoeListResponseBodyQoeInfoList {
+	s.TraceId = &v
 	return s
 }
 
@@ -6268,17 +6382,19 @@ func (s *DescribePlayQoeListResponse) SetBody(v *DescribePlayQoeListResponseBody
 }
 
 type DescribePlayQosListRequest struct {
-	AppName      *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTs      *string `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	Definition   *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	EndTs        *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	ItemConfigs  *string `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
-	MetricType   *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	Network      *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	Os           *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	PageNo       *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TerminalType *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
+	AppName      *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTs      *string   `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
+	Definition   *string   `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	EndTs        *string   `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	ItemConfigs  *string   `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
+	MetricTypes  []*string `json:"MetricTypes,omitempty" xml:"MetricTypes,omitempty" type:"Repeated"`
+	Network      *string   `json:"Network,omitempty" xml:"Network,omitempty"`
+	OrderName    *string   `json:"OrderName,omitempty" xml:"OrderName,omitempty"`
+	OrderType    *string   `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	Os           *string   `json:"Os,omitempty" xml:"Os,omitempty"`
+	PageNo       *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TerminalType *string   `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
 }
 
 func (s DescribePlayQosListRequest) String() string {
@@ -6314,13 +6430,23 @@ func (s *DescribePlayQosListRequest) SetItemConfigs(v string) *DescribePlayQosLi
 	return s
 }
 
-func (s *DescribePlayQosListRequest) SetMetricType(v string) *DescribePlayQosListRequest {
-	s.MetricType = &v
+func (s *DescribePlayQosListRequest) SetMetricTypes(v []*string) *DescribePlayQosListRequest {
+	s.MetricTypes = v
 	return s
 }
 
 func (s *DescribePlayQosListRequest) SetNetwork(v string) *DescribePlayQosListRequest {
 	s.Network = &v
+	return s
+}
+
+func (s *DescribePlayQosListRequest) SetOrderName(v string) *DescribePlayQosListRequest {
+	s.OrderName = &v
+	return s
+}
+
+func (s *DescribePlayQosListRequest) SetOrderType(v string) *DescribePlayQosListRequest {
+	s.OrderType = &v
 	return s
 }
 
@@ -6344,13 +6470,101 @@ func (s *DescribePlayQosListRequest) SetTerminalType(v string) *DescribePlayQosL
 	return s
 }
 
+type DescribePlayQosListShrinkRequest struct {
+	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTs           *string `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
+	Definition        *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	EndTs             *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	ItemConfigs       *string `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
+	MetricTypesShrink *string `json:"MetricTypes,omitempty" xml:"MetricTypes,omitempty"`
+	Network           *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	OrderName         *string `json:"OrderName,omitempty" xml:"OrderName,omitempty"`
+	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	Os                *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TerminalType      *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
+}
+
+func (s DescribePlayQosListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePlayQosListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePlayQosListShrinkRequest) SetAppName(v string) *DescribePlayQosListShrinkRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribePlayQosListShrinkRequest) SetBeginTs(v string) *DescribePlayQosListShrinkRequest {
+	s.BeginTs = &v
+	return s
+}
+
+func (s *DescribePlayQosListShrinkRequest) SetDefinition(v string) *DescribePlayQosListShrinkRequest {
+	s.Definition = &v
+	return s
+}
+
+func (s *DescribePlayQosListShrinkRequest) SetEndTs(v string) *DescribePlayQosListShrinkRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribePlayQosListShrinkRequest) SetItemConfigs(v string) *DescribePlayQosListShrinkRequest {
+	s.ItemConfigs = &v
+	return s
+}
+
+func (s *DescribePlayQosListShrinkRequest) SetMetricTypesShrink(v string) *DescribePlayQosListShrinkRequest {
+	s.MetricTypesShrink = &v
+	return s
+}
+
+func (s *DescribePlayQosListShrinkRequest) SetNetwork(v string) *DescribePlayQosListShrinkRequest {
+	s.Network = &v
+	return s
+}
+
+func (s *DescribePlayQosListShrinkRequest) SetOrderName(v string) *DescribePlayQosListShrinkRequest {
+	s.OrderName = &v
+	return s
+}
+
+func (s *DescribePlayQosListShrinkRequest) SetOrderType(v string) *DescribePlayQosListShrinkRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *DescribePlayQosListShrinkRequest) SetOs(v string) *DescribePlayQosListShrinkRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *DescribePlayQosListShrinkRequest) SetPageNo(v int32) *DescribePlayQosListShrinkRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribePlayQosListShrinkRequest) SetPageSize(v int32) *DescribePlayQosListShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePlayQosListShrinkRequest) SetTerminalType(v string) *DescribePlayQosListShrinkRequest {
+	s.TerminalType = &v
+	return s
+}
+
 type DescribePlayQosListResponseBody struct {
 	PageNo      *int64                                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize    *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	QosInfoList []*DescribePlayQosListResponseBodyQosInfoList `json:"QosInfoList,omitempty" xml:"QosInfoList,omitempty" type:"Repeated"`
-	// Id
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePlayQosListResponseBody) String() string {
@@ -6394,7 +6608,7 @@ type DescribePlayQosListResponseBodyQosInfoList struct {
 	QosRealPlay     *string `json:"QosRealPlay,omitempty" xml:"QosRealPlay,omitempty"`
 	QosSeedFailRate *string `json:"QosSeedFailRate,omitempty" xml:"QosSeedFailRate,omitempty"`
 	QosStuckRate    *string `json:"QosStuckRate,omitempty" xml:"QosStuckRate,omitempty"`
-	Vpsid           *string `json:"Vpsid,omitempty" xml:"Vpsid,omitempty"`
+	TraceId         *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DescribePlayQosListResponseBodyQosInfoList) String() string {
@@ -6440,8 +6654,8 @@ func (s *DescribePlayQosListResponseBodyQosInfoList) SetQosStuckRate(v string) *
 	return s
 }
 
-func (s *DescribePlayQosListResponseBodyQosInfoList) SetVpsid(v string) *DescribePlayQosListResponseBodyQosInfoList {
-	s.Vpsid = &v
+func (s *DescribePlayQosListResponseBodyQosInfoList) SetTraceId(v string) *DescribePlayQosListResponseBodyQosInfoList {
+	s.TraceId = &v
 	return s
 }
 
@@ -6492,9 +6706,8 @@ func (s *DescribeQueryConfigsRequest) SetType(v string) *DescribeQueryConfigsReq
 }
 
 type DescribeQueryConfigsResponseBody struct {
-	Configs []*DescribeQueryConfigsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Configs   []*DescribeQueryConfigsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeQueryConfigsResponseBody) String() string {
@@ -6557,195 +6770,6 @@ func (s *DescribeQueryConfigsResponse) SetStatusCode(v int32) *DescribeQueryConf
 }
 
 func (s *DescribeQueryConfigsResponse) SetBody(v *DescribeQueryConfigsResponseBody) *DescribeQueryConfigsResponse {
-	s.Body = v
-	return s
-}
-
-type DownloadResourceByResourceIdsRequest struct {
-	// 资源id号
-	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-}
-
-func (s DownloadResourceByResourceIdsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadResourceByResourceIdsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadResourceByResourceIdsRequest) SetResourceIds(v string) *DownloadResourceByResourceIdsRequest {
-	s.ResourceIds = &v
-	return s
-}
-
-type DownloadResourceByResourceIdsResponseBody struct {
-	// 过期时间
-	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源地址
-	ResourcePackageUrl *string `json:"ResourcePackageUrl,omitempty" xml:"ResourcePackageUrl,omitempty"`
-}
-
-func (s DownloadResourceByResourceIdsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadResourceByResourceIdsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadResourceByResourceIdsResponseBody) SetExpireTime(v int64) *DownloadResourceByResourceIdsResponseBody {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *DownloadResourceByResourceIdsResponseBody) SetRequestId(v string) *DownloadResourceByResourceIdsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DownloadResourceByResourceIdsResponseBody) SetResourcePackageUrl(v string) *DownloadResourceByResourceIdsResponseBody {
-	s.ResourcePackageUrl = &v
-	return s
-}
-
-type DownloadResourceByResourceIdsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DownloadResourceByResourceIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DownloadResourceByResourceIdsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadResourceByResourceIdsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadResourceByResourceIdsResponse) SetHeaders(v map[string]*string) *DownloadResourceByResourceIdsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DownloadResourceByResourceIdsResponse) SetStatusCode(v int32) *DownloadResourceByResourceIdsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DownloadResourceByResourceIdsResponse) SetBody(v *DownloadResourceByResourceIdsResponseBody) *DownloadResourceByResourceIdsResponse {
-	s.Body = v
-	return s
-}
-
-type GetAuditConfigRequest struct {
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-}
-
-func (s GetAuditConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAuditConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetAuditConfigRequest) SetAppId(v string) *GetAuditConfigRequest {
-	s.AppId = &v
-	return s
-}
-
-type GetAuditConfigResponseBody struct {
-	Audit     *GetAuditConfigResponseBodyAudit `json:"Audit,omitempty" xml:"Audit,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetAuditConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAuditConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetAuditConfigResponseBody) SetAudit(v *GetAuditConfigResponseBodyAudit) *GetAuditConfigResponseBody {
-	s.Audit = v
-	return s
-}
-
-func (s *GetAuditConfigResponseBody) SetRequestId(v string) *GetAuditConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetAuditConfigResponseBodyAudit struct {
-	Channel     *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LegalSwitch *string `json:"LegalSwitch,omitempty" xml:"LegalSwitch,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s GetAuditConfigResponseBodyAudit) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAuditConfigResponseBodyAudit) GoString() string {
-	return s.String()
-}
-
-func (s *GetAuditConfigResponseBodyAudit) SetChannel(v string) *GetAuditConfigResponseBodyAudit {
-	s.Channel = &v
-	return s
-}
-
-func (s *GetAuditConfigResponseBodyAudit) SetCreateTime(v string) *GetAuditConfigResponseBodyAudit {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetAuditConfigResponseBodyAudit) SetLegalSwitch(v string) *GetAuditConfigResponseBodyAudit {
-	s.LegalSwitch = &v
-	return s
-}
-
-func (s *GetAuditConfigResponseBodyAudit) SetUpdateTime(v string) *GetAuditConfigResponseBodyAudit {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *GetAuditConfigResponseBodyAudit) SetUserId(v string) *GetAuditConfigResponseBodyAudit {
-	s.UserId = &v
-	return s
-}
-
-type GetAuditConfigResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAuditConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetAuditConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAuditConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetAuditConfigResponse) SetHeaders(v map[string]*string) *GetAuditConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetAuditConfigResponse) SetStatusCode(v int32) *GetAuditConfigResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetAuditConfigResponse) SetBody(v *GetAuditConfigResponseBody) *GetAuditConfigResponse {
 	s.Body = v
 	return s
 }
@@ -6960,116 +6984,8 @@ func (s *GetCategoriesResponse) SetBody(v *GetCategoriesResponseBody) *GetCatego
 	return s
 }
 
-type GetClientConfigRequest struct {
-	// 云端配置所对应的IOS BundleId
-	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// 云端配置所对应的包名。
-	PkgName *string `json:"PkgName,omitempty" xml:"PkgName,omitempty"`
-	// 云端配置所对应的包签名
-	PkgSignature *string `json:"PkgSignature,omitempty" xml:"PkgSignature,omitempty"`
-}
-
-func (s GetClientConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetClientConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetClientConfigRequest) SetBundleId(v string) *GetClientConfigRequest {
-	s.BundleId = &v
-	return s
-}
-
-func (s *GetClientConfigRequest) SetPkgName(v string) *GetClientConfigRequest {
-	s.PkgName = &v
-	return s
-}
-
-func (s *GetClientConfigRequest) SetPkgSignature(v string) *GetClientConfigRequest {
-	s.PkgSignature = &v
-	return s
-}
-
-type GetClientConfigResponseBody struct {
-	// oss bucket 名称
-	ClientUploadBucket *string `json:"ClientUploadBucket,omitempty" xml:"ClientUploadBucket,omitempty"`
-	// 路径
-	ClientUploadPath *string `json:"ClientUploadPath,omitempty" xml:"ClientUploadPath,omitempty"`
-	// 状态
-	ClientUploadStorageStatus *string `json:"ClientUploadStorageStatus,omitempty" xml:"ClientUploadStorageStatus,omitempty"`
-	// 存储类型
-	ClientUploadStorageType *string `json:"ClientUploadStorageType,omitempty" xml:"ClientUploadStorageType,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetClientConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetClientConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetClientConfigResponseBody) SetClientUploadBucket(v string) *GetClientConfigResponseBody {
-	s.ClientUploadBucket = &v
-	return s
-}
-
-func (s *GetClientConfigResponseBody) SetClientUploadPath(v string) *GetClientConfigResponseBody {
-	s.ClientUploadPath = &v
-	return s
-}
-
-func (s *GetClientConfigResponseBody) SetClientUploadStorageStatus(v string) *GetClientConfigResponseBody {
-	s.ClientUploadStorageStatus = &v
-	return s
-}
-
-func (s *GetClientConfigResponseBody) SetClientUploadStorageType(v string) *GetClientConfigResponseBody {
-	s.ClientUploadStorageType = &v
-	return s
-}
-
-func (s *GetClientConfigResponseBody) SetRequestId(v string) *GetClientConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetClientConfigResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetClientConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetClientConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetClientConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetClientConfigResponse) SetHeaders(v map[string]*string) *GetClientConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetClientConfigResponse) SetStatusCode(v int32) *GetClientConfigResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetClientConfigResponse) SetBody(v *GetClientConfigResponseBody) *GetClientConfigResponse {
-	s.Body = v
-	return s
-}
-
 type GetCustomTemplateRequest struct {
-	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// 模板ID
+	Subtype    *int32  `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	Type       *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -7098,10 +7014,8 @@ func (s *GetCustomTemplateRequest) SetType(v int32) *GetCustomTemplateRequest {
 }
 
 type GetCustomTemplateResponseBody struct {
-	// 模板信息
 	CustomTemplate *GetCustomTemplateResponseBodyCustomTemplate `json:"CustomTemplate,omitempty" xml:"CustomTemplate,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetCustomTemplateResponseBody) String() string {
@@ -7123,28 +7037,17 @@ func (s *GetCustomTemplateResponseBody) SetRequestId(v string) *GetCustomTemplat
 }
 
 type GetCustomTemplateResponseBodyCustomTemplate struct {
-	// 模板创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 是否默认模板
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// 模板修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 模板状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板子类型ID
-	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// 模板子类型名称
-	SubtypeName *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
-	// 模板参数
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	IsDefault      *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	ModifiedTime   *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Subtype        *int32  `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	SubtypeName    *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// 模板Id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板名称
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 模板类型ID
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 模板类型名称
-	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Type           *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	TypeName       *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
 
 func (s GetCustomTemplateResponseBodyCustomTemplate) String() string {
@@ -7240,15 +7143,10 @@ func (s *GetCustomTemplateResponse) SetBody(v *GetCustomTemplateResponseBody) *G
 }
 
 type GetDefaultStorageLocationResponseBody struct {
-	// oss bucket 名称
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// 路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 存储类型
+	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
@@ -7332,7 +7230,6 @@ func (s *GetDynamicImageJobRequest) SetJobId(v string) *GetDynamicImageJobReques
 }
 
 type GetDynamicImageJobResponseBody struct {
-	// 截图任务信息
 	DynamicImageJob *GetDynamicImageJobResponseBodyDynamicImageJob `json:"DynamicImageJob,omitempty" xml:"DynamicImageJob,omitempty" type:"Struct"`
 	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -7469,8 +7366,7 @@ func (s *GetDynamicImageJobResponseBodyDynamicImageJob) SetUserData(v string) *G
 }
 
 type GetDynamicImageJobResponseBodyDynamicImageJobInput struct {
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 输入类型为媒资ID时的OSS地址
+	Media   *string                                                    `json:"Media,omitempty" xml:"Media,omitempty"`
 	OssFile *GetDynamicImageJobResponseBodyDynamicImageJobInputOssFile `json:"OssFile,omitempty" xml:"OssFile,omitempty" type:"Struct"`
 	Type    *string                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -7528,8 +7424,7 @@ func (s *GetDynamicImageJobResponseBodyDynamicImageJobInputOssFile) SetObject(v 
 }
 
 type GetDynamicImageJobResponseBodyDynamicImageJobOutput struct {
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 输出类型为媒资ID时的OSS地址
+	Media   *string                                                     `json:"Media,omitempty" xml:"Media,omitempty"`
 	OssFile *GetDynamicImageJobResponseBodyDynamicImageJobOutputOssFile `json:"OssFile,omitempty" xml:"OssFile,omitempty" type:"Struct"`
 	Type    *string                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -7616,7 +7511,6 @@ func (s *GetDynamicImageJobResponse) SetBody(v *GetDynamicImageJobResponseBody) 
 }
 
 type GetEditingProjectRequest struct {
-	// 云剪辑工程ID
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -7634,9 +7528,8 @@ func (s *GetEditingProjectRequest) SetProjectId(v string) *GetEditingProjectRequ
 }
 
 type GetEditingProjectResponseBody struct {
-	Project *GetEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Project   *GetEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetEditingProjectResponseBody) String() string {
@@ -7660,35 +7553,21 @@ func (s *GetEditingProjectResponseBody) SetRequestId(v string) *GetEditingProjec
 type GetEditingProjectResponseBodyProject struct {
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// 模板素材参数
-	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	// 云剪辑工程封面
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 云剪辑工程创建来源
-	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	// 云剪辑工程创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 云剪辑工程描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 云剪辑工程总时长
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 云剪辑工程修改来源
+	ClipsParam     *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	CoverURL       *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateSource   *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration       *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
-	// 云剪辑工程最新修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 云剪辑工程ID
-	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
-	// 云剪辑工程状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板Id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 云剪辑工程模板类型
-	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// 云剪辑工程时间线
-	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	// 云剪辑工程标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	ModifiedTime   *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectType    *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType   *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	Timeline       *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetEditingProjectResponseBodyProject) String() string {
@@ -7814,7 +7693,6 @@ func (s *GetEditingProjectResponse) SetBody(v *GetEditingProjectResponseBody) *G
 }
 
 type GetEditingProjectMaterialsRequest struct {
-	// 云剪辑工程ID
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -7832,13 +7710,11 @@ func (s *GetEditingProjectMaterialsRequest) SetProjectId(v string) *GetEditingPr
 }
 
 type GetEditingProjectMaterialsResponseBody struct {
-	LiveMaterials []*GetEditingProjectMaterialsResponseBodyLiveMaterials `json:"LiveMaterials,omitempty" xml:"LiveMaterials,omitempty" type:"Repeated"`
-	// 符合要求的媒资集合
-	MediaInfos       []*GetEditingProjectMaterialsResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
-	ProjectId        *string                                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectMaterials []*string                                           `json:"ProjectMaterials,omitempty" xml:"ProjectMaterials,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LiveMaterials    []*GetEditingProjectMaterialsResponseBodyLiveMaterials `json:"LiveMaterials,omitempty" xml:"LiveMaterials,omitempty" type:"Repeated"`
+	MediaInfos       []*GetEditingProjectMaterialsResponseBodyMediaInfos    `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	ProjectId        *string                                                `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectMaterials []*string                                              `json:"ProjectMaterials,omitempty" xml:"ProjectMaterials,omitempty" type:"Repeated"`
+	RequestId        *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetEditingProjectMaterialsResponseBody) String() string {
@@ -7910,12 +7786,9 @@ func (s *GetEditingProjectMaterialsResponseBodyLiveMaterials) SetStreamName(v st
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfos struct {
-	// FileInfos
-	FileInfoList []*GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// BasicInfo
+	FileInfoList   []*GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	MediaBasicInfo *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId        *string                                                         `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s GetEditingProjectMaterialsResponseBodyMediaInfos) String() string {
@@ -7942,7 +7815,6 @@ func (s *GetEditingProjectMaterialsResponseBodyMediaInfos) SetMediaId(v string) 
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList struct {
-	// 文件基础信息，包含时长，大小等
 	FileBasicInfo *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -7960,28 +7832,17 @@ func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) SetFileBa
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小（字节）
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration   *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize   *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件oss地址
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 封装格式
+	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl    *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 文件存储区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height     *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width      *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) String() string {
@@ -8048,42 +7909,24 @@ func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicIn
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo struct {
-	// 媒资业务类型
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 封面地址
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 媒资创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 媒资删除时间
-	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// 内容描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 待注册的媒资在相应系统中的地址
-	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// MediaId
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 标签
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 媒资媒体类型
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 媒资修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 截图
-	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 雪碧图
-	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// 资源状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 转码状态
+	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CoverURL        *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletedTime     *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputURL        *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	MediaId         *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaTags       *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	MediaType       *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	ModifiedTime    *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Snapshots       *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SpriteImages    *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) String() string {
@@ -8220,8 +8063,7 @@ type GetEventCallbackResponseBody struct {
 	CallbackType      *string `json:"CallbackType,omitempty" xml:"CallbackType,omitempty"`
 	CallbackURL       *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
 	EventTypeList     *string `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetEventCallbackResponseBody) String() string {
@@ -8333,7 +8175,6 @@ func (s *GetLiveEditingIndexFileRequest) SetStreamName(v string) *GetLiveEditing
 
 type GetLiveEditingIndexFileResponseBody struct {
 	IndexFile *string `json:"IndexFile,omitempty" xml:"IndexFile,omitempty"`
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8385,7 +8226,6 @@ func (s *GetLiveEditingIndexFileResponse) SetBody(v *GetLiveEditingIndexFileResp
 }
 
 type GetLiveEditingJobRequest struct {
-	// 直播剪辑JobId
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -8403,10 +8243,8 @@ func (s *GetLiveEditingJobRequest) SetJobId(v string) *GetLiveEditingJobRequest 
 }
 
 type GetLiveEditingJobResponseBody struct {
-	// 直播剪辑任务
 	LiveEditingJob *GetLiveEditingJobResponseBodyLiveEditingJob `json:"LiveEditingJob,omitempty" xml:"LiveEditingJob,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetLiveEditingJobResponseBody) String() string {
@@ -8428,36 +8266,21 @@ func (s *GetLiveEditingJobResponseBody) SetRequestId(v string) *GetLiveEditingJo
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJob struct {
-	// 剪辑片段列表
-	Clips *string `json:"Clips,omitempty" xml:"Clips,omitempty"`
-	// 剪辑合成作业错误码  注：作业失败时关注该字段
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 直播剪辑作业完成时间，格式为utc时间。  格式为："2021-06-21T08:01:00Z"。
-	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// 直播剪辑作业创建时间，格式为utc时间。  格式为："2021-06-21T08:01:00Z"。
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// 直播剪辑任务ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 直播剪辑配置
-	LiveStreamConfig *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig `json:"LiveStreamConfig,omitempty" xml:"LiveStreamConfig,omitempty" type:"Struct"`
-	// 输出成品的资源Id
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 直播剪辑合成配置
+	Clips              *string                                                        `json:"Clips,omitempty" xml:"Clips,omitempty"`
+	Code               *string                                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	CompleteTime       *string                                                        `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	CreationTime       *string                                                        `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	JobId              *string                                                        `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	LiveStreamConfig   *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig   `json:"LiveStreamConfig,omitempty" xml:"LiveStreamConfig,omitempty" type:"Struct"`
+	MediaId            *string                                                        `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	MediaProduceConfig *GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig `json:"MediaProduceConfig,omitempty" xml:"MediaProduceConfig,omitempty" type:"Struct"`
-	// 输出成品的资源文件URL
-	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
-	// 剪辑合成作业错误信息  注：作业失败时关注该字段
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 直播剪辑作业修改时间，格式为utc时间。  格式为："2021-06-21T08:01:00Z"。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 输出成片的存储配置
-	OutputMediaConfig *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty" type:"Struct"`
-	// 直播剪辑工程ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 直播剪辑作业状态，取值可能为如下值：  -Init （初始状态）  -Queuing（排队中）  -Processing（处理中）  -Success（成功）  -Failed（失败）
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	MediaURL           *string                                                        `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	Message            *string                                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	ModifiedTime       *string                                                        `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	OutputMediaConfig  *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig  `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty" type:"Struct"`
+	ProjectId          *string                                                        `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Status             *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserData           *string                                                        `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetLiveEditingJobResponseBodyLiveEditingJob) String() string {
@@ -8544,11 +8367,8 @@ func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetUserData(v string) *Get
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig struct {
-	// 播流所属应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 播流所属域名
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// 播流所属流名
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 }
 
@@ -8576,7 +8396,6 @@ func (s *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig) SetStreamN
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig struct {
-	// 剪辑模式，默认Accurate
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
@@ -8594,20 +8413,13 @@ func (s *GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig) SetMode(
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig struct {
-	// 输出成品的码率，单位为Kbps。可以不填，默认值是多个素材的最高码率
-	Bitrate *int64 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 当 OutputMediaTarget 的目标为 vod-media 时，指定 fileName(包含文件后缀，不含路径）作为输出文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 输出成品的高。可以不填，默认值是多个素材的最大高
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 输出成片的文件地址
-	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
-	// 当 OutputMediaTarget 的目标为 vod-media 时， 指定 storage location 来存储媒资到 VOD; storage location 是 VOD 中的文件存储位置， 不包含 http:// 的前缀， 如:  outin-xxxxxx.oss-cn-shanghai.aliyuncs.com
-	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// 合成成片输出到vod，指定vod转码模板组。如不需要VOD转码，请填写 "VOD_NO_TRANSCODE".
+	Bitrate            *int64  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	FileName           *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Height             *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	MediaURL           *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	StorageLocation    *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 	VodTemplateGroupId *string `json:"VodTemplateGroupId,omitempty" xml:"VodTemplateGroupId,omitempty"`
-	// 输出成品的宽。可以不填，默认值是多个素材的最大宽
-	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Width              *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig) String() string {
@@ -8682,8 +8494,660 @@ func (s *GetLiveEditingJobResponse) SetBody(v *GetLiveEditingJobResponseBody) *G
 	return s
 }
 
+type GetLiveRecordJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetLiveRecordJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRecordJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRecordJobRequest) SetJobId(v string) *GetLiveRecordJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetLiveRecordJobResponseBody struct {
+	RecordJob *GetLiveRecordJobResponseBodyRecordJob `json:"RecordJob,omitempty" xml:"RecordJob,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetLiveRecordJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRecordJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRecordJobResponseBody) SetRecordJob(v *GetLiveRecordJobResponseBodyRecordJob) *GetLiveRecordJobResponseBody {
+	s.RecordJob = v
+	return s
+}
+
+func (s *GetLiveRecordJobResponseBody) SetRequestId(v string) *GetLiveRecordJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetLiveRecordJobResponseBodyRecordJob struct {
+	CreateTime   *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	JobId        *string                                            `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Name         *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	NotifyUrl    *string                                            `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	RecordOutput *GetLiveRecordJobResponseBodyRecordJobRecordOutput `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty" type:"Struct"`
+	Status       *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	StreamInput  *GetLiveRecordJobResponseBodyRecordJobStreamInput  `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
+	TemplateId   *string                                            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string                                            `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s GetLiveRecordJobResponseBodyRecordJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRecordJobResponseBodyRecordJob) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJob) SetCreateTime(v string) *GetLiveRecordJobResponseBodyRecordJob {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJob) SetJobId(v string) *GetLiveRecordJobResponseBodyRecordJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJob) SetName(v string) *GetLiveRecordJobResponseBodyRecordJob {
+	s.Name = &v
+	return s
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJob) SetNotifyUrl(v string) *GetLiveRecordJobResponseBodyRecordJob {
+	s.NotifyUrl = &v
+	return s
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJob) SetRecordOutput(v *GetLiveRecordJobResponseBodyRecordJobRecordOutput) *GetLiveRecordJobResponseBodyRecordJob {
+	s.RecordOutput = v
+	return s
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJob) SetStatus(v string) *GetLiveRecordJobResponseBodyRecordJob {
+	s.Status = &v
+	return s
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJob) SetStreamInput(v *GetLiveRecordJobResponseBodyRecordJobStreamInput) *GetLiveRecordJobResponseBodyRecordJob {
+	s.StreamInput = v
+	return s
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJob) SetTemplateId(v string) *GetLiveRecordJobResponseBodyRecordJob {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJob) SetTemplateName(v string) *GetLiveRecordJobResponseBodyRecordJob {
+	s.TemplateName = &v
+	return s
+}
+
+type GetLiveRecordJobResponseBodyRecordJobRecordOutput struct {
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetLiveRecordJobResponseBodyRecordJobRecordOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRecordJobResponseBodyRecordJobRecordOutput) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJobRecordOutput) SetBucket(v string) *GetLiveRecordJobResponseBodyRecordJobRecordOutput {
+	s.Bucket = &v
+	return s
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJobRecordOutput) SetEndpoint(v string) *GetLiveRecordJobResponseBodyRecordJobRecordOutput {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJobRecordOutput) SetType(v string) *GetLiveRecordJobResponseBodyRecordJobRecordOutput {
+	s.Type = &v
+	return s
+}
+
+type GetLiveRecordJobResponseBodyRecordJobStreamInput struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetLiveRecordJobResponseBodyRecordJobStreamInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRecordJobResponseBodyRecordJobStreamInput) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJobStreamInput) SetType(v string) *GetLiveRecordJobResponseBodyRecordJobStreamInput {
+	s.Type = &v
+	return s
+}
+
+func (s *GetLiveRecordJobResponseBodyRecordJobStreamInput) SetUrl(v string) *GetLiveRecordJobResponseBodyRecordJobStreamInput {
+	s.Url = &v
+	return s
+}
+
+type GetLiveRecordJobResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLiveRecordJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLiveRecordJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRecordJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRecordJobResponse) SetHeaders(v map[string]*string) *GetLiveRecordJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLiveRecordJobResponse) SetStatusCode(v int32) *GetLiveRecordJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLiveRecordJobResponse) SetBody(v *GetLiveRecordJobResponseBody) *GetLiveRecordJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetLiveRecordTemplateRequest struct {
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetLiveRecordTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRecordTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRecordTemplateRequest) SetJobId(v string) *GetLiveRecordTemplateRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetLiveRecordTemplateRequest) SetTemplateId(v string) *GetLiveRecordTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type GetLiveRecordTemplateResponseBody struct {
+	RecordTemplate *GetLiveRecordTemplateResponseBodyRecordTemplate `json:"RecordTemplate,omitempty" xml:"RecordTemplate,omitempty" type:"Struct"`
+	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetLiveRecordTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRecordTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRecordTemplateResponseBody) SetRecordTemplate(v *GetLiveRecordTemplateResponseBodyRecordTemplate) *GetLiveRecordTemplateResponseBody {
+	s.RecordTemplate = v
+	return s
+}
+
+func (s *GetLiveRecordTemplateResponseBody) SetRequestId(v string) *GetLiveRecordTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetLiveRecordTemplateResponseBodyRecordTemplate struct {
+	CreateTime       *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LastModified     *string                                                            `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	Name             *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	RecordFormatList []*GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList `json:"RecordFormatList,omitempty" xml:"RecordFormatList,omitempty" type:"Repeated"`
+	TemplateId       *string                                                            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Type             *string                                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetLiveRecordTemplateResponseBodyRecordTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRecordTemplateResponseBodyRecordTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRecordTemplateResponseBodyRecordTemplate) SetCreateTime(v string) *GetLiveRecordTemplateResponseBodyRecordTemplate {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetLiveRecordTemplateResponseBodyRecordTemplate) SetLastModified(v string) *GetLiveRecordTemplateResponseBodyRecordTemplate {
+	s.LastModified = &v
+	return s
+}
+
+func (s *GetLiveRecordTemplateResponseBodyRecordTemplate) SetName(v string) *GetLiveRecordTemplateResponseBodyRecordTemplate {
+	s.Name = &v
+	return s
+}
+
+func (s *GetLiveRecordTemplateResponseBodyRecordTemplate) SetRecordFormatList(v []*GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList) *GetLiveRecordTemplateResponseBodyRecordTemplate {
+	s.RecordFormatList = v
+	return s
+}
+
+func (s *GetLiveRecordTemplateResponseBodyRecordTemplate) SetTemplateId(v string) *GetLiveRecordTemplateResponseBodyRecordTemplate {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetLiveRecordTemplateResponseBodyRecordTemplate) SetType(v string) *GetLiveRecordTemplateResponseBodyRecordTemplate {
+	s.Type = &v
+	return s
+}
+
+type GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList struct {
+	CycleDuration        *int32  `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	Format               *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	OssObjectPrefix      *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
+	SliceDuration        *int32  `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	SliceOssObjectPrefix *string `json:"SliceOssObjectPrefix,omitempty" xml:"SliceOssObjectPrefix,omitempty"`
+}
+
+func (s GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList) SetCycleDuration(v int32) *GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList {
+	s.CycleDuration = &v
+	return s
+}
+
+func (s *GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList) SetFormat(v string) *GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList {
+	s.Format = &v
+	return s
+}
+
+func (s *GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList) SetOssObjectPrefix(v string) *GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList {
+	s.OssObjectPrefix = &v
+	return s
+}
+
+func (s *GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList) SetSliceDuration(v int32) *GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList {
+	s.SliceDuration = &v
+	return s
+}
+
+func (s *GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList) SetSliceOssObjectPrefix(v string) *GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList {
+	s.SliceOssObjectPrefix = &v
+	return s
+}
+
+type GetLiveRecordTemplateResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLiveRecordTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLiveRecordTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRecordTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRecordTemplateResponse) SetHeaders(v map[string]*string) *GetLiveRecordTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLiveRecordTemplateResponse) SetStatusCode(v int32) *GetLiveRecordTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLiveRecordTemplateResponse) SetBody(v *GetLiveRecordTemplateResponseBody) *GetLiveRecordTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type GetLiveSnapshotJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetLiveSnapshotJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveSnapshotJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveSnapshotJobRequest) SetJobId(v string) *GetLiveSnapshotJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetLiveSnapshotJobResponseBody struct {
+	CallbackUrl     *string                                       `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	CreateTime      *string                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	JobId           *string                                       `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName         *string                                       `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	LastModified    *string                                       `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	OverwriteFormat *string                                       `json:"OverwriteFormat,omitempty" xml:"OverwriteFormat,omitempty"`
+	RequestId       *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SequenceFormat  *string                                       `json:"SequenceFormat,omitempty" xml:"SequenceFormat,omitempty"`
+	SnapshotOutput  *GetLiveSnapshotJobResponseBodySnapshotOutput `json:"SnapshotOutput,omitempty" xml:"SnapshotOutput,omitempty" type:"Struct"`
+	Status          *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	StreamInput     *GetLiveSnapshotJobResponseBodyStreamInput    `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
+	TemplateId      *string                                       `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName    *string                                       `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TimeInterval    *int32                                        `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
+}
+
+func (s GetLiveSnapshotJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveSnapshotJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetCallbackUrl(v string) *GetLiveSnapshotJobResponseBody {
+	s.CallbackUrl = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetCreateTime(v string) *GetLiveSnapshotJobResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetJobId(v string) *GetLiveSnapshotJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetJobName(v string) *GetLiveSnapshotJobResponseBody {
+	s.JobName = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetLastModified(v string) *GetLiveSnapshotJobResponseBody {
+	s.LastModified = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetOverwriteFormat(v string) *GetLiveSnapshotJobResponseBody {
+	s.OverwriteFormat = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetRequestId(v string) *GetLiveSnapshotJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetSequenceFormat(v string) *GetLiveSnapshotJobResponseBody {
+	s.SequenceFormat = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetSnapshotOutput(v *GetLiveSnapshotJobResponseBodySnapshotOutput) *GetLiveSnapshotJobResponseBody {
+	s.SnapshotOutput = v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetStatus(v string) *GetLiveSnapshotJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetStreamInput(v *GetLiveSnapshotJobResponseBodyStreamInput) *GetLiveSnapshotJobResponseBody {
+	s.StreamInput = v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetTemplateId(v string) *GetLiveSnapshotJobResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetTemplateName(v string) *GetLiveSnapshotJobResponseBody {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBody) SetTimeInterval(v int32) *GetLiveSnapshotJobResponseBody {
+	s.TimeInterval = &v
+	return s
+}
+
+type GetLiveSnapshotJobResponseBodySnapshotOutput struct {
+	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Endpoint    *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+}
+
+func (s GetLiveSnapshotJobResponseBodySnapshotOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveSnapshotJobResponseBodySnapshotOutput) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveSnapshotJobResponseBodySnapshotOutput) SetBucket(v string) *GetLiveSnapshotJobResponseBodySnapshotOutput {
+	s.Bucket = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBodySnapshotOutput) SetEndpoint(v string) *GetLiveSnapshotJobResponseBodySnapshotOutput {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBodySnapshotOutput) SetStorageType(v string) *GetLiveSnapshotJobResponseBodySnapshotOutput {
+	s.StorageType = &v
+	return s
+}
+
+type GetLiveSnapshotJobResponseBodyStreamInput struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetLiveSnapshotJobResponseBodyStreamInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveSnapshotJobResponseBodyStreamInput) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveSnapshotJobResponseBodyStreamInput) SetType(v string) *GetLiveSnapshotJobResponseBodyStreamInput {
+	s.Type = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponseBodyStreamInput) SetUrl(v string) *GetLiveSnapshotJobResponseBodyStreamInput {
+	s.Url = &v
+	return s
+}
+
+type GetLiveSnapshotJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLiveSnapshotJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLiveSnapshotJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveSnapshotJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveSnapshotJobResponse) SetHeaders(v map[string]*string) *GetLiveSnapshotJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponse) SetStatusCode(v int32) *GetLiveSnapshotJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLiveSnapshotJobResponse) SetBody(v *GetLiveSnapshotJobResponseBody) *GetLiveSnapshotJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetLiveSnapshotTemplateRequest struct {
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetLiveSnapshotTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveSnapshotTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveSnapshotTemplateRequest) SetTemplateId(v string) *GetLiveSnapshotTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type GetLiveSnapshotTemplateResponseBody struct {
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LastModified    *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	OverwriteFormat *string `json:"OverwriteFormat,omitempty" xml:"OverwriteFormat,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SequenceFormat  *string `json:"SequenceFormat,omitempty" xml:"SequenceFormat,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TimeInterval    *int32  `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetLiveSnapshotTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveSnapshotTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveSnapshotTemplateResponseBody) SetCreateTime(v string) *GetLiveSnapshotTemplateResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetLiveSnapshotTemplateResponseBody) SetLastModified(v string) *GetLiveSnapshotTemplateResponseBody {
+	s.LastModified = &v
+	return s
+}
+
+func (s *GetLiveSnapshotTemplateResponseBody) SetOverwriteFormat(v string) *GetLiveSnapshotTemplateResponseBody {
+	s.OverwriteFormat = &v
+	return s
+}
+
+func (s *GetLiveSnapshotTemplateResponseBody) SetRequestId(v string) *GetLiveSnapshotTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLiveSnapshotTemplateResponseBody) SetSequenceFormat(v string) *GetLiveSnapshotTemplateResponseBody {
+	s.SequenceFormat = &v
+	return s
+}
+
+func (s *GetLiveSnapshotTemplateResponseBody) SetTemplateId(v string) *GetLiveSnapshotTemplateResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetLiveSnapshotTemplateResponseBody) SetTemplateName(v string) *GetLiveSnapshotTemplateResponseBody {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *GetLiveSnapshotTemplateResponseBody) SetTimeInterval(v int32) *GetLiveSnapshotTemplateResponseBody {
+	s.TimeInterval = &v
+	return s
+}
+
+func (s *GetLiveSnapshotTemplateResponseBody) SetType(v string) *GetLiveSnapshotTemplateResponseBody {
+	s.Type = &v
+	return s
+}
+
+type GetLiveSnapshotTemplateResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLiveSnapshotTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLiveSnapshotTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveSnapshotTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveSnapshotTemplateResponse) SetHeaders(v map[string]*string) *GetLiveSnapshotTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLiveSnapshotTemplateResponse) SetStatusCode(v int32) *GetLiveSnapshotTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLiveSnapshotTemplateResponse) SetBody(v *GetLiveSnapshotTemplateResponseBody) *GetLiveSnapshotTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type GetLiveTranscodeJobRequest struct {
-	// 模板Id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -8701,9 +9165,8 @@ func (s *GetLiveTranscodeJobRequest) SetJobId(v string) *GetLiveTranscodeJobRequ
 }
 
 type GetLiveTranscodeJobResponseBody struct {
-	Job *GetLiveTranscodeJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Job       *GetLiveTranscodeJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetLiveTranscodeJobResponseBody) String() string {
@@ -8905,7 +9368,6 @@ func (s *GetLiveTranscodeTemplateRequest) SetTemplateId(v string) *GetLiveTransc
 }
 
 type GetLiveTranscodeTemplateResponseBody struct {
-	// 请求ID
 	RequestId       *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TemplateContent *GetLiveTranscodeTemplateResponseBodyTemplateContent `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty" type:"Struct"`
 }
@@ -9121,481 +9583,6 @@ func (s *GetLiveTranscodeTemplateResponse) SetBody(v *GetLiveTranscodeTemplateRe
 	return s
 }
 
-type GetMediaAuditResultRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-}
-
-func (s GetMediaAuditResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaAuditResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaAuditResultRequest) SetAppId(v string) *GetMediaAuditResultRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *GetMediaAuditResultRequest) SetMediaId(v string) *GetMediaAuditResultRequest {
-	s.MediaId = &v
-	return s
-}
-
-type GetMediaAuditResultResponseBody struct {
-	AudioResult      *GetMediaAuditResultResponseBodyAudioResult      `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Struct"`
-	CoverResult      *GetMediaAuditResultResponseBodyCoverResult      `json:"CoverResult,omitempty" xml:"CoverResult,omitempty" type:"Struct"`
-	DescResult       *GetMediaAuditResultResponseBodyDescResult       `json:"DescResult,omitempty" xml:"DescResult,omitempty" type:"Struct"`
-	MediaAuditResult *GetMediaAuditResultResponseBodyMediaAuditResult `json:"MediaAuditResult,omitempty" xml:"MediaAuditResult,omitempty" type:"Struct"`
-	// RequestId
-	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TitleResult *GetMediaAuditResultResponseBodyTitleResult `json:"TitleResult,omitempty" xml:"TitleResult,omitempty" type:"Struct"`
-	VideoResult *GetMediaAuditResultResponseBodyVideoResult `json:"VideoResult,omitempty" xml:"VideoResult,omitempty" type:"Struct"`
-}
-
-func (s GetMediaAuditResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaAuditResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaAuditResultResponseBody) SetAudioResult(v *GetMediaAuditResultResponseBodyAudioResult) *GetMediaAuditResultResponseBody {
-	s.AudioResult = v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBody) SetCoverResult(v *GetMediaAuditResultResponseBodyCoverResult) *GetMediaAuditResultResponseBody {
-	s.CoverResult = v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBody) SetDescResult(v *GetMediaAuditResultResponseBodyDescResult) *GetMediaAuditResultResponseBody {
-	s.DescResult = v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBody) SetMediaAuditResult(v *GetMediaAuditResultResponseBodyMediaAuditResult) *GetMediaAuditResultResponseBody {
-	s.MediaAuditResult = v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBody) SetRequestId(v string) *GetMediaAuditResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBody) SetTitleResult(v *GetMediaAuditResultResponseBodyTitleResult) *GetMediaAuditResultResponseBody {
-	s.TitleResult = v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBody) SetVideoResult(v *GetMediaAuditResultResponseBodyVideoResult) *GetMediaAuditResultResponseBody {
-	s.VideoResult = v
-	return s
-}
-
-type GetMediaAuditResultResponseBodyAudioResult struct {
-	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	Score      *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-}
-
-func (s GetMediaAuditResultResponseBodyAudioResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaAuditResultResponseBodyAudioResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaAuditResultResponseBodyAudioResult) SetLabel(v string) *GetMediaAuditResultResponseBodyAudioResult {
-	s.Label = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyAudioResult) SetScene(v string) *GetMediaAuditResultResponseBodyAudioResult {
-	s.Scene = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyAudioResult) SetScore(v string) *GetMediaAuditResultResponseBodyAudioResult {
-	s.Score = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyAudioResult) SetSuggestion(v string) *GetMediaAuditResultResponseBodyAudioResult {
-	s.Suggestion = &v
-	return s
-}
-
-type GetMediaAuditResultResponseBodyCoverResult struct {
-	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	Score      *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-}
-
-func (s GetMediaAuditResultResponseBodyCoverResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaAuditResultResponseBodyCoverResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaAuditResultResponseBodyCoverResult) SetLabel(v string) *GetMediaAuditResultResponseBodyCoverResult {
-	s.Label = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyCoverResult) SetScene(v string) *GetMediaAuditResultResponseBodyCoverResult {
-	s.Scene = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyCoverResult) SetScore(v string) *GetMediaAuditResultResponseBodyCoverResult {
-	s.Score = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyCoverResult) SetSuggestion(v string) *GetMediaAuditResultResponseBodyCoverResult {
-	s.Suggestion = &v
-	return s
-}
-
-type GetMediaAuditResultResponseBodyDescResult struct {
-	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	Score      *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-}
-
-func (s GetMediaAuditResultResponseBodyDescResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaAuditResultResponseBodyDescResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaAuditResultResponseBodyDescResult) SetLabel(v string) *GetMediaAuditResultResponseBodyDescResult {
-	s.Label = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyDescResult) SetScene(v string) *GetMediaAuditResultResponseBodyDescResult {
-	s.Scene = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyDescResult) SetScore(v string) *GetMediaAuditResultResponseBodyDescResult {
-	s.Score = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyDescResult) SetSuggestion(v string) *GetMediaAuditResultResponseBodyDescResult {
-	s.Suggestion = &v
-	return s
-}
-
-type GetMediaAuditResultResponseBodyMediaAuditResult struct {
-	AbnormalModules *string `json:"AbnormalModules,omitempty" xml:"AbnormalModules,omitempty"`
-	Label           *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Suggestion      *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-}
-
-func (s GetMediaAuditResultResponseBodyMediaAuditResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaAuditResultResponseBodyMediaAuditResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaAuditResultResponseBodyMediaAuditResult) SetAbnormalModules(v string) *GetMediaAuditResultResponseBodyMediaAuditResult {
-	s.AbnormalModules = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyMediaAuditResult) SetLabel(v string) *GetMediaAuditResultResponseBodyMediaAuditResult {
-	s.Label = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyMediaAuditResult) SetSuggestion(v string) *GetMediaAuditResultResponseBodyMediaAuditResult {
-	s.Suggestion = &v
-	return s
-}
-
-type GetMediaAuditResultResponseBodyTitleResult struct {
-	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	Score      *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-}
-
-func (s GetMediaAuditResultResponseBodyTitleResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaAuditResultResponseBodyTitleResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaAuditResultResponseBodyTitleResult) SetLabel(v string) *GetMediaAuditResultResponseBodyTitleResult {
-	s.Label = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyTitleResult) SetScene(v string) *GetMediaAuditResultResponseBodyTitleResult {
-	s.Scene = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyTitleResult) SetScore(v string) *GetMediaAuditResultResponseBodyTitleResult {
-	s.Score = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyTitleResult) SetSuggestion(v string) *GetMediaAuditResultResponseBodyTitleResult {
-	s.Suggestion = &v
-	return s
-}
-
-type GetMediaAuditResultResponseBodyVideoResult struct {
-	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	Score      *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-}
-
-func (s GetMediaAuditResultResponseBodyVideoResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaAuditResultResponseBodyVideoResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaAuditResultResponseBodyVideoResult) SetLabel(v string) *GetMediaAuditResultResponseBodyVideoResult {
-	s.Label = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyVideoResult) SetScene(v string) *GetMediaAuditResultResponseBodyVideoResult {
-	s.Scene = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyVideoResult) SetScore(v string) *GetMediaAuditResultResponseBodyVideoResult {
-	s.Score = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponseBodyVideoResult) SetSuggestion(v string) *GetMediaAuditResultResponseBodyVideoResult {
-	s.Suggestion = &v
-	return s
-}
-
-type GetMediaAuditResultResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMediaAuditResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetMediaAuditResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaAuditResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaAuditResultResponse) SetHeaders(v map[string]*string) *GetMediaAuditResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetMediaAuditResultResponse) SetStatusCode(v int32) *GetMediaAuditResultResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetMediaAuditResultResponse) SetBody(v *GetMediaAuditResultResponseBody) *GetMediaAuditResultResponse {
-	s.Body = v
-	return s
-}
-
-type GetMediaAuditResultDetailRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-}
-
-func (s GetMediaAuditResultDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaAuditResultDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaAuditResultDetailRequest) SetAppId(v string) *GetMediaAuditResultDetailRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailRequest) SetMediaId(v string) *GetMediaAuditResultDetailRequest {
-	s.MediaId = &v
-	return s
-}
-
-type GetMediaAuditResultDetailResponseBody struct {
-	AuditResultDetails []*GetMediaAuditResultDetailResponseBodyAuditResultDetails `json:"AuditResultDetails,omitempty" xml:"AuditResultDetails,omitempty" type:"Repeated"`
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *string `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s GetMediaAuditResultDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaAuditResultDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaAuditResultDetailResponseBody) SetAuditResultDetails(v []*GetMediaAuditResultDetailResponseBodyAuditResultDetails) *GetMediaAuditResultDetailResponseBody {
-	s.AuditResultDetails = v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponseBody) SetRequestId(v string) *GetMediaAuditResultDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponseBody) SetTotal(v string) *GetMediaAuditResultDetailResponseBody {
-	s.Total = &v
-	return s
-}
-
-type GetMediaAuditResultDetailResponseBodyAuditResultDetails struct {
-	AdLabel        *string `json:"AdLabel,omitempty" xml:"AdLabel,omitempty"`
-	AdScore        *string `json:"AdScore,omitempty" xml:"AdScore,omitempty"`
-	LiveLabel      *string `json:"LiveLabel,omitempty" xml:"LiveLabel,omitempty"`
-	LiveScore      *string `json:"LiveScore,omitempty" xml:"LiveScore,omitempty"`
-	LogoLabel      *string `json:"LogoLabel,omitempty" xml:"LogoLabel,omitempty"`
-	LogoScore      *string `json:"LogoScore,omitempty" xml:"LogoScore,omitempty"`
-	PornLabel      *string `json:"PornLabel,omitempty" xml:"PornLabel,omitempty"`
-	PornScore      *string `json:"PornScore,omitempty" xml:"PornScore,omitempty"`
-	TerrorismLabel *string `json:"TerrorismLabel,omitempty" xml:"TerrorismLabel,omitempty"`
-	TerrorismScore *string `json:"TerrorismScore,omitempty" xml:"TerrorismScore,omitempty"`
-	Timestamp      *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
-}
-
-func (s GetMediaAuditResultDetailResponseBodyAuditResultDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaAuditResultDetailResponseBodyAuditResultDetails) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaAuditResultDetailResponseBodyAuditResultDetails) SetAdLabel(v string) *GetMediaAuditResultDetailResponseBodyAuditResultDetails {
-	s.AdLabel = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponseBodyAuditResultDetails) SetAdScore(v string) *GetMediaAuditResultDetailResponseBodyAuditResultDetails {
-	s.AdScore = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponseBodyAuditResultDetails) SetLiveLabel(v string) *GetMediaAuditResultDetailResponseBodyAuditResultDetails {
-	s.LiveLabel = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponseBodyAuditResultDetails) SetLiveScore(v string) *GetMediaAuditResultDetailResponseBodyAuditResultDetails {
-	s.LiveScore = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponseBodyAuditResultDetails) SetLogoLabel(v string) *GetMediaAuditResultDetailResponseBodyAuditResultDetails {
-	s.LogoLabel = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponseBodyAuditResultDetails) SetLogoScore(v string) *GetMediaAuditResultDetailResponseBodyAuditResultDetails {
-	s.LogoScore = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponseBodyAuditResultDetails) SetPornLabel(v string) *GetMediaAuditResultDetailResponseBodyAuditResultDetails {
-	s.PornLabel = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponseBodyAuditResultDetails) SetPornScore(v string) *GetMediaAuditResultDetailResponseBodyAuditResultDetails {
-	s.PornScore = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponseBodyAuditResultDetails) SetTerrorismLabel(v string) *GetMediaAuditResultDetailResponseBodyAuditResultDetails {
-	s.TerrorismLabel = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponseBodyAuditResultDetails) SetTerrorismScore(v string) *GetMediaAuditResultDetailResponseBodyAuditResultDetails {
-	s.TerrorismScore = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponseBodyAuditResultDetails) SetTimestamp(v string) *GetMediaAuditResultDetailResponseBodyAuditResultDetails {
-	s.Timestamp = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponseBodyAuditResultDetails) SetUrl(v string) *GetMediaAuditResultDetailResponseBodyAuditResultDetails {
-	s.Url = &v
-	return s
-}
-
-type GetMediaAuditResultDetailResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMediaAuditResultDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetMediaAuditResultDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaAuditResultDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaAuditResultDetailResponse) SetHeaders(v map[string]*string) *GetMediaAuditResultDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponse) SetStatusCode(v int32) *GetMediaAuditResultDetailResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetMediaAuditResultDetailResponse) SetBody(v *GetMediaAuditResultDetailResponseBody) *GetMediaAuditResultDetailResponse {
-	s.Body = v
-	return s
-}
-
 type GetMediaInfoRequest struct {
 	InputURL   *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
 	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
@@ -9627,8 +9614,7 @@ func (s *GetMediaInfoRequest) SetOutputType(v string) *GetMediaInfoRequest {
 
 type GetMediaInfoResponseBody struct {
 	MediaInfo *GetMediaInfoResponseBodyMediaInfo `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMediaInfoResponseBody) String() string {
@@ -9650,12 +9636,9 @@ func (s *GetMediaInfoResponseBody) SetRequestId(v string) *GetMediaInfoResponseB
 }
 
 type GetMediaInfoResponseBodyMediaInfo struct {
-	// FileInfos
-	FileInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// BasicInfo
+	FileInfoList   []*GetMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	MediaBasicInfo *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId        *string                                          `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s GetMediaInfoResponseBodyMediaInfo) String() string {
@@ -9682,14 +9665,10 @@ func (s *GetMediaInfoResponseBodyMediaInfo) SetMediaId(v string) *GetMediaInfoRe
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoList struct {
-	// 音频流信息，一个媒资可能有多条音频流
-	AudioStreamInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	// 文件基础信息，包含时长，大小等
-	FileBasicInfo *GetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
-	// 字幕流信息，一个媒资可能有多条字幕流
+	AudioStreamInfoList    []*GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList    `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
+	FileBasicInfo          *GetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo            `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 	SubtitleStreamInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList `json:"SubtitleStreamInfoList,omitempty" xml:"SubtitleStreamInfoList,omitempty" type:"Repeated"`
-	// 视频流信息，一个媒资可能有多条视频流
-	VideoStreamInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
+	VideoStreamInfoList    []*GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList    `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
 func (s GetMediaInfoResponseBodyMediaInfoFileInfoList) String() string {
@@ -9721,42 +9700,24 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoList) SetVideoStreamInfoList(v
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道输出样式
-	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// 声道数
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 编码格式长述名
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// 编码格式简述名
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// 编码格式标记
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// 编码格式标记文本
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// 编码时基
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 音频帧率
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// 音频流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 总帧数
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// 编码预置
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 采样格式
-	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// 采样率
-	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 时基
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	Profile        *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	SampleRate     *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) String() string {
@@ -9858,30 +9819,19 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetTi
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct {
-	// 码率
-	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小（字节）
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
-	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件oss地址
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 封装格式
-	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
+	Bitrate      *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize     *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	FileStatus   *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	FileType     *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FormatName   *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
 	Height       *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 文件存储区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width        *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) String() string {
@@ -9958,26 +9908,16 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetWidth(v 
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList struct {
-	// 编码格式长述名
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// 编码格式简述名
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// 编码格式标记
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// 编码格式标记文本
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// 编码时基
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 音频流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 时基
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s GetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) String() string {
@@ -10039,54 +9979,30 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) Se
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
-	// 平均帧率
-	AvgFPS *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 编码格式长述名
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// 编码格式简述名
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// 编码格式标记
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// 编码格式标记文本
+	AvgFPS         *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// 编码时基
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// 编码显示分辨率比
-	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 视频帧率
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// 是否有B帧
-	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 视频流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 编码等级
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 总帧数
-	NbFrames *string `json:"Nb_frames,omitempty" xml:"Nb_frames,omitempty"`
-	// 总帧数
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// 像素格式
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 编码预置
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 旋转
-	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// 编码信号分辨率比
-	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 时基
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Dar            *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HasBFrames     *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	NbFrames       *string `json:"Nb_frames,omitempty" xml:"Nb_frames,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt         *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile        *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Rotate         *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Sar            *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) String() string {
@@ -10218,42 +10134,26 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetWi
 }
 
 type GetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
-	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// 媒资业务类型
+	Biz          *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	CateId       *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	CateName     *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 封面地址
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 媒资创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 媒资删除时间
-	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// 内容描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 待注册的媒资在相应系统中的地址
-	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// MediaId
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 标签
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 媒资媒体类型
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 媒资修改时间
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CoverURL     *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletedTime  *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputURL     *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaTags    *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	MediaType    *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 雪碧图
+	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// 资源状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	UploadSource *string `json:"UploadSource,omitempty" xml:"UploadSource,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetMediaInfoResponseBodyMediaInfoMediaBasicInfo) String() string {
@@ -10394,7 +10294,6 @@ func (s *GetMediaInfoResponse) SetBody(v *GetMediaInfoResponseBody) *GetMediaInf
 }
 
 type GetMediaInfoJobRequest struct {
-	// 任务 id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -10412,10 +10311,8 @@ func (s *GetMediaInfoJobRequest) SetJobId(v string) *GetMediaInfoJobRequest {
 }
 
 type GetMediaInfoJobResponseBody struct {
-	// MediaInfoJobDTO
 	MediaInfoJob *GetMediaInfoJobResponseBodyMediaInfoJob `json:"MediaInfoJob,omitempty" xml:"MediaInfoJob,omitempty" type:"Struct"`
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMediaInfoJobResponseBody) String() string {
@@ -10437,32 +10334,19 @@ func (s *GetMediaInfoJobResponseBody) SetRequestId(v string) *GetMediaInfoJobRes
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJob struct {
-	// 是否异步处理
-	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// 任务完成时间
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// 任务输入
-	Input *GetMediaInfoJobResponseBodyMediaInfoJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// 任务 id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 媒体信息详情
+	Async             *bool                                                     `json:"Async,omitempty" xml:"Async,omitempty"`
+	FinishTime        *string                                                   `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Input             *GetMediaInfoJobResponseBodyMediaInfoJobInput             `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	JobId             *string                                                   `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	MediaInfoProperty *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty `json:"MediaInfoProperty,omitempty" xml:"MediaInfoProperty,omitempty" type:"Struct"`
-	// 任务名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调度信息
-	ScheduleConfig *GetMediaInfoJobResponseBodyMediaInfoJobScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// 任务状态 - Init: 已提交, Success: 成功, Fail: 失败
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 任务提交信息
-	SubmitResultJson map[string]interface{} `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
-	// 任务提交时间
-	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// 任务来源 - API, WorkFlow, Console
-	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Name              *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId         *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScheduleConfig    *GetMediaInfoJobResponseBodyMediaInfoJobScheduleConfig    `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	Status            *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitResultJson  map[string]interface{}                                    `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
+	SubmitTime        *string                                                   `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	TriggerSource     *string                                                   `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	UserData          *string                                                   `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetMediaInfoJobResponseBodyMediaInfoJob) String() string {
@@ -10539,12 +10423,8 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJob) SetUserData(v string) *GetMedi
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobInput struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetMediaInfoJobResponseBodyMediaInfoJobInput) String() string {
@@ -10566,11 +10446,8 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJobInput) SetType(v string) *GetMed
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty struct {
-	// 音频流信息
 	AudioStreamInfoList []*GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	// 基础文件信息
-	FileBasicInfo *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
-	// 视频流信息
+	FileBasicInfo       *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 	VideoStreamInfoList []*GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -10598,35 +10475,21 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty) SetVideoStrea
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList struct {
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道布局
-	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// 声道数
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 编码格式名
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// 编码格式
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// 编码器标签
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// 编码器标签名
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// 编码器时间基
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// 采样率
-	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 时间基
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	SampleRate     *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList) String() string {
@@ -10713,30 +10576,18 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfo
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo struct {
-	// 视频码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 视频时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration   *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize   *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件url
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 视频格式名称
+	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl    *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 文件所在区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height     *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width      *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo) String() string {
@@ -10808,47 +10659,29 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo) 
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList struct {
-	AvgFps  *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
-	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
-	// 编码格式名
-	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
-	// 编码格式
-	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
-	// 编码格式标记
-	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
-	// 编码格式标记文本
+	AvgFps         *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	BitRate        *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	CodecLongName  *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	CodecName      *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	CodecTag       *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
 	CodecTimeBase  *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
-	// 图像显示宽高比
-	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 帧率
-	Fps        *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 编码等级
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 总帧数
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// 颜色存储格式
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 编码器预设
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 视频画面旋转角度
-	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// 采集点数宽高比
-	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// 起始时间
-	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
-	TimeBase  *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Dar            *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HasBFrames     *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt         *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile        *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Rotate         *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Sar            *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime      *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	TimeBase       *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList) String() string {
@@ -10975,10 +10808,8 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfo
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobScheduleConfig struct {
-	// 管道 id
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 任务优先级，取值范围：1~10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s GetMediaInfoJobResponseBodyMediaInfoJobScheduleConfig) String() string {
@@ -11047,8 +10878,7 @@ func (s *GetMediaProducingJobRequest) SetJobId(v string) *GetMediaProducingJobRe
 
 type GetMediaProducingJobResponseBody struct {
 	MediaProducingJob *GetMediaProducingJobResponseBodyMediaProducingJob `json:"MediaProducingJob,omitempty" xml:"MediaProducingJob,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMediaProducingJobResponseBody) String() string {
@@ -11200,7 +11030,6 @@ func (s *GetMediaProducingJobResponse) SetBody(v *GetMediaProducingJobResponseBo
 }
 
 type GetPipelineRequest struct {
-	// 管道ID
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 }
 
@@ -11218,10 +11047,8 @@ func (s *GetPipelineRequest) SetPipelineId(v string) *GetPipelineRequest {
 }
 
 type GetPipelineResponseBody struct {
-	// 管道信息
-	Pipeline *GetPipelineResponseBodyPipeline `json:"Pipeline,omitempty" xml:"Pipeline,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Pipeline  *GetPipelineResponseBodyPipeline `json:"Pipeline,omitempty" xml:"Pipeline,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPipelineResponseBody) String() string {
@@ -11243,20 +11070,13 @@ func (s *GetPipelineResponseBody) SetRequestId(v string) *GetPipelineResponseBod
 }
 
 type GetPipelineResponseBodyPipeline struct {
-	// 模板创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 模板修改时间
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 管道名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 管道Id
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 管道优先级
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 管道类型
-	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// 管道状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PipelineId   *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	Priority     *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Speed        *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetPipelineResponseBodyPipeline) String() string {
@@ -11351,8 +11171,7 @@ func (s *GetPlayInfoRequest) SetMediaId(v string) *GetPlayInfoRequest {
 type GetPlayInfoResponseBody struct {
 	MediaBase    *GetPlayInfoResponseBodyMediaBase      `json:"MediaBase,omitempty" xml:"MediaBase,omitempty" type:"Struct"`
 	PlayInfoList []*GetPlayInfoResponseBodyPlayInfoList `json:"PlayInfoList,omitempty" xml:"PlayInfoList,omitempty" type:"Repeated"`
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPlayInfoResponseBody) String() string {
@@ -11426,18 +11245,16 @@ func (s *GetPlayInfoResponseBodyMediaBase) SetTitle(v string) *GetPlayInfoRespon
 }
 
 type GetPlayInfoResponseBodyPlayInfoList struct {
-	// 颜色位深
-	BitDepth     *int32  `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
-	Bitrate      *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Definition   *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Encrypt      *int64  `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
-	EncryptType  *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	FileURL      *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	Format       *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	Fps          *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// 视频流HDR类型
+	BitDepth          *int32  `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
+	Bitrate           *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CreationTime      *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Definition        *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Duration          *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Encrypt           *int64  `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	EncryptType       *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	FileURL           *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	Format            *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Fps               *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
 	HDRType           *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
 	Height            *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
 	ModificationTime  *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
@@ -11612,8 +11429,7 @@ func (s *GetPublicMediaInfoRequest) SetMediaId(v string) *GetPublicMediaInfoRequ
 
 type GetPublicMediaInfoResponseBody struct {
 	MediaInfo *GetPublicMediaInfoResponseBodyMediaInfo `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPublicMediaInfoResponseBody) String() string {
@@ -11635,14 +11451,10 @@ func (s *GetPublicMediaInfoResponseBody) SetRequestId(v string) *GetPublicMediaI
 }
 
 type GetPublicMediaInfoResponseBodyMediaInfo struct {
-	// 公共媒资动态元数据
 	DynamicMetaData *GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData `json:"DynamicMetaData,omitempty" xml:"DynamicMetaData,omitempty" type:"Struct"`
-	// FileInfos
-	FileInfoList []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// BasicInfo
-	MediaBasicInfo *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	FileInfoList    []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoList  `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	MediaBasicInfo  *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo  `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	MediaId         *string                                                 `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s GetPublicMediaInfoResponseBodyMediaInfo) String() string {
@@ -11674,9 +11486,7 @@ func (s *GetPublicMediaInfoResponseBodyMediaInfo) SetMediaId(v string) *GetPubli
 }
 
 type GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData struct {
-	// 元数据json
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 类型
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -11699,14 +11509,10 @@ func (s *GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData) SetType(v strin
 }
 
 type GetPublicMediaInfoResponseBodyMediaInfoFileInfoList struct {
-	// 音频流信息，一个媒资可能有多条音频流
-	AudioStreamInfoList []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	// 文件基础信息，包含时长，大小等
-	FileBasicInfo *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
-	// 字幕流信息，一个媒资可能有多条字幕流
+	AudioStreamInfoList    []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList    `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
+	FileBasicInfo          *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo            `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 	SubtitleStreamInfoList []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList `json:"SubtitleStreamInfoList,omitempty" xml:"SubtitleStreamInfoList,omitempty" type:"Repeated"`
-	// 视频流信息，一个媒资可能有多条视频流
-	VideoStreamInfoList []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
+	VideoStreamInfoList    []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList    `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
 func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoList) String() string {
@@ -11738,42 +11544,24 @@ func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoList) SetVideoStreamInfo
 }
 
 type GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道输出样式
-	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// 声道数
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 编码格式长述名
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// 编码格式简述名
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// 编码格式标记
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// 编码格式标记文本
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// 编码时基
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 音频帧率
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// 音频流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 总帧数
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// 编码预置
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 采样格式
-	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// 采样率
-	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 时基
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	Profile        *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	SampleRate     *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) String() string {
@@ -11875,28 +11663,17 @@ func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList)
 }
 
 type GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct {
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小（字节）
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration   *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize   *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件oss地址
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 封装格式
+	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl    *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 文件存储区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height     *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width      *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) String() string {
@@ -11963,26 +11740,16 @@ func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetWi
 }
 
 type GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList struct {
-	// 编码格式长述名
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// 编码格式简述名
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// 编码格式标记
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// 编码格式标记文本
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// 编码时基
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 音频流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 时基
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) String() string {
@@ -12044,54 +11811,30 @@ func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoLi
 }
 
 type GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
-	// 平均帧率
-	AvgFPS *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 编码格式长述名
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// 编码格式简述名
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// 编码格式标记
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// 编码格式标记文本
+	AvgFPS         *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// 编码时基
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// 编码显示分辨率比
-	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 视频帧率
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// 是否有B帧
-	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 视频流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 编码等级
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 总帧数
-	NbFrames *string `json:"Nb_frames,omitempty" xml:"Nb_frames,omitempty"`
-	// 总帧数
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// 像素格式
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 编码预置
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 旋转
-	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// 编码信号分辨率比
-	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 时基
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Dar            *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HasBFrames     *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	NbFrames       *string `json:"Nb_frames,omitempty" xml:"Nb_frames,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt         *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile        *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Rotate         *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Sar            *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) String() string {
@@ -12223,36 +11966,21 @@ func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList)
 }
 
 type GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
-	// 媒资业务类型
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 封面地址
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 媒资创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 媒资删除时间
-	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// 内容描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// MediaId
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 标签
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 媒资媒体类型
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 媒资修改时间
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CoverURL     *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletedTime  *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaTags    *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	MediaType    *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 雪碧图
+	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// 资源状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) String() string {
@@ -12368,7 +12096,6 @@ func (s *GetPublicMediaInfoResponse) SetBody(v *GetPublicMediaInfoResponseBody) 
 }
 
 type GetSmartHandleJobRequest struct {
-	// 任务Id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -12386,18 +12113,12 @@ func (s *GetSmartHandleJobRequest) SetJobId(v string) *GetSmartHandleJobRequest 
 }
 
 type GetSmartHandleJobResponseBody struct {
-	// 任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 任务结果
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 智能任务信息
+	JobId        *string                                    `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Output       *string                                    `json:"Output,omitempty" xml:"Output,omitempty"`
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SmartJobInfo *GetSmartHandleJobResponseBodySmartJobInfo `json:"SmartJobInfo,omitempty" xml:"SmartJobInfo,omitempty" type:"Struct"`
-	// 任务状态
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// 用户自定义信息
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	State        *string                                    `json:"State,omitempty" xml:"State,omitempty"`
+	UserData     *string                                    `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetSmartHandleJobResponseBody) String() string {
@@ -12439,22 +12160,14 @@ func (s *GetSmartHandleJobResponseBody) SetUserData(v string) *GetSmartHandleJob
 }
 
 type GetSmartHandleJobResponseBodySmartJobInfo struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 任务描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 输入参数
-	InputConfig *GetSmartHandleJobResponseBodySmartJobInfoInputConfig `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
-	// 任务类型
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// 修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 输出配置
+	CreateTime   *string                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description  *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputConfig  *GetSmartHandleJobResponseBodySmartJobInfoInputConfig  `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
+	JobType      *string                                                `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	ModifiedTime *string                                                `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	OutputConfig *GetSmartHandleJobResponseBodySmartJobInfoOutputConfig `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty" type:"Struct"`
-	// 任务标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// userid
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Title        *string                                                `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserId       *string                                                `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetSmartHandleJobResponseBodySmartJobInfo) String() string {
@@ -12506,7 +12219,6 @@ func (s *GetSmartHandleJobResponseBodySmartJobInfo) SetUserId(v string) *GetSmar
 }
 
 type GetSmartHandleJobResponseBodySmartJobInfoInputConfig struct {
-	// OSS地址 或 内容库素材ID
 	InputFile *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
 }
 
@@ -12524,9 +12236,7 @@ func (s *GetSmartHandleJobResponseBodySmartJobInfoInputConfig) SetInputFile(v st
 }
 
 type GetSmartHandleJobResponseBodySmartJobInfoOutputConfig struct {
-	// OSS Bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// OSS Object
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
@@ -12595,9 +12305,7 @@ func (s *GetSnapshotJobRequest) SetJobId(v string) *GetSnapshotJobRequest {
 }
 
 type GetSnapshotJobResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 截图任务信息
+	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnapshotJob *GetSnapshotJobResponseBodySnapshotJob `json:"SnapshotJob,omitempty" xml:"SnapshotJob,omitempty" type:"Struct"`
 }
 
@@ -12745,8 +12453,7 @@ func (s *GetSnapshotJobResponseBodySnapshotJob) SetUserData(v string) *GetSnapsh
 }
 
 type GetSnapshotJobResponseBodySnapshotJobInput struct {
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 输入类型为媒资ID时的OSS地址
+	Media   *string                                            `json:"Media,omitempty" xml:"Media,omitempty"`
 	OssFile *GetSnapshotJobResponseBodySnapshotJobInputOssFile `json:"OssFile,omitempty" xml:"OssFile,omitempty" type:"Struct"`
 	Type    *string                                            `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -12804,8 +12511,7 @@ func (s *GetSnapshotJobResponseBodySnapshotJobInputOssFile) SetObject(v string) 
 }
 
 type GetSnapshotJobResponseBodySnapshotJobOutput struct {
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 输出类型为媒资ID时的OSS地址
+	Media   *string                                             `json:"Media,omitempty" xml:"Media,omitempty"`
 	OssFile *GetSnapshotJobResponseBodySnapshotJobOutputOssFile `json:"OssFile,omitempty" xml:"OssFile,omitempty" type:"Struct"`
 	Type    *string                                             `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -12892,13 +12598,11 @@ func (s *GetSnapshotJobResponse) SetBody(v *GetSnapshotJobResponseBody) *GetSnap
 }
 
 type GetSnapshotUrlsRequest struct {
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 排列顺序。取值：Asc，Desc
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 鉴权超时时间
-	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Timeout    *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s GetSnapshotUrlsRequest) String() string {
@@ -12935,13 +12639,10 @@ func (s *GetSnapshotUrlsRequest) SetTimeout(v int64) *GetSnapshotUrlsRequest {
 }
 
 type GetSnapshotUrlsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 截图URL
+	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnapshotUrls []*string `json:"SnapshotUrls,omitempty" xml:"SnapshotUrls,omitempty" type:"Repeated"`
-	// 截图总数量
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// WebVTT文件URL
-	WebVTTUrl *string `json:"WebVTTUrl,omitempty" xml:"WebVTTUrl,omitempty"`
+	Total        *int32    `json:"Total,omitempty" xml:"Total,omitempty"`
+	WebVTTUrl    *string   `json:"WebVTTUrl,omitempty" xml:"WebVTTUrl,omitempty"`
 }
 
 func (s GetSnapshotUrlsResponseBody) String() string {
@@ -13002,7 +12703,6 @@ func (s *GetSnapshotUrlsResponse) SetBody(v *GetSnapshotUrlsResponseBody) *GetSn
 }
 
 type GetSystemTemplateRequest struct {
-	// 模板ID
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -13020,9 +12720,7 @@ func (s *GetSystemTemplateRequest) SetTemplateId(v string) *GetSystemTemplateReq
 }
 
 type GetSystemTemplateResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 模板信息
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SystemTemplate *GetSystemTemplateResponseBodySystemTemplate `json:"SystemTemplate,omitempty" xml:"SystemTemplate,omitempty" type:"Struct"`
 }
 
@@ -13045,22 +12743,14 @@ func (s *GetSystemTemplateResponseBody) SetSystemTemplate(v *GetSystemTemplateRe
 }
 
 type GetSystemTemplateResponseBodySystemTemplate struct {
-	// 模板状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板子类型ID
-	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// 模板子类型名称
-	SubtypeName *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
-	// 模板参数
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Subtype        *int32  `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	SubtypeName    *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// 模板Id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板名称
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 模板类型ID
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 模板类型名称
-	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Type           *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	TypeName       *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
 
 func (s GetSystemTemplateResponseBodySystemTemplate) String() string {
@@ -13141,10 +12831,8 @@ func (s *GetSystemTemplateResponse) SetBody(v *GetSystemTemplateResponseBody) *G
 }
 
 type GetTemplateRequest struct {
-	// 是否返回模板关联素材，1返回，默认0，不返回
 	RelatedMediaidFlag *string `json:"RelatedMediaidFlag,omitempty" xml:"RelatedMediaidFlag,omitempty"`
-	// 模板Id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s GetTemplateRequest) String() string {
@@ -13166,7 +12854,6 @@ func (s *GetTemplateRequest) SetTemplateId(v string) *GetTemplateRequest {
 }
 
 type GetTemplateResponseBody struct {
-	// Id of the request
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Template  *GetTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
@@ -13190,34 +12877,20 @@ func (s *GetTemplateResponseBody) SetTemplate(v *GetTemplateResponseBodyTemplate
 }
 
 type GetTemplateResponseBodyTemplate struct {
-	// 提交合成任务的ClipsParam参数
-	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	// 模板配置
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 封面URL
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 创建来源
-	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	// 创建时间
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// 修改来源
-	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
-	// 修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 模板名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 预览素材
-	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
-	// 预览素材状态
+	ClipsParam         *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	Config             *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	CoverURL           *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateSource       *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	CreationTime       *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ModifiedSource     *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	ModifiedTime       *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreviewMedia       *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
 	PreviewMediaStatus *string `json:"PreviewMediaStatus,omitempty" xml:"PreviewMediaStatus,omitempty"`
-	// 模板关联素材
-	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
-	// 模板状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板ID
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	RelatedMediaids    *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTemplateResponseBodyTemplate) String() string {
@@ -13328,9 +13001,7 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 }
 
 type GetTemplateMaterialsRequest struct {
-	// 所需文件列表
-	FileList *string `json:"FileList,omitempty" xml:"FileList,omitempty"`
-	// 模板Id
+	FileList   *string `json:"FileList,omitempty" xml:"FileList,omitempty"`
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -13353,10 +13024,8 @@ func (s *GetTemplateMaterialsRequest) SetTemplateId(v string) *GetTemplateMateri
 }
 
 type GetTemplateMaterialsResponseBody struct {
-	// 关联素材地址
 	MaterialUrls *string `json:"MaterialUrls,omitempty" xml:"MaterialUrls,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTemplateMaterialsResponseBody) String() string {
@@ -13407,7 +13076,6 @@ func (s *GetTemplateMaterialsResponse) SetBody(v *GetTemplateMaterialsResponseBo
 }
 
 type GetTranscodeJobRequest struct {
-	// 任务 id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -13425,9 +13093,7 @@ func (s *GetTranscodeJobRequest) SetJobId(v string) *GetTranscodeJobRequest {
 }
 
 type GetTranscodeJobResponseBody struct {
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TranscodeParentJobWithSubJobDTO
+	RequestId          *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TranscodeParentJob *GetTranscodeJobResponseBodyTranscodeParentJob `json:"TranscodeParentJob,omitempty" xml:"TranscodeParentJob,omitempty" type:"Struct"`
 }
 
@@ -13450,36 +13116,21 @@ func (s *GetTranscodeJobResponseBody) SetTranscodeParentJob(v *GetTranscodeJobRe
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJob struct {
-	// 任务创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 任务结束时间
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// 任务输入组 (目前只支持单个输入)
-	InputGroup []*GetTranscodeJobResponseBodyTranscodeParentJobInputGroup `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
-	// 子任务数量
-	JobCount *int32 `json:"JobCount,omitempty" xml:"JobCount,omitempty"`
-	// 任务名
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 任务输出组
-	OutputGroup []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroup `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
-	// 主任务 id
-	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
-	// 任务完成百分比
-	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 提交任务时请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务调度配置
-	ScheduleConfig *GetTranscodeJobResponseBodyTranscodeParentJobScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// 任务状态 Success: 有子任务成功, Fail: 所有子任务失败
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 任务提交时间
-	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// 子任务列表
+	CreateTime       *string                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime       *string                                                          `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	InputGroup       []*GetTranscodeJobResponseBodyTranscodeParentJobInputGroup       `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
+	JobCount         *int32                                                           `json:"JobCount,omitempty" xml:"JobCount,omitempty"`
+	Name             *string                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutputGroup      []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroup      `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
+	ParentJobId      *string                                                          `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	Percent          *int32                                                           `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	RequestId        *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScheduleConfig   *GetTranscodeJobResponseBodyTranscodeParentJobScheduleConfig     `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	Status           *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitTime       *string                                                          `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
 	TranscodeJobList []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList `json:"TranscodeJobList,omitempty" xml:"TranscodeJobList,omitempty" type:"Repeated"`
-	// 任务来源 - API, WorkFlow, Console
-	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	TriggerSource    *string                                                          `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	UserData         *string                                                          `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJob) String() string {
@@ -13566,12 +13217,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJob) SetUserData(v string) *G
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobInputGroup struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobInputGroup) String() string {
@@ -13593,9 +13240,7 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobInputGroup) SetType(v stri
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroup struct {
-	// 输出媒体配置
-	Output *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// 任务处理配置
+	Output        *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput        `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
 	ProcessConfig *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
 }
 
@@ -13618,12 +13263,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroup) SetProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput) String() string {
@@ -13645,14 +13286,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput) SetType
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig struct {
-	// 图片水印配置
 	ImageWatermarks []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	// 字幕压制配置
-	Subtitles []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	// 文字水印配置
-	TextWatermarks []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
-	// 转码配置
-	Transcode *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
+	Subtitles       []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	TextWatermarks  []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
+	Transcode       *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig) String() string {
@@ -13684,10 +13321,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig) 
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarks struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                              `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarks) String() string {
@@ -13709,20 +13344,13 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigIm
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParams struct {
-	// 水印位置，x
-	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	// 水印位置，y
-	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	// 水印文件oss路径
-	File *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 参考位置: TopLeft, TopRight, BottomLeft, BottomRight  default: TopLeft
-	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	// 显示时间设置
+	Dx       *string                                                                                                      `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Dy       *string                                                                                                      `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	File     *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsFile     `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Height   *string                                                                                                      `json:"Height,omitempty" xml:"Height,omitempty"`
+	ReferPos *string                                                                                                      `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
 	Timeline *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Width    *string                                                                                                      `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParams) String() string {
@@ -13769,12 +13397,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigIm
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsFile struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsFile) String() string {
@@ -13796,10 +13420,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigIm
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline struct {
-	// 显示时长，秒数 或者 "ToEND"
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 开始时间
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline) String() string {
@@ -13821,10 +13443,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigIm
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                        `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles) String() string {
@@ -13846,12 +13466,9 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSu
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParams struct {
-	// 文件 encoding 格式
-	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	// 字幕文件
-	File *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// 字幕文件格式
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	CharEnc *string                                                                                            `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	File    *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Format  *string                                                                                            `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParams) String() string {
@@ -13878,12 +13495,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSu
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile) String() string {
@@ -13905,10 +13518,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSu
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                             `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks) String() string {
@@ -13930,26 +13541,16 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTe
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarksOverwriteParams struct {
-	// 根据输出视频大小调整字体 size。 true / false, default: false
-	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
-	// 边框颜色
+	Adaptive    *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	// 边框宽度
-	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	// 水印文本，不需要 base64 encode，字符串需要 utf-8 编码
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 透明度
-	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
-	// 颜色
-	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	// 字体
-	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// 字体大小
-	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	// 水印位置，距离左边距离
-	Left *string `json:"Left,omitempty" xml:"Left,omitempty"`
-	// 水印位置，距离上边距离
-	Top *string `json:"Top,omitempty" xml:"Top,omitempty"`
+	BorderWidth *int32  `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	FontAlpha   *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
+	FontColor   *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontName    *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	FontSize    *int32  `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	Left        *string `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top         *string `json:"Top,omitempty" xml:"Top,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarksOverwriteParams) String() string {
@@ -14011,10 +13612,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTe
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                        `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode) String() string {
@@ -14036,14 +13635,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams struct {
-	// audio 设置
-	Audio *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	// 封装格式设置
+	Audio     *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
 	Container *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	// 封装设置
 	MuxConfig *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	// video 设置
-	Video *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Video     *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams) String() string {
@@ -14075,20 +13670,13 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio struct {
-	// 输出文件的音频码率。
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道数。
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 音频编解码格式，AAC、MP3、VORBIS、FLAC。
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// 音频编码预置。
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 是否删除音频流。
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// 采样率。
-	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	// 音量控制
-	Volume *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Bitrate    *string                                                                                                   `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Channels   *string                                                                                                   `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Codec      *string                                                                                                   `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Profile    *string                                                                                                   `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Remove     *string                                                                                                   `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	Samplerate *string                                                                                                   `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	Volume     *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio) String() string {
@@ -14135,14 +13723,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume struct {
-	// 目标音量
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
-	// 音量范围
-	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
-	// 音量调整方式
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// 最大峰值
-	TruePeak *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
+	LoudnessRangeTarget      *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	Method                   *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	TruePeak                 *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume) String() string {
@@ -14174,7 +13758,6 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer struct {
-	// 容器格式
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
@@ -14192,7 +13775,6 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig struct {
-	// 切片设置
 	Segment *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 }
 
@@ -14210,9 +13792,7 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
-	// 切片时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 强制切片时间点
+	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	ForceSegTime *string `json:"ForceSegTime,omitempty" xml:"ForceSegTime,omitempty"`
 }
 
@@ -14235,41 +13815,24 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo struct {
-	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
-	// 视频平均码率。
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 缓冲区大小
-	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
-	// 编码格式
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// 码率-质量控制因子。
-	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
-	// 视频画面裁切
-	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	// 帧率。
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// 关键帧间最大帧数。
-	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// 高。
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 是否开启横竖屏自适应（即：长短边模式）
+	AbrMax        *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
+	Bitrate       *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Bufsize       *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	Codec         *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Crf           *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	Crop          *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	Fps           *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Gop           *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Height        *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
-	// 视频码率峰值
-	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
-	// 视频贴黑边
-	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	// 视频颜色格式。
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 只有H264支持该参数
-	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
-	// 编码级别。
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 是否去掉视频
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// 扫描模式。
-	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	// 宽。
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Maxrate       *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	Pad           *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	PixFmt        *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Preset        *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	Profile       *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Remove        *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	ScanMode      *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	Width         *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo) String() string {
@@ -14371,10 +13934,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobScheduleConfig struct {
-	// 管道 id
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 任务优先级，取值范围：1~10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobScheduleConfig) String() string {
@@ -14396,38 +13957,22 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobScheduleConfig) SetPriorit
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList struct {
-	// 任务创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 任务结束时间
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// 任务输入组 (目前只支持单个输入)
-	InputGroup []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
-	// 子任务 id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 子任务在整个任务中的索引号
-	JobIndex *int32 `json:"JobIndex,omitempty" xml:"JobIndex,omitempty"`
-	// 任务名
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 任务生成视频 media 信息
-	OutFileMeta *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMeta `json:"OutFileMeta,omitempty" xml:"OutFileMeta,omitempty" type:"Struct"`
-	// 输出媒体配置
-	Output *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// 主任务 id
-	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
-	// 转码处理配置
-	ProcessConfig *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务调度信息
-	ScheduleConfig *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// 转码任务任务状态 - Init: 已提交, Processing: 转码中, Success: 转码成功, Fail: 转码失败, Deleted: 已删除
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 任务提交结果
-	SubmitResultJson map[string]interface{} `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
-	// 任务提交时间
-	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CreateTime       *string                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime       *string                                                                      `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	InputGroup       []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup   `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
+	JobId            *string                                                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobIndex         *int32                                                                       `json:"JobIndex,omitempty" xml:"JobIndex,omitempty"`
+	Name             *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutFileMeta      *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMeta    `json:"OutFileMeta,omitempty" xml:"OutFileMeta,omitempty" type:"Struct"`
+	Output           *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput         `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	ParentJobId      *string                                                                      `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	ProcessConfig    *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig  `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
+	RequestId        *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScheduleConfig   *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	Status           *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitResultJson map[string]interface{}                                                       `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
+	SubmitTime       *string                                                                      `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	UserData         *string                                                                      `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList) String() string {
@@ -14519,12 +14064,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList) SetUserD
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup) String() string {
@@ -14546,11 +14087,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMeta struct {
-	// 音频流信息
 	AudioStreamInfoList []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	// 基础文件信息
-	FileBasicInfo *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
-	// 视频流信息
+	FileBasicInfo       *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 	VideoStreamInfoList []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -14578,35 +14116,21 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMet
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaAudioStreamInfoList struct {
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道布局
-	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// 声道数
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 编码格式名
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// 编码格式
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// 编码器标签
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// 编码器标签名
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// 编码器时间基
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// 采样率
-	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 时间基
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	SampleRate     *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaAudioStreamInfoList) String() string {
@@ -14693,30 +14217,18 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMet
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo struct {
-	// 视频码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 视频时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration   *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize   *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件url
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 视频格式名称
+	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl    *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 文件所在区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height     *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width      *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo) String() string {
@@ -14788,47 +14300,29 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMet
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaVideoStreamInfoList struct {
-	AvgFps  *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
-	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
-	// 编码格式名
-	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
-	// 编码格式
-	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
-	// 编码格式标记
-	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
-	// 编码格式标记文本
+	AvgFps         *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	BitRate        *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	CodecLongName  *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	CodecName      *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	CodecTag       *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
 	CodecTimeBase  *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
-	// 图像显示宽高比
-	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 帧率
-	Fps        *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 编码等级
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 总帧数
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// 颜色存储格式
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 编码器预设
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 视频画面旋转角度
-	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// 采集点数宽高比
-	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// 起始时间
-	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
-	TimeBase  *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Dar            *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HasBFrames     *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt         *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile        *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Rotate         *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Sar            *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime      *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	TimeBase       *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaVideoStreamInfoList) String() string {
@@ -14955,12 +14449,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMet
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput) String() string {
@@ -14982,14 +14472,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput) Se
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig struct {
-	// 图片水印配置
 	ImageWatermarks []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	// 字幕压制配置
-	Subtitles []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	// 文字水印配置
-	TextWatermarks []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
-	// 转码配置
-	Transcode *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
+	Subtitles       []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	TextWatermarks  []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
+	Transcode       *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig) String() string {
@@ -15021,10 +14507,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks) String() string {
@@ -15046,20 +14530,13 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParams struct {
-	// 水印位置，x
-	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	// 水印位置，y
-	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	// 水印文件oss路径
-	File *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 参考位置: TopLeft, TopRight, BottomLeft, BottomRight  default: TopLeft
-	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	// 显示时间设置
+	Dx       *string                                                                                                           `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Dy       *string                                                                                                           `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	File     *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsFile     `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Height   *string                                                                                                           `json:"Height,omitempty" xml:"Height,omitempty"`
+	ReferPos *string                                                                                                           `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
 	Timeline *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Width    *string                                                                                                           `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParams) String() string {
@@ -15106,12 +14583,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsFile struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsFile) String() string {
@@ -15133,10 +14606,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsTimeline struct {
-	// 显示时长，秒数 或者 "ToEND"
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 开始时间
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsTimeline) String() string {
@@ -15158,10 +14629,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                             `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles) String() string {
@@ -15183,12 +14652,9 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParams struct {
-	// 文件 encoding 格式
-	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	// 字幕文件
-	File *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// 字幕文件格式
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	CharEnc *string                                                                                                 `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	File    *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Format  *string                                                                                                 `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParams) String() string {
@@ -15215,12 +14681,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile) String() string {
@@ -15242,10 +14704,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                                  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks) String() string {
@@ -15267,26 +14727,16 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarksOverwriteParams struct {
-	// 根据输出视频大小调整字体 size。 true / false, default: false
-	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
-	// 边框颜色
+	Adaptive    *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	// 边框宽度
-	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	// 水印文本，不需要 base64 encode，字符串需要 utf-8 编码
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 透明度
-	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
-	// 颜色
-	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	// 字体
-	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// 字体大小
-	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	// 水印位置，距离左边距离
-	Left *string `json:"Left,omitempty" xml:"Left,omitempty"`
-	// 水印位置，距离上边距离
-	Top *string `json:"Top,omitempty" xml:"Top,omitempty"`
+	BorderWidth *int32  `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	FontAlpha   *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
+	FontColor   *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontName    *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	FontSize    *int32  `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	Left        *string `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top         *string `json:"Top,omitempty" xml:"Top,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarksOverwriteParams) String() string {
@@ -15348,10 +14798,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                             `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode) String() string {
@@ -15373,14 +14821,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams struct {
-	// audio 设置
-	Audio *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	// 封装格式设置
+	Audio     *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
 	Container *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	// 封装设置
 	MuxConfig *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	// video 设置
-	Video *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Video     *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) String() string {
@@ -15412,20 +14856,13 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio struct {
-	// 输出文件的音频码率。
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道数。
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 音频编解码格式，AAC、MP3、VORBIS、FLAC。
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// 音频编码预置。
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 是否删除音频流。
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// 采样率。
-	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	// 音量控制
-	Volume *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Bitrate    *string                                                                                                        `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Channels   *string                                                                                                        `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Codec      *string                                                                                                        `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Profile    *string                                                                                                        `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Remove     *string                                                                                                        `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	Samplerate *string                                                                                                        `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	Volume     *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio) String() string {
@@ -15472,14 +14909,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume struct {
-	// 目标音量
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
-	// 音量范围
-	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
-	// 音量调整方式
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// 最大峰值
-	TruePeak *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
+	LoudnessRangeTarget      *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	Method                   *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	TruePeak                 *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume) String() string {
@@ -15511,7 +14944,6 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer struct {
-	// 容器格式
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
@@ -15529,7 +14961,6 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig struct {
-	// 切片设置
 	Segment *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 }
 
@@ -15547,9 +14978,7 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
-	// 切片时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 强制切片时间点
+	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	ForceSegTime *string `json:"ForceSegTime,omitempty" xml:"ForceSegTime,omitempty"`
 }
 
@@ -15572,41 +15001,24 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo struct {
-	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
-	// 视频平均码率。
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 缓冲区大小
-	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
-	// 编码格式
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// 码率-质量控制因子。
-	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
-	// 视频画面裁切
-	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	// 帧率。
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// 关键帧间最大帧数。
-	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// 高。
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 是否开启横竖屏自适应（即：长短边模式）
+	AbrMax        *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
+	Bitrate       *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Bufsize       *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	Codec         *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Crf           *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	Crop          *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	Fps           *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Gop           *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Height        *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
-	// 视频码率峰值
-	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
-	// 视频贴黑边
-	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	// 视频颜色格式。
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 只有H264支持该参数
-	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
-	// 编码级别。
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 是否去掉视频
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// 扫描模式。
-	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	// 宽。
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Maxrate       *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	Pad           *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	PixFmt        *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Preset        *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	Profile       *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Remove        *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	ScanMode      *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	Width         *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo) String() string {
@@ -15708,10 +15120,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleConfig struct {
-	// 管道 id
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 任务优先级，取值范围：1~10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleConfig) String() string {
@@ -15914,7 +15324,6 @@ func (s *GetUrlUploadInfosResponse) SetBody(v *GetUrlUploadInfosResponseBody) *G
 }
 
 type ListAllPublicMediaTagsRequest struct {
-	// 媒资业务类型
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	EntityId     *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 }
@@ -15938,10 +15347,8 @@ func (s *ListAllPublicMediaTagsRequest) SetEntityId(v string) *ListAllPublicMedi
 }
 
 type ListAllPublicMediaTagsResponseBody struct {
-	// 公共素材库标签列表
 	MediaTagList []*ListAllPublicMediaTagsResponseBodyMediaTagList `json:"MediaTagList,omitempty" xml:"MediaTagList,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAllPublicMediaTagsResponseBody) String() string {
@@ -15963,11 +15370,8 @@ func (s *ListAllPublicMediaTagsResponseBody) SetRequestId(v string) *ListAllPubl
 }
 
 type ListAllPublicMediaTagsResponseBodyMediaTagList struct {
-	// 素材标签id
-	MediaTagId *string `json:"MediaTagId,omitempty" xml:"MediaTagId,omitempty"`
-	// 素材标签中文名
-	MediaTagNameChinese *string `json:"MediaTagNameChinese,omitempty" xml:"MediaTagNameChinese,omitempty"`
-	// 素材标签英文名
+	MediaTagId          *string                                                  `json:"MediaTagId,omitempty" xml:"MediaTagId,omitempty"`
+	MediaTagNameChinese *string                                                  `json:"MediaTagNameChinese,omitempty" xml:"MediaTagNameChinese,omitempty"`
 	MediaTagNameEnglish *string                                                  `json:"MediaTagNameEnglish,omitempty" xml:"MediaTagNameEnglish,omitempty"`
 	Options             []*ListAllPublicMediaTagsResponseBodyMediaTagListOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
 }
@@ -16059,20 +15463,13 @@ func (s *ListAllPublicMediaTagsResponse) SetBody(v *ListAllPublicMediaTagsRespon
 }
 
 type ListCustomTemplatesRequest struct {
-	// 模板名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 排序顺序：CreateTimeDesc 和 CreateTimeAsc
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 分页数目
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 模板子类型ID
-	Subtype *string `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// 模板ID
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Subtype    *string `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板类型。逗号分隔
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListCustomTemplatesRequest) String() string {
@@ -16119,12 +15516,9 @@ func (s *ListCustomTemplatesRequest) SetType(v string) *ListCustomTemplatesReque
 }
 
 type ListCustomTemplatesResponseBody struct {
-	// 模板信息列表
 	CustomTemplateList []*ListCustomTemplatesResponseBodyCustomTemplateList `json:"CustomTemplateList,omitempty" xml:"CustomTemplateList,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 模板总数
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total              *int32                                               `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListCustomTemplatesResponseBody) String() string {
@@ -16151,28 +15545,17 @@ func (s *ListCustomTemplatesResponseBody) SetTotal(v int32) *ListCustomTemplates
 }
 
 type ListCustomTemplatesResponseBodyCustomTemplateList struct {
-	// 模板创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 是否默认模板
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// 模板修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 模板状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板子类型ID
-	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// 模板子类型名称
-	SubtypeName *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
-	// 模板参数
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	IsDefault      *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	ModifiedTime   *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Subtype        *int32  `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	SubtypeName    *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// 模板Id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板名称
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 模板类型ID
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 模板类型名称
-	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Type           *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	TypeName       *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
 
 func (s ListCustomTemplatesResponseBodyCustomTemplateList) String() string {
@@ -16268,12 +15651,9 @@ func (s *ListCustomTemplatesResponse) SetBody(v *ListCustomTemplatesResponseBody
 }
 
 type ListDynamicImageJobsRequest struct {
-	EndOfCreateTime *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
-	// 任务ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 连续分页查询时下一页的标记
-	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// 排序顺序：CreateTimeDesc 和 CreateTimeAsc
+	EndOfCreateTime   *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	NextPageToken     *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	OrderBy           *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartOfCreateTime *string `json:"StartOfCreateTime,omitempty" xml:"StartOfCreateTime,omitempty"`
@@ -16510,6 +15890,470 @@ func (s *ListDynamicImageJobsResponse) SetBody(v *ListDynamicImageJobsResponseBo
 	return s
 }
 
+type ListLiveRecordFilesRequest struct {
+	EndTime      *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	JobIds       []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+	PageNo       *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RecordFormat *string   `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty"`
+	SortBy       *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	StartTime    *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListLiveRecordFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRecordFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRecordFilesRequest) SetEndTime(v string) *ListLiveRecordFilesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesRequest) SetJobIds(v []*string) *ListLiveRecordFilesRequest {
+	s.JobIds = v
+	return s
+}
+
+func (s *ListLiveRecordFilesRequest) SetPageNo(v int32) *ListLiveRecordFilesRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesRequest) SetPageSize(v int32) *ListLiveRecordFilesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesRequest) SetRecordFormat(v string) *ListLiveRecordFilesRequest {
+	s.RecordFormat = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesRequest) SetSortBy(v string) *ListLiveRecordFilesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesRequest) SetStartTime(v string) *ListLiveRecordFilesRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListLiveRecordFilesResponseBody struct {
+	Files      []*ListLiveRecordFilesResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	PageNo     *int64                                  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *string                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SortBy     *string                                 `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TotalCount *string                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListLiveRecordFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRecordFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRecordFilesResponseBody) SetFiles(v []*ListLiveRecordFilesResponseBodyFiles) *ListLiveRecordFilesResponseBody {
+	s.Files = v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBody) SetPageNo(v int64) *ListLiveRecordFilesResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBody) SetPageSize(v string) *ListLiveRecordFilesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBody) SetRequestId(v string) *ListLiveRecordFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBody) SetSortBy(v string) *ListLiveRecordFilesResponseBody {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBody) SetTotalCount(v string) *ListLiveRecordFilesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListLiveRecordFilesResponseBodyFiles struct {
+	CreateTime   *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Duration     *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EndTime      *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Format       *string  `json:"Format,omitempty" xml:"Format,omitempty"`
+	Height       *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
+	JobId        *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName      *string  `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	RecordId     *string  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	RecordOutput *string  `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty"`
+	RecordUrl    *string  `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
+	StartTime    *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StreamUrl    *string  `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
+	Width        *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s ListLiveRecordFilesResponseBodyFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRecordFilesResponseBodyFiles) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRecordFilesResponseBodyFiles) SetCreateTime(v string) *ListLiveRecordFilesResponseBodyFiles {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBodyFiles) SetDuration(v float32) *ListLiveRecordFilesResponseBodyFiles {
+	s.Duration = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBodyFiles) SetEndTime(v string) *ListLiveRecordFilesResponseBodyFiles {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBodyFiles) SetFormat(v string) *ListLiveRecordFilesResponseBodyFiles {
+	s.Format = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBodyFiles) SetHeight(v int32) *ListLiveRecordFilesResponseBodyFiles {
+	s.Height = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBodyFiles) SetJobId(v string) *ListLiveRecordFilesResponseBodyFiles {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBodyFiles) SetJobName(v string) *ListLiveRecordFilesResponseBodyFiles {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBodyFiles) SetRecordId(v string) *ListLiveRecordFilesResponseBodyFiles {
+	s.RecordId = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBodyFiles) SetRecordOutput(v string) *ListLiveRecordFilesResponseBodyFiles {
+	s.RecordOutput = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBodyFiles) SetRecordUrl(v string) *ListLiveRecordFilesResponseBodyFiles {
+	s.RecordUrl = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBodyFiles) SetStartTime(v string) *ListLiveRecordFilesResponseBodyFiles {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBodyFiles) SetStreamUrl(v string) *ListLiveRecordFilesResponseBodyFiles {
+	s.StreamUrl = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponseBodyFiles) SetWidth(v int32) *ListLiveRecordFilesResponseBodyFiles {
+	s.Width = &v
+	return s
+}
+
+type ListLiveRecordFilesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLiveRecordFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLiveRecordFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRecordFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRecordFilesResponse) SetHeaders(v map[string]*string) *ListLiveRecordFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponse) SetStatusCode(v int32) *ListLiveRecordFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLiveRecordFilesResponse) SetBody(v *ListLiveRecordFilesResponseBody) *ListLiveRecordFilesResponse {
+	s.Body = v
+	return s
+}
+
+type ListLiveRecordJobsRequest struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Keyword   *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNo    *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy    *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListLiveRecordJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRecordJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRecordJobsRequest) SetEndTime(v string) *ListLiveRecordJobsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsRequest) SetKeyword(v string) *ListLiveRecordJobsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsRequest) SetPageNo(v int64) *ListLiveRecordJobsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsRequest) SetPageSize(v int64) *ListLiveRecordJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsRequest) SetSortBy(v string) *ListLiveRecordJobsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsRequest) SetStartTime(v string) *ListLiveRecordJobsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsRequest) SetStatus(v string) *ListLiveRecordJobsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListLiveRecordJobsResponseBody struct {
+	LiveRecordJobs []*ListLiveRecordJobsResponseBodyLiveRecordJobs `json:"LiveRecordJobs,omitempty" xml:"LiveRecordJobs,omitempty" type:"Repeated"`
+	PageNo         *int64                                          `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize       *int64                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SortBy         *string                                         `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TotalCount     *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListLiveRecordJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRecordJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRecordJobsResponseBody) SetLiveRecordJobs(v []*ListLiveRecordJobsResponseBodyLiveRecordJobs) *ListLiveRecordJobsResponseBody {
+	s.LiveRecordJobs = v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBody) SetPageNo(v int64) *ListLiveRecordJobsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBody) SetPageSize(v int64) *ListLiveRecordJobsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBody) SetRequestId(v string) *ListLiveRecordJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBody) SetSortBy(v string) *ListLiveRecordJobsResponseBody {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBody) SetTotalCount(v int64) *ListLiveRecordJobsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListLiveRecordJobsResponseBodyLiveRecordJobs struct {
+	CreateTime   *string                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	JobId        *string                                                   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Name         *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NotifyUrl    *string                                                   `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	RecordOutput *ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty" type:"Struct"`
+	Status       *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StreamInput  *ListLiveRecordJobsResponseBodyLiveRecordJobsStreamInput  `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
+	TemplateId   *string                                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string                                                   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s ListLiveRecordJobsResponseBodyLiveRecordJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRecordJobsResponseBodyLiveRecordJobs) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobs) SetCreateTime(v string) *ListLiveRecordJobsResponseBodyLiveRecordJobs {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobs) SetJobId(v string) *ListLiveRecordJobsResponseBodyLiveRecordJobs {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobs) SetName(v string) *ListLiveRecordJobsResponseBodyLiveRecordJobs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobs) SetNotifyUrl(v string) *ListLiveRecordJobsResponseBodyLiveRecordJobs {
+	s.NotifyUrl = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobs) SetRecordOutput(v *ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput) *ListLiveRecordJobsResponseBodyLiveRecordJobs {
+	s.RecordOutput = v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobs) SetStatus(v string) *ListLiveRecordJobsResponseBodyLiveRecordJobs {
+	s.Status = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobs) SetStreamInput(v *ListLiveRecordJobsResponseBodyLiveRecordJobsStreamInput) *ListLiveRecordJobsResponseBodyLiveRecordJobs {
+	s.StreamInput = v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobs) SetTemplateId(v string) *ListLiveRecordJobsResponseBodyLiveRecordJobs {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobs) SetTemplateName(v string) *ListLiveRecordJobsResponseBodyLiveRecordJobs {
+	s.TemplateName = &v
+	return s
+}
+
+type ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput struct {
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput) SetBucket(v string) *ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput {
+	s.Bucket = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput) SetEndpoint(v string) *ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput) SetType(v string) *ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput {
+	s.Type = &v
+	return s
+}
+
+type ListLiveRecordJobsResponseBodyLiveRecordJobsStreamInput struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListLiveRecordJobsResponseBodyLiveRecordJobsStreamInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRecordJobsResponseBodyLiveRecordJobsStreamInput) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobsStreamInput) SetType(v string) *ListLiveRecordJobsResponseBodyLiveRecordJobsStreamInput {
+	s.Type = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponseBodyLiveRecordJobsStreamInput) SetUrl(v string) *ListLiveRecordJobsResponseBodyLiveRecordJobsStreamInput {
+	s.Url = &v
+	return s
+}
+
+type ListLiveRecordJobsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLiveRecordJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLiveRecordJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRecordJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRecordJobsResponse) SetHeaders(v map[string]*string) *ListLiveRecordJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponse) SetStatusCode(v int32) *ListLiveRecordJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLiveRecordJobsResponse) SetBody(v *ListLiveRecordJobsResponseBody) *ListLiveRecordJobsResponse {
+	s.Body = v
+	return s
+}
+
 type ListLiveRecordTemplatesRequest struct {
 	Keyword     *string   `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	PageNo      *int64    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
@@ -16558,15 +16402,12 @@ func (s *ListLiveRecordTemplatesRequest) SetType(v string) *ListLiveRecordTempla
 }
 
 type ListLiveRecordTemplatesResponseBody struct {
-	PageNo   *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 数组，返回示例目录。
+	PageNo             *int64                                                   `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize           *int64                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RecordTemplateList []*ListLiveRecordTemplatesResponseBodyRecordTemplateList `json:"RecordTemplateList,omitempty" xml:"RecordTemplateList,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SortBy    *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// 总记录数。
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId          *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SortBy             *string                                                  `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TotalCount         *int64                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLiveRecordTemplatesResponseBody) String() string {
@@ -16608,18 +16449,12 @@ func (s *ListLiveRecordTemplatesResponseBody) SetTotalCount(v int64) *ListLiveRe
 }
 
 type ListLiveRecordTemplatesResponseBodyRecordTemplateList struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 最后修改时间
-	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 资源名称
-	Name []byte `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 录制格式
+	CreateTime       *string                                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LastModified     *string                                                                  `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	Name             *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
 	RecordFormatList []*ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList `json:"RecordFormatList,omitempty" xml:"RecordFormatList,omitempty" type:"Repeated"`
-	// 资源一级ID
-	TemplateId []byte `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 资源名称
-	Type []byte `json:"Type,omitempty" xml:"Type,omitempty"`
+	TemplateId       *string                                                                  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Type             *string                                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListLiveRecordTemplatesResponseBodyRecordTemplateList) String() string {
@@ -16640,8 +16475,8 @@ func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateList) SetLastModified(
 	return s
 }
 
-func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateList) SetName(v []byte) *ListLiveRecordTemplatesResponseBodyRecordTemplateList {
-	s.Name = v
+func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateList) SetName(v string) *ListLiveRecordTemplatesResponseBodyRecordTemplateList {
+	s.Name = &v
 	return s
 }
 
@@ -16650,27 +16485,22 @@ func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateList) SetRecordFormatL
 	return s
 }
 
-func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateList) SetTemplateId(v []byte) *ListLiveRecordTemplatesResponseBodyRecordTemplateList {
-	s.TemplateId = v
+func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateList) SetTemplateId(v string) *ListLiveRecordTemplatesResponseBodyRecordTemplateList {
+	s.TemplateId = &v
 	return s
 }
 
-func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateList) SetType(v []byte) *ListLiveRecordTemplatesResponseBodyRecordTemplateList {
-	s.Type = v
+func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateList) SetType(v string) *ListLiveRecordTemplatesResponseBodyRecordTemplateList {
+	s.Type = &v
 	return s
 }
 
 type ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList struct {
-	// 录制周期时长
-	CycleDuration []byte `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// 格式
-	Format []byte `json:"Format,omitempty" xml:"Format,omitempty"`
-	// Oss对象名
-	OssObjectPrefix []byte `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	// 切片时长
-	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
-	// 切片Oss对象名
-	SliceOssObjectPrefix []byte `json:"SliceOssObjectPrefix,omitempty" xml:"SliceOssObjectPrefix,omitempty"`
+	CycleDuration        *int32  `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	Format               *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	OssObjectPrefix      *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
+	SliceDuration        *int32  `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	SliceOssObjectPrefix *string `json:"SliceOssObjectPrefix,omitempty" xml:"SliceOssObjectPrefix,omitempty"`
 }
 
 func (s ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList) String() string {
@@ -16681,18 +16511,18 @@ func (s ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList) G
 	return s.String()
 }
 
-func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList) SetCycleDuration(v []byte) *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList {
-	s.CycleDuration = v
+func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList) SetCycleDuration(v int32) *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList {
+	s.CycleDuration = &v
 	return s
 }
 
-func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList) SetFormat(v []byte) *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList {
-	s.Format = v
+func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList) SetFormat(v string) *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList {
+	s.Format = &v
 	return s
 }
 
-func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList) SetOssObjectPrefix(v []byte) *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList {
-	s.OssObjectPrefix = v
+func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList) SetOssObjectPrefix(v string) *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList {
+	s.OssObjectPrefix = &v
 	return s
 }
 
@@ -16701,8 +16531,8 @@ func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList) 
 	return s
 }
 
-func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList) SetSliceOssObjectPrefix(v []byte) *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList {
-	s.SliceOssObjectPrefix = v
+func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList) SetSliceOssObjectPrefix(v string) *ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList {
+	s.SliceOssObjectPrefix = &v
 	return s
 }
 
@@ -16735,6 +16565,533 @@ func (s *ListLiveRecordTemplatesResponse) SetBody(v *ListLiveRecordTemplatesResp
 	return s
 }
 
+type ListLiveSnapshotFilesRequest struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Limit     *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	SortBy    *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListLiveSnapshotFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveSnapshotFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveSnapshotFilesRequest) SetEndTime(v string) *ListLiveSnapshotFilesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListLiveSnapshotFilesRequest) SetJobId(v string) *ListLiveSnapshotFilesRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListLiveSnapshotFilesRequest) SetLimit(v int32) *ListLiveSnapshotFilesRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListLiveSnapshotFilesRequest) SetSortBy(v string) *ListLiveSnapshotFilesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListLiveSnapshotFilesRequest) SetStartTime(v string) *ListLiveSnapshotFilesRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListLiveSnapshotFilesResponseBody struct {
+	FileList      []*ListLiveSnapshotFilesResponseBodyFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	NextStartTime *string                                      `json:"NextStartTime,omitempty" xml:"NextStartTime,omitempty"`
+	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListLiveSnapshotFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveSnapshotFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveSnapshotFilesResponseBody) SetFileList(v []*ListLiveSnapshotFilesResponseBodyFileList) *ListLiveSnapshotFilesResponseBody {
+	s.FileList = v
+	return s
+}
+
+func (s *ListLiveSnapshotFilesResponseBody) SetNextStartTime(v string) *ListLiveSnapshotFilesResponseBody {
+	s.NextStartTime = &v
+	return s
+}
+
+func (s *ListLiveSnapshotFilesResponseBody) SetRequestId(v string) *ListLiveSnapshotFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListLiveSnapshotFilesResponseBodyFileList struct {
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	IsOverlay       *bool   `json:"IsOverlay,omitempty" xml:"IsOverlay,omitempty"`
+	OssBucket       *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint     *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OssObject       *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+}
+
+func (s ListLiveSnapshotFilesResponseBodyFileList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveSnapshotFilesResponseBodyFileList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveSnapshotFilesResponseBodyFileList) SetCreateTime(v string) *ListLiveSnapshotFilesResponseBodyFileList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListLiveSnapshotFilesResponseBodyFileList) SetCreateTimestamp(v int64) *ListLiveSnapshotFilesResponseBodyFileList {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *ListLiveSnapshotFilesResponseBodyFileList) SetIsOverlay(v bool) *ListLiveSnapshotFilesResponseBodyFileList {
+	s.IsOverlay = &v
+	return s
+}
+
+func (s *ListLiveSnapshotFilesResponseBodyFileList) SetOssBucket(v string) *ListLiveSnapshotFilesResponseBodyFileList {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *ListLiveSnapshotFilesResponseBodyFileList) SetOssEndpoint(v string) *ListLiveSnapshotFilesResponseBodyFileList {
+	s.OssEndpoint = &v
+	return s
+}
+
+func (s *ListLiveSnapshotFilesResponseBodyFileList) SetOssObject(v string) *ListLiveSnapshotFilesResponseBodyFileList {
+	s.OssObject = &v
+	return s
+}
+
+type ListLiveSnapshotFilesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLiveSnapshotFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLiveSnapshotFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveSnapshotFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveSnapshotFilesResponse) SetHeaders(v map[string]*string) *ListLiveSnapshotFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLiveSnapshotFilesResponse) SetStatusCode(v int32) *ListLiveSnapshotFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLiveSnapshotFilesResponse) SetBody(v *ListLiveSnapshotFilesResponseBody) *ListLiveSnapshotFilesResponse {
+	s.Body = v
+	return s
+}
+
+type ListLiveSnapshotJobsRequest struct {
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageNo        *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListLiveSnapshotJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveSnapshotJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveSnapshotJobsRequest) SetEndTime(v string) *ListLiveSnapshotJobsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsRequest) SetPageNo(v int32) *ListLiveSnapshotJobsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsRequest) SetPageSize(v int32) *ListLiveSnapshotJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsRequest) SetSearchKeyWord(v string) *ListLiveSnapshotJobsRequest {
+	s.SearchKeyWord = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsRequest) SetSortBy(v string) *ListLiveSnapshotJobsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsRequest) SetStartTime(v string) *ListLiveSnapshotJobsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsRequest) SetStatus(v string) *ListLiveSnapshotJobsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListLiveSnapshotJobsResponseBody struct {
+	JobList    []*ListLiveSnapshotJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
+	PageNo     *int32                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SortBy     *string                                    `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TotalCount *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListLiveSnapshotJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveSnapshotJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveSnapshotJobsResponseBody) SetJobList(v []*ListLiveSnapshotJobsResponseBodyJobList) *ListLiveSnapshotJobsResponseBody {
+	s.JobList = v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBody) SetPageNo(v int32) *ListLiveSnapshotJobsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBody) SetPageSize(v int32) *ListLiveSnapshotJobsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBody) SetRequestId(v string) *ListLiveSnapshotJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBody) SetSortBy(v string) *ListLiveSnapshotJobsResponseBody {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBody) SetTotalCount(v int64) *ListLiveSnapshotJobsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListLiveSnapshotJobsResponseBodyJobList struct {
+	CreateTime     *string                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	JobId          *string                                                `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName        *string                                                `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	SnapshotOutput *ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput `json:"SnapshotOutput,omitempty" xml:"SnapshotOutput,omitempty" type:"Struct"`
+	Status         *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId     *string                                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName   *string                                                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TimeInterval   *int32                                                 `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
+}
+
+func (s ListLiveSnapshotJobsResponseBodyJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveSnapshotJobsResponseBodyJobList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveSnapshotJobsResponseBodyJobList) SetCreateTime(v string) *ListLiveSnapshotJobsResponseBodyJobList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBodyJobList) SetJobId(v string) *ListLiveSnapshotJobsResponseBodyJobList {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBodyJobList) SetJobName(v string) *ListLiveSnapshotJobsResponseBodyJobList {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBodyJobList) SetSnapshotOutput(v *ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput) *ListLiveSnapshotJobsResponseBodyJobList {
+	s.SnapshotOutput = v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBodyJobList) SetStatus(v string) *ListLiveSnapshotJobsResponseBodyJobList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBodyJobList) SetTemplateId(v string) *ListLiveSnapshotJobsResponseBodyJobList {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBodyJobList) SetTemplateName(v string) *ListLiveSnapshotJobsResponseBodyJobList {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBodyJobList) SetTimeInterval(v int32) *ListLiveSnapshotJobsResponseBodyJobList {
+	s.TimeInterval = &v
+	return s
+}
+
+type ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput struct {
+	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Endpoint    *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+}
+
+func (s ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput) SetBucket(v string) *ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput {
+	s.Bucket = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput) SetEndpoint(v string) *ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput) SetStorageType(v string) *ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput {
+	s.StorageType = &v
+	return s
+}
+
+type ListLiveSnapshotJobsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLiveSnapshotJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLiveSnapshotJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveSnapshotJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveSnapshotJobsResponse) SetHeaders(v map[string]*string) *ListLiveSnapshotJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponse) SetStatusCode(v int32) *ListLiveSnapshotJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLiveSnapshotJobsResponse) SetBody(v *ListLiveSnapshotJobsResponseBody) *ListLiveSnapshotJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListLiveSnapshotTemplatesRequest struct {
+	PageNo        *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchKeyWord *string   `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+	SortBy        *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TemplateIds   []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
+	Type          *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListLiveSnapshotTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveSnapshotTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveSnapshotTemplatesRequest) SetPageNo(v int32) *ListLiveSnapshotTemplatesRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesRequest) SetPageSize(v int32) *ListLiveSnapshotTemplatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesRequest) SetSearchKeyWord(v string) *ListLiveSnapshotTemplatesRequest {
+	s.SearchKeyWord = &v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesRequest) SetSortBy(v string) *ListLiveSnapshotTemplatesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesRequest) SetTemplateIds(v []*string) *ListLiveSnapshotTemplatesRequest {
+	s.TemplateIds = v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesRequest) SetType(v string) *ListLiveSnapshotTemplatesRequest {
+	s.Type = &v
+	return s
+}
+
+type ListLiveSnapshotTemplatesResponseBody struct {
+	PageNo       *int32                                               `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize     *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SortBy       *string                                              `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TemplateList []*ListLiveSnapshotTemplatesResponseBodyTemplateList `json:"TemplateList,omitempty" xml:"TemplateList,omitempty" type:"Repeated"`
+	TotalCount   *int64                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListLiveSnapshotTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveSnapshotTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveSnapshotTemplatesResponseBody) SetPageNo(v int32) *ListLiveSnapshotTemplatesResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesResponseBody) SetPageSize(v int32) *ListLiveSnapshotTemplatesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesResponseBody) SetRequestId(v string) *ListLiveSnapshotTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesResponseBody) SetSortBy(v string) *ListLiveSnapshotTemplatesResponseBody {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesResponseBody) SetTemplateList(v []*ListLiveSnapshotTemplatesResponseBodyTemplateList) *ListLiveSnapshotTemplatesResponseBody {
+	s.TemplateList = v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesResponseBody) SetTotalCount(v int64) *ListLiveSnapshotTemplatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListLiveSnapshotTemplatesResponseBodyTemplateList struct {
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TimeInterval *int32  `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListLiveSnapshotTemplatesResponseBodyTemplateList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveSnapshotTemplatesResponseBodyTemplateList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveSnapshotTemplatesResponseBodyTemplateList) SetCreateTime(v string) *ListLiveSnapshotTemplatesResponseBodyTemplateList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesResponseBodyTemplateList) SetTemplateId(v string) *ListLiveSnapshotTemplatesResponseBodyTemplateList {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesResponseBodyTemplateList) SetTemplateName(v string) *ListLiveSnapshotTemplatesResponseBodyTemplateList {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesResponseBodyTemplateList) SetTimeInterval(v int32) *ListLiveSnapshotTemplatesResponseBodyTemplateList {
+	s.TimeInterval = &v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesResponseBodyTemplateList) SetType(v string) *ListLiveSnapshotTemplatesResponseBodyTemplateList {
+	s.Type = &v
+	return s
+}
+
+type ListLiveSnapshotTemplatesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLiveSnapshotTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLiveSnapshotTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveSnapshotTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveSnapshotTemplatesResponse) SetHeaders(v map[string]*string) *ListLiveSnapshotTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesResponse) SetStatusCode(v int32) *ListLiveSnapshotTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLiveSnapshotTemplatesResponse) SetBody(v *ListLiveSnapshotTemplatesResponseBody) *ListLiveSnapshotTemplatesResponse {
+	s.Body = v
+	return s
+}
+
 type ListLiveTranscodeJobsRequest struct {
 	KeyWord   *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	PageNo    *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
@@ -16742,8 +17099,7 @@ type ListLiveTranscodeJobsRequest struct {
 	SortBy    *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	StartMode *int32  `json:"StartMode,omitempty" xml:"StartMode,omitempty"`
 	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板Id
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListLiveTranscodeJobsRequest) String() string {
@@ -16790,10 +17146,9 @@ func (s *ListLiveTranscodeJobsRequest) SetType(v string) *ListLiveTranscodeJobsR
 }
 
 type ListLiveTranscodeJobsResponseBody struct {
-	JobList []*ListLiveTranscodeJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	JobList    []*ListLiveTranscodeJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLiveTranscodeJobsResponseBody) String() string {
@@ -16983,12 +17338,11 @@ func (s *ListLiveTranscodeJobsResponse) SetBody(v *ListLiveTranscodeJobsResponse
 }
 
 type ListLiveTranscodeTemplatesRequest struct {
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	KeyWord  *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy   *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// 模板Id
+	Category   *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	KeyWord    *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
 }
@@ -17037,7 +17391,6 @@ func (s *ListLiveTranscodeTemplatesRequest) SetVideoCodec(v string) *ListLiveTra
 }
 
 type ListLiveTranscodeTemplatesResponseBody struct {
-	// 请求ID
 	RequestId           *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TemplateContentList []*ListLiveTranscodeTemplatesResponseBodyTemplateContentList `json:"TemplateContentList,omitempty" xml:"TemplateContentList,omitempty" type:"Repeated"`
 	TotalCount          *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -17260,28 +17613,17 @@ func (s *ListLiveTranscodeTemplatesResponse) SetBody(v *ListLiveTranscodeTemplat
 }
 
 type ListMediaBasicInfosRequest struct {
-	// 媒资业务类型
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 返回值中是否包含文件基础信息
-	IncludeFileBasicInfo *bool `json:"IncludeFileBasicInfo,omitempty" xml:"IncludeFileBasicInfo,omitempty"`
-	// 分页大小
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 媒资ID，单个媒资ID支持前缀匹配
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 媒资媒体类型
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 页号
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 创建时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 资源状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	BusinessType         *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IncludeFileBasicInfo *bool   `json:"IncludeFileBasicInfo,omitempty" xml:"IncludeFileBasicInfo,omitempty"`
+	MaxResults           *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MediaId              *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaType            *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	SortBy               *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Source               *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListMediaBasicInfosRequest) String() string {
@@ -17348,14 +17690,11 @@ func (s *ListMediaBasicInfosRequest) SetStatus(v string) *ListMediaBasicInfosReq
 }
 
 type ListMediaBasicInfosResponseBody struct {
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 符合要求的媒资集合
+	MaxResults *int32                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	MediaInfos []*ListMediaBasicInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
 	NextToken  *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 符合要求的媒资总数
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListMediaBasicInfosResponseBody) String() string {
@@ -17392,12 +17731,9 @@ func (s *ListMediaBasicInfosResponseBody) SetTotalCount(v int64) *ListMediaBasic
 }
 
 type ListMediaBasicInfosResponseBodyMediaInfos struct {
-	// FileInfos
-	FileInfoList []*ListMediaBasicInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// BasicInfo
+	FileInfoList   []*ListMediaBasicInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	MediaBasicInfo *ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId        *string                                                  `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s ListMediaBasicInfosResponseBodyMediaInfos) String() string {
@@ -17424,7 +17760,6 @@ func (s *ListMediaBasicInfosResponseBodyMediaInfos) SetMediaId(v string) *ListMe
 }
 
 type ListMediaBasicInfosResponseBodyMediaInfosFileInfoList struct {
-	// 文件基础信息，包含时长，大小等
 	FileBasicInfo *ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -17442,29 +17777,19 @@ func (s *ListMediaBasicInfosResponseBodyMediaInfosFileInfoList) SetFileBasicInfo
 }
 
 type ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
-	// 码率
-	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小（字节）
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
-	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件oss地址
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 封装格式
-	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
+	Bitrate      *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize     *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	FileStatus   *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	FileType     *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FormatName   *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
 	Height       *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 文件存储区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width        *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) String() string {
@@ -17541,45 +17866,27 @@ func (s *ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) Set
 }
 
 type ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo struct {
-	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// 媒资业务类型
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	CateId       *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 封面地址
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 媒资创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 媒资删除时间
-	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// 内容描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 待注册的媒资在相应系统中的地址
-	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// MediaId
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 标签
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 媒资媒体类型
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 媒资修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 截图
-	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 雪碧图
-	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// 资源状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 转码状态
+	Biz             *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
+	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	CateId          *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CoverURL        *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletedTime     *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputURL        *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	MediaId         *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaTags       *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	MediaType       *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	ModifiedTime    *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Snapshots       *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SpriteImages    *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
 	UploadSource    *string `json:"UploadSource,omitempty" xml:"UploadSource,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo) String() string {
@@ -17725,19 +18032,13 @@ func (s *ListMediaBasicInfosResponse) SetBody(v *ListMediaBasicInfosResponseBody
 }
 
 type ListMediaInfoJobsRequest struct {
-	// 任务创建时间筛选条件的结束时间
-	EndOfCreateTime *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
-	// 按 jobId 筛选
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 连续分页查询时下一页的标记 (第一页没有)
-	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// 排序顺序，目前只支持两种：CreateTimeDesc 和 CreateTimeAsc
-	OrderBy  *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 任务创建时间筛选条件的起始时间
+	EndOfCreateTime   *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	NextPageToken     *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	OrderBy           *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartOfCreateTime *string `json:"StartOfCreateTime,omitempty" xml:"StartOfCreateTime,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListMediaInfoJobsRequest) String() string {
@@ -17786,8 +18087,7 @@ func (s *ListMediaInfoJobsRequest) SetStatus(v string) *ListMediaInfoJobsRequest
 type ListMediaInfoJobsResponseBody struct {
 	Jobs          []*ListMediaInfoJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
 	NextPageToken *string                              `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListMediaInfoJobsResponseBody) String() string {
@@ -17814,32 +18114,19 @@ func (s *ListMediaInfoJobsResponseBody) SetRequestId(v string) *ListMediaInfoJob
 }
 
 type ListMediaInfoJobsResponseBodyJobs struct {
-	// 是否异步处理
-	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// 任务完成时间
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// 任务输入
-	Input *ListMediaInfoJobsResponseBodyJobsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// 任务 id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 媒体信息详情
+	Async             *bool                                               `json:"Async,omitempty" xml:"Async,omitempty"`
+	FinishTime        *string                                             `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Input             *ListMediaInfoJobsResponseBodyJobsInput             `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	JobId             *string                                             `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	MediaInfoProperty *ListMediaInfoJobsResponseBodyJobsMediaInfoProperty `json:"MediaInfoProperty,omitempty" xml:"MediaInfoProperty,omitempty" type:"Struct"`
-	// 任务名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调度信息
-	ScheduleConfig *ListMediaInfoJobsResponseBodyJobsScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// 任务状态 - Init: 已提交, Success: 成功, Fail: 失败
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 任务提交信息
-	SubmitResultJson map[string]interface{} `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
-	// 任务提交时间
-	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// 任务来源 - API, WorkFlow, Console
-	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Name              *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScheduleConfig    *ListMediaInfoJobsResponseBodyJobsScheduleConfig    `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	Status            *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitResultJson  map[string]interface{}                              `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
+	SubmitTime        *string                                             `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	TriggerSource     *string                                             `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	UserData          *string                                             `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ListMediaInfoJobsResponseBodyJobs) String() string {
@@ -17916,12 +18203,8 @@ func (s *ListMediaInfoJobsResponseBodyJobs) SetUserData(v string) *ListMediaInfo
 }
 
 type ListMediaInfoJobsResponseBodyJobsInput struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListMediaInfoJobsResponseBodyJobsInput) String() string {
@@ -17943,11 +18226,8 @@ func (s *ListMediaInfoJobsResponseBodyJobsInput) SetType(v string) *ListMediaInf
 }
 
 type ListMediaInfoJobsResponseBodyJobsMediaInfoProperty struct {
-	// 音频流信息
 	AudioStreamInfoList []*ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	// 基础文件信息
-	FileBasicInfo *ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
-	// 视频流信息
+	FileBasicInfo       *ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 	VideoStreamInfoList []*ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -17975,35 +18255,21 @@ func (s *ListMediaInfoJobsResponseBodyJobsMediaInfoProperty) SetVideoStreamInfoL
 }
 
 type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyAudioStreamInfoList struct {
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道布局
-	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// 声道数
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 编码格式名
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// 编码格式
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// 编码器标签
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// 编码器标签名
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// 编码器时间基
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// 采样率
-	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 时间基
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	SampleRate     *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyAudioStreamInfoList) String() string {
@@ -18090,30 +18356,18 @@ func (s *ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyAudioStreamInfoList) 
 }
 
 type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo struct {
-	// 视频码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 视频时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration   *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize   *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件url
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 视频格式名称
+	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl    *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 文件所在区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height     *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width      *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo) String() string {
@@ -18185,47 +18439,29 @@ func (s *ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo) SetWid
 }
 
 type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList struct {
-	AvgFps  *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
-	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
-	// 编码格式名
-	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
-	// 编码格式
-	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
-	// 编码格式标记
-	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
-	// 编码格式标记文本
+	AvgFps         *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	BitRate        *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	CodecLongName  *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	CodecName      *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	CodecTag       *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
 	CodecTimeBase  *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
-	// 图像显示宽高比
-	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 帧率
-	Fps        *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 编码等级
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 总帧数
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// 颜色存储格式
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 编码器预设
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 视频画面旋转角度
-	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// 采集点数宽高比
-	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// 起始时间
-	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
-	TimeBase  *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Dar            *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HasBFrames     *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt         *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile        *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Rotate         *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Sar            *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime      *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	TimeBase       *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList) String() string {
@@ -18352,10 +18588,8 @@ func (s *ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList) 
 }
 
 type ListMediaInfoJobsResponseBodyJobsScheduleConfig struct {
-	// 管道 id
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 任务优先级，取值范围：1~10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s ListMediaInfoJobsResponseBodyJobsScheduleConfig) String() string {
@@ -18406,7 +18640,6 @@ func (s *ListMediaInfoJobsResponse) SetBody(v *ListMediaInfoJobsResponseBody) *L
 }
 
 type ListPipelinesRequest struct {
-	// 管道类型。
 	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
 }
 
@@ -18425,8 +18658,7 @@ func (s *ListPipelinesRequest) SetSpeed(v string) *ListPipelinesRequest {
 
 type ListPipelinesResponseBody struct {
 	PipelineList []*ListPipelinesResponseBodyPipelineList `json:"PipelineList,omitempty" xml:"PipelineList,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPipelinesResponseBody) String() string {
@@ -18448,20 +18680,13 @@ func (s *ListPipelinesResponseBody) SetRequestId(v string) *ListPipelinesRespons
 }
 
 type ListPipelinesResponseBodyPipelineList struct {
-	// 模板创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 模板修改时间
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 管道名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 管道Id
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 管道优先级
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 管道类型
-	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// 管道状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PipelineId   *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	Priority     *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Speed        *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListPipelinesResponseBodyPipelineList) String() string {
@@ -18537,14 +18762,12 @@ func (s *ListPipelinesResponse) SetBody(v *ListPipelinesResponseBody) *ListPipel
 }
 
 type ListPublicMediaBasicInfosRequest struct {
-	// 返回值中是否包含文件基础信息
-	IncludeFileBasicInfo *bool `json:"IncludeFileBasicInfo,omitempty" xml:"IncludeFileBasicInfo,omitempty"`
-	// 分页大小
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标签
-	MediaTagId *string `json:"MediaTagId,omitempty" xml:"MediaTagId,omitempty"`
-	// 下一次读取的位置
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	IncludeFileBasicInfo *bool   `json:"IncludeFileBasicInfo,omitempty" xml:"IncludeFileBasicInfo,omitempty"`
+	MaxResults           *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MediaTagId           *string `json:"MediaTagId,omitempty" xml:"MediaTagId,omitempty"`
+	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListPublicMediaBasicInfosRequest) String() string {
@@ -18575,15 +18798,22 @@ func (s *ListPublicMediaBasicInfosRequest) SetNextToken(v string) *ListPublicMed
 	return s
 }
 
+func (s *ListPublicMediaBasicInfosRequest) SetPageNo(v int32) *ListPublicMediaBasicInfosRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListPublicMediaBasicInfosRequest) SetPageSize(v int32) *ListPublicMediaBasicInfosRequest {
+	s.PageSize = &v
+	return s
+}
+
 type ListPublicMediaBasicInfosResponseBody struct {
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 符合要求的媒资集合
+	MaxResults *int32                                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	MediaInfos []*ListPublicMediaBasicInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
 	NextToken  *string                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 符合要求的媒资总数
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPublicMediaBasicInfosResponseBody) String() string {
@@ -18620,12 +18850,9 @@ func (s *ListPublicMediaBasicInfosResponseBody) SetTotalCount(v int64) *ListPubl
 }
 
 type ListPublicMediaBasicInfosResponseBodyMediaInfos struct {
-	// FileInfos
-	FileInfoList []*ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// BasicInfo
+	FileInfoList   []*ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	MediaBasicInfo *ListPublicMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId        *string                                                        `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s ListPublicMediaBasicInfosResponseBodyMediaInfos) String() string {
@@ -18652,7 +18879,6 @@ func (s *ListPublicMediaBasicInfosResponseBodyMediaInfos) SetMediaId(v string) *
 }
 
 type ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoList struct {
-	// 文件基础信息，包含时长，大小等
 	FileBasicInfo *ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -18670,28 +18896,17 @@ func (s *ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoList) SetFileBas
 }
 
 type ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小（字节）
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration   *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize   *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件oss地址
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 封装格式
+	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl    *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 文件存储区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height     *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width      *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) String() string {
@@ -18758,40 +18973,23 @@ func (s *ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInf
 }
 
 type ListPublicMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo struct {
-	// 媒资业务类型
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 封面地址
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 媒资创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 媒资删除时间
-	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// 内容描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 待注册的媒资在相应系统中的地址
-	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// MediaId
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 标签
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 媒资媒体类型
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 媒资修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 截图
-	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 资源状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 转码状态
+	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CoverURL        *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletedTime     *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputURL        *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	MediaId         *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaTags       *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	MediaType       *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	ModifiedTime    *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Snapshots       *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ListPublicMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo) String() string {
@@ -18917,20 +19115,13 @@ func (s *ListPublicMediaBasicInfosResponse) SetBody(v *ListPublicMediaBasicInfos
 }
 
 type ListSmartJobsRequest struct {
-	// 任务状态
-	JobState *string `json:"JobState,omitempty" xml:"JobState,omitempty"`
-	// 任务类型
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// 分页大小。最大不超过100。  默认值：10
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当前开始读取的位置
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 当前页码。默认值为1。
-	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 分页大小，每页显示条数。默认值为10，最大值为100。
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 排序参数，默认根据创建时间倒序
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	JobState   *string `json:"JobState,omitempty" xml:"JobState,omitempty"`
+	JobType    *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNo     *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListSmartJobsRequest) String() string {
@@ -18977,15 +19168,11 @@ func (s *ListSmartJobsRequest) SetSortBy(v string) *ListSmartJobsRequest {
 }
 
 type ListSmartJobsResponseBody struct {
-	// 本次请求所返回的最大记录条数，最后一页前每页记录条数为MaxResults取值。  例如：  正例：10,10,5，反例：10,5,10
-	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 用来表示当前调用返回读取到的位置，空代表数据已经读取完毕。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	MaxResults   *string                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SmartJobList []*ListSmartJobsResponseBodySmartJobList `json:"SmartJobList,omitempty" xml:"SmartJobList,omitempty" type:"Repeated"`
-	// 本次请求条件下的数据总量，此参数为可选参数，默认可不返回。
-	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount   *string                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSmartJobsResponseBody) String() string {
@@ -19022,30 +19209,18 @@ func (s *ListSmartJobsResponseBody) SetTotalCount(v string) *ListSmartJobsRespon
 }
 
 type ListSmartJobsResponseBodySmartJobList struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 任务描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 输入配置
-	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	// 任务输入配置
-	InputConfig *ListSmartJobsResponseBodySmartJobListInputConfig `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
-	// 任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 任务状态
-	JobState *string `json:"JobState,omitempty" xml:"JobState,omitempty"`
-	// 任务类型
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// 最后修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 任务输出配置
-	OutputConfig *ListSmartJobsResponseBodySmartJobListOutputConfig `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty" type:"Struct"`
-	// 任务标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 用户自定义字段
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// 用户Id
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CreateTime    *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description   *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	EditingConfig *string                                            `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	InputConfig   *ListSmartJobsResponseBodySmartJobListInputConfig  `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
+	JobId         *string                                            `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobState      *string                                            `json:"JobState,omitempty" xml:"JobState,omitempty"`
+	JobType       *string                                            `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	ModifiedTime  *string                                            `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	OutputConfig  *ListSmartJobsResponseBodySmartJobListOutputConfig `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty" type:"Struct"`
+	Title         *string                                            `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData      *string                                            `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserId        *int64                                             `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListSmartJobsResponseBodySmartJobList) String() string {
@@ -19117,10 +19292,8 @@ func (s *ListSmartJobsResponseBodySmartJobList) SetUserId(v int64) *ListSmartJob
 }
 
 type ListSmartJobsResponseBodySmartJobListInputConfig struct {
-	// 文件信息
 	InputFile *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
-	// 关键词信息
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Keyword   *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 }
 
 func (s ListSmartJobsResponseBodySmartJobListInputConfig) String() string {
@@ -19142,9 +19315,7 @@ func (s *ListSmartJobsResponseBodySmartJobListInputConfig) SetKeyword(v string) 
 }
 
 type ListSmartJobsResponseBodySmartJobListOutputConfig struct {
-	// OSS Bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// OSS Object
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
@@ -19196,11 +19367,9 @@ func (s *ListSmartJobsResponse) SetBody(v *ListSmartJobsResponseBody) *ListSmart
 }
 
 type ListSnapshotJobsRequest struct {
-	EndOfCreateTime *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
-	JobId           *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 连续分页查询时下一页的标记
-	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// 排序顺序：CreateTimeDesc 和 CreateTimeAsc
+	EndOfCreateTime   *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	NextPageToken     *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	OrderBy           *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartOfCreateTime *string `json:"StartOfCreateTime,omitempty" xml:"StartOfCreateTime,omitempty"`
@@ -19253,8 +19422,7 @@ func (s *ListSnapshotJobsRequest) SetStatus(v string) *ListSnapshotJobsRequest {
 type ListSnapshotJobsResponseBody struct {
 	Jobs          []*ListSnapshotJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
 	NextPageToken *string                             `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListSnapshotJobsResponseBody) String() string {
@@ -19457,20 +19625,13 @@ func (s *ListSnapshotJobsResponse) SetBody(v *ListSnapshotJobsResponseBody) *Lis
 }
 
 type ListSystemTemplatesRequest struct {
-	// 模板名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 分页数目
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 模板状态：Normal正常，Invisible不可见，ALL全部
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板子类型ID
-	Subtype *string `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// 模板ID
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Subtype    *string `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板类型。逗号分隔
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListSystemTemplatesRequest) String() string {
@@ -19517,12 +19678,9 @@ func (s *ListSystemTemplatesRequest) SetType(v string) *ListSystemTemplatesReque
 }
 
 type ListSystemTemplatesResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 模板信息列表
+	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SystemTemplateList []*ListSystemTemplatesResponseBodySystemTemplateList `json:"SystemTemplateList,omitempty" xml:"SystemTemplateList,omitempty" type:"Repeated"`
-	// 模板总数
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Total              *int32                                               `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListSystemTemplatesResponseBody) String() string {
@@ -19549,22 +19707,14 @@ func (s *ListSystemTemplatesResponseBody) SetTotal(v int32) *ListSystemTemplates
 }
 
 type ListSystemTemplatesResponseBodySystemTemplateList struct {
-	// 模板状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板子类型ID
-	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// 模板子类型名称
-	SubtypeName *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
-	// 模板参数
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Subtype        *int32  `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	SubtypeName    *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// 模板Id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板名称
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 模板类型ID
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 模板类型名称
-	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Type           *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	TypeName       *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
 
 func (s ListSystemTemplatesResponseBodySystemTemplateList) String() string {
@@ -19645,20 +19795,13 @@ func (s *ListSystemTemplatesResponse) SetBody(v *ListSystemTemplatesResponseBody
 }
 
 type ListTemplatesRequest struct {
-	// 创建来源
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	// 搜索关键词，可以根据模板id和title搜索
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 当前页码。默认值为1。
-	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 分页大小，每页显示条数。默认值为10，最大值为100。
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 排序参数，默认根据创建时间倒序
-	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	// 模板状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNo       *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortType     *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTemplatesRequest) String() string {
@@ -19705,11 +19848,9 @@ func (s *ListTemplatesRequest) SetType(v string) *ListTemplatesRequest {
 }
 
 type ListTemplatesResponseBody struct {
-	// 请求ID
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Templates []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
-	// 本次请求条件下的数据总量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Templates  []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTemplatesResponseBody) String() string {
@@ -19736,32 +19877,19 @@ func (s *ListTemplatesResponseBody) SetTotalCount(v int32) *ListTemplatesRespons
 }
 
 type ListTemplatesResponseBodyTemplates struct {
-	// ClipsParam
-	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	// 模板配置
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 封面URL
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 创建来源
-	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	// 创建时间
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// 修改来源
-	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
-	// 修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 模板名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 预览素材
-	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
-	// 预览素材状态
+	ClipsParam         *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	Config             *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	CoverURL           *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateSource       *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	CreationTime       *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ModifiedSource     *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	ModifiedTime       *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreviewMedia       *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
 	PreviewMediaStatus *string `json:"PreviewMediaStatus,omitempty" xml:"PreviewMediaStatus,omitempty"`
-	// 模板状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板ID
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTemplatesResponseBodyTemplates) String() string {
@@ -19867,19 +19995,13 @@ func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTempl
 }
 
 type ListTranscodeJobsRequest struct {
-	// 任务创建时间筛选条件的结束时间
-	EndOfCreateTime *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
-	// 按 jobId 筛选
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 连续分页查询时下一页的标记 (第一页没有)
-	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// 排序顺序，目前只支持两种：CreateTimeDesc 和 CreateTimeAsc
-	OrderBy  *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 任务创建时间筛选条件的起始时间
+	EndOfCreateTime   *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	NextPageToken     *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	OrderBy           *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartOfCreateTime *string `json:"StartOfCreateTime,omitempty" xml:"StartOfCreateTime,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListTranscodeJobsRequest) String() string {
@@ -19928,8 +20050,7 @@ func (s *ListTranscodeJobsRequest) SetStatus(v string) *ListTranscodeJobsRequest
 type ListTranscodeJobsResponseBody struct {
 	Jobs          []*ListTranscodeJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
 	NextPageToken *string                              `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBody) String() string {
@@ -19956,34 +20077,20 @@ func (s *ListTranscodeJobsResponseBody) SetRequestId(v string) *ListTranscodeJob
 }
 
 type ListTranscodeJobsResponseBodyJobs struct {
-	// 任务创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 任务结束时间
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// 任务输入组 (目前只支持单个输入)
-	InputGroup []*ListTranscodeJobsResponseBodyJobsInputGroup `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
-	// 子任务数量
-	JobCount *int32 `json:"JobCount,omitempty" xml:"JobCount,omitempty"`
-	// 任务名
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 任务输出组
-	OutputGroup []*ListTranscodeJobsResponseBodyJobsOutputGroup `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
-	// 主任务 id
-	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
-	// 任务完成百分比
-	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 提交任务时请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务调度配置
+	CreateTime     *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime     *string                                          `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	InputGroup     []*ListTranscodeJobsResponseBodyJobsInputGroup   `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
+	JobCount       *int32                                           `json:"JobCount,omitempty" xml:"JobCount,omitempty"`
+	Name           *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutputGroup    []*ListTranscodeJobsResponseBodyJobsOutputGroup  `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
+	ParentJobId    *string                                          `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	Percent        *int32                                           `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScheduleConfig *ListTranscodeJobsResponseBodyJobsScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// 任务状态 Success: 有子任务成功, Fail: 所有子任务失败
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 任务提交时间
-	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// 任务来源 - API, WorkFlow, Console
-	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Status         *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitTime     *string                                          `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	TriggerSource  *string                                          `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	UserData       *string                                          `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobs) String() string {
@@ -20065,12 +20172,8 @@ func (s *ListTranscodeJobsResponseBodyJobs) SetUserData(v string) *ListTranscode
 }
 
 type ListTranscodeJobsResponseBodyJobsInputGroup struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsInputGroup) String() string {
@@ -20092,9 +20195,7 @@ func (s *ListTranscodeJobsResponseBodyJobsInputGroup) SetType(v string) *ListTra
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroup struct {
-	// 输出媒体配置
-	Output *ListTranscodeJobsResponseBodyJobsOutputGroupOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// 任务处理配置
+	Output        *ListTranscodeJobsResponseBodyJobsOutputGroupOutput        `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
 	ProcessConfig *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
 }
 
@@ -20117,12 +20218,8 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroup) SetProcessConfig(v *ListT
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupOutput struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupOutput) String() string {
@@ -20144,14 +20241,10 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupOutput) SetType(v string) *
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig struct {
-	// 图片水印配置
 	ImageWatermarks []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	// 字幕压制配置
-	Subtitles []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	// 文字水印配置
-	TextWatermarks []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
-	// 转码配置
-	Transcode *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
+	Subtitles       []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	TextWatermarks  []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
+	Transcode       *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig) String() string {
@@ -20183,10 +20276,8 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig) SetTranscode
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarks struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarks) String() string {
@@ -20208,20 +20299,13 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermark
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParams struct {
-	// 水印位置，x
-	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	// 水印位置，y
-	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	// 水印文件oss路径
-	File *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 参考位置: TopLeft, TopRight, BottomLeft, BottomRight  default: TopLeft
-	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	// 显示时间设置
+	Dx       *string                                                                                          `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Dy       *string                                                                                          `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	File     *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsFile     `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Height   *string                                                                                          `json:"Height,omitempty" xml:"Height,omitempty"`
+	ReferPos *string                                                                                          `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
 	Timeline *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Width    *string                                                                                          `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParams) String() string {
@@ -20268,12 +20352,8 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermark
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsFile struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsFile) String() string {
@@ -20295,10 +20375,8 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermark
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline struct {
-	// 显示时长，秒数 或者 "ToEND"
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 开始时间
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline) String() string {
@@ -20320,10 +20398,8 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermark
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles) String() string {
@@ -20345,12 +20421,9 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles) Set
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParams struct {
-	// 文件 encoding 格式
-	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	// 字幕文件
-	File *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// 字幕文件格式
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	CharEnc *string                                                                                `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	File    *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Format  *string                                                                                `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParams) String() string {
@@ -20377,12 +20450,8 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParamsFile struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParamsFile) String() string {
@@ -20404,10 +20473,8 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks) String() string {
@@ -20429,26 +20496,16 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarksOverwriteParams struct {
-	// 根据输出视频大小调整字体 size。 true / false, default: false
-	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
-	// 边框颜色
+	Adaptive    *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	// 边框宽度
-	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	// 水印文本，不需要 base64 encode，字符串需要 utf-8 编码
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 透明度
-	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
-	// 颜色
-	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	// 字体
-	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// 字体大小
-	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	// 水印位置，距离左边距离
-	Left *string `json:"Left,omitempty" xml:"Left,omitempty"`
-	// 水印位置，距离上边距离
-	Top *string `json:"Top,omitempty" xml:"Top,omitempty"`
+	BorderWidth *int32  `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	FontAlpha   *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
+	FontColor   *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontName    *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	FontSize    *int32  `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	Left        *string `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top         *string `json:"Top,omitempty" xml:"Top,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarksOverwriteParams) String() string {
@@ -20510,10 +20567,8 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode) String() string {
@@ -20535,14 +20590,10 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode) Set
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams struct {
-	// audio 设置
-	Audio *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	// 封装格式设置
+	Audio     *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
 	Container *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	// 封装设置
 	MuxConfig *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	// video 设置
-	Video *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Video     *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams) String() string {
@@ -20574,20 +20625,13 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudio struct {
-	// 输出文件的音频码率。
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道数。
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 音频编解码格式，AAC、MP3、VORBIS、FLAC。
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// 音频编码预置。
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 是否删除音频流。
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// 采样率。
-	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	// 音量控制
-	Volume *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Bitrate    *string                                                                                       `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Channels   *string                                                                                       `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Codec      *string                                                                                       `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Profile    *string                                                                                       `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Remove     *string                                                                                       `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	Samplerate *string                                                                                       `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	Volume     *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudio) String() string {
@@ -20634,14 +20678,10 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume struct {
-	// 目标音量
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
-	// 音量范围
-	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
-	// 音量调整方式
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// 最大峰值
-	TruePeak *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
+	LoudnessRangeTarget      *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	Method                   *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	TruePeak                 *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume) String() string {
@@ -20673,7 +20713,6 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsContainer struct {
-	// 容器格式
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
@@ -20691,7 +20730,6 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig struct {
-	// 切片设置
 	Segment *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 }
 
@@ -20709,9 +20747,7 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
-	// 切片时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 强制切片时间点
+	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	ForceSegTime *string `json:"ForceSegTime,omitempty" xml:"ForceSegTime,omitempty"`
 }
 
@@ -20734,41 +20770,24 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsVideo struct {
-	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
-	// 视频平均码率。
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 缓冲区大小
-	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
-	// 编码格式
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// 码率-质量控制因子。
-	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
-	// 视频画面裁切
-	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	// 帧率。
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// 关键帧间最大帧数。
-	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// 高。
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 是否开启横竖屏自适应（即：长短边模式）
+	AbrMax        *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
+	Bitrate       *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Bufsize       *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	Codec         *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Crf           *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	Crop          *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	Fps           *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Gop           *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Height        *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
-	// 视频码率峰值
-	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
-	// 视频贴黑边
-	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	// 视频颜色格式。
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 只有H264支持该参数
-	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
-	// 编码级别。
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 是否去掉视频
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// 扫描模式。
-	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	// 宽。
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Maxrate       *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	Pad           *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	PixFmt        *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Preset        *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	Profile       *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Remove        *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	ScanMode      *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	Width         *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsVideo) String() string {
@@ -20870,10 +20889,8 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsScheduleConfig struct {
-	// 管道 id
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 任务优先级，取值范围：1~10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsScheduleConfig) String() string {
@@ -20919,70 +20936,6 @@ func (s *ListTranscodeJobsResponse) SetStatusCode(v int32) *ListTranscodeJobsRes
 }
 
 func (s *ListTranscodeJobsResponse) SetBody(v *ListTranscodeJobsResponseBody) *ListTranscodeJobsResponse {
-	s.Body = v
-	return s
-}
-
-type NotifyPreOssUploadCompleteRequest struct {
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-}
-
-func (s NotifyPreOssUploadCompleteRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s NotifyPreOssUploadCompleteRequest) GoString() string {
-	return s.String()
-}
-
-func (s *NotifyPreOssUploadCompleteRequest) SetFileName(v string) *NotifyPreOssUploadCompleteRequest {
-	s.FileName = &v
-	return s
-}
-
-type NotifyPreOssUploadCompleteResponseBody struct {
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s NotifyPreOssUploadCompleteResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s NotifyPreOssUploadCompleteResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *NotifyPreOssUploadCompleteResponseBody) SetRequestId(v string) *NotifyPreOssUploadCompleteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type NotifyPreOssUploadCompleteResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *NotifyPreOssUploadCompleteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s NotifyPreOssUploadCompleteResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s NotifyPreOssUploadCompleteResponse) GoString() string {
-	return s.String()
-}
-
-func (s *NotifyPreOssUploadCompleteResponse) SetHeaders(v map[string]*string) *NotifyPreOssUploadCompleteResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *NotifyPreOssUploadCompleteResponse) SetStatusCode(v int32) *NotifyPreOssUploadCompleteResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *NotifyPreOssUploadCompleteResponse) SetBody(v *NotifyPreOssUploadCompleteResponseBody) *NotifyPreOssUploadCompleteResponse {
 	s.Body = v
 	return s
 }
@@ -21669,7 +21622,6 @@ func (s *QueryCensorJobListResponse) SetBody(v *QueryCensorJobListResponseBody) 
 }
 
 type QueryIProductionJobRequest struct {
-	// 幂等参数
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
@@ -21693,17 +21645,16 @@ func (s *QueryIProductionJobRequest) SetJobId(v string) *QueryIProductionJobRequ
 }
 
 type QueryIProductionJobResponseBody struct {
-	CreateTime   *string                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FinishTime   *string                                `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	FunctionName *string                                `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	Input        *QueryIProductionJobResponseBodyInput  `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	JobId        *string                                `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobParams    *string                                `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
-	Name         *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Output       *QueryIProductionJobResponseBodyOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	OutputFiles  []*string                              `json:"OutputFiles,omitempty" xml:"OutputFiles,omitempty" type:"Repeated"`
-	OutputUrls   []*string                              `json:"OutputUrls,omitempty" xml:"OutputUrls,omitempty" type:"Repeated"`
-	// Id of the request
+	CreateTime     *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime     *string                                        `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	FunctionName   *string                                        `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	Input          *QueryIProductionJobResponseBodyInput          `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	JobId          *string                                        `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobParams      *string                                        `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
+	Name           *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Output         *QueryIProductionJobResponseBodyOutput         `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	OutputFiles    []*string                                      `json:"OutputFiles,omitempty" xml:"OutputFiles,omitempty" type:"Repeated"`
+	OutputUrls     []*string                                      `json:"OutputUrls,omitempty" xml:"OutputUrls,omitempty" type:"Repeated"`
 	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result         *string                                        `json:"Result,omitempty" xml:"Result,omitempty"`
 	ScheduleConfig *QueryIProductionJobResponseBodyScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
@@ -22585,6 +22536,133 @@ func (s *QueryMediaCensorJobDetailResponse) SetBody(v *QueryMediaCensorJobDetail
 	return s
 }
 
+type QuerySmarttagJobRequest struct {
+	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+}
+
+func (s QuerySmarttagJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmarttagJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmarttagJobRequest) SetJobId(v string) *QuerySmarttagJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *QuerySmarttagJobRequest) SetParams(v string) *QuerySmarttagJobRequest {
+	s.Params = &v
+	return s
+}
+
+type QuerySmarttagJobResponseBody struct {
+	JobStatus *string                              `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   *QuerySmarttagJobResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	UserData  *string                              `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s QuerySmarttagJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmarttagJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmarttagJobResponseBody) SetJobStatus(v string) *QuerySmarttagJobResponseBody {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *QuerySmarttagJobResponseBody) SetRequestId(v string) *QuerySmarttagJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySmarttagJobResponseBody) SetResults(v *QuerySmarttagJobResponseBodyResults) *QuerySmarttagJobResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *QuerySmarttagJobResponseBody) SetUserData(v string) *QuerySmarttagJobResponseBody {
+	s.UserData = &v
+	return s
+}
+
+type QuerySmarttagJobResponseBodyResults struct {
+	Result []*QuerySmarttagJobResponseBodyResultsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s QuerySmarttagJobResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmarttagJobResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmarttagJobResponseBodyResults) SetResult(v []*QuerySmarttagJobResponseBodyResultsResult) *QuerySmarttagJobResponseBodyResults {
+	s.Result = v
+	return s
+}
+
+type QuerySmarttagJobResponseBodyResultsResult struct {
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QuerySmarttagJobResponseBodyResultsResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmarttagJobResponseBodyResultsResult) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmarttagJobResponseBodyResultsResult) SetData(v string) *QuerySmarttagJobResponseBodyResultsResult {
+	s.Data = &v
+	return s
+}
+
+func (s *QuerySmarttagJobResponseBodyResultsResult) SetType(v string) *QuerySmarttagJobResponseBodyResultsResult {
+	s.Type = &v
+	return s
+}
+
+type QuerySmarttagJobResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySmarttagJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySmarttagJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmarttagJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmarttagJobResponse) SetHeaders(v map[string]*string) *QuerySmarttagJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySmarttagJobResponse) SetStatusCode(v int32) *QuerySmarttagJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySmarttagJobResponse) SetBody(v *QuerySmarttagJobResponseBody) *QuerySmarttagJobResponse {
+	s.Body = v
+	return s
+}
+
 type RefreshUploadMediaRequest struct {
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
@@ -22603,8 +22681,7 @@ func (s *RefreshUploadMediaRequest) SetMediaId(v string) *RefreshUploadMediaRequ
 }
 
 type RefreshUploadMediaResponseBody struct {
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// RequestId
+	MediaId       *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UploadAddress *string `json:"UploadAddress,omitempty" xml:"UploadAddress,omitempty"`
 	UploadAuth    *string `json:"UploadAuth,omitempty" xml:"UploadAuth,omitempty"`
@@ -22668,29 +22745,19 @@ func (s *RefreshUploadMediaResponse) SetBody(v *RefreshUploadMediaResponseBody) 
 }
 
 type RegisterMediaInfoRequest struct {
-	// 媒资业务类型
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	CateId       *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// 客户端token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 封面图，仅视频媒资有效
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 媒资媒体url
-	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// 标签,如果有多个标签用逗号隔开
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 媒资媒体类型
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 是否覆盖已有媒资
-	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	// 注册媒资的配置
+	BusinessType   *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	CateId         *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CoverURL       *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputURL       *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	MediaTags      *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	MediaType      *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	Overwrite      *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
 	RegisterConfig *string `json:"RegisterConfig,omitempty" xml:"RegisterConfig,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 用户数据，最大1024字节
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData       *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	WorkflowId     *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
 func (s RegisterMediaInfoRequest) String() string {
@@ -22761,10 +22828,13 @@ func (s *RegisterMediaInfoRequest) SetUserData(v string) *RegisterMediaInfoReque
 	return s
 }
 
+func (s *RegisterMediaInfoRequest) SetWorkflowId(v string) *RegisterMediaInfoRequest {
+	s.WorkflowId = &v
+	return s
+}
+
 type RegisterMediaInfoResponseBody struct {
-	// ICE媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 请求ID
+	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22897,22 +22967,14 @@ func (s *RegisterMediaStreamResponse) SetBody(v *RegisterMediaStreamResponseBody
 }
 
 type SearchEditingProjectRequest struct {
-	// 创建来源
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	// CreationTime（创建时间）的结束时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 分页参数
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页参数
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
-	// 结果排序方式
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// CreateTime（创建时间）的开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 云剪辑工程状态。多个用逗号分隔
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板类型
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MaxResults   *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ProjectType  *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	SortBy       *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -22970,14 +23032,11 @@ func (s *SearchEditingProjectRequest) SetTemplateType(v string) *SearchEditingPr
 }
 
 type SearchEditingProjectResponseBody struct {
-	// 云剪辑工程总数
-	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 云剪辑工程列表
+	MaxResults  *int64                                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	ProjectList []*SearchEditingProjectResponseBodyProjectList `json:"ProjectList,omitempty" xml:"ProjectList,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s SearchEditingProjectResponseBody) String() string {
@@ -23016,35 +23075,21 @@ func (s *SearchEditingProjectResponseBody) SetTotalCount(v int64) *SearchEditing
 type SearchEditingProjectResponseBodyProjectList struct {
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// 云剪辑工程封面
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 创建来源
-	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	// 云剪辑工程创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 云剪辑工程描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 云剪辑工程总时长
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 云剪辑工程合成失败的错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 云剪辑工程合成失败的消息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 最后一次修改来源
+	CoverURL       *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateSource   *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration       *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
-	// 云剪辑工程最新修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 云剪辑工程ID
-	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
-	// 云剪辑工程状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板类型
-	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// 云剪辑工程时间线
-	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	// 云剪辑工程标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	ModifiedTime   *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectType    *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateType   *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	Timeline       *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s SearchEditingProjectResponseBodyProjectList) String() string {
@@ -23170,16 +23215,11 @@ func (s *SearchEditingProjectResponse) SetBody(v *SearchEditingProjectResponseBo
 }
 
 type SearchMediaRequest struct {
-	// 实体Id
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// 过滤条件
-	Match *string `json:"Match,omitempty" xml:"Match,omitempty"`
-	// 当前页码。默认值为1
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 每页返回的数据条数。默认值为10，最大值为100
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 排序字段和排序顺序。多个使用英文逗号（,）分隔
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Match    *string `json:"Match,omitempty" xml:"Match,omitempty"`
+	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy   *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s SearchMediaRequest) String() string {
@@ -23216,8 +23256,7 @@ func (s *SearchMediaRequest) SetSortBy(v string) *SearchMediaRequest {
 }
 
 type SearchMediaResponseBody struct {
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 符合要求的媒资集合
+	Code          *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	MediaInfoList []*SearchMediaResponseBodyMediaInfoList `json:"MediaInfoList,omitempty" xml:"MediaInfoList,omitempty" type:"Repeated"`
 	RequestId     *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success       *string                                 `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -23258,12 +23297,9 @@ func (s *SearchMediaResponseBody) SetTotal(v int64) *SearchMediaResponseBody {
 }
 
 type SearchMediaResponseBodyMediaInfoList struct {
-	// FileInfos
-	FileInfoList []*SearchMediaResponseBodyMediaInfoListFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// BasicInfo
+	FileInfoList   []*SearchMediaResponseBodyMediaInfoListFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	MediaBasicInfo *SearchMediaResponseBodyMediaInfoListMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId        *string                                             `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s SearchMediaResponseBodyMediaInfoList) String() string {
@@ -23290,7 +23326,6 @@ func (s *SearchMediaResponseBodyMediaInfoList) SetMediaId(v string) *SearchMedia
 }
 
 type SearchMediaResponseBodyMediaInfoListFileInfoList struct {
-	// 文件基础信息，包含时长，大小等
 	FileBasicInfo *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -23308,29 +23343,19 @@ func (s *SearchMediaResponseBodyMediaInfoListFileInfoList) SetFileBasicInfo(v *S
 }
 
 type SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo struct {
-	// 码率
-	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小（字节）
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
-	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件oss地址
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 封装格式
-	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
+	Bitrate      *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize     *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	FileStatus   *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	FileType     *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FormatName   *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
 	Height       *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 文件存储区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width        *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo) String() string {
@@ -23407,46 +23432,28 @@ func (s *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo) SetWidth
 }
 
 type SearchMediaResponseBodyMediaInfoListMediaBasicInfo struct {
-	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// 媒资业务类型
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	CateId       *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	CateName     *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 封面地址
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 媒资创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 媒资删除时间
-	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// 内容描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 待注册的媒资在相应系统中的地址
-	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// MediaId
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 标签
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 媒资媒体类型
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 媒资修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 截图
-	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 雪碧图
-	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// 资源状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 转码状态
+	Biz             *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
+	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	CateId          *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateName        *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CoverURL        *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletedTime     *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputURL        *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	MediaId         *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaTags       *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	MediaType       *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	ModifiedTime    *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Snapshots       *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SpriteImages    *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
 	UploadSource    *string `json:"UploadSource,omitempty" xml:"UploadSource,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SearchMediaResponseBodyMediaInfoListMediaBasicInfo) String() string {
@@ -23657,9 +23664,8 @@ func (s *SearchPublicMediaInfoRequest) SetSortBy(v string) *SearchPublicMediaInf
 
 type SearchPublicMediaInfoResponseBody struct {
 	PublicMediaInfos []*SearchPublicMediaInfoResponseBodyPublicMediaInfos `json:"PublicMediaInfos,omitempty" xml:"PublicMediaInfos,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId        *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int64                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s SearchPublicMediaInfoResponseBody) String() string {
@@ -23722,10 +23728,8 @@ func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfos) SetRemainingAuthTime
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo struct {
 	DynamicMetaData *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData `json:"DynamicMetaData,omitempty" xml:"DynamicMetaData,omitempty" type:"Struct"`
-	// BasicInfo
-	MediaBasicInfo *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaBasicInfo  *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo  `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	MediaId         *string                                                                    `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo) String() string {
@@ -23775,36 +23779,21 @@ func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaDa
 }
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo struct {
-	// 媒资业务类型
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 封面地址
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 媒资创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 媒资删除时间
-	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// 内容描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// MediaId
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 标签
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 媒资媒体类型
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 媒资修改时间
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CoverURL     *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletedTime  *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaTags    *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	MediaType    *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 雪碧图
+	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// 资源状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) String() string {
@@ -23919,10 +23908,78 @@ func (s *SearchPublicMediaInfoResponse) SetBody(v *SearchPublicMediaInfoResponse
 	return s
 }
 
+type SendLiveSnapshotJobCommandRequest struct {
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SendLiveSnapshotJobCommandRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendLiveSnapshotJobCommandRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendLiveSnapshotJobCommandRequest) SetCommand(v string) *SendLiveSnapshotJobCommandRequest {
+	s.Command = &v
+	return s
+}
+
+func (s *SendLiveSnapshotJobCommandRequest) SetJobId(v string) *SendLiveSnapshotJobCommandRequest {
+	s.JobId = &v
+	return s
+}
+
+type SendLiveSnapshotJobCommandResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SendLiveSnapshotJobCommandResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendLiveSnapshotJobCommandResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendLiveSnapshotJobCommandResponseBody) SetRequestId(v string) *SendLiveSnapshotJobCommandResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SendLiveSnapshotJobCommandResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendLiveSnapshotJobCommandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendLiveSnapshotJobCommandResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendLiveSnapshotJobCommandResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendLiveSnapshotJobCommandResponse) SetHeaders(v map[string]*string) *SendLiveSnapshotJobCommandResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendLiveSnapshotJobCommandResponse) SetStatusCode(v int32) *SendLiveSnapshotJobCommandResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendLiveSnapshotJobCommandResponse) SetBody(v *SendLiveSnapshotJobCommandResponseBody) *SendLiveSnapshotJobCommandResponse {
+	s.Body = v
+	return s
+}
+
 type SendLiveTranscodeJobCommandRequest struct {
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// 模板Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s SendLiveTranscodeJobCommandRequest) String() string {
@@ -23944,7 +24001,6 @@ func (s *SendLiveTranscodeJobCommandRequest) SetJobId(v string) *SendLiveTransco
 }
 
 type SendLiveTranscodeJobCommandResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23990,191 +24046,7 @@ func (s *SendLiveTranscodeJobCommandResponse) SetBody(v *SendLiveTranscodeJobCom
 	return s
 }
 
-type SetAuditConfigRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Channel     *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	LegalSwitch *string `json:"LegalSwitch,omitempty" xml:"LegalSwitch,omitempty"`
-}
-
-func (s SetAuditConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetAuditConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetAuditConfigRequest) SetAppId(v string) *SetAuditConfigRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *SetAuditConfigRequest) SetChannel(v string) *SetAuditConfigRequest {
-	s.Channel = &v
-	return s
-}
-
-func (s *SetAuditConfigRequest) SetLegalSwitch(v string) *SetAuditConfigRequest {
-	s.LegalSwitch = &v
-	return s
-}
-
-type SetAuditConfigResponseBody struct {
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SetAuditConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetAuditConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetAuditConfigResponseBody) SetRequestId(v string) *SetAuditConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SetAuditConfigResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetAuditConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetAuditConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetAuditConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetAuditConfigResponse) SetHeaders(v map[string]*string) *SetAuditConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetAuditConfigResponse) SetStatusCode(v int32) *SetAuditConfigResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SetAuditConfigResponse) SetBody(v *SetAuditConfigResponseBody) *SetAuditConfigResponse {
-	s.Body = v
-	return s
-}
-
-type SetClientConfigRequest struct {
-	// 云端配置所对应的IOS BundleId
-	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// 端侧上传存储Bucket信息
-	ClientUploadBucket *string `json:"ClientUploadBucket,omitempty" xml:"ClientUploadBucket,omitempty"`
-	// 端侧上传存储bucket下路径信息
-	ClientUploadPath *string `json:"ClientUploadPath,omitempty" xml:"ClientUploadPath,omitempty"`
-	// 端侧上传存储类型，vod_oss_bucket: vod托管bucket，user_oss_bucket: 用户私有bucket
-	ClientUploadStorageType *string `json:"ClientUploadStorageType,omitempty" xml:"ClientUploadStorageType,omitempty"`
-	// 云端配置所对应的安卓包名。
-	PkgName *string `json:"PkgName,omitempty" xml:"PkgName,omitempty"`
-	// 云端配置所对应的安卓包签名，当包名不为空时，必填。
-	PkgSignature *string `json:"PkgSignature,omitempty" xml:"PkgSignature,omitempty"`
-}
-
-func (s SetClientConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetClientConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetClientConfigRequest) SetBundleId(v string) *SetClientConfigRequest {
-	s.BundleId = &v
-	return s
-}
-
-func (s *SetClientConfigRequest) SetClientUploadBucket(v string) *SetClientConfigRequest {
-	s.ClientUploadBucket = &v
-	return s
-}
-
-func (s *SetClientConfigRequest) SetClientUploadPath(v string) *SetClientConfigRequest {
-	s.ClientUploadPath = &v
-	return s
-}
-
-func (s *SetClientConfigRequest) SetClientUploadStorageType(v string) *SetClientConfigRequest {
-	s.ClientUploadStorageType = &v
-	return s
-}
-
-func (s *SetClientConfigRequest) SetPkgName(v string) *SetClientConfigRequest {
-	s.PkgName = &v
-	return s
-}
-
-func (s *SetClientConfigRequest) SetPkgSignature(v string) *SetClientConfigRequest {
-	s.PkgSignature = &v
-	return s
-}
-
-type SetClientConfigResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 配置是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SetClientConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetClientConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetClientConfigResponseBody) SetRequestId(v string) *SetClientConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SetClientConfigResponseBody) SetSuccess(v bool) *SetClientConfigResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SetClientConfigResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetClientConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetClientConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetClientConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetClientConfigResponse) SetHeaders(v map[string]*string) *SetClientConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetClientConfigResponse) SetStatusCode(v int32) *SetClientConfigResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SetClientConfigResponse) SetBody(v *SetClientConfigResponseBody) *SetClientConfigResponse {
-	s.Body = v
-	return s
-}
-
 type SetDefaultCustomTemplateRequest struct {
-	// 模板ID
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -24192,10 +24064,8 @@ func (s *SetDefaultCustomTemplateRequest) SetTemplateId(v string) *SetDefaultCus
 }
 
 type SetDefaultCustomTemplateResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetDefaultCustomTemplateResponseBody) String() string {
@@ -24275,7 +24145,6 @@ func (s *SetDefaultStorageLocationRequest) SetStorageType(v string) *SetDefaultS
 }
 
 type SetDefaultStorageLocationResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -24375,10 +24244,8 @@ func (s *SetEventCallbackRequest) SetEventTypeList(v string) *SetEventCallbackRe
 }
 
 type SetEventCallbackResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否设置成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetEventCallbackResponseBody) String() string {
@@ -24429,18 +24296,12 @@ func (s *SetEventCallbackResponse) SetBody(v *SetEventCallbackResponseBody) *Set
 }
 
 type SubmitASRJobRequest struct {
-	// 任务描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 持续时间
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 输入配置，支持OSS地址和内容库素材ID
-	InputFile *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 任务标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 自定义设置，为JSON字符串
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Duration    *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InputFile   *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitASRJobRequest) String() string {
@@ -24482,12 +24343,9 @@ func (s *SubmitASRJobRequest) SetUserData(v string) *SubmitASRJobRequest {
 }
 
 type SubmitASRJobResponseBody struct {
-	// 智能任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求Id
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务状态
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s SubmitASRJobResponseBody) String() string {
@@ -24543,20 +24401,13 @@ func (s *SubmitASRJobResponse) SetBody(v *SubmitASRJobResponseBody) *SubmitASRJo
 }
 
 type SubmitAudioProduceJobRequest struct {
-	// 任务描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 音频生产配置
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	// 文本内容。  最大支持300个汉字
-	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
-	// 音频输出配置
-	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	// 是否覆盖现有OSS文件
-	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	// 任务标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 自定义数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	InputConfig   *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	OutputConfig  *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	Overwrite     *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitAudioProduceJobRequest) String() string {
@@ -24603,12 +24454,9 @@ func (s *SubmitAudioProduceJobRequest) SetUserData(v string) *SubmitAudioProduce
 }
 
 type SubmitAudioProduceJobResponseBody struct {
-	// 任务ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求Id
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务状态
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s SubmitAudioProduceJobResponseBody) String() string {
@@ -24663,182 +24511,20 @@ func (s *SubmitAudioProduceJobResponse) SetBody(v *SubmitAudioProduceJobResponse
 	return s
 }
 
-type SubmitBatchMediaProducingJobRequest struct {
-	// 调用方保证请求幂等性Client Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 批量混剪ClipsParam
-	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	// 剪辑合成配置
-	EditingProduceConfig *string `json:"EditingProduceConfig,omitempty" xml:"EditingProduceConfig,omitempty"`
-	// 任务名称
-	JobTitle *string `json:"JobTitle,omitempty" xml:"JobTitle,omitempty"`
-	// 用户合成输出配置
-	OutputMediaConfig *string `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty"`
-	// 用户合成输出目标
-	OutputMediaTarget *string `json:"OutputMediaTarget,omitempty" xml:"OutputMediaTarget,omitempty"`
-	// 批量混剪下合成成片的个数
-	OutputNum *int32 `json:"OutputNum,omitempty" xml:"OutputNum,omitempty"`
-	// 剪辑任务工程信息
-	ProjectMetadata *string `json:"ProjectMetadata,omitempty" xml:"ProjectMetadata,omitempty"`
-	// 任务来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 提交任务类型
-	SubmitBy *string `json:"SubmitBy,omitempty" xml:"SubmitBy,omitempty"`
-	// 批量混剪模版id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 用户配置UserData
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-}
-
-func (s SubmitBatchMediaProducingJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitBatchMediaProducingJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitBatchMediaProducingJobRequest) SetClientToken(v string) *SubmitBatchMediaProducingJobRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobRequest) SetClipsParam(v string) *SubmitBatchMediaProducingJobRequest {
-	s.ClipsParam = &v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobRequest) SetEditingProduceConfig(v string) *SubmitBatchMediaProducingJobRequest {
-	s.EditingProduceConfig = &v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobRequest) SetJobTitle(v string) *SubmitBatchMediaProducingJobRequest {
-	s.JobTitle = &v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobRequest) SetOutputMediaConfig(v string) *SubmitBatchMediaProducingJobRequest {
-	s.OutputMediaConfig = &v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobRequest) SetOutputMediaTarget(v string) *SubmitBatchMediaProducingJobRequest {
-	s.OutputMediaTarget = &v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobRequest) SetOutputNum(v int32) *SubmitBatchMediaProducingJobRequest {
-	s.OutputNum = &v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobRequest) SetProjectMetadata(v string) *SubmitBatchMediaProducingJobRequest {
-	s.ProjectMetadata = &v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobRequest) SetSource(v string) *SubmitBatchMediaProducingJobRequest {
-	s.Source = &v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobRequest) SetSubmitBy(v string) *SubmitBatchMediaProducingJobRequest {
-	s.SubmitBy = &v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobRequest) SetTemplateId(v string) *SubmitBatchMediaProducingJobRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobRequest) SetUserData(v string) *SubmitBatchMediaProducingJobRequest {
-	s.UserData = &v
-	return s
-}
-
-type SubmitBatchMediaProducingJobResponseBody struct {
-	// 批量混剪任务jobId
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitBatchMediaProducingJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitBatchMediaProducingJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitBatchMediaProducingJobResponseBody) SetJobId(v string) *SubmitBatchMediaProducingJobResponseBody {
-	s.JobId = &v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobResponseBody) SetRequestId(v string) *SubmitBatchMediaProducingJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitBatchMediaProducingJobResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitBatchMediaProducingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitBatchMediaProducingJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitBatchMediaProducingJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitBatchMediaProducingJobResponse) SetHeaders(v map[string]*string) *SubmitBatchMediaProducingJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobResponse) SetStatusCode(v int32) *SubmitBatchMediaProducingJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitBatchMediaProducingJobResponse) SetBody(v *SubmitBatchMediaProducingJobResponseBody) *SubmitBatchMediaProducingJobResponse {
-	s.Body = v
-	return s
-}
-
 type SubmitDynamicChartJobRequest struct {
-	// 坐标样式。XAxisFontInterval不传或为0则算法自动计算间距
-	AxisParams *string `json:"AxisParams,omitempty" xml:"AxisParams,omitempty"`
-	// 图表背景
-	Background *string `json:"Background,omitempty" xml:"Background,omitempty"`
-	// 图表配置
-	ChartConfig *string `json:"ChartConfig,omitempty" xml:"ChartConfig,omitempty"`
-	// 主标题
-	ChartTitle *string `json:"ChartTitle,omitempty" xml:"ChartTitle,omitempty"`
-	// 图表类型
-	ChartType *string `json:"ChartType,omitempty" xml:"ChartType,omitempty"`
-	// 数据来源
-	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	// 任务描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 图表输入数据
-	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// 输出设置
+	AxisParams   *string `json:"AxisParams,omitempty" xml:"AxisParams,omitempty"`
+	Background   *string `json:"Background,omitempty" xml:"Background,omitempty"`
+	ChartConfig  *string `json:"ChartConfig,omitempty" xml:"ChartConfig,omitempty"`
+	ChartTitle   *string `json:"ChartTitle,omitempty" xml:"ChartTitle,omitempty"`
+	ChartType    *string `json:"ChartType,omitempty" xml:"ChartType,omitempty"`
+	DataSource   *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Input        *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	// 副标题
-	Subtitle *string `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
-	// 任务标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 单位
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// 自定义数据，JSON格式
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Subtitle     *string `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Unit         *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitDynamicChartJobRequest) String() string {
@@ -24915,9 +24601,7 @@ func (s *SubmitDynamicChartJobRequest) SetUserData(v string) *SubmitDynamicChart
 }
 
 type SubmitDynamicChartJobResponseBody struct {
-	// 任务Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求Id
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25108,14 +24792,13 @@ func (s *SubmitDynamicImageJobRequestTemplateConfig) SetTemplateId(v string) *Su
 }
 
 type SubmitDynamicImageJobRequestTemplateConfigOverwriteParams struct {
-	Format        *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	Fps           *int32  `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	Height        *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	LongShortMode *bool   `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
-	ScanMode      *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	// 时间线参数
-	TimeSpan *SubmitDynamicImageJobRequestTemplateConfigOverwriteParamsTimeSpan `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty" type:"Struct"`
-	Width    *int32                                                             `json:"Width,omitempty" xml:"Width,omitempty"`
+	Format        *string                                                            `json:"Format,omitempty" xml:"Format,omitempty"`
+	Fps           *int32                                                             `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Height        *int32                                                             `json:"Height,omitempty" xml:"Height,omitempty"`
+	LongShortMode *bool                                                              `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
+	ScanMode      *string                                                            `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	TimeSpan      *SubmitDynamicImageJobRequestTemplateConfigOverwriteParamsTimeSpan `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty" type:"Struct"`
+	Width         *int32                                                             `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitDynamicImageJobRequestTemplateConfigOverwriteParams) String() string {
@@ -25238,8 +24921,7 @@ func (s *SubmitDynamicImageJobShrinkRequest) SetUserData(v string) *SubmitDynami
 }
 
 type SubmitDynamicImageJobResponseBody struct {
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求ID
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25478,8 +25160,7 @@ func (s *SubmitIProductionJobShrinkRequest) SetUserData(v string) *SubmitIProduc
 }
 
 type SubmitIProductionJobResponseBody struct {
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25588,7 +25269,6 @@ type SubmitLiveEditingJobResponseBody struct {
 	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	MediaURL  *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25650,6 +25330,593 @@ func (s *SubmitLiveEditingJobResponse) SetStatusCode(v int32) *SubmitLiveEditing
 }
 
 func (s *SubmitLiveEditingJobResponse) SetBody(v *SubmitLiveEditingJobResponseBody) *SubmitLiveEditingJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitLiveRecordJobRequest struct {
+	Name         *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	NotifyUrl    *string                                 `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	RecordOutput *SubmitLiveRecordJobRequestRecordOutput `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty" type:"Struct"`
+	StreamInput  *SubmitLiveRecordJobRequestStreamInput  `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
+	TemplateId   *string                                 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s SubmitLiveRecordJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveRecordJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveRecordJobRequest) SetName(v string) *SubmitLiveRecordJobRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *SubmitLiveRecordJobRequest) SetNotifyUrl(v string) *SubmitLiveRecordJobRequest {
+	s.NotifyUrl = &v
+	return s
+}
+
+func (s *SubmitLiveRecordJobRequest) SetRecordOutput(v *SubmitLiveRecordJobRequestRecordOutput) *SubmitLiveRecordJobRequest {
+	s.RecordOutput = v
+	return s
+}
+
+func (s *SubmitLiveRecordJobRequest) SetStreamInput(v *SubmitLiveRecordJobRequestStreamInput) *SubmitLiveRecordJobRequest {
+	s.StreamInput = v
+	return s
+}
+
+func (s *SubmitLiveRecordJobRequest) SetTemplateId(v string) *SubmitLiveRecordJobRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type SubmitLiveRecordJobRequestRecordOutput struct {
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitLiveRecordJobRequestRecordOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveRecordJobRequestRecordOutput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveRecordJobRequestRecordOutput) SetBucket(v string) *SubmitLiveRecordJobRequestRecordOutput {
+	s.Bucket = &v
+	return s
+}
+
+func (s *SubmitLiveRecordJobRequestRecordOutput) SetEndpoint(v string) *SubmitLiveRecordJobRequestRecordOutput {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *SubmitLiveRecordJobRequestRecordOutput) SetType(v string) *SubmitLiveRecordJobRequestRecordOutput {
+	s.Type = &v
+	return s
+}
+
+type SubmitLiveRecordJobRequestStreamInput struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s SubmitLiveRecordJobRequestStreamInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveRecordJobRequestStreamInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveRecordJobRequestStreamInput) SetType(v string) *SubmitLiveRecordJobRequestStreamInput {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitLiveRecordJobRequestStreamInput) SetUrl(v string) *SubmitLiveRecordJobRequestStreamInput {
+	s.Url = &v
+	return s
+}
+
+type SubmitLiveRecordJobShrinkRequest struct {
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NotifyUrl          *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	RecordOutputShrink *string `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty"`
+	StreamInputShrink  *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
+	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s SubmitLiveRecordJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveRecordJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveRecordJobShrinkRequest) SetName(v string) *SubmitLiveRecordJobShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *SubmitLiveRecordJobShrinkRequest) SetNotifyUrl(v string) *SubmitLiveRecordJobShrinkRequest {
+	s.NotifyUrl = &v
+	return s
+}
+
+func (s *SubmitLiveRecordJobShrinkRequest) SetRecordOutputShrink(v string) *SubmitLiveRecordJobShrinkRequest {
+	s.RecordOutputShrink = &v
+	return s
+}
+
+func (s *SubmitLiveRecordJobShrinkRequest) SetStreamInputShrink(v string) *SubmitLiveRecordJobShrinkRequest {
+	s.StreamInputShrink = &v
+	return s
+}
+
+func (s *SubmitLiveRecordJobShrinkRequest) SetTemplateId(v string) *SubmitLiveRecordJobShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type SubmitLiveRecordJobResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitLiveRecordJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveRecordJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveRecordJobResponseBody) SetJobId(v string) *SubmitLiveRecordJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitLiveRecordJobResponseBody) SetRequestId(v string) *SubmitLiveRecordJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitLiveRecordJobResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitLiveRecordJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitLiveRecordJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveRecordJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveRecordJobResponse) SetHeaders(v map[string]*string) *SubmitLiveRecordJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitLiveRecordJobResponse) SetStatusCode(v int32) *SubmitLiveRecordJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitLiveRecordJobResponse) SetBody(v *SubmitLiveRecordJobResponseBody) *SubmitLiveRecordJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitLiveSnapshotJobRequest struct {
+	CallbackUrl    *string                                     `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	JobName        *string                                     `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	SnapshotOutput *SubmitLiveSnapshotJobRequestSnapshotOutput `json:"SnapshotOutput,omitempty" xml:"SnapshotOutput,omitempty" type:"Struct"`
+	StreamInput    *SubmitLiveSnapshotJobRequestStreamInput    `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
+	TemplateId     *string                                     `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s SubmitLiveSnapshotJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveSnapshotJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveSnapshotJobRequest) SetCallbackUrl(v string) *SubmitLiveSnapshotJobRequest {
+	s.CallbackUrl = &v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobRequest) SetJobName(v string) *SubmitLiveSnapshotJobRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobRequest) SetSnapshotOutput(v *SubmitLiveSnapshotJobRequestSnapshotOutput) *SubmitLiveSnapshotJobRequest {
+	s.SnapshotOutput = v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobRequest) SetStreamInput(v *SubmitLiveSnapshotJobRequestStreamInput) *SubmitLiveSnapshotJobRequest {
+	s.StreamInput = v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobRequest) SetTemplateId(v string) *SubmitLiveSnapshotJobRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type SubmitLiveSnapshotJobRequestSnapshotOutput struct {
+	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Endpoint    *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+}
+
+func (s SubmitLiveSnapshotJobRequestSnapshotOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveSnapshotJobRequestSnapshotOutput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveSnapshotJobRequestSnapshotOutput) SetBucket(v string) *SubmitLiveSnapshotJobRequestSnapshotOutput {
+	s.Bucket = &v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobRequestSnapshotOutput) SetEndpoint(v string) *SubmitLiveSnapshotJobRequestSnapshotOutput {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobRequestSnapshotOutput) SetStorageType(v string) *SubmitLiveSnapshotJobRequestSnapshotOutput {
+	s.StorageType = &v
+	return s
+}
+
+type SubmitLiveSnapshotJobRequestStreamInput struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s SubmitLiveSnapshotJobRequestStreamInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveSnapshotJobRequestStreamInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveSnapshotJobRequestStreamInput) SetType(v string) *SubmitLiveSnapshotJobRequestStreamInput {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobRequestStreamInput) SetUrl(v string) *SubmitLiveSnapshotJobRequestStreamInput {
+	s.Url = &v
+	return s
+}
+
+type SubmitLiveSnapshotJobShrinkRequest struct {
+	CallbackUrl          *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	JobName              *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	SnapshotOutputShrink *string `json:"SnapshotOutput,omitempty" xml:"SnapshotOutput,omitempty"`
+	StreamInputShrink    *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
+	TemplateId           *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s SubmitLiveSnapshotJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveSnapshotJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveSnapshotJobShrinkRequest) SetCallbackUrl(v string) *SubmitLiveSnapshotJobShrinkRequest {
+	s.CallbackUrl = &v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobShrinkRequest) SetJobName(v string) *SubmitLiveSnapshotJobShrinkRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobShrinkRequest) SetSnapshotOutputShrink(v string) *SubmitLiveSnapshotJobShrinkRequest {
+	s.SnapshotOutputShrink = &v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobShrinkRequest) SetStreamInputShrink(v string) *SubmitLiveSnapshotJobShrinkRequest {
+	s.StreamInputShrink = &v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobShrinkRequest) SetTemplateId(v string) *SubmitLiveSnapshotJobShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type SubmitLiveSnapshotJobResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitLiveSnapshotJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveSnapshotJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveSnapshotJobResponseBody) SetJobId(v string) *SubmitLiveSnapshotJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobResponseBody) SetRequestId(v string) *SubmitLiveSnapshotJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitLiveSnapshotJobResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitLiveSnapshotJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitLiveSnapshotJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveSnapshotJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveSnapshotJobResponse) SetHeaders(v map[string]*string) *SubmitLiveSnapshotJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobResponse) SetStatusCode(v int32) *SubmitLiveSnapshotJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitLiveSnapshotJobResponse) SetBody(v *SubmitLiveSnapshotJobResponseBody) *SubmitLiveSnapshotJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitLiveTranscodeJobRequest struct {
+	Name            *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	StartMode       *int32                                        `json:"StartMode,omitempty" xml:"StartMode,omitempty"`
+	StreamInput     *SubmitLiveTranscodeJobRequestStreamInput     `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
+	TemplateId      *string                                       `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TimedConfig     *SubmitLiveTranscodeJobRequestTimedConfig     `json:"TimedConfig,omitempty" xml:"TimedConfig,omitempty" type:"Struct"`
+	TranscodeOutput *SubmitLiveTranscodeJobRequestTranscodeOutput `json:"TranscodeOutput,omitempty" xml:"TranscodeOutput,omitempty" type:"Struct"`
+}
+
+func (s SubmitLiveTranscodeJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveTranscodeJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveTranscodeJobRequest) SetName(v string) *SubmitLiveTranscodeJobRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobRequest) SetStartMode(v int32) *SubmitLiveTranscodeJobRequest {
+	s.StartMode = &v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobRequest) SetStreamInput(v *SubmitLiveTranscodeJobRequestStreamInput) *SubmitLiveTranscodeJobRequest {
+	s.StreamInput = v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobRequest) SetTemplateId(v string) *SubmitLiveTranscodeJobRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobRequest) SetTimedConfig(v *SubmitLiveTranscodeJobRequestTimedConfig) *SubmitLiveTranscodeJobRequest {
+	s.TimedConfig = v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobRequest) SetTranscodeOutput(v *SubmitLiveTranscodeJobRequestTranscodeOutput) *SubmitLiveTranscodeJobRequest {
+	s.TranscodeOutput = v
+	return s
+}
+
+type SubmitLiveTranscodeJobRequestStreamInput struct {
+	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitLiveTranscodeJobRequestStreamInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveTranscodeJobRequestStreamInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveTranscodeJobRequestStreamInput) SetInputUrl(v string) *SubmitLiveTranscodeJobRequestStreamInput {
+	s.InputUrl = &v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobRequestStreamInput) SetType(v string) *SubmitLiveTranscodeJobRequestStreamInput {
+	s.Type = &v
+	return s
+}
+
+type SubmitLiveTranscodeJobRequestTimedConfig struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s SubmitLiveTranscodeJobRequestTimedConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveTranscodeJobRequestTimedConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveTranscodeJobRequestTimedConfig) SetEndTime(v string) *SubmitLiveTranscodeJobRequestTimedConfig {
+	s.EndTime = &v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobRequestTimedConfig) SetStartTime(v string) *SubmitLiveTranscodeJobRequestTimedConfig {
+	s.StartTime = &v
+	return s
+}
+
+type SubmitLiveTranscodeJobRequestTranscodeOutput struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitLiveTranscodeJobRequestTranscodeOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveTranscodeJobRequestTranscodeOutput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveTranscodeJobRequestTranscodeOutput) SetDomainName(v string) *SubmitLiveTranscodeJobRequestTranscodeOutput {
+	s.DomainName = &v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobRequestTranscodeOutput) SetType(v string) *SubmitLiveTranscodeJobRequestTranscodeOutput {
+	s.Type = &v
+	return s
+}
+
+type SubmitLiveTranscodeJobShrinkRequest struct {
+	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	StartMode             *int32  `json:"StartMode,omitempty" xml:"StartMode,omitempty"`
+	StreamInputShrink     *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
+	TemplateId            *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TimedConfigShrink     *string `json:"TimedConfig,omitempty" xml:"TimedConfig,omitempty"`
+	TranscodeOutputShrink *string `json:"TranscodeOutput,omitempty" xml:"TranscodeOutput,omitempty"`
+}
+
+func (s SubmitLiveTranscodeJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveTranscodeJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveTranscodeJobShrinkRequest) SetName(v string) *SubmitLiveTranscodeJobShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobShrinkRequest) SetStartMode(v int32) *SubmitLiveTranscodeJobShrinkRequest {
+	s.StartMode = &v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobShrinkRequest) SetStreamInputShrink(v string) *SubmitLiveTranscodeJobShrinkRequest {
+	s.StreamInputShrink = &v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobShrinkRequest) SetTemplateId(v string) *SubmitLiveTranscodeJobShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobShrinkRequest) SetTimedConfigShrink(v string) *SubmitLiveTranscodeJobShrinkRequest {
+	s.TimedConfigShrink = &v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobShrinkRequest) SetTranscodeOutputShrink(v string) *SubmitLiveTranscodeJobShrinkRequest {
+	s.TranscodeOutputShrink = &v
+	return s
+}
+
+type SubmitLiveTranscodeJobResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitLiveTranscodeJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveTranscodeJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveTranscodeJobResponseBody) SetJobId(v string) *SubmitLiveTranscodeJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobResponseBody) SetRequestId(v string) *SubmitLiveTranscodeJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitLiveTranscodeJobResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitLiveTranscodeJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitLiveTranscodeJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveTranscodeJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveTranscodeJobResponse) SetHeaders(v map[string]*string) *SubmitLiveTranscodeJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobResponse) SetStatusCode(v int32) *SubmitLiveTranscodeJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitLiveTranscodeJobResponse) SetBody(v *SubmitLiveTranscodeJobResponseBody) *SubmitLiveTranscodeJobResponse {
 	s.Body = v
 	return s
 }
@@ -25895,14 +26162,10 @@ func (s *SubmitMediaCensorJobResponse) SetBody(v *SubmitMediaCensorJobResponseBo
 }
 
 type SubmitMediaInfoJobRequest struct {
-	// 任务输入
-	Input *SubmitMediaInfoJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// 任务名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 调度参数
+	Input          *SubmitMediaInfoJobRequestInput          `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	Name           *string                                  `json:"Name,omitempty" xml:"Name,omitempty"`
 	ScheduleConfig *SubmitMediaInfoJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData       *string                                  `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitMediaInfoJobRequest) String() string {
@@ -25934,12 +26197,8 @@ func (s *SubmitMediaInfoJobRequest) SetUserData(v string) *SubmitMediaInfoJobReq
 }
 
 type SubmitMediaInfoJobRequestInput struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitMediaInfoJobRequestInput) String() string {
@@ -25961,10 +26220,8 @@ func (s *SubmitMediaInfoJobRequestInput) SetType(v string) *SubmitMediaInfoJobRe
 }
 
 type SubmitMediaInfoJobRequestScheduleConfig struct {
-	// 管道 id
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 任务优先级，取值范围：1~10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s SubmitMediaInfoJobRequestScheduleConfig) String() string {
@@ -25986,14 +26243,10 @@ func (s *SubmitMediaInfoJobRequestScheduleConfig) SetPriority(v int32) *SubmitMe
 }
 
 type SubmitMediaInfoJobShrinkRequest struct {
-	// 任务输入
-	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// 任务名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 调度参数
+	InputShrink          *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitMediaInfoJobShrinkRequest) String() string {
@@ -26025,10 +26278,8 @@ func (s *SubmitMediaInfoJobShrinkRequest) SetUserData(v string) *SubmitMediaInfo
 }
 
 type SubmitMediaInfoJobResponseBody struct {
-	// MediaInfoJobDTO
 	MediaInfoJob *SubmitMediaInfoJobResponseBodyMediaInfoJob `json:"MediaInfoJob,omitempty" xml:"MediaInfoJob,omitempty" type:"Struct"`
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitMediaInfoJobResponseBody) String() string {
@@ -26050,32 +26301,19 @@ func (s *SubmitMediaInfoJobResponseBody) SetRequestId(v string) *SubmitMediaInfo
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJob struct {
-	// 是否异步处理
-	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// 任务完成时间
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// 任务输入
-	Input *SubmitMediaInfoJobResponseBodyMediaInfoJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// 任务 id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 媒体信息详情
+	Async             *bool                                                        `json:"Async,omitempty" xml:"Async,omitempty"`
+	FinishTime        *string                                                      `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Input             *SubmitMediaInfoJobResponseBodyMediaInfoJobInput             `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	JobId             *string                                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	MediaInfoProperty *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty `json:"MediaInfoProperty,omitempty" xml:"MediaInfoProperty,omitempty" type:"Struct"`
-	// 任务名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调度信息
-	ScheduleConfig *SubmitMediaInfoJobResponseBodyMediaInfoJobScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// 任务状态 - Init: 已提交, Success: 成功, Fail: 失败
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 任务提交信息
-	SubmitResultJson map[string]interface{} `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
-	// 任务提交时间
-	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// 任务来源 - API, WorkFlow, Console
-	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Name              *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId         *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScheduleConfig    *SubmitMediaInfoJobResponseBodyMediaInfoJobScheduleConfig    `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	Status            *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitResultJson  map[string]interface{}                                       `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
+	SubmitTime        *string                                                      `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	TriggerSource     *string                                                      `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	UserData          *string                                                      `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitMediaInfoJobResponseBodyMediaInfoJob) String() string {
@@ -26152,12 +26390,8 @@ func (s *SubmitMediaInfoJobResponseBodyMediaInfoJob) SetUserData(v string) *Subm
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJobInput struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitMediaInfoJobResponseBodyMediaInfoJobInput) String() string {
@@ -26179,11 +26413,8 @@ func (s *SubmitMediaInfoJobResponseBodyMediaInfoJobInput) SetType(v string) *Sub
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty struct {
-	// 音频流信息
 	AudioStreamInfoList []*SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	// 基础文件信息
-	FileBasicInfo *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
-	// 视频流信息
+	FileBasicInfo       *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 	VideoStreamInfoList []*SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -26211,35 +26442,21 @@ func (s *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty) SetVideoSt
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList struct {
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道布局
-	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// 声道数
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 编码格式名
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// 编码格式
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// 编码器标签
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// 编码器标签名
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// 编码器时间基
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// 采样率
-	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 时间基
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	SampleRate     *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList) String() string {
@@ -26326,30 +26543,18 @@ func (s *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamI
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo struct {
-	// 视频码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 视频时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration   *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize   *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件url
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 视频格式名称
+	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl    *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 文件所在区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height     *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width      *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo) String() string {
@@ -26421,47 +26626,29 @@ func (s *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInf
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList struct {
-	AvgFps  *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
-	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
-	// 编码格式名
-	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
-	// 编码格式
-	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
-	// 编码格式标记
-	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
-	// 编码格式标记文本
+	AvgFps         *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	BitRate        *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	CodecLongName  *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	CodecName      *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	CodecTag       *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
 	CodecTimeBase  *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
-	// 图像显示宽高比
-	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 帧率
-	Fps        *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 编码等级
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 总帧数
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// 颜色存储格式
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 编码器预设
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 视频画面旋转角度
-	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// 采集点数宽高比
-	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// 起始时间
-	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
-	TimeBase  *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Dar            *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HasBFrames     *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt         *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile        *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Rotate         *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Sar            *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime      *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	TimeBase       *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList) String() string {
@@ -26588,10 +26775,8 @@ func (s *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamI
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJobScheduleConfig struct {
-	// 管道 id
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 任务优先级，取值范围：1~10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s SubmitMediaInfoJobResponseBodyMediaInfoJobScheduleConfig) String() string {
@@ -26719,15 +26904,10 @@ func (s *SubmitMediaProducingJobRequest) SetUserData(v string) *SubmitMediaProdu
 }
 
 type SubmitMediaProducingJobResponseBody struct {
-	// 合成作业Id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 合成ICE媒资Id
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 剪辑工程Id
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// vod媒资id
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VodMediaId *string `json:"VodMediaId,omitempty" xml:"VodMediaId,omitempty"`
 }
 
@@ -26789,6 +26969,246 @@ func (s *SubmitMediaProducingJobResponse) SetStatusCode(v int32) *SubmitMediaPro
 }
 
 func (s *SubmitMediaProducingJobResponse) SetBody(v *SubmitMediaProducingJobResponseBody) *SubmitMediaProducingJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitSmarttagJobRequest struct {
+	Content        *string                                 `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentAddr    *string                                 `json:"ContentAddr,omitempty" xml:"ContentAddr,omitempty"`
+	ContentType    *string                                 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	Input          *SubmitSmarttagJobRequestInput          `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	NotifyUrl      *string                                 `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	Params         *string                                 `json:"Params,omitempty" xml:"Params,omitempty"`
+	ScheduleConfig *SubmitSmarttagJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	TemplateId     *string                                 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Title          *string                                 `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData       *string                                 `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitSmarttagJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmarttagJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmarttagJobRequest) SetContent(v string) *SubmitSmarttagJobRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobRequest) SetContentAddr(v string) *SubmitSmarttagJobRequest {
+	s.ContentAddr = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobRequest) SetContentType(v string) *SubmitSmarttagJobRequest {
+	s.ContentType = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobRequest) SetInput(v *SubmitSmarttagJobRequestInput) *SubmitSmarttagJobRequest {
+	s.Input = v
+	return s
+}
+
+func (s *SubmitSmarttagJobRequest) SetNotifyUrl(v string) *SubmitSmarttagJobRequest {
+	s.NotifyUrl = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobRequest) SetParams(v string) *SubmitSmarttagJobRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobRequest) SetScheduleConfig(v *SubmitSmarttagJobRequestScheduleConfig) *SubmitSmarttagJobRequest {
+	s.ScheduleConfig = v
+	return s
+}
+
+func (s *SubmitSmarttagJobRequest) SetTemplateId(v string) *SubmitSmarttagJobRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobRequest) SetTitle(v string) *SubmitSmarttagJobRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobRequest) SetUserData(v string) *SubmitSmarttagJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitSmarttagJobRequestInput struct {
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitSmarttagJobRequestInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmarttagJobRequestInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmarttagJobRequestInput) SetMedia(v string) *SubmitSmarttagJobRequestInput {
+	s.Media = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobRequestInput) SetType(v string) *SubmitSmarttagJobRequestInput {
+	s.Type = &v
+	return s
+}
+
+type SubmitSmarttagJobRequestScheduleConfig struct {
+	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	Priority   *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+}
+
+func (s SubmitSmarttagJobRequestScheduleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmarttagJobRequestScheduleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmarttagJobRequestScheduleConfig) SetPipelineId(v string) *SubmitSmarttagJobRequestScheduleConfig {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobRequestScheduleConfig) SetPriority(v string) *SubmitSmarttagJobRequestScheduleConfig {
+	s.Priority = &v
+	return s
+}
+
+type SubmitSmarttagJobShrinkRequest struct {
+	Content              *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentAddr          *string `json:"ContentAddr,omitempty" xml:"ContentAddr,omitempty"`
+	ContentType          *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	InputShrink          *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	NotifyUrl            *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	Params               *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
+	TemplateId           *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Title                *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitSmarttagJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmarttagJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmarttagJobShrinkRequest) SetContent(v string) *SubmitSmarttagJobShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobShrinkRequest) SetContentAddr(v string) *SubmitSmarttagJobShrinkRequest {
+	s.ContentAddr = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobShrinkRequest) SetContentType(v string) *SubmitSmarttagJobShrinkRequest {
+	s.ContentType = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobShrinkRequest) SetInputShrink(v string) *SubmitSmarttagJobShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobShrinkRequest) SetNotifyUrl(v string) *SubmitSmarttagJobShrinkRequest {
+	s.NotifyUrl = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobShrinkRequest) SetParams(v string) *SubmitSmarttagJobShrinkRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobShrinkRequest) SetScheduleConfigShrink(v string) *SubmitSmarttagJobShrinkRequest {
+	s.ScheduleConfigShrink = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobShrinkRequest) SetTemplateId(v string) *SubmitSmarttagJobShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobShrinkRequest) SetTitle(v string) *SubmitSmarttagJobShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobShrinkRequest) SetUserData(v string) *SubmitSmarttagJobShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitSmarttagJobResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitSmarttagJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmarttagJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmarttagJobResponseBody) SetJobId(v string) *SubmitSmarttagJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobResponseBody) SetRequestId(v string) *SubmitSmarttagJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitSmarttagJobResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitSmarttagJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitSmarttagJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmarttagJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmarttagJobResponse) SetHeaders(v map[string]*string) *SubmitSmarttagJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitSmarttagJobResponse) SetStatusCode(v int32) *SubmitSmarttagJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobResponse) SetBody(v *SubmitSmarttagJobResponseBody) *SubmitSmarttagJobResponse {
 	s.Body = v
 	return s
 }
@@ -26927,16 +27347,13 @@ func (s *SubmitSnapshotJobRequestTemplateConfig) SetTemplateId(v string) *Submit
 }
 
 type SubmitSnapshotJobRequestTemplateConfigOverwriteParams struct {
-	BlackLevel *int32 `json:"BlackLevel,omitempty" xml:"BlackLevel,omitempty"`
-	Count      *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 截图公共参数
-	FrameType *string `json:"FrameType,omitempty" xml:"FrameType,omitempty"`
-	Height    *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	Interval  *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Webvtt截图配置:是否拼合输出
-	IsSptFrag           *bool  `json:"IsSptFrag,omitempty" xml:"IsSptFrag,omitempty"`
-	PixelBlackThreshold *int32 `json:"PixelBlackThreshold,omitempty" xml:"PixelBlackThreshold,omitempty"`
-	// 雪碧图配置
+	BlackLevel           *int32                                                                     `json:"BlackLevel,omitempty" xml:"BlackLevel,omitempty"`
+	Count                *int64                                                                     `json:"Count,omitempty" xml:"Count,omitempty"`
+	FrameType            *string                                                                    `json:"FrameType,omitempty" xml:"FrameType,omitempty"`
+	Height               *int32                                                                     `json:"Height,omitempty" xml:"Height,omitempty"`
+	Interval             *int64                                                                     `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IsSptFrag            *bool                                                                      `json:"IsSptFrag,omitempty" xml:"IsSptFrag,omitempty"`
+	PixelBlackThreshold  *int32                                                                     `json:"PixelBlackThreshold,omitempty" xml:"PixelBlackThreshold,omitempty"`
 	SpriteSnapshotConfig *SubmitSnapshotJobRequestTemplateConfigOverwriteParamsSpriteSnapshotConfig `json:"SpriteSnapshotConfig,omitempty" xml:"SpriteSnapshotConfig,omitempty" type:"Struct"`
 	Time                 *int64                                                                     `json:"Time,omitempty" xml:"Time,omitempty"`
 	Type                 *string                                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -27107,8 +27524,7 @@ func (s *SubmitSnapshotJobShrinkRequest) SetUserData(v string) *SubmitSnapshotJo
 }
 
 type SubmitSnapshotJobResponseBody struct {
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 请求ID
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27219,8 +27635,7 @@ func (s *SubmitSubtitleProduceJobRequest) SetUserData(v string) *SubmitSubtitleP
 }
 
 type SubmitSubtitleProduceJobResponseBody struct {
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27272,14 +27687,10 @@ func (s *SubmitSubtitleProduceJobResponse) SetBody(v *SubmitSubtitleProduceJobRe
 }
 
 type SubmitSyncMediaInfoJobRequest struct {
-	// 任务输入
-	Input *SubmitSyncMediaInfoJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// 任务名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 调度参数
+	Input          *SubmitSyncMediaInfoJobRequestInput          `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	Name           *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
 	ScheduleConfig *SubmitSyncMediaInfoJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData       *string                                      `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitSyncMediaInfoJobRequest) String() string {
@@ -27311,12 +27722,8 @@ func (s *SubmitSyncMediaInfoJobRequest) SetUserData(v string) *SubmitSyncMediaIn
 }
 
 type SubmitSyncMediaInfoJobRequestInput struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitSyncMediaInfoJobRequestInput) String() string {
@@ -27338,10 +27745,8 @@ func (s *SubmitSyncMediaInfoJobRequestInput) SetType(v string) *SubmitSyncMediaI
 }
 
 type SubmitSyncMediaInfoJobRequestScheduleConfig struct {
-	// 管道 id
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 任务优先级，取值范围：1~10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s SubmitSyncMediaInfoJobRequestScheduleConfig) String() string {
@@ -27363,14 +27768,10 @@ func (s *SubmitSyncMediaInfoJobRequestScheduleConfig) SetPriority(v int32) *Subm
 }
 
 type SubmitSyncMediaInfoJobShrinkRequest struct {
-	// 任务输入
-	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// 任务名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 调度参数
+	InputShrink          *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitSyncMediaInfoJobShrinkRequest) String() string {
@@ -27402,10 +27803,8 @@ func (s *SubmitSyncMediaInfoJobShrinkRequest) SetUserData(v string) *SubmitSyncM
 }
 
 type SubmitSyncMediaInfoJobResponseBody struct {
-	// MediaInfoJobDTO
 	MediaInfoJob *SubmitSyncMediaInfoJobResponseBodyMediaInfoJob `json:"MediaInfoJob,omitempty" xml:"MediaInfoJob,omitempty" type:"Struct"`
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitSyncMediaInfoJobResponseBody) String() string {
@@ -27427,32 +27826,19 @@ func (s *SubmitSyncMediaInfoJobResponseBody) SetRequestId(v string) *SubmitSyncM
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJob struct {
-	// 是否异步处理
-	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// 任务完成时间
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// 任务输入
-	Input *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// 任务 id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 媒体信息详情
+	Async             *bool                                                            `json:"Async,omitempty" xml:"Async,omitempty"`
+	FinishTime        *string                                                          `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Input             *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobInput             `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	JobId             *string                                                          `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	MediaInfoProperty *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty `json:"MediaInfoProperty,omitempty" xml:"MediaInfoProperty,omitempty" type:"Struct"`
-	// 任务名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 调度信息
-	ScheduleConfig *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// 任务状态 - Init: 已提交, Success: 成功, Fail: 失败
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 任务提交信息
-	SubmitResultJson map[string]interface{} `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
-	// 任务提交时间
-	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// 任务来源 - API, WorkFlow, Console
-	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Name              *string                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId         *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScheduleConfig    *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobScheduleConfig    `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	Status            *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitResultJson  map[string]interface{}                                           `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
+	SubmitTime        *string                                                          `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	TriggerSource     *string                                                          `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	UserData          *string                                                          `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitSyncMediaInfoJobResponseBodyMediaInfoJob) String() string {
@@ -27529,12 +27915,8 @@ func (s *SubmitSyncMediaInfoJobResponseBodyMediaInfoJob) SetUserData(v string) *
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJobInput struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitSyncMediaInfoJobResponseBodyMediaInfoJobInput) String() string {
@@ -27556,11 +27938,8 @@ func (s *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobInput) SetType(v string) 
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty struct {
-	// 音频流信息
 	AudioStreamInfoList []*SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	// 基础文件信息
-	FileBasicInfo *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
-	// 视频流信息
+	FileBasicInfo       *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 	VideoStreamInfoList []*SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -27588,35 +27967,21 @@ func (s *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty) SetVid
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList struct {
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道布局
-	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// 声道数
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 编码格式名
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// 编码格式
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// 编码器标签
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// 编码器标签名
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// 编码器时间基
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// 采样率
-	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 时间基
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	SampleRate     *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList) String() string {
@@ -27703,30 +28068,18 @@ func (s *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStr
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo struct {
-	// 视频码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 视频时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration   *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize   *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件url
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 视频格式名称
+	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl    *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 文件所在区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height     *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width      *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo) String() string {
@@ -27798,47 +28151,29 @@ func (s *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasi
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList struct {
-	AvgFps  *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
-	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
-	// 编码格式名
-	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
-	// 编码格式
-	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
-	// 编码格式标记
-	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
-	// 编码格式标记文本
+	AvgFps         *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	BitRate        *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	CodecLongName  *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	CodecName      *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	CodecTag       *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
 	CodecTimeBase  *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
-	// 图像显示宽高比
-	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 帧率
-	Fps        *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 编码等级
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 总帧数
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// 颜色存储格式
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 编码器预设
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 视频画面旋转角度
-	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// 采集点数宽高比
-	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// 起始时间
-	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
-	TimeBase  *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Dar            *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HasBFrames     *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt         *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile        *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Rotate         *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Sar            *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime      *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	TimeBase       *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList) String() string {
@@ -27965,10 +28300,8 @@ func (s *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStr
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJobScheduleConfig struct {
-	// 管道 id
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 任务优先级，取值范围：1~10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s SubmitSyncMediaInfoJobResponseBodyMediaInfoJobScheduleConfig) String() string {
@@ -28019,16 +28352,11 @@ func (s *SubmitSyncMediaInfoJobResponse) SetBody(v *SubmitSyncMediaInfoJobRespon
 }
 
 type SubmitTranscodeJobRequest struct {
-	// 任务输入组 (目前只支持一个)
-	InputGroup []*SubmitTranscodeJobRequestInputGroup `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
-	// 任务名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 任务输出组
-	OutputGroup []*SubmitTranscodeJobRequestOutputGroup `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
-	// 任务调度信息
+	InputGroup     []*SubmitTranscodeJobRequestInputGroup   `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
+	Name           *string                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutputGroup    []*SubmitTranscodeJobRequestOutputGroup  `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
 	ScheduleConfig *SubmitTranscodeJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData       *string                                  `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequest) String() string {
@@ -28065,12 +28393,8 @@ func (s *SubmitTranscodeJobRequest) SetUserData(v string) *SubmitTranscodeJobReq
 }
 
 type SubmitTranscodeJobRequestInputGroup struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestInputGroup) String() string {
@@ -28092,9 +28416,7 @@ func (s *SubmitTranscodeJobRequestInputGroup) SetType(v string) *SubmitTranscode
 }
 
 type SubmitTranscodeJobRequestOutputGroup struct {
-	// 输出媒体配置
-	Output *SubmitTranscodeJobRequestOutputGroupOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// 任务处理配置
+	Output        *SubmitTranscodeJobRequestOutputGroupOutput        `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
 	ProcessConfig *SubmitTranscodeJobRequestOutputGroupProcessConfig `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
 }
 
@@ -28117,12 +28439,8 @@ func (s *SubmitTranscodeJobRequestOutputGroup) SetProcessConfig(v *SubmitTransco
 }
 
 type SubmitTranscodeJobRequestOutputGroupOutput struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupOutput) String() string {
@@ -28144,14 +28462,10 @@ func (s *SubmitTranscodeJobRequestOutputGroupOutput) SetType(v string) *SubmitTr
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfig struct {
-	// 图片水印配置
 	ImageWatermarks []*SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	// 字幕压制配置
-	Subtitles []*SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	// 文字水印配置
-	TextWatermarks []*SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
-	// 转码配置
-	Transcode *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
+	Subtitles       []*SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	TextWatermarks  []*SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
+	Transcode       *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfig) String() string {
@@ -28183,10 +28497,8 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfig) SetTranscode(v *Subm
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks) String() string {
@@ -28208,20 +28520,13 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks) SetTe
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParams struct {
-	// 水印位置，x
-	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	// 水印位置，y
-	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	// 水印文件oss路径
-	File *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 参考位置: TopLeft, TopRight, BottomLeft, BottomRight  default: TopLeft
-	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	// 显示时间设置
+	Dx       *string                                                                                  `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Dy       *string                                                                                  `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	File     *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsFile     `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Height   *string                                                                                  `json:"Height,omitempty" xml:"Height,omitempty"`
+	ReferPos *string                                                                                  `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
 	Timeline *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Width    *string                                                                                  `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParams) String() string {
@@ -28268,12 +28573,8 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwri
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsFile struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsFile) String() string {
@@ -28295,10 +28596,8 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwri
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline struct {
-	// 显示时长，秒数 或者 "ToEND"
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 开始时间
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline) String() string {
@@ -28320,10 +28619,8 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwri
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles) String() string {
@@ -28345,12 +28642,9 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles) SetTemplate
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParams struct {
-	// 文件 encoding 格式
-	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	// 字幕文件
-	File *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// 字幕文件格式
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	CharEnc *string                                                                        `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	File    *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Format  *string                                                                        `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParams) String() string {
@@ -28377,12 +28671,8 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParamsFile struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParamsFile) String() string {
@@ -28404,10 +28694,8 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks) String() string {
@@ -28429,26 +28717,16 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks) SetTem
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwriteParams struct {
-	// 根据输出视频大小调整字体 size。 true / false, default: false
-	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
-	// 边框颜色
+	Adaptive    *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	// 边框宽度
-	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	// 水印文本，不需要 base64 encode，字符串需要 utf-8 编码
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 透明度
-	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
-	// 颜色
-	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	// 字体
-	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// 字体大小
-	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	// 水印位置，距离左边距离
-	Left *string `json:"Left,omitempty" xml:"Left,omitempty"`
-	// 水印位置，距离上边距离
-	Top *string `json:"Top,omitempty" xml:"Top,omitempty"`
+	BorderWidth *int32  `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	FontAlpha   *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
+	FontColor   *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontName    *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	FontSize    *int32  `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	Left        *string `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top         *string `json:"Top,omitempty" xml:"Top,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwriteParams) String() string {
@@ -28510,10 +28788,8 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwrit
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode) String() string {
@@ -28535,14 +28811,10 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode) SetTemplate
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams struct {
-	// audio 设置
-	Audio *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	// 封装格式设置
+	Audio     *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
 	Container *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	// 封装设置
 	MuxConfig *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	// video 设置
-	Video *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Video     *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams) String() string {
@@ -28574,20 +28846,13 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio struct {
-	// 输出文件的音频码率。
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道数。
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 音频编解码格式，AAC、MP3、VORBIS、FLAC。
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// 音频编码预置。
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 是否删除音频流。
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// 采样率。
-	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	// 音量控制
-	Volume *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Bitrate    *string                                                                               `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Channels   *string                                                                               `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Codec      *string                                                                               `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Profile    *string                                                                               `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Remove     *string                                                                               `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	Samplerate *string                                                                               `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	Volume     *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio) String() string {
@@ -28634,14 +28899,10 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume struct {
-	// 目标音量
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
-	// 音量范围
-	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
-	// 音量调整方式
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// 最大峰值
-	TruePeak *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
+	LoudnessRangeTarget      *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	Method                   *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	TruePeak                 *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume) String() string {
@@ -28673,7 +28934,6 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsContainer struct {
-	// 容器格式
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
@@ -28691,7 +28951,6 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig struct {
-	// 切片设置
 	Segment *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 }
 
@@ -28709,9 +28968,7 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
-	// 切片时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 强制切片时间点
+	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	ForceSegTime *string `json:"ForceSegTime,omitempty" xml:"ForceSegTime,omitempty"`
 }
 
@@ -28734,41 +28991,24 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo struct {
-	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
-	// 视频平均码率。
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 缓冲区大小
-	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
-	// 编码格式
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// 码率-质量控制因子。
-	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
-	// 视频画面裁切
-	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	// 帧率。
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// 关键帧间最大帧数。
-	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// 高。
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 是否开启横竖屏自适应（即：长短边模式）
+	AbrMax        *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
+	Bitrate       *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Bufsize       *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	Codec         *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Crf           *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	Crop          *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	Fps           *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Gop           *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Height        *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
-	// 视频码率峰值
-	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
-	// 视频贴黑边
-	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	// 视频颜色格式。
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 只有H264支持该参数
-	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
-	// 编码级别。
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 是否去掉视频
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// 扫描模式。
-	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	// 宽。
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Maxrate       *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	Pad           *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	PixFmt        *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Preset        *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	Profile       *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Remove        *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	ScanMode      *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	Width         *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo) String() string {
@@ -28870,10 +29110,8 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestScheduleConfig struct {
-	// 管道 id
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 任务优先级，取值范围：1~10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestScheduleConfig) String() string {
@@ -28895,16 +29133,11 @@ func (s *SubmitTranscodeJobRequestScheduleConfig) SetPriority(v int32) *SubmitTr
 }
 
 type SubmitTranscodeJobShrinkRequest struct {
-	// 任务输入组 (目前只支持一个)
-	InputGroupShrink *string `json:"InputGroup,omitempty" xml:"InputGroup,omitempty"`
-	// 任务名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 任务输出组
-	OutputGroupShrink *string `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty"`
-	// 任务调度信息
+	InputGroupShrink     *string `json:"InputGroup,omitempty" xml:"InputGroup,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutputGroupShrink    *string `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty"`
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitTranscodeJobShrinkRequest) String() string {
@@ -28941,9 +29174,7 @@ func (s *SubmitTranscodeJobShrinkRequest) SetUserData(v string) *SubmitTranscode
 }
 
 type SubmitTranscodeJobResponseBody struct {
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TranscodeParentJobWithSubJobDTO
+	RequestId          *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TranscodeParentJob *SubmitTranscodeJobResponseBodyTranscodeParentJob `json:"TranscodeParentJob,omitempty" xml:"TranscodeParentJob,omitempty" type:"Struct"`
 }
 
@@ -28966,36 +29197,21 @@ func (s *SubmitTranscodeJobResponseBody) SetTranscodeParentJob(v *SubmitTranscod
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJob struct {
-	// 任务创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 任务结束时间
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// 任务输入组 (目前只支持单个输入)
-	InputGroup []*SubmitTranscodeJobResponseBodyTranscodeParentJobInputGroup `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
-	// 子任务数量
-	JobCount *int32 `json:"JobCount,omitempty" xml:"JobCount,omitempty"`
-	// 任务名
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 任务输出组
-	OutputGroup []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroup `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
-	// 主任务 id
-	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
-	// 任务完成百分比
-	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// 提交任务时请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务调度配置
-	ScheduleConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// 任务状态 Success: 有子任务成功, Fail: 所有子任务失败
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 任务提交时间
-	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// 子任务列表
+	CreateTime       *string                                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime       *string                                                             `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	InputGroup       []*SubmitTranscodeJobResponseBodyTranscodeParentJobInputGroup       `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
+	JobCount         *int32                                                              `json:"JobCount,omitempty" xml:"JobCount,omitempty"`
+	Name             *string                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutputGroup      []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroup      `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
+	ParentJobId      *string                                                             `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	Percent          *int32                                                              `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	RequestId        *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScheduleConfig   *SubmitTranscodeJobResponseBodyTranscodeParentJobScheduleConfig     `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	Status           *string                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitTime       *string                                                             `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
 	TranscodeJobList []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList `json:"TranscodeJobList,omitempty" xml:"TranscodeJobList,omitempty" type:"Repeated"`
-	// 任务来源 - API, WorkFlow, Console
-	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	TriggerSource    *string                                                             `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	UserData         *string                                                             `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJob) String() string {
@@ -29082,12 +29298,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJob) SetUserData(v string)
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobInputGroup struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobInputGroup) String() string {
@@ -29109,9 +29321,7 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobInputGroup) SetType(v s
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroup struct {
-	// 输出媒体配置
-	Output *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// 任务处理配置
+	Output        *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput        `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
 	ProcessConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
 }
 
@@ -29134,12 +29344,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroup) SetProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput) String() string {
@@ -29161,14 +29367,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput) SetT
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig struct {
-	// 图片水印配置
 	ImageWatermarks []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	// 字幕压制配置
-	Subtitles []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	// 文字水印配置
-	TextWatermarks []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
-	// 转码配置
-	Transcode *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
+	Subtitles       []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	TextWatermarks  []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
+	Transcode       *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig) String() string {
@@ -29200,10 +29402,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarks struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                                 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarks) String() string {
@@ -29225,20 +29425,13 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParams struct {
-	// 水印位置，x
-	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	// 水印位置，y
-	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	// 水印文件oss路径
-	File *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 参考位置: TopLeft, TopRight, BottomLeft, BottomRight  default: TopLeft
-	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	// 显示时间设置
+	Dx       *string                                                                                                         `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Dy       *string                                                                                                         `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	File     *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsFile     `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Height   *string                                                                                                         `json:"Height,omitempty" xml:"Height,omitempty"`
+	ReferPos *string                                                                                                         `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
 	Timeline *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Width    *string                                                                                                         `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParams) String() string {
@@ -29285,12 +29478,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsFile struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsFile) String() string {
@@ -29312,10 +29501,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline struct {
-	// 显示时长，秒数 或者 "ToEND"
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 开始时间
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline) String() string {
@@ -29337,10 +29524,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                           `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles) String() string {
@@ -29362,12 +29547,9 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParams struct {
-	// 文件 encoding 格式
-	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	// 字幕文件
-	File *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// 字幕文件格式
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	CharEnc *string                                                                                               `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	File    *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Format  *string                                                                                               `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParams) String() string {
@@ -29394,12 +29576,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile) String() string {
@@ -29421,10 +29599,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks) String() string {
@@ -29446,26 +29622,16 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarksOverwriteParams struct {
-	// 根据输出视频大小调整字体 size。 true / false, default: false
-	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
-	// 边框颜色
+	Adaptive    *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	// 边框宽度
-	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	// 水印文本，不需要 base64 encode，字符串需要 utf-8 编码
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 透明度
-	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
-	// 颜色
-	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	// 字体
-	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// 字体大小
-	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	// 水印位置，距离左边距离
-	Left *string `json:"Left,omitempty" xml:"Left,omitempty"`
-	// 水印位置，距离上边距离
-	Top *string `json:"Top,omitempty" xml:"Top,omitempty"`
+	BorderWidth *int32  `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	FontAlpha   *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
+	FontColor   *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontName    *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	FontSize    *int32  `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	Left        *string `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top         *string `json:"Top,omitempty" xml:"Top,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarksOverwriteParams) String() string {
@@ -29527,10 +29693,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                           `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode) String() string {
@@ -29552,14 +29716,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams struct {
-	// audio 设置
-	Audio *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	// 封装格式设置
+	Audio     *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
 	Container *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	// 封装设置
 	MuxConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	// video 设置
-	Video *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Video     *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams) String() string {
@@ -29591,20 +29751,13 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio struct {
-	// 输出文件的音频码率。
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道数。
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 音频编解码格式，AAC、MP3、VORBIS、FLAC。
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// 音频编码预置。
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 是否删除音频流。
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// 采样率。
-	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	// 音量控制
-	Volume *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Bitrate    *string                                                                                                      `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Channels   *string                                                                                                      `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Codec      *string                                                                                                      `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Profile    *string                                                                                                      `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Remove     *string                                                                                                      `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	Samplerate *string                                                                                                      `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	Volume     *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio) String() string {
@@ -29651,14 +29804,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume struct {
-	// 目标音量
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
-	// 音量范围
-	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
-	// 音量调整方式
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// 最大峰值
-	TruePeak *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
+	LoudnessRangeTarget      *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	Method                   *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	TruePeak                 *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume) String() string {
@@ -29690,7 +29839,6 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer struct {
-	// 容器格式
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
@@ -29708,7 +29856,6 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig struct {
-	// 切片设置
 	Segment *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 }
 
@@ -29726,9 +29873,7 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
-	// 切片时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 强制切片时间点
+	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	ForceSegTime *string `json:"ForceSegTime,omitempty" xml:"ForceSegTime,omitempty"`
 }
 
@@ -29751,41 +29896,24 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo struct {
-	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
-	// 视频平均码率。
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 缓冲区大小
-	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
-	// 编码格式
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// 码率-质量控制因子。
-	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
-	// 视频画面裁切
-	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	// 帧率。
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// 关键帧间最大帧数。
-	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// 高。
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 是否开启横竖屏自适应（即：长短边模式）
+	AbrMax        *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
+	Bitrate       *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Bufsize       *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	Codec         *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Crf           *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	Crop          *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	Fps           *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Gop           *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Height        *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
-	// 视频码率峰值
-	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
-	// 视频贴黑边
-	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	// 视频颜色格式。
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 只有H264支持该参数
-	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
-	// 编码级别。
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 是否去掉视频
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// 扫描模式。
-	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	// 宽。
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Maxrate       *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	Pad           *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	PixFmt        *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Preset        *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	Profile       *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Remove        *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	ScanMode      *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	Width         *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo) String() string {
@@ -29887,10 +30015,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobScheduleConfig struct {
-	// 管道 id
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 任务优先级，取值范围：1~10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobScheduleConfig) String() string {
@@ -29912,38 +30038,22 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobScheduleConfig) SetPrio
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList struct {
-	// 任务创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 任务结束时间
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// 任务输入组 (目前只支持单个输入)
-	InputGroup []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
-	// 子任务 id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 子任务在整个任务中的索引号
-	JobIndex *int32 `json:"JobIndex,omitempty" xml:"JobIndex,omitempty"`
-	// 任务名
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 任务生成视频 media 信息
-	OutFileMeta *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMeta `json:"OutFileMeta,omitempty" xml:"OutFileMeta,omitempty" type:"Struct"`
-	// 输出媒体配置
-	Output *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// 主任务 id
-	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
-	// 转码处理配置
-	ProcessConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务调度信息
-	ScheduleConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// 转码任务任务状态 - Init: 已提交, Processing: 转码中, Success: 转码成功, Fail: 转码失败, Deleted: 已删除
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 任务提交结果
-	SubmitResultJson map[string]interface{} `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
-	// 任务提交时间
-	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CreateTime       *string                                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime       *string                                                                         `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	InputGroup       []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup   `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
+	JobId            *string                                                                         `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobIndex         *int32                                                                          `json:"JobIndex,omitempty" xml:"JobIndex,omitempty"`
+	Name             *string                                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutFileMeta      *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMeta    `json:"OutFileMeta,omitempty" xml:"OutFileMeta,omitempty" type:"Struct"`
+	Output           *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput         `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	ParentJobId      *string                                                                         `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	ProcessConfig    *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig  `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
+	RequestId        *string                                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScheduleConfig   *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	Status           *string                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitResultJson map[string]interface{}                                                          `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
+	SubmitTime       *string                                                                         `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	UserData         *string                                                                         `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList) String() string {
@@ -30035,12 +30145,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList) SetUs
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup) String() string {
@@ -30062,11 +30168,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGr
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMeta struct {
-	// 音频流信息
 	AudioStreamInfoList []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	// 基础文件信息
-	FileBasicInfo *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
-	// 视频流信息
+	FileBasicInfo       *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 	VideoStreamInfoList []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -30094,35 +30197,21 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFile
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaAudioStreamInfoList struct {
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道布局
-	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// 声道数
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 编码格式名
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// 编码格式
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// 编码器标签
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// 编码器标签名
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// 编码器时间基
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// 采样率
-	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 时间基
-	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	SampleRate     *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaAudioStreamInfoList) String() string {
@@ -30209,30 +30298,18 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFile
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo struct {
-	// 视频码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 视频时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件大小
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件状态
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration   *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize   *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件url
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 视频格式名称
+	FileType   *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl    *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 文件所在区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height     *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Width      *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo) String() string {
@@ -30304,47 +30381,29 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFile
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaVideoStreamInfoList struct {
-	AvgFps  *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
-	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
-	// 编码格式名
-	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
-	// 编码格式
-	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
-	// 编码格式标记
-	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
-	// 编码格式标记文本
+	AvgFps         *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	BitRate        *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	CodecLongName  *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	CodecName      *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	CodecTag       *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
 	CodecTimeBase  *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
-	// 图像显示宽高比
-	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 帧率
-	Fps        *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 流序号
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 编码等级
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 总帧数
-	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// 颜色存储格式
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 编码器预设
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 视频画面旋转角度
-	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// 采集点数宽高比
-	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// 起始时间
-	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
-	TimeBase  *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Dar            *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HasBFrames     *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt         *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile        *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Rotate         *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Sar            *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime      *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	TimeBase       *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaVideoStreamInfoList) String() string {
@@ -30471,12 +30530,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFile
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput) String() string {
@@ -30498,14 +30553,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput)
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig struct {
-	// 图片水印配置
 	ImageWatermarks []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	// 字幕压制配置
-	Subtitles []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	// 文字水印配置
-	TextWatermarks []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
-	// 转码配置
-	Transcode *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
+	Subtitles       []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	TextWatermarks  []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
+	Transcode       *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig) String() string {
@@ -30537,10 +30588,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                                      `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks) String() string {
@@ -30562,20 +30611,13 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParams struct {
-	// 水印位置，x
-	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	// 水印位置，y
-	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	// 水印文件oss路径
-	File *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 参考位置: TopLeft, TopRight, BottomLeft, BottomRight  default: TopLeft
-	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	// 显示时间设置
+	Dx       *string                                                                                                              `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Dy       *string                                                                                                              `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	File     *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsFile     `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Height   *string                                                                                                              `json:"Height,omitempty" xml:"Height,omitempty"`
+	ReferPos *string                                                                                                              `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
 	Timeline *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Width    *string                                                                                                              `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParams) String() string {
@@ -30622,12 +30664,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsFile struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsFile) String() string {
@@ -30649,10 +30687,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsTimeline struct {
-	// 显示时长，秒数 或者 "ToEND"
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 开始时间
-	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start    *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsTimeline) String() string {
@@ -30674,10 +30710,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles) String() string {
@@ -30699,12 +30733,9 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParams struct {
-	// 文件 encoding 格式
-	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	// 字幕文件
-	File *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// 字幕文件格式
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	CharEnc *string                                                                                                    `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	File    *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	Format  *string                                                                                                    `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParams) String() string {
@@ -30731,12 +30762,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile struct {
-	// 媒体值：
-	//       type 为 OSS 时，为 url, 支持 oss 协议和 http 协议；
-	//       type 为 Media 时，为媒资 id。
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// 媒体对象类型 - OSS: oss文件, Media: 媒资 ID
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile) String() string {
@@ -30758,10 +30785,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                                     `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks) String() string {
@@ -30783,26 +30808,16 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarksOverwriteParams struct {
-	// 根据输出视频大小调整字体 size。 true / false, default: false
-	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
-	// 边框颜色
+	Adaptive    *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	// 边框宽度
-	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	// 水印文本，不需要 base64 encode，字符串需要 utf-8 编码
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 透明度
-	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
-	// 颜色
-	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	// 字体
-	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// 字体大小
-	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	// 水印位置，距离左边距离
-	Left *string `json:"Left,omitempty" xml:"Left,omitempty"`
-	// 水印位置，距离上边距离
-	Top *string `json:"Top,omitempty" xml:"Top,omitempty"`
+	BorderWidth *int32  `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	FontAlpha   *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
+	FontColor   *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontName    *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	FontSize    *int32  `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	Left        *string `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top         *string `json:"Top,omitempty" xml:"Top,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarksOverwriteParams) String() string {
@@ -30864,10 +30879,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode struct {
-	// 覆盖参数, 若填写会覆盖模板对应参数
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// 模板 id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string                                                                                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode) String() string {
@@ -30889,14 +30902,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams struct {
-	// audio 设置
-	Audio *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	// 封装格式设置
+	Audio     *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
 	Container *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	// 封装设置
 	MuxConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	// video 设置
-	Video *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Video     *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) String() string {
@@ -30928,20 +30937,13 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio struct {
-	// 输出文件的音频码率。
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 声道数。
-	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 音频编解码格式，AAC、MP3、VORBIS、FLAC。
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// 音频编码预置。
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 是否删除音频流。
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// 采样率。
-	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	// 音量控制
-	Volume *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Bitrate    *string                                                                                                           `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Channels   *string                                                                                                           `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	Codec      *string                                                                                                           `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Profile    *string                                                                                                           `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Remove     *string                                                                                                           `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	Samplerate *string                                                                                                           `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	Volume     *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio) String() string {
@@ -30988,14 +30990,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume struct {
-	// 目标音量
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
-	// 音量范围
-	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
-	// 音量调整方式
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// 最大峰值
-	TruePeak *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
+	LoudnessRangeTarget      *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	Method                   *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	TruePeak                 *string `json:"TruePeak,omitempty" xml:"TruePeak,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume) String() string {
@@ -31027,7 +31025,6 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer struct {
-	// 容器格式
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
@@ -31045,7 +31042,6 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig struct {
-	// 切片设置
 	Segment *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 }
 
@@ -31063,9 +31059,7 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
-	// 切片时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 强制切片时间点
+	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	ForceSegTime *string `json:"ForceSegTime,omitempty" xml:"ForceSegTime,omitempty"`
 }
 
@@ -31088,41 +31082,24 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo struct {
-	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
-	// 视频平均码率。
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 缓冲区大小
-	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
-	// 编码格式
-	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// 码率-质量控制因子。
-	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
-	// 视频画面裁切
-	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	// 帧率。
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// 关键帧间最大帧数。
-	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// 高。
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 是否开启横竖屏自适应（即：长短边模式）
+	AbrMax        *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
+	Bitrate       *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Bufsize       *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	Codec         *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Crf           *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	Crop          *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	Fps           *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Gop           *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	Height        *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
-	// 视频码率峰值
-	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
-	// 视频贴黑边
-	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	// 视频颜色格式。
-	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// 只有H264支持该参数
-	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
-	// 编码级别。
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// 是否去掉视频
-	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// 扫描模式。
-	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	// 宽。
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	Maxrate       *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	Pad           *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	PixFmt        *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Preset        *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	Profile       *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Remove        *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	ScanMode      *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	Width         *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo) String() string {
@@ -31224,10 +31201,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleConfig struct {
-	// 管道 id
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 任务优先级，取值范围：1~10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleConfig) String() string {
@@ -31347,12 +31322,9 @@ func (s *UpdateCategoryResponse) SetBody(v *UpdateCategoryResponseBody) *UpdateC
 }
 
 type UpdateCustomTemplateRequest struct {
-	// 模板名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 模板参数
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// 模板ID
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s UpdateCustomTemplateRequest) String() string {
@@ -31379,10 +31351,8 @@ func (s *UpdateCustomTemplateRequest) SetTemplateId(v string) *UpdateCustomTempl
 }
 
 type UpdateCustomTemplateResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateCustomTemplateResponseBody) String() string {
@@ -31434,20 +31404,13 @@ func (s *UpdateCustomTemplateResponse) SetBody(v *UpdateCustomTemplateResponseBo
 
 type UpdateEditingProjectRequest struct {
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// 模板对应的素材参数
-	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	// 云剪辑工程封面
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 云剪辑工程描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 云剪辑工程ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 模板Id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 云剪辑工程时间线，Json格式
-	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	// 云剪辑工程标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	ClipsParam     *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	CoverURL       *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Timeline       *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateEditingProjectRequest) String() string {
@@ -31499,7 +31462,6 @@ func (s *UpdateEditingProjectRequest) SetTitle(v string) *UpdateEditingProjectRe
 }
 
 type UpdateEditingProjectResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31541,6 +31503,238 @@ func (s *UpdateEditingProjectResponse) SetStatusCode(v int32) *UpdateEditingProj
 }
 
 func (s *UpdateEditingProjectResponse) SetBody(v *UpdateEditingProjectResponseBody) *UpdateEditingProjectResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateLiveRecordTemplateRequest struct {
+	Name         *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	RecordFormat []*UpdateLiveRecordTemplateRequestRecordFormat `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty" type:"Repeated"`
+	TemplateId   *string                                        `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s UpdateLiveRecordTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLiveRecordTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLiveRecordTemplateRequest) SetName(v string) *UpdateLiveRecordTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateLiveRecordTemplateRequest) SetRecordFormat(v []*UpdateLiveRecordTemplateRequestRecordFormat) *UpdateLiveRecordTemplateRequest {
+	s.RecordFormat = v
+	return s
+}
+
+func (s *UpdateLiveRecordTemplateRequest) SetTemplateId(v string) *UpdateLiveRecordTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type UpdateLiveRecordTemplateRequestRecordFormat struct {
+	CycleDuration        *int32  `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	Format               *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	OssObjectPrefix      *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
+	SliceDuration        *int32  `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	SliceOssObjectPrefix *string `json:"SliceOssObjectPrefix,omitempty" xml:"SliceOssObjectPrefix,omitempty"`
+}
+
+func (s UpdateLiveRecordTemplateRequestRecordFormat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLiveRecordTemplateRequestRecordFormat) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLiveRecordTemplateRequestRecordFormat) SetCycleDuration(v int32) *UpdateLiveRecordTemplateRequestRecordFormat {
+	s.CycleDuration = &v
+	return s
+}
+
+func (s *UpdateLiveRecordTemplateRequestRecordFormat) SetFormat(v string) *UpdateLiveRecordTemplateRequestRecordFormat {
+	s.Format = &v
+	return s
+}
+
+func (s *UpdateLiveRecordTemplateRequestRecordFormat) SetOssObjectPrefix(v string) *UpdateLiveRecordTemplateRequestRecordFormat {
+	s.OssObjectPrefix = &v
+	return s
+}
+
+func (s *UpdateLiveRecordTemplateRequestRecordFormat) SetSliceDuration(v int32) *UpdateLiveRecordTemplateRequestRecordFormat {
+	s.SliceDuration = &v
+	return s
+}
+
+func (s *UpdateLiveRecordTemplateRequestRecordFormat) SetSliceOssObjectPrefix(v string) *UpdateLiveRecordTemplateRequestRecordFormat {
+	s.SliceOssObjectPrefix = &v
+	return s
+}
+
+type UpdateLiveRecordTemplateShrinkRequest struct {
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RecordFormatShrink *string `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty"`
+	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s UpdateLiveRecordTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLiveRecordTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLiveRecordTemplateShrinkRequest) SetName(v string) *UpdateLiveRecordTemplateShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateLiveRecordTemplateShrinkRequest) SetRecordFormatShrink(v string) *UpdateLiveRecordTemplateShrinkRequest {
+	s.RecordFormatShrink = &v
+	return s
+}
+
+func (s *UpdateLiveRecordTemplateShrinkRequest) SetTemplateId(v string) *UpdateLiveRecordTemplateShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type UpdateLiveRecordTemplateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateLiveRecordTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLiveRecordTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLiveRecordTemplateResponseBody) SetRequestId(v string) *UpdateLiveRecordTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateLiveRecordTemplateResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateLiveRecordTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateLiveRecordTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLiveRecordTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLiveRecordTemplateResponse) SetHeaders(v map[string]*string) *UpdateLiveRecordTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLiveRecordTemplateResponse) SetStatusCode(v int32) *UpdateLiveRecordTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLiveRecordTemplateResponse) SetBody(v *UpdateLiveRecordTemplateResponseBody) *UpdateLiveRecordTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateLiveSnapshotTemplateRequest struct {
+	OverwriteFormat *string `json:"OverwriteFormat,omitempty" xml:"OverwriteFormat,omitempty"`
+	SequenceFormat  *string `json:"SequenceFormat,omitempty" xml:"SequenceFormat,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TimeInterval    *int32  `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
+}
+
+func (s UpdateLiveSnapshotTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLiveSnapshotTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLiveSnapshotTemplateRequest) SetOverwriteFormat(v string) *UpdateLiveSnapshotTemplateRequest {
+	s.OverwriteFormat = &v
+	return s
+}
+
+func (s *UpdateLiveSnapshotTemplateRequest) SetSequenceFormat(v string) *UpdateLiveSnapshotTemplateRequest {
+	s.SequenceFormat = &v
+	return s
+}
+
+func (s *UpdateLiveSnapshotTemplateRequest) SetTemplateId(v string) *UpdateLiveSnapshotTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateLiveSnapshotTemplateRequest) SetTemplateName(v string) *UpdateLiveSnapshotTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *UpdateLiveSnapshotTemplateRequest) SetTimeInterval(v int32) *UpdateLiveSnapshotTemplateRequest {
+	s.TimeInterval = &v
+	return s
+}
+
+type UpdateLiveSnapshotTemplateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateLiveSnapshotTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLiveSnapshotTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLiveSnapshotTemplateResponseBody) SetRequestId(v string) *UpdateLiveSnapshotTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateLiveSnapshotTemplateResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateLiveSnapshotTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateLiveSnapshotTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLiveSnapshotTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLiveSnapshotTemplateResponse) SetHeaders(v map[string]*string) *UpdateLiveSnapshotTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLiveSnapshotTemplateResponse) SetStatusCode(v int32) *UpdateLiveSnapshotTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLiveSnapshotTemplateResponse) SetBody(v *UpdateLiveSnapshotTemplateResponseBody) *UpdateLiveSnapshotTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -31697,7 +31891,6 @@ func (s *UpdateLiveTranscodeJobShrinkRequest) SetTranscodeOutputShrink(v string)
 }
 
 type UpdateLiveTranscodeJobResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31919,7 +32112,6 @@ func (s *UpdateLiveTranscodeTemplateShrinkRequest) SetTemplateId(v string) *Upda
 }
 
 type UpdateLiveTranscodeTemplateResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31966,27 +32158,17 @@ func (s *UpdateLiveTranscodeTemplateResponse) SetBody(v *UpdateLiveTranscodeTemp
 }
 
 type UpdateMediaInfoRequest struct {
-	// 是否以append的形式更新Tags字段
-	AppendTags *bool `json:"AppendTags,omitempty" xml:"AppendTags,omitempty"`
-	// 媒资业务类型
+	AppendTags   *bool   `json:"AppendTags,omitempty" xml:"AppendTags,omitempty"`
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	CateId       *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 封面图，仅视频媒资有效
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 媒资媒体类型
-	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// 媒资Id
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 标签,如果有多个标签用逗号隔开
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 用户数据，最大1024字节
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CoverURL     *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputURL     *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaTags    *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s UpdateMediaInfoRequest) String() string {
@@ -32053,9 +32235,7 @@ func (s *UpdateMediaInfoRequest) SetUserData(v string) *UpdateMediaInfoRequest {
 }
 
 type UpdateMediaInfoResponseBody struct {
-	// ICE媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 请求ID
+	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -32107,14 +32287,10 @@ func (s *UpdateMediaInfoResponse) SetBody(v *UpdateMediaInfoResponseBody) *Updat
 }
 
 type UpdatePipelineRequest struct {
-	// 管道名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 管道ID
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 优先级
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// 管道状态。
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdatePipelineRequest) String() string {
@@ -32146,10 +32322,8 @@ func (s *UpdatePipelineRequest) SetStatus(v string) *UpdatePipelineRequest {
 }
 
 type UpdatePipelineResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdatePipelineResponseBody) String() string {
@@ -32223,9 +32397,8 @@ func (s *UpdateSmartJobRequest) SetJobId(v string) *UpdateSmartJobRequest {
 }
 
 type UpdateSmartJobResponseBody struct {
-	FEExtend *string `json:"FEExtend,omitempty" xml:"FEExtend,omitempty"`
-	JobId    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	FEExtend  *string `json:"FEExtend,omitempty" xml:"FEExtend,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -32282,22 +32455,14 @@ func (s *UpdateSmartJobResponse) SetBody(v *UpdateSmartJobResponseBody) *UpdateS
 }
 
 type UpdateTemplateRequest struct {
-	// 参见模板Config文档
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 模板封面
-	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// 模板名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 预览视频媒资id
-	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
-	// 模板相关素材，模板编辑器使用
+	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	CoverUrl        *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreviewMedia    *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
 	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
-	// 修改来源，默认OpenAPI
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 模板状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板ID
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s UpdateTemplateRequest) String() string {
@@ -32349,7 +32514,6 @@ func (s *UpdateTemplateRequest) SetTemplateId(v string) *UpdateTemplateRequest {
 }
 
 type UpdateTemplateResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -32449,7 +32613,6 @@ func (s *UploadMediaByURLRequest) SetUserData(v string) *UploadMediaByURLRequest
 }
 
 type UploadMediaByURLResponseBody struct {
-	// RequestId
 	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UploadJobs []*UploadMediaByURLResponseBodyUploadJobs `json:"UploadJobs,omitempty" xml:"UploadJobs,omitempty" type:"Repeated"`
 }
@@ -32919,6 +33082,10 @@ func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtim
 		query["PreviewMedia"] = request.PreviewMedia
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RelatedMediaids)) {
+		query["RelatedMediaids"] = request.RelatedMediaids
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
 	}
@@ -33050,102 +33217,6 @@ func (client *Client) CancelFavoritePublicMedia(request *CancelFavoritePublicMed
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelFavoritePublicMediaResponse{}
 	_body, _err := client.CancelFavoritePublicMediaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CancelUrlUploadJobsWithOptions(request *CancelUrlUploadJobsRequest, runtime *util.RuntimeOptions) (_result *CancelUrlUploadJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
-		query["JobIds"] = request.JobIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UploadUrls)) {
-		query["UploadUrls"] = request.UploadUrls
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CancelUrlUploadJobs"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CancelUrlUploadJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CancelUrlUploadJobs(request *CancelUrlUploadJobsRequest) (_result *CancelUrlUploadJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CancelUrlUploadJobsResponse{}
-	_body, _err := client.CancelUrlUploadJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateAuditWithOptions(request *CreateAuditRequest, runtime *util.RuntimeOptions) (_result *CreateAuditResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AuditContent)) {
-		query["AuditContent"] = request.AuditContent
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateAudit"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateAuditResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateAudit(request *CreateAuditRequest) (_result *CreateAuditResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateAuditResponse{}
-	_body, _err := client.CreateAuditWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33332,6 +33403,120 @@ func (client *Client) CreateLiveRecordTemplate(request *CreateLiveRecordTemplate
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLiveRecordTemplateResponse{}
 	_body, _err := client.CreateLiveRecordTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateLiveSnapshotTemplateWithOptions(request *CreateLiveSnapshotTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateLiveSnapshotTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OverwriteFormat)) {
+		body["OverwriteFormat"] = request.OverwriteFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SequenceFormat)) {
+		body["SequenceFormat"] = request.SequenceFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeInterval)) {
+		body["TimeInterval"] = request.TimeInterval
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLiveSnapshotTemplate"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLiveSnapshotTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLiveSnapshotTemplate(request *CreateLiveSnapshotTemplateRequest) (_result *CreateLiveSnapshotTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLiveSnapshotTemplateResponse{}
+	_body, _err := client.CreateLiveSnapshotTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateLiveTranscodeTemplateWithOptions(tmpReq *CreateLiveTranscodeTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateLiveTranscodeTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateLiveTranscodeTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TemplateConfig))) {
+		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TemplateConfig), tea.String("TemplateConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateConfigShrink)) {
+		query["TemplateConfig"] = request.TemplateConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLiveTranscodeTemplate"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLiveTranscodeTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLiveTranscodeTemplate(request *CreateLiveTranscodeTemplateRequest) (_result *CreateLiveTranscodeTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLiveTranscodeTemplateResponse{}
+	_body, _err := client.CreateLiveTranscodeTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33703,6 +33888,200 @@ func (client *Client) DeleteEditingProjects(request *DeleteEditingProjectsReques
 	return _result, _err
 }
 
+func (client *Client) DeleteLiveRecordFilesWithOptions(request *DeleteLiveRecordFilesRequest, runtime *util.RuntimeOptions) (_result *DeleteLiveRecordFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RecordIds)) {
+		query["RecordIds"] = request.RecordIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoveFile)) {
+		query["RemoveFile"] = request.RemoveFile
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLiveRecordFiles"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLiveRecordFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLiveRecordFiles(request *DeleteLiveRecordFilesRequest) (_result *DeleteLiveRecordFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLiveRecordFilesResponse{}
+	_body, _err := client.DeleteLiveRecordFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteLiveRecordTemplateWithOptions(request *DeleteLiveRecordTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteLiveRecordTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLiveRecordTemplate"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLiveRecordTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLiveRecordTemplate(request *DeleteLiveRecordTemplateRequest) (_result *DeleteLiveRecordTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLiveRecordTemplateResponse{}
+	_body, _err := client.DeleteLiveRecordTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteLiveSnapshotFilesWithOptions(tmpReq *DeleteLiveSnapshotFilesRequest, runtime *util.RuntimeOptions) (_result *DeleteLiveSnapshotFilesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteLiveSnapshotFilesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CreateTimestampList)) {
+		request.CreateTimestampListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateTimestampList, tea.String("CreateTimestampList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateTimestampListShrink)) {
+		query["CreateTimestampList"] = request.CreateTimestampListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeleteOriginalFile)) {
+		query["DeleteOriginalFile"] = request.DeleteOriginalFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLiveSnapshotFiles"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLiveSnapshotFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLiveSnapshotFiles(request *DeleteLiveSnapshotFilesRequest) (_result *DeleteLiveSnapshotFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLiveSnapshotFilesResponse{}
+	_body, _err := client.DeleteLiveSnapshotFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteLiveSnapshotTemplateWithOptions(request *DeleteLiveSnapshotTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteLiveSnapshotTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLiveSnapshotTemplate"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLiveSnapshotTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLiveSnapshotTemplate(request *DeleteLiveSnapshotTemplateRequest) (_result *DeleteLiveSnapshotTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLiveSnapshotTemplateResponse{}
+	_body, _err := client.DeleteLiveSnapshotTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteLiveTranscodeJobWithOptions(request *DeleteLiveTranscodeJobRequest, runtime *util.RuntimeOptions) (_result *DeleteLiveTranscodeJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33797,6 +34176,10 @@ func (client *Client) DeleteMediaInfosWithOptions(request *DeleteMediaInfosReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeletePhysicalFiles)) {
+		query["DeletePhysicalFiles"] = request.DeletePhysicalFiles
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InputURLs)) {
 		query["InputURLs"] = request.InputURLs
 	}
@@ -33832,50 +34215,6 @@ func (client *Client) DeleteMediaInfos(request *DeleteMediaInfosRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMediaInfosResponse{}
 	_body, _err := client.DeleteMediaInfosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteMediaProducingJobsWithOptions(request *DeleteMediaProducingJobsRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaProducingJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
-		body["JobIds"] = request.JobIds
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteMediaProducingJobs"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteMediaProducingJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteMediaProducingJobs(request *DeleteMediaProducingJobsRequest) (_result *DeleteMediaProducingJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteMediaProducingJobsResponse{}
-	_body, _err := client.DeleteMediaProducingJobsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33933,6 +34272,10 @@ func (client *Client) DeletePlayInfoWithOptions(request *DeletePlayInfoRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeletePhysicalFiles)) {
+		query["DeletePhysicalFiles"] = request.DeletePhysicalFiles
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FileURLs)) {
 		query["FileURLs"] = request.FileURLs
 	}
@@ -34059,50 +34402,6 @@ func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *D
 	return _result, _err
 }
 
-func (client *Client) DescribeBizUserTypeWithOptions(request *DescribeBizUserTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeBizUserTypeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeBizUserType"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeBizUserTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeBizUserType(request *DescribeBizUserTypeRequest) (_result *DescribeBizUserTypeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeBizUserTypeResponse{}
-	_body, _err := client.DescribeBizUserTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeFilterConfigsWithOptions(request *DescribeFilterConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeFilterConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34140,490 +34439,6 @@ func (client *Client) DescribeFilterConfigs(request *DescribeFilterConfigsReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFilterConfigsResponse{}
 	_body, _err := client.DescribeFilterConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeLivePubExperienceMetricDataWithOptions(request *DescribeLivePubExperienceMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribeLivePubExperienceMetricDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BeginTs)) {
-		query["BeginTs"] = request.BeginTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Domain)) {
-		query["Domain"] = request.Domain
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
-		query["MetricType"] = request.MetricType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Os)) {
-		query["Os"] = request.Os
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PubProtocol)) {
-		query["PubProtocol"] = request.PubProtocol
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TerminalType)) {
-		query["TerminalType"] = request.TerminalType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeLivePubExperienceMetricData"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeLivePubExperienceMetricDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeLivePubExperienceMetricData(request *DescribeLivePubExperienceMetricDataRequest) (_result *DescribeLivePubExperienceMetricDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeLivePubExperienceMetricDataResponse{}
-	_body, _err := client.DescribeLivePubExperienceMetricDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeLivePubListWithOptions(request *DescribeLivePubListRequest, runtime *util.RuntimeOptions) (_result *DescribeLivePubListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BeginTs)) {
-		query["BeginTs"] = request.BeginTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Domain)) {
-		query["Domain"] = request.Domain
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
-		query["MetricType"] = request.MetricType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Os)) {
-		query["Os"] = request.Os
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
-		query["PageNum"] = request.PageNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PubProtocol)) {
-		query["PubProtocol"] = request.PubProtocol
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TerminalType)) {
-		query["TerminalType"] = request.TerminalType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeLivePubList"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeLivePubListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeLivePubList(request *DescribeLivePubListRequest) (_result *DescribeLivePubListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeLivePubListResponse{}
-	_body, _err := client.DescribeLivePubListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeLivePubMetricDataWithOptions(request *DescribeLivePubMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribeLivePubMetricDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BeginTs)) {
-		query["BeginTs"] = request.BeginTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Domain)) {
-		query["Domain"] = request.Domain
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExperienceLevel)) {
-		query["ExperienceLevel"] = request.ExperienceLevel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
-		query["MetricType"] = request.MetricType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Os)) {
-		query["Os"] = request.Os
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PubProtocol)) {
-		query["PubProtocol"] = request.PubProtocol
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SdkVersion)) {
-		query["SdkVersion"] = request.SdkVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StreamName)) {
-		query["StreamName"] = request.StreamName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TerminalType)) {
-		query["TerminalType"] = request.TerminalType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeLivePubMetricData"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeLivePubMetricDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeLivePubMetricData(request *DescribeLivePubMetricDataRequest) (_result *DescribeLivePubMetricDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeLivePubMetricDataResponse{}
-	_body, _err := client.DescribeLivePubMetricDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeLiveSubExperienceMetricDataWithOptions(request *DescribeLiveSubExperienceMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveSubExperienceMetricDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppName)) {
-		query["AppName"] = request.AppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BeginTs)) {
-		query["BeginTs"] = request.BeginTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExperienceLevel)) {
-		query["ExperienceLevel"] = request.ExperienceLevel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
-		query["MetricType"] = request.MetricType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Os)) {
-		query["Os"] = request.Os
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SubProtocol)) {
-		query["SubProtocol"] = request.SubProtocol
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TerminalType)) {
-		query["TerminalType"] = request.TerminalType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeLiveSubExperienceMetricData"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeLiveSubExperienceMetricDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeLiveSubExperienceMetricData(request *DescribeLiveSubExperienceMetricDataRequest) (_result *DescribeLiveSubExperienceMetricDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeLiveSubExperienceMetricDataResponse{}
-	_body, _err := client.DescribeLiveSubExperienceMetricDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeLiveSubListWithOptions(request *DescribeLiveSubListRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveSubListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppName)) {
-		query["AppName"] = request.AppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BeginTs)) {
-		query["BeginTs"] = request.BeginTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Definition)) {
-		query["Definition"] = request.Definition
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExperienceLevel)) {
-		query["ExperienceLevel"] = request.ExperienceLevel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ItemConfigs)) {
-		query["ItemConfigs"] = request.ItemConfigs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
-		query["MetricType"] = request.MetricType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Network)) {
-		query["Network"] = request.Network
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Os)) {
-		query["Os"] = request.Os
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StreamName)) {
-		query["StreamName"] = request.StreamName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SubProtocol)) {
-		query["SubProtocol"] = request.SubProtocol
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TerminalType)) {
-		query["TerminalType"] = request.TerminalType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeLiveSubList"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeLiveSubListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeLiveSubList(request *DescribeLiveSubListRequest) (_result *DescribeLiveSubListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeLiveSubListResponse{}
-	_body, _err := client.DescribeLiveSubListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeLiveSubMetricDataWithOptions(request *DescribeLiveSubMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveSubMetricDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppName)) {
-		query["AppName"] = request.AppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BeginTs)) {
-		query["BeginTs"] = request.BeginTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Definition)) {
-		query["Definition"] = request.Definition
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExperienceLevel)) {
-		query["ExperienceLevel"] = request.ExperienceLevel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ItemConfigs)) {
-		query["ItemConfigs"] = request.ItemConfigs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
-		query["MetricType"] = request.MetricType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Network)) {
-		query["Network"] = request.Network
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Os)) {
-		query["Os"] = request.Os
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SdkVersion)) {
-		query["SdkVersion"] = request.SdkVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StreamName)) {
-		query["StreamName"] = request.StreamName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SubProtocol)) {
-		query["SubProtocol"] = request.SubProtocol
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TerminalType)) {
-		query["TerminalType"] = request.TerminalType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeLiveSubMetricData"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeLiveSubMetricDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeLiveSubMetricData(request *DescribeLiveSubMetricDataRequest) (_result *DescribeLiveSubMetricDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeLiveSubMetricDataResponse{}
-	_body, _err := client.DescribeLiveSubMetricDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34911,7 +34726,455 @@ func (client *Client) DescribeMeterIceMpsAiUsage(request *DescribeMeterIceMpsAiU
 	return _result, _err
 }
 
-func (client *Client) DescribeMeterIceSummaryWithOptions(request *DescribeMeterIceSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterIceSummaryResponse, _err error) {
+func (client *Client) DescribeMeterImsEditUsageWithOptions(request *DescribeMeterImsEditUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsEditUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
+		query["EndTs"] = request.EndTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
+		query["StartTs"] = request.StartTs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMeterImsEditUsage"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMeterImsEditUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsEditUsage(request *DescribeMeterImsEditUsageRequest) (_result *DescribeMeterImsEditUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMeterImsEditUsageResponse{}
+	_body, _err := client.DescribeMeterImsEditUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsLiveEditUsageWithOptions(request *DescribeMeterImsLiveEditUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsLiveEditUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
+		query["EndTs"] = request.EndTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
+		query["StartTs"] = request.StartTs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMeterImsLiveEditUsage"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMeterImsLiveEditUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsLiveEditUsage(request *DescribeMeterImsLiveEditUsageRequest) (_result *DescribeMeterImsLiveEditUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMeterImsLiveEditUsageResponse{}
+	_body, _err := client.DescribeMeterImsLiveEditUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsLiveMediaConvertUsageWithOptions(request *DescribeMeterImsLiveMediaConvertUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsLiveMediaConvertUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
+		query["EndTs"] = request.EndTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
+		query["StartTs"] = request.StartTs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMeterImsLiveMediaConvertUsage"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMeterImsLiveMediaConvertUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsLiveMediaConvertUsage(request *DescribeMeterImsLiveMediaConvertUsageRequest) (_result *DescribeMeterImsLiveMediaConvertUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMeterImsLiveMediaConvertUsageResponse{}
+	_body, _err := client.DescribeMeterImsLiveMediaConvertUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsLiveRecordUsageWithOptions(request *DescribeMeterImsLiveRecordUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsLiveRecordUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
+		query["EndTs"] = request.EndTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
+		query["StartTs"] = request.StartTs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMeterImsLiveRecordUsage"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMeterImsLiveRecordUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsLiveRecordUsage(request *DescribeMeterImsLiveRecordUsageRequest) (_result *DescribeMeterImsLiveRecordUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMeterImsLiveRecordUsageResponse{}
+	_body, _err := client.DescribeMeterImsLiveRecordUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsLiveSnapshotUsageWithOptions(request *DescribeMeterImsLiveSnapshotUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsLiveSnapshotUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
+		query["EndTs"] = request.EndTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
+		query["StartTs"] = request.StartTs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMeterImsLiveSnapshotUsage"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMeterImsLiveSnapshotUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsLiveSnapshotUsage(request *DescribeMeterImsLiveSnapshotUsageRequest) (_result *DescribeMeterImsLiveSnapshotUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMeterImsLiveSnapshotUsageResponse{}
+	_body, _err := client.DescribeMeterImsLiveSnapshotUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsMediaConvertUHDUsageWithOptions(request *DescribeMeterImsMediaConvertUHDUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsMediaConvertUHDUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
+		query["EndTs"] = request.EndTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
+		query["StartTs"] = request.StartTs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMeterImsMediaConvertUHDUsage"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMeterImsMediaConvertUHDUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsMediaConvertUHDUsage(request *DescribeMeterImsMediaConvertUHDUsageRequest) (_result *DescribeMeterImsMediaConvertUHDUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMeterImsMediaConvertUHDUsageResponse{}
+	_body, _err := client.DescribeMeterImsMediaConvertUHDUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsMediaConvertUsageWithOptions(request *DescribeMeterImsMediaConvertUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsMediaConvertUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
+		query["EndTs"] = request.EndTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
+		query["StartTs"] = request.StartTs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMeterImsMediaConvertUsage"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMeterImsMediaConvertUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsMediaConvertUsage(request *DescribeMeterImsMediaConvertUsageRequest) (_result *DescribeMeterImsMediaConvertUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMeterImsMediaConvertUsageResponse{}
+	_body, _err := client.DescribeMeterImsMediaConvertUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsMpsAiUsageWithOptions(request *DescribeMeterImsMpsAiUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsMpsAiUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
+		query["EndTs"] = request.EndTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
+		query["StartTs"] = request.StartTs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMeterImsMpsAiUsage"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMeterImsMpsAiUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsMpsAiUsage(request *DescribeMeterImsMpsAiUsageRequest) (_result *DescribeMeterImsMpsAiUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMeterImsMpsAiUsageResponse{}
+	_body, _err := client.DescribeMeterImsMpsAiUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImsSummaryWithOptions(request *DescribeMeterImsSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -34933,7 +35196,7 @@ func (client *Client) DescribeMeterIceSummaryWithOptions(request *DescribeMeterI
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DescribeMeterIceSummary"),
+		Action:      tea.String("DescribeMeterImsSummary"),
 		Version:     tea.String("2020-11-09"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -34943,7 +35206,7 @@ func (client *Client) DescribeMeterIceSummaryWithOptions(request *DescribeMeterI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeMeterIceSummaryResponse{}
+	_result = &DescribeMeterImsSummaryResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -34952,10 +35215,10 @@ func (client *Client) DescribeMeterIceSummaryWithOptions(request *DescribeMeterI
 	return _result, _err
 }
 
-func (client *Client) DescribeMeterIceSummary(request *DescribeMeterIceSummaryRequest) (_result *DescribeMeterIceSummaryResponse, _err error) {
+func (client *Client) DescribeMeterImsSummary(request *DescribeMeterImsSummaryRequest) (_result *DescribeMeterImsSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMeterIceSummaryResponse{}
-	_body, _err := client.DescribeMeterIceSummaryWithOptions(request, runtime)
+	_result = &DescribeMeterImsSummaryResponse{}
+	_body, _err := client.DescribeMeterImsSummaryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34963,21 +35226,21 @@ func (client *Client) DescribeMeterIceSummary(request *DescribeMeterIceSummaryRe
 	return _result, _err
 }
 
-func (client *Client) DescribePalyDetailWithOptions(request *DescribePalyDetailRequest, runtime *util.RuntimeOptions) (_result *DescribePalyDetailResponse, _err error) {
+func (client *Client) DescribePlayDetailWithOptions(request *DescribePlayDetailRequest, runtime *util.RuntimeOptions) (_result *DescribePlayDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
-		query["TraceId"] = request.TraceId
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DescribePalyDetail"),
+		Action:      tea.String("DescribePlayDetail"),
 		Version:     tea.String("2020-11-09"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -34987,7 +35250,7 @@ func (client *Client) DescribePalyDetailWithOptions(request *DescribePalyDetailR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePalyDetailResponse{}
+	_result = &DescribePlayDetailResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -34996,10 +35259,10 @@ func (client *Client) DescribePalyDetailWithOptions(request *DescribePalyDetailR
 	return _result, _err
 }
 
-func (client *Client) DescribePalyDetail(request *DescribePalyDetailRequest) (_result *DescribePalyDetailResponse, _err error) {
+func (client *Client) DescribePlayDetail(request *DescribePlayDetailRequest) (_result *DescribePlayDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DescribePalyDetailResponse{}
-	_body, _err := client.DescribePalyDetailWithOptions(request, runtime)
+	_result = &DescribePlayDetailResponse{}
+	_body, _err := client.DescribePlayDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35007,7 +35270,7 @@ func (client *Client) DescribePalyDetail(request *DescribePalyDetailRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) DescribePalyEventListWithOptions(request *DescribePalyEventListRequest, runtime *util.RuntimeOptions) (_result *DescribePalyEventListResponse, _err error) {
+func (client *Client) DescribePlayEventListWithOptions(request *DescribePlayEventListRequest, runtime *util.RuntimeOptions) (_result *DescribePlayEventListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -35021,15 +35284,15 @@ func (client *Client) DescribePalyEventListWithOptions(request *DescribePalyEven
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
-		query["TraceId"] = request.TraceId
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DescribePalyEventList"),
+		Action:      tea.String("DescribePlayEventList"),
 		Version:     tea.String("2020-11-09"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -35039,7 +35302,7 @@ func (client *Client) DescribePalyEventListWithOptions(request *DescribePalyEven
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePalyEventListResponse{}
+	_result = &DescribePlayEventListResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -35048,150 +35311,10 @@ func (client *Client) DescribePalyEventListWithOptions(request *DescribePalyEven
 	return _result, _err
 }
 
-func (client *Client) DescribePalyEventList(request *DescribePalyEventListRequest) (_result *DescribePalyEventListResponse, _err error) {
+func (client *Client) DescribePlayEventList(request *DescribePlayEventListRequest) (_result *DescribePlayEventListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DescribePalyEventListResponse{}
-	_body, _err := client.DescribePalyEventListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribePalyListWithOptions(request *DescribePalyListRequest, runtime *util.RuntimeOptions) (_result *DescribePalyListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BeginTs)) {
-		query["BeginTs"] = request.BeginTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderName)) {
-		query["OrderName"] = request.OrderName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
-		query["OrderType"] = request.OrderType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PlayType)) {
-		query["PlayType"] = request.PlayType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
-		query["TraceId"] = request.TraceId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribePalyList"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribePalyListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribePalyList(request *DescribePalyListRequest) (_result *DescribePalyListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribePalyListResponse{}
-	_body, _err := client.DescribePalyListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribePlayExperienceMetricDataWithOptions(request *DescribePlayExperienceMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribePlayExperienceMetricDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppName)) {
-		query["AppName"] = request.AppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BeginTs)) {
-		query["BeginTs"] = request.BeginTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExperienceLevel)) {
-		query["ExperienceLevel"] = request.ExperienceLevel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Os)) {
-		query["Os"] = request.Os
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TerminalType)) {
-		query["TerminalType"] = request.TerminalType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribePlayExperienceMetricData"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribePlayExperienceMetricDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribePlayExperienceMetricData(request *DescribePlayExperienceMetricDataRequest) (_result *DescribePlayExperienceMetricDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribePlayExperienceMetricDataResponse{}
-	_body, _err := client.DescribePlayExperienceMetricDataWithOptions(request, runtime)
+	_result = &DescribePlayEventListResponse{}
+	_body, _err := client.DescribePlayEventListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35244,6 +35367,82 @@ func (client *Client) DescribePlayFirstFrameDurationMetricData(request *Describe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePlayFirstFrameDurationMetricDataResponse{}
 	_body, _err := client.DescribePlayFirstFrameDurationMetricDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePlayListWithOptions(request *DescribePlayListRequest, runtime *util.RuntimeOptions) (_result *DescribePlayListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginTs)) {
+		query["BeginTs"] = request.BeginTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
+		query["EndTs"] = request.EndTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderName)) {
+		query["OrderName"] = request.OrderName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayType)) {
+		query["PlayType"] = request.PlayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
+		query["TraceId"] = request.TraceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePlayList"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePlayListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePlayList(request *DescribePlayListRequest) (_result *DescribePlayListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePlayListResponse{}
+	_body, _err := client.DescribePlayListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35335,11 +35534,17 @@ func (client *Client) DescribePlayMetricData(request *DescribePlayMetricDataRequ
 	return _result, _err
 }
 
-func (client *Client) DescribePlayQoeListWithOptions(request *DescribePlayQoeListRequest, runtime *util.RuntimeOptions) (_result *DescribePlayQoeListResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribePlayQoeListWithOptions(tmpReq *DescribePlayQoeListRequest, runtime *util.RuntimeOptions) (_result *DescribePlayQoeListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DescribePlayQoeListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MetricTypes)) {
+		request.MetricTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MetricTypes, tea.String("MetricTypes"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppName)) {
 		query["AppName"] = request.AppName
@@ -35361,12 +35566,20 @@ func (client *Client) DescribePlayQoeListWithOptions(request *DescribePlayQoeLis
 		query["ItemConfigs"] = request.ItemConfigs
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
-		query["MetricType"] = request.MetricType
+	if !tea.BoolValue(util.IsUnset(request.MetricTypesShrink)) {
+		query["MetricTypes"] = request.MetricTypesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Network)) {
 		query["Network"] = request.Network
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderName)) {
+		query["OrderName"] = request.OrderName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Os)) {
@@ -35419,11 +35632,17 @@ func (client *Client) DescribePlayQoeList(request *DescribePlayQoeListRequest) (
 	return _result, _err
 }
 
-func (client *Client) DescribePlayQosListWithOptions(request *DescribePlayQosListRequest, runtime *util.RuntimeOptions) (_result *DescribePlayQosListResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribePlayQosListWithOptions(tmpReq *DescribePlayQosListRequest, runtime *util.RuntimeOptions) (_result *DescribePlayQosListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DescribePlayQosListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MetricTypes)) {
+		request.MetricTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MetricTypes, tea.String("MetricTypes"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppName)) {
 		query["AppName"] = request.AppName
@@ -35445,12 +35664,20 @@ func (client *Client) DescribePlayQosListWithOptions(request *DescribePlayQosLis
 		query["ItemConfigs"] = request.ItemConfigs
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
-		query["MetricType"] = request.MetricType
+	if !tea.BoolValue(util.IsUnset(request.MetricTypesShrink)) {
+		query["MetricTypes"] = request.MetricTypesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Network)) {
 		query["Network"] = request.Network
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderName)) {
+		query["OrderName"] = request.OrderName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Os)) {
@@ -35547,94 +35774,6 @@ func (client *Client) DescribeQueryConfigs(request *DescribeQueryConfigsRequest)
 	return _result, _err
 }
 
-func (client *Client) DownloadResourceByResourceIdsWithOptions(request *DownloadResourceByResourceIdsRequest, runtime *util.RuntimeOptions) (_result *DownloadResourceByResourceIdsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
-		query["ResourceIds"] = request.ResourceIds
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DownloadResourceByResourceIds"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DownloadResourceByResourceIdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DownloadResourceByResourceIds(request *DownloadResourceByResourceIdsRequest) (_result *DownloadResourceByResourceIdsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DownloadResourceByResourceIdsResponse{}
-	_body, _err := client.DownloadResourceByResourceIdsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetAuditConfigWithOptions(request *GetAuditConfigRequest, runtime *util.RuntimeOptions) (_result *GetAuditConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetAuditConfig"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetAuditConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetAuditConfig(request *GetAuditConfigRequest) (_result *GetAuditConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetAuditConfigResponse{}
-	_body, _err := client.GetAuditConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetCategoriesWithOptions(request *GetCategoriesRequest, runtime *util.RuntimeOptions) (_result *GetCategoriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35688,58 +35827,6 @@ func (client *Client) GetCategories(request *GetCategoriesRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCategoriesResponse{}
 	_body, _err := client.GetCategoriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetClientConfigWithOptions(request *GetClientConfigRequest, runtime *util.RuntimeOptions) (_result *GetClientConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BundleId)) {
-		query["BundleId"] = request.BundleId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PkgName)) {
-		query["PkgName"] = request.PkgName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PkgSignature)) {
-		query["PkgSignature"] = request.PkgSignature
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetClientConfig"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetClientConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetClientConfig(request *GetClientConfigRequest) (_result *GetClientConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetClientConfigResponse{}
-	_body, _err := client.GetClientConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36081,6 +36168,166 @@ func (client *Client) GetLiveEditingJob(request *GetLiveEditingJobRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetLiveRecordJobWithOptions(request *GetLiveRecordJobRequest, runtime *util.RuntimeOptions) (_result *GetLiveRecordJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLiveRecordJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLiveRecordJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLiveRecordJob(request *GetLiveRecordJobRequest) (_result *GetLiveRecordJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLiveRecordJobResponse{}
+	_body, _err := client.GetLiveRecordJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLiveRecordTemplateWithOptions(request *GetLiveRecordTemplateRequest, runtime *util.RuntimeOptions) (_result *GetLiveRecordTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLiveRecordTemplate"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLiveRecordTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLiveRecordTemplate(request *GetLiveRecordTemplateRequest) (_result *GetLiveRecordTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLiveRecordTemplateResponse{}
+	_body, _err := client.GetLiveRecordTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLiveSnapshotJobWithOptions(request *GetLiveSnapshotJobRequest, runtime *util.RuntimeOptions) (_result *GetLiveSnapshotJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLiveSnapshotJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLiveSnapshotJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLiveSnapshotJob(request *GetLiveSnapshotJobRequest) (_result *GetLiveSnapshotJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLiveSnapshotJobResponse{}
+	_body, _err := client.GetLiveSnapshotJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLiveSnapshotTemplateWithOptions(request *GetLiveSnapshotTemplateRequest, runtime *util.RuntimeOptions) (_result *GetLiveSnapshotTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLiveSnapshotTemplate"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLiveSnapshotTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLiveSnapshotTemplate(request *GetLiveSnapshotTemplateRequest) (_result *GetLiveSnapshotTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLiveSnapshotTemplateResponse{}
+	_body, _err := client.GetLiveSnapshotTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetLiveTranscodeJobWithOptions(request *GetLiveTranscodeJobRequest, runtime *util.RuntimeOptions) (_result *GetLiveTranscodeJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36162,102 +36409,6 @@ func (client *Client) GetLiveTranscodeTemplate(request *GetLiveTranscodeTemplate
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLiveTranscodeTemplateResponse{}
 	_body, _err := client.GetLiveTranscodeTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetMediaAuditResultWithOptions(request *GetMediaAuditResultRequest, runtime *util.RuntimeOptions) (_result *GetMediaAuditResultResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
-		query["MediaId"] = request.MediaId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetMediaAuditResult"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetMediaAuditResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetMediaAuditResult(request *GetMediaAuditResultRequest) (_result *GetMediaAuditResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetMediaAuditResultResponse{}
-	_body, _err := client.GetMediaAuditResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetMediaAuditResultDetailWithOptions(request *GetMediaAuditResultDetailRequest, runtime *util.RuntimeOptions) (_result *GetMediaAuditResultDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
-		query["MediaId"] = request.MediaId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetMediaAuditResultDetail"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetMediaAuditResultDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetMediaAuditResultDetail(request *GetMediaAuditResultDetailRequest) (_result *GetMediaAuditResultDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetMediaAuditResultDetailResponse{}
-	_body, _err := client.GetMediaAuditResultDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37077,6 +37228,86 @@ func (client *Client) ListDynamicImageJobs(request *ListDynamicImageJobsRequest)
 	return _result, _err
 }
 
+func (client *Client) ListLiveRecordFilesWithOptions(request *ListLiveRecordFilesRequest, runtime *util.RuntimeOptions) (_result *ListLiveRecordFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLiveRecordFiles"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLiveRecordFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLiveRecordFiles(request *ListLiveRecordFilesRequest) (_result *ListLiveRecordFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLiveRecordFilesResponse{}
+	_body, _err := client.ListLiveRecordFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListLiveRecordJobsWithOptions(request *ListLiveRecordJobsRequest, runtime *util.RuntimeOptions) (_result *ListLiveRecordJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLiveRecordJobs"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLiveRecordJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLiveRecordJobs(request *ListLiveRecordJobsRequest) (_result *ListLiveRecordJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLiveRecordJobsResponse{}
+	_body, _err := client.ListLiveRecordJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListLiveRecordTemplatesWithOptions(request *ListLiveRecordTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListLiveRecordTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37110,6 +37341,126 @@ func (client *Client) ListLiveRecordTemplates(request *ListLiveRecordTemplatesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLiveRecordTemplatesResponse{}
 	_body, _err := client.ListLiveRecordTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListLiveSnapshotFilesWithOptions(request *ListLiveSnapshotFilesRequest, runtime *util.RuntimeOptions) (_result *ListLiveSnapshotFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLiveSnapshotFiles"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLiveSnapshotFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLiveSnapshotFiles(request *ListLiveSnapshotFilesRequest) (_result *ListLiveSnapshotFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLiveSnapshotFilesResponse{}
+	_body, _err := client.ListLiveSnapshotFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListLiveSnapshotJobsWithOptions(request *ListLiveSnapshotJobsRequest, runtime *util.RuntimeOptions) (_result *ListLiveSnapshotJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLiveSnapshotJobs"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLiveSnapshotJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLiveSnapshotJobs(request *ListLiveSnapshotJobsRequest) (_result *ListLiveSnapshotJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLiveSnapshotJobsResponse{}
+	_body, _err := client.ListLiveSnapshotJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListLiveSnapshotTemplatesWithOptions(request *ListLiveSnapshotTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListLiveSnapshotTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLiveSnapshotTemplates"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLiveSnapshotTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLiveSnapshotTemplates(request *ListLiveSnapshotTemplatesRequest) (_result *ListLiveSnapshotTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLiveSnapshotTemplatesResponse{}
+	_body, _err := client.ListLiveSnapshotTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37471,6 +37822,14 @@ func (client *Client) ListPublicMediaBasicInfosWithOptions(request *ListPublicMe
 		query["NextToken"] = request.NextToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -37817,50 +38176,6 @@ func (client *Client) ListTranscodeJobs(request *ListTranscodeJobsRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) NotifyPreOssUploadCompleteWithOptions(request *NotifyPreOssUploadCompleteRequest, runtime *util.RuntimeOptions) (_result *NotifyPreOssUploadCompleteResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
-		query["FileName"] = request.FileName
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("NotifyPreOssUploadComplete"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &NotifyPreOssUploadCompleteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) NotifyPreOssUploadComplete(request *NotifyPreOssUploadCompleteRequest) (_result *NotifyPreOssUploadCompleteResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &NotifyPreOssUploadCompleteResponse{}
-	_body, _err := client.NotifyPreOssUploadCompleteWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) QueryCensorJobListWithOptions(request *QueryCensorJobListRequest, runtime *util.RuntimeOptions) (_result *QueryCensorJobListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38037,6 +38352,54 @@ func (client *Client) QueryMediaCensorJobDetail(request *QueryMediaCensorJobDeta
 	return _result, _err
 }
 
+func (client *Client) QuerySmarttagJobWithOptions(request *QuerySmarttagJobRequest, runtime *util.RuntimeOptions) (_result *QuerySmarttagJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySmarttagJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySmarttagJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySmarttagJob(request *QuerySmarttagJobRequest) (_result *QuerySmarttagJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySmarttagJobResponse{}
+	_body, _err := client.QuerySmarttagJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RefreshUploadMediaWithOptions(request *RefreshUploadMediaRequest, runtime *util.RuntimeOptions) (_result *RefreshUploadMediaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38133,6 +38496,10 @@ func (client *Client) RegisterMediaInfoWithOptions(request *RegisterMediaInfoReq
 
 	if !tea.BoolValue(util.IsUnset(request.UserData)) {
 		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		query["WorkflowId"] = request.WorkflowId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -38429,6 +38796,54 @@ func (client *Client) SearchPublicMediaInfo(request *SearchPublicMediaInfoReques
 	return _result, _err
 }
 
+func (client *Client) SendLiveSnapshotJobCommandWithOptions(request *SendLiveSnapshotJobCommandRequest, runtime *util.RuntimeOptions) (_result *SendLiveSnapshotJobCommandResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Command)) {
+		body["Command"] = request.Command
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendLiveSnapshotJobCommand"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendLiveSnapshotJobCommandResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendLiveSnapshotJobCommand(request *SendLiveSnapshotJobCommandRequest) (_result *SendLiveSnapshotJobCommandResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendLiveSnapshotJobCommandResponse{}
+	_body, _err := client.SendLiveSnapshotJobCommandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SendLiveTranscodeJobCommandWithOptions(request *SendLiveTranscodeJobCommandRequest, runtime *util.RuntimeOptions) (_result *SendLiveTranscodeJobCommandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38470,122 +38885,6 @@ func (client *Client) SendLiveTranscodeJobCommand(request *SendLiveTranscodeJobC
 	runtime := &util.RuntimeOptions{}
 	_result = &SendLiveTranscodeJobCommandResponse{}
 	_body, _err := client.SendLiveTranscodeJobCommandWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SetAuditConfigWithOptions(request *SetAuditConfigRequest, runtime *util.RuntimeOptions) (_result *SetAuditConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Channel)) {
-		query["Channel"] = request.Channel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LegalSwitch)) {
-		query["LegalSwitch"] = request.LegalSwitch
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetAuditConfig"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetAuditConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetAuditConfig(request *SetAuditConfigRequest) (_result *SetAuditConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetAuditConfigResponse{}
-	_body, _err := client.SetAuditConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SetClientConfigWithOptions(request *SetClientConfigRequest, runtime *util.RuntimeOptions) (_result *SetClientConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BundleId)) {
-		query["BundleId"] = request.BundleId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientUploadBucket)) {
-		query["ClientUploadBucket"] = request.ClientUploadBucket
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientUploadPath)) {
-		query["ClientUploadPath"] = request.ClientUploadPath
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientUploadStorageType)) {
-		query["ClientUploadStorageType"] = request.ClientUploadStorageType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PkgName)) {
-		query["PkgName"] = request.PkgName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PkgSignature)) {
-		query["PkgSignature"] = request.PkgSignature
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetClientConfig"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetClientConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetClientConfig(request *SetClientConfigRequest) (_result *SetClientConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetClientConfigResponse{}
-	_body, _err := client.SetClientConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38878,94 +39177,6 @@ func (client *Client) SubmitAudioProduceJob(request *SubmitAudioProduceJobReques
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitAudioProduceJobResponse{}
 	_body, _err := client.SubmitAudioProduceJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SubmitBatchMediaProducingJobWithOptions(request *SubmitBatchMediaProducingJobRequest, runtime *util.RuntimeOptions) (_result *SubmitBatchMediaProducingJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		query["ClientToken"] = request.ClientToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClipsParam)) {
-		query["ClipsParam"] = request.ClipsParam
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EditingProduceConfig)) {
-		query["EditingProduceConfig"] = request.EditingProduceConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.JobTitle)) {
-		query["JobTitle"] = request.JobTitle
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OutputMediaConfig)) {
-		query["OutputMediaConfig"] = request.OutputMediaConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OutputMediaTarget)) {
-		query["OutputMediaTarget"] = request.OutputMediaTarget
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OutputNum)) {
-		query["OutputNum"] = request.OutputNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectMetadata)) {
-		query["ProjectMetadata"] = request.ProjectMetadata
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Source)) {
-		query["Source"] = request.Source
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SubmitBy)) {
-		query["SubmitBy"] = request.SubmitBy
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
-		query["TemplateId"] = request.TemplateId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserData)) {
-		query["UserData"] = request.UserData
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitBatchMediaProducingJob"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SubmitBatchMediaProducingJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitBatchMediaProducingJob(request *SubmitBatchMediaProducingJobRequest) (_result *SubmitBatchMediaProducingJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitBatchMediaProducingJobResponse{}
-	_body, _err := client.SubmitBatchMediaProducingJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39301,6 +39512,224 @@ func (client *Client) SubmitLiveEditingJob(request *SubmitLiveEditingJobRequest)
 	return _result, _err
 }
 
+func (client *Client) SubmitLiveRecordJobWithOptions(tmpReq *SubmitLiveRecordJobRequest, runtime *util.RuntimeOptions) (_result *SubmitLiveRecordJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitLiveRecordJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RecordOutput))) {
+		request.RecordOutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RecordOutput), tea.String("RecordOutput"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.StreamInput))) {
+		request.StreamInputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.StreamInput), tea.String("StreamInput"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyUrl)) {
+		body["NotifyUrl"] = request.NotifyUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordOutputShrink)) {
+		body["RecordOutput"] = request.RecordOutputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamInputShrink)) {
+		body["StreamInput"] = request.StreamInputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitLiveRecordJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitLiveRecordJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitLiveRecordJob(request *SubmitLiveRecordJobRequest) (_result *SubmitLiveRecordJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitLiveRecordJobResponse{}
+	_body, _err := client.SubmitLiveRecordJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitLiveSnapshotJobWithOptions(tmpReq *SubmitLiveSnapshotJobRequest, runtime *util.RuntimeOptions) (_result *SubmitLiveSnapshotJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitLiveSnapshotJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SnapshotOutput))) {
+		request.SnapshotOutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SnapshotOutput), tea.String("SnapshotOutput"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.StreamInput))) {
+		request.StreamInputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.StreamInput), tea.String("StreamInput"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallbackUrl)) {
+		body["CallbackUrl"] = request.CallbackUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobName)) {
+		body["JobName"] = request.JobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotOutputShrink)) {
+		body["SnapshotOutput"] = request.SnapshotOutputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamInputShrink)) {
+		body["StreamInput"] = request.StreamInputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitLiveSnapshotJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitLiveSnapshotJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitLiveSnapshotJob(request *SubmitLiveSnapshotJobRequest) (_result *SubmitLiveSnapshotJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitLiveSnapshotJobResponse{}
+	_body, _err := client.SubmitLiveSnapshotJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitLiveTranscodeJobWithOptions(tmpReq *SubmitLiveTranscodeJobRequest, runtime *util.RuntimeOptions) (_result *SubmitLiveTranscodeJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitLiveTranscodeJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.StreamInput))) {
+		request.StreamInputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.StreamInput), tea.String("StreamInput"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TimedConfig))) {
+		request.TimedConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TimedConfig), tea.String("TimedConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TranscodeOutput))) {
+		request.TranscodeOutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TranscodeOutput), tea.String("TranscodeOutput"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartMode)) {
+		query["StartMode"] = request.StartMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamInputShrink)) {
+		query["StreamInput"] = request.StreamInputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimedConfigShrink)) {
+		query["TimedConfig"] = request.TimedConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TranscodeOutputShrink)) {
+		query["TranscodeOutput"] = request.TranscodeOutputShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitLiveTranscodeJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitLiveTranscodeJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitLiveTranscodeJob(request *SubmitLiveTranscodeJobRequest) (_result *SubmitLiveTranscodeJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitLiveTranscodeJobResponse{}
+	_body, _err := client.SubmitLiveTranscodeJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SubmitMediaCensorJobWithOptions(tmpReq *SubmitMediaCensorJobRequest, runtime *util.RuntimeOptions) (_result *SubmitMediaCensorJobResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -39534,6 +39963,96 @@ func (client *Client) SubmitMediaProducingJob(request *SubmitMediaProducingJobRe
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitMediaProducingJobResponse{}
 	_body, _err := client.SubmitMediaProducingJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitSmarttagJobWithOptions(tmpReq *SubmitSmarttagJobRequest, runtime *util.RuntimeOptions) (_result *SubmitSmarttagJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitSmarttagJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Input))) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Input), tea.String("Input"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ScheduleConfig))) {
+		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ScheduleConfig), tea.String("ScheduleConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentAddr)) {
+		query["ContentAddr"] = request.ContentAddr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentType)) {
+		query["ContentType"] = request.ContentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		query["Input"] = request.InputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyUrl)) {
+		query["NotifyUrl"] = request.NotifyUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleConfigShrink)) {
+		query["ScheduleConfig"] = request.ScheduleConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSmarttagJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitSmarttagJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitSmarttagJob(request *SubmitSmarttagJobRequest) (_result *SubmitSmarttagJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitSmarttagJobResponse{}
+	_body, _err := client.SubmitSmarttagJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40000,6 +40519,124 @@ func (client *Client) UpdateEditingProject(request *UpdateEditingProjectRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateEditingProjectResponse{}
 	_body, _err := client.UpdateEditingProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateLiveRecordTemplateWithOptions(tmpReq *UpdateLiveRecordTemplateRequest, runtime *util.RuntimeOptions) (_result *UpdateLiveRecordTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateLiveRecordTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RecordFormat)) {
+		request.RecordFormatShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecordFormat, tea.String("RecordFormat"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordFormatShrink)) {
+		body["RecordFormat"] = request.RecordFormatShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLiveRecordTemplate"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLiveRecordTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateLiveRecordTemplate(request *UpdateLiveRecordTemplateRequest) (_result *UpdateLiveRecordTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLiveRecordTemplateResponse{}
+	_body, _err := client.UpdateLiveRecordTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateLiveSnapshotTemplateWithOptions(request *UpdateLiveSnapshotTemplateRequest, runtime *util.RuntimeOptions) (_result *UpdateLiveSnapshotTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OverwriteFormat)) {
+		body["OverwriteFormat"] = request.OverwriteFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SequenceFormat)) {
+		body["SequenceFormat"] = request.SequenceFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeInterval)) {
+		body["TimeInterval"] = request.TimeInterval
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLiveSnapshotTemplate"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLiveSnapshotTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateLiveSnapshotTemplate(request *UpdateLiveSnapshotTemplateRequest) (_result *UpdateLiveSnapshotTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLiveSnapshotTemplateResponse{}
+	_body, _err := client.UpdateLiveSnapshotTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
