@@ -7,13 +7,14 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AddUserToGroupRequest struct {
-	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s AddUserToGroupRequest) String() string {
@@ -24,13 +25,13 @@ func (s AddUserToGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AddUserToGroupRequest) SetUserName(v string) *AddUserToGroupRequest {
-	s.UserName = &v
+func (s *AddUserToGroupRequest) SetGroupName(v string) *AddUserToGroupRequest {
+	s.GroupName = &v
 	return s
 }
 
-func (s *AddUserToGroupRequest) SetGroupName(v string) *AddUserToGroupRequest {
-	s.GroupName = &v
+func (s *AddUserToGroupRequest) SetUserName(v string) *AddUserToGroupRequest {
+	s.UserName = &v
 	return s
 }
 
@@ -52,8 +53,9 @@ func (s *AddUserToGroupResponseBody) SetRequestId(v string) *AddUserToGroupRespo
 }
 
 type AddUserToGroupResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddUserToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddUserToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddUserToGroupResponse) String() string {
@@ -69,15 +71,20 @@ func (s *AddUserToGroupResponse) SetHeaders(v map[string]*string) *AddUserToGrou
 	return s
 }
 
+func (s *AddUserToGroupResponse) SetStatusCode(v int32) *AddUserToGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AddUserToGroupResponse) SetBody(v *AddUserToGroupResponseBody) *AddUserToGroupResponse {
 	s.Body = v
 	return s
 }
 
 type AttachPolicyToGroupRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s AttachPolicyToGroupRequest) String() string {
@@ -88,8 +95,8 @@ func (s AttachPolicyToGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AttachPolicyToGroupRequest) SetPolicyType(v string) *AttachPolicyToGroupRequest {
-	s.PolicyType = &v
+func (s *AttachPolicyToGroupRequest) SetGroupName(v string) *AttachPolicyToGroupRequest {
+	s.GroupName = &v
 	return s
 }
 
@@ -98,8 +105,8 @@ func (s *AttachPolicyToGroupRequest) SetPolicyName(v string) *AttachPolicyToGrou
 	return s
 }
 
-func (s *AttachPolicyToGroupRequest) SetGroupName(v string) *AttachPolicyToGroupRequest {
-	s.GroupName = &v
+func (s *AttachPolicyToGroupRequest) SetPolicyType(v string) *AttachPolicyToGroupRequest {
+	s.PolicyType = &v
 	return s
 }
 
@@ -121,8 +128,9 @@ func (s *AttachPolicyToGroupResponseBody) SetRequestId(v string) *AttachPolicyTo
 }
 
 type AttachPolicyToGroupResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AttachPolicyToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachPolicyToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AttachPolicyToGroupResponse) String() string {
@@ -138,14 +146,19 @@ func (s *AttachPolicyToGroupResponse) SetHeaders(v map[string]*string) *AttachPo
 	return s
 }
 
+func (s *AttachPolicyToGroupResponse) SetStatusCode(v int32) *AttachPolicyToGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AttachPolicyToGroupResponse) SetBody(v *AttachPolicyToGroupResponseBody) *AttachPolicyToGroupResponse {
 	s.Body = v
 	return s
 }
 
 type AttachPolicyToRoleRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	RoleName   *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -157,13 +170,13 @@ func (s AttachPolicyToRoleRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AttachPolicyToRoleRequest) SetPolicyType(v string) *AttachPolicyToRoleRequest {
-	s.PolicyType = &v
+func (s *AttachPolicyToRoleRequest) SetPolicyName(v string) *AttachPolicyToRoleRequest {
+	s.PolicyName = &v
 	return s
 }
 
-func (s *AttachPolicyToRoleRequest) SetPolicyName(v string) *AttachPolicyToRoleRequest {
-	s.PolicyName = &v
+func (s *AttachPolicyToRoleRequest) SetPolicyType(v string) *AttachPolicyToRoleRequest {
+	s.PolicyType = &v
 	return s
 }
 
@@ -190,8 +203,9 @@ func (s *AttachPolicyToRoleResponseBody) SetRequestId(v string) *AttachPolicyToR
 }
 
 type AttachPolicyToRoleResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AttachPolicyToRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachPolicyToRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AttachPolicyToRoleResponse) String() string {
@@ -207,14 +221,19 @@ func (s *AttachPolicyToRoleResponse) SetHeaders(v map[string]*string) *AttachPol
 	return s
 }
 
+func (s *AttachPolicyToRoleResponse) SetStatusCode(v int32) *AttachPolicyToRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AttachPolicyToRoleResponse) SetBody(v *AttachPolicyToRoleResponseBody) *AttachPolicyToRoleResponse {
 	s.Body = v
 	return s
 }
 
 type AttachPolicyToUserRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -226,13 +245,13 @@ func (s AttachPolicyToUserRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AttachPolicyToUserRequest) SetPolicyType(v string) *AttachPolicyToUserRequest {
-	s.PolicyType = &v
+func (s *AttachPolicyToUserRequest) SetPolicyName(v string) *AttachPolicyToUserRequest {
+	s.PolicyName = &v
 	return s
 }
 
-func (s *AttachPolicyToUserRequest) SetPolicyName(v string) *AttachPolicyToUserRequest {
-	s.PolicyName = &v
+func (s *AttachPolicyToUserRequest) SetPolicyType(v string) *AttachPolicyToUserRequest {
+	s.PolicyType = &v
 	return s
 }
 
@@ -259,8 +278,9 @@ func (s *AttachPolicyToUserResponseBody) SetRequestId(v string) *AttachPolicyToU
 }
 
 type AttachPolicyToUserResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AttachPolicyToUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachPolicyToUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AttachPolicyToUserResponse) String() string {
@@ -276,16 +296,21 @@ func (s *AttachPolicyToUserResponse) SetHeaders(v map[string]*string) *AttachPol
 	return s
 }
 
+func (s *AttachPolicyToUserResponse) SetStatusCode(v int32) *AttachPolicyToUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AttachPolicyToUserResponse) SetBody(v *AttachPolicyToUserResponseBody) *AttachPolicyToUserResponse {
 	s.Body = v
 	return s
 }
 
 type BindMFADeviceRequest struct {
-	SerialNumber        *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	AuthenticationCode1 *string `json:"AuthenticationCode1,omitempty" xml:"AuthenticationCode1,omitempty"`
 	AuthenticationCode2 *string `json:"AuthenticationCode2,omitempty" xml:"AuthenticationCode2,omitempty"`
+	SerialNumber        *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s BindMFADeviceRequest) String() string {
@@ -296,16 +321,6 @@ func (s BindMFADeviceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *BindMFADeviceRequest) SetSerialNumber(v string) *BindMFADeviceRequest {
-	s.SerialNumber = &v
-	return s
-}
-
-func (s *BindMFADeviceRequest) SetUserName(v string) *BindMFADeviceRequest {
-	s.UserName = &v
-	return s
-}
-
 func (s *BindMFADeviceRequest) SetAuthenticationCode1(v string) *BindMFADeviceRequest {
 	s.AuthenticationCode1 = &v
 	return s
@@ -313,6 +328,16 @@ func (s *BindMFADeviceRequest) SetAuthenticationCode1(v string) *BindMFADeviceRe
 
 func (s *BindMFADeviceRequest) SetAuthenticationCode2(v string) *BindMFADeviceRequest {
 	s.AuthenticationCode2 = &v
+	return s
+}
+
+func (s *BindMFADeviceRequest) SetSerialNumber(v string) *BindMFADeviceRequest {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *BindMFADeviceRequest) SetUserName(v string) *BindMFADeviceRequest {
+	s.UserName = &v
 	return s
 }
 
@@ -334,8 +359,9 @@ func (s *BindMFADeviceResponseBody) SetRequestId(v string) *BindMFADeviceRespons
 }
 
 type BindMFADeviceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BindMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BindMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BindMFADeviceResponse) String() string {
@@ -351,14 +377,19 @@ func (s *BindMFADeviceResponse) SetHeaders(v map[string]*string) *BindMFADeviceR
 	return s
 }
 
+func (s *BindMFADeviceResponse) SetStatusCode(v int32) *BindMFADeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *BindMFADeviceResponse) SetBody(v *BindMFADeviceResponseBody) *BindMFADeviceResponse {
 	s.Body = v
 	return s
 }
 
 type ChangePasswordRequest struct {
-	OldPassword *string `json:"OldPassword,omitempty" xml:"OldPassword,omitempty"`
 	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
+	OldPassword *string `json:"OldPassword,omitempty" xml:"OldPassword,omitempty"`
 }
 
 func (s ChangePasswordRequest) String() string {
@@ -369,13 +400,13 @@ func (s ChangePasswordRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ChangePasswordRequest) SetOldPassword(v string) *ChangePasswordRequest {
-	s.OldPassword = &v
+func (s *ChangePasswordRequest) SetNewPassword(v string) *ChangePasswordRequest {
+	s.NewPassword = &v
 	return s
 }
 
-func (s *ChangePasswordRequest) SetNewPassword(v string) *ChangePasswordRequest {
-	s.NewPassword = &v
+func (s *ChangePasswordRequest) SetOldPassword(v string) *ChangePasswordRequest {
+	s.OldPassword = &v
 	return s
 }
 
@@ -397,8 +428,9 @@ func (s *ChangePasswordResponseBody) SetRequestId(v string) *ChangePasswordRespo
 }
 
 type ChangePasswordResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ChangePasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangePasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ChangePasswordResponse) String() string {
@@ -411,6 +443,11 @@ func (s ChangePasswordResponse) GoString() string {
 
 func (s *ChangePasswordResponse) SetHeaders(v map[string]*string) *ChangePasswordResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ChangePasswordResponse) SetStatusCode(v int32) *ChangePasswordResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -437,8 +474,9 @@ func (s *ClearAccountAliasResponseBody) SetRequestId(v string) *ClearAccountAlia
 }
 
 type ClearAccountAliasResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ClearAccountAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ClearAccountAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ClearAccountAliasResponse) String() string {
@@ -451,6 +489,11 @@ func (s ClearAccountAliasResponse) GoString() string {
 
 func (s *ClearAccountAliasResponse) SetHeaders(v map[string]*string) *ClearAccountAliasResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ClearAccountAliasResponse) SetStatusCode(v int32) *ClearAccountAliasResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -477,8 +520,8 @@ func (s *CreateAccessKeyRequest) SetUserName(v string) *CreateAccessKeyRequest {
 }
 
 type CreateAccessKeyResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AccessKey *CreateAccessKeyResponseBodyAccessKey `json:"AccessKey,omitempty" xml:"AccessKey,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAccessKeyResponseBody) String() string {
@@ -489,21 +532,21 @@ func (s CreateAccessKeyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAccessKeyResponseBody) SetRequestId(v string) *CreateAccessKeyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateAccessKeyResponseBody) SetAccessKey(v *CreateAccessKeyResponseBodyAccessKey) *CreateAccessKeyResponseBody {
 	s.AccessKey = v
 	return s
 }
 
+func (s *CreateAccessKeyResponseBody) SetRequestId(v string) *CreateAccessKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type CreateAccessKeyResponseBodyAccessKey struct {
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
 	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateAccessKeyResponseBodyAccessKey) String() string {
@@ -514,8 +557,8 @@ func (s CreateAccessKeyResponseBodyAccessKey) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAccessKeyResponseBodyAccessKey) SetStatus(v string) *CreateAccessKeyResponseBodyAccessKey {
-	s.Status = &v
+func (s *CreateAccessKeyResponseBodyAccessKey) SetAccessKeyId(v string) *CreateAccessKeyResponseBodyAccessKey {
+	s.AccessKeyId = &v
 	return s
 }
 
@@ -529,14 +572,15 @@ func (s *CreateAccessKeyResponseBodyAccessKey) SetCreateDate(v string) *CreateAc
 	return s
 }
 
-func (s *CreateAccessKeyResponseBodyAccessKey) SetAccessKeyId(v string) *CreateAccessKeyResponseBodyAccessKey {
-	s.AccessKeyId = &v
+func (s *CreateAccessKeyResponseBodyAccessKey) SetStatus(v string) *CreateAccessKeyResponseBodyAccessKey {
+	s.Status = &v
 	return s
 }
 
 type CreateAccessKeyResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateAccessKeyResponse) String() string {
@@ -552,14 +596,19 @@ func (s *CreateAccessKeyResponse) SetHeaders(v map[string]*string) *CreateAccess
 	return s
 }
 
+func (s *CreateAccessKeyResponse) SetStatusCode(v int32) *CreateAccessKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateAccessKeyResponse) SetBody(v *CreateAccessKeyResponseBody) *CreateAccessKeyResponse {
 	s.Body = v
 	return s
 }
 
 type CreateGroupRequest struct {
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	Comments  *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s CreateGroupRequest) String() string {
@@ -570,13 +619,13 @@ func (s CreateGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateGroupRequest) SetGroupName(v string) *CreateGroupRequest {
-	s.GroupName = &v
+func (s *CreateGroupRequest) SetComments(v string) *CreateGroupRequest {
+	s.Comments = &v
 	return s
 }
 
-func (s *CreateGroupRequest) SetComments(v string) *CreateGroupRequest {
-	s.Comments = &v
+func (s *CreateGroupRequest) SetGroupName(v string) *CreateGroupRequest {
+	s.GroupName = &v
 	return s
 }
 
@@ -604,10 +653,10 @@ func (s *CreateGroupResponseBody) SetRequestId(v string) *CreateGroupResponseBod
 }
 
 type CreateGroupResponseBodyGroup struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s CreateGroupResponseBodyGroup) String() string {
@@ -616,16 +665,6 @@ func (s CreateGroupResponseBodyGroup) String() string {
 
 func (s CreateGroupResponseBodyGroup) GoString() string {
 	return s.String()
-}
-
-func (s *CreateGroupResponseBodyGroup) SetGroupId(v string) *CreateGroupResponseBodyGroup {
-	s.GroupId = &v
-	return s
-}
-
-func (s *CreateGroupResponseBodyGroup) SetGroupName(v string) *CreateGroupResponseBodyGroup {
-	s.GroupName = &v
-	return s
 }
 
 func (s *CreateGroupResponseBodyGroup) SetComments(v string) *CreateGroupResponseBodyGroup {
@@ -638,9 +677,20 @@ func (s *CreateGroupResponseBodyGroup) SetCreateDate(v string) *CreateGroupRespo
 	return s
 }
 
+func (s *CreateGroupResponseBodyGroup) SetGroupId(v string) *CreateGroupResponseBodyGroup {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyGroup) SetGroupName(v string) *CreateGroupResponseBodyGroup {
+	s.GroupName = &v
+	return s
+}
+
 type CreateGroupResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGroupResponse) String() string {
@@ -656,16 +706,21 @@ func (s *CreateGroupResponse) SetHeaders(v map[string]*string) *CreateGroupRespo
 	return s
 }
 
+func (s *CreateGroupResponse) SetStatusCode(v int32) *CreateGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupResponse {
 	s.Body = v
 	return s
 }
 
 type CreateLoginProfileRequest struct {
-	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
 	Password              *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
+	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateLoginProfileRequest) String() string {
@@ -676,8 +731,8 @@ func (s CreateLoginProfileRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLoginProfileRequest) SetUserName(v string) *CreateLoginProfileRequest {
-	s.UserName = &v
+func (s *CreateLoginProfileRequest) SetMFABindRequired(v bool) *CreateLoginProfileRequest {
+	s.MFABindRequired = &v
 	return s
 }
 
@@ -691,14 +746,14 @@ func (s *CreateLoginProfileRequest) SetPasswordResetRequired(v bool) *CreateLogi
 	return s
 }
 
-func (s *CreateLoginProfileRequest) SetMFABindRequired(v bool) *CreateLoginProfileRequest {
-	s.MFABindRequired = &v
+func (s *CreateLoginProfileRequest) SetUserName(v string) *CreateLoginProfileRequest {
+	s.UserName = &v
 	return s
 }
 
 type CreateLoginProfileResponseBody struct {
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	LoginProfile *CreateLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateLoginProfileResponseBody) String() string {
@@ -709,21 +764,21 @@ func (s CreateLoginProfileResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLoginProfileResponseBody) SetRequestId(v string) *CreateLoginProfileResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateLoginProfileResponseBody) SetLoginProfile(v *CreateLoginProfileResponseBodyLoginProfile) *CreateLoginProfileResponseBody {
 	s.LoginProfile = v
 	return s
 }
 
+func (s *CreateLoginProfileResponseBody) SetRequestId(v string) *CreateLoginProfileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type CreateLoginProfileResponseBodyLoginProfile struct {
-	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
 	CreateDate            *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
+	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateLoginProfileResponseBodyLoginProfile) String() string {
@@ -734,18 +789,8 @@ func (s CreateLoginProfileResponseBodyLoginProfile) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLoginProfileResponseBodyLoginProfile) SetPasswordResetRequired(v bool) *CreateLoginProfileResponseBodyLoginProfile {
-	s.PasswordResetRequired = &v
-	return s
-}
-
 func (s *CreateLoginProfileResponseBodyLoginProfile) SetCreateDate(v string) *CreateLoginProfileResponseBodyLoginProfile {
 	s.CreateDate = &v
-	return s
-}
-
-func (s *CreateLoginProfileResponseBodyLoginProfile) SetUserName(v string) *CreateLoginProfileResponseBodyLoginProfile {
-	s.UserName = &v
 	return s
 }
 
@@ -754,9 +799,20 @@ func (s *CreateLoginProfileResponseBodyLoginProfile) SetMFABindRequired(v bool) 
 	return s
 }
 
+func (s *CreateLoginProfileResponseBodyLoginProfile) SetPasswordResetRequired(v bool) *CreateLoginProfileResponseBodyLoginProfile {
+	s.PasswordResetRequired = &v
+	return s
+}
+
+func (s *CreateLoginProfileResponseBodyLoginProfile) SetUserName(v string) *CreateLoginProfileResponseBodyLoginProfile {
+	s.UserName = &v
+	return s
+}
+
 type CreateLoginProfileResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateLoginProfileResponse) String() string {
@@ -772,15 +828,20 @@ func (s *CreateLoginProfileResponse) SetHeaders(v map[string]*string) *CreateLog
 	return s
 }
 
+func (s *CreateLoginProfileResponse) SetStatusCode(v int32) *CreateLoginProfileResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateLoginProfileResponse) SetBody(v *CreateLoginProfileResponseBody) *CreateLoginProfileResponse {
 	s.Body = v
 	return s
 }
 
 type CreatePolicyRequest struct {
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
 func (s CreatePolicyRequest) String() string {
@@ -791,11 +852,6 @@ func (s CreatePolicyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreatePolicyRequest) SetPolicyName(v string) *CreatePolicyRequest {
-	s.PolicyName = &v
-	return s
-}
-
 func (s *CreatePolicyRequest) SetDescription(v string) *CreatePolicyRequest {
 	s.Description = &v
 	return s
@@ -803,6 +859,11 @@ func (s *CreatePolicyRequest) SetDescription(v string) *CreatePolicyRequest {
 
 func (s *CreatePolicyRequest) SetPolicyDocument(v string) *CreatePolicyRequest {
 	s.PolicyDocument = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetPolicyName(v string) *CreatePolicyRequest {
+	s.PolicyName = &v
 	return s
 }
 
@@ -830,10 +891,10 @@ func (s *CreatePolicyResponseBody) SetRequestId(v string) *CreatePolicyResponseB
 }
 
 type CreatePolicyResponseBodyPolicy struct {
+	CreateDate     *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	CreateDate     *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -843,6 +904,11 @@ func (s CreatePolicyResponseBodyPolicy) String() string {
 
 func (s CreatePolicyResponseBodyPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePolicyResponseBodyPolicy) SetCreateDate(v string) *CreatePolicyResponseBodyPolicy {
+	s.CreateDate = &v
+	return s
 }
 
 func (s *CreatePolicyResponseBodyPolicy) SetDefaultVersion(v string) *CreatePolicyResponseBodyPolicy {
@@ -860,19 +926,15 @@ func (s *CreatePolicyResponseBodyPolicy) SetPolicyName(v string) *CreatePolicyRe
 	return s
 }
 
-func (s *CreatePolicyResponseBodyPolicy) SetCreateDate(v string) *CreatePolicyResponseBodyPolicy {
-	s.CreateDate = &v
-	return s
-}
-
 func (s *CreatePolicyResponseBodyPolicy) SetPolicyType(v string) *CreatePolicyResponseBodyPolicy {
 	s.PolicyType = &v
 	return s
 }
 
 type CreatePolicyResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreatePolicyResponse) String() string {
@@ -888,16 +950,21 @@ func (s *CreatePolicyResponse) SetHeaders(v map[string]*string) *CreatePolicyRes
 	return s
 }
 
+func (s *CreatePolicyResponse) SetStatusCode(v int32) *CreatePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreatePolicyResponse) SetBody(v *CreatePolicyResponseBody) *CreatePolicyResponse {
 	s.Body = v
 	return s
 }
 
 type CreatePolicyVersionRequest struct {
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	SetAsDefault   *bool   `json:"SetAsDefault,omitempty" xml:"SetAsDefault,omitempty"`
+	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	RotateStrategy *string `json:"RotateStrategy,omitempty" xml:"RotateStrategy,omitempty"`
+	SetAsDefault   *bool   `json:"SetAsDefault,omitempty" xml:"SetAsDefault,omitempty"`
 }
 
 func (s CreatePolicyVersionRequest) String() string {
@@ -908,23 +975,23 @@ func (s CreatePolicyVersionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreatePolicyVersionRequest) SetPolicyName(v string) *CreatePolicyVersionRequest {
-	s.PolicyName = &v
-	return s
-}
-
 func (s *CreatePolicyVersionRequest) SetPolicyDocument(v string) *CreatePolicyVersionRequest {
 	s.PolicyDocument = &v
 	return s
 }
 
-func (s *CreatePolicyVersionRequest) SetSetAsDefault(v bool) *CreatePolicyVersionRequest {
-	s.SetAsDefault = &v
+func (s *CreatePolicyVersionRequest) SetPolicyName(v string) *CreatePolicyVersionRequest {
+	s.PolicyName = &v
 	return s
 }
 
 func (s *CreatePolicyVersionRequest) SetRotateStrategy(v string) *CreatePolicyVersionRequest {
 	s.RotateStrategy = &v
+	return s
+}
+
+func (s *CreatePolicyVersionRequest) SetSetAsDefault(v bool) *CreatePolicyVersionRequest {
+	s.SetAsDefault = &v
 	return s
 }
 
@@ -952,10 +1019,10 @@ func (s *CreatePolicyVersionResponseBody) SetRequestId(v string) *CreatePolicyVe
 }
 
 type CreatePolicyVersionResponseBodyPolicyVersion struct {
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
 	PolicyDocument   *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 }
 
 func (s CreatePolicyVersionResponseBodyPolicyVersion) String() string {
@@ -964,6 +1031,11 @@ func (s CreatePolicyVersionResponseBodyPolicyVersion) String() string {
 
 func (s CreatePolicyVersionResponseBodyPolicyVersion) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePolicyVersionResponseBodyPolicyVersion) SetCreateDate(v string) *CreatePolicyVersionResponseBodyPolicyVersion {
+	s.CreateDate = &v
+	return s
 }
 
 func (s *CreatePolicyVersionResponseBodyPolicyVersion) SetIsDefaultVersion(v bool) *CreatePolicyVersionResponseBodyPolicyVersion {
@@ -981,14 +1053,10 @@ func (s *CreatePolicyVersionResponseBodyPolicyVersion) SetVersionId(v string) *C
 	return s
 }
 
-func (s *CreatePolicyVersionResponseBodyPolicyVersion) SetCreateDate(v string) *CreatePolicyVersionResponseBodyPolicyVersion {
-	s.CreateDate = &v
-	return s
-}
-
 type CreatePolicyVersionResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreatePolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreatePolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreatePolicyVersionResponse) String() string {
@@ -1004,16 +1072,21 @@ func (s *CreatePolicyVersionResponse) SetHeaders(v map[string]*string) *CreatePo
 	return s
 }
 
+func (s *CreatePolicyVersionResponse) SetStatusCode(v int32) *CreatePolicyVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreatePolicyVersionResponse) SetBody(v *CreatePolicyVersionResponseBody) *CreatePolicyVersionResponse {
 	s.Body = v
 	return s
 }
 
 type CreateRoleRequest struct {
-	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
+	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	MaxSessionDuration       *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s CreateRoleRequest) String() string {
@@ -1024,8 +1097,8 @@ func (s CreateRoleRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRoleRequest) SetRoleName(v string) *CreateRoleRequest {
-	s.RoleName = &v
+func (s *CreateRoleRequest) SetAssumeRolePolicyDocument(v string) *CreateRoleRequest {
+	s.AssumeRolePolicyDocument = &v
 	return s
 }
 
@@ -1034,19 +1107,19 @@ func (s *CreateRoleRequest) SetDescription(v string) *CreateRoleRequest {
 	return s
 }
 
-func (s *CreateRoleRequest) SetAssumeRolePolicyDocument(v string) *CreateRoleRequest {
-	s.AssumeRolePolicyDocument = &v
-	return s
-}
-
 func (s *CreateRoleRequest) SetMaxSessionDuration(v int64) *CreateRoleRequest {
 	s.MaxSessionDuration = &v
 	return s
 }
 
+func (s *CreateRoleRequest) SetRoleName(v string) *CreateRoleRequest {
+	s.RoleName = &v
+	return s
+}
+
 type CreateRoleResponseBody struct {
-	Role      *CreateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Role      *CreateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s CreateRoleResponseBody) String() string {
@@ -1057,24 +1130,24 @@ func (s CreateRoleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRoleResponseBody) SetRole(v *CreateRoleResponseBodyRole) *CreateRoleResponseBody {
-	s.Role = v
-	return s
-}
-
 func (s *CreateRoleResponseBody) SetRequestId(v string) *CreateRoleResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *CreateRoleResponseBody) SetRole(v *CreateRoleResponseBodyRole) *CreateRoleResponseBody {
+	s.Role = v
+	return s
+}
+
 type CreateRoleResponseBodyRole struct {
+	Arn                      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
+	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	MaxSessionDuration       *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	RoleId                   *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	Arn                      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s CreateRoleResponseBodyRole) String() string {
@@ -1085,8 +1158,18 @@ func (s CreateRoleResponseBodyRole) GoString() string {
 	return s.String()
 }
 
+func (s *CreateRoleResponseBodyRole) SetArn(v string) *CreateRoleResponseBodyRole {
+	s.Arn = &v
+	return s
+}
+
 func (s *CreateRoleResponseBodyRole) SetAssumeRolePolicyDocument(v string) *CreateRoleResponseBodyRole {
 	s.AssumeRolePolicyDocument = &v
+	return s
+}
+
+func (s *CreateRoleResponseBodyRole) SetCreateDate(v string) *CreateRoleResponseBodyRole {
+	s.CreateDate = &v
 	return s
 }
 
@@ -1100,29 +1183,20 @@ func (s *CreateRoleResponseBodyRole) SetMaxSessionDuration(v int64) *CreateRoleR
 	return s
 }
 
-func (s *CreateRoleResponseBodyRole) SetRoleName(v string) *CreateRoleResponseBodyRole {
-	s.RoleName = &v
-	return s
-}
-
-func (s *CreateRoleResponseBodyRole) SetCreateDate(v string) *CreateRoleResponseBodyRole {
-	s.CreateDate = &v
-	return s
-}
-
 func (s *CreateRoleResponseBodyRole) SetRoleId(v string) *CreateRoleResponseBodyRole {
 	s.RoleId = &v
 	return s
 }
 
-func (s *CreateRoleResponseBodyRole) SetArn(v string) *CreateRoleResponseBodyRole {
-	s.Arn = &v
+func (s *CreateRoleResponseBodyRole) SetRoleName(v string) *CreateRoleResponseBodyRole {
+	s.RoleName = &v
 	return s
 }
 
 type CreateRoleResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateRoleResponse) String() string {
@@ -1138,17 +1212,22 @@ func (s *CreateRoleResponse) SetHeaders(v map[string]*string) *CreateRoleRespons
 	return s
 }
 
+func (s *CreateRoleResponse) SetStatusCode(v int32) *CreateRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateRoleResponse) SetBody(v *CreateRoleResponseBody) *CreateRoleResponse {
 	s.Body = v
 	return s
 }
 
 type CreateUserRequest struct {
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateUserRequest) String() string {
@@ -1159,8 +1238,8 @@ func (s CreateUserRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateUserRequest) SetUserName(v string) *CreateUserRequest {
-	s.UserName = &v
+func (s *CreateUserRequest) SetComments(v string) *CreateUserRequest {
+	s.Comments = &v
 	return s
 }
 
@@ -1169,24 +1248,24 @@ func (s *CreateUserRequest) SetDisplayName(v string) *CreateUserRequest {
 	return s
 }
 
-func (s *CreateUserRequest) SetMobilePhone(v string) *CreateUserRequest {
-	s.MobilePhone = &v
-	return s
-}
-
 func (s *CreateUserRequest) SetEmail(v string) *CreateUserRequest {
 	s.Email = &v
 	return s
 }
 
-func (s *CreateUserRequest) SetComments(v string) *CreateUserRequest {
-	s.Comments = &v
+func (s *CreateUserRequest) SetMobilePhone(v string) *CreateUserRequest {
+	s.MobilePhone = &v
+	return s
+}
+
+func (s *CreateUserRequest) SetUserName(v string) *CreateUserRequest {
+	s.UserName = &v
 	return s
 }
 
 type CreateUserResponseBody struct {
-	User      *CreateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	User      *CreateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s CreateUserResponseBody) String() string {
@@ -1197,23 +1276,23 @@ func (s CreateUserResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateUserResponseBody) SetUser(v *CreateUserResponseBodyUser) *CreateUserResponseBody {
-	s.User = v
-	return s
-}
-
 func (s *CreateUserResponseBody) SetRequestId(v string) *CreateUserResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *CreateUserResponseBody) SetUser(v *CreateUserResponseBodyUser) *CreateUserResponseBody {
+	s.User = v
+	return s
+}
+
 type CreateUserResponseBodyUser struct {
+	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
 	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -1223,6 +1302,16 @@ func (s CreateUserResponseBodyUser) String() string {
 
 func (s CreateUserResponseBodyUser) GoString() string {
 	return s.String()
+}
+
+func (s *CreateUserResponseBodyUser) SetComments(v string) *CreateUserResponseBodyUser {
+	s.Comments = &v
+	return s
+}
+
+func (s *CreateUserResponseBodyUser) SetCreateDate(v string) *CreateUserResponseBodyUser {
+	s.CreateDate = &v
+	return s
 }
 
 func (s *CreateUserResponseBodyUser) SetDisplayName(v string) *CreateUserResponseBodyUser {
@@ -1245,24 +1334,15 @@ func (s *CreateUserResponseBodyUser) SetUserId(v string) *CreateUserResponseBody
 	return s
 }
 
-func (s *CreateUserResponseBodyUser) SetComments(v string) *CreateUserResponseBodyUser {
-	s.Comments = &v
-	return s
-}
-
-func (s *CreateUserResponseBodyUser) SetCreateDate(v string) *CreateUserResponseBodyUser {
-	s.CreateDate = &v
-	return s
-}
-
 func (s *CreateUserResponseBodyUser) SetUserName(v string) *CreateUserResponseBodyUser {
 	s.UserName = &v
 	return s
 }
 
 type CreateUserResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateUserResponse) String() string {
@@ -1275,6 +1355,11 @@ func (s CreateUserResponse) GoString() string {
 
 func (s *CreateUserResponse) SetHeaders(v map[string]*string) *CreateUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateUserResponse) SetStatusCode(v int32) *CreateUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1301,8 +1386,8 @@ func (s *CreateVirtualMFADeviceRequest) SetVirtualMFADeviceName(v string) *Creat
 }
 
 type CreateVirtualMFADeviceResponseBody struct {
-	VirtualMFADevice *CreateVirtualMFADeviceResponseBodyVirtualMFADevice `json:"VirtualMFADevice,omitempty" xml:"VirtualMFADevice,omitempty" type:"Struct"`
 	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VirtualMFADevice *CreateVirtualMFADeviceResponseBodyVirtualMFADevice `json:"VirtualMFADevice,omitempty" xml:"VirtualMFADevice,omitempty" type:"Struct"`
 }
 
 func (s CreateVirtualMFADeviceResponseBody) String() string {
@@ -1313,20 +1398,20 @@ func (s CreateVirtualMFADeviceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateVirtualMFADeviceResponseBody) SetVirtualMFADevice(v *CreateVirtualMFADeviceResponseBodyVirtualMFADevice) *CreateVirtualMFADeviceResponseBody {
-	s.VirtualMFADevice = v
-	return s
-}
-
 func (s *CreateVirtualMFADeviceResponseBody) SetRequestId(v string) *CreateVirtualMFADeviceResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *CreateVirtualMFADeviceResponseBody) SetVirtualMFADevice(v *CreateVirtualMFADeviceResponseBodyVirtualMFADevice) *CreateVirtualMFADeviceResponseBody {
+	s.VirtualMFADevice = v
+	return s
+}
+
 type CreateVirtualMFADeviceResponseBodyVirtualMFADevice struct {
-	SerialNumber     *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	QRCodePNG        *string `json:"QRCodePNG,omitempty" xml:"QRCodePNG,omitempty"`
 	Base32StringSeed *string `json:"Base32StringSeed,omitempty" xml:"Base32StringSeed,omitempty"`
+	QRCodePNG        *string `json:"QRCodePNG,omitempty" xml:"QRCodePNG,omitempty"`
+	SerialNumber     *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
 func (s CreateVirtualMFADeviceResponseBodyVirtualMFADevice) String() string {
@@ -1337,8 +1422,8 @@ func (s CreateVirtualMFADeviceResponseBodyVirtualMFADevice) GoString() string {
 	return s.String()
 }
 
-func (s *CreateVirtualMFADeviceResponseBodyVirtualMFADevice) SetSerialNumber(v string) *CreateVirtualMFADeviceResponseBodyVirtualMFADevice {
-	s.SerialNumber = &v
+func (s *CreateVirtualMFADeviceResponseBodyVirtualMFADevice) SetBase32StringSeed(v string) *CreateVirtualMFADeviceResponseBodyVirtualMFADevice {
+	s.Base32StringSeed = &v
 	return s
 }
 
@@ -1347,14 +1432,15 @@ func (s *CreateVirtualMFADeviceResponseBodyVirtualMFADevice) SetQRCodePNG(v stri
 	return s
 }
 
-func (s *CreateVirtualMFADeviceResponseBodyVirtualMFADevice) SetBase32StringSeed(v string) *CreateVirtualMFADeviceResponseBodyVirtualMFADevice {
-	s.Base32StringSeed = &v
+func (s *CreateVirtualMFADeviceResponseBodyVirtualMFADevice) SetSerialNumber(v string) *CreateVirtualMFADeviceResponseBodyVirtualMFADevice {
+	s.SerialNumber = &v
 	return s
 }
 
 type CreateVirtualMFADeviceResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVirtualMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVirtualMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateVirtualMFADeviceResponse) String() string {
@@ -1370,14 +1456,19 @@ func (s *CreateVirtualMFADeviceResponse) SetHeaders(v map[string]*string) *Creat
 	return s
 }
 
+func (s *CreateVirtualMFADeviceResponse) SetStatusCode(v int32) *CreateVirtualMFADeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateVirtualMFADeviceResponse) SetBody(v *CreateVirtualMFADeviceResponseBody) *CreateVirtualMFADeviceResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteAccessKeyRequest struct {
-	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DeleteAccessKeyRequest) String() string {
@@ -1388,13 +1479,13 @@ func (s DeleteAccessKeyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteAccessKeyRequest) SetUserName(v string) *DeleteAccessKeyRequest {
-	s.UserName = &v
+func (s *DeleteAccessKeyRequest) SetUserAccessKeyId(v string) *DeleteAccessKeyRequest {
+	s.UserAccessKeyId = &v
 	return s
 }
 
-func (s *DeleteAccessKeyRequest) SetUserAccessKeyId(v string) *DeleteAccessKeyRequest {
-	s.UserAccessKeyId = &v
+func (s *DeleteAccessKeyRequest) SetUserName(v string) *DeleteAccessKeyRequest {
+	s.UserName = &v
 	return s
 }
 
@@ -1416,8 +1507,9 @@ func (s *DeleteAccessKeyResponseBody) SetRequestId(v string) *DeleteAccessKeyRes
 }
 
 type DeleteAccessKeyResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteAccessKeyResponse) String() string {
@@ -1430,6 +1522,11 @@ func (s DeleteAccessKeyResponse) GoString() string {
 
 func (s *DeleteAccessKeyResponse) SetHeaders(v map[string]*string) *DeleteAccessKeyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteAccessKeyResponse) SetStatusCode(v int32) *DeleteAccessKeyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1473,8 +1570,9 @@ func (s *DeleteGroupResponseBody) SetRequestId(v string) *DeleteGroupResponseBod
 }
 
 type DeleteGroupResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteGroupResponse) String() string {
@@ -1487,6 +1585,11 @@ func (s DeleteGroupResponse) GoString() string {
 
 func (s *DeleteGroupResponse) SetHeaders(v map[string]*string) *DeleteGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteGroupResponse) SetStatusCode(v int32) *DeleteGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1530,8 +1633,9 @@ func (s *DeleteLoginProfileResponseBody) SetRequestId(v string) *DeleteLoginProf
 }
 
 type DeleteLoginProfileResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteLoginProfileResponse) String() string {
@@ -1544,6 +1648,11 @@ func (s DeleteLoginProfileResponse) GoString() string {
 
 func (s *DeleteLoginProfileResponse) SetHeaders(v map[string]*string) *DeleteLoginProfileResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteLoginProfileResponse) SetStatusCode(v int32) *DeleteLoginProfileResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1587,8 +1696,9 @@ func (s *DeletePolicyResponseBody) SetRequestId(v string) *DeletePolicyResponseB
 }
 
 type DeletePolicyResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeletePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeletePolicyResponse) String() string {
@@ -1601,6 +1711,11 @@ func (s DeletePolicyResponse) GoString() string {
 
 func (s *DeletePolicyResponse) SetHeaders(v map[string]*string) *DeletePolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeletePolicyResponse) SetStatusCode(v int32) *DeletePolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1650,8 +1765,9 @@ func (s *DeletePolicyVersionResponseBody) SetRequestId(v string) *DeletePolicyVe
 }
 
 type DeletePolicyVersionResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeletePolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeletePolicyVersionResponse) String() string {
@@ -1664,6 +1780,11 @@ func (s DeletePolicyVersionResponse) GoString() string {
 
 func (s *DeletePolicyVersionResponse) SetHeaders(v map[string]*string) *DeletePolicyVersionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeletePolicyVersionResponse) SetStatusCode(v int32) *DeletePolicyVersionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1707,8 +1828,9 @@ func (s *DeleteRoleResponseBody) SetRequestId(v string) *DeleteRoleResponseBody 
 }
 
 type DeleteRoleResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteRoleResponse) String() string {
@@ -1721,6 +1843,11 @@ func (s DeleteRoleResponse) GoString() string {
 
 func (s *DeleteRoleResponse) SetHeaders(v map[string]*string) *DeleteRoleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteRoleResponse) SetStatusCode(v int32) *DeleteRoleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1764,8 +1891,9 @@ func (s *DeleteUserResponseBody) SetRequestId(v string) *DeleteUserResponseBody 
 }
 
 type DeleteUserResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteUserResponse) String() string {
@@ -1778,6 +1906,11 @@ func (s DeleteUserResponse) GoString() string {
 
 func (s *DeleteUserResponse) SetHeaders(v map[string]*string) *DeleteUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteUserResponse) SetStatusCode(v int32) *DeleteUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1821,8 +1954,9 @@ func (s *DeleteVirtualMFADeviceResponseBody) SetRequestId(v string) *DeleteVirtu
 }
 
 type DeleteVirtualMFADeviceResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteVirtualMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVirtualMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteVirtualMFADeviceResponse) String() string {
@@ -1838,15 +1972,20 @@ func (s *DeleteVirtualMFADeviceResponse) SetHeaders(v map[string]*string) *Delet
 	return s
 }
 
+func (s *DeleteVirtualMFADeviceResponse) SetStatusCode(v int32) *DeleteVirtualMFADeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteVirtualMFADeviceResponse) SetBody(v *DeleteVirtualMFADeviceResponseBody) *DeleteVirtualMFADeviceResponse {
 	s.Body = v
 	return s
 }
 
 type DetachPolicyFromGroupRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s DetachPolicyFromGroupRequest) String() string {
@@ -1857,8 +1996,8 @@ func (s DetachPolicyFromGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetachPolicyFromGroupRequest) SetPolicyType(v string) *DetachPolicyFromGroupRequest {
-	s.PolicyType = &v
+func (s *DetachPolicyFromGroupRequest) SetGroupName(v string) *DetachPolicyFromGroupRequest {
+	s.GroupName = &v
 	return s
 }
 
@@ -1867,8 +2006,8 @@ func (s *DetachPolicyFromGroupRequest) SetPolicyName(v string) *DetachPolicyFrom
 	return s
 }
 
-func (s *DetachPolicyFromGroupRequest) SetGroupName(v string) *DetachPolicyFromGroupRequest {
-	s.GroupName = &v
+func (s *DetachPolicyFromGroupRequest) SetPolicyType(v string) *DetachPolicyFromGroupRequest {
+	s.PolicyType = &v
 	return s
 }
 
@@ -1890,8 +2029,9 @@ func (s *DetachPolicyFromGroupResponseBody) SetRequestId(v string) *DetachPolicy
 }
 
 type DetachPolicyFromGroupResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetachPolicyFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetachPolicyFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetachPolicyFromGroupResponse) String() string {
@@ -1907,14 +2047,19 @@ func (s *DetachPolicyFromGroupResponse) SetHeaders(v map[string]*string) *Detach
 	return s
 }
 
+func (s *DetachPolicyFromGroupResponse) SetStatusCode(v int32) *DetachPolicyFromGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DetachPolicyFromGroupResponse) SetBody(v *DetachPolicyFromGroupResponseBody) *DetachPolicyFromGroupResponse {
 	s.Body = v
 	return s
 }
 
 type DetachPolicyFromRoleRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	RoleName   *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -1926,13 +2071,13 @@ func (s DetachPolicyFromRoleRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetachPolicyFromRoleRequest) SetPolicyType(v string) *DetachPolicyFromRoleRequest {
-	s.PolicyType = &v
+func (s *DetachPolicyFromRoleRequest) SetPolicyName(v string) *DetachPolicyFromRoleRequest {
+	s.PolicyName = &v
 	return s
 }
 
-func (s *DetachPolicyFromRoleRequest) SetPolicyName(v string) *DetachPolicyFromRoleRequest {
-	s.PolicyName = &v
+func (s *DetachPolicyFromRoleRequest) SetPolicyType(v string) *DetachPolicyFromRoleRequest {
+	s.PolicyType = &v
 	return s
 }
 
@@ -1959,8 +2104,9 @@ func (s *DetachPolicyFromRoleResponseBody) SetRequestId(v string) *DetachPolicyF
 }
 
 type DetachPolicyFromRoleResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetachPolicyFromRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetachPolicyFromRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetachPolicyFromRoleResponse) String() string {
@@ -1976,14 +2122,19 @@ func (s *DetachPolicyFromRoleResponse) SetHeaders(v map[string]*string) *DetachP
 	return s
 }
 
+func (s *DetachPolicyFromRoleResponse) SetStatusCode(v int32) *DetachPolicyFromRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DetachPolicyFromRoleResponse) SetBody(v *DetachPolicyFromRoleResponseBody) *DetachPolicyFromRoleResponse {
 	s.Body = v
 	return s
 }
 
 type DetachPolicyFromUserRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -1995,13 +2146,13 @@ func (s DetachPolicyFromUserRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetachPolicyFromUserRequest) SetPolicyType(v string) *DetachPolicyFromUserRequest {
-	s.PolicyType = &v
+func (s *DetachPolicyFromUserRequest) SetPolicyName(v string) *DetachPolicyFromUserRequest {
+	s.PolicyName = &v
 	return s
 }
 
-func (s *DetachPolicyFromUserRequest) SetPolicyName(v string) *DetachPolicyFromUserRequest {
-	s.PolicyName = &v
+func (s *DetachPolicyFromUserRequest) SetPolicyType(v string) *DetachPolicyFromUserRequest {
+	s.PolicyType = &v
 	return s
 }
 
@@ -2028,8 +2179,9 @@ func (s *DetachPolicyFromUserResponseBody) SetRequestId(v string) *DetachPolicyF
 }
 
 type DetachPolicyFromUserResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetachPolicyFromUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetachPolicyFromUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetachPolicyFromUserResponse) String() string {
@@ -2045,14 +2197,19 @@ func (s *DetachPolicyFromUserResponse) SetHeaders(v map[string]*string) *DetachP
 	return s
 }
 
+func (s *DetachPolicyFromUserResponse) SetStatusCode(v int32) *DetachPolicyFromUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DetachPolicyFromUserResponse) SetBody(v *DetachPolicyFromUserResponseBody) *DetachPolicyFromUserResponse {
 	s.Body = v
 	return s
 }
 
 type GetAccessKeyLastUsedRequest struct {
-	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s GetAccessKeyLastUsedRequest) String() string {
@@ -2063,13 +2220,13 @@ func (s GetAccessKeyLastUsedRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetAccessKeyLastUsedRequest) SetUserName(v string) *GetAccessKeyLastUsedRequest {
-	s.UserName = &v
+func (s *GetAccessKeyLastUsedRequest) SetUserAccessKeyId(v string) *GetAccessKeyLastUsedRequest {
+	s.UserAccessKeyId = &v
 	return s
 }
 
-func (s *GetAccessKeyLastUsedRequest) SetUserAccessKeyId(v string) *GetAccessKeyLastUsedRequest {
-	s.UserAccessKeyId = &v
+func (s *GetAccessKeyLastUsedRequest) SetUserName(v string) *GetAccessKeyLastUsedRequest {
+	s.UserName = &v
 	return s
 }
 
@@ -2114,8 +2271,9 @@ func (s *GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed) SetLastUsedDate(v st
 }
 
 type GetAccessKeyLastUsedResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAccessKeyLastUsedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAccessKeyLastUsedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAccessKeyLastUsedResponse) String() string {
@@ -2131,14 +2289,19 @@ func (s *GetAccessKeyLastUsedResponse) SetHeaders(v map[string]*string) *GetAcce
 	return s
 }
 
+func (s *GetAccessKeyLastUsedResponse) SetStatusCode(v int32) *GetAccessKeyLastUsedResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetAccessKeyLastUsedResponse) SetBody(v *GetAccessKeyLastUsedResponseBody) *GetAccessKeyLastUsedResponse {
 	s.Body = v
 	return s
 }
 
 type GetAccountAliasResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AccountAlias *string `json:"AccountAlias,omitempty" xml:"AccountAlias,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccountAliasResponseBody) String() string {
@@ -2149,19 +2312,20 @@ func (s GetAccountAliasResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetAccountAliasResponseBody) SetRequestId(v string) *GetAccountAliasResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetAccountAliasResponseBody) SetAccountAlias(v string) *GetAccountAliasResponseBody {
 	s.AccountAlias = &v
 	return s
 }
 
+func (s *GetAccountAliasResponseBody) SetRequestId(v string) *GetAccountAliasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetAccountAliasResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAccountAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAccountAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAccountAliasResponse) String() string {
@@ -2174,6 +2338,11 @@ func (s GetAccountAliasResponse) GoString() string {
 
 func (s *GetAccountAliasResponse) SetHeaders(v map[string]*string) *GetAccountAliasResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAccountAliasResponse) SetStatusCode(v int32) *GetAccountAliasResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2223,11 +2392,11 @@ func (s *GetGroupResponseBody) SetRequestId(v string) *GetGroupResponseBody {
 }
 
 type GetGroupResponseBodyGroup struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetGroupResponseBodyGroup) String() string {
@@ -2236,21 +2405,6 @@ func (s GetGroupResponseBodyGroup) String() string {
 
 func (s GetGroupResponseBodyGroup) GoString() string {
 	return s.String()
-}
-
-func (s *GetGroupResponseBodyGroup) SetGroupId(v string) *GetGroupResponseBodyGroup {
-	s.GroupId = &v
-	return s
-}
-
-func (s *GetGroupResponseBodyGroup) SetUpdateDate(v string) *GetGroupResponseBodyGroup {
-	s.UpdateDate = &v
-	return s
-}
-
-func (s *GetGroupResponseBodyGroup) SetGroupName(v string) *GetGroupResponseBodyGroup {
-	s.GroupName = &v
-	return s
 }
 
 func (s *GetGroupResponseBodyGroup) SetComments(v string) *GetGroupResponseBodyGroup {
@@ -2263,9 +2417,25 @@ func (s *GetGroupResponseBodyGroup) SetCreateDate(v string) *GetGroupResponseBod
 	return s
 }
 
+func (s *GetGroupResponseBodyGroup) SetGroupId(v string) *GetGroupResponseBodyGroup {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyGroup) SetGroupName(v string) *GetGroupResponseBodyGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyGroup) SetUpdateDate(v string) *GetGroupResponseBodyGroup {
+	s.UpdateDate = &v
+	return s
+}
+
 type GetGroupResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetGroupResponse) String() string {
@@ -2278,6 +2448,11 @@ func (s GetGroupResponse) GoString() string {
 
 func (s *GetGroupResponse) SetHeaders(v map[string]*string) *GetGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetGroupResponse) SetStatusCode(v int32) *GetGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2304,8 +2479,8 @@ func (s *GetLoginProfileRequest) SetUserName(v string) *GetLoginProfileRequest {
 }
 
 type GetLoginProfileResponseBody struct {
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	LoginProfile *GetLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetLoginProfileResponseBody) String() string {
@@ -2316,21 +2491,21 @@ func (s GetLoginProfileResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetLoginProfileResponseBody) SetRequestId(v string) *GetLoginProfileResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetLoginProfileResponseBody) SetLoginProfile(v *GetLoginProfileResponseBodyLoginProfile) *GetLoginProfileResponseBody {
 	s.LoginProfile = v
 	return s
 }
 
+func (s *GetLoginProfileResponseBody) SetRequestId(v string) *GetLoginProfileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetLoginProfileResponseBodyLoginProfile struct {
-	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
 	CreateDate            *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
+	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s GetLoginProfileResponseBodyLoginProfile) String() string {
@@ -2341,18 +2516,8 @@ func (s GetLoginProfileResponseBodyLoginProfile) GoString() string {
 	return s.String()
 }
 
-func (s *GetLoginProfileResponseBodyLoginProfile) SetPasswordResetRequired(v bool) *GetLoginProfileResponseBodyLoginProfile {
-	s.PasswordResetRequired = &v
-	return s
-}
-
 func (s *GetLoginProfileResponseBodyLoginProfile) SetCreateDate(v string) *GetLoginProfileResponseBodyLoginProfile {
 	s.CreateDate = &v
-	return s
-}
-
-func (s *GetLoginProfileResponseBodyLoginProfile) SetUserName(v string) *GetLoginProfileResponseBodyLoginProfile {
-	s.UserName = &v
 	return s
 }
 
@@ -2361,9 +2526,20 @@ func (s *GetLoginProfileResponseBodyLoginProfile) SetMFABindRequired(v bool) *Ge
 	return s
 }
 
+func (s *GetLoginProfileResponseBodyLoginProfile) SetPasswordResetRequired(v bool) *GetLoginProfileResponseBodyLoginProfile {
+	s.PasswordResetRequired = &v
+	return s
+}
+
+func (s *GetLoginProfileResponseBodyLoginProfile) SetUserName(v string) *GetLoginProfileResponseBodyLoginProfile {
+	s.UserName = &v
+	return s
+}
+
 type GetLoginProfileResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetLoginProfileResponse) String() string {
@@ -2379,14 +2555,19 @@ func (s *GetLoginProfileResponse) SetHeaders(v map[string]*string) *GetLoginProf
 	return s
 }
 
+func (s *GetLoginProfileResponse) SetStatusCode(v int32) *GetLoginProfileResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetLoginProfileResponse) SetBody(v *GetLoginProfileResponseBody) *GetLoginProfileResponse {
 	s.Body = v
 	return s
 }
 
 type GetPasswordPolicyResponseBody struct {
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PasswordPolicy *GetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPasswordPolicyResponseBody) String() string {
@@ -2397,26 +2578,26 @@ func (s GetPasswordPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetPasswordPolicyResponseBody) SetRequestId(v string) *GetPasswordPolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetPasswordPolicyResponseBody) SetPasswordPolicy(v *GetPasswordPolicyResponseBodyPasswordPolicy) *GetPasswordPolicyResponseBody {
 	s.PasswordPolicy = v
 	return s
 }
 
+func (s *GetPasswordPolicyResponseBody) SetRequestId(v string) *GetPasswordPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetPasswordPolicyResponseBodyPasswordPolicy struct {
-	RequireNumbers             *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	RequireLowercaseCharacters *bool  `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
 	HardExpiry                 *bool  `json:"HardExpiry,omitempty" xml:"HardExpiry,omitempty"`
-	PasswordReusePrevention    *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
-	RequireSymbols             *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
+	MaxLoginAttemps            *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
 	MaxPasswordAge             *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
 	MinimumPasswordLength      *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
+	PasswordReusePrevention    *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
+	RequireLowercaseCharacters *bool  `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
+	RequireNumbers             *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
+	RequireSymbols             *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
 	RequireUppercaseCharacters *bool  `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
-	MaxLoginAttemps            *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
 }
 
 func (s GetPasswordPolicyResponseBodyPasswordPolicy) String() string {
@@ -2427,28 +2608,13 @@ func (s GetPasswordPolicyResponseBodyPasswordPolicy) GoString() string {
 	return s.String()
 }
 
-func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetRequireNumbers(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
-	s.RequireNumbers = &v
-	return s
-}
-
-func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetRequireLowercaseCharacters(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
-	s.RequireLowercaseCharacters = &v
-	return s
-}
-
 func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetHardExpiry(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
 	s.HardExpiry = &v
 	return s
 }
 
-func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetPasswordReusePrevention(v int32) *GetPasswordPolicyResponseBodyPasswordPolicy {
-	s.PasswordReusePrevention = &v
-	return s
-}
-
-func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetRequireSymbols(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
-	s.RequireSymbols = &v
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetMaxLoginAttemps(v int32) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.MaxLoginAttemps = &v
 	return s
 }
 
@@ -2462,19 +2628,35 @@ func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetMinimumPasswordLength(v
 	return s
 }
 
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetPasswordReusePrevention(v int32) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.PasswordReusePrevention = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetRequireLowercaseCharacters(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.RequireLowercaseCharacters = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetRequireNumbers(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.RequireNumbers = &v
+	return s
+}
+
+func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetRequireSymbols(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
+	s.RequireSymbols = &v
+	return s
+}
+
 func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetRequireUppercaseCharacters(v bool) *GetPasswordPolicyResponseBodyPasswordPolicy {
 	s.RequireUppercaseCharacters = &v
 	return s
 }
 
-func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetMaxLoginAttemps(v int32) *GetPasswordPolicyResponseBodyPasswordPolicy {
-	s.MaxLoginAttemps = &v
-	return s
-}
-
 type GetPasswordPolicyResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPasswordPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPasswordPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetPasswordPolicyResponse) String() string {
@@ -2490,14 +2672,19 @@ func (s *GetPasswordPolicyResponse) SetHeaders(v map[string]*string) *GetPasswor
 	return s
 }
 
+func (s *GetPasswordPolicyResponse) SetStatusCode(v int32) *GetPasswordPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetPasswordPolicyResponse) SetBody(v *GetPasswordPolicyResponseBody) *GetPasswordPolicyResponse {
 	s.Body = v
 	return s
 }
 
 type GetPolicyRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s GetPolicyRequest) String() string {
@@ -2508,20 +2695,20 @@ func (s GetPolicyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetPolicyRequest) SetPolicyType(v string) *GetPolicyRequest {
-	s.PolicyType = &v
-	return s
-}
-
 func (s *GetPolicyRequest) SetPolicyName(v string) *GetPolicyRequest {
 	s.PolicyName = &v
 	return s
 }
 
+func (s *GetPolicyRequest) SetPolicyType(v string) *GetPolicyRequest {
+	s.PolicyType = &v
+	return s
+}
+
 type GetPolicyResponseBody struct {
+	DefaultPolicyVersion *GetPolicyResponseBodyDefaultPolicyVersion `json:"DefaultPolicyVersion,omitempty" xml:"DefaultPolicyVersion,omitempty" type:"Struct"`
 	Policy               *GetPolicyResponseBodyPolicy               `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
 	RequestId            *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DefaultPolicyVersion *GetPolicyResponseBodyDefaultPolicyVersion `json:"DefaultPolicyVersion,omitempty" xml:"DefaultPolicyVersion,omitempty" type:"Struct"`
 }
 
 func (s GetPolicyResponseBody) String() string {
@@ -2530,6 +2717,11 @@ func (s GetPolicyResponseBody) String() string {
 
 func (s GetPolicyResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetPolicyResponseBody) SetDefaultPolicyVersion(v *GetPolicyResponseBodyDefaultPolicyVersion) *GetPolicyResponseBody {
+	s.DefaultPolicyVersion = v
+	return s
 }
 
 func (s *GetPolicyResponseBody) SetPolicy(v *GetPolicyResponseBodyPolicy) *GetPolicyResponseBody {
@@ -2542,75 +2734,11 @@ func (s *GetPolicyResponseBody) SetRequestId(v string) *GetPolicyResponseBody {
 	return s
 }
 
-func (s *GetPolicyResponseBody) SetDefaultPolicyVersion(v *GetPolicyResponseBodyDefaultPolicyVersion) *GetPolicyResponseBody {
-	s.DefaultPolicyVersion = v
-	return s
-}
-
-type GetPolicyResponseBodyPolicy struct {
-	DefaultVersion  *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyDocument  *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	AttachmentCount *int32  `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-}
-
-func (s GetPolicyResponseBodyPolicy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPolicyResponseBodyPolicy) GoString() string {
-	return s.String()
-}
-
-func (s *GetPolicyResponseBodyPolicy) SetDefaultVersion(v string) *GetPolicyResponseBodyPolicy {
-	s.DefaultVersion = &v
-	return s
-}
-
-func (s *GetPolicyResponseBodyPolicy) SetUpdateDate(v string) *GetPolicyResponseBodyPolicy {
-	s.UpdateDate = &v
-	return s
-}
-
-func (s *GetPolicyResponseBodyPolicy) SetDescription(v string) *GetPolicyResponseBodyPolicy {
-	s.Description = &v
-	return s
-}
-
-func (s *GetPolicyResponseBodyPolicy) SetPolicyDocument(v string) *GetPolicyResponseBodyPolicy {
-	s.PolicyDocument = &v
-	return s
-}
-
-func (s *GetPolicyResponseBodyPolicy) SetAttachmentCount(v int32) *GetPolicyResponseBodyPolicy {
-	s.AttachmentCount = &v
-	return s
-}
-
-func (s *GetPolicyResponseBodyPolicy) SetPolicyName(v string) *GetPolicyResponseBodyPolicy {
-	s.PolicyName = &v
-	return s
-}
-
-func (s *GetPolicyResponseBodyPolicy) SetCreateDate(v string) *GetPolicyResponseBodyPolicy {
-	s.CreateDate = &v
-	return s
-}
-
-func (s *GetPolicyResponseBodyPolicy) SetPolicyType(v string) *GetPolicyResponseBodyPolicy {
-	s.PolicyType = &v
-	return s
-}
-
 type GetPolicyResponseBodyDefaultPolicyVersion struct {
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
 	PolicyDocument   *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 }
 
 func (s GetPolicyResponseBodyDefaultPolicyVersion) String() string {
@@ -2619,6 +2747,11 @@ func (s GetPolicyResponseBodyDefaultPolicyVersion) String() string {
 
 func (s GetPolicyResponseBodyDefaultPolicyVersion) GoString() string {
 	return s.String()
+}
+
+func (s *GetPolicyResponseBodyDefaultPolicyVersion) SetCreateDate(v string) *GetPolicyResponseBodyDefaultPolicyVersion {
+	s.CreateDate = &v
+	return s
 }
 
 func (s *GetPolicyResponseBodyDefaultPolicyVersion) SetIsDefaultVersion(v bool) *GetPolicyResponseBodyDefaultPolicyVersion {
@@ -2636,14 +2769,69 @@ func (s *GetPolicyResponseBodyDefaultPolicyVersion) SetVersionId(v string) *GetP
 	return s
 }
 
-func (s *GetPolicyResponseBodyDefaultPolicyVersion) SetCreateDate(v string) *GetPolicyResponseBodyDefaultPolicyVersion {
+type GetPolicyResponseBodyPolicy struct {
+	AttachmentCount *int32  `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DefaultVersion  *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PolicyDocument  *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+}
+
+func (s GetPolicyResponseBodyPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBodyPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetAttachmentCount(v int32) *GetPolicyResponseBodyPolicy {
+	s.AttachmentCount = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetCreateDate(v string) *GetPolicyResponseBodyPolicy {
 	s.CreateDate = &v
 	return s
 }
 
+func (s *GetPolicyResponseBodyPolicy) SetDefaultVersion(v string) *GetPolicyResponseBodyPolicy {
+	s.DefaultVersion = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetDescription(v string) *GetPolicyResponseBodyPolicy {
+	s.Description = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetPolicyDocument(v string) *GetPolicyResponseBodyPolicy {
+	s.PolicyDocument = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetPolicyName(v string) *GetPolicyResponseBodyPolicy {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetPolicyType(v string) *GetPolicyResponseBodyPolicy {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetUpdateDate(v string) *GetPolicyResponseBodyPolicy {
+	s.UpdateDate = &v
+	return s
+}
+
 type GetPolicyResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetPolicyResponse) String() string {
@@ -2659,14 +2847,19 @@ func (s *GetPolicyResponse) SetHeaders(v map[string]*string) *GetPolicyResponse 
 	return s
 }
 
+func (s *GetPolicyResponse) SetStatusCode(v int32) *GetPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetPolicyResponse) SetBody(v *GetPolicyResponseBody) *GetPolicyResponse {
 	s.Body = v
 	return s
 }
 
 type GetPolicyVersionRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	VersionId  *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -2678,13 +2871,13 @@ func (s GetPolicyVersionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetPolicyVersionRequest) SetPolicyType(v string) *GetPolicyVersionRequest {
-	s.PolicyType = &v
+func (s *GetPolicyVersionRequest) SetPolicyName(v string) *GetPolicyVersionRequest {
+	s.PolicyName = &v
 	return s
 }
 
-func (s *GetPolicyVersionRequest) SetPolicyName(v string) *GetPolicyVersionRequest {
-	s.PolicyName = &v
+func (s *GetPolicyVersionRequest) SetPolicyType(v string) *GetPolicyVersionRequest {
+	s.PolicyType = &v
 	return s
 }
 
@@ -2717,10 +2910,10 @@ func (s *GetPolicyVersionResponseBody) SetRequestId(v string) *GetPolicyVersionR
 }
 
 type GetPolicyVersionResponseBodyPolicyVersion struct {
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
 	PolicyDocument   *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 }
 
 func (s GetPolicyVersionResponseBodyPolicyVersion) String() string {
@@ -2729,6 +2922,11 @@ func (s GetPolicyVersionResponseBodyPolicyVersion) String() string {
 
 func (s GetPolicyVersionResponseBodyPolicyVersion) GoString() string {
 	return s.String()
+}
+
+func (s *GetPolicyVersionResponseBodyPolicyVersion) SetCreateDate(v string) *GetPolicyVersionResponseBodyPolicyVersion {
+	s.CreateDate = &v
+	return s
 }
 
 func (s *GetPolicyVersionResponseBodyPolicyVersion) SetIsDefaultVersion(v bool) *GetPolicyVersionResponseBodyPolicyVersion {
@@ -2746,14 +2944,10 @@ func (s *GetPolicyVersionResponseBodyPolicyVersion) SetVersionId(v string) *GetP
 	return s
 }
 
-func (s *GetPolicyVersionResponseBodyPolicyVersion) SetCreateDate(v string) *GetPolicyVersionResponseBodyPolicyVersion {
-	s.CreateDate = &v
-	return s
-}
-
 type GetPolicyVersionResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetPolicyVersionResponse) String() string {
@@ -2766,6 +2960,11 @@ func (s GetPolicyVersionResponse) GoString() string {
 
 func (s *GetPolicyVersionResponse) SetHeaders(v map[string]*string) *GetPolicyVersionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetPolicyVersionResponse) SetStatusCode(v int32) *GetPolicyVersionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2792,8 +2991,8 @@ func (s *GetRoleRequest) SetRoleName(v string) *GetRoleRequest {
 }
 
 type GetRoleResponseBody struct {
-	Role      *GetRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Role      *GetRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s GetRoleResponseBody) String() string {
@@ -2804,25 +3003,25 @@ func (s GetRoleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetRoleResponseBody) SetRole(v *GetRoleResponseBodyRole) *GetRoleResponseBody {
-	s.Role = v
-	return s
-}
-
 func (s *GetRoleResponseBody) SetRequestId(v string) *GetRoleResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *GetRoleResponseBody) SetRole(v *GetRoleResponseBodyRole) *GetRoleResponseBody {
+	s.Role = v
+	return s
+}
+
 type GetRoleResponseBodyRole struct {
+	Arn                      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	UpdateDate               *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	MaxSessionDuration       *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	RoleId                   *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	Arn                      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	UpdateDate               *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetRoleResponseBodyRole) String() string {
@@ -2833,13 +3032,18 @@ func (s GetRoleResponseBodyRole) GoString() string {
 	return s.String()
 }
 
+func (s *GetRoleResponseBodyRole) SetArn(v string) *GetRoleResponseBodyRole {
+	s.Arn = &v
+	return s
+}
+
 func (s *GetRoleResponseBodyRole) SetAssumeRolePolicyDocument(v string) *GetRoleResponseBodyRole {
 	s.AssumeRolePolicyDocument = &v
 	return s
 }
 
-func (s *GetRoleResponseBodyRole) SetUpdateDate(v string) *GetRoleResponseBodyRole {
-	s.UpdateDate = &v
+func (s *GetRoleResponseBodyRole) SetCreateDate(v string) *GetRoleResponseBodyRole {
+	s.CreateDate = &v
 	return s
 }
 
@@ -2853,29 +3057,25 @@ func (s *GetRoleResponseBodyRole) SetMaxSessionDuration(v int64) *GetRoleRespons
 	return s
 }
 
-func (s *GetRoleResponseBodyRole) SetRoleName(v string) *GetRoleResponseBodyRole {
-	s.RoleName = &v
-	return s
-}
-
-func (s *GetRoleResponseBodyRole) SetCreateDate(v string) *GetRoleResponseBodyRole {
-	s.CreateDate = &v
-	return s
-}
-
 func (s *GetRoleResponseBodyRole) SetRoleId(v string) *GetRoleResponseBodyRole {
 	s.RoleId = &v
 	return s
 }
 
-func (s *GetRoleResponseBodyRole) SetArn(v string) *GetRoleResponseBodyRole {
-	s.Arn = &v
+func (s *GetRoleResponseBodyRole) SetRoleName(v string) *GetRoleResponseBodyRole {
+	s.RoleName = &v
+	return s
+}
+
+func (s *GetRoleResponseBodyRole) SetUpdateDate(v string) *GetRoleResponseBodyRole {
+	s.UpdateDate = &v
 	return s
 }
 
 type GetRoleResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetRoleResponse) String() string {
@@ -2891,14 +3091,19 @@ func (s *GetRoleResponse) SetHeaders(v map[string]*string) *GetRoleResponse {
 	return s
 }
 
+func (s *GetRoleResponse) SetStatusCode(v int32) *GetRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetRoleResponse) SetBody(v *GetRoleResponseBody) *GetRoleResponse {
 	s.Body = v
 	return s
 }
 
 type GetSecurityPreferenceResponseBody struct {
-	SecurityPreference *GetSecurityPreferenceResponseBodySecurityPreference `json:"SecurityPreference,omitempty" xml:"SecurityPreference,omitempty" type:"Struct"`
 	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityPreference *GetSecurityPreferenceResponseBodySecurityPreference `json:"SecurityPreference,omitempty" xml:"SecurityPreference,omitempty" type:"Struct"`
 }
 
 func (s GetSecurityPreferenceResponseBody) String() string {
@@ -2909,20 +3114,20 @@ func (s GetSecurityPreferenceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetSecurityPreferenceResponseBody) SetSecurityPreference(v *GetSecurityPreferenceResponseBodySecurityPreference) *GetSecurityPreferenceResponseBody {
-	s.SecurityPreference = v
-	return s
-}
-
 func (s *GetSecurityPreferenceResponseBody) SetRequestId(v string) *GetSecurityPreferenceResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *GetSecurityPreferenceResponseBody) SetSecurityPreference(v *GetSecurityPreferenceResponseBodySecurityPreference) *GetSecurityPreferenceResponseBody {
+	s.SecurityPreference = v
+	return s
+}
+
 type GetSecurityPreferenceResponseBodySecurityPreference struct {
 	AccessKeyPreference    *GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference    `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
-	MFAPreference          *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference          `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
 	LoginProfilePreference *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
+	MFAPreference          *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference          `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
 	PublicKeyPreference    *GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference    `json:"PublicKeyPreference,omitempty" xml:"PublicKeyPreference,omitempty" type:"Struct"`
 }
 
@@ -2939,13 +3144,13 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetAccessKeyPrefer
 	return s
 }
 
-func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetMFAPreference(v *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) *GetSecurityPreferenceResponseBodySecurityPreference {
-	s.MFAPreference = v
+func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetLoginProfilePreference(v *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) *GetSecurityPreferenceResponseBodySecurityPreference {
+	s.LoginProfilePreference = v
 	return s
 }
 
-func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetLoginProfilePreference(v *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) *GetSecurityPreferenceResponseBodySecurityPreference {
-	s.LoginProfilePreference = v
+func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetMFAPreference(v *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) *GetSecurityPreferenceResponseBodySecurityPreference {
+	s.MFAPreference = v
 	return s
 }
 
@@ -2971,6 +3176,41 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference)
 	return s
 }
 
+type GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference struct {
+	AllowUserToChangePassword *bool   `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	EnableSaveMFATicket       *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
+	LoginNetworkMasks         *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
+	LoginSessionDuration      *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
+}
+
+func (s GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) GoString() string {
+	return s.String()
+}
+
+func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetAllowUserToChangePassword(v bool) *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
+	s.AllowUserToChangePassword = &v
+	return s
+}
+
+func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetEnableSaveMFATicket(v bool) *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
+	s.EnableSaveMFATicket = &v
+	return s
+}
+
+func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetLoginNetworkMasks(v string) *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
+	s.LoginNetworkMasks = &v
+	return s
+}
+
+func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetLoginSessionDuration(v int32) *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
+	s.LoginSessionDuration = &v
+	return s
+}
+
 type GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference struct {
 	AllowUserToManageMFADevices *bool `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
 }
@@ -2985,41 +3225,6 @@ func (s GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) GoStri
 
 func (s *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAllowUserToManageMFADevices(v bool) *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference {
 	s.AllowUserToManageMFADevices = &v
-	return s
-}
-
-type GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference struct {
-	EnableSaveMFATicket       *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
-	LoginSessionDuration      *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
-	LoginNetworkMasks         *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
-	AllowUserToChangePassword *bool   `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
-}
-
-func (s GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) GoString() string {
-	return s.String()
-}
-
-func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetEnableSaveMFATicket(v bool) *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
-	s.EnableSaveMFATicket = &v
-	return s
-}
-
-func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetLoginSessionDuration(v int32) *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
-	s.LoginSessionDuration = &v
-	return s
-}
-
-func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetLoginNetworkMasks(v string) *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
-	s.LoginNetworkMasks = &v
-	return s
-}
-
-func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetAllowUserToChangePassword(v bool) *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
-	s.AllowUserToChangePassword = &v
 	return s
 }
 
@@ -3041,8 +3246,9 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference)
 }
 
 type GetSecurityPreferenceResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSecurityPreferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSecurityPreferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSecurityPreferenceResponse) String() string {
@@ -3055,6 +3261,11 @@ func (s GetSecurityPreferenceResponse) GoString() string {
 
 func (s *GetSecurityPreferenceResponse) SetHeaders(v map[string]*string) *GetSecurityPreferenceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetSecurityPreferenceResponse) SetStatusCode(v int32) *GetSecurityPreferenceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3081,8 +3292,8 @@ func (s *GetUserRequest) SetUserName(v string) *GetUserRequest {
 }
 
 type GetUserResponseBody struct {
-	User      *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	User      *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -3093,25 +3304,25 @@ func (s GetUserResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetUserResponseBody) SetUser(v *GetUserResponseBodyUser) *GetUserResponseBody {
-	s.User = v
-	return s
-}
-
 func (s *GetUserResponseBody) SetRequestId(v string) *GetUserResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *GetUserResponseBody) SetUser(v *GetUserResponseBodyUser) *GetUserResponseBody {
+	s.User = v
+	return s
+}
+
 type GetUserResponseBodyUser struct {
+	Comments      *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	CreateDate    *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Email         *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	UpdateDate    *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	MobilePhone   *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Comments      *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	LastLoginDate *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
-	CreateDate    *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	MobilePhone   *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	UpdateDate    *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserName      *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -3121,6 +3332,16 @@ func (s GetUserResponseBodyUser) String() string {
 
 func (s GetUserResponseBodyUser) GoString() string {
 	return s.String()
+}
+
+func (s *GetUserResponseBodyUser) SetComments(v string) *GetUserResponseBodyUser {
+	s.Comments = &v
+	return s
+}
+
+func (s *GetUserResponseBodyUser) SetCreateDate(v string) *GetUserResponseBodyUser {
+	s.CreateDate = &v
+	return s
 }
 
 func (s *GetUserResponseBodyUser) SetDisplayName(v string) *GetUserResponseBodyUser {
@@ -3133,8 +3354,8 @@ func (s *GetUserResponseBodyUser) SetEmail(v string) *GetUserResponseBodyUser {
 	return s
 }
 
-func (s *GetUserResponseBodyUser) SetUpdateDate(v string) *GetUserResponseBodyUser {
-	s.UpdateDate = &v
+func (s *GetUserResponseBodyUser) SetLastLoginDate(v string) *GetUserResponseBodyUser {
+	s.LastLoginDate = &v
 	return s
 }
 
@@ -3143,23 +3364,13 @@ func (s *GetUserResponseBodyUser) SetMobilePhone(v string) *GetUserResponseBodyU
 	return s
 }
 
+func (s *GetUserResponseBodyUser) SetUpdateDate(v string) *GetUserResponseBodyUser {
+	s.UpdateDate = &v
+	return s
+}
+
 func (s *GetUserResponseBodyUser) SetUserId(v string) *GetUserResponseBodyUser {
 	s.UserId = &v
-	return s
-}
-
-func (s *GetUserResponseBodyUser) SetComments(v string) *GetUserResponseBodyUser {
-	s.Comments = &v
-	return s
-}
-
-func (s *GetUserResponseBodyUser) SetLastLoginDate(v string) *GetUserResponseBodyUser {
-	s.LastLoginDate = &v
-	return s
-}
-
-func (s *GetUserResponseBodyUser) SetCreateDate(v string) *GetUserResponseBodyUser {
-	s.CreateDate = &v
 	return s
 }
 
@@ -3169,8 +3380,9 @@ func (s *GetUserResponseBodyUser) SetUserName(v string) *GetUserResponseBodyUser
 }
 
 type GetUserResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetUserResponse) String() string {
@@ -3183,6 +3395,11 @@ func (s GetUserResponse) GoString() string {
 
 func (s *GetUserResponse) SetHeaders(v map[string]*string) *GetUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetUserResponse) SetStatusCode(v int32) *GetUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3233,6 +3450,7 @@ func (s *GetUserMFAInfoResponseBody) SetRequestId(v string) *GetUserMFAInfoRespo
 
 type GetUserMFAInfoResponseBodyMFADevice struct {
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetUserMFAInfoResponseBodyMFADevice) String() string {
@@ -3248,9 +3466,15 @@ func (s *GetUserMFAInfoResponseBodyMFADevice) SetSerialNumber(v string) *GetUser
 	return s
 }
 
+func (s *GetUserMFAInfoResponseBodyMFADevice) SetType(v string) *GetUserMFAInfoResponseBodyMFADevice {
+	s.Type = &v
+	return s
+}
+
 type GetUserMFAInfoResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserMFAInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserMFAInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetUserMFAInfoResponse) String() string {
@@ -3263,6 +3487,11 @@ func (s GetUserMFAInfoResponse) GoString() string {
 
 func (s *GetUserMFAInfoResponse) SetHeaders(v map[string]*string) *GetUserMFAInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetUserMFAInfoResponse) SetStatusCode(v int32) *GetUserMFAInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3329,9 +3558,9 @@ func (s *ListAccessKeysResponseBodyAccessKeys) SetAccessKey(v []*ListAccessKeysR
 }
 
 type ListAccessKeysResponseBodyAccessKeysAccessKey struct {
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
 	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAccessKeysResponseBodyAccessKeysAccessKey) String() string {
@@ -3340,11 +3569,6 @@ func (s ListAccessKeysResponseBodyAccessKeysAccessKey) String() string {
 
 func (s ListAccessKeysResponseBodyAccessKeysAccessKey) GoString() string {
 	return s.String()
-}
-
-func (s *ListAccessKeysResponseBodyAccessKeysAccessKey) SetStatus(v string) *ListAccessKeysResponseBodyAccessKeysAccessKey {
-	s.Status = &v
-	return s
 }
 
 func (s *ListAccessKeysResponseBodyAccessKeysAccessKey) SetAccessKeyId(v string) *ListAccessKeysResponseBodyAccessKeysAccessKey {
@@ -3357,9 +3581,15 @@ func (s *ListAccessKeysResponseBodyAccessKeysAccessKey) SetCreateDate(v string) 
 	return s
 }
 
+func (s *ListAccessKeysResponseBodyAccessKeysAccessKey) SetStatus(v string) *ListAccessKeysResponseBodyAccessKeysAccessKey {
+	s.Status = &v
+	return s
+}
+
 type ListAccessKeysResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAccessKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAccessKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAccessKeysResponse) String() string {
@@ -3375,14 +3605,19 @@ func (s *ListAccessKeysResponse) SetHeaders(v map[string]*string) *ListAccessKey
 	return s
 }
 
+func (s *ListAccessKeysResponse) SetStatusCode(v int32) *ListAccessKeysResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListAccessKeysResponse) SetBody(v *ListAccessKeysResponseBody) *ListAccessKeysResponse {
 	s.Body = v
 	return s
 }
 
 type ListEntitiesForPolicyRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s ListEntitiesForPolicyRequest) String() string {
@@ -3393,19 +3628,19 @@ func (s ListEntitiesForPolicyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListEntitiesForPolicyRequest) SetPolicyType(v string) *ListEntitiesForPolicyRequest {
-	s.PolicyType = &v
-	return s
-}
-
 func (s *ListEntitiesForPolicyRequest) SetPolicyName(v string) *ListEntitiesForPolicyRequest {
 	s.PolicyName = &v
 	return s
 }
 
+func (s *ListEntitiesForPolicyRequest) SetPolicyType(v string) *ListEntitiesForPolicyRequest {
+	s.PolicyType = &v
+	return s
+}
+
 type ListEntitiesForPolicyResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Groups    *ListEntitiesForPolicyResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Roles     *ListEntitiesForPolicyResponseBodyRoles  `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
 	Users     *ListEntitiesForPolicyResponseBodyUsers  `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
@@ -3418,13 +3653,13 @@ func (s ListEntitiesForPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListEntitiesForPolicyResponseBody) SetRequestId(v string) *ListEntitiesForPolicyResponseBody {
-	s.RequestId = &v
+func (s *ListEntitiesForPolicyResponseBody) SetGroups(v *ListEntitiesForPolicyResponseBodyGroups) *ListEntitiesForPolicyResponseBody {
+	s.Groups = v
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBody) SetGroups(v *ListEntitiesForPolicyResponseBodyGroups) *ListEntitiesForPolicyResponseBody {
-	s.Groups = v
+func (s *ListEntitiesForPolicyResponseBody) SetRequestId(v string) *ListEntitiesForPolicyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3456,9 +3691,9 @@ func (s *ListEntitiesForPolicyResponseBodyGroups) SetGroup(v []*ListEntitiesForP
 }
 
 type ListEntitiesForPolicyResponseBodyGroupsGroup struct {
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s ListEntitiesForPolicyResponseBodyGroupsGroup) String() string {
@@ -3469,8 +3704,8 @@ func (s ListEntitiesForPolicyResponseBodyGroupsGroup) GoString() string {
 	return s.String()
 }
 
-func (s *ListEntitiesForPolicyResponseBodyGroupsGroup) SetGroupName(v string) *ListEntitiesForPolicyResponseBodyGroupsGroup {
-	s.GroupName = &v
+func (s *ListEntitiesForPolicyResponseBodyGroupsGroup) SetAttachDate(v string) *ListEntitiesForPolicyResponseBodyGroupsGroup {
+	s.AttachDate = &v
 	return s
 }
 
@@ -3479,8 +3714,8 @@ func (s *ListEntitiesForPolicyResponseBodyGroupsGroup) SetComments(v string) *Li
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBodyGroupsGroup) SetAttachDate(v string) *ListEntitiesForPolicyResponseBodyGroupsGroup {
-	s.AttachDate = &v
+func (s *ListEntitiesForPolicyResponseBodyGroupsGroup) SetGroupName(v string) *ListEntitiesForPolicyResponseBodyGroupsGroup {
+	s.GroupName = &v
 	return s
 }
 
@@ -3502,11 +3737,11 @@ func (s *ListEntitiesForPolicyResponseBodyRoles) SetRole(v []*ListEntitiesForPol
 }
 
 type ListEntitiesForPolicyResponseBodyRolesRole struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RoleName    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
 	Arn         *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	RoleId      *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s ListEntitiesForPolicyResponseBodyRolesRole) String() string {
@@ -3517,13 +3752,8 @@ func (s ListEntitiesForPolicyResponseBodyRolesRole) GoString() string {
 	return s.String()
 }
 
-func (s *ListEntitiesForPolicyResponseBodyRolesRole) SetDescription(v string) *ListEntitiesForPolicyResponseBodyRolesRole {
-	s.Description = &v
-	return s
-}
-
-func (s *ListEntitiesForPolicyResponseBodyRolesRole) SetRoleName(v string) *ListEntitiesForPolicyResponseBodyRolesRole {
-	s.RoleName = &v
+func (s *ListEntitiesForPolicyResponseBodyRolesRole) SetArn(v string) *ListEntitiesForPolicyResponseBodyRolesRole {
+	s.Arn = &v
 	return s
 }
 
@@ -3532,13 +3762,18 @@ func (s *ListEntitiesForPolicyResponseBodyRolesRole) SetAttachDate(v string) *Li
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBodyRolesRole) SetArn(v string) *ListEntitiesForPolicyResponseBodyRolesRole {
-	s.Arn = &v
+func (s *ListEntitiesForPolicyResponseBodyRolesRole) SetDescription(v string) *ListEntitiesForPolicyResponseBodyRolesRole {
+	s.Description = &v
 	return s
 }
 
 func (s *ListEntitiesForPolicyResponseBodyRolesRole) SetRoleId(v string) *ListEntitiesForPolicyResponseBodyRolesRole {
 	s.RoleId = &v
+	return s
+}
+
+func (s *ListEntitiesForPolicyResponseBodyRolesRole) SetRoleName(v string) *ListEntitiesForPolicyResponseBodyRolesRole {
+	s.RoleName = &v
 	return s
 }
 
@@ -3560,10 +3795,10 @@ func (s *ListEntitiesForPolicyResponseBodyUsers) SetUser(v []*ListEntitiesForPol
 }
 
 type ListEntitiesForPolicyResponseBodyUsersUser struct {
+	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
 }
 
 func (s ListEntitiesForPolicyResponseBodyUsersUser) String() string {
@@ -3572,6 +3807,11 @@ func (s ListEntitiesForPolicyResponseBodyUsersUser) String() string {
 
 func (s ListEntitiesForPolicyResponseBodyUsersUser) GoString() string {
 	return s.String()
+}
+
+func (s *ListEntitiesForPolicyResponseBodyUsersUser) SetAttachDate(v string) *ListEntitiesForPolicyResponseBodyUsersUser {
+	s.AttachDate = &v
+	return s
 }
 
 func (s *ListEntitiesForPolicyResponseBodyUsersUser) SetDisplayName(v string) *ListEntitiesForPolicyResponseBodyUsersUser {
@@ -3589,14 +3829,10 @@ func (s *ListEntitiesForPolicyResponseBodyUsersUser) SetUserName(v string) *List
 	return s
 }
 
-func (s *ListEntitiesForPolicyResponseBodyUsersUser) SetAttachDate(v string) *ListEntitiesForPolicyResponseBodyUsersUser {
-	s.AttachDate = &v
-	return s
-}
-
 type ListEntitiesForPolicyResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEntitiesForPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEntitiesForPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListEntitiesForPolicyResponse) String() string {
@@ -3609,6 +3845,11 @@ func (s ListEntitiesForPolicyResponse) GoString() string {
 
 func (s *ListEntitiesForPolicyResponse) SetHeaders(v map[string]*string) *ListEntitiesForPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListEntitiesForPolicyResponse) SetStatusCode(v int32) *ListEntitiesForPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3641,10 +3882,10 @@ func (s *ListGroupsRequest) SetMaxItems(v int32) *ListGroupsRequest {
 }
 
 type ListGroupsResponseBody struct {
-	RequestId   *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Groups      *ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
 	IsTruncated *bool                         `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	Marker      *string                       `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	RequestId   *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListGroupsResponseBody) String() string {
@@ -3653,11 +3894,6 @@ func (s ListGroupsResponseBody) String() string {
 
 func (s ListGroupsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ListGroupsResponseBody) SetRequestId(v string) *ListGroupsResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *ListGroupsResponseBody) SetGroups(v *ListGroupsResponseBodyGroups) *ListGroupsResponseBody {
@@ -3672,6 +3908,11 @@ func (s *ListGroupsResponseBody) SetIsTruncated(v bool) *ListGroupsResponseBody 
 
 func (s *ListGroupsResponseBody) SetMarker(v string) *ListGroupsResponseBody {
 	s.Marker = &v
+	return s
+}
+
+func (s *ListGroupsResponseBody) SetRequestId(v string) *ListGroupsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3693,11 +3934,11 @@ func (s *ListGroupsResponseBodyGroups) SetGroup(v []*ListGroupsResponseBodyGroup
 }
 
 type ListGroupsResponseBodyGroupsGroup struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListGroupsResponseBodyGroupsGroup) String() string {
@@ -3706,21 +3947,6 @@ func (s ListGroupsResponseBodyGroupsGroup) String() string {
 
 func (s ListGroupsResponseBodyGroupsGroup) GoString() string {
 	return s.String()
-}
-
-func (s *ListGroupsResponseBodyGroupsGroup) SetGroupId(v string) *ListGroupsResponseBodyGroupsGroup {
-	s.GroupId = &v
-	return s
-}
-
-func (s *ListGroupsResponseBodyGroupsGroup) SetUpdateDate(v string) *ListGroupsResponseBodyGroupsGroup {
-	s.UpdateDate = &v
-	return s
-}
-
-func (s *ListGroupsResponseBodyGroupsGroup) SetGroupName(v string) *ListGroupsResponseBodyGroupsGroup {
-	s.GroupName = &v
-	return s
 }
 
 func (s *ListGroupsResponseBodyGroupsGroup) SetComments(v string) *ListGroupsResponseBodyGroupsGroup {
@@ -3733,9 +3959,25 @@ func (s *ListGroupsResponseBodyGroupsGroup) SetCreateDate(v string) *ListGroupsR
 	return s
 }
 
+func (s *ListGroupsResponseBodyGroupsGroup) SetGroupId(v string) *ListGroupsResponseBodyGroupsGroup {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyGroupsGroup) SetGroupName(v string) *ListGroupsResponseBodyGroupsGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyGroupsGroup) SetUpdateDate(v string) *ListGroupsResponseBodyGroupsGroup {
+	s.UpdateDate = &v
+	return s
+}
+
 type ListGroupsResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListGroupsResponse) String() string {
@@ -3748,6 +3990,11 @@ func (s ListGroupsResponse) GoString() string {
 
 func (s *ListGroupsResponse) SetHeaders(v map[string]*string) *ListGroupsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListGroupsResponse) SetStatusCode(v int32) *ListGroupsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3774,8 +4021,8 @@ func (s *ListGroupsForUserRequest) SetUserName(v string) *ListGroupsForUserReque
 }
 
 type ListGroupsForUserResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Groups    *ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListGroupsForUserResponseBody) String() string {
@@ -3786,13 +4033,13 @@ func (s ListGroupsForUserResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListGroupsForUserResponseBody) SetRequestId(v string) *ListGroupsForUserResponseBody {
-	s.RequestId = &v
+func (s *ListGroupsForUserResponseBody) SetGroups(v *ListGroupsForUserResponseBodyGroups) *ListGroupsForUserResponseBody {
+	s.Groups = v
 	return s
 }
 
-func (s *ListGroupsForUserResponseBody) SetGroups(v *ListGroupsForUserResponseBodyGroups) *ListGroupsForUserResponseBody {
-	s.Groups = v
+func (s *ListGroupsForUserResponseBody) SetRequestId(v string) *ListGroupsForUserResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3814,9 +4061,9 @@ func (s *ListGroupsForUserResponseBodyGroups) SetGroup(v []*ListGroupsForUserRes
 }
 
 type ListGroupsForUserResponseBodyGroupsGroup struct {
+	Comments  *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Comments  *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	JoinDate  *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
 }
 
@@ -3826,6 +4073,11 @@ func (s ListGroupsForUserResponseBodyGroupsGroup) String() string {
 
 func (s ListGroupsForUserResponseBodyGroupsGroup) GoString() string {
 	return s.String()
+}
+
+func (s *ListGroupsForUserResponseBodyGroupsGroup) SetComments(v string) *ListGroupsForUserResponseBodyGroupsGroup {
+	s.Comments = &v
+	return s
 }
 
 func (s *ListGroupsForUserResponseBodyGroupsGroup) SetGroupId(v string) *ListGroupsForUserResponseBodyGroupsGroup {
@@ -3838,19 +4090,15 @@ func (s *ListGroupsForUserResponseBodyGroupsGroup) SetGroupName(v string) *ListG
 	return s
 }
 
-func (s *ListGroupsForUserResponseBodyGroupsGroup) SetComments(v string) *ListGroupsForUserResponseBodyGroupsGroup {
-	s.Comments = &v
-	return s
-}
-
 func (s *ListGroupsForUserResponseBodyGroupsGroup) SetJoinDate(v string) *ListGroupsForUserResponseBodyGroupsGroup {
 	s.JoinDate = &v
 	return s
 }
 
 type ListGroupsForUserResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGroupsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGroupsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListGroupsForUserResponse) String() string {
@@ -3866,15 +4114,20 @@ func (s *ListGroupsForUserResponse) SetHeaders(v map[string]*string) *ListGroups
 	return s
 }
 
+func (s *ListGroupsForUserResponse) SetStatusCode(v int32) *ListGroupsForUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListGroupsForUserResponse) SetBody(v *ListGroupsForUserResponseBody) *ListGroupsForUserResponse {
 	s.Body = v
 	return s
 }
 
 type ListPoliciesRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	Marker     *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
 	MaxItems   *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s ListPoliciesRequest) String() string {
@@ -3883,11 +4136,6 @@ func (s ListPoliciesRequest) String() string {
 
 func (s ListPoliciesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListPoliciesRequest) SetPolicyType(v string) *ListPoliciesRequest {
-	s.PolicyType = &v
-	return s
 }
 
 func (s *ListPoliciesRequest) SetMarker(v string) *ListPoliciesRequest {
@@ -3900,11 +4148,16 @@ func (s *ListPoliciesRequest) SetMaxItems(v int32) *ListPoliciesRequest {
 	return s
 }
 
+func (s *ListPoliciesRequest) SetPolicyType(v string) *ListPoliciesRequest {
+	s.PolicyType = &v
+	return s
+}
+
 type ListPoliciesResponseBody struct {
-	Policies    *ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
-	RequestId   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	IsTruncated *bool                             `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	Marker      *string                           `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	Policies    *ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	RequestId   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPoliciesResponseBody) String() string {
@@ -3915,16 +4168,6 @@ func (s ListPoliciesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListPoliciesResponseBody) SetPolicies(v *ListPoliciesResponseBodyPolicies) *ListPoliciesResponseBody {
-	s.Policies = v
-	return s
-}
-
-func (s *ListPoliciesResponseBody) SetRequestId(v string) *ListPoliciesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListPoliciesResponseBody) SetIsTruncated(v bool) *ListPoliciesResponseBody {
 	s.IsTruncated = &v
 	return s
@@ -3932,6 +4175,16 @@ func (s *ListPoliciesResponseBody) SetIsTruncated(v bool) *ListPoliciesResponseB
 
 func (s *ListPoliciesResponseBody) SetMarker(v string) *ListPoliciesResponseBody {
 	s.Marker = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBody) SetPolicies(v *ListPoliciesResponseBodyPolicies) *ListPoliciesResponseBody {
+	s.Policies = v
+	return s
+}
+
+func (s *ListPoliciesResponseBody) SetRequestId(v string) *ListPoliciesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3953,13 +4206,13 @@ func (s *ListPoliciesResponseBodyPolicies) SetPolicy(v []*ListPoliciesResponseBo
 }
 
 type ListPoliciesResponseBodyPoliciesPolicy struct {
+	AttachmentCount *int32  `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	DefaultVersion  *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	AttachmentCount *int32  `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
 	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListPoliciesResponseBodyPoliciesPolicy) String() string {
@@ -3968,6 +4221,16 @@ func (s ListPoliciesResponseBodyPoliciesPolicy) String() string {
 
 func (s ListPoliciesResponseBodyPoliciesPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetAttachmentCount(v int32) *ListPoliciesResponseBodyPoliciesPolicy {
+	s.AttachmentCount = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetCreateDate(v string) *ListPoliciesResponseBodyPoliciesPolicy {
+	s.CreateDate = &v
+	return s
 }
 
 func (s *ListPoliciesResponseBodyPoliciesPolicy) SetDefaultVersion(v string) *ListPoliciesResponseBodyPoliciesPolicy {
@@ -3980,23 +4243,8 @@ func (s *ListPoliciesResponseBodyPoliciesPolicy) SetDescription(v string) *ListP
 	return s
 }
 
-func (s *ListPoliciesResponseBodyPoliciesPolicy) SetUpdateDate(v string) *ListPoliciesResponseBodyPoliciesPolicy {
-	s.UpdateDate = &v
-	return s
-}
-
-func (s *ListPoliciesResponseBodyPoliciesPolicy) SetAttachmentCount(v int32) *ListPoliciesResponseBodyPoliciesPolicy {
-	s.AttachmentCount = &v
-	return s
-}
-
 func (s *ListPoliciesResponseBodyPoliciesPolicy) SetPolicyName(v string) *ListPoliciesResponseBodyPoliciesPolicy {
 	s.PolicyName = &v
-	return s
-}
-
-func (s *ListPoliciesResponseBodyPoliciesPolicy) SetCreateDate(v string) *ListPoliciesResponseBodyPoliciesPolicy {
-	s.CreateDate = &v
 	return s
 }
 
@@ -4005,9 +4253,15 @@ func (s *ListPoliciesResponseBodyPoliciesPolicy) SetPolicyType(v string) *ListPo
 	return s
 }
 
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetUpdateDate(v string) *ListPoliciesResponseBodyPoliciesPolicy {
+	s.UpdateDate = &v
+	return s
+}
+
 type ListPoliciesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListPoliciesResponse) String() string {
@@ -4020,6 +4274,11 @@ func (s ListPoliciesResponse) GoString() string {
 
 func (s *ListPoliciesResponse) SetHeaders(v map[string]*string) *ListPoliciesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListPoliciesResponse) SetStatusCode(v int32) *ListPoliciesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4086,10 +4345,10 @@ func (s *ListPoliciesForGroupResponseBodyPolicies) SetPolicy(v []*ListPoliciesFo
 }
 
 type ListPoliciesForGroupResponseBodyPoliciesPolicy struct {
+	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
 	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -4099,6 +4358,11 @@ func (s ListPoliciesForGroupResponseBodyPoliciesPolicy) String() string {
 
 func (s ListPoliciesForGroupResponseBodyPoliciesPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *ListPoliciesForGroupResponseBodyPoliciesPolicy) SetAttachDate(v string) *ListPoliciesForGroupResponseBodyPoliciesPolicy {
+	s.AttachDate = &v
+	return s
 }
 
 func (s *ListPoliciesForGroupResponseBodyPoliciesPolicy) SetDefaultVersion(v string) *ListPoliciesForGroupResponseBodyPoliciesPolicy {
@@ -4116,19 +4380,15 @@ func (s *ListPoliciesForGroupResponseBodyPoliciesPolicy) SetPolicyName(v string)
 	return s
 }
 
-func (s *ListPoliciesForGroupResponseBodyPoliciesPolicy) SetAttachDate(v string) *ListPoliciesForGroupResponseBodyPoliciesPolicy {
-	s.AttachDate = &v
-	return s
-}
-
 func (s *ListPoliciesForGroupResponseBodyPoliciesPolicy) SetPolicyType(v string) *ListPoliciesForGroupResponseBodyPoliciesPolicy {
 	s.PolicyType = &v
 	return s
 }
 
 type ListPoliciesForGroupResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPoliciesForGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPoliciesForGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListPoliciesForGroupResponse) String() string {
@@ -4141,6 +4401,11 @@ func (s ListPoliciesForGroupResponse) GoString() string {
 
 func (s *ListPoliciesForGroupResponse) SetHeaders(v map[string]*string) *ListPoliciesForGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListPoliciesForGroupResponse) SetStatusCode(v int32) *ListPoliciesForGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4207,10 +4472,10 @@ func (s *ListPoliciesForRoleResponseBodyPolicies) SetPolicy(v []*ListPoliciesFor
 }
 
 type ListPoliciesForRoleResponseBodyPoliciesPolicy struct {
+	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
 	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -4220,6 +4485,11 @@ func (s ListPoliciesForRoleResponseBodyPoliciesPolicy) String() string {
 
 func (s ListPoliciesForRoleResponseBodyPoliciesPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *ListPoliciesForRoleResponseBodyPoliciesPolicy) SetAttachDate(v string) *ListPoliciesForRoleResponseBodyPoliciesPolicy {
+	s.AttachDate = &v
+	return s
 }
 
 func (s *ListPoliciesForRoleResponseBodyPoliciesPolicy) SetDefaultVersion(v string) *ListPoliciesForRoleResponseBodyPoliciesPolicy {
@@ -4237,19 +4507,15 @@ func (s *ListPoliciesForRoleResponseBodyPoliciesPolicy) SetPolicyName(v string) 
 	return s
 }
 
-func (s *ListPoliciesForRoleResponseBodyPoliciesPolicy) SetAttachDate(v string) *ListPoliciesForRoleResponseBodyPoliciesPolicy {
-	s.AttachDate = &v
-	return s
-}
-
 func (s *ListPoliciesForRoleResponseBodyPoliciesPolicy) SetPolicyType(v string) *ListPoliciesForRoleResponseBodyPoliciesPolicy {
 	s.PolicyType = &v
 	return s
 }
 
 type ListPoliciesForRoleResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPoliciesForRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPoliciesForRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListPoliciesForRoleResponse) String() string {
@@ -4262,6 +4528,11 @@ func (s ListPoliciesForRoleResponse) GoString() string {
 
 func (s *ListPoliciesForRoleResponse) SetHeaders(v map[string]*string) *ListPoliciesForRoleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListPoliciesForRoleResponse) SetStatusCode(v int32) *ListPoliciesForRoleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4328,10 +4599,10 @@ func (s *ListPoliciesForUserResponseBodyPolicies) SetPolicy(v []*ListPoliciesFor
 }
 
 type ListPoliciesForUserResponseBodyPoliciesPolicy struct {
+	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
 	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -4341,6 +4612,11 @@ func (s ListPoliciesForUserResponseBodyPoliciesPolicy) String() string {
 
 func (s ListPoliciesForUserResponseBodyPoliciesPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *ListPoliciesForUserResponseBodyPoliciesPolicy) SetAttachDate(v string) *ListPoliciesForUserResponseBodyPoliciesPolicy {
+	s.AttachDate = &v
+	return s
 }
 
 func (s *ListPoliciesForUserResponseBodyPoliciesPolicy) SetDefaultVersion(v string) *ListPoliciesForUserResponseBodyPoliciesPolicy {
@@ -4358,19 +4634,15 @@ func (s *ListPoliciesForUserResponseBodyPoliciesPolicy) SetPolicyName(v string) 
 	return s
 }
 
-func (s *ListPoliciesForUserResponseBodyPoliciesPolicy) SetAttachDate(v string) *ListPoliciesForUserResponseBodyPoliciesPolicy {
-	s.AttachDate = &v
-	return s
-}
-
 func (s *ListPoliciesForUserResponseBodyPoliciesPolicy) SetPolicyType(v string) *ListPoliciesForUserResponseBodyPoliciesPolicy {
 	s.PolicyType = &v
 	return s
 }
 
 type ListPoliciesForUserResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPoliciesForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPoliciesForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListPoliciesForUserResponse) String() string {
@@ -4386,14 +4658,19 @@ func (s *ListPoliciesForUserResponse) SetHeaders(v map[string]*string) *ListPoli
 	return s
 }
 
+func (s *ListPoliciesForUserResponse) SetStatusCode(v int32) *ListPoliciesForUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListPoliciesForUserResponse) SetBody(v *ListPoliciesForUserResponseBody) *ListPoliciesForUserResponse {
 	s.Body = v
 	return s
 }
 
 type ListPolicyVersionsRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s ListPolicyVersionsRequest) String() string {
@@ -4404,19 +4681,19 @@ func (s ListPolicyVersionsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListPolicyVersionsRequest) SetPolicyType(v string) *ListPolicyVersionsRequest {
-	s.PolicyType = &v
-	return s
-}
-
 func (s *ListPolicyVersionsRequest) SetPolicyName(v string) *ListPolicyVersionsRequest {
 	s.PolicyName = &v
 	return s
 }
 
+func (s *ListPolicyVersionsRequest) SetPolicyType(v string) *ListPolicyVersionsRequest {
+	s.PolicyType = &v
+	return s
+}
+
 type ListPolicyVersionsResponseBody struct {
-	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PolicyVersions *ListPolicyVersionsResponseBodyPolicyVersions `json:"PolicyVersions,omitempty" xml:"PolicyVersions,omitempty" type:"Struct"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPolicyVersionsResponseBody) String() string {
@@ -4427,13 +4704,13 @@ func (s ListPolicyVersionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListPolicyVersionsResponseBody) SetRequestId(v string) *ListPolicyVersionsResponseBody {
-	s.RequestId = &v
+func (s *ListPolicyVersionsResponseBody) SetPolicyVersions(v *ListPolicyVersionsResponseBodyPolicyVersions) *ListPolicyVersionsResponseBody {
+	s.PolicyVersions = v
 	return s
 }
 
-func (s *ListPolicyVersionsResponseBody) SetPolicyVersions(v *ListPolicyVersionsResponseBodyPolicyVersions) *ListPolicyVersionsResponseBody {
-	s.PolicyVersions = v
+func (s *ListPolicyVersionsResponseBody) SetRequestId(v string) *ListPolicyVersionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4455,10 +4732,10 @@ func (s *ListPolicyVersionsResponseBodyPolicyVersions) SetPolicyVersion(v []*Lis
 }
 
 type ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion struct {
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
 	PolicyDocument   *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 }
 
 func (s ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) String() string {
@@ -4467,6 +4744,11 @@ func (s ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) String() stri
 
 func (s ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) GoString() string {
 	return s.String()
+}
+
+func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetCreateDate(v string) *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion {
+	s.CreateDate = &v
+	return s
 }
 
 func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetIsDefaultVersion(v bool) *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion {
@@ -4484,14 +4766,10 @@ func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetVersionId
 	return s
 }
 
-func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetCreateDate(v string) *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion {
-	s.CreateDate = &v
-	return s
-}
-
 type ListPolicyVersionsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPolicyVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPolicyVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListPolicyVersionsResponse) String() string {
@@ -4504,6 +4782,11 @@ func (s ListPolicyVersionsResponse) GoString() string {
 
 func (s *ListPolicyVersionsResponse) SetHeaders(v map[string]*string) *ListPolicyVersionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListPolicyVersionsResponse) SetStatusCode(v int32) *ListPolicyVersionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4536,10 +4819,10 @@ func (s *ListRolesRequest) SetMaxItems(v int32) *ListRolesRequest {
 }
 
 type ListRolesResponseBody struct {
-	RequestId   *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	IsTruncated *bool                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Roles       *ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
 	Marker      *string                     `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	RequestId   *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Roles       *ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
 }
 
 func (s ListRolesResponseBody) String() string {
@@ -4550,23 +4833,23 @@ func (s ListRolesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRolesResponseBody) SetRequestId(v string) *ListRolesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListRolesResponseBody) SetIsTruncated(v bool) *ListRolesResponseBody {
 	s.IsTruncated = &v
 	return s
 }
 
-func (s *ListRolesResponseBody) SetRoles(v *ListRolesResponseBodyRoles) *ListRolesResponseBody {
-	s.Roles = v
+func (s *ListRolesResponseBody) SetMarker(v string) *ListRolesResponseBody {
+	s.Marker = &v
 	return s
 }
 
-func (s *ListRolesResponseBody) SetMarker(v string) *ListRolesResponseBody {
-	s.Marker = &v
+func (s *ListRolesResponseBody) SetRequestId(v string) *ListRolesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRolesResponseBody) SetRoles(v *ListRolesResponseBodyRoles) *ListRolesResponseBody {
+	s.Roles = v
 	return s
 }
 
@@ -4588,13 +4871,13 @@ func (s *ListRolesResponseBodyRoles) SetRole(v []*ListRolesResponseBodyRolesRole
 }
 
 type ListRolesResponseBodyRolesRole struct {
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	UpdateDate         *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	MaxSessionDuration *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	RoleName           *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	CreateDate         *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	RoleId             *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 	Arn                *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	CreateDate         *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	MaxSessionDuration *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	RoleId             *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName           *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	UpdateDate         *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListRolesResponseBodyRolesRole) String() string {
@@ -4605,23 +4888,8 @@ func (s ListRolesResponseBodyRolesRole) GoString() string {
 	return s.String()
 }
 
-func (s *ListRolesResponseBodyRolesRole) SetDescription(v string) *ListRolesResponseBodyRolesRole {
-	s.Description = &v
-	return s
-}
-
-func (s *ListRolesResponseBodyRolesRole) SetUpdateDate(v string) *ListRolesResponseBodyRolesRole {
-	s.UpdateDate = &v
-	return s
-}
-
-func (s *ListRolesResponseBodyRolesRole) SetMaxSessionDuration(v int64) *ListRolesResponseBodyRolesRole {
-	s.MaxSessionDuration = &v
-	return s
-}
-
-func (s *ListRolesResponseBodyRolesRole) SetRoleName(v string) *ListRolesResponseBodyRolesRole {
-	s.RoleName = &v
+func (s *ListRolesResponseBodyRolesRole) SetArn(v string) *ListRolesResponseBodyRolesRole {
+	s.Arn = &v
 	return s
 }
 
@@ -4630,19 +4898,35 @@ func (s *ListRolesResponseBodyRolesRole) SetCreateDate(v string) *ListRolesRespo
 	return s
 }
 
+func (s *ListRolesResponseBodyRolesRole) SetDescription(v string) *ListRolesResponseBodyRolesRole {
+	s.Description = &v
+	return s
+}
+
+func (s *ListRolesResponseBodyRolesRole) SetMaxSessionDuration(v int64) *ListRolesResponseBodyRolesRole {
+	s.MaxSessionDuration = &v
+	return s
+}
+
 func (s *ListRolesResponseBodyRolesRole) SetRoleId(v string) *ListRolesResponseBodyRolesRole {
 	s.RoleId = &v
 	return s
 }
 
-func (s *ListRolesResponseBodyRolesRole) SetArn(v string) *ListRolesResponseBodyRolesRole {
-	s.Arn = &v
+func (s *ListRolesResponseBodyRolesRole) SetRoleName(v string) *ListRolesResponseBodyRolesRole {
+	s.RoleName = &v
+	return s
+}
+
+func (s *ListRolesResponseBodyRolesRole) SetUpdateDate(v string) *ListRolesResponseBodyRolesRole {
+	s.UpdateDate = &v
 	return s
 }
 
 type ListRolesResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRolesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRolesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRolesResponse) String() string {
@@ -4655,6 +4939,11 @@ func (s ListRolesResponse) GoString() string {
 
 func (s *ListRolesResponse) SetHeaders(v map[string]*string) *ListRolesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListRolesResponse) SetStatusCode(v int32) *ListRolesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4687,9 +4976,9 @@ func (s *ListUsersRequest) SetMaxItems(v int32) *ListUsersRequest {
 }
 
 type ListUsersResponseBody struct {
-	RequestId   *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	IsTruncated *bool                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	Marker      *string                     `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	RequestId   *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Users       *ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
@@ -4701,11 +4990,6 @@ func (s ListUsersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListUsersResponseBody) SetRequestId(v string) *ListUsersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListUsersResponseBody) SetIsTruncated(v bool) *ListUsersResponseBody {
 	s.IsTruncated = &v
 	return s
@@ -4713,6 +4997,11 @@ func (s *ListUsersResponseBody) SetIsTruncated(v bool) *ListUsersResponseBody {
 
 func (s *ListUsersResponseBody) SetMarker(v string) *ListUsersResponseBody {
 	s.Marker = &v
+	return s
+}
+
+func (s *ListUsersResponseBody) SetRequestId(v string) *ListUsersResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4739,13 +5028,13 @@ func (s *ListUsersResponseBodyUsers) SetUser(v []*ListUsersResponseBodyUsersUser
 }
 
 type ListUsersResponseBodyUsersUser struct {
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -4755,31 +5044,6 @@ func (s ListUsersResponseBodyUsersUser) String() string {
 
 func (s ListUsersResponseBodyUsersUser) GoString() string {
 	return s.String()
-}
-
-func (s *ListUsersResponseBodyUsersUser) SetDisplayName(v string) *ListUsersResponseBodyUsersUser {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *ListUsersResponseBodyUsersUser) SetEmail(v string) *ListUsersResponseBodyUsersUser {
-	s.Email = &v
-	return s
-}
-
-func (s *ListUsersResponseBodyUsersUser) SetUpdateDate(v string) *ListUsersResponseBodyUsersUser {
-	s.UpdateDate = &v
-	return s
-}
-
-func (s *ListUsersResponseBodyUsersUser) SetMobilePhone(v string) *ListUsersResponseBodyUsersUser {
-	s.MobilePhone = &v
-	return s
-}
-
-func (s *ListUsersResponseBodyUsersUser) SetUserId(v string) *ListUsersResponseBodyUsersUser {
-	s.UserId = &v
-	return s
 }
 
 func (s *ListUsersResponseBodyUsersUser) SetComments(v string) *ListUsersResponseBodyUsersUser {
@@ -4792,14 +5056,40 @@ func (s *ListUsersResponseBodyUsersUser) SetCreateDate(v string) *ListUsersRespo
 	return s
 }
 
+func (s *ListUsersResponseBodyUsersUser) SetDisplayName(v string) *ListUsersResponseBodyUsersUser {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsersUser) SetEmail(v string) *ListUsersResponseBodyUsersUser {
+	s.Email = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsersUser) SetMobilePhone(v string) *ListUsersResponseBodyUsersUser {
+	s.MobilePhone = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsersUser) SetUpdateDate(v string) *ListUsersResponseBodyUsersUser {
+	s.UpdateDate = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsersUser) SetUserId(v string) *ListUsersResponseBodyUsersUser {
+	s.UserId = &v
+	return s
+}
+
 func (s *ListUsersResponseBodyUsersUser) SetUserName(v string) *ListUsersResponseBodyUsersUser {
 	s.UserName = &v
 	return s
 }
 
 type ListUsersResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListUsersResponse) String() string {
@@ -4812,6 +5102,11 @@ func (s ListUsersResponse) GoString() string {
 
 func (s *ListUsersResponse) SetHeaders(v map[string]*string) *ListUsersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListUsersResponse) SetStatusCode(v int32) *ListUsersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4850,9 +5145,9 @@ func (s *ListUsersForGroupRequest) SetMaxItems(v int32) *ListUsersForGroupReques
 }
 
 type ListUsersForGroupResponseBody struct {
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	IsTruncated *bool                               `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	Marker      *string                             `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Users       *ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
@@ -4864,11 +5159,6 @@ func (s ListUsersForGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListUsersForGroupResponseBody) SetRequestId(v string) *ListUsersForGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListUsersForGroupResponseBody) SetIsTruncated(v bool) *ListUsersForGroupResponseBody {
 	s.IsTruncated = &v
 	return s
@@ -4876,6 +5166,11 @@ func (s *ListUsersForGroupResponseBody) SetIsTruncated(v bool) *ListUsersForGrou
 
 func (s *ListUsersForGroupResponseBody) SetMarker(v string) *ListUsersForGroupResponseBody {
 	s.Marker = &v
+	return s
+}
+
+func (s *ListUsersForGroupResponseBody) SetRequestId(v string) *ListUsersForGroupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4931,8 +5226,9 @@ func (s *ListUsersForGroupResponseBodyUsersUser) SetUserName(v string) *ListUser
 }
 
 type ListUsersForGroupResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUsersForGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUsersForGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListUsersForGroupResponse) String() string {
@@ -4948,14 +5244,19 @@ func (s *ListUsersForGroupResponse) SetHeaders(v map[string]*string) *ListUsersF
 	return s
 }
 
+func (s *ListUsersForGroupResponse) SetStatusCode(v int32) *ListUsersForGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListUsersForGroupResponse) SetBody(v *ListUsersForGroupResponseBody) *ListUsersForGroupResponse {
 	s.Body = v
 	return s
 }
 
 type ListVirtualMFADevicesResponseBody struct {
-	VirtualMFADevices *ListVirtualMFADevicesResponseBodyVirtualMFADevices `json:"VirtualMFADevices,omitempty" xml:"VirtualMFADevices,omitempty" type:"Struct"`
 	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VirtualMFADevices *ListVirtualMFADevicesResponseBodyVirtualMFADevices `json:"VirtualMFADevices,omitempty" xml:"VirtualMFADevices,omitempty" type:"Struct"`
 }
 
 func (s ListVirtualMFADevicesResponseBody) String() string {
@@ -4966,13 +5267,13 @@ func (s ListVirtualMFADevicesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListVirtualMFADevicesResponseBody) SetVirtualMFADevices(v *ListVirtualMFADevicesResponseBodyVirtualMFADevices) *ListVirtualMFADevicesResponseBody {
-	s.VirtualMFADevices = v
+func (s *ListVirtualMFADevicesResponseBody) SetRequestId(v string) *ListVirtualMFADevicesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *ListVirtualMFADevicesResponseBody) SetRequestId(v string) *ListVirtualMFADevicesResponseBody {
-	s.RequestId = &v
+func (s *ListVirtualMFADevicesResponseBody) SetVirtualMFADevices(v *ListVirtualMFADevicesResponseBodyVirtualMFADevices) *ListVirtualMFADevicesResponseBody {
+	s.VirtualMFADevices = v
 	return s
 }
 
@@ -4994,9 +5295,9 @@ func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevices) SetVirtualMFADevice
 }
 
 type ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice struct {
+	ActivateDate *string                                                                 `json:"ActivateDate,omitempty" xml:"ActivateDate,omitempty"`
 	SerialNumber *string                                                                 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	User         *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
-	ActivateDate *string                                                                 `json:"ActivateDate,omitempty" xml:"ActivateDate,omitempty"`
 }
 
 func (s ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) String() string {
@@ -5007,6 +5308,11 @@ func (s ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) GoSt
 	return s.String()
 }
 
+func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) SetActivateDate(v string) *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice {
+	s.ActivateDate = &v
+	return s
+}
+
 func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) SetSerialNumber(v string) *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice {
 	s.SerialNumber = &v
 	return s
@@ -5014,11 +5320,6 @@ func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) Set
 
 func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) SetUser(v *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser) *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice {
 	s.User = v
-	return s
-}
-
-func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) SetActivateDate(v string) *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice {
-	s.ActivateDate = &v
 	return s
 }
 
@@ -5052,8 +5353,9 @@ func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser)
 }
 
 type ListVirtualMFADevicesResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVirtualMFADevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVirtualMFADevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVirtualMFADevicesResponse) String() string {
@@ -5069,14 +5371,19 @@ func (s *ListVirtualMFADevicesResponse) SetHeaders(v map[string]*string) *ListVi
 	return s
 }
 
+func (s *ListVirtualMFADevicesResponse) SetStatusCode(v int32) *ListVirtualMFADevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListVirtualMFADevicesResponse) SetBody(v *ListVirtualMFADevicesResponseBody) *ListVirtualMFADevicesResponse {
 	s.Body = v
 	return s
 }
 
 type RemoveUserFromGroupRequest struct {
-	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s RemoveUserFromGroupRequest) String() string {
@@ -5087,13 +5394,13 @@ func (s RemoveUserFromGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveUserFromGroupRequest) SetUserName(v string) *RemoveUserFromGroupRequest {
-	s.UserName = &v
+func (s *RemoveUserFromGroupRequest) SetGroupName(v string) *RemoveUserFromGroupRequest {
+	s.GroupName = &v
 	return s
 }
 
-func (s *RemoveUserFromGroupRequest) SetGroupName(v string) *RemoveUserFromGroupRequest {
-	s.GroupName = &v
+func (s *RemoveUserFromGroupRequest) SetUserName(v string) *RemoveUserFromGroupRequest {
+	s.UserName = &v
 	return s
 }
 
@@ -5115,8 +5422,9 @@ func (s *RemoveUserFromGroupResponseBody) SetRequestId(v string) *RemoveUserFrom
 }
 
 type RemoveUserFromGroupResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveUserFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveUserFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveUserFromGroupResponse) String() string {
@@ -5129,6 +5437,11 @@ func (s RemoveUserFromGroupResponse) GoString() string {
 
 func (s *RemoveUserFromGroupResponse) SetHeaders(v map[string]*string) *RemoveUserFromGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveUserFromGroupResponse) SetStatusCode(v int32) *RemoveUserFromGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5172,8 +5485,9 @@ func (s *SetAccountAliasResponseBody) SetRequestId(v string) *SetAccountAliasRes
 }
 
 type SetAccountAliasResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetAccountAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetAccountAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetAccountAliasResponse) String() string {
@@ -5186,6 +5500,11 @@ func (s SetAccountAliasResponse) GoString() string {
 
 func (s *SetAccountAliasResponse) SetHeaders(v map[string]*string) *SetAccountAliasResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetAccountAliasResponse) SetStatusCode(v int32) *SetAccountAliasResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5235,8 +5554,9 @@ func (s *SetDefaultPolicyVersionResponseBody) SetRequestId(v string) *SetDefault
 }
 
 type SetDefaultPolicyVersionResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetDefaultPolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetDefaultPolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetDefaultPolicyVersionResponse) String() string {
@@ -5252,21 +5572,26 @@ func (s *SetDefaultPolicyVersionResponse) SetHeaders(v map[string]*string) *SetD
 	return s
 }
 
+func (s *SetDefaultPolicyVersionResponse) SetStatusCode(v int32) *SetDefaultPolicyVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SetDefaultPolicyVersionResponse) SetBody(v *SetDefaultPolicyVersionResponseBody) *SetDefaultPolicyVersionResponse {
 	s.Body = v
 	return s
 }
 
 type SetPasswordPolicyRequest struct {
+	HardExpiry                 *bool  `json:"HardExpiry,omitempty" xml:"HardExpiry,omitempty"`
+	MaxLoginAttemps            *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
+	MaxPasswordAge             *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
 	MinimumPasswordLength      *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
+	PasswordReusePrevention    *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
 	RequireLowercaseCharacters *bool  `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
-	RequireUppercaseCharacters *bool  `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
 	RequireNumbers             *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
 	RequireSymbols             *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
-	HardExpiry                 *bool  `json:"HardExpiry,omitempty" xml:"HardExpiry,omitempty"`
-	MaxPasswordAge             *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
-	PasswordReusePrevention    *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
-	MaxLoginAttemps            *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
+	RequireUppercaseCharacters *bool  `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
 }
 
 func (s SetPasswordPolicyRequest) String() string {
@@ -5277,18 +5602,33 @@ func (s SetPasswordPolicyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SetPasswordPolicyRequest) SetHardExpiry(v bool) *SetPasswordPolicyRequest {
+	s.HardExpiry = &v
+	return s
+}
+
+func (s *SetPasswordPolicyRequest) SetMaxLoginAttemps(v int32) *SetPasswordPolicyRequest {
+	s.MaxLoginAttemps = &v
+	return s
+}
+
+func (s *SetPasswordPolicyRequest) SetMaxPasswordAge(v int32) *SetPasswordPolicyRequest {
+	s.MaxPasswordAge = &v
+	return s
+}
+
 func (s *SetPasswordPolicyRequest) SetMinimumPasswordLength(v int32) *SetPasswordPolicyRequest {
 	s.MinimumPasswordLength = &v
 	return s
 }
 
-func (s *SetPasswordPolicyRequest) SetRequireLowercaseCharacters(v bool) *SetPasswordPolicyRequest {
-	s.RequireLowercaseCharacters = &v
+func (s *SetPasswordPolicyRequest) SetPasswordReusePrevention(v int32) *SetPasswordPolicyRequest {
+	s.PasswordReusePrevention = &v
 	return s
 }
 
-func (s *SetPasswordPolicyRequest) SetRequireUppercaseCharacters(v bool) *SetPasswordPolicyRequest {
-	s.RequireUppercaseCharacters = &v
+func (s *SetPasswordPolicyRequest) SetRequireLowercaseCharacters(v bool) *SetPasswordPolicyRequest {
+	s.RequireLowercaseCharacters = &v
 	return s
 }
 
@@ -5302,29 +5642,14 @@ func (s *SetPasswordPolicyRequest) SetRequireSymbols(v bool) *SetPasswordPolicyR
 	return s
 }
 
-func (s *SetPasswordPolicyRequest) SetHardExpiry(v bool) *SetPasswordPolicyRequest {
-	s.HardExpiry = &v
-	return s
-}
-
-func (s *SetPasswordPolicyRequest) SetMaxPasswordAge(v int32) *SetPasswordPolicyRequest {
-	s.MaxPasswordAge = &v
-	return s
-}
-
-func (s *SetPasswordPolicyRequest) SetPasswordReusePrevention(v int32) *SetPasswordPolicyRequest {
-	s.PasswordReusePrevention = &v
-	return s
-}
-
-func (s *SetPasswordPolicyRequest) SetMaxLoginAttemps(v int32) *SetPasswordPolicyRequest {
-	s.MaxLoginAttemps = &v
+func (s *SetPasswordPolicyRequest) SetRequireUppercaseCharacters(v bool) *SetPasswordPolicyRequest {
+	s.RequireUppercaseCharacters = &v
 	return s
 }
 
 type SetPasswordPolicyResponseBody struct {
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PasswordPolicy *SetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetPasswordPolicyResponseBody) String() string {
@@ -5335,26 +5660,26 @@ func (s SetPasswordPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetPasswordPolicyResponseBody) SetRequestId(v string) *SetPasswordPolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *SetPasswordPolicyResponseBody) SetPasswordPolicy(v *SetPasswordPolicyResponseBodyPasswordPolicy) *SetPasswordPolicyResponseBody {
 	s.PasswordPolicy = v
 	return s
 }
 
+func (s *SetPasswordPolicyResponseBody) SetRequestId(v string) *SetPasswordPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type SetPasswordPolicyResponseBodyPasswordPolicy struct {
-	RequireNumbers             *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	RequireLowercaseCharacters *bool  `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
 	HardExpiry                 *bool  `json:"HardExpiry,omitempty" xml:"HardExpiry,omitempty"`
-	PasswordReusePrevention    *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
-	RequireSymbols             *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
+	MaxLoginAttemps            *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
 	MaxPasswordAge             *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
 	MinimumPasswordLength      *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
+	PasswordReusePrevention    *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
+	RequireLowercaseCharacters *bool  `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
+	RequireNumbers             *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
+	RequireSymbols             *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
 	RequireUppercaseCharacters *bool  `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
-	MaxLoginAttemps            *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
 }
 
 func (s SetPasswordPolicyResponseBodyPasswordPolicy) String() string {
@@ -5365,28 +5690,13 @@ func (s SetPasswordPolicyResponseBodyPasswordPolicy) GoString() string {
 	return s.String()
 }
 
-func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetRequireNumbers(v bool) *SetPasswordPolicyResponseBodyPasswordPolicy {
-	s.RequireNumbers = &v
-	return s
-}
-
-func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetRequireLowercaseCharacters(v bool) *SetPasswordPolicyResponseBodyPasswordPolicy {
-	s.RequireLowercaseCharacters = &v
-	return s
-}
-
 func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetHardExpiry(v bool) *SetPasswordPolicyResponseBodyPasswordPolicy {
 	s.HardExpiry = &v
 	return s
 }
 
-func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetPasswordReusePrevention(v int32) *SetPasswordPolicyResponseBodyPasswordPolicy {
-	s.PasswordReusePrevention = &v
-	return s
-}
-
-func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetRequireSymbols(v bool) *SetPasswordPolicyResponseBodyPasswordPolicy {
-	s.RequireSymbols = &v
+func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetMaxLoginAttemps(v int32) *SetPasswordPolicyResponseBodyPasswordPolicy {
+	s.MaxLoginAttemps = &v
 	return s
 }
 
@@ -5400,19 +5710,35 @@ func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetMinimumPasswordLength(v
 	return s
 }
 
+func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetPasswordReusePrevention(v int32) *SetPasswordPolicyResponseBodyPasswordPolicy {
+	s.PasswordReusePrevention = &v
+	return s
+}
+
+func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetRequireLowercaseCharacters(v bool) *SetPasswordPolicyResponseBodyPasswordPolicy {
+	s.RequireLowercaseCharacters = &v
+	return s
+}
+
+func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetRequireNumbers(v bool) *SetPasswordPolicyResponseBodyPasswordPolicy {
+	s.RequireNumbers = &v
+	return s
+}
+
+func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetRequireSymbols(v bool) *SetPasswordPolicyResponseBodyPasswordPolicy {
+	s.RequireSymbols = &v
+	return s
+}
+
 func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetRequireUppercaseCharacters(v bool) *SetPasswordPolicyResponseBodyPasswordPolicy {
 	s.RequireUppercaseCharacters = &v
 	return s
 }
 
-func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetMaxLoginAttemps(v int32) *SetPasswordPolicyResponseBodyPasswordPolicy {
-	s.MaxLoginAttemps = &v
-	return s
-}
-
 type SetPasswordPolicyResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetPasswordPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetPasswordPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetPasswordPolicyResponse) String() string {
@@ -5428,19 +5754,24 @@ func (s *SetPasswordPolicyResponse) SetHeaders(v map[string]*string) *SetPasswor
 	return s
 }
 
+func (s *SetPasswordPolicyResponse) SetStatusCode(v int32) *SetPasswordPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SetPasswordPolicyResponse) SetBody(v *SetPasswordPolicyResponseBody) *SetPasswordPolicyResponse {
 	s.Body = v
 	return s
 }
 
 type SetSecurityPreferenceRequest struct {
-	EnableSaveMFATicket         *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
 	AllowUserToChangePassword   *bool   `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
 	AllowUserToManageAccessKeys *bool   `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
-	AllowUserToManagePublicKeys *bool   `json:"AllowUserToManagePublicKeys,omitempty" xml:"AllowUserToManagePublicKeys,omitempty"`
 	AllowUserToManageMFADevices *bool   `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
-	LoginSessionDuration        *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
+	AllowUserToManagePublicKeys *bool   `json:"AllowUserToManagePublicKeys,omitempty" xml:"AllowUserToManagePublicKeys,omitempty"`
+	EnableSaveMFATicket         *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
 	LoginNetworkMasks           *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
+	LoginSessionDuration        *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
 }
 
 func (s SetSecurityPreferenceRequest) String() string {
@@ -5449,11 +5780,6 @@ func (s SetSecurityPreferenceRequest) String() string {
 
 func (s SetSecurityPreferenceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SetSecurityPreferenceRequest) SetEnableSaveMFATicket(v bool) *SetSecurityPreferenceRequest {
-	s.EnableSaveMFATicket = &v
-	return s
 }
 
 func (s *SetSecurityPreferenceRequest) SetAllowUserToChangePassword(v bool) *SetSecurityPreferenceRequest {
@@ -5466,18 +5792,18 @@ func (s *SetSecurityPreferenceRequest) SetAllowUserToManageAccessKeys(v bool) *S
 	return s
 }
 
-func (s *SetSecurityPreferenceRequest) SetAllowUserToManagePublicKeys(v bool) *SetSecurityPreferenceRequest {
-	s.AllowUserToManagePublicKeys = &v
-	return s
-}
-
 func (s *SetSecurityPreferenceRequest) SetAllowUserToManageMFADevices(v bool) *SetSecurityPreferenceRequest {
 	s.AllowUserToManageMFADevices = &v
 	return s
 }
 
-func (s *SetSecurityPreferenceRequest) SetLoginSessionDuration(v int32) *SetSecurityPreferenceRequest {
-	s.LoginSessionDuration = &v
+func (s *SetSecurityPreferenceRequest) SetAllowUserToManagePublicKeys(v bool) *SetSecurityPreferenceRequest {
+	s.AllowUserToManagePublicKeys = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceRequest) SetEnableSaveMFATicket(v bool) *SetSecurityPreferenceRequest {
+	s.EnableSaveMFATicket = &v
 	return s
 }
 
@@ -5486,9 +5812,14 @@ func (s *SetSecurityPreferenceRequest) SetLoginNetworkMasks(v string) *SetSecuri
 	return s
 }
 
+func (s *SetSecurityPreferenceRequest) SetLoginSessionDuration(v int32) *SetSecurityPreferenceRequest {
+	s.LoginSessionDuration = &v
+	return s
+}
+
 type SetSecurityPreferenceResponseBody struct {
-	SecurityPreference *SetSecurityPreferenceResponseBodySecurityPreference `json:"SecurityPreference,omitempty" xml:"SecurityPreference,omitempty" type:"Struct"`
 	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityPreference *SetSecurityPreferenceResponseBodySecurityPreference `json:"SecurityPreference,omitempty" xml:"SecurityPreference,omitempty" type:"Struct"`
 }
 
 func (s SetSecurityPreferenceResponseBody) String() string {
@@ -5499,20 +5830,20 @@ func (s SetSecurityPreferenceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetSecurityPreferenceResponseBody) SetSecurityPreference(v *SetSecurityPreferenceResponseBodySecurityPreference) *SetSecurityPreferenceResponseBody {
-	s.SecurityPreference = v
-	return s
-}
-
 func (s *SetSecurityPreferenceResponseBody) SetRequestId(v string) *SetSecurityPreferenceResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *SetSecurityPreferenceResponseBody) SetSecurityPreference(v *SetSecurityPreferenceResponseBodySecurityPreference) *SetSecurityPreferenceResponseBody {
+	s.SecurityPreference = v
+	return s
+}
+
 type SetSecurityPreferenceResponseBodySecurityPreference struct {
 	AccessKeyPreference    *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference    `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
-	MFAPreference          *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference          `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
 	LoginProfilePreference *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
+	MFAPreference          *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference          `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
 	PublicKeyPreference    *SetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference    `json:"PublicKeyPreference,omitempty" xml:"PublicKeyPreference,omitempty" type:"Struct"`
 }
 
@@ -5529,13 +5860,13 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetAccessKeyPrefer
 	return s
 }
 
-func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetMFAPreference(v *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) *SetSecurityPreferenceResponseBodySecurityPreference {
-	s.MFAPreference = v
+func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetLoginProfilePreference(v *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) *SetSecurityPreferenceResponseBodySecurityPreference {
+	s.LoginProfilePreference = v
 	return s
 }
 
-func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetLoginProfilePreference(v *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) *SetSecurityPreferenceResponseBodySecurityPreference {
-	s.LoginProfilePreference = v
+func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetMFAPreference(v *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) *SetSecurityPreferenceResponseBodySecurityPreference {
+	s.MFAPreference = v
 	return s
 }
 
@@ -5561,6 +5892,41 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference)
 	return s
 }
 
+type SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference struct {
+	AllowUserToChangePassword *bool   `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	EnableSaveMFATicket       *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
+	LoginNetworkMasks         *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
+	LoginSessionDuration      *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
+}
+
+func (s SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) GoString() string {
+	return s.String()
+}
+
+func (s *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetAllowUserToChangePassword(v bool) *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
+	s.AllowUserToChangePassword = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetEnableSaveMFATicket(v bool) *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
+	s.EnableSaveMFATicket = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetLoginNetworkMasks(v string) *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
+	s.LoginNetworkMasks = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetLoginSessionDuration(v int32) *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
+	s.LoginSessionDuration = &v
+	return s
+}
+
 type SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference struct {
 	AllowUserToManageMFADevices *bool `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
 }
@@ -5575,41 +5941,6 @@ func (s SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) GoStri
 
 func (s *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAllowUserToManageMFADevices(v bool) *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference {
 	s.AllowUserToManageMFADevices = &v
-	return s
-}
-
-type SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference struct {
-	EnableSaveMFATicket       *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
-	LoginSessionDuration      *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
-	LoginNetworkMasks         *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
-	AllowUserToChangePassword *bool   `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
-}
-
-func (s SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) GoString() string {
-	return s.String()
-}
-
-func (s *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetEnableSaveMFATicket(v bool) *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
-	s.EnableSaveMFATicket = &v
-	return s
-}
-
-func (s *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetLoginSessionDuration(v int32) *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
-	s.LoginSessionDuration = &v
-	return s
-}
-
-func (s *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetLoginNetworkMasks(v string) *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
-	s.LoginNetworkMasks = &v
-	return s
-}
-
-func (s *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) SetAllowUserToChangePassword(v bool) *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference {
-	s.AllowUserToChangePassword = &v
 	return s
 }
 
@@ -5631,8 +5962,9 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference)
 }
 
 type SetSecurityPreferenceResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetSecurityPreferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetSecurityPreferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetSecurityPreferenceResponse) String() string {
@@ -5645,6 +5977,11 @@ func (s SetSecurityPreferenceResponse) GoString() string {
 
 func (s *SetSecurityPreferenceResponse) SetHeaders(v map[string]*string) *SetSecurityPreferenceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetSecurityPreferenceResponse) SetStatusCode(v int32) *SetSecurityPreferenceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5711,8 +6048,9 @@ func (s *UnbindMFADeviceResponseBodyMFADevice) SetSerialNumber(v string) *Unbind
 }
 
 type UnbindMFADeviceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UnbindMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnbindMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UnbindMFADeviceResponse) String() string {
@@ -5728,15 +6066,20 @@ func (s *UnbindMFADeviceResponse) SetHeaders(v map[string]*string) *UnbindMFADev
 	return s
 }
 
+func (s *UnbindMFADeviceResponse) SetStatusCode(v int32) *UnbindMFADeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UnbindMFADeviceResponse) SetBody(v *UnbindMFADeviceResponseBody) *UnbindMFADeviceResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateAccessKeyRequest struct {
-	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
 	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s UpdateAccessKeyRequest) String() string {
@@ -5747,8 +6090,8 @@ func (s UpdateAccessKeyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateAccessKeyRequest) SetUserName(v string) *UpdateAccessKeyRequest {
-	s.UserName = &v
+func (s *UpdateAccessKeyRequest) SetStatus(v string) *UpdateAccessKeyRequest {
+	s.Status = &v
 	return s
 }
 
@@ -5757,8 +6100,8 @@ func (s *UpdateAccessKeyRequest) SetUserAccessKeyId(v string) *UpdateAccessKeyRe
 	return s
 }
 
-func (s *UpdateAccessKeyRequest) SetStatus(v string) *UpdateAccessKeyRequest {
-	s.Status = &v
+func (s *UpdateAccessKeyRequest) SetUserName(v string) *UpdateAccessKeyRequest {
+	s.UserName = &v
 	return s
 }
 
@@ -5780,8 +6123,9 @@ func (s *UpdateAccessKeyResponseBody) SetRequestId(v string) *UpdateAccessKeyRes
 }
 
 type UpdateAccessKeyResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateAccessKeyResponse) String() string {
@@ -5797,6 +6141,11 @@ func (s *UpdateAccessKeyResponse) SetHeaders(v map[string]*string) *UpdateAccess
 	return s
 }
 
+func (s *UpdateAccessKeyResponse) SetStatusCode(v int32) *UpdateAccessKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateAccessKeyResponse) SetBody(v *UpdateAccessKeyResponseBody) *UpdateAccessKeyResponse {
 	s.Body = v
 	return s
@@ -5804,8 +6153,8 @@ func (s *UpdateAccessKeyResponse) SetBody(v *UpdateAccessKeyResponseBody) *Updat
 
 type UpdateGroupRequest struct {
 	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	NewGroupName *string `json:"NewGroupName,omitempty" xml:"NewGroupName,omitempty"`
 	NewComments  *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
+	NewGroupName *string `json:"NewGroupName,omitempty" xml:"NewGroupName,omitempty"`
 }
 
 func (s UpdateGroupRequest) String() string {
@@ -5821,13 +6170,13 @@ func (s *UpdateGroupRequest) SetGroupName(v string) *UpdateGroupRequest {
 	return s
 }
 
-func (s *UpdateGroupRequest) SetNewGroupName(v string) *UpdateGroupRequest {
-	s.NewGroupName = &v
+func (s *UpdateGroupRequest) SetNewComments(v string) *UpdateGroupRequest {
+	s.NewComments = &v
 	return s
 }
 
-func (s *UpdateGroupRequest) SetNewComments(v string) *UpdateGroupRequest {
-	s.NewComments = &v
+func (s *UpdateGroupRequest) SetNewGroupName(v string) *UpdateGroupRequest {
+	s.NewGroupName = &v
 	return s
 }
 
@@ -5855,11 +6204,11 @@ func (s *UpdateGroupResponseBody) SetRequestId(v string) *UpdateGroupResponseBod
 }
 
 type UpdateGroupResponseBodyGroup struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s UpdateGroupResponseBodyGroup) String() string {
@@ -5868,21 +6217,6 @@ func (s UpdateGroupResponseBodyGroup) String() string {
 
 func (s UpdateGroupResponseBodyGroup) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateGroupResponseBodyGroup) SetGroupId(v string) *UpdateGroupResponseBodyGroup {
-	s.GroupId = &v
-	return s
-}
-
-func (s *UpdateGroupResponseBodyGroup) SetUpdateDate(v string) *UpdateGroupResponseBodyGroup {
-	s.UpdateDate = &v
-	return s
-}
-
-func (s *UpdateGroupResponseBodyGroup) SetGroupName(v string) *UpdateGroupResponseBodyGroup {
-	s.GroupName = &v
-	return s
 }
 
 func (s *UpdateGroupResponseBodyGroup) SetComments(v string) *UpdateGroupResponseBodyGroup {
@@ -5895,9 +6229,25 @@ func (s *UpdateGroupResponseBodyGroup) SetCreateDate(v string) *UpdateGroupRespo
 	return s
 }
 
+func (s *UpdateGroupResponseBodyGroup) SetGroupId(v string) *UpdateGroupResponseBodyGroup {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBodyGroup) SetGroupName(v string) *UpdateGroupResponseBodyGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBodyGroup) SetUpdateDate(v string) *UpdateGroupResponseBodyGroup {
+	s.UpdateDate = &v
+	return s
+}
+
 type UpdateGroupResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateGroupResponse) String() string {
@@ -5913,16 +6263,21 @@ func (s *UpdateGroupResponse) SetHeaders(v map[string]*string) *UpdateGroupRespo
 	return s
 }
 
+func (s *UpdateGroupResponse) SetStatusCode(v int32) *UpdateGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateGroupResponse) SetBody(v *UpdateGroupResponseBody) *UpdateGroupResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateLoginProfileRequest struct {
-	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
 	Password              *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
+	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s UpdateLoginProfileRequest) String() string {
@@ -5933,8 +6288,8 @@ func (s UpdateLoginProfileRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateLoginProfileRequest) SetUserName(v string) *UpdateLoginProfileRequest {
-	s.UserName = &v
+func (s *UpdateLoginProfileRequest) SetMFABindRequired(v bool) *UpdateLoginProfileRequest {
+	s.MFABindRequired = &v
 	return s
 }
 
@@ -5948,8 +6303,8 @@ func (s *UpdateLoginProfileRequest) SetPasswordResetRequired(v bool) *UpdateLogi
 	return s
 }
 
-func (s *UpdateLoginProfileRequest) SetMFABindRequired(v bool) *UpdateLoginProfileRequest {
-	s.MFABindRequired = &v
+func (s *UpdateLoginProfileRequest) SetUserName(v string) *UpdateLoginProfileRequest {
+	s.UserName = &v
 	return s
 }
 
@@ -5971,8 +6326,9 @@ func (s *UpdateLoginProfileResponseBody) SetRequestId(v string) *UpdateLoginProf
 }
 
 type UpdateLoginProfileResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateLoginProfileResponse) String() string {
@@ -5988,15 +6344,143 @@ func (s *UpdateLoginProfileResponse) SetHeaders(v map[string]*string) *UpdateLog
 	return s
 }
 
+func (s *UpdateLoginProfileResponse) SetStatusCode(v int32) *UpdateLoginProfileResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateLoginProfileResponse) SetBody(v *UpdateLoginProfileResponseBody) *UpdateLoginProfileResponse {
 	s.Body = v
 	return s
 }
 
+type UpdatePolicyDescriptionRequest struct {
+	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
+	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+}
+
+func (s UpdatePolicyDescriptionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyDescriptionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyDescriptionRequest) SetNewDescription(v string) *UpdatePolicyDescriptionRequest {
+	s.NewDescription = &v
+	return s
+}
+
+func (s *UpdatePolicyDescriptionRequest) SetPolicyName(v string) *UpdatePolicyDescriptionRequest {
+	s.PolicyName = &v
+	return s
+}
+
+type UpdatePolicyDescriptionResponseBody struct {
+	Policy    *UpdatePolicyDescriptionResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdatePolicyDescriptionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyDescriptionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyDescriptionResponseBody) SetPolicy(v *UpdatePolicyDescriptionResponseBodyPolicy) *UpdatePolicyDescriptionResponseBody {
+	s.Policy = v
+	return s
+}
+
+func (s *UpdatePolicyDescriptionResponseBody) SetRequestId(v string) *UpdatePolicyDescriptionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePolicyDescriptionResponseBodyPolicy struct {
+	CreateDate     *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	UpdateDate     *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+}
+
+func (s UpdatePolicyDescriptionResponseBodyPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyDescriptionResponseBodyPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyDescriptionResponseBodyPolicy) SetCreateDate(v string) *UpdatePolicyDescriptionResponseBodyPolicy {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *UpdatePolicyDescriptionResponseBodyPolicy) SetDefaultVersion(v string) *UpdatePolicyDescriptionResponseBodyPolicy {
+	s.DefaultVersion = &v
+	return s
+}
+
+func (s *UpdatePolicyDescriptionResponseBodyPolicy) SetDescription(v string) *UpdatePolicyDescriptionResponseBodyPolicy {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdatePolicyDescriptionResponseBodyPolicy) SetPolicyName(v string) *UpdatePolicyDescriptionResponseBodyPolicy {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *UpdatePolicyDescriptionResponseBodyPolicy) SetPolicyType(v string) *UpdatePolicyDescriptionResponseBodyPolicy {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *UpdatePolicyDescriptionResponseBodyPolicy) SetUpdateDate(v string) *UpdatePolicyDescriptionResponseBodyPolicy {
+	s.UpdateDate = &v
+	return s
+}
+
+type UpdatePolicyDescriptionResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePolicyDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePolicyDescriptionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyDescriptionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyDescriptionResponse) SetHeaders(v map[string]*string) *UpdatePolicyDescriptionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePolicyDescriptionResponse) SetStatusCode(v int32) *UpdatePolicyDescriptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePolicyDescriptionResponse) SetBody(v *UpdatePolicyDescriptionResponseBody) *UpdatePolicyDescriptionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateRoleRequest struct {
-	RoleName                    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	NewAssumeRolePolicyDocument *string `json:"NewAssumeRolePolicyDocument,omitempty" xml:"NewAssumeRolePolicyDocument,omitempty"`
+	NewDescription              *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
 	NewMaxSessionDuration       *int64  `json:"NewMaxSessionDuration,omitempty" xml:"NewMaxSessionDuration,omitempty"`
+	RoleName                    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s UpdateRoleRequest) String() string {
@@ -6007,13 +6491,13 @@ func (s UpdateRoleRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateRoleRequest) SetRoleName(v string) *UpdateRoleRequest {
-	s.RoleName = &v
+func (s *UpdateRoleRequest) SetNewAssumeRolePolicyDocument(v string) *UpdateRoleRequest {
+	s.NewAssumeRolePolicyDocument = &v
 	return s
 }
 
-func (s *UpdateRoleRequest) SetNewAssumeRolePolicyDocument(v string) *UpdateRoleRequest {
-	s.NewAssumeRolePolicyDocument = &v
+func (s *UpdateRoleRequest) SetNewDescription(v string) *UpdateRoleRequest {
+	s.NewDescription = &v
 	return s
 }
 
@@ -6022,9 +6506,14 @@ func (s *UpdateRoleRequest) SetNewMaxSessionDuration(v int64) *UpdateRoleRequest
 	return s
 }
 
+func (s *UpdateRoleRequest) SetRoleName(v string) *UpdateRoleRequest {
+	s.RoleName = &v
+	return s
+}
+
 type UpdateRoleResponseBody struct {
-	Role      *UpdateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Role      *UpdateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s UpdateRoleResponseBody) String() string {
@@ -6035,25 +6524,25 @@ func (s UpdateRoleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateRoleResponseBody) SetRole(v *UpdateRoleResponseBodyRole) *UpdateRoleResponseBody {
-	s.Role = v
-	return s
-}
-
 func (s *UpdateRoleResponseBody) SetRequestId(v string) *UpdateRoleResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *UpdateRoleResponseBody) SetRole(v *UpdateRoleResponseBodyRole) *UpdateRoleResponseBody {
+	s.Role = v
+	return s
+}
+
 type UpdateRoleResponseBodyRole struct {
+	Arn                      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	UpdateDate               *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	MaxSessionDuration       *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	RoleId                   *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	Arn                      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	UpdateDate               *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s UpdateRoleResponseBodyRole) String() string {
@@ -6064,13 +6553,18 @@ func (s UpdateRoleResponseBodyRole) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateRoleResponseBodyRole) SetArn(v string) *UpdateRoleResponseBodyRole {
+	s.Arn = &v
+	return s
+}
+
 func (s *UpdateRoleResponseBodyRole) SetAssumeRolePolicyDocument(v string) *UpdateRoleResponseBodyRole {
 	s.AssumeRolePolicyDocument = &v
 	return s
 }
 
-func (s *UpdateRoleResponseBodyRole) SetUpdateDate(v string) *UpdateRoleResponseBodyRole {
-	s.UpdateDate = &v
+func (s *UpdateRoleResponseBodyRole) SetCreateDate(v string) *UpdateRoleResponseBodyRole {
+	s.CreateDate = &v
 	return s
 }
 
@@ -6084,29 +6578,25 @@ func (s *UpdateRoleResponseBodyRole) SetMaxSessionDuration(v int64) *UpdateRoleR
 	return s
 }
 
-func (s *UpdateRoleResponseBodyRole) SetRoleName(v string) *UpdateRoleResponseBodyRole {
-	s.RoleName = &v
-	return s
-}
-
-func (s *UpdateRoleResponseBodyRole) SetCreateDate(v string) *UpdateRoleResponseBodyRole {
-	s.CreateDate = &v
-	return s
-}
-
 func (s *UpdateRoleResponseBodyRole) SetRoleId(v string) *UpdateRoleResponseBodyRole {
 	s.RoleId = &v
 	return s
 }
 
-func (s *UpdateRoleResponseBodyRole) SetArn(v string) *UpdateRoleResponseBodyRole {
-	s.Arn = &v
+func (s *UpdateRoleResponseBodyRole) SetRoleName(v string) *UpdateRoleResponseBodyRole {
+	s.RoleName = &v
+	return s
+}
+
+func (s *UpdateRoleResponseBodyRole) SetUpdateDate(v string) *UpdateRoleResponseBodyRole {
+	s.UpdateDate = &v
 	return s
 }
 
 type UpdateRoleResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateRoleResponse) String() string {
@@ -6122,18 +6612,23 @@ func (s *UpdateRoleResponse) SetHeaders(v map[string]*string) *UpdateRoleRespons
 	return s
 }
 
+func (s *UpdateRoleResponse) SetStatusCode(v int32) *UpdateRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateRoleResponse) SetBody(v *UpdateRoleResponseBody) *UpdateRoleResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateUserRequest struct {
-	UserName       *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	NewUserName    *string `json:"NewUserName,omitempty" xml:"NewUserName,omitempty"`
-	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
-	NewMobilePhone *string `json:"NewMobilePhone,omitempty" xml:"NewMobilePhone,omitempty"`
-	NewEmail       *string `json:"NewEmail,omitempty" xml:"NewEmail,omitempty"`
 	NewComments    *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
+	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
+	NewEmail       *string `json:"NewEmail,omitempty" xml:"NewEmail,omitempty"`
+	NewMobilePhone *string `json:"NewMobilePhone,omitempty" xml:"NewMobilePhone,omitempty"`
+	NewUserName    *string `json:"NewUserName,omitempty" xml:"NewUserName,omitempty"`
+	UserName       *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s UpdateUserRequest) String() string {
@@ -6144,13 +6639,8 @@ func (s UpdateUserRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateUserRequest) SetUserName(v string) *UpdateUserRequest {
-	s.UserName = &v
-	return s
-}
-
-func (s *UpdateUserRequest) SetNewUserName(v string) *UpdateUserRequest {
-	s.NewUserName = &v
+func (s *UpdateUserRequest) SetNewComments(v string) *UpdateUserRequest {
+	s.NewComments = &v
 	return s
 }
 
@@ -6159,24 +6649,29 @@ func (s *UpdateUserRequest) SetNewDisplayName(v string) *UpdateUserRequest {
 	return s
 }
 
-func (s *UpdateUserRequest) SetNewMobilePhone(v string) *UpdateUserRequest {
-	s.NewMobilePhone = &v
-	return s
-}
-
 func (s *UpdateUserRequest) SetNewEmail(v string) *UpdateUserRequest {
 	s.NewEmail = &v
 	return s
 }
 
-func (s *UpdateUserRequest) SetNewComments(v string) *UpdateUserRequest {
-	s.NewComments = &v
+func (s *UpdateUserRequest) SetNewMobilePhone(v string) *UpdateUserRequest {
+	s.NewMobilePhone = &v
+	return s
+}
+
+func (s *UpdateUserRequest) SetNewUserName(v string) *UpdateUserRequest {
+	s.NewUserName = &v
+	return s
+}
+
+func (s *UpdateUserRequest) SetUserName(v string) *UpdateUserRequest {
+	s.UserName = &v
 	return s
 }
 
 type UpdateUserResponseBody struct {
-	User      *UpdateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	User      *UpdateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s UpdateUserResponseBody) String() string {
@@ -6187,24 +6682,24 @@ func (s UpdateUserResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateUserResponseBody) SetUser(v *UpdateUserResponseBodyUser) *UpdateUserResponseBody {
-	s.User = v
-	return s
-}
-
 func (s *UpdateUserResponseBody) SetRequestId(v string) *UpdateUserResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *UpdateUserResponseBody) SetUser(v *UpdateUserResponseBodyUser) *UpdateUserResponseBody {
+	s.User = v
+	return s
+}
+
 type UpdateUserResponseBodyUser struct {
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -6214,31 +6709,6 @@ func (s UpdateUserResponseBodyUser) String() string {
 
 func (s UpdateUserResponseBodyUser) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateUserResponseBodyUser) SetDisplayName(v string) *UpdateUserResponseBodyUser {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *UpdateUserResponseBodyUser) SetEmail(v string) *UpdateUserResponseBodyUser {
-	s.Email = &v
-	return s
-}
-
-func (s *UpdateUserResponseBodyUser) SetUpdateDate(v string) *UpdateUserResponseBodyUser {
-	s.UpdateDate = &v
-	return s
-}
-
-func (s *UpdateUserResponseBodyUser) SetMobilePhone(v string) *UpdateUserResponseBodyUser {
-	s.MobilePhone = &v
-	return s
-}
-
-func (s *UpdateUserResponseBodyUser) SetUserId(v string) *UpdateUserResponseBodyUser {
-	s.UserId = &v
-	return s
 }
 
 func (s *UpdateUserResponseBodyUser) SetComments(v string) *UpdateUserResponseBodyUser {
@@ -6251,14 +6721,40 @@ func (s *UpdateUserResponseBodyUser) SetCreateDate(v string) *UpdateUserResponse
 	return s
 }
 
+func (s *UpdateUserResponseBodyUser) SetDisplayName(v string) *UpdateUserResponseBodyUser {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateUserResponseBodyUser) SetEmail(v string) *UpdateUserResponseBodyUser {
+	s.Email = &v
+	return s
+}
+
+func (s *UpdateUserResponseBodyUser) SetMobilePhone(v string) *UpdateUserResponseBodyUser {
+	s.MobilePhone = &v
+	return s
+}
+
+func (s *UpdateUserResponseBodyUser) SetUpdateDate(v string) *UpdateUserResponseBodyUser {
+	s.UpdateDate = &v
+	return s
+}
+
+func (s *UpdateUserResponseBodyUser) SetUserId(v string) *UpdateUserResponseBodyUser {
+	s.UserId = &v
+	return s
+}
+
 func (s *UpdateUserResponseBodyUser) SetUserName(v string) *UpdateUserResponseBodyUser {
 	s.UserName = &v
 	return s
 }
 
 type UpdateUserResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateUserResponse) String() string {
@@ -6271,6 +6767,11 @@ func (s UpdateUserResponse) GoString() string {
 
 func (s *UpdateUserResponse) SetHeaders(v map[string]*string) *UpdateUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateUserResponse) SetStatusCode(v int32) *UpdateUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6331,11 +6832,31 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddUserToGroup"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddUserToGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddUserToGroup"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6359,11 +6880,35 @@ func (client *Client) AttachPolicyToGroupWithOptions(request *AttachPolicyToGrou
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachPolicyToGroup"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AttachPolicyToGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachPolicyToGroup"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6387,11 +6932,35 @@ func (client *Client) AttachPolicyToRoleWithOptions(request *AttachPolicyToRoleR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachPolicyToRole"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AttachPolicyToRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachPolicyToRole"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6415,11 +6984,35 @@ func (client *Client) AttachPolicyToUserWithOptions(request *AttachPolicyToUserR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachPolicyToUser"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AttachPolicyToUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachPolicyToUser"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6443,11 +7036,39 @@ func (client *Client) BindMFADeviceWithOptions(request *BindMFADeviceRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthenticationCode1)) {
+		query["AuthenticationCode1"] = request.AuthenticationCode1
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticationCode2)) {
+		query["AuthenticationCode2"] = request.AuthenticationCode2
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
+		query["SerialNumber"] = request.SerialNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindMFADevice"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BindMFADeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BindMFADevice"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6471,11 +7092,31 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewPassword)) {
+		query["NewPassword"] = request.NewPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OldPassword)) {
+		query["OldPassword"] = request.OldPassword
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangePassword"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ChangePasswordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ChangePassword"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6496,8 +7137,19 @@ func (client *Client) ChangePassword(request *ChangePasswordRequest) (_result *C
 
 func (client *Client) ClearAccountAliasWithOptions(runtime *util.RuntimeOptions) (_result *ClearAccountAliasResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ClearAccountAlias"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ClearAccountAliasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ClearAccountAlias"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6521,11 +7173,27 @@ func (client *Client) CreateAccessKeyWithOptions(request *CreateAccessKeyRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAccessKey"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAccessKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAccessKey"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6549,11 +7217,31 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comments)) {
+		query["Comments"] = request.Comments
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGroup"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateGroup"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6577,11 +7265,39 @@ func (client *Client) CreateLoginProfileWithOptions(request *CreateLoginProfileR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MFABindRequired)) {
+		query["MFABindRequired"] = request.MFABindRequired
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordResetRequired)) {
+		query["PasswordResetRequired"] = request.PasswordResetRequired
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLoginProfile"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateLoginProfileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateLoginProfile"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6605,11 +7321,35 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyDocument)) {
+		query["PolicyDocument"] = request.PolicyDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePolicy"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreatePolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreatePolicy"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6633,11 +7373,39 @@ func (client *Client) CreatePolicyVersionWithOptions(request *CreatePolicyVersio
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyDocument)) {
+		query["PolicyDocument"] = request.PolicyDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RotateStrategy)) {
+		query["RotateStrategy"] = request.RotateStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SetAsDefault)) {
+		query["SetAsDefault"] = request.SetAsDefault
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePolicyVersion"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreatePolicyVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreatePolicyVersion"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6661,11 +7429,39 @@ func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssumeRolePolicyDocument)) {
+		query["AssumeRolePolicyDocument"] = request.AssumeRolePolicyDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxSessionDuration)) {
+		query["MaxSessionDuration"] = request.MaxSessionDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRole"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateRole"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6689,11 +7485,43 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comments)) {
+		query["Comments"] = request.Comments
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobilePhone)) {
+		query["MobilePhone"] = request.MobilePhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUser"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateUser"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6717,11 +7545,27 @@ func (client *Client) CreateVirtualMFADeviceWithOptions(request *CreateVirtualMF
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VirtualMFADeviceName)) {
+		query["VirtualMFADeviceName"] = request.VirtualMFADeviceName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVirtualMFADevice"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateVirtualMFADeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateVirtualMFADevice"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6745,11 +7589,31 @@ func (client *Client) DeleteAccessKeyWithOptions(request *DeleteAccessKeyRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserAccessKeyId)) {
+		query["UserAccessKeyId"] = request.UserAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAccessKey"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAccessKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAccessKey"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6773,11 +7637,27 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGroup"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteGroup"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6801,11 +7681,27 @@ func (client *Client) DeleteLoginProfileWithOptions(request *DeleteLoginProfileR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLoginProfile"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteLoginProfileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteLoginProfile"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6829,11 +7725,27 @@ func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePolicy"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeletePolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeletePolicy"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6857,11 +7769,31 @@ func (client *Client) DeletePolicyVersionWithOptions(request *DeletePolicyVersio
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePolicyVersion"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeletePolicyVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeletePolicyVersion"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6885,11 +7817,27 @@ func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRole"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteRole"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6913,11 +7861,27 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUser"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteUser"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6941,11 +7905,27 @@ func (client *Client) DeleteVirtualMFADeviceWithOptions(request *DeleteVirtualMF
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
+		query["SerialNumber"] = request.SerialNumber
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVirtualMFADevice"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVirtualMFADeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteVirtualMFADevice"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6969,11 +7949,35 @@ func (client *Client) DetachPolicyFromGroupWithOptions(request *DetachPolicyFrom
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachPolicyFromGroup"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetachPolicyFromGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetachPolicyFromGroup"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6997,11 +8001,35 @@ func (client *Client) DetachPolicyFromRoleWithOptions(request *DetachPolicyFromR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachPolicyFromRole"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetachPolicyFromRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetachPolicyFromRole"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7025,11 +8053,35 @@ func (client *Client) DetachPolicyFromUserWithOptions(request *DetachPolicyFromU
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachPolicyFromUser"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetachPolicyFromUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetachPolicyFromUser"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7053,11 +8105,31 @@ func (client *Client) GetAccessKeyLastUsedWithOptions(request *GetAccessKeyLastU
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserAccessKeyId)) {
+		query["UserAccessKeyId"] = request.UserAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccessKeyLastUsed"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAccessKeyLastUsedResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAccessKeyLastUsed"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7078,8 +8150,19 @@ func (client *Client) GetAccessKeyLastUsed(request *GetAccessKeyLastUsedRequest)
 
 func (client *Client) GetAccountAliasWithOptions(runtime *util.RuntimeOptions) (_result *GetAccountAliasResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccountAlias"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetAccountAliasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAccountAlias"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7103,11 +8186,27 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGroup"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetGroup"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7131,11 +8230,27 @@ func (client *Client) GetLoginProfileWithOptions(request *GetLoginProfileRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLoginProfile"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetLoginProfileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetLoginProfile"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7156,8 +8271,19 @@ func (client *Client) GetLoginProfile(request *GetLoginProfileRequest) (_result 
 
 func (client *Client) GetPasswordPolicyWithOptions(runtime *util.RuntimeOptions) (_result *GetPasswordPolicyResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetPasswordPolicy"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetPasswordPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPasswordPolicy"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7181,11 +8307,31 @@ func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPolicy"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPolicy"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7209,11 +8355,35 @@ func (client *Client) GetPolicyVersionWithOptions(request *GetPolicyVersionReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPolicyVersion"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetPolicyVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPolicyVersion"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7237,11 +8407,27 @@ func (client *Client) GetRoleWithOptions(request *GetRoleRequest, runtime *util.
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRole"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetRole"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7262,8 +8448,19 @@ func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse
 
 func (client *Client) GetSecurityPreferenceWithOptions(runtime *util.RuntimeOptions) (_result *GetSecurityPreferenceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetSecurityPreference"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetSecurityPreferenceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSecurityPreference"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7287,11 +8484,27 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUser"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUser"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7315,11 +8528,27 @@ func (client *Client) GetUserMFAInfoWithOptions(request *GetUserMFAInfoRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserMFAInfo"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetUserMFAInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUserMFAInfo"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7343,11 +8572,27 @@ func (client *Client) ListAccessKeysWithOptions(request *ListAccessKeysRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccessKeys"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAccessKeysResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAccessKeys"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7371,11 +8616,31 @@ func (client *Client) ListEntitiesForPolicyWithOptions(request *ListEntitiesForP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEntitiesForPolicy"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListEntitiesForPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListEntitiesForPolicy"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7399,11 +8664,31 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroups"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListGroups"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7427,11 +8712,27 @@ func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroupsForUser"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListGroupsForUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListGroupsForUser"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7455,11 +8756,35 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPolicies"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListPoliciesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPolicies"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7483,11 +8808,27 @@ func (client *Client) ListPoliciesForGroupWithOptions(request *ListPoliciesForGr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPoliciesForGroup"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListPoliciesForGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPoliciesForGroup"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7511,11 +8852,27 @@ func (client *Client) ListPoliciesForRoleWithOptions(request *ListPoliciesForRol
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPoliciesForRole"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListPoliciesForRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPoliciesForRole"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7539,11 +8896,27 @@ func (client *Client) ListPoliciesForUserWithOptions(request *ListPoliciesForUse
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPoliciesForUser"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListPoliciesForUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPoliciesForUser"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7567,11 +8940,31 @@ func (client *Client) ListPolicyVersionsWithOptions(request *ListPolicyVersionsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPolicyVersions"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListPolicyVersionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPolicyVersions"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7595,11 +8988,31 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRoles"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListRolesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRoles"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7623,11 +9036,31 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsers"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListUsersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListUsers"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7651,11 +9084,35 @@ func (client *Client) ListUsersForGroupWithOptions(request *ListUsersForGroupReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsersForGroup"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListUsersForGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListUsersForGroup"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7676,8 +9133,19 @@ func (client *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (_res
 
 func (client *Client) ListVirtualMFADevicesWithOptions(runtime *util.RuntimeOptions) (_result *ListVirtualMFADevicesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListVirtualMFADevices"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListVirtualMFADevicesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListVirtualMFADevices"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7701,11 +9169,31 @@ func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGrou
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveUserFromGroup"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveUserFromGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveUserFromGroup"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7729,11 +9217,27 @@ func (client *Client) SetAccountAliasWithOptions(request *SetAccountAliasRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountAlias)) {
+		query["AccountAlias"] = request.AccountAlias
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetAccountAlias"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetAccountAliasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetAccountAlias"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7757,11 +9261,31 @@ func (client *Client) SetDefaultPolicyVersionWithOptions(request *SetDefaultPoli
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDefaultPolicyVersion"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetDefaultPolicyVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetDefaultPolicyVersion"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7785,11 +9309,59 @@ func (client *Client) SetPasswordPolicyWithOptions(request *SetPasswordPolicyReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HardExpiry)) {
+		query["HardExpiry"] = request.HardExpiry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxLoginAttemps)) {
+		query["MaxLoginAttemps"] = request.MaxLoginAttemps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxPasswordAge)) {
+		query["MaxPasswordAge"] = request.MaxPasswordAge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumPasswordLength)) {
+		query["MinimumPasswordLength"] = request.MinimumPasswordLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordReusePrevention)) {
+		query["PasswordReusePrevention"] = request.PasswordReusePrevention
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireLowercaseCharacters)) {
+		query["RequireLowercaseCharacters"] = request.RequireLowercaseCharacters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireNumbers)) {
+		query["RequireNumbers"] = request.RequireNumbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireSymbols)) {
+		query["RequireSymbols"] = request.RequireSymbols
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireUppercaseCharacters)) {
+		query["RequireUppercaseCharacters"] = request.RequireUppercaseCharacters
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetPasswordPolicy"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetPasswordPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetPasswordPolicy"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7813,11 +9385,51 @@ func (client *Client) SetSecurityPreferenceWithOptions(request *SetSecurityPrefe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowUserToChangePassword)) {
+		query["AllowUserToChangePassword"] = request.AllowUserToChangePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowUserToManageAccessKeys)) {
+		query["AllowUserToManageAccessKeys"] = request.AllowUserToManageAccessKeys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowUserToManageMFADevices)) {
+		query["AllowUserToManageMFADevices"] = request.AllowUserToManageMFADevices
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowUserToManagePublicKeys)) {
+		query["AllowUserToManagePublicKeys"] = request.AllowUserToManagePublicKeys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSaveMFATicket)) {
+		query["EnableSaveMFATicket"] = request.EnableSaveMFATicket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginNetworkMasks)) {
+		query["LoginNetworkMasks"] = request.LoginNetworkMasks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginSessionDuration)) {
+		query["LoginSessionDuration"] = request.LoginSessionDuration
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetSecurityPreference"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetSecurityPreferenceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetSecurityPreference"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7841,11 +9453,27 @@ func (client *Client) UnbindMFADeviceWithOptions(request *UnbindMFADeviceRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindMFADevice"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UnbindMFADeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UnbindMFADevice"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7869,11 +9497,35 @@ func (client *Client) UpdateAccessKeyWithOptions(request *UpdateAccessKeyRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAccessKeyId)) {
+		query["UserAccessKeyId"] = request.UserAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAccessKey"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAccessKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAccessKey"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7897,11 +9549,35 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewComments)) {
+		query["NewComments"] = request.NewComments
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewGroupName)) {
+		query["NewGroupName"] = request.NewGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGroup"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateGroup"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7925,11 +9601,39 @@ func (client *Client) UpdateLoginProfileWithOptions(request *UpdateLoginProfileR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MFABindRequired)) {
+		query["MFABindRequired"] = request.MFABindRequired
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordResetRequired)) {
+		query["PasswordResetRequired"] = request.PasswordResetRequired
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLoginProfile"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateLoginProfileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateLoginProfile"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7948,16 +9652,92 @@ func (client *Client) UpdateLoginProfile(request *UpdateLoginProfileRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) UpdatePolicyDescriptionWithOptions(request *UpdatePolicyDescriptionRequest, runtime *util.RuntimeOptions) (_result *UpdatePolicyDescriptionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewDescription)) {
+		query["NewDescription"] = request.NewDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePolicyDescription"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePolicyDescriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePolicyDescription(request *UpdatePolicyDescriptionRequest) (_result *UpdatePolicyDescriptionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePolicyDescriptionResponse{}
+	_body, _err := client.UpdatePolicyDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, runtime *util.RuntimeOptions) (_result *UpdateRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewAssumeRolePolicyDocument)) {
+		query["NewAssumeRolePolicyDocument"] = request.NewAssumeRolePolicyDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDescription)) {
+		query["NewDescription"] = request.NewDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewMaxSessionDuration)) {
+		query["NewMaxSessionDuration"] = request.NewMaxSessionDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRole"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateRole"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7981,11 +9761,47 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewComments)) {
+		query["NewComments"] = request.NewComments
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDisplayName)) {
+		query["NewDisplayName"] = request.NewDisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewEmail)) {
+		query["NewEmail"] = request.NewEmail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewMobilePhone)) {
+		query["NewMobilePhone"] = request.NewMobilePhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewUserName)) {
+		query["NewUserName"] = request.NewUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUser"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateUser"), tea.String("2015-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
