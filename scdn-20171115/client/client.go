@@ -89,8 +89,9 @@ func (s *AddScdnDomainResponseBody) SetRequestId(v string) *AddScdnDomainRespons
 }
 
 type AddScdnDomainResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddScdnDomainResponse) String() string {
@@ -103,6 +104,11 @@ func (s AddScdnDomainResponse) GoString() string {
 
 func (s *AddScdnDomainResponse) SetHeaders(v map[string]*string) *AddScdnDomainResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddScdnDomainResponse) SetStatusCode(v int32) *AddScdnDomainResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -170,8 +176,9 @@ func (s *BatchDeleteScdnDomainConfigsResponseBody) SetRequestId(v string) *Batch
 }
 
 type BatchDeleteScdnDomainConfigsResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchDeleteScdnDomainConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchDeleteScdnDomainConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BatchDeleteScdnDomainConfigsResponse) String() string {
@@ -184,6 +191,11 @@ func (s BatchDeleteScdnDomainConfigsResponse) GoString() string {
 
 func (s *BatchDeleteScdnDomainConfigsResponse) SetHeaders(v map[string]*string) *BatchDeleteScdnDomainConfigsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BatchDeleteScdnDomainConfigsResponse) SetStatusCode(v int32) *BatchDeleteScdnDomainConfigsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -303,8 +315,9 @@ func (s *BatchSetScdnDomainConfigsResponseBodyDomainConfigListDomainConfigModel)
 }
 
 type BatchSetScdnDomainConfigsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchSetScdnDomainConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchSetScdnDomainConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BatchSetScdnDomainConfigsResponse) String() string {
@@ -317,6 +330,11 @@ func (s BatchSetScdnDomainConfigsResponse) GoString() string {
 
 func (s *BatchSetScdnDomainConfigsResponse) SetHeaders(v map[string]*string) *BatchSetScdnDomainConfigsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BatchSetScdnDomainConfigsResponse) SetStatusCode(v int32) *BatchSetScdnDomainConfigsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -372,8 +390,9 @@ func (s *BatchStartScdnDomainResponseBody) SetRequestId(v string) *BatchStartScd
 }
 
 type BatchStartScdnDomainResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchStartScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchStartScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BatchStartScdnDomainResponse) String() string {
@@ -386,6 +405,11 @@ func (s BatchStartScdnDomainResponse) GoString() string {
 
 func (s *BatchStartScdnDomainResponse) SetHeaders(v map[string]*string) *BatchStartScdnDomainResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BatchStartScdnDomainResponse) SetStatusCode(v int32) *BatchStartScdnDomainResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -441,8 +465,9 @@ func (s *BatchStopScdnDomainResponseBody) SetRequestId(v string) *BatchStopScdnD
 }
 
 type BatchStopScdnDomainResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchStopScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchStopScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BatchStopScdnDomainResponse) String() string {
@@ -455,6 +480,11 @@ func (s BatchStopScdnDomainResponse) GoString() string {
 
 func (s *BatchStopScdnDomainResponse) SetHeaders(v map[string]*string) *BatchStopScdnDomainResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BatchStopScdnDomainResponse) SetStatusCode(v int32) *BatchStopScdnDomainResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -528,8 +558,9 @@ func (s *BatchUpdateScdnDomainResponseBody) SetRequestId(v string) *BatchUpdateS
 }
 
 type BatchUpdateScdnDomainResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchUpdateScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchUpdateScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BatchUpdateScdnDomainResponse) String() string {
@@ -542,6 +573,11 @@ func (s BatchUpdateScdnDomainResponse) GoString() string {
 
 func (s *BatchUpdateScdnDomainResponse) SetHeaders(v map[string]*string) *BatchUpdateScdnDomainResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BatchUpdateScdnDomainResponse) SetStatusCode(v int32) *BatchUpdateScdnDomainResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -615,8 +651,9 @@ func (s *CheckScdnServiceResponseBody) SetRequestId(v string) *CheckScdnServiceR
 }
 
 type CheckScdnServiceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckScdnServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckScdnServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckScdnServiceResponse) String() string {
@@ -629,6 +666,11 @@ func (s CheckScdnServiceResponse) GoString() string {
 
 func (s *CheckScdnServiceResponse) SetHeaders(v map[string]*string) *CheckScdnServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CheckScdnServiceResponse) SetStatusCode(v int32) *CheckScdnServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -690,8 +732,9 @@ func (s *DeleteScdnDomainResponseBody) SetRequestId(v string) *DeleteScdnDomainR
 }
 
 type DeleteScdnDomainResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteScdnDomainResponse) String() string {
@@ -704,6 +747,11 @@ func (s DeleteScdnDomainResponse) GoString() string {
 
 func (s *DeleteScdnDomainResponse) SetHeaders(v map[string]*string) *DeleteScdnDomainResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteScdnDomainResponse) SetStatusCode(v int32) *DeleteScdnDomainResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -765,8 +813,9 @@ func (s *DeleteScdnSpecificConfigResponseBody) SetRequestId(v string) *DeleteScd
 }
 
 type DeleteScdnSpecificConfigResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteScdnSpecificConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteScdnSpecificConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteScdnSpecificConfigResponse) String() string {
@@ -782,25 +831,13 @@ func (s *DeleteScdnSpecificConfigResponse) SetHeaders(v map[string]*string) *Del
 	return s
 }
 
-func (s *DeleteScdnSpecificConfigResponse) SetBody(v *DeleteScdnSpecificConfigResponseBody) *DeleteScdnSpecificConfigResponse {
-	s.Body = v
+func (s *DeleteScdnSpecificConfigResponse) SetStatusCode(v int32) *DeleteScdnSpecificConfigResponse {
+	s.StatusCode = &v
 	return s
 }
 
-type DescribeScdnCcInfoRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeScdnCcInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeScdnCcInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeScdnCcInfoRequest) SetOwnerId(v int64) *DescribeScdnCcInfoRequest {
-	s.OwnerId = &v
+func (s *DeleteScdnSpecificConfigResponse) SetBody(v *DeleteScdnSpecificConfigResponseBody) *DeleteScdnSpecificConfigResponse {
+	s.Body = v
 	return s
 }
 
@@ -828,8 +865,9 @@ func (s *DescribeScdnCcInfoResponseBody) SetStatus(v string) *DescribeScdnCcInfo
 }
 
 type DescribeScdnCcInfoResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnCcInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnCcInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnCcInfoResponse) String() string {
@@ -845,6 +883,11 @@ func (s *DescribeScdnCcInfoResponse) SetHeaders(v map[string]*string) *DescribeS
 	return s
 }
 
+func (s *DescribeScdnCcInfoResponse) SetStatusCode(v int32) *DescribeScdnCcInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnCcInfoResponse) SetBody(v *DescribeScdnCcInfoResponseBody) *DescribeScdnCcInfoResponse {
 	s.Body = v
 	return s
@@ -853,7 +896,6 @@ func (s *DescribeScdnCcInfoResponse) SetBody(v *DescribeScdnCcInfoResponseBody) 
 type DescribeScdnCcQpsInfoRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -872,11 +914,6 @@ func (s *DescribeScdnCcQpsInfoRequest) SetDomainName(v string) *DescribeScdnCcQp
 
 func (s *DescribeScdnCcQpsInfoRequest) SetEndTime(v string) *DescribeScdnCcQpsInfoRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeScdnCcQpsInfoRequest) SetOwnerId(v int64) *DescribeScdnCcQpsInfoRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -995,8 +1032,9 @@ func (s *DescribeScdnCcQpsInfoResponseBodyTotals) SetTotal(v []*string) *Describ
 }
 
 type DescribeScdnCcQpsInfoResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnCcQpsInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnCcQpsInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnCcQpsInfoResponse) String() string {
@@ -1012,6 +1050,11 @@ func (s *DescribeScdnCcQpsInfoResponse) SetHeaders(v map[string]*string) *Descri
 	return s
 }
 
+func (s *DescribeScdnCcQpsInfoResponse) SetStatusCode(v int32) *DescribeScdnCcQpsInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnCcQpsInfoResponse) SetBody(v *DescribeScdnCcQpsInfoResponseBody) *DescribeScdnCcQpsInfoResponse {
 	s.Body = v
 	return s
@@ -1020,7 +1063,6 @@ func (s *DescribeScdnCcQpsInfoResponse) SetBody(v *DescribeScdnCcQpsInfoResponse
 type DescribeScdnCcTopIpRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -1041,11 +1083,6 @@ func (s *DescribeScdnCcTopIpRequest) SetDomainName(v string) *DescribeScdnCcTopI
 
 func (s *DescribeScdnCcTopIpRequest) SetEndTime(v string) *DescribeScdnCcTopIpRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeScdnCcTopIpRequest) SetOwnerId(v int64) *DescribeScdnCcTopIpRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -1140,8 +1177,9 @@ func (s *DescribeScdnCcTopIpResponseBodyAttackIpDataListAttackIpDatas) SetIp(v s
 }
 
 type DescribeScdnCcTopIpResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnCcTopIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnCcTopIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnCcTopIpResponse) String() string {
@@ -1157,6 +1195,11 @@ func (s *DescribeScdnCcTopIpResponse) SetHeaders(v map[string]*string) *Describe
 	return s
 }
 
+func (s *DescribeScdnCcTopIpResponse) SetStatusCode(v int32) *DescribeScdnCcTopIpResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnCcTopIpResponse) SetBody(v *DescribeScdnCcTopIpResponseBody) *DescribeScdnCcTopIpResponse {
 	s.Body = v
 	return s
@@ -1165,7 +1208,6 @@ func (s *DescribeScdnCcTopIpResponse) SetBody(v *DescribeScdnCcTopIpResponseBody
 type DescribeScdnCcTopUrlRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -1186,11 +1228,6 @@ func (s *DescribeScdnCcTopUrlRequest) SetDomainName(v string) *DescribeScdnCcTop
 
 func (s *DescribeScdnCcTopUrlRequest) SetEndTime(v string) *DescribeScdnCcTopUrlRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeScdnCcTopUrlRequest) SetOwnerId(v int64) *DescribeScdnCcTopUrlRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -1285,8 +1322,9 @@ func (s *DescribeScdnCcTopUrlResponseBodyAttackUrlDataListAttackUrlDatas) SetUrl
 }
 
 type DescribeScdnCcTopUrlResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnCcTopUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnCcTopUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnCcTopUrlResponse) String() string {
@@ -1299,6 +1337,11 @@ func (s DescribeScdnCcTopUrlResponse) GoString() string {
 
 func (s *DescribeScdnCcTopUrlResponse) SetHeaders(v map[string]*string) *DescribeScdnCcTopUrlResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeScdnCcTopUrlResponse) SetStatusCode(v int32) *DescribeScdnCcTopUrlResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1378,8 +1421,9 @@ func (s *DescribeScdnCertificateDetailResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeScdnCertificateDetailResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnCertificateDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnCertificateDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnCertificateDetailResponse) String() string {
@@ -1392,6 +1436,11 @@ func (s DescribeScdnCertificateDetailResponse) GoString() string {
 
 func (s *DescribeScdnCertificateDetailResponse) SetHeaders(v map[string]*string) *DescribeScdnCertificateDetailResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeScdnCertificateDetailResponse) SetStatusCode(v int32) *DescribeScdnCertificateDetailResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1540,8 +1589,9 @@ func (s *DescribeScdnCertificateListResponseBodyCertificateListModelCertListCert
 }
 
 type DescribeScdnCertificateListResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnCertificateListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnCertificateListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnCertificateListResponse) String() string {
@@ -1557,25 +1607,13 @@ func (s *DescribeScdnCertificateListResponse) SetHeaders(v map[string]*string) *
 	return s
 }
 
-func (s *DescribeScdnCertificateListResponse) SetBody(v *DescribeScdnCertificateListResponseBody) *DescribeScdnCertificateListResponse {
-	s.Body = v
+func (s *DescribeScdnCertificateListResponse) SetStatusCode(v int32) *DescribeScdnCertificateListResponse {
+	s.StatusCode = &v
 	return s
 }
 
-type DescribeScdnDDoSInfoRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeScdnDDoSInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeScdnDDoSInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeScdnDDoSInfoRequest) SetOwnerId(v int64) *DescribeScdnDDoSInfoRequest {
-	s.OwnerId = &v
+func (s *DescribeScdnCertificateListResponse) SetBody(v *DescribeScdnCertificateListResponseBody) *DescribeScdnCertificateListResponse {
+	s.Body = v
 	return s
 }
 
@@ -1609,8 +1647,9 @@ func (s *DescribeScdnDDoSInfoResponseBody) SetSecBandwidth(v int32) *DescribeScd
 }
 
 type DescribeScdnDDoSInfoResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDDoSInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDDoSInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDDoSInfoResponse) String() string {
@@ -1626,6 +1665,11 @@ func (s *DescribeScdnDDoSInfoResponse) SetHeaders(v map[string]*string) *Describ
 	return s
 }
 
+func (s *DescribeScdnDDoSInfoResponse) SetStatusCode(v int32) *DescribeScdnDDoSInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDDoSInfoResponse) SetBody(v *DescribeScdnDDoSInfoResponseBody) *DescribeScdnDDoSInfoResponse {
 	s.Body = v
 	return s
@@ -1634,7 +1678,6 @@ func (s *DescribeScdnDDoSInfoResponse) SetBody(v *DescribeScdnDDoSInfoResponseBo
 type DescribeScdnDDoSTrafficInfoRequest struct {
 	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Line      *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -1653,11 +1696,6 @@ func (s *DescribeScdnDDoSTrafficInfoRequest) SetEndTime(v string) *DescribeScdnD
 
 func (s *DescribeScdnDDoSTrafficInfoRequest) SetLine(v string) *DescribeScdnDDoSTrafficInfoRequest {
 	s.Line = &v
-	return s
-}
-
-func (s *DescribeScdnDDoSTrafficInfoRequest) SetOwnerId(v int64) *DescribeScdnDDoSTrafficInfoRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -1822,8 +1860,9 @@ func (s *DescribeScdnDDoSTrafficInfoResponseBodyTimeScopesTimeScope) SetStart(v 
 }
 
 type DescribeScdnDDoSTrafficInfoResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDDoSTrafficInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDDoSTrafficInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDDoSTrafficInfoResponse) String() string {
@@ -1839,6 +1878,11 @@ func (s *DescribeScdnDDoSTrafficInfoResponse) SetHeaders(v map[string]*string) *
 	return s
 }
 
+func (s *DescribeScdnDDoSTrafficInfoResponse) SetStatusCode(v int32) *DescribeScdnDDoSTrafficInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDDoSTrafficInfoResponse) SetBody(v *DescribeScdnDDoSTrafficInfoResponseBody) *DescribeScdnDDoSTrafficInfoResponse {
 	s.Body = v
 	return s
@@ -1850,7 +1894,6 @@ type DescribeScdnDomainBpsDataRequest struct {
 	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -1884,11 +1927,6 @@ func (s *DescribeScdnDomainBpsDataRequest) SetIspNameEn(v string) *DescribeScdnD
 
 func (s *DescribeScdnDomainBpsDataRequest) SetLocationNameEn(v string) *DescribeScdnDomainBpsDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeScdnDomainBpsDataRequest) SetOwnerId(v int64) *DescribeScdnDomainBpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -1997,8 +2035,9 @@ func (s *DescribeScdnDomainBpsDataResponseBodyBpsDataPerIntervalDataModule) SetT
 }
 
 type DescribeScdnDomainBpsDataResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainBpsDataResponse) String() string {
@@ -2014,6 +2053,11 @@ func (s *DescribeScdnDomainBpsDataResponse) SetHeaders(v map[string]*string) *De
 	return s
 }
 
+func (s *DescribeScdnDomainBpsDataResponse) SetStatusCode(v int32) *DescribeScdnDomainBpsDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainBpsDataResponse) SetBody(v *DescribeScdnDomainBpsDataResponseBody) *DescribeScdnDomainBpsDataResponse {
 	s.Body = v
 	return s
@@ -2021,7 +2065,6 @@ func (s *DescribeScdnDomainBpsDataResponse) SetBody(v *DescribeScdnDomainBpsData
 
 type DescribeScdnDomainCertificateInfoRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeScdnDomainCertificateInfoRequest) String() string {
@@ -2034,11 +2077,6 @@ func (s DescribeScdnDomainCertificateInfoRequest) GoString() string {
 
 func (s *DescribeScdnDomainCertificateInfoRequest) SetDomainName(v string) *DescribeScdnDomainCertificateInfoRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeScdnDomainCertificateInfoRequest) SetOwnerId(v int64) *DescribeScdnDomainCertificateInfoRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -2154,8 +2192,9 @@ func (s *DescribeScdnDomainCertificateInfoResponseBodyCertInfosCertInfo) SetStat
 }
 
 type DescribeScdnDomainCertificateInfoResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainCertificateInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainCertificateInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainCertificateInfoResponse) String() string {
@@ -2171,6 +2210,11 @@ func (s *DescribeScdnDomainCertificateInfoResponse) SetHeaders(v map[string]*str
 	return s
 }
 
+func (s *DescribeScdnDomainCertificateInfoResponse) SetStatusCode(v int32) *DescribeScdnDomainCertificateInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainCertificateInfoResponse) SetBody(v *DescribeScdnDomainCertificateInfoResponseBody) *DescribeScdnDomainCertificateInfoResponse {
 	s.Body = v
 	return s
@@ -2178,7 +2222,6 @@ func (s *DescribeScdnDomainCertificateInfoResponse) SetBody(v *DescribeScdnDomai
 
 type DescribeScdnDomainCnameRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeScdnDomainCnameRequest) String() string {
@@ -2191,11 +2234,6 @@ func (s DescribeScdnDomainCnameRequest) GoString() string {
 
 func (s *DescribeScdnDomainCnameRequest) SetDomainName(v string) *DescribeScdnDomainCnameRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeScdnDomainCnameRequest) SetOwnerId(v int64) *DescribeScdnDomainCnameRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -2269,8 +2307,9 @@ func (s *DescribeScdnDomainCnameResponseBodyCnameDatasData) SetStatus(v int32) *
 }
 
 type DescribeScdnDomainCnameResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainCnameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainCnameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainCnameResponse) String() string {
@@ -2283,6 +2322,11 @@ func (s DescribeScdnDomainCnameResponse) GoString() string {
 
 func (s *DescribeScdnDomainCnameResponse) SetHeaders(v map[string]*string) *DescribeScdnDomainCnameResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeScdnDomainCnameResponse) SetStatusCode(v int32) *DescribeScdnDomainCnameResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2376,7 +2420,7 @@ type DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfig struct {
 	ConfigId     *string                                                                     `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	FunctionArgs *DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Struct"`
 	FunctionName *string                                                                     `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	ParentId     *int64                                                                      `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	ParentId     *string                                                                     `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	Status       *string                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2403,7 +2447,7 @@ func (s *DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfig) SetFunc
 	return s
 }
 
-func (s *DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfig) SetParentId(v int64) *DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfig {
+func (s *DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfig) SetParentId(v string) *DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfig {
 	s.ParentId = &v
 	return s
 }
@@ -2454,8 +2498,9 @@ func (s *DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionA
 }
 
 type DescribeScdnDomainConfigsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainConfigsResponse) String() string {
@@ -2468,6 +2513,11 @@ func (s DescribeScdnDomainConfigsResponse) GoString() string {
 
 func (s *DescribeScdnDomainConfigsResponse) SetHeaders(v map[string]*string) *DescribeScdnDomainConfigsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeScdnDomainConfigsResponse) SetStatusCode(v int32) *DescribeScdnDomainConfigsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2670,8 +2720,9 @@ func (s *DescribeScdnDomainDetailResponseBodyDomainDetailSourcesSource) SetType(
 }
 
 type DescribeScdnDomainDetailResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainDetailResponse) String() string {
@@ -2687,6 +2738,11 @@ func (s *DescribeScdnDomainDetailResponse) SetHeaders(v map[string]*string) *Des
 	return s
 }
 
+func (s *DescribeScdnDomainDetailResponse) SetStatusCode(v int32) *DescribeScdnDomainDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainDetailResponse) SetBody(v *DescribeScdnDomainDetailResponseBody) *DescribeScdnDomainDetailResponse {
 	s.Body = v
 	return s
@@ -2696,7 +2752,6 @@ type DescribeScdnDomainHitRateDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2720,11 +2775,6 @@ func (s *DescribeScdnDomainHitRateDataRequest) SetEndTime(v string) *DescribeScd
 
 func (s *DescribeScdnDomainHitRateDataRequest) SetInterval(v string) *DescribeScdnDomainHitRateDataRequest {
 	s.Interval = &v
-	return s
-}
-
-func (s *DescribeScdnDomainHitRateDataRequest) SetOwnerId(v int64) *DescribeScdnDomainHitRateDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -2827,8 +2877,9 @@ func (s *DescribeScdnDomainHitRateDataResponseBodyHitRatePerIntervalDataModule) 
 }
 
 type DescribeScdnDomainHitRateDataResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainHitRateDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainHitRateDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainHitRateDataResponse) String() string {
@@ -2844,6 +2895,11 @@ func (s *DescribeScdnDomainHitRateDataResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *DescribeScdnDomainHitRateDataResponse) SetStatusCode(v int32) *DescribeScdnDomainHitRateDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainHitRateDataResponse) SetBody(v *DescribeScdnDomainHitRateDataResponseBody) *DescribeScdnDomainHitRateDataResponse {
 	s.Body = v
 	return s
@@ -2855,7 +2911,6 @@ type DescribeScdnDomainHttpCodeDataRequest struct {
 	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2889,11 +2944,6 @@ func (s *DescribeScdnDomainHttpCodeDataRequest) SetIspNameEn(v string) *Describe
 
 func (s *DescribeScdnDomainHttpCodeDataRequest) SetLocationNameEn(v string) *DescribeScdnDomainHttpCodeDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeScdnDomainHttpCodeDataRequest) SetOwnerId(v int64) *DescribeScdnDomainHttpCodeDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -3036,8 +3086,9 @@ func (s *DescribeScdnDomainHttpCodeDataResponseBodyDataPerIntervalDataModuleHttp
 }
 
 type DescribeScdnDomainHttpCodeDataResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainHttpCodeDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainHttpCodeDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainHttpCodeDataResponse) String() string {
@@ -3053,6 +3104,11 @@ func (s *DescribeScdnDomainHttpCodeDataResponse) SetHeaders(v map[string]*string
 	return s
 }
 
+func (s *DescribeScdnDomainHttpCodeDataResponse) SetStatusCode(v int32) *DescribeScdnDomainHttpCodeDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainHttpCodeDataResponse) SetBody(v *DescribeScdnDomainHttpCodeDataResponseBody) *DescribeScdnDomainHttpCodeDataResponse {
 	s.Body = v
 	return s
@@ -3061,7 +3117,6 @@ func (s *DescribeScdnDomainHttpCodeDataResponse) SetBody(v *DescribeScdnDomainHt
 type DescribeScdnDomainIspDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -3080,11 +3135,6 @@ func (s *DescribeScdnDomainIspDataRequest) SetDomainName(v string) *DescribeScdn
 
 func (s *DescribeScdnDomainIspDataRequest) SetEndTime(v string) *DescribeScdnDomainIspDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeScdnDomainIspDataRequest) SetOwnerId(v int64) *DescribeScdnDomainIspDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -3241,8 +3291,9 @@ func (s *DescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetTotalQu
 }
 
 type DescribeScdnDomainIspDataResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainIspDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainIspDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainIspDataResponse) String() string {
@@ -3258,6 +3309,11 @@ func (s *DescribeScdnDomainIspDataResponse) SetHeaders(v map[string]*string) *De
 	return s
 }
 
+func (s *DescribeScdnDomainIspDataResponse) SetStatusCode(v int32) *DescribeScdnDomainIspDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainIspDataResponse) SetBody(v *DescribeScdnDomainIspDataResponseBody) *DescribeScdnDomainIspDataResponse {
 	s.Body = v
 	return s
@@ -3266,7 +3322,6 @@ func (s *DescribeScdnDomainIspDataResponse) SetBody(v *DescribeScdnDomainIspData
 type DescribeScdnDomainLogRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -3287,11 +3342,6 @@ func (s *DescribeScdnDomainLogRequest) SetDomainName(v string) *DescribeScdnDoma
 
 func (s *DescribeScdnDomainLogRequest) SetEndTime(v string) *DescribeScdnDomainLogRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeScdnDomainLogRequest) SetOwnerId(v int64) *DescribeScdnDomainLogRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -3473,8 +3523,9 @@ func (s *DescribeScdnDomainLogResponseBodyDomainLogDetailsDomainLogDetailPageInf
 }
 
 type DescribeScdnDomainLogResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainLogResponse) String() string {
@@ -3490,6 +3541,11 @@ func (s *DescribeScdnDomainLogResponse) SetHeaders(v map[string]*string) *Descri
 	return s
 }
 
+func (s *DescribeScdnDomainLogResponse) SetStatusCode(v int32) *DescribeScdnDomainLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainLogResponse) SetBody(v *DescribeScdnDomainLogResponseBody) *DescribeScdnDomainLogResponse {
 	s.Body = v
 	return s
@@ -3499,7 +3555,6 @@ type DescribeScdnDomainOriginBpsDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -3523,11 +3578,6 @@ func (s *DescribeScdnDomainOriginBpsDataRequest) SetEndTime(v string) *DescribeS
 
 func (s *DescribeScdnDomainOriginBpsDataRequest) SetInterval(v string) *DescribeScdnDomainOriginBpsDataRequest {
 	s.Interval = &v
-	return s
-}
-
-func (s *DescribeScdnDomainOriginBpsDataRequest) SetOwnerId(v int64) *DescribeScdnDomainOriginBpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -3636,8 +3686,9 @@ func (s *DescribeScdnDomainOriginBpsDataResponseBodyOriginBpsDataPerIntervalData
 }
 
 type DescribeScdnDomainOriginBpsDataResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainOriginBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainOriginBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainOriginBpsDataResponse) String() string {
@@ -3653,6 +3704,11 @@ func (s *DescribeScdnDomainOriginBpsDataResponse) SetHeaders(v map[string]*strin
 	return s
 }
 
+func (s *DescribeScdnDomainOriginBpsDataResponse) SetStatusCode(v int32) *DescribeScdnDomainOriginBpsDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainOriginBpsDataResponse) SetBody(v *DescribeScdnDomainOriginBpsDataResponseBody) *DescribeScdnDomainOriginBpsDataResponse {
 	s.Body = v
 	return s
@@ -3662,7 +3718,6 @@ type DescribeScdnDomainOriginTrafficDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -3686,11 +3741,6 @@ func (s *DescribeScdnDomainOriginTrafficDataRequest) SetEndTime(v string) *Descr
 
 func (s *DescribeScdnDomainOriginTrafficDataRequest) SetInterval(v string) *DescribeScdnDomainOriginTrafficDataRequest {
 	s.Interval = &v
-	return s
-}
-
-func (s *DescribeScdnDomainOriginTrafficDataRequest) SetOwnerId(v int64) *DescribeScdnDomainOriginTrafficDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -3799,8 +3849,9 @@ func (s *DescribeScdnDomainOriginTrafficDataResponseBodyOriginTrafficDataPerInte
 }
 
 type DescribeScdnDomainOriginTrafficDataResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainOriginTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainOriginTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainOriginTrafficDataResponse) String() string {
@@ -3816,6 +3867,11 @@ func (s *DescribeScdnDomainOriginTrafficDataResponse) SetHeaders(v map[string]*s
 	return s
 }
 
+func (s *DescribeScdnDomainOriginTrafficDataResponse) SetStatusCode(v int32) *DescribeScdnDomainOriginTrafficDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainOriginTrafficDataResponse) SetBody(v *DescribeScdnDomainOriginTrafficDataResponseBody) *DescribeScdnDomainOriginTrafficDataResponse {
 	s.Body = v
 	return s
@@ -3824,7 +3880,6 @@ func (s *DescribeScdnDomainOriginTrafficDataResponse) SetBody(v *DescribeScdnDom
 type DescribeScdnDomainPvDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -3843,11 +3898,6 @@ func (s *DescribeScdnDomainPvDataRequest) SetDomainName(v string) *DescribeScdnD
 
 func (s *DescribeScdnDomainPvDataRequest) SetEndTime(v string) *DescribeScdnDomainPvDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeScdnDomainPvDataRequest) SetOwnerId(v int64) *DescribeScdnDomainPvDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -3944,8 +3994,9 @@ func (s *DescribeScdnDomainPvDataResponseBodyPvDataIntervalUsageData) SetValue(v
 }
 
 type DescribeScdnDomainPvDataResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainPvDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainPvDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainPvDataResponse) String() string {
@@ -3961,6 +4012,11 @@ func (s *DescribeScdnDomainPvDataResponse) SetHeaders(v map[string]*string) *Des
 	return s
 }
 
+func (s *DescribeScdnDomainPvDataResponse) SetStatusCode(v int32) *DescribeScdnDomainPvDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainPvDataResponse) SetBody(v *DescribeScdnDomainPvDataResponseBody) *DescribeScdnDomainPvDataResponse {
 	s.Body = v
 	return s
@@ -3972,7 +4028,6 @@ type DescribeScdnDomainQpsDataRequest struct {
 	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4006,11 +4061,6 @@ func (s *DescribeScdnDomainQpsDataRequest) SetIspNameEn(v string) *DescribeScdnD
 
 func (s *DescribeScdnDomainQpsDataRequest) SetLocationNameEn(v string) *DescribeScdnDomainQpsDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeScdnDomainQpsDataRequest) SetOwnerId(v int64) *DescribeScdnDomainQpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -4137,8 +4187,9 @@ func (s *DescribeScdnDomainQpsDataResponseBodyQpsDataPerIntervalDataModule) SetT
 }
 
 type DescribeScdnDomainQpsDataResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainQpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainQpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainQpsDataResponse) String() string {
@@ -4154,6 +4205,11 @@ func (s *DescribeScdnDomainQpsDataResponse) SetHeaders(v map[string]*string) *De
 	return s
 }
 
+func (s *DescribeScdnDomainQpsDataResponse) SetStatusCode(v int32) *DescribeScdnDomainQpsDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainQpsDataResponse) SetBody(v *DescribeScdnDomainQpsDataResponseBody) *DescribeScdnDomainQpsDataResponse {
 	s.Body = v
 	return s
@@ -4164,7 +4220,6 @@ type DescribeScdnDomainRealTimeBpsDataRequest struct {
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4193,11 +4248,6 @@ func (s *DescribeScdnDomainRealTimeBpsDataRequest) SetIspNameEn(v string) *Descr
 
 func (s *DescribeScdnDomainRealTimeBpsDataRequest) SetLocationNameEn(v string) *DescribeScdnDomainRealTimeBpsDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeScdnDomainRealTimeBpsDataRequest) SetOwnerId(v int64) *DescribeScdnDomainRealTimeBpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -4270,8 +4320,9 @@ func (s *DescribeScdnDomainRealTimeBpsDataResponseBodyDataBpsModel) SetTimeStamp
 }
 
 type DescribeScdnDomainRealTimeBpsDataResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainRealTimeBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainRealTimeBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainRealTimeBpsDataResponse) String() string {
@@ -4287,6 +4338,11 @@ func (s *DescribeScdnDomainRealTimeBpsDataResponse) SetHeaders(v map[string]*str
 	return s
 }
 
+func (s *DescribeScdnDomainRealTimeBpsDataResponse) SetStatusCode(v int32) *DescribeScdnDomainRealTimeBpsDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainRealTimeBpsDataResponse) SetBody(v *DescribeScdnDomainRealTimeBpsDataResponseBody) *DescribeScdnDomainRealTimeBpsDataResponse {
 	s.Body = v
 	return s
@@ -4295,7 +4351,6 @@ func (s *DescribeScdnDomainRealTimeBpsDataResponse) SetBody(v *DescribeScdnDomai
 type DescribeScdnDomainRealTimeByteHitRateDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4314,11 +4369,6 @@ func (s *DescribeScdnDomainRealTimeByteHitRateDataRequest) SetDomainName(v strin
 
 func (s *DescribeScdnDomainRealTimeByteHitRateDataRequest) SetEndTime(v string) *DescribeScdnDomainRealTimeByteHitRateDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeScdnDomainRealTimeByteHitRateDataRequest) SetOwnerId(v int64) *DescribeScdnDomainRealTimeByteHitRateDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -4391,8 +4441,9 @@ func (s *DescribeScdnDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDat
 }
 
 type DescribeScdnDomainRealTimeByteHitRateDataResponse struct {
-	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainRealTimeByteHitRateDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainRealTimeByteHitRateDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainRealTimeByteHitRateDataResponse) String() string {
@@ -4408,6 +4459,11 @@ func (s *DescribeScdnDomainRealTimeByteHitRateDataResponse) SetHeaders(v map[str
 	return s
 }
 
+func (s *DescribeScdnDomainRealTimeByteHitRateDataResponse) SetStatusCode(v int32) *DescribeScdnDomainRealTimeByteHitRateDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainRealTimeByteHitRateDataResponse) SetBody(v *DescribeScdnDomainRealTimeByteHitRateDataResponseBody) *DescribeScdnDomainRealTimeByteHitRateDataResponse {
 	s.Body = v
 	return s
@@ -4418,7 +4474,6 @@ type DescribeScdnDomainRealTimeHttpCodeDataRequest struct {
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4447,11 +4502,6 @@ func (s *DescribeScdnDomainRealTimeHttpCodeDataRequest) SetIspNameEn(v string) *
 
 func (s *DescribeScdnDomainRealTimeHttpCodeDataRequest) SetLocationNameEn(v string) *DescribeScdnDomainRealTimeHttpCodeDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeScdnDomainRealTimeHttpCodeDataRequest) SetOwnerId(v int64) *DescribeScdnDomainRealTimeHttpCodeDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -4594,8 +4644,9 @@ func (s *DescribeScdnDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataU
 }
 
 type DescribeScdnDomainRealTimeHttpCodeDataResponse struct {
-	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainRealTimeHttpCodeDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainRealTimeHttpCodeDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainRealTimeHttpCodeDataResponse) String() string {
@@ -4611,6 +4662,11 @@ func (s *DescribeScdnDomainRealTimeHttpCodeDataResponse) SetHeaders(v map[string
 	return s
 }
 
+func (s *DescribeScdnDomainRealTimeHttpCodeDataResponse) SetStatusCode(v int32) *DescribeScdnDomainRealTimeHttpCodeDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainRealTimeHttpCodeDataResponse) SetBody(v *DescribeScdnDomainRealTimeHttpCodeDataResponseBody) *DescribeScdnDomainRealTimeHttpCodeDataResponse {
 	s.Body = v
 	return s
@@ -4621,7 +4677,6 @@ type DescribeScdnDomainRealTimeQpsDataRequest struct {
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4650,11 +4705,6 @@ func (s *DescribeScdnDomainRealTimeQpsDataRequest) SetIspNameEn(v string) *Descr
 
 func (s *DescribeScdnDomainRealTimeQpsDataRequest) SetLocationNameEn(v string) *DescribeScdnDomainRealTimeQpsDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeScdnDomainRealTimeQpsDataRequest) SetOwnerId(v int64) *DescribeScdnDomainRealTimeQpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -4727,8 +4777,9 @@ func (s *DescribeScdnDomainRealTimeQpsDataResponseBodyDataQpsModel) SetTimeStamp
 }
 
 type DescribeScdnDomainRealTimeQpsDataResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainRealTimeQpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainRealTimeQpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainRealTimeQpsDataResponse) String() string {
@@ -4744,6 +4795,11 @@ func (s *DescribeScdnDomainRealTimeQpsDataResponse) SetHeaders(v map[string]*str
 	return s
 }
 
+func (s *DescribeScdnDomainRealTimeQpsDataResponse) SetStatusCode(v int32) *DescribeScdnDomainRealTimeQpsDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainRealTimeQpsDataResponse) SetBody(v *DescribeScdnDomainRealTimeQpsDataResponseBody) *DescribeScdnDomainRealTimeQpsDataResponse {
 	s.Body = v
 	return s
@@ -4752,7 +4808,6 @@ func (s *DescribeScdnDomainRealTimeQpsDataResponse) SetBody(v *DescribeScdnDomai
 type DescribeScdnDomainRealTimeReqHitRateDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4771,11 +4826,6 @@ func (s *DescribeScdnDomainRealTimeReqHitRateDataRequest) SetDomainName(v string
 
 func (s *DescribeScdnDomainRealTimeReqHitRateDataRequest) SetEndTime(v string) *DescribeScdnDomainRealTimeReqHitRateDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeScdnDomainRealTimeReqHitRateDataRequest) SetOwnerId(v int64) *DescribeScdnDomainRealTimeReqHitRateDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -4848,8 +4898,9 @@ func (s *DescribeScdnDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataM
 }
 
 type DescribeScdnDomainRealTimeReqHitRateDataResponse struct {
-	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainRealTimeReqHitRateDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainRealTimeReqHitRateDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainRealTimeReqHitRateDataResponse) String() string {
@@ -4865,6 +4916,11 @@ func (s *DescribeScdnDomainRealTimeReqHitRateDataResponse) SetHeaders(v map[stri
 	return s
 }
 
+func (s *DescribeScdnDomainRealTimeReqHitRateDataResponse) SetStatusCode(v int32) *DescribeScdnDomainRealTimeReqHitRateDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainRealTimeReqHitRateDataResponse) SetBody(v *DescribeScdnDomainRealTimeReqHitRateDataResponseBody) *DescribeScdnDomainRealTimeReqHitRateDataResponse {
 	s.Body = v
 	return s
@@ -4873,7 +4929,6 @@ func (s *DescribeScdnDomainRealTimeReqHitRateDataResponse) SetBody(v *DescribeSc
 type DescribeScdnDomainRealTimeSrcBpsDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4892,11 +4947,6 @@ func (s *DescribeScdnDomainRealTimeSrcBpsDataRequest) SetDomainName(v string) *D
 
 func (s *DescribeScdnDomainRealTimeSrcBpsDataRequest) SetEndTime(v string) *DescribeScdnDomainRealTimeSrcBpsDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeScdnDomainRealTimeSrcBpsDataRequest) SetOwnerId(v int64) *DescribeScdnDomainRealTimeSrcBpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -4993,8 +5043,9 @@ func (s *DescribeScdnDomainRealTimeSrcBpsDataResponseBodyRealTimeSrcBpsDataPerIn
 }
 
 type DescribeScdnDomainRealTimeSrcBpsDataResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainRealTimeSrcBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainRealTimeSrcBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainRealTimeSrcBpsDataResponse) String() string {
@@ -5010,6 +5061,11 @@ func (s *DescribeScdnDomainRealTimeSrcBpsDataResponse) SetHeaders(v map[string]*
 	return s
 }
 
+func (s *DescribeScdnDomainRealTimeSrcBpsDataResponse) SetStatusCode(v int32) *DescribeScdnDomainRealTimeSrcBpsDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainRealTimeSrcBpsDataResponse) SetBody(v *DescribeScdnDomainRealTimeSrcBpsDataResponseBody) *DescribeScdnDomainRealTimeSrcBpsDataResponse {
 	s.Body = v
 	return s
@@ -5018,7 +5074,6 @@ func (s *DescribeScdnDomainRealTimeSrcBpsDataResponse) SetBody(v *DescribeScdnDo
 type DescribeScdnDomainRealTimeSrcTrafficDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5037,11 +5092,6 @@ func (s *DescribeScdnDomainRealTimeSrcTrafficDataRequest) SetDomainName(v string
 
 func (s *DescribeScdnDomainRealTimeSrcTrafficDataRequest) SetEndTime(v string) *DescribeScdnDomainRealTimeSrcTrafficDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeScdnDomainRealTimeSrcTrafficDataRequest) SetOwnerId(v int64) *DescribeScdnDomainRealTimeSrcTrafficDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -5138,8 +5188,9 @@ func (s *DescribeScdnDomainRealTimeSrcTrafficDataResponseBodyRealTimeSrcTrafficD
 }
 
 type DescribeScdnDomainRealTimeSrcTrafficDataResponse struct {
-	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainRealTimeSrcTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainRealTimeSrcTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainRealTimeSrcTrafficDataResponse) String() string {
@@ -5155,6 +5206,11 @@ func (s *DescribeScdnDomainRealTimeSrcTrafficDataResponse) SetHeaders(v map[stri
 	return s
 }
 
+func (s *DescribeScdnDomainRealTimeSrcTrafficDataResponse) SetStatusCode(v int32) *DescribeScdnDomainRealTimeSrcTrafficDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainRealTimeSrcTrafficDataResponse) SetBody(v *DescribeScdnDomainRealTimeSrcTrafficDataResponseBody) *DescribeScdnDomainRealTimeSrcTrafficDataResponse {
 	s.Body = v
 	return s
@@ -5163,7 +5219,6 @@ func (s *DescribeScdnDomainRealTimeSrcTrafficDataResponse) SetBody(v *DescribeSc
 type DescribeScdnDomainRealTimeTrafficDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5182,11 +5237,6 @@ func (s *DescribeScdnDomainRealTimeTrafficDataRequest) SetDomainName(v string) *
 
 func (s *DescribeScdnDomainRealTimeTrafficDataRequest) SetEndTime(v string) *DescribeScdnDomainRealTimeTrafficDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeScdnDomainRealTimeTrafficDataRequest) SetOwnerId(v int64) *DescribeScdnDomainRealTimeTrafficDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -5283,8 +5333,9 @@ func (s *DescribeScdnDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPer
 }
 
 type DescribeScdnDomainRealTimeTrafficDataResponse struct {
-	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainRealTimeTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainRealTimeTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainRealTimeTrafficDataResponse) String() string {
@@ -5300,6 +5351,11 @@ func (s *DescribeScdnDomainRealTimeTrafficDataResponse) SetHeaders(v map[string]
 	return s
 }
 
+func (s *DescribeScdnDomainRealTimeTrafficDataResponse) SetStatusCode(v int32) *DescribeScdnDomainRealTimeTrafficDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainRealTimeTrafficDataResponse) SetBody(v *DescribeScdnDomainRealTimeTrafficDataResponseBody) *DescribeScdnDomainRealTimeTrafficDataResponse {
 	s.Body = v
 	return s
@@ -5308,7 +5364,6 @@ func (s *DescribeScdnDomainRealTimeTrafficDataResponse) SetBody(v *DescribeScdnD
 type DescribeScdnDomainRegionDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5327,11 +5382,6 @@ func (s *DescribeScdnDomainRegionDataRequest) SetDomainName(v string) *DescribeS
 
 func (s *DescribeScdnDomainRegionDataRequest) SetEndTime(v string) *DescribeScdnDomainRegionDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeScdnDomainRegionDataRequest) SetOwnerId(v int64) *DescribeScdnDomainRegionDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -5488,8 +5538,9 @@ func (s *DescribeScdnDomainRegionDataResponseBodyValueRegionProportionData) SetT
 }
 
 type DescribeScdnDomainRegionDataResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainRegionDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainRegionDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainRegionDataResponse) String() string {
@@ -5505,6 +5556,11 @@ func (s *DescribeScdnDomainRegionDataResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *DescribeScdnDomainRegionDataResponse) SetStatusCode(v int32) *DescribeScdnDomainRegionDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainRegionDataResponse) SetBody(v *DescribeScdnDomainRegionDataResponseBody) *DescribeScdnDomainRegionDataResponse {
 	s.Body = v
 	return s
@@ -5512,7 +5568,6 @@ func (s *DescribeScdnDomainRegionDataResponse) SetBody(v *DescribeScdnDomainRegi
 
 type DescribeScdnDomainTopReferVisitRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -5527,11 +5582,6 @@ func (s DescribeScdnDomainTopReferVisitRequest) GoString() string {
 
 func (s *DescribeScdnDomainTopReferVisitRequest) SetDomainName(v string) *DescribeScdnDomainTopReferVisitRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeScdnDomainTopReferVisitRequest) SetOwnerId(v int64) *DescribeScdnDomainTopReferVisitRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -5639,8 +5689,9 @@ func (s *DescribeScdnDomainTopReferVisitResponseBodyTopReferListReferList) SetVi
 }
 
 type DescribeScdnDomainTopReferVisitResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainTopReferVisitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainTopReferVisitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainTopReferVisitResponse) String() string {
@@ -5656,6 +5707,11 @@ func (s *DescribeScdnDomainTopReferVisitResponse) SetHeaders(v map[string]*strin
 	return s
 }
 
+func (s *DescribeScdnDomainTopReferVisitResponse) SetStatusCode(v int32) *DescribeScdnDomainTopReferVisitResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainTopReferVisitResponse) SetBody(v *DescribeScdnDomainTopReferVisitResponseBody) *DescribeScdnDomainTopReferVisitResponse {
 	s.Body = v
 	return s
@@ -5663,7 +5719,6 @@ func (s *DescribeScdnDomainTopReferVisitResponse) SetBody(v *DescribeScdnDomainT
 
 type DescribeScdnDomainTopUrlVisitRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -5678,11 +5733,6 @@ func (s DescribeScdnDomainTopUrlVisitRequest) GoString() string {
 
 func (s *DescribeScdnDomainTopUrlVisitRequest) SetDomainName(v string) *DescribeScdnDomainTopUrlVisitRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeScdnDomainTopUrlVisitRequest) SetOwnerId(v int64) *DescribeScdnDomainTopUrlVisitRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -6046,8 +6096,9 @@ func (s *DescribeScdnDomainTopUrlVisitResponseBodyUrl500ListUrlList) SetVisitPro
 }
 
 type DescribeScdnDomainTopUrlVisitResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainTopUrlVisitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainTopUrlVisitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainTopUrlVisitResponse) String() string {
@@ -6063,6 +6114,11 @@ func (s *DescribeScdnDomainTopUrlVisitResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *DescribeScdnDomainTopUrlVisitResponse) SetStatusCode(v int32) *DescribeScdnDomainTopUrlVisitResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainTopUrlVisitResponse) SetBody(v *DescribeScdnDomainTopUrlVisitResponseBody) *DescribeScdnDomainTopUrlVisitResponse {
 	s.Body = v
 	return s
@@ -6074,7 +6130,6 @@ type DescribeScdnDomainTrafficDataRequest struct {
 	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6108,11 +6163,6 @@ func (s *DescribeScdnDomainTrafficDataRequest) SetIspNameEn(v string) *DescribeS
 
 func (s *DescribeScdnDomainTrafficDataRequest) SetLocationNameEn(v string) *DescribeScdnDomainTrafficDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeScdnDomainTrafficDataRequest) SetOwnerId(v int64) *DescribeScdnDomainTrafficDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -6221,8 +6271,9 @@ func (s *DescribeScdnDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModu
 }
 
 type DescribeScdnDomainTrafficDataResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainTrafficDataResponse) String() string {
@@ -6238,6 +6289,11 @@ func (s *DescribeScdnDomainTrafficDataResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *DescribeScdnDomainTrafficDataResponse) SetStatusCode(v int32) *DescribeScdnDomainTrafficDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnDomainTrafficDataResponse) SetBody(v *DescribeScdnDomainTrafficDataResponseBody) *DescribeScdnDomainTrafficDataResponse {
 	s.Body = v
 	return s
@@ -6246,7 +6302,6 @@ func (s *DescribeScdnDomainTrafficDataResponse) SetBody(v *DescribeScdnDomainTra
 type DescribeScdnDomainUvDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6265,11 +6320,6 @@ func (s *DescribeScdnDomainUvDataRequest) SetDomainName(v string) *DescribeScdnD
 
 func (s *DescribeScdnDomainUvDataRequest) SetEndTime(v string) *DescribeScdnDomainUvDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeScdnDomainUvDataRequest) SetOwnerId(v int64) *DescribeScdnDomainUvDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -6366,8 +6416,9 @@ func (s *DescribeScdnDomainUvDataResponseBodyUvDataIntervalUsageData) SetValue(v
 }
 
 type DescribeScdnDomainUvDataResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnDomainUvDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnDomainUvDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnDomainUvDataResponse) String() string {
@@ -6380,6 +6431,11 @@ func (s DescribeScdnDomainUvDataResponse) GoString() string {
 
 func (s *DescribeScdnDomainUvDataResponse) SetHeaders(v map[string]*string) *DescribeScdnDomainUvDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeScdnDomainUvDataResponse) SetStatusCode(v int32) *DescribeScdnDomainUvDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6477,8 +6533,9 @@ func (s *DescribeScdnRefreshQuotaResponseBody) SetBlockRemain(v string) *Describ
 }
 
 type DescribeScdnRefreshQuotaResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnRefreshQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnRefreshQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnRefreshQuotaResponse) String() string {
@@ -6491,6 +6548,11 @@ func (s DescribeScdnRefreshQuotaResponse) GoString() string {
 
 func (s *DescribeScdnRefreshQuotaResponse) SetHeaders(v map[string]*string) *DescribeScdnRefreshQuotaResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeScdnRefreshQuotaResponse) SetStatusCode(v int32) *DescribeScdnRefreshQuotaResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6694,8 +6756,9 @@ func (s *DescribeScdnRefreshTasksResponseBodyTasksTask) SetTaskId(v string) *Des
 }
 
 type DescribeScdnRefreshTasksResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnRefreshTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnRefreshTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnRefreshTasksResponse) String() string {
@@ -6708,6 +6771,11 @@ func (s DescribeScdnRefreshTasksResponse) GoString() string {
 
 func (s *DescribeScdnRefreshTasksResponse) SetHeaders(v map[string]*string) *DescribeScdnRefreshTasksResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeScdnRefreshTasksResponse) SetStatusCode(v int32) *DescribeScdnRefreshTasksResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6989,8 +7057,9 @@ func (s *DescribeScdnServiceResponseBodyOperationLocksLockReason) SetLockReason(
 }
 
 type DescribeScdnServiceResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnServiceResponse) String() string {
@@ -7006,6 +7075,11 @@ func (s *DescribeScdnServiceResponse) SetHeaders(v map[string]*string) *Describe
 	return s
 }
 
+func (s *DescribeScdnServiceResponse) SetStatusCode(v int32) *DescribeScdnServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnServiceResponse) SetBody(v *DescribeScdnServiceResponseBody) *DescribeScdnServiceResponse {
 	s.Body = v
 	return s
@@ -7014,7 +7088,6 @@ func (s *DescribeScdnServiceResponse) SetBody(v *DescribeScdnServiceResponseBody
 type DescribeScdnTopDomainsByFlowRequest struct {
 	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit     *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Product   *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -7034,11 +7107,6 @@ func (s *DescribeScdnTopDomainsByFlowRequest) SetEndTime(v string) *DescribeScdn
 
 func (s *DescribeScdnTopDomainsByFlowRequest) SetLimit(v int64) *DescribeScdnTopDomainsByFlowRequest {
 	s.Limit = &v
-	return s
-}
-
-func (s *DescribeScdnTopDomainsByFlowRequest) SetOwnerId(v int64) *DescribeScdnTopDomainsByFlowRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -7170,8 +7238,9 @@ func (s *DescribeScdnTopDomainsByFlowResponseBodyTopDomainsTopDomain) SetTraffic
 }
 
 type DescribeScdnTopDomainsByFlowResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnTopDomainsByFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnTopDomainsByFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnTopDomainsByFlowResponse) String() string {
@@ -7184,6 +7253,11 @@ func (s DescribeScdnTopDomainsByFlowResponse) GoString() string {
 
 func (s *DescribeScdnTopDomainsByFlowResponse) SetHeaders(v map[string]*string) *DescribeScdnTopDomainsByFlowResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeScdnTopDomainsByFlowResponse) SetStatusCode(v int32) *DescribeScdnTopDomainsByFlowResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7451,8 +7525,9 @@ func (s *DescribeScdnUserDomainsResponseBodyDomainsPageDataSourcesSource) SetTyp
 }
 
 type DescribeScdnUserDomainsResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnUserDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnUserDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnUserDomainsResponse) String() string {
@@ -7468,25 +7543,13 @@ func (s *DescribeScdnUserDomainsResponse) SetHeaders(v map[string]*string) *Desc
 	return s
 }
 
-func (s *DescribeScdnUserDomainsResponse) SetBody(v *DescribeScdnUserDomainsResponseBody) *DescribeScdnUserDomainsResponse {
-	s.Body = v
+func (s *DescribeScdnUserDomainsResponse) SetStatusCode(v int32) *DescribeScdnUserDomainsResponse {
+	s.StatusCode = &v
 	return s
 }
 
-type DescribeScdnUserProtectInfoRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeScdnUserProtectInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeScdnUserProtectInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeScdnUserProtectInfoRequest) SetOwnerId(v int64) *DescribeScdnUserProtectInfoRequest {
-	s.OwnerId = &v
+func (s *DescribeScdnUserDomainsResponse) SetBody(v *DescribeScdnUserDomainsResponseBody) *DescribeScdnUserDomainsResponse {
+	s.Body = v
 	return s
 }
 
@@ -7514,8 +7577,9 @@ func (s *DescribeScdnUserProtectInfoResponseBody) SetServiceDDoS(v int32) *Descr
 }
 
 type DescribeScdnUserProtectInfoResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnUserProtectInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnUserProtectInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnUserProtectInfoResponse) String() string {
@@ -7528,6 +7592,11 @@ func (s DescribeScdnUserProtectInfoResponse) GoString() string {
 
 func (s *DescribeScdnUserProtectInfoResponse) SetHeaders(v map[string]*string) *DescribeScdnUserProtectInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeScdnUserProtectInfoResponse) SetStatusCode(v int32) *DescribeScdnUserProtectInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7631,8 +7700,9 @@ func (s *DescribeScdnUserQuotaResponseBody) SetRequestId(v string) *DescribeScdn
 }
 
 type DescribeScdnUserQuotaResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnUserQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnUserQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnUserQuotaResponse) String() string {
@@ -7648,6 +7718,11 @@ func (s *DescribeScdnUserQuotaResponse) SetHeaders(v map[string]*string) *Descri
 	return s
 }
 
+func (s *DescribeScdnUserQuotaResponse) SetStatusCode(v int32) *DescribeScdnUserQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnUserQuotaResponse) SetBody(v *DescribeScdnUserQuotaResponseBody) *DescribeScdnUserQuotaResponse {
 	s.Body = v
 	return s
@@ -7655,7 +7730,6 @@ func (s *DescribeScdnUserQuotaResponse) SetBody(v *DescribeScdnUserQuotaResponse
 
 type DescribeScdnVerifyContentRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeScdnVerifyContentRequest) String() string {
@@ -7668,11 +7742,6 @@ func (s DescribeScdnVerifyContentRequest) GoString() string {
 
 func (s *DescribeScdnVerifyContentRequest) SetDomainName(v string) *DescribeScdnVerifyContentRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeScdnVerifyContentRequest) SetOwnerId(v int64) *DescribeScdnVerifyContentRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -7700,8 +7769,9 @@ func (s *DescribeScdnVerifyContentResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeScdnVerifyContentResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeScdnVerifyContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeScdnVerifyContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeScdnVerifyContentResponse) String() string {
@@ -7717,118 +7787,12 @@ func (s *DescribeScdnVerifyContentResponse) SetHeaders(v map[string]*string) *De
 	return s
 }
 
+func (s *DescribeScdnVerifyContentResponse) SetStatusCode(v int32) *DescribeScdnVerifyContentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeScdnVerifyContentResponse) SetBody(v *DescribeScdnVerifyContentResponseBody) *DescribeScdnVerifyContentResponse {
-	s.Body = v
-	return s
-}
-
-type OpenScdnServiceRequest struct {
-	Bandwidth         *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	CcProtection      *int32  `json:"CcProtection,omitempty" xml:"CcProtection,omitempty"`
-	DDoSBasic         *int32  `json:"DDoSBasic,omitempty" xml:"DDoSBasic,omitempty"`
-	DomainCount       *int32  `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	ElasticProtection *int32  `json:"ElasticProtection,omitempty" xml:"ElasticProtection,omitempty"`
-	EndDate           *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProtectType       *string `json:"ProtectType,omitempty" xml:"ProtectType,omitempty"`
-	SecurityToken     *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	StartDate         *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-}
-
-func (s OpenScdnServiceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OpenScdnServiceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *OpenScdnServiceRequest) SetBandwidth(v int32) *OpenScdnServiceRequest {
-	s.Bandwidth = &v
-	return s
-}
-
-func (s *OpenScdnServiceRequest) SetCcProtection(v int32) *OpenScdnServiceRequest {
-	s.CcProtection = &v
-	return s
-}
-
-func (s *OpenScdnServiceRequest) SetDDoSBasic(v int32) *OpenScdnServiceRequest {
-	s.DDoSBasic = &v
-	return s
-}
-
-func (s *OpenScdnServiceRequest) SetDomainCount(v int32) *OpenScdnServiceRequest {
-	s.DomainCount = &v
-	return s
-}
-
-func (s *OpenScdnServiceRequest) SetElasticProtection(v int32) *OpenScdnServiceRequest {
-	s.ElasticProtection = &v
-	return s
-}
-
-func (s *OpenScdnServiceRequest) SetEndDate(v string) *OpenScdnServiceRequest {
-	s.EndDate = &v
-	return s
-}
-
-func (s *OpenScdnServiceRequest) SetOwnerId(v int64) *OpenScdnServiceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *OpenScdnServiceRequest) SetProtectType(v string) *OpenScdnServiceRequest {
-	s.ProtectType = &v
-	return s
-}
-
-func (s *OpenScdnServiceRequest) SetSecurityToken(v string) *OpenScdnServiceRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *OpenScdnServiceRequest) SetStartDate(v string) *OpenScdnServiceRequest {
-	s.StartDate = &v
-	return s
-}
-
-type OpenScdnServiceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s OpenScdnServiceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OpenScdnServiceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *OpenScdnServiceResponseBody) SetRequestId(v string) *OpenScdnServiceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type OpenScdnServiceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OpenScdnServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s OpenScdnServiceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OpenScdnServiceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *OpenScdnServiceResponse) SetHeaders(v map[string]*string) *OpenScdnServiceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *OpenScdnServiceResponse) SetBody(v *OpenScdnServiceResponseBody) *OpenScdnServiceResponse {
 	s.Body = v
 	return s
 }
@@ -7898,8 +7862,9 @@ func (s *PreloadScdnObjectCachesResponseBody) SetRequestId(v string) *PreloadScd
 }
 
 type PreloadScdnObjectCachesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PreloadScdnObjectCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PreloadScdnObjectCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PreloadScdnObjectCachesResponse) String() string {
@@ -7912,6 +7877,11 @@ func (s PreloadScdnObjectCachesResponse) GoString() string {
 
 func (s *PreloadScdnObjectCachesResponse) SetHeaders(v map[string]*string) *PreloadScdnObjectCachesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PreloadScdnObjectCachesResponse) SetStatusCode(v int32) *PreloadScdnObjectCachesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7979,8 +7949,9 @@ func (s *RefreshScdnObjectCachesResponseBody) SetRequestId(v string) *RefreshScd
 }
 
 type RefreshScdnObjectCachesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RefreshScdnObjectCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RefreshScdnObjectCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RefreshScdnObjectCachesResponse) String() string {
@@ -7996,6 +7967,11 @@ func (s *RefreshScdnObjectCachesResponse) SetHeaders(v map[string]*string) *Refr
 	return s
 }
 
+func (s *RefreshScdnObjectCachesResponse) SetStatusCode(v int32) *RefreshScdnObjectCachesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RefreshScdnObjectCachesResponse) SetBody(v *RefreshScdnObjectCachesResponseBody) *RefreshScdnObjectCachesResponse {
 	s.Body = v
 	return s
@@ -8004,7 +7980,6 @@ func (s *RefreshScdnObjectCachesResponse) SetBody(v *RefreshScdnObjectCachesResp
 type SetScdnBotInfoRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Enable     *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8023,11 +7998,6 @@ func (s *SetScdnBotInfoRequest) SetDomainName(v string) *SetScdnBotInfoRequest {
 
 func (s *SetScdnBotInfoRequest) SetEnable(v string) *SetScdnBotInfoRequest {
 	s.Enable = &v
-	return s
-}
-
-func (s *SetScdnBotInfoRequest) SetOwnerId(v int64) *SetScdnBotInfoRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -8054,8 +8024,9 @@ func (s *SetScdnBotInfoResponseBody) SetRequestId(v string) *SetScdnBotInfoRespo
 }
 
 type SetScdnBotInfoResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetScdnBotInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetScdnBotInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetScdnBotInfoResponse) String() string {
@@ -8071,14 +8042,18 @@ func (s *SetScdnBotInfoResponse) SetHeaders(v map[string]*string) *SetScdnBotInf
 	return s
 }
 
+func (s *SetScdnBotInfoResponse) SetStatusCode(v int32) *SetScdnBotInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SetScdnBotInfoResponse) SetBody(v *SetScdnBotInfoResponseBody) *SetScdnBotInfoResponse {
 	s.Body = v
 	return s
 }
 
 type SetScdnCcInfoRequest struct {
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SetScdnCcInfoRequest) String() string {
@@ -8087,11 +8062,6 @@ func (s SetScdnCcInfoRequest) String() string {
 
 func (s SetScdnCcInfoRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SetScdnCcInfoRequest) SetOwnerId(v int64) *SetScdnCcInfoRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *SetScdnCcInfoRequest) SetStatus(v string) *SetScdnCcInfoRequest {
@@ -8117,8 +8087,9 @@ func (s *SetScdnCcInfoResponseBody) SetRequestId(v string) *SetScdnCcInfoRespons
 }
 
 type SetScdnCcInfoResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetScdnCcInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetScdnCcInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetScdnCcInfoResponse) String() string {
@@ -8134,6 +8105,11 @@ func (s *SetScdnCcInfoResponse) SetHeaders(v map[string]*string) *SetScdnCcInfoR
 	return s
 }
 
+func (s *SetScdnCcInfoResponse) SetStatusCode(v int32) *SetScdnCcInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SetScdnCcInfoResponse) SetBody(v *SetScdnCcInfoResponseBody) *SetScdnCcInfoResponse {
 	s.Body = v
 	return s
@@ -8141,7 +8117,6 @@ func (s *SetScdnCcInfoResponse) SetBody(v *SetScdnCcInfoResponseBody) *SetScdnCc
 
 type SetScdnDDoSInfoRequest struct {
 	ElasticBandwidth *int32 `json:"ElasticBandwidth,omitempty" xml:"ElasticBandwidth,omitempty"`
-	OwnerId          *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s SetScdnDDoSInfoRequest) String() string {
@@ -8154,11 +8129,6 @@ func (s SetScdnDDoSInfoRequest) GoString() string {
 
 func (s *SetScdnDDoSInfoRequest) SetElasticBandwidth(v int32) *SetScdnDDoSInfoRequest {
 	s.ElasticBandwidth = &v
-	return s
-}
-
-func (s *SetScdnDDoSInfoRequest) SetOwnerId(v int64) *SetScdnDDoSInfoRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -8180,8 +8150,9 @@ func (s *SetScdnDDoSInfoResponseBody) SetRequestId(v string) *SetScdnDDoSInfoRes
 }
 
 type SetScdnDDoSInfoResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetScdnDDoSInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetScdnDDoSInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetScdnDDoSInfoResponse) String() string {
@@ -8197,76 +8168,12 @@ func (s *SetScdnDDoSInfoResponse) SetHeaders(v map[string]*string) *SetScdnDDoSI
 	return s
 }
 
+func (s *SetScdnDDoSInfoResponse) SetStatusCode(v int32) *SetScdnDDoSInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SetScdnDDoSInfoResponse) SetBody(v *SetScdnDDoSInfoResponseBody) *SetScdnDDoSInfoResponse {
-	s.Body = v
-	return s
-}
-
-type SetScdnDomainBizInfoRequest struct {
-	BizName    *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s SetScdnDomainBizInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetScdnDomainBizInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetScdnDomainBizInfoRequest) SetBizName(v string) *SetScdnDomainBizInfoRequest {
-	s.BizName = &v
-	return s
-}
-
-func (s *SetScdnDomainBizInfoRequest) SetDomainName(v string) *SetScdnDomainBizInfoRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *SetScdnDomainBizInfoRequest) SetOwnerId(v int64) *SetScdnDomainBizInfoRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type SetScdnDomainBizInfoResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SetScdnDomainBizInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetScdnDomainBizInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetScdnDomainBizInfoResponseBody) SetRequestId(v string) *SetScdnDomainBizInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SetScdnDomainBizInfoResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetScdnDomainBizInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetScdnDomainBizInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetScdnDomainBizInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetScdnDomainBizInfoResponse) SetHeaders(v map[string]*string) *SetScdnDomainBizInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetScdnDomainBizInfoResponse) SetBody(v *SetScdnDomainBizInfoResponseBody) *SetScdnDomainBizInfoResponse {
 	s.Body = v
 	return s
 }
@@ -8360,8 +8267,9 @@ func (s *SetScdnDomainCertificateResponseBody) SetRequestId(v string) *SetScdnDo
 }
 
 type SetScdnDomainCertificateResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetScdnDomainCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetScdnDomainCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetScdnDomainCertificateResponse) String() string {
@@ -8374,6 +8282,11 @@ func (s SetScdnDomainCertificateResponse) GoString() string {
 
 func (s *SetScdnDomainCertificateResponse) SetHeaders(v map[string]*string) *SetScdnDomainCertificateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetScdnDomainCertificateResponse) SetStatusCode(v int32) *SetScdnDomainCertificateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8429,8 +8342,9 @@ func (s *StartScdnDomainResponseBody) SetRequestId(v string) *StartScdnDomainRes
 }
 
 type StartScdnDomainResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartScdnDomainResponse) String() string {
@@ -8443,6 +8357,11 @@ func (s StartScdnDomainResponse) GoString() string {
 
 func (s *StartScdnDomainResponse) SetHeaders(v map[string]*string) *StartScdnDomainResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StartScdnDomainResponse) SetStatusCode(v int32) *StartScdnDomainResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8498,8 +8417,9 @@ func (s *StopScdnDomainResponseBody) SetRequestId(v string) *StopScdnDomainRespo
 }
 
 type StopScdnDomainResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopScdnDomainResponse) String() string {
@@ -8515,7 +8435,217 @@ func (s *StopScdnDomainResponse) SetHeaders(v map[string]*string) *StopScdnDomai
 	return s
 }
 
+func (s *StopScdnDomainResponse) SetStatusCode(v int32) *StopScdnDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *StopScdnDomainResponse) SetBody(v *StopScdnDomainResponseBody) *StopScdnDomainResponse {
+	s.Body = v
+	return s
+}
+
+type TestAmpDescribeScdnDomainIspDataRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s TestAmpDescribeScdnDomainIspDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestAmpDescribeScdnDomainIspDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataRequest) SetDomainName(v string) *TestAmpDescribeScdnDomainIspDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataRequest) SetEndTime(v string) *TestAmpDescribeScdnDomainIspDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataRequest) SetStartTime(v string) *TestAmpDescribeScdnDomainIspDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type TestAmpDescribeScdnDomainIspDataResponseBody struct {
+	DataInterval *string                                            `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName   *string                                            `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime      *string                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime    *string                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Value        *TestAmpDescribeScdnDomainIspDataResponseBodyValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+}
+
+func (s TestAmpDescribeScdnDomainIspDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestAmpDescribeScdnDomainIspDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBody) SetDataInterval(v string) *TestAmpDescribeScdnDomainIspDataResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBody) SetDomainName(v string) *TestAmpDescribeScdnDomainIspDataResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBody) SetEndTime(v string) *TestAmpDescribeScdnDomainIspDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBody) SetRequestId(v string) *TestAmpDescribeScdnDomainIspDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBody) SetStartTime(v string) *TestAmpDescribeScdnDomainIspDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBody) SetValue(v *TestAmpDescribeScdnDomainIspDataResponseBodyValue) *TestAmpDescribeScdnDomainIspDataResponseBody {
+	s.Value = v
+	return s
+}
+
+type TestAmpDescribeScdnDomainIspDataResponseBodyValue struct {
+	ISPProportionData []*TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData `json:"ISPProportionData,omitempty" xml:"ISPProportionData,omitempty" type:"Repeated"`
+}
+
+func (s TestAmpDescribeScdnDomainIspDataResponseBodyValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestAmpDescribeScdnDomainIspDataResponseBodyValue) GoString() string {
+	return s.String()
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValue) SetISPProportionData(v []*TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) *TestAmpDescribeScdnDomainIspDataResponseBodyValue {
+	s.ISPProportionData = v
+	return s
+}
+
+type TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData struct {
+	AvgObjectSize   *string `json:"AvgObjectSize,omitempty" xml:"AvgObjectSize,omitempty"`
+	AvgResponseRate *string `json:"AvgResponseRate,omitempty" xml:"AvgResponseRate,omitempty"`
+	AvgResponseTime *string `json:"AvgResponseTime,omitempty" xml:"AvgResponseTime,omitempty"`
+	Bps             *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	BytesProportion *string `json:"BytesProportion,omitempty" xml:"BytesProportion,omitempty"`
+	ISP             *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	IspEname        *string `json:"IspEname,omitempty" xml:"IspEname,omitempty"`
+	Proportion      *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
+	Qps             *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	ReqErrRate      *string `json:"ReqErrRate,omitempty" xml:"ReqErrRate,omitempty"`
+	TotalBytes      *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	TotalQuery      *string `json:"TotalQuery,omitempty" xml:"TotalQuery,omitempty"`
+}
+
+func (s TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) GoString() string {
+	return s.String()
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetAvgObjectSize(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
+	s.AvgObjectSize = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetAvgResponseRate(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
+	s.AvgResponseRate = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetAvgResponseTime(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
+	s.AvgResponseTime = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetBps(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
+	s.Bps = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetBytesProportion(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
+	s.BytesProportion = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetISP(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
+	s.ISP = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetIspEname(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
+	s.IspEname = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetProportion(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
+	s.Proportion = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetQps(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
+	s.Qps = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetReqErrRate(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
+	s.ReqErrRate = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetTotalBytes(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
+	s.TotalBytes = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetTotalQuery(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
+	s.TotalQuery = &v
+	return s
+}
+
+type TestAmpDescribeScdnDomainIspDataResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TestAmpDescribeScdnDomainIspDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TestAmpDescribeScdnDomainIspDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestAmpDescribeScdnDomainIspDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponse) SetHeaders(v map[string]*string) *TestAmpDescribeScdnDomainIspDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponse) SetStatusCode(v int32) *TestAmpDescribeScdnDomainIspDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TestAmpDescribeScdnDomainIspDataResponse) SetBody(v *TestAmpDescribeScdnDomainIspDataResponseBody) *TestAmpDescribeScdnDomainIspDataResponse {
 	s.Body = v
 	return s
 }
@@ -8579,8 +8709,9 @@ func (s *UpdateScdnDomainResponseBody) SetRequestId(v string) *UpdateScdnDomainR
 }
 
 type UpdateScdnDomainResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateScdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateScdnDomainResponse) String() string {
@@ -8596,6 +8727,11 @@ func (s *UpdateScdnDomainResponse) SetHeaders(v map[string]*string) *UpdateScdnD
 	return s
 }
 
+func (s *UpdateScdnDomainResponse) SetStatusCode(v int32) *UpdateScdnDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateScdnDomainResponse) SetBody(v *UpdateScdnDomainResponseBody) *UpdateScdnDomainResponse {
 	s.Body = v
 	return s
@@ -8603,7 +8739,6 @@ func (s *UpdateScdnDomainResponse) SetBody(v *UpdateScdnDomainResponseBody) *Upd
 
 type VerifyScdnDomainOwnerRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	VerifyType *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
 }
 
@@ -8617,11 +8752,6 @@ func (s VerifyScdnDomainOwnerRequest) GoString() string {
 
 func (s *VerifyScdnDomainOwnerRequest) SetDomainName(v string) *VerifyScdnDomainOwnerRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *VerifyScdnDomainOwnerRequest) SetOwnerId(v int64) *VerifyScdnDomainOwnerRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -8654,8 +8784,9 @@ func (s *VerifyScdnDomainOwnerResponseBody) SetRequestId(v string) *VerifyScdnDo
 }
 
 type VerifyScdnDomainOwnerResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *VerifyScdnDomainOwnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifyScdnDomainOwnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s VerifyScdnDomainOwnerResponse) String() string {
@@ -8668,6 +8799,11 @@ func (s VerifyScdnDomainOwnerResponse) GoString() string {
 
 func (s *VerifyScdnDomainOwnerResponse) SetHeaders(v map[string]*string) *VerifyScdnDomainOwnerResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VerifyScdnDomainOwnerResponse) SetStatusCode(v int32) *VerifyScdnDomainOwnerResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9299,15 +9435,8 @@ func (client *Client) DeleteScdnSpecificConfig(request *DeleteScdnSpecificConfig
 	return _result, _err
 }
 
-func (client *Client) DescribeScdnCcInfoWithOptions(request *DescribeScdnCcInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeScdnCcInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+func (client *Client) DescribeScdnCcInfoWithOptions(runtime *util.RuntimeOptions) (_result *DescribeScdnCcInfoResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeScdnCcInfo"),
 		Version:     tea.String("2017-11-15"),
@@ -9328,10 +9457,10 @@ func (client *Client) DescribeScdnCcInfoWithOptions(request *DescribeScdnCcInfoR
 	return _result, _err
 }
 
-func (client *Client) DescribeScdnCcInfo(request *DescribeScdnCcInfoRequest) (_result *DescribeScdnCcInfoResponse, _err error) {
+func (client *Client) DescribeScdnCcInfo() (_result *DescribeScdnCcInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeScdnCcInfoResponse{}
-	_body, _err := client.DescribeScdnCcInfoWithOptions(request, runtime)
+	_body, _err := client.DescribeScdnCcInfoWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9563,15 +9692,8 @@ func (client *Client) DescribeScdnCertificateList(request *DescribeScdnCertifica
 	return _result, _err
 }
 
-func (client *Client) DescribeScdnDDoSInfoWithOptions(request *DescribeScdnDDoSInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeScdnDDoSInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+func (client *Client) DescribeScdnDDoSInfoWithOptions(runtime *util.RuntimeOptions) (_result *DescribeScdnDDoSInfoResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeScdnDDoSInfo"),
 		Version:     tea.String("2017-11-15"),
@@ -9592,10 +9714,10 @@ func (client *Client) DescribeScdnDDoSInfoWithOptions(request *DescribeScdnDDoSI
 	return _result, _err
 }
 
-func (client *Client) DescribeScdnDDoSInfo(request *DescribeScdnDDoSInfoRequest) (_result *DescribeScdnDDoSInfoResponse, _err error) {
+func (client *Client) DescribeScdnDDoSInfo() (_result *DescribeScdnDDoSInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeScdnDDoSInfoResponse{}
-	_body, _err := client.DescribeScdnDDoSInfoWithOptions(request, runtime)
+	_body, _err := client.DescribeScdnDDoSInfoWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9669,10 +9791,6 @@ func (client *Client) DescribeScdnDomainBpsDataWithOptions(request *DescribeScdn
 		query["LocationNameEn"] = request.LocationNameEn
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -9719,10 +9837,6 @@ func (client *Client) DescribeScdnDomainCertificateInfoWithOptions(request *Desc
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9929,10 +10043,6 @@ func (client *Client) DescribeScdnDomainHitRateDataWithOptions(request *Describe
 		query["Interval"] = request.Interval
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -9997,10 +10107,6 @@ func (client *Client) DescribeScdnDomainHttpCodeDataWithOptions(request *Describ
 		query["LocationNameEn"] = request.LocationNameEn
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -10053,10 +10159,6 @@ func (client *Client) DescribeScdnDomainIspDataWithOptions(request *DescribeScdn
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -10107,10 +10209,6 @@ func (client *Client) DescribeScdnDomainLogWithOptions(request *DescribeScdnDoma
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -10177,10 +10275,6 @@ func (client *Client) DescribeScdnDomainOriginBpsDataWithOptions(request *Descri
 		query["Interval"] = request.Interval
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -10237,10 +10331,6 @@ func (client *Client) DescribeScdnDomainOriginTrafficDataWithOptions(request *De
 		query["Interval"] = request.Interval
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -10291,10 +10381,6 @@ func (client *Client) DescribeScdnDomainPvDataWithOptions(request *DescribeScdnD
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -10359,10 +10445,6 @@ func (client *Client) DescribeScdnDomainQpsDataWithOptions(request *DescribeScdn
 
 	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
 		query["LocationNameEn"] = request.LocationNameEn
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -10505,10 +10587,6 @@ func (client *Client) DescribeScdnDomainRealTimeHttpCodeDataWithOptions(request 
 		query["LocationNameEn"] = request.LocationNameEn
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -10641,10 +10719,6 @@ func (client *Client) DescribeScdnDomainRealTimeSrcBpsDataWithOptions(request *D
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -10695,10 +10769,6 @@ func (client *Client) DescribeScdnDomainRealTimeSrcTrafficDataWithOptions(reques
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -10753,10 +10823,6 @@ func (client *Client) DescribeScdnDomainRealTimeTrafficDataWithOptions(request *
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -10809,10 +10875,6 @@ func (client *Client) DescribeScdnDomainRegionDataWithOptions(request *DescribeS
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -10859,10 +10921,6 @@ func (client *Client) DescribeScdnDomainTopReferVisitWithOptions(request *Descri
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
@@ -10915,10 +10973,6 @@ func (client *Client) DescribeScdnDomainTopUrlVisitWithOptions(request *Describe
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
@@ -10989,10 +11043,6 @@ func (client *Client) DescribeScdnDomainTrafficDataWithOptions(request *Describe
 		query["LocationNameEn"] = request.LocationNameEn
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -11043,10 +11093,6 @@ func (client *Client) DescribeScdnDomainUvDataWithOptions(request *DescribeScdnD
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -11285,10 +11331,6 @@ func (client *Client) DescribeScdnTopDomainsByFlowWithOptions(request *DescribeS
 		query["Limit"] = request.Limit
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Product)) {
 		query["Product"] = request.Product
 	}
@@ -11415,15 +11457,8 @@ func (client *Client) DescribeScdnUserDomains(request *DescribeScdnUserDomainsRe
 	return _result, _err
 }
 
-func (client *Client) DescribeScdnUserProtectInfoWithOptions(request *DescribeScdnUserProtectInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeScdnUserProtectInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+func (client *Client) DescribeScdnUserProtectInfoWithOptions(runtime *util.RuntimeOptions) (_result *DescribeScdnUserProtectInfoResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeScdnUserProtectInfo"),
 		Version:     tea.String("2017-11-15"),
@@ -11444,10 +11479,10 @@ func (client *Client) DescribeScdnUserProtectInfoWithOptions(request *DescribeSc
 	return _result, _err
 }
 
-func (client *Client) DescribeScdnUserProtectInfo(request *DescribeScdnUserProtectInfoRequest) (_result *DescribeScdnUserProtectInfoResponse, _err error) {
+func (client *Client) DescribeScdnUserProtectInfo() (_result *DescribeScdnUserProtectInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeScdnUserProtectInfoResponse{}
-	_body, _err := client.DescribeScdnUserProtectInfoWithOptions(request, runtime)
+	_body, _err := client.DescribeScdnUserProtectInfoWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11513,10 +11548,6 @@ func (client *Client) DescribeScdnVerifyContentWithOptions(request *DescribeScdn
 		query["DomainName"] = request.DomainName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11544,86 +11575,6 @@ func (client *Client) DescribeScdnVerifyContent(request *DescribeScdnVerifyConte
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeScdnVerifyContentResponse{}
 	_body, _err := client.DescribeScdnVerifyContentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) OpenScdnServiceWithOptions(request *OpenScdnServiceRequest, runtime *util.RuntimeOptions) (_result *OpenScdnServiceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
-		query["Bandwidth"] = request.Bandwidth
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CcProtection)) {
-		query["CcProtection"] = request.CcProtection
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DDoSBasic)) {
-		query["DDoSBasic"] = request.DDoSBasic
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DomainCount)) {
-		query["DomainCount"] = request.DomainCount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ElasticProtection)) {
-		query["ElasticProtection"] = request.ElasticProtection
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
-		query["EndDate"] = request.EndDate
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProtectType)) {
-		query["ProtectType"] = request.ProtectType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
-		query["StartDate"] = request.StartDate
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("OpenScdnService"),
-		Version:     tea.String("2017-11-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &OpenScdnServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) OpenScdnService(request *OpenScdnServiceRequest) (_result *OpenScdnServiceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &OpenScdnServiceResponse{}
-	_body, _err := client.OpenScdnServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11867,46 +11818,6 @@ func (client *Client) SetScdnDDoSInfo(request *SetScdnDDoSInfoRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) SetScdnDomainBizInfoWithOptions(request *SetScdnDomainBizInfoRequest, runtime *util.RuntimeOptions) (_result *SetScdnDomainBizInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetScdnDomainBizInfo"),
-		Version:     tea.String("2017-11-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetScdnDomainBizInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetScdnDomainBizInfo(request *SetScdnDomainBizInfoRequest) (_result *SetScdnDomainBizInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetScdnDomainBizInfoResponse{}
-	_body, _err := client.SetScdnDomainBizInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SetScdnDomainCertificateWithOptions(request *SetScdnDomainCertificateRequest, runtime *util.RuntimeOptions) (_result *SetScdnDomainCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12091,6 +12002,58 @@ func (client *Client) StopScdnDomain(request *StopScdnDomainRequest) (_result *S
 	return _result, _err
 }
 
+func (client *Client) TestAmpDescribeScdnDomainIspDataWithOptions(request *TestAmpDescribeScdnDomainIspDataRequest, runtime *util.RuntimeOptions) (_result *TestAmpDescribeScdnDomainIspDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TestAmpDescribeScdnDomainIspData"),
+		Version:     tea.String("2017-11-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TestAmpDescribeScdnDomainIspDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TestAmpDescribeScdnDomainIspData(request *TestAmpDescribeScdnDomainIspDataRequest) (_result *TestAmpDescribeScdnDomainIspDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TestAmpDescribeScdnDomainIspDataResponse{}
+	_body, _err := client.TestAmpDescribeScdnDomainIspDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateScdnDomainWithOptions(request *UpdateScdnDomainRequest, runtime *util.RuntimeOptions) (_result *UpdateScdnDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12159,10 +12122,6 @@ func (client *Client) VerifyScdnDomainOwnerWithOptions(request *VerifyScdnDomain
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VerifyType)) {
