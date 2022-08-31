@@ -21487,6 +21487,7 @@ type ListAlertMessagesRequest struct {
 	AlertMethods   *string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty"`
 	AlertRuleTypes *string `json:"AlertRuleTypes,omitempty" xml:"AlertRuleTypes,omitempty"`
 	AlertUser      *string `json:"AlertUser,omitempty" xml:"AlertUser,omitempty"`
+	BaselineId     *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	BeginTime      *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -21514,6 +21515,11 @@ func (s *ListAlertMessagesRequest) SetAlertRuleTypes(v string) *ListAlertMessage
 
 func (s *ListAlertMessagesRequest) SetAlertUser(v string) *ListAlertMessagesRequest {
 	s.AlertUser = &v
+	return s
+}
+
+func (s *ListAlertMessagesRequest) SetBaselineId(v int64) *ListAlertMessagesRequest {
+	s.BaselineId = &v
 	return s
 }
 
@@ -28995,6 +29001,7 @@ type ListInstancesRequest struct {
 	ProgramType  *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
 	ProjectEnv   *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
 	ProjectId    *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -29067,6 +29074,11 @@ func (s *ListInstancesRequest) SetProjectEnv(v string) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetProjectId(v int64) *ListInstancesRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetStatus(v string) *ListInstancesRequest {
+	s.Status = &v
 	return s
 }
 
@@ -48640,6 +48652,10 @@ func (client *Client) ListAlertMessagesWithOptions(request *ListAlertMessagesReq
 		body["AlertUser"] = request.AlertUser
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BaselineId)) {
+		body["BaselineId"] = request.BaselineId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
 		body["BeginTime"] = request.BeginTime
 	}
@@ -50410,6 +50426,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
 		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
 	}
 
 	req := &openapi.OpenApiRequest{
