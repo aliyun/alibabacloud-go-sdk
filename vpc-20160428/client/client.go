@@ -19495,6 +19495,8 @@ func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddressTags) SetTag(v []
 }
 
 type DescribeEipAddressesResponseBodyEipAddressesEipAddressTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeEipAddressesResponseBodyEipAddressesEipAddressTagsTag) String() string {
@@ -19503,6 +19505,16 @@ func (s DescribeEipAddressesResponseBodyEipAddressesEipAddressTagsTag) String() 
 
 func (s DescribeEipAddressesResponseBodyEipAddressesEipAddressTagsTag) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddressTagsTag) SetKey(v string) *DescribeEipAddressesResponseBodyEipAddressesEipAddressTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddressTagsTag) SetValue(v string) *DescribeEipAddressesResponseBodyEipAddressesEipAddressTagsTag {
+	s.Value = &v
+	return s
 }
 
 type DescribeEipAddressesResponse struct {
@@ -41913,129 +41925,6 @@ func (s *ModifyCommonBandwidthPackageAttributeResponse) SetBody(v *ModifyCommonB
 	return s
 }
 
-type ModifyCommonBandwidthPackageInternetChargeTypeRequest struct {
-	AutoPay              *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	Bandwidth            *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	BandwidthPackageId   *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	InstanceChargeType   *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InternetChargeType   *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Ratio                *int32  `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s ModifyCommonBandwidthPackageInternetChargeTypeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyCommonBandwidthPackageInternetChargeTypeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeRequest) SetAutoPay(v bool) *ModifyCommonBandwidthPackageInternetChargeTypeRequest {
-	s.AutoPay = &v
-	return s
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeRequest) SetBandwidth(v int32) *ModifyCommonBandwidthPackageInternetChargeTypeRequest {
-	s.Bandwidth = &v
-	return s
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeRequest) SetBandwidthPackageId(v string) *ModifyCommonBandwidthPackageInternetChargeTypeRequest {
-	s.BandwidthPackageId = &v
-	return s
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeRequest) SetInstanceChargeType(v string) *ModifyCommonBandwidthPackageInternetChargeTypeRequest {
-	s.InstanceChargeType = &v
-	return s
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeRequest) SetInternetChargeType(v string) *ModifyCommonBandwidthPackageInternetChargeTypeRequest {
-	s.InternetChargeType = &v
-	return s
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeRequest) SetOwnerAccount(v string) *ModifyCommonBandwidthPackageInternetChargeTypeRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeRequest) SetOwnerId(v int64) *ModifyCommonBandwidthPackageInternetChargeTypeRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeRequest) SetRatio(v int32) *ModifyCommonBandwidthPackageInternetChargeTypeRequest {
-	s.Ratio = &v
-	return s
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeRequest) SetRegionId(v string) *ModifyCommonBandwidthPackageInternetChargeTypeRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeRequest) SetResourceOwnerAccount(v string) *ModifyCommonBandwidthPackageInternetChargeTypeRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeRequest) SetResourceOwnerId(v int64) *ModifyCommonBandwidthPackageInternetChargeTypeRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type ModifyCommonBandwidthPackageInternetChargeTypeResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyCommonBandwidthPackageInternetChargeTypeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyCommonBandwidthPackageInternetChargeTypeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeResponseBody) SetRequestId(v string) *ModifyCommonBandwidthPackageInternetChargeTypeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyCommonBandwidthPackageInternetChargeTypeResponse struct {
-	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyCommonBandwidthPackageInternetChargeTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyCommonBandwidthPackageInternetChargeTypeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyCommonBandwidthPackageInternetChargeTypeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeResponse) SetHeaders(v map[string]*string) *ModifyCommonBandwidthPackageInternetChargeTypeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeResponse) SetStatusCode(v int32) *ModifyCommonBandwidthPackageInternetChargeTypeResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ModifyCommonBandwidthPackageInternetChargeTypeResponse) SetBody(v *ModifyCommonBandwidthPackageInternetChargeTypeResponseBody) *ModifyCommonBandwidthPackageInternetChargeTypeResponse {
-	s.Body = v
-	return s
-}
-
 type ModifyCommonBandwidthPackageIpBandwidthRequest struct {
 	Bandwidth            *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	BandwidthPackageId   *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
@@ -48572,6 +48461,8 @@ func (s *OpenFlowLogServiceRequest) SetResourceOwnerId(v int64) *OpenFlowLogServ
 }
 
 type OpenFlowLogServiceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -48581,6 +48472,16 @@ func (s OpenFlowLogServiceResponseBody) String() string {
 
 func (s OpenFlowLogServiceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *OpenFlowLogServiceResponseBody) SetCode(v string) *OpenFlowLogServiceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *OpenFlowLogServiceResponseBody) SetMessage(v string) *OpenFlowLogServiceResponseBody {
+	s.Message = &v
+	return s
 }
 
 func (s *OpenFlowLogServiceResponseBody) SetRequestId(v string) *OpenFlowLogServiceResponseBody {
@@ -72109,90 +72010,6 @@ func (client *Client) ModifyCommonBandwidthPackageAttribute(request *ModifyCommo
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyCommonBandwidthPackageAttributeResponse{}
 	_body, _err := client.ModifyCommonBandwidthPackageAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ModifyCommonBandwidthPackageInternetChargeTypeWithOptions(request *ModifyCommonBandwidthPackageInternetChargeTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyCommonBandwidthPackageInternetChargeTypeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
-		query["AutoPay"] = request.AutoPay
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
-		query["Bandwidth"] = request.Bandwidth
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BandwidthPackageId)) {
-		query["BandwidthPackageId"] = request.BandwidthPackageId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
-		query["InstanceChargeType"] = request.InstanceChargeType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
-		query["InternetChargeType"] = request.InternetChargeType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Ratio)) {
-		query["Ratio"] = request.Ratio
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyCommonBandwidthPackageInternetChargeType"),
-		Version:     tea.String("2016-04-28"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ModifyCommonBandwidthPackageInternetChargeTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyCommonBandwidthPackageInternetChargeType(request *ModifyCommonBandwidthPackageInternetChargeTypeRequest) (_result *ModifyCommonBandwidthPackageInternetChargeTypeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyCommonBandwidthPackageInternetChargeTypeResponse{}
-	_body, _err := client.ModifyCommonBandwidthPackageInternetChargeTypeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
