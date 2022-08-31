@@ -433,6 +433,7 @@ type CreatePostPayOrderRequest struct {
 	EipMax          *int32  `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
 	IoMax           *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
 	IoMaxSpec       *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	PartitionNum    *int32  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SpecType        *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
@@ -474,6 +475,11 @@ func (s *CreatePostPayOrderRequest) SetIoMax(v int32) *CreatePostPayOrderRequest
 
 func (s *CreatePostPayOrderRequest) SetIoMaxSpec(v string) *CreatePostPayOrderRequest {
 	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *CreatePostPayOrderRequest) SetPartitionNum(v int32) *CreatePostPayOrderRequest {
+	s.PartitionNum = &v
 	return s
 }
 
@@ -574,6 +580,7 @@ type CreatePrePayOrderRequest struct {
 	EipMax          *int32  `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
 	IoMax           *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
 	IoMaxSpec       *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	PartitionNum    *int32  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SpecType        *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
@@ -615,6 +622,11 @@ func (s *CreatePrePayOrderRequest) SetIoMax(v int32) *CreatePrePayOrderRequest {
 
 func (s *CreatePrePayOrderRequest) SetIoMaxSpec(v string) *CreatePrePayOrderRequest {
 	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequest) SetPartitionNum(v int32) *CreatePrePayOrderRequest {
+	s.PartitionNum = &v
 	return s
 }
 
@@ -2756,6 +2768,7 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	ExpiredTime              *int64                                                                     `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	InstanceId               *string                                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IoMax                    *int32                                                                     `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	KmsKeyId                 *string                                                                    `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	MsgRetain                *int32                                                                     `json:"MsgRetain,omitempty" xml:"MsgRetain,omitempty"`
 	Name                     *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
 	PaidType                 *int32                                                                     `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
@@ -2838,6 +2851,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetInstanceId(v stri
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetIoMax(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.IoMax = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetKmsKeyId(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.KmsKeyId = &v
 	return s
 }
 
@@ -4718,15 +4736,16 @@ func (s *UpgradeInstanceVersionResponse) SetBody(v *UpgradeInstanceVersionRespon
 }
 
 type UpgradePostPayOrderRequest struct {
-	DiskSize   *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	EipMax     *int32  `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	EipModel   *bool   `json:"EipModel,omitempty" xml:"EipModel,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IoMax      *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	IoMaxSpec  *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SpecType   *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	TopicQuota *int32  `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+	DiskSize     *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	EipMax       *int32  `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	EipModel     *bool   `json:"EipModel,omitempty" xml:"EipModel,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IoMax        *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	IoMaxSpec    *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	PartitionNum *int32  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SpecType     *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	TopicQuota   *int32  `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
 }
 
 func (s UpgradePostPayOrderRequest) String() string {
@@ -4764,6 +4783,11 @@ func (s *UpgradePostPayOrderRequest) SetIoMax(v int32) *UpgradePostPayOrderReque
 
 func (s *UpgradePostPayOrderRequest) SetIoMaxSpec(v string) *UpgradePostPayOrderRequest {
 	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *UpgradePostPayOrderRequest) SetPartitionNum(v int32) *UpgradePostPayOrderRequest {
+	s.PartitionNum = &v
 	return s
 }
 
@@ -4847,15 +4871,16 @@ func (s *UpgradePostPayOrderResponse) SetBody(v *UpgradePostPayOrderResponseBody
 }
 
 type UpgradePrePayOrderRequest struct {
-	DiskSize   *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	EipMax     *int32  `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	EipModel   *bool   `json:"EipModel,omitempty" xml:"EipModel,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IoMax      *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	IoMaxSpec  *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SpecType   *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	TopicQuota *int32  `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+	DiskSize     *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	EipMax       *int32  `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	EipModel     *bool   `json:"EipModel,omitempty" xml:"EipModel,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IoMax        *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	IoMaxSpec    *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	PartitionNum *int32  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SpecType     *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	TopicQuota   *int32  `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
 }
 
 func (s UpgradePrePayOrderRequest) String() string {
@@ -4893,6 +4918,11 @@ func (s *UpgradePrePayOrderRequest) SetIoMax(v int32) *UpgradePrePayOrderRequest
 
 func (s *UpgradePrePayOrderRequest) SetIoMaxSpec(v string) *UpgradePrePayOrderRequest {
 	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequest) SetPartitionNum(v int32) *UpgradePrePayOrderRequest {
+	s.PartitionNum = &v
 	return s
 }
 
@@ -5317,6 +5347,10 @@ func (client *Client) CreatePostPayOrderWithOptions(request *CreatePostPayOrderR
 		query["IoMaxSpec"] = request.IoMaxSpec
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PartitionNum)) {
+		query["PartitionNum"] = request.PartitionNum
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -5395,6 +5429,10 @@ func (client *Client) CreatePrePayOrderWithOptions(request *CreatePrePayOrderReq
 
 	if !tea.BoolValue(util.IsUnset(request.IoMaxSpec)) {
 		query["IoMaxSpec"] = request.IoMaxSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartitionNum)) {
+		query["PartitionNum"] = request.PartitionNum
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -7107,6 +7145,10 @@ func (client *Client) UpgradePostPayOrderWithOptions(request *UpgradePostPayOrde
 		query["IoMaxSpec"] = request.IoMaxSpec
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PartitionNum)) {
+		query["PartitionNum"] = request.PartitionNum
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -7181,6 +7223,10 @@ func (client *Client) UpgradePrePayOrderWithOptions(request *UpgradePrePayOrderR
 
 	if !tea.BoolValue(util.IsUnset(request.IoMaxSpec)) {
 		query["IoMaxSpec"] = request.IoMaxSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartitionNum)) {
+		query["PartitionNum"] = request.PartitionNum
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
