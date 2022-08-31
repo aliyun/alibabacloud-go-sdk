@@ -6459,9 +6459,9 @@ func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval) 
 }
 
 type DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule struct {
-	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	TotalValue *string `json:"TotalValue,omitempty" xml:"TotalValue,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp  *string                `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TotalValue *string                `json:"TotalValue,omitempty" xml:"TotalValue,omitempty"`
+	Value      map[string]interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule) String() string {
@@ -6482,8 +6482,8 @@ func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDa
 	return s
 }
 
-func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule) SetValue(v string) *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule {
-	s.Value = &v
+func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule) SetValue(v map[string]interface{}) *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule {
+	s.Value = v
 	return s
 }
 
