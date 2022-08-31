@@ -312,6 +312,105 @@ func (s *CheckSecurityEventIdResponse) SetBody(v *CheckSecurityEventIdResponseBo
 	return s
 }
 
+type CheckUserHasEcsRequest struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s CheckUserHasEcsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckUserHasEcsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckUserHasEcsRequest) SetCurrentPage(v int32) *CheckUserHasEcsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *CheckUserHasEcsRequest) SetLang(v string) *CheckUserHasEcsRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *CheckUserHasEcsRequest) SetPageSize(v int32) *CheckUserHasEcsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type CheckUserHasEcsResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CheckUserHasEcsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckUserHasEcsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckUserHasEcsResponseBody) SetCode(v string) *CheckUserHasEcsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CheckUserHasEcsResponseBody) SetData(v bool) *CheckUserHasEcsResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CheckUserHasEcsResponseBody) SetMessage(v string) *CheckUserHasEcsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckUserHasEcsResponseBody) SetRequestId(v string) *CheckUserHasEcsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckUserHasEcsResponseBody) SetSuccess(v bool) *CheckUserHasEcsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CheckUserHasEcsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckUserHasEcsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckUserHasEcsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckUserHasEcsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckUserHasEcsResponse) SetHeaders(v map[string]*string) *CheckUserHasEcsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckUserHasEcsResponse) SetStatusCode(v int32) *CheckUserHasEcsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckUserHasEcsResponse) SetBody(v *CheckUserHasEcsResponseBody) *CheckUserHasEcsResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAntiBruteForceRuleRequest struct {
 	DefaultRule     *bool     `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
 	FailCount       *int32    `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
@@ -20772,6 +20871,7 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	DataSource            *string                                                `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
 	Desc                  *string                                                `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	Details               []*DescribeSuspEventsResponseBodySuspEventsDetails     `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	DisplaySandboxResult  *bool                                                  `json:"DisplaySandboxResult,omitempty" xml:"DisplaySandboxResult,omitempty"`
 	EventNotes            []*DescribeSuspEventsResponseBodySuspEventsEventNotes  `json:"EventNotes,omitempty" xml:"EventNotes,omitempty" type:"Repeated"`
 	EventStatus           *int32                                                 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
 	EventSubType          *string                                                `json:"EventSubType,omitempty" xml:"EventSubType,omitempty"`
@@ -20896,6 +20996,11 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) SetDesc(v string) *DescribeSu
 
 func (s *DescribeSuspEventsResponseBodySuspEvents) SetDetails(v []*DescribeSuspEventsResponseBodySuspEventsDetails) *DescribeSuspEventsResponseBodySuspEvents {
 	s.Details = v
+	return s
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetDisplaySandboxResult(v bool) *DescribeSuspEventsResponseBodySuspEvents {
+	s.DisplaySandboxResult = &v
 	return s
 }
 
@@ -32713,6 +32818,58 @@ func (client *Client) CheckSecurityEventId(request *CheckSecurityEventIdRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckSecurityEventIdResponse{}
 	_body, _err := client.CheckSecurityEventIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckUserHasEcsWithOptions(request *CheckUserHasEcsRequest, runtime *util.RuntimeOptions) (_result *CheckUserHasEcsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckUserHasEcs"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckUserHasEcsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckUserHasEcs(request *CheckUserHasEcsRequest) (_result *CheckUserHasEcsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckUserHasEcsResponse{}
+	_body, _err := client.CheckUserHasEcsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
