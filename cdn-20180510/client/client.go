@@ -1918,6 +1918,87 @@ func (s *DeleteFCTriggerResponse) SetBody(v *DeleteFCTriggerResponseBody) *Delet
 	return s
 }
 
+type DeleteRealTimeLogLogstoreRequest struct {
+	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s DeleteRealTimeLogLogstoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRealTimeLogLogstoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRealTimeLogLogstoreRequest) SetLogstore(v string) *DeleteRealTimeLogLogstoreRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *DeleteRealTimeLogLogstoreRequest) SetOwnerId(v int64) *DeleteRealTimeLogLogstoreRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteRealTimeLogLogstoreRequest) SetProject(v string) *DeleteRealTimeLogLogstoreRequest {
+	s.Project = &v
+	return s
+}
+
+func (s *DeleteRealTimeLogLogstoreRequest) SetRegion(v string) *DeleteRealTimeLogLogstoreRequest {
+	s.Region = &v
+	return s
+}
+
+type DeleteRealTimeLogLogstoreResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRealTimeLogLogstoreResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRealTimeLogLogstoreResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRealTimeLogLogstoreResponseBody) SetRequestId(v string) *DeleteRealTimeLogLogstoreResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRealTimeLogLogstoreResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteRealTimeLogLogstoreResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteRealTimeLogLogstoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRealTimeLogLogstoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRealTimeLogLogstoreResponse) SetHeaders(v map[string]*string) *DeleteRealTimeLogLogstoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRealTimeLogLogstoreResponse) SetStatusCode(v int32) *DeleteRealTimeLogLogstoreResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRealTimeLogLogstoreResponse) SetBody(v *DeleteRealTimeLogLogstoreResponseBody) *DeleteRealTimeLogLogstoreResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteRealtimeLogDeliveryRequest struct {
 	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
@@ -3881,6 +3962,7 @@ func (s *DescribeCdnDomainStagingConfigRequest) SetOwnerId(v int64) *DescribeCdn
 
 type DescribeCdnDomainStagingConfigResponseBody struct {
 	DomainConfigs []*DescribeCdnDomainStagingConfigResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Repeated"`
+	DomainName    *string                                                    `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	RequestId     *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3897,6 +3979,11 @@ func (s *DescribeCdnDomainStagingConfigResponseBody) SetDomainConfigs(v []*Descr
 	return s
 }
 
+func (s *DescribeCdnDomainStagingConfigResponseBody) SetDomainName(v string) *DescribeCdnDomainStagingConfigResponseBody {
+	s.DomainName = &v
+	return s
+}
+
 func (s *DescribeCdnDomainStagingConfigResponseBody) SetRequestId(v string) *DescribeCdnDomainStagingConfigResponseBody {
 	s.RequestId = &v
 	return s
@@ -3906,6 +3993,7 @@ type DescribeCdnDomainStagingConfigResponseBodyDomainConfigs struct {
 	ConfigId     *string                                                                `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	FunctionArgs []*DescribeCdnDomainStagingConfigResponseBodyDomainConfigsFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Repeated"`
 	FunctionName *string                                                                `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	ParentId     *string                                                                `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	Status       *string                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3929,6 +4017,11 @@ func (s *DescribeCdnDomainStagingConfigResponseBodyDomainConfigs) SetFunctionArg
 
 func (s *DescribeCdnDomainStagingConfigResponseBodyDomainConfigs) SetFunctionName(v string) *DescribeCdnDomainStagingConfigResponseBodyDomainConfigs {
 	s.FunctionName = &v
+	return s
+}
+
+func (s *DescribeCdnDomainStagingConfigResponseBodyDomainConfigs) SetParentId(v string) *DescribeCdnDomainStagingConfigResponseBodyDomainConfigs {
+	s.ParentId = &v
 	return s
 }
 
@@ -13695,7 +13788,6 @@ type DescribeDomainTopReferVisitRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Percent    *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -13720,11 +13812,6 @@ func (s *DescribeDomainTopReferVisitRequest) SetEndTime(v string) *DescribeDomai
 
 func (s *DescribeDomainTopReferVisitRequest) SetOwnerId(v int64) *DescribeDomainTopReferVisitRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDomainTopReferVisitRequest) SetPercent(v string) *DescribeDomainTopReferVisitRequest {
-	s.Percent = &v
 	return s
 }
 
@@ -16298,6 +16385,75 @@ func (s *DescribeRealtimeDeliveryAccResponse) SetBody(v *DescribeRealtimeDeliver
 	return s
 }
 
+type DescribeRealtimeLogAuthorizedRequest struct {
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeRealtimeLogAuthorizedRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRealtimeLogAuthorizedRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRealtimeLogAuthorizedRequest) SetOwnerId(v int64) *DescribeRealtimeLogAuthorizedRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeRealtimeLogAuthorizedResponseBody struct {
+	AuthorizedStatus *string `json:"AuthorizedStatus,omitempty" xml:"AuthorizedStatus,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRealtimeLogAuthorizedResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRealtimeLogAuthorizedResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRealtimeLogAuthorizedResponseBody) SetAuthorizedStatus(v string) *DescribeRealtimeLogAuthorizedResponseBody {
+	s.AuthorizedStatus = &v
+	return s
+}
+
+func (s *DescribeRealtimeLogAuthorizedResponseBody) SetRequestId(v string) *DescribeRealtimeLogAuthorizedResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRealtimeLogAuthorizedResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRealtimeLogAuthorizedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRealtimeLogAuthorizedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRealtimeLogAuthorizedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRealtimeLogAuthorizedResponse) SetHeaders(v map[string]*string) *DescribeRealtimeLogAuthorizedResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRealtimeLogAuthorizedResponse) SetStatusCode(v int32) *DescribeRealtimeLogAuthorizedResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRealtimeLogAuthorizedResponse) SetBody(v *DescribeRealtimeLogAuthorizedResponseBody) *DescribeRealtimeLogAuthorizedResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRefreshQuotaRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -17631,6 +17787,7 @@ type DescribeUserDomainsResponseBodyDomainsPageData struct {
 	Cname           *string                                                `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	Coverage        *string                                                `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
 	Description     *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	DomainId        *int64                                                 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	DomainName      *string                                                `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainStatus    *string                                                `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	GmtCreated      *string                                                `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
@@ -17666,6 +17823,11 @@ func (s *DescribeUserDomainsResponseBodyDomainsPageData) SetCoverage(v string) *
 
 func (s *DescribeUserDomainsResponseBodyDomainsPageData) SetDescription(v string) *DescribeUserDomainsResponseBodyDomainsPageData {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeUserDomainsResponseBodyDomainsPageData) SetDomainId(v int64) *DescribeUserDomainsResponseBodyDomainsPageData {
+	s.DomainId = &v
 	return s
 }
 
@@ -19426,81 +19588,6 @@ func (s *ModifyRealtimeLogDeliveryResponse) SetBody(v *ModifyRealtimeLogDelivery
 	return s
 }
 
-type ModifyUserCustomLogConfigRequest struct {
-	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Tag      *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-}
-
-func (s ModifyUserCustomLogConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyUserCustomLogConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyUserCustomLogConfigRequest) SetConfigId(v string) *ModifyUserCustomLogConfigRequest {
-	s.ConfigId = &v
-	return s
-}
-
-func (s *ModifyUserCustomLogConfigRequest) SetOwnerId(v int64) *ModifyUserCustomLogConfigRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyUserCustomLogConfigRequest) SetTag(v string) *ModifyUserCustomLogConfigRequest {
-	s.Tag = &v
-	return s
-}
-
-type ModifyUserCustomLogConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyUserCustomLogConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyUserCustomLogConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyUserCustomLogConfigResponseBody) SetRequestId(v string) *ModifyUserCustomLogConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyUserCustomLogConfigResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyUserCustomLogConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyUserCustomLogConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyUserCustomLogConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyUserCustomLogConfigResponse) SetHeaders(v map[string]*string) *ModifyUserCustomLogConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyUserCustomLogConfigResponse) SetStatusCode(v int32) *ModifyUserCustomLogConfigResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ModifyUserCustomLogConfigResponse) SetBody(v *ModifyUserCustomLogConfigResponseBody) *ModifyUserCustomLogConfigResponse {
-	s.Body = v
-	return s
-}
-
 type OpenCdnServiceRequest struct {
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -20132,15 +20219,14 @@ func (s *SetCdnDomainStagingConfigResponse) SetBody(v *SetCdnDomainStagingConfig
 }
 
 type SetConfigOfVersionRequest struct {
-	ConfigId        *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	FunctionArgs    *string `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty"`
-	FunctionId      *int64  `json:"FunctionId,omitempty" xml:"FunctionId,omitempty"`
-	FunctionMatches *string `json:"FunctionMatches,omitempty" xml:"FunctionMatches,omitempty"`
-	FunctionName    *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	VersionId       *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	ConfigId      *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	FunctionArgs  *string `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty"`
+	FunctionId    *int64  `json:"FunctionId,omitempty" xml:"FunctionId,omitempty"`
+	FunctionName  *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	VersionId     *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s SetConfigOfVersionRequest) String() string {
@@ -20163,11 +20249,6 @@ func (s *SetConfigOfVersionRequest) SetFunctionArgs(v string) *SetConfigOfVersio
 
 func (s *SetConfigOfVersionRequest) SetFunctionId(v int64) *SetConfigOfVersionRequest {
 	s.FunctionId = &v
-	return s
-}
-
-func (s *SetConfigOfVersionRequest) SetFunctionMatches(v string) *SetConfigOfVersionRequest {
-	s.FunctionMatches = &v
 	return s
 }
 
@@ -20238,81 +20319,6 @@ func (s *SetConfigOfVersionResponse) SetStatusCode(v int32) *SetConfigOfVersionR
 }
 
 func (s *SetConfigOfVersionResponse) SetBody(v *SetConfigOfVersionResponseBody) *SetConfigOfVersionResponse {
-	s.Body = v
-	return s
-}
-
-type SetDomainGreenManagerConfigRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Enable     *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s SetDomainGreenManagerConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDomainGreenManagerConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetDomainGreenManagerConfigRequest) SetDomainName(v string) *SetDomainGreenManagerConfigRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *SetDomainGreenManagerConfigRequest) SetEnable(v string) *SetDomainGreenManagerConfigRequest {
-	s.Enable = &v
-	return s
-}
-
-func (s *SetDomainGreenManagerConfigRequest) SetOwnerId(v int64) *SetDomainGreenManagerConfigRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type SetDomainGreenManagerConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SetDomainGreenManagerConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDomainGreenManagerConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetDomainGreenManagerConfigResponseBody) SetRequestId(v string) *SetDomainGreenManagerConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SetDomainGreenManagerConfigResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetDomainGreenManagerConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetDomainGreenManagerConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDomainGreenManagerConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetDomainGreenManagerConfigResponse) SetHeaders(v map[string]*string) *SetDomainGreenManagerConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetDomainGreenManagerConfigResponse) SetStatusCode(v int32) *SetDomainGreenManagerConfigResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SetDomainGreenManagerConfigResponse) SetBody(v *SetDomainGreenManagerConfigResponseBody) *SetDomainGreenManagerConfigResponse {
 	s.Body = v
 	return s
 }
@@ -20428,180 +20434,6 @@ func (s *SetDomainServerCertificateResponse) SetBody(v *SetDomainServerCertifica
 	return s
 }
 
-type SetErrorPageConfigRequest struct {
-	CustomPageUrl *string `json:"CustomPageUrl,omitempty" xml:"CustomPageUrl,omitempty"`
-	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageType      *string `json:"PageType,omitempty" xml:"PageType,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-}
-
-func (s SetErrorPageConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetErrorPageConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetErrorPageConfigRequest) SetCustomPageUrl(v string) *SetErrorPageConfigRequest {
-	s.CustomPageUrl = &v
-	return s
-}
-
-func (s *SetErrorPageConfigRequest) SetDomainName(v string) *SetErrorPageConfigRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *SetErrorPageConfigRequest) SetOwnerId(v int64) *SetErrorPageConfigRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *SetErrorPageConfigRequest) SetPageType(v string) *SetErrorPageConfigRequest {
-	s.PageType = &v
-	return s
-}
-
-func (s *SetErrorPageConfigRequest) SetSecurityToken(v string) *SetErrorPageConfigRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-type SetErrorPageConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SetErrorPageConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetErrorPageConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetErrorPageConfigResponseBody) SetRequestId(v string) *SetErrorPageConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SetErrorPageConfigResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetErrorPageConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetErrorPageConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetErrorPageConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetErrorPageConfigResponse) SetHeaders(v map[string]*string) *SetErrorPageConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetErrorPageConfigResponse) SetStatusCode(v int32) *SetErrorPageConfigResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SetErrorPageConfigResponse) SetBody(v *SetErrorPageConfigResponseBody) *SetErrorPageConfigResponse {
-	s.Body = v
-	return s
-}
-
-type SetHttpErrorPageConfigRequest struct {
-	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageUrl    *string `json:"PageUrl,omitempty" xml:"PageUrl,omitempty"`
-}
-
-func (s SetHttpErrorPageConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetHttpErrorPageConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetHttpErrorPageConfigRequest) SetConfigId(v int64) *SetHttpErrorPageConfigRequest {
-	s.ConfigId = &v
-	return s
-}
-
-func (s *SetHttpErrorPageConfigRequest) SetDomainName(v string) *SetHttpErrorPageConfigRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *SetHttpErrorPageConfigRequest) SetErrorCode(v string) *SetHttpErrorPageConfigRequest {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *SetHttpErrorPageConfigRequest) SetOwnerId(v int64) *SetHttpErrorPageConfigRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *SetHttpErrorPageConfigRequest) SetPageUrl(v string) *SetHttpErrorPageConfigRequest {
-	s.PageUrl = &v
-	return s
-}
-
-type SetHttpErrorPageConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SetHttpErrorPageConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetHttpErrorPageConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetHttpErrorPageConfigResponseBody) SetRequestId(v string) *SetHttpErrorPageConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SetHttpErrorPageConfigResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetHttpErrorPageConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetHttpErrorPageConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetHttpErrorPageConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetHttpErrorPageConfigResponse) SetHeaders(v map[string]*string) *SetHttpErrorPageConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetHttpErrorPageConfigResponse) SetStatusCode(v int32) *SetHttpErrorPageConfigResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SetHttpErrorPageConfigResponse) SetBody(v *SetHttpErrorPageConfigResponseBody) *SetHttpErrorPageConfigResponse {
-	s.Body = v
-	return s
-}
-
 type SetReqHeaderConfigRequest struct {
 	ConfigId      *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -20691,87 +20523,6 @@ func (s *SetReqHeaderConfigResponse) SetStatusCode(v int32) *SetReqHeaderConfigR
 }
 
 func (s *SetReqHeaderConfigResponse) SetBody(v *SetReqHeaderConfigResponseBody) *SetReqHeaderConfigResponse {
-	s.Body = v
-	return s
-}
-
-type SetUserGreenManagerConfigRequest struct {
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Quota         *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	Ratio         *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-}
-
-func (s SetUserGreenManagerConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetUserGreenManagerConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetUserGreenManagerConfigRequest) SetOwnerId(v int64) *SetUserGreenManagerConfigRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *SetUserGreenManagerConfigRequest) SetQuota(v string) *SetUserGreenManagerConfigRequest {
-	s.Quota = &v
-	return s
-}
-
-func (s *SetUserGreenManagerConfigRequest) SetRatio(v string) *SetUserGreenManagerConfigRequest {
-	s.Ratio = &v
-	return s
-}
-
-func (s *SetUserGreenManagerConfigRequest) SetSecurityToken(v string) *SetUserGreenManagerConfigRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-type SetUserGreenManagerConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SetUserGreenManagerConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetUserGreenManagerConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetUserGreenManagerConfigResponseBody) SetRequestId(v string) *SetUserGreenManagerConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SetUserGreenManagerConfigResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetUserGreenManagerConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetUserGreenManagerConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetUserGreenManagerConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetUserGreenManagerConfigResponse) SetHeaders(v map[string]*string) *SetUserGreenManagerConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetUserGreenManagerConfigResponse) SetStatusCode(v int32) *SetUserGreenManagerConfigResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SetUserGreenManagerConfigResponse) SetBody(v *SetUserGreenManagerConfigResponseBody) *SetUserGreenManagerConfigResponse {
 	s.Body = v
 	return s
 }
@@ -22847,6 +22598,46 @@ func (client *Client) DeleteFCTrigger(request *DeleteFCTriggerRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFCTriggerResponse{}
 	_body, _err := client.DeleteFCTriggerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteRealTimeLogLogstoreWithOptions(request *DeleteRealTimeLogLogstoreRequest, runtime *util.RuntimeOptions) (_result *DeleteRealTimeLogLogstoreResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRealTimeLogLogstore"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRealTimeLogLogstoreResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteRealTimeLogLogstore(request *DeleteRealTimeLogLogstoreRequest) (_result *DeleteRealTimeLogLogstoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRealTimeLogLogstoreResponse{}
+	_body, _err := client.DeleteRealTimeLogLogstoreWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27016,10 +26807,6 @@ func (client *Client) DescribeDomainTopReferVisitWithOptions(request *DescribeDo
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Percent)) {
-		query["Percent"] = request.Percent
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
 		query["SortBy"] = request.SortBy
 	}
@@ -27895,6 +27682,46 @@ func (client *Client) DescribeRealtimeDeliveryAcc(request *DescribeRealtimeDeliv
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRealtimeDeliveryAccResponse{}
 	_body, _err := client.DescribeRealtimeDeliveryAccWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRealtimeLogAuthorizedWithOptions(request *DescribeRealtimeLogAuthorizedRequest, runtime *util.RuntimeOptions) (_result *DescribeRealtimeLogAuthorizedResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRealtimeLogAuthorized"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRealtimeLogAuthorizedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRealtimeLogAuthorized(request *DescribeRealtimeLogAuthorizedRequest) (_result *DescribeRealtimeLogAuthorizedResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRealtimeLogAuthorizedResponse{}
+	_body, _err := client.DescribeRealtimeLogAuthorizedWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29110,46 +28937,6 @@ func (client *Client) ModifyRealtimeLogDelivery(request *ModifyRealtimeLogDelive
 	return _result, _err
 }
 
-func (client *Client) ModifyUserCustomLogConfigWithOptions(request *ModifyUserCustomLogConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyUserCustomLogConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyUserCustomLogConfig"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ModifyUserCustomLogConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyUserCustomLogConfig(request *ModifyUserCustomLogConfigRequest) (_result *ModifyUserCustomLogConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyUserCustomLogConfigResponse{}
-	_body, _err := client.ModifyUserCustomLogConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) OpenCdnServiceWithOptions(request *OpenCdnServiceRequest, runtime *util.RuntimeOptions) (_result *OpenCdnServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29596,10 +29383,6 @@ func (client *Client) SetConfigOfVersionWithOptions(request *SetConfigOfVersionR
 		query["FunctionId"] = request.FunctionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FunctionMatches)) {
-		query["FunctionMatches"] = request.FunctionMatches
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
 		query["FunctionName"] = request.FunctionName
 	}
@@ -29647,58 +29430,6 @@ func (client *Client) SetConfigOfVersion(request *SetConfigOfVersionRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &SetConfigOfVersionResponse{}
 	_body, _err := client.SetConfigOfVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SetDomainGreenManagerConfigWithOptions(request *SetDomainGreenManagerConfigRequest, runtime *util.RuntimeOptions) (_result *SetDomainGreenManagerConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
-		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Enable)) {
-		query["Enable"] = request.Enable
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetDomainGreenManagerConfig"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetDomainGreenManagerConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetDomainGreenManagerConfig(request *SetDomainGreenManagerConfigRequest) (_result *SetDomainGreenManagerConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetDomainGreenManagerConfigResponse{}
-	_body, _err := client.SetDomainGreenManagerConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29782,126 +29513,6 @@ func (client *Client) SetDomainServerCertificate(request *SetDomainServerCertifi
 	return _result, _err
 }
 
-func (client *Client) SetErrorPageConfigWithOptions(request *SetErrorPageConfigRequest, runtime *util.RuntimeOptions) (_result *SetErrorPageConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CustomPageUrl)) {
-		query["CustomPageUrl"] = request.CustomPageUrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
-		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageType)) {
-		query["PageType"] = request.PageType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetErrorPageConfig"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetErrorPageConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetErrorPageConfig(request *SetErrorPageConfigRequest) (_result *SetErrorPageConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetErrorPageConfigResponse{}
-	_body, _err := client.SetErrorPageConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SetHttpErrorPageConfigWithOptions(request *SetHttpErrorPageConfigRequest, runtime *util.RuntimeOptions) (_result *SetHttpErrorPageConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
-		query["ConfigId"] = request.ConfigId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
-		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ErrorCode)) {
-		query["ErrorCode"] = request.ErrorCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageUrl)) {
-		query["PageUrl"] = request.PageUrl
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetHttpErrorPageConfig"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetHttpErrorPageConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetHttpErrorPageConfig(request *SetHttpErrorPageConfigRequest) (_result *SetHttpErrorPageConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetHttpErrorPageConfigResponse{}
-	_body, _err := client.SetHttpErrorPageConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SetReqHeaderConfigWithOptions(request *SetReqHeaderConfigRequest, runtime *util.RuntimeOptions) (_result *SetReqHeaderConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29959,62 +29570,6 @@ func (client *Client) SetReqHeaderConfig(request *SetReqHeaderConfigRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &SetReqHeaderConfigResponse{}
 	_body, _err := client.SetReqHeaderConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SetUserGreenManagerConfigWithOptions(request *SetUserGreenManagerConfigRequest, runtime *util.RuntimeOptions) (_result *SetUserGreenManagerConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Quota)) {
-		query["Quota"] = request.Quota
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Ratio)) {
-		query["Ratio"] = request.Ratio
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetUserGreenManagerConfig"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetUserGreenManagerConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetUserGreenManagerConfig(request *SetUserGreenManagerConfigRequest) (_result *SetUserGreenManagerConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetUserGreenManagerConfigResponse{}
-	_body, _err := client.SetUserGreenManagerConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
