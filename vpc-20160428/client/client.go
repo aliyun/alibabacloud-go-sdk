@@ -23773,6 +23773,7 @@ type DescribeNatGatewaysResponseBodyNatGatewaysNatGateway struct {
 	DeletionProtection        *bool                                                                      `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	Description               *string                                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
 	EcsMetricEnabled          *bool                                                                      `json:"EcsMetricEnabled,omitempty" xml:"EcsMetricEnabled,omitempty"`
+	EipBindMode               *string                                                                    `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
 	ExpiredTime               *string                                                                    `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	ForwardTableIds           *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayForwardTableIds       `json:"ForwardTableIds,omitempty" xml:"ForwardTableIds,omitempty" type:"Struct"`
 	FullNatTableIds           *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayFullNatTableIds       `json:"FullNatTableIds,omitempty" xml:"FullNatTableIds,omitempty" type:"Struct"`
@@ -23832,6 +23833,11 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetDescription(v 
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetEcsMetricEnabled(v bool) *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway {
 	s.EcsMetricEnabled = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetEipBindMode(v string) *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway {
+	s.EipBindMode = &v
 	return s
 }
 
