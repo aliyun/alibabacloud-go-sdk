@@ -688,6 +688,650 @@ func (s *AddSubResponse) SetBody(v *AddSubResponseBody) *AddSubResponse {
 	return s
 }
 
+type AuthLoginWithAligenieUserInfoHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AuthLoginWithAligenieUserInfoHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithAligenieUserInfoHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithAligenieUserInfoHeaders) SetCommonHeaders(v map[string]*string) *AuthLoginWithAligenieUserInfoHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoHeaders) SetXAcsAligenieAccessToken(v string) *AuthLoginWithAligenieUserInfoHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoHeaders) SetAuthorization(v string) *AuthLoginWithAligenieUserInfoHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AuthLoginWithAligenieUserInfoRequest struct {
+	EncryptedAligenieUserIdentifier *string `json:"EncryptedAligenieUserIdentifier,omitempty" xml:"EncryptedAligenieUserIdentifier,omitempty"`
+	SessionId                       *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s AuthLoginWithAligenieUserInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithAligenieUserInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithAligenieUserInfoRequest) SetEncryptedAligenieUserIdentifier(v string) *AuthLoginWithAligenieUserInfoRequest {
+	s.EncryptedAligenieUserIdentifier = &v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoRequest) SetSessionId(v string) *AuthLoginWithAligenieUserInfoRequest {
+	s.SessionId = &v
+	return s
+}
+
+type AuthLoginWithAligenieUserInfoResponseBody struct {
+	Code      *int32                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *AuthLoginWithAligenieUserInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AuthLoginWithAligenieUserInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithAligenieUserInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithAligenieUserInfoResponseBody) SetCode(v int32) *AuthLoginWithAligenieUserInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoResponseBody) SetMessage(v string) *AuthLoginWithAligenieUserInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoResponseBody) SetRequestId(v string) *AuthLoginWithAligenieUserInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoResponseBody) SetResult(v *AuthLoginWithAligenieUserInfoResponseBodyResult) *AuthLoginWithAligenieUserInfoResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoResponseBody) SetSuccess(v bool) *AuthLoginWithAligenieUserInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AuthLoginWithAligenieUserInfoResponseBodyResult struct {
+	ExpiredTimeLong       *int64  `json:"ExpiredTimeLong,omitempty" xml:"ExpiredTimeLong,omitempty"`
+	LoginStateAccessToken *string `json:"LoginStateAccessToken,omitempty" xml:"LoginStateAccessToken,omitempty"`
+}
+
+func (s AuthLoginWithAligenieUserInfoResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithAligenieUserInfoResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithAligenieUserInfoResponseBodyResult) SetExpiredTimeLong(v int64) *AuthLoginWithAligenieUserInfoResponseBodyResult {
+	s.ExpiredTimeLong = &v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoResponseBodyResult) SetLoginStateAccessToken(v string) *AuthLoginWithAligenieUserInfoResponseBodyResult {
+	s.LoginStateAccessToken = &v
+	return s
+}
+
+type AuthLoginWithAligenieUserInfoResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AuthLoginWithAligenieUserInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AuthLoginWithAligenieUserInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithAligenieUserInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithAligenieUserInfoResponse) SetHeaders(v map[string]*string) *AuthLoginWithAligenieUserInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoResponse) SetStatusCode(v int32) *AuthLoginWithAligenieUserInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoResponse) SetBody(v *AuthLoginWithAligenieUserInfoResponseBody) *AuthLoginWithAligenieUserInfoResponse {
+	s.Body = v
+	return s
+}
+
+type AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders) SetCommonHeaders(v map[string]*string) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders) SetXAcsAligenieAccessToken(v string) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders) SetAuthorization(v string) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest struct {
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest) SetSessionId(v string) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest {
+	s.SessionId = &v
+	return s
+}
+
+type AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody struct {
+	Code      *int32                                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody) SetCode(v int32) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody) SetMessage(v string) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody) SetRequestId(v string) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody) SetResult(v *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBodyResult) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody) SetSuccess(v bool) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBodyResult struct {
+	ExpiredTimeLong       *int64  `json:"ExpiredTimeLong,omitempty" xml:"ExpiredTimeLong,omitempty"`
+	LoginStateAccessToken *string `json:"LoginStateAccessToken,omitempty" xml:"LoginStateAccessToken,omitempty"`
+}
+
+func (s AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBodyResult) SetExpiredTimeLong(v int64) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBodyResult {
+	s.ExpiredTimeLong = &v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBodyResult) SetLoginStateAccessToken(v string) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBodyResult {
+	s.LoginStateAccessToken = &v
+	return s
+}
+
+type AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse struct {
+	Headers    map[string]*string                                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse) SetHeaders(v map[string]*string) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse) SetStatusCode(v int32) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse) SetBody(v *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody) *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse {
+	s.Body = v
+	return s
+}
+
+type AuthLoginWithTaobaoUserInfoHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AuthLoginWithTaobaoUserInfoHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithTaobaoUserInfoHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithTaobaoUserInfoHeaders) SetCommonHeaders(v map[string]*string) *AuthLoginWithTaobaoUserInfoHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AuthLoginWithTaobaoUserInfoHeaders) SetXAcsAligenieAccessToken(v string) *AuthLoginWithTaobaoUserInfoHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *AuthLoginWithTaobaoUserInfoHeaders) SetAuthorization(v string) *AuthLoginWithTaobaoUserInfoHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AuthLoginWithTaobaoUserInfoRequest struct {
+	EncryptedTaobaoUserIdentifier *string `json:"EncryptedTaobaoUserIdentifier,omitempty" xml:"EncryptedTaobaoUserIdentifier,omitempty"`
+	SessionId                     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s AuthLoginWithTaobaoUserInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithTaobaoUserInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithTaobaoUserInfoRequest) SetEncryptedTaobaoUserIdentifier(v string) *AuthLoginWithTaobaoUserInfoRequest {
+	s.EncryptedTaobaoUserIdentifier = &v
+	return s
+}
+
+func (s *AuthLoginWithTaobaoUserInfoRequest) SetSessionId(v string) *AuthLoginWithTaobaoUserInfoRequest {
+	s.SessionId = &v
+	return s
+}
+
+type AuthLoginWithTaobaoUserInfoResponseBody struct {
+	Code      *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *AuthLoginWithTaobaoUserInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AuthLoginWithTaobaoUserInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithTaobaoUserInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithTaobaoUserInfoResponseBody) SetCode(v int32) *AuthLoginWithTaobaoUserInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AuthLoginWithTaobaoUserInfoResponseBody) SetMessage(v string) *AuthLoginWithTaobaoUserInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AuthLoginWithTaobaoUserInfoResponseBody) SetRequestId(v string) *AuthLoginWithTaobaoUserInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AuthLoginWithTaobaoUserInfoResponseBody) SetResult(v *AuthLoginWithTaobaoUserInfoResponseBodyResult) *AuthLoginWithTaobaoUserInfoResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *AuthLoginWithTaobaoUserInfoResponseBody) SetSuccess(v bool) *AuthLoginWithTaobaoUserInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AuthLoginWithTaobaoUserInfoResponseBodyResult struct {
+	ExpiredTimeLong       *int64  `json:"ExpiredTimeLong,omitempty" xml:"ExpiredTimeLong,omitempty"`
+	LoginStateAccessToken *string `json:"LoginStateAccessToken,omitempty" xml:"LoginStateAccessToken,omitempty"`
+}
+
+func (s AuthLoginWithTaobaoUserInfoResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithTaobaoUserInfoResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithTaobaoUserInfoResponseBodyResult) SetExpiredTimeLong(v int64) *AuthLoginWithTaobaoUserInfoResponseBodyResult {
+	s.ExpiredTimeLong = &v
+	return s
+}
+
+func (s *AuthLoginWithTaobaoUserInfoResponseBodyResult) SetLoginStateAccessToken(v string) *AuthLoginWithTaobaoUserInfoResponseBodyResult {
+	s.LoginStateAccessToken = &v
+	return s
+}
+
+type AuthLoginWithTaobaoUserInfoResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AuthLoginWithTaobaoUserInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AuthLoginWithTaobaoUserInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithTaobaoUserInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithTaobaoUserInfoResponse) SetHeaders(v map[string]*string) *AuthLoginWithTaobaoUserInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AuthLoginWithTaobaoUserInfoResponse) SetStatusCode(v int32) *AuthLoginWithTaobaoUserInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AuthLoginWithTaobaoUserInfoResponse) SetBody(v *AuthLoginWithTaobaoUserInfoResponseBody) *AuthLoginWithTaobaoUserInfoResponse {
+	s.Body = v
+	return s
+}
+
+type AuthLoginWithThirdUserInfoHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AuthLoginWithThirdUserInfoHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithThirdUserInfoHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithThirdUserInfoHeaders) SetCommonHeaders(v map[string]*string) *AuthLoginWithThirdUserInfoHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoHeaders) SetXAcsAligenieAccessToken(v string) *AuthLoginWithThirdUserInfoHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoHeaders) SetAuthorization(v string) *AuthLoginWithThirdUserInfoHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AuthLoginWithThirdUserInfoRequest struct {
+	ExtInfo             map[string]interface{} `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	SceneCode           *string                `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	ThirdUserIdentifier *string                `json:"ThirdUserIdentifier,omitempty" xml:"ThirdUserIdentifier,omitempty"`
+	ThirdUserType       *string                `json:"ThirdUserType,omitempty" xml:"ThirdUserType,omitempty"`
+}
+
+func (s AuthLoginWithThirdUserInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithThirdUserInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithThirdUserInfoRequest) SetExtInfo(v map[string]interface{}) *AuthLoginWithThirdUserInfoRequest {
+	s.ExtInfo = v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoRequest) SetSceneCode(v string) *AuthLoginWithThirdUserInfoRequest {
+	s.SceneCode = &v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoRequest) SetThirdUserIdentifier(v string) *AuthLoginWithThirdUserInfoRequest {
+	s.ThirdUserIdentifier = &v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoRequest) SetThirdUserType(v string) *AuthLoginWithThirdUserInfoRequest {
+	s.ThirdUserType = &v
+	return s
+}
+
+type AuthLoginWithThirdUserInfoShrinkRequest struct {
+	ExtInfoShrink       *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	SceneCode           *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	ThirdUserIdentifier *string `json:"ThirdUserIdentifier,omitempty" xml:"ThirdUserIdentifier,omitempty"`
+	ThirdUserType       *string `json:"ThirdUserType,omitempty" xml:"ThirdUserType,omitempty"`
+}
+
+func (s AuthLoginWithThirdUserInfoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithThirdUserInfoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithThirdUserInfoShrinkRequest) SetExtInfoShrink(v string) *AuthLoginWithThirdUserInfoShrinkRequest {
+	s.ExtInfoShrink = &v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoShrinkRequest) SetSceneCode(v string) *AuthLoginWithThirdUserInfoShrinkRequest {
+	s.SceneCode = &v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoShrinkRequest) SetThirdUserIdentifier(v string) *AuthLoginWithThirdUserInfoShrinkRequest {
+	s.ThirdUserIdentifier = &v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoShrinkRequest) SetThirdUserType(v string) *AuthLoginWithThirdUserInfoShrinkRequest {
+	s.ThirdUserType = &v
+	return s
+}
+
+type AuthLoginWithThirdUserInfoResponseBody struct {
+	Code      *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	DataObj   *AuthLoginWithThirdUserInfoResponseBodyDataObj `json:"DataObj,omitempty" xml:"DataObj,omitempty" type:"Struct"`
+	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *AuthLoginWithThirdUserInfoResponseBodyResult  `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AuthLoginWithThirdUserInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithThirdUserInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithThirdUserInfoResponseBody) SetCode(v int32) *AuthLoginWithThirdUserInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoResponseBody) SetDataObj(v *AuthLoginWithThirdUserInfoResponseBodyDataObj) *AuthLoginWithThirdUserInfoResponseBody {
+	s.DataObj = v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoResponseBody) SetMessage(v string) *AuthLoginWithThirdUserInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoResponseBody) SetRequestId(v string) *AuthLoginWithThirdUserInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoResponseBody) SetResult(v *AuthLoginWithThirdUserInfoResponseBodyResult) *AuthLoginWithThirdUserInfoResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoResponseBody) SetSuccess(v bool) *AuthLoginWithThirdUserInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AuthLoginWithThirdUserInfoResponseBodyDataObj struct {
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s AuthLoginWithThirdUserInfoResponseBodyDataObj) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithThirdUserInfoResponseBodyDataObj) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithThirdUserInfoResponseBodyDataObj) SetSessionId(v string) *AuthLoginWithThirdUserInfoResponseBodyDataObj {
+	s.SessionId = &v
+	return s
+}
+
+type AuthLoginWithThirdUserInfoResponseBodyResult struct {
+	ExpiredTimeLong       *int64  `json:"ExpiredTimeLong,omitempty" xml:"ExpiredTimeLong,omitempty"`
+	LoginStateAccessToken *string `json:"LoginStateAccessToken,omitempty" xml:"LoginStateAccessToken,omitempty"`
+}
+
+func (s AuthLoginWithThirdUserInfoResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithThirdUserInfoResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithThirdUserInfoResponseBodyResult) SetExpiredTimeLong(v int64) *AuthLoginWithThirdUserInfoResponseBodyResult {
+	s.ExpiredTimeLong = &v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoResponseBodyResult) SetLoginStateAccessToken(v string) *AuthLoginWithThirdUserInfoResponseBodyResult {
+	s.LoginStateAccessToken = &v
+	return s
+}
+
+type AuthLoginWithThirdUserInfoResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AuthLoginWithThirdUserInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AuthLoginWithThirdUserInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthLoginWithThirdUserInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AuthLoginWithThirdUserInfoResponse) SetHeaders(v map[string]*string) *AuthLoginWithThirdUserInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoResponse) SetStatusCode(v int32) *AuthLoginWithThirdUserInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AuthLoginWithThirdUserInfoResponse) SetBody(v *AuthLoginWithThirdUserInfoResponseBody) *AuthLoginWithThirdUserInfoResponse {
+	s.Body = v
+	return s
+}
+
 type CheckAuthCodeBindForExtHeaders struct {
 	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
@@ -3101,6 +3745,547 @@ func (s *DeviceControlResponse) SetStatusCode(v int32) *DeviceControlResponse {
 }
 
 func (s *DeviceControlResponse) SetBody(v *DeviceControlResponseBody) *DeviceControlResponse {
+	s.Body = v
+	return s
+}
+
+type EcologyOpennessAuthenticateHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s EcologyOpennessAuthenticateHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EcologyOpennessAuthenticateHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *EcologyOpennessAuthenticateHeaders) SetCommonHeaders(v map[string]*string) *EcologyOpennessAuthenticateHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateHeaders) SetXAcsAligenieAccessToken(v string) *EcologyOpennessAuthenticateHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateHeaders) SetAuthorization(v string) *EcologyOpennessAuthenticateHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type EcologyOpennessAuthenticateRequest struct {
+	EncodeKey             *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType            *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	LoginStateAccessToken *string `json:"LoginStateAccessToken,omitempty" xml:"LoginStateAccessToken,omitempty"`
+}
+
+func (s EcologyOpennessAuthenticateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EcologyOpennessAuthenticateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EcologyOpennessAuthenticateRequest) SetEncodeKey(v string) *EcologyOpennessAuthenticateRequest {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateRequest) SetEncodeType(v string) *EcologyOpennessAuthenticateRequest {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateRequest) SetLoginStateAccessToken(v string) *EcologyOpennessAuthenticateRequest {
+	s.LoginStateAccessToken = &v
+	return s
+}
+
+type EcologyOpennessAuthenticateResponseBody struct {
+	Code      *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *EcologyOpennessAuthenticateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EcologyOpennessAuthenticateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EcologyOpennessAuthenticateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EcologyOpennessAuthenticateResponseBody) SetCode(v int32) *EcologyOpennessAuthenticateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateResponseBody) SetMessage(v string) *EcologyOpennessAuthenticateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateResponseBody) SetRequestId(v string) *EcologyOpennessAuthenticateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateResponseBody) SetResult(v *EcologyOpennessAuthenticateResponseBodyResult) *EcologyOpennessAuthenticateResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateResponseBody) SetSuccess(v bool) *EcologyOpennessAuthenticateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EcologyOpennessAuthenticateResponseBodyResult struct {
+	EncodeKey           *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType          *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	SceneCode           *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	ThirdUserIdentifier *string `json:"ThirdUserIdentifier,omitempty" xml:"ThirdUserIdentifier,omitempty"`
+	ThirdUserType       *string `json:"ThirdUserType,omitempty" xml:"ThirdUserType,omitempty"`
+	UserOpenId          *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
+}
+
+func (s EcologyOpennessAuthenticateResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EcologyOpennessAuthenticateResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *EcologyOpennessAuthenticateResponseBodyResult) SetEncodeKey(v string) *EcologyOpennessAuthenticateResponseBodyResult {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateResponseBodyResult) SetEncodeType(v string) *EcologyOpennessAuthenticateResponseBodyResult {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateResponseBodyResult) SetSceneCode(v string) *EcologyOpennessAuthenticateResponseBodyResult {
+	s.SceneCode = &v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateResponseBodyResult) SetThirdUserIdentifier(v string) *EcologyOpennessAuthenticateResponseBodyResult {
+	s.ThirdUserIdentifier = &v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateResponseBodyResult) SetThirdUserType(v string) *EcologyOpennessAuthenticateResponseBodyResult {
+	s.ThirdUserType = &v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateResponseBodyResult) SetUserOpenId(v string) *EcologyOpennessAuthenticateResponseBodyResult {
+	s.UserOpenId = &v
+	return s
+}
+
+type EcologyOpennessAuthenticateResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EcologyOpennessAuthenticateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EcologyOpennessAuthenticateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EcologyOpennessAuthenticateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EcologyOpennessAuthenticateResponse) SetHeaders(v map[string]*string) *EcologyOpennessAuthenticateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateResponse) SetStatusCode(v int32) *EcologyOpennessAuthenticateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EcologyOpennessAuthenticateResponse) SetBody(v *EcologyOpennessAuthenticateResponseBody) *EcologyOpennessAuthenticateResponse {
+	s.Body = v
+	return s
+}
+
+type EcologyOpennessSendVerificationCodeHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s EcologyOpennessSendVerificationCodeHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EcologyOpennessSendVerificationCodeHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *EcologyOpennessSendVerificationCodeHeaders) SetCommonHeaders(v map[string]*string) *EcologyOpennessSendVerificationCodeHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *EcologyOpennessSendVerificationCodeHeaders) SetXAcsAligenieAccessToken(v string) *EcologyOpennessSendVerificationCodeHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *EcologyOpennessSendVerificationCodeHeaders) SetAuthorization(v string) *EcologyOpennessSendVerificationCodeHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type EcologyOpennessSendVerificationCodeRequest struct {
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	Region      *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SessionId   *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s EcologyOpennessSendVerificationCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EcologyOpennessSendVerificationCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EcologyOpennessSendVerificationCodeRequest) SetPhoneNumber(v string) *EcologyOpennessSendVerificationCodeRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *EcologyOpennessSendVerificationCodeRequest) SetRegion(v string) *EcologyOpennessSendVerificationCodeRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *EcologyOpennessSendVerificationCodeRequest) SetSessionId(v string) *EcologyOpennessSendVerificationCodeRequest {
+	s.SessionId = &v
+	return s
+}
+
+type EcologyOpennessSendVerificationCodeResponseBody struct {
+	Code      *int32                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *EcologyOpennessSendVerificationCodeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EcologyOpennessSendVerificationCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EcologyOpennessSendVerificationCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EcologyOpennessSendVerificationCodeResponseBody) SetCode(v int32) *EcologyOpennessSendVerificationCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EcologyOpennessSendVerificationCodeResponseBody) SetMessage(v string) *EcologyOpennessSendVerificationCodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EcologyOpennessSendVerificationCodeResponseBody) SetRequestId(v string) *EcologyOpennessSendVerificationCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EcologyOpennessSendVerificationCodeResponseBody) SetResult(v *EcologyOpennessSendVerificationCodeResponseBodyResult) *EcologyOpennessSendVerificationCodeResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *EcologyOpennessSendVerificationCodeResponseBody) SetSuccess(v bool) *EcologyOpennessSendVerificationCodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EcologyOpennessSendVerificationCodeResponseBodyResult struct {
+	ExpireIn       *int32 `json:"ExpireIn,omitempty" xml:"ExpireIn,omitempty"`
+	RepeatInterval *int32 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
+}
+
+func (s EcologyOpennessSendVerificationCodeResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EcologyOpennessSendVerificationCodeResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *EcologyOpennessSendVerificationCodeResponseBodyResult) SetExpireIn(v int32) *EcologyOpennessSendVerificationCodeResponseBodyResult {
+	s.ExpireIn = &v
+	return s
+}
+
+func (s *EcologyOpennessSendVerificationCodeResponseBodyResult) SetRepeatInterval(v int32) *EcologyOpennessSendVerificationCodeResponseBodyResult {
+	s.RepeatInterval = &v
+	return s
+}
+
+type EcologyOpennessSendVerificationCodeResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EcologyOpennessSendVerificationCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EcologyOpennessSendVerificationCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EcologyOpennessSendVerificationCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EcologyOpennessSendVerificationCodeResponse) SetHeaders(v map[string]*string) *EcologyOpennessSendVerificationCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EcologyOpennessSendVerificationCodeResponse) SetStatusCode(v int32) *EcologyOpennessSendVerificationCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EcologyOpennessSendVerificationCodeResponse) SetBody(v *EcologyOpennessSendVerificationCodeResponseBody) *EcologyOpennessSendVerificationCodeResponse {
+	s.Body = v
+	return s
+}
+
+type FindUserlistToAuthLoginWithPhoneNumberHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberHeaders) SetCommonHeaders(v map[string]*string) *FindUserlistToAuthLoginWithPhoneNumberHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberHeaders) SetXAcsAligenieAccessToken(v string) *FindUserlistToAuthLoginWithPhoneNumberHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberHeaders) SetAuthorization(v string) *FindUserlistToAuthLoginWithPhoneNumberHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type FindUserlistToAuthLoginWithPhoneNumberRequest struct {
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	Region      *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SessionId   *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberRequest) SetCode(v string) *FindUserlistToAuthLoginWithPhoneNumberRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberRequest) SetPhoneNumber(v string) *FindUserlistToAuthLoginWithPhoneNumberRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberRequest) SetRegion(v string) *FindUserlistToAuthLoginWithPhoneNumberRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberRequest) SetSessionId(v string) *FindUserlistToAuthLoginWithPhoneNumberRequest {
+	s.SessionId = &v
+	return s
+}
+
+type FindUserlistToAuthLoginWithPhoneNumberResponseBody struct {
+	Code      *int32                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	DataObj   *FindUserlistToAuthLoginWithPhoneNumberResponseBodyDataObj `json:"DataObj,omitempty" xml:"DataObj,omitempty" type:"Struct"`
+	Message   *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult  `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBody) SetCode(v int32) *FindUserlistToAuthLoginWithPhoneNumberResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBody) SetDataObj(v *FindUserlistToAuthLoginWithPhoneNumberResponseBodyDataObj) *FindUserlistToAuthLoginWithPhoneNumberResponseBody {
+	s.DataObj = v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBody) SetMessage(v string) *FindUserlistToAuthLoginWithPhoneNumberResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBody) SetRequestId(v string) *FindUserlistToAuthLoginWithPhoneNumberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBody) SetResult(v *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult) *FindUserlistToAuthLoginWithPhoneNumberResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBody) SetSuccess(v bool) *FindUserlistToAuthLoginWithPhoneNumberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type FindUserlistToAuthLoginWithPhoneNumberResponseBodyDataObj struct {
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberResponseBodyDataObj) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberResponseBodyDataObj) GoString() string {
+	return s.String()
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBodyDataObj) SetSessionId(v string) *FindUserlistToAuthLoginWithPhoneNumberResponseBodyDataObj {
+	s.SessionId = &v
+	return s
+}
+
+type FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult struct {
+	UserListToAuthLogin []*FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin `json:"UserListToAuthLogin,omitempty" xml:"UserListToAuthLogin,omitempty" type:"Repeated"`
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult) SetUserListToAuthLogin(v []*FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin) *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult {
+	s.UserListToAuthLogin = v
+	return s
+}
+
+type FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin struct {
+	Avatar                  *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	EncryptedUserIdentifier *string `json:"EncryptedUserIdentifier,omitempty" xml:"EncryptedUserIdentifier,omitempty"`
+	FindingType             *string `json:"FindingType,omitempty" xml:"FindingType,omitempty"`
+	Nickname                *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	UserType                *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin) GoString() string {
+	return s.String()
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin) SetAvatar(v string) *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin {
+	s.Avatar = &v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin) SetEncryptedUserIdentifier(v string) *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin {
+	s.EncryptedUserIdentifier = &v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin) SetFindingType(v string) *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin {
+	s.FindingType = &v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin) SetNickname(v string) *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin {
+	s.Nickname = &v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin) SetUserType(v string) *FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin {
+	s.UserType = &v
+	return s
+}
+
+type FindUserlistToAuthLoginWithPhoneNumberResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FindUserlistToAuthLoginWithPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindUserlistToAuthLoginWithPhoneNumberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponse) SetHeaders(v map[string]*string) *FindUserlistToAuthLoginWithPhoneNumberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponse) SetStatusCode(v int32) *FindUserlistToAuthLoginWithPhoneNumberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FindUserlistToAuthLoginWithPhoneNumberResponse) SetBody(v *FindUserlistToAuthLoginWithPhoneNumberResponseBody) *FindUserlistToAuthLoginWithPhoneNumberResponse {
 	s.Body = v
 	return s
 }
@@ -17730,6 +18915,268 @@ func (client *Client) AddSubWithOptions(tmpReq *AddSubRequest, headers *AddSubHe
 	return _result, _err
 }
 
+func (client *Client) AuthLoginWithAligenieUserInfo(request *AuthLoginWithAligenieUserInfoRequest) (_result *AuthLoginWithAligenieUserInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AuthLoginWithAligenieUserInfoHeaders{}
+	_result = &AuthLoginWithAligenieUserInfoResponse{}
+	_body, _err := client.AuthLoginWithAligenieUserInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AuthLoginWithAligenieUserInfoWithOptions(request *AuthLoginWithAligenieUserInfoRequest, headers *AuthLoginWithAligenieUserInfoHeaders, runtime *util.RuntimeOptions) (_result *AuthLoginWithAligenieUserInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncryptedAligenieUserIdentifier)) {
+		body["EncryptedAligenieUserIdentifier"] = request.EncryptedAligenieUserIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AuthLoginWithAligenieUserInfo"),
+		Version:     tea.String("ssp_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ssp/authLoginWithAligenieUserInfo"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AuthLoginWithAligenieUserInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AuthLoginWithAligenieUserInfoGeneratedByPhoneNumber(request *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest) (_result *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders{}
+	_result = &AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse{}
+	_body, _err := client.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberWithOptions(request *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest, headers *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders, runtime *util.RuntimeOptions) (_result *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AuthLoginWithAligenieUserInfoGeneratedByPhoneNumber"),
+		Version:     tea.String("ssp_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ssp/authLoginWithAligenieUserInfoGeneratedByPhoneNumber"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AuthLoginWithTaobaoUserInfo(request *AuthLoginWithTaobaoUserInfoRequest) (_result *AuthLoginWithTaobaoUserInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AuthLoginWithTaobaoUserInfoHeaders{}
+	_result = &AuthLoginWithTaobaoUserInfoResponse{}
+	_body, _err := client.AuthLoginWithTaobaoUserInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AuthLoginWithTaobaoUserInfoWithOptions(request *AuthLoginWithTaobaoUserInfoRequest, headers *AuthLoginWithTaobaoUserInfoHeaders, runtime *util.RuntimeOptions) (_result *AuthLoginWithTaobaoUserInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncryptedTaobaoUserIdentifier)) {
+		body["EncryptedTaobaoUserIdentifier"] = request.EncryptedTaobaoUserIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AuthLoginWithTaobaoUserInfo"),
+		Version:     tea.String("ssp_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ssp/authLoginWithTaobaoUserInfo"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AuthLoginWithTaobaoUserInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AuthLoginWithThirdUserInfo(request *AuthLoginWithThirdUserInfoRequest) (_result *AuthLoginWithThirdUserInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AuthLoginWithThirdUserInfoHeaders{}
+	_result = &AuthLoginWithThirdUserInfoResponse{}
+	_body, _err := client.AuthLoginWithThirdUserInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AuthLoginWithThirdUserInfoWithOptions(tmpReq *AuthLoginWithThirdUserInfoRequest, headers *AuthLoginWithThirdUserInfoHeaders, runtime *util.RuntimeOptions) (_result *AuthLoginWithThirdUserInfoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AuthLoginWithThirdUserInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExtInfo)) {
+		request.ExtInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExtInfo, tea.String("ExtInfo"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExtInfoShrink)) {
+		body["ExtInfo"] = request.ExtInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneCode)) {
+		body["SceneCode"] = request.SceneCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdUserIdentifier)) {
+		body["ThirdUserIdentifier"] = request.ThirdUserIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdUserType)) {
+		body["ThirdUserType"] = request.ThirdUserType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AuthLoginWithThirdUserInfo"),
+		Version:     tea.String("ssp_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ssp/authLoginWithThirdUserInfo"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AuthLoginWithThirdUserInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CheckAuthCodeBindForExt(request *CheckAuthCodeBindForExtRequest) (_result *CheckAuthCodeBindForExtResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CheckAuthCodeBindForExtHeaders{}
@@ -18340,6 +19787,211 @@ func (client *Client) DeviceControlWithOptions(tmpReq *DeviceControlRequest, hea
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeviceControlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EcologyOpennessAuthenticate(request *EcologyOpennessAuthenticateRequest) (_result *EcologyOpennessAuthenticateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &EcologyOpennessAuthenticateHeaders{}
+	_result = &EcologyOpennessAuthenticateResponse{}
+	_body, _err := client.EcologyOpennessAuthenticateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EcologyOpennessAuthenticateWithOptions(request *EcologyOpennessAuthenticateRequest, headers *EcologyOpennessAuthenticateHeaders, runtime *util.RuntimeOptions) (_result *EcologyOpennessAuthenticateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncodeKey)) {
+		body["EncodeKey"] = request.EncodeKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncodeType)) {
+		body["EncodeType"] = request.EncodeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginStateAccessToken)) {
+		body["LoginStateAccessToken"] = request.LoginStateAccessToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EcologyOpennessAuthenticate"),
+		Version:     tea.String("ssp_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ssp/ecologyOpennessAuthenticate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EcologyOpennessAuthenticateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EcologyOpennessSendVerificationCode(request *EcologyOpennessSendVerificationCodeRequest) (_result *EcologyOpennessSendVerificationCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &EcologyOpennessSendVerificationCodeHeaders{}
+	_result = &EcologyOpennessSendVerificationCodeResponse{}
+	_body, _err := client.EcologyOpennessSendVerificationCodeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EcologyOpennessSendVerificationCodeWithOptions(request *EcologyOpennessSendVerificationCodeRequest, headers *EcologyOpennessSendVerificationCodeHeaders, runtime *util.RuntimeOptions) (_result *EcologyOpennessSendVerificationCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		body["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EcologyOpennessSendVerificationCode"),
+		Version:     tea.String("ssp_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ssp/ecologyOpennessSendVerificationCode"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EcologyOpennessSendVerificationCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FindUserlistToAuthLoginWithPhoneNumber(request *FindUserlistToAuthLoginWithPhoneNumberRequest) (_result *FindUserlistToAuthLoginWithPhoneNumberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &FindUserlistToAuthLoginWithPhoneNumberHeaders{}
+	_result = &FindUserlistToAuthLoginWithPhoneNumberResponse{}
+	_body, _err := client.FindUserlistToAuthLoginWithPhoneNumberWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) FindUserlistToAuthLoginWithPhoneNumberWithOptions(request *FindUserlistToAuthLoginWithPhoneNumberRequest, headers *FindUserlistToAuthLoginWithPhoneNumberHeaders, runtime *util.RuntimeOptions) (_result *FindUserlistToAuthLoginWithPhoneNumberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		query["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FindUserlistToAuthLoginWithPhoneNumber"),
+		Version:     tea.String("ssp_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ssp/findUserlistToAuthLoginWithPhoneNumber"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FindUserlistToAuthLoginWithPhoneNumberResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
