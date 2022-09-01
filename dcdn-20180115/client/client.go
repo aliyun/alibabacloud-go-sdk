@@ -13713,6 +13713,81 @@ func (s *DescribeDcdnIpaUserDomainsResponse) SetBody(v *DescribeDcdnIpaUserDomai
 	return s
 }
 
+type DescribeDcdnL2VipsRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s DescribeDcdnL2VipsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnL2VipsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnL2VipsRequest) SetDomainName(v string) *DescribeDcdnL2VipsRequest {
+	s.DomainName = &v
+	return s
+}
+
+type DescribeDcdnL2VipsResponseBody struct {
+	DomainName *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Vips       []*string `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnL2VipsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnL2VipsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnL2VipsResponseBody) SetDomainName(v string) *DescribeDcdnL2VipsResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnL2VipsResponseBody) SetRequestId(v string) *DescribeDcdnL2VipsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnL2VipsResponseBody) SetVips(v []*string) *DescribeDcdnL2VipsResponseBody {
+	s.Vips = v
+	return s
+}
+
+type DescribeDcdnL2VipsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnL2VipsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnL2VipsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnL2VipsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnL2VipsResponse) SetHeaders(v map[string]*string) *DescribeDcdnL2VipsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnL2VipsResponse) SetStatusCode(v int32) *DescribeDcdnL2VipsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnL2VipsResponse) SetBody(v *DescribeDcdnL2VipsResponseBody) *DescribeDcdnL2VipsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDcdnL2VipsByDomainRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -30151,6 +30226,50 @@ func (client *Client) DescribeDcdnIpaUserDomains(request *DescribeDcdnIpaUserDom
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnIpaUserDomainsResponse{}
 	_body, _err := client.DescribeDcdnIpaUserDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnL2VipsWithOptions(request *DescribeDcdnL2VipsRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnL2VipsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnL2Vips"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnL2VipsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnL2Vips(request *DescribeDcdnL2VipsRequest) (_result *DescribeDcdnL2VipsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnL2VipsResponse{}
+	_body, _err := client.DescribeDcdnL2VipsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
