@@ -1390,6 +1390,92 @@ func (s *GetUserIdByUserExternalIdResponse) SetBody(v *GetUserIdByUserExternalId
 	return s
 }
 
+type GetUserIdByUsernameHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetUserIdByUsernameHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByUsernameHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByUsernameHeaders) SetCommonHeaders(v map[string]*string) *GetUserIdByUsernameHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetUserIdByUsernameHeaders) SetAuthorization(v string) *GetUserIdByUsernameHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetUserIdByUsernameRequest struct {
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s GetUserIdByUsernameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByUsernameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByUsernameRequest) SetUsername(v string) *GetUserIdByUsernameRequest {
+	s.Username = &v
+	return s
+}
+
+type GetUserIdByUsernameResponseBody struct {
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s GetUserIdByUsernameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByUsernameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByUsernameResponseBody) SetUserId(v string) *GetUserIdByUsernameResponseBody {
+	s.UserId = &v
+	return s
+}
+
+type GetUserIdByUsernameResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserIdByUsernameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserIdByUsernameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByUsernameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByUsernameResponse) SetHeaders(v map[string]*string) *GetUserIdByUsernameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserIdByUsernameResponse) SetStatusCode(v int32) *GetUserIdByUsernameResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserIdByUsernameResponse) SetBody(v *GetUserIdByUsernameResponseBody) *GetUserIdByUsernameResponse {
+	s.Body = v
+	return s
+}
+
 type GetUserInfoHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
@@ -2976,6 +3062,63 @@ func (client *Client) GetUserIdByUserExternalIdWithOptions(instanceId *string, a
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetUserIdByUserExternalIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserIdByUsername(instanceId *string, applicationId *string, request *GetUserIdByUsernameRequest) (_result *GetUserIdByUsernameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetUserIdByUsernameHeaders{}
+	_result = &GetUserIdByUsernameResponse{}
+	_body, _err := client.GetUserIdByUsernameWithOptions(instanceId, applicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserIdByUsernameWithOptions(instanceId *string, applicationId *string, request *GetUserIdByUsernameRequest, headers *GetUserIdByUsernameHeaders, runtime *util.RuntimeOptions) (_result *GetUserIdByUsernameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	instanceId = openapiutil.GetEncodeParam(instanceId)
+	applicationId = openapiutil.GetEncodeParam(applicationId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		body["username"] = request.Username
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserIdByUsername"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users/_/actions/getUserIdByUsername"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserIdByUsernameResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
