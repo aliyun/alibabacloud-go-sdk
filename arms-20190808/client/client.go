@@ -3978,15 +3978,19 @@ func (s *CreateRetcodeAppResponse) SetBody(v *CreateRetcodeAppResponseBody) *Cre
 
 type CreateSyntheticTaskRequest struct {
 	CommonParam    *CreateSyntheticTaskRequestCommonParam    `json:"CommonParam,omitempty" xml:"CommonParam,omitempty" type:"Struct"`
+	Download       *CreateSyntheticTaskRequestDownload       `json:"Download,omitempty" xml:"Download,omitempty" type:"Struct"`
 	ExtendInterval *CreateSyntheticTaskRequestExtendInterval `json:"ExtendInterval,omitempty" xml:"ExtendInterval,omitempty" type:"Struct"`
 	IntervalTime   *string                                   `json:"IntervalTime,omitempty" xml:"IntervalTime,omitempty"`
 	IntervalType   *string                                   `json:"IntervalType,omitempty" xml:"IntervalType,omitempty"`
 	IpType         *int64                                    `json:"IpType,omitempty" xml:"IpType,omitempty"`
 	MonitorList    []*CreateSyntheticTaskRequestMonitorList  `json:"MonitorList,omitempty" xml:"MonitorList,omitempty" type:"Repeated"`
+	Navigation     *CreateSyntheticTaskRequestNavigation     `json:"Navigation,omitempty" xml:"Navigation,omitempty" type:"Struct"`
 	Net            *CreateSyntheticTaskRequestNet            `json:"Net,omitempty" xml:"Net,omitempty" type:"Struct"`
+	Protocol       *CreateSyntheticTaskRequestProtocol       `json:"Protocol,omitempty" xml:"Protocol,omitempty" type:"Struct"`
 	RegionId       *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TaskName       *string                                   `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	TaskType       *int64                                    `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	UpdateTask     *bool                                     `json:"UpdateTask,omitempty" xml:"UpdateTask,omitempty"`
 	Url            *string                                   `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -4000,6 +4004,11 @@ func (s CreateSyntheticTaskRequest) GoString() string {
 
 func (s *CreateSyntheticTaskRequest) SetCommonParam(v *CreateSyntheticTaskRequestCommonParam) *CreateSyntheticTaskRequest {
 	s.CommonParam = v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequest) SetDownload(v *CreateSyntheticTaskRequestDownload) *CreateSyntheticTaskRequest {
+	s.Download = v
 	return s
 }
 
@@ -4028,8 +4037,18 @@ func (s *CreateSyntheticTaskRequest) SetMonitorList(v []*CreateSyntheticTaskRequ
 	return s
 }
 
+func (s *CreateSyntheticTaskRequest) SetNavigation(v *CreateSyntheticTaskRequestNavigation) *CreateSyntheticTaskRequest {
+	s.Navigation = v
+	return s
+}
+
 func (s *CreateSyntheticTaskRequest) SetNet(v *CreateSyntheticTaskRequestNet) *CreateSyntheticTaskRequest {
 	s.Net = v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequest) SetProtocol(v *CreateSyntheticTaskRequestProtocol) *CreateSyntheticTaskRequest {
+	s.Protocol = v
 	return s
 }
 
@@ -4045,6 +4064,11 @@ func (s *CreateSyntheticTaskRequest) SetTaskName(v string) *CreateSyntheticTaskR
 
 func (s *CreateSyntheticTaskRequest) SetTaskType(v int64) *CreateSyntheticTaskRequest {
 	s.TaskType = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequest) SetUpdateTask(v bool) *CreateSyntheticTaskRequest {
+	s.UpdateTask = &v
 	return s
 }
 
@@ -4126,6 +4150,95 @@ func (s *CreateSyntheticTaskRequestCommonParamAlertList) SetName(v string) *Crea
 
 func (s *CreateSyntheticTaskRequestCommonParamAlertList) SetSymbols(v int64) *CreateSyntheticTaskRequestCommonParamAlertList {
 	s.Symbols = &v
+	return s
+}
+
+type CreateSyntheticTaskRequestDownload struct {
+	ConnectionTimeout              *float64 `json:"ConnectionTimeout,omitempty" xml:"ConnectionTimeout,omitempty"`
+	DownloadCustomHeaderContent    *string  `json:"DownloadCustomHeaderContent,omitempty" xml:"DownloadCustomHeaderContent,omitempty"`
+	DownloadCustomHost             *int64   `json:"DownloadCustomHost,omitempty" xml:"DownloadCustomHost,omitempty"`
+	DownloadCustomHostIp           *string  `json:"DownloadCustomHostIp,omitempty" xml:"DownloadCustomHostIp,omitempty"`
+	DownloadIgnoreCertificateError *string  `json:"DownloadIgnoreCertificateError,omitempty" xml:"DownloadIgnoreCertificateError,omitempty"`
+	DownloadKernel                 *int64   `json:"DownloadKernel,omitempty" xml:"DownloadKernel,omitempty"`
+	DownloadRedirection            *int64   `json:"DownloadRedirection,omitempty" xml:"DownloadRedirection,omitempty"`
+	DownloadTransmissionSize       *int64   `json:"DownloadTransmissionSize,omitempty" xml:"DownloadTransmissionSize,omitempty"`
+	MonitorTimeout                 *int64   `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	QuickProtocol                  *string  `json:"QuickProtocol,omitempty" xml:"QuickProtocol,omitempty"`
+	ValidateKeywords               *string  `json:"ValidateKeywords,omitempty" xml:"ValidateKeywords,omitempty"`
+	VerifyWay                      *int64   `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
+	WhiteList                      *string  `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+}
+
+func (s CreateSyntheticTaskRequestDownload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequestDownload) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequestDownload) SetConnectionTimeout(v float64) *CreateSyntheticTaskRequestDownload {
+	s.ConnectionTimeout = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestDownload) SetDownloadCustomHeaderContent(v string) *CreateSyntheticTaskRequestDownload {
+	s.DownloadCustomHeaderContent = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestDownload) SetDownloadCustomHost(v int64) *CreateSyntheticTaskRequestDownload {
+	s.DownloadCustomHost = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestDownload) SetDownloadCustomHostIp(v string) *CreateSyntheticTaskRequestDownload {
+	s.DownloadCustomHostIp = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestDownload) SetDownloadIgnoreCertificateError(v string) *CreateSyntheticTaskRequestDownload {
+	s.DownloadIgnoreCertificateError = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestDownload) SetDownloadKernel(v int64) *CreateSyntheticTaskRequestDownload {
+	s.DownloadKernel = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestDownload) SetDownloadRedirection(v int64) *CreateSyntheticTaskRequestDownload {
+	s.DownloadRedirection = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestDownload) SetDownloadTransmissionSize(v int64) *CreateSyntheticTaskRequestDownload {
+	s.DownloadTransmissionSize = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestDownload) SetMonitorTimeout(v int64) *CreateSyntheticTaskRequestDownload {
+	s.MonitorTimeout = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestDownload) SetQuickProtocol(v string) *CreateSyntheticTaskRequestDownload {
+	s.QuickProtocol = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestDownload) SetValidateKeywords(v string) *CreateSyntheticTaskRequestDownload {
+	s.ValidateKeywords = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestDownload) SetVerifyWay(v int64) *CreateSyntheticTaskRequestDownload {
+	s.VerifyWay = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestDownload) SetWhiteList(v string) *CreateSyntheticTaskRequestDownload {
+	s.WhiteList = &v
 	return s
 }
 
@@ -4211,6 +4324,191 @@ func (s *CreateSyntheticTaskRequestMonitorList) SetNetServiceId(v int64) *Create
 	return s
 }
 
+type CreateSyntheticTaskRequestNavigation struct {
+	DNSHijackWhiteList        *string  `json:"DNSHijackWhiteList,omitempty" xml:"DNSHijackWhiteList,omitempty"`
+	ElementBlacklist          *string  `json:"ElementBlacklist,omitempty" xml:"ElementBlacklist,omitempty"`
+	ExecuteActiveX            *int64   `json:"ExecuteActiveX,omitempty" xml:"ExecuteActiveX,omitempty"`
+	ExecuteApplication        *int64   `json:"ExecuteApplication,omitempty" xml:"ExecuteApplication,omitempty"`
+	ExecuteScript             *int64   `json:"ExecuteScript,omitempty" xml:"ExecuteScript,omitempty"`
+	FilterInvalidIP           *int64   `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
+	FlowHijackJumpTimes       *int64   `json:"FlowHijackJumpTimes,omitempty" xml:"FlowHijackJumpTimes,omitempty"`
+	FlowHijackLogo            *string  `json:"FlowHijackLogo,omitempty" xml:"FlowHijackLogo,omitempty"`
+	MonitorTimeout            *string  `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	NavAutomaticScrolling     *string  `json:"NavAutomaticScrolling,omitempty" xml:"NavAutomaticScrolling,omitempty"`
+	NavCustomHeader           *string  `json:"NavCustomHeader,omitempty" xml:"NavCustomHeader,omitempty"`
+	NavCustomHeaderContent    *string  `json:"NavCustomHeaderContent,omitempty" xml:"NavCustomHeaderContent,omitempty"`
+	NavCustomHost             *int64   `json:"NavCustomHost,omitempty" xml:"NavCustomHost,omitempty"`
+	NavCustomHostIp           *string  `json:"NavCustomHostIp,omitempty" xml:"NavCustomHostIp,omitempty"`
+	NavDisableCache           *int64   `json:"NavDisableCache,omitempty" xml:"NavDisableCache,omitempty"`
+	NavDisableCompression     *string  `json:"NavDisableCompression,omitempty" xml:"NavDisableCompression,omitempty"`
+	NavIgnoreCertificateError *int64   `json:"NavIgnoreCertificateError,omitempty" xml:"NavIgnoreCertificateError,omitempty"`
+	NavRedirection            *int64   `json:"NavRedirection,omitempty" xml:"NavRedirection,omitempty"`
+	NavReturnElement          *int64   `json:"NavReturnElement,omitempty" xml:"NavReturnElement,omitempty"`
+	PageTamper                *string  `json:"PageTamper,omitempty" xml:"PageTamper,omitempty"`
+	ProcessName               *string  `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	QUICDomain                *string  `json:"QUICDomain,omitempty" xml:"QUICDomain,omitempty"`
+	QUICVersion               *int64   `json:"QUICVersion,omitempty" xml:"QUICVersion,omitempty"`
+	RequestHeader             *int64   `json:"RequestHeader,omitempty" xml:"RequestHeader,omitempty"`
+	ResponseHeader            *int64   `json:"ResponseHeader,omitempty" xml:"ResponseHeader,omitempty"`
+	SlowElementThreshold      *float64 `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
+	VerifyStringBlacklist     *string  `json:"VerifyStringBlacklist,omitempty" xml:"VerifyStringBlacklist,omitempty"`
+	VerifyStringWhiteList     *string  `json:"VerifyStringWhiteList,omitempty" xml:"VerifyStringWhiteList,omitempty"`
+	WaitCompletionTime        *float64 `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
+}
+
+func (s CreateSyntheticTaskRequestNavigation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequestNavigation) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetDNSHijackWhiteList(v string) *CreateSyntheticTaskRequestNavigation {
+	s.DNSHijackWhiteList = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetElementBlacklist(v string) *CreateSyntheticTaskRequestNavigation {
+	s.ElementBlacklist = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetExecuteActiveX(v int64) *CreateSyntheticTaskRequestNavigation {
+	s.ExecuteActiveX = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetExecuteApplication(v int64) *CreateSyntheticTaskRequestNavigation {
+	s.ExecuteApplication = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetExecuteScript(v int64) *CreateSyntheticTaskRequestNavigation {
+	s.ExecuteScript = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetFilterInvalidIP(v int64) *CreateSyntheticTaskRequestNavigation {
+	s.FilterInvalidIP = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetFlowHijackJumpTimes(v int64) *CreateSyntheticTaskRequestNavigation {
+	s.FlowHijackJumpTimes = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetFlowHijackLogo(v string) *CreateSyntheticTaskRequestNavigation {
+	s.FlowHijackLogo = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetMonitorTimeout(v string) *CreateSyntheticTaskRequestNavigation {
+	s.MonitorTimeout = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetNavAutomaticScrolling(v string) *CreateSyntheticTaskRequestNavigation {
+	s.NavAutomaticScrolling = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetNavCustomHeader(v string) *CreateSyntheticTaskRequestNavigation {
+	s.NavCustomHeader = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetNavCustomHeaderContent(v string) *CreateSyntheticTaskRequestNavigation {
+	s.NavCustomHeaderContent = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetNavCustomHost(v int64) *CreateSyntheticTaskRequestNavigation {
+	s.NavCustomHost = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetNavCustomHostIp(v string) *CreateSyntheticTaskRequestNavigation {
+	s.NavCustomHostIp = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetNavDisableCache(v int64) *CreateSyntheticTaskRequestNavigation {
+	s.NavDisableCache = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetNavDisableCompression(v string) *CreateSyntheticTaskRequestNavigation {
+	s.NavDisableCompression = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetNavIgnoreCertificateError(v int64) *CreateSyntheticTaskRequestNavigation {
+	s.NavIgnoreCertificateError = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetNavRedirection(v int64) *CreateSyntheticTaskRequestNavigation {
+	s.NavRedirection = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetNavReturnElement(v int64) *CreateSyntheticTaskRequestNavigation {
+	s.NavReturnElement = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetPageTamper(v string) *CreateSyntheticTaskRequestNavigation {
+	s.PageTamper = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetProcessName(v string) *CreateSyntheticTaskRequestNavigation {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetQUICDomain(v string) *CreateSyntheticTaskRequestNavigation {
+	s.QUICDomain = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetQUICVersion(v int64) *CreateSyntheticTaskRequestNavigation {
+	s.QUICVersion = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetRequestHeader(v int64) *CreateSyntheticTaskRequestNavigation {
+	s.RequestHeader = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetResponseHeader(v int64) *CreateSyntheticTaskRequestNavigation {
+	s.ResponseHeader = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetSlowElementThreshold(v float64) *CreateSyntheticTaskRequestNavigation {
+	s.SlowElementThreshold = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetVerifyStringBlacklist(v string) *CreateSyntheticTaskRequestNavigation {
+	s.VerifyStringBlacklist = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetVerifyStringWhiteList(v string) *CreateSyntheticTaskRequestNavigation {
+	s.VerifyStringWhiteList = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNavigation) SetWaitCompletionTime(v float64) *CreateSyntheticTaskRequestNavigation {
+	s.WaitCompletionTime = &v
+	return s
+}
+
 type CreateSyntheticTaskRequestNet struct {
 	NetDNSNs             *string `json:"NetDNSNs,omitempty" xml:"NetDNSNs,omitempty"`
 	NetDNSQueryMethod    *int64  `json:"NetDNSQueryMethod,omitempty" xml:"NetDNSQueryMethod,omitempty"`
@@ -4219,10 +4517,12 @@ type CreateSyntheticTaskRequestNet struct {
 	NetDNSTimeout        *int64  `json:"NetDNSTimeout,omitempty" xml:"NetDNSTimeout,omitempty"`
 	NetDigSwitch         *int64  `json:"NetDigSwitch,omitempty" xml:"NetDigSwitch,omitempty"`
 	NetICMPActive        *int64  `json:"NetICMPActive,omitempty" xml:"NetICMPActive,omitempty"`
+	NetICMPDataCut       *int64  `json:"NetICMPDataCut,omitempty" xml:"NetICMPDataCut,omitempty"`
 	NetICMPInterval      *int64  `json:"NetICMPInterval,omitempty" xml:"NetICMPInterval,omitempty"`
 	NetICMPNum           *int64  `json:"NetICMPNum,omitempty" xml:"NetICMPNum,omitempty"`
 	NetICMPSize          *int64  `json:"NetICMPSize,omitempty" xml:"NetICMPSize,omitempty"`
 	NetICMPSwitch        *int64  `json:"NetICMPSwitch,omitempty" xml:"NetICMPSwitch,omitempty"`
+	NetICMPTimeout       *int64  `json:"NetICMPTimeout,omitempty" xml:"NetICMPTimeout,omitempty"`
 	NetTraceRouteNum     *int64  `json:"NetTraceRouteNum,omitempty" xml:"NetTraceRouteNum,omitempty"`
 	NetTraceRouteSwitch  *int64  `json:"NetTraceRouteSwitch,omitempty" xml:"NetTraceRouteSwitch,omitempty"`
 	NetTraceRouteTimeout *int64  `json:"NetTraceRouteTimeout,omitempty" xml:"NetTraceRouteTimeout,omitempty"`
@@ -4272,6 +4572,11 @@ func (s *CreateSyntheticTaskRequestNet) SetNetICMPActive(v int64) *CreateSynthet
 	return s
 }
 
+func (s *CreateSyntheticTaskRequestNet) SetNetICMPDataCut(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetICMPDataCut = &v
+	return s
+}
+
 func (s *CreateSyntheticTaskRequestNet) SetNetICMPInterval(v int64) *CreateSyntheticTaskRequestNet {
 	s.NetICMPInterval = &v
 	return s
@@ -4289,6 +4594,11 @@ func (s *CreateSyntheticTaskRequestNet) SetNetICMPSize(v int64) *CreateSynthetic
 
 func (s *CreateSyntheticTaskRequestNet) SetNetICMPSwitch(v int64) *CreateSyntheticTaskRequestNet {
 	s.NetICMPSwitch = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestNet) SetNetICMPTimeout(v int64) *CreateSyntheticTaskRequestNet {
+	s.NetICMPTimeout = &v
 	return s
 }
 
@@ -4312,17 +4622,225 @@ func (s *CreateSyntheticTaskRequestNet) SetWhiteList(v string) *CreateSyntheticT
 	return s
 }
 
+type CreateSyntheticTaskRequestProtocol struct {
+	CharacterEncoding      *int64                                            `json:"CharacterEncoding,omitempty" xml:"CharacterEncoding,omitempty"`
+	CustomHost             *int64                                            `json:"CustomHost,omitempty" xml:"CustomHost,omitempty"`
+	CustomHostIp           *string                                           `json:"CustomHostIp,omitempty" xml:"CustomHostIp,omitempty"`
+	ProtocolConnectionTime *int64                                            `json:"ProtocolConnectionTime,omitempty" xml:"ProtocolConnectionTime,omitempty"`
+	ProtocolMonitorTimeout *string                                           `json:"ProtocolMonitorTimeout,omitempty" xml:"ProtocolMonitorTimeout,omitempty"`
+	ReceivedDataSize       *int64                                            `json:"ReceivedDataSize,omitempty" xml:"ReceivedDataSize,omitempty"`
+	RequestContent         *CreateSyntheticTaskRequestProtocolRequestContent `json:"RequestContent,omitempty" xml:"RequestContent,omitempty" type:"Struct"`
+	VerifyContent          *string                                           `json:"VerifyContent,omitempty" xml:"VerifyContent,omitempty"`
+	VerifyWay              *int64                                            `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
+}
+
+func (s CreateSyntheticTaskRequestProtocol) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequestProtocol) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequestProtocol) SetCharacterEncoding(v int64) *CreateSyntheticTaskRequestProtocol {
+	s.CharacterEncoding = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocol) SetCustomHost(v int64) *CreateSyntheticTaskRequestProtocol {
+	s.CustomHost = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocol) SetCustomHostIp(v string) *CreateSyntheticTaskRequestProtocol {
+	s.CustomHostIp = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocol) SetProtocolConnectionTime(v int64) *CreateSyntheticTaskRequestProtocol {
+	s.ProtocolConnectionTime = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocol) SetProtocolMonitorTimeout(v string) *CreateSyntheticTaskRequestProtocol {
+	s.ProtocolMonitorTimeout = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocol) SetReceivedDataSize(v int64) *CreateSyntheticTaskRequestProtocol {
+	s.ReceivedDataSize = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocol) SetRequestContent(v *CreateSyntheticTaskRequestProtocolRequestContent) *CreateSyntheticTaskRequestProtocol {
+	s.RequestContent = v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocol) SetVerifyContent(v string) *CreateSyntheticTaskRequestProtocol {
+	s.VerifyContent = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocol) SetVerifyWay(v int64) *CreateSyntheticTaskRequestProtocol {
+	s.VerifyWay = &v
+	return s
+}
+
+type CreateSyntheticTaskRequestProtocolRequestContent struct {
+	Body   *CreateSyntheticTaskRequestProtocolRequestContentBody     `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Header []*CreateSyntheticTaskRequestProtocolRequestContentHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Repeated"`
+	Method *string                                                   `json:"Method,omitempty" xml:"Method,omitempty"`
+}
+
+func (s CreateSyntheticTaskRequestProtocolRequestContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequestProtocolRequestContent) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContent) SetBody(v *CreateSyntheticTaskRequestProtocolRequestContentBody) *CreateSyntheticTaskRequestProtocolRequestContent {
+	s.Body = v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContent) SetHeader(v []*CreateSyntheticTaskRequestProtocolRequestContentHeader) *CreateSyntheticTaskRequestProtocolRequestContent {
+	s.Header = v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContent) SetMethod(v string) *CreateSyntheticTaskRequestProtocolRequestContent {
+	s.Method = &v
+	return s
+}
+
+type CreateSyntheticTaskRequestProtocolRequestContentBody struct {
+	FormData    []*CreateSyntheticTaskRequestProtocolRequestContentBodyFormData    `json:"FormData,omitempty" xml:"FormData,omitempty" type:"Repeated"`
+	Language    *string                                                            `json:"Language,omitempty" xml:"Language,omitempty"`
+	Mode        *string                                                            `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Raw         *string                                                            `json:"Raw,omitempty" xml:"Raw,omitempty"`
+	UrlEncoding []*CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding `json:"UrlEncoding,omitempty" xml:"UrlEncoding,omitempty" type:"Repeated"`
+}
+
+func (s CreateSyntheticTaskRequestProtocolRequestContentBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequestProtocolRequestContentBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContentBody) SetFormData(v []*CreateSyntheticTaskRequestProtocolRequestContentBodyFormData) *CreateSyntheticTaskRequestProtocolRequestContentBody {
+	s.FormData = v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContentBody) SetLanguage(v string) *CreateSyntheticTaskRequestProtocolRequestContentBody {
+	s.Language = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContentBody) SetMode(v string) *CreateSyntheticTaskRequestProtocolRequestContentBody {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContentBody) SetRaw(v string) *CreateSyntheticTaskRequestProtocolRequestContentBody {
+	s.Raw = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContentBody) SetUrlEncoding(v []*CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding) *CreateSyntheticTaskRequestProtocolRequestContentBody {
+	s.UrlEncoding = v
+	return s
+}
+
+type CreateSyntheticTaskRequestProtocolRequestContentBodyFormData struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateSyntheticTaskRequestProtocolRequestContentBodyFormData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequestProtocolRequestContentBodyFormData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContentBodyFormData) SetKey(v string) *CreateSyntheticTaskRequestProtocolRequestContentBodyFormData {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContentBodyFormData) SetValue(v string) *CreateSyntheticTaskRequestProtocolRequestContentBodyFormData {
+	s.Value = &v
+	return s
+}
+
+type CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding) SetKey(v string) *CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding) SetValue(v string) *CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding {
+	s.Value = &v
+	return s
+}
+
+type CreateSyntheticTaskRequestProtocolRequestContentHeader struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateSyntheticTaskRequestProtocolRequestContentHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSyntheticTaskRequestProtocolRequestContentHeader) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContentHeader) SetKey(v string) *CreateSyntheticTaskRequestProtocolRequestContentHeader {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskRequestProtocolRequestContentHeader) SetValue(v string) *CreateSyntheticTaskRequestProtocolRequestContentHeader {
+	s.Value = &v
+	return s
+}
+
 type CreateSyntheticTaskShrinkRequest struct {
 	CommonParamShrink    *string `json:"CommonParam,omitempty" xml:"CommonParam,omitempty"`
+	DownloadShrink       *string `json:"Download,omitempty" xml:"Download,omitempty"`
 	ExtendIntervalShrink *string `json:"ExtendInterval,omitempty" xml:"ExtendInterval,omitempty"`
 	IntervalTime         *string `json:"IntervalTime,omitempty" xml:"IntervalTime,omitempty"`
 	IntervalType         *string `json:"IntervalType,omitempty" xml:"IntervalType,omitempty"`
 	IpType               *int64  `json:"IpType,omitempty" xml:"IpType,omitempty"`
 	MonitorListShrink    *string `json:"MonitorList,omitempty" xml:"MonitorList,omitempty"`
+	NavigationShrink     *string `json:"Navigation,omitempty" xml:"Navigation,omitempty"`
 	NetShrink            *string `json:"Net,omitempty" xml:"Net,omitempty"`
+	ProtocolShrink       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	TaskType             *int64  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	UpdateTask           *bool   `json:"UpdateTask,omitempty" xml:"UpdateTask,omitempty"`
 	Url                  *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -4336,6 +4854,11 @@ func (s CreateSyntheticTaskShrinkRequest) GoString() string {
 
 func (s *CreateSyntheticTaskShrinkRequest) SetCommonParamShrink(v string) *CreateSyntheticTaskShrinkRequest {
 	s.CommonParamShrink = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetDownloadShrink(v string) *CreateSyntheticTaskShrinkRequest {
+	s.DownloadShrink = &v
 	return s
 }
 
@@ -4364,8 +4887,18 @@ func (s *CreateSyntheticTaskShrinkRequest) SetMonitorListShrink(v string) *Creat
 	return s
 }
 
+func (s *CreateSyntheticTaskShrinkRequest) SetNavigationShrink(v string) *CreateSyntheticTaskShrinkRequest {
+	s.NavigationShrink = &v
+	return s
+}
+
 func (s *CreateSyntheticTaskShrinkRequest) SetNetShrink(v string) *CreateSyntheticTaskShrinkRequest {
 	s.NetShrink = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetProtocolShrink(v string) *CreateSyntheticTaskShrinkRequest {
+	s.ProtocolShrink = &v
 	return s
 }
 
@@ -4381,6 +4914,11 @@ func (s *CreateSyntheticTaskShrinkRequest) SetTaskName(v string) *CreateSyntheti
 
 func (s *CreateSyntheticTaskShrinkRequest) SetTaskType(v int64) *CreateSyntheticTaskShrinkRequest {
 	s.TaskType = &v
+	return s
+}
+
+func (s *CreateSyntheticTaskShrinkRequest) SetUpdateTask(v bool) *CreateSyntheticTaskShrinkRequest {
+	s.UpdateTask = &v
 	return s
 }
 
@@ -6145,6 +6683,81 @@ func (s *DeleteSourceMapResponse) SetStatusCode(v int32) *DeleteSourceMapRespons
 }
 
 func (s *DeleteSourceMapResponse) SetBody(v *DeleteSourceMapResponseBody) *DeleteSourceMapResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSyntheticTaskRequest struct {
+	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskIds  []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+}
+
+func (s DeleteSyntheticTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSyntheticTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSyntheticTaskRequest) SetRegionId(v string) *DeleteSyntheticTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteSyntheticTaskRequest) SetTaskIds(v []*string) *DeleteSyntheticTaskRequest {
+	s.TaskIds = v
+	return s
+}
+
+type DeleteSyntheticTaskResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DeleteSyntheticTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSyntheticTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSyntheticTaskResponseBody) SetRequestId(v string) *DeleteSyntheticTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSyntheticTaskResponseBody) SetResult(v string) *DeleteSyntheticTaskResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DeleteSyntheticTaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSyntheticTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSyntheticTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSyntheticTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSyntheticTaskResponse) SetHeaders(v map[string]*string) *DeleteSyntheticTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSyntheticTaskResponse) SetStatusCode(v int32) *DeleteSyntheticTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSyntheticTaskResponse) SetBody(v *DeleteSyntheticTaskResponseBody) *DeleteSyntheticTaskResponse {
 	s.Body = v
 	return s
 }
@@ -8633,6 +9246,105 @@ func (s *GetIntegrationStateResponse) SetBody(v *GetIntegrationStateResponseBody
 	return s
 }
 
+type GetManagedPrometheusStatusRequest struct {
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetManagedPrometheusStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagedPrometheusStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedPrometheusStatusRequest) SetClusterId(v string) *GetManagedPrometheusStatusRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetManagedPrometheusStatusRequest) SetClusterType(v string) *GetManagedPrometheusStatusRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *GetManagedPrometheusStatusRequest) SetRegionId(v string) *GetManagedPrometheusStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetManagedPrometheusStatusResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetManagedPrometheusStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagedPrometheusStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedPrometheusStatusResponseBody) SetCode(v int32) *GetManagedPrometheusStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetManagedPrometheusStatusResponseBody) SetData(v string) *GetManagedPrometheusStatusResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetManagedPrometheusStatusResponseBody) SetMessage(v string) *GetManagedPrometheusStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetManagedPrometheusStatusResponseBody) SetRequestId(v string) *GetManagedPrometheusStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetManagedPrometheusStatusResponseBody) SetSuccess(v bool) *GetManagedPrometheusStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetManagedPrometheusStatusResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetManagedPrometheusStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetManagedPrometheusStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagedPrometheusStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedPrometheusStatusResponse) SetHeaders(v map[string]*string) *GetManagedPrometheusStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetManagedPrometheusStatusResponse) SetStatusCode(v int32) *GetManagedPrometheusStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetManagedPrometheusStatusResponse) SetBody(v *GetManagedPrometheusStatusResponseBody) *GetManagedPrometheusStatusResponse {
+	s.Body = v
+	return s
+}
+
 type GetMultipleTraceRequest struct {
 	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TraceIDs []*string `json:"TraceIDs,omitempty" xml:"TraceIDs,omitempty" type:"Repeated"`
@@ -9870,6 +10582,1102 @@ func (s *GetStackResponse) SetBody(v *GetStackResponseBody) *GetStackResponse {
 	return s
 }
 
+type GetSyntheticTaskDetailRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailRequest) SetRegionId(v string) *GetSyntheticTaskDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailRequest) SetTaskId(v string) *GetSyntheticTaskDetailRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBody struct {
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskDetail *GetSyntheticTaskDetailResponseBodyTaskDetail `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty" type:"Struct"`
+}
+
+func (s GetSyntheticTaskDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBody) SetRequestId(v string) *GetSyntheticTaskDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBody) SetTaskDetail(v *GetSyntheticTaskDetailResponseBodyTaskDetail) *GetSyntheticTaskDetailResponseBody {
+	s.TaskDetail = v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetail struct {
+	Download       *GetSyntheticTaskDetailResponseBodyTaskDetailDownload       `json:"Download,omitempty" xml:"Download,omitempty" type:"Struct"`
+	ExtendInterval *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval `json:"ExtendInterval,omitempty" xml:"ExtendInterval,omitempty" type:"Struct"`
+	IntervalTime   *int64                                                      `json:"IntervalTime,omitempty" xml:"IntervalTime,omitempty"`
+	IntervalType   *int64                                                      `json:"IntervalType,omitempty" xml:"IntervalType,omitempty"`
+	IpType         *int64                                                      `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	MinotorList    []*GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList  `json:"MinotorList,omitempty" xml:"MinotorList,omitempty" type:"Repeated"`
+	Nav            *GetSyntheticTaskDetailResponseBodyTaskDetailNav            `json:"Nav,omitempty" xml:"Nav,omitempty" type:"Struct"`
+	Net            *GetSyntheticTaskDetailResponseBodyTaskDetailNet            `json:"Net,omitempty" xml:"Net,omitempty" type:"Struct"`
+	Protocol       *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol       `json:"Protocol,omitempty" xml:"Protocol,omitempty" type:"Struct"`
+	TaskId         *int64                                                      `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName       *string                                                     `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType       *int64                                                      `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Url            *string                                                     `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetDownload(v *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.Download = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetExtendInterval(v *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.ExtendInterval = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetIntervalTime(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.IntervalTime = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetIntervalType(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.IntervalType = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetIpType(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.IpType = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetMinotorList(v []*GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.MinotorList = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetNav(v *GetSyntheticTaskDetailResponseBodyTaskDetailNav) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.Nav = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetNet(v *GetSyntheticTaskDetailResponseBodyTaskDetailNet) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.Net = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetProtocol(v *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.Protocol = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetTaskId(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetTaskName(v string) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.TaskName = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetTaskType(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetUrl(v string) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.Url = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetailDownload struct {
+	ConnectionTimeout           *int64  `json:"ConnectionTimeout,omitempty" xml:"ConnectionTimeout,omitempty"`
+	DownloadCustomHeaderContent *string `json:"DownloadCustomHeaderContent,omitempty" xml:"DownloadCustomHeaderContent,omitempty"`
+	DownloadCustomHost          *int64  `json:"DownloadCustomHost,omitempty" xml:"DownloadCustomHost,omitempty"`
+	DownloadCustomHostIp        *string `json:"DownloadCustomHostIp,omitempty" xml:"DownloadCustomHostIp,omitempty"`
+	DownloadKernel              *int64  `json:"DownloadKernel,omitempty" xml:"DownloadKernel,omitempty"`
+	DownloadRedirect            *int64  `json:"DownloadRedirect,omitempty" xml:"DownloadRedirect,omitempty"`
+	DownloadTransmissionSize    *int64  `json:"DownloadTransmissionSize,omitempty" xml:"DownloadTransmissionSize,omitempty"`
+	MonitorTimeout              *int64  `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	QuickProtocol               *string `json:"QuickProtocol,omitempty" xml:"QuickProtocol,omitempty"`
+	ValidateKeywords            *string `json:"ValidateKeywords,omitempty" xml:"ValidateKeywords,omitempty"`
+	VerifyWay                   *int64  `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
+	WhiteList                   *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailDownload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailDownload) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) SetConnectionTimeout(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailDownload {
+	s.ConnectionTimeout = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) SetDownloadCustomHeaderContent(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailDownload {
+	s.DownloadCustomHeaderContent = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) SetDownloadCustomHost(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailDownload {
+	s.DownloadCustomHost = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) SetDownloadCustomHostIp(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailDownload {
+	s.DownloadCustomHostIp = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) SetDownloadKernel(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailDownload {
+	s.DownloadKernel = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) SetDownloadRedirect(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailDownload {
+	s.DownloadRedirect = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) SetDownloadTransmissionSize(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailDownload {
+	s.DownloadTransmissionSize = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) SetMonitorTimeout(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailDownload {
+	s.MonitorTimeout = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) SetQuickProtocol(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailDownload {
+	s.QuickProtocol = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) SetValidateKeywords(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailDownload {
+	s.ValidateKeywords = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) SetVerifyWay(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailDownload {
+	s.VerifyWay = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) SetWhiteList(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailDownload {
+	s.WhiteList = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval struct {
+	Days        []*int64 `json:"Days,omitempty" xml:"Days,omitempty" type:"Repeated"`
+	EndMinute   *int64   `json:"EndMinute,omitempty" xml:"EndMinute,omitempty"`
+	EndTime     *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Endhour     *int64   `json:"Endhour,omitempty" xml:"Endhour,omitempty"`
+	StartHour   *int64   `json:"StartHour,omitempty" xml:"StartHour,omitempty"`
+	StartMinute *int64   `json:"StartMinute,omitempty" xml:"StartMinute,omitempty"`
+	StartTime   *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval) SetDays(v []*int64) *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval {
+	s.Days = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval) SetEndMinute(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval {
+	s.EndMinute = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval) SetEndTime(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval) SetEndhour(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval {
+	s.Endhour = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval) SetStartHour(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval {
+	s.StartHour = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval) SetStartMinute(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval {
+	s.StartMinute = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval) SetStartTime(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval {
+	s.StartTime = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList struct {
+	CityCode     *int64 `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	MonitorType  *int64 `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	NetServiceId *int64 `json:"NetServiceId,omitempty" xml:"NetServiceId,omitempty"`
+	SendCount    *int64 `json:"SendCount,omitempty" xml:"SendCount,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) SetCityCode(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList {
+	s.CityCode = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) SetMonitorType(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList {
+	s.MonitorType = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) SetNetServiceId(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList {
+	s.NetServiceId = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) SetSendCount(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList {
+	s.SendCount = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetailNav struct {
+	DnsHijackWhitelist        *string `json:"DnsHijackWhitelist,omitempty" xml:"DnsHijackWhitelist,omitempty"`
+	ElementBlacklist          *string `json:"ElementBlacklist,omitempty" xml:"ElementBlacklist,omitempty"`
+	ExecuteActiveX            *int64  `json:"ExecuteActiveX,omitempty" xml:"ExecuteActiveX,omitempty"`
+	ExecuteApplet             *int64  `json:"ExecuteApplet,omitempty" xml:"ExecuteApplet,omitempty"`
+	ExecuteScript             *int64  `json:"ExecuteScript,omitempty" xml:"ExecuteScript,omitempty"`
+	FilterInvalidIP           *int64  `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
+	FlowHijackJumpTimes       *int64  `json:"FlowHijackJumpTimes,omitempty" xml:"FlowHijackJumpTimes,omitempty"`
+	FlowHijackLogo            *string `json:"FlowHijackLogo,omitempty" xml:"FlowHijackLogo,omitempty"`
+	MonitorTimeout            *int64  `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	NavAutomaticScrolling     *int64  `json:"NavAutomaticScrolling,omitempty" xml:"NavAutomaticScrolling,omitempty"`
+	NavCustomHeader           *string `json:"NavCustomHeader,omitempty" xml:"NavCustomHeader,omitempty"`
+	NavCustomHeaderContent    *string `json:"NavCustomHeaderContent,omitempty" xml:"NavCustomHeaderContent,omitempty"`
+	NavCustomHost             *int64  `json:"NavCustomHost,omitempty" xml:"NavCustomHost,omitempty"`
+	NavCustomHostIp           *string `json:"NavCustomHostIp,omitempty" xml:"NavCustomHostIp,omitempty"`
+	NavDisableCache           *int64  `json:"NavDisableCache,omitempty" xml:"NavDisableCache,omitempty"`
+	NavDisableCompression     *int64  `json:"NavDisableCompression,omitempty" xml:"NavDisableCompression,omitempty"`
+	NavIgnoreCertificateError *int64  `json:"NavIgnoreCertificateError,omitempty" xml:"NavIgnoreCertificateError,omitempty"`
+	NavRedirect               *int64  `json:"NavRedirect,omitempty" xml:"NavRedirect,omitempty"`
+	NavReturnElement          *int64  `json:"NavReturnElement,omitempty" xml:"NavReturnElement,omitempty"`
+	PageTampering             *string `json:"PageTampering,omitempty" xml:"PageTampering,omitempty"`
+	ProcessName               *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	QuicDomain                *string `json:"QuicDomain,omitempty" xml:"QuicDomain,omitempty"`
+	QuicVersion               *int64  `json:"QuicVersion,omitempty" xml:"QuicVersion,omitempty"`
+	RequestHeader             *int64  `json:"RequestHeader,omitempty" xml:"RequestHeader,omitempty"`
+	SlowElementThreshold      *int64  `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
+	VerifyStringBlacklist     *string `json:"VerifyStringBlacklist,omitempty" xml:"VerifyStringBlacklist,omitempty"`
+	VerifyStringWhitelist     *string `json:"VerifyStringWhitelist,omitempty" xml:"VerifyStringWhitelist,omitempty"`
+	WaitCompletionTime        *int64  `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailNav) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailNav) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetDnsHijackWhitelist(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.DnsHijackWhitelist = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetElementBlacklist(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.ElementBlacklist = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetExecuteActiveX(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.ExecuteActiveX = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetExecuteApplet(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.ExecuteApplet = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetExecuteScript(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.ExecuteScript = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetFilterInvalidIP(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.FilterInvalidIP = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetFlowHijackJumpTimes(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.FlowHijackJumpTimes = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetFlowHijackLogo(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.FlowHijackLogo = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetMonitorTimeout(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.MonitorTimeout = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetNavAutomaticScrolling(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.NavAutomaticScrolling = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetNavCustomHeader(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.NavCustomHeader = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetNavCustomHeaderContent(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.NavCustomHeaderContent = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetNavCustomHost(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.NavCustomHost = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetNavCustomHostIp(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.NavCustomHostIp = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetNavDisableCache(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.NavDisableCache = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetNavDisableCompression(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.NavDisableCompression = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetNavIgnoreCertificateError(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.NavIgnoreCertificateError = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetNavRedirect(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.NavRedirect = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetNavReturnElement(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.NavReturnElement = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetPageTampering(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.PageTampering = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetProcessName(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetQuicDomain(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.QuicDomain = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetQuicVersion(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.QuicVersion = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetRequestHeader(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.RequestHeader = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetSlowElementThreshold(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.SlowElementThreshold = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetVerifyStringBlacklist(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.VerifyStringBlacklist = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetVerifyStringWhitelist(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.VerifyStringWhitelist = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNav) SetWaitCompletionTime(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNav {
+	s.WaitCompletionTime = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetailNet struct {
+	NetDigSwitch         *int64  `json:"NetDigSwitch,omitempty" xml:"NetDigSwitch,omitempty"`
+	NetDnsNs             *string `json:"NetDnsNs,omitempty" xml:"NetDnsNs,omitempty"`
+	NetDnsQueryMethod    *string `json:"NetDnsQueryMethod,omitempty" xml:"NetDnsQueryMethod,omitempty"`
+	NetDnsServer         *int64  `json:"NetDnsServer,omitempty" xml:"NetDnsServer,omitempty"`
+	NetDnsSwitch         *int64  `json:"NetDnsSwitch,omitempty" xml:"NetDnsSwitch,omitempty"`
+	NetIcmpActive        *int64  `json:"NetIcmpActive,omitempty" xml:"NetIcmpActive,omitempty"`
+	NetIcmpDataCut       *int64  `json:"NetIcmpDataCut,omitempty" xml:"NetIcmpDataCut,omitempty"`
+	NetIcmpInterval      *int64  `json:"NetIcmpInterval,omitempty" xml:"NetIcmpInterval,omitempty"`
+	NetIcmpNum           *int64  `json:"NetIcmpNum,omitempty" xml:"NetIcmpNum,omitempty"`
+	NetIcmpSize          *int64  `json:"NetIcmpSize,omitempty" xml:"NetIcmpSize,omitempty"`
+	NetIcmpSwitch        *int64  `json:"NetIcmpSwitch,omitempty" xml:"NetIcmpSwitch,omitempty"`
+	NetIcmpTimeout       *int64  `json:"NetIcmpTimeout,omitempty" xml:"NetIcmpTimeout,omitempty"`
+	NetTraceRouteNum     *int64  `json:"NetTraceRouteNum,omitempty" xml:"NetTraceRouteNum,omitempty"`
+	NetTraceRouteSwitch  *int64  `json:"NetTraceRouteSwitch,omitempty" xml:"NetTraceRouteSwitch,omitempty"`
+	NetTraceRouteTimeout *int64  `json:"NetTraceRouteTimeout,omitempty" xml:"NetTraceRouteTimeout,omitempty"`
+	WhiteList            *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailNet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailNet) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetDigSwitch(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetDigSwitch = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetDnsNs(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetDnsNs = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetDnsQueryMethod(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetDnsQueryMethod = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetDnsServer(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetDnsServer = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetDnsSwitch(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetDnsSwitch = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetIcmpActive(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetIcmpActive = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetIcmpDataCut(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetIcmpDataCut = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetIcmpInterval(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetIcmpInterval = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetIcmpNum(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetIcmpNum = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetIcmpSize(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetIcmpSize = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetIcmpSwitch(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetIcmpSwitch = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetIcmpTimeout(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetIcmpTimeout = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetTraceRouteNum(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetTraceRouteNum = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetTraceRouteSwitch(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetTraceRouteSwitch = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetTraceRouteTimeout(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetTraceRouteTimeout = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetWhiteList(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.WhiteList = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetailProtocol struct {
+	CharacterEncoding         *int64                                                              `json:"CharacterEncoding,omitempty" xml:"CharacterEncoding,omitempty"`
+	CustomHost                *int64                                                              `json:"CustomHost,omitempty" xml:"CustomHost,omitempty"`
+	CustomHostIp              *string                                                             `json:"CustomHostIp,omitempty" xml:"CustomHostIp,omitempty"`
+	ProtocolConnectionTimeout *int64                                                              `json:"ProtocolConnectionTimeout,omitempty" xml:"ProtocolConnectionTimeout,omitempty"`
+	ProtocolMonitorTimeout    *int64                                                              `json:"ProtocolMonitorTimeout,omitempty" xml:"ProtocolMonitorTimeout,omitempty"`
+	ReceivedDataSize          *int64                                                              `json:"ReceivedDataSize,omitempty" xml:"ReceivedDataSize,omitempty"`
+	RequestContent            *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent `json:"RequestContent,omitempty" xml:"RequestContent,omitempty" type:"Struct"`
+	VerifyContent             *string                                                             `json:"VerifyContent,omitempty" xml:"VerifyContent,omitempty"`
+	VerifyWay                 *int64                                                              `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) SetCharacterEncoding(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol {
+	s.CharacterEncoding = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) SetCustomHost(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol {
+	s.CustomHost = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) SetCustomHostIp(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol {
+	s.CustomHostIp = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) SetProtocolConnectionTimeout(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol {
+	s.ProtocolConnectionTimeout = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) SetProtocolMonitorTimeout(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol {
+	s.ProtocolMonitorTimeout = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) SetReceivedDataSize(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol {
+	s.ReceivedDataSize = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) SetRequestContent(v *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol {
+	s.RequestContent = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) SetVerifyContent(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol {
+	s.VerifyContent = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol) SetVerifyWay(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol {
+	s.VerifyWay = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent struct {
+	Body   *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody     `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Header []*GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Repeated"`
+	Method *string                                                                     `json:"Method,omitempty" xml:"Method,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent) SetBody(v *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent {
+	s.Body = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent) SetHeader(v []*GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentHeader) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent {
+	s.Header = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent) SetMethod(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent {
+	s.Method = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody struct {
+	Formdata   *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyFormdata   `json:"Formdata,omitempty" xml:"Formdata,omitempty" type:"Struct"`
+	Language   *string                                                                           `json:"Language,omitempty" xml:"Language,omitempty"`
+	Mode       *string                                                                           `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Raw        *string                                                                           `json:"Raw,omitempty" xml:"Raw,omitempty"`
+	Urlencoded *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyUrlencoded `json:"Urlencoded,omitempty" xml:"Urlencoded,omitempty" type:"Struct"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody) SetFormdata(v *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyFormdata) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody {
+	s.Formdata = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody) SetLanguage(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody {
+	s.Language = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody) SetMode(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody {
+	s.Mode = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody) SetRaw(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody {
+	s.Raw = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody) SetUrlencoded(v *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyUrlencoded) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody {
+	s.Urlencoded = v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyFormdata struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyFormdata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyFormdata) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyFormdata) SetKey(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyFormdata {
+	s.Key = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyFormdata) SetValue(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyFormdata {
+	s.Value = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyUrlencoded struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyUrlencoded) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyUrlencoded) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyUrlencoded) SetKey(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyUrlencoded {
+	s.Key = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyUrlencoded) SetValue(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyUrlencoded {
+	s.Value = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentHeader struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentHeader) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentHeader) SetKey(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentHeader {
+	s.Key = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentHeader) SetValue(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentHeader {
+	s.Value = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSyntheticTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSyntheticTaskDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponse) SetHeaders(v map[string]*string) *GetSyntheticTaskDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponse) SetStatusCode(v int32) *GetSyntheticTaskDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponse) SetBody(v *GetSyntheticTaskDetailResponseBody) *GetSyntheticTaskDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetSyntheticTaskListRequest struct {
+	Direction  *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNum    *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskName   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskType   *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetSyntheticTaskListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskListRequest) SetDirection(v string) *GetSyntheticTaskListRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListRequest) SetOrder(v string) *GetSyntheticTaskListRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListRequest) SetPageNum(v int64) *GetSyntheticTaskListRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListRequest) SetPageSize(v int64) *GetSyntheticTaskListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListRequest) SetRegionId(v string) *GetSyntheticTaskListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListRequest) SetTaskName(v string) *GetSyntheticTaskListRequest {
+	s.TaskName = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListRequest) SetTaskStatus(v string) *GetSyntheticTaskListRequest {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListRequest) SetTaskType(v string) *GetSyntheticTaskListRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListRequest) SetUrl(v string) *GetSyntheticTaskListRequest {
+	s.Url = &v
+	return s
+}
+
+type GetSyntheticTaskListResponseBody struct {
+	PageInfo  *GetSyntheticTaskListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSyntheticTaskListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskListResponseBody) SetPageInfo(v *GetSyntheticTaskListResponseBodyPageInfo) *GetSyntheticTaskListResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBody) SetRequestId(v string) *GetSyntheticTaskListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSyntheticTaskListResponseBodyPageInfo struct {
+	HasNextPage       *string                                         `json:"HasNextPage,omitempty" xml:"HasNextPage,omitempty"`
+	HasPreviousPage   *bool                                           `json:"HasPreviousPage,omitempty" xml:"HasPreviousPage,omitempty"`
+	IsFirstPage       *bool                                           `json:"IsFirstPage,omitempty" xml:"IsFirstPage,omitempty"`
+	IsLastPage        *bool                                           `json:"IsLastPage,omitempty" xml:"IsLastPage,omitempty"`
+	List              []*GetSyntheticTaskListResponseBodyPageInfoList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	NavigateFirstPage *string                                         `json:"NavigateFirstPage,omitempty" xml:"NavigateFirstPage,omitempty"`
+	NavigateLastPage  *string                                         `json:"NavigateLastPage,omitempty" xml:"NavigateLastPage,omitempty"`
+	NavigatePageNums  *string                                         `json:"NavigatePageNums,omitempty" xml:"NavigatePageNums,omitempty"`
+	NextPage          *string                                         `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	Pages             *string                                         `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	Prepage           *string                                         `json:"Prepage,omitempty" xml:"Prepage,omitempty"`
+	Size              *int64                                          `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total             *int64                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSyntheticTaskListResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskListResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfo) SetHasNextPage(v string) *GetSyntheticTaskListResponseBodyPageInfo {
+	s.HasNextPage = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfo) SetHasPreviousPage(v bool) *GetSyntheticTaskListResponseBodyPageInfo {
+	s.HasPreviousPage = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfo) SetIsFirstPage(v bool) *GetSyntheticTaskListResponseBodyPageInfo {
+	s.IsFirstPage = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfo) SetIsLastPage(v bool) *GetSyntheticTaskListResponseBodyPageInfo {
+	s.IsLastPage = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfo) SetList(v []*GetSyntheticTaskListResponseBodyPageInfoList) *GetSyntheticTaskListResponseBodyPageInfo {
+	s.List = v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfo) SetNavigateFirstPage(v string) *GetSyntheticTaskListResponseBodyPageInfo {
+	s.NavigateFirstPage = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfo) SetNavigateLastPage(v string) *GetSyntheticTaskListResponseBodyPageInfo {
+	s.NavigateLastPage = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfo) SetNavigatePageNums(v string) *GetSyntheticTaskListResponseBodyPageInfo {
+	s.NavigatePageNums = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfo) SetNextPage(v string) *GetSyntheticTaskListResponseBodyPageInfo {
+	s.NextPage = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfo) SetPages(v string) *GetSyntheticTaskListResponseBodyPageInfo {
+	s.Pages = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfo) SetPrepage(v string) *GetSyntheticTaskListResponseBodyPageInfo {
+	s.Prepage = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfo) SetSize(v int64) *GetSyntheticTaskListResponseBodyPageInfo {
+	s.Size = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfo) SetTotal(v int64) *GetSyntheticTaskListResponseBodyPageInfo {
+	s.Total = &v
+	return s
+}
+
+type GetSyntheticTaskListResponseBodyPageInfoList struct {
+	CreateTime    *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	MonitorNumber *int64   `json:"MonitorNumber,omitempty" xml:"MonitorNumber,omitempty"`
+	TaskId        *string  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName      *string  `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskStatus    *string  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskType      *int64   `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskTypeName  *string  `json:"TaskTypeName,omitempty" xml:"TaskTypeName,omitempty"`
+	Url           *string  `json:"Url,omitempty" xml:"Url,omitempty"`
+	Usable        *float32 `json:"Usable,omitempty" xml:"Usable,omitempty"`
+}
+
+func (s GetSyntheticTaskListResponseBodyPageInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskListResponseBodyPageInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfoList) SetCreateTime(v string) *GetSyntheticTaskListResponseBodyPageInfoList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfoList) SetMonitorNumber(v int64) *GetSyntheticTaskListResponseBodyPageInfoList {
+	s.MonitorNumber = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfoList) SetTaskId(v string) *GetSyntheticTaskListResponseBodyPageInfoList {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfoList) SetTaskName(v string) *GetSyntheticTaskListResponseBodyPageInfoList {
+	s.TaskName = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfoList) SetTaskStatus(v string) *GetSyntheticTaskListResponseBodyPageInfoList {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfoList) SetTaskType(v int64) *GetSyntheticTaskListResponseBodyPageInfoList {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfoList) SetTaskTypeName(v string) *GetSyntheticTaskListResponseBodyPageInfoList {
+	s.TaskTypeName = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfoList) SetUrl(v string) *GetSyntheticTaskListResponseBodyPageInfoList {
+	s.Url = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponseBodyPageInfoList) SetUsable(v float32) *GetSyntheticTaskListResponseBodyPageInfoList {
+	s.Usable = &v
+	return s
+}
+
+type GetSyntheticTaskListResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSyntheticTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSyntheticTaskListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskListResponse) SetHeaders(v map[string]*string) *GetSyntheticTaskListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponse) SetStatusCode(v int32) *GetSyntheticTaskListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSyntheticTaskListResponse) SetBody(v *GetSyntheticTaskListResponseBody) *GetSyntheticTaskListResponse {
+	s.Body = v
+	return s
+}
+
 type GetSyntheticTaskMonitorsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -10974,6 +12782,270 @@ func (s *ListActivatedAlertsResponse) SetBody(v *ListActivatedAlertsResponseBody
 	return s
 }
 
+type ListAlertEventsRequest struct {
+	AlertName          *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MatchingConditions *string `json:"MatchingConditions,omitempty" xml:"MatchingConditions,omitempty"`
+	Page               *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size               *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListAlertEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertEventsRequest) SetAlertName(v string) *ListAlertEventsRequest {
+	s.AlertName = &v
+	return s
+}
+
+func (s *ListAlertEventsRequest) SetEndTime(v string) *ListAlertEventsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListAlertEventsRequest) SetMatchingConditions(v string) *ListAlertEventsRequest {
+	s.MatchingConditions = &v
+	return s
+}
+
+func (s *ListAlertEventsRequest) SetPage(v int64) *ListAlertEventsRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListAlertEventsRequest) SetSize(v int64) *ListAlertEventsRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *ListAlertEventsRequest) SetStartTime(v string) *ListAlertEventsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListAlertEventsRequest) SetStatus(v string) *ListAlertEventsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListAlertEventsResponseBody struct {
+	PageBean  *ListAlertEventsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAlertEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertEventsResponseBody) SetPageBean(v *ListAlertEventsResponseBodyPageBean) *ListAlertEventsResponseBody {
+	s.PageBean = v
+	return s
+}
+
+func (s *ListAlertEventsResponseBody) SetRequestId(v string) *ListAlertEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAlertEventsResponseBodyPageBean struct {
+	Events []*ListAlertEventsResponseBodyPageBeanEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	Page   *int64                                       `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size   *int64                                       `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total  *int64                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListAlertEventsResponseBodyPageBean) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertEventsResponseBodyPageBean) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertEventsResponseBodyPageBean) SetEvents(v []*ListAlertEventsResponseBodyPageBeanEvents) *ListAlertEventsResponseBodyPageBean {
+	s.Events = v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBean) SetPage(v int64) *ListAlertEventsResponseBodyPageBean {
+	s.Page = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBean) SetSize(v int64) *ListAlertEventsResponseBodyPageBean {
+	s.Size = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBean) SetTotal(v int64) *ListAlertEventsResponseBodyPageBean {
+	s.Total = &v
+	return s
+}
+
+type ListAlertEventsResponseBodyPageBeanEvents struct {
+	Alarms          []*ListAlertEventsResponseBodyPageBeanEventsAlarms `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Repeated"`
+	AlertName       *string                                            `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	Annotations     *string                                            `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	Description     *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime         *string                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GeneratorURL    *string                                            `json:"GeneratorURL,omitempty" xml:"GeneratorURL,omitempty"`
+	IntegrationName *string                                            `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
+	IntegrationType *string                                            `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
+	Labels          *string                                            `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	ReceiveTime     *string                                            `json:"ReceiveTime,omitempty" xml:"ReceiveTime,omitempty"`
+	Severity        *string                                            `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	StartTime       *string                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status          *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListAlertEventsResponseBodyPageBeanEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertEventsResponseBodyPageBeanEvents) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetAlarms(v []*ListAlertEventsResponseBodyPageBeanEventsAlarms) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.Alarms = v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetAlertName(v string) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.AlertName = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetAnnotations(v string) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.Annotations = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetDescription(v string) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.Description = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetEndTime(v string) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetGeneratorURL(v string) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.GeneratorURL = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetIntegrationName(v string) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.IntegrationName = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetIntegrationType(v string) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.IntegrationType = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetLabels(v string) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.Labels = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetReceiveTime(v string) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.ReceiveTime = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetSeverity(v string) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.Severity = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetStartTime(v string) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetStatus(v string) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.Status = &v
+	return s
+}
+
+type ListAlertEventsResponseBodyPageBeanEventsAlarms struct {
+	AlarmId    *int64  `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	AlarmName  *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	State      *int32  `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListAlertEventsResponseBodyPageBeanEventsAlarms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertEventsResponseBodyPageBeanEventsAlarms) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEventsAlarms) SetAlarmId(v int64) *ListAlertEventsResponseBodyPageBeanEventsAlarms {
+	s.AlarmId = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEventsAlarms) SetAlarmName(v string) *ListAlertEventsResponseBodyPageBeanEventsAlarms {
+	s.AlarmName = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEventsAlarms) SetCreateTime(v string) *ListAlertEventsResponseBodyPageBeanEventsAlarms {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEventsAlarms) SetState(v int32) *ListAlertEventsResponseBodyPageBeanEventsAlarms {
+	s.State = &v
+	return s
+}
+
+type ListAlertEventsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAlertEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAlertEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertEventsResponse) SetHeaders(v map[string]*string) *ListAlertEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAlertEventsResponse) SetStatusCode(v int32) *ListAlertEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAlertEventsResponse) SetBody(v *ListAlertEventsResponseBody) *ListAlertEventsResponse {
+	s.Body = v
+	return s
+}
+
 type ListAlertsRequest struct {
 	AlertName       *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	DispatchRuleId  *int64  `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
@@ -11516,8 +13588,9 @@ func (s *ListClusterFromGrafanaResponse) SetBody(v *ListClusterFromGrafanaRespon
 }
 
 type ListCmsInstancesRequest struct {
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TypeFilter *string `json:"TypeFilter,omitempty" xml:"TypeFilter,omitempty"`
 }
 
 func (s ListCmsInstancesRequest) String() string {
@@ -11535,6 +13608,11 @@ func (s *ListCmsInstancesRequest) SetClusterId(v string) *ListCmsInstancesReques
 
 func (s *ListCmsInstancesRequest) SetRegionId(v string) *ListCmsInstancesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListCmsInstancesRequest) SetTypeFilter(v string) *ListCmsInstancesRequest {
+	s.TypeFilter = &v
 	return s
 }
 
@@ -12743,10 +14821,10 @@ func (s *ListIntegrationResponseBody) SetRequestId(v string) *ListIntegrationRes
 }
 
 type ListIntegrationResponseBodyPageInfo struct {
-	Iintegrations []*ListIntegrationResponseBodyPageInfoIintegrations `json:"Iintegrations,omitempty" xml:"Iintegrations,omitempty" type:"Repeated"`
-	Page          *int64                                              `json:"Page,omitempty" xml:"Page,omitempty"`
-	Size          *int64                                              `json:"Size,omitempty" xml:"Size,omitempty"`
-	Total         *int64                                              `json:"Total,omitempty" xml:"Total,omitempty"`
+	Integrations []*ListIntegrationResponseBodyPageInfoIntegrations `json:"Integrations,omitempty" xml:"Integrations,omitempty" type:"Repeated"`
+	Page         *int64                                             `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size         *int64                                             `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total        *int64                                             `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListIntegrationResponseBodyPageInfo) String() string {
@@ -12757,8 +14835,8 @@ func (s ListIntegrationResponseBodyPageInfo) GoString() string {
 	return s.String()
 }
 
-func (s *ListIntegrationResponseBodyPageInfo) SetIintegrations(v []*ListIntegrationResponseBodyPageInfoIintegrations) *ListIntegrationResponseBodyPageInfo {
-	s.Iintegrations = v
+func (s *ListIntegrationResponseBodyPageInfo) SetIntegrations(v []*ListIntegrationResponseBodyPageInfoIntegrations) *ListIntegrationResponseBodyPageInfo {
+	s.Integrations = v
 	return s
 }
 
@@ -12777,120 +14855,132 @@ func (s *ListIntegrationResponseBodyPageInfo) SetTotal(v int64) *ListIntegration
 	return s
 }
 
-type ListIntegrationResponseBodyPageInfoIintegrations struct {
-	ApiEndpoint            *string                                                            `json:"ApiEndpoint,omitempty" xml:"ApiEndpoint,omitempty"`
-	CreateTime             *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IntegrationDetail      *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail `json:"IntegrationDetail,omitempty" xml:"IntegrationDetail,omitempty" type:"Struct"`
-	IntegrationId          *int64                                                             `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
-	IntegrationName        *string                                                            `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
-	IntegrationProductType *string                                                            `json:"IntegrationProductType,omitempty" xml:"IntegrationProductType,omitempty"`
-	Liveness               *string                                                            `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	ShortToken             *string                                                            `json:"ShortToken,omitempty" xml:"ShortToken,omitempty"`
-	State                  *bool                                                              `json:"State,omitempty" xml:"State,omitempty"`
+type ListIntegrationResponseBodyPageInfoIntegrations struct {
+	ApiEndpoint            *string                                                           `json:"ApiEndpoint,omitempty" xml:"ApiEndpoint,omitempty"`
+	CreateTime             *string                                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	IntegrationDetail      *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail `json:"IntegrationDetail,omitempty" xml:"IntegrationDetail,omitempty" type:"Struct"`
+	IntegrationId          *int64                                                            `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
+	IntegrationName        *string                                                           `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
+	IntegrationProductType *string                                                           `json:"IntegrationProductType,omitempty" xml:"IntegrationProductType,omitempty"`
+	Liveness               *string                                                           `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	ShortToken             *string                                                           `json:"ShortToken,omitempty" xml:"ShortToken,omitempty"`
+	State                  *bool                                                             `json:"State,omitempty" xml:"State,omitempty"`
 }
 
-func (s ListIntegrationResponseBodyPageInfoIintegrations) String() string {
+func (s ListIntegrationResponseBodyPageInfoIntegrations) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListIntegrationResponseBodyPageInfoIintegrations) GoString() string {
+func (s ListIntegrationResponseBodyPageInfoIntegrations) GoString() string {
 	return s.String()
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetApiEndpoint(v string) *ListIntegrationResponseBodyPageInfoIintegrations {
+func (s *ListIntegrationResponseBodyPageInfoIntegrations) SetApiEndpoint(v string) *ListIntegrationResponseBodyPageInfoIntegrations {
 	s.ApiEndpoint = &v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetCreateTime(v string) *ListIntegrationResponseBodyPageInfoIintegrations {
+func (s *ListIntegrationResponseBodyPageInfoIntegrations) SetCreateTime(v string) *ListIntegrationResponseBodyPageInfoIntegrations {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetIntegrationDetail(v *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) *ListIntegrationResponseBodyPageInfoIintegrations {
+func (s *ListIntegrationResponseBodyPageInfoIntegrations) SetIntegrationDetail(v *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail) *ListIntegrationResponseBodyPageInfoIntegrations {
 	s.IntegrationDetail = v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetIntegrationId(v int64) *ListIntegrationResponseBodyPageInfoIintegrations {
+func (s *ListIntegrationResponseBodyPageInfoIntegrations) SetIntegrationId(v int64) *ListIntegrationResponseBodyPageInfoIntegrations {
 	s.IntegrationId = &v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetIntegrationName(v string) *ListIntegrationResponseBodyPageInfoIintegrations {
+func (s *ListIntegrationResponseBodyPageInfoIntegrations) SetIntegrationName(v string) *ListIntegrationResponseBodyPageInfoIntegrations {
 	s.IntegrationName = &v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetIntegrationProductType(v string) *ListIntegrationResponseBodyPageInfoIintegrations {
+func (s *ListIntegrationResponseBodyPageInfoIntegrations) SetIntegrationProductType(v string) *ListIntegrationResponseBodyPageInfoIntegrations {
 	s.IntegrationProductType = &v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetLiveness(v string) *ListIntegrationResponseBodyPageInfoIintegrations {
+func (s *ListIntegrationResponseBodyPageInfoIntegrations) SetLiveness(v string) *ListIntegrationResponseBodyPageInfoIntegrations {
 	s.Liveness = &v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetShortToken(v string) *ListIntegrationResponseBodyPageInfoIintegrations {
+func (s *ListIntegrationResponseBodyPageInfoIntegrations) SetShortToken(v string) *ListIntegrationResponseBodyPageInfoIntegrations {
 	s.ShortToken = &v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrations) SetState(v bool) *ListIntegrationResponseBodyPageInfoIintegrations {
+func (s *ListIntegrationResponseBodyPageInfoIntegrations) SetState(v bool) *ListIntegrationResponseBodyPageInfoIntegrations {
 	s.State = &v
 	return s
 }
 
-type ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail struct {
+type ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail struct {
 	AutoRecover                *bool                    `json:"AutoRecover,omitempty" xml:"AutoRecover,omitempty"`
 	Description                *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
 	DuplicateKey               *string                  `json:"DuplicateKey,omitempty" xml:"DuplicateKey,omitempty"`
 	ExtendedFieldRedefineRules []map[string]interface{} `json:"ExtendedFieldRedefineRules,omitempty" xml:"ExtendedFieldRedefineRules,omitempty" type:"Repeated"`
 	FieldRedefineRules         []map[string]interface{} `json:"FieldRedefineRules,omitempty" xml:"FieldRedefineRules,omitempty" type:"Repeated"`
+	InitiativeRecoverField     *string                  `json:"InitiativeRecoverField,omitempty" xml:"InitiativeRecoverField,omitempty"`
+	InitiativeRecoverValue     *string                  `json:"InitiativeRecoverValue,omitempty" xml:"InitiativeRecoverValue,omitempty"`
 	RecoverTime                *int64                   `json:"RecoverTime,omitempty" xml:"RecoverTime,omitempty"`
 	Stat                       []*int64                 `json:"Stat,omitempty" xml:"Stat,omitempty" type:"Repeated"`
 }
 
-func (s ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) String() string {
+func (s ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) GoString() string {
+func (s ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail) GoString() string {
 	return s.String()
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetAutoRecover(v bool) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+func (s *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail) SetAutoRecover(v bool) *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail {
 	s.AutoRecover = &v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetDescription(v string) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+func (s *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail) SetDescription(v string) *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail {
 	s.Description = &v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetDuplicateKey(v string) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+func (s *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail) SetDuplicateKey(v string) *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail {
 	s.DuplicateKey = &v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetExtendedFieldRedefineRules(v []map[string]interface{}) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+func (s *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail) SetExtendedFieldRedefineRules(v []map[string]interface{}) *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail {
 	s.ExtendedFieldRedefineRules = v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetFieldRedefineRules(v []map[string]interface{}) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+func (s *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail) SetFieldRedefineRules(v []map[string]interface{}) *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail {
 	s.FieldRedefineRules = v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetRecoverTime(v int64) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+func (s *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail) SetInitiativeRecoverField(v string) *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail {
+	s.InitiativeRecoverField = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail) SetInitiativeRecoverValue(v string) *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail {
+	s.InitiativeRecoverValue = &v
+	return s
+}
+
+func (s *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail) SetRecoverTime(v int64) *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail {
 	s.RecoverTime = &v
 	return s
 }
 
-func (s *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail) SetStat(v []*int64) *ListIntegrationResponseBodyPageInfoIintegrationsIntegrationDetail {
+func (s *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail) SetStat(v []*int64) *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail {
 	s.Stat = v
 	return s
 }
@@ -18567,6 +20657,81 @@ func (s *StopAlertResponse) SetBody(v *StopAlertResponseBody) *StopAlertResponse
 	return s
 }
 
+type SwitchSyntheticTaskStatusRequest struct {
+	SwitchStatus *int64   `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
+	TaskIds      []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+}
+
+func (s SwitchSyntheticTaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchSyntheticTaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchSyntheticTaskStatusRequest) SetSwitchStatus(v int64) *SwitchSyntheticTaskStatusRequest {
+	s.SwitchStatus = &v
+	return s
+}
+
+func (s *SwitchSyntheticTaskStatusRequest) SetTaskIds(v []*int64) *SwitchSyntheticTaskStatusRequest {
+	s.TaskIds = v
+	return s
+}
+
+type SwitchSyntheticTaskStatusResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s SwitchSyntheticTaskStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchSyntheticTaskStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchSyntheticTaskStatusResponseBody) SetRequestId(v string) *SwitchSyntheticTaskStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SwitchSyntheticTaskStatusResponseBody) SetResult(v string) *SwitchSyntheticTaskStatusResponseBody {
+	s.Result = &v
+	return s
+}
+
+type SwitchSyntheticTaskStatusResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SwitchSyntheticTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SwitchSyntheticTaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchSyntheticTaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchSyntheticTaskStatusResponse) SetHeaders(v map[string]*string) *SwitchSyntheticTaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SwitchSyntheticTaskStatusResponse) SetStatusCode(v int32) *SwitchSyntheticTaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SwitchSyntheticTaskStatusResponse) SetBody(v *SwitchSyntheticTaskStatusResponseBody) *SwitchSyntheticTaskStatusResponse {
+	s.Body = v
+	return s
+}
+
 type TurnOnSecondSwitchRequest struct {
 	Pid              *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	ProxyUserId      *string `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
@@ -19201,6 +21366,8 @@ type UpdateIntegrationRequest struct {
 	DuplicateKey               *string `json:"DuplicateKey,omitempty" xml:"DuplicateKey,omitempty"`
 	ExtendedFieldRedefineRules *string `json:"ExtendedFieldRedefineRules,omitempty" xml:"ExtendedFieldRedefineRules,omitempty"`
 	FieldRedefineRules         *string `json:"FieldRedefineRules,omitempty" xml:"FieldRedefineRules,omitempty"`
+	InitiativeRecoverField     *string `json:"InitiativeRecoverField,omitempty" xml:"InitiativeRecoverField,omitempty"`
+	InitiativeRecoverValue     *string `json:"InitiativeRecoverValue,omitempty" xml:"InitiativeRecoverValue,omitempty"`
 	IntegrationId              *int64  `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
 	IntegrationName            *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
 	IntegrationProductType     *string `json:"IntegrationProductType,omitempty" xml:"IntegrationProductType,omitempty"`
@@ -19246,6 +21413,16 @@ func (s *UpdateIntegrationRequest) SetExtendedFieldRedefineRules(v string) *Upda
 
 func (s *UpdateIntegrationRequest) SetFieldRedefineRules(v string) *UpdateIntegrationRequest {
 	s.FieldRedefineRules = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetInitiativeRecoverField(v string) *UpdateIntegrationRequest {
+	s.InitiativeRecoverField = &v
+	return s
+}
+
+func (s *UpdateIntegrationRequest) SetInitiativeRecoverValue(v string) *UpdateIntegrationRequest {
+	s.InitiativeRecoverValue = &v
 	return s
 }
 
@@ -19319,6 +21496,8 @@ type UpdateIntegrationResponseBodyIntegration struct {
 	DuplicateKey               *string                  `json:"DuplicateKey,omitempty" xml:"DuplicateKey,omitempty"`
 	ExtendedFieldRedefineRules []map[string]interface{} `json:"ExtendedFieldRedefineRules,omitempty" xml:"ExtendedFieldRedefineRules,omitempty" type:"Repeated"`
 	FieldRedefineRules         []map[string]interface{} `json:"FieldRedefineRules,omitempty" xml:"FieldRedefineRules,omitempty" type:"Repeated"`
+	InitiativeRecoverField     *string                  `json:"InitiativeRecoverField,omitempty" xml:"InitiativeRecoverField,omitempty"`
+	InitiativeRecoverValue     *string                  `json:"InitiativeRecoverValue,omitempty" xml:"InitiativeRecoverValue,omitempty"`
 	IntegrationId              *int64                   `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
 	IntegrationName            *string                  `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
 	IntegrationProductType     *string                  `json:"IntegrationProductType,omitempty" xml:"IntegrationProductType,omitempty"`
@@ -19364,6 +21543,16 @@ func (s *UpdateIntegrationResponseBodyIntegration) SetExtendedFieldRedefineRules
 
 func (s *UpdateIntegrationResponseBodyIntegration) SetFieldRedefineRules(v []map[string]interface{}) *UpdateIntegrationResponseBodyIntegration {
 	s.FieldRedefineRules = v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetInitiativeRecoverField(v string) *UpdateIntegrationResponseBodyIntegration {
+	s.InitiativeRecoverField = &v
+	return s
+}
+
+func (s *UpdateIntegrationResponseBodyIntegration) SetInitiativeRecoverValue(v string) *UpdateIntegrationResponseBodyIntegration {
+	s.InitiativeRecoverValue = &v
 	return s
 }
 
@@ -21620,6 +23809,10 @@ func (client *Client) CreateSyntheticTaskWithOptions(tmpReq *CreateSyntheticTask
 		request.CommonParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CommonParam), tea.String("CommonParam"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Download))) {
+		request.DownloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Download), tea.String("Download"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ExtendInterval))) {
 		request.ExtendIntervalShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ExtendInterval), tea.String("ExtendInterval"), tea.String("json"))
 	}
@@ -21628,13 +23821,25 @@ func (client *Client) CreateSyntheticTaskWithOptions(tmpReq *CreateSyntheticTask
 		request.MonitorListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MonitorList, tea.String("MonitorList"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Navigation))) {
+		request.NavigationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Navigation), tea.String("Navigation"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Net))) {
 		request.NetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Net), tea.String("Net"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Protocol))) {
+		request.ProtocolShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Protocol), tea.String("Protocol"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CommonParamShrink)) {
 		query["CommonParam"] = request.CommonParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DownloadShrink)) {
+		query["Download"] = request.DownloadShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ExtendIntervalShrink)) {
@@ -21657,8 +23862,16 @@ func (client *Client) CreateSyntheticTaskWithOptions(tmpReq *CreateSyntheticTask
 		query["MonitorList"] = request.MonitorListShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NavigationShrink)) {
+		query["Navigation"] = request.NavigationShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NetShrink)) {
 		query["Net"] = request.NetShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProtocolShrink)) {
+		query["Protocol"] = request.ProtocolShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -21671,6 +23884,10 @@ func (client *Client) CreateSyntheticTaskWithOptions(tmpReq *CreateSyntheticTask
 
 	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
 		query["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateTask)) {
+		query["UpdateTask"] = request.UpdateTask
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
@@ -22771,6 +24988,54 @@ func (client *Client) DeleteSourceMap(request *DeleteSourceMapRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DeleteSyntheticTaskWithOptions(request *DeleteSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteSyntheticTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIds)) {
+		query["TaskIds"] = request.TaskIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSyntheticTask"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSyntheticTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSyntheticTask(request *DeleteSyntheticTaskRequest) (_result *DeleteSyntheticTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSyntheticTaskResponse{}
+	_body, _err := client.DeleteSyntheticTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteTraceAppWithOptions(request *DeleteTraceAppRequest, runtime *util.RuntimeOptions) (_result *DeleteTraceAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23595,6 +25860,58 @@ func (client *Client) GetIntegrationState(request *GetIntegrationStateRequest) (
 	return _result, _err
 }
 
+func (client *Client) GetManagedPrometheusStatusWithOptions(request *GetManagedPrometheusStatusRequest, runtime *util.RuntimeOptions) (_result *GetManagedPrometheusStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetManagedPrometheusStatus"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetManagedPrometheusStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetManagedPrometheusStatus(request *GetManagedPrometheusStatusRequest) (_result *GetManagedPrometheusStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetManagedPrometheusStatusResponse{}
+	_body, _err := client.GetManagedPrometheusStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetMultipleTraceWithOptions(request *GetMultipleTraceRequest, runtime *util.RuntimeOptions) (_result *GetMultipleTraceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23988,6 +26305,130 @@ func (client *Client) GetStack(request *GetStackRequest) (_result *GetStackRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &GetStackResponse{}
 	_body, _err := client.GetStackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSyntheticTaskDetailWithOptions(request *GetSyntheticTaskDetailRequest, runtime *util.RuntimeOptions) (_result *GetSyntheticTaskDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSyntheticTaskDetail"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSyntheticTaskDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSyntheticTaskDetail(request *GetSyntheticTaskDetailRequest) (_result *GetSyntheticTaskDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSyntheticTaskDetailResponse{}
+	_body, _err := client.GetSyntheticTaskDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSyntheticTaskListWithOptions(request *GetSyntheticTaskListRequest, runtime *util.RuntimeOptions) (_result *GetSyntheticTaskListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskStatus)) {
+		query["TaskStatus"] = request.TaskStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSyntheticTaskList"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSyntheticTaskListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSyntheticTaskList(request *GetSyntheticTaskListRequest) (_result *GetSyntheticTaskListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSyntheticTaskListResponse{}
+	_body, _err := client.GetSyntheticTaskListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24391,6 +26832,74 @@ func (client *Client) ListActivatedAlerts(request *ListActivatedAlertsRequest) (
 	return _result, _err
 }
 
+func (client *Client) ListAlertEventsWithOptions(request *ListAlertEventsRequest, runtime *util.RuntimeOptions) (_result *ListAlertEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertName)) {
+		query["AlertName"] = request.AlertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchingConditions)) {
+		query["MatchingConditions"] = request.MatchingConditions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAlertEvents"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAlertEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAlertEvents(request *ListAlertEventsRequest) (_result *ListAlertEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAlertEventsResponse{}
+	_body, _err := client.ListAlertEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, runtime *util.RuntimeOptions) (_result *ListAlertsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24531,6 +27040,10 @@ func (client *Client) ListCmsInstancesWithOptions(request *ListCmsInstancesReque
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TypeFilter)) {
+		query["TypeFilter"] = request.TypeFilter
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -27015,6 +29528,54 @@ func (client *Client) StopAlert(request *StopAlertRequest) (_result *StopAlertRe
 	return _result, _err
 }
 
+func (client *Client) SwitchSyntheticTaskStatusWithOptions(request *SwitchSyntheticTaskStatusRequest, runtime *util.RuntimeOptions) (_result *SwitchSyntheticTaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SwitchStatus)) {
+		query["SwitchStatus"] = request.SwitchStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIds)) {
+		query["TaskIds"] = request.TaskIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SwitchSyntheticTaskStatus"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SwitchSyntheticTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SwitchSyntheticTaskStatus(request *SwitchSyntheticTaskStatusRequest) (_result *SwitchSyntheticTaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SwitchSyntheticTaskStatusResponse{}
+	_body, _err := client.SwitchSyntheticTaskStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) TurnOnSecondSwitchWithOptions(request *TurnOnSecondSwitchRequest, runtime *util.RuntimeOptions) (_result *TurnOnSecondSwitchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27419,6 +29980,14 @@ func (client *Client) UpdateIntegrationWithOptions(request *UpdateIntegrationReq
 
 	if !tea.BoolValue(util.IsUnset(request.FieldRedefineRules)) {
 		body["FieldRedefineRules"] = request.FieldRedefineRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitiativeRecoverField)) {
+		body["InitiativeRecoverField"] = request.InitiativeRecoverField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitiativeRecoverValue)) {
+		body["InitiativeRecoverValue"] = request.InitiativeRecoverValue
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IntegrationId)) {

@@ -1,3 +1,6 @@
+2022-09-01 Version: v1.0.6
+- Add ListAlertEvents api.
+
 2022-07-29 Version: v1.0.5
 - Add AddPrometheusInstance api.
 
