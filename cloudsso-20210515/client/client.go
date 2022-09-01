@@ -59,8 +59,9 @@ func (s *AddExternalSAMLIdPCertificateResponseBody) SetRequestId(v string) *AddE
 }
 
 type AddExternalSAMLIdPCertificateResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddExternalSAMLIdPCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddExternalSAMLIdPCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddExternalSAMLIdPCertificateResponse) String() string {
@@ -73,6 +74,11 @@ func (s AddExternalSAMLIdPCertificateResponse) GoString() string {
 
 func (s *AddExternalSAMLIdPCertificateResponse) SetHeaders(v map[string]*string) *AddExternalSAMLIdPCertificateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddExternalSAMLIdPCertificateResponse) SetStatusCode(v int32) *AddExternalSAMLIdPCertificateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -140,8 +146,9 @@ func (s *AddPermissionPolicyToAccessConfigurationResponseBody) SetRequestId(v st
 }
 
 type AddPermissionPolicyToAccessConfigurationResponse struct {
-	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddPermissionPolicyToAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddPermissionPolicyToAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddPermissionPolicyToAccessConfigurationResponse) String() string {
@@ -154,6 +161,11 @@ func (s AddPermissionPolicyToAccessConfigurationResponse) GoString() string {
 
 func (s *AddPermissionPolicyToAccessConfigurationResponse) SetHeaders(v map[string]*string) *AddPermissionPolicyToAccessConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddPermissionPolicyToAccessConfigurationResponse) SetStatusCode(v int32) *AddPermissionPolicyToAccessConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -209,8 +221,9 @@ func (s *AddUserToGroupResponseBody) SetRequestId(v string) *AddUserToGroupRespo
 }
 
 type AddUserToGroupResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddUserToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddUserToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddUserToGroupResponse) String() string {
@@ -223,6 +236,11 @@ func (s AddUserToGroupResponse) GoString() string {
 
 func (s *AddUserToGroupResponse) SetHeaders(v map[string]*string) *AddUserToGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddUserToGroupResponse) SetStatusCode(v int32) *AddUserToGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -266,8 +284,9 @@ func (s *ClearExternalSAMLIdentityProviderResponseBody) SetRequestId(v string) *
 }
 
 type ClearExternalSAMLIdentityProviderResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ClearExternalSAMLIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ClearExternalSAMLIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ClearExternalSAMLIdentityProviderResponse) String() string {
@@ -280,6 +299,11 @@ func (s ClearExternalSAMLIdentityProviderResponse) GoString() string {
 
 func (s *ClearExternalSAMLIdentityProviderResponse) SetHeaders(v map[string]*string) *ClearExternalSAMLIdentityProviderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ClearExternalSAMLIdentityProviderResponse) SetStatusCode(v int32) *ClearExternalSAMLIdentityProviderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -448,8 +472,9 @@ func (s *CreateAccessAssignmentResponseBodyTask) SetTaskType(v string) *CreateAc
 }
 
 type CreateAccessAssignmentResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateAccessAssignmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAccessAssignmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateAccessAssignmentResponse) String() string {
@@ -462,6 +487,11 @@ func (s CreateAccessAssignmentResponse) GoString() string {
 
 func (s *CreateAccessAssignmentResponse) SetHeaders(v map[string]*string) *CreateAccessAssignmentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateAccessAssignmentResponse) SetStatusCode(v int32) *CreateAccessAssignmentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -594,8 +624,9 @@ func (s *CreateAccessConfigurationResponseBodyAccessConfiguration) SetUpdateTime
 }
 
 type CreateAccessConfigurationResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateAccessConfigurationResponse) String() string {
@@ -608,6 +639,11 @@ func (s CreateAccessConfigurationResponse) GoString() string {
 
 func (s *CreateAccessConfigurationResponse) SetHeaders(v map[string]*string) *CreateAccessConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateAccessConfigurationResponse) SetStatusCode(v int32) *CreateAccessConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -698,8 +734,9 @@ func (s *CreateDirectoryResponseBodyDirectory) SetUpdateTime(v string) *CreateDi
 }
 
 type CreateDirectoryResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDirectoryResponse) String() string {
@@ -712,6 +749,11 @@ func (s CreateDirectoryResponse) GoString() string {
 
 func (s *CreateDirectoryResponse) SetHeaders(v map[string]*string) *CreateDirectoryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateDirectoryResponse) SetStatusCode(v int32) *CreateDirectoryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -820,8 +862,9 @@ func (s *CreateGroupResponseBodyGroup) SetUpdateTime(v string) *CreateGroupRespo
 }
 
 type CreateGroupResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGroupResponse) String() string {
@@ -834,6 +877,11 @@ func (s CreateGroupResponse) GoString() string {
 
 func (s *CreateGroupResponse) SetHeaders(v map[string]*string) *CreateGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupResponse) SetStatusCode(v int32) *CreateGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -936,8 +984,9 @@ func (s *CreateSCIMServerCredentialResponseBodySCIMServerCredential) SetStatus(v
 }
 
 type CreateSCIMServerCredentialResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSCIMServerCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSCIMServerCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateSCIMServerCredentialResponse) String() string {
@@ -950,6 +999,11 @@ func (s CreateSCIMServerCredentialResponse) GoString() string {
 
 func (s *CreateSCIMServerCredentialResponse) SetHeaders(v map[string]*string) *CreateSCIMServerCredentialResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateSCIMServerCredentialResponse) SetStatusCode(v int32) *CreateSCIMServerCredentialResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1118,8 +1172,9 @@ func (s *CreateUserResponseBodyUser) SetUserName(v string) *CreateUserResponseBo
 }
 
 type CreateUserResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateUserResponse) String() string {
@@ -1132,6 +1187,11 @@ func (s CreateUserResponse) GoString() string {
 
 func (s *CreateUserResponse) SetHeaders(v map[string]*string) *CreateUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateUserResponse) SetStatusCode(v int32) *CreateUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1306,8 +1366,9 @@ func (s *DeleteAccessAssignmentResponseBodyTask) SetTaskType(v string) *DeleteAc
 }
 
 type DeleteAccessAssignmentResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAccessAssignmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAccessAssignmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteAccessAssignmentResponse) String() string {
@@ -1320,6 +1381,11 @@ func (s DeleteAccessAssignmentResponse) GoString() string {
 
 func (s *DeleteAccessAssignmentResponse) SetHeaders(v map[string]*string) *DeleteAccessAssignmentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteAccessAssignmentResponse) SetStatusCode(v int32) *DeleteAccessAssignmentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1375,8 +1441,9 @@ func (s *DeleteAccessConfigurationResponseBody) SetRequestId(v string) *DeleteAc
 }
 
 type DeleteAccessConfigurationResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteAccessConfigurationResponse) String() string {
@@ -1389,6 +1456,11 @@ func (s DeleteAccessConfigurationResponse) GoString() string {
 
 func (s *DeleteAccessConfigurationResponse) SetHeaders(v map[string]*string) *DeleteAccessConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteAccessConfigurationResponse) SetStatusCode(v int32) *DeleteAccessConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1432,8 +1504,9 @@ func (s *DeleteDirectoryResponseBody) SetRequestId(v string) *DeleteDirectoryRes
 }
 
 type DeleteDirectoryResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDirectoryResponse) String() string {
@@ -1446,6 +1519,11 @@ func (s DeleteDirectoryResponse) GoString() string {
 
 func (s *DeleteDirectoryResponse) SetHeaders(v map[string]*string) *DeleteDirectoryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteDirectoryResponse) SetStatusCode(v int32) *DeleteDirectoryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1495,8 +1573,9 @@ func (s *DeleteGroupResponseBody) SetRequestId(v string) *DeleteGroupResponseBod
 }
 
 type DeleteGroupResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteGroupResponse) String() string {
@@ -1509,6 +1588,11 @@ func (s DeleteGroupResponse) GoString() string {
 
 func (s *DeleteGroupResponse) SetHeaders(v map[string]*string) *DeleteGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteGroupResponse) SetStatusCode(v int32) *DeleteGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1564,8 +1648,9 @@ func (s *DeleteMFADeviceForUserResponseBody) SetRequestId(v string) *DeleteMFADe
 }
 
 type DeleteMFADeviceForUserResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMFADeviceForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMFADeviceForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteMFADeviceForUserResponse) String() string {
@@ -1578,6 +1663,11 @@ func (s DeleteMFADeviceForUserResponse) GoString() string {
 
 func (s *DeleteMFADeviceForUserResponse) SetHeaders(v map[string]*string) *DeleteMFADeviceForUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteMFADeviceForUserResponse) SetStatusCode(v int32) *DeleteMFADeviceForUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1627,8 +1717,9 @@ func (s *DeleteSCIMServerCredentialResponseBody) SetRequestId(v string) *DeleteS
 }
 
 type DeleteSCIMServerCredentialResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSCIMServerCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSCIMServerCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSCIMServerCredentialResponse) String() string {
@@ -1641,6 +1732,11 @@ func (s DeleteSCIMServerCredentialResponse) GoString() string {
 
 func (s *DeleteSCIMServerCredentialResponse) SetHeaders(v map[string]*string) *DeleteSCIMServerCredentialResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteSCIMServerCredentialResponse) SetStatusCode(v int32) *DeleteSCIMServerCredentialResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1690,8 +1786,9 @@ func (s *DeleteUserResponseBody) SetRequestId(v string) *DeleteUserResponseBody 
 }
 
 type DeleteUserResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteUserResponse) String() string {
@@ -1704,6 +1801,11 @@ func (s DeleteUserResponse) GoString() string {
 
 func (s *DeleteUserResponse) SetHeaders(v map[string]*string) *DeleteUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteUserResponse) SetStatusCode(v int32) *DeleteUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1842,8 +1944,9 @@ func (s *DeprovisionAccessConfigurationResponseBodyTasks) SetTaskType(v string) 
 }
 
 type DeprovisionAccessConfigurationResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeprovisionAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeprovisionAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeprovisionAccessConfigurationResponse) String() string {
@@ -1856,6 +1959,11 @@ func (s DeprovisionAccessConfigurationResponse) GoString() string {
 
 func (s *DeprovisionAccessConfigurationResponse) SetHeaders(v map[string]*string) *DeprovisionAccessConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeprovisionAccessConfigurationResponse) SetStatusCode(v int32) *DeprovisionAccessConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1882,8 +1990,9 @@ func (s *DisableServiceResponseBody) SetRequestId(v string) *DisableServiceRespo
 }
 
 type DisableServiceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableServiceResponse) String() string {
@@ -1896,6 +2005,11 @@ func (s DisableServiceResponse) GoString() string {
 
 func (s *DisableServiceResponse) SetHeaders(v map[string]*string) *DisableServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableServiceResponse) SetStatusCode(v int32) *DisableServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1922,8 +2036,9 @@ func (s *EnableServiceResponseBody) SetRequestId(v string) *EnableServiceRespons
 }
 
 type EnableServiceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableServiceResponse) String() string {
@@ -1936,6 +2051,11 @@ func (s EnableServiceResponse) GoString() string {
 
 func (s *EnableServiceResponse) SetHeaders(v map[string]*string) *EnableServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableServiceResponse) SetStatusCode(v int32) *EnableServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2050,8 +2170,9 @@ func (s *GetAccessConfigurationResponseBodyAccessConfiguration) SetUpdateTime(v 
 }
 
 type GetAccessConfigurationResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAccessConfigurationResponse) String() string {
@@ -2064,6 +2185,11 @@ func (s GetAccessConfigurationResponse) GoString() string {
 
 func (s *GetAccessConfigurationResponse) SetHeaders(v map[string]*string) *GetAccessConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAccessConfigurationResponse) SetStatusCode(v int32) *GetAccessConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2154,8 +2280,9 @@ func (s *GetDirectoryResponseBodyDirectory) SetUpdateTime(v string) *GetDirector
 }
 
 type GetDirectoryResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDirectoryResponse) String() string {
@@ -2168,6 +2295,11 @@ func (s GetDirectoryResponse) GoString() string {
 
 func (s *GetDirectoryResponse) SetHeaders(v map[string]*string) *GetDirectoryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetDirectoryResponse) SetStatusCode(v int32) *GetDirectoryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2252,8 +2384,9 @@ func (s *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider) Set
 }
 
 type GetDirectorySAMLServiceProviderInfoResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDirectorySAMLServiceProviderInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDirectorySAMLServiceProviderInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDirectorySAMLServiceProviderInfoResponse) String() string {
@@ -2266,6 +2399,11 @@ func (s GetDirectorySAMLServiceProviderInfoResponse) GoString() string {
 
 func (s *GetDirectorySAMLServiceProviderInfoResponse) SetHeaders(v map[string]*string) *GetDirectorySAMLServiceProviderInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetDirectorySAMLServiceProviderInfoResponse) SetStatusCode(v int32) *GetDirectorySAMLServiceProviderInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2410,8 +2548,9 @@ func (s *GetDirectoryStatisticsResponseBodyDirectoryStatistics) SetUserQuota(v i
 }
 
 type GetDirectoryStatisticsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDirectoryStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDirectoryStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDirectoryStatisticsResponse) String() string {
@@ -2424,6 +2563,11 @@ func (s GetDirectoryStatisticsResponse) GoString() string {
 
 func (s *GetDirectoryStatisticsResponse) SetHeaders(v map[string]*string) *GetDirectoryStatisticsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetDirectoryStatisticsResponse) SetStatusCode(v int32) *GetDirectoryStatisticsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2538,8 +2682,9 @@ func (s *GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigur
 }
 
 type GetExternalSAMLIdentityProviderResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetExternalSAMLIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetExternalSAMLIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetExternalSAMLIdentityProviderResponse) String() string {
@@ -2552,6 +2697,11 @@ func (s GetExternalSAMLIdentityProviderResponse) GoString() string {
 
 func (s *GetExternalSAMLIdentityProviderResponse) SetHeaders(v map[string]*string) *GetExternalSAMLIdentityProviderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetExternalSAMLIdentityProviderResponse) SetStatusCode(v int32) *GetExternalSAMLIdentityProviderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2654,8 +2804,9 @@ func (s *GetGroupResponseBodyGroup) SetUpdateTime(v string) *GetGroupResponseBod
 }
 
 type GetGroupResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetGroupResponse) String() string {
@@ -2671,7 +2822,81 @@ func (s *GetGroupResponse) SetHeaders(v map[string]*string) *GetGroupResponse {
 	return s
 }
 
+func (s *GetGroupResponse) SetStatusCode(v int32) *GetGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetGroupResponse) SetBody(v *GetGroupResponseBody) *GetGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetMFAAuthenticationSettingsRequest struct {
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+}
+
+func (s GetMFAAuthenticationSettingsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMFAAuthenticationSettingsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMFAAuthenticationSettingsRequest) SetDirectoryId(v string) *GetMFAAuthenticationSettingsRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+type GetMFAAuthenticationSettingsResponseBody struct {
+	MFAAuthenticationAdvanceSettings *string `json:"MFAAuthenticationAdvanceSettings,omitempty" xml:"MFAAuthenticationAdvanceSettings,omitempty"`
+	RequestId                        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetMFAAuthenticationSettingsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMFAAuthenticationSettingsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMFAAuthenticationSettingsResponseBody) SetMFAAuthenticationAdvanceSettings(v string) *GetMFAAuthenticationSettingsResponseBody {
+	s.MFAAuthenticationAdvanceSettings = &v
+	return s
+}
+
+func (s *GetMFAAuthenticationSettingsResponseBody) SetRequestId(v string) *GetMFAAuthenticationSettingsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetMFAAuthenticationSettingsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMFAAuthenticationSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMFAAuthenticationSettingsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMFAAuthenticationSettingsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMFAAuthenticationSettingsResponse) SetHeaders(v map[string]*string) *GetMFAAuthenticationSettingsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMFAAuthenticationSettingsResponse) SetStatusCode(v int32) *GetMFAAuthenticationSettingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMFAAuthenticationSettingsResponse) SetBody(v *GetMFAAuthenticationSettingsResponseBody) *GetMFAAuthenticationSettingsResponse {
 	s.Body = v
 	return s
 }
@@ -2717,8 +2942,9 @@ func (s *GetMFAAuthenticationStatusResponseBody) SetRequestId(v string) *GetMFAA
 }
 
 type GetMFAAuthenticationStatusResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetMFAAuthenticationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMFAAuthenticationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetMFAAuthenticationStatusResponse) String() string {
@@ -2731,6 +2957,11 @@ func (s GetMFAAuthenticationStatusResponse) GoString() string {
 
 func (s *GetMFAAuthenticationStatusResponse) SetHeaders(v map[string]*string) *GetMFAAuthenticationStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetMFAAuthenticationStatusResponse) SetStatusCode(v int32) *GetMFAAuthenticationStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2780,8 +3011,9 @@ func (s *GetSCIMSynchronizationStatusResponseBody) SetSCIMSynchronizationStatus(
 }
 
 type GetSCIMSynchronizationStatusResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSCIMSynchronizationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSCIMSynchronizationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSCIMSynchronizationStatusResponse) String() string {
@@ -2794,6 +3026,11 @@ func (s GetSCIMSynchronizationStatusResponse) GoString() string {
 
 func (s *GetSCIMSynchronizationStatusResponse) SetHeaders(v map[string]*string) *GetSCIMSynchronizationStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetSCIMSynchronizationStatusResponse) SetStatusCode(v int32) *GetSCIMSynchronizationStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2861,8 +3098,9 @@ func (s *GetServiceStatusResponseBodyServiceStatus) SetStatus(v string) *GetServ
 }
 
 type GetServiceStatusResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetServiceStatusResponse) String() string {
@@ -2875,6 +3113,11 @@ func (s GetServiceStatusResponse) GoString() string {
 
 func (s *GetServiceStatusResponse) SetHeaders(v map[string]*string) *GetServiceStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetServiceStatusResponse) SetStatusCode(v int32) *GetServiceStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3037,8 +3280,9 @@ func (s *GetTaskResponseBodyTask) SetTaskType(v string) *GetTaskResponseBodyTask
 }
 
 type GetTaskResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTaskResponse) String() string {
@@ -3051,6 +3295,11 @@ func (s GetTaskResponse) GoString() string {
 
 func (s *GetTaskResponse) SetHeaders(v map[string]*string) *GetTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetTaskResponse) SetStatusCode(v int32) *GetTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3153,8 +3402,9 @@ func (s *GetTaskStatusResponseBodyTaskStatus) SetTaskType(v string) *GetTaskStat
 }
 
 type GetTaskStatusResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTaskStatusResponse) String() string {
@@ -3167,6 +3417,11 @@ func (s GetTaskStatusResponse) GoString() string {
 
 func (s *GetTaskStatusResponse) SetHeaders(v map[string]*string) *GetTaskStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetTaskStatusResponse) SetStatusCode(v int32) *GetTaskStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3299,8 +3554,9 @@ func (s *GetUserResponseBodyUser) SetUserName(v string) *GetUserResponseBodyUser
 }
 
 type GetUserResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetUserResponse) String() string {
@@ -3316,7 +3572,87 @@ func (s *GetUserResponse) SetHeaders(v map[string]*string) *GetUserResponse {
 	return s
 }
 
+func (s *GetUserResponse) SetStatusCode(v int32) *GetUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserMFAAuthenticationSettingsRequest struct {
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetUserMFAAuthenticationSettingsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserMFAAuthenticationSettingsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserMFAAuthenticationSettingsRequest) SetDirectoryId(v string) *GetUserMFAAuthenticationSettingsRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *GetUserMFAAuthenticationSettingsRequest) SetUserId(v string) *GetUserMFAAuthenticationSettingsRequest {
+	s.UserId = &v
+	return s
+}
+
+type GetUserMFAAuthenticationSettingsResponseBody struct {
+	RequestId                     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserMFAAuthenticationSettings *string `json:"UserMFAAuthenticationSettings,omitempty" xml:"UserMFAAuthenticationSettings,omitempty"`
+}
+
+func (s GetUserMFAAuthenticationSettingsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserMFAAuthenticationSettingsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserMFAAuthenticationSettingsResponseBody) SetRequestId(v string) *GetUserMFAAuthenticationSettingsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserMFAAuthenticationSettingsResponseBody) SetUserMFAAuthenticationSettings(v string) *GetUserMFAAuthenticationSettingsResponseBody {
+	s.UserMFAAuthenticationSettings = &v
+	return s
+}
+
+type GetUserMFAAuthenticationSettingsResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserMFAAuthenticationSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserMFAAuthenticationSettingsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserMFAAuthenticationSettingsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserMFAAuthenticationSettingsResponse) SetHeaders(v map[string]*string) *GetUserMFAAuthenticationSettingsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserMFAAuthenticationSettingsResponse) SetStatusCode(v int32) *GetUserMFAAuthenticationSettingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserMFAAuthenticationSettingsResponse) SetBody(v *GetUserMFAAuthenticationSettingsResponseBody) *GetUserMFAAuthenticationSettingsResponse {
 	s.Body = v
 	return s
 }
@@ -3505,8 +3841,9 @@ func (s *ListAccessAssignmentsResponseBodyAccessAssignments) SetTargetType(v str
 }
 
 type ListAccessAssignmentsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAccessAssignmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAccessAssignmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAccessAssignmentsResponse) String() string {
@@ -3519,6 +3856,11 @@ func (s ListAccessAssignmentsResponse) GoString() string {
 
 func (s *ListAccessAssignmentsResponse) SetHeaders(v map[string]*string) *ListAccessAssignmentsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAccessAssignmentsResponse) SetStatusCode(v int32) *ListAccessAssignmentsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3717,8 +4059,9 @@ func (s *ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProv
 }
 
 type ListAccessConfigurationProvisioningsResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAccessConfigurationProvisioningsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAccessConfigurationProvisioningsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAccessConfigurationProvisioningsResponse) String() string {
@@ -3731,6 +4074,11 @@ func (s ListAccessConfigurationProvisioningsResponse) GoString() string {
 
 func (s *ListAccessConfigurationProvisioningsResponse) SetHeaders(v map[string]*string) *ListAccessConfigurationProvisioningsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAccessConfigurationProvisioningsResponse) SetStatusCode(v int32) *ListAccessConfigurationProvisioningsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3887,8 +4235,9 @@ func (s *ListAccessConfigurationsResponseBodyAccessConfigurations) SetUpdateTime
 }
 
 type ListAccessConfigurationsResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAccessConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAccessConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAccessConfigurationsResponse) String() string {
@@ -3901,6 +4250,11 @@ func (s ListAccessConfigurationsResponse) GoString() string {
 
 func (s *ListAccessConfigurationsResponse) SetHeaders(v map[string]*string) *ListAccessConfigurationsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAccessConfigurationsResponse) SetStatusCode(v int32) *ListAccessConfigurationsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3980,8 +4334,9 @@ func (s *ListDirectoriesResponseBodyDirectories) SetUpdateTime(v string) *ListDi
 }
 
 type ListDirectoriesResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDirectoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDirectoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDirectoriesResponse) String() string {
@@ -3994,6 +4349,11 @@ func (s ListDirectoriesResponse) GoString() string {
 
 func (s *ListDirectoriesResponse) SetHeaders(v map[string]*string) *ListDirectoriesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListDirectoriesResponse) SetStatusCode(v int32) *ListDirectoriesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4120,8 +4480,9 @@ func (s *ListExternalSAMLIdPCertificatesResponseBodySAMLIdPCertificates) SetX509
 }
 
 type ListExternalSAMLIdPCertificatesResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListExternalSAMLIdPCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListExternalSAMLIdPCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListExternalSAMLIdPCertificatesResponse) String() string {
@@ -4134,6 +4495,11 @@ func (s ListExternalSAMLIdPCertificatesResponse) GoString() string {
 
 func (s *ListExternalSAMLIdPCertificatesResponse) SetHeaders(v map[string]*string) *ListExternalSAMLIdPCertificatesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListExternalSAMLIdPCertificatesResponse) SetStatusCode(v int32) *ListExternalSAMLIdPCertificatesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4290,8 +4656,9 @@ func (s *ListGroupMembersResponseBodyGroupMembers) SetUserName(v string) *ListGr
 }
 
 type ListGroupMembersResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListGroupMembersResponse) String() string {
@@ -4304,6 +4671,11 @@ func (s ListGroupMembersResponse) GoString() string {
 
 func (s *ListGroupMembersResponse) SetHeaders(v map[string]*string) *ListGroupMembersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListGroupMembersResponse) SetStatusCode(v int32) *ListGroupMembersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4448,8 +4820,9 @@ func (s *ListGroupsResponseBodyGroups) SetUpdateTime(v string) *ListGroupsRespon
 }
 
 type ListGroupsResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListGroupsResponse) String() string {
@@ -4462,6 +4835,11 @@ func (s ListGroupsResponse) GoString() string {
 
 func (s *ListGroupsResponse) SetHeaders(v map[string]*string) *ListGroupsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListGroupsResponse) SetStatusCode(v int32) *ListGroupsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4600,8 +4978,9 @@ func (s *ListJoinedGroupsForUserResponseBodyJoinedGroups) SetUserId(v string) *L
 }
 
 type ListJoinedGroupsForUserResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListJoinedGroupsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListJoinedGroupsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListJoinedGroupsForUserResponse) String() string {
@@ -4614,6 +4993,11 @@ func (s ListJoinedGroupsForUserResponse) GoString() string {
 
 func (s *ListJoinedGroupsForUserResponse) SetHeaders(v map[string]*string) *ListJoinedGroupsForUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListJoinedGroupsForUserResponse) SetStatusCode(v int32) *ListJoinedGroupsForUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4716,8 +5100,9 @@ func (s *ListMFADevicesForUserResponseBodyMFADevices) SetUserId(v string) *ListM
 }
 
 type ListMFADevicesForUserResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListMFADevicesForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMFADevicesForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListMFADevicesForUserResponse) String() string {
@@ -4730,6 +5115,11 @@ func (s ListMFADevicesForUserResponse) GoString() string {
 
 func (s *ListMFADevicesForUserResponse) SetHeaders(v map[string]*string) *ListMFADevicesForUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListMFADevicesForUserResponse) SetStatusCode(v int32) *ListMFADevicesForUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4832,8 +5222,9 @@ func (s *ListPermissionPoliciesInAccessConfigurationResponseBodyPermissionPolici
 }
 
 type ListPermissionPoliciesInAccessConfigurationResponse struct {
-	Headers map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPermissionPoliciesInAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPermissionPoliciesInAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListPermissionPoliciesInAccessConfigurationResponse) String() string {
@@ -4846,6 +5237,11 @@ func (s ListPermissionPoliciesInAccessConfigurationResponse) GoString() string {
 
 func (s *ListPermissionPoliciesInAccessConfigurationResponse) SetHeaders(v map[string]*string) *ListPermissionPoliciesInAccessConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListPermissionPoliciesInAccessConfigurationResponse) SetStatusCode(v int32) *ListPermissionPoliciesInAccessConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4948,8 +5344,9 @@ func (s *ListSCIMServerCredentialsResponseBodySCIMServerCredentials) SetStatus(v
 }
 
 type ListSCIMServerCredentialsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSCIMServerCredentialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSCIMServerCredentialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSCIMServerCredentialsResponse) String() string {
@@ -4962,6 +5359,11 @@ func (s ListSCIMServerCredentialsResponse) GoString() string {
 
 func (s *ListSCIMServerCredentialsResponse) SetHeaders(v map[string]*string) *ListSCIMServerCredentialsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListSCIMServerCredentialsResponse) SetStatusCode(v int32) *ListSCIMServerCredentialsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5202,8 +5604,9 @@ func (s *ListTasksResponseBodyTasks) SetTaskType(v string) *ListTasksResponseBod
 }
 
 type ListTasksResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTasksResponse) String() string {
@@ -5216,6 +5619,11 @@ func (s ListTasksResponse) GoString() string {
 
 func (s *ListTasksResponse) SetHeaders(v map[string]*string) *ListTasksResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTasksResponse) SetStatusCode(v int32) *ListTasksResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5396,8 +5804,9 @@ func (s *ListUsersResponseBodyUsers) SetUserName(v string) *ListUsersResponseBod
 }
 
 type ListUsersResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListUsersResponse) String() string {
@@ -5410,6 +5819,11 @@ func (s ListUsersResponse) GoString() string {
 
 func (s *ListUsersResponse) SetHeaders(v map[string]*string) *ListUsersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListUsersResponse) SetStatusCode(v int32) *ListUsersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5548,8 +5962,9 @@ func (s *ProvisionAccessConfigurationResponseBodyTasks) SetTaskType(v string) *P
 }
 
 type ProvisionAccessConfigurationResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ProvisionAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ProvisionAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ProvisionAccessConfigurationResponse) String() string {
@@ -5562,6 +5977,11 @@ func (s ProvisionAccessConfigurationResponse) GoString() string {
 
 func (s *ProvisionAccessConfigurationResponse) SetHeaders(v map[string]*string) *ProvisionAccessConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ProvisionAccessConfigurationResponse) SetStatusCode(v int32) *ProvisionAccessConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5611,8 +6031,9 @@ func (s *RemoveExternalSAMLIdPCertificateResponseBody) SetRequestId(v string) *R
 }
 
 type RemoveExternalSAMLIdPCertificateResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveExternalSAMLIdPCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveExternalSAMLIdPCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveExternalSAMLIdPCertificateResponse) String() string {
@@ -5625,6 +6046,11 @@ func (s RemoveExternalSAMLIdPCertificateResponse) GoString() string {
 
 func (s *RemoveExternalSAMLIdPCertificateResponse) SetHeaders(v map[string]*string) *RemoveExternalSAMLIdPCertificateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveExternalSAMLIdPCertificateResponse) SetStatusCode(v int32) *RemoveExternalSAMLIdPCertificateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5686,8 +6112,9 @@ func (s *RemovePermissionPolicyFromAccessConfigurationResponseBody) SetRequestId
 }
 
 type RemovePermissionPolicyFromAccessConfigurationResponse struct {
-	Headers map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemovePermissionPolicyFromAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemovePermissionPolicyFromAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemovePermissionPolicyFromAccessConfigurationResponse) String() string {
@@ -5700,6 +6127,11 @@ func (s RemovePermissionPolicyFromAccessConfigurationResponse) GoString() string
 
 func (s *RemovePermissionPolicyFromAccessConfigurationResponse) SetHeaders(v map[string]*string) *RemovePermissionPolicyFromAccessConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemovePermissionPolicyFromAccessConfigurationResponse) SetStatusCode(v int32) *RemovePermissionPolicyFromAccessConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5755,8 +6187,9 @@ func (s *RemoveUserFromGroupResponseBody) SetRequestId(v string) *RemoveUserFrom
 }
 
 type RemoveUserFromGroupResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveUserFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveUserFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveUserFromGroupResponse) String() string {
@@ -5769,6 +6202,11 @@ func (s RemoveUserFromGroupResponse) GoString() string {
 
 func (s *RemoveUserFromGroupResponse) SetHeaders(v map[string]*string) *RemoveUserFromGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveUserFromGroupResponse) SetStatusCode(v int32) *RemoveUserFromGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5842,8 +6280,9 @@ func (s *ResetUserPasswordResponseBody) SetRequestId(v string) *ResetUserPasswor
 }
 
 type ResetUserPasswordResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ResetUserPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResetUserPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ResetUserPasswordResponse) String() string {
@@ -5856,6 +6295,11 @@ func (s ResetUserPasswordResponse) GoString() string {
 
 func (s *ResetUserPasswordResponse) SetHeaders(v map[string]*string) *ResetUserPasswordResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ResetUserPasswordResponse) SetStatusCode(v int32) *ResetUserPasswordResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6006,8 +6450,9 @@ func (s *SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigur
 }
 
 type SetExternalSAMLIdentityProviderResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetExternalSAMLIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetExternalSAMLIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetExternalSAMLIdentityProviderResponse) String() string {
@@ -6020,6 +6465,11 @@ func (s SetExternalSAMLIdentityProviderResponse) GoString() string {
 
 func (s *SetExternalSAMLIdentityProviderResponse) SetHeaders(v map[string]*string) *SetExternalSAMLIdentityProviderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetExternalSAMLIdentityProviderResponse) SetStatusCode(v int32) *SetExternalSAMLIdentityProviderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6069,8 +6519,9 @@ func (s *SetMFAAuthenticationStatusResponseBody) SetRequestId(v string) *SetMFAA
 }
 
 type SetMFAAuthenticationStatusResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetMFAAuthenticationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetMFAAuthenticationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetMFAAuthenticationStatusResponse) String() string {
@@ -6083,6 +6534,11 @@ func (s SetMFAAuthenticationStatusResponse) GoString() string {
 
 func (s *SetMFAAuthenticationStatusResponse) SetHeaders(v map[string]*string) *SetMFAAuthenticationStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetMFAAuthenticationStatusResponse) SetStatusCode(v int32) *SetMFAAuthenticationStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6132,8 +6588,9 @@ func (s *SetSCIMSynchronizationStatusResponseBody) SetRequestId(v string) *SetSC
 }
 
 type SetSCIMSynchronizationStatusResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetSCIMSynchronizationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetSCIMSynchronizationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetSCIMSynchronizationStatusResponse) String() string {
@@ -6146,6 +6603,11 @@ func (s SetSCIMSynchronizationStatusResponse) GoString() string {
 
 func (s *SetSCIMSynchronizationStatusResponse) SetHeaders(v map[string]*string) *SetSCIMSynchronizationStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetSCIMSynchronizationStatusResponse) SetStatusCode(v int32) *SetSCIMSynchronizationStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6278,8 +6740,9 @@ func (s *UpdateAccessConfigurationResponseBodyAccessConfiguration) SetUpdateTime
 }
 
 type UpdateAccessConfigurationResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateAccessConfigurationResponse) String() string {
@@ -6292,6 +6755,11 @@ func (s UpdateAccessConfigurationResponse) GoString() string {
 
 func (s *UpdateAccessConfigurationResponse) SetHeaders(v map[string]*string) *UpdateAccessConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateAccessConfigurationResponse) SetStatusCode(v int32) *UpdateAccessConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6388,8 +6856,9 @@ func (s *UpdateDirectoryResponseBodyDirectory) SetUpdateTime(v string) *UpdateDi
 }
 
 type UpdateDirectoryResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateDirectoryResponse) String() string {
@@ -6402,6 +6871,11 @@ func (s UpdateDirectoryResponse) GoString() string {
 
 func (s *UpdateDirectoryResponse) SetHeaders(v map[string]*string) *UpdateDirectoryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateDirectoryResponse) SetStatusCode(v int32) *UpdateDirectoryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6516,8 +6990,9 @@ func (s *UpdateGroupResponseBodyGroup) SetUpdateTime(v string) *UpdateGroupRespo
 }
 
 type UpdateGroupResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateGroupResponse) String() string {
@@ -6530,6 +7005,11 @@ func (s UpdateGroupResponse) GoString() string {
 
 func (s *UpdateGroupResponse) SetHeaders(v map[string]*string) *UpdateGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateGroupResponse) SetStatusCode(v int32) *UpdateGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6591,8 +7071,9 @@ func (s *UpdateInlinePolicyForAccessConfigurationResponseBody) SetRequestId(v st
 }
 
 type UpdateInlinePolicyForAccessConfigurationResponse struct {
-	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateInlinePolicyForAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateInlinePolicyForAccessConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateInlinePolicyForAccessConfigurationResponse) String() string {
@@ -6608,7 +7089,81 @@ func (s *UpdateInlinePolicyForAccessConfigurationResponse) SetHeaders(v map[stri
 	return s
 }
 
+func (s *UpdateInlinePolicyForAccessConfigurationResponse) SetStatusCode(v int32) *UpdateInlinePolicyForAccessConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateInlinePolicyForAccessConfigurationResponse) SetBody(v *UpdateInlinePolicyForAccessConfigurationResponseBody) *UpdateInlinePolicyForAccessConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMFAAuthenticationSettingsRequest struct {
+	DirectoryId               *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	MFAAuthenticationSettings *string `json:"MFAAuthenticationSettings,omitempty" xml:"MFAAuthenticationSettings,omitempty"`
+}
+
+func (s UpdateMFAAuthenticationSettingsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMFAAuthenticationSettingsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMFAAuthenticationSettingsRequest) SetDirectoryId(v string) *UpdateMFAAuthenticationSettingsRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *UpdateMFAAuthenticationSettingsRequest) SetMFAAuthenticationSettings(v string) *UpdateMFAAuthenticationSettingsRequest {
+	s.MFAAuthenticationSettings = &v
+	return s
+}
+
+type UpdateMFAAuthenticationSettingsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateMFAAuthenticationSettingsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMFAAuthenticationSettingsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMFAAuthenticationSettingsResponseBody) SetRequestId(v string) *UpdateMFAAuthenticationSettingsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateMFAAuthenticationSettingsResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMFAAuthenticationSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMFAAuthenticationSettingsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMFAAuthenticationSettingsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMFAAuthenticationSettingsResponse) SetHeaders(v map[string]*string) *UpdateMFAAuthenticationSettingsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMFAAuthenticationSettingsResponse) SetStatusCode(v int32) *UpdateMFAAuthenticationSettingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMFAAuthenticationSettingsResponse) SetBody(v *UpdateMFAAuthenticationSettingsResponseBody) *UpdateMFAAuthenticationSettingsResponse {
 	s.Body = v
 	return s
 }
@@ -6713,8 +7268,9 @@ func (s *UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential) SetSt
 }
 
 type UpdateSCIMServerCredentialStatusResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateSCIMServerCredentialStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSCIMServerCredentialStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateSCIMServerCredentialStatusResponse) String() string {
@@ -6727,6 +7283,11 @@ func (s UpdateSCIMServerCredentialStatusResponse) GoString() string {
 
 func (s *UpdateSCIMServerCredentialStatusResponse) SetHeaders(v map[string]*string) *UpdateSCIMServerCredentialStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateSCIMServerCredentialStatusResponse) SetStatusCode(v int32) *UpdateSCIMServerCredentialStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6889,8 +7450,9 @@ func (s *UpdateUserResponseBodyUser) SetUserName(v string) *UpdateUserResponseBo
 }
 
 type UpdateUserResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateUserResponse) String() string {
@@ -6906,7 +7468,87 @@ func (s *UpdateUserResponse) SetHeaders(v map[string]*string) *UpdateUserRespons
 	return s
 }
 
+func (s *UpdateUserResponse) SetStatusCode(v int32) *UpdateUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateUserResponse) SetBody(v *UpdateUserResponseBody) *UpdateUserResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateUserMFAAuthenticationSettingsRequest struct {
+	DirectoryId                   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	UserId                        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserMFAAuthenticationSettings *string `json:"UserMFAAuthenticationSettings,omitempty" xml:"UserMFAAuthenticationSettings,omitempty"`
+}
+
+func (s UpdateUserMFAAuthenticationSettingsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserMFAAuthenticationSettingsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserMFAAuthenticationSettingsRequest) SetDirectoryId(v string) *UpdateUserMFAAuthenticationSettingsRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *UpdateUserMFAAuthenticationSettingsRequest) SetUserId(v string) *UpdateUserMFAAuthenticationSettingsRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *UpdateUserMFAAuthenticationSettingsRequest) SetUserMFAAuthenticationSettings(v string) *UpdateUserMFAAuthenticationSettingsRequest {
+	s.UserMFAAuthenticationSettings = &v
+	return s
+}
+
+type UpdateUserMFAAuthenticationSettingsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateUserMFAAuthenticationSettingsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserMFAAuthenticationSettingsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserMFAAuthenticationSettingsResponseBody) SetRequestId(v string) *UpdateUserMFAAuthenticationSettingsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateUserMFAAuthenticationSettingsResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateUserMFAAuthenticationSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateUserMFAAuthenticationSettingsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserMFAAuthenticationSettingsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserMFAAuthenticationSettingsResponse) SetHeaders(v map[string]*string) *UpdateUserMFAAuthenticationSettingsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUserMFAAuthenticationSettingsResponse) SetStatusCode(v int32) *UpdateUserMFAAuthenticationSettingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateUserMFAAuthenticationSettingsResponse) SetBody(v *UpdateUserMFAAuthenticationSettingsResponseBody) *UpdateUserMFAAuthenticationSettingsResponse {
 	s.Body = v
 	return s
 }
@@ -6958,8 +7600,9 @@ func (s *UpdateUserStatusResponseBody) SetRequestId(v string) *UpdateUserStatusR
 }
 
 type UpdateUserStatusResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateUserStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateUserStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateUserStatusResponse) String() string {
@@ -6972,6 +7615,11 @@ func (s UpdateUserStatusResponse) GoString() string {
 
 func (s *UpdateUserStatusResponse) SetHeaders(v map[string]*string) *UpdateUserStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateUserStatusResponse) SetStatusCode(v int32) *UpdateUserStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7033,11 +7681,16 @@ func (client *Client) AddExternalSAMLIdPCertificateWithOptions(request *AddExter
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["X509Certificate"] = request.X509Certificate
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.X509Certificate)) {
+		query["X509Certificate"] = request.X509Certificate
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddExternalSAMLIdPCertificate"),
@@ -7047,7 +7700,7 @@ func (client *Client) AddExternalSAMLIdPCertificateWithOptions(request *AddExter
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddExternalSAMLIdPCertificateResponse{}
@@ -7076,14 +7729,28 @@ func (client *Client) AddPermissionPolicyToAccessConfigurationWithOptions(reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DirectoryId"] = request.DirectoryId
-	query["InlinePolicyDocument"] = request.InlinePolicyDocument
-	query["PermissionPolicyName"] = request.PermissionPolicyName
-	query["PermissionPolicyType"] = request.PermissionPolicyType
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InlinePolicyDocument)) {
+		query["InlinePolicyDocument"] = request.InlinePolicyDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionPolicyName)) {
+		query["PermissionPolicyName"] = request.PermissionPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionPolicyType)) {
+		query["PermissionPolicyType"] = request.PermissionPolicyType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddPermissionPolicyToAccessConfiguration"),
@@ -7093,7 +7760,7 @@ func (client *Client) AddPermissionPolicyToAccessConfigurationWithOptions(reques
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddPermissionPolicyToAccessConfigurationResponse{}
@@ -7122,12 +7789,20 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["GroupId"] = request.GroupId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddUserToGroup"),
@@ -7137,7 +7812,7 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddUserToGroupResponse{}
@@ -7166,10 +7841,12 @@ func (client *Client) ClearExternalSAMLIdentityProviderWithOptions(request *Clea
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ClearExternalSAMLIdentityProvider"),
@@ -7179,7 +7856,7 @@ func (client *Client) ClearExternalSAMLIdentityProviderWithOptions(request *Clea
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ClearExternalSAMLIdentityProviderResponse{}
@@ -7208,15 +7885,32 @@ func (client *Client) CreateAccessAssignmentWithOptions(request *CreateAccessAss
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DirectoryId"] = request.DirectoryId
-	query["PrincipalId"] = request.PrincipalId
-	query["PrincipalType"] = request.PrincipalType
-	query["TargetId"] = request.TargetId
-	query["TargetType"] = request.TargetType
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalId)) {
+		query["PrincipalId"] = request.PrincipalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalType)) {
+		query["PrincipalType"] = request.PrincipalType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAccessAssignment"),
@@ -7226,7 +7920,7 @@ func (client *Client) CreateAccessAssignmentWithOptions(request *CreateAccessAss
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAccessAssignmentResponse{}
@@ -7255,14 +7949,28 @@ func (client *Client) CreateAccessConfigurationWithOptions(request *CreateAccess
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationName"] = request.AccessConfigurationName
-	query["Description"] = request.Description
-	query["DirectoryId"] = request.DirectoryId
-	query["RelayState"] = request.RelayState
-	query["SessionDuration"] = request.SessionDuration
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationName)) {
+		query["AccessConfigurationName"] = request.AccessConfigurationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelayState)) {
+		query["RelayState"] = request.RelayState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionDuration)) {
+		query["SessionDuration"] = request.SessionDuration
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAccessConfiguration"),
@@ -7272,7 +7980,7 @@ func (client *Client) CreateAccessConfigurationWithOptions(request *CreateAccess
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAccessConfigurationResponse{}
@@ -7301,10 +8009,12 @@ func (client *Client) CreateDirectoryWithOptions(request *CreateDirectoryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryName"] = request.DirectoryName
+	if !tea.BoolValue(util.IsUnset(request.DirectoryName)) {
+		query["DirectoryName"] = request.DirectoryName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDirectory"),
@@ -7314,7 +8024,7 @@ func (client *Client) CreateDirectoryWithOptions(request *CreateDirectoryRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDirectoryResponse{}
@@ -7343,12 +8053,20 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["DirectoryId"] = request.DirectoryId
-	query["GroupName"] = request.GroupName
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateGroup"),
@@ -7358,7 +8076,7 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGroupResponse{}
@@ -7387,10 +8105,12 @@ func (client *Client) CreateSCIMServerCredentialWithOptions(request *CreateSCIMS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSCIMServerCredential"),
@@ -7400,7 +8120,7 @@ func (client *Client) CreateSCIMServerCredentialWithOptions(request *CreateSCIMS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSCIMServerCredentialResponse{}
@@ -7429,17 +8149,40 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["DirectoryId"] = request.DirectoryId
-	query["DisplayName"] = request.DisplayName
-	query["Email"] = request.Email
-	query["FirstName"] = request.FirstName
-	query["LastName"] = request.LastName
-	query["Status"] = request.Status
-	query["UserName"] = request.UserName
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirstName)) {
+		query["FirstName"] = request.FirstName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LastName)) {
+		query["LastName"] = request.LastName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateUser"),
@@ -7449,7 +8192,7 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUserResponse{}
@@ -7478,16 +8221,36 @@ func (client *Client) DeleteAccessAssignmentWithOptions(request *DeleteAccessAss
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DeprovisionStrategy"] = request.DeprovisionStrategy
-	query["DirectoryId"] = request.DirectoryId
-	query["PrincipalId"] = request.PrincipalId
-	query["PrincipalType"] = request.PrincipalType
-	query["TargetId"] = request.TargetId
-	query["TargetType"] = request.TargetType
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeprovisionStrategy)) {
+		query["DeprovisionStrategy"] = request.DeprovisionStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalId)) {
+		query["PrincipalId"] = request.PrincipalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalType)) {
+		query["PrincipalType"] = request.PrincipalType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAccessAssignment"),
@@ -7497,7 +8260,7 @@ func (client *Client) DeleteAccessAssignmentWithOptions(request *DeleteAccessAss
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAccessAssignmentResponse{}
@@ -7526,12 +8289,20 @@ func (client *Client) DeleteAccessConfigurationWithOptions(request *DeleteAccess
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DirectoryId"] = request.DirectoryId
-	query["ForceRemovePermissionPolicies"] = request.ForceRemovePermissionPolicies
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceRemovePermissionPolicies)) {
+		query["ForceRemovePermissionPolicies"] = request.ForceRemovePermissionPolicies
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAccessConfiguration"),
@@ -7541,7 +8312,7 @@ func (client *Client) DeleteAccessConfigurationWithOptions(request *DeleteAccess
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAccessConfigurationResponse{}
@@ -7570,10 +8341,12 @@ func (client *Client) DeleteDirectoryWithOptions(request *DeleteDirectoryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDirectory"),
@@ -7583,7 +8356,7 @@ func (client *Client) DeleteDirectoryWithOptions(request *DeleteDirectoryRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDirectoryResponse{}
@@ -7612,11 +8385,16 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["GroupId"] = request.GroupId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteGroup"),
@@ -7626,7 +8404,7 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGroupResponse{}
@@ -7655,12 +8433,20 @@ func (client *Client) DeleteMFADeviceForUserWithOptions(request *DeleteMFADevice
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["MFADeviceId"] = request.MFADeviceId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MFADeviceId)) {
+		query["MFADeviceId"] = request.MFADeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMFADeviceForUser"),
@@ -7670,7 +8456,7 @@ func (client *Client) DeleteMFADeviceForUserWithOptions(request *DeleteMFADevice
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMFADeviceForUserResponse{}
@@ -7699,11 +8485,16 @@ func (client *Client) DeleteSCIMServerCredentialWithOptions(request *DeleteSCIMS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CredentialId"] = request.CredentialId
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.CredentialId)) {
+		query["CredentialId"] = request.CredentialId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSCIMServerCredential"),
@@ -7713,7 +8504,7 @@ func (client *Client) DeleteSCIMServerCredentialWithOptions(request *DeleteSCIMS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSCIMServerCredentialResponse{}
@@ -7742,11 +8533,16 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteUser"),
@@ -7756,7 +8552,7 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteUserResponse{}
@@ -7785,13 +8581,24 @@ func (client *Client) DeprovisionAccessConfigurationWithOptions(request *Deprovi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DirectoryId"] = request.DirectoryId
-	query["TargetId"] = request.TargetId
-	query["TargetType"] = request.TargetType
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeprovisionAccessConfiguration"),
@@ -7801,7 +8608,7 @@ func (client *Client) DeprovisionAccessConfigurationWithOptions(request *Deprovi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeprovisionAccessConfigurationResponse{}
@@ -7834,7 +8641,7 @@ func (client *Client) DisableServiceWithOptions(runtime *util.RuntimeOptions) (_
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DisableServiceResponse{}
@@ -7867,7 +8674,7 @@ func (client *Client) EnableServiceWithOptions(runtime *util.RuntimeOptions) (_r
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableServiceResponse{}
@@ -7896,11 +8703,16 @@ func (client *Client) GetAccessConfigurationWithOptions(request *GetAccessConfig
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetAccessConfiguration"),
@@ -7910,7 +8722,7 @@ func (client *Client) GetAccessConfigurationWithOptions(request *GetAccessConfig
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAccessConfigurationResponse{}
@@ -7939,10 +8751,12 @@ func (client *Client) GetDirectoryWithOptions(request *GetDirectoryRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDirectory"),
@@ -7952,7 +8766,7 @@ func (client *Client) GetDirectoryWithOptions(request *GetDirectoryRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDirectoryResponse{}
@@ -7981,10 +8795,12 @@ func (client *Client) GetDirectorySAMLServiceProviderInfoWithOptions(request *Ge
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDirectorySAMLServiceProviderInfo"),
@@ -7994,7 +8810,7 @@ func (client *Client) GetDirectorySAMLServiceProviderInfoWithOptions(request *Ge
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDirectorySAMLServiceProviderInfoResponse{}
@@ -8023,10 +8839,12 @@ func (client *Client) GetDirectoryStatisticsWithOptions(request *GetDirectorySta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDirectoryStatistics"),
@@ -8036,7 +8854,7 @@ func (client *Client) GetDirectoryStatisticsWithOptions(request *GetDirectorySta
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDirectoryStatisticsResponse{}
@@ -8065,10 +8883,12 @@ func (client *Client) GetExternalSAMLIdentityProviderWithOptions(request *GetExt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetExternalSAMLIdentityProvider"),
@@ -8078,7 +8898,7 @@ func (client *Client) GetExternalSAMLIdentityProviderWithOptions(request *GetExt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetExternalSAMLIdentityProviderResponse{}
@@ -8107,11 +8927,16 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["GroupId"] = request.GroupId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetGroup"),
@@ -8121,7 +8946,7 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *uti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetGroupResponse{}
@@ -8144,16 +8969,62 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 	return _result, _err
 }
 
+func (client *Client) GetMFAAuthenticationSettingsWithOptions(request *GetMFAAuthenticationSettingsRequest, runtime *util.RuntimeOptions) (_result *GetMFAAuthenticationSettingsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMFAAuthenticationSettings"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMFAAuthenticationSettingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMFAAuthenticationSettings(request *GetMFAAuthenticationSettingsRequest) (_result *GetMFAAuthenticationSettingsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMFAAuthenticationSettingsResponse{}
+	_body, _err := client.GetMFAAuthenticationSettingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetMFAAuthenticationStatusWithOptions(request *GetMFAAuthenticationStatusRequest, runtime *util.RuntimeOptions) (_result *GetMFAAuthenticationStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMFAAuthenticationStatus"),
@@ -8163,7 +9034,7 @@ func (client *Client) GetMFAAuthenticationStatusWithOptions(request *GetMFAAuthe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMFAAuthenticationStatusResponse{}
@@ -8192,10 +9063,12 @@ func (client *Client) GetSCIMSynchronizationStatusWithOptions(request *GetSCIMSy
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSCIMSynchronizationStatus"),
@@ -8205,7 +9078,7 @@ func (client *Client) GetSCIMSynchronizationStatusWithOptions(request *GetSCIMSy
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetSCIMSynchronizationStatusResponse{}
@@ -8238,7 +9111,7 @@ func (client *Client) GetServiceStatusWithOptions(runtime *util.RuntimeOptions) 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetServiceStatusResponse{}
@@ -8267,11 +9140,16 @@ func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTask"),
@@ -8281,7 +9159,7 @@ func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTaskResponse{}
@@ -8310,11 +9188,16 @@ func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTaskStatus"),
@@ -8324,7 +9207,7 @@ func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTaskStatusResponse{}
@@ -8353,11 +9236,16 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetUser"),
@@ -8367,7 +9255,7 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetUserResponse{}
@@ -8390,23 +9278,94 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	return _result, _err
 }
 
+func (client *Client) GetUserMFAAuthenticationSettingsWithOptions(request *GetUserMFAAuthenticationSettingsRequest, runtime *util.RuntimeOptions) (_result *GetUserMFAAuthenticationSettingsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserMFAAuthenticationSettings"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserMFAAuthenticationSettingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserMFAAuthenticationSettings(request *GetUserMFAAuthenticationSettingsRequest) (_result *GetUserMFAAuthenticationSettingsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserMFAAuthenticationSettingsResponse{}
+	_body, _err := client.GetUserMFAAuthenticationSettingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListAccessAssignmentsWithOptions(request *ListAccessAssignmentsRequest, runtime *util.RuntimeOptions) (_result *ListAccessAssignmentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DirectoryId"] = request.DirectoryId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["PrincipalId"] = request.PrincipalId
-	query["PrincipalType"] = request.PrincipalType
-	query["TargetId"] = request.TargetId
-	query["TargetType"] = request.TargetType
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalId)) {
+		query["PrincipalId"] = request.PrincipalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalType)) {
+		query["PrincipalType"] = request.PrincipalType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAccessAssignments"),
@@ -8416,7 +9375,7 @@ func (client *Client) ListAccessAssignmentsWithOptions(request *ListAccessAssign
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAccessAssignmentsResponse{}
@@ -8445,16 +9404,36 @@ func (client *Client) ListAccessConfigurationProvisioningsWithOptions(request *L
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DirectoryId"] = request.DirectoryId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ProvisioningStatus"] = request.ProvisioningStatus
-	query["TargetId"] = request.TargetId
-	query["TargetType"] = request.TargetType
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProvisioningStatus)) {
+		query["ProvisioningStatus"] = request.ProvisioningStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAccessConfigurationProvisionings"),
@@ -8464,7 +9443,7 @@ func (client *Client) ListAccessConfigurationProvisioningsWithOptions(request *L
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAccessConfigurationProvisioningsResponse{}
@@ -8493,14 +9472,28 @@ func (client *Client) ListAccessConfigurationsWithOptions(request *ListAccessCon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["Filter"] = request.Filter
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["StatusNotifications"] = request.StatusNotifications
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusNotifications)) {
+		query["StatusNotifications"] = request.StatusNotifications
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAccessConfigurations"),
@@ -8510,7 +9503,7 @@ func (client *Client) ListAccessConfigurationsWithOptions(request *ListAccessCon
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAccessConfigurationsResponse{}
@@ -8543,7 +9536,7 @@ func (client *Client) ListDirectoriesWithOptions(runtime *util.RuntimeOptions) (
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDirectoriesResponse{}
@@ -8572,10 +9565,12 @@ func (client *Client) ListExternalSAMLIdPCertificatesWithOptions(request *ListEx
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListExternalSAMLIdPCertificates"),
@@ -8585,7 +9580,7 @@ func (client *Client) ListExternalSAMLIdPCertificatesWithOptions(request *ListEx
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListExternalSAMLIdPCertificatesResponse{}
@@ -8614,13 +9609,24 @@ func (client *Client) ListGroupMembersWithOptions(request *ListGroupMembersReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["GroupId"] = request.GroupId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListGroupMembers"),
@@ -8630,7 +9636,7 @@ func (client *Client) ListGroupMembersWithOptions(request *ListGroupMembersReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListGroupMembersResponse{}
@@ -8659,14 +9665,28 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["Filter"] = request.Filter
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ProvisionType"] = request.ProvisionType
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProvisionType)) {
+		query["ProvisionType"] = request.ProvisionType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListGroups"),
@@ -8676,7 +9696,7 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListGroupsResponse{}
@@ -8705,13 +9725,24 @@ func (client *Client) ListJoinedGroupsForUserWithOptions(request *ListJoinedGrou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListJoinedGroupsForUser"),
@@ -8721,7 +9752,7 @@ func (client *Client) ListJoinedGroupsForUserWithOptions(request *ListJoinedGrou
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListJoinedGroupsForUserResponse{}
@@ -8750,11 +9781,16 @@ func (client *Client) ListMFADevicesForUserWithOptions(request *ListMFADevicesFo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListMFADevicesForUser"),
@@ -8764,7 +9800,7 @@ func (client *Client) ListMFADevicesForUserWithOptions(request *ListMFADevicesFo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListMFADevicesForUserResponse{}
@@ -8793,12 +9829,20 @@ func (client *Client) ListPermissionPoliciesInAccessConfigurationWithOptions(req
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DirectoryId"] = request.DirectoryId
-	query["PermissionPolicyType"] = request.PermissionPolicyType
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionPolicyType)) {
+		query["PermissionPolicyType"] = request.PermissionPolicyType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListPermissionPoliciesInAccessConfiguration"),
@@ -8808,7 +9852,7 @@ func (client *Client) ListPermissionPoliciesInAccessConfigurationWithOptions(req
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPermissionPoliciesInAccessConfigurationResponse{}
@@ -8837,10 +9881,12 @@ func (client *Client) ListSCIMServerCredentialsWithOptions(request *ListSCIMServ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListSCIMServerCredentials"),
@@ -8850,7 +9896,7 @@ func (client *Client) ListSCIMServerCredentialsWithOptions(request *ListSCIMServ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSCIMServerCredentialsResponse{}
@@ -8879,20 +9925,52 @@ func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DirectoryId"] = request.DirectoryId
-	query["Filter"] = request.Filter
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["PrincipalId"] = request.PrincipalId
-	query["PrincipalType"] = request.PrincipalType
-	query["Status"] = request.Status
-	query["TargetId"] = request.TargetId
-	query["TargetType"] = request.TargetType
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalId)) {
+		query["PrincipalId"] = request.PrincipalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalType)) {
+		query["PrincipalType"] = request.PrincipalType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTasks"),
@@ -8902,7 +9980,7 @@ func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTasksResponse{}
@@ -8931,15 +10009,32 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["Filter"] = request.Filter
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ProvisionType"] = request.ProvisionType
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProvisionType)) {
+		query["ProvisionType"] = request.ProvisionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListUsers"),
@@ -8949,7 +10044,7 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListUsersResponse{}
@@ -8978,13 +10073,24 @@ func (client *Client) ProvisionAccessConfigurationWithOptions(request *Provision
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DirectoryId"] = request.DirectoryId
-	query["TargetId"] = request.TargetId
-	query["TargetType"] = request.TargetType
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ProvisionAccessConfiguration"),
@@ -8994,7 +10100,7 @@ func (client *Client) ProvisionAccessConfigurationWithOptions(request *Provision
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ProvisionAccessConfigurationResponse{}
@@ -9023,11 +10129,16 @@ func (client *Client) RemoveExternalSAMLIdPCertificateWithOptions(request *Remov
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertificateId"] = request.CertificateId
-	query["DirectoryId"] = request.DirectoryId
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveExternalSAMLIdPCertificate"),
@@ -9037,7 +10148,7 @@ func (client *Client) RemoveExternalSAMLIdPCertificateWithOptions(request *Remov
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveExternalSAMLIdPCertificateResponse{}
@@ -9066,13 +10177,24 @@ func (client *Client) RemovePermissionPolicyFromAccessConfigurationWithOptions(r
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DirectoryId"] = request.DirectoryId
-	query["PermissionPolicyName"] = request.PermissionPolicyName
-	query["PermissionPolicyType"] = request.PermissionPolicyType
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionPolicyName)) {
+		query["PermissionPolicyName"] = request.PermissionPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionPolicyType)) {
+		query["PermissionPolicyType"] = request.PermissionPolicyType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemovePermissionPolicyFromAccessConfiguration"),
@@ -9082,7 +10204,7 @@ func (client *Client) RemovePermissionPolicyFromAccessConfigurationWithOptions(r
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemovePermissionPolicyFromAccessConfigurationResponse{}
@@ -9111,12 +10233,20 @@ func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGrou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["GroupId"] = request.GroupId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveUserFromGroup"),
@@ -9126,7 +10256,7 @@ func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGrou
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveUserFromGroupResponse{}
@@ -9155,14 +10285,28 @@ func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["GenerateRandomPassword"] = request.GenerateRandomPassword
-	query["Password"] = request.Password
-	query["RequirePasswordResetForNextLogin"] = request.RequirePasswordResetForNextLogin
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GenerateRandomPassword)) {
+		query["GenerateRandomPassword"] = request.GenerateRandomPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequirePasswordResetForNextLogin)) {
+		query["RequirePasswordResetForNextLogin"] = request.RequirePasswordResetForNextLogin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ResetUserPassword"),
@@ -9172,7 +10316,7 @@ func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ResetUserPasswordResponse{}
@@ -9201,16 +10345,36 @@ func (client *Client) SetExternalSAMLIdentityProviderWithOptions(request *SetExt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["EncodedMetadataDocument"] = request.EncodedMetadataDocument
-	query["EntityId"] = request.EntityId
-	query["LoginUrl"] = request.LoginUrl
-	query["SSOStatus"] = request.SSOStatus
-	query["WantRequestSigned"] = request.WantRequestSigned
-	query["X509Certificate"] = request.X509Certificate
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncodedMetadataDocument)) {
+		query["EncodedMetadataDocument"] = request.EncodedMetadataDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginUrl)) {
+		query["LoginUrl"] = request.LoginUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSOStatus)) {
+		query["SSOStatus"] = request.SSOStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WantRequestSigned)) {
+		query["WantRequestSigned"] = request.WantRequestSigned
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.X509Certificate)) {
+		query["X509Certificate"] = request.X509Certificate
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetExternalSAMLIdentityProvider"),
@@ -9220,7 +10384,7 @@ func (client *Client) SetExternalSAMLIdentityProviderWithOptions(request *SetExt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetExternalSAMLIdentityProviderResponse{}
@@ -9249,11 +10413,16 @@ func (client *Client) SetMFAAuthenticationStatusWithOptions(request *SetMFAAuthe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["MFAAuthenticationStatus"] = request.MFAAuthenticationStatus
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MFAAuthenticationStatus)) {
+		query["MFAAuthenticationStatus"] = request.MFAAuthenticationStatus
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetMFAAuthenticationStatus"),
@@ -9263,7 +10432,7 @@ func (client *Client) SetMFAAuthenticationStatusWithOptions(request *SetMFAAuthe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetMFAAuthenticationStatusResponse{}
@@ -9292,11 +10461,16 @@ func (client *Client) SetSCIMSynchronizationStatusWithOptions(request *SetSCIMSy
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["SCIMSynchronizationStatus"] = request.SCIMSynchronizationStatus
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SCIMSynchronizationStatus)) {
+		query["SCIMSynchronizationStatus"] = request.SCIMSynchronizationStatus
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetSCIMSynchronizationStatus"),
@@ -9306,7 +10480,7 @@ func (client *Client) SetSCIMSynchronizationStatusWithOptions(request *SetSCIMSy
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetSCIMSynchronizationStatusResponse{}
@@ -9335,14 +10509,28 @@ func (client *Client) UpdateAccessConfigurationWithOptions(request *UpdateAccess
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DirectoryId"] = request.DirectoryId
-	query["NewDescription"] = request.NewDescription
-	query["NewRelayState"] = request.NewRelayState
-	query["NewSessionDuration"] = request.NewSessionDuration
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDescription)) {
+		query["NewDescription"] = request.NewDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewRelayState)) {
+		query["NewRelayState"] = request.NewRelayState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewSessionDuration)) {
+		query["NewSessionDuration"] = request.NewSessionDuration
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAccessConfiguration"),
@@ -9352,7 +10540,7 @@ func (client *Client) UpdateAccessConfigurationWithOptions(request *UpdateAccess
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAccessConfigurationResponse{}
@@ -9381,11 +10569,16 @@ func (client *Client) UpdateDirectoryWithOptions(request *UpdateDirectoryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["NewDirectoryName"] = request.NewDirectoryName
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDirectoryName)) {
+		query["NewDirectoryName"] = request.NewDirectoryName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateDirectory"),
@@ -9395,7 +10588,7 @@ func (client *Client) UpdateDirectoryWithOptions(request *UpdateDirectoryRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateDirectoryResponse{}
@@ -9424,13 +10617,24 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["GroupId"] = request.GroupId
-	query["NewDescription"] = request.NewDescription
-	query["NewGroupName"] = request.NewGroupName
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDescription)) {
+		query["NewDescription"] = request.NewDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewGroupName)) {
+		query["NewGroupName"] = request.NewGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateGroup"),
@@ -9440,7 +10644,7 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateGroupResponse{}
@@ -9469,13 +10673,24 @@ func (client *Client) UpdateInlinePolicyForAccessConfigurationWithOptions(reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessConfigurationId"] = request.AccessConfigurationId
-	query["DirectoryId"] = request.DirectoryId
-	query["InlinePolicyName"] = request.InlinePolicyName
-	query["NewInlinePolicyDocument"] = request.NewInlinePolicyDocument
+	if !tea.BoolValue(util.IsUnset(request.AccessConfigurationId)) {
+		query["AccessConfigurationId"] = request.AccessConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InlinePolicyName)) {
+		query["InlinePolicyName"] = request.InlinePolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewInlinePolicyDocument)) {
+		query["NewInlinePolicyDocument"] = request.NewInlinePolicyDocument
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateInlinePolicyForAccessConfiguration"),
@@ -9485,7 +10700,7 @@ func (client *Client) UpdateInlinePolicyForAccessConfigurationWithOptions(reques
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateInlinePolicyForAccessConfigurationResponse{}
@@ -9508,18 +10723,74 @@ func (client *Client) UpdateInlinePolicyForAccessConfiguration(request *UpdateIn
 	return _result, _err
 }
 
+func (client *Client) UpdateMFAAuthenticationSettingsWithOptions(request *UpdateMFAAuthenticationSettingsRequest, runtime *util.RuntimeOptions) (_result *UpdateMFAAuthenticationSettingsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MFAAuthenticationSettings)) {
+		query["MFAAuthenticationSettings"] = request.MFAAuthenticationSettings
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMFAAuthenticationSettings"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMFAAuthenticationSettingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMFAAuthenticationSettings(request *UpdateMFAAuthenticationSettingsRequest) (_result *UpdateMFAAuthenticationSettingsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMFAAuthenticationSettingsResponse{}
+	_body, _err := client.UpdateMFAAuthenticationSettingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateSCIMServerCredentialStatusWithOptions(request *UpdateSCIMServerCredentialStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateSCIMServerCredentialStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CredentialId"] = request.CredentialId
-	query["DirectoryId"] = request.DirectoryId
-	query["NewStatus"] = request.NewStatus
+	if !tea.BoolValue(util.IsUnset(request.CredentialId)) {
+		query["CredentialId"] = request.CredentialId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewStatus)) {
+		query["NewStatus"] = request.NewStatus
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateSCIMServerCredentialStatus"),
@@ -9529,7 +10800,7 @@ func (client *Client) UpdateSCIMServerCredentialStatusWithOptions(request *Updat
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSCIMServerCredentialStatusResponse{}
@@ -9558,16 +10829,36 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["NewDescription"] = request.NewDescription
-	query["NewDisplayName"] = request.NewDisplayName
-	query["NewEmail"] = request.NewEmail
-	query["NewFirstName"] = request.NewFirstName
-	query["NewLastName"] = request.NewLastName
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDescription)) {
+		query["NewDescription"] = request.NewDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDisplayName)) {
+		query["NewDisplayName"] = request.NewDisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewEmail)) {
+		query["NewEmail"] = request.NewEmail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewFirstName)) {
+		query["NewFirstName"] = request.NewFirstName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewLastName)) {
+		query["NewLastName"] = request.NewLastName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateUser"),
@@ -9577,7 +10868,7 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateUserResponse{}
@@ -9600,18 +10891,78 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 	return _result, _err
 }
 
+func (client *Client) UpdateUserMFAAuthenticationSettingsWithOptions(request *UpdateUserMFAAuthenticationSettingsRequest, runtime *util.RuntimeOptions) (_result *UpdateUserMFAAuthenticationSettingsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserMFAAuthenticationSettings)) {
+		query["UserMFAAuthenticationSettings"] = request.UserMFAAuthenticationSettings
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUserMFAAuthenticationSettings"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateUserMFAAuthenticationSettingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateUserMFAAuthenticationSettings(request *UpdateUserMFAAuthenticationSettingsRequest) (_result *UpdateUserMFAAuthenticationSettingsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUserMFAAuthenticationSettingsResponse{}
+	_body, _err := client.UpdateUserMFAAuthenticationSettingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateUserStatusWithOptions(request *UpdateUserStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateUserStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DirectoryId"] = request.DirectoryId
-	query["NewStatus"] = request.NewStatus
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewStatus)) {
+		query["NewStatus"] = request.NewStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateUserStatus"),
@@ -9621,7 +10972,7 @@ func (client *Client) UpdateUserStatusWithOptions(request *UpdateUserStatusReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateUserStatusResponse{}
