@@ -20732,6 +20732,87 @@ func (s *SwitchSyntheticTaskStatusResponse) SetBody(v *SwitchSyntheticTaskStatus
 	return s
 }
 
+type SyncRecordingRulesRequest struct {
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TargetClusters *string `json:"TargetClusters,omitempty" xml:"TargetClusters,omitempty"`
+}
+
+func (s SyncRecordingRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncRecordingRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncRecordingRulesRequest) SetClusterId(v string) *SyncRecordingRulesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *SyncRecordingRulesRequest) SetRegionId(v string) *SyncRecordingRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SyncRecordingRulesRequest) SetTargetClusters(v string) *SyncRecordingRulesRequest {
+	s.TargetClusters = &v
+	return s
+}
+
+type SyncRecordingRulesResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SyncRecordingRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncRecordingRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncRecordingRulesResponseBody) SetData(v string) *SyncRecordingRulesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SyncRecordingRulesResponseBody) SetRequestId(v string) *SyncRecordingRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SyncRecordingRulesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SyncRecordingRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SyncRecordingRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncRecordingRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncRecordingRulesResponse) SetHeaders(v map[string]*string) *SyncRecordingRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncRecordingRulesResponse) SetStatusCode(v int32) *SyncRecordingRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SyncRecordingRulesResponse) SetBody(v *SyncRecordingRulesResponseBody) *SyncRecordingRulesResponse {
+	s.Body = v
+	return s
+}
+
 type TurnOnSecondSwitchRequest struct {
 	Pid              *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	ProxyUserId      *string `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
@@ -29569,6 +29650,58 @@ func (client *Client) SwitchSyntheticTaskStatus(request *SwitchSyntheticTaskStat
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchSyntheticTaskStatusResponse{}
 	_body, _err := client.SwitchSyntheticTaskStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SyncRecordingRulesWithOptions(request *SyncRecordingRulesRequest, runtime *util.RuntimeOptions) (_result *SyncRecordingRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetClusters)) {
+		query["TargetClusters"] = request.TargetClusters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SyncRecordingRules"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SyncRecordingRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SyncRecordingRules(request *SyncRecordingRulesRequest) (_result *SyncRecordingRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SyncRecordingRulesResponse{}
+	_body, _err := client.SyncRecordingRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
