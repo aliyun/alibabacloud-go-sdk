@@ -87,93 +87,6 @@ func (s *CancelReserveTaskResponse) SetBody(v *CancelReserveTaskResponseBody) *C
 	return s
 }
 
-type CancelUploadTaskRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-}
-
-func (s CancelUploadTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelUploadTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CancelUploadTaskRequest) SetAppId(v string) *CancelUploadTaskRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *CancelUploadTaskRequest) SetVersionId(v string) *CancelUploadTaskRequest {
-	s.VersionId = &v
-	return s
-}
-
-type CancelUploadTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CancelUploadTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelUploadTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CancelUploadTaskResponseBody) SetCode(v string) *CancelUploadTaskResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CancelUploadTaskResponseBody) SetData(v bool) *CancelUploadTaskResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CancelUploadTaskResponseBody) SetMessage(v string) *CancelUploadTaskResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CancelUploadTaskResponseBody) SetRequestId(v string) *CancelUploadTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CancelUploadTaskResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelUploadTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CancelUploadTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelUploadTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CancelUploadTaskResponse) SetHeaders(v map[string]*string) *CancelUploadTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CancelUploadTaskResponse) SetStatusCode(v int32) *CancelUploadTaskResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CancelUploadTaskResponse) SetBody(v *CancelUploadTaskResponseBody) *CancelUploadTaskResponse {
-	s.Body = v
-	return s
-}
-
 type CreateAdaptationRequest struct {
 	AdaptTarget  *CreateAdaptationRequestAdaptTarget `json:"AdaptTarget,omitempty" xml:"AdaptTarget,omitempty" type:"Struct"`
 	AppVersionId *string                             `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
@@ -593,12 +506,14 @@ func (s *CreateAppSessionBatchSyncRequest) SetBatchId(v string) *CreateAppSessio
 }
 
 type CreateAppSessionBatchSyncRequestAppInfos struct {
+	AdapterFileId     *string                                                    `json:"AdapterFileId,omitempty" xml:"AdapterFileId,omitempty"`
 	AppId             *string                                                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppVersion        *string                                                    `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	ClientIp          *string                                                    `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	CustomUserId      *string                                                    `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
 	CustomerSessionId *string                                                    `json:"CustomerSessionId,omitempty" xml:"CustomerSessionId,omitempty"`
 	DistrictId        *string                                                    `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	MatchRules        []*CreateAppSessionBatchSyncRequestAppInfosMatchRules      `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
 	ProjectId         *string                                                    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	StartParameters   []*CreateAppSessionBatchSyncRequestAppInfosStartParameters `json:"StartParameters,omitempty" xml:"StartParameters,omitempty" type:"Repeated"`
 	SystemInfo        []*CreateAppSessionBatchSyncRequestAppInfosSystemInfo      `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Repeated"`
@@ -611,6 +526,11 @@ func (s CreateAppSessionBatchSyncRequestAppInfos) String() string {
 
 func (s CreateAppSessionBatchSyncRequestAppInfos) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAppSessionBatchSyncRequestAppInfos) SetAdapterFileId(v string) *CreateAppSessionBatchSyncRequestAppInfos {
+	s.AdapterFileId = &v
+	return s
 }
 
 func (s *CreateAppSessionBatchSyncRequestAppInfos) SetAppId(v string) *CreateAppSessionBatchSyncRequestAppInfos {
@@ -643,6 +563,11 @@ func (s *CreateAppSessionBatchSyncRequestAppInfos) SetDistrictId(v string) *Crea
 	return s
 }
 
+func (s *CreateAppSessionBatchSyncRequestAppInfos) SetMatchRules(v []*CreateAppSessionBatchSyncRequestAppInfosMatchRules) *CreateAppSessionBatchSyncRequestAppInfos {
+	s.MatchRules = v
+	return s
+}
+
 func (s *CreateAppSessionBatchSyncRequestAppInfos) SetProjectId(v string) *CreateAppSessionBatchSyncRequestAppInfos {
 	s.ProjectId = &v
 	return s
@@ -660,6 +585,35 @@ func (s *CreateAppSessionBatchSyncRequestAppInfos) SetSystemInfo(v []*CreateAppS
 
 func (s *CreateAppSessionBatchSyncRequestAppInfos) SetTags(v []*CreateAppSessionBatchSyncRequestAppInfosTags) *CreateAppSessionBatchSyncRequestAppInfos {
 	s.Tags = v
+	return s
+}
+
+type CreateAppSessionBatchSyncRequestAppInfosMatchRules struct {
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Type   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s CreateAppSessionBatchSyncRequestAppInfosMatchRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppSessionBatchSyncRequestAppInfosMatchRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppSessionBatchSyncRequestAppInfosMatchRules) SetKey(v string) *CreateAppSessionBatchSyncRequestAppInfosMatchRules {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchSyncRequestAppInfosMatchRules) SetType(v string) *CreateAppSessionBatchSyncRequestAppInfosMatchRules {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchSyncRequestAppInfosMatchRules) SetValues(v []*string) *CreateAppSessionBatchSyncRequestAppInfosMatchRules {
+	s.Values = v
 	return s
 }
 
@@ -983,12 +937,14 @@ func (s *CreateAppSessionBatchSyncResponse) SetBody(v *CreateAppSessionBatchSync
 }
 
 type CreateAppSessionSyncRequest struct {
+	AdapterFileId   *string                                       `json:"AdapterFileId,omitempty" xml:"AdapterFileId,omitempty"`
 	AppId           *string                                       `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppVersion      *string                                       `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	ClientIp        *string                                       `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	CustomSessionId *string                                       `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
 	CustomUserId    *string                                       `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
 	DistrictId      *string                                       `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	MatchRules      []*CreateAppSessionSyncRequestMatchRules      `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
 	ProjectId       *string                                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	StartParameters []*CreateAppSessionSyncRequestStartParameters `json:"StartParameters,omitempty" xml:"StartParameters,omitempty" type:"Repeated"`
 	SystemInfo      []*CreateAppSessionSyncRequestSystemInfo      `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Repeated"`
@@ -1001,6 +957,11 @@ func (s CreateAppSessionSyncRequest) String() string {
 
 func (s CreateAppSessionSyncRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAppSessionSyncRequest) SetAdapterFileId(v string) *CreateAppSessionSyncRequest {
+	s.AdapterFileId = &v
+	return s
 }
 
 func (s *CreateAppSessionSyncRequest) SetAppId(v string) *CreateAppSessionSyncRequest {
@@ -1033,6 +994,11 @@ func (s *CreateAppSessionSyncRequest) SetDistrictId(v string) *CreateAppSessionS
 	return s
 }
 
+func (s *CreateAppSessionSyncRequest) SetMatchRules(v []*CreateAppSessionSyncRequestMatchRules) *CreateAppSessionSyncRequest {
+	s.MatchRules = v
+	return s
+}
+
 func (s *CreateAppSessionSyncRequest) SetProjectId(v string) *CreateAppSessionSyncRequest {
 	s.ProjectId = &v
 	return s
@@ -1050,6 +1016,35 @@ func (s *CreateAppSessionSyncRequest) SetSystemInfo(v []*CreateAppSessionSyncReq
 
 func (s *CreateAppSessionSyncRequest) SetTags(v []*CreateAppSessionSyncRequestTags) *CreateAppSessionSyncRequest {
 	s.Tags = v
+	return s
+}
+
+type CreateAppSessionSyncRequestMatchRules struct {
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Type   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s CreateAppSessionSyncRequestMatchRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppSessionSyncRequestMatchRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppSessionSyncRequestMatchRules) SetKey(v string) *CreateAppSessionSyncRequestMatchRules {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateAppSessionSyncRequestMatchRules) SetType(v string) *CreateAppSessionSyncRequestMatchRules {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateAppSessionSyncRequestMatchRules) SetValues(v []*string) *CreateAppSessionSyncRequestMatchRules {
+	s.Values = v
 	return s
 }
 
@@ -3254,128 +3249,6 @@ func (s *ModifyAppVersionResponse) SetBody(v *ModifyAppVersionResponseBody) *Mod
 	return s
 }
 
-type QueryOfflineTaskProgressRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-}
-
-func (s QueryOfflineTaskProgressRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryOfflineTaskProgressRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryOfflineTaskProgressRequest) SetAppId(v string) *QueryOfflineTaskProgressRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *QueryOfflineTaskProgressRequest) SetVersionId(v string) *QueryOfflineTaskProgressRequest {
-	s.VersionId = &v
-	return s
-}
-
-type QueryOfflineTaskProgressResponseBody struct {
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryOfflineTaskProgressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s QueryOfflineTaskProgressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryOfflineTaskProgressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryOfflineTaskProgressResponseBody) SetCode(v string) *QueryOfflineTaskProgressResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryOfflineTaskProgressResponseBody) SetData(v *QueryOfflineTaskProgressResponseBodyData) *QueryOfflineTaskProgressResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryOfflineTaskProgressResponseBody) SetMessage(v string) *QueryOfflineTaskProgressResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryOfflineTaskProgressResponseBody) SetRequestId(v string) *QueryOfflineTaskProgressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type QueryOfflineTaskProgressResponseBodyData struct {
-	ErrorCode    *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Progress     *float64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status       *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s QueryOfflineTaskProgressResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryOfflineTaskProgressResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryOfflineTaskProgressResponseBodyData) SetErrorCode(v string) *QueryOfflineTaskProgressResponseBodyData {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *QueryOfflineTaskProgressResponseBodyData) SetErrorMessage(v string) *QueryOfflineTaskProgressResponseBodyData {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *QueryOfflineTaskProgressResponseBodyData) SetProgress(v float64) *QueryOfflineTaskProgressResponseBodyData {
-	s.Progress = &v
-	return s
-}
-
-func (s *QueryOfflineTaskProgressResponseBodyData) SetStatus(v string) *QueryOfflineTaskProgressResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-type QueryOfflineTaskProgressResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryOfflineTaskProgressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryOfflineTaskProgressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryOfflineTaskProgressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryOfflineTaskProgressResponse) SetHeaders(v map[string]*string) *QueryOfflineTaskProgressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryOfflineTaskProgressResponse) SetStatusCode(v int32) *QueryOfflineTaskProgressResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *QueryOfflineTaskProgressResponse) SetBody(v *QueryOfflineTaskProgressResponseBody) *QueryOfflineTaskProgressResponse {
-	s.Body = v
-	return s
-}
-
 type ReleaseCapacityRequest struct {
 	AppId                        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppVersion                   *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
@@ -3847,105 +3720,6 @@ func (s *StopAppSessionBatchResponse) SetBody(v *StopAppSessionBatchResponseBody
 	return s
 }
 
-type SubmitOfflineTaskRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppType   *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	Uri       *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-}
-
-func (s SubmitOfflineTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitOfflineTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitOfflineTaskRequest) SetAppId(v string) *SubmitOfflineTaskRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *SubmitOfflineTaskRequest) SetAppType(v string) *SubmitOfflineTaskRequest {
-	s.AppType = &v
-	return s
-}
-
-func (s *SubmitOfflineTaskRequest) SetUri(v string) *SubmitOfflineTaskRequest {
-	s.Uri = &v
-	return s
-}
-
-func (s *SubmitOfflineTaskRequest) SetVersionId(v string) *SubmitOfflineTaskRequest {
-	s.VersionId = &v
-	return s
-}
-
-type SubmitOfflineTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitOfflineTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitOfflineTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitOfflineTaskResponseBody) SetCode(v string) *SubmitOfflineTaskResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitOfflineTaskResponseBody) SetData(v bool) *SubmitOfflineTaskResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *SubmitOfflineTaskResponseBody) SetMessage(v string) *SubmitOfflineTaskResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitOfflineTaskResponseBody) SetRequestId(v string) *SubmitOfflineTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitOfflineTaskResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitOfflineTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitOfflineTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitOfflineTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitOfflineTaskResponse) SetHeaders(v map[string]*string) *SubmitOfflineTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitOfflineTaskResponse) SetStatusCode(v int32) *SubmitOfflineTaskResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitOfflineTaskResponse) SetBody(v *SubmitOfflineTaskResponseBody) *SubmitOfflineTaskResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -4034,54 +3808,6 @@ func (client *Client) CancelReserveTask(request *CancelReserveTaskRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelReserveTaskResponse{}
 	_body, _err := client.CancelReserveTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CancelUploadTaskWithOptions(request *CancelUploadTaskRequest, runtime *util.RuntimeOptions) (_result *CancelUploadTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		body["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
-		body["VersionId"] = request.VersionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CancelUploadTask"),
-		Version:     tea.String("2021-11-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CancelUploadTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CancelUploadTask(request *CancelUploadTaskRequest) (_result *CancelUploadTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CancelUploadTaskResponse{}
-	_body, _err := client.CancelUploadTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4331,6 +4057,10 @@ func (client *Client) CreateAppSessionSyncWithOptions(request *CreateAppSessionS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdapterFileId)) {
+		query["AdapterFileId"] = request.AdapterFileId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
 	}
@@ -4353,6 +4083,10 @@ func (client *Client) CreateAppSessionSyncWithOptions(request *CreateAppSessionS
 
 	if !tea.BoolValue(util.IsUnset(request.DistrictId)) {
 		query["DistrictId"] = request.DistrictId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchRules)) {
+		query["MatchRules"] = request.MatchRules
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
@@ -5253,54 +4987,6 @@ func (client *Client) ModifyAppVersion(request *ModifyAppVersionRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) QueryOfflineTaskProgressWithOptions(request *QueryOfflineTaskProgressRequest, runtime *util.RuntimeOptions) (_result *QueryOfflineTaskProgressResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		body["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
-		body["VersionId"] = request.VersionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryOfflineTaskProgress"),
-		Version:     tea.String("2021-11-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryOfflineTaskProgressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryOfflineTaskProgress(request *QueryOfflineTaskProgressRequest) (_result *QueryOfflineTaskProgressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryOfflineTaskProgressResponse{}
-	_body, _err := client.QueryOfflineTaskProgressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ReleaseCapacityWithOptions(request *ReleaseCapacityRequest, runtime *util.RuntimeOptions) (_result *ReleaseCapacityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5482,62 +5168,6 @@ func (client *Client) StopAppSessionBatch(request *StopAppSessionBatchRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &StopAppSessionBatchResponse{}
 	_body, _err := client.StopAppSessionBatchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SubmitOfflineTaskWithOptions(request *SubmitOfflineTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitOfflineTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		body["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AppType)) {
-		body["AppType"] = request.AppType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Uri)) {
-		body["Uri"] = request.Uri
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
-		body["VersionId"] = request.VersionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitOfflineTask"),
-		Version:     tea.String("2021-11-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SubmitOfflineTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitOfflineTask(request *SubmitOfflineTaskRequest) (_result *SubmitOfflineTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitOfflineTaskResponse{}
-	_body, _err := client.SubmitOfflineTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
