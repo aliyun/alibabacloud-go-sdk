@@ -7156,7 +7156,8 @@ func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetImageCategory(v
 }
 
 type DescribeNodePoolVulsResponseBody struct {
-	VulRecords []*DescribeNodePoolVulsResponseBodyVulRecords `json:"vul_records,omitempty" xml:"vul_records,omitempty" type:"Repeated"`
+	VulRecords              []*DescribeNodePoolVulsResponseBodyVulRecords `json:"vul_records,omitempty" xml:"vul_records,omitempty" type:"Repeated"`
+	VulsFixServicePurchased *bool                                         `json:"vuls_fix_service_purchased,omitempty" xml:"vuls_fix_service_purchased,omitempty"`
 }
 
 func (s DescribeNodePoolVulsResponseBody) String() string {
@@ -7169,6 +7170,11 @@ func (s DescribeNodePoolVulsResponseBody) GoString() string {
 
 func (s *DescribeNodePoolVulsResponseBody) SetVulRecords(v []*DescribeNodePoolVulsResponseBodyVulRecords) *DescribeNodePoolVulsResponseBody {
 	s.VulRecords = v
+	return s
+}
+
+func (s *DescribeNodePoolVulsResponseBody) SetVulsFixServicePurchased(v bool) *DescribeNodePoolVulsResponseBody {
+	s.VulsFixServicePurchased = &v
 	return s
 }
 
@@ -12340,10 +12346,10 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-2-pop":          tea.String("cs.aliyuncs.com"),
-		"cn-beijing-finance-1":        tea.String("cs.aliyuncs.com"),
 		"cn-beijing-finance-pop":      tea.String("cs.aliyuncs.com"),
 		"cn-beijing-gov-1":            tea.String("cs.aliyuncs.com"),
 		"cn-beijing-nu16-b01":         tea.String("cs.aliyuncs.com"),
@@ -12351,21 +12357,17 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-fujian":                   tea.String("cs.aliyuncs.com"),
 		"cn-haidian-cm12-c01":         tea.String("cs.aliyuncs.com"),
 		"cn-hangzhou-bj-b01":          tea.String("cs.aliyuncs.com"),
-		"cn-hangzhou-finance":         tea.String("cs-vpc.cn-hangzhou-finance.aliyuncs.com"),
 		"cn-hangzhou-internal-prod-1": tea.String("cs.aliyuncs.com"),
 		"cn-hangzhou-internal-test-1": tea.String("cs.aliyuncs.com"),
 		"cn-hangzhou-internal-test-2": tea.String("cs.aliyuncs.com"),
 		"cn-hangzhou-internal-test-3": tea.String("cs.aliyuncs.com"),
 		"cn-hangzhou-test-306":        tea.String("cs.aliyuncs.com"),
 		"cn-hongkong-finance-pop":     tea.String("cs.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       tea.String("cs.aliyuncs.com"),
 		"cn-qingdao-nebula":           tea.String("cs.aliyuncs.com"),
 		"cn-shanghai-et15-b01":        tea.String("cs.aliyuncs.com"),
 		"cn-shanghai-et2-b01":         tea.String("cs.aliyuncs.com"),
-		"cn-shanghai-finance-1":       tea.String("cs-vpc.cn-shanghai-finance-1.aliyuncs.com"),
 		"cn-shanghai-inner":           tea.String("cs.aliyuncs.com"),
 		"cn-shanghai-internal-test-1": tea.String("cs.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       tea.String("cs-vpc.cn-shenzhen-finance-1.aliyuncs.com"),
 		"cn-shenzhen-inner":           tea.String("cs.aliyuncs.com"),
 		"cn-shenzhen-st4-d01":         tea.String("cs.aliyuncs.com"),
 		"cn-shenzhen-su18-b01":        tea.String("cs.aliyuncs.com"),
