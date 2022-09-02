@@ -288,6 +288,53 @@ func (s *CustomDNS) SetSearches(v []*string) *CustomDNS {
 	return s
 }
 
+type CustomHealthCheckConfig struct {
+	FailureThreshold    *int32  `json:"failureThreshold,omitempty" xml:"failureThreshold,omitempty"`
+	HttpGetUrl          *string `json:"httpGetUrl,omitempty" xml:"httpGetUrl,omitempty"`
+	InitialDelaySeconds *int32  `json:"initialDelaySeconds,omitempty" xml:"initialDelaySeconds,omitempty"`
+	PeriodSeconds       *int32  `json:"periodSeconds,omitempty" xml:"periodSeconds,omitempty"`
+	SuccessThreshold    *int32  `json:"successThreshold,omitempty" xml:"successThreshold,omitempty"`
+	TimeoutSeconds      *int32  `json:"timeoutSeconds,omitempty" xml:"timeoutSeconds,omitempty"`
+}
+
+func (s CustomHealthCheckConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomHealthCheckConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CustomHealthCheckConfig) SetFailureThreshold(v int32) *CustomHealthCheckConfig {
+	s.FailureThreshold = &v
+	return s
+}
+
+func (s *CustomHealthCheckConfig) SetHttpGetUrl(v string) *CustomHealthCheckConfig {
+	s.HttpGetUrl = &v
+	return s
+}
+
+func (s *CustomHealthCheckConfig) SetInitialDelaySeconds(v int32) *CustomHealthCheckConfig {
+	s.InitialDelaySeconds = &v
+	return s
+}
+
+func (s *CustomHealthCheckConfig) SetPeriodSeconds(v int32) *CustomHealthCheckConfig {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *CustomHealthCheckConfig) SetSuccessThreshold(v int32) *CustomHealthCheckConfig {
+	s.SuccessThreshold = &v
+	return s
+}
+
+func (s *CustomHealthCheckConfig) SetTimeoutSeconds(v int32) *CustomHealthCheckConfig {
+	s.TimeoutSeconds = &v
+	return s
+}
+
 type CustomRuntimeConfig struct {
 	Args    []*string `json:"args,omitempty" xml:"args,omitempty" type:"Repeated"`
 	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
@@ -934,6 +981,58 @@ func (s *NASConfigMountPoints) SetMountDir(v string) *NASConfigMountPoints {
 
 func (s *NASConfigMountPoints) SetServerAddr(v string) *NASConfigMountPoints {
 	s.ServerAddr = &v
+	return s
+}
+
+type OSSMountConfig struct {
+	MountPoints []*OSSMountConfigMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+}
+
+func (s OSSMountConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSMountConfig) GoString() string {
+	return s.String()
+}
+
+func (s *OSSMountConfig) SetMountPoints(v []*OSSMountConfigMountPoints) *OSSMountConfig {
+	s.MountPoints = v
+	return s
+}
+
+type OSSMountConfigMountPoints struct {
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	Endpoint   *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	ReadOnly   *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+}
+
+func (s OSSMountConfigMountPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSMountConfigMountPoints) GoString() string {
+	return s.String()
+}
+
+func (s *OSSMountConfigMountPoints) SetBucketName(v string) *OSSMountConfigMountPoints {
+	s.BucketName = &v
+	return s
+}
+
+func (s *OSSMountConfigMountPoints) SetEndpoint(v string) *OSSMountConfigMountPoints {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *OSSMountConfigMountPoints) SetMountDir(v string) *OSSMountConfigMountPoints {
+	s.MountDir = &v
+	return s
+}
+
+func (s *OSSMountConfigMountPoints) SetReadOnly(v bool) *OSSMountConfigMountPoints {
+	s.ReadOnly = &v
 	return s
 }
 
@@ -1804,6 +1903,164 @@ func (s *VendorConfig) SetMeteringConfig(v *MeteringConfig) *VendorConfig {
 	return s
 }
 
+type ClaimGPUInstanceHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ClaimGPUInstanceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClaimGPUInstanceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ClaimGPUInstanceHeaders) SetCommonHeaders(v map[string]*string) *ClaimGPUInstanceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ClaimGPUInstanceHeaders) SetXFcAccountId(v string) *ClaimGPUInstanceHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ClaimGPUInstanceHeaders) SetXFcDate(v string) *ClaimGPUInstanceHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ClaimGPUInstanceHeaders) SetXFcTraceId(v string) *ClaimGPUInstanceHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
+type ClaimGPUInstanceRequest struct {
+	DiskPerformanceLevel *string   `json:"diskPerformanceLevel,omitempty" xml:"diskPerformanceLevel,omitempty"`
+	DiskSizeGigabytes    *string   `json:"diskSizeGigabytes,omitempty" xml:"diskSizeGigabytes,omitempty"`
+	ImageId              *string   `json:"imageId,omitempty" xml:"imageId,omitempty"`
+	InstanceType         *string   `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	InternetBandwidthOut *string   `json:"internetBandwidthOut,omitempty" xml:"internetBandwidthOut,omitempty"`
+	Password             *string   `json:"password,omitempty" xml:"password,omitempty"`
+	SourceCidrIp         *string   `json:"sourceCidrIp,omitempty" xml:"sourceCidrIp,omitempty"`
+	TcpPortRange         []*string `json:"tcpPortRange,omitempty" xml:"tcpPortRange,omitempty" type:"Repeated"`
+	UdpPortRange         []*string `json:"udpPortRange,omitempty" xml:"udpPortRange,omitempty" type:"Repeated"`
+}
+
+func (s ClaimGPUInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClaimGPUInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ClaimGPUInstanceRequest) SetDiskPerformanceLevel(v string) *ClaimGPUInstanceRequest {
+	s.DiskPerformanceLevel = &v
+	return s
+}
+
+func (s *ClaimGPUInstanceRequest) SetDiskSizeGigabytes(v string) *ClaimGPUInstanceRequest {
+	s.DiskSizeGigabytes = &v
+	return s
+}
+
+func (s *ClaimGPUInstanceRequest) SetImageId(v string) *ClaimGPUInstanceRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ClaimGPUInstanceRequest) SetInstanceType(v string) *ClaimGPUInstanceRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ClaimGPUInstanceRequest) SetInternetBandwidthOut(v string) *ClaimGPUInstanceRequest {
+	s.InternetBandwidthOut = &v
+	return s
+}
+
+func (s *ClaimGPUInstanceRequest) SetPassword(v string) *ClaimGPUInstanceRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *ClaimGPUInstanceRequest) SetSourceCidrIp(v string) *ClaimGPUInstanceRequest {
+	s.SourceCidrIp = &v
+	return s
+}
+
+func (s *ClaimGPUInstanceRequest) SetTcpPortRange(v []*string) *ClaimGPUInstanceRequest {
+	s.TcpPortRange = v
+	return s
+}
+
+func (s *ClaimGPUInstanceRequest) SetUdpPortRange(v []*string) *ClaimGPUInstanceRequest {
+	s.UdpPortRange = v
+	return s
+}
+
+type ClaimGPUInstanceResponseBody struct {
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	PublicIp    *string `json:"publicIp,omitempty" xml:"publicIp,omitempty"`
+}
+
+func (s ClaimGPUInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClaimGPUInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ClaimGPUInstanceResponseBody) SetCreatedTime(v string) *ClaimGPUInstanceResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ClaimGPUInstanceResponseBody) SetInstanceId(v string) *ClaimGPUInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ClaimGPUInstanceResponseBody) SetPublicIp(v string) *ClaimGPUInstanceResponseBody {
+	s.PublicIp = &v
+	return s
+}
+
+type ClaimGPUInstanceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ClaimGPUInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ClaimGPUInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClaimGPUInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ClaimGPUInstanceResponse) SetHeaders(v map[string]*string) *ClaimGPUInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ClaimGPUInstanceResponse) SetStatusCode(v int32) *ClaimGPUInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ClaimGPUInstanceResponse) SetBody(v *ClaimGPUInstanceResponseBody) *ClaimGPUInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAliasHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
@@ -2178,6 +2435,7 @@ type CreateFunctionRequest struct {
 	Code                    *Code                    `json:"code,omitempty" xml:"code,omitempty"`
 	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
 	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
@@ -2220,6 +2478,11 @@ func (s *CreateFunctionRequest) SetCustomContainerConfig(v *CustomContainerConfi
 
 func (s *CreateFunctionRequest) SetCustomDNS(v *CustomDNS) *CreateFunctionRequest {
 	s.CustomDNS = v
+	return s
+}
+
+func (s *CreateFunctionRequest) SetCustomHealthCheckConfig(v *CustomHealthCheckConfig) *CreateFunctionRequest {
+	s.CustomHealthCheckConfig = v
 	return s
 }
 
@@ -2305,6 +2568,7 @@ type CreateFunctionResponseBody struct {
 	CreatedTime             *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
 	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
@@ -2359,6 +2623,11 @@ func (s *CreateFunctionResponseBody) SetCustomContainerConfig(v *CustomContainer
 
 func (s *CreateFunctionResponseBody) SetCustomDNS(v *CustomDNS) *CreateFunctionResponseBody {
 	s.CustomDNS = v
+	return s
+}
+
+func (s *CreateFunctionResponseBody) SetCustomHealthCheckConfig(v *CustomHealthCheckConfig) *CreateFunctionResponseBody {
+	s.CustomHealthCheckConfig = v
 	return s
 }
 
@@ -2676,14 +2945,15 @@ func (s *CreateServiceHeaders) SetXFcTraceId(v string) *CreateServiceHeaders {
 }
 
 type CreateServiceRequest struct {
-	Description    *string        `json:"description,omitempty" xml:"description,omitempty"`
-	InternetAccess *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LogConfig      *LogConfig     `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	NasConfig      *NASConfig     `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	Role           *string        `json:"role,omitempty" xml:"role,omitempty"`
-	ServiceName    *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	TracingConfig  *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig      *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	Description    *string         `json:"description,omitempty" xml:"description,omitempty"`
+	InternetAccess *bool           `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LogConfig      *LogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	Role           *string         `json:"role,omitempty" xml:"role,omitempty"`
+	ServiceName    *string         `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	TracingConfig  *TracingConfig  `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig      *VPCConfig      `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -2714,6 +2984,11 @@ func (s *CreateServiceRequest) SetNasConfig(v *NASConfig) *CreateServiceRequest 
 	return s
 }
 
+func (s *CreateServiceRequest) SetOssMountConfig(v *OSSMountConfig) *CreateServiceRequest {
+	s.OssMountConfig = v
+	return s
+}
+
 func (s *CreateServiceRequest) SetRole(v string) *CreateServiceRequest {
 	s.Role = &v
 	return s
@@ -2735,17 +3010,18 @@ func (s *CreateServiceRequest) SetVpcConfig(v *VPCConfig) *CreateServiceRequest 
 }
 
 type CreateServiceResponseBody struct {
-	CreatedTime      *string        `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	Description      *string        `json:"description,omitempty" xml:"description,omitempty"`
-	InternetAccess   *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LastModifiedTime *string        `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	LogConfig        *LogConfig     `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	NasConfig        *NASConfig     `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	Role             *string        `json:"role,omitempty" xml:"role,omitempty"`
-	ServiceId        *string        `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName      *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	TracingConfig    *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig        *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	CreatedTime      *string         `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string         `json:"description,omitempty" xml:"description,omitempty"`
+	InternetAccess   *bool           `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LastModifiedTime *string         `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LogConfig        *LogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	NasConfig        *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig   *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	Role             *string         `json:"role,omitempty" xml:"role,omitempty"`
+	ServiceId        *string         `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName      *string         `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	TracingConfig    *TracingConfig  `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig        *VPCConfig      `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s CreateServiceResponseBody) String() string {
@@ -2783,6 +3059,11 @@ func (s *CreateServiceResponseBody) SetLogConfig(v *LogConfig) *CreateServiceRes
 
 func (s *CreateServiceResponseBody) SetNasConfig(v *NASConfig) *CreateServiceResponseBody {
 	s.NasConfig = v
+	return s
+}
+
+func (s *CreateServiceResponseBody) SetOssMountConfig(v *OSSMountConfig) *CreateServiceResponseBody {
+	s.OssMountConfig = v
 	return s
 }
 
@@ -4238,6 +4519,7 @@ type GetFunctionResponseBody struct {
 	CreatedTime             *string                    `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	CustomContainerConfig   *CustomContainerConfigInfo `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	CustomDNS               *CustomDNS                 `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomHealthCheckConfig *CustomHealthCheckConfig   `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	CustomRuntimeConfig     *CustomRuntimeConfig       `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
 	Description             *string                    `json:"description,omitempty" xml:"description,omitempty"`
 	EnvironmentVariables    map[string]*string         `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
@@ -4292,6 +4574,11 @@ func (s *GetFunctionResponseBody) SetCustomContainerConfig(v *CustomContainerCon
 
 func (s *GetFunctionResponseBody) SetCustomDNS(v *CustomDNS) *GetFunctionResponseBody {
 	s.CustomDNS = v
+	return s
+}
+
+func (s *GetFunctionResponseBody) SetCustomHealthCheckConfig(v *CustomHealthCheckConfig) *GetFunctionResponseBody {
+	s.CustomHealthCheckConfig = v
 	return s
 }
 
@@ -5118,17 +5405,18 @@ func (s *GetServiceRequest) SetQualifier(v string) *GetServiceRequest {
 }
 
 type GetServiceResponseBody struct {
-	CreatedTime      *string        `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	Description      *string        `json:"description,omitempty" xml:"description,omitempty"`
-	InternetAccess   *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LastModifiedTime *string        `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	LogConfig        *LogConfig     `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	NasConfig        *NASConfig     `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	Role             *string        `json:"role,omitempty" xml:"role,omitempty"`
-	ServiceId        *string        `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName      *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	TracingConfig    *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig        *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	CreatedTime      *string         `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string         `json:"description,omitempty" xml:"description,omitempty"`
+	InternetAccess   *bool           `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LastModifiedTime *string         `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LogConfig        *LogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	NasConfig        *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig   *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	Role             *string         `json:"role,omitempty" xml:"role,omitempty"`
+	ServiceId        *string         `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName      *string         `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	TracingConfig    *TracingConfig  `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig        *VPCConfig      `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s GetServiceResponseBody) String() string {
@@ -5166,6 +5454,11 @@ func (s *GetServiceResponseBody) SetLogConfig(v *LogConfig) *GetServiceResponseB
 
 func (s *GetServiceResponseBody) SetNasConfig(v *NASConfig) *GetServiceResponseBody {
 	s.NasConfig = v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetOssMountConfig(v *OSSMountConfig) *GetServiceResponseBody {
+	s.OssMountConfig = v
 	return s
 }
 
@@ -6367,6 +6660,7 @@ type ListFunctionsResponseBodyFunctions struct {
 	CodeSize                *int64                   `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
 	CreatedTime             *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
 	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	FunctionId              *string                  `json:"functionId,omitempty" xml:"functionId,omitempty"`
@@ -6415,6 +6709,11 @@ func (s *ListFunctionsResponseBodyFunctions) SetCreatedTime(v string) *ListFunct
 
 func (s *ListFunctionsResponseBodyFunctions) SetCustomContainerConfig(v *CustomContainerConfig) *ListFunctionsResponseBodyFunctions {
 	s.CustomContainerConfig = v
+	return s
+}
+
+func (s *ListFunctionsResponseBodyFunctions) SetCustomHealthCheckConfig(v *CustomHealthCheckConfig) *ListFunctionsResponseBodyFunctions {
+	s.CustomHealthCheckConfig = v
 	return s
 }
 
@@ -7556,17 +7855,18 @@ func (s *ListServicesResponseBody) SetServices(v []*ListServicesResponseBodyServ
 }
 
 type ListServicesResponseBodyServices struct {
-	CreatedTime      *string        `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	Description      *string        `json:"description,omitempty" xml:"description,omitempty"`
-	InternetAccess   *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LastModifiedTime *string        `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	LogConfig        *LogConfig     `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	NasConfig        *NASConfig     `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	Role             *string        `json:"role,omitempty" xml:"role,omitempty"`
-	ServiceId        *string        `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName      *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	TracingConfig    *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig        *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	CreatedTime      *string         `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string         `json:"description,omitempty" xml:"description,omitempty"`
+	InternetAccess   *bool           `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LastModifiedTime *string         `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LogConfig        *LogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	NasConfig        *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig   *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	Role             *string         `json:"role,omitempty" xml:"role,omitempty"`
+	ServiceId        *string         `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName      *string         `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	TracingConfig    *TracingConfig  `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig        *VPCConfig      `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s ListServicesResponseBodyServices) String() string {
@@ -7604,6 +7904,11 @@ func (s *ListServicesResponseBodyServices) SetLogConfig(v *LogConfig) *ListServi
 
 func (s *ListServicesResponseBodyServices) SetNasConfig(v *NASConfig) *ListServicesResponseBodyServices {
 	s.NasConfig = v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetOssMountConfig(v *OSSMountConfig) *ListServicesResponseBodyServices {
+	s.OssMountConfig = v
 	return s
 }
 
@@ -9094,6 +9399,64 @@ func (s *RegisterEventSourceResponse) SetBody(v *RegisterEventSourceResponseBody
 	return s
 }
 
+type ReleaseGPUInstanceHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ReleaseGPUInstanceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseGPUInstanceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseGPUInstanceHeaders) SetCommonHeaders(v map[string]*string) *ReleaseGPUInstanceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ReleaseGPUInstanceHeaders) SetXFcAccountId(v string) *ReleaseGPUInstanceHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ReleaseGPUInstanceHeaders) SetXFcDate(v string) *ReleaseGPUInstanceHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ReleaseGPUInstanceHeaders) SetXFcTraceId(v string) *ReleaseGPUInstanceHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
+type ReleaseGPUInstanceResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s ReleaseGPUInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseGPUInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseGPUInstanceResponse) SetHeaders(v map[string]*string) *ReleaseGPUInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseGPUInstanceResponse) SetStatusCode(v int32) *ReleaseGPUInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type StopStatefulAsyncInvocationHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
@@ -9712,6 +10075,7 @@ type UpdateFunctionRequest struct {
 	Code                    *Code                    `json:"code,omitempty" xml:"code,omitempty"`
 	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
 	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
@@ -9757,6 +10121,11 @@ func (s *UpdateFunctionRequest) SetCustomContainerConfig(v *CustomContainerConfi
 
 func (s *UpdateFunctionRequest) SetCustomDNS(v *CustomDNS) *UpdateFunctionRequest {
 	s.CustomDNS = v
+	return s
+}
+
+func (s *UpdateFunctionRequest) SetCustomHealthCheckConfig(v *CustomHealthCheckConfig) *UpdateFunctionRequest {
+	s.CustomHealthCheckConfig = v
 	return s
 }
 
@@ -9832,6 +10201,7 @@ type UpdateFunctionResponseBody struct {
 	CreatedTime             *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
 	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
@@ -9885,6 +10255,11 @@ func (s *UpdateFunctionResponseBody) SetCustomContainerConfig(v *CustomContainer
 
 func (s *UpdateFunctionResponseBody) SetCustomDNS(v *CustomDNS) *UpdateFunctionResponseBody {
 	s.CustomDNS = v
+	return s
+}
+
+func (s *UpdateFunctionResponseBody) SetCustomHealthCheckConfig(v *CustomHealthCheckConfig) *UpdateFunctionResponseBody {
+	s.CustomHealthCheckConfig = v
 	return s
 }
 
@@ -10039,13 +10414,14 @@ func (s *UpdateServiceHeaders) SetXFcTraceId(v string) *UpdateServiceHeaders {
 }
 
 type UpdateServiceRequest struct {
-	Description    *string        `json:"description,omitempty" xml:"description,omitempty"`
-	InternetAccess *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LogConfig      *LogConfig     `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	NasConfig      *NASConfig     `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	Role           *string        `json:"role,omitempty" xml:"role,omitempty"`
-	TracingConfig  *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig      *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	Description    *string         `json:"description,omitempty" xml:"description,omitempty"`
+	InternetAccess *bool           `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LogConfig      *LogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	Role           *string         `json:"role,omitempty" xml:"role,omitempty"`
+	TracingConfig  *TracingConfig  `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig      *VPCConfig      `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s UpdateServiceRequest) String() string {
@@ -10076,6 +10452,11 @@ func (s *UpdateServiceRequest) SetNasConfig(v *NASConfig) *UpdateServiceRequest 
 	return s
 }
 
+func (s *UpdateServiceRequest) SetOssMountConfig(v *OSSMountConfig) *UpdateServiceRequest {
+	s.OssMountConfig = v
+	return s
+}
+
 func (s *UpdateServiceRequest) SetRole(v string) *UpdateServiceRequest {
 	s.Role = &v
 	return s
@@ -10092,17 +10473,18 @@ func (s *UpdateServiceRequest) SetVpcConfig(v *VPCConfig) *UpdateServiceRequest 
 }
 
 type UpdateServiceResponseBody struct {
-	CreatedTime      *string        `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	Description      *string        `json:"description,omitempty" xml:"description,omitempty"`
-	InternetAccess   *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LastModifiedTime *string        `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	LogConfig        *LogConfig     `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	NasConfig        *NASConfig     `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	Role             *string        `json:"role,omitempty" xml:"role,omitempty"`
-	ServiceId        *string        `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName      *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	TracingConfig    *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig        *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	CreatedTime      *string         `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string         `json:"description,omitempty" xml:"description,omitempty"`
+	InternetAccess   *bool           `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LastModifiedTime *string         `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LogConfig        *LogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	NasConfig        *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig   *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	Role             *string         `json:"role,omitempty" xml:"role,omitempty"`
+	ServiceId        *string         `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName      *string         `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	TracingConfig    *TracingConfig  `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig        *VPCConfig      `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s UpdateServiceResponseBody) String() string {
@@ -10140,6 +10522,11 @@ func (s *UpdateServiceResponseBody) SetLogConfig(v *LogConfig) *UpdateServiceRes
 
 func (s *UpdateServiceResponseBody) SetNasConfig(v *NASConfig) *UpdateServiceResponseBody {
 	s.NasConfig = v
+	return s
+}
+
+func (s *UpdateServiceResponseBody) SetOssMountConfig(v *OSSMountConfig) *UpdateServiceResponseBody {
+	s.OssMountConfig = v
 	return s
 }
 
@@ -10461,6 +10848,101 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) ClaimGPUInstance(request *ClaimGPUInstanceRequest) (_result *ClaimGPUInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ClaimGPUInstanceHeaders{}
+	_result = &ClaimGPUInstanceResponse{}
+	_body, _err := client.ClaimGPUInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ClaimGPUInstanceWithOptions(request *ClaimGPUInstanceRequest, headers *ClaimGPUInstanceHeaders, runtime *util.RuntimeOptions) (_result *ClaimGPUInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskPerformanceLevel)) {
+		body["diskPerformanceLevel"] = request.DiskPerformanceLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskSizeGigabytes)) {
+		body["diskSizeGigabytes"] = request.DiskSizeGigabytes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["imageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["instanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetBandwidthOut)) {
+		body["internetBandwidthOut"] = request.InternetBandwidthOut
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCidrIp)) {
+		body["sourceCidrIp"] = request.SourceCidrIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TcpPortRange)) {
+		body["tcpPortRange"] = request.TcpPortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdpPortRange)) {
+		body["udpPortRange"] = request.UdpPortRange
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClaimGPUInstance"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/gpuInstances"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ClaimGPUInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateAlias(serviceName *string, request *CreateAliasRequest) (_result *CreateAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateAliasHeaders{}
@@ -10657,6 +11139,10 @@ func (client *Client) CreateFunctionWithOptions(serviceName *string, request *Cr
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CustomDNS))) {
 		body["customDNS"] = request.CustomDNS
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CustomHealthCheckConfig))) {
+		body["customHealthCheckConfig"] = request.CustomHealthCheckConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CustomRuntimeConfig))) {
@@ -10868,6 +11354,10 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NasConfig))) {
 		body["nasConfig"] = request.NasConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.OssMountConfig))) {
+		body["ossMountConfig"] = request.OssMountConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Role)) {
@@ -14400,6 +14890,60 @@ func (client *Client) RegisterEventSourceWithOptions(serviceName *string, functi
 	return _result, _err
 }
 
+func (client *Client) ReleaseGPUInstance(instanceId *string) (_result *ReleaseGPUInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ReleaseGPUInstanceHeaders{}
+	_result = &ReleaseGPUInstanceResponse{}
+	_body, _err := client.ReleaseGPUInstanceWithOptions(instanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReleaseGPUInstanceWithOptions(instanceId *string, headers *ReleaseGPUInstanceHeaders, runtime *util.RuntimeOptions) (_result *ReleaseGPUInstanceResponse, _err error) {
+	instanceId = openapiutil.GetEncodeParam(instanceId)
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseGPUInstance"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/gpuInstances/" + tea.StringValue(instanceId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &ReleaseGPUInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) StopStatefulAsyncInvocation(serviceName *string, functionName *string, invocationId *string, request *StopStatefulAsyncInvocationRequest) (_result *StopStatefulAsyncInvocationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &StopStatefulAsyncInvocationHeaders{}
@@ -14805,6 +15349,10 @@ func (client *Client) UpdateFunctionWithOptions(serviceName *string, functionNam
 		body["customDNS"] = request.CustomDNS
 	}
 
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CustomHealthCheckConfig))) {
+		body["customHealthCheckConfig"] = request.CustomHealthCheckConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CustomRuntimeConfig))) {
 		body["customRuntimeConfig"] = request.CustomRuntimeConfig
 	}
@@ -14939,6 +15487,10 @@ func (client *Client) UpdateServiceWithOptions(serviceName *string, request *Upd
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NasConfig))) {
 		body["nasConfig"] = request.NasConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.OssMountConfig))) {
+		body["ossMountConfig"] = request.OssMountConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Role)) {
