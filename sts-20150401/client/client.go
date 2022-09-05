@@ -135,8 +135,9 @@ func (s *AssumeRoleResponseBodyCredentials) SetSecurityToken(v string) *AssumeRo
 }
 
 type AssumeRoleResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AssumeRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssumeRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AssumeRoleResponse) String() string {
@@ -152,23 +153,22 @@ func (s *AssumeRoleResponse) SetHeaders(v map[string]*string) *AssumeRoleRespons
 	return s
 }
 
+func (s *AssumeRoleResponse) SetStatusCode(v int32) *AssumeRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AssumeRoleResponse) SetBody(v *AssumeRoleResponseBody) *AssumeRoleResponse {
 	s.Body = v
 	return s
 }
 
 type AssumeRoleWithOIDCRequest struct {
-	// Session过期时间，单位为秒。
-	DurationSeconds *int64 `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
-	// OIDC Provider的ARN
+	DurationSeconds *int64  `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
 	OIDCProviderArn *string `json:"OIDCProviderArn,omitempty" xml:"OIDCProviderArn,omitempty"`
-	// OIDC的ID Token，需输入原始Token，无需Base64解码
-	OIDCToken *string `json:"OIDCToken,omitempty" xml:"OIDCToken,omitempty"`
-	// 权限策略。 生成STS Token时可以指定一个额外的权限策略，以进一步限制STS Token的权限。若不指定则返回的Token拥有指定角色的所有权限。
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// 需要扮演的角色的ARN
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// 用户自定义参数。此参数用来区分不同的令牌，可用于用户级别的访问审计。
+	OIDCToken       *string `json:"OIDCToken,omitempty" xml:"OIDCToken,omitempty"`
+	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	RoleArn         *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	RoleSessionName *string `json:"RoleSessionName,omitempty" xml:"RoleSessionName,omitempty"`
 }
 
@@ -333,8 +333,9 @@ func (s *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) SetSubject(v string) *Assu
 }
 
 type AssumeRoleWithOIDCResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AssumeRoleWithOIDCResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssumeRoleWithOIDCResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AssumeRoleWithOIDCResponse) String() string {
@@ -347,6 +348,11 @@ func (s AssumeRoleWithOIDCResponse) GoString() string {
 
 func (s *AssumeRoleWithOIDCResponse) SetHeaders(v map[string]*string) *AssumeRoleWithOIDCResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponse) SetStatusCode(v int32) *AssumeRoleWithOIDCResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -525,8 +531,9 @@ func (s *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) SetSubjectType(v strin
 }
 
 type AssumeRoleWithSAMLResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AssumeRoleWithSAMLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssumeRoleWithSAMLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AssumeRoleWithSAMLResponse) String() string {
@@ -539,6 +546,11 @@ func (s AssumeRoleWithSAMLResponse) GoString() string {
 
 func (s *AssumeRoleWithSAMLResponse) SetHeaders(v map[string]*string) *AssumeRoleWithSAMLResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AssumeRoleWithSAMLResponse) SetStatusCode(v int32) *AssumeRoleWithSAMLResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -601,8 +613,9 @@ func (s *GetCallerIdentityResponseBody) SetUserId(v string) *GetCallerIdentityRe
 }
 
 type GetCallerIdentityResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetCallerIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCallerIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetCallerIdentityResponse) String() string {
@@ -615,6 +628,11 @@ func (s GetCallerIdentityResponse) GoString() string {
 
 func (s *GetCallerIdentityResponse) SetHeaders(v map[string]*string) *GetCallerIdentityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetCallerIdentityResponse) SetStatusCode(v int32) *GetCallerIdentityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -638,6 +656,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-2-pop":          tea.String("sts.aliyuncs.com"),
