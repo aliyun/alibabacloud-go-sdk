@@ -403,7 +403,6 @@ func (s *ApproveFotaUpdateRequest) SetRegionId(v string) *ApproveFotaUpdateReque
 }
 
 type ApproveFotaUpdateResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1584,10 +1583,12 @@ type CreateDesktopGroupRequest struct {
 	Classify                *string   `json:"Classify,omitempty" xml:"Classify,omitempty"`
 	ClientToken             *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Comments                *string   `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	ConnectDuration         *int64    `json:"ConnectDuration,omitempty" xml:"ConnectDuration,omitempty"`
 	DefaultInitDesktopCount *int32    `json:"DefaultInitDesktopCount,omitempty" xml:"DefaultInitDesktopCount,omitempty"`
 	DesktopGroupName        *string   `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
 	DirectoryId             *string   `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	EndUserIds              []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	IdleDisconnectDuration  *int64    `json:"IdleDisconnectDuration,omitempty" xml:"IdleDisconnectDuration,omitempty"`
 	KeepDuration            *int64    `json:"KeepDuration,omitempty" xml:"KeepDuration,omitempty"`
 	LoadPolicy              *int64    `json:"LoadPolicy,omitempty" xml:"LoadPolicy,omitempty"`
 	MaxDesktopsCount        *int32    `json:"MaxDesktopsCount,omitempty" xml:"MaxDesktopsCount,omitempty"`
@@ -1597,9 +1598,11 @@ type CreateDesktopGroupRequest struct {
 	Period                  *int32    `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodUnit              *string   `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	PolicyGroupId           *string   `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	RatioThreshold          *float32  `json:"RatioThreshold,omitempty" xml:"RatioThreshold,omitempty"`
 	RegionId                *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResetType               *int64    `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
 	ScaleStrategyId         *string   `json:"ScaleStrategyId,omitempty" xml:"ScaleStrategyId,omitempty"`
+	StopDuration            *int64    `json:"StopDuration,omitempty" xml:"StopDuration,omitempty"`
 	VolumeEncryptionEnabled *bool     `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
 	VolumeEncryptionKey     *string   `json:"VolumeEncryptionKey,omitempty" xml:"VolumeEncryptionKey,omitempty"`
 	VpcId                   *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -1663,6 +1666,11 @@ func (s *CreateDesktopGroupRequest) SetComments(v string) *CreateDesktopGroupReq
 	return s
 }
 
+func (s *CreateDesktopGroupRequest) SetConnectDuration(v int64) *CreateDesktopGroupRequest {
+	s.ConnectDuration = &v
+	return s
+}
+
 func (s *CreateDesktopGroupRequest) SetDefaultInitDesktopCount(v int32) *CreateDesktopGroupRequest {
 	s.DefaultInitDesktopCount = &v
 	return s
@@ -1680,6 +1688,11 @@ func (s *CreateDesktopGroupRequest) SetDirectoryId(v string) *CreateDesktopGroup
 
 func (s *CreateDesktopGroupRequest) SetEndUserIds(v []*string) *CreateDesktopGroupRequest {
 	s.EndUserIds = v
+	return s
+}
+
+func (s *CreateDesktopGroupRequest) SetIdleDisconnectDuration(v int64) *CreateDesktopGroupRequest {
+	s.IdleDisconnectDuration = &v
 	return s
 }
 
@@ -1728,6 +1741,11 @@ func (s *CreateDesktopGroupRequest) SetPolicyGroupId(v string) *CreateDesktopGro
 	return s
 }
 
+func (s *CreateDesktopGroupRequest) SetRatioThreshold(v float32) *CreateDesktopGroupRequest {
+	s.RatioThreshold = &v
+	return s
+}
+
 func (s *CreateDesktopGroupRequest) SetRegionId(v string) *CreateDesktopGroupRequest {
 	s.RegionId = &v
 	return s
@@ -1740,6 +1758,11 @@ func (s *CreateDesktopGroupRequest) SetResetType(v int64) *CreateDesktopGroupReq
 
 func (s *CreateDesktopGroupRequest) SetScaleStrategyId(v string) *CreateDesktopGroupRequest {
 	s.ScaleStrategyId = &v
+	return s
+}
+
+func (s *CreateDesktopGroupRequest) SetStopDuration(v int64) *CreateDesktopGroupRequest {
+	s.StopDuration = &v
 	return s
 }
 
@@ -1817,29 +1840,30 @@ func (s *CreateDesktopGroupResponse) SetBody(v *CreateDesktopGroupResponseBody) 
 }
 
 type CreateDesktopsRequest struct {
-	Amount                  *int32                      `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AutoPay                 *bool                       `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew               *bool                       `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	BundleId                *string                     `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	ChargeType              *string                     `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	DesktopName             *string                     `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	DesktopNameSuffix       *bool                       `json:"DesktopNameSuffix,omitempty" xml:"DesktopNameSuffix,omitempty"`
-	DirectoryId             *string                     `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	EndUserId               []*string                   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	GroupId                 *string                     `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Hostname                *string                     `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	OfficeSiteId            *string                     `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	Period                  *int32                      `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit              *string                     `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PolicyGroupId           *string                     `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	PromotionId             *string                     `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	RegionId                *string                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag                     []*CreateDesktopsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	UserAssignMode          *string                     `json:"UserAssignMode,omitempty" xml:"UserAssignMode,omitempty"`
-	UserName                *string                     `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	VolumeEncryptionEnabled *bool                       `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	VolumeEncryptionKey     *string                     `json:"VolumeEncryptionKey,omitempty" xml:"VolumeEncryptionKey,omitempty"`
-	VpcId                   *string                     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Amount                  *int32                               `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AutoPay                 *bool                                `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew               *bool                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	BundleId                *string                              `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
+	ChargeType              *string                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	DesktopName             *string                              `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	DesktopNameSuffix       *bool                                `json:"DesktopNameSuffix,omitempty" xml:"DesktopNameSuffix,omitempty"`
+	DirectoryId             *string                              `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	EndUserId               []*string                            `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	GroupId                 *string                              `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Hostname                *string                              `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	OfficeSiteId            *string                              `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	Period                  *int32                               `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit              *string                              `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PolicyGroupId           *string                              `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PromotionId             *string                              `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	RegionId                *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tag                     []*CreateDesktopsRequestTag          `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UserAssignMode          *string                              `json:"UserAssignMode,omitempty" xml:"UserAssignMode,omitempty"`
+	UserCommands            []*CreateDesktopsRequestUserCommands `json:"UserCommands,omitempty" xml:"UserCommands,omitempty" type:"Repeated"`
+	UserName                *string                              `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	VolumeEncryptionEnabled *bool                                `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
+	VolumeEncryptionKey     *string                              `json:"VolumeEncryptionKey,omitempty" xml:"VolumeEncryptionKey,omitempty"`
+	VpcId                   *string                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateDesktopsRequest) String() string {
@@ -1945,6 +1969,11 @@ func (s *CreateDesktopsRequest) SetUserAssignMode(v string) *CreateDesktopsReque
 	return s
 }
 
+func (s *CreateDesktopsRequest) SetUserCommands(v []*CreateDesktopsRequestUserCommands) *CreateDesktopsRequest {
+	s.UserCommands = v
+	return s
+}
+
 func (s *CreateDesktopsRequest) SetUserName(v string) *CreateDesktopsRequest {
 	s.UserName = &v
 	return s
@@ -1985,6 +2014,35 @@ func (s *CreateDesktopsRequestTag) SetKey(v string) *CreateDesktopsRequestTag {
 
 func (s *CreateDesktopsRequestTag) SetValue(v string) *CreateDesktopsRequestTag {
 	s.Value = &v
+	return s
+}
+
+type CreateDesktopsRequestUserCommands struct {
+	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	ContentType     *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+}
+
+func (s CreateDesktopsRequestUserCommands) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDesktopsRequestUserCommands) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDesktopsRequestUserCommands) SetContent(v string) *CreateDesktopsRequestUserCommands {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestUserCommands) SetContentEncoding(v string) *CreateDesktopsRequestUserCommands {
+	s.ContentEncoding = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestUserCommands) SetContentType(v string) *CreateDesktopsRequestUserCommands {
+	s.ContentType = &v
 	return s
 }
 
@@ -2117,6 +2175,266 @@ func (s *CreateDiskEncryptionServiceResponse) SetStatusCode(v int32) *CreateDisk
 }
 
 func (s *CreateDiskEncryptionServiceResponse) SetBody(v *CreateDiskEncryptionServiceResponseBody) *CreateDiskEncryptionServiceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDriveRequest struct {
+	AliUid           *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DomainId         *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DriveName        *string `json:"DriveName,omitempty" xml:"DriveName,omitempty"`
+	ExternalDomainId *string `json:"ExternalDomainId,omitempty" xml:"ExternalDomainId,omitempty"`
+	ProfileRoaming   *bool   `json:"ProfileRoaming,omitempty" xml:"ProfileRoaming,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TotalSize        *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UsedSize         *int64  `json:"UsedSize,omitempty" xml:"UsedSize,omitempty"`
+	UserId           *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateDriveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDriveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDriveRequest) SetAliUid(v int64) *CreateDriveRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetDescription(v string) *CreateDriveRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetDomainId(v string) *CreateDriveRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetDriveName(v string) *CreateDriveRequest {
+	s.DriveName = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetExternalDomainId(v string) *CreateDriveRequest {
+	s.ExternalDomainId = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetProfileRoaming(v bool) *CreateDriveRequest {
+	s.ProfileRoaming = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetRegionId(v string) *CreateDriveRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetResourceType(v string) *CreateDriveRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetTotalSize(v int64) *CreateDriveRequest {
+	s.TotalSize = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetType(v string) *CreateDriveRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetUsedSize(v int64) *CreateDriveRequest {
+	s.UsedSize = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetUserId(v string) *CreateDriveRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateDriveResponseBody struct {
+	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Drive     *CreateDriveResponseBodyDrive `json:"Drive,omitempty" xml:"Drive,omitempty" type:"Struct"`
+	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDriveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDriveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDriveResponseBody) SetCode(v string) *CreateDriveResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetDrive(v *CreateDriveResponseBodyDrive) *CreateDriveResponseBody {
+	s.Drive = v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetMessage(v string) *CreateDriveResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetRequestId(v string) *CreateDriveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetSuccess(v bool) *CreateDriveResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDriveResponseBodyDrive struct {
+	AliUid          *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DomainId        *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DriveId         *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	ExternalDriveId *string `json:"ExternalDriveId,omitempty" xml:"ExternalDriveId,omitempty"`
+	ExternalUserId  *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProfileRoaming  *bool   `json:"ProfileRoaming,omitempty" xml:"ProfileRoaming,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalSize       *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UsedSize        *int64  `json:"UsedSize,omitempty" xml:"UsedSize,omitempty"`
+	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateDriveResponseBodyDrive) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDriveResponseBodyDrive) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDriveResponseBodyDrive) SetAliUid(v string) *CreateDriveResponseBodyDrive {
+	s.AliUid = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetDescription(v string) *CreateDriveResponseBodyDrive {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetDomainId(v string) *CreateDriveResponseBodyDrive {
+	s.DomainId = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetDriveId(v string) *CreateDriveResponseBodyDrive {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetExternalDriveId(v string) *CreateDriveResponseBodyDrive {
+	s.ExternalDriveId = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetExternalUserId(v string) *CreateDriveResponseBodyDrive {
+	s.ExternalUserId = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetGmtCreate(v string) *CreateDriveResponseBodyDrive {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetGmtModified(v string) *CreateDriveResponseBodyDrive {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetId(v string) *CreateDriveResponseBodyDrive {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetName(v string) *CreateDriveResponseBodyDrive {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetProfileRoaming(v bool) *CreateDriveResponseBodyDrive {
+	s.ProfileRoaming = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetStatus(v string) *CreateDriveResponseBodyDrive {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetTotalSize(v int64) *CreateDriveResponseBodyDrive {
+	s.TotalSize = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetType(v string) *CreateDriveResponseBodyDrive {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetUsedSize(v int64) *CreateDriveResponseBodyDrive {
+	s.UsedSize = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetUserId(v string) *CreateDriveResponseBodyDrive {
+	s.UserId = &v
+	return s
+}
+
+type CreateDriveResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDriveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDriveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDriveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDriveResponse) SetHeaders(v map[string]*string) *CreateDriveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDriveResponse) SetStatusCode(v int32) *CreateDriveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDriveResponse) SetBody(v *CreateDriveResponseBody) *CreateDriveResponse {
 	s.Body = v
 	return s
 }
@@ -2479,6 +2797,7 @@ func (s *CreateNetworkPackageResponse) SetBody(v *CreateNetworkPackageResponseBo
 }
 
 type CreatePolicyGroupRequest struct {
+	AppContentProtection        *string                                                `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
 	AuthorizeAccessPolicyRule   []*CreatePolicyGroupRequestAuthorizeAccessPolicyRule   `json:"AuthorizeAccessPolicyRule,omitempty" xml:"AuthorizeAccessPolicyRule,omitempty" type:"Repeated"`
 	AuthorizeSecurityPolicyRule []*CreatePolicyGroupRequestAuthorizeSecurityPolicyRule `json:"AuthorizeSecurityPolicyRule,omitempty" xml:"AuthorizeSecurityPolicyRule,omitempty" type:"Repeated"`
 	CameraRedirect              *string                                                `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
@@ -2494,8 +2813,11 @@ type CreatePolicyGroupRequest struct {
 	PreemptLogin                *string                                                `json:"PreemptLogin,omitempty" xml:"PreemptLogin,omitempty"`
 	PreemptLoginUser            []*string                                              `json:"PreemptLoginUser,omitempty" xml:"PreemptLoginUser,omitempty" type:"Repeated"`
 	PrinterRedirection          *string                                                `json:"PrinterRedirection,omitempty" xml:"PrinterRedirection,omitempty"`
+	RecordContent               *string                                                `json:"RecordContent,omitempty" xml:"RecordContent,omitempty"`
+	RecordContentExpires        *int64                                                 `json:"RecordContentExpires,omitempty" xml:"RecordContentExpires,omitempty"`
 	Recording                   *string                                                `json:"Recording,omitempty" xml:"Recording,omitempty"`
 	RecordingEndTime            *string                                                `json:"RecordingEndTime,omitempty" xml:"RecordingEndTime,omitempty"`
+	RecordingExpires            *int64                                                 `json:"RecordingExpires,omitempty" xml:"RecordingExpires,omitempty"`
 	RecordingFps                *int64                                                 `json:"RecordingFps,omitempty" xml:"RecordingFps,omitempty"`
 	RecordingStartTime          *string                                                `json:"RecordingStartTime,omitempty" xml:"RecordingStartTime,omitempty"`
 	RegionId                    *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -2513,6 +2835,11 @@ func (s CreatePolicyGroupRequest) String() string {
 
 func (s CreatePolicyGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePolicyGroupRequest) SetAppContentProtection(v string) *CreatePolicyGroupRequest {
+	s.AppContentProtection = &v
+	return s
 }
 
 func (s *CreatePolicyGroupRequest) SetAuthorizeAccessPolicyRule(v []*CreatePolicyGroupRequestAuthorizeAccessPolicyRule) *CreatePolicyGroupRequest {
@@ -2590,6 +2917,16 @@ func (s *CreatePolicyGroupRequest) SetPrinterRedirection(v string) *CreatePolicy
 	return s
 }
 
+func (s *CreatePolicyGroupRequest) SetRecordContent(v string) *CreatePolicyGroupRequest {
+	s.RecordContent = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequest) SetRecordContentExpires(v int64) *CreatePolicyGroupRequest {
+	s.RecordContentExpires = &v
+	return s
+}
+
 func (s *CreatePolicyGroupRequest) SetRecording(v string) *CreatePolicyGroupRequest {
 	s.Recording = &v
 	return s
@@ -2597,6 +2934,11 @@ func (s *CreatePolicyGroupRequest) SetRecording(v string) *CreatePolicyGroupRequ
 
 func (s *CreatePolicyGroupRequest) SetRecordingEndTime(v string) *CreatePolicyGroupRequest {
 	s.RecordingEndTime = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequest) SetRecordingExpires(v int64) *CreatePolicyGroupRequest {
+	s.RecordingExpires = &v
 	return s
 }
 
@@ -3251,6 +3593,81 @@ func (s *DeleteBundlesResponse) SetBody(v *DeleteBundlesResponseBody) *DeleteBun
 	return s
 }
 
+type DeleteCloudDriveUsersRequest struct {
+	CdsId     *string   `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteCloudDriveUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudDriveUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudDriveUsersRequest) SetCdsId(v string) *DeleteCloudDriveUsersRequest {
+	s.CdsId = &v
+	return s
+}
+
+func (s *DeleteCloudDriveUsersRequest) SetEndUserId(v []*string) *DeleteCloudDriveUsersRequest {
+	s.EndUserId = v
+	return s
+}
+
+func (s *DeleteCloudDriveUsersRequest) SetRegionId(v string) *DeleteCloudDriveUsersRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteCloudDriveUsersResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCloudDriveUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudDriveUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudDriveUsersResponseBody) SetRequestId(v string) *DeleteCloudDriveUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCloudDriveUsersResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCloudDriveUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCloudDriveUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudDriveUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudDriveUsersResponse) SetHeaders(v map[string]*string) *DeleteCloudDriveUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCloudDriveUsersResponse) SetStatusCode(v int32) *DeleteCloudDriveUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCloudDriveUsersResponse) SetBody(v *DeleteCloudDriveUsersResponseBody) *DeleteCloudDriveUsersResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDesktopGroupRequest struct {
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3454,6 +3871,99 @@ func (s *DeleteDirectoriesResponse) SetStatusCode(v int32) *DeleteDirectoriesRes
 }
 
 func (s *DeleteDirectoriesResponse) SetBody(v *DeleteDirectoriesResponseBody) *DeleteDirectoriesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDriveRequest struct {
+	DriveId  *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteDriveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveRequest) SetDriveId(v string) *DeleteDriveRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *DeleteDriveRequest) SetRegionId(v string) *DeleteDriveRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteDriveResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDriveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveResponseBody) SetCode(v string) *DeleteDriveResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDriveResponseBody) SetData(v bool) *DeleteDriveResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteDriveResponseBody) SetMessage(v string) *DeleteDriveResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDriveResponseBody) SetRequestId(v string) *DeleteDriveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDriveResponseBody) SetSuccess(v bool) *DeleteDriveResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDriveResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDriveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDriveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveResponse) SetHeaders(v map[string]*string) *DeleteDriveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDriveResponse) SetStatusCode(v int32) *DeleteDriveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDriveResponse) SetBody(v *DeleteDriveResponseBody) *DeleteDriveResponse {
 	s.Body = v
 	return s
 }
@@ -4870,6 +5380,104 @@ func (s *DescribeClientEventsResponse) SetBody(v *DescribeClientEventsResponseBo
 	return s
 }
 
+type DescribeCloudDrivePermissionsRequest struct {
+	CdsId    *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeCloudDrivePermissionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudDrivePermissionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudDrivePermissionsRequest) SetCdsId(v string) *DescribeCloudDrivePermissionsRequest {
+	s.CdsId = &v
+	return s
+}
+
+func (s *DescribeCloudDrivePermissionsRequest) SetRegionId(v string) *DescribeCloudDrivePermissionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeCloudDrivePermissionsResponseBody struct {
+	CloudDrivePermissionModels []*DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels `json:"CloudDrivePermissionModels,omitempty" xml:"CloudDrivePermissionModels,omitempty" type:"Repeated"`
+	RequestId                  *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCloudDrivePermissionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudDrivePermissionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudDrivePermissionsResponseBody) SetCloudDrivePermissionModels(v []*DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels) *DescribeCloudDrivePermissionsResponseBody {
+	s.CloudDrivePermissionModels = v
+	return s
+}
+
+func (s *DescribeCloudDrivePermissionsResponseBody) SetRequestId(v string) *DescribeCloudDrivePermissionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels struct {
+	EndUsers   []*string `json:"EndUsers,omitempty" xml:"EndUsers,omitempty" type:"Repeated"`
+	Permission *string   `json:"Permission,omitempty" xml:"Permission,omitempty"`
+}
+
+func (s DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels) SetEndUsers(v []*string) *DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels {
+	s.EndUsers = v
+	return s
+}
+
+func (s *DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels) SetPermission(v string) *DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels {
+	s.Permission = &v
+	return s
+}
+
+type DescribeCloudDrivePermissionsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCloudDrivePermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCloudDrivePermissionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudDrivePermissionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudDrivePermissionsResponse) SetHeaders(v map[string]*string) *DescribeCloudDrivePermissionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudDrivePermissionsResponse) SetStatusCode(v int32) *DescribeCloudDrivePermissionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudDrivePermissionsResponse) SetBody(v *DescribeCloudDrivePermissionsResponseBody) *DescribeCloudDrivePermissionsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDesktopGroupsRequest struct {
 	DesktopGroupId     *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
 	DesktopGroupName   *string   `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
@@ -4991,6 +5599,7 @@ func (s *DescribeDesktopGroupsResponseBody) SetRequestId(v string) *DescribeDesk
 type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	BindAmount              *int64   `json:"BindAmount,omitempty" xml:"BindAmount,omitempty"`
 	Comments                *string  `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	ConnectDuration         *int64   `json:"ConnectDuration,omitempty" xml:"ConnectDuration,omitempty"`
 	Cpu                     *int32   `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	CreateTime              *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Creator                 *string  `json:"Creator,omitempty" xml:"Creator,omitempty"`
@@ -5002,6 +5611,7 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	ExpiredTime             *string  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	GpuCount                *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
 	GpuSpec                 *string  `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
+	IdleDisconnectDuration  *int64   `json:"IdleDisconnectDuration,omitempty" xml:"IdleDisconnectDuration,omitempty"`
 	ImageId                 *string  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	KeepDuration            *int64   `json:"KeepDuration,omitempty" xml:"KeepDuration,omitempty"`
 	LoadPolicy              *int64   `json:"LoadPolicy,omitempty" xml:"LoadPolicy,omitempty"`
@@ -5017,10 +5627,13 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	PayType                 *string  `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	PolicyGroupId           *string  `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
 	PolicyGroupName         *string  `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	RatioThreshold          *float32 `json:"RatioThreshold,omitempty" xml:"RatioThreshold,omitempty"`
 	ResetType               *int64   `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
 	Status                  *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StopDuration            *int64   `json:"StopDuration,omitempty" xml:"StopDuration,omitempty"`
 	SystemDiskCategory      *string  `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
 	SystemDiskSize          *int32   `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	Version                 *int32   `json:"Version,omitempty" xml:"Version,omitempty"`
 	VolumeEncryptionEnabled *bool    `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
 	VolumeEncryptionKey     *string  `json:"VolumeEncryptionKey,omitempty" xml:"VolumeEncryptionKey,omitempty"`
 }
@@ -5040,6 +5653,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetBindAmount(v int64) 
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetComments(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.Comments = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetConnectDuration(v int64) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.ConnectDuration = &v
 	return s
 }
 
@@ -5095,6 +5713,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetGpuCount(v float32) 
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetGpuSpec(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.GpuSpec = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetIdleDisconnectDuration(v int64) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.IdleDisconnectDuration = &v
 	return s
 }
 
@@ -5173,6 +5796,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetPolicyGroupName(v st
 	return s
 }
 
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetRatioThreshold(v float32) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.RatioThreshold = &v
+	return s
+}
+
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetResetType(v int64) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.ResetType = &v
 	return s
@@ -5183,6 +5811,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetStatus(v int32) *Des
 	return s
 }
 
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetStopDuration(v int64) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.StopDuration = &v
+	return s
+}
+
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetSystemDiskCategory(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.SystemDiskCategory = &v
 	return s
@@ -5190,6 +5823,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetSystemDiskCategory(v
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetSystemDiskSize(v int32) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetVersion(v int32) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.Version = &v
 	return s
 }
 
@@ -6189,6 +6827,7 @@ func (s *DescribeDesktopsResponse) SetBody(v *DescribeDesktopsResponseBody) *Des
 
 type DescribeDesktopsInGroupRequest struct {
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	IgnoreDeleted  *bool   `json:"IgnoreDeleted,omitempty" xml:"IgnoreDeleted,omitempty"`
 	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PayType        *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
@@ -6205,6 +6844,11 @@ func (s DescribeDesktopsInGroupRequest) GoString() string {
 
 func (s *DescribeDesktopsInGroupRequest) SetDesktopGroupId(v string) *DescribeDesktopsInGroupRequest {
 	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *DescribeDesktopsInGroupRequest) SetIgnoreDeleted(v bool) *DescribeDesktopsInGroupRequest {
+	s.IgnoreDeleted = &v
 	return s
 }
 
@@ -6313,7 +6957,10 @@ type DescribeDesktopsInGroupResponseBodyPaidDesktops struct {
 	ImageId          *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName        *string   `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	ManagementFlag   *string   `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty"`
+	ManagementFlags  []*string `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
+	MemberEniIp      *string   `json:"MemberEniIp,omitempty" xml:"MemberEniIp,omitempty"`
 	OsType           *string   `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	PrimaryEniIp     *string   `json:"PrimaryEniIp,omitempty" xml:"PrimaryEniIp,omitempty"`
 	ResetTime        *string   `json:"ResetTime,omitempty" xml:"ResetTime,omitempty"`
 	SystemDiskSize   *int32    `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 }
@@ -6391,8 +7038,23 @@ func (s *DescribeDesktopsInGroupResponseBodyPaidDesktops) SetManagementFlag(v st
 	return s
 }
 
+func (s *DescribeDesktopsInGroupResponseBodyPaidDesktops) SetManagementFlags(v []*string) *DescribeDesktopsInGroupResponseBodyPaidDesktops {
+	s.ManagementFlags = v
+	return s
+}
+
+func (s *DescribeDesktopsInGroupResponseBodyPaidDesktops) SetMemberEniIp(v string) *DescribeDesktopsInGroupResponseBodyPaidDesktops {
+	s.MemberEniIp = &v
+	return s
+}
+
 func (s *DescribeDesktopsInGroupResponseBodyPaidDesktops) SetOsType(v string) *DescribeDesktopsInGroupResponseBodyPaidDesktops {
 	s.OsType = &v
+	return s
+}
+
+func (s *DescribeDesktopsInGroupResponseBodyPaidDesktops) SetPrimaryEniIp(v string) *DescribeDesktopsInGroupResponseBodyPaidDesktops {
+	s.PrimaryEniIp = &v
 	return s
 }
 
@@ -6422,7 +7084,10 @@ type DescribeDesktopsInGroupResponseBodyPostPaidDesktops struct {
 	ImageId          *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName        *string   `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	ManagementFlag   *string   `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty"`
+	ManagementFlags  []*string `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
+	MemberEniIp      *string   `json:"MemberEniIp,omitempty" xml:"MemberEniIp,omitempty"`
 	OsType           *string   `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	PrimaryEniIp     *string   `json:"PrimaryEniIp,omitempty" xml:"PrimaryEniIp,omitempty"`
 	ReleaseTime      *string   `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
 	ResetTime        *string   `json:"ResetTime,omitempty" xml:"ResetTime,omitempty"`
 	SystemDiskSize   *int32    `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
@@ -6511,8 +7176,23 @@ func (s *DescribeDesktopsInGroupResponseBodyPostPaidDesktops) SetManagementFlag(
 	return s
 }
 
+func (s *DescribeDesktopsInGroupResponseBodyPostPaidDesktops) SetManagementFlags(v []*string) *DescribeDesktopsInGroupResponseBodyPostPaidDesktops {
+	s.ManagementFlags = v
+	return s
+}
+
+func (s *DescribeDesktopsInGroupResponseBodyPostPaidDesktops) SetMemberEniIp(v string) *DescribeDesktopsInGroupResponseBodyPostPaidDesktops {
+	s.MemberEniIp = &v
+	return s
+}
+
 func (s *DescribeDesktopsInGroupResponseBodyPostPaidDesktops) SetOsType(v string) *DescribeDesktopsInGroupResponseBodyPostPaidDesktops {
 	s.OsType = &v
+	return s
+}
+
+func (s *DescribeDesktopsInGroupResponseBodyPostPaidDesktops) SetPrimaryEniIp(v string) *DescribeDesktopsInGroupResponseBodyPostPaidDesktops {
+	s.PrimaryEniIp = &v
 	return s
 }
 
@@ -6938,6 +7618,265 @@ func (s *DescribeDirectoriesResponse) SetBody(v *DescribeDirectoriesResponseBody
 	return s
 }
 
+type DescribeDrivesRequest struct {
+	DomainIds    []*string `json:"DomainIds,omitempty" xml:"DomainIds,omitempty" type:"Repeated"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	UserId       *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeDrivesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrivesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrivesRequest) SetDomainIds(v []*string) *DescribeDrivesRequest {
+	s.DomainIds = v
+	return s
+}
+
+func (s *DescribeDrivesRequest) SetRegionId(v string) *DescribeDrivesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDrivesRequest) SetResourceType(v string) *DescribeDrivesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeDrivesRequest) SetUserId(v string) *DescribeDrivesRequest {
+	s.UserId = &v
+	return s
+}
+
+type DescribeDrivesResponseBody struct {
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Drives    []*DescribeDrivesResponseBodyDrives `json:"Drives,omitempty" xml:"Drives,omitempty" type:"Repeated"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeDrivesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrivesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrivesResponseBody) SetCode(v string) *DescribeDrivesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBody) SetDrives(v []*DescribeDrivesResponseBodyDrives) *DescribeDrivesResponseBody {
+	s.Drives = v
+	return s
+}
+
+func (s *DescribeDrivesResponseBody) SetMessage(v string) *DescribeDrivesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBody) SetRequestId(v string) *DescribeDrivesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBody) SetSuccess(v bool) *DescribeDrivesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeDrivesResponseBodyDrives struct {
+	AliUid                  *int64                                           `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Description             *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	DesktopGroupCount       *int32                                           `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
+	DesktopGroups           []*DescribeDrivesResponseBodyDrivesDesktopGroups `json:"DesktopGroups,omitempty" xml:"DesktopGroups,omitempty" type:"Repeated"`
+	DomainId                *string                                          `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DriveId                 *string                                          `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	EnableProfileManagement *bool                                            `json:"EnableProfileManagement,omitempty" xml:"EnableProfileManagement,omitempty"`
+	ExternalDomainId        *string                                          `json:"ExternalDomainId,omitempty" xml:"ExternalDomainId,omitempty"`
+	ExternalDriveId         *string                                          `json:"ExternalDriveId,omitempty" xml:"ExternalDriveId,omitempty"`
+	ExternalUserId          *string                                          `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	GmtCreate               *string                                          `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified             *string                                          `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                      *string                                          `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name                    *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProfileRoaming          *bool                                            `json:"ProfileRoaming,omitempty" xml:"ProfileRoaming,omitempty"`
+	Status                  *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalSize               *int64                                           `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	Type                    *string                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+	UsedSize                *int64                                           `json:"UsedSize,omitempty" xml:"UsedSize,omitempty"`
+	UserId                  *string                                          `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeDrivesResponseBodyDrives) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrivesResponseBodyDrives) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetAliUid(v int64) *DescribeDrivesResponseBodyDrives {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetDescription(v string) *DescribeDrivesResponseBodyDrives {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetDesktopGroupCount(v int32) *DescribeDrivesResponseBodyDrives {
+	s.DesktopGroupCount = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetDesktopGroups(v []*DescribeDrivesResponseBodyDrivesDesktopGroups) *DescribeDrivesResponseBodyDrives {
+	s.DesktopGroups = v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetDomainId(v string) *DescribeDrivesResponseBodyDrives {
+	s.DomainId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetDriveId(v string) *DescribeDrivesResponseBodyDrives {
+	s.DriveId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetEnableProfileManagement(v bool) *DescribeDrivesResponseBodyDrives {
+	s.EnableProfileManagement = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetExternalDomainId(v string) *DescribeDrivesResponseBodyDrives {
+	s.ExternalDomainId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetExternalDriveId(v string) *DescribeDrivesResponseBodyDrives {
+	s.ExternalDriveId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetExternalUserId(v string) *DescribeDrivesResponseBodyDrives {
+	s.ExternalUserId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetGmtCreate(v string) *DescribeDrivesResponseBodyDrives {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetGmtModified(v string) *DescribeDrivesResponseBodyDrives {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetId(v string) *DescribeDrivesResponseBodyDrives {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetName(v string) *DescribeDrivesResponseBodyDrives {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetProfileRoaming(v bool) *DescribeDrivesResponseBodyDrives {
+	s.ProfileRoaming = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetStatus(v string) *DescribeDrivesResponseBodyDrives {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetTotalSize(v int64) *DescribeDrivesResponseBodyDrives {
+	s.TotalSize = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetType(v string) *DescribeDrivesResponseBodyDrives {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetUsedSize(v int64) *DescribeDrivesResponseBodyDrives {
+	s.UsedSize = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetUserId(v string) *DescribeDrivesResponseBodyDrives {
+	s.UserId = &v
+	return s
+}
+
+type DescribeDrivesResponseBodyDrivesDesktopGroups struct {
+	DesktopGroupId   *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
+}
+
+func (s DescribeDrivesResponseBodyDrivesDesktopGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrivesResponseBodyDrivesDesktopGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrivesResponseBodyDrivesDesktopGroups) SetDesktopGroupId(v string) *DescribeDrivesResponseBodyDrivesDesktopGroups {
+	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrivesDesktopGroups) SetDesktopGroupName(v string) *DescribeDrivesResponseBodyDrivesDesktopGroups {
+	s.DesktopGroupName = &v
+	return s
+}
+
+type DescribeDrivesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDrivesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDrivesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrivesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrivesResponse) SetHeaders(v map[string]*string) *DescribeDrivesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDrivesResponse) SetStatusCode(v int32) *DescribeDrivesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDrivesResponse) SetBody(v *DescribeDrivesResponseBody) *DescribeDrivesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeFlowMetricRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -7221,8 +8160,7 @@ func (s *DescribeFotaPendingDesktopsRequest) SetTaskUid(v string) *DescribeFotaP
 type DescribeFotaPendingDesktopsResponseBody struct {
 	FotaPendingDesktops []*DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops `json:"FotaPendingDesktops,omitempty" xml:"FotaPendingDesktops,omitempty" type:"Repeated"`
 	NextToken           *string                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId           *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeFotaPendingDesktopsResponseBody) String() string {
@@ -8998,6 +9936,7 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	NetworkPackageStatus *string   `json:"NetworkPackageStatus,omitempty" xml:"NetworkPackageStatus,omitempty"`
 	OfficeSiteId         *string   `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	OfficeSiteName       *string   `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	OfficeSiteVpcType    *string   `json:"OfficeSiteVpcType,omitempty" xml:"OfficeSiteVpcType,omitempty"`
 }
 
 func (s DescribeNetworkPackagesResponseBodyNetworkPackages) String() string {
@@ -9050,6 +9989,11 @@ func (s *DescribeNetworkPackagesResponseBodyNetworkPackages) SetOfficeSiteId(v s
 
 func (s *DescribeNetworkPackagesResponseBodyNetworkPackages) SetOfficeSiteName(v string) *DescribeNetworkPackagesResponseBodyNetworkPackages {
 	s.OfficeSiteName = &v
+	return s
+}
+
+func (s *DescribeNetworkPackagesResponseBodyNetworkPackages) SetOfficeSiteVpcType(v string) *DescribeNetworkPackagesResponseBodyNetworkPackages {
+	s.OfficeSiteVpcType = &v
 	return s
 }
 
@@ -9579,6 +10523,7 @@ func (s *DescribePolicyGroupsResponseBody) SetRequestId(v string) *DescribePolic
 }
 
 type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
+	AppContentProtection         *string                                                                             `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
 	AuthorizeAccessPolicyRules   []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules   `json:"AuthorizeAccessPolicyRules,omitempty" xml:"AuthorizeAccessPolicyRules,omitempty" type:"Repeated"`
 	AuthorizeSecurityPolicyRules []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules `json:"AuthorizeSecurityPolicyRules,omitempty" xml:"AuthorizeSecurityPolicyRules,omitempty" type:"Repeated"`
 	CameraRedirect               *string                                                                             `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
@@ -9598,8 +10543,11 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	PreemptLogin                 *string                                                                             `json:"PreemptLogin,omitempty" xml:"PreemptLogin,omitempty"`
 	PreemptLoginUsers            []*string                                                                           `json:"PreemptLoginUsers,omitempty" xml:"PreemptLoginUsers,omitempty" type:"Repeated"`
 	PrinterRedirection           *string                                                                             `json:"PrinterRedirection,omitempty" xml:"PrinterRedirection,omitempty"`
+	RecordContent                *string                                                                             `json:"RecordContent,omitempty" xml:"RecordContent,omitempty"`
+	RecordContentExpires         *int64                                                                              `json:"RecordContentExpires,omitempty" xml:"RecordContentExpires,omitempty"`
 	Recording                    *string                                                                             `json:"Recording,omitempty" xml:"Recording,omitempty"`
 	RecordingEndTime             *string                                                                             `json:"RecordingEndTime,omitempty" xml:"RecordingEndTime,omitempty"`
+	RecordingExpires             *int64                                                                              `json:"RecordingExpires,omitempty" xml:"RecordingExpires,omitempty"`
 	RecordingFps                 *int64                                                                              `json:"RecordingFps,omitempty" xml:"RecordingFps,omitempty"`
 	RecordingStartTime           *string                                                                             `json:"RecordingStartTime,omitempty" xml:"RecordingStartTime,omitempty"`
 	UsbRedirect                  *string                                                                             `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
@@ -9617,6 +10565,11 @@ func (s DescribePolicyGroupsResponseBodyDescribePolicyGroups) String() string {
 
 func (s DescribePolicyGroupsResponseBodyDescribePolicyGroups) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetAppContentProtection(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.AppContentProtection = &v
+	return s
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetAuthorizeAccessPolicyRules(v []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
@@ -9714,6 +10667,16 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetPrinterRedirec
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRecordContent(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.RecordContent = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRecordContentExpires(v int64) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.RecordContentExpires = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRecording(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.Recording = &v
 	return s
@@ -9721,6 +10684,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRecording(v st
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRecordingEndTime(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.RecordingEndTime = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRecordingExpires(v int64) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.RecordingExpires = &v
 	return s
 }
 
@@ -9950,148 +10918,9 @@ func (s *DescribePolicyGroupsResponse) SetBody(v *DescribePolicyGroupsResponseBo
 	return s
 }
 
-type DescribeRecordingsRequest struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeRecordingsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRecordingsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRecordingsRequest) SetMaxResults(v int32) *DescribeRecordingsRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *DescribeRecordingsRequest) SetNextToken(v string) *DescribeRecordingsRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *DescribeRecordingsRequest) SetRegionId(v string) *DescribeRecordingsRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeRecordingsResponseBody struct {
-	NextToken  *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Recordings []*DescribeRecordingsResponseBodyRecordings `json:"Recordings,omitempty" xml:"Recordings,omitempty" type:"Repeated"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeRecordingsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRecordingsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRecordingsResponseBody) SetNextToken(v string) *DescribeRecordingsResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *DescribeRecordingsResponseBody) SetRecordings(v []*DescribeRecordingsResponseBodyRecordings) *DescribeRecordingsResponseBody {
-	s.Recordings = v
-	return s
-}
-
-func (s *DescribeRecordingsResponseBody) SetRequestId(v string) *DescribeRecordingsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeRecordingsResponseBodyRecordings struct {
-	DesktopId     *string   `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	EndTime       *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EndUserIds    []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	FilePath      *string   `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	RecordingSize *int32    `json:"RecordingSize,omitempty" xml:"RecordingSize,omitempty"`
-	RecordingType *string   `json:"RecordingType,omitempty" xml:"RecordingType,omitempty"`
-	StartTime     *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeRecordingsResponseBodyRecordings) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRecordingsResponseBodyRecordings) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRecordingsResponseBodyRecordings) SetDesktopId(v string) *DescribeRecordingsResponseBodyRecordings {
-	s.DesktopId = &v
-	return s
-}
-
-func (s *DescribeRecordingsResponseBodyRecordings) SetEndTime(v string) *DescribeRecordingsResponseBodyRecordings {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeRecordingsResponseBodyRecordings) SetEndUserIds(v []*string) *DescribeRecordingsResponseBodyRecordings {
-	s.EndUserIds = v
-	return s
-}
-
-func (s *DescribeRecordingsResponseBodyRecordings) SetFilePath(v string) *DescribeRecordingsResponseBodyRecordings {
-	s.FilePath = &v
-	return s
-}
-
-func (s *DescribeRecordingsResponseBodyRecordings) SetRecordingSize(v int32) *DescribeRecordingsResponseBodyRecordings {
-	s.RecordingSize = &v
-	return s
-}
-
-func (s *DescribeRecordingsResponseBodyRecordings) SetRecordingType(v string) *DescribeRecordingsResponseBodyRecordings {
-	s.RecordingType = &v
-	return s
-}
-
-func (s *DescribeRecordingsResponseBodyRecordings) SetStartTime(v string) *DescribeRecordingsResponseBodyRecordings {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeRecordingsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRecordingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRecordingsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRecordingsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRecordingsResponse) SetHeaders(v map[string]*string) *DescribeRecordingsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRecordingsResponse) SetStatusCode(v int32) *DescribeRecordingsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeRecordingsResponse) SetBody(v *DescribeRecordingsResponseBody) *DescribeRecordingsResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeRegionsRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {
@@ -10100,6 +10929,11 @@ func (s DescribeRegionsRequest) String() string {
 
 func (s DescribeRegionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsRequest {
+	s.AcceptLanguage = &v
+	return s
 }
 
 func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
@@ -10131,6 +10965,7 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -10141,6 +10976,11 @@ func (s DescribeRegionsResponseBodyRegions) String() string {
 
 func (s DescribeRegionsResponseBodyRegions) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRegionsResponseBodyRegions) SetLocalName(v string) *DescribeRegionsResponseBodyRegions {
+	s.LocalName = &v
+	return s
 }
 
 func (s *DescribeRegionsResponseBodyRegions) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegions {
@@ -10558,6 +11398,7 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DesktopId               *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
 	Progress                *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	ProtocolType            *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	RemainTime              *int32  `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
 	SnapshotId              *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	SnapshotName            *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
@@ -10594,6 +11435,11 @@ func (s *DescribeSnapshotsResponseBodySnapshots) SetDesktopId(v string) *Describ
 
 func (s *DescribeSnapshotsResponseBodySnapshots) SetProgress(v string) *DescribeSnapshotsResponseBodySnapshots {
 	s.Progress = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetProtocolType(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.ProtocolType = &v
 	return s
 }
 
@@ -11557,6 +12403,7 @@ type DescribeUsersInGroupResponseBodyEndUsers struct {
 	EndUserPhone            *string                                                            `json:"EndUserPhone,omitempty" xml:"EndUserPhone,omitempty"`
 	EndUserType             *string                                                            `json:"EndUserType,omitempty" xml:"EndUserType,omitempty"`
 	ExternalInfo            *DescribeUsersInGroupResponseBodyEndUsersExternalInfo              `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty" type:"Struct"`
+	UserDesktopId           *string                                                            `json:"UserDesktopId,omitempty" xml:"UserDesktopId,omitempty"`
 	UserSetPropertiesModels []*DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModels `json:"UserSetPropertiesModels,omitempty" xml:"UserSetPropertiesModels,omitempty" type:"Repeated"`
 }
 
@@ -11610,6 +12457,11 @@ func (s *DescribeUsersInGroupResponseBodyEndUsers) SetEndUserType(v string) *Des
 
 func (s *DescribeUsersInGroupResponseBodyEndUsers) SetExternalInfo(v *DescribeUsersInGroupResponseBodyEndUsersExternalInfo) *DescribeUsersInGroupResponseBodyEndUsers {
 	s.ExternalInfo = v
+	return s
+}
+
+func (s *DescribeUsersInGroupResponseBodyEndUsers) SetUserDesktopId(v string) *DescribeUsersInGroupResponseBodyEndUsers {
+	s.UserDesktopId = &v
 	return s
 }
 
@@ -11736,6 +12588,110 @@ func (s *DescribeUsersInGroupResponse) SetStatusCode(v int32) *DescribeUsersInGr
 }
 
 func (s *DescribeUsersInGroupResponse) SetBody(v *DescribeUsersInGroupResponseBody) *DescribeUsersInGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUsersPasswordRequest struct {
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeUsersPasswordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUsersPasswordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUsersPasswordRequest) SetDesktopId(v string) *DescribeUsersPasswordRequest {
+	s.DesktopId = &v
+	return s
+}
+
+func (s *DescribeUsersPasswordRequest) SetRegionId(v string) *DescribeUsersPasswordRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeUsersPasswordResponseBody struct {
+	DesktopUsers []*DescribeUsersPasswordResponseBodyDesktopUsers `json:"DesktopUsers,omitempty" xml:"DesktopUsers,omitempty" type:"Repeated"`
+	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeUsersPasswordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUsersPasswordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUsersPasswordResponseBody) SetDesktopUsers(v []*DescribeUsersPasswordResponseBodyDesktopUsers) *DescribeUsersPasswordResponseBody {
+	s.DesktopUsers = v
+	return s
+}
+
+func (s *DescribeUsersPasswordResponseBody) SetRequestId(v string) *DescribeUsersPasswordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeUsersPasswordResponseBodyDesktopUsers struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	EndUserId   *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	Password    *string `json:"Password,omitempty" xml:"Password,omitempty"`
+}
+
+func (s DescribeUsersPasswordResponseBodyDesktopUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUsersPasswordResponseBodyDesktopUsers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUsersPasswordResponseBodyDesktopUsers) SetDisplayName(v string) *DescribeUsersPasswordResponseBodyDesktopUsers {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *DescribeUsersPasswordResponseBodyDesktopUsers) SetEndUserId(v string) *DescribeUsersPasswordResponseBodyDesktopUsers {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeUsersPasswordResponseBodyDesktopUsers) SetPassword(v string) *DescribeUsersPasswordResponseBodyDesktopUsers {
+	s.Password = &v
+	return s
+}
+
+type DescribeUsersPasswordResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUsersPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUsersPasswordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUsersPasswordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUsersPasswordResponse) SetHeaders(v map[string]*string) *DescribeUsersPasswordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUsersPasswordResponse) SetStatusCode(v int32) *DescribeUsersPasswordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUsersPasswordResponse) SetBody(v *DescribeUsersPasswordResponseBody) *DescribeUsersPasswordResponse {
 	s.Body = v
 	return s
 }
@@ -12031,6 +12987,7 @@ type DescribeVulListRequest struct {
 	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Dealed       *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Necessity    *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -12063,6 +13020,11 @@ func (s *DescribeVulListRequest) SetDealed(v string) *DescribeVulListRequest {
 
 func (s *DescribeVulListRequest) SetLang(v string) *DescribeVulListRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeVulListRequest) SetName(v string) *DescribeVulListRequest {
+	s.Name = &v
 	return s
 }
 
@@ -12610,7 +13572,6 @@ func (s *DisableDesktopsInGroupRequest) SetRegionId(v string) *DisableDesktopsIn
 }
 
 type DisableDesktopsInGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13329,42 +14290,47 @@ func (s *GetDesktopGroupDetailResponseBody) SetRequestId(v string) *GetDesktopGr
 }
 
 type GetDesktopGroupDetailResponseBodyDesktops struct {
-	AllowAutoSetup     *int32                                                 `json:"AllowAutoSetup,omitempty" xml:"AllowAutoSetup,omitempty"`
-	AllowBufferCount   *int32                                                 `json:"AllowBufferCount,omitempty" xml:"AllowBufferCount,omitempty"`
-	BindAmount         *int32                                                 `json:"BindAmount,omitempty" xml:"BindAmount,omitempty"`
-	Comments           *string                                                `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	Cpu                *int32                                                 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreationTime       *string                                                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Creator            *string                                                `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	DataDiskCategory   *string                                                `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
-	DataDiskSize       *string                                                `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
-	DesktopGroupId     *string                                                `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	DesktopGroupName   *string                                                `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	DirectoryId        *string                                                `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	DirectoryType      *string                                                `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
-	ExpiredTime        *string                                                `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	GpuCount           *float32                                               `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
-	GpuSpec            *string                                                `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
-	KeepDuration       *int64                                                 `json:"KeepDuration,omitempty" xml:"KeepDuration,omitempty"`
-	LoadPolicy         *int32                                                 `json:"LoadPolicy,omitempty" xml:"LoadPolicy,omitempty"`
-	MaxDesktopsCount   *int32                                                 `json:"MaxDesktopsCount,omitempty" xml:"MaxDesktopsCount,omitempty"`
-	Memory             *int64                                                 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MinDesktopsCount   *int32                                                 `json:"MinDesktopsCount,omitempty" xml:"MinDesktopsCount,omitempty"`
-	OfficeSiteId       *string                                                `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	OfficeSiteName     *string                                                `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	OfficeSiteType     *string                                                `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	OwnBundleId        *string                                                `json:"OwnBundleId,omitempty" xml:"OwnBundleId,omitempty"`
-	OwnBundleName      *string                                                `json:"OwnBundleName,omitempty" xml:"OwnBundleName,omitempty"`
-	OwnType            *int32                                                 `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
-	PayType            *string                                                `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PolicyGroupId      *string                                                `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	PolicyGroupName    *string                                                `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
-	ResType            *int32                                                 `json:"ResType,omitempty" xml:"ResType,omitempty"`
-	ResetType          *int32                                                 `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	Status             *int32                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	SystemDiskCategory *string                                                `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	SystemDiskSize     *int32                                                 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	TimerInfos         []*GetDesktopGroupDetailResponseBodyDesktopsTimerInfos `json:"TimerInfos,omitempty" xml:"TimerInfos,omitempty" type:"Repeated"`
+	AllowAutoSetup         *int32                                                 `json:"AllowAutoSetup,omitempty" xml:"AllowAutoSetup,omitempty"`
+	AllowBufferCount       *int32                                                 `json:"AllowBufferCount,omitempty" xml:"AllowBufferCount,omitempty"`
+	BindAmount             *int32                                                 `json:"BindAmount,omitempty" xml:"BindAmount,omitempty"`
+	Comments               *string                                                `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	ConnectDuration        *int64                                                 `json:"ConnectDuration,omitempty" xml:"ConnectDuration,omitempty"`
+	Cpu                    *int32                                                 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreationTime           *string                                                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Creator                *string                                                `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	DataDiskCategory       *string                                                `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
+	DataDiskSize           *string                                                `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	DesktopGroupId         *string                                                `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	DesktopGroupName       *string                                                `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
+	DirectoryId            *string                                                `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	DirectoryType          *string                                                `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
+	ExpiredTime            *string                                                `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	GpuCount               *float32                                               `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuSpec                *string                                                `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
+	IdleDisconnectDuration *int64                                                 `json:"IdleDisconnectDuration,omitempty" xml:"IdleDisconnectDuration,omitempty"`
+	KeepDuration           *int64                                                 `json:"KeepDuration,omitempty" xml:"KeepDuration,omitempty"`
+	LoadPolicy             *int32                                                 `json:"LoadPolicy,omitempty" xml:"LoadPolicy,omitempty"`
+	MaxDesktopsCount       *int32                                                 `json:"MaxDesktopsCount,omitempty" xml:"MaxDesktopsCount,omitempty"`
+	Memory                 *int64                                                 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	MinDesktopsCount       *int32                                                 `json:"MinDesktopsCount,omitempty" xml:"MinDesktopsCount,omitempty"`
+	OfficeSiteId           *string                                                `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	OfficeSiteName         *string                                                `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	OfficeSiteType         *string                                                `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
+	OwnBundleId            *string                                                `json:"OwnBundleId,omitempty" xml:"OwnBundleId,omitempty"`
+	OwnBundleName          *string                                                `json:"OwnBundleName,omitempty" xml:"OwnBundleName,omitempty"`
+	OwnType                *int32                                                 `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
+	PayType                *string                                                `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PolicyGroupId          *string                                                `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PolicyGroupName        *string                                                `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	RatioThreshold         *float32                                               `json:"RatioThreshold,omitempty" xml:"RatioThreshold,omitempty"`
+	ResType                *int32                                                 `json:"ResType,omitempty" xml:"ResType,omitempty"`
+	ResetType              *int32                                                 `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	Status                 *int32                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	StopDuration           *int64                                                 `json:"StopDuration,omitempty" xml:"StopDuration,omitempty"`
+	SystemDiskCategory     *string                                                `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	SystemDiskSize         *int32                                                 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	TimerInfos             []*GetDesktopGroupDetailResponseBodyDesktopsTimerInfos `json:"TimerInfos,omitempty" xml:"TimerInfos,omitempty" type:"Repeated"`
+	Version                *int64                                                 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetDesktopGroupDetailResponseBodyDesktops) String() string {
@@ -13392,6 +14358,11 @@ func (s *GetDesktopGroupDetailResponseBodyDesktops) SetBindAmount(v int32) *GetD
 
 func (s *GetDesktopGroupDetailResponseBodyDesktops) SetComments(v string) *GetDesktopGroupDetailResponseBodyDesktops {
 	s.Comments = &v
+	return s
+}
+
+func (s *GetDesktopGroupDetailResponseBodyDesktops) SetConnectDuration(v int64) *GetDesktopGroupDetailResponseBodyDesktops {
+	s.ConnectDuration = &v
 	return s
 }
 
@@ -13452,6 +14423,11 @@ func (s *GetDesktopGroupDetailResponseBodyDesktops) SetGpuCount(v float32) *GetD
 
 func (s *GetDesktopGroupDetailResponseBodyDesktops) SetGpuSpec(v string) *GetDesktopGroupDetailResponseBodyDesktops {
 	s.GpuSpec = &v
+	return s
+}
+
+func (s *GetDesktopGroupDetailResponseBodyDesktops) SetIdleDisconnectDuration(v int64) *GetDesktopGroupDetailResponseBodyDesktops {
+	s.IdleDisconnectDuration = &v
 	return s
 }
 
@@ -13525,6 +14501,11 @@ func (s *GetDesktopGroupDetailResponseBodyDesktops) SetPolicyGroupName(v string)
 	return s
 }
 
+func (s *GetDesktopGroupDetailResponseBodyDesktops) SetRatioThreshold(v float32) *GetDesktopGroupDetailResponseBodyDesktops {
+	s.RatioThreshold = &v
+	return s
+}
+
 func (s *GetDesktopGroupDetailResponseBodyDesktops) SetResType(v int32) *GetDesktopGroupDetailResponseBodyDesktops {
 	s.ResType = &v
 	return s
@@ -13537,6 +14518,11 @@ func (s *GetDesktopGroupDetailResponseBodyDesktops) SetResetType(v int32) *GetDe
 
 func (s *GetDesktopGroupDetailResponseBodyDesktops) SetStatus(v int32) *GetDesktopGroupDetailResponseBodyDesktops {
 	s.Status = &v
+	return s
+}
+
+func (s *GetDesktopGroupDetailResponseBodyDesktops) SetStopDuration(v int64) *GetDesktopGroupDetailResponseBodyDesktops {
+	s.StopDuration = &v
 	return s
 }
 
@@ -13555,8 +14541,14 @@ func (s *GetDesktopGroupDetailResponseBodyDesktops) SetTimerInfos(v []*GetDeskto
 	return s
 }
 
+func (s *GetDesktopGroupDetailResponseBodyDesktops) SetVersion(v int64) *GetDesktopGroupDetailResponseBodyDesktops {
+	s.Version = &v
+	return s
+}
+
 type GetDesktopGroupDetailResponseBodyDesktopsTimerInfos struct {
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	Forced         *bool   `json:"Forced,omitempty" xml:"Forced,omitempty"`
 	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	TimerType      *int32  `json:"TimerType,omitempty" xml:"TimerType,omitempty"`
 }
@@ -13571,6 +14563,11 @@ func (s GetDesktopGroupDetailResponseBodyDesktopsTimerInfos) GoString() string {
 
 func (s *GetDesktopGroupDetailResponseBodyDesktopsTimerInfos) SetCronExpression(v string) *GetDesktopGroupDetailResponseBodyDesktopsTimerInfos {
 	s.CronExpression = &v
+	return s
+}
+
+func (s *GetDesktopGroupDetailResponseBodyDesktopsTimerInfos) SetForced(v bool) *GetDesktopGroupDetailResponseBodyDesktopsTimerInfos {
+	s.Forced = &v
 	return s
 }
 
@@ -15010,6 +16007,87 @@ func (s *ModifyBundleResponse) SetBody(v *ModifyBundleResponseBody) *ModifyBundl
 	return s
 }
 
+type ModifyCloudDrivePermissionRequest struct {
+	CdsId                    *string   `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	DownloadEndUserIds       []*string `json:"DownloadEndUserIds,omitempty" xml:"DownloadEndUserIds,omitempty" type:"Repeated"`
+	DownloadUploadEndUserIds []*string `json:"DownloadUploadEndUserIds,omitempty" xml:"DownloadUploadEndUserIds,omitempty" type:"Repeated"`
+	RegionId                 *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyCloudDrivePermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudDrivePermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudDrivePermissionRequest) SetCdsId(v string) *ModifyCloudDrivePermissionRequest {
+	s.CdsId = &v
+	return s
+}
+
+func (s *ModifyCloudDrivePermissionRequest) SetDownloadEndUserIds(v []*string) *ModifyCloudDrivePermissionRequest {
+	s.DownloadEndUserIds = v
+	return s
+}
+
+func (s *ModifyCloudDrivePermissionRequest) SetDownloadUploadEndUserIds(v []*string) *ModifyCloudDrivePermissionRequest {
+	s.DownloadUploadEndUserIds = v
+	return s
+}
+
+func (s *ModifyCloudDrivePermissionRequest) SetRegionId(v string) *ModifyCloudDrivePermissionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyCloudDrivePermissionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyCloudDrivePermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudDrivePermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudDrivePermissionResponseBody) SetRequestId(v string) *ModifyCloudDrivePermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyCloudDrivePermissionResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyCloudDrivePermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyCloudDrivePermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudDrivePermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudDrivePermissionResponse) SetHeaders(v map[string]*string) *ModifyCloudDrivePermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCloudDrivePermissionResponse) SetStatusCode(v int32) *ModifyCloudDrivePermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCloudDrivePermissionResponse) SetBody(v *ModifyCloudDrivePermissionResponseBody) *ModifyCloudDrivePermissionResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDesktopChargeTypeRequest struct {
 	AutoPay     *bool     `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	ChargeType  *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
@@ -15122,23 +16200,28 @@ func (s *ModifyDesktopChargeTypeResponse) SetBody(v *ModifyDesktopChargeTypeResp
 }
 
 type ModifyDesktopGroupRequest struct {
-	AllowAutoSetup   *int32  `json:"AllowAutoSetup,omitempty" xml:"AllowAutoSetup,omitempty"`
-	AllowBufferCount *int32  `json:"AllowBufferCount,omitempty" xml:"AllowBufferCount,omitempty"`
-	BindAmount       *int64  `json:"BindAmount,omitempty" xml:"BindAmount,omitempty"`
-	Classify         *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
-	Comments         *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	DesktopGroupId   *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	ImageId          *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	KeepDuration     *int64  `json:"KeepDuration,omitempty" xml:"KeepDuration,omitempty"`
-	LoadPolicy       *int64  `json:"LoadPolicy,omitempty" xml:"LoadPolicy,omitempty"`
-	MaxDesktopsCount *int32  `json:"MaxDesktopsCount,omitempty" xml:"MaxDesktopsCount,omitempty"`
-	MinDesktopsCount *int32  `json:"MinDesktopsCount,omitempty" xml:"MinDesktopsCount,omitempty"`
-	OwnBundleId      *string `json:"OwnBundleId,omitempty" xml:"OwnBundleId,omitempty"`
-	PolicyGroupId    *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResetType        *int64  `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	ScaleStrategyId  *string `json:"ScaleStrategyId,omitempty" xml:"ScaleStrategyId,omitempty"`
+	AllowAutoSetup         *int32   `json:"AllowAutoSetup,omitempty" xml:"AllowAutoSetup,omitempty"`
+	AllowBufferCount       *int32   `json:"AllowBufferCount,omitempty" xml:"AllowBufferCount,omitempty"`
+	BindAmount             *int64   `json:"BindAmount,omitempty" xml:"BindAmount,omitempty"`
+	Classify               *string  `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	Comments               *string  `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	ConnectDuration        *int64   `json:"ConnectDuration,omitempty" xml:"ConnectDuration,omitempty"`
+	DesktopGroupId         *string  `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	DesktopGroupName       *string  `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
+	DisableSessionConfig   *bool    `json:"DisableSessionConfig,omitempty" xml:"DisableSessionConfig,omitempty"`
+	IdleDisconnectDuration *int64   `json:"IdleDisconnectDuration,omitempty" xml:"IdleDisconnectDuration,omitempty"`
+	ImageId                *string  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	KeepDuration           *int64   `json:"KeepDuration,omitempty" xml:"KeepDuration,omitempty"`
+	LoadPolicy             *int64   `json:"LoadPolicy,omitempty" xml:"LoadPolicy,omitempty"`
+	MaxDesktopsCount       *int32   `json:"MaxDesktopsCount,omitempty" xml:"MaxDesktopsCount,omitempty"`
+	MinDesktopsCount       *int32   `json:"MinDesktopsCount,omitempty" xml:"MinDesktopsCount,omitempty"`
+	OwnBundleId            *string  `json:"OwnBundleId,omitempty" xml:"OwnBundleId,omitempty"`
+	PolicyGroupId          *string  `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	RatioThreshold         *float32 `json:"RatioThreshold,omitempty" xml:"RatioThreshold,omitempty"`
+	RegionId               *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResetType              *int64   `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	ScaleStrategyId        *string  `json:"ScaleStrategyId,omitempty" xml:"ScaleStrategyId,omitempty"`
+	StopDuration           *int64   `json:"StopDuration,omitempty" xml:"StopDuration,omitempty"`
 }
 
 func (s ModifyDesktopGroupRequest) String() string {
@@ -15174,6 +16257,11 @@ func (s *ModifyDesktopGroupRequest) SetComments(v string) *ModifyDesktopGroupReq
 	return s
 }
 
+func (s *ModifyDesktopGroupRequest) SetConnectDuration(v int64) *ModifyDesktopGroupRequest {
+	s.ConnectDuration = &v
+	return s
+}
+
 func (s *ModifyDesktopGroupRequest) SetDesktopGroupId(v string) *ModifyDesktopGroupRequest {
 	s.DesktopGroupId = &v
 	return s
@@ -15181,6 +16269,16 @@ func (s *ModifyDesktopGroupRequest) SetDesktopGroupId(v string) *ModifyDesktopGr
 
 func (s *ModifyDesktopGroupRequest) SetDesktopGroupName(v string) *ModifyDesktopGroupRequest {
 	s.DesktopGroupName = &v
+	return s
+}
+
+func (s *ModifyDesktopGroupRequest) SetDisableSessionConfig(v bool) *ModifyDesktopGroupRequest {
+	s.DisableSessionConfig = &v
+	return s
+}
+
+func (s *ModifyDesktopGroupRequest) SetIdleDisconnectDuration(v int64) *ModifyDesktopGroupRequest {
+	s.IdleDisconnectDuration = &v
 	return s
 }
 
@@ -15219,6 +16317,11 @@ func (s *ModifyDesktopGroupRequest) SetPolicyGroupId(v string) *ModifyDesktopGro
 	return s
 }
 
+func (s *ModifyDesktopGroupRequest) SetRatioThreshold(v float32) *ModifyDesktopGroupRequest {
+	s.RatioThreshold = &v
+	return s
+}
+
 func (s *ModifyDesktopGroupRequest) SetRegionId(v string) *ModifyDesktopGroupRequest {
 	s.RegionId = &v
 	return s
@@ -15231,6 +16334,11 @@ func (s *ModifyDesktopGroupRequest) SetResetType(v int64) *ModifyDesktopGroupReq
 
 func (s *ModifyDesktopGroupRequest) SetScaleStrategyId(v string) *ModifyDesktopGroupRequest {
 	s.ScaleStrategyId = &v
+	return s
+}
+
+func (s *ModifyDesktopGroupRequest) SetStopDuration(v int64) *ModifyDesktopGroupRequest {
+	s.StopDuration = &v
 	return s
 }
 
@@ -16590,6 +17698,7 @@ func (s *ModifyOperateVulResponse) SetBody(v *ModifyOperateVulResponseBody) *Mod
 }
 
 type ModifyPolicyGroupRequest struct {
+	AppContentProtection        *string                                                `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
 	AuthorizeAccessPolicyRule   []*ModifyPolicyGroupRequestAuthorizeAccessPolicyRule   `json:"AuthorizeAccessPolicyRule,omitempty" xml:"AuthorizeAccessPolicyRule,omitempty" type:"Repeated"`
 	AuthorizeSecurityPolicyRule []*ModifyPolicyGroupRequestAuthorizeSecurityPolicyRule `json:"AuthorizeSecurityPolicyRule,omitempty" xml:"AuthorizeSecurityPolicyRule,omitempty" type:"Repeated"`
 	CameraRedirect              *string                                                `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
@@ -16606,8 +17715,11 @@ type ModifyPolicyGroupRequest struct {
 	PreemptLogin                *string                                                `json:"PreemptLogin,omitempty" xml:"PreemptLogin,omitempty"`
 	PreemptLoginUser            []*string                                              `json:"PreemptLoginUser,omitempty" xml:"PreemptLoginUser,omitempty" type:"Repeated"`
 	PrinterRedirection          *string                                                `json:"PrinterRedirection,omitempty" xml:"PrinterRedirection,omitempty"`
+	RecordContent               *string                                                `json:"RecordContent,omitempty" xml:"RecordContent,omitempty"`
+	RecordContentExpires        *int64                                                 `json:"RecordContentExpires,omitempty" xml:"RecordContentExpires,omitempty"`
 	Recording                   *string                                                `json:"Recording,omitempty" xml:"Recording,omitempty"`
 	RecordingEndTime            *string                                                `json:"RecordingEndTime,omitempty" xml:"RecordingEndTime,omitempty"`
+	RecordingExpires            *int64                                                 `json:"RecordingExpires,omitempty" xml:"RecordingExpires,omitempty"`
 	RecordingFps                *int64                                                 `json:"RecordingFps,omitempty" xml:"RecordingFps,omitempty"`
 	RecordingStartTime          *string                                                `json:"RecordingStartTime,omitempty" xml:"RecordingStartTime,omitempty"`
 	RegionId                    *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -16627,6 +17739,11 @@ func (s ModifyPolicyGroupRequest) String() string {
 
 func (s ModifyPolicyGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyPolicyGroupRequest) SetAppContentProtection(v string) *ModifyPolicyGroupRequest {
+	s.AppContentProtection = &v
+	return s
 }
 
 func (s *ModifyPolicyGroupRequest) SetAuthorizeAccessPolicyRule(v []*ModifyPolicyGroupRequestAuthorizeAccessPolicyRule) *ModifyPolicyGroupRequest {
@@ -16709,6 +17826,16 @@ func (s *ModifyPolicyGroupRequest) SetPrinterRedirection(v string) *ModifyPolicy
 	return s
 }
 
+func (s *ModifyPolicyGroupRequest) SetRecordContent(v string) *ModifyPolicyGroupRequest {
+	s.RecordContent = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequest) SetRecordContentExpires(v int64) *ModifyPolicyGroupRequest {
+	s.RecordContentExpires = &v
+	return s
+}
+
 func (s *ModifyPolicyGroupRequest) SetRecording(v string) *ModifyPolicyGroupRequest {
 	s.Recording = &v
 	return s
@@ -16716,6 +17843,11 @@ func (s *ModifyPolicyGroupRequest) SetRecording(v string) *ModifyPolicyGroupRequ
 
 func (s *ModifyPolicyGroupRequest) SetRecordingEndTime(v string) *ModifyPolicyGroupRequest {
 	s.RecordingEndTime = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequest) SetRecordingExpires(v int64) *ModifyPolicyGroupRequest {
+	s.RecordingExpires = &v
 	return s
 }
 
@@ -18247,6 +19379,204 @@ func (s *SendVerifyCodeResponse) SetBody(v *SendVerifyCodeResponseBody) *SendVer
 	return s
 }
 
+type SetDesktopGroupTimerRequest struct {
+	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	Force          *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResetType      *int32  `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	TimerType      *int32  `json:"TimerType,omitempty" xml:"TimerType,omitempty"`
+}
+
+func (s SetDesktopGroupTimerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDesktopGroupTimerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetDesktopGroupTimerRequest) SetCronExpression(v string) *SetDesktopGroupTimerRequest {
+	s.CronExpression = &v
+	return s
+}
+
+func (s *SetDesktopGroupTimerRequest) SetDesktopGroupId(v string) *SetDesktopGroupTimerRequest {
+	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *SetDesktopGroupTimerRequest) SetForce(v bool) *SetDesktopGroupTimerRequest {
+	s.Force = &v
+	return s
+}
+
+func (s *SetDesktopGroupTimerRequest) SetRegionId(v string) *SetDesktopGroupTimerRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SetDesktopGroupTimerRequest) SetResetType(v int32) *SetDesktopGroupTimerRequest {
+	s.ResetType = &v
+	return s
+}
+
+func (s *SetDesktopGroupTimerRequest) SetTimerType(v int32) *SetDesktopGroupTimerRequest {
+	s.TimerType = &v
+	return s
+}
+
+type SetDesktopGroupTimerResponseBody struct {
+	DesktopGroupId *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	OrderIds       []*string `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetDesktopGroupTimerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDesktopGroupTimerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetDesktopGroupTimerResponseBody) SetDesktopGroupId(v string) *SetDesktopGroupTimerResponseBody {
+	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *SetDesktopGroupTimerResponseBody) SetOrderIds(v []*string) *SetDesktopGroupTimerResponseBody {
+	s.OrderIds = v
+	return s
+}
+
+func (s *SetDesktopGroupTimerResponseBody) SetRequestId(v string) *SetDesktopGroupTimerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetDesktopGroupTimerResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetDesktopGroupTimerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetDesktopGroupTimerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDesktopGroupTimerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetDesktopGroupTimerResponse) SetHeaders(v map[string]*string) *SetDesktopGroupTimerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetDesktopGroupTimerResponse) SetStatusCode(v int32) *SetDesktopGroupTimerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetDesktopGroupTimerResponse) SetBody(v *SetDesktopGroupTimerResponseBody) *SetDesktopGroupTimerResponse {
+	s.Body = v
+	return s
+}
+
+type SetDesktopGroupTimerStatusRequest struct {
+	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TimerType      *int32  `json:"TimerType,omitempty" xml:"TimerType,omitempty"`
+}
+
+func (s SetDesktopGroupTimerStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDesktopGroupTimerStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetDesktopGroupTimerStatusRequest) SetDesktopGroupId(v string) *SetDesktopGroupTimerStatusRequest {
+	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *SetDesktopGroupTimerStatusRequest) SetRegionId(v string) *SetDesktopGroupTimerStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SetDesktopGroupTimerStatusRequest) SetStatus(v int32) *SetDesktopGroupTimerStatusRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *SetDesktopGroupTimerStatusRequest) SetTimerType(v int32) *SetDesktopGroupTimerStatusRequest {
+	s.TimerType = &v
+	return s
+}
+
+type SetDesktopGroupTimerStatusResponseBody struct {
+	DesktopGroupId *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	OrderIds       []*string `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetDesktopGroupTimerStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDesktopGroupTimerStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetDesktopGroupTimerStatusResponseBody) SetDesktopGroupId(v string) *SetDesktopGroupTimerStatusResponseBody {
+	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *SetDesktopGroupTimerStatusResponseBody) SetOrderIds(v []*string) *SetDesktopGroupTimerStatusResponseBody {
+	s.OrderIds = v
+	return s
+}
+
+func (s *SetDesktopGroupTimerStatusResponseBody) SetRequestId(v string) *SetDesktopGroupTimerStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetDesktopGroupTimerStatusResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetDesktopGroupTimerStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetDesktopGroupTimerStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDesktopGroupTimerStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetDesktopGroupTimerStatusResponse) SetHeaders(v map[string]*string) *SetDesktopGroupTimerStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetDesktopGroupTimerStatusResponse) SetStatusCode(v int32) *SetDesktopGroupTimerStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetDesktopGroupTimerStatusResponse) SetBody(v *SetDesktopGroupTimerStatusResponseBody) *SetDesktopGroupTimerStatusResponse {
+	s.Body = v
+	return s
+}
+
 type SetIdpMetadataRequest struct {
 	DirectoryId  *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	IdpMetadata  *string `json:"IdpMetadata,omitempty" xml:"IdpMetadata,omitempty"`
@@ -18999,7 +20329,6 @@ func (s *UpdateFotaTaskRequest) SetUserStatus(v string) *UpdateFotaTaskRequest {
 }
 
 type UpdateFotaTaskResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20363,6 +21692,10 @@ func (client *Client) CreateDesktopGroupWithOptions(request *CreateDesktopGroupR
 		query["Comments"] = request.Comments
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ConnectDuration)) {
+		query["ConnectDuration"] = request.ConnectDuration
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DefaultInitDesktopCount)) {
 		query["DefaultInitDesktopCount"] = request.DefaultInitDesktopCount
 	}
@@ -20377,6 +21710,10 @@ func (client *Client) CreateDesktopGroupWithOptions(request *CreateDesktopGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.EndUserIds)) {
 		query["EndUserIds"] = request.EndUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdleDisconnectDuration)) {
+		query["IdleDisconnectDuration"] = request.IdleDisconnectDuration
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KeepDuration)) {
@@ -20415,6 +21752,10 @@ func (client *Client) CreateDesktopGroupWithOptions(request *CreateDesktopGroupR
 		query["PolicyGroupId"] = request.PolicyGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RatioThreshold)) {
+		query["RatioThreshold"] = request.RatioThreshold
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -20425,6 +21766,10 @@ func (client *Client) CreateDesktopGroupWithOptions(request *CreateDesktopGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.ScaleStrategyId)) {
 		query["ScaleStrategyId"] = request.ScaleStrategyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopDuration)) {
+		query["StopDuration"] = request.StopDuration
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VolumeEncryptionEnabled)) {
@@ -20555,6 +21900,10 @@ func (client *Client) CreateDesktopsWithOptions(request *CreateDesktopsRequest, 
 		query["UserAssignMode"] = request.UserAssignMode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserCommands)) {
+		query["UserCommands"] = request.UserCommands
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserName)) {
 		query["UserName"] = request.UserName
 	}
@@ -20642,6 +21991,94 @@ func (client *Client) CreateDiskEncryptionService(request *CreateDiskEncryptionS
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDiskEncryptionServiceResponse{}
 	_body, _err := client.CreateDiskEncryptionServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDriveWithOptions(request *CreateDriveRequest, runtime *util.RuntimeOptions) (_result *CreateDriveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		query["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DriveName)) {
+		query["DriveName"] = request.DriveName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalDomainId)) {
+		query["ExternalDomainId"] = request.ExternalDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProfileRoaming)) {
+		query["ProfileRoaming"] = request.ProfileRoaming
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TotalSize)) {
+		query["TotalSize"] = request.TotalSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsedSize)) {
+		query["UsedSize"] = request.UsedSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDrive"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDriveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDrive(request *CreateDriveRequest) (_result *CreateDriveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDriveResponse{}
+	_body, _err := client.CreateDriveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20871,6 +22308,10 @@ func (client *Client) CreatePolicyGroupWithOptions(request *CreatePolicyGroupReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppContentProtection)) {
+		query["AppContentProtection"] = request.AppContentProtection
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AuthorizeAccessPolicyRule)) {
 		query["AuthorizeAccessPolicyRule"] = request.AuthorizeAccessPolicyRule
 	}
@@ -20931,12 +22372,24 @@ func (client *Client) CreatePolicyGroupWithOptions(request *CreatePolicyGroupReq
 		query["PrinterRedirection"] = request.PrinterRedirection
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RecordContent)) {
+		query["RecordContent"] = request.RecordContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordContentExpires)) {
+		query["RecordContentExpires"] = request.RecordContentExpires
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Recording)) {
 		query["Recording"] = request.Recording
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RecordingEndTime)) {
 		query["RecordingEndTime"] = request.RecordingEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingExpires)) {
+		query["RecordingExpires"] = request.RecordingExpires
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RecordingFps)) {
@@ -21273,6 +22726,58 @@ func (client *Client) DeleteBundles(request *DeleteBundlesRequest) (_result *Del
 	return _result, _err
 }
 
+func (client *Client) DeleteCloudDriveUsersWithOptions(request *DeleteCloudDriveUsersRequest, runtime *util.RuntimeOptions) (_result *DeleteCloudDriveUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CdsId)) {
+		query["CdsId"] = request.CdsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCloudDriveUsers"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCloudDriveUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCloudDriveUsers(request *DeleteCloudDriveUsersRequest) (_result *DeleteCloudDriveUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCloudDriveUsersResponse{}
+	_body, _err := client.DeleteCloudDriveUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteDesktopGroupWithOptions(request *DeleteDesktopGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteDesktopGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21410,6 +22915,54 @@ func (client *Client) DeleteDirectories(request *DeleteDirectoriesRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDirectoriesResponse{}
 	_body, _err := client.DeleteDirectoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDriveWithOptions(request *DeleteDriveRequest, runtime *util.RuntimeOptions) (_result *DeleteDriveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		query["DriveId"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDrive"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDriveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDrive(request *DeleteDriveRequest) (_result *DeleteDriveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDriveResponse{}
+	_body, _err := client.DeleteDriveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22057,6 +23610,54 @@ func (client *Client) DescribeClientEvents(request *DescribeClientEventsRequest)
 	return _result, _err
 }
 
+func (client *Client) DescribeCloudDrivePermissionsWithOptions(request *DescribeCloudDrivePermissionsRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudDrivePermissionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CdsId)) {
+		query["CdsId"] = request.CdsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudDrivePermissions"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudDrivePermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCloudDrivePermissions(request *DescribeCloudDrivePermissionsRequest) (_result *DescribeCloudDrivePermissionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudDrivePermissionsResponse{}
+	_body, _err := client.DescribeCloudDrivePermissionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDesktopGroupsWithOptions(request *DescribeDesktopGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeDesktopGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22419,6 +24020,10 @@ func (client *Client) DescribeDesktopsInGroupWithOptions(request *DescribeDeskto
 		query["DesktopGroupId"] = request.DesktopGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IgnoreDeleted)) {
+		query["IgnoreDeleted"] = request.IgnoreDeleted
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -22530,6 +24135,62 @@ func (client *Client) DescribeDirectories(request *DescribeDirectoriesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDirectoriesResponse{}
 	_body, _err := client.DescribeDirectoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDrivesWithOptions(request *DescribeDrivesRequest, runtime *util.RuntimeOptions) (_result *DescribeDrivesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainIds)) {
+		query["DomainIds"] = request.DomainIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrives"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDrivesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDrives(request *DescribeDrivesRequest) (_result *DescribeDrivesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDrivesResponse{}
+	_body, _err := client.DescribeDrivesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23457,64 +25118,16 @@ func (client *Client) DescribePolicyGroups(request *DescribePolicyGroupsRequest)
 	return _result, _err
 }
 
-func (client *Client) DescribeRecordingsWithOptions(request *DescribeRecordingsRequest, runtime *util.RuntimeOptions) (_result *DescribeRecordingsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
-		query["MaxResults"] = request.MaxResults
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["NextToken"] = request.NextToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRecordings"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRecordingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRecordings(request *DescribeRecordingsRequest) (_result *DescribeRecordingsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRecordingsResponse{}
-	_body, _err := client.DescribeRecordingsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -24105,6 +25718,54 @@ func (client *Client) DescribeUsersInGroup(request *DescribeUsersInGroupRequest)
 	return _result, _err
 }
 
+func (client *Client) DescribeUsersPasswordWithOptions(request *DescribeUsersPasswordRequest, runtime *util.RuntimeOptions) (_result *DescribeUsersPasswordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DesktopId)) {
+		query["DesktopId"] = request.DesktopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUsersPassword"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUsersPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUsersPassword(request *DescribeUsersPasswordRequest) (_result *DescribeUsersPasswordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUsersPasswordResponse{}
+	_body, _err := client.DescribeUsersPasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeVirtualMFADevicesWithOptions(request *DescribeVirtualMFADevicesRequest, runtime *util.RuntimeOptions) (_result *DescribeVirtualMFADevicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24245,6 +25906,10 @@ func (client *Client) DescribeVulListWithOptions(request *DescribeVulListRequest
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Necessity)) {
@@ -25677,6 +27342,62 @@ func (client *Client) ModifyBundle(request *ModifyBundleRequest) (_result *Modif
 	return _result, _err
 }
 
+func (client *Client) ModifyCloudDrivePermissionWithOptions(request *ModifyCloudDrivePermissionRequest, runtime *util.RuntimeOptions) (_result *ModifyCloudDrivePermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CdsId)) {
+		query["CdsId"] = request.CdsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DownloadEndUserIds)) {
+		query["DownloadEndUserIds"] = request.DownloadEndUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DownloadUploadEndUserIds)) {
+		query["DownloadUploadEndUserIds"] = request.DownloadUploadEndUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCloudDrivePermission"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyCloudDrivePermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyCloudDrivePermission(request *ModifyCloudDrivePermissionRequest) (_result *ModifyCloudDrivePermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCloudDrivePermissionResponse{}
+	_body, _err := client.ModifyCloudDrivePermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyDesktopChargeTypeWithOptions(request *ModifyDesktopChargeTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyDesktopChargeTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25771,12 +27492,24 @@ func (client *Client) ModifyDesktopGroupWithOptions(request *ModifyDesktopGroupR
 		query["Comments"] = request.Comments
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ConnectDuration)) {
+		query["ConnectDuration"] = request.ConnectDuration
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DesktopGroupId)) {
 		query["DesktopGroupId"] = request.DesktopGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DesktopGroupName)) {
 		query["DesktopGroupName"] = request.DesktopGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableSessionConfig)) {
+		query["DisableSessionConfig"] = request.DisableSessionConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdleDisconnectDuration)) {
+		query["IdleDisconnectDuration"] = request.IdleDisconnectDuration
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
@@ -25807,6 +27540,10 @@ func (client *Client) ModifyDesktopGroupWithOptions(request *ModifyDesktopGroupR
 		query["PolicyGroupId"] = request.PolicyGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RatioThreshold)) {
+		query["RatioThreshold"] = request.RatioThreshold
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -25817,6 +27554,10 @@ func (client *Client) ModifyDesktopGroupWithOptions(request *ModifyDesktopGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.ScaleStrategyId)) {
 		query["ScaleStrategyId"] = request.ScaleStrategyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopDuration)) {
+		query["StopDuration"] = request.StopDuration
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -26707,6 +28448,10 @@ func (client *Client) ModifyPolicyGroupWithOptions(request *ModifyPolicyGroupReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppContentProtection)) {
+		query["AppContentProtection"] = request.AppContentProtection
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AuthorizeAccessPolicyRule)) {
 		query["AuthorizeAccessPolicyRule"] = request.AuthorizeAccessPolicyRule
 	}
@@ -26771,12 +28516,24 @@ func (client *Client) ModifyPolicyGroupWithOptions(request *ModifyPolicyGroupReq
 		query["PrinterRedirection"] = request.PrinterRedirection
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RecordContent)) {
+		query["RecordContent"] = request.RecordContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordContentExpires)) {
+		query["RecordContentExpires"] = request.RecordContentExpires
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Recording)) {
 		query["Recording"] = request.Recording
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RecordingEndTime)) {
 		query["RecordingEndTime"] = request.RecordingEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingExpires)) {
+		query["RecordingExpires"] = request.RecordingExpires
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RecordingFps)) {
@@ -27642,6 +29399,126 @@ func (client *Client) SendVerifyCode(request *SendVerifyCodeRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &SendVerifyCodeResponse{}
 	_body, _err := client.SendVerifyCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetDesktopGroupTimerWithOptions(request *SetDesktopGroupTimerRequest, runtime *util.RuntimeOptions) (_result *SetDesktopGroupTimerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CronExpression)) {
+		query["CronExpression"] = request.CronExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DesktopGroupId)) {
+		query["DesktopGroupId"] = request.DesktopGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResetType)) {
+		query["ResetType"] = request.ResetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimerType)) {
+		query["TimerType"] = request.TimerType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDesktopGroupTimer"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetDesktopGroupTimerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetDesktopGroupTimer(request *SetDesktopGroupTimerRequest) (_result *SetDesktopGroupTimerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetDesktopGroupTimerResponse{}
+	_body, _err := client.SetDesktopGroupTimerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetDesktopGroupTimerStatusWithOptions(request *SetDesktopGroupTimerStatusRequest, runtime *util.RuntimeOptions) (_result *SetDesktopGroupTimerStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DesktopGroupId)) {
+		query["DesktopGroupId"] = request.DesktopGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimerType)) {
+		query["TimerType"] = request.TimerType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDesktopGroupTimerStatus"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetDesktopGroupTimerStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetDesktopGroupTimerStatus(request *SetDesktopGroupTimerStatusRequest) (_result *SetDesktopGroupTimerStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetDesktopGroupTimerStatusResponse{}
+	_body, _err := client.SetDesktopGroupTimerStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
