@@ -8265,6 +8265,7 @@ type GetAlertRulesRequest struct {
 	AlertNames  *string `json:"AlertNames,omitempty" xml:"AlertNames,omitempty"`
 	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
 	AlertType   *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Page        *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
@@ -8295,6 +8296,11 @@ func (s *GetAlertRulesRequest) SetAlertStatus(v string) *GetAlertRulesRequest {
 
 func (s *GetAlertRulesRequest) SetAlertType(v string) *GetAlertRulesRequest {
 	s.AlertType = &v
+	return s
+}
+
+func (s *GetAlertRulesRequest) SetClusterId(v string) *GetAlertRulesRequest {
+	s.ClusterId = &v
 	return s
 }
 
@@ -25621,6 +25627,10 @@ func (client *Client) GetAlertRulesWithOptions(request *GetAlertRulesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.AlertType)) {
 		query["AlertType"] = request.AlertType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
