@@ -745,32 +745,33 @@ func (s *CreateDBInstancePlanResponse) SetBody(v *CreateDBInstancePlanResponseBo
 }
 
 type CreateECSDBInstanceRequest struct {
-	BackupId              *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DBInstanceCategory    *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
-	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	EncryptionKey         *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	EncryptionType        *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	InstanceNetworkType   *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	InstanceSpec          *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	MasterNodeNum         *int32  `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PayType               *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period                *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	PrivateIpAddress      *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityIPList        *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	SegNodeNum            *int32  `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	SegStorageType        *string `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
-	SrcDbInstanceName     *string `json:"SrcDbInstanceName,omitempty" xml:"SrcDbInstanceName,omitempty"`
-	StorageSize           *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	UsedTime              *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	VPCId                 *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId             *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId                *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	BackupId              *string                          `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	ClientToken           *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DBInstanceCategory    *string                          `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
+	DBInstanceDescription *string                          `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	EncryptionKey         *string                          `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	EncryptionType        *string                          `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	Engine                *string                          `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion         *string                          `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	InstanceNetworkType   *string                          `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	InstanceSpec          *string                          `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	MasterNodeNum         *int32                           `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
+	OwnerId               *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PayType               *string                          `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Period                *string                          `json:"Period,omitempty" xml:"Period,omitempty"`
+	PrivateIpAddress      *string                          `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	RegionId              *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityIPList        *string                          `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	SegNodeNum            *int32                           `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	SegStorageType        *string                          `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
+	SrcDbInstanceName     *string                          `json:"SrcDbInstanceName,omitempty" xml:"SrcDbInstanceName,omitempty"`
+	StorageSize           *int32                           `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	Tag                   []*CreateECSDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UsedTime              *string                          `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	VPCId                 *string                          `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId             *string                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId                *string                          `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateECSDBInstanceRequest) String() string {
@@ -891,6 +892,11 @@ func (s *CreateECSDBInstanceRequest) SetStorageSize(v int32) *CreateECSDBInstanc
 	return s
 }
 
+func (s *CreateECSDBInstanceRequest) SetTag(v []*CreateECSDBInstanceRequestTag) *CreateECSDBInstanceRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateECSDBInstanceRequest) SetUsedTime(v string) *CreateECSDBInstanceRequest {
 	s.UsedTime = &v
 	return s
@@ -908,6 +914,29 @@ func (s *CreateECSDBInstanceRequest) SetVSwitchId(v string) *CreateECSDBInstance
 
 func (s *CreateECSDBInstanceRequest) SetZoneId(v string) *CreateECSDBInstanceRequest {
 	s.ZoneId = &v
+	return s
+}
+
+type CreateECSDBInstanceRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateECSDBInstanceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateECSDBInstanceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateECSDBInstanceRequestTag) SetKey(v string) *CreateECSDBInstanceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateECSDBInstanceRequestTag) SetValue(v string) *CreateECSDBInstanceRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1051,9 +1080,10 @@ func (s *CreateServiceLinkedRoleResponse) SetBody(v *CreateServiceLinkedRoleResp
 }
 
 type DeleteDBInstanceRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DeleteDBInstanceRequest) String() string {
@@ -1076,6 +1106,11 @@ func (s *DeleteDBInstanceRequest) SetDBInstanceId(v string) *DeleteDBInstanceReq
 
 func (s *DeleteDBInstanceRequest) SetOwnerId(v int64) *DeleteDBInstanceRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteDBInstanceRequest) SetResourceGroupId(v string) *DeleteDBInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1225,8 +1260,9 @@ func (s *DeleteDBInstancePlanResponse) SetBody(v *DeleteDBInstancePlanResponseBo
 }
 
 type DeleteDatabaseRequest struct {
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBName       *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBName          *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DeleteDatabaseRequest) String() string {
@@ -1244,6 +1280,11 @@ func (s *DeleteDatabaseRequest) SetDBInstanceId(v string) *DeleteDatabaseRequest
 
 func (s *DeleteDatabaseRequest) SetDBName(v string) *DeleteDatabaseRequest {
 	s.DBName = &v
+	return s
+}
+
+func (s *DeleteDatabaseRequest) SetResourceGroupId(v string) *DeleteDatabaseRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2048,8 +2089,9 @@ func (s *DescribeDBClusterPerformanceResponse) SetBody(v *DescribeDBClusterPerfo
 }
 
 type DescribeDBInstanceAttributeRequest struct {
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeRequest) String() string {
@@ -2067,6 +2109,11 @@ func (s *DescribeDBInstanceAttributeRequest) SetDBInstanceId(v string) *Describe
 
 func (s *DescribeDBInstanceAttributeRequest) SetOwnerId(v int64) *DescribeDBInstanceAttributeRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeRequest) SetResourceGroupId(v string) *DescribeDBInstanceAttributeRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3337,7 +3384,8 @@ func (s *DescribeDBInstanceErrorLogResponse) SetBody(v *DescribeDBInstanceErrorL
 }
 
 type DescribeDBInstanceIPArrayListRequest struct {
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeDBInstanceIPArrayListRequest) String() string {
@@ -3350,6 +3398,11 @@ func (s DescribeDBInstanceIPArrayListRequest) GoString() string {
 
 func (s *DescribeDBInstanceIPArrayListRequest) SetDBInstanceId(v string) *DescribeDBInstanceIPArrayListRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIPArrayListRequest) SetResourceGroupId(v string) *DescribeDBInstanceIPArrayListRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -4096,10 +4149,11 @@ func (s *DescribeDBInstanceOnECSAttributeResponse) SetBody(v *DescribeDBInstance
 }
 
 type DescribeDBInstancePerformanceRequest struct {
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Key             *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDBInstancePerformanceRequest) String() string {
@@ -4122,6 +4176,11 @@ func (s *DescribeDBInstancePerformanceRequest) SetEndTime(v string) *DescribeDBI
 
 func (s *DescribeDBInstancePerformanceRequest) SetKey(v string) *DescribeDBInstancePerformanceRequest {
 	s.Key = &v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceRequest) SetResourceGroupId(v string) *DescribeDBInstancePerformanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -4202,6 +4261,229 @@ func (s *DescribeDBInstancePerformanceResponse) SetStatusCode(v int32) *Describe
 }
 
 func (s *DescribeDBInstancePerformanceResponse) SetBody(v *DescribeDBInstancePerformanceResponseBody) *DescribeDBInstancePerformanceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBInstancePlansRequest struct {
+	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PlanCreateDate   *string `json:"PlanCreateDate,omitempty" xml:"PlanCreateDate,omitempty"`
+	PlanDesc         *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
+	PlanId           *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanScheduleType *string `json:"PlanScheduleType,omitempty" xml:"PlanScheduleType,omitempty"`
+	PlanType         *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+}
+
+func (s DescribeDBInstancePlansRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancePlansRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancePlansRequest) SetDBInstanceId(v string) *DescribeDBInstancePlansRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansRequest) SetOwnerId(v int64) *DescribeDBInstancePlansRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansRequest) SetPlanCreateDate(v string) *DescribeDBInstancePlansRequest {
+	s.PlanCreateDate = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansRequest) SetPlanDesc(v string) *DescribeDBInstancePlansRequest {
+	s.PlanDesc = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansRequest) SetPlanId(v string) *DescribeDBInstancePlansRequest {
+	s.PlanId = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansRequest) SetPlanScheduleType(v string) *DescribeDBInstancePlansRequest {
+	s.PlanScheduleType = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansRequest) SetPlanType(v string) *DescribeDBInstancePlansRequest {
+	s.PlanType = &v
+	return s
+}
+
+type DescribeDBInstancePlansResponseBody struct {
+	ErrorMessage     *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Items            *DescribeDBInstancePlansResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	PageNumber       *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                    `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	RequestId        *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status           *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalRecordCount *int32                                    `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s DescribeDBInstancePlansResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancePlansResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancePlansResponseBody) SetErrorMessage(v string) *DescribeDBInstancePlansResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBody) SetItems(v *DescribeDBInstancePlansResponseBodyItems) *DescribeDBInstancePlansResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBody) SetPageNumber(v int32) *DescribeDBInstancePlansResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBody) SetPageRecordCount(v int32) *DescribeDBInstancePlansResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBody) SetRequestId(v string) *DescribeDBInstancePlansResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBody) SetStatus(v string) *DescribeDBInstancePlansResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBody) SetTotalRecordCount(v int32) *DescribeDBInstancePlansResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type DescribeDBInstancePlansResponseBodyItems struct {
+	PlanList []*DescribeDBInstancePlansResponseBodyItemsPlanList `json:"PlanList,omitempty" xml:"PlanList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBInstancePlansResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancePlansResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancePlansResponseBodyItems) SetPlanList(v []*DescribeDBInstancePlansResponseBodyItemsPlanList) *DescribeDBInstancePlansResponseBodyItems {
+	s.PlanList = v
+	return s
+}
+
+type DescribeDBInstancePlansResponseBodyItemsPlanList struct {
+	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	PlanConfig       *string `json:"PlanConfig,omitempty" xml:"PlanConfig,omitempty"`
+	PlanDesc         *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
+	PlanEndDate      *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
+	PlanId           *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanName         *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	PlanScheduleType *string `json:"PlanScheduleType,omitempty" xml:"PlanScheduleType,omitempty"`
+	PlanStartDate    *string `json:"PlanStartDate,omitempty" xml:"PlanStartDate,omitempty"`
+	PlanStatus       *string `json:"PlanStatus,omitempty" xml:"PlanStatus,omitempty"`
+	PlanType         *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+}
+
+func (s DescribeDBInstancePlansResponseBodyItemsPlanList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancePlansResponseBodyItemsPlanList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancePlansResponseBodyItemsPlanList) SetDBInstanceId(v string) *DescribeDBInstancePlansResponseBodyItemsPlanList {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBodyItemsPlanList) SetPlanConfig(v string) *DescribeDBInstancePlansResponseBodyItemsPlanList {
+	s.PlanConfig = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBodyItemsPlanList) SetPlanDesc(v string) *DescribeDBInstancePlansResponseBodyItemsPlanList {
+	s.PlanDesc = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBodyItemsPlanList) SetPlanEndDate(v string) *DescribeDBInstancePlansResponseBodyItemsPlanList {
+	s.PlanEndDate = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBodyItemsPlanList) SetPlanId(v string) *DescribeDBInstancePlansResponseBodyItemsPlanList {
+	s.PlanId = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBodyItemsPlanList) SetPlanName(v string) *DescribeDBInstancePlansResponseBodyItemsPlanList {
+	s.PlanName = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBodyItemsPlanList) SetPlanScheduleType(v string) *DescribeDBInstancePlansResponseBodyItemsPlanList {
+	s.PlanScheduleType = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBodyItemsPlanList) SetPlanStartDate(v string) *DescribeDBInstancePlansResponseBodyItemsPlanList {
+	s.PlanStartDate = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBodyItemsPlanList) SetPlanStatus(v string) *DescribeDBInstancePlansResponseBodyItemsPlanList {
+	s.PlanStatus = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponseBodyItemsPlanList) SetPlanType(v string) *DescribeDBInstancePlansResponseBodyItemsPlanList {
+	s.PlanType = &v
+	return s
+}
+
+type DescribeDBInstancePlansResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBInstancePlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDBInstancePlansResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancePlansResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancePlansResponse) SetHeaders(v map[string]*string) *DescribeDBInstancePlansResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponse) SetStatusCode(v int32) *DescribeDBInstancePlansResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstancePlansResponse) SetBody(v *DescribeDBInstancePlansResponseBody) *DescribeDBInstancePlansResponse {
 	s.Body = v
 	return s
 }
@@ -9946,13 +10228,14 @@ func (s *DescribeUserEncryptionKeyListResponse) SetBody(v *DescribeUserEncryptio
 }
 
 type DownloadDiagnosisRecordsRequest struct {
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database       *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	User           *string `json:"User,omitempty" xml:"User,omitempty"`
+	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database        *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	QueryCondition  *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	User            *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DownloadDiagnosisRecordsRequest) String() string {
@@ -9988,6 +10271,11 @@ func (s *DownloadDiagnosisRecordsRequest) SetQueryCondition(v string) *DownloadD
 	return s
 }
 
+func (s *DownloadDiagnosisRecordsRequest) SetResourceGroupId(v string) *DownloadDiagnosisRecordsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DownloadDiagnosisRecordsRequest) SetStartTime(v string) *DownloadDiagnosisRecordsRequest {
 	s.StartTime = &v
 	return s
@@ -9999,8 +10287,9 @@ func (s *DownloadDiagnosisRecordsRequest) SetUser(v string) *DownloadDiagnosisRe
 }
 
 type DownloadDiagnosisRecordsResponseBody struct {
-	DownloadId *string `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DownloadId   *string `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DownloadDiagnosisRecordsResponseBody) String() string {
@@ -10009,6 +10298,11 @@ func (s DownloadDiagnosisRecordsResponseBody) String() string {
 
 func (s DownloadDiagnosisRecordsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DownloadDiagnosisRecordsResponseBody) SetDBInstanceId(v string) *DownloadDiagnosisRecordsResponseBody {
+	s.DBInstanceId = &v
+	return s
 }
 
 func (s *DownloadDiagnosisRecordsResponseBody) SetDownloadId(v string) *DownloadDiagnosisRecordsResponseBody {
@@ -10569,6 +10863,7 @@ func (s *ModifyDBInstanceConnectionStringResponse) SetBody(v *ModifyDBInstanceCo
 type ModifyDBInstanceDescriptionRequest struct {
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyDBInstanceDescriptionRequest) String() string {
@@ -10586,6 +10881,11 @@ func (s *ModifyDBInstanceDescriptionRequest) SetDBInstanceDescription(v string) 
 
 func (s *ModifyDBInstanceDescriptionRequest) SetDBInstanceId(v string) *ModifyDBInstanceDescriptionRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceDescriptionRequest) SetResourceGroupId(v string) *ModifyDBInstanceDescriptionRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10636,9 +10936,10 @@ func (s *ModifyDBInstanceDescriptionResponse) SetBody(v *ModifyDBInstanceDescrip
 }
 
 type ModifyDBInstanceMaintainTimeRequest struct {
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ModifyDBInstanceMaintainTimeRequest) String() string {
@@ -10656,6 +10957,11 @@ func (s *ModifyDBInstanceMaintainTimeRequest) SetDBInstanceId(v string) *ModifyD
 
 func (s *ModifyDBInstanceMaintainTimeRequest) SetEndTime(v string) *ModifyDBInstanceMaintainTimeRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ModifyDBInstanceMaintainTimeRequest) SetResourceGroupId(v string) *ModifyDBInstanceMaintainTimeRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10793,6 +11099,105 @@ func (s *ModifyDBInstanceNetworkTypeResponse) SetStatusCode(v int32) *ModifyDBIn
 }
 
 func (s *ModifyDBInstanceNetworkTypeResponse) SetBody(v *ModifyDBInstanceNetworkTypeResponseBody) *ModifyDBInstanceNetworkTypeResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDBInstanceResourceGroupRequest struct {
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	NewResourceGroupId   *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ModifyDBInstanceResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceResourceGroupRequest) SetDBInstanceId(v string) *ModifyDBInstanceResourceGroupRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceResourceGroupRequest) SetNewResourceGroupId(v string) *ModifyDBInstanceResourceGroupRequest {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceResourceGroupRequest) SetOwnerAccount(v string) *ModifyDBInstanceResourceGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBInstanceResourceGroupRequest) SetOwnerId(v int64) *ModifyDBInstanceResourceGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceResourceGroupRequest) SetResourceGroupId(v string) *ModifyDBInstanceResourceGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceResourceGroupRequest) SetResourceOwnerAccount(v string) *ModifyDBInstanceResourceGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBInstanceResourceGroupRequest) SetResourceOwnerId(v int64) *ModifyDBInstanceResourceGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ModifyDBInstanceResourceGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBInstanceResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceResourceGroupResponseBody) SetRequestId(v string) *ModifyDBInstanceResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBInstanceResourceGroupResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDBInstanceResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDBInstanceResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceResourceGroupResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBInstanceResourceGroupResponse) SetStatusCode(v int32) *ModifyDBInstanceResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBInstanceResourceGroupResponse) SetBody(v *ModifyDBInstanceResourceGroupResponseBody) *ModifyDBInstanceResourceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -11020,6 +11425,7 @@ type ModifySecurityIpsRequest struct {
 	DBInstanceIPArrayAttribute *string `json:"DBInstanceIPArrayAttribute,omitempty" xml:"DBInstanceIPArrayAttribute,omitempty"`
 	DBInstanceIPArrayName      *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
 	DBInstanceId               *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ResourceGroupId            *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityIPList             *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 }
 
@@ -11043,6 +11449,11 @@ func (s *ModifySecurityIpsRequest) SetDBInstanceIPArrayName(v string) *ModifySec
 
 func (s *ModifySecurityIpsRequest) SetDBInstanceId(v string) *ModifySecurityIpsRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifySecurityIpsRequest) SetResourceGroupId(v string) *ModifySecurityIpsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -12238,6 +12649,7 @@ type UpgradeDBInstanceRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SegNodeNum           *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
 	StorageSize          *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	UpgradeType          *int64  `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
@@ -12288,6 +12700,11 @@ func (s *UpgradeDBInstanceRequest) SetPayType(v string) *UpgradeDBInstanceReques
 
 func (s *UpgradeDBInstanceRequest) SetRegionId(v string) *UpgradeDBInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpgradeDBInstanceRequest) SetResourceGroupId(v string) *UpgradeDBInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -13089,6 +13506,10 @@ func (client *Client) CreateECSDBInstanceWithOptions(request *CreateECSDBInstanc
 		query["StorageSize"] = request.StorageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
 		query["UsedTime"] = request.UsedTime
 	}
@@ -13205,6 +13626,10 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13303,6 +13728,10 @@ func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.DBName)) {
 		query["DBName"] = request.DBName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -13609,6 +14038,10 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13901,6 +14334,10 @@ func (client *Client) DescribeDBInstanceIPArrayListWithOptions(request *Describe
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14097,6 +14534,10 @@ func (client *Client) DescribeDBInstancePerformanceWithOptions(request *Describe
 		query["Key"] = request.Key
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -14128,6 +14569,74 @@ func (client *Client) DescribeDBInstancePerformance(request *DescribeDBInstanceP
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstancePerformanceResponse{}
 	_body, _err := client.DescribeDBInstancePerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstancePlansWithOptions(request *DescribeDBInstancePlansRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancePlansResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanCreateDate)) {
+		query["PlanCreateDate"] = request.PlanCreateDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanDesc)) {
+		query["PlanDesc"] = request.PlanDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
+		query["PlanId"] = request.PlanId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanScheduleType)) {
+		query["PlanScheduleType"] = request.PlanScheduleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanType)) {
+		query["PlanType"] = request.PlanType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstancePlans"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBInstancePlansResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstancePlans(request *DescribeDBInstancePlansRequest) (_result *DescribeDBInstancePlansResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBInstancePlansResponse{}
+	_body, _err := client.DescribeDBInstancePlansWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16127,6 +16636,10 @@ func (client *Client) DownloadDiagnosisRecordsWithOptions(request *DownloadDiagn
 		query["QueryCondition"] = request.QueryCondition
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -16479,6 +16992,10 @@ func (client *Client) ModifyDBInstanceDescriptionWithOptions(request *ModifyDBIn
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16525,6 +17042,10 @@ func (client *Client) ModifyDBInstanceMaintainTimeWithOptions(request *ModifyDBI
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -16618,6 +17139,74 @@ func (client *Client) ModifyDBInstanceNetworkType(request *ModifyDBInstanceNetwo
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceNetworkTypeResponse{}
 	_body, _err := client.ModifyDBInstanceNetworkTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDBInstanceResourceGroupWithOptions(request *ModifyDBInstanceResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		query["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBInstanceResourceGroup"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBInstanceResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDBInstanceResourceGroup(request *ModifyDBInstanceResourceGroupRequest) (_result *ModifyDBInstanceResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBInstanceResourceGroupResponse{}
+	_body, _err := client.ModifyDBInstanceResourceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16793,6 +17382,10 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
@@ -17555,6 +18148,10 @@ func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SegNodeNum)) {
