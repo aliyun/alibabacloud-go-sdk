@@ -55,6 +55,7 @@ type CreateInstanceRequest struct {
 	ImageId              *string                                 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageUrl             *string                                 `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	InstanceName         *string                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Labels               []*CreateInstanceRequestLabels          `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	Priority             *int64                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RequestedResource    *CreateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
 	ResourceId           *string                                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
@@ -105,6 +106,11 @@ func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest
 	return s
 }
 
+func (s *CreateInstanceRequest) SetLabels(v []*CreateInstanceRequestLabels) *CreateInstanceRequest {
+	s.Labels = v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetPriority(v int64) *CreateInstanceRequest {
 	s.Priority = &v
 	return s
@@ -150,6 +156,29 @@ func (s *CreateInstanceRequestDatasets) SetDatasetId(v string) *CreateInstanceRe
 
 func (s *CreateInstanceRequestDatasets) SetMountPath(v string) *CreateInstanceRequestDatasets {
 	s.MountPath = &v
+	return s
+}
+
+type CreateInstanceRequestLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateInstanceRequestLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestLabels) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestLabels) SetKey(v string) *CreateInstanceRequestLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateInstanceRequestLabels) SetValue(v string) *CreateInstanceRequestLabels {
+	s.Value = &v
 	return s
 }
 
@@ -1182,6 +1211,169 @@ func (s *GetInstanceResponse) SetStatusCode(v int32) *GetInstanceResponse {
 }
 
 func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetInstanceMetricsRequest struct {
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TimeStep   *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
+}
+
+func (s GetInstanceMetricsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceMetricsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceMetricsRequest) SetEndTime(v string) *GetInstanceMetricsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetInstanceMetricsRequest) SetMetricType(v string) *GetInstanceMetricsRequest {
+	s.MetricType = &v
+	return s
+}
+
+func (s *GetInstanceMetricsRequest) SetStartTime(v string) *GetInstanceMetricsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetInstanceMetricsRequest) SetTimeStep(v string) *GetInstanceMetricsRequest {
+	s.TimeStep = &v
+	return s
+}
+
+type GetInstanceMetricsResponseBody struct {
+	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	InstanceId     *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Message        *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	PodMetrics     []*GetInstanceMetricsResponseBodyPodMetrics `json:"PodMetrics,omitempty" xml:"PodMetrics,omitempty" type:"Repeated"`
+	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetInstanceMetricsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceMetricsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceMetricsResponseBody) SetCode(v string) *GetInstanceMetricsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetInstanceMetricsResponseBody) SetHttpStatusCode(v int32) *GetInstanceMetricsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetInstanceMetricsResponseBody) SetInstanceId(v string) *GetInstanceMetricsResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceMetricsResponseBody) SetMessage(v string) *GetInstanceMetricsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetInstanceMetricsResponseBody) SetPodMetrics(v []*GetInstanceMetricsResponseBodyPodMetrics) *GetInstanceMetricsResponseBody {
+	s.PodMetrics = v
+	return s
+}
+
+func (s *GetInstanceMetricsResponseBody) SetRequestId(v string) *GetInstanceMetricsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInstanceMetricsResponseBody) SetSuccess(v bool) *GetInstanceMetricsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetInstanceMetricsResponseBodyPodMetrics struct {
+	Metrics []*GetInstanceMetricsResponseBodyPodMetricsMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	PodId   *string                                            `json:"PodId,omitempty" xml:"PodId,omitempty"`
+}
+
+func (s GetInstanceMetricsResponseBodyPodMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceMetricsResponseBodyPodMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceMetricsResponseBodyPodMetrics) SetMetrics(v []*GetInstanceMetricsResponseBodyPodMetricsMetrics) *GetInstanceMetricsResponseBodyPodMetrics {
+	s.Metrics = v
+	return s
+}
+
+func (s *GetInstanceMetricsResponseBodyPodMetrics) SetPodId(v string) *GetInstanceMetricsResponseBodyPodMetrics {
+	s.PodId = &v
+	return s
+}
+
+type GetInstanceMetricsResponseBodyPodMetricsMetrics struct {
+	Time  *int64   `json:"Time,omitempty" xml:"Time,omitempty"`
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetInstanceMetricsResponseBodyPodMetricsMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceMetricsResponseBodyPodMetricsMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceMetricsResponseBodyPodMetricsMetrics) SetTime(v int64) *GetInstanceMetricsResponseBodyPodMetricsMetrics {
+	s.Time = &v
+	return s
+}
+
+func (s *GetInstanceMetricsResponseBodyPodMetricsMetrics) SetValue(v float32) *GetInstanceMetricsResponseBodyPodMetricsMetrics {
+	s.Value = &v
+	return s
+}
+
+type GetInstanceMetricsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetInstanceMetricsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceMetricsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceMetricsResponse) SetHeaders(v map[string]*string) *GetInstanceMetricsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceMetricsResponse) SetStatusCode(v int32) *GetInstanceMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInstanceMetricsResponse) SetBody(v *GetInstanceMetricsResponseBody) *GetInstanceMetricsResponse {
 	s.Body = v
 	return s
 }
@@ -2399,6 +2591,7 @@ type ListInstancesResponseBodyInstances struct {
 	InstanceShutdownTimer      *ListInstancesResponseBodyInstancesInstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
 	InstanceUrl                *string                                                  `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
 	JupyterlabUrl              *string                                                  `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
+	Labels                     []*ListInstancesResponseBodyInstancesLabels              `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	LatestSnapshot             *ListInstancesResponseBodyInstancesLatestSnapshot        `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
 	PaymentType                *string                                                  `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	Priority                   *int64                                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
@@ -2502,6 +2695,11 @@ func (s *ListInstancesResponseBodyInstances) SetInstanceUrl(v string) *ListInsta
 
 func (s *ListInstancesResponseBodyInstances) SetJupyterlabUrl(v string) *ListInstancesResponseBodyInstances {
 	s.JupyterlabUrl = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetLabels(v []*ListInstancesResponseBodyInstancesLabels) *ListInstancesResponseBodyInstances {
+	s.Labels = v
 	return s
 }
 
@@ -2646,6 +2844,29 @@ func (s *ListInstancesResponseBodyInstancesInstanceShutdownTimer) SetInstanceId(
 
 func (s *ListInstancesResponseBodyInstancesInstanceShutdownTimer) SetRemainingTimeInMs(v int64) *ListInstancesResponseBodyInstancesInstanceShutdownTimer {
 	s.RemainingTimeInMs = &v
+	return s
+}
+
+type ListInstancesResponseBodyInstancesLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesLabels) SetKey(v string) *ListInstancesResponseBodyInstancesLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesLabels) SetValue(v string) *ListInstancesResponseBodyInstancesLabels {
+	s.Value = &v
 	return s
 }
 
@@ -3150,6 +3371,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["InstanceName"] = request.InstanceName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Priority)) {
 		body["Priority"] = request.Priority
 	}
@@ -3441,6 +3666,65 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[str
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInstanceMetrics(InstanceId *string, request *GetInstanceMetricsRequest) (_result *GetInstanceMetricsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetInstanceMetricsResponse{}
+	_body, _err := client.GetInstanceMetricsWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetInstanceMetricsWithOptions(InstanceId *string, request *GetInstanceMetricsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceMetricsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
+		query["MetricType"] = request.MetricType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeStep)) {
+		query["TimeStep"] = request.TimeStep
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceMetrics"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instance/" + tea.StringValue(InstanceId) + "/metrics"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInstanceMetricsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err

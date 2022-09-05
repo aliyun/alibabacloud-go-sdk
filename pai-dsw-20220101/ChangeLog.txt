@@ -1,3 +1,6 @@
+2022-09-05 Version: v1.1.22
+- DSW support role chain.
+
 2022-08-08 Version: v1.1.19
 - Release of list instance enhancement.
 
