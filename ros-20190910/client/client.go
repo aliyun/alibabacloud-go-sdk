@@ -10009,22 +10009,23 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type PreviewStackRequest struct {
-	ClientToken             *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DisableRollback         *bool                            `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	Parallelism             *int64                           `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	Parameters              []*PreviewStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RegionId                *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackId                 *string                          `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	StackName               *string                          `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	StackPolicyBody         *string                          `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
-	StackPolicyURL          *string                          `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	TemplateBody            *string                          `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateId              *string                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateScratchId       *string                          `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
-	TemplateScratchRegionId *string                          `json:"TemplateScratchRegionId,omitempty" xml:"TemplateScratchRegionId,omitempty"`
-	TemplateURL             *string                          `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateVersion         *string                          `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	TimeoutInMinutes        *int64                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	ClientToken             *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DisableRollback         *bool                                     `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	Parallelism             *int64                                    `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	Parameters              []*PreviewStackRequestParameters          `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RegionId                *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceConfigRules     []*PreviewStackRequestResourceConfigRules `json:"ResourceConfigRules,omitempty" xml:"ResourceConfigRules,omitempty" type:"Repeated"`
+	StackId                 *string                                   `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackName               *string                                   `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	StackPolicyBody         *string                                   `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
+	StackPolicyURL          *string                                   `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
+	TemplateBody            *string                                   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId              *string                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateScratchId       *string                                   `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateScratchRegionId *string                                   `json:"TemplateScratchRegionId,omitempty" xml:"TemplateScratchRegionId,omitempty"`
+	TemplateURL             *string                                   `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion         *string                                   `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	TimeoutInMinutes        *int64                                    `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s PreviewStackRequest) String() string {
@@ -10057,6 +10058,11 @@ func (s *PreviewStackRequest) SetParameters(v []*PreviewStackRequestParameters) 
 
 func (s *PreviewStackRequest) SetRegionId(v string) *PreviewStackRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *PreviewStackRequest) SetResourceConfigRules(v []*PreviewStackRequestResourceConfigRules) *PreviewStackRequest {
+	s.ResourceConfigRules = v
 	return s
 }
 
@@ -10134,6 +10140,171 @@ func (s *PreviewStackRequestParameters) SetParameterKey(v string) *PreviewStackR
 }
 
 func (s *PreviewStackRequestParameters) SetParameterValue(v string) *PreviewStackRequestParameters {
+	s.ParameterValue = &v
+	return s
+}
+
+type PreviewStackRequestResourceConfigRules struct {
+	Identifier      *string                `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	ResourceType    *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s PreviewStackRequestResourceConfigRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewStackRequestResourceConfigRules) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewStackRequestResourceConfigRules) SetIdentifier(v string) *PreviewStackRequestResourceConfigRules {
+	s.Identifier = &v
+	return s
+}
+
+func (s *PreviewStackRequestResourceConfigRules) SetInputParameters(v map[string]interface{}) *PreviewStackRequestResourceConfigRules {
+	s.InputParameters = v
+	return s
+}
+
+func (s *PreviewStackRequestResourceConfigRules) SetResourceType(v string) *PreviewStackRequestResourceConfigRules {
+	s.ResourceType = &v
+	return s
+}
+
+type PreviewStackShrinkRequest struct {
+	ClientToken               *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DisableRollback           *bool                                  `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	Parallelism               *int64                                 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	Parameters                []*PreviewStackShrinkRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RegionId                  *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceConfigRulesShrink *string                                `json:"ResourceConfigRules,omitempty" xml:"ResourceConfigRules,omitempty"`
+	StackId                   *string                                `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackName                 *string                                `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	StackPolicyBody           *string                                `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
+	StackPolicyURL            *string                                `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
+	TemplateBody              *string                                `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId                *string                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateScratchId         *string                                `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateScratchRegionId   *string                                `json:"TemplateScratchRegionId,omitempty" xml:"TemplateScratchRegionId,omitempty"`
+	TemplateURL               *string                                `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion           *string                                `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	TimeoutInMinutes          *int64                                 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+}
+
+func (s PreviewStackShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewStackShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewStackShrinkRequest) SetClientToken(v string) *PreviewStackShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetDisableRollback(v bool) *PreviewStackShrinkRequest {
+	s.DisableRollback = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetParallelism(v int64) *PreviewStackShrinkRequest {
+	s.Parallelism = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetParameters(v []*PreviewStackShrinkRequestParameters) *PreviewStackShrinkRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetRegionId(v string) *PreviewStackShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetResourceConfigRulesShrink(v string) *PreviewStackShrinkRequest {
+	s.ResourceConfigRulesShrink = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetStackId(v string) *PreviewStackShrinkRequest {
+	s.StackId = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetStackName(v string) *PreviewStackShrinkRequest {
+	s.StackName = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetStackPolicyBody(v string) *PreviewStackShrinkRequest {
+	s.StackPolicyBody = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetStackPolicyURL(v string) *PreviewStackShrinkRequest {
+	s.StackPolicyURL = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetTemplateBody(v string) *PreviewStackShrinkRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetTemplateId(v string) *PreviewStackShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetTemplateScratchId(v string) *PreviewStackShrinkRequest {
+	s.TemplateScratchId = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetTemplateScratchRegionId(v string) *PreviewStackShrinkRequest {
+	s.TemplateScratchRegionId = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetTemplateURL(v string) *PreviewStackShrinkRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetTemplateVersion(v string) *PreviewStackShrinkRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequest) SetTimeoutInMinutes(v int64) *PreviewStackShrinkRequest {
+	s.TimeoutInMinutes = &v
+	return s
+}
+
+type PreviewStackShrinkRequestParameters struct {
+	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s PreviewStackShrinkRequestParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewStackShrinkRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewStackShrinkRequestParameters) SetParameterKey(v string) *PreviewStackShrinkRequestParameters {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *PreviewStackShrinkRequestParameters) SetParameterValue(v string) *PreviewStackShrinkRequestParameters {
 	s.ParameterValue = &v
 	return s
 }
@@ -10302,14 +10473,15 @@ func (s *PreviewStackResponseBodyStackParameters) SetParameterValue(v string) *P
 }
 
 type PreviewStackResponseBodyStackResources struct {
-	Action            *string                `json:"Action,omitempty" xml:"Action,omitempty"`
-	Description       *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	LogicalResourceId *string                `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	Properties        map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	Replacement       *string                `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
-	RequiredBy        []*string              `json:"RequiredBy,omitempty" xml:"RequiredBy,omitempty" type:"Repeated"`
-	ResourceType      *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Stack             map[string]interface{} `json:"Stack,omitempty" xml:"Stack,omitempty"`
+	Action                *string                                                        `json:"Action,omitempty" xml:"Action,omitempty"`
+	ConfigRuleEvaluations []*PreviewStackResponseBodyStackResourcesConfigRuleEvaluations `json:"ConfigRuleEvaluations,omitempty" xml:"ConfigRuleEvaluations,omitempty" type:"Repeated"`
+	Description           *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	LogicalResourceId     *string                                                        `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	Properties            map[string]interface{}                                         `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Replacement           *string                                                        `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
+	RequiredBy            []*string                                                      `json:"RequiredBy,omitempty" xml:"RequiredBy,omitempty" type:"Repeated"`
+	ResourceType          *string                                                        `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Stack                 map[string]interface{}                                         `json:"Stack,omitempty" xml:"Stack,omitempty"`
 }
 
 func (s PreviewStackResponseBodyStackResources) String() string {
@@ -10322,6 +10494,11 @@ func (s PreviewStackResponseBodyStackResources) GoString() string {
 
 func (s *PreviewStackResponseBodyStackResources) SetAction(v string) *PreviewStackResponseBodyStackResources {
 	s.Action = &v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStackResources) SetConfigRuleEvaluations(v []*PreviewStackResponseBodyStackResourcesConfigRuleEvaluations) *PreviewStackResponseBodyStackResources {
+	s.ConfigRuleEvaluations = v
 	return s
 }
 
@@ -10357,6 +10534,41 @@ func (s *PreviewStackResponseBodyStackResources) SetResourceType(v string) *Prev
 
 func (s *PreviewStackResponseBodyStackResources) SetStack(v map[string]interface{}) *PreviewStackResponseBodyStackResources {
 	s.Stack = v
+	return s
+}
+
+type PreviewStackResponseBodyStackResourcesConfigRuleEvaluations struct {
+	Annotation     *string `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	HelpUrl        *string `json:"HelpUrl,omitempty" xml:"HelpUrl,omitempty"`
+	Identifier     *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+}
+
+func (s PreviewStackResponseBodyStackResourcesConfigRuleEvaluations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewStackResponseBodyStackResourcesConfigRuleEvaluations) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewStackResponseBodyStackResourcesConfigRuleEvaluations) SetAnnotation(v string) *PreviewStackResponseBodyStackResourcesConfigRuleEvaluations {
+	s.Annotation = &v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStackResourcesConfigRuleEvaluations) SetComplianceType(v string) *PreviewStackResponseBodyStackResourcesConfigRuleEvaluations {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStackResourcesConfigRuleEvaluations) SetHelpUrl(v string) *PreviewStackResponseBodyStackResourcesConfigRuleEvaluations {
+	s.HelpUrl = &v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStackResourcesConfigRuleEvaluations) SetIdentifier(v string) *PreviewStackResponseBodyStackResourcesConfigRuleEvaluations {
+	s.Identifier = &v
 	return s
 }
 
@@ -16119,11 +16331,17 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) PreviewStackWithOptions(request *PreviewStackRequest, runtime *util.RuntimeOptions) (_result *PreviewStackResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) PreviewStackWithOptions(tmpReq *PreviewStackRequest, runtime *util.RuntimeOptions) (_result *PreviewStackResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &PreviewStackShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceConfigRules)) {
+		request.ResourceConfigRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceConfigRules, tea.String("ResourceConfigRules"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -16143,6 +16361,10 @@ func (client *Client) PreviewStackWithOptions(request *PreviewStackRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceConfigRulesShrink)) {
+		query["ResourceConfigRules"] = request.ResourceConfigRulesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StackId)) {
