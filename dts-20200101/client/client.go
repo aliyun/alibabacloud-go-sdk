@@ -294,7 +294,6 @@ func (s *ConfigureDtsJobRequest) SetSynchronizationDirection(v string) *Configur
 }
 
 type ConfigureDtsJobAdvanceRequest struct {
-	FileOssUrlObject                io.Reader `json:"FileOssUrlObject,omitempty" xml:"FileOssUrlObject,omitempty" require:"true"`
 	Checkpoint                      *string   `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
 	DataCheckConfigure              *string   `json:"DataCheckConfigure,omitempty" xml:"DataCheckConfigure,omitempty"`
 	DataInitialization              *bool     `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
@@ -320,6 +319,7 @@ type ConfigureDtsJobAdvanceRequest struct {
 	DtsJobName                      *string   `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
 	ErrorNotice                     *bool     `json:"ErrorNotice,omitempty" xml:"ErrorNotice,omitempty"`
 	ErrorPhone                      *string   `json:"ErrorPhone,omitempty" xml:"ErrorPhone,omitempty"`
+	FileOssUrlObject                io.Reader `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
 	JobType                         *string   `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	OwnerId                         *string   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId                        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -346,11 +346,6 @@ func (s ConfigureDtsJobAdvanceRequest) String() string {
 
 func (s ConfigureDtsJobAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ConfigureDtsJobAdvanceRequest) SetFileOssUrlObject(v io.Reader) *ConfigureDtsJobAdvanceRequest {
-	s.FileOssUrlObject = v
-	return s
 }
 
 func (s *ConfigureDtsJobAdvanceRequest) SetCheckpoint(v string) *ConfigureDtsJobAdvanceRequest {
@@ -475,6 +470,11 @@ func (s *ConfigureDtsJobAdvanceRequest) SetErrorNotice(v bool) *ConfigureDtsJobA
 
 func (s *ConfigureDtsJobAdvanceRequest) SetErrorPhone(v string) *ConfigureDtsJobAdvanceRequest {
 	s.ErrorPhone = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetFileOssUrlObject(v io.Reader) *ConfigureDtsJobAdvanceRequest {
+	s.FileOssUrlObject = v
 	return s
 }
 
@@ -646,6 +646,339 @@ func (s *ConfigureDtsJobResponse) SetStatusCode(v int32) *ConfigureDtsJobRespons
 }
 
 func (s *ConfigureDtsJobResponse) SetBody(v *ConfigureDtsJobResponseBody) *ConfigureDtsJobResponse {
+	s.Body = v
+	return s
+}
+
+type ConfigureEtlJobRequest struct {
+	Checkpoint                      *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	DataInitialization              *bool   `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
+	DataSynchronization             *bool   `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
+	DbList                          *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
+	DelayNotice                     *bool   `json:"DelayNotice,omitempty" xml:"DelayNotice,omitempty"`
+	DelayPhone                      *string `json:"DelayPhone,omitempty" xml:"DelayPhone,omitempty"`
+	DelayRuleTime                   *int64  `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
+	DestinationEndpointDataBaseName *string `json:"DestinationEndpointDataBaseName,omitempty" xml:"DestinationEndpointDataBaseName,omitempty"`
+	DestinationEndpointEngineName   *string `json:"DestinationEndpointEngineName,omitempty" xml:"DestinationEndpointEngineName,omitempty"`
+	DestinationEndpointIP           *string `json:"DestinationEndpointIP,omitempty" xml:"DestinationEndpointIP,omitempty"`
+	DestinationEndpointInstanceID   *string `json:"DestinationEndpointInstanceID,omitempty" xml:"DestinationEndpointInstanceID,omitempty"`
+	DestinationEndpointInstanceType *string `json:"DestinationEndpointInstanceType,omitempty" xml:"DestinationEndpointInstanceType,omitempty"`
+	DestinationEndpointOracleSID    *string `json:"DestinationEndpointOracleSID,omitempty" xml:"DestinationEndpointOracleSID,omitempty"`
+	DestinationEndpointPassword     *string `json:"DestinationEndpointPassword,omitempty" xml:"DestinationEndpointPassword,omitempty"`
+	DestinationEndpointPort         *string `json:"DestinationEndpointPort,omitempty" xml:"DestinationEndpointPort,omitempty"`
+	DestinationEndpointRegion       *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
+	DestinationEndpointUserName     *string `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
+	DtsInstanceId                   *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	DtsJobId                        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName                      *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	ErrorNotice                     *bool   `json:"ErrorNotice,omitempty" xml:"ErrorNotice,omitempty"`
+	ErrorPhone                      *string `json:"ErrorPhone,omitempty" xml:"ErrorPhone,omitempty"`
+	EtlCalculator                   *string `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
+	JobType                         *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	OwnerId                         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Reserve                         *string `json:"Reserve,omitempty" xml:"Reserve,omitempty"`
+	SourceEndpointDatabaseName      *string `json:"SourceEndpointDatabaseName,omitempty" xml:"SourceEndpointDatabaseName,omitempty"`
+	SourceEndpointEngineName        *string `json:"SourceEndpointEngineName,omitempty" xml:"SourceEndpointEngineName,omitempty"`
+	SourceEndpointIP                *string `json:"SourceEndpointIP,omitempty" xml:"SourceEndpointIP,omitempty"`
+	SourceEndpointInstanceID        *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
+	SourceEndpointInstanceType      *string `json:"SourceEndpointInstanceType,omitempty" xml:"SourceEndpointInstanceType,omitempty"`
+	SourceEndpointOracleSID         *string `json:"SourceEndpointOracleSID,omitempty" xml:"SourceEndpointOracleSID,omitempty"`
+	SourceEndpointOwnerID           *string `json:"SourceEndpointOwnerID,omitempty" xml:"SourceEndpointOwnerID,omitempty"`
+	SourceEndpointPassword          *string `json:"SourceEndpointPassword,omitempty" xml:"SourceEndpointPassword,omitempty"`
+	SourceEndpointPort              *string `json:"SourceEndpointPort,omitempty" xml:"SourceEndpointPort,omitempty"`
+	SourceEndpointRegion            *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
+	SourceEndpointRole              *string `json:"SourceEndpointRole,omitempty" xml:"SourceEndpointRole,omitempty"`
+	SourceEndpointUserName          *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
+	StructureInitialization         *bool   `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
+}
+
+func (s ConfigureEtlJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigureEtlJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigureEtlJobRequest) SetCheckpoint(v string) *ConfigureEtlJobRequest {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDataInitialization(v bool) *ConfigureEtlJobRequest {
+	s.DataInitialization = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDataSynchronization(v bool) *ConfigureEtlJobRequest {
+	s.DataSynchronization = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDbList(v string) *ConfigureEtlJobRequest {
+	s.DbList = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDelayNotice(v bool) *ConfigureEtlJobRequest {
+	s.DelayNotice = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDelayPhone(v string) *ConfigureEtlJobRequest {
+	s.DelayPhone = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDelayRuleTime(v int64) *ConfigureEtlJobRequest {
+	s.DelayRuleTime = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDestinationEndpointDataBaseName(v string) *ConfigureEtlJobRequest {
+	s.DestinationEndpointDataBaseName = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDestinationEndpointEngineName(v string) *ConfigureEtlJobRequest {
+	s.DestinationEndpointEngineName = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDestinationEndpointIP(v string) *ConfigureEtlJobRequest {
+	s.DestinationEndpointIP = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDestinationEndpointInstanceID(v string) *ConfigureEtlJobRequest {
+	s.DestinationEndpointInstanceID = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDestinationEndpointInstanceType(v string) *ConfigureEtlJobRequest {
+	s.DestinationEndpointInstanceType = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDestinationEndpointOracleSID(v string) *ConfigureEtlJobRequest {
+	s.DestinationEndpointOracleSID = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDestinationEndpointPassword(v string) *ConfigureEtlJobRequest {
+	s.DestinationEndpointPassword = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDestinationEndpointPort(v string) *ConfigureEtlJobRequest {
+	s.DestinationEndpointPort = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDestinationEndpointRegion(v string) *ConfigureEtlJobRequest {
+	s.DestinationEndpointRegion = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDestinationEndpointUserName(v string) *ConfigureEtlJobRequest {
+	s.DestinationEndpointUserName = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDtsInstanceId(v string) *ConfigureEtlJobRequest {
+	s.DtsInstanceId = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDtsJobId(v string) *ConfigureEtlJobRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetDtsJobName(v string) *ConfigureEtlJobRequest {
+	s.DtsJobName = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetErrorNotice(v bool) *ConfigureEtlJobRequest {
+	s.ErrorNotice = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetErrorPhone(v string) *ConfigureEtlJobRequest {
+	s.ErrorPhone = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetEtlCalculator(v string) *ConfigureEtlJobRequest {
+	s.EtlCalculator = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetJobType(v string) *ConfigureEtlJobRequest {
+	s.JobType = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetOwnerId(v string) *ConfigureEtlJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetRegionId(v string) *ConfigureEtlJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetReserve(v string) *ConfigureEtlJobRequest {
+	s.Reserve = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetSourceEndpointDatabaseName(v string) *ConfigureEtlJobRequest {
+	s.SourceEndpointDatabaseName = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetSourceEndpointEngineName(v string) *ConfigureEtlJobRequest {
+	s.SourceEndpointEngineName = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetSourceEndpointIP(v string) *ConfigureEtlJobRequest {
+	s.SourceEndpointIP = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetSourceEndpointInstanceID(v string) *ConfigureEtlJobRequest {
+	s.SourceEndpointInstanceID = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetSourceEndpointInstanceType(v string) *ConfigureEtlJobRequest {
+	s.SourceEndpointInstanceType = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetSourceEndpointOracleSID(v string) *ConfigureEtlJobRequest {
+	s.SourceEndpointOracleSID = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetSourceEndpointOwnerID(v string) *ConfigureEtlJobRequest {
+	s.SourceEndpointOwnerID = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetSourceEndpointPassword(v string) *ConfigureEtlJobRequest {
+	s.SourceEndpointPassword = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetSourceEndpointPort(v string) *ConfigureEtlJobRequest {
+	s.SourceEndpointPort = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetSourceEndpointRegion(v string) *ConfigureEtlJobRequest {
+	s.SourceEndpointRegion = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetSourceEndpointRole(v string) *ConfigureEtlJobRequest {
+	s.SourceEndpointRole = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetSourceEndpointUserName(v string) *ConfigureEtlJobRequest {
+	s.SourceEndpointUserName = &v
+	return s
+}
+
+func (s *ConfigureEtlJobRequest) SetStructureInitialization(v bool) *ConfigureEtlJobRequest {
+	s.StructureInitialization = &v
+	return s
+}
+
+type ConfigureEtlJobResponseBody struct {
+	DtsInstanceId  *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	DtsJobId       *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	ErrCode        *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage     *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ConfigureEtlJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigureEtlJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigureEtlJobResponseBody) SetDtsInstanceId(v string) *ConfigureEtlJobResponseBody {
+	s.DtsInstanceId = &v
+	return s
+}
+
+func (s *ConfigureEtlJobResponseBody) SetDtsJobId(v string) *ConfigureEtlJobResponseBody {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *ConfigureEtlJobResponseBody) SetErrCode(v string) *ConfigureEtlJobResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ConfigureEtlJobResponseBody) SetErrMessage(v string) *ConfigureEtlJobResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ConfigureEtlJobResponseBody) SetHttpStatusCode(v string) *ConfigureEtlJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ConfigureEtlJobResponseBody) SetRequestId(v string) *ConfigureEtlJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConfigureEtlJobResponseBody) SetSuccess(v string) *ConfigureEtlJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ConfigureEtlJobResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ConfigureEtlJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ConfigureEtlJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigureEtlJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigureEtlJobResponse) SetHeaders(v map[string]*string) *ConfigureEtlJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConfigureEtlJobResponse) SetStatusCode(v int32) *ConfigureEtlJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConfigureEtlJobResponse) SetBody(v *ConfigureEtlJobResponseBody) *ConfigureEtlJobResponse {
 	s.Body = v
 	return s
 }
@@ -2882,6 +3215,7 @@ type CreateDtsInstanceRequest struct {
 	Period                        *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	Quantity                      *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	RegionId                      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId               *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SourceEndpointEngineName      *string `json:"SourceEndpointEngineName,omitempty" xml:"SourceEndpointEngineName,omitempty"`
 	SourceRegion                  *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
 	SyncArchitecture              *string `json:"SyncArchitecture,omitempty" xml:"SyncArchitecture,omitempty"`
@@ -2964,6 +3298,11 @@ func (s *CreateDtsInstanceRequest) SetQuantity(v int32) *CreateDtsInstanceReques
 
 func (s *CreateDtsInstanceRequest) SetRegionId(v string) *CreateDtsInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDtsInstanceRequest) SetResourceGroupId(v string) *CreateDtsInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6953,6 +7292,10 @@ func (s *DescribeDtsJobDetailRequest) SetSynchronizationDirection(v string) *Des
 type DescribeDtsJobDetailResponseBody struct {
 	AppName                   *string                                                    `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	BeginTimestamp            *string                                                    `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Binlog                    *string                                                    `json:"Binlog,omitempty" xml:"Binlog,omitempty"`
+	BinlogSite                *string                                                    `json:"BinlogSite,omitempty" xml:"BinlogSite,omitempty"`
+	BinlogTime                *string                                                    `json:"BinlogTime,omitempty" xml:"BinlogTime,omitempty"`
+	BootTime                  *string                                                    `json:"BootTime,omitempty" xml:"BootTime,omitempty"`
 	Checkpoint                *int64                                                     `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
 	Code                      *int32                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	ConsumptionCheckpoint     *string                                                    `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
@@ -6982,6 +7325,7 @@ type DescribeDtsJobDetailResponseBody struct {
 	GroupId                   *string                                                    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	HttpStatusCode            *int32                                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	JobType                   *string                                                    `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	LastUpdateTime            *string                                                    `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
 	MigrationMode             *DescribeDtsJobDetailResponseBodyMigrationMode             `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
 	PayType                   *string                                                    `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	RequestId                 *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -7013,6 +7357,26 @@ func (s *DescribeDtsJobDetailResponseBody) SetAppName(v string) *DescribeDtsJobD
 
 func (s *DescribeDtsJobDetailResponseBody) SetBeginTimestamp(v string) *DescribeDtsJobDetailResponseBody {
 	s.BeginTimestamp = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetBinlog(v string) *DescribeDtsJobDetailResponseBody {
+	s.Binlog = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetBinlogSite(v string) *DescribeDtsJobDetailResponseBody {
+	s.BinlogSite = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetBinlogTime(v string) *DescribeDtsJobDetailResponseBody {
+	s.BinlogTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetBootTime(v string) *DescribeDtsJobDetailResponseBody {
+	s.BootTime = &v
 	return s
 }
 
@@ -7158,6 +7522,11 @@ func (s *DescribeDtsJobDetailResponseBody) SetHttpStatusCode(v int32) *DescribeD
 
 func (s *DescribeDtsJobDetailResponseBody) SetJobType(v string) *DescribeDtsJobDetailResponseBody {
 	s.JobType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetLastUpdateTime(v string) *DescribeDtsJobDetailResponseBody {
+	s.LastUpdateTime = &v
 	return s
 }
 
@@ -11324,6 +11693,7 @@ type DescribeDtsJobsRequest struct {
 	Params             *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId    *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags               *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -11399,6 +11769,11 @@ func (s *DescribeDtsJobsRequest) SetRegion(v string) *DescribeDtsJobsRequest {
 
 func (s *DescribeDtsJobsRequest) SetRegionId(v string) *DescribeDtsJobsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDtsJobsRequest) SetResourceGroupId(v string) *DescribeDtsJobsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -11533,6 +11908,7 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	Performance                   *DescribeDtsJobsResponseBodyDtsJobListPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
 	PrecheckStatus                *DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus                `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
 	Reserved                      *string                                                             `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	ResourceGroupId               *string                                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	RetryState                    *DescribeDtsJobsResponseBodyDtsJobListRetryState                    `json:"RetryState,omitempty" xml:"RetryState,omitempty" type:"Struct"`
 	ReverseJob                    *DescribeDtsJobsResponseBodyDtsJobListReverseJob                    `json:"ReverseJob,omitempty" xml:"ReverseJob,omitempty" type:"Struct"`
 	SourceEndpoint                *DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint                `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
@@ -11706,6 +12082,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetPrecheckStatus(v *DescribeDts
 
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetReserved(v string) *DescribeDtsJobsResponseBodyDtsJobList {
 	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetResourceGroupId(v string) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -12847,6 +13228,7 @@ type DescribeDtsJobsResponseBodyEtlDemoList struct {
 	Performance                   *DescribeDtsJobsResponseBodyEtlDemoListPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
 	PrecheckStatus                *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus                `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
 	Reserved                      *string                                                              `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	ResourceGroupId               *string                                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	RetryState                    *DescribeDtsJobsResponseBodyEtlDemoListRetryState                    `json:"RetryState,omitempty" xml:"RetryState,omitempty" type:"Struct"`
 	ReverseJob                    *DescribeDtsJobsResponseBodyEtlDemoListReverseJob                    `json:"ReverseJob,omitempty" xml:"ReverseJob,omitempty" type:"Struct"`
 	SourceEndpoint                *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint                `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
@@ -12995,6 +13377,11 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetPrecheckStatus(v *DescribeDt
 
 func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetReserved(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
 	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetResourceGroupId(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -22353,11 +22740,11 @@ func (s *ModifyDtsJobRequest) SetSynchronizationDirection(v string) *ModifyDtsJo
 }
 
 type ModifyDtsJobAdvanceRequest struct {
-	FileOssUrlObject           io.Reader              `json:"FileOssUrlObject,omitempty" xml:"FileOssUrlObject,omitempty" require:"true"`
 	ClientToken                *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DbList                     map[string]interface{} `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	DtsInstanceId              *string                `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	EtlOperatorColumnReference *string                `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
+	FileOssUrlObject           io.Reader              `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
 	FilterTableName            *string                `json:"FilterTableName,omitempty" xml:"FilterTableName,omitempty"`
 	ModifyTypeEnum             *string                `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
 	RegionId                   *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -22371,11 +22758,6 @@ func (s ModifyDtsJobAdvanceRequest) String() string {
 
 func (s ModifyDtsJobAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyDtsJobAdvanceRequest) SetFileOssUrlObject(v io.Reader) *ModifyDtsJobAdvanceRequest {
-	s.FileOssUrlObject = v
-	return s
 }
 
 func (s *ModifyDtsJobAdvanceRequest) SetClientToken(v string) *ModifyDtsJobAdvanceRequest {
@@ -22395,6 +22777,11 @@ func (s *ModifyDtsJobAdvanceRequest) SetDtsInstanceId(v string) *ModifyDtsJobAdv
 
 func (s *ModifyDtsJobAdvanceRequest) SetEtlOperatorColumnReference(v string) *ModifyDtsJobAdvanceRequest {
 	s.EtlOperatorColumnReference = &v
+	return s
+}
+
+func (s *ModifyDtsJobAdvanceRequest) SetFileOssUrlObject(v io.Reader) *ModifyDtsJobAdvanceRequest {
+	s.FileOssUrlObject = v
 	return s
 }
 
@@ -23373,6 +23760,129 @@ func (s *ModifySynchronizationObjectResponse) SetStatusCode(v int32) *ModifySync
 }
 
 func (s *ModifySynchronizationObjectResponse) SetBody(v *ModifySynchronizationObjectResponseBody) *ModifySynchronizationObjectResponse {
+	s.Body = v
+	return s
+}
+
+type PreviewSqlRequest struct {
+	EtlCalculator *string `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s PreviewSqlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewSqlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewSqlRequest) SetEtlCalculator(v string) *PreviewSqlRequest {
+	s.EtlCalculator = &v
+	return s
+}
+
+func (s *PreviewSqlRequest) SetRegionId(v string) *PreviewSqlRequest {
+	s.RegionId = &v
+	return s
+}
+
+type PreviewSqlResponseBody struct {
+	DynamicCode         *string   `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage      *string   `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode             *string   `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage          *string   `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode      *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId           *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SqlList             []*string `json:"SqlList,omitempty" xml:"SqlList,omitempty" type:"Repeated"`
+	StreamGraph         *string   `json:"StreamGraph,omitempty" xml:"StreamGraph,omitempty"`
+	Success             *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	ValidationException *string   `json:"ValidationException,omitempty" xml:"ValidationException,omitempty"`
+}
+
+func (s PreviewSqlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewSqlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewSqlResponseBody) SetDynamicCode(v string) *PreviewSqlResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *PreviewSqlResponseBody) SetDynamicMessage(v string) *PreviewSqlResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *PreviewSqlResponseBody) SetErrCode(v string) *PreviewSqlResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *PreviewSqlResponseBody) SetErrMessage(v string) *PreviewSqlResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *PreviewSqlResponseBody) SetHttpStatusCode(v int32) *PreviewSqlResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *PreviewSqlResponseBody) SetRequestId(v string) *PreviewSqlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PreviewSqlResponseBody) SetSqlList(v []*string) *PreviewSqlResponseBody {
+	s.SqlList = v
+	return s
+}
+
+func (s *PreviewSqlResponseBody) SetStreamGraph(v string) *PreviewSqlResponseBody {
+	s.StreamGraph = &v
+	return s
+}
+
+func (s *PreviewSqlResponseBody) SetSuccess(v bool) *PreviewSqlResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *PreviewSqlResponseBody) SetValidationException(v string) *PreviewSqlResponseBody {
+	s.ValidationException = &v
+	return s
+}
+
+type PreviewSqlResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PreviewSqlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PreviewSqlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewSqlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewSqlResponse) SetHeaders(v map[string]*string) *PreviewSqlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PreviewSqlResponse) SetStatusCode(v int32) *PreviewSqlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PreviewSqlResponse) SetBody(v *PreviewSqlResponseBody) *PreviewSqlResponse {
 	s.Body = v
 	return s
 }
@@ -27026,6 +27536,208 @@ func (client *Client) ConfigureDtsJobAdvance(request *ConfigureDtsJobAdvanceRequ
 	return _result, _err
 }
 
+func (client *Client) ConfigureEtlJobWithOptions(request *ConfigureEtlJobRequest, runtime *util.RuntimeOptions) (_result *ConfigureEtlJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Checkpoint)) {
+		query["Checkpoint"] = request.Checkpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataInitialization)) {
+		query["DataInitialization"] = request.DataInitialization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSynchronization)) {
+		query["DataSynchronization"] = request.DataSynchronization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbList)) {
+		query["DbList"] = request.DbList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayNotice)) {
+		query["DelayNotice"] = request.DelayNotice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayPhone)) {
+		query["DelayPhone"] = request.DelayPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayRuleTime)) {
+		query["DelayRuleTime"] = request.DelayRuleTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointDataBaseName)) {
+		query["DestinationEndpointDataBaseName"] = request.DestinationEndpointDataBaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointEngineName)) {
+		query["DestinationEndpointEngineName"] = request.DestinationEndpointEngineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointIP)) {
+		query["DestinationEndpointIP"] = request.DestinationEndpointIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointInstanceID)) {
+		query["DestinationEndpointInstanceID"] = request.DestinationEndpointInstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointInstanceType)) {
+		query["DestinationEndpointInstanceType"] = request.DestinationEndpointInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointOracleSID)) {
+		query["DestinationEndpointOracleSID"] = request.DestinationEndpointOracleSID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointPassword)) {
+		query["DestinationEndpointPassword"] = request.DestinationEndpointPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointPort)) {
+		query["DestinationEndpointPort"] = request.DestinationEndpointPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointRegion)) {
+		query["DestinationEndpointRegion"] = request.DestinationEndpointRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointUserName)) {
+		query["DestinationEndpointUserName"] = request.DestinationEndpointUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobName)) {
+		query["DtsJobName"] = request.DtsJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorNotice)) {
+		query["ErrorNotice"] = request.ErrorNotice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorPhone)) {
+		query["ErrorPhone"] = request.ErrorPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reserve)) {
+		query["Reserve"] = request.Reserve
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointDatabaseName)) {
+		query["SourceEndpointDatabaseName"] = request.SourceEndpointDatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointEngineName)) {
+		query["SourceEndpointEngineName"] = request.SourceEndpointEngineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointIP)) {
+		query["SourceEndpointIP"] = request.SourceEndpointIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointInstanceID)) {
+		query["SourceEndpointInstanceID"] = request.SourceEndpointInstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointInstanceType)) {
+		query["SourceEndpointInstanceType"] = request.SourceEndpointInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointOracleSID)) {
+		query["SourceEndpointOracleSID"] = request.SourceEndpointOracleSID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointOwnerID)) {
+		query["SourceEndpointOwnerID"] = request.SourceEndpointOwnerID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointPassword)) {
+		query["SourceEndpointPassword"] = request.SourceEndpointPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointPort)) {
+		query["SourceEndpointPort"] = request.SourceEndpointPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointRegion)) {
+		query["SourceEndpointRegion"] = request.SourceEndpointRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointRole)) {
+		query["SourceEndpointRole"] = request.SourceEndpointRole
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointUserName)) {
+		query["SourceEndpointUserName"] = request.SourceEndpointUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StructureInitialization)) {
+		query["StructureInitialization"] = request.StructureInitialization
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EtlCalculator)) {
+		body["EtlCalculator"] = request.EtlCalculator
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfigureEtlJob"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ConfigureEtlJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ConfigureEtlJob(request *ConfigureEtlJobRequest) (_result *ConfigureEtlJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConfigureEtlJobResponse{}
+	_body, _err := client.ConfigureEtlJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ConfigureMigrationJobWithOptions(request *ConfigureMigrationJobRequest, runtime *util.RuntimeOptions) (_result *ConfigureMigrationJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28100,6 +28812,10 @@ func (client *Client) CreateDtsInstanceWithOptions(request *CreateDtsInstanceReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceEndpointEngineName)) {
@@ -29836,6 +30552,10 @@ func (client *Client) DescribeDtsJobsWithOptions(request *DescribeDtsJobsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
@@ -32439,6 +33159,56 @@ func (client *Client) ModifySynchronizationObject(request *ModifySynchronization
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySynchronizationObjectResponse{}
 	_body, _err := client.ModifySynchronizationObjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PreviewSqlWithOptions(request *PreviewSqlRequest, runtime *util.RuntimeOptions) (_result *PreviewSqlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EtlCalculator)) {
+		body["EtlCalculator"] = request.EtlCalculator
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PreviewSql"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PreviewSqlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PreviewSql(request *PreviewSqlRequest) (_result *PreviewSqlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PreviewSqlResponse{}
+	_body, _err := client.PreviewSqlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
