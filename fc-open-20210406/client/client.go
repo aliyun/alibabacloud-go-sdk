@@ -9111,7 +9111,6 @@ func (s *PutLayerACLRequest) SetPublic(v bool) *PutLayerACLRequest {
 type PutLayerACLResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *string            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutLayerACLResponse) String() string {
@@ -9129,11 +9128,6 @@ func (s *PutLayerACLResponse) SetHeaders(v map[string]*string) *PutLayerACLRespo
 
 func (s *PutLayerACLResponse) SetStatusCode(v int32) *PutLayerACLResponse {
 	s.StatusCode = &v
-	return s
-}
-
-func (s *PutLayerACLResponse) SetBody(v string) *PutLayerACLResponse {
-	s.Body = &v
 	return s
 }
 
@@ -14725,7 +14719,7 @@ func (client *Client) PutLayerACLWithOptions(layerName *string, request *PutLaye
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("string"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &PutLayerACLResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
