@@ -2387,16 +2387,17 @@ func (s *GetReserveTaskDetailRequest) SetTaskId(v string) *GetReserveTaskDetailR
 }
 
 type GetReserveTaskDetailResponseBody struct {
-	AppId                        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion                   *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	CurrCompletedSessionCapacity *int32  `json:"CurrCompletedSessionCapacity,omitempty" xml:"CurrCompletedSessionCapacity,omitempty"`
-	DistrictId                   *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	ExpectResourceReadyTime      *string `json:"ExpectResourceReadyTime,omitempty" xml:"ExpectResourceReadyTime,omitempty"`
-	ExpectSessionCapacity        *int32  `json:"ExpectSessionCapacity,omitempty" xml:"ExpectSessionCapacity,omitempty"`
-	ProjectId                    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId                       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskStatus                   *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	AppId                        *string                                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion                   *string                                         `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	CurrCompletedSessionCapacity *int32                                          `json:"CurrCompletedSessionCapacity,omitempty" xml:"CurrCompletedSessionCapacity,omitempty"`
+	DistrictId                   *string                                         `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	ExpectResourceReadyTime      *string                                         `json:"ExpectResourceReadyTime,omitempty" xml:"ExpectResourceReadyTime,omitempty"`
+	ExpectSessionCapacity        *int32                                          `json:"ExpectSessionCapacity,omitempty" xml:"ExpectSessionCapacity,omitempty"`
+	ProjectId                    *string                                         `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RequestId                    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResBatchList                 []*GetReserveTaskDetailResponseBodyResBatchList `json:"ResBatchList,omitempty" xml:"ResBatchList,omitempty" type:"Repeated"`
+	TaskId                       *string                                         `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskStatus                   *string                                         `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s GetReserveTaskDetailResponseBody) String() string {
@@ -2447,6 +2448,11 @@ func (s *GetReserveTaskDetailResponseBody) SetRequestId(v string) *GetReserveTas
 	return s
 }
 
+func (s *GetReserveTaskDetailResponseBody) SetResBatchList(v []*GetReserveTaskDetailResponseBodyResBatchList) *GetReserveTaskDetailResponseBody {
+	s.ResBatchList = v
+	return s
+}
+
 func (s *GetReserveTaskDetailResponseBody) SetTaskId(v string) *GetReserveTaskDetailResponseBody {
 	s.TaskId = &v
 	return s
@@ -2454,6 +2460,29 @@ func (s *GetReserveTaskDetailResponseBody) SetTaskId(v string) *GetReserveTaskDe
 
 func (s *GetReserveTaskDetailResponseBody) SetTaskStatus(v string) *GetReserveTaskDetailResponseBody {
 	s.TaskStatus = &v
+	return s
+}
+
+type GetReserveTaskDetailResponseBodyResBatchList struct {
+	ResBatchId      *string `json:"ResBatchId,omitempty" xml:"ResBatchId,omitempty"`
+	ResBatchTagName *string `json:"ResBatchTagName,omitempty" xml:"ResBatchTagName,omitempty"`
+}
+
+func (s GetReserveTaskDetailResponseBodyResBatchList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReserveTaskDetailResponseBodyResBatchList) GoString() string {
+	return s.String()
+}
+
+func (s *GetReserveTaskDetailResponseBodyResBatchList) SetResBatchId(v string) *GetReserveTaskDetailResponseBodyResBatchList {
+	s.ResBatchId = &v
+	return s
+}
+
+func (s *GetReserveTaskDetailResponseBodyResBatchList) SetResBatchTagName(v string) *GetReserveTaskDetailResponseBodyResBatchList {
+	s.ResBatchTagName = &v
 	return s
 }
 
@@ -3338,6 +3367,69 @@ func (s *ReleaseCapacityResponse) SetStatusCode(v int32) *ReleaseCapacityRespons
 }
 
 func (s *ReleaseCapacityResponse) SetBody(v *ReleaseCapacityResponseBody) *ReleaseCapacityResponse {
+	s.Body = v
+	return s
+}
+
+type ReleaseCapacityByBatchRequest struct {
+	ResBatchId *string `json:"ResBatchId,omitempty" xml:"ResBatchId,omitempty"`
+}
+
+func (s ReleaseCapacityByBatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseCapacityByBatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseCapacityByBatchRequest) SetResBatchId(v string) *ReleaseCapacityByBatchRequest {
+	s.ResBatchId = &v
+	return s
+}
+
+type ReleaseCapacityByBatchResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReleaseCapacityByBatchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseCapacityByBatchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseCapacityByBatchResponseBody) SetRequestId(v string) *ReleaseCapacityByBatchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReleaseCapacityByBatchResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReleaseCapacityByBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReleaseCapacityByBatchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseCapacityByBatchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseCapacityByBatchResponse) SetHeaders(v map[string]*string) *ReleaseCapacityByBatchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseCapacityByBatchResponse) SetStatusCode(v int32) *ReleaseCapacityByBatchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReleaseCapacityByBatchResponse) SetBody(v *ReleaseCapacityByBatchResponseBody) *ReleaseCapacityByBatchResponse {
 	s.Body = v
 	return s
 }
@@ -5040,6 +5132,50 @@ func (client *Client) ReleaseCapacity(request *ReleaseCapacityRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseCapacityResponse{}
 	_body, _err := client.ReleaseCapacityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReleaseCapacityByBatchWithOptions(request *ReleaseCapacityByBatchRequest, runtime *util.RuntimeOptions) (_result *ReleaseCapacityByBatchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResBatchId)) {
+		body["ResBatchId"] = request.ResBatchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseCapacityByBatch"),
+		Version:     tea.String("2021-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReleaseCapacityByBatchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReleaseCapacityByBatch(request *ReleaseCapacityByBatchRequest) (_result *ReleaseCapacityByBatchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleaseCapacityByBatchResponse{}
+	_body, _err := client.ReleaseCapacityByBatchWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -1,3 +1,6 @@
+2022-09-07 Version: v2.3.3
+- Add proposeCluster.
+
 2022-09-02 Version: v2.3.1
 - Update createSessionSync open api.
 
