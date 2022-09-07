@@ -384,15 +384,110 @@ func (s *AssociateVSwitchWithIoTCloudConnectorResponse) SetBody(v *AssociateVSwi
 	return s
 }
 
+type ConfirmIoTCloudConnectorRequest struct {
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConfirmStatus       *string `json:"ConfirmStatus,omitempty" xml:"ConfirmStatus,omitempty"`
+	DryRun              *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ConfirmIoTCloudConnectorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmIoTCloudConnectorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmIoTCloudConnectorRequest) SetClientToken(v string) *ConfirmIoTCloudConnectorRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ConfirmIoTCloudConnectorRequest) SetConfirmStatus(v string) *ConfirmIoTCloudConnectorRequest {
+	s.ConfirmStatus = &v
+	return s
+}
+
+func (s *ConfirmIoTCloudConnectorRequest) SetDryRun(v bool) *ConfirmIoTCloudConnectorRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ConfirmIoTCloudConnectorRequest) SetIoTCloudConnectorId(v string) *ConfirmIoTCloudConnectorRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *ConfirmIoTCloudConnectorRequest) SetRegionId(v string) *ConfirmIoTCloudConnectorRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ConfirmIoTCloudConnectorResponseBody struct {
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s ConfirmIoTCloudConnectorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmIoTCloudConnectorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmIoTCloudConnectorResponseBody) SetRequestId(v string) *ConfirmIoTCloudConnectorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConfirmIoTCloudConnectorResponseBody) SetResourceId(v string) *ConfirmIoTCloudConnectorResponseBody {
+	s.ResourceId = &v
+	return s
+}
+
+type ConfirmIoTCloudConnectorResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ConfirmIoTCloudConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ConfirmIoTCloudConnectorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmIoTCloudConnectorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmIoTCloudConnectorResponse) SetHeaders(v map[string]*string) *ConfirmIoTCloudConnectorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConfirmIoTCloudConnectorResponse) SetStatusCode(v int32) *ConfirmIoTCloudConnectorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConfirmIoTCloudConnectorResponse) SetBody(v *ConfirmIoTCloudConnectorResponseBody) *ConfirmIoTCloudConnectorResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAuthorizationRuleRequest struct {
 	AuthorizationRuleDescription *string   `json:"AuthorizationRuleDescription,omitempty" xml:"AuthorizationRuleDescription,omitempty"`
 	AuthorizationRuleName        *string   `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
 	ClientToken                  *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Destination                  *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort              *string   `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
 	DestinationType              *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	DryRun                       *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	IoTCloudConnectorId          *string   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	Policy                       *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol                     *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	RegionId                     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SourceCidrs                  []*string `json:"SourceCidrs,omitempty" xml:"SourceCidrs,omitempty" type:"Repeated"`
 }
@@ -425,6 +520,11 @@ func (s *CreateAuthorizationRuleRequest) SetDestination(v string) *CreateAuthori
 	return s
 }
 
+func (s *CreateAuthorizationRuleRequest) SetDestinationPort(v string) *CreateAuthorizationRuleRequest {
+	s.DestinationPort = &v
+	return s
+}
+
 func (s *CreateAuthorizationRuleRequest) SetDestinationType(v string) *CreateAuthorizationRuleRequest {
 	s.DestinationType = &v
 	return s
@@ -442,6 +542,11 @@ func (s *CreateAuthorizationRuleRequest) SetIoTCloudConnectorId(v string) *Creat
 
 func (s *CreateAuthorizationRuleRequest) SetPolicy(v string) *CreateAuthorizationRuleRequest {
 	s.Policy = &v
+	return s
+}
+
+func (s *CreateAuthorizationRuleRequest) SetProtocol(v string) *CreateAuthorizationRuleRequest {
+	s.Protocol = &v
 	return s
 }
 
@@ -503,6 +608,158 @@ func (s *CreateAuthorizationRuleResponse) SetStatusCode(v int32) *CreateAuthoriz
 }
 
 func (s *CreateAuthorizationRuleResponse) SetBody(v *CreateAuthorizationRuleResponseBody) *CreateAuthorizationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAuthorizationRulesRequest struct {
+	AuthorizationRules  []*CreateAuthorizationRulesRequestAuthorizationRules `json:"AuthorizationRules,omitempty" xml:"AuthorizationRules,omitempty" type:"Repeated"`
+	ClientToken         *string                                              `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun              *bool                                                `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId *string                                              `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RegionId            *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateAuthorizationRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAuthorizationRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAuthorizationRulesRequest) SetAuthorizationRules(v []*CreateAuthorizationRulesRequestAuthorizationRules) *CreateAuthorizationRulesRequest {
+	s.AuthorizationRules = v
+	return s
+}
+
+func (s *CreateAuthorizationRulesRequest) SetClientToken(v string) *CreateAuthorizationRulesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAuthorizationRulesRequest) SetDryRun(v bool) *CreateAuthorizationRulesRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateAuthorizationRulesRequest) SetIoTCloudConnectorId(v string) *CreateAuthorizationRulesRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *CreateAuthorizationRulesRequest) SetRegionId(v string) *CreateAuthorizationRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateAuthorizationRulesRequestAuthorizationRules struct {
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Destination     *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort *string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
+	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol        *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	SourceCidr      *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
+}
+
+func (s CreateAuthorizationRulesRequestAuthorizationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAuthorizationRulesRequestAuthorizationRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAuthorizationRulesRequestAuthorizationRules) SetDescription(v string) *CreateAuthorizationRulesRequestAuthorizationRules {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAuthorizationRulesRequestAuthorizationRules) SetDestination(v string) *CreateAuthorizationRulesRequestAuthorizationRules {
+	s.Destination = &v
+	return s
+}
+
+func (s *CreateAuthorizationRulesRequestAuthorizationRules) SetDestinationPort(v string) *CreateAuthorizationRulesRequestAuthorizationRules {
+	s.DestinationPort = &v
+	return s
+}
+
+func (s *CreateAuthorizationRulesRequestAuthorizationRules) SetDestinationType(v string) *CreateAuthorizationRulesRequestAuthorizationRules {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *CreateAuthorizationRulesRequestAuthorizationRules) SetName(v string) *CreateAuthorizationRulesRequestAuthorizationRules {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAuthorizationRulesRequestAuthorizationRules) SetPolicy(v string) *CreateAuthorizationRulesRequestAuthorizationRules {
+	s.Policy = &v
+	return s
+}
+
+func (s *CreateAuthorizationRulesRequestAuthorizationRules) SetProtocol(v string) *CreateAuthorizationRulesRequestAuthorizationRules {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateAuthorizationRulesRequestAuthorizationRules) SetSourceCidr(v string) *CreateAuthorizationRulesRequestAuthorizationRules {
+	s.SourceCidr = &v
+	return s
+}
+
+type CreateAuthorizationRulesResponseBody struct {
+	AuthorizationRuleIds []*string `json:"AuthorizationRuleIds,omitempty" xml:"AuthorizationRuleIds,omitempty" type:"Repeated"`
+	RequestId            *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAuthorizationRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAuthorizationRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAuthorizationRulesResponseBody) SetAuthorizationRuleIds(v []*string) *CreateAuthorizationRulesResponseBody {
+	s.AuthorizationRuleIds = v
+	return s
+}
+
+func (s *CreateAuthorizationRulesResponseBody) SetRequestId(v string) *CreateAuthorizationRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAuthorizationRulesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAuthorizationRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAuthorizationRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAuthorizationRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAuthorizationRulesResponse) SetHeaders(v map[string]*string) *CreateAuthorizationRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAuthorizationRulesResponse) SetStatusCode(v int32) *CreateAuthorizationRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAuthorizationRulesResponse) SetBody(v *CreateAuthorizationRulesResponseBody) *CreateAuthorizationRulesResponse {
 	s.Body = v
 	return s
 }
@@ -740,10 +997,12 @@ type CreateGroupAuthorizationRuleRequest struct {
 	AuthorizationRuleName        *string   `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
 	ClientToken                  *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Destination                  *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort              *string   `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
 	DestinationType              *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	DryRun                       *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	IoTCloudConnectorGroupId     *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
 	Policy                       *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol                     *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	RegionId                     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SourceCidrs                  []*string `json:"SourceCidrs,omitempty" xml:"SourceCidrs,omitempty" type:"Repeated"`
 	Type                         *string   `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -777,6 +1036,11 @@ func (s *CreateGroupAuthorizationRuleRequest) SetDestination(v string) *CreateGr
 	return s
 }
 
+func (s *CreateGroupAuthorizationRuleRequest) SetDestinationPort(v string) *CreateGroupAuthorizationRuleRequest {
+	s.DestinationPort = &v
+	return s
+}
+
 func (s *CreateGroupAuthorizationRuleRequest) SetDestinationType(v string) *CreateGroupAuthorizationRuleRequest {
 	s.DestinationType = &v
 	return s
@@ -794,6 +1058,11 @@ func (s *CreateGroupAuthorizationRuleRequest) SetIoTCloudConnectorGroupId(v stri
 
 func (s *CreateGroupAuthorizationRuleRequest) SetPolicy(v string) *CreateGroupAuthorizationRuleRequest {
 	s.Policy = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetProtocol(v string) *CreateGroupAuthorizationRuleRequest {
+	s.Protocol = &v
 	return s
 }
 
@@ -989,6 +1258,117 @@ func (s *CreateGroupDNSServiceRuleResponse) SetStatusCode(v int32) *CreateGroupD
 }
 
 func (s *CreateGroupDNSServiceRuleResponse) SetBody(v *CreateGroupDNSServiceRuleResponseBody) *CreateGroupDNSServiceRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateGroupIpMappingRuleRequest struct {
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DestinationIp            *string `json:"DestinationIp,omitempty" xml:"DestinationIp,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	IpMappingRuleDescription *string `json:"IpMappingRuleDescription,omitempty" xml:"IpMappingRuleDescription,omitempty"`
+	IpMappingRuleName        *string `json:"IpMappingRuleName,omitempty" xml:"IpMappingRuleName,omitempty"`
+	MappingIp                *string `json:"MappingIp,omitempty" xml:"MappingIp,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateGroupIpMappingRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupIpMappingRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupIpMappingRuleRequest) SetClientToken(v string) *CreateGroupIpMappingRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateGroupIpMappingRuleRequest) SetDestinationIp(v string) *CreateGroupIpMappingRuleRequest {
+	s.DestinationIp = &v
+	return s
+}
+
+func (s *CreateGroupIpMappingRuleRequest) SetDryRun(v bool) *CreateGroupIpMappingRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateGroupIpMappingRuleRequest) SetIoTCloudConnectorGroupId(v string) *CreateGroupIpMappingRuleRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *CreateGroupIpMappingRuleRequest) SetIpMappingRuleDescription(v string) *CreateGroupIpMappingRuleRequest {
+	s.IpMappingRuleDescription = &v
+	return s
+}
+
+func (s *CreateGroupIpMappingRuleRequest) SetIpMappingRuleName(v string) *CreateGroupIpMappingRuleRequest {
+	s.IpMappingRuleName = &v
+	return s
+}
+
+func (s *CreateGroupIpMappingRuleRequest) SetMappingIp(v string) *CreateGroupIpMappingRuleRequest {
+	s.MappingIp = &v
+	return s
+}
+
+func (s *CreateGroupIpMappingRuleRequest) SetRegionId(v string) *CreateGroupIpMappingRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateGroupIpMappingRuleResponseBody struct {
+	GroupIpMappingRuleId *string `json:"GroupIpMappingRuleId,omitempty" xml:"GroupIpMappingRuleId,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGroupIpMappingRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupIpMappingRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupIpMappingRuleResponseBody) SetGroupIpMappingRuleId(v string) *CreateGroupIpMappingRuleResponseBody {
+	s.GroupIpMappingRuleId = &v
+	return s
+}
+
+func (s *CreateGroupIpMappingRuleResponseBody) SetRequestId(v string) *CreateGroupIpMappingRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGroupIpMappingRuleResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGroupIpMappingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGroupIpMappingRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupIpMappingRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupIpMappingRuleResponse) SetHeaders(v map[string]*string) *CreateGroupIpMappingRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupIpMappingRuleResponse) SetStatusCode(v int32) *CreateGroupIpMappingRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGroupIpMappingRuleResponse) SetBody(v *CreateGroupIpMappingRuleResponseBody) *CreateGroupIpMappingRuleResponse {
 	s.Body = v
 	return s
 }
@@ -1298,6 +1678,117 @@ func (s *CreateIoTCloudConnectorGroupResponse) SetStatusCode(v int32) *CreateIoT
 }
 
 func (s *CreateIoTCloudConnectorGroupResponse) SetBody(v *CreateIoTCloudConnectorGroupResponseBody) *CreateIoTCloudConnectorGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateIpMappingRuleRequest struct {
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DestinationIp            *string `json:"DestinationIp,omitempty" xml:"DestinationIp,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId      *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	IpMappingRuleDescription *string `json:"IpMappingRuleDescription,omitempty" xml:"IpMappingRuleDescription,omitempty"`
+	IpMappingRuleName        *string `json:"IpMappingRuleName,omitempty" xml:"IpMappingRuleName,omitempty"`
+	MappingIp                *string `json:"MappingIp,omitempty" xml:"MappingIp,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateIpMappingRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIpMappingRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIpMappingRuleRequest) SetClientToken(v string) *CreateIpMappingRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateIpMappingRuleRequest) SetDestinationIp(v string) *CreateIpMappingRuleRequest {
+	s.DestinationIp = &v
+	return s
+}
+
+func (s *CreateIpMappingRuleRequest) SetDryRun(v bool) *CreateIpMappingRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateIpMappingRuleRequest) SetIoTCloudConnectorId(v string) *CreateIpMappingRuleRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *CreateIpMappingRuleRequest) SetIpMappingRuleDescription(v string) *CreateIpMappingRuleRequest {
+	s.IpMappingRuleDescription = &v
+	return s
+}
+
+func (s *CreateIpMappingRuleRequest) SetIpMappingRuleName(v string) *CreateIpMappingRuleRequest {
+	s.IpMappingRuleName = &v
+	return s
+}
+
+func (s *CreateIpMappingRuleRequest) SetMappingIp(v string) *CreateIpMappingRuleRequest {
+	s.MappingIp = &v
+	return s
+}
+
+func (s *CreateIpMappingRuleRequest) SetRegionId(v string) *CreateIpMappingRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateIpMappingRuleResponseBody struct {
+	IpMappingRuleId *string `json:"IpMappingRuleId,omitempty" xml:"IpMappingRuleId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateIpMappingRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIpMappingRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIpMappingRuleResponseBody) SetIpMappingRuleId(v string) *CreateIpMappingRuleResponseBody {
+	s.IpMappingRuleId = &v
+	return s
+}
+
+func (s *CreateIpMappingRuleResponseBody) SetRequestId(v string) *CreateIpMappingRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateIpMappingRuleResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateIpMappingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateIpMappingRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIpMappingRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIpMappingRuleResponse) SetHeaders(v map[string]*string) *CreateIpMappingRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIpMappingRuleResponse) SetStatusCode(v int32) *CreateIpMappingRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateIpMappingRuleResponse) SetBody(v *CreateIpMappingRuleResponseBody) *CreateIpMappingRuleResponse {
 	s.Body = v
 	return s
 }
@@ -1953,6 +2444,93 @@ func (s *DeleteGroupDNSServiceRuleResponse) SetBody(v *DeleteGroupDNSServiceRule
 	return s
 }
 
+type DeleteGroupIpMappingRuleRequest struct {
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	GroupIpMappingRuleId     *string `json:"GroupIpMappingRuleId,omitempty" xml:"GroupIpMappingRuleId,omitempty"`
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteGroupIpMappingRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupIpMappingRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupIpMappingRuleRequest) SetClientToken(v string) *DeleteGroupIpMappingRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteGroupIpMappingRuleRequest) SetDryRun(v bool) *DeleteGroupIpMappingRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteGroupIpMappingRuleRequest) SetGroupIpMappingRuleId(v string) *DeleteGroupIpMappingRuleRequest {
+	s.GroupIpMappingRuleId = &v
+	return s
+}
+
+func (s *DeleteGroupIpMappingRuleRequest) SetIoTCloudConnectorGroupId(v string) *DeleteGroupIpMappingRuleRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *DeleteGroupIpMappingRuleRequest) SetRegionId(v string) *DeleteGroupIpMappingRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteGroupIpMappingRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGroupIpMappingRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupIpMappingRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupIpMappingRuleResponseBody) SetRequestId(v string) *DeleteGroupIpMappingRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGroupIpMappingRuleResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGroupIpMappingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGroupIpMappingRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupIpMappingRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupIpMappingRuleResponse) SetHeaders(v map[string]*string) *DeleteGroupIpMappingRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGroupIpMappingRuleResponse) SetStatusCode(v int32) *DeleteGroupIpMappingRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGroupIpMappingRuleResponse) SetBody(v *DeleteGroupIpMappingRuleResponseBody) *DeleteGroupIpMappingRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteIoTCloudConnectorRequest struct {
 	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun              *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -2192,6 +2770,93 @@ func (s *DeleteIoTCloudConnetorBackhaulRouteResponse) SetStatusCode(v int32) *De
 }
 
 func (s *DeleteIoTCloudConnetorBackhaulRouteResponse) SetBody(v *DeleteIoTCloudConnetorBackhaulRouteResponseBody) *DeleteIoTCloudConnetorBackhaulRouteResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteIpMappingRuleRequest struct {
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun              *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	IpMappingRuleId     *string `json:"IpMappingRuleId,omitempty" xml:"IpMappingRuleId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteIpMappingRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIpMappingRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIpMappingRuleRequest) SetClientToken(v string) *DeleteIpMappingRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteIpMappingRuleRequest) SetDryRun(v bool) *DeleteIpMappingRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteIpMappingRuleRequest) SetIoTCloudConnectorId(v string) *DeleteIpMappingRuleRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *DeleteIpMappingRuleRequest) SetIpMappingRuleId(v string) *DeleteIpMappingRuleRequest {
+	s.IpMappingRuleId = &v
+	return s
+}
+
+func (s *DeleteIpMappingRuleRequest) SetRegionId(v string) *DeleteIpMappingRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteIpMappingRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteIpMappingRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIpMappingRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIpMappingRuleResponseBody) SetRequestId(v string) *DeleteIpMappingRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteIpMappingRuleResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteIpMappingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteIpMappingRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIpMappingRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIpMappingRuleResponse) SetHeaders(v map[string]*string) *DeleteIpMappingRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIpMappingRuleResponse) SetStatusCode(v int32) *DeleteIpMappingRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteIpMappingRuleResponse) SetBody(v *DeleteIpMappingRuleResponseBody) *DeleteIpMappingRuleResponse {
 	s.Body = v
 	return s
 }
@@ -2766,9 +3431,7 @@ func (s *GetConnectionPoolIpOperationResultRequest) SetRegionId(v string) *GetCo
 }
 
 type GetConnectionPoolIpOperationResultResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// OssPath
+	RequestId       *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultFilePaths []*string `json:"ResultFilePaths,omitempty" xml:"ResultFilePaths,omitempty" type:"Repeated"`
 }
 
@@ -3147,18 +3810,12 @@ func (s *GetStsInfoAndOssPathRequest) SetRegionId(v string) *GetStsInfoAndOssPat
 }
 
 type GetStsInfoAndOssPathResponseBody struct {
-	// Sts info of accessKeyId
-	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// Sts info of accessKeySecret
+	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	// Sts info expiration time
-	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// OssPath
-	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Sts info of securityToken
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Expiration      *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	OssPath         *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s GetStsInfoAndOssPathResponseBody) String() string {
@@ -3252,7 +3909,6 @@ func (s *GrantVirtualBorderRouterRequest) SetVirtualBorderRouterId(v string) *Gr
 }
 
 type GrantVirtualBorderRouterResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3304,6 +3960,7 @@ type ListAPNsRequest struct {
 	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAPNsRequest) String() string {
@@ -3336,6 +3993,11 @@ func (s *ListAPNsRequest) SetNextToken(v string) *ListAPNsRequest {
 
 func (s *ListAPNsRequest) SetRegionId(v string) *ListAPNsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListAPNsRequest) SetType(v string) *ListAPNsRequest {
+	s.Type = &v
 	return s
 }
 
@@ -3462,11 +4124,13 @@ type ListAuthorizationRulesRequest struct {
 	AuthorizationRuleStatus []*string `json:"AuthorizationRuleStatus,omitempty" xml:"AuthorizationRuleStatus,omitempty" type:"Repeated"`
 	AuthorizationRuleType   *string   `json:"AuthorizationRuleType,omitempty" xml:"AuthorizationRuleType,omitempty"`
 	Destination             []*string `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Repeated"`
+	DestinationPort         []*string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty" type:"Repeated"`
 	DestinationType         []*string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty" type:"Repeated"`
 	IoTCloudConnectorId     *string   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	MaxResults              *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken               *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Policy                  []*string `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Repeated"`
+	Protocol                []*string `json:"Protocol,omitempty" xml:"Protocol,omitempty" type:"Repeated"`
 	RegionId                *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3503,6 +4167,11 @@ func (s *ListAuthorizationRulesRequest) SetDestination(v []*string) *ListAuthori
 	return s
 }
 
+func (s *ListAuthorizationRulesRequest) SetDestinationPort(v []*string) *ListAuthorizationRulesRequest {
+	s.DestinationPort = v
+	return s
+}
+
 func (s *ListAuthorizationRulesRequest) SetDestinationType(v []*string) *ListAuthorizationRulesRequest {
 	s.DestinationType = v
 	return s
@@ -3525,6 +4194,11 @@ func (s *ListAuthorizationRulesRequest) SetNextToken(v string) *ListAuthorizatio
 
 func (s *ListAuthorizationRulesRequest) SetPolicy(v []*string) *ListAuthorizationRulesRequest {
 	s.Policy = v
+	return s
+}
+
+func (s *ListAuthorizationRulesRequest) SetProtocol(v []*string) *ListAuthorizationRulesRequest {
+	s.Protocol = v
 	return s
 }
 
@@ -3581,9 +4255,11 @@ type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	AuthorizationRuleStatus      *string   `json:"AuthorizationRuleStatus,omitempty" xml:"AuthorizationRuleStatus,omitempty"`
 	AuthorizationRuleType        *string   `json:"AuthorizationRuleType,omitempty" xml:"AuthorizationRuleType,omitempty"`
 	Destination                  *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort              *string   `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
 	DestinationType              *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	IoTCloudConnectorId          *string   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	Policy                       *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol                     *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	SourceCidrs                  []*string `json:"SourceCidrs,omitempty" xml:"SourceCidrs,omitempty" type:"Repeated"`
 }
 
@@ -3625,6 +4301,11 @@ func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetDestination(v 
 	return s
 }
 
+func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetDestinationPort(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
+	s.DestinationPort = &v
+	return s
+}
+
 func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetDestinationType(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
 	s.DestinationType = &v
 	return s
@@ -3637,6 +4318,11 @@ func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetIoTCloudConnec
 
 func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetPolicy(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
 	s.Policy = &v
+	return s
+}
+
+func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetProtocol(v string) *ListAuthorizationRulesResponseBodyAuthorizationRules {
+	s.Protocol = &v
 	return s
 }
 
@@ -4559,11 +5245,13 @@ type ListGroupAuthorizationRulesRequest struct {
 	AuthorizationRuleName    []*string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty" type:"Repeated"`
 	AuthorizationRuleStatus  []*string `json:"AuthorizationRuleStatus,omitempty" xml:"AuthorizationRuleStatus,omitempty" type:"Repeated"`
 	Destination              []*string `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Repeated"`
+	DestinationPort          []*string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty" type:"Repeated"`
 	DestinationType          []*string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty" type:"Repeated"`
 	IoTCloudConnectorGroupId *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
 	MaxResults               *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken                *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Policy                   []*string `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Repeated"`
+	Protocol                 []*string `json:"Protocol,omitempty" xml:"Protocol,omitempty" type:"Repeated"`
 	RegionId                 *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Type                     *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -4596,6 +5284,11 @@ func (s *ListGroupAuthorizationRulesRequest) SetDestination(v []*string) *ListGr
 	return s
 }
 
+func (s *ListGroupAuthorizationRulesRequest) SetDestinationPort(v []*string) *ListGroupAuthorizationRulesRequest {
+	s.DestinationPort = v
+	return s
+}
+
 func (s *ListGroupAuthorizationRulesRequest) SetDestinationType(v []*string) *ListGroupAuthorizationRulesRequest {
 	s.DestinationType = v
 	return s
@@ -4618,6 +5311,11 @@ func (s *ListGroupAuthorizationRulesRequest) SetNextToken(v string) *ListGroupAu
 
 func (s *ListGroupAuthorizationRulesRequest) SetPolicy(v []*string) *ListGroupAuthorizationRulesRequest {
 	s.Policy = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetProtocol(v []*string) *ListGroupAuthorizationRulesRequest {
+	s.Protocol = v
 	return s
 }
 
@@ -4678,9 +5376,11 @@ type ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules struct {
 	AuthorizationRuleName        *string   `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
 	AuthorizationRuleStatus      *string   `json:"AuthorizationRuleStatus,omitempty" xml:"AuthorizationRuleStatus,omitempty"`
 	Destination                  *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort              *string   `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
 	DestinationType              *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	IoTCloudConnectorGroupId     *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
 	Policy                       *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol                     *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	SourceCidrs                  []*string `json:"SourceCidrs,omitempty" xml:"SourceCidrs,omitempty" type:"Repeated"`
 	Type                         *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -4718,6 +5418,11 @@ func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetDest
 	return s
 }
 
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetDestinationPort(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.DestinationPort = &v
+	return s
+}
+
 func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetDestinationType(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
 	s.DestinationType = &v
 	return s
@@ -4730,6 +5435,11 @@ func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetIoTC
 
 func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetPolicy(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
 	s.Policy = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetProtocol(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.Protocol = &v
 	return s
 }
 
@@ -4968,6 +5678,194 @@ func (s *ListGroupDNSServiceRulesResponse) SetStatusCode(v int32) *ListGroupDNSS
 }
 
 func (s *ListGroupDNSServiceRulesResponse) SetBody(v *ListGroupDNSServiceRulesResponseBody) *ListGroupDNSServiceRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListGroupIpMappingRulesRequest struct {
+	DestinationIps           []*string `json:"DestinationIps,omitempty" xml:"DestinationIps,omitempty" type:"Repeated"`
+	IoTCloudConnectorGroupId *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	IpMappingRuleIds         []*string `json:"IpMappingRuleIds,omitempty" xml:"IpMappingRuleIds,omitempty" type:"Repeated"`
+	IpMappingRuleNames       []*string `json:"IpMappingRuleNames,omitempty" xml:"IpMappingRuleNames,omitempty" type:"Repeated"`
+	IpMappingRuleStatuses    []*string `json:"IpMappingRuleStatuses,omitempty" xml:"IpMappingRuleStatuses,omitempty" type:"Repeated"`
+	MappingIps               []*string `json:"MappingIps,omitempty" xml:"MappingIps,omitempty" type:"Repeated"`
+	MaxResults               *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId                 *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListGroupIpMappingRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupIpMappingRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupIpMappingRulesRequest) SetDestinationIps(v []*string) *ListGroupIpMappingRulesRequest {
+	s.DestinationIps = v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesRequest) SetIoTCloudConnectorGroupId(v string) *ListGroupIpMappingRulesRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesRequest) SetIpMappingRuleIds(v []*string) *ListGroupIpMappingRulesRequest {
+	s.IpMappingRuleIds = v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesRequest) SetIpMappingRuleNames(v []*string) *ListGroupIpMappingRulesRequest {
+	s.IpMappingRuleNames = v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesRequest) SetIpMappingRuleStatuses(v []*string) *ListGroupIpMappingRulesRequest {
+	s.IpMappingRuleStatuses = v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesRequest) SetMappingIps(v []*string) *ListGroupIpMappingRulesRequest {
+	s.MappingIps = v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesRequest) SetMaxResults(v int32) *ListGroupIpMappingRulesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesRequest) SetNextToken(v string) *ListGroupIpMappingRulesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesRequest) SetRegionId(v string) *ListGroupIpMappingRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListGroupIpMappingRulesResponseBody struct {
+	IpMappingRules []*ListGroupIpMappingRulesResponseBodyIpMappingRules `json:"IpMappingRules,omitempty" xml:"IpMappingRules,omitempty" type:"Repeated"`
+	MaxResults     *int32                                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken      *string                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListGroupIpMappingRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupIpMappingRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupIpMappingRulesResponseBody) SetIpMappingRules(v []*ListGroupIpMappingRulesResponseBodyIpMappingRules) *ListGroupIpMappingRulesResponseBody {
+	s.IpMappingRules = v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesResponseBody) SetMaxResults(v int32) *ListGroupIpMappingRulesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesResponseBody) SetNextToken(v string) *ListGroupIpMappingRulesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesResponseBody) SetRequestId(v string) *ListGroupIpMappingRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesResponseBody) SetTotalCount(v int32) *ListGroupIpMappingRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListGroupIpMappingRulesResponseBodyIpMappingRules struct {
+	DestinationIp            *string `json:"DestinationIp,omitempty" xml:"DestinationIp,omitempty"`
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	IpMappingRuleDescription *string `json:"IpMappingRuleDescription,omitempty" xml:"IpMappingRuleDescription,omitempty"`
+	IpMappingRuleId          *string `json:"IpMappingRuleId,omitempty" xml:"IpMappingRuleId,omitempty"`
+	IpMappingRuleName        *string `json:"IpMappingRuleName,omitempty" xml:"IpMappingRuleName,omitempty"`
+	IpMappingRuleStatus      *string `json:"IpMappingRuleStatus,omitempty" xml:"IpMappingRuleStatus,omitempty"`
+	MappingIp                *string `json:"MappingIp,omitempty" xml:"MappingIp,omitempty"`
+}
+
+func (s ListGroupIpMappingRulesResponseBodyIpMappingRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupIpMappingRulesResponseBodyIpMappingRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupIpMappingRulesResponseBodyIpMappingRules) SetDestinationIp(v string) *ListGroupIpMappingRulesResponseBodyIpMappingRules {
+	s.DestinationIp = &v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesResponseBodyIpMappingRules) SetIoTCloudConnectorGroupId(v string) *ListGroupIpMappingRulesResponseBodyIpMappingRules {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesResponseBodyIpMappingRules) SetIpMappingRuleDescription(v string) *ListGroupIpMappingRulesResponseBodyIpMappingRules {
+	s.IpMappingRuleDescription = &v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesResponseBodyIpMappingRules) SetIpMappingRuleId(v string) *ListGroupIpMappingRulesResponseBodyIpMappingRules {
+	s.IpMappingRuleId = &v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesResponseBodyIpMappingRules) SetIpMappingRuleName(v string) *ListGroupIpMappingRulesResponseBodyIpMappingRules {
+	s.IpMappingRuleName = &v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesResponseBodyIpMappingRules) SetIpMappingRuleStatus(v string) *ListGroupIpMappingRulesResponseBodyIpMappingRules {
+	s.IpMappingRuleStatus = &v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesResponseBodyIpMappingRules) SetMappingIp(v string) *ListGroupIpMappingRulesResponseBodyIpMappingRules {
+	s.MappingIp = &v
+	return s
+}
+
+type ListGroupIpMappingRulesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGroupIpMappingRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGroupIpMappingRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupIpMappingRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupIpMappingRulesResponse) SetHeaders(v map[string]*string) *ListGroupIpMappingRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesResponse) SetStatusCode(v int32) *ListGroupIpMappingRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGroupIpMappingRulesResponse) SetBody(v *ListGroupIpMappingRulesResponseBody) *ListGroupIpMappingRulesResponse {
 	s.Body = v
 	return s
 }
@@ -5241,6 +6139,111 @@ func (s *ListIoTCloudConnectorAvailableZonesResponse) SetBody(v *ListIoTCloudCon
 	return s
 }
 
+type ListIoTCloudConnectorEIPsRequest struct {
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListIoTCloudConnectorEIPsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIoTCloudConnectorEIPsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIoTCloudConnectorEIPsRequest) SetIoTCloudConnectorId(v string) *ListIoTCloudConnectorEIPsRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorEIPsRequest) SetMaxResults(v int32) *ListIoTCloudConnectorEIPsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorEIPsRequest) SetNextToken(v string) *ListIoTCloudConnectorEIPsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorEIPsRequest) SetRegionId(v string) *ListIoTCloudConnectorEIPsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListIoTCloudConnectorEIPsResponseBody struct {
+	EIPs       []*string `json:"EIPs,omitempty" xml:"EIPs,omitempty" type:"Repeated"`
+	MaxResults *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListIoTCloudConnectorEIPsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIoTCloudConnectorEIPsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIoTCloudConnectorEIPsResponseBody) SetEIPs(v []*string) *ListIoTCloudConnectorEIPsResponseBody {
+	s.EIPs = v
+	return s
+}
+
+func (s *ListIoTCloudConnectorEIPsResponseBody) SetMaxResults(v int32) *ListIoTCloudConnectorEIPsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorEIPsResponseBody) SetNextToken(v string) *ListIoTCloudConnectorEIPsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorEIPsResponseBody) SetRequestId(v string) *ListIoTCloudConnectorEIPsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorEIPsResponseBody) SetTotalCount(v int32) *ListIoTCloudConnectorEIPsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListIoTCloudConnectorEIPsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIoTCloudConnectorEIPsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListIoTCloudConnectorEIPsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIoTCloudConnectorEIPsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIoTCloudConnectorEIPsResponse) SetHeaders(v map[string]*string) *ListIoTCloudConnectorEIPsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIoTCloudConnectorEIPsResponse) SetStatusCode(v int32) *ListIoTCloudConnectorEIPsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorEIPsResponse) SetBody(v *ListIoTCloudConnectorEIPsResponseBody) *ListIoTCloudConnectorEIPsResponse {
+	s.Body = v
+	return s
+}
+
 type ListIoTCloudConnectorGroupsRequest struct {
 	IoTCloudConnectorGroupIds    []*string `json:"IoTCloudConnectorGroupIds,omitempty" xml:"IoTCloudConnectorGroupIds,omitempty" type:"Repeated"`
 	IoTCloudConnectorGroupName   []*string `json:"IoTCloudConnectorGroupName,omitempty" xml:"IoTCloudConnectorGroupName,omitempty" type:"Repeated"`
@@ -5342,6 +6345,7 @@ type ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups struct {
 	IoTCloudConnectorGroupStatus *string                                                                             `json:"IoTCloudConnectorGroupStatus,omitempty" xml:"IoTCloudConnectorGroupStatus,omitempty"`
 	IoTCloudConnectors           []*ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors `json:"IoTCloudConnectors,omitempty" xml:"IoTCloudConnectors,omitempty" type:"Repeated"`
 	Name                         *string                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	ServiceType                  *string                                                                             `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	Type                         *string                                                                             `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -5383,6 +6387,11 @@ func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) SetName
 	return s
 }
 
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) SetServiceType(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups {
+	s.ServiceType = &v
+	return s
+}
+
 func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) SetType(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups {
 	s.Type = &v
 	return s
@@ -5396,6 +6405,7 @@ type ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConne
 	IoTCloudConnectorId          *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	IoTCloudConnectorName        *string `json:"IoTCloudConnectorName,omitempty" xml:"IoTCloudConnectorName,omitempty"`
 	IoTCloudConnectorStatus      *string `json:"IoTCloudConnectorStatus,omitempty" xml:"IoTCloudConnectorStatus,omitempty"`
+	ServiceType                  *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
 func (s ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) String() string {
@@ -5438,6 +6448,11 @@ func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudC
 
 func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) SetIoTCloudConnectorStatus(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors {
 	s.IoTCloudConnectorStatus = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) SetServiceType(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors {
+	s.ServiceType = &v
 	return s
 }
 
@@ -5591,6 +6606,7 @@ func (s *ListIoTCloudConnectorsResponseBody) SetTotalCount(v int32) *ListIoTClou
 type ListIoTCloudConnectorsResponseBodyIoTCloudConnectors struct {
 	APN                             *string   `json:"APN,omitempty" xml:"APN,omitempty"`
 	CreateTime                      *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	GrantAliUid                     *string   `json:"GrantAliUid,omitempty" xml:"GrantAliUid,omitempty"`
 	ISP                             *string   `json:"ISP,omitempty" xml:"ISP,omitempty"`
 	IoTCloudConnectorBusinessStatus *string   `json:"IoTCloudConnectorBusinessStatus,omitempty" xml:"IoTCloudConnectorBusinessStatus,omitempty"`
 	IoTCloudConnectorDescription    *string   `json:"IoTCloudConnectorDescription,omitempty" xml:"IoTCloudConnectorDescription,omitempty"`
@@ -5602,6 +6618,7 @@ type ListIoTCloudConnectorsResponseBodyIoTCloudConnectors struct {
 	Mode                            *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	ModifyTime                      *int64    `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	RateLimit                       *int64    `json:"RateLimit,omitempty" xml:"RateLimit,omitempty"`
+	ServiceType                     *string   `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	Type                            *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 	VSwitchList                     []*string `json:"VSwitchList,omitempty" xml:"VSwitchList,omitempty" type:"Repeated"`
 	VpcId                           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -5623,6 +6640,11 @@ func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetAPN(v string) 
 
 func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetCreateTime(v int64) *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetGrantAliUid(v string) *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors {
+	s.GrantAliUid = &v
 	return s
 }
 
@@ -5678,6 +6700,11 @@ func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetModifyTime(v i
 
 func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetRateLimit(v int64) *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors {
 	s.RateLimit = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetServiceType(v string) *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors {
+	s.ServiceType = &v
 	return s
 }
 
@@ -5872,6 +6899,194 @@ func (s *ListIoTCoudConnectorBackhaulRouteResponse) SetStatusCode(v int32) *List
 }
 
 func (s *ListIoTCoudConnectorBackhaulRouteResponse) SetBody(v *ListIoTCoudConnectorBackhaulRouteResponseBody) *ListIoTCoudConnectorBackhaulRouteResponse {
+	s.Body = v
+	return s
+}
+
+type ListIpMappingRulesRequest struct {
+	DestinationIps        []*string `json:"DestinationIps,omitempty" xml:"DestinationIps,omitempty" type:"Repeated"`
+	IoTCloudConnectorId   *string   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	IpMappingRuleIds      []*string `json:"IpMappingRuleIds,omitempty" xml:"IpMappingRuleIds,omitempty" type:"Repeated"`
+	IpMappingRuleNames    []*string `json:"IpMappingRuleNames,omitempty" xml:"IpMappingRuleNames,omitempty" type:"Repeated"`
+	IpMappingRuleStatuses []*string `json:"IpMappingRuleStatuses,omitempty" xml:"IpMappingRuleStatuses,omitempty" type:"Repeated"`
+	MappingIps            []*string `json:"MappingIps,omitempty" xml:"MappingIps,omitempty" type:"Repeated"`
+	MaxResults            *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken             *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListIpMappingRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpMappingRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpMappingRulesRequest) SetDestinationIps(v []*string) *ListIpMappingRulesRequest {
+	s.DestinationIps = v
+	return s
+}
+
+func (s *ListIpMappingRulesRequest) SetIoTCloudConnectorId(v string) *ListIpMappingRulesRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *ListIpMappingRulesRequest) SetIpMappingRuleIds(v []*string) *ListIpMappingRulesRequest {
+	s.IpMappingRuleIds = v
+	return s
+}
+
+func (s *ListIpMappingRulesRequest) SetIpMappingRuleNames(v []*string) *ListIpMappingRulesRequest {
+	s.IpMappingRuleNames = v
+	return s
+}
+
+func (s *ListIpMappingRulesRequest) SetIpMappingRuleStatuses(v []*string) *ListIpMappingRulesRequest {
+	s.IpMappingRuleStatuses = v
+	return s
+}
+
+func (s *ListIpMappingRulesRequest) SetMappingIps(v []*string) *ListIpMappingRulesRequest {
+	s.MappingIps = v
+	return s
+}
+
+func (s *ListIpMappingRulesRequest) SetMaxResults(v int32) *ListIpMappingRulesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIpMappingRulesRequest) SetNextToken(v string) *ListIpMappingRulesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIpMappingRulesRequest) SetRegionId(v string) *ListIpMappingRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListIpMappingRulesResponseBody struct {
+	IpMappingRules []*ListIpMappingRulesResponseBodyIpMappingRules `json:"IpMappingRules,omitempty" xml:"IpMappingRules,omitempty" type:"Repeated"`
+	MaxResults     *int32                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken      *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListIpMappingRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpMappingRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpMappingRulesResponseBody) SetIpMappingRules(v []*ListIpMappingRulesResponseBodyIpMappingRules) *ListIpMappingRulesResponseBody {
+	s.IpMappingRules = v
+	return s
+}
+
+func (s *ListIpMappingRulesResponseBody) SetMaxResults(v int32) *ListIpMappingRulesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIpMappingRulesResponseBody) SetNextToken(v string) *ListIpMappingRulesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIpMappingRulesResponseBody) SetRequestId(v string) *ListIpMappingRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIpMappingRulesResponseBody) SetTotalCount(v int32) *ListIpMappingRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListIpMappingRulesResponseBodyIpMappingRules struct {
+	DestinationIp            *string `json:"DestinationIp,omitempty" xml:"DestinationIp,omitempty"`
+	IoTCloudConnectorId      *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	IpMappingRuleDescription *string `json:"IpMappingRuleDescription,omitempty" xml:"IpMappingRuleDescription,omitempty"`
+	IpMappingRuleId          *string `json:"IpMappingRuleId,omitempty" xml:"IpMappingRuleId,omitempty"`
+	IpMappingRuleName        *string `json:"IpMappingRuleName,omitempty" xml:"IpMappingRuleName,omitempty"`
+	IpMappingRuleStatus      *string `json:"IpMappingRuleStatus,omitempty" xml:"IpMappingRuleStatus,omitempty"`
+	MappingIp                *string `json:"MappingIp,omitempty" xml:"MappingIp,omitempty"`
+}
+
+func (s ListIpMappingRulesResponseBodyIpMappingRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpMappingRulesResponseBodyIpMappingRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpMappingRulesResponseBodyIpMappingRules) SetDestinationIp(v string) *ListIpMappingRulesResponseBodyIpMappingRules {
+	s.DestinationIp = &v
+	return s
+}
+
+func (s *ListIpMappingRulesResponseBodyIpMappingRules) SetIoTCloudConnectorId(v string) *ListIpMappingRulesResponseBodyIpMappingRules {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *ListIpMappingRulesResponseBodyIpMappingRules) SetIpMappingRuleDescription(v string) *ListIpMappingRulesResponseBodyIpMappingRules {
+	s.IpMappingRuleDescription = &v
+	return s
+}
+
+func (s *ListIpMappingRulesResponseBodyIpMappingRules) SetIpMappingRuleId(v string) *ListIpMappingRulesResponseBodyIpMappingRules {
+	s.IpMappingRuleId = &v
+	return s
+}
+
+func (s *ListIpMappingRulesResponseBodyIpMappingRules) SetIpMappingRuleName(v string) *ListIpMappingRulesResponseBodyIpMappingRules {
+	s.IpMappingRuleName = &v
+	return s
+}
+
+func (s *ListIpMappingRulesResponseBodyIpMappingRules) SetIpMappingRuleStatus(v string) *ListIpMappingRulesResponseBodyIpMappingRules {
+	s.IpMappingRuleStatus = &v
+	return s
+}
+
+func (s *ListIpMappingRulesResponseBodyIpMappingRules) SetMappingIp(v string) *ListIpMappingRulesResponseBodyIpMappingRules {
+	s.MappingIp = &v
+	return s
+}
+
+type ListIpMappingRulesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIpMappingRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListIpMappingRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpMappingRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpMappingRulesResponse) SetHeaders(v map[string]*string) *ListIpMappingRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIpMappingRulesResponse) SetStatusCode(v int32) *ListIpMappingRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIpMappingRulesResponse) SetBody(v *ListIpMappingRulesResponseBody) *ListIpMappingRulesResponse {
 	s.Body = v
 	return s
 }
@@ -6662,6 +7877,93 @@ func (s *RemoveIoTCloudConnectorFromGroupResponse) SetBody(v *RemoveIoTCloudConn
 	return s
 }
 
+type RevertIoTCloudConnectorRequest struct {
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun              *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s RevertIoTCloudConnectorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevertIoTCloudConnectorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevertIoTCloudConnectorRequest) SetClientToken(v string) *RevertIoTCloudConnectorRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RevertIoTCloudConnectorRequest) SetDryRun(v bool) *RevertIoTCloudConnectorRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *RevertIoTCloudConnectorRequest) SetIoTCloudConnectorId(v string) *RevertIoTCloudConnectorRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *RevertIoTCloudConnectorRequest) SetRegionId(v string) *RevertIoTCloudConnectorRequest {
+	s.RegionId = &v
+	return s
+}
+
+type RevertIoTCloudConnectorResponseBody struct {
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s RevertIoTCloudConnectorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevertIoTCloudConnectorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevertIoTCloudConnectorResponseBody) SetRequestId(v string) *RevertIoTCloudConnectorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RevertIoTCloudConnectorResponseBody) SetResourceId(v string) *RevertIoTCloudConnectorResponseBody {
+	s.ResourceId = &v
+	return s
+}
+
+type RevertIoTCloudConnectorResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RevertIoTCloudConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RevertIoTCloudConnectorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevertIoTCloudConnectorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevertIoTCloudConnectorResponse) SetHeaders(v map[string]*string) *RevertIoTCloudConnectorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevertIoTCloudConnectorResponse) SetStatusCode(v int32) *RevertIoTCloudConnectorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RevertIoTCloudConnectorResponse) SetBody(v *RevertIoTCloudConnectorResponseBody) *RevertIoTCloudConnectorResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitDiagnoseTaskForSingleCardRequest struct {
 	BeginTime           *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	Destination         *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
@@ -6785,10 +8087,12 @@ type UpdateAuthorizationRuleAttributeRequest struct {
 	AuthorizationRuleName        *string   `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
 	ClientToken                  *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Destination                  *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort              *string   `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
 	DestinationType              *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	DryRun                       *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	IoTCloudConnectorId          *string   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	Policy                       *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol                     *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	RegionId                     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SourceCidrs                  []*string `json:"SourceCidrs,omitempty" xml:"SourceCidrs,omitempty" type:"Repeated"`
 }
@@ -6826,6 +8130,11 @@ func (s *UpdateAuthorizationRuleAttributeRequest) SetDestination(v string) *Upda
 	return s
 }
 
+func (s *UpdateAuthorizationRuleAttributeRequest) SetDestinationPort(v string) *UpdateAuthorizationRuleAttributeRequest {
+	s.DestinationPort = &v
+	return s
+}
+
 func (s *UpdateAuthorizationRuleAttributeRequest) SetDestinationType(v string) *UpdateAuthorizationRuleAttributeRequest {
 	s.DestinationType = &v
 	return s
@@ -6843,6 +8152,11 @@ func (s *UpdateAuthorizationRuleAttributeRequest) SetIoTCloudConnectorId(v strin
 
 func (s *UpdateAuthorizationRuleAttributeRequest) SetPolicy(v string) *UpdateAuthorizationRuleAttributeRequest {
 	s.Policy = &v
+	return s
+}
+
+func (s *UpdateAuthorizationRuleAttributeRequest) SetProtocol(v string) *UpdateAuthorizationRuleAttributeRequest {
+	s.Protocol = &v
 	return s
 }
 
@@ -7136,10 +8450,12 @@ type UpdateGroupAuthorizationRuleAttributeRequest struct {
 	AuthorizationRuleName        *string   `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
 	ClientToken                  *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Destination                  *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort              *string   `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
 	DestinationType              *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	DryRun                       *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	IoTCloudConnectorGroupId     *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
 	Policy                       *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol                     *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	RegionId                     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SourceCidrs                  []*string `json:"SourceCidrs,omitempty" xml:"SourceCidrs,omitempty" type:"Repeated"`
 }
@@ -7177,6 +8493,11 @@ func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetDestination(v string) 
 	return s
 }
 
+func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetDestinationPort(v string) *UpdateGroupAuthorizationRuleAttributeRequest {
+	s.DestinationPort = &v
+	return s
+}
+
 func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetDestinationType(v string) *UpdateGroupAuthorizationRuleAttributeRequest {
 	s.DestinationType = &v
 	return s
@@ -7194,6 +8515,11 @@ func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetIoTCloudConnectorGroup
 
 func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetPolicy(v string) *UpdateGroupAuthorizationRuleAttributeRequest {
 	s.Policy = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetProtocol(v string) *UpdateGroupAuthorizationRuleAttributeRequest {
+	s.Protocol = &v
 	return s
 }
 
@@ -7382,12 +8708,136 @@ func (s *UpdateGroupDNSServiceRuleAttributeResponse) SetBody(v *UpdateGroupDNSSe
 	return s
 }
 
+type UpdateGroupIpMappingRuleRequest struct {
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DestinationIp            *string `json:"DestinationIp,omitempty" xml:"DestinationIp,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	GroupIpMappingRuleId     *string `json:"GroupIpMappingRuleId,omitempty" xml:"GroupIpMappingRuleId,omitempty"`
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	IpMappingRuleDescription *string `json:"IpMappingRuleDescription,omitempty" xml:"IpMappingRuleDescription,omitempty"`
+	IpMappingRuleName        *string `json:"IpMappingRuleName,omitempty" xml:"IpMappingRuleName,omitempty"`
+	MappingIp                *string `json:"MappingIp,omitempty" xml:"MappingIp,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateGroupIpMappingRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupIpMappingRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupIpMappingRuleRequest) SetClientToken(v string) *UpdateGroupIpMappingRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateGroupIpMappingRuleRequest) SetDestinationIp(v string) *UpdateGroupIpMappingRuleRequest {
+	s.DestinationIp = &v
+	return s
+}
+
+func (s *UpdateGroupIpMappingRuleRequest) SetDryRun(v bool) *UpdateGroupIpMappingRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateGroupIpMappingRuleRequest) SetGroupIpMappingRuleId(v string) *UpdateGroupIpMappingRuleRequest {
+	s.GroupIpMappingRuleId = &v
+	return s
+}
+
+func (s *UpdateGroupIpMappingRuleRequest) SetIoTCloudConnectorGroupId(v string) *UpdateGroupIpMappingRuleRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *UpdateGroupIpMappingRuleRequest) SetIpMappingRuleDescription(v string) *UpdateGroupIpMappingRuleRequest {
+	s.IpMappingRuleDescription = &v
+	return s
+}
+
+func (s *UpdateGroupIpMappingRuleRequest) SetIpMappingRuleName(v string) *UpdateGroupIpMappingRuleRequest {
+	s.IpMappingRuleName = &v
+	return s
+}
+
+func (s *UpdateGroupIpMappingRuleRequest) SetMappingIp(v string) *UpdateGroupIpMappingRuleRequest {
+	s.MappingIp = &v
+	return s
+}
+
+func (s *UpdateGroupIpMappingRuleRequest) SetRegionId(v string) *UpdateGroupIpMappingRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateGroupIpMappingRuleResponseBody struct {
+	AuthorizationRuleId      *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateGroupIpMappingRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupIpMappingRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupIpMappingRuleResponseBody) SetAuthorizationRuleId(v string) *UpdateGroupIpMappingRuleResponseBody {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *UpdateGroupIpMappingRuleResponseBody) SetIoTCloudConnectorGroupId(v string) *UpdateGroupIpMappingRuleResponseBody {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *UpdateGroupIpMappingRuleResponseBody) SetRequestId(v string) *UpdateGroupIpMappingRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateGroupIpMappingRuleResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGroupIpMappingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGroupIpMappingRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupIpMappingRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupIpMappingRuleResponse) SetHeaders(v map[string]*string) *UpdateGroupIpMappingRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGroupIpMappingRuleResponse) SetStatusCode(v int32) *UpdateGroupIpMappingRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGroupIpMappingRuleResponse) SetBody(v *UpdateGroupIpMappingRuleResponseBody) *UpdateGroupIpMappingRuleResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateIoTCloudConnectorAttributeRequest struct {
 	ClientToken                  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	IoTCloudConnectorDescription *string `json:"IoTCloudConnectorDescription,omitempty" xml:"IoTCloudConnectorDescription,omitempty"`
 	IoTCloudConnectorId          *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	IoTCloudConnectorName        *string `json:"IoTCloudConnectorName,omitempty" xml:"IoTCloudConnectorName,omitempty"`
+	Mode                         *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	WildcardDomainEnabled        *bool   `json:"WildcardDomainEnabled,omitempty" xml:"WildcardDomainEnabled,omitempty"`
 }
@@ -7422,6 +8872,11 @@ func (s *UpdateIoTCloudConnectorAttributeRequest) SetIoTCloudConnectorId(v strin
 
 func (s *UpdateIoTCloudConnectorAttributeRequest) SetIoTCloudConnectorName(v string) *UpdateIoTCloudConnectorAttributeRequest {
 	s.IoTCloudConnectorName = &v
+	return s
+}
+
+func (s *UpdateIoTCloudConnectorAttributeRequest) SetMode(v string) *UpdateIoTCloudConnectorAttributeRequest {
+	s.Mode = &v
 	return s
 }
 
@@ -7576,6 +9031,117 @@ func (s *UpdateIoTCloudConnectorGroupAttributeResponse) SetStatusCode(v int32) *
 }
 
 func (s *UpdateIoTCloudConnectorGroupAttributeResponse) SetBody(v *UpdateIoTCloudConnectorGroupAttributeResponseBody) *UpdateIoTCloudConnectorGroupAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateIpMappingRuleRequest struct {
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DestinationIp            *string `json:"DestinationIp,omitempty" xml:"DestinationIp,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId      *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	IpMappingRuleDescription *string `json:"IpMappingRuleDescription,omitempty" xml:"IpMappingRuleDescription,omitempty"`
+	IpMappingRuleId          *string `json:"IpMappingRuleId,omitempty" xml:"IpMappingRuleId,omitempty"`
+	IpMappingRuleName        *string `json:"IpMappingRuleName,omitempty" xml:"IpMappingRuleName,omitempty"`
+	MappingIp                *string `json:"MappingIp,omitempty" xml:"MappingIp,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateIpMappingRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIpMappingRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIpMappingRuleRequest) SetClientToken(v string) *UpdateIpMappingRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateIpMappingRuleRequest) SetDestinationIp(v string) *UpdateIpMappingRuleRequest {
+	s.DestinationIp = &v
+	return s
+}
+
+func (s *UpdateIpMappingRuleRequest) SetDryRun(v bool) *UpdateIpMappingRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateIpMappingRuleRequest) SetIoTCloudConnectorId(v string) *UpdateIpMappingRuleRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *UpdateIpMappingRuleRequest) SetIpMappingRuleDescription(v string) *UpdateIpMappingRuleRequest {
+	s.IpMappingRuleDescription = &v
+	return s
+}
+
+func (s *UpdateIpMappingRuleRequest) SetIpMappingRuleId(v string) *UpdateIpMappingRuleRequest {
+	s.IpMappingRuleId = &v
+	return s
+}
+
+func (s *UpdateIpMappingRuleRequest) SetIpMappingRuleName(v string) *UpdateIpMappingRuleRequest {
+	s.IpMappingRuleName = &v
+	return s
+}
+
+func (s *UpdateIpMappingRuleRequest) SetMappingIp(v string) *UpdateIpMappingRuleRequest {
+	s.MappingIp = &v
+	return s
+}
+
+func (s *UpdateIpMappingRuleRequest) SetRegionId(v string) *UpdateIpMappingRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateIpMappingRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIpMappingRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIpMappingRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIpMappingRuleResponseBody) SetRequestId(v string) *UpdateIpMappingRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIpMappingRuleResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateIpMappingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateIpMappingRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIpMappingRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIpMappingRuleResponse) SetHeaders(v map[string]*string) *UpdateIpMappingRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIpMappingRuleResponse) SetStatusCode(v int32) *UpdateIpMappingRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateIpMappingRuleResponse) SetBody(v *UpdateIpMappingRuleResponseBody) *UpdateIpMappingRuleResponse {
 	s.Body = v
 	return s
 }
@@ -8087,6 +9653,66 @@ func (client *Client) AssociateVSwitchWithIoTCloudConnector(request *AssociateVS
 	return _result, _err
 }
 
+func (client *Client) ConfirmIoTCloudConnectorWithOptions(request *ConfirmIoTCloudConnectorRequest, runtime *util.RuntimeOptions) (_result *ConfirmIoTCloudConnectorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfirmStatus)) {
+		query["ConfirmStatus"] = request.ConfirmStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfirmIoTCloudConnector"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ConfirmIoTCloudConnectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ConfirmIoTCloudConnector(request *ConfirmIoTCloudConnectorRequest) (_result *ConfirmIoTCloudConnectorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConfirmIoTCloudConnectorResponse{}
+	_body, _err := client.ConfirmIoTCloudConnectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateAuthorizationRuleWithOptions(request *CreateAuthorizationRuleRequest, runtime *util.RuntimeOptions) (_result *CreateAuthorizationRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8109,6 +9735,10 @@ func (client *Client) CreateAuthorizationRuleWithOptions(request *CreateAuthoriz
 		query["Destination"] = request.Destination
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DestinationPort)) {
+		query["DestinationPort"] = request.DestinationPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
 		query["DestinationType"] = request.DestinationType
 	}
@@ -8123,6 +9753,10 @@ func (client *Client) CreateAuthorizationRuleWithOptions(request *CreateAuthoriz
 
 	if !tea.BoolValue(util.IsUnset(request.Policy)) {
 		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -8160,6 +9794,66 @@ func (client *Client) CreateAuthorizationRule(request *CreateAuthorizationRuleRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAuthorizationRuleResponse{}
 	_body, _err := client.CreateAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAuthorizationRulesWithOptions(request *CreateAuthorizationRulesRequest, runtime *util.RuntimeOptions) (_result *CreateAuthorizationRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRules)) {
+		query["AuthorizationRules"] = request.AuthorizationRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAuthorizationRules"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAuthorizationRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAuthorizationRules(request *CreateAuthorizationRulesRequest) (_result *CreateAuthorizationRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAuthorizationRulesResponse{}
+	_body, _err := client.CreateAuthorizationRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8337,6 +10031,10 @@ func (client *Client) CreateGroupAuthorizationRuleWithOptions(request *CreateGro
 		query["Destination"] = request.Destination
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DestinationPort)) {
+		query["DestinationPort"] = request.DestinationPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
 		query["DestinationType"] = request.DestinationType
 	}
@@ -8351,6 +10049,10 @@ func (client *Client) CreateGroupAuthorizationRuleWithOptions(request *CreateGro
 
 	if !tea.BoolValue(util.IsUnset(request.Policy)) {
 		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -8468,6 +10170,78 @@ func (client *Client) CreateGroupDNSServiceRule(request *CreateGroupDNSServiceRu
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGroupDNSServiceRuleResponse{}
 	_body, _err := client.CreateGroupDNSServiceRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateGroupIpMappingRuleWithOptions(request *CreateGroupIpMappingRuleRequest, runtime *util.RuntimeOptions) (_result *CreateGroupIpMappingRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationIp)) {
+		query["DestinationIp"] = request.DestinationIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleDescription)) {
+		query["IpMappingRuleDescription"] = request.IpMappingRuleDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleName)) {
+		query["IpMappingRuleName"] = request.IpMappingRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingIp)) {
+		query["MappingIp"] = request.MappingIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGroupIpMappingRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGroupIpMappingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGroupIpMappingRule(request *CreateGroupIpMappingRuleRequest) (_result *CreateGroupIpMappingRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGroupIpMappingRuleResponse{}
+	_body, _err := client.CreateGroupIpMappingRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8668,6 +10442,78 @@ func (client *Client) CreateIoTCloudConnectorGroup(request *CreateIoTCloudConnec
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateIoTCloudConnectorGroupResponse{}
 	_body, _err := client.CreateIoTCloudConnectorGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateIpMappingRuleWithOptions(request *CreateIpMappingRuleRequest, runtime *util.RuntimeOptions) (_result *CreateIpMappingRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationIp)) {
+		query["DestinationIp"] = request.DestinationIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleDescription)) {
+		query["IpMappingRuleDescription"] = request.IpMappingRuleDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleName)) {
+		query["IpMappingRuleName"] = request.IpMappingRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingIp)) {
+		query["MappingIp"] = request.MappingIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIpMappingRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateIpMappingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateIpMappingRule(request *CreateIpMappingRuleRequest) (_result *CreateIpMappingRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateIpMappingRuleResponse{}
+	_body, _err := client.CreateIpMappingRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9115,6 +10961,66 @@ func (client *Client) DeleteGroupDNSServiceRule(request *DeleteGroupDNSServiceRu
 	return _result, _err
 }
 
+func (client *Client) DeleteGroupIpMappingRuleWithOptions(request *DeleteGroupIpMappingRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteGroupIpMappingRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupIpMappingRuleId)) {
+		query["GroupIpMappingRuleId"] = request.GroupIpMappingRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGroupIpMappingRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGroupIpMappingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGroupIpMappingRule(request *DeleteGroupIpMappingRuleRequest) (_result *DeleteGroupIpMappingRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGroupIpMappingRuleResponse{}
+	_body, _err := client.DeleteGroupIpMappingRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteIoTCloudConnectorWithOptions(request *DeleteIoTCloudConnectorRequest, runtime *util.RuntimeOptions) (_result *DeleteIoTCloudConnectorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9276,6 +11182,66 @@ func (client *Client) DeleteIoTCloudConnetorBackhaulRoute(request *DeleteIoTClou
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIoTCloudConnetorBackhaulRouteResponse{}
 	_body, _err := client.DeleteIoTCloudConnetorBackhaulRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteIpMappingRuleWithOptions(request *DeleteIpMappingRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteIpMappingRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleId)) {
+		query["IpMappingRuleId"] = request.IpMappingRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIpMappingRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteIpMappingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteIpMappingRule(request *DeleteIpMappingRuleRequest) (_result *DeleteIpMappingRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteIpMappingRuleResponse{}
+	_body, _err := client.DeleteIpMappingRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9949,6 +11915,10 @@ func (client *Client) ListAPNsWithOptions(request *ListAPNsRequest, runtime *uti
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10009,6 +11979,10 @@ func (client *Client) ListAuthorizationRulesWithOptions(request *ListAuthorizati
 		query["Destination"] = request.Destination
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DestinationPort)) {
+		query["DestinationPort"] = request.DestinationPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
 		query["DestinationType"] = request.DestinationType
 	}
@@ -10027,6 +12001,10 @@ func (client *Client) ListAuthorizationRulesWithOptions(request *ListAuthorizati
 
 	if !tea.BoolValue(util.IsUnset(request.Policy)) {
 		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -10433,6 +12411,10 @@ func (client *Client) ListGroupAuthorizationRulesWithOptions(request *ListGroupA
 		query["Destination"] = request.Destination
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DestinationPort)) {
+		query["DestinationPort"] = request.DestinationPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
 		query["DestinationType"] = request.DestinationType
 	}
@@ -10451,6 +12433,10 @@ func (client *Client) ListGroupAuthorizationRulesWithOptions(request *ListGroupA
 
 	if !tea.BoolValue(util.IsUnset(request.Policy)) {
 		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -10575,6 +12561,82 @@ func (client *Client) ListGroupDNSServiceRules(request *ListGroupDNSServiceRules
 	return _result, _err
 }
 
+func (client *Client) ListGroupIpMappingRulesWithOptions(request *ListGroupIpMappingRulesRequest, runtime *util.RuntimeOptions) (_result *ListGroupIpMappingRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationIps)) {
+		query["DestinationIps"] = request.DestinationIps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleIds)) {
+		query["IpMappingRuleIds"] = request.IpMappingRuleIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleNames)) {
+		query["IpMappingRuleNames"] = request.IpMappingRuleNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleStatuses)) {
+		query["IpMappingRuleStatuses"] = request.IpMappingRuleStatuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingIps)) {
+		query["MappingIps"] = request.MappingIps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroupIpMappingRules"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGroupIpMappingRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGroupIpMappingRules(request *ListGroupIpMappingRulesRequest) (_result *ListGroupIpMappingRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGroupIpMappingRulesResponse{}
+	_body, _err := client.ListGroupIpMappingRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListIoTCloudConnectorAccessSessionLogsWithOptions(request *ListIoTCloudConnectorAccessSessionLogsRequest, runtime *util.RuntimeOptions) (_result *ListIoTCloudConnectorAccessSessionLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10688,6 +12750,62 @@ func (client *Client) ListIoTCloudConnectorAvailableZones(request *ListIoTCloudC
 	runtime := &util.RuntimeOptions{}
 	_result = &ListIoTCloudConnectorAvailableZonesResponse{}
 	_body, _err := client.ListIoTCloudConnectorAvailableZonesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListIoTCloudConnectorEIPsWithOptions(request *ListIoTCloudConnectorEIPsRequest, runtime *util.RuntimeOptions) (_result *ListIoTCloudConnectorEIPsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIoTCloudConnectorEIPs"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIoTCloudConnectorEIPsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListIoTCloudConnectorEIPs(request *ListIoTCloudConnectorEIPsRequest) (_result *ListIoTCloudConnectorEIPsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIoTCloudConnectorEIPsResponse{}
+	_body, _err := client.ListIoTCloudConnectorEIPsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10896,6 +13014,82 @@ func (client *Client) ListIoTCoudConnectorBackhaulRoute(request *ListIoTCoudConn
 	runtime := &util.RuntimeOptions{}
 	_result = &ListIoTCoudConnectorBackhaulRouteResponse{}
 	_body, _err := client.ListIoTCoudConnectorBackhaulRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListIpMappingRulesWithOptions(request *ListIpMappingRulesRequest, runtime *util.RuntimeOptions) (_result *ListIpMappingRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationIps)) {
+		query["DestinationIps"] = request.DestinationIps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleIds)) {
+		query["IpMappingRuleIds"] = request.IpMappingRuleIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleNames)) {
+		query["IpMappingRuleNames"] = request.IpMappingRuleNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleStatuses)) {
+		query["IpMappingRuleStatuses"] = request.IpMappingRuleStatuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingIps)) {
+		query["MappingIps"] = request.MappingIps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIpMappingRules"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIpMappingRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListIpMappingRules(request *ListIpMappingRulesRequest) (_result *ListIpMappingRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIpMappingRulesResponse{}
+	_body, _err := client.ListIpMappingRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11323,6 +13517,62 @@ func (client *Client) RemoveIoTCloudConnectorFromGroup(request *RemoveIoTCloudCo
 	return _result, _err
 }
 
+func (client *Client) RevertIoTCloudConnectorWithOptions(request *RevertIoTCloudConnectorRequest, runtime *util.RuntimeOptions) (_result *RevertIoTCloudConnectorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevertIoTCloudConnector"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevertIoTCloudConnectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RevertIoTCloudConnector(request *RevertIoTCloudConnectorRequest) (_result *RevertIoTCloudConnectorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RevertIoTCloudConnectorResponse{}
+	_body, _err := client.RevertIoTCloudConnectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SubmitDiagnoseTaskForSingleCardWithOptions(request *SubmitDiagnoseTaskForSingleCardRequest, runtime *util.RuntimeOptions) (_result *SubmitDiagnoseTaskForSingleCardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11425,6 +13675,10 @@ func (client *Client) UpdateAuthorizationRuleAttributeWithOptions(request *Updat
 		query["Destination"] = request.Destination
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DestinationPort)) {
+		query["DestinationPort"] = request.DestinationPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
 		query["DestinationType"] = request.DestinationType
 	}
@@ -11439,6 +13693,10 @@ func (client *Client) UpdateAuthorizationRuleAttributeWithOptions(request *Updat
 
 	if !tea.BoolValue(util.IsUnset(request.Policy)) {
 		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -11665,6 +13923,10 @@ func (client *Client) UpdateGroupAuthorizationRuleAttributeWithOptions(request *
 		query["Destination"] = request.Destination
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DestinationPort)) {
+		query["DestinationPort"] = request.DestinationPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
 		query["DestinationType"] = request.DestinationType
 	}
@@ -11679,6 +13941,10 @@ func (client *Client) UpdateGroupAuthorizationRuleAttributeWithOptions(request *
 
 	if !tea.BoolValue(util.IsUnset(request.Policy)) {
 		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -11803,6 +14069,82 @@ func (client *Client) UpdateGroupDNSServiceRuleAttribute(request *UpdateGroupDNS
 	return _result, _err
 }
 
+func (client *Client) UpdateGroupIpMappingRuleWithOptions(request *UpdateGroupIpMappingRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateGroupIpMappingRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationIp)) {
+		query["DestinationIp"] = request.DestinationIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupIpMappingRuleId)) {
+		query["GroupIpMappingRuleId"] = request.GroupIpMappingRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleDescription)) {
+		query["IpMappingRuleDescription"] = request.IpMappingRuleDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleName)) {
+		query["IpMappingRuleName"] = request.IpMappingRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingIp)) {
+		query["MappingIp"] = request.MappingIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGroupIpMappingRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGroupIpMappingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGroupIpMappingRule(request *UpdateGroupIpMappingRuleRequest) (_result *UpdateGroupIpMappingRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGroupIpMappingRuleResponse{}
+	_body, _err := client.UpdateGroupIpMappingRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateIoTCloudConnectorAttributeWithOptions(request *UpdateIoTCloudConnectorAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateIoTCloudConnectorAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11827,6 +14169,10 @@ func (client *Client) UpdateIoTCloudConnectorAttributeWithOptions(request *Updat
 
 	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorName)) {
 		query["IoTCloudConnectorName"] = request.IoTCloudConnectorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -11928,6 +14274,82 @@ func (client *Client) UpdateIoTCloudConnectorGroupAttribute(request *UpdateIoTCl
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateIoTCloudConnectorGroupAttributeResponse{}
 	_body, _err := client.UpdateIoTCloudConnectorGroupAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateIpMappingRuleWithOptions(request *UpdateIpMappingRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateIpMappingRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationIp)) {
+		query["DestinationIp"] = request.DestinationIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleDescription)) {
+		query["IpMappingRuleDescription"] = request.IpMappingRuleDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleId)) {
+		query["IpMappingRuleId"] = request.IpMappingRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpMappingRuleName)) {
+		query["IpMappingRuleName"] = request.IpMappingRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MappingIp)) {
+		query["MappingIp"] = request.MappingIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIpMappingRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateIpMappingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateIpMappingRule(request *UpdateIpMappingRuleRequest) (_result *UpdateIpMappingRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIpMappingRuleResponse{}
+	_body, _err := client.UpdateIpMappingRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
