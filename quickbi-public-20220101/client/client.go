@@ -982,6 +982,180 @@ func (s *AuthorizeMenuResponse) SetBody(v *AuthorizeMenuResponseBody) *Authorize
 	return s
 }
 
+type BatchAddFeishuUsersRequest struct {
+	FeishuUsers  *string `json:"FeishuUsers,omitempty" xml:"FeishuUsers,omitempty"`
+	IsAdmin      *bool   `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
+	IsAuthAdmin  *bool   `json:"IsAuthAdmin,omitempty" xml:"IsAuthAdmin,omitempty"`
+	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
+	UserType     *int32  `json:"UserType,omitempty" xml:"UserType,omitempty"`
+}
+
+func (s BatchAddFeishuUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFeishuUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFeishuUsersRequest) SetFeishuUsers(v string) *BatchAddFeishuUsersRequest {
+	s.FeishuUsers = &v
+	return s
+}
+
+func (s *BatchAddFeishuUsersRequest) SetIsAdmin(v bool) *BatchAddFeishuUsersRequest {
+	s.IsAdmin = &v
+	return s
+}
+
+func (s *BatchAddFeishuUsersRequest) SetIsAuthAdmin(v bool) *BatchAddFeishuUsersRequest {
+	s.IsAuthAdmin = &v
+	return s
+}
+
+func (s *BatchAddFeishuUsersRequest) SetUserGroupIds(v string) *BatchAddFeishuUsersRequest {
+	s.UserGroupIds = &v
+	return s
+}
+
+func (s *BatchAddFeishuUsersRequest) SetUserType(v int32) *BatchAddFeishuUsersRequest {
+	s.UserType = &v
+	return s
+}
+
+type BatchAddFeishuUsersResponseBody struct {
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *BatchAddFeishuUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BatchAddFeishuUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFeishuUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFeishuUsersResponseBody) SetRequestId(v string) *BatchAddFeishuUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchAddFeishuUsersResponseBody) SetResult(v *BatchAddFeishuUsersResponseBodyResult) *BatchAddFeishuUsersResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *BatchAddFeishuUsersResponseBody) SetSuccess(v bool) *BatchAddFeishuUsersResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchAddFeishuUsersResponseBodyResult struct {
+	FailCount   *int32                                              `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	FailResults []*BatchAddFeishuUsersResponseBodyResultFailResults `json:"FailResults,omitempty" xml:"FailResults,omitempty" type:"Repeated"`
+	OkCount     *int32                                              `json:"OkCount,omitempty" xml:"OkCount,omitempty"`
+}
+
+func (s BatchAddFeishuUsersResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFeishuUsersResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFeishuUsersResponseBodyResult) SetFailCount(v int32) *BatchAddFeishuUsersResponseBodyResult {
+	s.FailCount = &v
+	return s
+}
+
+func (s *BatchAddFeishuUsersResponseBodyResult) SetFailResults(v []*BatchAddFeishuUsersResponseBodyResultFailResults) *BatchAddFeishuUsersResponseBodyResult {
+	s.FailResults = v
+	return s
+}
+
+func (s *BatchAddFeishuUsersResponseBodyResult) SetOkCount(v int32) *BatchAddFeishuUsersResponseBodyResult {
+	s.OkCount = &v
+	return s
+}
+
+type BatchAddFeishuUsersResponseBodyResultFailResults struct {
+	FailInfos []*BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos `json:"FailInfos,omitempty" xml:"FailInfos,omitempty" type:"Repeated"`
+}
+
+func (s BatchAddFeishuUsersResponseBodyResultFailResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFeishuUsersResponseBodyResultFailResults) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFeishuUsersResponseBodyResultFailResults) SetFailInfos(v []*BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos) *BatchAddFeishuUsersResponseBodyResultFailResults {
+	s.FailInfos = v
+	return s
+}
+
+type BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos struct {
+	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	CodeDesc *string `json:"CodeDesc,omitempty" xml:"CodeDesc,omitempty"`
+	Input    *string `json:"Input,omitempty" xml:"Input,omitempty"`
+}
+
+func (s BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos) SetCode(v string) *BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos) SetCodeDesc(v string) *BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos {
+	s.CodeDesc = &v
+	return s
+}
+
+func (s *BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos) SetInput(v string) *BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos {
+	s.Input = &v
+	return s
+}
+
+type BatchAddFeishuUsersResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchAddFeishuUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchAddFeishuUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFeishuUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFeishuUsersResponse) SetHeaders(v map[string]*string) *BatchAddFeishuUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchAddFeishuUsersResponse) SetStatusCode(v int32) *BatchAddFeishuUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchAddFeishuUsersResponse) SetBody(v *BatchAddFeishuUsersResponseBody) *BatchAddFeishuUsersResponse {
+	s.Body = v
+	return s
+}
+
 type CancelAuthorizationMenuRequest struct {
 	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
 	MenuIds      *string `json:"MenuIds,omitempty" xml:"MenuIds,omitempty"`
@@ -10304,6 +10478,66 @@ func (client *Client) AuthorizeMenu(request *AuthorizeMenuRequest) (_result *Aut
 	runtime := &util.RuntimeOptions{}
 	_result = &AuthorizeMenuResponse{}
 	_body, _err := client.AuthorizeMenuWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchAddFeishuUsersWithOptions(request *BatchAddFeishuUsersRequest, runtime *util.RuntimeOptions) (_result *BatchAddFeishuUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FeishuUsers)) {
+		query["FeishuUsers"] = request.FeishuUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAdmin)) {
+		query["IsAdmin"] = request.IsAdmin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAuthAdmin)) {
+		query["IsAuthAdmin"] = request.IsAuthAdmin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserGroupIds)) {
+		query["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		query["UserType"] = request.UserType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchAddFeishuUsers"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchAddFeishuUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchAddFeishuUsers(request *BatchAddFeishuUsersRequest) (_result *BatchAddFeishuUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchAddFeishuUsersResponse{}
+	_body, _err := client.BatchAddFeishuUsersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
