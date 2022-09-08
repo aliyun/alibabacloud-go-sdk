@@ -445,7 +445,6 @@ func (s *BatchCopyVpcFirewallControlPolicyRequest) SetTargetVpcFirewallId(v stri
 }
 
 type BatchCopyVpcFirewallControlPolicyResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1947,6 +1946,7 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	ApplicationId         *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	ApplicationName       *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	ApplicationNameList   []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
+	CreateTime            *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description           *string   `json:"Description,omitempty" xml:"Description,omitempty"`
 	DestPort              *string   `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
 	DestPortGroup         *string   `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
@@ -1962,6 +1962,7 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	HitLastTime           *int64    `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
 	HitTimes              *int64    `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
 	IpVersion             *int32    `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	ModifyTime            *int64    `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	Order                 *int32    `json:"Order,omitempty" xml:"Order,omitempty"`
 	Proto                 *string   `json:"Proto,omitempty" xml:"Proto,omitempty"`
 	Release               *string   `json:"Release,omitempty" xml:"Release,omitempty"`
@@ -1969,6 +1970,7 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	SourceGroupCidrs      []*string `json:"SourceGroupCidrs,omitempty" xml:"SourceGroupCidrs,omitempty" type:"Repeated"`
 	SourceGroupType       *string   `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
 	SourceType            *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpreadCnt             *int32    `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
 }
 
 func (s DescribeControlPolicyResponseBodyPolicys) String() string {
@@ -2001,6 +2003,11 @@ func (s *DescribeControlPolicyResponseBodyPolicys) SetApplicationName(v string) 
 
 func (s *DescribeControlPolicyResponseBodyPolicys) SetApplicationNameList(v []*string) *DescribeControlPolicyResponseBodyPolicys {
 	s.ApplicationNameList = v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetCreateTime(v int64) *DescribeControlPolicyResponseBodyPolicys {
+	s.CreateTime = &v
 	return s
 }
 
@@ -2079,6 +2086,11 @@ func (s *DescribeControlPolicyResponseBodyPolicys) SetIpVersion(v int32) *Descri
 	return s
 }
 
+func (s *DescribeControlPolicyResponseBodyPolicys) SetModifyTime(v int64) *DescribeControlPolicyResponseBodyPolicys {
+	s.ModifyTime = &v
+	return s
+}
+
 func (s *DescribeControlPolicyResponseBodyPolicys) SetOrder(v int32) *DescribeControlPolicyResponseBodyPolicys {
 	s.Order = &v
 	return s
@@ -2111,6 +2123,11 @@ func (s *DescribeControlPolicyResponseBodyPolicys) SetSourceGroupType(v string) 
 
 func (s *DescribeControlPolicyResponseBodyPolicys) SetSourceType(v string) *DescribeControlPolicyResponseBodyPolicys {
 	s.SourceType = &v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetSpreadCnt(v int32) *DescribeControlPolicyResponseBodyPolicys {
+	s.SpreadCnt = &v
 	return s
 }
 
@@ -2429,38 +2446,22 @@ func (s *DescribeInstanceMembersResponse) SetBody(v *DescribeInstanceMembersResp
 }
 
 type DescribeInvadeEventListRequest struct {
-	// 资产IP
-	AssetsIP *string `json:"AssetsIP,omitempty" xml:"AssetsIP,omitempty"`
-	// 实例ID
-	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
-	// 实例名称
-	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
-	// 当前页
-	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 事件key
-	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
-	// 事件名称
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// 事件UUID
-	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
-	// 是否忽略
-	IsIgnore *string `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 成员账号UID
-	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// 每页多少条
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 处理状态列表
-	ProcessStatusList []*int32 `json:"ProcessStatusList,omitempty" xml:"ProcessStatusList,omitempty" type:"Repeated"`
-	// 风险等级
-	RiskLevel []*int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
-	// 源IP
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	AssetsIP           *string  `json:"AssetsIP,omitempty" xml:"AssetsIP,omitempty"`
+	AssetsInstanceId   *string  `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
+	AssetsInstanceName *string  `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
+	CurrentPage        *string  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EndTime            *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EventKey           *string  `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
+	EventName          *string  `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	EventUuid          *string  `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
+	IsIgnore           *string  `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
+	Lang               *string  `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MemberUid          *int64   `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	PageSize           *string  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProcessStatusList  []*int32 `json:"ProcessStatusList,omitempty" xml:"ProcessStatusList,omitempty" type:"Repeated"`
+	RiskLevel          []*int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
+	SourceIp           *string  `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	StartTime          *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeInvadeEventListRequest) String() string {
@@ -2552,17 +2553,12 @@ func (s *DescribeInvadeEventListRequest) SetStartTime(v string) *DescribeInvadeE
 }
 
 type DescribeInvadeEventListResponseBody struct {
-	// 事件列表
-	EventList []*DescribeInvadeEventListResponseBodyEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
-	// 高风险等级比例
-	HighLevelPercent *int32 `json:"HighLevelPercent,omitempty" xml:"HighLevelPercent,omitempty"`
-	// 低风险等级比例
-	LowLevelPercent *int32 `json:"LowLevelPercent,omitempty" xml:"LowLevelPercent,omitempty"`
-	// 中风险等级比例
-	MiddleLevelPercent *int32 `json:"MiddleLevelPercent,omitempty" xml:"MiddleLevelPercent,omitempty"`
-	// 分页信息
-	PageInfo  *DescribeInvadeEventListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	EventList          []*DescribeInvadeEventListResponseBodyEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
+	HighLevelPercent   *int32                                          `json:"HighLevelPercent,omitempty" xml:"HighLevelPercent,omitempty"`
+	LowLevelPercent    *int32                                          `json:"LowLevelPercent,omitempty" xml:"LowLevelPercent,omitempty"`
+	MiddleLevelPercent *int32                                          `json:"MiddleLevelPercent,omitempty" xml:"MiddleLevelPercent,omitempty"`
+	PageInfo           *DescribeInvadeEventListResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId          *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInvadeEventListResponseBody) String() string {
@@ -2604,38 +2600,22 @@ func (s *DescribeInvadeEventListResponseBody) SetRequestId(v string) *DescribeIn
 }
 
 type DescribeInvadeEventListResponseBodyEventList struct {
-	// 资产实例ID
-	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
-	// 资产名称
+	AssetsInstanceId   *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
 	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
-	// 资产类型
-	AssetsType *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
-	// CVE编号
-	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
-	// 事件名称
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// 事件来源
-	EventSrc *string `json:"EventSrc,omitempty" xml:"EventSrc,omitempty"`
-	// 事件UUID
-	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
-	// 首次出现时间
-	FirstTime *int32 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	// 是否忽略
-	IsIgnore *bool `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
-	// 最近一次时间
-	LastTime *int32 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	// 成员账号UID
-	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// 私网IP
-	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
-	// 处理状态
-	ProcessStatus *int32 `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
-	// 公网IP
-	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// 公开类型
-	PublicIpType *string `json:"PublicIpType,omitempty" xml:"PublicIpType,omitempty"`
-	// 风险等级
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	AssetsType         *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
+	EventKey           *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
+	EventName          *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	EventSrc           *string `json:"EventSrc,omitempty" xml:"EventSrc,omitempty"`
+	EventUuid          *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
+	FirstTime          *int32  `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	IsIgnore           *bool   `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
+	LastTime           *int32  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	MemberUid          *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	PrivateIP          *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	ProcessStatus      *int32  `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	PublicIP           *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	PublicIpType       *string `json:"PublicIpType,omitempty" xml:"PublicIpType,omitempty"`
+	RiskLevel          *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s DescribeInvadeEventListResponseBodyEventList) String() string {
@@ -2727,12 +2707,9 @@ func (s *DescribeInvadeEventListResponseBodyEventList) SetRiskLevel(v int32) *De
 }
 
 type DescribeInvadeEventListResponseBodyPageInfo struct {
-	// 当前页
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 每页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 总数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInvadeEventListResponseBodyPageInfo) String() string {
@@ -2788,30 +2765,17 @@ func (s *DescribeInvadeEventListResponse) SetBody(v *DescribeInvadeEventListResp
 }
 
 type DescribeOutgoingDestinationIPRequest struct {
-	// 当前页
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 目的IP
-	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
-	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 排序字段, 枚举值.
-	// 默认值: SessionCount
-	// 可选值: InBytes, OutBytes,TotalBytes,SessionCount
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 每页大小
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 端口号
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 私网IP
-	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
-	// 公网IP
-	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// 顺序, 枚举值, 可选:asc, desc
-	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// 开始时间,Unix timestamp, 精确到秒
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	DstIP       *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Port        *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	PrivateIP   *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	PublicIP    *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeOutgoingDestinationIPRequest) String() string {
@@ -2878,11 +2842,9 @@ func (s *DescribeOutgoingDestinationIPRequest) SetStartTime(v string) *DescribeO
 }
 
 type DescribeOutgoingDestinationIPResponseBody struct {
-	// 外联IP列表
-	DstIPList []*DescribeOutgoingDestinationIPResponseBodyDstIPList `json:"DstIPList,omitempty" xml:"DstIPList,omitempty" type:"Repeated"`
-	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	DstIPList  []*DescribeOutgoingDestinationIPResponseBodyDstIPList `json:"DstIPList,omitempty" xml:"DstIPList,omitempty" type:"Repeated"`
+	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeOutgoingDestinationIPResponseBody) String() string {
@@ -2909,43 +2871,25 @@ func (s *DescribeOutgoingDestinationIPResponseBody) SetTotalCount(v int32) *Desc
 }
 
 type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
-	// ACL覆盖
-	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
-	// ACL推荐内容
-	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
-	// ACL状态
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// 地址簿名称
-	AddressGroupName *string `json:"AddressGroupName,omitempty" xml:"AddressGroupName,omitempty"`
-	// 地址簿UUID
+	AclCoverage         *string                                                                  `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
+	AclRecommendDetail  *string                                                                  `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
+	AclStatus           *string                                                                  `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	AddressGroupName    *string                                                                  `json:"AddressGroupName,omitempty" xml:"AddressGroupName,omitempty"`
 	AddressGroupUUID    *string                                                                  `json:"AddressGroupUUID,omitempty" xml:"AddressGroupUUID,omitempty"`
 	ApplicationPortList []*DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList `json:"ApplicationPortList,omitempty" xml:"ApplicationPortList,omitempty" type:"Repeated"`
-	// 分类ID
-	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// 分类名称
-	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// 目的IP
-	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
-	// 规则中的组名称
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// 是否有推荐ACL
-	HasAclRecommend *bool `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
-	// 入方向流量
-	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// 是否正常
-	IsMarkNormal *bool `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
-	// 出流量
-	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// 规则UUID
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// 规则名称
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// 安全建议
-	SecuritySuggest *string `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
-	// 会话数
-	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// 标签列表
-	TagList []*DescribeOutgoingDestinationIPResponseBodyDstIPListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	CategoryId          *string                                                                  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryName        *string                                                                  `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	DstIP               *string                                                                  `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	GroupName           *string                                                                  `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	HasAclRecommend     *bool                                                                    `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
+	InBytes             *int64                                                                   `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	IsMarkNormal        *bool                                                                    `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
+	OutBytes            *int64                                                                   `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	RuleId              *string                                                                  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName            *string                                                                  `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SecuritySuggest     *string                                                                  `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
+	SessionCount        *int64                                                                   `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	TagList             []*DescribeOutgoingDestinationIPResponseBodyDstIPListTagList             `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeOutgoingDestinationIPResponseBodyDstIPList) String() string {
@@ -3052,10 +2996,8 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetTagList(v []*Des
 }
 
 type DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList struct {
-	// 应用名
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 端口
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port            *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) String() string {
@@ -3077,14 +3019,10 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) 
 }
 
 type DescribeOutgoingDestinationIPResponseBodyDstIPListTagList struct {
-	// 风险等级
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// 标签描述
+	RiskLevel   *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	TagDescribe *string `json:"TagDescribe,omitempty" xml:"TagDescribe,omitempty"`
-	// 标签ID
-	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	// 标签名
-	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	TagId       *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagName     *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) String() string {
@@ -3145,37 +3083,16 @@ func (s *DescribeOutgoingDestinationIPResponse) SetBody(v *DescribeOutgoingDesti
 }
 
 type DescribeOutgoingDomainRequest struct {
-	// 分类, 枚举值.
-	// 默认值: 空
-	// 可选值:
-	// All (全部分类)
-	// RiskDomain (风险域名分类)
-	// RiskIP (风险IP分类)
-	// AliYun (云产品分类)
-	// NotAliYun (非云产品分类)
-	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// 当前页
+	CategoryId  *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 域名
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// 结束时间,Unix timestamp, 精确到秒
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 语言, 枚举值.
-	// 默认值: zh
-	// 可选值: en
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 排序字段, 枚举值.
-	// 默认值: SessionCount
-	// 可选值: InBytes, OutBytes,TotalBytes,SessionCount
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 每页条数, 不得超过100, 超过100会设置为100
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 公网IP
-	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// 顺序, 枚举值, 可选:asc, desc
-	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// 开始时间,Unix timestamp, 精确到秒
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PublicIP    *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeOutgoingDomainRequest) String() string {
@@ -3239,8 +3156,7 @@ func (s *DescribeOutgoingDomainRequest) SetStartTime(v string) *DescribeOutgoing
 type DescribeOutgoingDomainResponseBody struct {
 	DomainList []*DescribeOutgoingDomainResponseBodyDomainList `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
 	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeOutgoingDomainResponseBody) String() string {
@@ -3267,41 +3183,24 @@ func (s *DescribeOutgoingDomainResponseBody) SetTotalCount(v int32) *DescribeOut
 }
 
 type DescribeOutgoingDomainResponseBodyDomainList struct {
-	// ACL覆盖
-	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
-	// ACL推荐内容
-	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
-	// ACL状态
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// 地址簿名称
-	AddressGroupName *string `json:"AddressGroupName,omitempty" xml:"AddressGroupName,omitempty"`
-	// 地址簿UUID
-	AddressGroupUUID *string `json:"AddressGroupUUID,omitempty" xml:"AddressGroupUUID,omitempty"`
-	// 分类ID
-	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// 分类名称
-	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// 域名
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// 规则中的组名称
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// 是否有ACL推荐规则
-	HasAclRecommend *bool `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
-	// 入流量
-	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// 是否正常
-	IsMarkNormal *bool `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
-	// 出流量
-	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// ACL规则ID
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// 规则名称
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// 安全建议
-	SecuritySuggest *string `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
-	// 会话数
-	SessionCount *int64                                                 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	TagList      []*DescribeOutgoingDomainResponseBodyDomainListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	AclCoverage        *string                                                `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
+	AclRecommendDetail *string                                                `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
+	AclStatus          *string                                                `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	AddressGroupName   *string                                                `json:"AddressGroupName,omitempty" xml:"AddressGroupName,omitempty"`
+	AddressGroupUUID   *string                                                `json:"AddressGroupUUID,omitempty" xml:"AddressGroupUUID,omitempty"`
+	CategoryId         *string                                                `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryName       *string                                                `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	Domain             *string                                                `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	GroupName          *string                                                `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	HasAclRecommend    *bool                                                  `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
+	InBytes            *int64                                                 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	IsMarkNormal       *bool                                                  `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
+	OutBytes           *int64                                                 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	RuleId             *string                                                `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName           *string                                                `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SecuritySuggest    *string                                                `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
+	SessionCount       *int64                                                 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	TagList            []*DescribeOutgoingDomainResponseBodyDomainListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeOutgoingDomainResponseBodyDomainList) String() string {
@@ -3403,14 +3302,10 @@ func (s *DescribeOutgoingDomainResponseBodyDomainList) SetTagList(v []*DescribeO
 }
 
 type DescribeOutgoingDomainResponseBodyDomainListTagList struct {
-	// 风险等级
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// 标签描述
+	RiskLevel   *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	TagDescribe *string `json:"TagDescribe,omitempty" xml:"TagDescribe,omitempty"`
-	// 标签ID
-	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	// 标签名称
-	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	TagId       *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagName     *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s DescribeOutgoingDomainResponseBodyDomainListTagList) String() string {
@@ -4117,11 +4012,8 @@ func (s *DescribeRiskEventGroupResponse) SetBody(v *DescribeRiskEventGroupRespon
 }
 
 type DescribeUserAssetIPTrafficInfoRequest struct {
-	// 资产IP
-	AssetIP *string `json:"AssetIP,omitempty" xml:"AssetIP,omitempty"`
-	// 语言
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 时间
+	AssetIP     *string `json:"AssetIP,omitempty" xml:"AssetIP,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	TrafficTime *string `json:"TrafficTime,omitempty" xml:"TrafficTime,omitempty"`
 }
 
@@ -4149,18 +4041,15 @@ func (s *DescribeUserAssetIPTrafficInfoRequest) SetTrafficTime(v string) *Descri
 }
 
 type DescribeUserAssetIPTrafficInfoResponseBody struct {
-	// 结束时间
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InBps   *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
-	InPps   *int64 `json:"InPps,omitempty" xml:"InPps,omitempty"`
-	NewConn *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
-	OutBps  *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
-	OutPps  *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
-	// Id of the request
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InBps        *int64  `json:"InBps,omitempty" xml:"InBps,omitempty"`
+	InPps        *int64  `json:"InPps,omitempty" xml:"InPps,omitempty"`
+	NewConn      *int64  `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
+	OutBps       *int64  `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
+	OutPps       *int64  `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SessionCount *int64  `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// 开始时间
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeUserAssetIPTrafficInfoResponseBody) String() string {
@@ -4665,6 +4554,7 @@ type DescribeVpcFirewallCenListRequest struct {
 	PageSize             *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionNo             *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	RouteMode            *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	TransitRouterType    *string `json:"TransitRouterType,omitempty" xml:"TransitRouterType,omitempty"`
 	VpcFirewallId        *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 	VpcFirewallName      *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
 }
@@ -4724,6 +4614,11 @@ func (s *DescribeVpcFirewallCenListRequest) SetRegionNo(v string) *DescribeVpcFi
 
 func (s *DescribeVpcFirewallCenListRequest) SetRouteMode(v string) *DescribeVpcFirewallCenListRequest {
 	s.RouteMode = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallCenListRequest) SetTransitRouterType(v string) *DescribeVpcFirewallCenListRequest {
+	s.TransitRouterType = &v
 	return s
 }
 
@@ -9796,6 +9691,10 @@ func (client *Client) DescribeVpcFirewallCenListWithOptions(request *DescribeVpc
 
 	if !tea.BoolValue(util.IsUnset(request.RouteMode)) {
 		query["RouteMode"] = request.RouteMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterType)) {
+		query["TransitRouterType"] = request.TransitRouterType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpcFirewallId)) {
