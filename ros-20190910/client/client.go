@@ -4123,6 +4123,7 @@ type GetStackResponseBody struct {
 	Interface           *string                               `json:"Interface,omitempty" xml:"Interface,omitempty"`
 	Log                 *GetStackResponseBodyLog              `json:"Log,omitempty" xml:"Log,omitempty" type:"Struct"`
 	NotificationURLs    []*string                             `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
+	OperationInfo       *GetStackResponseBodyOperationInfo    `json:"OperationInfo,omitempty" xml:"OperationInfo,omitempty" type:"Struct"`
 	Outputs             []map[string]interface{}              `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 	Parameters          []*GetStackResponseBodyParameters     `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	ParentStackId       *string                               `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
@@ -4195,6 +4196,11 @@ func (s *GetStackResponseBody) SetLog(v *GetStackResponseBodyLog) *GetStackRespo
 
 func (s *GetStackResponseBody) SetNotificationURLs(v []*string) *GetStackResponseBody {
 	s.NotificationURLs = v
+	return s
+}
+
+func (s *GetStackResponseBody) SetOperationInfo(v *GetStackResponseBodyOperationInfo) *GetStackResponseBody {
+	s.OperationInfo = v
 	return s
 }
 
@@ -4418,6 +4424,53 @@ func (s *GetStackResponseBodyLogTerraformLogs) SetContent(v string) *GetStackRes
 
 func (s *GetStackResponseBodyLogTerraformLogs) SetStream(v string) *GetStackResponseBodyLogTerraformLogs {
 	s.Stream = &v
+	return s
+}
+
+type GetStackResponseBodyOperationInfo struct {
+	Action            *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetStackResponseBodyOperationInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStackResponseBodyOperationInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetStackResponseBodyOperationInfo) SetAction(v string) *GetStackResponseBodyOperationInfo {
+	s.Action = &v
+	return s
+}
+
+func (s *GetStackResponseBodyOperationInfo) SetCode(v string) *GetStackResponseBodyOperationInfo {
+	s.Code = &v
+	return s
+}
+
+func (s *GetStackResponseBodyOperationInfo) SetLogicalResourceId(v string) *GetStackResponseBodyOperationInfo {
+	s.LogicalResourceId = &v
+	return s
+}
+
+func (s *GetStackResponseBodyOperationInfo) SetMessage(v string) *GetStackResponseBodyOperationInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *GetStackResponseBodyOperationInfo) SetRequestId(v string) *GetStackResponseBodyOperationInfo {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStackResponseBodyOperationInfo) SetResourceType(v string) *GetStackResponseBodyOperationInfo {
+	s.ResourceType = &v
 	return s
 }
 
@@ -8748,23 +8801,24 @@ func (s *ListStacksResponseBody) SetTotalCount(v int32) *ListStacksResponseBody 
 }
 
 type ListStacksResponseBodyStacks struct {
-	CreateTime         *string                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DisableRollback    *bool                               `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	DriftDetectionTime *string                             `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	ParentStackId      *string                             `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
-	RegionId           *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId    *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceManaged     *bool                               `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	ServiceName        *string                             `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	StackDriftStatus   *string                             `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
-	StackId            *string                             `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	StackName          *string                             `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	StackType          *string                             `json:"StackType,omitempty" xml:"StackType,omitempty"`
-	Status             *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusReason       *string                             `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	Tags               []*ListStacksResponseBodyStacksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TimeoutInMinutes   *int32                              `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
-	UpdateTime         *string                             `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime         *string                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DisableRollback    *bool                                      `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	DriftDetectionTime *string                                    `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	OperationInfo      *ListStacksResponseBodyStacksOperationInfo `json:"OperationInfo,omitempty" xml:"OperationInfo,omitempty" type:"Struct"`
+	ParentStackId      *string                                    `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
+	RegionId           *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId    *string                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceManaged     *bool                                      `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	ServiceName        *string                                    `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	StackDriftStatus   *string                                    `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
+	StackId            *string                                    `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackName          *string                                    `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	StackType          *string                                    `json:"StackType,omitempty" xml:"StackType,omitempty"`
+	Status             *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason       *string                                    `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	Tags               []*ListStacksResponseBodyStacksTags        `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TimeoutInMinutes   *int32                                     `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	UpdateTime         *string                                    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListStacksResponseBodyStacks) String() string {
@@ -8787,6 +8841,11 @@ func (s *ListStacksResponseBodyStacks) SetDisableRollback(v bool) *ListStacksRes
 
 func (s *ListStacksResponseBodyStacks) SetDriftDetectionTime(v string) *ListStacksResponseBodyStacks {
 	s.DriftDetectionTime = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacks) SetOperationInfo(v *ListStacksResponseBodyStacksOperationInfo) *ListStacksResponseBodyStacks {
+	s.OperationInfo = v
 	return s
 }
 
@@ -8857,6 +8916,53 @@ func (s *ListStacksResponseBodyStacks) SetTimeoutInMinutes(v int32) *ListStacksR
 
 func (s *ListStacksResponseBodyStacks) SetUpdateTime(v string) *ListStacksResponseBodyStacks {
 	s.UpdateTime = &v
+	return s
+}
+
+type ListStacksResponseBodyStacksOperationInfo struct {
+	Action            *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ListStacksResponseBodyStacksOperationInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStacksResponseBodyStacksOperationInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListStacksResponseBodyStacksOperationInfo) SetAction(v string) *ListStacksResponseBodyStacksOperationInfo {
+	s.Action = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacksOperationInfo) SetCode(v string) *ListStacksResponseBodyStacksOperationInfo {
+	s.Code = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacksOperationInfo) SetLogicalResourceId(v string) *ListStacksResponseBodyStacksOperationInfo {
+	s.LogicalResourceId = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacksOperationInfo) SetMessage(v string) *ListStacksResponseBodyStacksOperationInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacksOperationInfo) SetRequestId(v string) *ListStacksResponseBodyStacksOperationInfo {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacksOperationInfo) SetResourceType(v string) *ListStacksResponseBodyStacksOperationInfo {
+	s.ResourceType = &v
 	return s
 }
 
