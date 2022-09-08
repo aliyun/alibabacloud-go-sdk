@@ -5349,6 +5349,7 @@ type DescribeServiceMeshClustersResponseBodyClusters struct {
 	CreationTime  *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	ForbiddenFlag *int64  `json:"ForbiddenFlag,omitempty" xml:"ForbiddenFlag,omitempty"`
+	ForbiddenInfo *string `json:"ForbiddenInfo,omitempty" xml:"ForbiddenInfo,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
@@ -5394,6 +5395,11 @@ func (s *DescribeServiceMeshClustersResponseBodyClusters) SetErrorMessage(v stri
 
 func (s *DescribeServiceMeshClustersResponseBodyClusters) SetForbiddenFlag(v int64) *DescribeServiceMeshClustersResponseBodyClusters {
 	s.ForbiddenFlag = &v
+	return s
+}
+
+func (s *DescribeServiceMeshClustersResponseBodyClusters) SetForbiddenInfo(v string) *DescribeServiceMeshClustersResponseBodyClusters {
+	s.ForbiddenInfo = &v
 	return s
 }
 
@@ -10863,12 +10869,13 @@ func (s *UpdateIstioRouteAdditionalStatusResponse) SetBody(v *UpdateIstioRouteAd
 }
 
 type UpdateMeshCRAggregationRequest struct {
-	CPULimit          *string `json:"CPULimit,omitempty" xml:"CPULimit,omitempty"`
-	CPURequirement    *string `json:"CPURequirement,omitempty" xml:"CPURequirement,omitempty"`
-	Enabled           *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	MemoryLimit       *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	MemoryRequirement *string `json:"MemoryRequirement,omitempty" xml:"MemoryRequirement,omitempty"`
-	ServiceMeshId     *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	CPULimit           *string `json:"CPULimit,omitempty" xml:"CPULimit,omitempty"`
+	CPURequirement     *string `json:"CPURequirement,omitempty" xml:"CPURequirement,omitempty"`
+	Enabled            *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MemoryLimit        *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	MemoryRequirement  *string `json:"MemoryRequirement,omitempty" xml:"MemoryRequirement,omitempty"`
+	ServiceMeshId      *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	UsePublicApiServer *bool   `json:"UsePublicApiServer,omitempty" xml:"UsePublicApiServer,omitempty"`
 }
 
 func (s UpdateMeshCRAggregationRequest) String() string {
@@ -10906,6 +10913,11 @@ func (s *UpdateMeshCRAggregationRequest) SetMemoryRequirement(v string) *UpdateM
 
 func (s *UpdateMeshCRAggregationRequest) SetServiceMeshId(v string) *UpdateMeshCRAggregationRequest {
 	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *UpdateMeshCRAggregationRequest) SetUsePublicApiServer(v bool) *UpdateMeshCRAggregationRequest {
+	s.UsePublicApiServer = &v
 	return s
 }
 
@@ -15553,6 +15565,10 @@ func (client *Client) UpdateMeshCRAggregationWithOptions(request *UpdateMeshCRAg
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
 		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsePublicApiServer)) {
+		body["UsePublicApiServer"] = request.UsePublicApiServer
 	}
 
 	req := &openapi.OpenApiRequest{
