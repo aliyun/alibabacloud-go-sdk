@@ -536,12 +536,9 @@ func (s *AddUserGroupMembersRequest) SetUserId(v string) *AddUserGroupMembersReq
 }
 
 type AddUserGroupMembersResponseBody struct {
-	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 接口执行结果。取值范围：true：请求成功false：请求失败
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// 是否请求成功。取值范围：true：请求成功false：请求失败
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddUserGroupMembersResponseBody) String() string {
@@ -7290,7 +7287,6 @@ func (s *QueryUserTagValueListResponse) SetBody(v *QueryUserTagValueListResponse
 }
 
 type QueryWorksRequest struct {
-	// 报表ID
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -7308,10 +7304,9 @@ func (s *QueryWorksRequest) SetWorksId(v string) *QueryWorksRequest {
 }
 
 type QueryWorksResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// QueryWorksModel
-	Result  *QueryWorksResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *QueryWorksResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryWorksResponseBody) String() string {
@@ -7338,36 +7333,21 @@ func (s *QueryWorksResponseBody) SetSuccess(v bool) *QueryWorksResponseBody {
 }
 
 type QueryWorksResponseBodyResult struct {
-	// 第三方嵌入状态
-	Auth3rdFlag *int32 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 所属空间目录信息
-	Directory *QueryWorksResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	// 创建时间d
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// 修改显示名称
-	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
-	// 所有者Id
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 所有者显示名称
-	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// 安全策略：0 私有 1 协同编辑。 （
-	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	// 报表发布状态 @PublishStatusEnum
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 作品名称
-	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
-	// 作品类型
-	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
-	// 作品ID
-	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
-	// 所属工作空间
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// 所属空间名称
-	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	Auth3rdFlag   *int32                                 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
+	Description   *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Directory     *QueryWorksResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	GmtCreate     *string                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify     *string                                `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	ModifyName    *string                                `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
+	OwnerId       *string                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerName     *string                                `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	SecurityLevel *string                                `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	Status        *int32                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	WorkName      *string                                `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
+	WorkType      *string                                `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
+	WorksId       *string                                `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	WorkspaceId   *string                                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName *string                                `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QueryWorksResponseBodyResult) String() string {
@@ -7454,13 +7434,9 @@ func (s *QueryWorksResponseBodyResult) SetWorkspaceName(v string) *QueryWorksRes
 }
 
 type QueryWorksResponseBodyResultDirectory struct {
-	// 目录ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 目录名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 目录ID的路径，例如：aa/bb/cc/dd
-	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
-	// 目录ID的路径名称，例如：一层目录/二层目录
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PathId   *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -7522,7 +7498,6 @@ func (s *QueryWorksResponse) SetBody(v *QueryWorksResponseBody) *QueryWorksRespo
 }
 
 type QueryWorksBloodRelationshipRequest struct {
-	// 报表ID
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -7569,16 +7544,12 @@ func (s *QueryWorksBloodRelationshipResponseBody) SetSuccess(v bool) *QueryWorks
 }
 
 type QueryWorksBloodRelationshipResponseBodyResult struct {
-	// 组件ID or  sheetId
-	ComponentId   *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// 组件类型
-	ComponentType     *int32  `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	ComponentTypeName *string `json:"ComponentTypeName,omitempty" xml:"ComponentTypeName,omitempty"`
-	// 数据集ID
-	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// 查询参数引用的列信息
-	QueryParams []*QueryWorksBloodRelationshipResponseBodyResultQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Repeated"`
+	ComponentId       *string                                                     `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	ComponentName     *string                                                     `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	ComponentType     *int32                                                      `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	ComponentTypeName *string                                                     `json:"ComponentTypeName,omitempty" xml:"ComponentTypeName,omitempty"`
+	DatasetId         *string                                                     `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	QueryParams       []*QueryWorksBloodRelationshipResponseBodyResultQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Repeated"`
 }
 
 func (s QueryWorksBloodRelationshipResponseBodyResult) String() string {
@@ -7620,19 +7591,13 @@ func (s *QueryWorksBloodRelationshipResponseBodyResult) SetQueryParams(v []*Quer
 }
 
 type QueryWorksBloodRelationshipResponseBodyResultQueryParams struct {
-	// 所属位置：
-	AreaId   *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
-	// 字段显示名称
-	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	// 字段类型
-	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// 是否是度量
-	IsMeasure *bool `json:"IsMeasure,omitempty" xml:"IsMeasure,omitempty"`
-	// 全局唯一的PathId。位于cube的level中pathId
-	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
-	// 字段唯一ID。即cube中的name
-	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	AreaId    *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	AreaName  *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
+	Caption   *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	IsMeasure *bool   `json:"IsMeasure,omitempty" xml:"IsMeasure,omitempty"`
+	PathId    *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	Uid       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s QueryWorksBloodRelationshipResponseBodyResultQueryParams) String() string {
