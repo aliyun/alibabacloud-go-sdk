@@ -12,6 +12,41 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type LoginStateInfo struct {
+	SceneCode           *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	ThirdUserIdentifier *string `json:"ThirdUserIdentifier,omitempty" xml:"ThirdUserIdentifier,omitempty"`
+	ThirdUserType       *string `json:"ThirdUserType,omitempty" xml:"ThirdUserType,omitempty"`
+	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s LoginStateInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoginStateInfo) GoString() string {
+	return s.String()
+}
+
+func (s *LoginStateInfo) SetSceneCode(v string) *LoginStateInfo {
+	s.SceneCode = &v
+	return s
+}
+
+func (s *LoginStateInfo) SetThirdUserIdentifier(v string) *LoginStateInfo {
+	s.ThirdUserIdentifier = &v
+	return s
+}
+
+func (s *LoginStateInfo) SetThirdUserType(v string) *LoginStateInfo {
+	s.ThirdUserType = &v
+	return s
+}
+
+func (s *LoginStateInfo) SetUserId(v string) *LoginStateInfo {
+	s.UserId = &v
+	return s
+}
+
 type AddAndRemoveFavoriteContentHeaders struct {
 	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
@@ -4519,8 +4554,6 @@ type GetAlarmResponseBodyResult struct {
 	Status           *int32                                  `json:"Status,omitempty" xml:"Status,omitempty"`
 	TriggerDateDesc  *string                                 `json:"TriggerDateDesc,omitempty" xml:"TriggerDateDesc,omitempty"`
 	TriggerTimeDesc  *string                                 `json:"TriggerTimeDesc,omitempty" xml:"TriggerTimeDesc,omitempty"`
-	UserId           *int64                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Uuid             *string                                 `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	Volume           *int32                                  `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
@@ -4564,16 +4597,6 @@ func (s *GetAlarmResponseBodyResult) SetTriggerDateDesc(v string) *GetAlarmRespo
 
 func (s *GetAlarmResponseBodyResult) SetTriggerTimeDesc(v string) *GetAlarmResponseBodyResult {
 	s.TriggerTimeDesc = &v
-	return s
-}
-
-func (s *GetAlarmResponseBodyResult) SetUserId(v int64) *GetAlarmResponseBodyResult {
-	s.UserId = &v
-	return s
-}
-
-func (s *GetAlarmResponseBodyResult) SetUuid(v string) *GetAlarmResponseBodyResult {
-	s.Uuid = &v
 	return s
 }
 
@@ -5279,6 +5302,151 @@ func (s *GetAlbumDetailByIdResponse) SetStatusCode(v int32) *GetAlbumDetailByIdR
 }
 
 func (s *GetAlbumDetailByIdResponse) SetBody(v *GetAlbumDetailByIdResponseBody) *GetAlbumDetailByIdResponse {
+	s.Body = v
+	return s
+}
+
+type GetAligenieUserInfoHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetAligenieUserInfoHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAligenieUserInfoHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetAligenieUserInfoHeaders) SetCommonHeaders(v map[string]*string) *GetAligenieUserInfoHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetAligenieUserInfoHeaders) SetXAcsAligenieAccessToken(v string) *GetAligenieUserInfoHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *GetAligenieUserInfoHeaders) SetAuthorization(v string) *GetAligenieUserInfoHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetAligenieUserInfoRequest struct {
+	LoginStateAccessToken *string `json:"LoginStateAccessToken,omitempty" xml:"LoginStateAccessToken,omitempty"`
+}
+
+func (s GetAligenieUserInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAligenieUserInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAligenieUserInfoRequest) SetLoginStateAccessToken(v string) *GetAligenieUserInfoRequest {
+	s.LoginStateAccessToken = &v
+	return s
+}
+
+type GetAligenieUserInfoResponseBody struct {
+	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetAligenieUserInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAligenieUserInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAligenieUserInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAligenieUserInfoResponseBody) SetCode(v int32) *GetAligenieUserInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAligenieUserInfoResponseBody) SetMessage(v string) *GetAligenieUserInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAligenieUserInfoResponseBody) SetRequestId(v string) *GetAligenieUserInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAligenieUserInfoResponseBody) SetResult(v *GetAligenieUserInfoResponseBodyResult) *GetAligenieUserInfoResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetAligenieUserInfoResponseBody) SetSuccess(v bool) *GetAligenieUserInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAligenieUserInfoResponseBodyResult struct {
+	AligenieNickname *string `json:"AligenieNickname,omitempty" xml:"AligenieNickname,omitempty"`
+	Avatar           *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	Deletable        *bool   `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
+}
+
+func (s GetAligenieUserInfoResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAligenieUserInfoResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetAligenieUserInfoResponseBodyResult) SetAligenieNickname(v string) *GetAligenieUserInfoResponseBodyResult {
+	s.AligenieNickname = &v
+	return s
+}
+
+func (s *GetAligenieUserInfoResponseBodyResult) SetAvatar(v string) *GetAligenieUserInfoResponseBodyResult {
+	s.Avatar = &v
+	return s
+}
+
+func (s *GetAligenieUserInfoResponseBodyResult) SetDeletable(v bool) *GetAligenieUserInfoResponseBodyResult {
+	s.Deletable = &v
+	return s
+}
+
+type GetAligenieUserInfoResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAligenieUserInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAligenieUserInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAligenieUserInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAligenieUserInfoResponse) SetHeaders(v map[string]*string) *GetAligenieUserInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAligenieUserInfoResponse) SetStatusCode(v int32) *GetAligenieUserInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAligenieUserInfoResponse) SetBody(v *GetAligenieUserInfoResponseBody) *GetAligenieUserInfoResponse {
 	s.Body = v
 	return s
 }
@@ -9673,8 +9841,6 @@ type ListAlarmsResponseBodyResultModel struct {
 	Status           *int32                                         `json:"Status,omitempty" xml:"Status,omitempty"`
 	TriggerDateDesc  *string                                        `json:"TriggerDateDesc,omitempty" xml:"TriggerDateDesc,omitempty"`
 	TriggerTimeDesc  *string                                        `json:"TriggerTimeDesc,omitempty" xml:"TriggerTimeDesc,omitempty"`
-	UserId           *int64                                         `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Uuid             *string                                        `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	Volume           *int32                                         `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
@@ -9718,16 +9884,6 @@ func (s *ListAlarmsResponseBodyResultModel) SetTriggerDateDesc(v string) *ListAl
 
 func (s *ListAlarmsResponseBodyResultModel) SetTriggerTimeDesc(v string) *ListAlarmsResponseBodyResultModel {
 	s.TriggerTimeDesc = &v
-	return s
-}
-
-func (s *ListAlarmsResponseBodyResultModel) SetUserId(v int64) *ListAlarmsResponseBodyResultModel {
-	s.UserId = &v
-	return s
-}
-
-func (s *ListAlarmsResponseBodyResultModel) SetUuid(v string) *ListAlarmsResponseBodyResultModel {
-	s.Uuid = &v
 	return s
 }
 
@@ -16625,6 +16781,238 @@ func (s *ReadMessageResponse) SetBody(v *ReadMessageResponseBody) *ReadMessageRe
 	return s
 }
 
+type ScanCodeBindHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ScanCodeBindHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanCodeBindHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ScanCodeBindHeaders) SetCommonHeaders(v map[string]*string) *ScanCodeBindHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ScanCodeBindHeaders) SetXAcsAligenieAccessToken(v string) *ScanCodeBindHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *ScanCodeBindHeaders) SetAuthorization(v string) *ScanCodeBindHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ScanCodeBindRequest struct {
+	BindReq  *ScanCodeBindRequestBindReq  `json:"BindReq,omitempty" xml:"BindReq,omitempty" type:"Struct"`
+	UserInfo *ScanCodeBindRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+}
+
+func (s ScanCodeBindRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanCodeBindRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScanCodeBindRequest) SetBindReq(v *ScanCodeBindRequestBindReq) *ScanCodeBindRequest {
+	s.BindReq = v
+	return s
+}
+
+func (s *ScanCodeBindRequest) SetUserInfo(v *ScanCodeBindRequestUserInfo) *ScanCodeBindRequest {
+	s.UserInfo = v
+	return s
+}
+
+type ScanCodeBindRequestBindReq struct {
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtInfo  *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+}
+
+func (s ScanCodeBindRequestBindReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanCodeBindRequestBindReq) GoString() string {
+	return s.String()
+}
+
+func (s *ScanCodeBindRequestBindReq) SetClientId(v string) *ScanCodeBindRequestBindReq {
+	s.ClientId = &v
+	return s
+}
+
+func (s *ScanCodeBindRequestBindReq) SetCode(v string) *ScanCodeBindRequestBindReq {
+	s.Code = &v
+	return s
+}
+
+func (s *ScanCodeBindRequestBindReq) SetExtInfo(v string) *ScanCodeBindRequestBindReq {
+	s.ExtInfo = &v
+	return s
+}
+
+type ScanCodeBindRequestUserInfo struct {
+	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s ScanCodeBindRequestUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanCodeBindRequestUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ScanCodeBindRequestUserInfo) SetEncodeKey(v string) *ScanCodeBindRequestUserInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *ScanCodeBindRequestUserInfo) SetEncodeType(v string) *ScanCodeBindRequestUserInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *ScanCodeBindRequestUserInfo) SetId(v string) *ScanCodeBindRequestUserInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *ScanCodeBindRequestUserInfo) SetIdType(v string) *ScanCodeBindRequestUserInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *ScanCodeBindRequestUserInfo) SetOrganizationId(v string) *ScanCodeBindRequestUserInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type ScanCodeBindShrinkRequest struct {
+	BindReqShrink  *string `json:"BindReq,omitempty" xml:"BindReq,omitempty"`
+	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+}
+
+func (s ScanCodeBindShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanCodeBindShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScanCodeBindShrinkRequest) SetBindReqShrink(v string) *ScanCodeBindShrinkRequest {
+	s.BindReqShrink = &v
+	return s
+}
+
+func (s *ScanCodeBindShrinkRequest) SetUserInfoShrink(v string) *ScanCodeBindShrinkRequest {
+	s.UserInfoShrink = &v
+	return s
+}
+
+type ScanCodeBindResponseBody struct {
+	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ScanCodeBindResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ScanCodeBindResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanCodeBindResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ScanCodeBindResponseBody) SetCode(v int32) *ScanCodeBindResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ScanCodeBindResponseBody) SetMessage(v string) *ScanCodeBindResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ScanCodeBindResponseBody) SetRequestId(v string) *ScanCodeBindResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ScanCodeBindResponseBody) SetResult(v *ScanCodeBindResponseBodyResult) *ScanCodeBindResponseBody {
+	s.Result = v
+	return s
+}
+
+type ScanCodeBindResponseBodyResult struct {
+	BizGroup *string `json:"bizGroup,omitempty" xml:"bizGroup,omitempty"`
+	BizType  *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+}
+
+func (s ScanCodeBindResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanCodeBindResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ScanCodeBindResponseBodyResult) SetBizGroup(v string) *ScanCodeBindResponseBodyResult {
+	s.BizGroup = &v
+	return s
+}
+
+func (s *ScanCodeBindResponseBodyResult) SetBizType(v string) *ScanCodeBindResponseBodyResult {
+	s.BizType = &v
+	return s
+}
+
+type ScanCodeBindResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ScanCodeBindResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ScanCodeBindResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanCodeBindResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ScanCodeBindResponse) SetHeaders(v map[string]*string) *ScanCodeBindResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ScanCodeBindResponse) SetStatusCode(v int32) *ScanCodeBindResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ScanCodeBindResponse) SetBody(v *ScanCodeBindResponseBody) *ScanCodeBindResponse {
+	s.Body = v
+	return s
+}
+
 type ScgSearchHeaders struct {
 	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
@@ -17972,6 +18360,116 @@ func (s *SetDeviceSettingResponse) SetStatusCode(v int32) *SetDeviceSettingRespo
 }
 
 func (s *SetDeviceSettingResponse) SetBody(v *SetDeviceSettingResponseBody) *SetDeviceSettingResponse {
+	s.Body = v
+	return s
+}
+
+type UnbindAligenieUserHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s UnbindAligenieUserHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindAligenieUserHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindAligenieUserHeaders) SetCommonHeaders(v map[string]*string) *UnbindAligenieUserHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UnbindAligenieUserHeaders) SetXAcsAligenieAccessToken(v string) *UnbindAligenieUserHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *UnbindAligenieUserHeaders) SetAuthorization(v string) *UnbindAligenieUserHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type UnbindAligenieUserRequest struct {
+	LoginStateAccessToken *string `json:"LoginStateAccessToken,omitempty" xml:"LoginStateAccessToken,omitempty"`
+}
+
+func (s UnbindAligenieUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindAligenieUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindAligenieUserRequest) SetLoginStateAccessToken(v string) *UnbindAligenieUserRequest {
+	s.LoginStateAccessToken = &v
+	return s
+}
+
+type UnbindAligenieUserResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UnbindAligenieUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindAligenieUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindAligenieUserResponseBody) SetCode(v int32) *UnbindAligenieUserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UnbindAligenieUserResponseBody) SetMessage(v string) *UnbindAligenieUserResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UnbindAligenieUserResponseBody) SetRequestId(v string) *UnbindAligenieUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UnbindAligenieUserResponseBody) SetSuccess(v bool) *UnbindAligenieUserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UnbindAligenieUserResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnbindAligenieUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnbindAligenieUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindAligenieUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindAligenieUserResponse) SetHeaders(v map[string]*string) *UnbindAligenieUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnbindAligenieUserResponse) SetStatusCode(v int32) *UnbindAligenieUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnbindAligenieUserResponse) SetBody(v *UnbindAligenieUserResponseBody) *UnbindAligenieUserResponse {
 	s.Body = v
 	return s
 }
@@ -20195,6 +20693,65 @@ func (client *Client) GetAlbumDetailByIdWithOptions(request *GetAlbumDetailByIdR
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAlbumDetailByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAligenieUserInfo(request *GetAligenieUserInfoRequest) (_result *GetAligenieUserInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetAligenieUserInfoHeaders{}
+	_result = &GetAligenieUserInfoResponse{}
+	_body, _err := client.GetAligenieUserInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAligenieUserInfoWithOptions(request *GetAligenieUserInfoRequest, headers *GetAligenieUserInfoHeaders, runtime *util.RuntimeOptions) (_result *GetAligenieUserInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LoginStateAccessToken)) {
+		query["LoginStateAccessToken"] = request.LoginStateAccessToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAligenieUserInfo"),
+		Version:     tea.String("ssp_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ssp/getAligenieUserInfo"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAligenieUserInfoResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -23082,6 +23639,79 @@ func (client *Client) ReadMessageWithOptions(tmpReq *ReadMessageRequest, headers
 	return _result, _err
 }
 
+func (client *Client) ScanCodeBind(request *ScanCodeBindRequest) (_result *ScanCodeBindResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ScanCodeBindHeaders{}
+	_result = &ScanCodeBindResponse{}
+	_body, _err := client.ScanCodeBindWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ScanCodeBindWithOptions(tmpReq *ScanCodeBindRequest, headers *ScanCodeBindHeaders, runtime *util.RuntimeOptions) (_result *ScanCodeBindResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ScanCodeBindShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.BindReq))) {
+		request.BindReqShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.BindReq), tea.String("BindReq"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BindReqShrink)) {
+		body["BindReq"] = request.BindReqShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserInfoShrink)) {
+		body["UserInfo"] = request.UserInfoShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ScanCodeBind"),
+		Version:     tea.String("ssp_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ssp/scanCode"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ScanCodeBindResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ScgSearch(request *ScgSearchRequest) (_result *ScgSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ScgSearchHeaders{}
@@ -23370,6 +24000,65 @@ func (client *Client) SetDeviceSettingWithOptions(tmpReq *SetDeviceSettingReques
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetDeviceSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnbindAligenieUser(request *UnbindAligenieUserRequest) (_result *UnbindAligenieUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UnbindAligenieUserHeaders{}
+	_result = &UnbindAligenieUserResponse{}
+	_body, _err := client.UnbindAligenieUserWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnbindAligenieUserWithOptions(request *UnbindAligenieUserRequest, headers *UnbindAligenieUserHeaders, runtime *util.RuntimeOptions) (_result *UnbindAligenieUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LoginStateAccessToken)) {
+		body["LoginStateAccessToken"] = request.LoginStateAccessToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindAligenieUser"),
+		Version:     tea.String("ssp_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ssp/unbindAligenieUser"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnbindAligenieUserResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
