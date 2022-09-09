@@ -14573,6 +14573,7 @@ type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
 	InstanceSpecAttributes *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes `json:"InstanceSpecAttributes,omitempty" xml:"InstanceSpecAttributes,omitempty" type:"Struct"`
 	InstanceType           *string                                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	InternetEgressAddress  *string                                                                        `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
+	IntranetSegments       *string                                                                        `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
 	RegionId               *string                                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Status                 *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
 	SupportIpv6            *bool                                                                          `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
@@ -14677,6 +14678,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceTyp
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInternetEgressAddress(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
 	s.InternetEgressAddress = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetIntranetSegments(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.IntranetSegments = &v
 	return s
 }
 
@@ -23395,6 +23401,7 @@ type SetDomainWebSocketStatusRequest struct {
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	WSSEnable     *string `json:"WSSEnable,omitempty" xml:"WSSEnable,omitempty"`
 }
 
 func (s SetDomainWebSocketStatusRequest) String() string {
@@ -23422,6 +23429,11 @@ func (s *SetDomainWebSocketStatusRequest) SetGroupId(v string) *SetDomainWebSock
 
 func (s *SetDomainWebSocketStatusRequest) SetSecurityToken(v string) *SetDomainWebSocketStatusRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *SetDomainWebSocketStatusRequest) SetWSSEnable(v string) *SetDomainWebSocketStatusRequest {
+	s.WSSEnable = &v
 	return s
 }
 
@@ -33050,6 +33062,10 @@ func (client *Client) SetDomainWebSocketStatusWithOptions(request *SetDomainWebS
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WSSEnable)) {
+		query["WSSEnable"] = request.WSSEnable
 	}
 
 	req := &openapi.OpenApiRequest{
