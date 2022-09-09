@@ -16,6 +16,7 @@ type CancelScheduleTasksRequest struct {
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -41,6 +42,11 @@ func (s *CancelScheduleTasksRequest) SetOwnerAccount(v string) *CancelScheduleTa
 
 func (s *CancelScheduleTasksRequest) SetOwnerId(v int64) *CancelScheduleTasksRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CancelScheduleTasksRequest) SetResourceGroupId(v string) *CancelScheduleTasksRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -252,6 +258,7 @@ func (s *CheckDBNameRequest) SetResourceOwnerId(v int64) *CheckDBNameRequest {
 }
 
 type CheckDBNameResponseBody struct {
+	DBName    *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -261,6 +268,11 @@ func (s CheckDBNameResponseBody) String() string {
 
 func (s CheckDBNameResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CheckDBNameResponseBody) SetDBName(v string) *CheckDBNameResponseBody {
+	s.DBName = &v
+	return s
 }
 
 func (s *CheckDBNameResponseBody) SetRequestId(v string) *CheckDBNameResponseBody {
@@ -718,37 +730,38 @@ func (s *CreateBackupResponse) SetBody(v *CreateBackupResponseBody) *CreateBacku
 }
 
 type CreateDBClusterRequest struct {
-	AutoRenew                              *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	BackupRetentionPolicyOnClusterDeletion *string `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
-	ClientToken                            *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CloneDataPoint                         *string `json:"CloneDataPoint,omitempty" xml:"CloneDataPoint,omitempty"`
-	ClusterNetworkType                     *string `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
-	CreationCategory                       *string `json:"CreationCategory,omitempty" xml:"CreationCategory,omitempty"`
-	CreationOption                         *string `json:"CreationOption,omitempty" xml:"CreationOption,omitempty"`
-	DBClusterDescription                   *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	DBMinorVersion                         *string `json:"DBMinorVersion,omitempty" xml:"DBMinorVersion,omitempty"`
-	DBNodeClass                            *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	DBType                                 *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	DBVersion                              *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	DefaultTimeZone                        *string `json:"DefaultTimeZone,omitempty" xml:"DefaultTimeZone,omitempty"`
-	GDNId                                  *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
-	LowerCaseTableNames                    *string `json:"LowerCaseTableNames,omitempty" xml:"LowerCaseTableNames,omitempty"`
-	OwnerAccount                           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ParameterGroupId                       *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	PayType                                *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period                                 *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	RegionId                               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId                        *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount                   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId                        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityIPList                         *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	SourceResourceId                       *string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
-	TDEStatus                              *bool   `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
-	UsedTime                               *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	VPCId                                  *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId                              *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId                                 *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AutoRenew                              *bool                        `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	BackupRetentionPolicyOnClusterDeletion *string                      `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
+	ClientToken                            *string                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CloneDataPoint                         *string                      `json:"CloneDataPoint,omitempty" xml:"CloneDataPoint,omitempty"`
+	ClusterNetworkType                     *string                      `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
+	CreationCategory                       *string                      `json:"CreationCategory,omitempty" xml:"CreationCategory,omitempty"`
+	CreationOption                         *string                      `json:"CreationOption,omitempty" xml:"CreationOption,omitempty"`
+	DBClusterDescription                   *string                      `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	DBMinorVersion                         *string                      `json:"DBMinorVersion,omitempty" xml:"DBMinorVersion,omitempty"`
+	DBNodeClass                            *string                      `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	DBType                                 *string                      `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion                              *string                      `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	DefaultTimeZone                        *string                      `json:"DefaultTimeZone,omitempty" xml:"DefaultTimeZone,omitempty"`
+	GDNId                                  *string                      `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
+	LowerCaseTableNames                    *string                      `json:"LowerCaseTableNames,omitempty" xml:"LowerCaseTableNames,omitempty"`
+	OwnerAccount                           *string                      `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                                *int64                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ParameterGroupId                       *string                      `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
+	PayType                                *string                      `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Period                                 *string                      `json:"Period,omitempty" xml:"Period,omitempty"`
+	RegionId                               *string                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId                        *string                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount                   *string                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                        *int64                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityIPList                         *string                      `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	SourceResourceId                       *string                      `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
+	TDEStatus                              *bool                        `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
+	Tag                                    []*CreateDBClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UsedTime                               *string                      `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	VPCId                                  *string                      `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId                              *string                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId                                 *string                      `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateDBClusterRequest) String() string {
@@ -894,6 +907,11 @@ func (s *CreateDBClusterRequest) SetTDEStatus(v bool) *CreateDBClusterRequest {
 	return s
 }
 
+func (s *CreateDBClusterRequest) SetTag(v []*CreateDBClusterRequestTag) *CreateDBClusterRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateDBClusterRequest) SetUsedTime(v string) *CreateDBClusterRequest {
 	s.UsedTime = &v
 	return s
@@ -911,6 +929,29 @@ func (s *CreateDBClusterRequest) SetVSwitchId(v string) *CreateDBClusterRequest 
 
 func (s *CreateDBClusterRequest) SetZoneId(v string) *CreateDBClusterRequest {
 	s.ZoneId = &v
+	return s
+}
+
+type CreateDBClusterRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDBClusterRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBClusterRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBClusterRequestTag) SetKey(v string) *CreateDBClusterRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDBClusterRequestTag) SetValue(v string) *CreateDBClusterRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1219,6 +1260,7 @@ type CreateDBLinkRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SourceDBName         *string `json:"SourceDBName,omitempty" xml:"SourceDBName,omitempty"`
@@ -1266,6 +1308,11 @@ func (s *CreateDBLinkRequest) SetOwnerId(v int64) *CreateDBLinkRequest {
 
 func (s *CreateDBLinkRequest) SetRegionId(v string) *CreateDBLinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDBLinkRequest) SetResourceGroupId(v string) *CreateDBLinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1375,6 +1422,7 @@ type CreateDBNodesRequest struct {
 	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PlannedEndTime       *string                       `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	PlannedStartTime     *string                       `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
+	ResourceGroupId      *string                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -1429,6 +1477,11 @@ func (s *CreateDBNodesRequest) SetPlannedEndTime(v string) *CreateDBNodesRequest
 
 func (s *CreateDBNodesRequest) SetPlannedStartTime(v string) *CreateDBNodesRequest {
 	s.PlannedStartTime = &v
+	return s
+}
+
+func (s *CreateDBNodesRequest) SetResourceGroupId(v string) *CreateDBNodesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1680,6 +1733,7 @@ type CreateGlobalDatabaseNetworkRequest struct {
 	GDNDescription       *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -1710,6 +1764,11 @@ func (s *CreateGlobalDatabaseNetworkRequest) SetOwnerAccount(v string) *CreateGl
 
 func (s *CreateGlobalDatabaseNetworkRequest) SetOwnerId(v int64) *CreateGlobalDatabaseNetworkRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateGlobalDatabaseNetworkRequest) SetResourceGroupId(v string) *CreateGlobalDatabaseNetworkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1789,6 +1848,7 @@ type CreateParameterGroupRequest struct {
 	ParameterGroupName   *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
 	Parameters           *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -1838,6 +1898,11 @@ func (s *CreateParameterGroupRequest) SetParameters(v string) *CreateParameterGr
 
 func (s *CreateParameterGroupRequest) SetRegionId(v string) *CreateParameterGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetResourceGroupId(v string) *CreateParameterGroupRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2798,6 +2863,7 @@ type DeleteGlobalDatabaseNetworkRequest struct {
 	GDNId                *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -2823,6 +2889,11 @@ func (s *DeleteGlobalDatabaseNetworkRequest) SetOwnerAccount(v string) *DeleteGl
 
 func (s *DeleteGlobalDatabaseNetworkRequest) SetOwnerId(v int64) *DeleteGlobalDatabaseNetworkRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteGlobalDatabaseNetworkRequest) SetResourceGroupId(v string) *DeleteGlobalDatabaseNetworkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2973,6 +3044,7 @@ type DeleteParameterGroupRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ParameterGroupId     *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -3002,6 +3074,11 @@ func (s *DeleteParameterGroupRequest) SetParameterGroupId(v string) *DeleteParam
 
 func (s *DeleteParameterGroupRequest) SetRegionId(v string) *DeleteParameterGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteParameterGroupRequest) SetResourceGroupId(v string) *DeleteParameterGroupRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3270,6 +3347,7 @@ type DescribeAccountsResponseBodyAccounts struct {
 	AccountDescription       *string                                                   `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	AccountLockState         *string                                                   `json:"AccountLockState,omitempty" xml:"AccountLockState,omitempty"`
 	AccountName              *string                                                   `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountPassword          *string                                                   `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	AccountPasswordValidTime *string                                                   `json:"AccountPasswordValidTime,omitempty" xml:"AccountPasswordValidTime,omitempty"`
 	AccountStatus            *string                                                   `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	AccountType              *string                                                   `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
@@ -3296,6 +3374,11 @@ func (s *DescribeAccountsResponseBodyAccounts) SetAccountLockState(v string) *De
 
 func (s *DescribeAccountsResponseBodyAccounts) SetAccountName(v string) *DescribeAccountsResponseBodyAccounts {
 	s.AccountName = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccounts) SetAccountPassword(v string) *DescribeAccountsResponseBodyAccounts {
+	s.AccountPassword = &v
 	return s
 }
 
@@ -4502,6 +4585,182 @@ func (s *DescribeCharacterSetNameResponse) SetBody(v *DescribeCharacterSetNameRe
 	return s
 }
 
+type DescribeClassListRequest struct {
+	CommodityCode        *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	OrderType            *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeClassListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClassListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClassListRequest) SetCommodityCode(v string) *DescribeClassListRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeClassListRequest) SetOrderType(v string) *DescribeClassListRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *DescribeClassListRequest) SetOwnerAccount(v string) *DescribeClassListRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeClassListRequest) SetOwnerId(v int64) *DescribeClassListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeClassListRequest) SetRegionId(v string) *DescribeClassListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeClassListRequest) SetResourceGroupId(v string) *DescribeClassListRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeClassListRequest) SetResourceOwnerAccount(v string) *DescribeClassListRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeClassListRequest) SetResourceOwnerId(v int64) *DescribeClassListRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeClassListResponseBody struct {
+	Items     []*DescribeClassListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	RegionId  *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeClassListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClassListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClassListResponseBody) SetItems(v []*DescribeClassListResponseBodyItems) *DescribeClassListResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeClassListResponseBody) SetRegionId(v string) *DescribeClassListResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeClassListResponseBody) SetRequestId(v string) *DescribeClassListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeClassListResponseBodyItems struct {
+	ClassCode      *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	ClassGroup     *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
+	ClassTypeLevel *string `json:"ClassTypeLevel,omitempty" xml:"ClassTypeLevel,omitempty"`
+	Cpu            *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	MaxConnections *string `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MaxIOPS        *string `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	MemoryClass    *string `json:"MemoryClass,omitempty" xml:"MemoryClass,omitempty"`
+	ReferencePrice *string `json:"ReferencePrice,omitempty" xml:"ReferencePrice,omitempty"`
+}
+
+func (s DescribeClassListResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClassListResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClassListResponseBodyItems) SetClassCode(v string) *DescribeClassListResponseBodyItems {
+	s.ClassCode = &v
+	return s
+}
+
+func (s *DescribeClassListResponseBodyItems) SetClassGroup(v string) *DescribeClassListResponseBodyItems {
+	s.ClassGroup = &v
+	return s
+}
+
+func (s *DescribeClassListResponseBodyItems) SetClassTypeLevel(v string) *DescribeClassListResponseBodyItems {
+	s.ClassTypeLevel = &v
+	return s
+}
+
+func (s *DescribeClassListResponseBodyItems) SetCpu(v string) *DescribeClassListResponseBodyItems {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeClassListResponseBodyItems) SetMaxConnections(v string) *DescribeClassListResponseBodyItems {
+	s.MaxConnections = &v
+	return s
+}
+
+func (s *DescribeClassListResponseBodyItems) SetMaxIOPS(v string) *DescribeClassListResponseBodyItems {
+	s.MaxIOPS = &v
+	return s
+}
+
+func (s *DescribeClassListResponseBodyItems) SetMemoryClass(v string) *DescribeClassListResponseBodyItems {
+	s.MemoryClass = &v
+	return s
+}
+
+func (s *DescribeClassListResponseBodyItems) SetReferencePrice(v string) *DescribeClassListResponseBodyItems {
+	s.ReferencePrice = &v
+	return s
+}
+
+type DescribeClassListResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeClassListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeClassListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClassListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClassListResponse) SetHeaders(v map[string]*string) *DescribeClassListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClassListResponse) SetStatusCode(v int32) *DescribeClassListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeClassListResponse) SetBody(v *DescribeClassListResponseBody) *DescribeClassListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDBClusterAccessWhitelistRequest struct {
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -4761,6 +5020,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	RequestId                 *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroupId           *string                                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SQLSize                   *int64                                           `json:"SQLSize,omitempty" xml:"SQLSize,omitempty"`
+	ServerlessType            *string                                          `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
 	StorageMax                *int64                                           `json:"StorageMax,omitempty" xml:"StorageMax,omitempty"`
 	StoragePayType            *string                                          `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
 	StorageSpace              *int64                                           `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
@@ -4941,6 +5201,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetSQLSize(v int64) *DescribeDB
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBody) SetServerlessType(v string) *DescribeDBClusterAttributeResponseBody {
+	s.ServerlessType = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBody) SetStorageMax(v int64) *DescribeDBClusterAttributeResponseBody {
 	s.StorageMax = &v
 	return s
@@ -5004,6 +5269,7 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	MasterId         *string `json:"MasterId,omitempty" xml:"MasterId,omitempty"`
 	MaxConnections   *int32  `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	MaxIOPS          *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	SccMode          *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
 	ZoneId           *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -5072,6 +5338,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMaxConnections(v int3
 
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMaxIOPS(v int32) *DescribeDBClusterAttributeResponseBodyDBNodes {
 	s.MaxIOPS = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetSccMode(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.SccMode = &v
 	return s
 }
 
@@ -5496,6 +5767,7 @@ func (s *DescribeDBClusterEndpointsResponseBody) SetRequestId(v string) *Describ
 type DescribeDBClusterEndpointsResponseBodyItems struct {
 	AddressItems          []*DescribeDBClusterEndpointsResponseBodyItemsAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
 	AutoAddNewNodes       *string                                                    `json:"AutoAddNewNodes,omitempty" xml:"AutoAddNewNodes,omitempty"`
+	DBClusterId           *string                                                    `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	DBEndpointDescription *string                                                    `json:"DBEndpointDescription,omitempty" xml:"DBEndpointDescription,omitempty"`
 	DBEndpointId          *string                                                    `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	EndpointConfig        *string                                                    `json:"EndpointConfig,omitempty" xml:"EndpointConfig,omitempty"`
@@ -5520,6 +5792,11 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) SetAddressItems(v []*Descr
 
 func (s *DescribeDBClusterEndpointsResponseBodyItems) SetAutoAddNewNodes(v string) *DescribeDBClusterEndpointsResponseBodyItems {
 	s.AutoAddNewNodes = &v
+	return s
+}
+
+func (s *DescribeDBClusterEndpointsResponseBodyItems) SetDBClusterId(v string) *DescribeDBClusterEndpointsResponseBodyItems {
+	s.DBClusterId = &v
 	return s
 }
 
@@ -5810,6 +6087,7 @@ type DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems str
 	IPAddress        *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	NetType          *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	SSLEnabled       *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
 	VPCId            *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
@@ -5839,6 +6117,11 @@ func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems
 
 func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems) SetPort(v string) *DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems {
 	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems) SetSSLEnabled(v string) *DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems {
+	s.SSLEnabled = &v
 	return s
 }
 
@@ -5886,6 +6169,7 @@ type DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems struct {
 	IPAddress        *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	NetType          *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	SSLEnabled       *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
 	VPCId            *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
@@ -5915,6 +6199,11 @@ func (s *DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems) SetN
 
 func (s *DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems) SetPort(v string) *DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems {
 	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems) SetSSLEnabled(v string) *DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems {
+	s.SSLEnabled = &v
 	return s
 }
 
@@ -6650,6 +6939,7 @@ type DescribeDBClusterTDEResponseBody struct {
 	EncryptNewTables *string `json:"EncryptNewTables,omitempty" xml:"EncryptNewTables,omitempty"`
 	EncryptionKey    *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TDERegion        *string `json:"TDERegion,omitempty" xml:"TDERegion,omitempty"`
 	TDEStatus        *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 }
 
@@ -6678,6 +6968,11 @@ func (s *DescribeDBClusterTDEResponseBody) SetEncryptionKey(v string) *DescribeD
 
 func (s *DescribeDBClusterTDEResponseBody) SetRequestId(v string) *DescribeDBClusterTDEResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBClusterTDEResponseBody) SetTDERegion(v string) *DescribeDBClusterTDEResponseBody {
+	s.TDERegion = &v
 	return s
 }
 
@@ -6869,21 +7164,24 @@ func (s *DescribeDBClusterVersionResponse) SetBody(v *DescribeDBClusterVersionRe
 }
 
 type DescribeDBClustersRequest struct {
-	DBClusterDescription *string                         `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	DBClusterIds         *string                         `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
-	DBClusterStatus      *string                         `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	DBNodeIds            *string                         `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
-	DBType               *string                         `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	OwnerAccount         *string                         `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PayType              *string                         `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId             *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                         `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                          `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*DescribeDBClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	DBClusterDescription     *string                         `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	DBClusterIds             *string                         `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
+	DBClusterStatus          *string                         `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	DBNodeIds                *string                         `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
+	DBType                   *string                         `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	Expired                  *bool                           `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	OwnerAccount             *string                         `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                  *int64                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber               *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                 *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PayType                  *string                         `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RecentCreationInterval   *int32                          `json:"RecentCreationInterval,omitempty" xml:"RecentCreationInterval,omitempty"`
+	RecentExpirationInterval *int32                          `json:"RecentExpirationInterval,omitempty" xml:"RecentExpirationInterval,omitempty"`
+	RegionId                 *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId          *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount     *string                         `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId          *int64                          `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                      []*DescribeDBClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBClustersRequest) String() string {
@@ -6919,6 +7217,11 @@ func (s *DescribeDBClustersRequest) SetDBType(v string) *DescribeDBClustersReque
 	return s
 }
 
+func (s *DescribeDBClustersRequest) SetExpired(v bool) *DescribeDBClustersRequest {
+	s.Expired = &v
+	return s
+}
+
 func (s *DescribeDBClustersRequest) SetOwnerAccount(v string) *DescribeDBClustersRequest {
 	s.OwnerAccount = &v
 	return s
@@ -6941,6 +7244,16 @@ func (s *DescribeDBClustersRequest) SetPageSize(v int32) *DescribeDBClustersRequ
 
 func (s *DescribeDBClustersRequest) SetPayType(v string) *DescribeDBClustersRequest {
 	s.PayType = &v
+	return s
+}
+
+func (s *DescribeDBClustersRequest) SetRecentCreationInterval(v int32) *DescribeDBClustersRequest {
+	s.RecentCreationInterval = &v
+	return s
+}
+
+func (s *DescribeDBClustersRequest) SetRecentExpirationInterval(v int32) *DescribeDBClustersRequest {
+	s.RecentExpirationInterval = &v
 	return s
 }
 
@@ -7349,6 +7662,7 @@ type DescribeDBClustersWithBackupsRequest struct {
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -7408,6 +7722,11 @@ func (s *DescribeDBClustersWithBackupsRequest) SetPageSize(v int32) *DescribeDBC
 
 func (s *DescribeDBClustersWithBackupsRequest) SetRegionId(v string) *DescribeDBClustersWithBackupsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDBClustersWithBackupsRequest) SetResourceGroupId(v string) *DescribeDBClustersWithBackupsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9085,6 +9404,7 @@ type DescribeGlobalDatabaseNetworkRequest struct {
 	GDNId                *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -9110,6 +9430,11 @@ func (s *DescribeGlobalDatabaseNetworkRequest) SetOwnerAccount(v string) *Descri
 
 func (s *DescribeGlobalDatabaseNetworkRequest) SetOwnerId(v int64) *DescribeGlobalDatabaseNetworkRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkRequest) SetResourceGroupId(v string) *DescribeGlobalDatabaseNetworkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9419,6 +9744,7 @@ type DescribeGlobalDatabaseNetworksRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -9464,6 +9790,11 @@ func (s *DescribeGlobalDatabaseNetworksRequest) SetPageNumber(v int32) *Describe
 
 func (s *DescribeGlobalDatabaseNetworksRequest) SetPageSize(v int32) *DescribeGlobalDatabaseNetworksRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworksRequest) SetResourceGroupId(v string) *DescribeGlobalDatabaseNetworksRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10042,6 +10373,7 @@ type DescribeParameterGroupRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ParameterGroupId     *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -10071,6 +10403,11 @@ func (s *DescribeParameterGroupRequest) SetParameterGroupId(v string) *DescribeP
 
 func (s *DescribeParameterGroupRequest) SetRegionId(v string) *DescribeParameterGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupRequest) SetResourceGroupId(v string) *DescribeParameterGroupRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10236,6 +10573,7 @@ type DescribeParameterGroupsRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -10270,6 +10608,11 @@ func (s *DescribeParameterGroupsRequest) SetOwnerId(v int64) *DescribeParameterG
 
 func (s *DescribeParameterGroupsRequest) SetRegionId(v string) *DescribeParameterGroupsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetResourceGroupId(v string) *DescribeParameterGroupsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10406,6 +10749,7 @@ type DescribeParameterTemplatesRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -10440,6 +10784,11 @@ func (s *DescribeParameterTemplatesRequest) SetOwnerId(v int64) *DescribeParamet
 
 func (s *DescribeParameterTemplatesRequest) SetRegionId(v string) *DescribeParameterTemplatesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesRequest) SetResourceGroupId(v string) *DescribeParameterTemplatesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10612,6 +10961,7 @@ type DescribePendingMaintenanceActionRequest struct {
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -10653,6 +11003,11 @@ func (s *DescribePendingMaintenanceActionRequest) SetPageSize(v int32) *Describe
 
 func (s *DescribePendingMaintenanceActionRequest) SetRegion(v string) *DescribePendingMaintenanceActionRequest {
 	s.Region = &v
+	return s
+}
+
+func (s *DescribePendingMaintenanceActionRequest) SetResourceGroupId(v string) *DescribePendingMaintenanceActionRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10846,6 +11201,7 @@ type DescribePendingMaintenanceActionsRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -10876,6 +11232,11 @@ func (s *DescribePendingMaintenanceActionsRequest) SetOwnerId(v int64) *Describe
 
 func (s *DescribePendingMaintenanceActionsRequest) SetRegionId(v string) *DescribePendingMaintenanceActionsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribePendingMaintenanceActionsRequest) SetResourceGroupId(v string) *DescribePendingMaintenanceActionsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -11246,6 +11607,7 @@ type DescribeScheduleTasksRequest struct {
 	PlannedEndTime       *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -11307,6 +11669,11 @@ func (s *DescribeScheduleTasksRequest) SetPlannedStartTime(v string) *DescribeSc
 
 func (s *DescribeScheduleTasksRequest) SetRegionId(v string) *DescribeScheduleTasksRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeScheduleTasksRequest) SetResourceGroupId(v string) *DescribeScheduleTasksRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -12053,6 +12420,7 @@ type DescribeStoragePlanRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -12082,6 +12450,11 @@ func (s *DescribeStoragePlanRequest) SetPageNumber(v int32) *DescribeStoragePlan
 
 func (s *DescribeStoragePlanRequest) SetPageSize(v int32) *DescribeStoragePlanRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeStoragePlanRequest) SetResourceGroupId(v string) *DescribeStoragePlanRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -12650,6 +13023,165 @@ func (s *EnableFirewallRulesResponse) SetStatusCode(v int32) *EnableFirewallRule
 }
 
 func (s *EnableFirewallRulesResponse) SetBody(v *EnableFirewallRulesResponseBody) *EnableFirewallRulesResponse {
+	s.Body = v
+	return s
+}
+
+type EvaluateRegionResourceRequest struct {
+	DBInstanceConnType   *string `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
+	DBNodeClass          *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	DBType               *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion            *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	DispenseMode         *string `json:"DispenseMode,omitempty" xml:"DispenseMode,omitempty"`
+	NeedMaxScaleLink     *string `json:"NeedMaxScaleLink,omitempty" xml:"NeedMaxScaleLink,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SubDomain            *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s EvaluateRegionResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluateRegionResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluateRegionResourceRequest) SetDBInstanceConnType(v string) *EvaluateRegionResourceRequest {
+	s.DBInstanceConnType = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceRequest) SetDBNodeClass(v string) *EvaluateRegionResourceRequest {
+	s.DBNodeClass = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceRequest) SetDBType(v string) *EvaluateRegionResourceRequest {
+	s.DBType = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceRequest) SetDBVersion(v string) *EvaluateRegionResourceRequest {
+	s.DBVersion = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceRequest) SetDispenseMode(v string) *EvaluateRegionResourceRequest {
+	s.DispenseMode = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceRequest) SetNeedMaxScaleLink(v string) *EvaluateRegionResourceRequest {
+	s.NeedMaxScaleLink = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceRequest) SetOwnerAccount(v string) *EvaluateRegionResourceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceRequest) SetOwnerId(v int64) *EvaluateRegionResourceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceRequest) SetRegionId(v string) *EvaluateRegionResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceRequest) SetResourceGroupId(v string) *EvaluateRegionResourceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceRequest) SetResourceOwnerAccount(v string) *EvaluateRegionResourceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceRequest) SetResourceOwnerId(v int64) *EvaluateRegionResourceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceRequest) SetSubDomain(v string) *EvaluateRegionResourceRequest {
+	s.SubDomain = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceRequest) SetZoneId(v string) *EvaluateRegionResourceRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type EvaluateRegionResourceResponseBody struct {
+	DBInstanceAvailable *string `json:"DBInstanceAvailable,omitempty" xml:"DBInstanceAvailable,omitempty"`
+	DBType              *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion           *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EvaluateRegionResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluateRegionResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluateRegionResourceResponseBody) SetDBInstanceAvailable(v string) *EvaluateRegionResourceResponseBody {
+	s.DBInstanceAvailable = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceResponseBody) SetDBType(v string) *EvaluateRegionResourceResponseBody {
+	s.DBType = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceResponseBody) SetDBVersion(v string) *EvaluateRegionResourceResponseBody {
+	s.DBVersion = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceResponseBody) SetRequestId(v string) *EvaluateRegionResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EvaluateRegionResourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EvaluateRegionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EvaluateRegionResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluateRegionResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluateRegionResourceResponse) SetHeaders(v map[string]*string) *EvaluateRegionResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EvaluateRegionResourceResponse) SetStatusCode(v int32) *EvaluateRegionResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EvaluateRegionResourceResponse) SetBody(v *EvaluateRegionResourceResponseBody) *EvaluateRegionResourceResponse {
 	s.Body = v
 	return s
 }
@@ -15679,6 +16211,7 @@ type ModifyGlobalDatabaseNetworkRequest struct {
 	GDNId                *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -15709,6 +16242,11 @@ func (s *ModifyGlobalDatabaseNetworkRequest) SetOwnerAccount(v string) *ModifyGl
 
 func (s *ModifyGlobalDatabaseNetworkRequest) SetOwnerId(v int64) *ModifyGlobalDatabaseNetworkRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyGlobalDatabaseNetworkRequest) SetResourceGroupId(v string) *ModifyGlobalDatabaseNetworkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -15982,6 +16520,7 @@ type ModifyPendingMaintenanceActionRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -16013,6 +16552,11 @@ func (s *ModifyPendingMaintenanceActionRequest) SetOwnerId(v int64) *ModifyPendi
 
 func (s *ModifyPendingMaintenanceActionRequest) SetRegionId(v string) *ModifyPendingMaintenanceActionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyPendingMaintenanceActionRequest) SetResourceGroupId(v string) *ModifyPendingMaintenanceActionRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -16094,6 +16638,7 @@ type OpenAITaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	Username             *string `json:"Username,omitempty" xml:"Username,omitempty"`
@@ -16129,6 +16674,11 @@ func (s *OpenAITaskRequest) SetPassword(v string) *OpenAITaskRequest {
 
 func (s *OpenAITaskRequest) SetRegionId(v string) *OpenAITaskRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *OpenAITaskRequest) SetResourceGroupId(v string) *OpenAITaskRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -16241,10 +16791,7 @@ func (s *RefreshDBClusterStorageUsageRequest) SetSyncRealTime(v bool) *RefreshDB
 }
 
 type RefreshDBClusterStorageUsageResponseBody struct {
-	DBClusterId         *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UsedStorage         *string `json:"UsedStorage,omitempty" xml:"UsedStorage,omitempty"`
-	UsedStorageModified *string `json:"UsedStorageModified,omitempty" xml:"UsedStorageModified,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RefreshDBClusterStorageUsageResponseBody) String() string {
@@ -16255,23 +16802,8 @@ func (s RefreshDBClusterStorageUsageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RefreshDBClusterStorageUsageResponseBody) SetDBClusterId(v string) *RefreshDBClusterStorageUsageResponseBody {
-	s.DBClusterId = &v
-	return s
-}
-
 func (s *RefreshDBClusterStorageUsageResponseBody) SetRequestId(v string) *RefreshDBClusterStorageUsageResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *RefreshDBClusterStorageUsageResponseBody) SetUsedStorage(v string) *RefreshDBClusterStorageUsageResponseBody {
-	s.UsedStorage = &v
-	return s
-}
-
-func (s *RefreshDBClusterStorageUsageResponseBody) SetUsedStorageModified(v string) *RefreshDBClusterStorageUsageResponseBody {
-	s.UsedStorageModified = &v
 	return s
 }
 
@@ -16805,6 +17337,7 @@ type SwitchOverGlobalDatabaseNetworkRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -16840,6 +17373,11 @@ func (s *SwitchOverGlobalDatabaseNetworkRequest) SetOwnerId(v int64) *SwitchOver
 
 func (s *SwitchOverGlobalDatabaseNetworkRequest) SetRegionId(v string) *SwitchOverGlobalDatabaseNetworkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SwitchOverGlobalDatabaseNetworkRequest) SetResourceGroupId(v string) *SwitchOverGlobalDatabaseNetworkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -17789,6 +18327,10 @@ func (client *Client) CancelScheduleTasksWithOptions(request *CancelScheduleTask
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -18357,6 +18899,10 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		query["TDEStatus"] = request.TDEStatus
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
 		query["UsedTime"] = request.UsedTime
 	}
@@ -18597,6 +19143,10 @@ func (client *Client) CreateDBLinkWithOptions(request *CreateDBLinkRequest, runt
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -18711,6 +19261,10 @@ func (client *Client) CreateDBNodesWithOptions(request *CreateDBNodesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.PlannedStartTime)) {
 		query["PlannedStartTime"] = request.PlannedStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -18865,6 +19419,10 @@ func (client *Client) CreateGlobalDatabaseNetworkWithOptions(request *CreateGlob
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -18947,6 +19505,10 @@ func (client *Client) CreateParameterGroupWithOptions(request *CreateParameterGr
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -19605,6 +20167,10 @@ func (client *Client) DeleteGlobalDatabaseNetworkWithOptions(request *DeleteGlob
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -19719,6 +20285,10 @@ func (client *Client) DeleteParameterGroupWithOptions(request *DeleteParameterGr
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -20308,6 +20878,78 @@ func (client *Client) DescribeCharacterSetName(request *DescribeCharacterSetName
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCharacterSetNameResponse{}
 	_body, _err := client.DescribeCharacterSetNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeClassListWithOptions(request *DescribeClassListRequest, runtime *util.RuntimeOptions) (_result *DescribeClassListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClassList"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeClassListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeClassList(request *DescribeClassListRequest) (_result *DescribeClassListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeClassListResponse{}
+	_body, _err := client.DescribeClassListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21081,6 +21723,10 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 		query["DBType"] = request.DBType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Expired)) {
+		query["Expired"] = request.Expired
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -21099,6 +21745,14 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 
 	if !tea.BoolValue(util.IsUnset(request.PayType)) {
 		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecentCreationInterval)) {
+		query["RecentCreationInterval"] = request.RecentCreationInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecentExpirationInterval)) {
+		query["RecentExpirationInterval"] = request.RecentExpirationInterval
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -21199,6 +21853,10 @@ func (client *Client) DescribeDBClustersWithBackupsWithOptions(request *Describe
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -21729,6 +22387,10 @@ func (client *Client) DescribeGlobalDatabaseNetworkWithOptions(request *Describe
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -21807,6 +22469,10 @@ func (client *Client) DescribeGlobalDatabaseNetworksWithOptions(request *Describ
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -22069,6 +22735,10 @@ func (client *Client) DescribeParameterGroupWithOptions(request *DescribeParamet
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -22137,6 +22807,10 @@ func (client *Client) DescribeParameterGroupsWithOptions(request *DescribeParame
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -22203,6 +22877,10 @@ func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribePar
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -22277,6 +22955,10 @@ func (client *Client) DescribePendingMaintenanceActionWithOptions(request *Descr
 		query["Region"] = request.Region
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -22347,6 +23029,10 @@ func (client *Client) DescribePendingMaintenanceActionsWithOptions(request *Desc
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -22535,6 +23221,10 @@ func (client *Client) DescribeScheduleTasksWithOptions(request *DescribeSchedule
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -22781,6 +23471,10 @@ func (client *Client) DescribeStoragePlanWithOptions(request *DescribeStoragePla
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -22968,6 +23662,102 @@ func (client *Client) EnableFirewallRules(request *EnableFirewallRulesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableFirewallRulesResponse{}
 	_body, _err := client.EnableFirewallRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EvaluateRegionResourceWithOptions(request *EvaluateRegionResourceRequest, runtime *util.RuntimeOptions) (_result *EvaluateRegionResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceConnType)) {
+		query["DBInstanceConnType"] = request.DBInstanceConnType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBNodeClass)) {
+		query["DBNodeClass"] = request.DBNodeClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBType)) {
+		query["DBType"] = request.DBType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBVersion)) {
+		query["DBVersion"] = request.DBVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DispenseMode)) {
+		query["DispenseMode"] = request.DispenseMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedMaxScaleLink)) {
+		query["NeedMaxScaleLink"] = request.NeedMaxScaleLink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubDomain)) {
+		query["SubDomain"] = request.SubDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EvaluateRegionResource"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EvaluateRegionResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EvaluateRegionResource(request *EvaluateRegionResourceRequest) (_result *EvaluateRegionResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EvaluateRegionResourceResponse{}
+	_body, _err := client.EvaluateRegionResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24973,6 +25763,10 @@ func (client *Client) ModifyGlobalDatabaseNetworkWithOptions(request *ModifyGlob
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -25173,6 +25967,10 @@ func (client *Client) ModifyPendingMaintenanceActionWithOptions(request *ModifyP
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -25247,6 +26045,10 @@ func (client *Client) OpenAITaskWithOptions(request *OpenAITaskRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -25719,6 +26521,10 @@ func (client *Client) SwitchOverGlobalDatabaseNetworkWithOptions(request *Switch
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
