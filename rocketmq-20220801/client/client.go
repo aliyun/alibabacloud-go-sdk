@@ -16,7 +16,6 @@ type CreateConsumerGroupRequest struct {
 	ConsumeRetryPolicy *CreateConsumerGroupRequestConsumeRetryPolicy `json:"consumeRetryPolicy,omitempty" xml:"consumeRetryPolicy,omitempty" type:"Struct"`
 	DeliveryOrderType  *string                                       `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
 	Remark             *string                                       `json:"remark,omitempty" xml:"remark,omitempty"`
-	ResourceGroupId    *string                                       `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
 func (s CreateConsumerGroupRequest) String() string {
@@ -39,11 +38,6 @@ func (s *CreateConsumerGroupRequest) SetDeliveryOrderType(v string) *CreateConsu
 
 func (s *CreateConsumerGroupRequest) SetRemark(v string) *CreateConsumerGroupRequest {
 	s.Remark = &v
-	return s
-}
-
-func (s *CreateConsumerGroupRequest) SetResourceGroupId(v string) *CreateConsumerGroupRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -159,9 +153,8 @@ func (s *CreateConsumerGroupResponse) SetBody(v *CreateConsumerGroupResponseBody
 }
 
 type CreateTopicRequest struct {
-	MessageType     *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
-	Remark          *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
+	Remark      *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
 func (s CreateTopicRequest) String() string {
@@ -179,11 +172,6 @@ func (s *CreateTopicRequest) SetMessageType(v string) *CreateTopicRequest {
 
 func (s *CreateTopicRequest) SetRemark(v string) *CreateTopicRequest {
 	s.Remark = &v
-	return s
-}
-
-func (s *CreateTopicRequest) SetResourceGroupId(v string) *CreateTopicRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -606,7 +594,6 @@ type GetConsumerGroupResponseBodyData struct {
 	InstanceId         *string                                             `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	RegionId           *string                                             `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	Remark             *string                                             `json:"remark,omitempty" xml:"remark,omitempty"`
-	ResourceGroupId    *string                                             `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	Status             *string                                             `json:"status,omitempty" xml:"status,omitempty"`
 	UpdateTime         *string                                             `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
@@ -651,11 +638,6 @@ func (s *GetConsumerGroupResponseBodyData) SetRegionId(v string) *GetConsumerGro
 
 func (s *GetConsumerGroupResponseBodyData) SetRemark(v string) *GetConsumerGroupResponseBodyData {
 	s.Remark = &v
-	return s
-}
-
-func (s *GetConsumerGroupResponseBodyData) SetResourceGroupId(v string) *GetConsumerGroupResponseBodyData {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -781,28 +763,29 @@ func (s *GetInstanceResponseBody) SetSuccess(v bool) *GetInstanceResponseBody {
 }
 
 type GetInstanceResponseBodyData struct {
-	AccountInfo     *GetInstanceResponseBodyDataAccountInfo      `json:"accountInfo,omitempty" xml:"accountInfo,omitempty" type:"Struct"`
-	Bid             *string                                      `json:"bid,omitempty" xml:"bid,omitempty"`
-	CommodityCode   *string                                      `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	CreateTime      *string                                      `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	ExpireTime      *string                                      `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	ExtConfig       *GetInstanceResponseBodyDataExtConfig        `json:"extConfig,omitempty" xml:"extConfig,omitempty" type:"Struct"`
-	InstanceId      *string                                      `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceName    *string                                      `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	InstanceQuotas  []*GetInstanceResponseBodyDataInstanceQuotas `json:"instanceQuotas,omitempty" xml:"instanceQuotas,omitempty" type:"Repeated"`
-	NetworkInfo     *GetInstanceResponseBodyDataNetworkInfo      `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
-	PaymentType     *string                                      `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	RegionId        *string                                      `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	ReleaseTime     *string                                      `json:"releaseTime,omitempty" xml:"releaseTime,omitempty"`
-	Remark          *string                                      `json:"remark,omitempty" xml:"remark,omitempty"`
-	ResourceGroupId *string                                      `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	SeriesCode      *string                                      `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
-	ServiceCode     *string                                      `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
-	StartTime       *string                                      `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status          *string                                      `json:"status,omitempty" xml:"status,omitempty"`
-	SubSeriesCode   *string                                      `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
-	UpdateTime      *string                                      `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId          *string                                      `json:"userId,omitempty" xml:"userId,omitempty"`
+	AccountInfo    *GetInstanceResponseBodyDataAccountInfo      `json:"accountInfo,omitempty" xml:"accountInfo,omitempty" type:"Struct"`
+	Bid            *string                                      `json:"bid,omitempty" xml:"bid,omitempty"`
+	CommodityCode  *string                                      `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	CreateTime     *string                                      `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	ExpireTime     *string                                      `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	ExtConfig      *GetInstanceResponseBodyDataExtConfig        `json:"extConfig,omitempty" xml:"extConfig,omitempty" type:"Struct"`
+	GroupCount     *int64                                       `json:"groupCount,omitempty" xml:"groupCount,omitempty"`
+	InstanceId     *string                                      `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceName   *string                                      `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	InstanceQuotas []*GetInstanceResponseBodyDataInstanceQuotas `json:"instanceQuotas,omitempty" xml:"instanceQuotas,omitempty" type:"Repeated"`
+	NetworkInfo    *GetInstanceResponseBodyDataNetworkInfo      `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
+	PaymentType    *string                                      `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	RegionId       *string                                      `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ReleaseTime    *string                                      `json:"releaseTime,omitempty" xml:"releaseTime,omitempty"`
+	Remark         *string                                      `json:"remark,omitempty" xml:"remark,omitempty"`
+	SeriesCode     *string                                      `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
+	ServiceCode    *string                                      `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
+	StartTime      *string                                      `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status         *string                                      `json:"status,omitempty" xml:"status,omitempty"`
+	SubSeriesCode  *string                                      `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
+	TopicCount     *int64                                       `json:"topicCount,omitempty" xml:"topicCount,omitempty"`
+	UpdateTime     *string                                      `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UserId         *string                                      `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetInstanceResponseBodyData) String() string {
@@ -840,6 +823,11 @@ func (s *GetInstanceResponseBodyData) SetExpireTime(v string) *GetInstanceRespon
 
 func (s *GetInstanceResponseBodyData) SetExtConfig(v *GetInstanceResponseBodyDataExtConfig) *GetInstanceResponseBodyData {
 	s.ExtConfig = v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetGroupCount(v int64) *GetInstanceResponseBodyData {
+	s.GroupCount = &v
 	return s
 }
 
@@ -883,11 +871,6 @@ func (s *GetInstanceResponseBodyData) SetRemark(v string) *GetInstanceResponseBo
 	return s
 }
 
-func (s *GetInstanceResponseBodyData) SetResourceGroupId(v string) *GetInstanceResponseBodyData {
-	s.ResourceGroupId = &v
-	return s
-}
-
 func (s *GetInstanceResponseBodyData) SetSeriesCode(v string) *GetInstanceResponseBodyData {
 	s.SeriesCode = &v
 	return s
@@ -913,6 +896,11 @@ func (s *GetInstanceResponseBodyData) SetSubSeriesCode(v string) *GetInstanceRes
 	return s
 }
 
+func (s *GetInstanceResponseBodyData) SetTopicCount(v int64) *GetInstanceResponseBodyData {
+	s.TopicCount = &v
+	return s
+}
+
 func (s *GetInstanceResponseBodyData) SetUpdateTime(v string) *GetInstanceResponseBodyData {
 	s.UpdateTime = &v
 	return s
@@ -924,7 +912,6 @@ func (s *GetInstanceResponseBodyData) SetUserId(v string) *GetInstanceResponseBo
 }
 
 type GetInstanceResponseBodyDataAccountInfo struct {
-	Password *string `json:"password,omitempty" xml:"password,omitempty"`
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -934,11 +921,6 @@ func (s GetInstanceResponseBodyDataAccountInfo) String() string {
 
 func (s GetInstanceResponseBodyDataAccountInfo) GoString() string {
 	return s.String()
-}
-
-func (s *GetInstanceResponseBodyDataAccountInfo) SetPassword(v string) *GetInstanceResponseBodyDataAccountInfo {
-	s.Password = &v
-	return s
 }
 
 func (s *GetInstanceResponseBodyDataAccountInfo) SetUsername(v string) *GetInstanceResponseBodyDataAccountInfo {
@@ -1210,15 +1192,14 @@ func (s *GetTopicResponseBody) SetSuccess(v bool) *GetTopicResponseBody {
 }
 
 type GetTopicResponseBodyData struct {
-	CreateTime      *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	MessageType     *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
-	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Remark          *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
-	TopicName       *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	UpdateTime      *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
+	RegionId    *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Remark      *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
+	TopicName   *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+	UpdateTime  *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetTopicResponseBodyData) String() string {
@@ -1251,11 +1232,6 @@ func (s *GetTopicResponseBodyData) SetRegionId(v string) *GetTopicResponseBodyDa
 
 func (s *GetTopicResponseBodyData) SetRemark(v string) *GetTopicResponseBodyData {
 	s.Remark = &v
-	return s
-}
-
-func (s *GetTopicResponseBodyData) SetResourceGroupId(v string) *GetTopicResponseBodyData {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1304,10 +1280,9 @@ func (s *GetTopicResponse) SetBody(v *GetTopicResponseBody) *GetTopicResponse {
 }
 
 type ListConsumerGroupsRequest struct {
-	Filter          *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	PageNumber      *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Filter     *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListConsumerGroupsRequest) String() string {
@@ -1330,11 +1305,6 @@ func (s *ListConsumerGroupsRequest) SetPageNumber(v int32) *ListConsumerGroupsRe
 
 func (s *ListConsumerGroupsRequest) SetPageSize(v int32) *ListConsumerGroupsRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListConsumerGroupsRequest) SetResourceGroupId(v string) *ListConsumerGroupsRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1438,7 +1408,6 @@ type ListConsumerGroupsResponseBodyDataList struct {
 	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	Remark          *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
 	UpdateTime      *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
@@ -1473,11 +1442,6 @@ func (s *ListConsumerGroupsResponseBodyDataList) SetRegionId(v string) *ListCons
 
 func (s *ListConsumerGroupsResponseBodyDataList) SetRemark(v string) *ListConsumerGroupsResponseBodyDataList {
 	s.Remark = &v
-	return s
-}
-
-func (s *ListConsumerGroupsResponseBodyDataList) SetResourceGroupId(v string) *ListConsumerGroupsResponseBodyDataList {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1521,10 +1485,9 @@ func (s *ListConsumerGroupsResponse) SetBody(v *ListConsumerGroupsResponseBody) 
 }
 
 type ListInstancesRequest struct {
-	Filter          *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	PageNumber      *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Filter     *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -1547,11 +1510,6 @@ func (s *ListInstancesRequest) SetPageNumber(v int32) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetPageSize(v int32) *ListInstancesRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListInstancesRequest) SetResourceGroupId(v string) *ListInstancesRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1650,25 +1608,24 @@ func (s *ListInstancesResponseBodyData) SetTotalCount(v int64) *ListInstancesRes
 }
 
 type ListInstancesResponseBodyDataList struct {
-	CommodityCode   *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	CreateTime      *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	ExpireTime      *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	GroupCount      *int64  `json:"groupCount,omitempty" xml:"groupCount,omitempty"`
-	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceName    *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	PaymentType     *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	ReleaseTime     *string `json:"releaseTime,omitempty" xml:"releaseTime,omitempty"`
-	Remark          *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	SeriesCode      *string `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
-	ServiceCode     *string `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
-	StartTime       *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
-	SubSeriesCode   *string `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
-	TopicCount      *int64  `json:"topicCount,omitempty" xml:"topicCount,omitempty"`
-	UpdateTime      *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId          *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	CreateTime    *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	ExpireTime    *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	GroupCount    *int64  `json:"groupCount,omitempty" xml:"groupCount,omitempty"`
+	InstanceId    *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceName  *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	PaymentType   *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	RegionId      *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ReleaseTime   *string `json:"releaseTime,omitempty" xml:"releaseTime,omitempty"`
+	Remark        *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	SeriesCode    *string `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
+	ServiceCode   *string `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
+	StartTime     *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status        *string `json:"status,omitempty" xml:"status,omitempty"`
+	SubSeriesCode *string `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
+	TopicCount    *int64  `json:"topicCount,omitempty" xml:"topicCount,omitempty"`
+	UpdateTime    *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UserId        *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyDataList) String() string {
@@ -1726,11 +1683,6 @@ func (s *ListInstancesResponseBodyDataList) SetReleaseTime(v string) *ListInstan
 
 func (s *ListInstancesResponseBodyDataList) SetRemark(v string) *ListInstancesResponseBodyDataList {
 	s.Remark = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyDataList) SetResourceGroupId(v string) *ListInstancesResponseBodyDataList {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1804,10 +1756,9 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListTopicsRequest struct {
-	Filter          *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	PageNumber      *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Filter     *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListTopicsRequest) String() string {
@@ -1830,11 +1781,6 @@ func (s *ListTopicsRequest) SetPageNumber(v int32) *ListTopicsRequest {
 
 func (s *ListTopicsRequest) SetPageSize(v int32) *ListTopicsRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListTopicsRequest) SetResourceGroupId(v string) *ListTopicsRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1933,15 +1879,14 @@ func (s *ListTopicsResponseBodyData) SetTotalCount(v int64) *ListTopicsResponseB
 }
 
 type ListTopicsResponseBodyDataList struct {
-	CreateTime      *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	MessageType     *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
-	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Remark          *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
-	TopicName       *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	UpdateTime      *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
+	RegionId    *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Remark      *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
+	TopicName   *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+	UpdateTime  *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListTopicsResponseBodyDataList) String() string {
@@ -1974,11 +1919,6 @@ func (s *ListTopicsResponseBodyDataList) SetRegionId(v string) *ListTopicsRespon
 
 func (s *ListTopicsResponseBodyDataList) SetRemark(v string) *ListTopicsResponseBodyDataList {
 	s.Remark = &v
-	return s
-}
-
-func (s *ListTopicsResponseBodyDataList) SetResourceGroupId(v string) *ListTopicsResponseBodyDataList {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2030,7 +1970,6 @@ type UpdateConsumerGroupRequest struct {
 	ConsumeRetryPolicy *UpdateConsumerGroupRequestConsumeRetryPolicy `json:"consumeRetryPolicy,omitempty" xml:"consumeRetryPolicy,omitempty" type:"Struct"`
 	DeliveryOrderType  *string                                       `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
 	Remark             *string                                       `json:"remark,omitempty" xml:"remark,omitempty"`
-	ResourceGroupId    *string                                       `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
 func (s UpdateConsumerGroupRequest) String() string {
@@ -2053,11 +1992,6 @@ func (s *UpdateConsumerGroupRequest) SetDeliveryOrderType(v string) *UpdateConsu
 
 func (s *UpdateConsumerGroupRequest) SetRemark(v string) *UpdateConsumerGroupRequest {
 	s.Remark = &v
-	return s
-}
-
-func (s *UpdateConsumerGroupRequest) SetResourceGroupId(v string) *UpdateConsumerGroupRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2173,11 +2107,10 @@ func (s *UpdateConsumerGroupResponse) SetBody(v *UpdateConsumerGroupResponseBody
 }
 
 type UpdateInstanceRequest struct {
-	ExtConfig       *UpdateInstanceRequestExtConfig   `json:"extConfig,omitempty" xml:"extConfig,omitempty" type:"Struct"`
-	InstanceName    *string                           `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	NetworkInfo     *UpdateInstanceRequestNetworkInfo `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
-	Remark          *string                           `json:"remark,omitempty" xml:"remark,omitempty"`
-	ResourceGroupId *string                           `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	ExtConfig    *UpdateInstanceRequestExtConfig   `json:"extConfig,omitempty" xml:"extConfig,omitempty" type:"Struct"`
+	InstanceName *string                           `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	NetworkInfo  *UpdateInstanceRequestNetworkInfo `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
+	Remark       *string                           `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
 func (s UpdateInstanceRequest) String() string {
@@ -2205,11 +2138,6 @@ func (s *UpdateInstanceRequest) SetNetworkInfo(v *UpdateInstanceRequestNetworkIn
 
 func (s *UpdateInstanceRequest) SetRemark(v string) *UpdateInstanceRequest {
 	s.Remark = &v
-	return s
-}
-
-func (s *UpdateInstanceRequest) SetResourceGroupId(v string) *UpdateInstanceRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2371,8 +2299,7 @@ func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateI
 }
 
 type UpdateTopicRequest struct {
-	Remark          *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
 func (s UpdateTopicRequest) String() string {
@@ -2385,11 +2312,6 @@ func (s UpdateTopicRequest) GoString() string {
 
 func (s *UpdateTopicRequest) SetRemark(v string) *UpdateTopicRequest {
 	s.Remark = &v
-	return s
-}
-
-func (s *UpdateTopicRequest) SetResourceGroupId(v string) *UpdateTopicRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2545,8 +2467,6 @@ func (client *Client) CreateConsumerGroupWithOptions(instanceId *string, consume
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	consumerGroupId = openapiutil.GetEncodeParam(consumerGroupId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ConsumeRetryPolicy))) {
 		body["consumeRetryPolicy"] = request.ConsumeRetryPolicy
@@ -2560,10 +2480,6 @@ func (client *Client) CreateConsumerGroupWithOptions(instanceId *string, consume
 		body["remark"] = request.Remark
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		body["resourceGroupId"] = request.ResourceGroupId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -2572,7 +2488,7 @@ func (client *Client) CreateConsumerGroupWithOptions(instanceId *string, consume
 		Action:      tea.String("CreateConsumerGroup"),
 		Version:     tea.String("2022-08-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/instances/" + tea.StringValue(instanceId) + "/consumerGroups/" + tea.StringValue(consumerGroupId)),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/consumerGroups/" + tea.StringValue(openapiutil.GetEncodeParam(consumerGroupId))),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2605,8 +2521,6 @@ func (client *Client) CreateTopicWithOptions(instanceId *string, topicName *stri
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	topicName = openapiutil.GetEncodeParam(topicName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.MessageType)) {
 		body["messageType"] = request.MessageType
@@ -2614,10 +2528,6 @@ func (client *Client) CreateTopicWithOptions(instanceId *string, topicName *stri
 
 	if !tea.BoolValue(util.IsUnset(request.Remark)) {
 		body["remark"] = request.Remark
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		body["resourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2628,7 +2538,7 @@ func (client *Client) CreateTopicWithOptions(instanceId *string, topicName *stri
 		Action:      tea.String("CreateTopic"),
 		Version:     tea.String("2022-08-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/instances/" + tea.StringValue(instanceId) + "/topics/" + tea.StringValue(topicName)),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/topics/" + tea.StringValue(openapiutil.GetEncodeParam(topicName))),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2657,8 +2567,6 @@ func (client *Client) DeleteConsumerGroup(instanceId *string, consumerGroupId *s
 }
 
 func (client *Client) DeleteConsumerGroupWithOptions(instanceId *string, consumerGroupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConsumerGroupResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	consumerGroupId = openapiutil.GetEncodeParam(consumerGroupId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2666,7 +2574,7 @@ func (client *Client) DeleteConsumerGroupWithOptions(instanceId *string, consume
 		Action:      tea.String("DeleteConsumerGroup"),
 		Version:     tea.String("2022-08-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/instances/" + tea.StringValue(instanceId) + "/consumerGroups/" + tea.StringValue(consumerGroupId)),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/consumerGroups/" + tea.StringValue(openapiutil.GetEncodeParam(consumerGroupId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2695,7 +2603,6 @@ func (client *Client) DeleteInstance(instanceId *string) (_result *DeleteInstanc
 }
 
 func (client *Client) DeleteInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2703,7 +2610,7 @@ func (client *Client) DeleteInstanceWithOptions(instanceId *string, headers map[
 		Action:      tea.String("DeleteInstance"),
 		Version:     tea.String("2022-08-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/instances/" + tea.StringValue(instanceId)),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2732,8 +2639,6 @@ func (client *Client) DeleteTopic(instanceId *string, topicName *string) (_resul
 }
 
 func (client *Client) DeleteTopicWithOptions(instanceId *string, topicName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTopicResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	topicName = openapiutil.GetEncodeParam(topicName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2741,7 +2646,7 @@ func (client *Client) DeleteTopicWithOptions(instanceId *string, topicName *stri
 		Action:      tea.String("DeleteTopic"),
 		Version:     tea.String("2022-08-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/instances/" + tea.StringValue(instanceId) + "/topics/" + tea.StringValue(topicName)),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/topics/" + tea.StringValue(openapiutil.GetEncodeParam(topicName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2770,8 +2675,6 @@ func (client *Client) GetConsumerGroup(instanceId *string, consumerGroupId *stri
 }
 
 func (client *Client) GetConsumerGroupWithOptions(instanceId *string, consumerGroupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConsumerGroupResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	consumerGroupId = openapiutil.GetEncodeParam(consumerGroupId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2779,7 +2682,7 @@ func (client *Client) GetConsumerGroupWithOptions(instanceId *string, consumerGr
 		Action:      tea.String("GetConsumerGroup"),
 		Version:     tea.String("2022-08-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/instances/" + tea.StringValue(instanceId) + "/consumerGroups/" + tea.StringValue(consumerGroupId)),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/consumerGroups/" + tea.StringValue(openapiutil.GetEncodeParam(consumerGroupId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2808,7 +2711,6 @@ func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceRespo
 }
 
 func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2816,7 +2718,7 @@ func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[str
 		Action:      tea.String("GetInstance"),
 		Version:     tea.String("2022-08-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/instances/" + tea.StringValue(instanceId)),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2845,8 +2747,6 @@ func (client *Client) GetTopic(instanceId *string, topicName *string) (_result *
 }
 
 func (client *Client) GetTopicWithOptions(instanceId *string, topicName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTopicResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	topicName = openapiutil.GetEncodeParam(topicName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2854,7 +2754,7 @@ func (client *Client) GetTopicWithOptions(instanceId *string, topicName *string,
 		Action:      tea.String("GetTopic"),
 		Version:     tea.String("2022-08-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/instances/" + tea.StringValue(instanceId) + "/topics/" + tea.StringValue(topicName)),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/topics/" + tea.StringValue(openapiutil.GetEncodeParam(topicName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2887,7 +2787,6 @@ func (client *Client) ListConsumerGroupsWithOptions(instanceId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["filter"] = request.Filter
@@ -2901,10 +2800,6 @@ func (client *Client) ListConsumerGroupsWithOptions(instanceId *string, request 
 		query["pageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["resourceGroupId"] = request.ResourceGroupId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -2913,7 +2808,7 @@ func (client *Client) ListConsumerGroupsWithOptions(instanceId *string, request 
 		Action:      tea.String("ListConsumerGroups"),
 		Version:     tea.String("2022-08-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/instances/" + tea.StringValue(instanceId) + "/consumerGroups"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/consumerGroups"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2959,10 +2854,6 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 		query["pageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["resourceGroupId"] = request.ResourceGroupId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -3004,7 +2895,6 @@ func (client *Client) ListTopicsWithOptions(instanceId *string, request *ListTop
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["filter"] = request.Filter
@@ -3018,10 +2908,6 @@ func (client *Client) ListTopicsWithOptions(instanceId *string, request *ListTop
 		query["pageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["resourceGroupId"] = request.ResourceGroupId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -3030,7 +2916,7 @@ func (client *Client) ListTopicsWithOptions(instanceId *string, request *ListTop
 		Action:      tea.String("ListTopics"),
 		Version:     tea.String("2022-08-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/instances/" + tea.StringValue(instanceId) + "/topics"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/topics"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3063,8 +2949,6 @@ func (client *Client) UpdateConsumerGroupWithOptions(instanceId *string, consume
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	consumerGroupId = openapiutil.GetEncodeParam(consumerGroupId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ConsumeRetryPolicy))) {
 		body["consumeRetryPolicy"] = request.ConsumeRetryPolicy
@@ -3078,10 +2962,6 @@ func (client *Client) UpdateConsumerGroupWithOptions(instanceId *string, consume
 		body["remark"] = request.Remark
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		body["resourceGroupId"] = request.ResourceGroupId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -3090,7 +2970,7 @@ func (client *Client) UpdateConsumerGroupWithOptions(instanceId *string, consume
 		Action:      tea.String("UpdateConsumerGroup"),
 		Version:     tea.String("2022-08-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/instances/" + tea.StringValue(instanceId) + "/consumerGroups/" + tea.StringValue(consumerGroupId)),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/consumerGroups/" + tea.StringValue(openapiutil.GetEncodeParam(consumerGroupId))),
 		Method:      tea.String("PATCH"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3123,7 +3003,6 @@ func (client *Client) UpdateInstanceWithOptions(instanceId *string, request *Upd
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ExtConfig))) {
 		body["extConfig"] = request.ExtConfig
@@ -3141,10 +3020,6 @@ func (client *Client) UpdateInstanceWithOptions(instanceId *string, request *Upd
 		body["remark"] = request.Remark
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		body["resourceGroupId"] = request.ResourceGroupId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -3153,7 +3028,7 @@ func (client *Client) UpdateInstanceWithOptions(instanceId *string, request *Upd
 		Action:      tea.String("UpdateInstance"),
 		Version:     tea.String("2022-08-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/instances/" + tea.StringValue(instanceId)),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId))),
 		Method:      tea.String("PATCH"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3186,15 +3061,9 @@ func (client *Client) UpdateTopicWithOptions(instanceId *string, topicName *stri
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	topicName = openapiutil.GetEncodeParam(topicName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Remark)) {
 		body["remark"] = request.Remark
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		body["resourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3205,7 +3074,7 @@ func (client *Client) UpdateTopicWithOptions(instanceId *string, topicName *stri
 		Action:      tea.String("UpdateTopic"),
 		Version:     tea.String("2022-08-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/instances/" + tea.StringValue(instanceId) + "/topics/" + tea.StringValue(topicName)),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/topics/" + tea.StringValue(openapiutil.GetEncodeParam(topicName))),
 		Method:      tea.String("PATCH"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
