@@ -4230,139 +4230,6 @@ func (s *DescribeDcdnDdosServiceResponse) SetBody(v *DescribeDcdnDdosServiceResp
 	return s
 }
 
-type DescribeDcdnDdosSpecInfoRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeDcdnDdosSpecInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnDdosSpecInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnDdosSpecInfoRequest) SetOwnerId(v int64) *DescribeDcdnDdosSpecInfoRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DescribeDcdnDdosSpecInfoResponseBody struct {
-	Edition   *string                                          `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	Enable    *string                                          `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SpecInfos []*DescribeDcdnDdosSpecInfoResponseBodySpecInfos `json:"SpecInfos,omitempty" xml:"SpecInfos,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDcdnDdosSpecInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnDdosSpecInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnDdosSpecInfoResponseBody) SetEdition(v string) *DescribeDcdnDdosSpecInfoResponseBody {
-	s.Edition = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosSpecInfoResponseBody) SetEnable(v string) *DescribeDcdnDdosSpecInfoResponseBody {
-	s.Enable = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosSpecInfoResponseBody) SetRequestId(v string) *DescribeDcdnDdosSpecInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosSpecInfoResponseBody) SetSpecInfos(v []*DescribeDcdnDdosSpecInfoResponseBodySpecInfos) *DescribeDcdnDdosSpecInfoResponseBody {
-	s.SpecInfos = v
-	return s
-}
-
-type DescribeDcdnDdosSpecInfoResponseBodySpecInfos struct {
-	Configs []*DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	Rule    *string                                                 `json:"Rule,omitempty" xml:"Rule,omitempty"`
-}
-
-func (s DescribeDcdnDdosSpecInfoResponseBodySpecInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnDdosSpecInfoResponseBodySpecInfos) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnDdosSpecInfoResponseBodySpecInfos) SetConfigs(v []*DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs) *DescribeDcdnDdosSpecInfoResponseBodySpecInfos {
-	s.Configs = v
-	return s
-}
-
-func (s *DescribeDcdnDdosSpecInfoResponseBodySpecInfos) SetRule(v string) *DescribeDcdnDdosSpecInfoResponseBodySpecInfos {
-	s.Rule = &v
-	return s
-}
-
-type DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs struct {
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Expr   *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
-	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs) SetConfig(v string) *DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs {
-	s.Config = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs) SetExpr(v string) *DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs {
-	s.Expr = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs) SetValue(v string) *DescribeDcdnDdosSpecInfoResponseBodySpecInfosConfigs {
-	s.Value = &v
-	return s
-}
-
-type DescribeDcdnDdosSpecInfoResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDcdnDdosSpecInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDcdnDdosSpecInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnDdosSpecInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnDdosSpecInfoResponse) SetHeaders(v map[string]*string) *DescribeDcdnDdosSpecInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDcdnDdosSpecInfoResponse) SetStatusCode(v int32) *DescribeDcdnDdosSpecInfoResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosSpecInfoResponse) SetBody(v *DescribeDcdnDdosSpecInfoResponseBody) *DescribeDcdnDdosSpecInfoResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeDcdnDeletedDomainsRequest struct {
 	OwnerId    *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -5800,7 +5667,6 @@ func (s *DescribeDcdnDomainDetailResponseBody) SetRequestId(v string) *DescribeD
 }
 
 type DescribeDcdnDomainDetailResponseBodyDomainDetail struct {
-	CertName        *string                                                  `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	Cname           *string                                                  `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	Description     *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
 	DomainName      *string                                                  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -5820,11 +5686,6 @@ func (s DescribeDcdnDomainDetailResponseBodyDomainDetail) String() string {
 
 func (s DescribeDcdnDomainDetailResponseBodyDomainDetail) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDcdnDomainDetailResponseBodyDomainDetail) SetCertName(v string) *DescribeDcdnDomainDetailResponseBodyDomainDetail {
-	s.CertName = &v
-	return s
 }
 
 func (s *DescribeDcdnDomainDetailResponseBodyDomainDetail) SetCname(v string) *DescribeDcdnDomainDetailResponseBodyDomainDetail {
@@ -13784,87 +13645,6 @@ func (s *DescribeDcdnL2VipsResponse) SetStatusCode(v int32) *DescribeDcdnL2VipsR
 }
 
 func (s *DescribeDcdnL2VipsResponse) SetBody(v *DescribeDcdnL2VipsResponseBody) *DescribeDcdnL2VipsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeDcdnL2VipsByDomainRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeDcdnL2VipsByDomainRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnL2VipsByDomainRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnL2VipsByDomainRequest) SetDomainName(v string) *DescribeDcdnL2VipsByDomainRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeDcdnL2VipsByDomainRequest) SetOwnerId(v int64) *DescribeDcdnL2VipsByDomainRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DescribeDcdnL2VipsByDomainResponseBody struct {
-	DomainName *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Vips       []*string `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDcdnL2VipsByDomainResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnL2VipsByDomainResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnL2VipsByDomainResponseBody) SetDomainName(v string) *DescribeDcdnL2VipsByDomainResponseBody {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeDcdnL2VipsByDomainResponseBody) SetRequestId(v string) *DescribeDcdnL2VipsByDomainResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDcdnL2VipsByDomainResponseBody) SetVips(v []*string) *DescribeDcdnL2VipsByDomainResponseBody {
-	s.Vips = v
-	return s
-}
-
-type DescribeDcdnL2VipsByDomainResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDcdnL2VipsByDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDcdnL2VipsByDomainResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnL2VipsByDomainResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnL2VipsByDomainResponse) SetHeaders(v map[string]*string) *DescribeDcdnL2VipsByDomainResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDcdnL2VipsByDomainResponse) SetStatusCode(v int32) *DescribeDcdnL2VipsByDomainResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDcdnL2VipsByDomainResponse) SetBody(v *DescribeDcdnL2VipsByDomainResponseBody) *DescribeDcdnL2VipsByDomainResponse {
 	s.Body = v
 	return s
 }
@@ -27085,50 +26865,6 @@ func (client *Client) DescribeDcdnDdosService(request *DescribeDcdnDdosServiceRe
 	return _result, _err
 }
 
-func (client *Client) DescribeDcdnDdosSpecInfoWithOptions(request *DescribeDcdnDdosSpecInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnDdosSpecInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDcdnDdosSpecInfo"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDcdnDdosSpecInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDcdnDdosSpecInfo(request *DescribeDcdnDdosSpecInfoRequest) (_result *DescribeDcdnDdosSpecInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDcdnDdosSpecInfoResponse{}
-	_body, _err := client.DescribeDcdnDdosSpecInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeDcdnDeletedDomainsWithOptions(request *DescribeDcdnDeletedDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnDeletedDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30270,54 +30006,6 @@ func (client *Client) DescribeDcdnL2Vips(request *DescribeDcdnL2VipsRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnL2VipsResponse{}
 	_body, _err := client.DescribeDcdnL2VipsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDcdnL2VipsByDomainWithOptions(request *DescribeDcdnL2VipsByDomainRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnL2VipsByDomainResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
-		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDcdnL2VipsByDomain"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDcdnL2VipsByDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDcdnL2VipsByDomain(request *DescribeDcdnL2VipsByDomainRequest) (_result *DescribeDcdnL2VipsByDomainResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDcdnL2VipsByDomainResponse{}
-	_body, _err := client.DescribeDcdnL2VipsByDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
