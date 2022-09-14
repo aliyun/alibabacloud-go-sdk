@@ -374,6 +374,7 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 
 type CreateDBInstanceRequest struct {
 	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CreateSampleData      *bool   `json:"CreateSampleData,omitempty" xml:"CreateSampleData,omitempty"`
 	DBInstanceCategory    *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
 	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
@@ -411,6 +412,11 @@ func (s CreateDBInstanceRequest) GoString() string {
 
 func (s *CreateDBInstanceRequest) SetClientToken(v string) *CreateDBInstanceRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetCreateSampleData(v bool) *CreateDBInstanceRequest {
+	s.CreateSampleData = &v
 	return s
 }
 
@@ -1006,6 +1012,93 @@ func (s *CreateECSDBInstanceResponse) SetStatusCode(v int32) *CreateECSDBInstanc
 }
 
 func (s *CreateECSDBInstanceResponse) SetBody(v *CreateECSDBInstanceResponseBody) *CreateECSDBInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSampleDataRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s CreateSampleDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSampleDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSampleDataRequest) SetDBInstanceId(v string) *CreateSampleDataRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateSampleDataRequest) SetOwnerId(v int64) *CreateSampleDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type CreateSampleDataResponseBody struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateSampleDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSampleDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSampleDataResponseBody) SetDBInstanceId(v string) *CreateSampleDataResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateSampleDataResponseBody) SetErrorMessage(v string) *CreateSampleDataResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateSampleDataResponseBody) SetRequestId(v string) *CreateSampleDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSampleDataResponseBody) SetStatus(v bool) *CreateSampleDataResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CreateSampleDataResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSampleDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSampleDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSampleDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSampleDataResponse) SetHeaders(v map[string]*string) *CreateSampleDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSampleDataResponse) SetStatusCode(v int32) *CreateSampleDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSampleDataResponse) SetBody(v *CreateSampleDataResponseBody) *CreateSampleDataResponse {
 	s.Body = v
 	return s
 }
@@ -9368,6 +9461,93 @@ func (s *DescribeSQLLogsOnSliceResponse) SetBody(v *DescribeSQLLogsOnSliceRespon
 	return s
 }
 
+type DescribeSampleDataRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeSampleDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSampleDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSampleDataRequest) SetDBInstanceId(v string) *DescribeSampleDataRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeSampleDataRequest) SetOwnerId(v int64) *DescribeSampleDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeSampleDataResponseBody struct {
+	DBInstanceId  *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HasSampleData *bool   `json:"HasSampleData,omitempty" xml:"HasSampleData,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSampleDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSampleDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSampleDataResponseBody) SetDBInstanceId(v string) *DescribeSampleDataResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeSampleDataResponseBody) SetErrorMessage(v string) *DescribeSampleDataResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeSampleDataResponseBody) SetHasSampleData(v bool) *DescribeSampleDataResponseBody {
+	s.HasSampleData = &v
+	return s
+}
+
+func (s *DescribeSampleDataResponseBody) SetRequestId(v string) *DescribeSampleDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSampleDataResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSampleDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSampleDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSampleDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSampleDataResponse) SetHeaders(v map[string]*string) *DescribeSampleDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSampleDataResponse) SetStatusCode(v int32) *DescribeSampleDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSampleDataResponse) SetBody(v *DescribeSampleDataResponseBody) *DescribeSampleDataResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSlowLogRecordsRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	DBName       *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
@@ -12400,6 +12580,93 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 	return s
 }
 
+type UnloadSampleDataRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s UnloadSampleDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnloadSampleDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnloadSampleDataRequest) SetDBInstanceId(v string) *UnloadSampleDataRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UnloadSampleDataRequest) SetOwnerId(v int64) *UnloadSampleDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type UnloadSampleDataResponseBody struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UnloadSampleDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnloadSampleDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnloadSampleDataResponseBody) SetDBInstanceId(v string) *UnloadSampleDataResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UnloadSampleDataResponseBody) SetErrorMessage(v string) *UnloadSampleDataResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UnloadSampleDataResponseBody) SetRequestId(v string) *UnloadSampleDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UnloadSampleDataResponseBody) SetStatus(v bool) *UnloadSampleDataResponseBody {
+	s.Status = &v
+	return s
+}
+
+type UnloadSampleDataResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnloadSampleDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnloadSampleDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnloadSampleDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnloadSampleDataResponse) SetHeaders(v map[string]*string) *UnloadSampleDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnloadSampleDataResponse) SetStatusCode(v int32) *UnloadSampleDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnloadSampleDataResponse) SetBody(v *UnloadSampleDataResponseBody) *UnloadSampleDataResponse {
+	s.Body = v
+	return s
+}
+
 type UntagResourcesRequest struct {
 	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -13202,6 +13469,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CreateSampleData)) {
+		query["CreateSampleData"] = request.CreateSampleData
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceCategory)) {
 		query["DBInstanceCategory"] = request.DBInstanceCategory
 	}
@@ -13553,6 +13824,54 @@ func (client *Client) CreateECSDBInstance(request *CreateECSDBInstanceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateECSDBInstanceResponse{}
 	_body, _err := client.CreateECSDBInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSampleDataWithOptions(request *CreateSampleDataRequest, runtime *util.RuntimeOptions) (_result *CreateSampleDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSampleData"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSampleDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSampleData(request *CreateSampleDataRequest) (_result *CreateSampleDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSampleDataResponse{}
+	_body, _err := client.CreateSampleDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16270,6 +16589,54 @@ func (client *Client) DescribeSQLLogsOnSlice(request *DescribeSQLLogsOnSliceRequ
 	return _result, _err
 }
 
+func (client *Client) DescribeSampleDataWithOptions(request *DescribeSampleDataRequest, runtime *util.RuntimeOptions) (_result *DescribeSampleDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSampleData"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSampleDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSampleData(request *DescribeSampleDataRequest) (_result *DescribeSampleDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSampleDataResponse{}
+	_body, _err := client.DescribeSampleDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLogRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeSlowLogRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17957,6 +18324,54 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
 	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnloadSampleDataWithOptions(request *UnloadSampleDataRequest, runtime *util.RuntimeOptions) (_result *UnloadSampleDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnloadSampleData"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnloadSampleDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnloadSampleData(request *UnloadSampleDataRequest) (_result *UnloadSampleDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnloadSampleDataResponse{}
+	_body, _err := client.UnloadSampleDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
