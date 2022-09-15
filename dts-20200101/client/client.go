@@ -7292,10 +7292,6 @@ func (s *DescribeDtsJobDetailRequest) SetSynchronizationDirection(v string) *Des
 type DescribeDtsJobDetailResponseBody struct {
 	AppName                   *string                                                    `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	BeginTimestamp            *string                                                    `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
-	Binlog                    *string                                                    `json:"Binlog,omitempty" xml:"Binlog,omitempty"`
-	BinlogSite                *string                                                    `json:"BinlogSite,omitempty" xml:"BinlogSite,omitempty"`
-	BinlogTime                *string                                                    `json:"BinlogTime,omitempty" xml:"BinlogTime,omitempty"`
-	BootTime                  *string                                                    `json:"BootTime,omitempty" xml:"BootTime,omitempty"`
 	Checkpoint                *int64                                                     `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
 	Code                      *int32                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	ConsumptionCheckpoint     *string                                                    `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
@@ -7325,11 +7321,11 @@ type DescribeDtsJobDetailResponseBody struct {
 	GroupId                   *string                                                    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	HttpStatusCode            *int32                                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	JobType                   *string                                                    `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	LastUpdateTime            *string                                                    `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
 	MigrationMode             *DescribeDtsJobDetailResponseBodyMigrationMode             `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
 	PayType                   *string                                                    `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	RequestId                 *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Reserved                  *string                                                    `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	RetryState                *DescribeDtsJobDetailResponseBodyRetryState                `json:"RetryState,omitempty" xml:"RetryState,omitempty" type:"Struct"`
 	SourceEndpoint            *DescribeDtsJobDetailResponseBodySourceEndpoint            `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
 	Status                    *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 	SubDistributedJob         []*DescribeDtsJobDetailResponseBodySubDistributedJob       `json:"SubDistributedJob,omitempty" xml:"SubDistributedJob,omitempty" type:"Repeated"`
@@ -7357,26 +7353,6 @@ func (s *DescribeDtsJobDetailResponseBody) SetAppName(v string) *DescribeDtsJobD
 
 func (s *DescribeDtsJobDetailResponseBody) SetBeginTimestamp(v string) *DescribeDtsJobDetailResponseBody {
 	s.BeginTimestamp = &v
-	return s
-}
-
-func (s *DescribeDtsJobDetailResponseBody) SetBinlog(v string) *DescribeDtsJobDetailResponseBody {
-	s.Binlog = &v
-	return s
-}
-
-func (s *DescribeDtsJobDetailResponseBody) SetBinlogSite(v string) *DescribeDtsJobDetailResponseBody {
-	s.BinlogSite = &v
-	return s
-}
-
-func (s *DescribeDtsJobDetailResponseBody) SetBinlogTime(v string) *DescribeDtsJobDetailResponseBody {
-	s.BinlogTime = &v
-	return s
-}
-
-func (s *DescribeDtsJobDetailResponseBody) SetBootTime(v string) *DescribeDtsJobDetailResponseBody {
-	s.BootTime = &v
 	return s
 }
 
@@ -7525,11 +7501,6 @@ func (s *DescribeDtsJobDetailResponseBody) SetJobType(v string) *DescribeDtsJobD
 	return s
 }
 
-func (s *DescribeDtsJobDetailResponseBody) SetLastUpdateTime(v string) *DescribeDtsJobDetailResponseBody {
-	s.LastUpdateTime = &v
-	return s
-}
-
 func (s *DescribeDtsJobDetailResponseBody) SetMigrationMode(v *DescribeDtsJobDetailResponseBodyMigrationMode) *DescribeDtsJobDetailResponseBody {
 	s.MigrationMode = v
 	return s
@@ -7547,6 +7518,11 @@ func (s *DescribeDtsJobDetailResponseBody) SetRequestId(v string) *DescribeDtsJo
 
 func (s *DescribeDtsJobDetailResponseBody) SetReserved(v string) *DescribeDtsJobDetailResponseBody {
 	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetRetryState(v *DescribeDtsJobDetailResponseBodyRetryState) *DescribeDtsJobDetailResponseBody {
+	s.RetryState = v
 	return s
 }
 
@@ -7744,6 +7720,65 @@ func (s *DescribeDtsJobDetailResponseBodyMigrationMode) SetDataSynchronization(v
 
 func (s *DescribeDtsJobDetailResponseBodyMigrationMode) SetStructureInitialization(v bool) *DescribeDtsJobDetailResponseBodyMigrationMode {
 	s.StructureInitialization = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodyRetryState struct {
+	ErrMessage   *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MaxRetryTime *int32  `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
+	Module       *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	RetryCount   *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RetryTarget  *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
+	RetryTime    *int32  `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
+	Retrying     *bool   `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodyRetryState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodyRetryState) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodyRetryState) SetErrMessage(v string) *DescribeDtsJobDetailResponseBodyRetryState {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodyRetryState) SetJobId(v string) *DescribeDtsJobDetailResponseBodyRetryState {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodyRetryState) SetMaxRetryTime(v int32) *DescribeDtsJobDetailResponseBodyRetryState {
+	s.MaxRetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodyRetryState) SetModule(v string) *DescribeDtsJobDetailResponseBodyRetryState {
+	s.Module = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodyRetryState) SetRetryCount(v int32) *DescribeDtsJobDetailResponseBodyRetryState {
+	s.RetryCount = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodyRetryState) SetRetryTarget(v string) *DescribeDtsJobDetailResponseBodyRetryState {
+	s.RetryTarget = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodyRetryState) SetRetryTime(v int32) *DescribeDtsJobDetailResponseBodyRetryState {
+	s.RetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodyRetryState) SetRetrying(v bool) *DescribeDtsJobDetailResponseBodyRetryState {
+	s.Retrying = &v
 	return s
 }
 
@@ -11908,6 +11943,7 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	Performance                   *DescribeDtsJobsResponseBodyDtsJobListPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
 	PrecheckStatus                *DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus                `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
 	Reserved                      *string                                                             `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	ResourceGroupDisplayName      *string                                                             `json:"ResourceGroupDisplayName,omitempty" xml:"ResourceGroupDisplayName,omitempty"`
 	ResourceGroupId               *string                                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	RetryState                    *DescribeDtsJobsResponseBodyDtsJobListRetryState                    `json:"RetryState,omitempty" xml:"RetryState,omitempty" type:"Struct"`
 	ReverseJob                    *DescribeDtsJobsResponseBodyDtsJobListReverseJob                    `json:"ReverseJob,omitempty" xml:"ReverseJob,omitempty" type:"Struct"`
@@ -12082,6 +12118,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetPrecheckStatus(v *DescribeDts
 
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetReserved(v string) *DescribeDtsJobsResponseBodyDtsJobList {
 	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetResourceGroupDisplayName(v string) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.ResourceGroupDisplayName = &v
 	return s
 }
 
@@ -12455,10 +12496,13 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListPrecheckStatusDetail) SetRepairMet
 
 type DescribeDtsJobsResponseBodyDtsJobListRetryState struct {
 	ErrMessage   *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	MaxRetryTime *int32  `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
+	Module       *string `json:"Module,omitempty" xml:"Module,omitempty"`
 	RetryCount   *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
 	RetryTarget  *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
 	RetryTime    *int32  `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
+	Retrying     *bool   `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
 }
 
 func (s DescribeDtsJobsResponseBodyDtsJobListRetryState) String() string {
@@ -12474,8 +12518,18 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListRetryState) SetErrMessage(v string
 	return s
 }
 
+func (s *DescribeDtsJobsResponseBodyDtsJobListRetryState) SetJobId(v string) *DescribeDtsJobsResponseBodyDtsJobListRetryState {
+	s.JobId = &v
+	return s
+}
+
 func (s *DescribeDtsJobsResponseBodyDtsJobListRetryState) SetMaxRetryTime(v int32) *DescribeDtsJobsResponseBodyDtsJobListRetryState {
 	s.MaxRetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListRetryState) SetModule(v string) *DescribeDtsJobsResponseBodyDtsJobListRetryState {
+	s.Module = &v
 	return s
 }
 
@@ -12491,6 +12545,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListRetryState) SetRetryTarget(v strin
 
 func (s *DescribeDtsJobsResponseBodyDtsJobListRetryState) SetRetryTime(v int32) *DescribeDtsJobsResponseBodyDtsJobListRetryState {
 	s.RetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListRetryState) SetRetrying(v bool) *DescribeDtsJobsResponseBodyDtsJobListRetryState {
+	s.Retrying = &v
 	return s
 }
 
@@ -13228,6 +13287,7 @@ type DescribeDtsJobsResponseBodyEtlDemoList struct {
 	Performance                   *DescribeDtsJobsResponseBodyEtlDemoListPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
 	PrecheckStatus                *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus                `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
 	Reserved                      *string                                                              `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	ResourceGroupDisplayName      *string                                                              `json:"ResourceGroupDisplayName,omitempty" xml:"ResourceGroupDisplayName,omitempty"`
 	ResourceGroupId               *string                                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	RetryState                    *DescribeDtsJobsResponseBodyEtlDemoListRetryState                    `json:"RetryState,omitempty" xml:"RetryState,omitempty" type:"Struct"`
 	ReverseJob                    *DescribeDtsJobsResponseBodyEtlDemoListReverseJob                    `json:"ReverseJob,omitempty" xml:"ReverseJob,omitempty" type:"Struct"`
@@ -13377,6 +13437,11 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetPrecheckStatus(v *DescribeDt
 
 func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetReserved(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
 	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetResourceGroupDisplayName(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.ResourceGroupDisplayName = &v
 	return s
 }
 
@@ -13727,10 +13792,13 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail) SetRepairMe
 
 type DescribeDtsJobsResponseBodyEtlDemoListRetryState struct {
 	ErrMessage   *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	MaxRetryTime *int32  `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
+	Module       *string `json:"Module,omitempty" xml:"Module,omitempty"`
 	RetryCount   *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
 	RetryTarget  *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
 	RetryTime    *int32  `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
+	Retrying     *bool   `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
 }
 
 func (s DescribeDtsJobsResponseBodyEtlDemoListRetryState) String() string {
@@ -13746,8 +13814,18 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListRetryState) SetErrMessage(v strin
 	return s
 }
 
+func (s *DescribeDtsJobsResponseBodyEtlDemoListRetryState) SetJobId(v string) *DescribeDtsJobsResponseBodyEtlDemoListRetryState {
+	s.JobId = &v
+	return s
+}
+
 func (s *DescribeDtsJobsResponseBodyEtlDemoListRetryState) SetMaxRetryTime(v int32) *DescribeDtsJobsResponseBodyEtlDemoListRetryState {
 	s.MaxRetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListRetryState) SetModule(v string) *DescribeDtsJobsResponseBodyEtlDemoListRetryState {
+	s.Module = &v
 	return s
 }
 
@@ -13763,6 +13841,11 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListRetryState) SetRetryTarget(v stri
 
 func (s *DescribeDtsJobsResponseBodyEtlDemoListRetryState) SetRetryTime(v int32) *DescribeDtsJobsResponseBodyEtlDemoListRetryState {
 	s.RetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListRetryState) SetRetrying(v bool) *DescribeDtsJobsResponseBodyEtlDemoListRetryState {
+	s.Retrying = &v
 	return s
 }
 
@@ -22669,16 +22752,16 @@ func (s *ModifyDedicatedClusterResponse) SetBody(v *ModifyDedicatedClusterRespon
 }
 
 type ModifyDtsJobRequest struct {
-	ClientToken                *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DbList                     map[string]interface{} `json:"DbList,omitempty" xml:"DbList,omitempty"`
-	DtsInstanceId              *string                `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	EtlOperatorColumnReference *string                `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
-	FileOssUrl                 *string                `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
-	FilterTableName            *string                `json:"FilterTableName,omitempty" xml:"FilterTableName,omitempty"`
-	ModifyTypeEnum             *string                `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
-	RegionId                   *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Reserved                   *string                `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
-	SynchronizationDirection   *string                `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DbList                     *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
+	DtsInstanceId              *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	EtlOperatorColumnReference *string `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
+	FileOssUrl                 *string `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
+	FilterTableName            *string `json:"FilterTableName,omitempty" xml:"FilterTableName,omitempty"`
+	ModifyTypeEnum             *string `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
+	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Reserved                   *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	SynchronizationDirection   *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 }
 
 func (s ModifyDtsJobRequest) String() string {
@@ -22694,8 +22777,8 @@ func (s *ModifyDtsJobRequest) SetClientToken(v string) *ModifyDtsJobRequest {
 	return s
 }
 
-func (s *ModifyDtsJobRequest) SetDbList(v map[string]interface{}) *ModifyDtsJobRequest {
-	s.DbList = v
+func (s *ModifyDtsJobRequest) SetDbList(v string) *ModifyDtsJobRequest {
+	s.DbList = &v
 	return s
 }
 
@@ -22740,16 +22823,16 @@ func (s *ModifyDtsJobRequest) SetSynchronizationDirection(v string) *ModifyDtsJo
 }
 
 type ModifyDtsJobAdvanceRequest struct {
-	ClientToken                *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DbList                     map[string]interface{} `json:"DbList,omitempty" xml:"DbList,omitempty"`
-	DtsInstanceId              *string                `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	EtlOperatorColumnReference *string                `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
-	FileOssUrlObject           io.Reader              `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
-	FilterTableName            *string                `json:"FilterTableName,omitempty" xml:"FilterTableName,omitempty"`
-	ModifyTypeEnum             *string                `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
-	RegionId                   *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Reserved                   *string                `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
-	SynchronizationDirection   *string                `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	ClientToken                *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DbList                     *string   `json:"DbList,omitempty" xml:"DbList,omitempty"`
+	DtsInstanceId              *string   `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	EtlOperatorColumnReference *string   `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
+	FileOssUrlObject           io.Reader `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
+	FilterTableName            *string   `json:"FilterTableName,omitempty" xml:"FilterTableName,omitempty"`
+	ModifyTypeEnum             *string   `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
+	RegionId                   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Reserved                   *string   `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	SynchronizationDirection   *string   `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 }
 
 func (s ModifyDtsJobAdvanceRequest) String() string {
@@ -22765,8 +22848,8 @@ func (s *ModifyDtsJobAdvanceRequest) SetClientToken(v string) *ModifyDtsJobAdvan
 	return s
 }
 
-func (s *ModifyDtsJobAdvanceRequest) SetDbList(v map[string]interface{}) *ModifyDtsJobAdvanceRequest {
-	s.DbList = v
+func (s *ModifyDtsJobAdvanceRequest) SetDbList(v string) *ModifyDtsJobAdvanceRequest {
+	s.DbList = &v
 	return s
 }
 
@@ -22806,77 +22889,6 @@ func (s *ModifyDtsJobAdvanceRequest) SetReserved(v string) *ModifyDtsJobAdvanceR
 }
 
 func (s *ModifyDtsJobAdvanceRequest) SetSynchronizationDirection(v string) *ModifyDtsJobAdvanceRequest {
-	s.SynchronizationDirection = &v
-	return s
-}
-
-type ModifyDtsJobShrinkRequest struct {
-	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DbListShrink               *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
-	DtsInstanceId              *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	EtlOperatorColumnReference *string `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
-	FileOssUrl                 *string `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
-	FilterTableName            *string `json:"FilterTableName,omitempty" xml:"FilterTableName,omitempty"`
-	ModifyTypeEnum             *string `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
-	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Reserved                   *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
-	SynchronizationDirection   *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-}
-
-func (s ModifyDtsJobShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDtsJobShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDtsJobShrinkRequest) SetClientToken(v string) *ModifyDtsJobShrinkRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *ModifyDtsJobShrinkRequest) SetDbListShrink(v string) *ModifyDtsJobShrinkRequest {
-	s.DbListShrink = &v
-	return s
-}
-
-func (s *ModifyDtsJobShrinkRequest) SetDtsInstanceId(v string) *ModifyDtsJobShrinkRequest {
-	s.DtsInstanceId = &v
-	return s
-}
-
-func (s *ModifyDtsJobShrinkRequest) SetEtlOperatorColumnReference(v string) *ModifyDtsJobShrinkRequest {
-	s.EtlOperatorColumnReference = &v
-	return s
-}
-
-func (s *ModifyDtsJobShrinkRequest) SetFileOssUrl(v string) *ModifyDtsJobShrinkRequest {
-	s.FileOssUrl = &v
-	return s
-}
-
-func (s *ModifyDtsJobShrinkRequest) SetFilterTableName(v string) *ModifyDtsJobShrinkRequest {
-	s.FilterTableName = &v
-	return s
-}
-
-func (s *ModifyDtsJobShrinkRequest) SetModifyTypeEnum(v string) *ModifyDtsJobShrinkRequest {
-	s.ModifyTypeEnum = &v
-	return s
-}
-
-func (s *ModifyDtsJobShrinkRequest) SetRegionId(v string) *ModifyDtsJobShrinkRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ModifyDtsJobShrinkRequest) SetReserved(v string) *ModifyDtsJobShrinkRequest {
-	s.Reserved = &v
-	return s
-}
-
-func (s *ModifyDtsJobShrinkRequest) SetSynchronizationDirection(v string) *ModifyDtsJobShrinkRequest {
 	s.SynchronizationDirection = &v
 	return s
 }
@@ -32558,17 +32570,11 @@ func (client *Client) ModifyDedicatedCluster(request *ModifyDedicatedClusterRequ
 	return _result, _err
 }
 
-func (client *Client) ModifyDtsJobWithOptions(tmpReq *ModifyDtsJobRequest, runtime *util.RuntimeOptions) (_result *ModifyDtsJobResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ModifyDtsJobWithOptions(request *ModifyDtsJobRequest, runtime *util.RuntimeOptions) (_result *ModifyDtsJobResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ModifyDtsJobShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.DbList)) {
-		request.DbListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DbList, tea.String("DbList"), tea.String("json"))
-	}
-
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -32591,8 +32597,8 @@ func (client *Client) ModifyDtsJobWithOptions(tmpReq *ModifyDtsJobRequest, runti
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DbListShrink)) {
-		body["DbList"] = request.DbListShrink
+	if !tea.BoolValue(util.IsUnset(request.DbList)) {
+		body["DbList"] = request.DbList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EtlOperatorColumnReference)) {
