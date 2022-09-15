@@ -1054,16 +1054,16 @@ func (s *CreatePatchBaselineResponse) SetBody(v *CreatePatchBaselineResponseBody
 }
 
 type CreateSecretParameterRequest struct {
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Constraints     *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	KeyId           *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value           *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	ClientToken     *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Constraints     *string                `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	KeyId           *string                `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId        *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Type            *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value           *string                `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateSecretParameterRequest) String() string {
@@ -1109,8 +1109,8 @@ func (s *CreateSecretParameterRequest) SetResourceGroupId(v string) *CreateSecre
 	return s
 }
 
-func (s *CreateSecretParameterRequest) SetTags(v string) *CreateSecretParameterRequest {
-	s.Tags = &v
+func (s *CreateSecretParameterRequest) SetTags(v map[string]interface{}) *CreateSecretParameterRequest {
+	s.Tags = v
 	return s
 }
 
@@ -1120,6 +1120,77 @@ func (s *CreateSecretParameterRequest) SetType(v string) *CreateSecretParameterR
 }
 
 func (s *CreateSecretParameterRequest) SetValue(v string) *CreateSecretParameterRequest {
+	s.Value = &v
+	return s
+}
+
+type CreateSecretParameterShrinkRequest struct {
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Constraints     *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	KeyId           *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value           *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateSecretParameterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecretParameterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecretParameterShrinkRequest) SetClientToken(v string) *CreateSecretParameterShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateSecretParameterShrinkRequest) SetConstraints(v string) *CreateSecretParameterShrinkRequest {
+	s.Constraints = &v
+	return s
+}
+
+func (s *CreateSecretParameterShrinkRequest) SetDescription(v string) *CreateSecretParameterShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSecretParameterShrinkRequest) SetKeyId(v string) *CreateSecretParameterShrinkRequest {
+	s.KeyId = &v
+	return s
+}
+
+func (s *CreateSecretParameterShrinkRequest) SetName(v string) *CreateSecretParameterShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSecretParameterShrinkRequest) SetRegionId(v string) *CreateSecretParameterShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateSecretParameterShrinkRequest) SetResourceGroupId(v string) *CreateSecretParameterShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateSecretParameterShrinkRequest) SetTagsShrink(v string) *CreateSecretParameterShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateSecretParameterShrinkRequest) SetType(v string) *CreateSecretParameterShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateSecretParameterShrinkRequest) SetValue(v string) *CreateSecretParameterShrinkRequest {
 	s.Value = &v
 	return s
 }
@@ -1148,20 +1219,20 @@ func (s *CreateSecretParameterResponseBody) SetRequestId(v string) *CreateSecret
 }
 
 type CreateSecretParameterResponseBodyParameter struct {
-	Constraints      *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	CreatedBy        *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	CreatedDate      *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	KeyId            *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParameterVersion *int32  `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ShareType        *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Tags             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdatedBy        *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
-	UpdatedDate      *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
+	Constraints      *string                `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	CreatedBy        *string                `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	CreatedDate      *string                `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
+	Description      *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id               *string                `json:"Id,omitempty" xml:"Id,omitempty"`
+	KeyId            *string                `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	Name             *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParameterVersion *int32                 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
+	ResourceGroupId  *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ShareType        *string                `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	Tags             map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Type             *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdatedBy        *string                `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
+	UpdatedDate      *string                `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
 func (s CreateSecretParameterResponseBodyParameter) String() string {
@@ -1222,8 +1293,8 @@ func (s *CreateSecretParameterResponseBodyParameter) SetShareType(v string) *Cre
 	return s
 }
 
-func (s *CreateSecretParameterResponseBodyParameter) SetTags(v string) *CreateSecretParameterResponseBodyParameter {
-	s.Tags = &v
+func (s *CreateSecretParameterResponseBodyParameter) SetTags(v map[string]interface{}) *CreateSecretParameterResponseBodyParameter {
+	s.Tags = v
 	return s
 }
 
@@ -1826,6 +1897,7 @@ func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateT
 }
 
 type DeleteApplicationRequest struct {
+	Force    *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -1836,6 +1908,11 @@ func (s DeleteApplicationRequest) String() string {
 
 func (s DeleteApplicationRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteApplicationRequest) SetForce(v bool) *DeleteApplicationRequest {
+	s.Force = &v
+	return s
 }
 
 func (s *DeleteApplicationRequest) SetName(v string) *DeleteApplicationRequest {
@@ -2921,6 +2998,7 @@ type GetApplicationGroupResponseBodyApplicationGroup struct {
 	ImportTagKey     *string `json:"ImportTagKey,omitempty" xml:"ImportTagKey,omitempty"`
 	ImportTagValue   *string `json:"ImportTagValue,omitempty" xml:"ImportTagValue,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Progress         *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusReason     *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
@@ -2981,6 +3059,11 @@ func (s *GetApplicationGroupResponseBodyApplicationGroup) SetImportTagValue(v st
 
 func (s *GetApplicationGroupResponseBodyApplicationGroup) SetName(v string) *GetApplicationGroupResponseBodyApplicationGroup {
 	s.Name = &v
+	return s
+}
+
+func (s *GetApplicationGroupResponseBodyApplicationGroup) SetProgress(v string) *GetApplicationGroupResponseBodyApplicationGroup {
+	s.Progress = &v
 	return s
 }
 
@@ -5102,7 +5185,10 @@ type ListApplicationGroupsRequest struct {
 	DeployRegionId  *string `json:"DeployRegionId,omitempty" xml:"DeployRegionId,omitempty"`
 	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Product         *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListApplicationGroupsRequest) String() string {
@@ -5133,8 +5219,23 @@ func (s *ListApplicationGroupsRequest) SetNextToken(v string) *ListApplicationGr
 	return s
 }
 
+func (s *ListApplicationGroupsRequest) SetProduct(v string) *ListApplicationGroupsRequest {
+	s.Product = &v
+	return s
+}
+
 func (s *ListApplicationGroupsRequest) SetRegionId(v string) *ListApplicationGroupsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListApplicationGroupsRequest) SetResourceId(v string) *ListApplicationGroupsRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListApplicationGroupsRequest) SetResourceType(v string) *ListApplicationGroupsRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -13090,11 +13191,17 @@ func (client *Client) CreatePatchBaseline(request *CreatePatchBaselineRequest) (
 	return _result, _err
 }
 
-func (client *Client) CreateSecretParameterWithOptions(request *CreateSecretParameterRequest, runtime *util.RuntimeOptions) (_result *CreateSecretParameterResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateSecretParameterWithOptions(tmpReq *CreateSecretParameterRequest, runtime *util.RuntimeOptions) (_result *CreateSecretParameterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateSecretParameterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -13124,8 +13231,8 @@ func (client *Client) CreateSecretParameterWithOptions(request *CreateSecretPara
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tags)) {
-		query["Tags"] = request.Tags
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -13340,6 +13447,10 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -14704,8 +14815,20 @@ func (client *Client) ListApplicationGroupsWithOptions(request *ListApplicationG
 		query["NextToken"] = request.NextToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["Product"] = request.Product
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	req := &openapi.OpenApiRequest{
