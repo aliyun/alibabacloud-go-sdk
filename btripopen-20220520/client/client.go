@@ -6249,10 +6249,10 @@ func (s *CorpTokenRequest) SetType(v int32) *CorpTokenRequest {
 }
 
 type CorpTokenResponseBody struct {
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *string                    `json:"code,omitempty" xml:"code,omitempty"`
 	Data      *CorpTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	Message   *string                    `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	TraceId   *string                    `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -6262,11 +6262,6 @@ func (s CorpTokenResponseBody) String() string {
 
 func (s CorpTokenResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CorpTokenResponseBody) SetRequestId(v string) *CorpTokenResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *CorpTokenResponseBody) SetCode(v string) *CorpTokenResponseBody {
@@ -6281,6 +6276,11 @@ func (s *CorpTokenResponseBody) SetData(v *CorpTokenResponseBodyData) *CorpToken
 
 func (s *CorpTokenResponseBody) SetMessage(v string) *CorpTokenResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *CorpTokenResponseBody) SetRequestId(v string) *CorpTokenResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -16323,7 +16323,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -16392,7 +16391,7 @@ func (client *Client) AccessTokenWithOptions(request *AccessTokenRequest, header
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/btrip-open-auth/v1/access-token/action/take"),
 		Method:      tea.String("GET"),
-		AuthType:    tea.String("Anonymous"),
+		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
