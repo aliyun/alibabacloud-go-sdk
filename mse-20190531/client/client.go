@@ -385,6 +385,7 @@ type AddAuthResourceRequest struct {
 	AuthId          *int64  `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
 	DomainId        *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	MatchType       *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
@@ -414,6 +415,11 @@ func (s *AddAuthResourceRequest) SetDomainId(v int64) *AddAuthResourceRequest {
 
 func (s *AddAuthResourceRequest) SetGatewayUniqueId(v string) *AddAuthResourceRequest {
 	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *AddAuthResourceRequest) SetMatchType(v string) *AddAuthResourceRequest {
+	s.MatchType = &v
 	return s
 }
 
@@ -30428,6 +30434,10 @@ func (client *Client) AddAuthResourceWithOptions(request *AddAuthResourceRequest
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchType)) {
+		query["MatchType"] = request.MatchType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
