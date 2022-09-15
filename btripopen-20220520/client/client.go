@@ -7099,12 +7099,12 @@ func (s *DepartmentSaveShrinkRequest) SetDepartListShrink(v string) *DepartmentS
 }
 
 type DepartmentSaveResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Module     *string `json:"module,omitempty" xml:"module,omitempty"`
-	ResultCode *int32  `json:"result_code,omitempty" xml:"result_code,omitempty"`
-	ResultMsg  *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
-	Success    *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId    *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *string `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s DepartmentSaveResponseBody) String() string {
@@ -7115,8 +7115,13 @@ func (s DepartmentSaveResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DepartmentSaveResponseBody) SetRequestId(v string) *DepartmentSaveResponseBody {
-	s.RequestId = &v
+func (s *DepartmentSaveResponseBody) SetCode(v int32) *DepartmentSaveResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DepartmentSaveResponseBody) SetMessage(v string) *DepartmentSaveResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -7125,13 +7130,8 @@ func (s *DepartmentSaveResponseBody) SetModule(v string) *DepartmentSaveResponse
 	return s
 }
 
-func (s *DepartmentSaveResponseBody) SetResultCode(v int32) *DepartmentSaveResponseBody {
-	s.ResultCode = &v
-	return s
-}
-
-func (s *DepartmentSaveResponseBody) SetResultMsg(v string) *DepartmentSaveResponseBody {
-	s.ResultMsg = &v
+func (s *DepartmentSaveResponseBody) SetRequestId(v string) *DepartmentSaveResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13183,12 +13183,12 @@ func (s *IsvUserSaveShrinkRequest) SetUserListShrink(v string) *IsvUserSaveShrin
 }
 
 type IsvUserSaveResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Module     *string `json:"module,omitempty" xml:"module,omitempty"`
-	ResultCode *int32  `json:"result_code,omitempty" xml:"result_code,omitempty"`
-	ResultMsg  *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
-	Success    *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId    *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *string `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s IsvUserSaveResponseBody) String() string {
@@ -13199,8 +13199,13 @@ func (s IsvUserSaveResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *IsvUserSaveResponseBody) SetRequestId(v string) *IsvUserSaveResponseBody {
-	s.RequestId = &v
+func (s *IsvUserSaveResponseBody) SetCode(v int32) *IsvUserSaveResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *IsvUserSaveResponseBody) SetMessage(v string) *IsvUserSaveResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -13209,13 +13214,8 @@ func (s *IsvUserSaveResponseBody) SetModule(v string) *IsvUserSaveResponseBody {
 	return s
 }
 
-func (s *IsvUserSaveResponseBody) SetResultCode(v int32) *IsvUserSaveResponseBody {
-	s.ResultCode = &v
-	return s
-}
-
-func (s *IsvUserSaveResponseBody) SetResultMsg(v string) *IsvUserSaveResponseBody {
-	s.ResultMsg = &v
+func (s *IsvUserSaveResponseBody) SetRequestId(v string) *IsvUserSaveResponseBody {
+	s.RequestId = &v
 	return s
 }
 
