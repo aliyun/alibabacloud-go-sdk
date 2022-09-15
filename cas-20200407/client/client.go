@@ -47,8 +47,9 @@ func (s *CancelCertificateForPackageRequestResponseBody) SetRequestId(v string) 
 }
 
 type CancelCertificateForPackageRequestResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CancelCertificateForPackageRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelCertificateForPackageRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CancelCertificateForPackageRequestResponse) String() string {
@@ -61,6 +62,11 @@ func (s CancelCertificateForPackageRequestResponse) GoString() string {
 
 func (s *CancelCertificateForPackageRequestResponse) SetHeaders(v map[string]*string) *CancelCertificateForPackageRequestResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CancelCertificateForPackageRequestResponse) SetStatusCode(v int32) *CancelCertificateForPackageRequestResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -104,8 +110,9 @@ func (s *CancelOrderRequestResponseBody) SetRequestId(v string) *CancelOrderRequ
 }
 
 type CancelOrderRequestResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CancelOrderRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelOrderRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CancelOrderRequestResponse) String() string {
@@ -118,6 +125,11 @@ func (s CancelOrderRequestResponse) GoString() string {
 
 func (s *CancelOrderRequestResponse) SetHeaders(v map[string]*string) *CancelOrderRequestResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CancelOrderRequestResponse) SetStatusCode(v int32) *CancelOrderRequestResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -209,8 +221,9 @@ func (s *CreateCertificateForPackageRequestResponseBody) SetRequestId(v string) 
 }
 
 type CreateCertificateForPackageRequestResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCertificateForPackageRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCertificateForPackageRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCertificateForPackageRequestResponse) String() string {
@@ -223,6 +236,11 @@ func (s CreateCertificateForPackageRequestResponse) GoString() string {
 
 func (s *CreateCertificateForPackageRequestResponse) SetHeaders(v map[string]*string) *CreateCertificateForPackageRequestResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateCertificateForPackageRequestResponse) SetStatusCode(v int32) *CreateCertificateForPackageRequestResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -302,8 +320,9 @@ func (s *CreateCertificateRequestResponseBody) SetRequestId(v string) *CreateCer
 }
 
 type CreateCertificateRequestResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCertificateRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCertificateRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCertificateRequestResponse) String() string {
@@ -316,6 +335,11 @@ func (s CreateCertificateRequestResponse) GoString() string {
 
 func (s *CreateCertificateRequestResponse) SetHeaders(v map[string]*string) *CreateCertificateRequestResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateCertificateRequestResponse) SetStatusCode(v int32) *CreateCertificateRequestResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -395,8 +419,9 @@ func (s *CreateCertificateWithCsrRequestResponseBody) SetRequestId(v string) *Cr
 }
 
 type CreateCertificateWithCsrRequestResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCertificateWithCsrRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCertificateWithCsrRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCertificateWithCsrRequestResponse) String() string {
@@ -409,6 +434,11 @@ func (s CreateCertificateWithCsrRequestResponse) GoString() string {
 
 func (s *CreateCertificateWithCsrRequestResponse) SetHeaders(v map[string]*string) *CreateCertificateWithCsrRequestResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateCertificateWithCsrRequestResponse) SetStatusCode(v int32) *CreateCertificateWithCsrRequestResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -452,8 +482,9 @@ func (s *DeleteCertificateRequestResponseBody) SetRequestId(v string) *DeleteCer
 }
 
 type DeleteCertificateRequestResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteCertificateRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCertificateRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteCertificateRequestResponse) String() string {
@@ -469,7 +500,75 @@ func (s *DeleteCertificateRequestResponse) SetHeaders(v map[string]*string) *Del
 	return s
 }
 
+func (s *DeleteCertificateRequestResponse) SetStatusCode(v int32) *DeleteCertificateRequestResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteCertificateRequestResponse) SetBody(v *DeleteCertificateRequestResponseBody) *DeleteCertificateRequestResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePCACertRequest struct {
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+}
+
+func (s DeletePCACertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePCACertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePCACertRequest) SetIdentifier(v string) *DeletePCACertRequest {
+	s.Identifier = &v
+	return s
+}
+
+type DeletePCACertResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePCACertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePCACertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePCACertResponseBody) SetRequestId(v string) *DeletePCACertResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePCACertResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePCACertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePCACertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePCACertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePCACertResponse) SetHeaders(v map[string]*string) *DeletePCACertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePCACertResponse) SetStatusCode(v int32) *DeletePCACertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePCACertResponse) SetBody(v *DeletePCACertResponseBody) *DeletePCACertResponse {
 	s.Body = v
 	return s
 }
@@ -569,8 +668,9 @@ func (s *DescribeCertificateStateResponseBody) SetValidateType(v string) *Descri
 }
 
 type DescribeCertificateStateResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCertificateStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCertificateStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCertificateStateResponse) String() string {
@@ -583,6 +683,11 @@ func (s DescribeCertificateStateResponse) GoString() string {
 
 func (s *DescribeCertificateStateResponse) SetHeaders(v map[string]*string) *DescribeCertificateStateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCertificateStateResponse) SetStatusCode(v int32) *DescribeCertificateStateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -650,8 +755,9 @@ func (s *DescribePackageStateResponseBody) SetUsedCount(v int64) *DescribePackag
 }
 
 type DescribePackageStateResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribePackageStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePackageStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribePackageStateResponse) String() string {
@@ -667,7 +773,370 @@ func (s *DescribePackageStateResponse) SetHeaders(v map[string]*string) *Describ
 	return s
 }
 
+func (s *DescribePackageStateResponse) SetStatusCode(v int32) *DescribePackageStateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribePackageStateResponse) SetBody(v *DescribePackageStateResponseBody) *DescribePackageStateResponse {
+	s.Body = v
+	return s
+}
+
+type ListCertRequest struct {
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	KeyWord     *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	ShowSize    *int64  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	WarehouseId *int64  `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
+}
+
+func (s ListCertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertRequest) SetCurrentPage(v int64) *ListCertRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCertRequest) SetKeyWord(v string) *ListCertRequest {
+	s.KeyWord = &v
+	return s
+}
+
+func (s *ListCertRequest) SetShowSize(v int64) *ListCertRequest {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListCertRequest) SetStatus(v string) *ListCertRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCertRequest) SetWarehouseId(v int64) *ListCertRequest {
+	s.WarehouseId = &v
+	return s
+}
+
+type ListCertResponseBody struct {
+	CertList    []*ListCertResponseBodyCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Repeated"`
+	CurrentPage *int64                          `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RequestId   *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ShowSize    *int64                          `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	TotalCount  *int64                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertResponseBody) SetCertList(v []*ListCertResponseBodyCertList) *ListCertResponseBody {
+	s.CertList = v
+	return s
+}
+
+func (s *ListCertResponseBody) SetCurrentPage(v int64) *ListCertResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCertResponseBody) SetRequestId(v string) *ListCertResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCertResponseBody) SetShowSize(v int64) *ListCertResponseBody {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListCertResponseBody) SetTotalCount(v int64) *ListCertResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCertResponseBodyCertList struct {
+	AfterDate       *int64  `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
+	BeforeDate      *int64  `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	CommonName      *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	ExistPrivateKey *bool   `json:"ExistPrivateKey,omitempty" xml:"ExistPrivateKey,omitempty"`
+	Identifier      *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	Issuer          *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	Sans            *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	WhId            *int64  `json:"WhId,omitempty" xml:"WhId,omitempty"`
+	WhInstanceId    *string `json:"WhInstanceId,omitempty" xml:"WhInstanceId,omitempty"`
+}
+
+func (s ListCertResponseBodyCertList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertResponseBodyCertList) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertResponseBodyCertList) SetAfterDate(v int64) *ListCertResponseBodyCertList {
+	s.AfterDate = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetBeforeDate(v int64) *ListCertResponseBodyCertList {
+	s.BeforeDate = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetCommonName(v string) *ListCertResponseBodyCertList {
+	s.CommonName = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetExistPrivateKey(v bool) *ListCertResponseBodyCertList {
+	s.ExistPrivateKey = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetIdentifier(v string) *ListCertResponseBodyCertList {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetIssuer(v string) *ListCertResponseBodyCertList {
+	s.Issuer = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetSans(v string) *ListCertResponseBodyCertList {
+	s.Sans = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetSourceType(v string) *ListCertResponseBodyCertList {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetStatus(v string) *ListCertResponseBodyCertList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetWhId(v int64) *ListCertResponseBodyCertList {
+	s.WhId = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetWhInstanceId(v string) *ListCertResponseBodyCertList {
+	s.WhInstanceId = &v
+	return s
+}
+
+type ListCertResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertResponse) SetHeaders(v map[string]*string) *ListCertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCertResponse) SetStatusCode(v int32) *ListCertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCertResponse) SetBody(v *ListCertResponseBody) *ListCertResponse {
+	s.Body = v
+	return s
+}
+
+type ListCertWarehouseRequest struct {
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShowSize    *int64  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListCertWarehouseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertWarehouseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertWarehouseRequest) SetCurrentPage(v int64) *ListCertWarehouseRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCertWarehouseRequest) SetInstanceId(v string) *ListCertWarehouseRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCertWarehouseRequest) SetName(v string) *ListCertWarehouseRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCertWarehouseRequest) SetShowSize(v int64) *ListCertWarehouseRequest {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListCertWarehouseRequest) SetType(v string) *ListCertWarehouseRequest {
+	s.Type = &v
+	return s
+}
+
+type ListCertWarehouseResponseBody struct {
+	CertWarehouseList []*ListCertWarehouseResponseBodyCertWarehouseList `json:"CertWarehouseList,omitempty" xml:"CertWarehouseList,omitempty" type:"Repeated"`
+	CurrentPage       *int64                                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RequestId         *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ShowSize          *int64                                            `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	TotalCount        *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCertWarehouseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertWarehouseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertWarehouseResponseBody) SetCertWarehouseList(v []*ListCertWarehouseResponseBodyCertWarehouseList) *ListCertWarehouseResponseBody {
+	s.CertWarehouseList = v
+	return s
+}
+
+func (s *ListCertWarehouseResponseBody) SetCurrentPage(v int64) *ListCertWarehouseResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCertWarehouseResponseBody) SetRequestId(v string) *ListCertWarehouseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCertWarehouseResponseBody) SetShowSize(v int64) *ListCertWarehouseResponseBody {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListCertWarehouseResponseBody) SetTotalCount(v int64) *ListCertWarehouseResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCertWarehouseResponseBodyCertWarehouseList struct {
+	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsExpired     *bool   `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PcaInstanceId *string `json:"PcaInstanceId,omitempty" xml:"PcaInstanceId,omitempty"`
+	Qps           *int64  `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	WhId          *int64  `json:"WhId,omitempty" xml:"WhId,omitempty"`
+}
+
+func (s ListCertWarehouseResponseBodyCertWarehouseList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertWarehouseResponseBodyCertWarehouseList) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertWarehouseResponseBodyCertWarehouseList) SetEndTime(v int64) *ListCertWarehouseResponseBodyCertWarehouseList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListCertWarehouseResponseBodyCertWarehouseList) SetInstanceId(v string) *ListCertWarehouseResponseBodyCertWarehouseList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCertWarehouseResponseBodyCertWarehouseList) SetIsExpired(v bool) *ListCertWarehouseResponseBodyCertWarehouseList {
+	s.IsExpired = &v
+	return s
+}
+
+func (s *ListCertWarehouseResponseBodyCertWarehouseList) SetName(v string) *ListCertWarehouseResponseBodyCertWarehouseList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCertWarehouseResponseBodyCertWarehouseList) SetPcaInstanceId(v string) *ListCertWarehouseResponseBodyCertWarehouseList {
+	s.PcaInstanceId = &v
+	return s
+}
+
+func (s *ListCertWarehouseResponseBodyCertWarehouseList) SetQps(v int64) *ListCertWarehouseResponseBodyCertWarehouseList {
+	s.Qps = &v
+	return s
+}
+
+func (s *ListCertWarehouseResponseBodyCertWarehouseList) SetType(v string) *ListCertWarehouseResponseBodyCertWarehouseList {
+	s.Type = &v
+	return s
+}
+
+func (s *ListCertWarehouseResponseBodyCertWarehouseList) SetWhId(v int64) *ListCertWarehouseResponseBodyCertWarehouseList {
+	s.WhId = &v
+	return s
+}
+
+type ListCertWarehouseResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCertWarehouseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCertWarehouseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertWarehouseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertWarehouseResponse) SetHeaders(v map[string]*string) *ListCertWarehouseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCertWarehouseResponse) SetStatusCode(v int32) *ListCertWarehouseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCertWarehouseResponse) SetBody(v *ListCertWarehouseResponseBody) *ListCertWarehouseResponse {
 	s.Body = v
 	return s
 }
@@ -880,8 +1349,9 @@ func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetWildDomain
 }
 
 type ListUserCertificateOrderResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUserCertificateOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUserCertificateOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListUserCertificateOrderResponse) String() string {
@@ -894,6 +1364,11 @@ func (s ListUserCertificateOrderResponse) GoString() string {
 
 func (s *ListUserCertificateOrderResponse) SetHeaders(v map[string]*string) *ListUserCertificateOrderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponse) SetStatusCode(v int32) *ListUserCertificateOrderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -949,8 +1424,9 @@ func (s *RenewCertificateOrderForPackageRequestResponseBody) SetRequestId(v stri
 }
 
 type RenewCertificateOrderForPackageRequestResponse struct {
-	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RenewCertificateOrderForPackageRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RenewCertificateOrderForPackageRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RenewCertificateOrderForPackageRequestResponse) String() string {
@@ -966,7 +1442,273 @@ func (s *RenewCertificateOrderForPackageRequestResponse) SetHeaders(v map[string
 	return s
 }
 
+func (s *RenewCertificateOrderForPackageRequestResponse) SetStatusCode(v int32) *RenewCertificateOrderForPackageRequestResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RenewCertificateOrderForPackageRequestResponse) SetBody(v *RenewCertificateOrderForPackageRequestResponseBody) *RenewCertificateOrderForPackageRequestResponse {
+	s.Body = v
+	return s
+}
+
+type SignRequest struct {
+	CertIdentifier   *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageType      *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	SigningAlgorithm *string `json:"SigningAlgorithm,omitempty" xml:"SigningAlgorithm,omitempty"`
+}
+
+func (s SignRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SignRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SignRequest) SetCertIdentifier(v string) *SignRequest {
+	s.CertIdentifier = &v
+	return s
+}
+
+func (s *SignRequest) SetMessage(v string) *SignRequest {
+	s.Message = &v
+	return s
+}
+
+func (s *SignRequest) SetMessageType(v string) *SignRequest {
+	s.MessageType = &v
+	return s
+}
+
+func (s *SignRequest) SetSigningAlgorithm(v string) *SignRequest {
+	s.SigningAlgorithm = &v
+	return s
+}
+
+type SignResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+}
+
+func (s SignResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SignResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SignResponseBody) SetRequestId(v string) *SignResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SignResponseBody) SetSignature(v string) *SignResponseBody {
+	s.Signature = &v
+	return s
+}
+
+type SignResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SignResponseBody  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SignResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SignResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SignResponse) SetHeaders(v map[string]*string) *SignResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SignResponse) SetStatusCode(v int32) *SignResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SignResponse) SetBody(v *SignResponseBody) *SignResponse {
+	s.Body = v
+	return s
+}
+
+type UploadPCACertRequest struct {
+	Cert        *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PrivateKey  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	WarehouseId *int64  `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
+}
+
+func (s UploadPCACertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadPCACertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadPCACertRequest) SetCert(v string) *UploadPCACertRequest {
+	s.Cert = &v
+	return s
+}
+
+func (s *UploadPCACertRequest) SetName(v string) *UploadPCACertRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UploadPCACertRequest) SetPrivateKey(v string) *UploadPCACertRequest {
+	s.PrivateKey = &v
+	return s
+}
+
+func (s *UploadPCACertRequest) SetWarehouseId(v int64) *UploadPCACertRequest {
+	s.WarehouseId = &v
+	return s
+}
+
+type UploadPCACertResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UploadPCACertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadPCACertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadPCACertResponseBody) SetRequestId(v string) *UploadPCACertResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UploadPCACertResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UploadPCACertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UploadPCACertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadPCACertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadPCACertResponse) SetHeaders(v map[string]*string) *UploadPCACertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadPCACertResponse) SetStatusCode(v int32) *UploadPCACertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadPCACertResponse) SetBody(v *UploadPCACertResponseBody) *UploadPCACertResponse {
+	s.Body = v
+	return s
+}
+
+type VerifyRequest struct {
+	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageType      *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	SignatureValue   *string `json:"SignatureValue,omitempty" xml:"SignatureValue,omitempty"`
+	SigningAlgorithm *string `json:"SigningAlgorithm,omitempty" xml:"SigningAlgorithm,omitempty"`
+}
+
+func (s VerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyRequest) SetIdentifier(v string) *VerifyRequest {
+	s.Identifier = &v
+	return s
+}
+
+func (s *VerifyRequest) SetMessage(v string) *VerifyRequest {
+	s.Message = &v
+	return s
+}
+
+func (s *VerifyRequest) SetMessageType(v string) *VerifyRequest {
+	s.MessageType = &v
+	return s
+}
+
+func (s *VerifyRequest) SetSignatureValue(v string) *VerifyRequest {
+	s.SignatureValue = &v
+	return s
+}
+
+func (s *VerifyRequest) SetSigningAlgorithm(v string) *VerifyRequest {
+	s.SigningAlgorithm = &v
+	return s
+}
+
+type VerifyResponseBody struct {
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SignatureValid *bool   `json:"SignatureValid,omitempty" xml:"SignatureValid,omitempty"`
+}
+
+func (s VerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyResponseBody) SetRequestId(v string) *VerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VerifyResponseBody) SetSignatureValid(v bool) *VerifyResponseBody {
+	s.SignatureValid = &v
+	return s
+}
+
+type VerifyResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyResponse) SetHeaders(v map[string]*string) *VerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifyResponse) SetStatusCode(v int32) *VerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VerifyResponse) SetBody(v *VerifyResponseBody) *VerifyResponse {
 	s.Body = v
 	return s
 }
@@ -1401,6 +2143,50 @@ func (client *Client) DeleteCertificateRequest(request *DeleteCertificateRequest
 	return _result, _err
 }
 
+func (client *Client) DeletePCACertWithOptions(request *DeletePCACertRequest, runtime *util.RuntimeOptions) (_result *DeletePCACertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
+		query["Identifier"] = request.Identifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePCACert"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePCACertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePCACert(request *DeletePCACertRequest) (_result *DeletePCACertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePCACertResponse{}
+	_body, _err := client.DeletePCACertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeCertificateStateWithOptions(request *DescribeCertificateStateRequest, runtime *util.RuntimeOptions) (_result *DescribeCertificateStateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1482,6 +2268,126 @@ func (client *Client) DescribePackageState(request *DescribePackageStateRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePackageStateResponse{}
 	_body, _err := client.DescribePackageStateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCertWithOptions(request *ListCertRequest, runtime *util.RuntimeOptions) (_result *ListCertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyWord)) {
+		query["KeyWord"] = request.KeyWord
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowSize)) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WarehouseId)) {
+		query["WarehouseId"] = request.WarehouseId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCert"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCert(request *ListCertRequest) (_result *ListCertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCertResponse{}
+	_body, _err := client.ListCertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCertWarehouseWithOptions(request *ListCertWarehouseRequest, runtime *util.RuntimeOptions) (_result *ListCertWarehouseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowSize)) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCertWarehouse"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCertWarehouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCertWarehouse(request *ListCertWarehouseRequest) (_result *ListCertWarehouseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCertWarehouseResponse{}
+	_body, _err := client.ListCertWarehouseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1590,6 +2496,178 @@ func (client *Client) RenewCertificateOrderForPackageRequest(request *RenewCerti
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewCertificateOrderForPackageRequestResponse{}
 	_body, _err := client.RenewCertificateOrderForPackageRequestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SignWithOptions(request *SignRequest, runtime *util.RuntimeOptions) (_result *SignResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertIdentifier)) {
+		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		query["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageType)) {
+		query["MessageType"] = request.MessageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SigningAlgorithm)) {
+		query["SigningAlgorithm"] = request.SigningAlgorithm
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Sign"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) Sign(request *SignRequest) (_result *SignResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SignResponse{}
+	_body, _err := client.SignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UploadPCACertWithOptions(request *UploadPCACertRequest, runtime *util.RuntimeOptions) (_result *UploadPCACertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cert)) {
+		query["Cert"] = request.Cert
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateKey)) {
+		query["PrivateKey"] = request.PrivateKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WarehouseId)) {
+		query["WarehouseId"] = request.WarehouseId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadPCACert"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadPCACertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UploadPCACert(request *UploadPCACertRequest) (_result *UploadPCACertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadPCACertResponse{}
+	_body, _err := client.UploadPCACertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyWithOptions(request *VerifyRequest, runtime *util.RuntimeOptions) (_result *VerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
+		query["Identifier"] = request.Identifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		query["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageType)) {
+		query["MessageType"] = request.MessageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureValue)) {
+		query["SignatureValue"] = request.SignatureValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SigningAlgorithm)) {
+		query["SigningAlgorithm"] = request.SigningAlgorithm
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Verify"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) Verify(request *VerifyRequest) (_result *VerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VerifyResponse{}
+	_body, _err := client.VerifyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
