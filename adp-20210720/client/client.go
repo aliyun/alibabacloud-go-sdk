@@ -2151,12 +2151,15 @@ func (s *AddProductComponentVersionResponse) SetBody(v *AddProductComponentVersi
 }
 
 type AddProductVersionConfigRequest struct {
-	ComponentVersionUID       *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
-	Description               *string `json:"description,omitempty" xml:"description,omitempty"`
-	Name                      *string `json:"name,omitempty" xml:"name,omitempty"`
-	ParentComponentVersionUID *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
-	Value                     *string `json:"value,omitempty" xml:"value,omitempty"`
-	ValueType                 *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
+	ComponentReleaseName       *string `json:"componentReleaseName,omitempty" xml:"componentReleaseName,omitempty"`
+	ComponentVersionUID        *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	Description                *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name                       *string `json:"name,omitempty" xml:"name,omitempty"`
+	ParentComponentReleaseName *string `json:"parentComponentReleaseName,omitempty" xml:"parentComponentReleaseName,omitempty"`
+	ParentComponentVersionUID  *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
+	Scope                      *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	Value                      *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueType                  *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
 }
 
 func (s AddProductVersionConfigRequest) String() string {
@@ -2165,6 +2168,11 @@ func (s AddProductVersionConfigRequest) String() string {
 
 func (s AddProductVersionConfigRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddProductVersionConfigRequest) SetComponentReleaseName(v string) *AddProductVersionConfigRequest {
+	s.ComponentReleaseName = &v
+	return s
 }
 
 func (s *AddProductVersionConfigRequest) SetComponentVersionUID(v string) *AddProductVersionConfigRequest {
@@ -2182,8 +2190,18 @@ func (s *AddProductVersionConfigRequest) SetName(v string) *AddProductVersionCon
 	return s
 }
 
+func (s *AddProductVersionConfigRequest) SetParentComponentReleaseName(v string) *AddProductVersionConfigRequest {
+	s.ParentComponentReleaseName = &v
+	return s
+}
+
 func (s *AddProductVersionConfigRequest) SetParentComponentVersionUID(v string) *AddProductVersionConfigRequest {
 	s.ParentComponentVersionUID = &v
+	return s
+}
+
+func (s *AddProductVersionConfigRequest) SetScope(v string) *AddProductVersionConfigRequest {
+	s.Scope = &v
 	return s
 }
 
@@ -2279,6 +2297,7 @@ func (s *AddProductVersionConfigResponse) SetBody(v *AddProductVersionConfigResp
 }
 
 type AddResourceSnapshotRequest struct {
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
 	ClusterUID        *string `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
 	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 }
@@ -2289,6 +2308,11 @@ func (s AddResourceSnapshotRequest) String() string {
 
 func (s AddResourceSnapshotRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddResourceSnapshotRequest) SetName(v string) *AddResourceSnapshotRequest {
+	s.Name = &v
+	return s
 }
 
 func (s *AddResourceSnapshotRequest) SetClusterUID(v string) *AddResourceSnapshotRequest {
@@ -2446,12 +2470,15 @@ func (s *BatchAddProductVersionConfigRequest) SetProductVersionConfigList(v []*B
 }
 
 type BatchAddProductVersionConfigRequestProductVersionConfigList struct {
-	ComponentVersionUID       *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
-	Description               *string `json:"description,omitempty" xml:"description,omitempty"`
-	Name                      *string `json:"name,omitempty" xml:"name,omitempty"`
-	ParentComponentVersionUID *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
-	Value                     *string `json:"value,omitempty" xml:"value,omitempty"`
-	ValueType                 *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
+	ComponentReleaseName       *string `json:"componentReleaseName,omitempty" xml:"componentReleaseName,omitempty"`
+	ComponentVersionUID        *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	Description                *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name                       *string `json:"name,omitempty" xml:"name,omitempty"`
+	ParentComponentReleaseName *string `json:"parentComponentReleaseName,omitempty" xml:"parentComponentReleaseName,omitempty"`
+	ParentComponentVersionUID  *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
+	Scope                      *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	Value                      *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueType                  *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
 }
 
 func (s BatchAddProductVersionConfigRequestProductVersionConfigList) String() string {
@@ -2460,6 +2487,11 @@ func (s BatchAddProductVersionConfigRequestProductVersionConfigList) String() st
 
 func (s BatchAddProductVersionConfigRequestProductVersionConfigList) GoString() string {
 	return s.String()
+}
+
+func (s *BatchAddProductVersionConfigRequestProductVersionConfigList) SetComponentReleaseName(v string) *BatchAddProductVersionConfigRequestProductVersionConfigList {
+	s.ComponentReleaseName = &v
+	return s
 }
 
 func (s *BatchAddProductVersionConfigRequestProductVersionConfigList) SetComponentVersionUID(v string) *BatchAddProductVersionConfigRequestProductVersionConfigList {
@@ -2477,8 +2509,18 @@ func (s *BatchAddProductVersionConfigRequestProductVersionConfigList) SetName(v 
 	return s
 }
 
+func (s *BatchAddProductVersionConfigRequestProductVersionConfigList) SetParentComponentReleaseName(v string) *BatchAddProductVersionConfigRequestProductVersionConfigList {
+	s.ParentComponentReleaseName = &v
+	return s
+}
+
 func (s *BatchAddProductVersionConfigRequestProductVersionConfigList) SetParentComponentVersionUID(v string) *BatchAddProductVersionConfigRequestProductVersionConfigList {
 	s.ParentComponentVersionUID = &v
+	return s
+}
+
+func (s *BatchAddProductVersionConfigRequestProductVersionConfigList) SetScope(v string) *BatchAddProductVersionConfigRequestProductVersionConfigList {
+	s.Scope = &v
 	return s
 }
 
@@ -3073,9 +3115,12 @@ func (s *CreateProductHeaders) SetClientToken(v string) *CreateProductHeaders {
 }
 
 type CreateProductRequest struct {
-	Description          *string `json:"description,omitempty" xml:"description,omitempty"`
-	FoundationVersionUID *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
-	ProductName          *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	Categories           []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	Description          *string   `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName          *string   `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	FoundationVersionUID *string   `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	ProductName          *string   `json:"productName,omitempty" xml:"productName,omitempty"`
+	Vendor               *string   `json:"vendor,omitempty" xml:"vendor,omitempty"`
 }
 
 func (s CreateProductRequest) String() string {
@@ -3086,8 +3131,18 @@ func (s CreateProductRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateProductRequest) SetCategories(v []*string) *CreateProductRequest {
+	s.Categories = v
+	return s
+}
+
 func (s *CreateProductRequest) SetDescription(v string) *CreateProductRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateProductRequest) SetDisplayName(v string) *CreateProductRequest {
+	s.DisplayName = &v
 	return s
 }
 
@@ -3098,6 +3153,11 @@ func (s *CreateProductRequest) SetFoundationVersionUID(v string) *CreateProductR
 
 func (s *CreateProductRequest) SetProductName(v string) *CreateProductRequest {
 	s.ProductName = &v
+	return s
+}
+
+func (s *CreateProductRequest) SetVendor(v string) *CreateProductRequest {
+	s.Vendor = &v
 	return s
 }
 
@@ -4057,9 +4117,10 @@ func (s *DeleteProductVersionConfigResponse) SetBody(v *DeleteProductVersionConf
 }
 
 type GenerateProductInstanceDeploymentConfigRequest struct {
-	EnvironmentUID    *string `json:"environmentUID,omitempty" xml:"environmentUID,omitempty"`
-	PackageUID        *string `json:"packageUID,omitempty" xml:"packageUID,omitempty"`
-	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	EnvironmentUID        *string   `json:"environmentUID,omitempty" xml:"environmentUID,omitempty"`
+	PackageUID            *string   `json:"packageUID,omitempty" xml:"packageUID,omitempty"`
+	ProductVersionUID     *string   `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	ProductVersionUIDList []*string `json:"productVersionUIDList,omitempty" xml:"productVersionUIDList,omitempty" type:"Repeated"`
 }
 
 func (s GenerateProductInstanceDeploymentConfigRequest) String() string {
@@ -4082,6 +4143,11 @@ func (s *GenerateProductInstanceDeploymentConfigRequest) SetPackageUID(v string)
 
 func (s *GenerateProductInstanceDeploymentConfigRequest) SetProductVersionUID(v string) *GenerateProductInstanceDeploymentConfigRequest {
 	s.ProductVersionUID = &v
+	return s
+}
+
+func (s *GenerateProductInstanceDeploymentConfigRequest) SetProductVersionUIDList(v []*string) *GenerateProductInstanceDeploymentConfigRequest {
+	s.ProductVersionUIDList = v
 	return s
 }
 
@@ -4545,7 +4611,9 @@ func (s *GetEnvironmentResponseBody) SetMsg(v string) *GetEnvironmentResponseBod
 }
 
 type GetEnvironmentResponseBodyData struct {
+	AdvancedConfigs      *GetEnvironmentResponseBodyDataAdvancedConfigs  `json:"advancedConfigs,omitempty" xml:"advancedConfigs,omitempty" type:"Struct"`
 	ClusterId            *string                                         `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	ClusterUID           *string                                         `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
 	CreatedAt            *string                                         `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	Description          *string                                         `json:"description,omitempty" xml:"description,omitempty"`
 	FoundationVersion    *string                                         `json:"foundationVersion,omitempty" xml:"foundationVersion,omitempty"`
@@ -4575,8 +4643,18 @@ func (s GetEnvironmentResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetEnvironmentResponseBodyData) SetAdvancedConfigs(v *GetEnvironmentResponseBodyDataAdvancedConfigs) *GetEnvironmentResponseBodyData {
+	s.AdvancedConfigs = v
+	return s
+}
+
 func (s *GetEnvironmentResponseBodyData) SetClusterId(v string) *GetEnvironmentResponseBodyData {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *GetEnvironmentResponseBodyData) SetClusterUID(v string) *GetEnvironmentResponseBodyData {
+	s.ClusterUID = &v
 	return s
 }
 
@@ -4672,6 +4750,29 @@ func (s *GetEnvironmentResponseBodyData) SetVendorConfig(v string) *GetEnvironme
 
 func (s *GetEnvironmentResponseBodyData) SetVendorType(v string) *GetEnvironmentResponseBodyData {
 	s.VendorType = &v
+	return s
+}
+
+type GetEnvironmentResponseBodyDataAdvancedConfigs struct {
+	EnableDeploySimulation *bool `json:"enableDeploySimulation,omitempty" xml:"enableDeploySimulation,omitempty"`
+	EnableSiteSurvey       *bool `json:"enableSiteSurvey,omitempty" xml:"enableSiteSurvey,omitempty"`
+}
+
+func (s GetEnvironmentResponseBodyDataAdvancedConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentResponseBodyDataAdvancedConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentResponseBodyDataAdvancedConfigs) SetEnableDeploySimulation(v bool) *GetEnvironmentResponseBodyDataAdvancedConfigs {
+	s.EnableDeploySimulation = &v
+	return s
+}
+
+func (s *GetEnvironmentResponseBodyDataAdvancedConfigs) SetEnableSiteSurvey(v bool) *GetEnvironmentResponseBodyDataAdvancedConfigs {
+	s.EnableSiteSurvey = &v
 	return s
 }
 
@@ -5470,6 +5571,23 @@ func (s *GetFoundationVersionResponse) SetBody(v *GetFoundationVersionResponseBo
 	return s
 }
 
+type GetProductRequest struct {
+	WithIconURL *bool `json:"withIconURL,omitempty" xml:"withIconURL,omitempty"`
+}
+
+func (s GetProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductRequest) SetWithIconURL(v bool) *GetProductRequest {
+	s.WithIconURL = &v
+	return s
+}
+
 type GetProductResponseBody struct {
 	Code *string                     `json:"code,omitempty" xml:"code,omitempty"`
 	Data *GetProductResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
@@ -5500,9 +5618,13 @@ func (s *GetProductResponseBody) SetMsg(v string) *GetProductResponseBody {
 }
 
 type GetProductResponseBodyData struct {
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
-	Uid         *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	Categories  []*string                          `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	Description *string                            `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName *string                            `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Icons       []*GetProductResponseBodyDataIcons `json:"icons,omitempty" xml:"icons,omitempty" type:"Repeated"`
+	Name        *string                            `json:"name,omitempty" xml:"name,omitempty"`
+	Uid         *string                            `json:"uid,omitempty" xml:"uid,omitempty"`
+	Vendor      *string                            `json:"vendor,omitempty" xml:"vendor,omitempty"`
 }
 
 func (s GetProductResponseBodyData) String() string {
@@ -5513,8 +5635,23 @@ func (s GetProductResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetProductResponseBodyData) SetCategories(v []*string) *GetProductResponseBodyData {
+	s.Categories = v
+	return s
+}
+
 func (s *GetProductResponseBodyData) SetDescription(v string) *GetProductResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *GetProductResponseBodyData) SetDisplayName(v string) *GetProductResponseBodyData {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetProductResponseBodyData) SetIcons(v []*GetProductResponseBodyDataIcons) *GetProductResponseBodyData {
+	s.Icons = v
 	return s
 }
 
@@ -5525,6 +5662,40 @@ func (s *GetProductResponseBodyData) SetName(v string) *GetProductResponseBodyDa
 
 func (s *GetProductResponseBodyData) SetUid(v string) *GetProductResponseBodyData {
 	s.Uid = &v
+	return s
+}
+
+func (s *GetProductResponseBodyData) SetVendor(v string) *GetProductResponseBodyData {
+	s.Vendor = &v
+	return s
+}
+
+type GetProductResponseBodyDataIcons struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Url         *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetProductResponseBodyDataIcons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductResponseBodyDataIcons) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductResponseBodyDataIcons) SetDescription(v string) *GetProductResponseBodyDataIcons {
+	s.Description = &v
+	return s
+}
+
+func (s *GetProductResponseBodyDataIcons) SetName(v string) *GetProductResponseBodyDataIcons {
+	s.Name = &v
+	return s
+}
+
+func (s *GetProductResponseBodyDataIcons) SetUrl(v string) *GetProductResponseBodyDataIcons {
+	s.Url = &v
 	return s
 }
 
@@ -5862,6 +6033,29 @@ func (s *GetProductDeploymentResponse) SetBody(v *GetProductDeploymentResponseBo
 	return s
 }
 
+type GetProductVersionRequest struct {
+	WithDocumentationURL  *bool `json:"withDocumentationURL,omitempty" xml:"withDocumentationURL,omitempty"`
+	WithExtendResourceURL *bool `json:"withExtendResourceURL,omitempty" xml:"withExtendResourceURL,omitempty"`
+}
+
+func (s GetProductVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionRequest) SetWithDocumentationURL(v bool) *GetProductVersionRequest {
+	s.WithDocumentationURL = &v
+	return s
+}
+
+func (s *GetProductVersionRequest) SetWithExtendResourceURL(v bool) *GetProductVersionRequest {
+	s.WithExtendResourceURL = &v
+	return s
+}
+
 type GetProductVersionResponseBody struct {
 	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
 	Data *GetProductVersionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
@@ -5892,16 +6086,18 @@ func (s *GetProductVersionResponseBody) SetMsg(v string) *GetProductVersionRespo
 }
 
 type GetProductVersionResponseBodyData struct {
-	ContinuousIntegration *bool       `json:"continuousIntegration,omitempty" xml:"continuousIntegration,omitempty"`
-	Description           *string     `json:"description,omitempty" xml:"description,omitempty"`
-	FoundationVersionUID  *string     `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
-	PackageURL            *string     `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
-	Platforms             []*Platform `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
-	ProductName           *string     `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductUID            *string     `json:"productUID,omitempty" xml:"productUID,omitempty"`
-	Provider              *string     `json:"provider,omitempty" xml:"provider,omitempty"`
-	Uid                   *string     `json:"uid,omitempty" xml:"uid,omitempty"`
-	Version               *string     `json:"version,omitempty" xml:"version,omitempty"`
+	ContinuousIntegration *bool                                                 `json:"continuousIntegration,omitempty" xml:"continuousIntegration,omitempty"`
+	Description           *string                                               `json:"description,omitempty" xml:"description,omitempty"`
+	Documentations        []*GetProductVersionResponseBodyDataDocumentations    `json:"documentations,omitempty" xml:"documentations,omitempty" type:"Repeated"`
+	ExtendedResources     []*GetProductVersionResponseBodyDataExtendedResources `json:"extendedResources,omitempty" xml:"extendedResources,omitempty" type:"Repeated"`
+	FoundationVersionUID  *string                                               `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	PackageURL            *string                                               `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
+	Platforms             []*Platform                                           `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+	ProductName           *string                                               `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductUID            *string                                               `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	Provider              *string                                               `json:"provider,omitempty" xml:"provider,omitempty"`
+	Uid                   *string                                               `json:"uid,omitempty" xml:"uid,omitempty"`
+	Version               *string                                               `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetProductVersionResponseBodyData) String() string {
@@ -5919,6 +6115,16 @@ func (s *GetProductVersionResponseBodyData) SetContinuousIntegration(v bool) *Ge
 
 func (s *GetProductVersionResponseBodyData) SetDescription(v string) *GetProductVersionResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *GetProductVersionResponseBodyData) SetDocumentations(v []*GetProductVersionResponseBodyDataDocumentations) *GetProductVersionResponseBodyData {
+	s.Documentations = v
+	return s
+}
+
+func (s *GetProductVersionResponseBodyData) SetExtendedResources(v []*GetProductVersionResponseBodyDataExtendedResources) *GetProductVersionResponseBodyData {
+	s.ExtendedResources = v
 	return s
 }
 
@@ -5959,6 +6165,64 @@ func (s *GetProductVersionResponseBodyData) SetUid(v string) *GetProductVersionR
 
 func (s *GetProductVersionResponseBodyData) SetVersion(v string) *GetProductVersionResponseBodyData {
 	s.Version = &v
+	return s
+}
+
+type GetProductVersionResponseBodyDataDocumentations struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Url         *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetProductVersionResponseBodyDataDocumentations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionResponseBodyDataDocumentations) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionResponseBodyDataDocumentations) SetDescription(v string) *GetProductVersionResponseBodyDataDocumentations {
+	s.Description = &v
+	return s
+}
+
+func (s *GetProductVersionResponseBodyDataDocumentations) SetName(v string) *GetProductVersionResponseBodyDataDocumentations {
+	s.Name = &v
+	return s
+}
+
+func (s *GetProductVersionResponseBodyDataDocumentations) SetUrl(v string) *GetProductVersionResponseBodyDataDocumentations {
+	s.Url = &v
+	return s
+}
+
+type GetProductVersionResponseBodyDataExtendedResources struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Url         *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetProductVersionResponseBodyDataExtendedResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductVersionResponseBodyDataExtendedResources) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductVersionResponseBodyDataExtendedResources) SetDescription(v string) *GetProductVersionResponseBodyDataExtendedResources {
+	s.Description = &v
+	return s
+}
+
+func (s *GetProductVersionResponseBodyDataExtendedResources) SetName(v string) *GetProductVersionResponseBodyDataExtendedResources {
+	s.Name = &v
+	return s
+}
+
+func (s *GetProductVersionResponseBodyDataExtendedResources) SetUrl(v string) *GetProductVersionResponseBodyDataExtendedResources {
+	s.Url = &v
 	return s
 }
 
@@ -6325,13 +6589,14 @@ func (s *GetResourceSnapshotRequest) SetUid(v string) *GetResourceSnapshotReques
 }
 
 type GetResourceSnapshotResponseBody struct {
-	CPULimit       *string                                     `json:"CPULimit,omitempty" xml:"CPULimit,omitempty"`
-	CPURequest     *string                                     `json:"CPURequest,omitempty" xml:"CPURequest,omitempty"`
-	AdpInfo        *GetResourceSnapshotResponseBodyAdpInfo     `json:"adpInfo,omitempty" xml:"adpInfo,omitempty" type:"Struct"`
-	MemoryLimit    *string                                     `json:"memoryLimit,omitempty" xml:"memoryLimit,omitempty"`
-	MemoryRequest  *string                                     `json:"memoryRequest,omitempty" xml:"memoryRequest,omitempty"`
-	ProductInfo    *GetResourceSnapshotResponseBodyProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
-	StorageRequest *string                                     `json:"storageRequest,omitempty" xml:"storageRequest,omitempty"`
+	CPULimit         *string                                            `json:"CPULimit,omitempty" xml:"CPULimit,omitempty"`
+	CPURequest       *string                                            `json:"CPURequest,omitempty" xml:"CPURequest,omitempty"`
+	AdpInfo          *GetResourceSnapshotResponseBodyAdpInfo            `json:"adpInfo,omitempty" xml:"adpInfo,omitempty" type:"Struct"`
+	MemoryLimit      *string                                            `json:"memoryLimit,omitempty" xml:"memoryLimit,omitempty"`
+	MemoryRequest    *string                                            `json:"memoryRequest,omitempty" xml:"memoryRequest,omitempty"`
+	ProductInfo      *GetResourceSnapshotResponseBodyProductInfo        `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
+	SpecParamConfigs []*GetResourceSnapshotResponseBodySpecParamConfigs `json:"specParamConfigs,omitempty" xml:"specParamConfigs,omitempty" type:"Repeated"`
+	StorageRequest   *string                                            `json:"storageRequest,omitempty" xml:"storageRequest,omitempty"`
 }
 
 func (s GetResourceSnapshotResponseBody) String() string {
@@ -6369,6 +6634,11 @@ func (s *GetResourceSnapshotResponseBody) SetMemoryRequest(v string) *GetResourc
 
 func (s *GetResourceSnapshotResponseBody) SetProductInfo(v *GetResourceSnapshotResponseBodyProductInfo) *GetResourceSnapshotResponseBody {
 	s.ProductInfo = v
+	return s
+}
+
+func (s *GetResourceSnapshotResponseBody) SetSpecParamConfigs(v []*GetResourceSnapshotResponseBodySpecParamConfigs) *GetResourceSnapshotResponseBody {
+	s.SpecParamConfigs = v
 	return s
 }
 
@@ -6622,6 +6892,83 @@ func (s *GetResourceSnapshotResponseBodyProductInfoComponents) SetStatus(v strin
 
 func (s *GetResourceSnapshotResponseBodyProductInfoComponents) SetStorageRequest(v string) *GetResourceSnapshotResponseBodyProductInfoComponents {
 	s.StorageRequest = &v
+	return s
+}
+
+type GetResourceSnapshotResponseBodySpecParamConfigs struct {
+	ComponentName              *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
+	ComponentReleaseName       *string `json:"componentReleaseName,omitempty" xml:"componentReleaseName,omitempty"`
+	ComponentSource            *string `json:"componentSource,omitempty" xml:"componentSource,omitempty"`
+	ComponentVersion           *string `json:"componentVersion,omitempty" xml:"componentVersion,omitempty"`
+	Name                       *string `json:"name,omitempty" xml:"name,omitempty"`
+	ParamType                  *string `json:"paramType,omitempty" xml:"paramType,omitempty"`
+	ParentComponentName        *string `json:"parentComponentName,omitempty" xml:"parentComponentName,omitempty"`
+	ParentComponentReleaseName *string `json:"parentComponentReleaseName,omitempty" xml:"parentComponentReleaseName,omitempty"`
+	ParentComponentVersion     *string `json:"parentComponentVersion,omitempty" xml:"parentComponentVersion,omitempty"`
+	Value                      *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueType                  *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
+}
+
+func (s GetResourceSnapshotResponseBodySpecParamConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceSnapshotResponseBodySpecParamConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceSnapshotResponseBodySpecParamConfigs) SetComponentName(v string) *GetResourceSnapshotResponseBodySpecParamConfigs {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *GetResourceSnapshotResponseBodySpecParamConfigs) SetComponentReleaseName(v string) *GetResourceSnapshotResponseBodySpecParamConfigs {
+	s.ComponentReleaseName = &v
+	return s
+}
+
+func (s *GetResourceSnapshotResponseBodySpecParamConfigs) SetComponentSource(v string) *GetResourceSnapshotResponseBodySpecParamConfigs {
+	s.ComponentSource = &v
+	return s
+}
+
+func (s *GetResourceSnapshotResponseBodySpecParamConfigs) SetComponentVersion(v string) *GetResourceSnapshotResponseBodySpecParamConfigs {
+	s.ComponentVersion = &v
+	return s
+}
+
+func (s *GetResourceSnapshotResponseBodySpecParamConfigs) SetName(v string) *GetResourceSnapshotResponseBodySpecParamConfigs {
+	s.Name = &v
+	return s
+}
+
+func (s *GetResourceSnapshotResponseBodySpecParamConfigs) SetParamType(v string) *GetResourceSnapshotResponseBodySpecParamConfigs {
+	s.ParamType = &v
+	return s
+}
+
+func (s *GetResourceSnapshotResponseBodySpecParamConfigs) SetParentComponentName(v string) *GetResourceSnapshotResponseBodySpecParamConfigs {
+	s.ParentComponentName = &v
+	return s
+}
+
+func (s *GetResourceSnapshotResponseBodySpecParamConfigs) SetParentComponentReleaseName(v string) *GetResourceSnapshotResponseBodySpecParamConfigs {
+	s.ParentComponentReleaseName = &v
+	return s
+}
+
+func (s *GetResourceSnapshotResponseBodySpecParamConfigs) SetParentComponentVersion(v string) *GetResourceSnapshotResponseBodySpecParamConfigs {
+	s.ParentComponentVersion = &v
+	return s
+}
+
+func (s *GetResourceSnapshotResponseBodySpecParamConfigs) SetValue(v string) *GetResourceSnapshotResponseBodySpecParamConfigs {
+	s.Value = &v
+	return s
+}
+
+func (s *GetResourceSnapshotResponseBodySpecParamConfigs) SetValueType(v string) *GetResourceSnapshotResponseBodySpecParamConfigs {
+	s.ValueType = &v
 	return s
 }
 
@@ -8853,7 +9200,9 @@ func (s *ListProductDeploymentsResponse) SetBody(v *ListProductDeploymentsRespon
 type ListProductEnvironmentsRequest struct {
 	CompatibleProductVersionUID *string                                    `json:"compatibleProductVersionUID,omitempty" xml:"compatibleProductVersionUID,omitempty"`
 	EnvType                     *string                                    `json:"envType,omitempty" xml:"envType,omitempty"`
+	Options                     *ListProductEnvironmentsRequestOptions     `json:"options,omitempty" xml:"options,omitempty" type:"Struct"`
 	Platforms                   []*ListProductEnvironmentsRequestPlatforms `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+	ProductVersionSpecUID       *string                                    `json:"productVersionSpecUID,omitempty" xml:"productVersionSpecUID,omitempty"`
 	ProductVersionUID           *string                                    `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 }
 
@@ -8875,13 +9224,46 @@ func (s *ListProductEnvironmentsRequest) SetEnvType(v string) *ListProductEnviro
 	return s
 }
 
+func (s *ListProductEnvironmentsRequest) SetOptions(v *ListProductEnvironmentsRequestOptions) *ListProductEnvironmentsRequest {
+	s.Options = v
+	return s
+}
+
 func (s *ListProductEnvironmentsRequest) SetPlatforms(v []*ListProductEnvironmentsRequestPlatforms) *ListProductEnvironmentsRequest {
 	s.Platforms = v
 	return s
 }
 
+func (s *ListProductEnvironmentsRequest) SetProductVersionSpecUID(v string) *ListProductEnvironmentsRequest {
+	s.ProductVersionSpecUID = &v
+	return s
+}
+
 func (s *ListProductEnvironmentsRequest) SetProductVersionUID(v string) *ListProductEnvironmentsRequest {
 	s.ProductVersionUID = &v
+	return s
+}
+
+type ListProductEnvironmentsRequestOptions struct {
+	FilterWithSpecUID *bool   `json:"filterWithSpecUID,omitempty" xml:"filterWithSpecUID,omitempty"`
+	SpecUID           *string `json:"specUID,omitempty" xml:"specUID,omitempty"`
+}
+
+func (s ListProductEnvironmentsRequestOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductEnvironmentsRequestOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductEnvironmentsRequestOptions) SetFilterWithSpecUID(v bool) *ListProductEnvironmentsRequestOptions {
+	s.FilterWithSpecUID = &v
+	return s
+}
+
+func (s *ListProductEnvironmentsRequestOptions) SetSpecUID(v string) *ListProductEnvironmentsRequestOptions {
+	s.SpecUID = &v
 	return s
 }
 
@@ -8911,7 +9293,9 @@ func (s *ListProductEnvironmentsRequestPlatforms) SetOs(v string) *ListProductEn
 type ListProductEnvironmentsShrinkRequest struct {
 	CompatibleProductVersionUID *string `json:"compatibleProductVersionUID,omitempty" xml:"compatibleProductVersionUID,omitempty"`
 	EnvType                     *string `json:"envType,omitempty" xml:"envType,omitempty"`
+	OptionsShrink               *string `json:"options,omitempty" xml:"options,omitempty"`
 	PlatformsShrink             *string `json:"platforms,omitempty" xml:"platforms,omitempty"`
+	ProductVersionSpecUID       *string `json:"productVersionSpecUID,omitempty" xml:"productVersionSpecUID,omitempty"`
 	ProductVersionUID           *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 }
 
@@ -8933,8 +9317,18 @@ func (s *ListProductEnvironmentsShrinkRequest) SetEnvType(v string) *ListProduct
 	return s
 }
 
+func (s *ListProductEnvironmentsShrinkRequest) SetOptionsShrink(v string) *ListProductEnvironmentsShrinkRequest {
+	s.OptionsShrink = &v
+	return s
+}
+
 func (s *ListProductEnvironmentsShrinkRequest) SetPlatformsShrink(v string) *ListProductEnvironmentsShrinkRequest {
 	s.PlatformsShrink = &v
+	return s
+}
+
+func (s *ListProductEnvironmentsShrinkRequest) SetProductVersionSpecUID(v string) *ListProductEnvironmentsShrinkRequest {
+	s.ProductVersionSpecUID = &v
 	return s
 }
 
@@ -9461,10 +9855,11 @@ func (s *ListProductInstanceConfigsResponse) SetBody(v *ListProductInstanceConfi
 }
 
 type ListProductInstancesRequest struct {
-	EnvUID            *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
-	PageNum           *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize          *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	EnvUID            *string                             `json:"envUID,omitempty" xml:"envUID,omitempty"`
+	Options           *ListProductInstancesRequestOptions `json:"options,omitempty" xml:"options,omitempty" type:"Struct"`
+	PageNum           *string                             `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize          *string                             `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ProductVersionUID *string                             `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 }
 
 func (s ListProductInstancesRequest) String() string {
@@ -9480,6 +9875,11 @@ func (s *ListProductInstancesRequest) SetEnvUID(v string) *ListProductInstancesR
 	return s
 }
 
+func (s *ListProductInstancesRequest) SetOptions(v *ListProductInstancesRequestOptions) *ListProductInstancesRequest {
+	s.Options = v
+	return s
+}
+
 func (s *ListProductInstancesRequest) SetPageNum(v string) *ListProductInstancesRequest {
 	s.PageNum = &v
 	return s
@@ -9491,6 +9891,70 @@ func (s *ListProductInstancesRequest) SetPageSize(v string) *ListProductInstance
 }
 
 func (s *ListProductInstancesRequest) SetProductVersionUID(v string) *ListProductInstancesRequest {
+	s.ProductVersionUID = &v
+	return s
+}
+
+type ListProductInstancesRequestOptions struct {
+	FilterWithSpecUID *bool   `json:"filterWithSpecUID,omitempty" xml:"filterWithSpecUID,omitempty"`
+	SpecUID           *string `json:"specUID,omitempty" xml:"specUID,omitempty"`
+}
+
+func (s ListProductInstancesRequestOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductInstancesRequestOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductInstancesRequestOptions) SetFilterWithSpecUID(v bool) *ListProductInstancesRequestOptions {
+	s.FilterWithSpecUID = &v
+	return s
+}
+
+func (s *ListProductInstancesRequestOptions) SetSpecUID(v string) *ListProductInstancesRequestOptions {
+	s.SpecUID = &v
+	return s
+}
+
+type ListProductInstancesShrinkRequest struct {
+	EnvUID            *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
+	OptionsShrink     *string `json:"options,omitempty" xml:"options,omitempty"`
+	PageNum           *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize          *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+}
+
+func (s ListProductInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductInstancesShrinkRequest) SetEnvUID(v string) *ListProductInstancesShrinkRequest {
+	s.EnvUID = &v
+	return s
+}
+
+func (s *ListProductInstancesShrinkRequest) SetOptionsShrink(v string) *ListProductInstancesShrinkRequest {
+	s.OptionsShrink = &v
+	return s
+}
+
+func (s *ListProductInstancesShrinkRequest) SetPageNum(v string) *ListProductInstancesShrinkRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListProductInstancesShrinkRequest) SetPageSize(v string) *ListProductInstancesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProductInstancesShrinkRequest) SetProductVersionUID(v string) *ListProductInstancesShrinkRequest {
 	s.ProductVersionUID = &v
 	return s
 }
@@ -9610,6 +10074,7 @@ type ListProductVersionConfigsRequest struct {
 	PageNum    *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
 	PageSize   *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Parameter  *string `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	Scope      *string `json:"scope,omitempty" xml:"scope,omitempty"`
 }
 
 func (s ListProductVersionConfigsRequest) String() string {
@@ -9637,6 +10102,11 @@ func (s *ListProductVersionConfigsRequest) SetPageSize(v string) *ListProductVer
 
 func (s *ListProductVersionConfigsRequest) SetParameter(v string) *ListProductVersionConfigsRequest {
 	s.Parameter = &v
+	return s
+}
+
+func (s *ListProductVersionConfigsRequest) SetScope(v string) *ListProductVersionConfigsRequest {
+	s.Scope = &v
 	return s
 }
 
@@ -10838,9 +11308,10 @@ func (s *SetEnvironmentFoundationReferenceResponse) SetBody(v *SetEnvironmentFou
 }
 
 type UpdateEnvironmentRequest struct {
-	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
-	Location     *string `json:"location,omitempty" xml:"location,omitempty"`
-	VendorConfig *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
+	AdvancedConfigs *UpdateEnvironmentRequestAdvancedConfigs `json:"advancedConfigs,omitempty" xml:"advancedConfigs,omitempty" type:"Struct"`
+	Description     *string                                  `json:"description,omitempty" xml:"description,omitempty"`
+	Location        *string                                  `json:"location,omitempty" xml:"location,omitempty"`
+	VendorConfig    *string                                  `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
 }
 
 func (s UpdateEnvironmentRequest) String() string {
@@ -10849,6 +11320,11 @@ func (s UpdateEnvironmentRequest) String() string {
 
 func (s UpdateEnvironmentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateEnvironmentRequest) SetAdvancedConfigs(v *UpdateEnvironmentRequestAdvancedConfigs) *UpdateEnvironmentRequest {
+	s.AdvancedConfigs = v
+	return s
 }
 
 func (s *UpdateEnvironmentRequest) SetDescription(v string) *UpdateEnvironmentRequest {
@@ -10863,6 +11339,29 @@ func (s *UpdateEnvironmentRequest) SetLocation(v string) *UpdateEnvironmentReque
 
 func (s *UpdateEnvironmentRequest) SetVendorConfig(v string) *UpdateEnvironmentRequest {
 	s.VendorConfig = &v
+	return s
+}
+
+type UpdateEnvironmentRequestAdvancedConfigs struct {
+	EnableDeploySimulation *bool `json:"enableDeploySimulation,omitempty" xml:"enableDeploySimulation,omitempty"`
+	EnableSiteSurvey       *bool `json:"enableSiteSurvey,omitempty" xml:"enableSiteSurvey,omitempty"`
+}
+
+func (s UpdateEnvironmentRequestAdvancedConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvironmentRequestAdvancedConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvironmentRequestAdvancedConfigs) SetEnableDeploySimulation(v bool) *UpdateEnvironmentRequestAdvancedConfigs {
+	s.EnableDeploySimulation = &v
+	return s
+}
+
+func (s *UpdateEnvironmentRequestAdvancedConfigs) SetEnableSiteSurvey(v bool) *UpdateEnvironmentRequestAdvancedConfigs {
+	s.EnableSiteSurvey = &v
 	return s
 }
 
@@ -11053,8 +11552,10 @@ func (s *UpdateEnvironmentNodeResponse) SetBody(v *UpdateEnvironmentNodeResponse
 }
 
 type UpdateEnvironmentProductVersionRequest struct {
-	OldProductVersionUID *string `json:"oldProductVersionUID,omitempty" xml:"oldProductVersionUID,omitempty"`
-	ProductVersionUID    *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	OldProductVersionSpecUID *string `json:"oldProductVersionSpecUID,omitempty" xml:"oldProductVersionSpecUID,omitempty"`
+	OldProductVersionUID     *string `json:"oldProductVersionUID,omitempty" xml:"oldProductVersionUID,omitempty"`
+	ProductVersionSpecUID    *string `json:"productVersionSpecUID,omitempty" xml:"productVersionSpecUID,omitempty"`
+	ProductVersionUID        *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 }
 
 func (s UpdateEnvironmentProductVersionRequest) String() string {
@@ -11065,8 +11566,18 @@ func (s UpdateEnvironmentProductVersionRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateEnvironmentProductVersionRequest) SetOldProductVersionSpecUID(v string) *UpdateEnvironmentProductVersionRequest {
+	s.OldProductVersionSpecUID = &v
+	return s
+}
+
 func (s *UpdateEnvironmentProductVersionRequest) SetOldProductVersionUID(v string) *UpdateEnvironmentProductVersionRequest {
 	s.OldProductVersionUID = &v
+	return s
+}
+
+func (s *UpdateEnvironmentProductVersionRequest) SetProductVersionSpecUID(v string) *UpdateEnvironmentProductVersionRequest {
+	s.ProductVersionSpecUID = &v
 	return s
 }
 
@@ -11272,7 +11783,10 @@ func (s *UpdateFoundationReferenceResponse) SetBody(v *UpdateFoundationReference
 }
 
 type UpdateProductRequest struct {
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Categories  []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	Description *string   `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName *string   `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Vendor      *string   `json:"vendor,omitempty" xml:"vendor,omitempty"`
 }
 
 func (s UpdateProductRequest) String() string {
@@ -11283,8 +11797,23 @@ func (s UpdateProductRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateProductRequest) SetCategories(v []*string) *UpdateProductRequest {
+	s.Categories = v
+	return s
+}
+
 func (s *UpdateProductRequest) SetDescription(v string) *UpdateProductRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateProductRequest) SetDisplayName(v string) *UpdateProductRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateProductRequest) SetVendor(v string) *UpdateProductRequest {
+	s.Vendor = &v
 	return s
 }
 
@@ -11341,10 +11870,11 @@ func (s *UpdateProductResponse) SetBody(v *UpdateProductResponseBody) *UpdatePro
 }
 
 type UpdateProductComponentVersionRequest struct {
-	ComponentOrchestrationValues *string `json:"componentOrchestrationValues,omitempty" xml:"componentOrchestrationValues,omitempty"`
-	Enable                       *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
-	NewComponentVersionUID       *string `json:"newComponentVersionUID,omitempty" xml:"newComponentVersionUID,omitempty"`
-	ReleaseName                  *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+	ComponentOrchestrationValues *string                                     `json:"componentOrchestrationValues,omitempty" xml:"componentOrchestrationValues,omitempty"`
+	Enable                       *bool                                       `json:"enable,omitempty" xml:"enable,omitempty"`
+	NewComponentVersionUID       *string                                     `json:"newComponentVersionUID,omitempty" xml:"newComponentVersionUID,omitempty"`
+	Policy                       *UpdateProductComponentVersionRequestPolicy `json:"policy,omitempty" xml:"policy,omitempty" type:"Struct"`
+	ReleaseName                  *string                                     `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
 }
 
 func (s UpdateProductComponentVersionRequest) String() string {
@@ -11370,8 +11900,53 @@ func (s *UpdateProductComponentVersionRequest) SetNewComponentVersionUID(v strin
 	return s
 }
 
+func (s *UpdateProductComponentVersionRequest) SetPolicy(v *UpdateProductComponentVersionRequestPolicy) *UpdateProductComponentVersionRequest {
+	s.Policy = v
+	return s
+}
+
 func (s *UpdateProductComponentVersionRequest) SetReleaseName(v string) *UpdateProductComponentVersionRequest {
 	s.ReleaseName = &v
+	return s
+}
+
+type UpdateProductComponentVersionRequestPolicy struct {
+	MultiCluster *UpdateProductComponentVersionRequestPolicyMultiCluster `json:"multiCluster,omitempty" xml:"multiCluster,omitempty" type:"Struct"`
+}
+
+func (s UpdateProductComponentVersionRequestPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProductComponentVersionRequestPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProductComponentVersionRequestPolicy) SetMultiCluster(v *UpdateProductComponentVersionRequestPolicyMultiCluster) *UpdateProductComponentVersionRequestPolicy {
+	s.MultiCluster = v
+	return s
+}
+
+type UpdateProductComponentVersionRequestPolicyMultiCluster struct {
+	AutoInstall    *bool     `json:"autoInstall,omitempty" xml:"autoInstall,omitempty"`
+	TargetClusters []*string `json:"targetClusters,omitempty" xml:"targetClusters,omitempty" type:"Repeated"`
+}
+
+func (s UpdateProductComponentVersionRequestPolicyMultiCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProductComponentVersionRequestPolicyMultiCluster) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProductComponentVersionRequestPolicyMultiCluster) SetAutoInstall(v bool) *UpdateProductComponentVersionRequestPolicyMultiCluster {
+	s.AutoInstall = &v
+	return s
+}
+
+func (s *UpdateProductComponentVersionRequestPolicyMultiCluster) SetTargetClusters(v []*string) *UpdateProductComponentVersionRequestPolicyMultiCluster {
+	s.TargetClusters = v
 	return s
 }
 
@@ -11891,7 +12466,6 @@ func (client *Client) AddEnvironmentNodesWithOptions(uid *string, request *AddEn
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplicationDisk)) {
 		body["applicationDisk"] = request.ApplicationDisk
@@ -11961,7 +12535,7 @@ func (client *Client) AddEnvironmentNodesWithOptions(uid *string, request *AddEn
 		Action:      tea.String("AddEnvironmentNodes"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/nodes"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/nodes"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -11994,7 +12568,6 @@ func (client *Client) AddEnvironmentProductVersionsWithOptions(uid *string, requ
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ProductVersionInfoList)) {
 		body["productVersionInfoList"] = request.ProductVersionInfoList
@@ -12012,7 +12585,7 @@ func (client *Client) AddEnvironmentProductVersionsWithOptions(uid *string, requ
 		Action:      tea.String("AddEnvironmentProductVersions"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/product-versions"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/product-versions"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12045,8 +12618,6 @@ func (client *Client) AddProductComponentVersionWithOptions(uid *string, compone
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
-	componentVersionUID = openapiutil.GetEncodeParam(componentVersionUID)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ReleaseName)) {
 		body["releaseName"] = request.ReleaseName
@@ -12060,7 +12631,7 @@ func (client *Client) AddProductComponentVersionWithOptions(uid *string, compone
 		Action:      tea.String("AddProductComponentVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/integration/api/v2/product-versions/" + tea.StringValue(uid) + "/component-versions/" + tea.StringValue(componentVersionUID)),
+		Pathname:    tea.String("/integration/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/component-versions/" + tea.StringValue(openapiutil.GetEncodeParam(componentVersionUID))),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12093,8 +12664,11 @@ func (client *Client) AddProductVersionConfigWithOptions(uid *string, request *A
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComponentReleaseName)) {
+		body["componentReleaseName"] = request.ComponentReleaseName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ComponentVersionUID)) {
 		body["componentVersionUID"] = request.ComponentVersionUID
 	}
@@ -12107,8 +12681,16 @@ func (client *Client) AddProductVersionConfigWithOptions(uid *string, request *A
 		body["name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParentComponentReleaseName)) {
+		body["parentComponentReleaseName"] = request.ParentComponentReleaseName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ParentComponentVersionUID)) {
 		body["parentComponentVersionUID"] = request.ParentComponentVersionUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["scope"] = request.Scope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Value)) {
@@ -12127,7 +12709,7 @@ func (client *Client) AddProductVersionConfigWithOptions(uid *string, request *A
 		Action:      tea.String("AddProductVersionConfig"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/configs"),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/configs"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12169,9 +12751,15 @@ func (client *Client) AddResourceSnapshotWithOptions(request *AddResourceSnapsho
 		query["productVersionUID"] = request.ProductVersionUID
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddResourceSnapshot"),
@@ -12210,7 +12798,6 @@ func (client *Client) BatchAddEnvironmentNodesWithOptions(uid *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceList)) {
 		body["instanceList"] = request.InstanceList
@@ -12228,7 +12815,7 @@ func (client *Client) BatchAddEnvironmentNodesWithOptions(uid *string, request *
 		Action:      tea.String("BatchAddEnvironmentNodes"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/batch/nodes"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/batch/nodes"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12261,7 +12848,6 @@ func (client *Client) BatchAddProductVersionConfigWithOptions(uid *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ProductVersionConfigList)) {
 		body["productVersionConfigList"] = request.ProductVersionConfigList
@@ -12275,7 +12861,7 @@ func (client *Client) BatchAddProductVersionConfigWithOptions(uid *string, reque
 		Action:      tea.String("BatchAddProductVersionConfig"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/batch/configs"),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/batch/configs"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12395,7 +12981,6 @@ func (client *Client) CreateEnvironmentLicenseWithOptions(uid *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CompanyName)) {
 		body["companyName"] = request.CompanyName
@@ -12445,7 +13030,7 @@ func (client *Client) CreateEnvironmentLicenseWithOptions(uid *string, request *
 		Action:      tea.String("CreateEnvironmentLicense"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/licenses"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/licenses"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12529,8 +13114,16 @@ func (client *Client) CreateProductWithOptions(request *CreateProductRequest, he
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Categories)) {
+		body["categories"] = request.Categories
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FoundationVersionUID)) {
@@ -12539,6 +13132,10 @@ func (client *Client) CreateProductWithOptions(request *CreateProductRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
 		body["productName"] = request.ProductName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vendor)) {
+		body["vendor"] = request.Vendor
 	}
 
 	realHeaders := make(map[string]*string)
@@ -12657,7 +13254,6 @@ func (client *Client) CreateProductVersionWithOptions(uid *string, request *Crea
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BaseProductVersionUID)) {
 		query["baseProductVersionUID"] = request.BaseProductVersionUID
@@ -12671,7 +13267,7 @@ func (client *Client) CreateProductVersionWithOptions(uid *string, request *Crea
 		Action:      tea.String("CreateProductVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/integration/api/v2/products/" + tea.StringValue(uid) + "/versions"),
+		Pathname:    tea.String("/integration/api/v2/products/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/versions"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12704,7 +13300,6 @@ func (client *Client) CreateProductVersionPackageWithOptions(uid *string, reques
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterEngineType)) {
 		query["clusterEngineType"] = request.ClusterEngineType
@@ -12755,7 +13350,7 @@ func (client *Client) CreateProductVersionPackageWithOptions(uid *string, reques
 		Action:      tea.String("CreateProductVersionPackage"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/hosting/product-versions/" + tea.StringValue(uid) + "/packages"),
+		Pathname:    tea.String("/api/v2/hosting/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/packages"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12784,7 +13379,6 @@ func (client *Client) DeleteEnvironment(uid *string) (_result *DeleteEnvironment
 }
 
 func (client *Client) DeleteEnvironmentWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -12792,7 +13386,7 @@ func (client *Client) DeleteEnvironmentWithOptions(uid *string, headers map[stri
 		Action:      tea.String("DeleteEnvironment"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid)),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12821,8 +13415,6 @@ func (client *Client) DeleteEnvironmentLicense(uid *string, licenseUID *string) 
 }
 
 func (client *Client) DeleteEnvironmentLicenseWithOptions(uid *string, licenseUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentLicenseResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
-	licenseUID = openapiutil.GetEncodeParam(licenseUID)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -12830,7 +13422,7 @@ func (client *Client) DeleteEnvironmentLicenseWithOptions(uid *string, licenseUI
 		Action:      tea.String("DeleteEnvironmentLicense"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/licenses/" + tea.StringValue(licenseUID)),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/licenses/" + tea.StringValue(openapiutil.GetEncodeParam(licenseUID))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12859,8 +13451,6 @@ func (client *Client) DeleteEnvironmentNode(uid *string, nodeUID *string) (_resu
 }
 
 func (client *Client) DeleteEnvironmentNodeWithOptions(uid *string, nodeUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentNodeResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
-	nodeUID = openapiutil.GetEncodeParam(nodeUID)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -12868,7 +13458,7 @@ func (client *Client) DeleteEnvironmentNodeWithOptions(uid *string, nodeUID *str
 		Action:      tea.String("DeleteEnvironmentNode"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/nodes/" + tea.StringValue(nodeUID)),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/nodes/" + tea.StringValue(openapiutil.GetEncodeParam(nodeUID))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12897,8 +13487,6 @@ func (client *Client) DeleteEnvironmentProductVersion(uid *string, productVersio
 }
 
 func (client *Client) DeleteEnvironmentProductVersionWithOptions(uid *string, productVersionUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentProductVersionResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
-	productVersionUID = openapiutil.GetEncodeParam(productVersionUID)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -12906,7 +13494,7 @@ func (client *Client) DeleteEnvironmentProductVersionWithOptions(uid *string, pr
 		Action:      tea.String("DeleteEnvironmentProductVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/product-versions/" + tea.StringValue(productVersionUID)),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(productVersionUID))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12935,7 +13523,6 @@ func (client *Client) DeleteProduct(uid *string) (_result *DeleteProductResponse
 }
 
 func (client *Client) DeleteProductWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProductResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -12943,7 +13530,7 @@ func (client *Client) DeleteProductWithOptions(uid *string, headers map[string]*
 		Action:      tea.String("DeleteProduct"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/integration/api/v2/products/" + tea.StringValue(uid)),
+		Pathname:    tea.String("/integration/api/v2/products/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12972,8 +13559,6 @@ func (client *Client) DeleteProductComponentVersion(uid *string, relationUID *st
 }
 
 func (client *Client) DeleteProductComponentVersionWithOptions(uid *string, relationUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProductComponentVersionResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
-	relationUID = openapiutil.GetEncodeParam(relationUID)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -12981,7 +13566,7 @@ func (client *Client) DeleteProductComponentVersionWithOptions(uid *string, rela
 		Action:      tea.String("DeleteProductComponentVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/relations/" + tea.StringValue(relationUID)),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/relations/" + tea.StringValue(openapiutil.GetEncodeParam(relationUID))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13014,7 +13599,6 @@ func (client *Client) DeleteProductInstanceConfigWithOptions(configUID *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	configUID = openapiutil.GetEncodeParam(configUID)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentUID)) {
 		query["environmentUID"] = request.EnvironmentUID
@@ -13032,7 +13616,7 @@ func (client *Client) DeleteProductInstanceConfigWithOptions(configUID *string, 
 		Action:      tea.String("DeleteProductInstanceConfig"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-instances/configs/" + tea.StringValue(configUID)),
+		Pathname:    tea.String("/api/v2/product-instances/configs/" + tea.StringValue(openapiutil.GetEncodeParam(configUID))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13061,7 +13645,6 @@ func (client *Client) DeleteProductVersion(uid *string) (_result *DeleteProductV
 }
 
 func (client *Client) DeleteProductVersionWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProductVersionResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -13069,7 +13652,7 @@ func (client *Client) DeleteProductVersionWithOptions(uid *string, headers map[s
 		Action:      tea.String("DeleteProductVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid)),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13098,8 +13681,6 @@ func (client *Client) DeleteProductVersionConfig(uid *string, configUID *string)
 }
 
 func (client *Client) DeleteProductVersionConfigWithOptions(uid *string, configUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProductVersionConfigResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
-	configUID = openapiutil.GetEncodeParam(configUID)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -13107,7 +13688,7 @@ func (client *Client) DeleteProductVersionConfigWithOptions(uid *string, configU
 		Action:      tea.String("DeleteProductVersionConfig"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/configs/" + tea.StringValue(configUID)),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/configs/" + tea.StringValue(openapiutil.GetEncodeParam(configUID))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13153,6 +13734,10 @@ func (client *Client) GenerateProductInstanceDeploymentConfigWithOptions(request
 		body["productVersionUID"] = request.ProductVersionUID
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProductVersionUIDList)) {
+		body["productVersionUIDList"] = request.ProductVersionUIDList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -13190,7 +13775,6 @@ func (client *Client) GetComponent(uid *string) (_result *GetComponentResponse, 
 }
 
 func (client *Client) GetComponentWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetComponentResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -13198,7 +13782,7 @@ func (client *Client) GetComponentWithOptions(uid *string, headers map[string]*s
 		Action:      tea.String("GetComponent"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/components/" + tea.StringValue(uid)),
+		Pathname:    tea.String("/api/v2/components/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13231,8 +13815,6 @@ func (client *Client) GetComponentVersionWithOptions(uid *string, versionUID *st
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
-	versionUID = openapiutil.GetEncodeParam(versionUID)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.WithoutChartContent)) {
 		query["withoutChartContent"] = request.WithoutChartContent
@@ -13246,7 +13828,7 @@ func (client *Client) GetComponentVersionWithOptions(uid *string, versionUID *st
 		Action:      tea.String("GetComponentVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/integration/api/v2/components/" + tea.StringValue(uid) + "/versions/" + tea.StringValue(versionUID)),
+		Pathname:    tea.String("/integration/api/v2/components/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(versionUID))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13279,7 +13861,6 @@ func (client *Client) GetEnvironmentWithOptions(uid *string, tmpReq *GetEnvironm
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	request := &GetEnvironmentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Options))) {
@@ -13299,7 +13880,7 @@ func (client *Client) GetEnvironmentWithOptions(uid *string, tmpReq *GetEnvironm
 		Action:      tea.String("GetEnvironment"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid)),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13332,8 +13913,6 @@ func (client *Client) GetEnvironmentLicenseWithOptions(uid *string, licenseUID *
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
-	licenseUID = openapiutil.GetEncodeParam(licenseUID)
 	request := &GetEnvironmentLicenseShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Options))) {
@@ -13353,7 +13932,7 @@ func (client *Client) GetEnvironmentLicenseWithOptions(uid *string, licenseUID *
 		Action:      tea.String("GetEnvironmentLicense"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/licenses/" + tea.StringValue(licenseUID)),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/licenses/" + tea.StringValue(openapiutil.GetEncodeParam(licenseUID))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13382,8 +13961,6 @@ func (client *Client) GetEnvironmentNode(uid *string, nodeUID *string) (_result 
 }
 
 func (client *Client) GetEnvironmentNodeWithOptions(uid *string, nodeUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEnvironmentNodeResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
-	nodeUID = openapiutil.GetEncodeParam(nodeUID)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -13391,7 +13968,7 @@ func (client *Client) GetEnvironmentNodeWithOptions(uid *string, nodeUID *string
 		Action:      tea.String("GetEnvironmentNode"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/nodes/" + tea.StringValue(nodeUID)),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/nodes/" + tea.StringValue(openapiutil.GetEncodeParam(nodeUID))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13420,8 +13997,6 @@ func (client *Client) GetFoundationComponentReference(componentReferenceUID *str
 }
 
 func (client *Client) GetFoundationComponentReferenceWithOptions(componentReferenceUID *string, uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFoundationComponentReferenceResponse, _err error) {
-	componentReferenceUID = openapiutil.GetEncodeParam(componentReferenceUID)
-	uid = openapiutil.GetEncodeParam(uid)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -13429,7 +14004,7 @@ func (client *Client) GetFoundationComponentReferenceWithOptions(componentRefere
 		Action:      tea.String("GetFoundationComponentReference"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/foundation-references/" + tea.StringValue(uid) + "/components/" + tea.StringValue(componentReferenceUID)),
+		Pathname:    tea.String("/api/v2/foundation-references/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/components/" + tea.StringValue(openapiutil.GetEncodeParam(componentReferenceUID))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13458,7 +14033,6 @@ func (client *Client) GetFoundationReference(uid *string) (_result *GetFoundatio
 }
 
 func (client *Client) GetFoundationReferenceWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFoundationReferenceResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -13466,7 +14040,7 @@ func (client *Client) GetFoundationReferenceWithOptions(uid *string, headers map
 		Action:      tea.String("GetFoundationReference"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/foundation-references/" + tea.StringValue(uid) + "/info"),
+		Pathname:    tea.String("/api/v2/foundation-references/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/info"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13495,7 +14069,6 @@ func (client *Client) GetFoundationVersion(uid *string) (_result *GetFoundationV
 }
 
 func (client *Client) GetFoundationVersionWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFoundationVersionResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -13503,7 +14076,7 @@ func (client *Client) GetFoundationVersionWithOptions(uid *string, headers map[s
 		Action:      tea.String("GetFoundationVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/foundation/versions/" + tea.StringValue(uid)),
+		Pathname:    tea.String("/api/v2/foundation/versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13519,11 +14092,11 @@ func (client *Client) GetFoundationVersionWithOptions(uid *string, headers map[s
 	return _result, _err
 }
 
-func (client *Client) GetProduct(uid *string) (_result *GetProductResponse, _err error) {
+func (client *Client) GetProduct(uid *string, request *GetProductRequest) (_result *GetProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetProductResponse{}
-	_body, _err := client.GetProductWithOptions(uid, headers, runtime)
+	_body, _err := client.GetProductWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13531,16 +14104,25 @@ func (client *Client) GetProduct(uid *string) (_result *GetProductResponse, _err
 	return _result, _err
 }
 
-func (client *Client) GetProductWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
+func (client *Client) GetProductWithOptions(uid *string, request *GetProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WithIconURL)) {
+		query["withIconURL"] = request.WithIconURL
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetProduct"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/products/" + tea.StringValue(uid)),
+		Pathname:    tea.String("/api/v2/products/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13569,8 +14151,6 @@ func (client *Client) GetProductComponentVersion(relationUID *string, uid *strin
 }
 
 func (client *Client) GetProductComponentVersionWithOptions(relationUID *string, uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductComponentVersionResponse, _err error) {
-	relationUID = openapiutil.GetEncodeParam(relationUID)
-	uid = openapiutil.GetEncodeParam(uid)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -13578,7 +14158,7 @@ func (client *Client) GetProductComponentVersionWithOptions(relationUID *string,
 		Action:      tea.String("GetProductComponentVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/integration/api/v2/product-versions/" + tea.StringValue(uid) + "/relations/" + tea.StringValue(relationUID)),
+		Pathname:    tea.String("/integration/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/relations/" + tea.StringValue(openapiutil.GetEncodeParam(relationUID))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13611,7 +14191,6 @@ func (client *Client) GetProductDeploymentWithOptions(deploymentUID *string, req
 	if _err != nil {
 		return _result, _err
 	}
-	deploymentUID = openapiutil.GetEncodeParam(deploymentUID)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentUID)) {
 		query["environmentUID"] = request.EnvironmentUID
@@ -13633,7 +14212,7 @@ func (client *Client) GetProductDeploymentWithOptions(deploymentUID *string, req
 		Action:      tea.String("GetProductDeployment"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-instances/deployments/" + tea.StringValue(deploymentUID)),
+		Pathname:    tea.String("/api/v2/product-instances/deployments/" + tea.StringValue(openapiutil.GetEncodeParam(deploymentUID))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13649,11 +14228,11 @@ func (client *Client) GetProductDeploymentWithOptions(deploymentUID *string, req
 	return _result, _err
 }
 
-func (client *Client) GetProductVersion(uid *string) (_result *GetProductVersionResponse, _err error) {
+func (client *Client) GetProductVersion(uid *string, request *GetProductVersionRequest) (_result *GetProductVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetProductVersionResponse{}
-	_body, _err := client.GetProductVersionWithOptions(uid, headers, runtime)
+	_body, _err := client.GetProductVersionWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13661,16 +14240,29 @@ func (client *Client) GetProductVersion(uid *string) (_result *GetProductVersion
 	return _result, _err
 }
 
-func (client *Client) GetProductVersionWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductVersionResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
+func (client *Client) GetProductVersionWithOptions(uid *string, request *GetProductVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WithDocumentationURL)) {
+		query["withDocumentationURL"] = request.WithDocumentationURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithExtendResourceURL)) {
+		query["withExtendResourceURL"] = request.WithExtendResourceURL
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetProductVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid)),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13703,8 +14295,6 @@ func (client *Client) GetProductVersionDifferencesWithOptions(uid *string, versi
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
-	versionUID = openapiutil.GetEncodeParam(versionUID)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PreVersionUID)) {
 		query["preVersionUID"] = request.PreVersionUID
@@ -13718,7 +14308,7 @@ func (client *Client) GetProductVersionDifferencesWithOptions(uid *string, versi
 		Action:      tea.String("GetProductVersionDifferences"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/integration/api/v2/products/" + tea.StringValue(uid) + "/versions/" + tea.StringValue(versionUID) + "/differences"),
+		Pathname:    tea.String("/integration/api/v2/products/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(versionUID)) + "/differences"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13751,7 +14341,6 @@ func (client *Client) GetProductVersionPackageWithOptions(uid *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FoundationReferenceUID)) {
 		query["foundationReferenceUID"] = request.FoundationReferenceUID
@@ -13793,7 +14382,7 @@ func (client *Client) GetProductVersionPackageWithOptions(uid *string, request *
 		Action:      tea.String("GetProductVersionPackage"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/hosting/product-versions/" + tea.StringValue(uid) + "/packages"),
+		Pathname:    tea.String("/api/v2/hosting/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/packages"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13926,7 +14515,6 @@ func (client *Client) InitEnvironmentResourceWithOptions(uid *string, request *I
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessKeyID)) {
 		body["accessKeyID"] = request.AccessKeyID
@@ -13948,7 +14536,7 @@ func (client *Client) InitEnvironmentResourceWithOptions(uid *string, request *I
 		Action:      tea.String("InitEnvironmentResource"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/resources"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/resources"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13981,7 +14569,6 @@ func (client *Client) ListComponentVersionsWithOptions(uid *string, tmpReq *List
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	request := &ListComponentVersionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
 	if !tea.BoolValue(util.IsUnset(tmpReq.Platforms)) {
@@ -14009,7 +14596,7 @@ func (client *Client) ListComponentVersionsWithOptions(uid *string, tmpReq *List
 		Action:      tea.String("ListComponentVersions"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/components/" + tea.StringValue(uid) + "/versions"),
+		Pathname:    tea.String("/api/v2/components/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/versions"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14108,7 +14695,6 @@ func (client *Client) ListEnvironmentLicensesWithOptions(uid *string, request *L
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
 		query["pageNum"] = request.PageNum
@@ -14134,7 +14720,7 @@ func (client *Client) ListEnvironmentLicensesWithOptions(uid *string, request *L
 		Action:      tea.String("ListEnvironmentLicenses"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/licenses"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/licenses"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14167,7 +14753,6 @@ func (client *Client) ListEnvironmentNodesWithOptions(uid *string, request *List
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
 		query["pageNum"] = request.PageNum
@@ -14185,7 +14770,7 @@ func (client *Client) ListEnvironmentNodesWithOptions(uid *string, request *List
 		Action:      tea.String("ListEnvironmentNodes"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/nodes"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/nodes"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14214,7 +14799,6 @@ func (client *Client) ListEnvironmentTunnels(uid *string) (_result *ListEnvironm
 }
 
 func (client *Client) ListEnvironmentTunnelsWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEnvironmentTunnelsResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14222,7 +14806,7 @@ func (client *Client) ListEnvironmentTunnelsWithOptions(uid *string, headers map
 		Action:      tea.String("ListEnvironmentTunnels"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/tunnels"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/tunnels"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14329,7 +14913,6 @@ func (client *Client) ListFoundationComponentVersions(uid *string) (_result *Lis
 }
 
 func (client *Client) ListFoundationComponentVersionsWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFoundationComponentVersionsResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14337,7 +14920,7 @@ func (client *Client) ListFoundationComponentVersionsWithOptions(uid *string, he
 		Action:      tea.String("ListFoundationComponentVersions"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/foundation/versions/" + tea.StringValue(uid) + "/component-versions"),
+		Pathname:    tea.String("/api/v2/foundation/versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/component-versions"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14482,7 +15065,6 @@ func (client *Client) ListProductComponentVersionsWithOptions(uid *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Category)) {
 		query["category"] = request.Category
@@ -14512,7 +15094,7 @@ func (client *Client) ListProductComponentVersionsWithOptions(uid *string, reque
 		Action:      tea.String("ListProductComponentVersions"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/component-versions"),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/component-versions"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14603,9 +15185,12 @@ func (client *Client) ListProductEnvironmentsWithOptions(uid *string, tmpReq *Li
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	request := &ListProductEnvironmentsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Options))) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Options), tea.String("options"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Platforms)) {
 		request.PlatformsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Platforms, tea.String("platforms"), tea.String("json"))
 	}
@@ -14619,8 +15204,16 @@ func (client *Client) ListProductEnvironmentsWithOptions(uid *string, tmpReq *Li
 		query["envType"] = request.EnvType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OptionsShrink)) {
+		query["options"] = request.OptionsShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PlatformsShrink)) {
 		query["platforms"] = request.PlatformsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductVersionSpecUID)) {
+		query["productVersionSpecUID"] = request.ProductVersionSpecUID
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProductVersionUID)) {
@@ -14635,7 +15228,7 @@ func (client *Client) ListProductEnvironmentsWithOptions(uid *string, tmpReq *Li
 		Action:      tea.String("ListProductEnvironments"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/hosting/products/" + tea.StringValue(uid) + "/environments"),
+		Pathname:    tea.String("/api/v2/hosting/products/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/environments"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14664,7 +15257,6 @@ func (client *Client) ListProductFoundationReferences(uid *string) (_result *Lis
 }
 
 func (client *Client) ListProductFoundationReferencesWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProductFoundationReferencesResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14672,7 +15264,7 @@ func (client *Client) ListProductFoundationReferencesWithOptions(uid *string, he
 		Action:      tea.String("ListProductFoundationReferences"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/foundation-references"),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/foundation-references"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14762,14 +15354,24 @@ func (client *Client) ListProductInstances(request *ListProductInstancesRequest)
 	return _result, _err
 }
 
-func (client *Client) ListProductInstancesWithOptions(request *ListProductInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProductInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListProductInstancesWithOptions(tmpReq *ListProductInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProductInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListProductInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Options))) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Options), tea.String("options"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvUID)) {
 		query["envUID"] = request.EnvUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OptionsShrink)) {
+		query["options"] = request.OptionsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
@@ -14825,7 +15427,6 @@ func (client *Client) ListProductVersionConfigsWithOptions(uid *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ConfigType)) {
 		query["configType"] = request.ConfigType
@@ -14843,6 +15444,10 @@ func (client *Client) ListProductVersionConfigsWithOptions(uid *string, request 
 		query["parameter"] = request.Parameter
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["scope"] = request.Scope
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -14851,7 +15456,7 @@ func (client *Client) ListProductVersionConfigsWithOptions(uid *string, request 
 		Action:      tea.String("ListProductVersionConfigs"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/configs"),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/configs"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15026,8 +15631,6 @@ func (client *Client) ListWorkflowTaskLogsWithOptions(stepName *string, taskName
 	if _err != nil {
 		return _result, _err
 	}
-	stepName = openapiutil.GetEncodeParam(stepName)
-	taskName = openapiutil.GetEncodeParam(taskName)
 	request := &ListWorkflowTaskLogsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
 	if !tea.BoolValue(util.IsUnset(tmpReq.FilterValues)) {
@@ -15067,7 +15670,7 @@ func (client *Client) ListWorkflowTaskLogsWithOptions(stepName *string, taskName
 		Action:      tea.String("ListWorkflowTaskLogs"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/workflows/steps/" + tea.StringValue(stepName) + "/tasks/" + tea.StringValue(taskName) + "/logs"),
+		Pathname:    tea.String("/api/v2/workflows/steps/" + tea.StringValue(openapiutil.GetEncodeParam(stepName)) + "/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(taskName)) + "/logs"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15100,7 +15703,6 @@ func (client *Client) PutEnvironmentTunnelWithOptions(uid *string, request *PutE
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TunnelConfig))) {
 		body["tunnelConfig"] = request.TunnelConfig
@@ -15118,7 +15720,7 @@ func (client *Client) PutEnvironmentTunnelWithOptions(uid *string, request *PutE
 		Action:      tea.String("PutEnvironmentTunnel"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/tunnels"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/tunnels"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15241,8 +15843,6 @@ func (client *Client) SetEnvironmentFoundationReference(uid *string, foundationR
 }
 
 func (client *Client) SetEnvironmentFoundationReferenceWithOptions(uid *string, foundationReferenceUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetEnvironmentFoundationReferenceResponse, _err error) {
-	uid = openapiutil.GetEncodeParam(uid)
-	foundationReferenceUID = openapiutil.GetEncodeParam(foundationReferenceUID)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15250,7 +15850,7 @@ func (client *Client) SetEnvironmentFoundationReferenceWithOptions(uid *string, 
 		Action:      tea.String("SetEnvironmentFoundationReference"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/foundation-references/" + tea.StringValue(foundationReferenceUID)),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/foundation-references/" + tea.StringValue(openapiutil.GetEncodeParam(foundationReferenceUID))),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15283,8 +15883,11 @@ func (client *Client) UpdateEnvironmentWithOptions(uid *string, request *UpdateE
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.AdvancedConfigs))) {
+		body["advancedConfigs"] = request.AdvancedConfigs
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
 	}
@@ -15305,7 +15908,7 @@ func (client *Client) UpdateEnvironmentWithOptions(uid *string, request *UpdateE
 		Action:      tea.String("UpdateEnvironment"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid)),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15338,8 +15941,6 @@ func (client *Client) UpdateEnvironmentNodeWithOptions(uid *string, nodeUID *str
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
-	nodeUID = openapiutil.GetEncodeParam(nodeUID)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplicationDisk)) {
 		body["applicationDisk"] = request.ApplicationDisk
@@ -15377,7 +15978,7 @@ func (client *Client) UpdateEnvironmentNodeWithOptions(uid *string, nodeUID *str
 		Action:      tea.String("UpdateEnvironmentNode"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/nodes/" + tea.StringValue(nodeUID)),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/nodes/" + tea.StringValue(openapiutil.GetEncodeParam(nodeUID))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15410,10 +16011,17 @@ func (client *Client) UpdateEnvironmentProductVersionWithOptions(uid *string, re
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OldProductVersionSpecUID)) {
+		body["oldProductVersionSpecUID"] = request.OldProductVersionSpecUID
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OldProductVersionUID)) {
 		body["oldProductVersionUID"] = request.OldProductVersionUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductVersionSpecUID)) {
+		body["productVersionSpecUID"] = request.ProductVersionSpecUID
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProductVersionUID)) {
@@ -15428,7 +16036,7 @@ func (client *Client) UpdateEnvironmentProductVersionWithOptions(uid *string, re
 		Action:      tea.String("UpdateEnvironmentProductVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/product-versions"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/product-versions"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15461,8 +16069,6 @@ func (client *Client) UpdateFoundationComponentReferenceWithOptions(uid *string,
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
-	componentReferenceUID = openapiutil.GetEncodeParam(componentReferenceUID)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ComponentOrchestrationValues)) {
 		body["componentOrchestrationValues"] = request.ComponentOrchestrationValues
@@ -15480,7 +16086,7 @@ func (client *Client) UpdateFoundationComponentReferenceWithOptions(uid *string,
 		Action:      tea.String("UpdateFoundationComponentReference"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/foundation-references/" + tea.StringValue(uid) + "/components/" + tea.StringValue(componentReferenceUID)),
+		Pathname:    tea.String("/api/v2/foundation-references/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/components/" + tea.StringValue(openapiutil.GetEncodeParam(componentReferenceUID))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15513,7 +16119,6 @@ func (client *Client) UpdateFoundationReferenceWithOptions(uid *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterConfig)) {
 		body["clusterConfig"] = request.ClusterConfig
@@ -15527,7 +16132,7 @@ func (client *Client) UpdateFoundationReferenceWithOptions(uid *string, request 
 		Action:      tea.String("UpdateFoundationReference"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/foundation-references/" + tea.StringValue(uid)),
+		Pathname:    tea.String("/api/v2/foundation-references/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15560,10 +16165,21 @@ func (client *Client) UpdateProductWithOptions(uid *string, request *UpdateProdu
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Categories)) {
+		body["categories"] = request.Categories
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vendor)) {
+		body["vendor"] = request.Vendor
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -15574,7 +16190,7 @@ func (client *Client) UpdateProductWithOptions(uid *string, request *UpdateProdu
 		Action:      tea.String("UpdateProduct"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/products/" + tea.StringValue(uid)),
+		Pathname:    tea.String("/api/v2/products/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15607,8 +16223,6 @@ func (client *Client) UpdateProductComponentVersionWithOptions(uid *string, rela
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
-	relationUID = openapiutil.GetEncodeParam(relationUID)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ComponentOrchestrationValues)) {
 		body["componentOrchestrationValues"] = request.ComponentOrchestrationValues
@@ -15620,6 +16234,10 @@ func (client *Client) UpdateProductComponentVersionWithOptions(uid *string, rela
 
 	if !tea.BoolValue(util.IsUnset(request.NewComponentVersionUID)) {
 		body["newComponentVersionUID"] = request.NewComponentVersionUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Policy))) {
+		body["policy"] = request.Policy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ReleaseName)) {
@@ -15634,7 +16252,7 @@ func (client *Client) UpdateProductComponentVersionWithOptions(uid *string, rela
 		Action:      tea.String("UpdateProductComponentVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/relations/" + tea.StringValue(relationUID)),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/relations/" + tea.StringValue(openapiutil.GetEncodeParam(relationUID))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15667,7 +16285,6 @@ func (client *Client) UpdateProductFoundationVersionWithOptions(uid *string, req
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FoundationVersionUID)) {
 		body["foundationVersionUID"] = request.FoundationVersionUID
@@ -15681,7 +16298,7 @@ func (client *Client) UpdateProductFoundationVersionWithOptions(uid *string, req
 		Action:      tea.String("UpdateProductFoundationVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/foundation"),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/foundation"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15714,7 +16331,6 @@ func (client *Client) UpdateProductVersionWithOptions(uid *string, request *Upda
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ContinuousIntegration)) {
 		body["continuousIntegration"] = request.ContinuousIntegration
@@ -15736,7 +16352,7 @@ func (client *Client) UpdateProductVersionWithOptions(uid *string, request *Upda
 		Action:      tea.String("UpdateProductVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid)),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15769,8 +16385,6 @@ func (client *Client) UpdateProductVersionConfigWithOptions(uid *string, configU
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
-	configUID = openapiutil.GetEncodeParam(configUID)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ComponentVersionUID)) {
 		body["componentVersionUID"] = request.ComponentVersionUID
@@ -15804,7 +16418,7 @@ func (client *Client) UpdateProductVersionConfigWithOptions(uid *string, configU
 		Action:      tea.String("UpdateProductVersionConfig"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/configs/" + tea.StringValue(configUID)),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/configs/" + tea.StringValue(openapiutil.GetEncodeParam(configUID))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15837,7 +16451,6 @@ func (client *Client) ValidateEnvironmentTunnelWithOptions(uid *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TunnelConfig))) {
 		body["tunnelConfig"] = request.TunnelConfig
@@ -15855,7 +16468,7 @@ func (client *Client) ValidateEnvironmentTunnelWithOptions(uid *string, request 
 		Action:      tea.String("ValidateEnvironmentTunnel"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/tunnels/validation"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/tunnels/validation"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
