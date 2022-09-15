@@ -100,6 +100,41 @@ func (s *EncryptUserCmkConf) SetRegionId(v string) *EncryptUserCmkConf {
 	return s
 }
 
+type Histogram struct {
+	Count    *int64  `json:"count,omitempty" xml:"count,omitempty"`
+	From     *int32  `json:"from,omitempty" xml:"from,omitempty"`
+	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
+	To       *int32  `json:"to,omitempty" xml:"to,omitempty"`
+}
+
+func (s Histogram) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Histogram) GoString() string {
+	return s.String()
+}
+
+func (s *Histogram) SetCount(v int64) *Histogram {
+	s.Count = &v
+	return s
+}
+
+func (s *Histogram) SetFrom(v int32) *Histogram {
+	s.From = &v
+	return s
+}
+
+func (s *Histogram) SetProgress(v string) *Histogram {
+	s.Progress = &v
+	return s
+}
+
+func (s *Histogram) SetTo(v int32) *Histogram {
+	s.To = &v
+	return s
+}
+
 type LogtailConfig struct {
 	ConfigName     *string                    `json:"configName,omitempty" xml:"configName,omitempty"`
 	CreateTime     *int64                     `json:"createTime,omitempty" xml:"createTime,omitempty"`
@@ -574,6 +609,106 @@ func (s *ExternalStore) SetStoreType(v string) *ExternalStore {
 	return s
 }
 
+type Index struct {
+	Keys               map[string]*IndexKeysValue `json:"keys,omitempty" xml:"keys,omitempty"`
+	LastModifyTime     *int64                     `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	Line               *IndexLine                 `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
+	LogReduce          *bool                      `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
+	LogReduceBlackList []*string                  `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
+	LogReduceWhiteList []*string                  `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
+	MaxTextLen         *int32                     `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
+	Ttl                *int32                     `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s Index) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Index) GoString() string {
+	return s.String()
+}
+
+func (s *Index) SetKeys(v map[string]*IndexKeysValue) *Index {
+	s.Keys = v
+	return s
+}
+
+func (s *Index) SetLastModifyTime(v int64) *Index {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *Index) SetLine(v *IndexLine) *Index {
+	s.Line = v
+	return s
+}
+
+func (s *Index) SetLogReduce(v bool) *Index {
+	s.LogReduce = &v
+	return s
+}
+
+func (s *Index) SetLogReduceBlackList(v []*string) *Index {
+	s.LogReduceBlackList = v
+	return s
+}
+
+func (s *Index) SetLogReduceWhiteList(v []*string) *Index {
+	s.LogReduceWhiteList = v
+	return s
+}
+
+func (s *Index) SetMaxTextLen(v int32) *Index {
+	s.MaxTextLen = &v
+	return s
+}
+
+func (s *Index) SetTtl(v int32) *Index {
+	s.Ttl = &v
+	return s
+}
+
+type IndexLine struct {
+	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	Chn           *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
+	ExcludeKeys   []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
+	IncludeKeys   []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
+	Token         []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+}
+
+func (s IndexLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IndexLine) GoString() string {
+	return s.String()
+}
+
+func (s *IndexLine) SetCaseSensitive(v bool) *IndexLine {
+	s.CaseSensitive = &v
+	return s
+}
+
+func (s *IndexLine) SetChn(v bool) *IndexLine {
+	s.Chn = &v
+	return s
+}
+
+func (s *IndexLine) SetExcludeKeys(v []*string) *IndexLine {
+	s.ExcludeKeys = v
+	return s
+}
+
+func (s *IndexLine) SetIncludeKeys(v []*string) *IndexLine {
+	s.IncludeKeys = v
+	return s
+}
+
+func (s *IndexLine) SetToken(v []*string) *IndexLine {
+	s.Token = v
+	return s
+}
+
 type Logging struct {
 	LoggingDetails []*LoggingLoggingDetails `json:"loggingDetails,omitempty" xml:"loggingDetails,omitempty" type:"Repeated"`
 	LoggingProject *string                  `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
@@ -630,6 +765,7 @@ type Logstore struct {
 	LastModifyTime *int32       `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
 	LogstoreName   *string      `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
 	MaxSplitShard  *int32       `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	Mode           *string      `json:"mode,omitempty" xml:"mode,omitempty"`
 	ShardCount     *int32       `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
 	TelemetryType  *string      `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
 	Ttl            *int32       `json:"ttl,omitempty" xml:"ttl,omitempty"`
@@ -685,6 +821,11 @@ func (s *Logstore) SetLogstoreName(v string) *Logstore {
 
 func (s *Logstore) SetMaxSplitShard(v int32) *Logstore {
 	s.MaxSplitShard = &v
+	return s
+}
+
+func (s *Logstore) SetMode(v string) *Logstore {
+	s.Mode = &v
 	return s
 }
 
@@ -893,6 +1034,100 @@ func (s *Shard) SetShardID(v int32) *Shard {
 
 func (s *Shard) SetStatus(v string) *Shard {
 	s.Status = &v
+	return s
+}
+
+type IndexKeysValue struct {
+	Chn           *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
+	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	Token         []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	Alias         *string   `json:"alias,omitempty" xml:"alias,omitempty"`
+	Type          *string   `json:"type,omitempty" xml:"type,omitempty"`
+	DocValue      *bool     `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
+}
+
+func (s IndexKeysValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IndexKeysValue) GoString() string {
+	return s.String()
+}
+
+func (s *IndexKeysValue) SetChn(v bool) *IndexKeysValue {
+	s.Chn = &v
+	return s
+}
+
+func (s *IndexKeysValue) SetCaseSensitive(v bool) *IndexKeysValue {
+	s.CaseSensitive = &v
+	return s
+}
+
+func (s *IndexKeysValue) SetToken(v []*string) *IndexKeysValue {
+	s.Token = v
+	return s
+}
+
+func (s *IndexKeysValue) SetAlias(v string) *IndexKeysValue {
+	s.Alias = &v
+	return s
+}
+
+func (s *IndexKeysValue) SetType(v string) *IndexKeysValue {
+	s.Type = &v
+	return s
+}
+
+func (s *IndexKeysValue) SetDocValue(v bool) *IndexKeysValue {
+	s.DocValue = &v
+	return s
+}
+
+type KeysValue struct {
+	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	Chn           *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
+	Type          *string   `json:"type,omitempty" xml:"type,omitempty"`
+	Alias         *string   `json:"alias,omitempty" xml:"alias,omitempty"`
+	Token         []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	DocValue      *bool     `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
+}
+
+func (s KeysValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KeysValue) GoString() string {
+	return s.String()
+}
+
+func (s *KeysValue) SetCaseSensitive(v bool) *KeysValue {
+	s.CaseSensitive = &v
+	return s
+}
+
+func (s *KeysValue) SetChn(v bool) *KeysValue {
+	s.Chn = &v
+	return s
+}
+
+func (s *KeysValue) SetType(v string) *KeysValue {
+	s.Type = &v
+	return s
+}
+
+func (s *KeysValue) SetAlias(v string) *KeysValue {
+	s.Alias = &v
+	return s
+}
+
+func (s *KeysValue) SetToken(v []*string) *KeysValue {
+	s.Token = v
+	return s
+}
+
+func (s *KeysValue) SetDocValue(v bool) *KeysValue {
+	s.DocValue = &v
 	return s
 }
 
@@ -1237,6 +1472,222 @@ func (s *CreateDomainResponse) SetStatusCode(v int32) *CreateDomainResponse {
 	return s
 }
 
+type CreateEtlJobRequest struct {
+	Enable            *bool                              `json:"enable,omitempty" xml:"enable,omitempty"`
+	EtlJobName        *string                            `json:"etlJobName,omitempty" xml:"etlJobName,omitempty"`
+	FunctionConfig    *CreateEtlJobRequestFunctionConfig `json:"functionConfig,omitempty" xml:"functionConfig,omitempty" type:"Struct"`
+	FunctionParameter map[string]interface{}             `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
+	LogConfig         *CreateEtlJobRequestLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
+	SourceConfig      *CreateEtlJobRequestSourceConfig   `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty" type:"Struct"`
+	TriggerConfig     *CreateEtlJobRequestTriggerConfig  `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Struct"`
+}
+
+func (s CreateEtlJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEtlJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEtlJobRequest) SetEnable(v bool) *CreateEtlJobRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateEtlJobRequest) SetEtlJobName(v string) *CreateEtlJobRequest {
+	s.EtlJobName = &v
+	return s
+}
+
+func (s *CreateEtlJobRequest) SetFunctionConfig(v *CreateEtlJobRequestFunctionConfig) *CreateEtlJobRequest {
+	s.FunctionConfig = v
+	return s
+}
+
+func (s *CreateEtlJobRequest) SetFunctionParameter(v map[string]interface{}) *CreateEtlJobRequest {
+	s.FunctionParameter = v
+	return s
+}
+
+func (s *CreateEtlJobRequest) SetLogConfig(v *CreateEtlJobRequestLogConfig) *CreateEtlJobRequest {
+	s.LogConfig = v
+	return s
+}
+
+func (s *CreateEtlJobRequest) SetSourceConfig(v *CreateEtlJobRequestSourceConfig) *CreateEtlJobRequest {
+	s.SourceConfig = v
+	return s
+}
+
+func (s *CreateEtlJobRequest) SetTriggerConfig(v *CreateEtlJobRequestTriggerConfig) *CreateEtlJobRequest {
+	s.TriggerConfig = v
+	return s
+}
+
+type CreateEtlJobRequestFunctionConfig struct {
+	AccountId        *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	Endpoint         *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	FunctionName     *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	FunctionProvider *string `json:"functionProvider,omitempty" xml:"functionProvider,omitempty"`
+	RegionName       *string `json:"regionName,omitempty" xml:"regionName,omitempty"`
+	RoleArn          *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	ServiceName      *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+}
+
+func (s CreateEtlJobRequestFunctionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEtlJobRequestFunctionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEtlJobRequestFunctionConfig) SetAccountId(v string) *CreateEtlJobRequestFunctionConfig {
+	s.AccountId = &v
+	return s
+}
+
+func (s *CreateEtlJobRequestFunctionConfig) SetEndpoint(v string) *CreateEtlJobRequestFunctionConfig {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateEtlJobRequestFunctionConfig) SetFunctionName(v string) *CreateEtlJobRequestFunctionConfig {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *CreateEtlJobRequestFunctionConfig) SetFunctionProvider(v string) *CreateEtlJobRequestFunctionConfig {
+	s.FunctionProvider = &v
+	return s
+}
+
+func (s *CreateEtlJobRequestFunctionConfig) SetRegionName(v string) *CreateEtlJobRequestFunctionConfig {
+	s.RegionName = &v
+	return s
+}
+
+func (s *CreateEtlJobRequestFunctionConfig) SetRoleArn(v string) *CreateEtlJobRequestFunctionConfig {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *CreateEtlJobRequestFunctionConfig) SetServiceName(v string) *CreateEtlJobRequestFunctionConfig {
+	s.ServiceName = &v
+	return s
+}
+
+type CreateEtlJobRequestLogConfig struct {
+	Endpoint     *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	ProjectName  *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+}
+
+func (s CreateEtlJobRequestLogConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEtlJobRequestLogConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEtlJobRequestLogConfig) SetEndpoint(v string) *CreateEtlJobRequestLogConfig {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateEtlJobRequestLogConfig) SetLogstoreName(v string) *CreateEtlJobRequestLogConfig {
+	s.LogstoreName = &v
+	return s
+}
+
+func (s *CreateEtlJobRequestLogConfig) SetProjectName(v string) *CreateEtlJobRequestLogConfig {
+	s.ProjectName = &v
+	return s
+}
+
+type CreateEtlJobRequestSourceConfig struct {
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+}
+
+func (s CreateEtlJobRequestSourceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEtlJobRequestSourceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEtlJobRequestSourceConfig) SetLogstoreName(v string) *CreateEtlJobRequestSourceConfig {
+	s.LogstoreName = &v
+	return s
+}
+
+type CreateEtlJobRequestTriggerConfig struct {
+	MaxRetryTime     *int32  `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
+	RoleArn          *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	StartingPosition *string `json:"startingPosition,omitempty" xml:"startingPosition,omitempty"`
+	StartingUnixtime *int64  `json:"startingUnixtime,omitempty" xml:"startingUnixtime,omitempty"`
+	TriggerInterval  *int32  `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
+}
+
+func (s CreateEtlJobRequestTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEtlJobRequestTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEtlJobRequestTriggerConfig) SetMaxRetryTime(v int32) *CreateEtlJobRequestTriggerConfig {
+	s.MaxRetryTime = &v
+	return s
+}
+
+func (s *CreateEtlJobRequestTriggerConfig) SetRoleArn(v string) *CreateEtlJobRequestTriggerConfig {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *CreateEtlJobRequestTriggerConfig) SetStartingPosition(v string) *CreateEtlJobRequestTriggerConfig {
+	s.StartingPosition = &v
+	return s
+}
+
+func (s *CreateEtlJobRequestTriggerConfig) SetStartingUnixtime(v int64) *CreateEtlJobRequestTriggerConfig {
+	s.StartingUnixtime = &v
+	return s
+}
+
+func (s *CreateEtlJobRequestTriggerConfig) SetTriggerInterval(v int32) *CreateEtlJobRequestTriggerConfig {
+	s.TriggerInterval = &v
+	return s
+}
+
+type CreateEtlJobResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateEtlJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEtlJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEtlJobResponse) SetHeaders(v map[string]*string) *CreateEtlJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEtlJobResponse) SetStatusCode(v int32) *CreateEtlJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateEtlMetaRequest struct {
 	Enable       *bool                  `json:"enable,omitempty" xml:"enable,omitempty"`
 	EtlMetaKey   *string                `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
@@ -1426,6 +1877,7 @@ type CreateLogStoreRequest struct {
 	HotTtl         *int32       `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
 	LogstoreName   *string      `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
 	MaxSplitShard  *int32       `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	Mode           *string      `json:"mode,omitempty" xml:"mode,omitempty"`
 	ShardCount     *int32       `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
 	TelemetryType  *string      `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
 	Ttl            *int32       `json:"ttl,omitempty" xml:"ttl,omitempty"`
@@ -1471,6 +1923,11 @@ func (s *CreateLogStoreRequest) SetLogstoreName(v string) *CreateLogStoreRequest
 
 func (s *CreateLogStoreRequest) SetMaxSplitShard(v int32) *CreateLogStoreRequest {
 	s.MaxSplitShard = &v
+	return s
+}
+
+func (s *CreateLogStoreRequest) SetMode(v string) *CreateLogStoreRequest {
+	s.Mode = &v
 	return s
 }
 
@@ -2320,6 +2777,29 @@ func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
 	return s
 }
 
+type DeleteEtlJobResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteEtlJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEtlJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEtlJobResponse) SetHeaders(v map[string]*string) *DeleteEtlJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEtlJobResponse) SetStatusCode(v int32) *DeleteEtlJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteEtlMetaRequest struct {
 	EtlMetaKey  *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
 	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
@@ -2990,10 +3470,39 @@ func (s *GetCursorTimeResponse) SetBody(v *GetCursorTimeResponseBody) *GetCursor
 	return s
 }
 
+type GetEtlJobResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EtlJob            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEtlJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEtlJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEtlJobResponse) SetHeaders(v map[string]*string) *GetEtlJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEtlJobResponse) SetStatusCode(v int32) *GetEtlJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEtlJobResponse) SetBody(v *EtlJob) *GetEtlJobResponse {
+	s.Body = v
+	return s
+}
+
 type GetEtlMetaRequest struct {
-	ElMetaName *string `json:"elMetaName,omitempty" xml:"elMetaName,omitempty"`
-	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	EtlMetaTag *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
+	EtlMetaKey  *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
+	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
+	EtlMetaTag  *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
 }
 
 func (s GetEtlMetaRequest) String() string {
@@ -3004,13 +3513,13 @@ func (s GetEtlMetaRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetEtlMetaRequest) SetElMetaName(v string) *GetEtlMetaRequest {
-	s.ElMetaName = &v
+func (s *GetEtlMetaRequest) SetEtlMetaKey(v string) *GetEtlMetaRequest {
+	s.EtlMetaKey = &v
 	return s
 }
 
-func (s *GetEtlMetaRequest) SetEtlMetaKey(v string) *GetEtlMetaRequest {
-	s.EtlMetaKey = &v
+func (s *GetEtlMetaRequest) SetEtlMetaName(v string) *GetEtlMetaRequest {
+	s.EtlMetaName = &v
 	return s
 }
 
@@ -3105,7 +3614,6 @@ type GetHistogramsRequest struct {
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	To    *int64  `json:"to,omitempty" xml:"to,omitempty"`
 	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
-	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetHistogramsRequest) String() string {
@@ -3133,11 +3641,6 @@ func (s *GetHistogramsRequest) SetTo(v int64) *GetHistogramsRequest {
 
 func (s *GetHistogramsRequest) SetTopic(v string) *GetHistogramsRequest {
 	s.Topic = &v
-	return s
-}
-
-func (s *GetHistogramsRequest) SetType(v string) *GetHistogramsRequest {
-	s.Type = &v
 	return s
 }
 
@@ -3413,7 +3916,6 @@ type GetLogsRequest struct {
 	Reverse  *bool   `json:"reverse,omitempty" xml:"reverse,omitempty"`
 	To       *int64  `json:"to,omitempty" xml:"to,omitempty"`
 	Topic    *string `json:"topic,omitempty" xml:"topic,omitempty"`
-	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetLogsRequest) String() string {
@@ -3461,11 +3963,6 @@ func (s *GetLogsRequest) SetTo(v int64) *GetLogsRequest {
 
 func (s *GetLogsRequest) SetTopic(v string) *GetLogsRequest {
 	s.Topic = &v
-	return s
-}
-
-func (s *GetLogsRequest) SetType(v string) *GetLogsRequest {
-	s.Type = &v
 	return s
 }
 
@@ -4016,6 +4513,87 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 	return s
 }
 
+type ListEtlJobRequest struct {
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListEtlJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEtlJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEtlJobRequest) SetOffset(v int32) *ListEtlJobRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListEtlJobRequest) SetSize(v int32) *ListEtlJobRequest {
+	s.Size = &v
+	return s
+}
+
+type ListEtlJobResponseBody struct {
+	Count          *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	EtlJobNameList []*string `json:"etlJobNameList,omitempty" xml:"etlJobNameList,omitempty" type:"Repeated"`
+	Total          *int32    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListEtlJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEtlJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEtlJobResponseBody) SetCount(v int32) *ListEtlJobResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListEtlJobResponseBody) SetEtlJobNameList(v []*string) *ListEtlJobResponseBody {
+	s.EtlJobNameList = v
+	return s
+}
+
+func (s *ListEtlJobResponseBody) SetTotal(v int32) *ListEtlJobResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListEtlJobResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEtlJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEtlJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEtlJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEtlJobResponse) SetHeaders(v map[string]*string) *ListEtlJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEtlJobResponse) SetStatusCode(v int32) *ListEtlJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEtlJobResponse) SetBody(v *ListEtlJobResponseBody) *ListEtlJobResponse {
+	s.Body = v
+	return s
+}
+
 type ListEtlMetaRequest struct {
 	EtlMetaKey  *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
 	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
@@ -4279,6 +4857,7 @@ func (s *ListExternalStoreResponse) SetBody(v *ListExternalStoreResponseBody) *L
 
 type ListLogStoresRequest struct {
 	LogstoreName  *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	Mode          *string `json:"mode,omitempty" xml:"mode,omitempty"`
 	Offset        *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
 	Size          *int32  `json:"size,omitempty" xml:"size,omitempty"`
 	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
@@ -4294,6 +4873,11 @@ func (s ListLogStoresRequest) GoString() string {
 
 func (s *ListLogStoresRequest) SetLogstoreName(v string) *ListLogStoresRequest {
 	s.LogstoreName = &v
+	return s
+}
+
+func (s *ListLogStoresRequest) SetMode(v string) *ListLogStoresRequest {
+	s.Mode = &v
 	return s
 }
 
@@ -5325,6 +5909,222 @@ func (s *UpdateConsumerGroupResponse) SetStatusCode(v int32) *UpdateConsumerGrou
 	return s
 }
 
+type UpdateEtlJobRequest struct {
+	Enable            *bool                              `json:"enable,omitempty" xml:"enable,omitempty"`
+	EtlJobName        *string                            `json:"etlJobName,omitempty" xml:"etlJobName,omitempty"`
+	FunctionConfig    *UpdateEtlJobRequestFunctionConfig `json:"functionConfig,omitempty" xml:"functionConfig,omitempty" type:"Struct"`
+	FunctionParameter map[string]interface{}             `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
+	LogConfig         *UpdateEtlJobRequestLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
+	SourceConfig      *UpdateEtlJobRequestSourceConfig   `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty" type:"Struct"`
+	TriggerConfig     *UpdateEtlJobRequestTriggerConfig  `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Struct"`
+}
+
+func (s UpdateEtlJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEtlJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEtlJobRequest) SetEnable(v bool) *UpdateEtlJobRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequest) SetEtlJobName(v string) *UpdateEtlJobRequest {
+	s.EtlJobName = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequest) SetFunctionConfig(v *UpdateEtlJobRequestFunctionConfig) *UpdateEtlJobRequest {
+	s.FunctionConfig = v
+	return s
+}
+
+func (s *UpdateEtlJobRequest) SetFunctionParameter(v map[string]interface{}) *UpdateEtlJobRequest {
+	s.FunctionParameter = v
+	return s
+}
+
+func (s *UpdateEtlJobRequest) SetLogConfig(v *UpdateEtlJobRequestLogConfig) *UpdateEtlJobRequest {
+	s.LogConfig = v
+	return s
+}
+
+func (s *UpdateEtlJobRequest) SetSourceConfig(v *UpdateEtlJobRequestSourceConfig) *UpdateEtlJobRequest {
+	s.SourceConfig = v
+	return s
+}
+
+func (s *UpdateEtlJobRequest) SetTriggerConfig(v *UpdateEtlJobRequestTriggerConfig) *UpdateEtlJobRequest {
+	s.TriggerConfig = v
+	return s
+}
+
+type UpdateEtlJobRequestFunctionConfig struct {
+	AccountId        *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	Endpoint         *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	FunctionName     *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	FunctionProvider *string `json:"functionProvider,omitempty" xml:"functionProvider,omitempty"`
+	RegionName       *string `json:"regionName,omitempty" xml:"regionName,omitempty"`
+	RoleArn          *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	ServiceName      *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+}
+
+func (s UpdateEtlJobRequestFunctionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEtlJobRequestFunctionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEtlJobRequestFunctionConfig) SetAccountId(v string) *UpdateEtlJobRequestFunctionConfig {
+	s.AccountId = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequestFunctionConfig) SetEndpoint(v string) *UpdateEtlJobRequestFunctionConfig {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequestFunctionConfig) SetFunctionName(v string) *UpdateEtlJobRequestFunctionConfig {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequestFunctionConfig) SetFunctionProvider(v string) *UpdateEtlJobRequestFunctionConfig {
+	s.FunctionProvider = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequestFunctionConfig) SetRegionName(v string) *UpdateEtlJobRequestFunctionConfig {
+	s.RegionName = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequestFunctionConfig) SetRoleArn(v string) *UpdateEtlJobRequestFunctionConfig {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequestFunctionConfig) SetServiceName(v string) *UpdateEtlJobRequestFunctionConfig {
+	s.ServiceName = &v
+	return s
+}
+
+type UpdateEtlJobRequestLogConfig struct {
+	Endpoint     *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	ProjectName  *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+}
+
+func (s UpdateEtlJobRequestLogConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEtlJobRequestLogConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEtlJobRequestLogConfig) SetEndpoint(v string) *UpdateEtlJobRequestLogConfig {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequestLogConfig) SetLogstoreName(v string) *UpdateEtlJobRequestLogConfig {
+	s.LogstoreName = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequestLogConfig) SetProjectName(v string) *UpdateEtlJobRequestLogConfig {
+	s.ProjectName = &v
+	return s
+}
+
+type UpdateEtlJobRequestSourceConfig struct {
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+}
+
+func (s UpdateEtlJobRequestSourceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEtlJobRequestSourceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEtlJobRequestSourceConfig) SetLogstoreName(v string) *UpdateEtlJobRequestSourceConfig {
+	s.LogstoreName = &v
+	return s
+}
+
+type UpdateEtlJobRequestTriggerConfig struct {
+	MaxRetryTime     *int32  `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
+	RoleArn          *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	StartingPosition *string `json:"startingPosition,omitempty" xml:"startingPosition,omitempty"`
+	StartingUnixtime *int64  `json:"startingUnixtime,omitempty" xml:"startingUnixtime,omitempty"`
+	TriggerInterval  *int32  `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
+}
+
+func (s UpdateEtlJobRequestTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEtlJobRequestTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEtlJobRequestTriggerConfig) SetMaxRetryTime(v int32) *UpdateEtlJobRequestTriggerConfig {
+	s.MaxRetryTime = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequestTriggerConfig) SetRoleArn(v string) *UpdateEtlJobRequestTriggerConfig {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequestTriggerConfig) SetStartingPosition(v string) *UpdateEtlJobRequestTriggerConfig {
+	s.StartingPosition = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequestTriggerConfig) SetStartingUnixtime(v int64) *UpdateEtlJobRequestTriggerConfig {
+	s.StartingUnixtime = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequestTriggerConfig) SetTriggerInterval(v int32) *UpdateEtlJobRequestTriggerConfig {
+	s.TriggerInterval = &v
+	return s
+}
+
+type UpdateEtlJobResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateEtlJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEtlJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEtlJobResponse) SetHeaders(v map[string]*string) *UpdateEtlJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEtlJobResponse) SetStatusCode(v int32) *UpdateEtlJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateEtlMetaRequest struct {
 	Enable       *bool                  `json:"enable,omitempty" xml:"enable,omitempty"`
 	EtlMetaKey   *string                `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
@@ -5514,6 +6314,7 @@ type UpdateLogStoreRequest struct {
 	HotTtl         *int32       `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
 	LogstoreName   *string      `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
 	MaxSplitShard  *int32       `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	Mode           *string      `json:"mode,omitempty" xml:"mode,omitempty"`
 	ShardCount     *int32       `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
 	TelemetryType  *string      `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
 	Ttl            *int32       `json:"ttl,omitempty" xml:"ttl,omitempty"`
@@ -5559,6 +6360,11 @@ func (s *UpdateLogStoreRequest) SetLogstoreName(v string) *UpdateLogStoreRequest
 
 func (s *UpdateLogStoreRequest) SetMaxSplitShard(v int32) *UpdateLogStoreRequest {
 	s.MaxSplitShard = &v
+	return s
+}
+
+func (s *UpdateLogStoreRequest) SetMode(v string) *UpdateLogStoreRequest {
+	s.Mode = &v
 	return s
 }
 
@@ -6356,53 +7162,6 @@ func (s *UpdateSavedSearchResponse) SetStatusCode(v int32) *UpdateSavedSearchRes
 	return s
 }
 
-type KeysValue struct {
-	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	Chn           *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
-	Type          *string   `json:"type,omitempty" xml:"type,omitempty"`
-	Alias         *string   `json:"alias,omitempty" xml:"alias,omitempty"`
-	Token         []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
-	DocValue      *bool     `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
-}
-
-func (s KeysValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s KeysValue) GoString() string {
-	return s.String()
-}
-
-func (s *KeysValue) SetCaseSensitive(v bool) *KeysValue {
-	s.CaseSensitive = &v
-	return s
-}
-
-func (s *KeysValue) SetChn(v bool) *KeysValue {
-	s.Chn = &v
-	return s
-}
-
-func (s *KeysValue) SetType(v string) *KeysValue {
-	s.Type = &v
-	return s
-}
-
-func (s *KeysValue) SetAlias(v string) *KeysValue {
-	s.Alias = &v
-	return s
-}
-
-func (s *KeysValue) SetToken(v []*string) *KeysValue {
-	s.Token = v
-	return s
-}
-
-func (s *KeysValue) SetDocValue(v bool) *KeysValue {
-	s.DocValue = &v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -6443,8 +7202,6 @@ func (client *Client) ApplyConfigToMachineGroup(project *string, machineGroup *s
 func (client *Client) ApplyConfigToMachineGroupWithOptions(project *string, machineGroup *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyConfigToMachineGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	machineGroup = openapiutil.GetEncodeParam(machineGroup)
-	configName = openapiutil.GetEncodeParam(configName)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -6653,7 +7410,6 @@ func (client *Client) CreateConsumerGroupWithOptions(project *string, logstore *
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ConsumerGroup)) {
 		body["consumerGroup"] = request.ConsumerGroup
@@ -6733,6 +7489,79 @@ func (client *Client) CreateDomainWithOptions(project *string, request *CreateDo
 		BodyType:    tea.String("none"),
 	}
 	_result = &CreateDomainResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEtlJob(project *string, request *CreateEtlJobRequest) (_result *CreateEtlJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateEtlJobResponse{}
+	_body, _err := client.CreateEtlJobWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateEtlJobWithOptions(project *string, request *CreateEtlJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateEtlJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlJobName)) {
+		body["etlJobName"] = request.EtlJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.FunctionConfig))) {
+		body["functionConfig"] = request.FunctionConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionParameter)) {
+		body["functionParameter"] = request.FunctionParameter
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.LogConfig))) {
+		body["logConfig"] = request.LogConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SourceConfig))) {
+		body["sourceConfig"] = request.SourceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TriggerConfig))) {
+		body["triggerConfig"] = request.TriggerConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEtlJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etljobs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateEtlJobResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6825,7 +7654,6 @@ func (client *Client) CreateIndexWithOptions(project *string, logstore *string, 
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Keys)) {
 		body["keys"] = request.Keys
@@ -6926,6 +7754,10 @@ func (client *Client) CreateLogStoreWithOptions(project *string, request *Create
 
 	if !tea.BoolValue(util.IsUnset(request.MaxSplitShard)) {
 		body["maxSplitShard"] = request.MaxSplitShard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		body["mode"] = request.Mode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
@@ -7102,7 +7934,6 @@ func (client *Client) CreateOdpsShipperWithOptions(project *string, logstore *st
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ShipperName)) {
 		body["shipperName"] = request.ShipperName
@@ -7217,7 +8048,6 @@ func (client *Client) CreateOssShipperWithOptions(project *string, logstore *str
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ShipperName)) {
 		body["shipperName"] = request.ShipperName
@@ -7443,8 +8273,6 @@ func (client *Client) DeleteConsumerGroup(project *string, logstore *string, con
 func (client *Client) DeleteConsumerGroupWithOptions(project *string, logstore *string, consumerGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConsumerGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
-	consumerGroup = openapiutil.GetEncodeParam(consumerGroup)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -7484,7 +8312,6 @@ func (client *Client) DeleteDomain(project *string, domainName *string) (_result
 func (client *Client) DeleteDomainWithOptions(project *string, domainName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	domainName = openapiutil.GetEncodeParam(domainName)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -7501,6 +8328,45 @@ func (client *Client) DeleteDomainWithOptions(project *string, domainName *strin
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteDomainResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEtlJob(project *string, etlJobName *string) (_result *DeleteEtlJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEtlJobResponse{}
+	_body, _err := client.DeleteEtlJobWithOptions(project, etlJobName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEtlJobWithOptions(project *string, etlJobName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEtlJobResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEtlJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etljobs/" + tea.StringValue(etlJobName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteEtlJobResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7581,7 +8447,6 @@ func (client *Client) DeleteExternalStore(project *string, externalStoreName *st
 func (client *Client) DeleteExternalStoreWithOptions(project *string, externalStoreName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteExternalStoreResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	externalStoreName = openapiutil.GetEncodeParam(externalStoreName)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -7621,7 +8486,6 @@ func (client *Client) DeleteIndex(project *string, logstore *string) (_result *D
 func (client *Client) DeleteIndexWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteIndexResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -7661,7 +8525,6 @@ func (client *Client) DeleteLogStore(project *string, logstore *string) (_result
 func (client *Client) DeleteLogStoreWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLogStoreResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -7740,7 +8603,6 @@ func (client *Client) DeleteMachineGroup(project *string, machineGroup *string) 
 func (client *Client) DeleteMachineGroupWithOptions(project *string, machineGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteMachineGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	machineGroup = openapiutil.GetEncodeParam(machineGroup)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -7819,7 +8681,6 @@ func (client *Client) DeleteSavedSearch(project *string, savedsearchName *string
 func (client *Client) DeleteSavedSearchWithOptions(project *string, savedsearchName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSavedSearchResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	savedsearchName = openapiutil.GetEncodeParam(savedsearchName)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -7859,8 +8720,6 @@ func (client *Client) DeleteShipper(project *string, logstore *string, shipperNa
 func (client *Client) DeleteShipperWithOptions(project *string, logstore *string, shipperName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteShipperResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
-	shipperName = openapiutil.GetEncodeParam(shipperName)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -7900,7 +8759,6 @@ func (client *Client) GetAppliedConfigs(project *string, machineGroup *string) (
 func (client *Client) GetAppliedConfigsWithOptions(project *string, machineGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAppliedConfigsResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	machineGroup = openapiutil.GetEncodeParam(machineGroup)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -7940,7 +8798,6 @@ func (client *Client) GetAppliedMachineGroups(project *string, configName *strin
 func (client *Client) GetAppliedMachineGroupsWithOptions(project *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAppliedMachineGroupsResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	configName = openapiutil.GetEncodeParam(configName)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -7984,8 +8841,6 @@ func (client *Client) GetCheckPointWithOptions(project *string, logstore *string
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
-	consumerGroup = openapiutil.GetEncodeParam(consumerGroup)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Shard)) {
 		query["shard"] = request.Shard
@@ -8035,7 +8890,6 @@ func (client *Client) GetContextLogsWithOptions(project *string, logstore *strin
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BackLines)) {
 		query["back_lines"] = request.BackLines
@@ -8101,8 +8955,6 @@ func (client *Client) GetCursorWithOptions(project *string, logstore *string, sh
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
-	shardId = openapiutil.GetEncodeParam(shardId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		query["from"] = request.From
@@ -8156,8 +9008,6 @@ func (client *Client) GetCursorTimeWithOptions(project *string, logstore *string
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
-	shardId = openapiutil.GetEncodeParam(shardId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Cursor)) {
 		query["cursor"] = request.Cursor
@@ -8192,6 +9042,45 @@ func (client *Client) GetCursorTimeWithOptions(project *string, logstore *string
 	return _result, _err
 }
 
+func (client *Client) GetEtlJob(project *string, etlJobName *string) (_result *GetEtlJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEtlJobResponse{}
+	_body, _err := client.GetEtlJobWithOptions(project, etlJobName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEtlJobWithOptions(project *string, etlJobName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEtlJobResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEtlJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etljobs/" + tea.StringValue(etlJobName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEtlJobResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetEtlMeta(project *string, request *GetEtlMetaRequest) (_result *GetEtlMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8212,12 +9101,12 @@ func (client *Client) GetEtlMetaWithOptions(project *string, request *GetEtlMeta
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ElMetaName)) {
-		query["elMetaName"] = request.ElMetaName
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EtlMetaKey)) {
 		query["etlMetaKey"] = request.EtlMetaKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaName)) {
+		query["etlMetaName"] = request.EtlMetaName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EtlMetaTag)) {
@@ -8264,7 +9153,6 @@ func (client *Client) GetExternalStore(project *string, externalStoreName *strin
 func (client *Client) GetExternalStoreWithOptions(project *string, externalStoreName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExternalStoreResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	externalStoreName = openapiutil.GetEncodeParam(externalStoreName)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -8308,7 +9196,6 @@ func (client *Client) GetHistogramsWithOptions(project *string, logstore *string
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		query["from"] = request.From
@@ -8326,10 +9213,6 @@ func (client *Client) GetHistogramsWithOptions(project *string, logstore *string
 		query["topic"] = request.Topic
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["type"] = request.Type
-	}
-
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -8339,7 +9222,7 @@ func (client *Client) GetHistogramsWithOptions(project *string, logstore *string
 		Action:      tea.String("GetHistograms"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/index"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/index?type=histogram"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -8370,7 +9253,6 @@ func (client *Client) GetIndex(project *string, logstore *string) (_result *GetI
 func (client *Client) GetIndexWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIndexResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -8410,7 +9292,6 @@ func (client *Client) GetLogStore(project *string, logstore *string) (_result *G
 func (client *Client) GetLogStoreWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLogStoreResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -8493,7 +9374,6 @@ func (client *Client) GetLogsWithOptions(project *string, logstore *string, requ
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		query["from"] = request.From
@@ -8527,10 +9407,6 @@ func (client *Client) GetLogsWithOptions(project *string, logstore *string, requ
 		query["topic"] = request.Topic
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["type"] = request.Type
-	}
-
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -8540,7 +9416,7 @@ func (client *Client) GetLogsWithOptions(project *string, logstore *string, requ
 		Action:      tea.String("GetLogs"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/index"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "?type=log"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -8571,7 +9447,6 @@ func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_r
 func (client *Client) GetMachineGroupWithOptions(project *string, machineGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMachineGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	machineGroup = openapiutil.GetEncodeParam(machineGroup)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -8703,7 +9578,6 @@ func (client *Client) GetSavedSearch(project *string, savedsearchName *string) (
 func (client *Client) GetSavedSearchWithOptions(project *string, savedsearchName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSavedSearchResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	savedsearchName = openapiutil.GetEncodeParam(savedsearchName)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -8743,8 +9617,6 @@ func (client *Client) GetShipperConfig(project *string, logstore *string, shippe
 func (client *Client) GetShipperConfigWithOptions(project *string, logstore *string, shipperName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetShipperConfigResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
-	shipperName = openapiutil.GetEncodeParam(shipperName)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -8788,8 +9660,6 @@ func (client *Client) GetShipperStatusWithOptions(project *string, logstore *str
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
-	shipperName = openapiutil.GetEncodeParam(shipperName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		query["from"] = request.From
@@ -8851,7 +9721,6 @@ func (client *Client) ListConsumerGroup(project *string, logstore *string) (_res
 func (client *Client) ListConsumerGroupWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConsumerGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -8925,6 +9794,59 @@ func (client *Client) ListDomainsWithOptions(project *string, request *ListDomai
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDomainsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEtlJob(project *string, request *ListEtlJobRequest) (_result *ListEtlJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEtlJobResponse{}
+	_body, _err := client.ListEtlJobWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEtlJobWithOptions(project *string, request *ListEtlJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEtlJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEtlJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etljobs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEtlJobResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9132,6 +10054,10 @@ func (client *Client) ListLogStoresWithOptions(project *string, request *ListLog
 		query["logstoreName"] = request.LogstoreName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["mode"] = request.Mode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
 		query["offset"] = request.Offset
 	}
@@ -9245,7 +10171,6 @@ func (client *Client) ListMachinesWithOptions(project *string, machineGroup *str
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	machineGroup = openapiutil.GetEncodeParam(machineGroup)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
 		query["offset"] = request.Offset
@@ -9402,7 +10327,6 @@ func (client *Client) ListShards(project *string, logstore *string) (_result *Li
 func (client *Client) ListShardsWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListShardsResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -9442,7 +10366,6 @@ func (client *Client) ListShipper(project *string, logstore *string) (_result *L
 func (client *Client) ListShipperWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListShipperResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -9550,8 +10473,6 @@ func (client *Client) MergeShardsWithOptions(project *string, logstore *string, 
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
-	shardID = openapiutil.GetEncodeParam(shardID)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Action)) {
 		query["action"] = request.Action
@@ -9597,8 +10518,6 @@ func (client *Client) RemoveConfigFromMachineGroup(project *string, machineGroup
 func (client *Client) RemoveConfigFromMachineGroupWithOptions(project *string, machineGroup *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveConfigFromMachineGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	machineGroup = openapiutil.GetEncodeParam(machineGroup)
-	configName = openapiutil.GetEncodeParam(configName)
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -9642,8 +10561,6 @@ func (client *Client) SplitShardWithOptions(project *string, logstore *string, s
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
-	shardID = openapiutil.GetEncodeParam(shardID)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Action)) {
 		query["action"] = request.Action
@@ -9813,8 +10730,6 @@ func (client *Client) UpdateCheckPointWithOptions(project *string, logstore *str
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
-	consumerGroup = openapiutil.GetEncodeParam(consumerGroup)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Consumer)) {
 		query["consumer"] = request.Consumer
@@ -9882,8 +10797,6 @@ func (client *Client) UpdateConsumerGroupWithOptions(project *string, logstore *
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
-	consumerGroup = openapiutil.GetEncodeParam(consumerGroup)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
 		body["order"] = request.Order
@@ -9910,6 +10823,79 @@ func (client *Client) UpdateConsumerGroupWithOptions(project *string, logstore *
 		BodyType:    tea.String("none"),
 	}
 	_result = &UpdateConsumerGroupResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateEtlJob(project *string, etlJobName *string, request *UpdateEtlJobRequest) (_result *UpdateEtlJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateEtlJobResponse{}
+	_body, _err := client.UpdateEtlJobWithOptions(project, etlJobName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateEtlJobWithOptions(project *string, etlJobName *string, request *UpdateEtlJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateEtlJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlJobName)) {
+		body["etlJobName"] = request.EtlJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.FunctionConfig))) {
+		body["functionConfig"] = request.FunctionConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionParameter)) {
+		body["functionParameter"] = request.FunctionParameter
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.LogConfig))) {
+		body["logConfig"] = request.LogConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SourceConfig))) {
+		body["sourceConfig"] = request.SourceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TriggerConfig))) {
+		body["triggerConfig"] = request.TriggerConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEtlJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etljobs/" + tea.StringValue(etlJobName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateEtlJobResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10002,7 +10988,6 @@ func (client *Client) UpdateIndexWithOptions(project *string, logstore *string, 
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Keys)) {
 		body["keys"] = request.Keys
@@ -10076,7 +11061,6 @@ func (client *Client) UpdateLogStoreWithOptions(project *string, logstore *strin
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppendMeta)) {
 		body["appendMeta"] = request.AppendMeta
@@ -10104,6 +11088,10 @@ func (client *Client) UpdateLogStoreWithOptions(project *string, logstore *strin
 
 	if !tea.BoolValue(util.IsUnset(request.MaxSplitShard)) {
 		body["maxSplitShard"] = request.MaxSplitShard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		body["mode"] = request.Mode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
@@ -10215,7 +11203,6 @@ func (client *Client) UpdateMachineGroupWithOptions(project *string, groupName *
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	groupName = openapiutil.GetEncodeParam(groupName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.GroupAttribute))) {
 		body["groupAttribute"] = request.GroupAttribute
@@ -10281,8 +11268,6 @@ func (client *Client) UpdateOdpsShipperWithOptions(project *string, logstore *st
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
-	shipperName = openapiutil.GetEncodeParam(shipperName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ShipperName)) {
 		body["shipperName"] = request.ShipperName
@@ -10340,7 +11325,6 @@ func (client *Client) UpdateOssExternalStoreWithOptions(project *string, externa
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	externalStoreName = openapiutil.GetEncodeParam(externalStoreName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ExternalStoreName)) {
 		body["externalStoreName"] = request.ExternalStoreName
@@ -10398,8 +11382,6 @@ func (client *Client) UpdateOssShipperWithOptions(project *string, logstore *str
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	logstore = openapiutil.GetEncodeParam(logstore)
-	shipperName = openapiutil.GetEncodeParam(shipperName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ShipperName)) {
 		body["shipperName"] = request.ShipperName
@@ -10506,7 +11488,6 @@ func (client *Client) UpdateRdsExternalStoreWithOptions(project *string, externa
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	externalStoreName = openapiutil.GetEncodeParam(externalStoreName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ExternalStoreName)) {
 		body["externalStoreName"] = request.ExternalStoreName
@@ -10564,7 +11545,6 @@ func (client *Client) UpdateSavedSearchWithOptions(project *string, savedsearchN
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	savedsearchName = openapiutil.GetEncodeParam(savedsearchName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
 		body["displayName"] = request.DisplayName
