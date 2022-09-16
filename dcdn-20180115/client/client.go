@@ -4801,8 +4801,9 @@ func (s *DescribeDcdnDomainBpsDataByLayerResponse) SetBody(v *DescribeDcdnDomain
 }
 
 type DescribeDcdnDomainByCertificateRequest struct {
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SSLPub  *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SSLPub    *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
+	SSLStatus *bool   `json:"SSLStatus,omitempty" xml:"SSLStatus,omitempty"`
 }
 
 func (s DescribeDcdnDomainByCertificateRequest) String() string {
@@ -4820,6 +4821,11 @@ func (s *DescribeDcdnDomainByCertificateRequest) SetOwnerId(v int64) *DescribeDc
 
 func (s *DescribeDcdnDomainByCertificateRequest) SetSSLPub(v string) *DescribeDcdnDomainByCertificateRequest {
 	s.SSLPub = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainByCertificateRequest) SetSSLStatus(v bool) *DescribeDcdnDomainByCertificateRequest {
+	s.SSLStatus = &v
 	return s
 }
 
@@ -14465,8 +14471,8 @@ func (s *DescribeDcdnReportRequest) SetStartTime(v string) *DescribeDcdnReportRe
 }
 
 type DescribeDcdnReportResponseBody struct {
-	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDcdnReportResponseBody) String() string {
@@ -14477,8 +14483,8 @@ func (s DescribeDcdnReportResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDcdnReportResponseBody) SetContent(v string) *DescribeDcdnReportResponseBody {
-	s.Content = &v
+func (s *DescribeDcdnReportResponseBody) SetContent(v map[string]interface{}) *DescribeDcdnReportResponseBody {
+	s.Content = v
 	return s
 }
 
@@ -27117,6 +27123,10 @@ func (client *Client) DescribeDcdnDomainByCertificateWithOptions(request *Descri
 
 	if !tea.BoolValue(util.IsUnset(request.SSLPub)) {
 		query["SSLPub"] = request.SSLPub
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLStatus)) {
+		query["SSLStatus"] = request.SSLStatus
 	}
 
 	req := &openapi.OpenApiRequest{
