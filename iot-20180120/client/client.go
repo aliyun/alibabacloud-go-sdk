@@ -6541,6 +6541,105 @@ func (s *CopyThingModelResponse) SetBody(v *CopyThingModelResponseBody) *CopyThi
 	return s
 }
 
+type CountSpeechBroadcastHourRequest struct {
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	QueryDateTimeHour *string `json:"QueryDateTimeHour,omitempty" xml:"QueryDateTimeHour,omitempty"`
+	ShareTaskCode     *string `json:"ShareTaskCode,omitempty" xml:"ShareTaskCode,omitempty"`
+}
+
+func (s CountSpeechBroadcastHourRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountSpeechBroadcastHourRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CountSpeechBroadcastHourRequest) SetIotInstanceId(v string) *CountSpeechBroadcastHourRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CountSpeechBroadcastHourRequest) SetQueryDateTimeHour(v string) *CountSpeechBroadcastHourRequest {
+	s.QueryDateTimeHour = &v
+	return s
+}
+
+func (s *CountSpeechBroadcastHourRequest) SetShareTaskCode(v string) *CountSpeechBroadcastHourRequest {
+	s.ShareTaskCode = &v
+	return s
+}
+
+type CountSpeechBroadcastHourResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CountSpeechBroadcastHourResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountSpeechBroadcastHourResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CountSpeechBroadcastHourResponseBody) SetCode(v string) *CountSpeechBroadcastHourResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CountSpeechBroadcastHourResponseBody) SetData(v int32) *CountSpeechBroadcastHourResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CountSpeechBroadcastHourResponseBody) SetErrorMessage(v string) *CountSpeechBroadcastHourResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CountSpeechBroadcastHourResponseBody) SetRequestId(v string) *CountSpeechBroadcastHourResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CountSpeechBroadcastHourResponseBody) SetSuccess(v bool) *CountSpeechBroadcastHourResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CountSpeechBroadcastHourResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CountSpeechBroadcastHourResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CountSpeechBroadcastHourResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountSpeechBroadcastHourResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CountSpeechBroadcastHourResponse) SetHeaders(v map[string]*string) *CountSpeechBroadcastHourResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CountSpeechBroadcastHourResponse) SetStatusCode(v int32) *CountSpeechBroadcastHourResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CountSpeechBroadcastHourResponse) SetBody(v *CountSpeechBroadcastHourResponseBody) *CountSpeechBroadcastHourResponse {
+	s.Body = v
+	return s
+}
+
 type CreateConsumerGroupRequest struct {
 	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
@@ -18309,6 +18408,7 @@ type GetDestinationResponseBodyDestination struct {
 	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
 	IsFailover    *bool   `json:"IsFailover,omitempty" xml:"IsFailover,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	UtcCreated    *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
 }
@@ -18338,6 +18438,11 @@ func (s *GetDestinationResponseBodyDestination) SetIsFailover(v bool) *GetDestin
 
 func (s *GetDestinationResponseBodyDestination) SetName(v string) *GetDestinationResponseBodyDestination {
 	s.Name = &v
+	return s
+}
+
+func (s *GetDestinationResponseBodyDestination) SetStatus(v string) *GetDestinationResponseBodyDestination {
+	s.Status = &v
 	return s
 }
 
@@ -24534,6 +24639,7 @@ type ListDestinationResponseBodyDestinationsDestinations struct {
 	DestinationId *int64  `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
 	IsFailover    *bool   `json:"IsFailover,omitempty" xml:"IsFailover,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	UtcCreated    *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
 }
@@ -24568,6 +24674,11 @@ func (s *ListDestinationResponseBodyDestinationsDestinations) SetIsFailover(v bo
 
 func (s *ListDestinationResponseBodyDestinationsDestinations) SetName(v string) *ListDestinationResponseBodyDestinationsDestinations {
 	s.Name = &v
+	return s
+}
+
+func (s *ListDestinationResponseBodyDestinationsDestinations) SetStatus(v string) *ListDestinationResponseBodyDestinationsDestinations {
+	s.Status = &v
 	return s
 }
 
@@ -28376,6 +28487,7 @@ type ListRuleActionsResponseBodyRuleActionListRuleActionInfo struct {
 	ErrorActionFlag *bool   `json:"ErrorActionFlag,omitempty" xml:"ErrorActionFlag,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	RuleId          *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -28404,6 +28516,11 @@ func (s *ListRuleActionsResponseBodyRuleActionListRuleActionInfo) SetId(v int64)
 
 func (s *ListRuleActionsResponseBodyRuleActionListRuleActionInfo) SetRuleId(v int64) *ListRuleActionsResponseBodyRuleActionListRuleActionInfo {
 	s.RuleId = &v
+	return s
+}
+
+func (s *ListRuleActionsResponseBodyRuleActionListRuleActionInfo) SetStatus(v string) *ListRuleActionsResponseBodyRuleActionListRuleActionInfo {
+	s.Status = &v
 	return s
 }
 
@@ -29474,6 +29591,234 @@ func (s *PageQuerySharedSpeechOpenResponse) SetStatusCode(v int32) *PageQuerySha
 }
 
 func (s *PageQuerySharedSpeechOpenResponse) SetBody(v *PageQuerySharedSpeechOpenResponseBody) *PageQuerySharedSpeechOpenResponse {
+	s.Body = v
+	return s
+}
+
+type PageQuerySpeechBroadcastHourRequest struct {
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageToken         *string `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+	QueryDateTimeHour *string `json:"QueryDateTimeHour,omitempty" xml:"QueryDateTimeHour,omitempty"`
+	ShareTaskCode     *string `json:"ShareTaskCode,omitempty" xml:"ShareTaskCode,omitempty"`
+}
+
+func (s PageQuerySpeechBroadcastHourRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageQuerySpeechBroadcastHourRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PageQuerySpeechBroadcastHourRequest) SetIotInstanceId(v string) *PageQuerySpeechBroadcastHourRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourRequest) SetPageSize(v int32) *PageQuerySpeechBroadcastHourRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourRequest) SetPageToken(v string) *PageQuerySpeechBroadcastHourRequest {
+	s.PageToken = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourRequest) SetQueryDateTimeHour(v string) *PageQuerySpeechBroadcastHourRequest {
+	s.QueryDateTimeHour = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourRequest) SetShareTaskCode(v string) *PageQuerySpeechBroadcastHourRequest {
+	s.ShareTaskCode = &v
+	return s
+}
+
+type PageQuerySpeechBroadcastHourResponseBody struct {
+	Code         *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *PageQuerySpeechBroadcastHourResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PageQuerySpeechBroadcastHourResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageQuerySpeechBroadcastHourResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBody) SetCode(v string) *PageQuerySpeechBroadcastHourResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBody) SetData(v *PageQuerySpeechBroadcastHourResponseBodyData) *PageQuerySpeechBroadcastHourResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBody) SetErrorMessage(v string) *PageQuerySpeechBroadcastHourResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBody) SetRequestId(v string) *PageQuerySpeechBroadcastHourResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBody) SetSuccess(v bool) *PageQuerySpeechBroadcastHourResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PageQuerySpeechBroadcastHourResponseBodyData struct {
+	PageId     *int32                                                  `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize   *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageToken  *string                                                 `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+	ResultData *PageQuerySpeechBroadcastHourResponseBodyDataResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Struct"`
+	Total      *int32                                                  `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s PageQuerySpeechBroadcastHourResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageQuerySpeechBroadcastHourResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyData) SetPageId(v int32) *PageQuerySpeechBroadcastHourResponseBodyData {
+	s.PageId = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyData) SetPageSize(v int32) *PageQuerySpeechBroadcastHourResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyData) SetPageToken(v string) *PageQuerySpeechBroadcastHourResponseBodyData {
+	s.PageToken = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyData) SetResultData(v *PageQuerySpeechBroadcastHourResponseBodyDataResultData) *PageQuerySpeechBroadcastHourResponseBodyData {
+	s.ResultData = v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyData) SetTotal(v int32) *PageQuerySpeechBroadcastHourResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type PageQuerySpeechBroadcastHourResponseBodyDataResultData struct {
+	Data []*PageQuerySpeechBroadcastHourResponseBodyDataResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+}
+
+func (s PageQuerySpeechBroadcastHourResponseBodyDataResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageQuerySpeechBroadcastHourResponseBodyDataResultData) GoString() string {
+	return s.String()
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyDataResultData) SetData(v []*PageQuerySpeechBroadcastHourResponseBodyDataResultDataData) *PageQuerySpeechBroadcastHourResponseBodyDataResultData {
+	s.Data = v
+	return s
+}
+
+type PageQuerySpeechBroadcastHourResponseBodyDataResultDataData struct {
+	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	Msg           *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ShareTaskCode *string `json:"ShareTaskCode,omitempty" xml:"ShareTaskCode,omitempty"`
+	SpeechId      *string `json:"SpeechId,omitempty" xml:"SpeechId,omitempty"`
+	Speechs       *string `json:"Speechs,omitempty" xml:"Speechs,omitempty"`
+	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s PageQuerySpeechBroadcastHourResponseBodyDataResultDataData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageQuerySpeechBroadcastHourResponseBodyDataResultDataData) GoString() string {
+	return s.String()
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData) SetCode(v int32) *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData {
+	s.Code = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData) SetDeviceName(v string) *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData) SetMsg(v string) *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData {
+	s.Msg = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData) SetProductKey(v string) *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData) SetShareTaskCode(v string) *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData {
+	s.ShareTaskCode = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData) SetSpeechId(v string) *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData {
+	s.SpeechId = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData) SetSpeechs(v string) *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData {
+	s.Speechs = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData) SetStartTime(v int64) *PageQuerySpeechBroadcastHourResponseBodyDataResultDataData {
+	s.StartTime = &v
+	return s
+}
+
+type PageQuerySpeechBroadcastHourResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PageQuerySpeechBroadcastHourResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PageQuerySpeechBroadcastHourResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageQuerySpeechBroadcastHourResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PageQuerySpeechBroadcastHourResponse) SetHeaders(v map[string]*string) *PageQuerySpeechBroadcastHourResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponse) SetStatusCode(v int32) *PageQuerySpeechBroadcastHourResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PageQuerySpeechBroadcastHourResponse) SetBody(v *PageQuerySpeechBroadcastHourResponseBody) *PageQuerySpeechBroadcastHourResponse {
 	s.Body = v
 	return s
 }
@@ -59478,6 +59823,60 @@ func (client *Client) CopyThingModel(request *CopyThingModelRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) CountSpeechBroadcastHourWithOptions(request *CountSpeechBroadcastHourRequest, runtime *util.RuntimeOptions) (_result *CountSpeechBroadcastHourResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QueryDateTimeHour)) {
+		query["QueryDateTimeHour"] = request.QueryDateTimeHour
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareTaskCode)) {
+		body["ShareTaskCode"] = request.ShareTaskCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CountSpeechBroadcastHour"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CountSpeechBroadcastHourResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CountSpeechBroadcastHour(request *CountSpeechBroadcastHourRequest) (_result *CountSpeechBroadcastHourResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CountSpeechBroadcastHourResponse{}
+	_body, _err := client.CountSpeechBroadcastHourWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateConsumerGroupWithOptions(request *CreateConsumerGroupRequest, runtime *util.RuntimeOptions) (_result *CreateConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68548,6 +68947,68 @@ func (client *Client) PageQuerySharedSpeechOpen(request *PageQuerySharedSpeechOp
 	runtime := &util.RuntimeOptions{}
 	_result = &PageQuerySharedSpeechOpenResponse{}
 	_body, _err := client.PageQuerySharedSpeechOpenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PageQuerySpeechBroadcastHourWithOptions(request *PageQuerySpeechBroadcastHourRequest, runtime *util.RuntimeOptions) (_result *PageQuerySpeechBroadcastHourResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QueryDateTimeHour)) {
+		query["QueryDateTimeHour"] = request.QueryDateTimeHour
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageToken)) {
+		body["PageToken"] = request.PageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareTaskCode)) {
+		body["ShareTaskCode"] = request.ShareTaskCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PageQuerySpeechBroadcastHour"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PageQuerySpeechBroadcastHourResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PageQuerySpeechBroadcastHour(request *PageQuerySpeechBroadcastHourRequest) (_result *PageQuerySpeechBroadcastHourResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PageQuerySpeechBroadcastHourResponse{}
+	_body, _err := client.PageQuerySpeechBroadcastHourWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
