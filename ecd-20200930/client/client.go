@@ -168,6 +168,93 @@ func (s *AddUserToDesktopGroupResponse) SetBody(v *AddUserToDesktopGroupResponse
 	return s
 }
 
+type ApplyCoordinatePrivilegeRequest struct {
+	CoId      *string `json:"CoId,omitempty" xml:"CoId,omitempty"`
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserType  *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	Uuid      *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s ApplyCoordinatePrivilegeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyCoordinatePrivilegeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyCoordinatePrivilegeRequest) SetCoId(v string) *ApplyCoordinatePrivilegeRequest {
+	s.CoId = &v
+	return s
+}
+
+func (s *ApplyCoordinatePrivilegeRequest) SetEndUserId(v string) *ApplyCoordinatePrivilegeRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *ApplyCoordinatePrivilegeRequest) SetRegionId(v string) *ApplyCoordinatePrivilegeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ApplyCoordinatePrivilegeRequest) SetUserType(v string) *ApplyCoordinatePrivilegeRequest {
+	s.UserType = &v
+	return s
+}
+
+func (s *ApplyCoordinatePrivilegeRequest) SetUuid(v string) *ApplyCoordinatePrivilegeRequest {
+	s.Uuid = &v
+	return s
+}
+
+type ApplyCoordinatePrivilegeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ApplyCoordinatePrivilegeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyCoordinatePrivilegeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyCoordinatePrivilegeResponseBody) SetRequestId(v string) *ApplyCoordinatePrivilegeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ApplyCoordinatePrivilegeResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ApplyCoordinatePrivilegeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApplyCoordinatePrivilegeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyCoordinatePrivilegeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyCoordinatePrivilegeResponse) SetHeaders(v map[string]*string) *ApplyCoordinatePrivilegeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyCoordinatePrivilegeResponse) SetStatusCode(v int32) *ApplyCoordinatePrivilegeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyCoordinatePrivilegeResponse) SetBody(v *ApplyCoordinatePrivilegeResponseBody) *ApplyCoordinatePrivilegeResponse {
+	s.Body = v
+	return s
+}
+
 type ApplyCoordinationForMonitoringRequest struct {
 	CoordinatePolicyType *string                                                    `json:"CoordinatePolicyType,omitempty" xml:"CoordinatePolicyType,omitempty"`
 	EndUserId            *string                                                    `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
@@ -2938,6 +3025,7 @@ type CreatePolicyGroupRequest struct {
 	RecordingFps                *int64                                                 `json:"RecordingFps,omitempty" xml:"RecordingFps,omitempty"`
 	RecordingStartTime          *string                                                `json:"RecordingStartTime,omitempty" xml:"RecordingStartTime,omitempty"`
 	RegionId                    *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemoteCoordinate            *string                                                `json:"RemoteCoordinate,omitempty" xml:"RemoteCoordinate,omitempty"`
 	UsbRedirect                 *string                                                `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
 	UsbSupplyRedirectRule       []*CreatePolicyGroupRequestUsbSupplyRedirectRule       `json:"UsbSupplyRedirectRule,omitempty" xml:"UsbSupplyRedirectRule,omitempty" type:"Repeated"`
 	VisualQuality               *string                                                `json:"VisualQuality,omitempty" xml:"VisualQuality,omitempty"`
@@ -3071,6 +3159,11 @@ func (s *CreatePolicyGroupRequest) SetRecordingStartTime(v string) *CreatePolicy
 
 func (s *CreatePolicyGroupRequest) SetRegionId(v string) *CreatePolicyGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequest) SetRemoteCoordinate(v string) *CreatePolicyGroupRequest {
+	s.RemoteCoordinate = &v
 	return s
 }
 
@@ -4805,6 +4898,7 @@ type DescribeBundlesResponseBodyBundles struct {
 	ImageName               *string                                                 `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	Language                *string                                                 `json:"Language,omitempty" xml:"Language,omitempty"`
 	OsType                  *string                                                 `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	Platform                *string                                                 `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	ProtocolType            *string                                                 `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	SessionType             *string                                                 `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
 	StockState              *string                                                 `json:"StockState,omitempty" xml:"StockState,omitempty"`
@@ -4882,6 +4976,11 @@ func (s *DescribeBundlesResponseBodyBundles) SetLanguage(v string) *DescribeBund
 
 func (s *DescribeBundlesResponseBodyBundles) SetOsType(v string) *DescribeBundlesResponseBodyBundles {
 	s.OsType = &v
+	return s
+}
+
+func (s *DescribeBundlesResponseBodyBundles) SetPlatform(v string) *DescribeBundlesResponseBodyBundles {
+	s.Platform = &v
 	return s
 }
 
@@ -10783,6 +10882,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	RecordingExpires             *int64                                                                              `json:"RecordingExpires,omitempty" xml:"RecordingExpires,omitempty"`
 	RecordingFps                 *int64                                                                              `json:"RecordingFps,omitempty" xml:"RecordingFps,omitempty"`
 	RecordingStartTime           *string                                                                             `json:"RecordingStartTime,omitempty" xml:"RecordingStartTime,omitempty"`
+	RemoteCoordinate             *string                                                                             `json:"RemoteCoordinate,omitempty" xml:"RemoteCoordinate,omitempty"`
 	UsbRedirect                  *string                                                                             `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
 	UsbSupplyRedirectRule        []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule        `json:"UsbSupplyRedirectRule,omitempty" xml:"UsbSupplyRedirectRule,omitempty" type:"Repeated"`
 	VisualQuality                *string                                                                             `json:"VisualQuality,omitempty" xml:"VisualQuality,omitempty"`
@@ -10932,6 +11032,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRecordingFps(v
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRecordingStartTime(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.RecordingStartTime = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRemoteCoordinate(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.RemoteCoordinate = &v
 	return s
 }
 
@@ -12533,6 +12638,7 @@ type DescribeUsersInGroupRequest struct {
 	Filter          *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrgId           *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	QueryUserDetail *bool   `json:"QueryUserDetail,omitempty" xml:"QueryUserDetail,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -12572,6 +12678,11 @@ func (s *DescribeUsersInGroupRequest) SetMaxResults(v int32) *DescribeUsersInGro
 
 func (s *DescribeUsersInGroupRequest) SetNextToken(v string) *DescribeUsersInGroupRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeUsersInGroupRequest) SetOrgId(v string) *DescribeUsersInGroupRequest {
+	s.OrgId = &v
 	return s
 }
 
@@ -12630,10 +12741,12 @@ type DescribeUsersInGroupResponseBodyEndUsers struct {
 	ConnectionStatus        *string                                                            `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
 	DesktopId               *string                                                            `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
 	DesktopName             *string                                                            `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	DisplayName             *string                                                            `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	EndUserEmail            *string                                                            `json:"EndUserEmail,omitempty" xml:"EndUserEmail,omitempty"`
 	EndUserId               *string                                                            `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	EndUserName             *string                                                            `json:"EndUserName,omitempty" xml:"EndUserName,omitempty"`
 	EndUserPhone            *string                                                            `json:"EndUserPhone,omitempty" xml:"EndUserPhone,omitempty"`
+	EndUserRemark           *string                                                            `json:"EndUserRemark,omitempty" xml:"EndUserRemark,omitempty"`
 	EndUserType             *string                                                            `json:"EndUserType,omitempty" xml:"EndUserType,omitempty"`
 	ExternalInfo            *DescribeUsersInGroupResponseBodyEndUsersExternalInfo              `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty" type:"Struct"`
 	UserDesktopId           *string                                                            `json:"UserDesktopId,omitempty" xml:"UserDesktopId,omitempty"`
@@ -12663,6 +12776,11 @@ func (s *DescribeUsersInGroupResponseBodyEndUsers) SetDesktopName(v string) *Des
 	return s
 }
 
+func (s *DescribeUsersInGroupResponseBodyEndUsers) SetDisplayName(v string) *DescribeUsersInGroupResponseBodyEndUsers {
+	s.DisplayName = &v
+	return s
+}
+
 func (s *DescribeUsersInGroupResponseBodyEndUsers) SetEndUserEmail(v string) *DescribeUsersInGroupResponseBodyEndUsers {
 	s.EndUserEmail = &v
 	return s
@@ -12680,6 +12798,11 @@ func (s *DescribeUsersInGroupResponseBodyEndUsers) SetEndUserName(v string) *Des
 
 func (s *DescribeUsersInGroupResponseBodyEndUsers) SetEndUserPhone(v string) *DescribeUsersInGroupResponseBodyEndUsers {
 	s.EndUserPhone = &v
+	return s
+}
+
+func (s *DescribeUsersInGroupResponseBodyEndUsers) SetEndUserRemark(v string) *DescribeUsersInGroupResponseBodyEndUsers {
+	s.EndUserRemark = &v
 	return s
 }
 
@@ -18090,6 +18213,7 @@ type ModifyPolicyGroupRequest struct {
 	RecordingFps                *int64                                                 `json:"RecordingFps,omitempty" xml:"RecordingFps,omitempty"`
 	RecordingStartTime          *string                                                `json:"RecordingStartTime,omitempty" xml:"RecordingStartTime,omitempty"`
 	RegionId                    *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemoteCoordinate            *string                                                `json:"RemoteCoordinate,omitempty" xml:"RemoteCoordinate,omitempty"`
 	RevokeAccessPolicyRule      []*ModifyPolicyGroupRequestRevokeAccessPolicyRule      `json:"RevokeAccessPolicyRule,omitempty" xml:"RevokeAccessPolicyRule,omitempty" type:"Repeated"`
 	RevokeSecurityPolicyRule    []*ModifyPolicyGroupRequestRevokeSecurityPolicyRule    `json:"RevokeSecurityPolicyRule,omitempty" xml:"RevokeSecurityPolicyRule,omitempty" type:"Repeated"`
 	UsbRedirect                 *string                                                `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
@@ -18230,6 +18354,11 @@ func (s *ModifyPolicyGroupRequest) SetRecordingStartTime(v string) *ModifyPolicy
 
 func (s *ModifyPolicyGroupRequest) SetRegionId(v string) *ModifyPolicyGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequest) SetRemoteCoordinate(v string) *ModifyPolicyGroupRequest {
+	s.RemoteCoordinate = &v
 	return s
 }
 
@@ -19493,6 +19622,93 @@ func (s *ResetSnapshotResponse) SetStatusCode(v int32) *ResetSnapshotResponse {
 }
 
 func (s *ResetSnapshotResponse) SetBody(v *ResetSnapshotResponseBody) *ResetSnapshotResponse {
+	s.Body = v
+	return s
+}
+
+type RevokeCoordinatePrivilegeRequest struct {
+	CoId      *string `json:"CoId,omitempty" xml:"CoId,omitempty"`
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserType  *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	Uuid      *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s RevokeCoordinatePrivilegeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeCoordinatePrivilegeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeCoordinatePrivilegeRequest) SetCoId(v string) *RevokeCoordinatePrivilegeRequest {
+	s.CoId = &v
+	return s
+}
+
+func (s *RevokeCoordinatePrivilegeRequest) SetEndUserId(v string) *RevokeCoordinatePrivilegeRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *RevokeCoordinatePrivilegeRequest) SetRegionId(v string) *RevokeCoordinatePrivilegeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RevokeCoordinatePrivilegeRequest) SetUserType(v string) *RevokeCoordinatePrivilegeRequest {
+	s.UserType = &v
+	return s
+}
+
+func (s *RevokeCoordinatePrivilegeRequest) SetUuid(v string) *RevokeCoordinatePrivilegeRequest {
+	s.Uuid = &v
+	return s
+}
+
+type RevokeCoordinatePrivilegeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RevokeCoordinatePrivilegeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeCoordinatePrivilegeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeCoordinatePrivilegeResponseBody) SetRequestId(v string) *RevokeCoordinatePrivilegeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RevokeCoordinatePrivilegeResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RevokeCoordinatePrivilegeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RevokeCoordinatePrivilegeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeCoordinatePrivilegeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeCoordinatePrivilegeResponse) SetHeaders(v map[string]*string) *RevokeCoordinatePrivilegeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevokeCoordinatePrivilegeResponse) SetStatusCode(v int32) *RevokeCoordinatePrivilegeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RevokeCoordinatePrivilegeResponse) SetBody(v *RevokeCoordinatePrivilegeResponseBody) *RevokeCoordinatePrivilegeResponse {
 	s.Body = v
 	return s
 }
@@ -21158,6 +21374,66 @@ func (client *Client) AddUserToDesktopGroup(request *AddUserToDesktopGroupReques
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserToDesktopGroupResponse{}
 	_body, _err := client.AddUserToDesktopGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ApplyCoordinatePrivilegeWithOptions(request *ApplyCoordinatePrivilegeRequest, runtime *util.RuntimeOptions) (_result *ApplyCoordinatePrivilegeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CoId)) {
+		query["CoId"] = request.CoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		query["UserType"] = request.UserType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyCoordinatePrivilege"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyCoordinatePrivilegeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyCoordinatePrivilege(request *ApplyCoordinatePrivilegeRequest) (_result *ApplyCoordinatePrivilegeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyCoordinatePrivilegeResponse{}
+	_body, _err := client.ApplyCoordinatePrivilegeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22849,6 +23125,10 @@ func (client *Client) CreatePolicyGroupWithOptions(request *CreatePolicyGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoteCoordinate)) {
+		query["RemoteCoordinate"] = request.RemoteCoordinate
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UsbRedirect)) {
@@ -26179,6 +26459,10 @@ func (client *Client) DescribeUsersInGroupWithOptions(request *DescribeUsersInGr
 		query["NextToken"] = request.NextToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		query["OrgId"] = request.OrgId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.QueryUserDetail)) {
 		query["QueryUserDetail"] = request.QueryUserDetail
 	}
@@ -29115,6 +29399,10 @@ func (client *Client) ModifyPolicyGroupWithOptions(request *ModifyPolicyGroupReq
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RemoteCoordinate)) {
+		query["RemoteCoordinate"] = request.RemoteCoordinate
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RevokeAccessPolicyRule)) {
 		query["RevokeAccessPolicyRule"] = request.RevokeAccessPolicyRule
 	}
@@ -29798,6 +30086,66 @@ func (client *Client) ResetSnapshot(request *ResetSnapshotRequest) (_result *Res
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetSnapshotResponse{}
 	_body, _err := client.ResetSnapshotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RevokeCoordinatePrivilegeWithOptions(request *RevokeCoordinatePrivilegeRequest, runtime *util.RuntimeOptions) (_result *RevokeCoordinatePrivilegeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CoId)) {
+		query["CoId"] = request.CoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		query["UserType"] = request.UserType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevokeCoordinatePrivilege"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevokeCoordinatePrivilegeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RevokeCoordinatePrivilege(request *RevokeCoordinatePrivilegeRequest) (_result *RevokeCoordinatePrivilegeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RevokeCoordinatePrivilegeResponse{}
+	_body, _err := client.RevokeCoordinatePrivilegeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
