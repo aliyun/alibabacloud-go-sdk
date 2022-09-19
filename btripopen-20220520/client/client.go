@@ -15358,16 +15358,19 @@ type TrainOrderQueryResponseBodyModuleChangeTicketInfoList struct {
 	ChangeSeatNo        *string  `json:"change_seat_no,omitempty" xml:"change_seat_no,omitempty"`
 	ChangeSeatTypeName  *string  `json:"change_seat_type_name,omitempty" xml:"change_seat_type_name,omitempty"`
 	ChangeServiceFee    *float64 `json:"change_service_fee,omitempty" xml:"change_service_fee,omitempty"`
+	ChangeTrainNo       *string  `json:"change_train_no,omitempty" xml:"change_train_no,omitempty"`
 	ChangeTrainTypeName *string  `json:"change_train_type_name,omitempty" xml:"change_train_type_name,omitempty"`
 	CheckInTime         *string  `json:"check_in_time,omitempty" xml:"check_in_time,omitempty"`
 	CheckOutTime        *string  `json:"check_out_time,omitempty" xml:"check_out_time,omitempty"`
 	EndTime             *string  `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	FromStationName     *string  `json:"from_station_name,omitempty" xml:"from_station_name,omitempty"`
 	GmtCreate           *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
 	GmtModify           *string  `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
 	OriginTicketNo      *string  `json:"origin_ticket_no,omitempty" xml:"origin_ticket_no,omitempty"`
 	OutTicketStatus     *string  `json:"out_ticket_status,omitempty" xml:"out_ticket_status,omitempty"`
 	StartTime           *string  `json:"start_time,omitempty" xml:"start_time,omitempty"`
 	TicketNo            *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	ToStationName       *string  `json:"to_station_name,omitempty" xml:"to_station_name,omitempty"`
 }
 
 func (s TrainOrderQueryResponseBodyModuleChangeTicketInfoList) String() string {
@@ -15408,6 +15411,11 @@ func (s *TrainOrderQueryResponseBodyModuleChangeTicketInfoList) SetChangeService
 	return s
 }
 
+func (s *TrainOrderQueryResponseBodyModuleChangeTicketInfoList) SetChangeTrainNo(v string) *TrainOrderQueryResponseBodyModuleChangeTicketInfoList {
+	s.ChangeTrainNo = &v
+	return s
+}
+
 func (s *TrainOrderQueryResponseBodyModuleChangeTicketInfoList) SetChangeTrainTypeName(v string) *TrainOrderQueryResponseBodyModuleChangeTicketInfoList {
 	s.ChangeTrainTypeName = &v
 	return s
@@ -15425,6 +15433,11 @@ func (s *TrainOrderQueryResponseBodyModuleChangeTicketInfoList) SetCheckOutTime(
 
 func (s *TrainOrderQueryResponseBodyModuleChangeTicketInfoList) SetEndTime(v string) *TrainOrderQueryResponseBodyModuleChangeTicketInfoList {
 	s.EndTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryResponseBodyModuleChangeTicketInfoList) SetFromStationName(v string) *TrainOrderQueryResponseBodyModuleChangeTicketInfoList {
+	s.FromStationName = &v
 	return s
 }
 
@@ -15455,6 +15468,11 @@ func (s *TrainOrderQueryResponseBodyModuleChangeTicketInfoList) SetStartTime(v s
 
 func (s *TrainOrderQueryResponseBodyModuleChangeTicketInfoList) SetTicketNo(v string) *TrainOrderQueryResponseBodyModuleChangeTicketInfoList {
 	s.TicketNo = &v
+	return s
+}
+
+func (s *TrainOrderQueryResponseBodyModuleChangeTicketInfoList) SetToStationName(v string) *TrainOrderQueryResponseBodyModuleChangeTicketInfoList {
+	s.ToStationName = &v
 	return s
 }
 
