@@ -158,12 +158,13 @@ func (s *AddServersToServerGroupRequest) SetServers(v []*AddServersToServerGroup
 }
 
 type AddServersToServerGroupRequestServers struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	ServerType  *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Port            *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RemoteIpEnabled *bool   `json:"RemoteIpEnabled,omitempty" xml:"RemoteIpEnabled,omitempty"`
+	ServerId        *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp        *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerType      *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	Weight          *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s AddServersToServerGroupRequestServers) String() string {
@@ -181,6 +182,11 @@ func (s *AddServersToServerGroupRequestServers) SetDescription(v string) *AddSer
 
 func (s *AddServersToServerGroupRequestServers) SetPort(v int32) *AddServersToServerGroupRequestServers {
 	s.Port = &v
+	return s
+}
+
+func (s *AddServersToServerGroupRequestServers) SetRemoteIpEnabled(v bool) *AddServersToServerGroupRequestServers {
+	s.RemoteIpEnabled = &v
 	return s
 }
 
@@ -8974,14 +8980,15 @@ func (s *ListServerGroupServersResponseBody) SetTotalCount(v int32) *ListServerG
 }
 
 type ListServerGroupServersResponseBodyServers struct {
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	ServerId      *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	ServerIp      *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	ServerType    *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Weight        *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Port            *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RemoteIpEnabled *bool   `json:"RemoteIpEnabled,omitempty" xml:"RemoteIpEnabled,omitempty"`
+	ServerGroupId   *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	ServerId        *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp        *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerType      *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Weight          *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s ListServerGroupServersResponseBodyServers) String() string {
@@ -8999,6 +9006,11 @@ func (s *ListServerGroupServersResponseBodyServers) SetDescription(v string) *Li
 
 func (s *ListServerGroupServersResponseBodyServers) SetPort(v int32) *ListServerGroupServersResponseBodyServers {
 	s.Port = &v
+	return s
+}
+
+func (s *ListServerGroupServersResponseBodyServers) SetRemoteIpEnabled(v bool) *ListServerGroupServersResponseBodyServers {
+	s.RemoteIpEnabled = &v
 	return s
 }
 
