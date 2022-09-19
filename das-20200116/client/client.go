@@ -12,6 +12,58 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DataResultValue struct {
+	SqlId     *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	Count     *int64  `json:"count,omitempty" xml:"count,omitempty"`
+}
+
+func (s DataResultValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataResultValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataResultValue) SetSqlId(v string) *DataResultValue {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DataResultValue) SetErrorCode(v string) *DataResultValue {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DataResultValue) SetCount(v int64) *DataResultValue {
+	s.Count = &v
+	return s
+}
+
+type DataValue struct {
+	Timestamp *string     `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Value     interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DataValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataValue) SetTimestamp(v string) *DataValue {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *DataValue) SetValue(v interface{}) *DataValue {
+	s.Value = v
+	return s
+}
+
 type AddHDMInstanceRequest struct {
 	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	FlushAccount  *string `json:"FlushAccount,omitempty" xml:"FlushAccount,omitempty"`
@@ -2821,6 +2873,152 @@ func (s *DescribeCloudbenchTaskConfigResponse) SetBody(v *DescribeCloudbenchTask
 	return s
 }
 
+type DescribeDasAdvancedInfoRequest struct {
+	CommodityInstanceId *string `json:"CommodityInstanceId,omitempty" xml:"CommodityInstanceId,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeDasAdvancedInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDasAdvancedInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDasAdvancedInfoRequest) SetCommodityInstanceId(v string) *DescribeDasAdvancedInfoRequest {
+	s.CommodityInstanceId = &v
+	return s
+}
+
+func (s *DescribeDasAdvancedInfoRequest) SetInstanceId(v string) *DescribeDasAdvancedInfoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeDasAdvancedInfoResponseBody struct {
+	Code      *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeDasAdvancedInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeDasAdvancedInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDasAdvancedInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDasAdvancedInfoResponseBody) SetCode(v int64) *DescribeDasAdvancedInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeDasAdvancedInfoResponseBody) SetData(v *DescribeDasAdvancedInfoResponseBodyData) *DescribeDasAdvancedInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeDasAdvancedInfoResponseBody) SetMessage(v string) *DescribeDasAdvancedInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeDasAdvancedInfoResponseBody) SetRequestId(v string) *DescribeDasAdvancedInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDasAdvancedInfoResponseBody) SetSuccess(v bool) *DescribeDasAdvancedInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeDasAdvancedInfoResponseBodyData struct {
+	CommodityInstanceId *string `json:"CommodityInstanceId,omitempty" xml:"CommodityInstanceId,omitempty"`
+	EndTime             *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Region              *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Retention           *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeDasAdvancedInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDasAdvancedInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDasAdvancedInfoResponseBodyData) SetCommodityInstanceId(v string) *DescribeDasAdvancedInfoResponseBodyData {
+	s.CommodityInstanceId = &v
+	return s
+}
+
+func (s *DescribeDasAdvancedInfoResponseBodyData) SetEndTime(v string) *DescribeDasAdvancedInfoResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDasAdvancedInfoResponseBodyData) SetInstanceId(v string) *DescribeDasAdvancedInfoResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDasAdvancedInfoResponseBodyData) SetRegion(v string) *DescribeDasAdvancedInfoResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDasAdvancedInfoResponseBodyData) SetRetention(v int64) *DescribeDasAdvancedInfoResponseBodyData {
+	s.Retention = &v
+	return s
+}
+
+func (s *DescribeDasAdvancedInfoResponseBodyData) SetStartTime(v string) *DescribeDasAdvancedInfoResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDasAdvancedInfoResponseBodyData) SetUserId(v string) *DescribeDasAdvancedInfoResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type DescribeDasAdvancedInfoResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDasAdvancedInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDasAdvancedInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDasAdvancedInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDasAdvancedInfoResponse) SetHeaders(v map[string]*string) *DescribeDasAdvancedInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDasAdvancedInfoResponse) SetStatusCode(v int32) *DescribeDasAdvancedInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDasAdvancedInfoResponse) SetBody(v *DescribeDasAdvancedInfoResponseBody) *DescribeDasAdvancedInfoResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDiagnosticReportListRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -3428,6 +3626,123 @@ func (s *DescribeInstanceDasProResponse) SetStatusCode(v int32) *DescribeInstanc
 }
 
 func (s *DescribeInstanceDasProResponse) SetBody(v *DescribeInstanceDasProResponseBody) *DescribeInstanceDasProResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSqlLogInstancesPagingRequest struct {
+	Bid            *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
+	PageNo         *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeSqlLogInstancesPagingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogInstancesPagingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogInstancesPagingRequest) SetBid(v string) *DescribeSqlLogInstancesPagingRequest {
+	s.Bid = &v
+	return s
+}
+
+func (s *DescribeSqlLogInstancesPagingRequest) SetConsoleContext(v string) *DescribeSqlLogInstancesPagingRequest {
+	s.ConsoleContext = &v
+	return s
+}
+
+func (s *DescribeSqlLogInstancesPagingRequest) SetPageNo(v int32) *DescribeSqlLogInstancesPagingRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeSqlLogInstancesPagingRequest) SetPageSize(v int32) *DescribeSqlLogInstancesPagingRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSqlLogInstancesPagingRequest) SetRegion(v string) *DescribeSqlLogInstancesPagingRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeSqlLogInstancesPagingRequest) SetUserId(v string) *DescribeSqlLogInstancesPagingRequest {
+	s.UserId = &v
+	return s
+}
+
+type DescribeSqlLogInstancesPagingResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeSqlLogInstancesPagingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogInstancesPagingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogInstancesPagingResponseBody) SetCode(v int64) *DescribeSqlLogInstancesPagingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSqlLogInstancesPagingResponseBody) SetData(v string) *DescribeSqlLogInstancesPagingResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DescribeSqlLogInstancesPagingResponseBody) SetMessage(v string) *DescribeSqlLogInstancesPagingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeSqlLogInstancesPagingResponseBody) SetRequestId(v string) *DescribeSqlLogInstancesPagingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSqlLogInstancesPagingResponseBody) SetSuccess(v bool) *DescribeSqlLogInstancesPagingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeSqlLogInstancesPagingResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSqlLogInstancesPagingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSqlLogInstancesPagingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogInstancesPagingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogInstancesPagingResponse) SetHeaders(v map[string]*string) *DescribeSqlLogInstancesPagingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSqlLogInstancesPagingResponse) SetStatusCode(v int32) *DescribeSqlLogInstancesPagingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSqlLogInstancesPagingResponse) SetBody(v *DescribeSqlLogInstancesPagingResponseBody) *DescribeSqlLogInstancesPagingResponse {
 	s.Body = v
 	return s
 }
@@ -5130,13 +5445,13 @@ func (s *GetAsyncErrorRequestStatResultResponseBody) SetSuccess(v bool) *GetAsyn
 }
 
 type GetAsyncErrorRequestStatResultResponseBodyData struct {
-	Complete  *bool                         `json:"complete,omitempty" xml:"complete,omitempty"`
-	Fail      *bool                         `json:"fail,omitempty" xml:"fail,omitempty"`
-	IsFinish  *bool                         `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
-	Result    []map[string]*DataResultValue `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	ResultId  *string                       `json:"resultId,omitempty" xml:"resultId,omitempty"`
-	State     *string                       `json:"state,omitempty" xml:"state,omitempty"`
-	Timestamp *int64                        `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Complete  *bool                       `json:"complete,omitempty" xml:"complete,omitempty"`
+	Fail      *bool                       `json:"fail,omitempty" xml:"fail,omitempty"`
+	IsFinish  *bool                       `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+	Result    map[string]*DataResultValue `json:"result,omitempty" xml:"result,omitempty"`
+	ResultId  *string                     `json:"resultId,omitempty" xml:"resultId,omitempty"`
+	State     *string                     `json:"state,omitempty" xml:"state,omitempty"`
+	Timestamp *int64                      `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 }
 
 func (s GetAsyncErrorRequestStatResultResponseBodyData) String() string {
@@ -5162,7 +5477,7 @@ func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetIsFinish(v bool) *Ge
 	return s
 }
 
-func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetResult(v []map[string]*DataResultValue) *GetAsyncErrorRequestStatResultResponseBodyData {
+func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetResult(v map[string]*DataResultValue) *GetAsyncErrorRequestStatResultResponseBodyData {
 	s.Result = v
 	return s
 }
@@ -8188,13 +8503,14 @@ func (s *GetHDMLastAliyunResourceSyncResultResponse) SetBody(v *GetHDMLastAliyun
 }
 
 type GetInstanceInspectionsRequest struct {
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Engine       *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	InstanceArea *string `json:"InstanceArea,omitempty" xml:"InstanceArea,omitempty"`
-	PageNo       *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchMap    *string `json:"SearchMap,omitempty" xml:"SearchMap,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Engine          *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	InstanceArea    *string `json:"InstanceArea,omitempty" xml:"InstanceArea,omitempty"`
+	PageNo          *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SearchMap       *string `json:"SearchMap,omitempty" xml:"SearchMap,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetInstanceInspectionsRequest) String() string {
@@ -8227,6 +8543,11 @@ func (s *GetInstanceInspectionsRequest) SetPageNo(v string) *GetInstanceInspecti
 
 func (s *GetInstanceInspectionsRequest) SetPageSize(v string) *GetInstanceInspectionsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *GetInstanceInspectionsRequest) SetResourceGroupId(v string) *GetInstanceInspectionsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -8471,6 +8792,1618 @@ func (s *GetInstanceInspectionsResponse) SetStatusCode(v int32) *GetInstanceInsp
 }
 
 func (s *GetInstanceInspectionsResponse) SetBody(v *GetInstanceInspectionsResponseBody) *GetInstanceInspectionsResponse {
+	s.Body = v
+	return s
+}
+
+type GetPfsMetricTrendsRequest struct {
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Metric     *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetPfsMetricTrendsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsMetricTrendsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsMetricTrendsRequest) SetEndTime(v int64) *GetPfsMetricTrendsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetPfsMetricTrendsRequest) SetInstanceId(v string) *GetPfsMetricTrendsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPfsMetricTrendsRequest) SetMetric(v string) *GetPfsMetricTrendsRequest {
+	s.Metric = &v
+	return s
+}
+
+func (s *GetPfsMetricTrendsRequest) SetNodeId(v string) *GetPfsMetricTrendsRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetPfsMetricTrendsRequest) SetStartTime(v int64) *GetPfsMetricTrendsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetPfsMetricTrendsResponseBody struct {
+	Code      *int64                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      map[string][]*DataValue `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetPfsMetricTrendsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsMetricTrendsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsMetricTrendsResponseBody) SetCode(v int64) *GetPfsMetricTrendsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPfsMetricTrendsResponseBody) SetData(v map[string][]*DataValue) *GetPfsMetricTrendsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPfsMetricTrendsResponseBody) SetMessage(v string) *GetPfsMetricTrendsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPfsMetricTrendsResponseBody) SetRequestId(v string) *GetPfsMetricTrendsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPfsMetricTrendsResponseBody) SetSuccess(v bool) *GetPfsMetricTrendsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPfsMetricTrendsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPfsMetricTrendsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPfsMetricTrendsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsMetricTrendsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsMetricTrendsResponse) SetHeaders(v map[string]*string) *GetPfsMetricTrendsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPfsMetricTrendsResponse) SetStatusCode(v int32) *GetPfsMetricTrendsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPfsMetricTrendsResponse) SetBody(v *GetPfsMetricTrendsResponseBody) *GetPfsMetricTrendsResponse {
+	s.Body = v
+	return s
+}
+
+type GetPfsSqlComparisonRequest struct {
+	Asc        *bool   `json:"Asc,omitempty" xml:"Asc,omitempty"`
+	EndOne     *int64  `json:"EndOne,omitempty" xml:"EndOne,omitempty"`
+	EndTwo     *int64  `json:"EndTwo,omitempty" xml:"EndTwo,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartOne   *int64  `json:"StartOne,omitempty" xml:"StartOne,omitempty"`
+	StartTwo   *int64  `json:"StartTwo,omitempty" xml:"StartTwo,omitempty"`
+}
+
+func (s GetPfsSqlComparisonRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlComparisonRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlComparisonRequest) SetAsc(v bool) *GetPfsSqlComparisonRequest {
+	s.Asc = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonRequest) SetEndOne(v int64) *GetPfsSqlComparisonRequest {
+	s.EndOne = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonRequest) SetEndTwo(v int64) *GetPfsSqlComparisonRequest {
+	s.EndTwo = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonRequest) SetInstanceId(v string) *GetPfsSqlComparisonRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonRequest) SetKeyword(v string) *GetPfsSqlComparisonRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonRequest) SetNodeId(v string) *GetPfsSqlComparisonRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonRequest) SetOrderBy(v string) *GetPfsSqlComparisonRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonRequest) SetPageNo(v int32) *GetPfsSqlComparisonRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonRequest) SetPageSize(v int32) *GetPfsSqlComparisonRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonRequest) SetStartOne(v int64) *GetPfsSqlComparisonRequest {
+	s.StartOne = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonRequest) SetStartTwo(v int64) *GetPfsSqlComparisonRequest {
+	s.StartTwo = &v
+	return s
+}
+
+type GetPfsSqlComparisonResponseBody struct {
+	Code      *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetPfsSqlComparisonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetPfsSqlComparisonResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlComparisonResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlComparisonResponseBody) SetCode(v int64) *GetPfsSqlComparisonResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBody) SetData(v *GetPfsSqlComparisonResponseBodyData) *GetPfsSqlComparisonResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBody) SetMessage(v string) *GetPfsSqlComparisonResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBody) SetRequestId(v string) *GetPfsSqlComparisonResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBody) SetSuccess(v bool) *GetPfsSqlComparisonResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPfsSqlComparisonResponseBodyData struct {
+	Extra    interface{}                                  `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	List     [][]*GetPfsSqlComparisonResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNo   *int64                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int64                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetPfsSqlComparisonResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlComparisonResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlComparisonResponseBodyData) SetExtra(v interface{}) *GetPfsSqlComparisonResponseBodyData {
+	s.Extra = v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyData) SetList(v [][]*GetPfsSqlComparisonResponseBodyDataList) *GetPfsSqlComparisonResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyData) SetPageNo(v int64) *GetPfsSqlComparisonResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyData) SetPageSize(v int64) *GetPfsSqlComparisonResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyData) SetTotal(v int64) *GetPfsSqlComparisonResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type GetPfsSqlComparisonResponseBodyDataList struct {
+	UserId              *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Psql                *string  `json:"Psql,omitempty" xml:"Psql,omitempty"`
+	SqlFeature          *string  `json:"SqlFeature,omitempty" xml:"SqlFeature,omitempty"`
+	InstanceId          *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeId              *string  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	SqlType             *string  `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	LogicId             *int64   `json:"LogicId,omitempty" xml:"LogicId,omitempty"`
+	SqlId               *string  `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	Timestamp           *int64   `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	RtRate              *float64 `json:"RtRate,omitempty" xml:"RtRate,omitempty"`
+	CountRate           *float64 `json:"CountRate,omitempty" xml:"CountRate,omitempty"`
+	FullScan            *bool    `json:"FullScan,omitempty" xml:"FullScan,omitempty"`
+	Count               *int64   `json:"Count,omitempty" xml:"Count,omitempty"`
+	ErrCount            *int64   `json:"ErrCount,omitempty" xml:"ErrCount,omitempty"`
+	WarnCount           *int64   `json:"WarnCount,omitempty" xml:"WarnCount,omitempty"`
+	TotalLatency        *int64   `json:"TotalLatency,omitempty" xml:"TotalLatency,omitempty"`
+	MaxLatency          *int64   `json:"MaxLatency,omitempty" xml:"MaxLatency,omitempty"`
+	AvgLatency          *float64 `json:"AvgLatency,omitempty" xml:"AvgLatency,omitempty"`
+	RowsSent            *int64   `json:"RowsSent,omitempty" xml:"RowsSent,omitempty"`
+	RowsSendAvg         *float64 `json:"RowsSendAvg,omitempty" xml:"RowsSendAvg,omitempty"`
+	RowsExamined        *int64   `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty"`
+	RowsExaminedAvg     *float64 `json:"RowsExaminedAvg,omitempty" xml:"RowsExaminedAvg,omitempty"`
+	RowsAffected        *int64   `json:"RowsAffected,omitempty" xml:"RowsAffected,omitempty"`
+	RowsAffectedAvg     *float64 `json:"RowsAffectedAvg,omitempty" xml:"RowsAffectedAvg,omitempty"`
+	TmpTables           *int64   `json:"TmpTables,omitempty" xml:"TmpTables,omitempty"`
+	TmpDiskTables       *int64   `json:"TmpDiskTables,omitempty" xml:"TmpDiskTables,omitempty"`
+	RowsSorted          *int64   `json:"RowsSorted,omitempty" xml:"RowsSorted,omitempty"`
+	SortMergePasses     *int64   `json:"SortMergePasses,omitempty" xml:"SortMergePasses,omitempty"`
+	PhysicalReads       *int64   `json:"PhysicalReads,omitempty" xml:"PhysicalReads,omitempty"`
+	PhysicalAsyncReads  *int64   `json:"PhysicalAsyncReads,omitempty" xml:"PhysicalAsyncReads,omitempty"`
+	SemisyncDelayTime   *int64   `json:"SemisyncDelayTime,omitempty" xml:"SemisyncDelayTime,omitempty"`
+	RowsSentAvg         *float64 `json:"RowsSentAvg,omitempty" xml:"RowsSentAvg,omitempty"`
+	LogicReads          *int64   `json:"LogicReads,omitempty" xml:"LogicReads,omitempty"`
+	RedoWrites          *int64   `json:"RedoWrites,omitempty" xml:"RedoWrites,omitempty"`
+	DataWriteTime       *int32   `json:"DataWriteTime,omitempty" xml:"DataWriteTime,omitempty"`
+	DataWrites          *int32   `json:"DataWrites,omitempty" xml:"DataWrites,omitempty"`
+	DataReadTime        *int32   `json:"DataReadTime,omitempty" xml:"DataReadTime,omitempty"`
+	DataReads           *int32   `json:"DataReads,omitempty" xml:"DataReads,omitempty"`
+	RwlockOsWaits       *int32   `json:"RwlockOsWaits,omitempty" xml:"RwlockOsWaits,omitempty"`
+	RwlockSpinRounds    *int32   `json:"RwlockSpinRounds,omitempty" xml:"RwlockSpinRounds,omitempty"`
+	RwlockSpinWaits     *int32   `json:"RwlockSpinWaits,omitempty" xml:"RwlockSpinWaits,omitempty"`
+	MutexWaits          *int32   `json:"MutexWaits,omitempty" xml:"MutexWaits,omitempty"`
+	MutexSpins          *int32   `json:"MutexSpins,omitempty" xml:"MutexSpins,omitempty"`
+	TransactionLockTime *int32   `json:"TransactionLockTime,omitempty" xml:"TransactionLockTime,omitempty"`
+	ServerLockTime      *int32   `json:"ServerLockTime,omitempty" xml:"ServerLockTime,omitempty"`
+	CpuTime             *int32   `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	ElapsedTime         *int32   `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	Id                  *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetPfsSqlComparisonResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlComparisonResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetUserId(v string) *GetPfsSqlComparisonResponseBodyDataList {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetPsql(v string) *GetPfsSqlComparisonResponseBodyDataList {
+	s.Psql = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetSqlFeature(v string) *GetPfsSqlComparisonResponseBodyDataList {
+	s.SqlFeature = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetInstanceId(v string) *GetPfsSqlComparisonResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetNodeId(v string) *GetPfsSqlComparisonResponseBodyDataList {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetSqlType(v string) *GetPfsSqlComparisonResponseBodyDataList {
+	s.SqlType = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetLogicId(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.LogicId = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetSqlId(v string) *GetPfsSqlComparisonResponseBodyDataList {
+	s.SqlId = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetTimestamp(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetRtRate(v float64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.RtRate = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetCountRate(v float64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.CountRate = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetFullScan(v bool) *GetPfsSqlComparisonResponseBodyDataList {
+	s.FullScan = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetCount(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.Count = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetErrCount(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.ErrCount = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetWarnCount(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.WarnCount = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetTotalLatency(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.TotalLatency = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetMaxLatency(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.MaxLatency = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetAvgLatency(v float64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.AvgLatency = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetRowsSent(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.RowsSent = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetRowsSendAvg(v float64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.RowsSendAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetRowsExamined(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.RowsExamined = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetRowsExaminedAvg(v float64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.RowsExaminedAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetRowsAffected(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.RowsAffected = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetRowsAffectedAvg(v float64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.RowsAffectedAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetTmpTables(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.TmpTables = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetTmpDiskTables(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.TmpDiskTables = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetRowsSorted(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.RowsSorted = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetSortMergePasses(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.SortMergePasses = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetPhysicalReads(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.PhysicalReads = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetPhysicalAsyncReads(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.PhysicalAsyncReads = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetSemisyncDelayTime(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.SemisyncDelayTime = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetRowsSentAvg(v float64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.RowsSentAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetLogicReads(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.LogicReads = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetRedoWrites(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.RedoWrites = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetDataWriteTime(v int32) *GetPfsSqlComparisonResponseBodyDataList {
+	s.DataWriteTime = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetDataWrites(v int32) *GetPfsSqlComparisonResponseBodyDataList {
+	s.DataWrites = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetDataReadTime(v int32) *GetPfsSqlComparisonResponseBodyDataList {
+	s.DataReadTime = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetDataReads(v int32) *GetPfsSqlComparisonResponseBodyDataList {
+	s.DataReads = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetRwlockOsWaits(v int32) *GetPfsSqlComparisonResponseBodyDataList {
+	s.RwlockOsWaits = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetRwlockSpinRounds(v int32) *GetPfsSqlComparisonResponseBodyDataList {
+	s.RwlockSpinRounds = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetRwlockSpinWaits(v int32) *GetPfsSqlComparisonResponseBodyDataList {
+	s.RwlockSpinWaits = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetMutexWaits(v int32) *GetPfsSqlComparisonResponseBodyDataList {
+	s.MutexWaits = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetMutexSpins(v int32) *GetPfsSqlComparisonResponseBodyDataList {
+	s.MutexSpins = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetTransactionLockTime(v int32) *GetPfsSqlComparisonResponseBodyDataList {
+	s.TransactionLockTime = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetServerLockTime(v int32) *GetPfsSqlComparisonResponseBodyDataList {
+	s.ServerLockTime = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetCpuTime(v int32) *GetPfsSqlComparisonResponseBodyDataList {
+	s.CpuTime = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetElapsedTime(v int32) *GetPfsSqlComparisonResponseBodyDataList {
+	s.ElapsedTime = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponseBodyDataList) SetId(v int64) *GetPfsSqlComparisonResponseBodyDataList {
+	s.Id = &v
+	return s
+}
+
+type GetPfsSqlComparisonResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPfsSqlComparisonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPfsSqlComparisonResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlComparisonResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlComparisonResponse) SetHeaders(v map[string]*string) *GetPfsSqlComparisonResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponse) SetStatusCode(v int32) *GetPfsSqlComparisonResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPfsSqlComparisonResponse) SetBody(v *GetPfsSqlComparisonResponseBody) *GetPfsSqlComparisonResponse {
+	s.Body = v
+	return s
+}
+
+type GetPfsSqlMetricTrendsRequest struct {
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Metric     *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	SqlId      *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetPfsSqlMetricTrendsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlMetricTrendsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlMetricTrendsRequest) SetEndTime(v int64) *GetPfsSqlMetricTrendsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetPfsSqlMetricTrendsRequest) SetInstanceId(v string) *GetPfsSqlMetricTrendsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPfsSqlMetricTrendsRequest) SetMetric(v string) *GetPfsSqlMetricTrendsRequest {
+	s.Metric = &v
+	return s
+}
+
+func (s *GetPfsSqlMetricTrendsRequest) SetNodeId(v string) *GetPfsSqlMetricTrendsRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetPfsSqlMetricTrendsRequest) SetSqlId(v string) *GetPfsSqlMetricTrendsRequest {
+	s.SqlId = &v
+	return s
+}
+
+func (s *GetPfsSqlMetricTrendsRequest) SetStartTime(v int64) *GetPfsSqlMetricTrendsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetPfsSqlMetricTrendsResponseBody struct {
+	Code      *int64                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      map[string][]*DataValue `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetPfsSqlMetricTrendsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlMetricTrendsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlMetricTrendsResponseBody) SetCode(v int64) *GetPfsSqlMetricTrendsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPfsSqlMetricTrendsResponseBody) SetData(v map[string][]*DataValue) *GetPfsSqlMetricTrendsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPfsSqlMetricTrendsResponseBody) SetMessage(v string) *GetPfsSqlMetricTrendsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPfsSqlMetricTrendsResponseBody) SetRequestId(v string) *GetPfsSqlMetricTrendsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPfsSqlMetricTrendsResponseBody) SetSuccess(v bool) *GetPfsSqlMetricTrendsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPfsSqlMetricTrendsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPfsSqlMetricTrendsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPfsSqlMetricTrendsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlMetricTrendsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlMetricTrendsResponse) SetHeaders(v map[string]*string) *GetPfsSqlMetricTrendsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPfsSqlMetricTrendsResponse) SetStatusCode(v int32) *GetPfsSqlMetricTrendsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPfsSqlMetricTrendsResponse) SetBody(v *GetPfsSqlMetricTrendsResponseBody) *GetPfsSqlMetricTrendsResponse {
+	s.Body = v
+	return s
+}
+
+type GetPfsSqlSampleRequest struct {
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	SqlId      *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetPfsSqlSampleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlSampleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlSampleRequest) SetEndTime(v int64) *GetPfsSqlSampleRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleRequest) SetInstanceId(v string) *GetPfsSqlSampleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleRequest) SetNodeId(v string) *GetPfsSqlSampleRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleRequest) SetSqlId(v string) *GetPfsSqlSampleRequest {
+	s.SqlId = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleRequest) SetStartTime(v int64) *GetPfsSqlSampleRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetPfsSqlSampleResponseBody struct {
+	Code      *int64                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetPfsSqlSampleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetPfsSqlSampleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlSampleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlSampleResponseBody) SetCode(v int64) *GetPfsSqlSampleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBody) SetData(v []*GetPfsSqlSampleResponseBodyData) *GetPfsSqlSampleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBody) SetMessage(v string) *GetPfsSqlSampleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBody) SetRequestId(v string) *GetPfsSqlSampleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBody) SetSuccess(v bool) *GetPfsSqlSampleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPfsSqlSampleResponseBodyData struct {
+	CreateTmpDiskTables *int32   `json:"CreateTmpDiskTables,omitempty" xml:"CreateTmpDiskTables,omitempty"`
+	CreateTmpTables     *int32   `json:"CreateTmpTables,omitempty" xml:"CreateTmpTables,omitempty"`
+	Db                  *string  `json:"Db,omitempty" xml:"Db,omitempty"`
+	EndEventId          *int32   `json:"EndEventId,omitempty" xml:"EndEventId,omitempty"`
+	Errors              *int32   `json:"Errors,omitempty" xml:"Errors,omitempty"`
+	EventId             *int32   `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventName           *string  `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	InstanceId          *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Latency             *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	LockLatency         *float64 `json:"LockLatency,omitempty" xml:"LockLatency,omitempty"`
+	LogicId             *string  `json:"LogicId,omitempty" xml:"LogicId,omitempty"`
+	NoGoodIndexUsed     *int32   `json:"NoGoodIndexUsed,omitempty" xml:"NoGoodIndexUsed,omitempty"`
+	NoIndexUsed         *int32   `json:"NoIndexUsed,omitempty" xml:"NoIndexUsed,omitempty"`
+	NodeId              *string  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	RowsAffected        *int32   `json:"RowsAffected,omitempty" xml:"RowsAffected,omitempty"`
+	RowsExamined        *int32   `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty"`
+	RowsSent            *int32   `json:"RowsSent,omitempty" xml:"RowsSent,omitempty"`
+	SelectFullJoin      *int32   `json:"SelectFullJoin,omitempty" xml:"SelectFullJoin,omitempty"`
+	SelectFullRangeJoin *int32   `json:"SelectFullRangeJoin,omitempty" xml:"SelectFullRangeJoin,omitempty"`
+	SelectRange         *int32   `json:"SelectRange,omitempty" xml:"SelectRange,omitempty"`
+	SelectRangeCheck    *int32   `json:"SelectRangeCheck,omitempty" xml:"SelectRangeCheck,omitempty"`
+	SelectScan          *int32   `json:"SelectScan,omitempty" xml:"SelectScan,omitempty"`
+	SortMergePasses     *int32   `json:"SortMergePasses,omitempty" xml:"SortMergePasses,omitempty"`
+	SortRange           *int32   `json:"SortRange,omitempty" xml:"SortRange,omitempty"`
+	SortRows            *int32   `json:"SortRows,omitempty" xml:"SortRows,omitempty"`
+	SortScan            *int32   `json:"SortScan,omitempty" xml:"SortScan,omitempty"`
+	Sql                 *string  `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	SqlId               *string  `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	ThreadId            *int32   `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
+	Timestamp           *int64   `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	UserId              *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Warnings            *int32   `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
+}
+
+func (s GetPfsSqlSampleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlSampleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetCreateTmpDiskTables(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.CreateTmpDiskTables = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetCreateTmpTables(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.CreateTmpTables = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetDb(v string) *GetPfsSqlSampleResponseBodyData {
+	s.Db = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetEndEventId(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.EndEventId = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetErrors(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.Errors = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetEventId(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.EventId = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetEventName(v string) *GetPfsSqlSampleResponseBodyData {
+	s.EventName = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetInstanceId(v string) *GetPfsSqlSampleResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetLatency(v float64) *GetPfsSqlSampleResponseBodyData {
+	s.Latency = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetLockLatency(v float64) *GetPfsSqlSampleResponseBodyData {
+	s.LockLatency = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetLogicId(v string) *GetPfsSqlSampleResponseBodyData {
+	s.LogicId = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetNoGoodIndexUsed(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.NoGoodIndexUsed = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetNoIndexUsed(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.NoIndexUsed = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetNodeId(v string) *GetPfsSqlSampleResponseBodyData {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetRowsAffected(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.RowsAffected = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetRowsExamined(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.RowsExamined = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetRowsSent(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.RowsSent = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetSelectFullJoin(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.SelectFullJoin = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetSelectFullRangeJoin(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.SelectFullRangeJoin = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetSelectRange(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.SelectRange = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetSelectRangeCheck(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.SelectRangeCheck = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetSelectScan(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.SelectScan = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetSortMergePasses(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.SortMergePasses = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetSortRange(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.SortRange = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetSortRows(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.SortRows = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetSortScan(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.SortScan = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetSql(v string) *GetPfsSqlSampleResponseBodyData {
+	s.Sql = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetSqlId(v string) *GetPfsSqlSampleResponseBodyData {
+	s.SqlId = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetThreadId(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.ThreadId = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetTimestamp(v int64) *GetPfsSqlSampleResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetUserId(v string) *GetPfsSqlSampleResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponseBodyData) SetWarnings(v int32) *GetPfsSqlSampleResponseBodyData {
+	s.Warnings = &v
+	return s
+}
+
+type GetPfsSqlSampleResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPfsSqlSampleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPfsSqlSampleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlSampleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlSampleResponse) SetHeaders(v map[string]*string) *GetPfsSqlSampleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponse) SetStatusCode(v int32) *GetPfsSqlSampleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPfsSqlSampleResponse) SetBody(v *GetPfsSqlSampleResponseBody) *GetPfsSqlSampleResponse {
+	s.Body = v
+	return s
+}
+
+type GetPfsSqlSummariesRequest struct {
+	Asc        *bool   `json:"Asc,omitempty" xml:"Asc,omitempty"`
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Keywords   *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SqlId      *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetPfsSqlSummariesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlSummariesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlSummariesRequest) SetAsc(v bool) *GetPfsSqlSummariesRequest {
+	s.Asc = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesRequest) SetEndTime(v int64) *GetPfsSqlSummariesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesRequest) SetInstanceId(v string) *GetPfsSqlSummariesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesRequest) SetKeywords(v string) *GetPfsSqlSummariesRequest {
+	s.Keywords = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesRequest) SetNodeId(v string) *GetPfsSqlSummariesRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesRequest) SetOrderBy(v string) *GetPfsSqlSummariesRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesRequest) SetPageNo(v int32) *GetPfsSqlSummariesRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesRequest) SetPageSize(v int32) *GetPfsSqlSummariesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesRequest) SetSqlId(v string) *GetPfsSqlSummariesRequest {
+	s.SqlId = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesRequest) SetStartTime(v int64) *GetPfsSqlSummariesRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetPfsSqlSummariesResponseBody struct {
+	Code      *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetPfsSqlSummariesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetPfsSqlSummariesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlSummariesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlSummariesResponseBody) SetCode(v int64) *GetPfsSqlSummariesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBody) SetData(v *GetPfsSqlSummariesResponseBodyData) *GetPfsSqlSummariesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBody) SetMessage(v string) *GetPfsSqlSummariesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBody) SetRequestId(v string) *GetPfsSqlSummariesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBody) SetSuccess(v bool) *GetPfsSqlSummariesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPfsSqlSummariesResponseBodyData struct {
+	Extra    interface{}                               `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	List     []*GetPfsSqlSummariesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNo   *int64                                    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64                                    `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetPfsSqlSummariesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlSummariesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlSummariesResponseBodyData) SetExtra(v interface{}) *GetPfsSqlSummariesResponseBodyData {
+	s.Extra = v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyData) SetList(v []*GetPfsSqlSummariesResponseBodyDataList) *GetPfsSqlSummariesResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyData) SetPageNo(v int64) *GetPfsSqlSummariesResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyData) SetPageSize(v int64) *GetPfsSqlSummariesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyData) SetTotal(v int64) *GetPfsSqlSummariesResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type GetPfsSqlSummariesResponseBodyDataList struct {
+	AvgLatency             *float64  `json:"AvgLatency,omitempty" xml:"AvgLatency,omitempty"`
+	Count                  *int64    `json:"Count,omitempty" xml:"Count,omitempty"`
+	CountRate              *float64  `json:"CountRate,omitempty" xml:"CountRate,omitempty"`
+	CpuRate                *float64  `json:"CpuRate,omitempty" xml:"CpuRate,omitempty"`
+	CpuTime                *float64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	DataReadTime           *float64  `json:"DataReadTime,omitempty" xml:"DataReadTime,omitempty"`
+	DataReads              *int32    `json:"DataReads,omitempty" xml:"DataReads,omitempty"`
+	DataWriteTime          *float64  `json:"DataWriteTime,omitempty" xml:"DataWriteTime,omitempty"`
+	DataWrites             *int32    `json:"DataWrites,omitempty" xml:"DataWrites,omitempty"`
+	Db                     *string   `json:"Db,omitempty" xml:"Db,omitempty"`
+	ElapsedTime            *float64  `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	ErrCount               *int64    `json:"ErrCount,omitempty" xml:"ErrCount,omitempty"`
+	FirstTime              *int64    `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	FullScan               *bool     `json:"FullScan,omitempty" xml:"FullScan,omitempty"`
+	Id                     *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId             *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LastTime               *int64    `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	LockLatencyAvg         *float64  `json:"LockLatencyAvg,omitempty" xml:"LockLatencyAvg,omitempty"`
+	LogicId                *int64    `json:"LogicId,omitempty" xml:"LogicId,omitempty"`
+	LogicReads             *int64    `json:"LogicReads,omitempty" xml:"LogicReads,omitempty"`
+	MaxLatency             *float64  `json:"MaxLatency,omitempty" xml:"MaxLatency,omitempty"`
+	MutexSpins             *int32    `json:"MutexSpins,omitempty" xml:"MutexSpins,omitempty"`
+	MutexWaits             *int32    `json:"MutexWaits,omitempty" xml:"MutexWaits,omitempty"`
+	NoIndexUsedAvg         *float64  `json:"NoIndexUsedAvg,omitempty" xml:"NoIndexUsedAvg,omitempty"`
+	NodeId                 *string   `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	PhysicalAsyncReads     *int64    `json:"PhysicalAsyncReads,omitempty" xml:"PhysicalAsyncReads,omitempty"`
+	PhysicalReads          *int64    `json:"PhysicalReads,omitempty" xml:"PhysicalReads,omitempty"`
+	Psql                   *string   `json:"Psql,omitempty" xml:"Psql,omitempty"`
+	RedoWrites             *int64    `json:"RedoWrites,omitempty" xml:"RedoWrites,omitempty"`
+	RowsAffected           *int64    `json:"RowsAffected,omitempty" xml:"RowsAffected,omitempty"`
+	RowsAffectedAvg        *float64  `json:"RowsAffectedAvg,omitempty" xml:"RowsAffectedAvg,omitempty"`
+	RowsExamined           *int64    `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty"`
+	RowsExaminedAvg        *float64  `json:"RowsExaminedAvg,omitempty" xml:"RowsExaminedAvg,omitempty"`
+	RowsSendAvg            *float64  `json:"RowsSendAvg,omitempty" xml:"RowsSendAvg,omitempty"`
+	RowsSent               *int64    `json:"RowsSent,omitempty" xml:"RowsSent,omitempty"`
+	RowsSentAvg            *float64  `json:"RowsSentAvg,omitempty" xml:"RowsSentAvg,omitempty"`
+	RowsSorted             *int64    `json:"RowsSorted,omitempty" xml:"RowsSorted,omitempty"`
+	RtRate                 *float64  `json:"RtRate,omitempty" xml:"RtRate,omitempty"`
+	RwlockOsWaits          *int32    `json:"RwlockOsWaits,omitempty" xml:"RwlockOsWaits,omitempty"`
+	RwlockSpinRounds       *int32    `json:"RwlockSpinRounds,omitempty" xml:"RwlockSpinRounds,omitempty"`
+	RwlockSpinWaits        *int32    `json:"RwlockSpinWaits,omitempty" xml:"RwlockSpinWaits,omitempty"`
+	SelectFullJoinAvg      *float64  `json:"SelectFullJoinAvg,omitempty" xml:"SelectFullJoinAvg,omitempty"`
+	SelectFullRangeJoinAvg *float64  `json:"SelectFullRangeJoinAvg,omitempty" xml:"SelectFullRangeJoinAvg,omitempty"`
+	SelectRangeAvg         *float64  `json:"SelectRangeAvg,omitempty" xml:"SelectRangeAvg,omitempty"`
+	SelectScanAvg          *float64  `json:"SelectScanAvg,omitempty" xml:"SelectScanAvg,omitempty"`
+	SemisyncDelayTime      *float64  `json:"SemisyncDelayTime,omitempty" xml:"SemisyncDelayTime,omitempty"`
+	ServerLockTime         *float64  `json:"ServerLockTime,omitempty" xml:"ServerLockTime,omitempty"`
+	SortMergePasses        *int64    `json:"SortMergePasses,omitempty" xml:"SortMergePasses,omitempty"`
+	SortRangeAvg           *float64  `json:"SortRangeAvg,omitempty" xml:"SortRangeAvg,omitempty"`
+	SortRowsAvg            *float64  `json:"SortRowsAvg,omitempty" xml:"SortRowsAvg,omitempty"`
+	SortScanAvg            *float64  `json:"SortScanAvg,omitempty" xml:"SortScanAvg,omitempty"`
+	SqlFeature             *string   `json:"SqlFeature,omitempty" xml:"SqlFeature,omitempty"`
+	SqlId                  *string   `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlType                *string   `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	Tables                 []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	TimerWaitAvg           *float64  `json:"TimerWaitAvg,omitempty" xml:"TimerWaitAvg,omitempty"`
+	Timestamp              *int64    `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	TmpDiskTables          *int64    `json:"TmpDiskTables,omitempty" xml:"TmpDiskTables,omitempty"`
+	TmpDiskTablesAvg       *float64  `json:"TmpDiskTablesAvg,omitempty" xml:"TmpDiskTablesAvg,omitempty"`
+	TmpTables              *int64    `json:"TmpTables,omitempty" xml:"TmpTables,omitempty"`
+	TmpTablesAvg           *float64  `json:"TmpTablesAvg,omitempty" xml:"TmpTablesAvg,omitempty"`
+	TotalLatency           *float64  `json:"TotalLatency,omitempty" xml:"TotalLatency,omitempty"`
+	TransactionLockTime    *float64  `json:"TransactionLockTime,omitempty" xml:"TransactionLockTime,omitempty"`
+	UserId                 *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WarnCount              *int64    `json:"WarnCount,omitempty" xml:"WarnCount,omitempty"`
+}
+
+func (s GetPfsSqlSummariesResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlSummariesResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetAvgLatency(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.AvgLatency = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetCount(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.Count = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetCountRate(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.CountRate = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetCpuRate(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.CpuRate = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetCpuTime(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.CpuTime = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetDataReadTime(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.DataReadTime = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetDataReads(v int32) *GetPfsSqlSummariesResponseBodyDataList {
+	s.DataReads = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetDataWriteTime(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.DataWriteTime = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetDataWrites(v int32) *GetPfsSqlSummariesResponseBodyDataList {
+	s.DataWrites = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetDb(v string) *GetPfsSqlSummariesResponseBodyDataList {
+	s.Db = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetElapsedTime(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.ElapsedTime = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetErrCount(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.ErrCount = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetFirstTime(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.FirstTime = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetFullScan(v bool) *GetPfsSqlSummariesResponseBodyDataList {
+	s.FullScan = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetId(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.Id = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetInstanceId(v string) *GetPfsSqlSummariesResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetLastTime(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.LastTime = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetLockLatencyAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.LockLatencyAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetLogicId(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.LogicId = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetLogicReads(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.LogicReads = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetMaxLatency(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.MaxLatency = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetMutexSpins(v int32) *GetPfsSqlSummariesResponseBodyDataList {
+	s.MutexSpins = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetMutexWaits(v int32) *GetPfsSqlSummariesResponseBodyDataList {
+	s.MutexWaits = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetNoIndexUsedAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.NoIndexUsedAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetNodeId(v string) *GetPfsSqlSummariesResponseBodyDataList {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetPhysicalAsyncReads(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.PhysicalAsyncReads = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetPhysicalReads(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.PhysicalReads = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetPsql(v string) *GetPfsSqlSummariesResponseBodyDataList {
+	s.Psql = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetRedoWrites(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.RedoWrites = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetRowsAffected(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.RowsAffected = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetRowsAffectedAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.RowsAffectedAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetRowsExamined(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.RowsExamined = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetRowsExaminedAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.RowsExaminedAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetRowsSendAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.RowsSendAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetRowsSent(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.RowsSent = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetRowsSentAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.RowsSentAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetRowsSorted(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.RowsSorted = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetRtRate(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.RtRate = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetRwlockOsWaits(v int32) *GetPfsSqlSummariesResponseBodyDataList {
+	s.RwlockOsWaits = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetRwlockSpinRounds(v int32) *GetPfsSqlSummariesResponseBodyDataList {
+	s.RwlockSpinRounds = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetRwlockSpinWaits(v int32) *GetPfsSqlSummariesResponseBodyDataList {
+	s.RwlockSpinWaits = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetSelectFullJoinAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.SelectFullJoinAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetSelectFullRangeJoinAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.SelectFullRangeJoinAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetSelectRangeAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.SelectRangeAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetSelectScanAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.SelectScanAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetSemisyncDelayTime(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.SemisyncDelayTime = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetServerLockTime(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.ServerLockTime = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetSortMergePasses(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.SortMergePasses = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetSortRangeAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.SortRangeAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetSortRowsAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.SortRowsAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetSortScanAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.SortScanAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetSqlFeature(v string) *GetPfsSqlSummariesResponseBodyDataList {
+	s.SqlFeature = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetSqlId(v string) *GetPfsSqlSummariesResponseBodyDataList {
+	s.SqlId = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetSqlType(v string) *GetPfsSqlSummariesResponseBodyDataList {
+	s.SqlType = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetTables(v []*string) *GetPfsSqlSummariesResponseBodyDataList {
+	s.Tables = v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetTimerWaitAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.TimerWaitAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetTimestamp(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetTmpDiskTables(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.TmpDiskTables = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetTmpDiskTablesAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.TmpDiskTablesAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetTmpTables(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.TmpTables = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetTmpTablesAvg(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.TmpTablesAvg = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetTotalLatency(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.TotalLatency = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetTransactionLockTime(v float64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.TransactionLockTime = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetUserId(v string) *GetPfsSqlSummariesResponseBodyDataList {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponseBodyDataList) SetWarnCount(v int64) *GetPfsSqlSummariesResponseBodyDataList {
+	s.WarnCount = &v
+	return s
+}
+
+type GetPfsSqlSummariesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPfsSqlSummariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPfsSqlSummariesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPfsSqlSummariesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPfsSqlSummariesResponse) SetHeaders(v map[string]*string) *GetPfsSqlSummariesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponse) SetStatusCode(v int32) *GetPfsSqlSummariesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPfsSqlSummariesResponse) SetBody(v *GetPfsSqlSummariesResponseBody) *GetPfsSqlSummariesResponse {
 	s.Body = v
 	return s
 }
@@ -9963,6 +11896,300 @@ func (s *GetQueryOptimizeSolutionResponse) SetBody(v *GetQueryOptimizeSolutionRe
 	return s
 }
 
+type GetRedisAllSessionRequest struct {
+	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetRedisAllSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRedisAllSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRedisAllSessionRequest) SetConsoleContext(v string) *GetRedisAllSessionRequest {
+	s.ConsoleContext = &v
+	return s
+}
+
+func (s *GetRedisAllSessionRequest) SetInstanceId(v string) *GetRedisAllSessionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetRedisAllSessionResponseBody struct {
+	Code      *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetRedisAllSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetRedisAllSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRedisAllSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRedisAllSessionResponseBody) SetCode(v int64) *GetRedisAllSessionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBody) SetData(v *GetRedisAllSessionResponseBodyData) *GetRedisAllSessionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBody) SetMessage(v string) *GetRedisAllSessionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBody) SetRequestId(v string) *GetRedisAllSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBody) SetSuccess(v bool) *GetRedisAllSessionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetRedisAllSessionResponseBodyData struct {
+	Sessions    []*GetRedisAllSessionResponseBodyDataSessions    `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
+	SourceStats []*GetRedisAllSessionResponseBodyDataSourceStats `json:"SourceStats,omitempty" xml:"SourceStats,omitempty" type:"Repeated"`
+	Timestamp   *int64                                           `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Total       *int64                                           `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetRedisAllSessionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRedisAllSessionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetRedisAllSessionResponseBodyData) SetSessions(v []*GetRedisAllSessionResponseBodyDataSessions) *GetRedisAllSessionResponseBodyData {
+	s.Sessions = v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyData) SetSourceStats(v []*GetRedisAllSessionResponseBodyDataSourceStats) *GetRedisAllSessionResponseBodyData {
+	s.SourceStats = v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyData) SetTimestamp(v int64) *GetRedisAllSessionResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyData) SetTotal(v int64) *GetRedisAllSessionResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type GetRedisAllSessionResponseBodyDataSessions struct {
+	Addr       *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
+	Age        *string `json:"Age,omitempty" xml:"Age,omitempty"`
+	Client     *string `json:"Client,omitempty" xml:"Client,omitempty"`
+	ClientDesc *string `json:"ClientDesc,omitempty" xml:"ClientDesc,omitempty"`
+	Cmd        *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
+	Db         *int64  `json:"Db,omitempty" xml:"Db,omitempty"`
+	Events     *string `json:"Events,omitempty" xml:"Events,omitempty"`
+	Fd         *int64  `json:"Fd,omitempty" xml:"Fd,omitempty"`
+	Flags      *string `json:"Flags,omitempty" xml:"Flags,omitempty"`
+	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Idle       *int64  `json:"Idle,omitempty" xml:"Idle,omitempty"`
+	Multi      *int64  `json:"Multi,omitempty" xml:"Multi,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Obl        *int64  `json:"Obl,omitempty" xml:"Obl,omitempty"`
+	Oll        *int64  `json:"Oll,omitempty" xml:"Oll,omitempty"`
+	Omem       *int64  `json:"Omem,omitempty" xml:"Omem,omitempty"`
+	Psub       *int64  `json:"Psub,omitempty" xml:"Psub,omitempty"`
+	Qbuf       *int64  `json:"Qbuf,omitempty" xml:"Qbuf,omitempty"`
+	QbufFree   *int64  `json:"QbufFree,omitempty" xml:"QbufFree,omitempty"`
+	Sub        *int64  `json:"Sub,omitempty" xml:"Sub,omitempty"`
+}
+
+func (s GetRedisAllSessionResponseBodyDataSessions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRedisAllSessionResponseBodyDataSessions) GoString() string {
+	return s.String()
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetAddr(v string) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Addr = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetAge(v string) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Age = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetClient(v string) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Client = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetClientDesc(v string) *GetRedisAllSessionResponseBodyDataSessions {
+	s.ClientDesc = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetCmd(v string) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Cmd = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetDb(v int64) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Db = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetEvents(v string) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Events = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetFd(v int64) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Fd = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetFlags(v string) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Flags = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetId(v int64) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Id = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetIdle(v int64) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Idle = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetMulti(v int64) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Multi = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetName(v string) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Name = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetNodeId(v string) *GetRedisAllSessionResponseBodyDataSessions {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetObl(v int64) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Obl = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetOll(v int64) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Oll = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetOmem(v int64) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Omem = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetPsub(v int64) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Psub = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetQbuf(v int64) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Qbuf = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetQbufFree(v int64) *GetRedisAllSessionResponseBodyDataSessions {
+	s.QbufFree = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSessions) SetSub(v int64) *GetRedisAllSessionResponseBodyDataSessions {
+	s.Sub = &v
+	return s
+}
+
+type GetRedisAllSessionResponseBodyDataSourceStats struct {
+	Count *string  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Ids   []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	Key   *string  `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s GetRedisAllSessionResponseBodyDataSourceStats) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRedisAllSessionResponseBodyDataSourceStats) GoString() string {
+	return s.String()
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSourceStats) SetCount(v string) *GetRedisAllSessionResponseBodyDataSourceStats {
+	s.Count = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSourceStats) SetIds(v []*int64) *GetRedisAllSessionResponseBodyDataSourceStats {
+	s.Ids = v
+	return s
+}
+
+func (s *GetRedisAllSessionResponseBodyDataSourceStats) SetKey(v string) *GetRedisAllSessionResponseBodyDataSourceStats {
+	s.Key = &v
+	return s
+}
+
+type GetRedisAllSessionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRedisAllSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRedisAllSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRedisAllSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRedisAllSessionResponse) SetHeaders(v map[string]*string) *GetRedisAllSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRedisAllSessionResponse) SetStatusCode(v int32) *GetRedisAllSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRedisAllSessionResponse) SetBody(v *GetRedisAllSessionResponseBody) *GetRedisAllSessionResponse {
+	s.Body = v
+	return s
+}
+
 type GetRequestDiagnosisPageRequest struct {
 	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -11059,6 +13286,93 @@ func (s *GetSqlOptimizeAdviceResponse) SetStatusCode(v int32) *GetSqlOptimizeAdv
 }
 
 func (s *GetSqlOptimizeAdviceResponse) SetBody(v *GetSqlOptimizeAdviceResponseBody) *GetSqlOptimizeAdviceResponse {
+	s.Body = v
+	return s
+}
+
+type IsSupportPFSRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s IsSupportPFSRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsSupportPFSRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IsSupportPFSRequest) SetInstanceId(v string) *IsSupportPFSRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type IsSupportPFSResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s IsSupportPFSResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsSupportPFSResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IsSupportPFSResponseBody) SetCode(v int64) *IsSupportPFSResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *IsSupportPFSResponseBody) SetData(v bool) *IsSupportPFSResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *IsSupportPFSResponseBody) SetMessage(v string) *IsSupportPFSResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *IsSupportPFSResponseBody) SetRequestId(v string) *IsSupportPFSResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *IsSupportPFSResponseBody) SetSuccess(v bool) *IsSupportPFSResponseBody {
+	s.Success = &v
+	return s
+}
+
+type IsSupportPFSResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *IsSupportPFSResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s IsSupportPFSResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsSupportPFSResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IsSupportPFSResponse) SetHeaders(v map[string]*string) *IsSupportPFSResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IsSupportPFSResponse) SetStatusCode(v int32) *IsSupportPFSResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IsSupportPFSResponse) SetBody(v *IsSupportPFSResponseBody) *IsSupportPFSResponse {
 	s.Body = v
 	return s
 }
@@ -12213,35 +14527,6 @@ func (s *UpdateAutoThrottleRulesAsyncResponse) SetBody(v *UpdateAutoThrottleRule
 	return s
 }
 
-type DataResultValue struct {
-	SqlId      *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Count      *int32  `json:"count,omitempty" xml:"count,omitempty"`
-}
-
-func (s DataResultValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DataResultValue) GoString() string {
-	return s.String()
-}
-
-func (s *DataResultValue) SetSqlId(v string) *DataResultValue {
-	s.SqlId = &v
-	return s
-}
-
-func (s *DataResultValue) SetInstanceId(v string) *DataResultValue {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DataResultValue) SetCount(v int32) *DataResultValue {
-	s.Count = &v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -13128,6 +15413,54 @@ func (client *Client) DescribeCloudbenchTaskConfig(request *DescribeCloudbenchTa
 	return _result, _err
 }
 
+func (client *Client) DescribeDasAdvancedInfoWithOptions(request *DescribeDasAdvancedInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDasAdvancedInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommodityInstanceId)) {
+		body["CommodityInstanceId"] = request.CommodityInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDasAdvancedInfo"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDasAdvancedInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDasAdvancedInfo(request *DescribeDasAdvancedInfoRequest) (_result *DescribeDasAdvancedInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDasAdvancedInfoResponse{}
+	_body, _err := client.DescribeDasAdvancedInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDiagnosticReportListWithOptions(request *DescribeDiagnosticReportListRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosticReportListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13325,6 +15658,72 @@ func (client *Client) DescribeInstanceDasPro(request *DescribeInstanceDasProRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceDasProResponse{}
 	_body, _err := client.DescribeInstanceDasProWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSqlLogInstancesPagingWithOptions(request *DescribeSqlLogInstancesPagingRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlLogInstancesPagingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
+		query["ConsoleContext"] = request.ConsoleContext
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bid)) {
+		body["Bid"] = request.Bid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		body["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSqlLogInstancesPaging"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSqlLogInstancesPagingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSqlLogInstancesPaging(request *DescribeSqlLogInstancesPagingRequest) (_result *DescribeSqlLogInstancesPagingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSqlLogInstancesPagingResponse{}
+	_body, _err := client.DescribeSqlLogInstancesPagingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14824,6 +17223,10 @@ func (client *Client) GetInstanceInspectionsWithOptions(request *GetInstanceInsp
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SearchMap)) {
 		query["SearchMap"] = request.SearchMap
 	}
@@ -14859,6 +17262,354 @@ func (client *Client) GetInstanceInspections(request *GetInstanceInspectionsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceInspectionsResponse{}
 	_body, _err := client.GetInstanceInspectionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPfsMetricTrendsWithOptions(request *GetPfsMetricTrendsRequest, runtime *util.RuntimeOptions) (_result *GetPfsMetricTrendsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metric)) {
+		body["Metric"] = request.Metric
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPfsMetricTrends"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPfsMetricTrendsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPfsMetricTrends(request *GetPfsMetricTrendsRequest) (_result *GetPfsMetricTrendsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPfsMetricTrendsResponse{}
+	_body, _err := client.GetPfsMetricTrendsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPfsSqlComparisonWithOptions(request *GetPfsSqlComparisonRequest, runtime *util.RuntimeOptions) (_result *GetPfsSqlComparisonResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Asc)) {
+		body["Asc"] = request.Asc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndOne)) {
+		body["EndOne"] = request.EndOne
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTwo)) {
+		body["EndTwo"] = request.EndTwo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		body["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartOne)) {
+		body["StartOne"] = request.StartOne
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTwo)) {
+		body["StartTwo"] = request.StartTwo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPfsSqlComparison"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPfsSqlComparisonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPfsSqlComparison(request *GetPfsSqlComparisonRequest) (_result *GetPfsSqlComparisonResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPfsSqlComparisonResponse{}
+	_body, _err := client.GetPfsSqlComparisonWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPfsSqlMetricTrendsWithOptions(request *GetPfsSqlMetricTrendsRequest, runtime *util.RuntimeOptions) (_result *GetPfsSqlMetricTrendsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metric)) {
+		body["Metric"] = request.Metric
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		body["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPfsSqlMetricTrends"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPfsSqlMetricTrendsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPfsSqlMetricTrends(request *GetPfsSqlMetricTrendsRequest) (_result *GetPfsSqlMetricTrendsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPfsSqlMetricTrendsResponse{}
+	_body, _err := client.GetPfsSqlMetricTrendsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPfsSqlSampleWithOptions(request *GetPfsSqlSampleRequest, runtime *util.RuntimeOptions) (_result *GetPfsSqlSampleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		body["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPfsSqlSample"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPfsSqlSampleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPfsSqlSample(request *GetPfsSqlSampleRequest) (_result *GetPfsSqlSampleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPfsSqlSampleResponse{}
+	_body, _err := client.GetPfsSqlSampleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPfsSqlSummariesWithOptions(request *GetPfsSqlSummariesRequest, runtime *util.RuntimeOptions) (_result *GetPfsSqlSummariesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Asc)) {
+		body["Asc"] = request.Asc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keywords)) {
+		body["Keywords"] = request.Keywords
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		body["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		body["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPfsSqlSummaries"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPfsSqlSummariesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPfsSqlSummaries(request *GetPfsSqlSummariesRequest) (_result *GetPfsSqlSummariesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPfsSqlSummariesResponse{}
+	_body, _err := client.GetPfsSqlSummariesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15139,6 +17890,54 @@ func (client *Client) GetQueryOptimizeSolution(request *GetQueryOptimizeSolution
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQueryOptimizeSolutionResponse{}
 	_body, _err := client.GetQueryOptimizeSolutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRedisAllSessionWithOptions(request *GetRedisAllSessionRequest, runtime *util.RuntimeOptions) (_result *GetRedisAllSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
+		query["ConsoleContext"] = request.ConsoleContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRedisAllSession"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRedisAllSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRedisAllSession(request *GetRedisAllSessionRequest) (_result *GetRedisAllSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRedisAllSessionResponse{}
+	_body, _err := client.GetRedisAllSessionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15479,6 +18278,50 @@ func (client *Client) GetSqlOptimizeAdvice(request *GetSqlOptimizeAdviceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSqlOptimizeAdviceResponse{}
 	_body, _err := client.GetSqlOptimizeAdviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) IsSupportPFSWithOptions(request *IsSupportPFSRequest, runtime *util.RuntimeOptions) (_result *IsSupportPFSResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IsSupportPFS"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IsSupportPFSResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IsSupportPFS(request *IsSupportPFSRequest) (_result *IsSupportPFSResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &IsSupportPFSResponse{}
+	_body, _err := client.IsSupportPFSWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
