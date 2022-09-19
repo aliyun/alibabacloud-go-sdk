@@ -1,3 +1,6 @@
+2022-09-19 Version: v1.1.32
+- Change RefreshAssets Public.
+
 2022-08-31 Version: v1.1.31
 - Change GetFileDetectResult Public.
 

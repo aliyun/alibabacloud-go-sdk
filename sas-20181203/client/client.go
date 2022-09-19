@@ -162,6 +162,141 @@ func (s *AddVpcHoneyPotResponse) SetBody(v *AddVpcHoneyPotResponseBody) *AddVpcH
 	return s
 }
 
+type BindAuthToMachineRequest struct {
+	AuthVersion *int32    `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
+	AutoBind    *int32    `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	Bind        []*string `json:"Bind,omitempty" xml:"Bind,omitempty" type:"Repeated"`
+	BindAll     *bool     `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
+	Criteria    *string   `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	LogicalExp  *string   `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
+	UnBind      []*string `json:"UnBind,omitempty" xml:"UnBind,omitempty" type:"Repeated"`
+}
+
+func (s BindAuthToMachineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAuthToMachineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindAuthToMachineRequest) SetAuthVersion(v int32) *BindAuthToMachineRequest {
+	s.AuthVersion = &v
+	return s
+}
+
+func (s *BindAuthToMachineRequest) SetAutoBind(v int32) *BindAuthToMachineRequest {
+	s.AutoBind = &v
+	return s
+}
+
+func (s *BindAuthToMachineRequest) SetBind(v []*string) *BindAuthToMachineRequest {
+	s.Bind = v
+	return s
+}
+
+func (s *BindAuthToMachineRequest) SetBindAll(v bool) *BindAuthToMachineRequest {
+	s.BindAll = &v
+	return s
+}
+
+func (s *BindAuthToMachineRequest) SetCriteria(v string) *BindAuthToMachineRequest {
+	s.Criteria = &v
+	return s
+}
+
+func (s *BindAuthToMachineRequest) SetLogicalExp(v string) *BindAuthToMachineRequest {
+	s.LogicalExp = &v
+	return s
+}
+
+func (s *BindAuthToMachineRequest) SetUnBind(v []*string) *BindAuthToMachineRequest {
+	s.UnBind = v
+	return s
+}
+
+type BindAuthToMachineResponseBody struct {
+	BindCount             *int32  `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
+	InsufficientCoreCount *int32  `json:"InsufficientCoreCount,omitempty" xml:"InsufficientCoreCount,omitempty"`
+	InsufficientCount     *int32  `json:"InsufficientCount,omitempty" xml:"InsufficientCount,omitempty"`
+	InsufficientEcsCount  *int32  `json:"InsufficientEcsCount,omitempty" xml:"InsufficientEcsCount,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode            *int32  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	UnBindCount           *int32  `json:"UnBindCount,omitempty" xml:"UnBindCount,omitempty"`
+}
+
+func (s BindAuthToMachineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAuthToMachineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindAuthToMachineResponseBody) SetBindCount(v int32) *BindAuthToMachineResponseBody {
+	s.BindCount = &v
+	return s
+}
+
+func (s *BindAuthToMachineResponseBody) SetInsufficientCoreCount(v int32) *BindAuthToMachineResponseBody {
+	s.InsufficientCoreCount = &v
+	return s
+}
+
+func (s *BindAuthToMachineResponseBody) SetInsufficientCount(v int32) *BindAuthToMachineResponseBody {
+	s.InsufficientCount = &v
+	return s
+}
+
+func (s *BindAuthToMachineResponseBody) SetInsufficientEcsCount(v int32) *BindAuthToMachineResponseBody {
+	s.InsufficientEcsCount = &v
+	return s
+}
+
+func (s *BindAuthToMachineResponseBody) SetRequestId(v string) *BindAuthToMachineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BindAuthToMachineResponseBody) SetResultCode(v int32) *BindAuthToMachineResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *BindAuthToMachineResponseBody) SetUnBindCount(v int32) *BindAuthToMachineResponseBody {
+	s.UnBindCount = &v
+	return s
+}
+
+type BindAuthToMachineResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BindAuthToMachineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BindAuthToMachineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAuthToMachineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindAuthToMachineResponse) SetHeaders(v map[string]*string) *BindAuthToMachineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindAuthToMachineResponse) SetStatusCode(v int32) *BindAuthToMachineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindAuthToMachineResponse) SetBody(v *BindAuthToMachineResponseBody) *BindAuthToMachineResponse {
+	s.Body = v
+	return s
+}
+
 type CheckQuaraFileIdRequest struct {
 	QuaraFileIds []*string `json:"QuaraFileIds,omitempty" xml:"QuaraFileIds,omitempty" type:"Repeated"`
 	Uuid         *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
@@ -2775,19 +2910,26 @@ func (s *DescribeAccesskeyLeakListResponse) SetBody(v *DescribeAccesskeyLeakList
 }
 
 type DescribeAffectedMaliciousFileImagesRequest struct {
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	ImageDigest    *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	ImageLayer     *string `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
-	ImageTag       *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MaliciousMd5   *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
-	PageSize       *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoId         *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoInstanceId *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
-	RepoName       *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespace  *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	RepoRegionId   *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	ClusterId      *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName    *string   `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ContainerId    *string   `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	CurrentPage    *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Image          *string   `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImageDigest    *string   `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
+	ImageLayer     *string   `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
+	ImageTag       *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	Lang           *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Levels         *string   `json:"Levels,omitempty" xml:"Levels,omitempty"`
+	MaliciousMd5   *string   `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
+	Namespace      *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PageSize       *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Pod            *string   `json:"Pod,omitempty" xml:"Pod,omitempty"`
+	RepoId         *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	RepoInstanceId *string   `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
+	RepoName       *string   `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespace  *string   `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	RepoRegionId   *string   `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	ScanRange      []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAffectedMaliciousFileImagesRequest) String() string {
@@ -2803,8 +2945,23 @@ func (s *DescribeAffectedMaliciousFileImagesRequest) SetClusterId(v string) *Des
 	return s
 }
 
+func (s *DescribeAffectedMaliciousFileImagesRequest) SetClusterName(v string) *DescribeAffectedMaliciousFileImagesRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesRequest) SetContainerId(v string) *DescribeAffectedMaliciousFileImagesRequest {
+	s.ContainerId = &v
+	return s
+}
+
 func (s *DescribeAffectedMaliciousFileImagesRequest) SetCurrentPage(v int32) *DescribeAffectedMaliciousFileImagesRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesRequest) SetImage(v string) *DescribeAffectedMaliciousFileImagesRequest {
+	s.Image = &v
 	return s
 }
 
@@ -2828,13 +2985,28 @@ func (s *DescribeAffectedMaliciousFileImagesRequest) SetLang(v string) *Describe
 	return s
 }
 
+func (s *DescribeAffectedMaliciousFileImagesRequest) SetLevels(v string) *DescribeAffectedMaliciousFileImagesRequest {
+	s.Levels = &v
+	return s
+}
+
 func (s *DescribeAffectedMaliciousFileImagesRequest) SetMaliciousMd5(v string) *DescribeAffectedMaliciousFileImagesRequest {
 	s.MaliciousMd5 = &v
 	return s
 }
 
+func (s *DescribeAffectedMaliciousFileImagesRequest) SetNamespace(v string) *DescribeAffectedMaliciousFileImagesRequest {
+	s.Namespace = &v
+	return s
+}
+
 func (s *DescribeAffectedMaliciousFileImagesRequest) SetPageSize(v string) *DescribeAffectedMaliciousFileImagesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesRequest) SetPod(v string) *DescribeAffectedMaliciousFileImagesRequest {
+	s.Pod = &v
 	return s
 }
 
@@ -2860,6 +3032,11 @@ func (s *DescribeAffectedMaliciousFileImagesRequest) SetRepoNamespace(v string) 
 
 func (s *DescribeAffectedMaliciousFileImagesRequest) SetRepoRegionId(v string) *DescribeAffectedMaliciousFileImagesRequest {
 	s.RepoRegionId = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesRequest) SetScanRange(v []*string) *DescribeAffectedMaliciousFileImagesRequest {
+	s.ScanRange = v
 	return s
 }
 
@@ -2893,18 +3070,24 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBody) SetRequestId(v string)
 }
 
 type DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse struct {
+	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName           *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ContainerId           *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
 	Digest                *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	DownloadUrl           *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	FilePath              *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	FirstScanTimestamp    *int64  `json:"FirstScanTimestamp,omitempty" xml:"FirstScanTimestamp,omitempty"`
 	HighLight             *string `json:"HighLight,omitempty" xml:"HighLight,omitempty"`
+	Image                 *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	ImageUuid             *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
 	LatestScanTimestamp   *int64  `json:"LatestScanTimestamp,omitempty" xml:"LatestScanTimestamp,omitempty"`
 	LatestVerifyTimestamp *int64  `json:"LatestVerifyTimestamp,omitempty" xml:"LatestVerifyTimestamp,omitempty"`
 	Layer                 *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
 	Level                 *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	MaliciousMd5          *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
+	MaliciousSource       *string `json:"MaliciousSource,omitempty" xml:"MaliciousSource,omitempty"`
 	Namespace             *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Pod                   *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
 	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	RepoInstanceId        *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
 	RepoName              *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
@@ -2919,6 +3102,21 @@ func (s DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImag
 
 func (s DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetClusterId(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetClusterName(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetContainerId(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.ContainerId = &v
+	return s
 }
 
 func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetDigest(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
@@ -2943,6 +3141,11 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileIma
 
 func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetHighLight(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
 	s.HighLight = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetImage(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.Image = &v
 	return s
 }
 
@@ -2976,8 +3179,18 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileIma
 	return s
 }
 
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetMaliciousSource(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.MaliciousSource = &v
+	return s
+}
+
 func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetNamespace(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
 	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetPod(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.Pod = &v
 	return s
 }
 
@@ -4581,6 +4794,7 @@ func (s *DescribeAssetDetailByUuidResponse) SetBody(v *DescribeAssetDetailByUuid
 }
 
 type DescribeAssetDetailByUuidsRequest struct {
+	Lang  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
@@ -4590,6 +4804,11 @@ func (s DescribeAssetDetailByUuidsRequest) String() string {
 
 func (s DescribeAssetDetailByUuidsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAssetDetailByUuidsRequest) SetLang(v string) *DescribeAssetDetailByUuidsRequest {
+	s.Lang = &v
+	return s
 }
 
 func (s *DescribeAssetDetailByUuidsRequest) SetUuids(v string) *DescribeAssetDetailByUuidsRequest {
@@ -6367,6 +6586,7 @@ type DescribeCloudCenterInstancesRequest struct {
 	Criteria     *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
 	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Importance   *int32  `json:"Importance,omitempty" xml:"Importance,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	LogicalExp   *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
 	MachineTypes *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
 	NoGroupTrace *bool   `json:"NoGroupTrace,omitempty" xml:"NoGroupTrace,omitempty"`
@@ -6394,6 +6614,11 @@ func (s *DescribeCloudCenterInstancesRequest) SetCurrentPage(v int32) *DescribeC
 
 func (s *DescribeCloudCenterInstancesRequest) SetImportance(v int32) *DescribeCloudCenterInstancesRequest {
 	s.Importance = &v
+	return s
+}
+
+func (s *DescribeCloudCenterInstancesRequest) SetLang(v string) *DescribeCloudCenterInstancesRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -9304,6 +9529,7 @@ func (s *DescribeFieldStatisticsResponse) SetBody(v *DescribeFieldStatisticsResp
 
 type DescribeFrontVulPatchListRequest struct {
 	Info        *string `json:"Info,omitempty" xml:"Info,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -9318,6 +9544,11 @@ func (s DescribeFrontVulPatchListRequest) GoString() string {
 
 func (s *DescribeFrontVulPatchListRequest) SetInfo(v string) *DescribeFrontVulPatchListRequest {
 	s.Info = &v
+	return s
+}
+
+func (s *DescribeFrontVulPatchListRequest) SetLang(v string) *DescribeFrontVulPatchListRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -9924,20 +10155,21 @@ func (s *DescribeGroupedInstancesResponse) SetBody(v *DescribeGroupedInstancesRe
 }
 
 type DescribeGroupedMaliciousFilesRequest struct {
-	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CurrentPage        *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	FuzzyMaliciousName *string `json:"FuzzyMaliciousName,omitempty" xml:"FuzzyMaliciousName,omitempty"`
-	ImageDigest        *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	ImageLayer         *string `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
-	ImageTag           *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Levels             *string `json:"Levels,omitempty" xml:"Levels,omitempty"`
-	PageSize           *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoId             *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoInstanceId     *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
-	RepoName           *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespace      *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	RepoRegionId       *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	ClusterId          *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CurrentPage        *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	FuzzyMaliciousName *string   `json:"FuzzyMaliciousName,omitempty" xml:"FuzzyMaliciousName,omitempty"`
+	ImageDigest        *string   `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
+	ImageLayer         *string   `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
+	ImageTag           *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	Lang               *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Levels             *string   `json:"Levels,omitempty" xml:"Levels,omitempty"`
+	PageSize           *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RepoId             *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	RepoInstanceId     *string   `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
+	RepoName           *string   `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespace      *string   `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	RepoRegionId       *string   `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	ScanRange          []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 }
 
 func (s DescribeGroupedMaliciousFilesRequest) String() string {
@@ -10015,6 +10247,11 @@ func (s *DescribeGroupedMaliciousFilesRequest) SetRepoNamespace(v string) *Descr
 
 func (s *DescribeGroupedMaliciousFilesRequest) SetRepoRegionId(v string) *DescribeGroupedMaliciousFilesRequest {
 	s.RepoRegionId = &v
+	return s
+}
+
+func (s *DescribeGroupedMaliciousFilesRequest) SetScanRange(v []*string) *DescribeGroupedMaliciousFilesRequest {
+	s.ScanRange = v
 	return s
 }
 
@@ -10685,13 +10922,14 @@ func (s *DescribeHoneyPotSuspStatisticsResponse) SetBody(v *DescribeHoneyPotSusp
 }
 
 type DescribeImageBaselineCheckSummaryRequest struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Criteria     *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RiskLevel    *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	ClusterId    *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Criteria     *string   `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	CriteriaType *string   `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
+	CurrentPage  *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RiskLevel    *string   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	ScanRange    []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 }
 
 func (s DescribeImageBaselineCheckSummaryRequest) String() string {
@@ -10734,6 +10972,11 @@ func (s *DescribeImageBaselineCheckSummaryRequest) SetPageSize(v int32) *Describ
 
 func (s *DescribeImageBaselineCheckSummaryRequest) SetRiskLevel(v string) *DescribeImageBaselineCheckSummaryRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeImageBaselineCheckSummaryRequest) SetScanRange(v []*string) *DescribeImageBaselineCheckSummaryRequest {
+	s.ScanRange = v
 	return s
 }
 
@@ -11125,27 +11368,28 @@ func (s *DescribeImageFixTaskResponse) SetBody(v *DescribeImageFixTaskResponseBo
 }
 
 type DescribeImageGroupedVulListRequest struct {
-	AliasName      *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	CveId          *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
-	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	ImageDigest    *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	ImageLayer     *string `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
-	ImageTag       *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	IsLatest       *int32  `json:"IsLatest,omitempty" xml:"IsLatest,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Necessity      *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PatchId        *int64  `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	RepoId         *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoInstanceId *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
-	RepoName       *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespace  *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	RepoRegionId   *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uuids          *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	AliasName      *string   `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	ClusterId      *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CurrentPage    *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CveId          *string   `json:"CveId,omitempty" xml:"CveId,omitempty"`
+	GroupId        *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ImageDigest    *string   `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
+	ImageLayer     *string   `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
+	ImageTag       *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	IsLatest       *int32    `json:"IsLatest,omitempty" xml:"IsLatest,omitempty"`
+	Lang           *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Necessity      *string   `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	PageSize       *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PatchId        *int64    `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
+	RepoId         *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	RepoInstanceId *string   `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
+	RepoName       *string   `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespace  *string   `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	RepoRegionId   *string   `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	ScanRange      []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
+	Type           *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uuids          *string   `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
 func (s DescribeImageGroupedVulListRequest) String() string {
@@ -11248,6 +11492,11 @@ func (s *DescribeImageGroupedVulListRequest) SetRepoNamespace(v string) *Describ
 
 func (s *DescribeImageGroupedVulListRequest) SetRepoRegionId(v string) *DescribeImageGroupedVulListRequest {
 	s.RepoRegionId = &v
+	return s
+}
+
+func (s *DescribeImageGroupedVulListRequest) SetScanRange(v []*string) *DescribeImageGroupedVulListRequest {
+	s.ScanRange = v
 	return s
 }
 
@@ -11403,17 +11652,23 @@ func (s *DescribeImageGroupedVulListResponse) SetBody(v *DescribeImageGroupedVul
 }
 
 type DescribeImageListWithBaselineNameRequest struct {
-	BaselineNameKey *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Criteria        *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	CriteriaType    *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	ImageDigest     *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoInstanceId  *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
-	RepoName        *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespace   *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	BaselineNameKey *string   `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
+	ClusterId       *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName     *string   `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ContainerId     *string   `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	Criteria        *string   `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	CriteriaType    *string   `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
+	CurrentPage     *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Image           *string   `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImageDigest     *string   `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
+	Lang            *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Namespace       *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Pod             *string   `json:"Pod,omitempty" xml:"Pod,omitempty"`
+	RepoInstanceId  *string   `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
+	RepoName        *string   `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespace   *string   `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	ScanRange       []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 }
 
 func (s DescribeImageListWithBaselineNameRequest) String() string {
@@ -11434,6 +11689,16 @@ func (s *DescribeImageListWithBaselineNameRequest) SetClusterId(v string) *Descr
 	return s
 }
 
+func (s *DescribeImageListWithBaselineNameRequest) SetClusterName(v string) *DescribeImageListWithBaselineNameRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameRequest) SetContainerId(v string) *DescribeImageListWithBaselineNameRequest {
+	s.ContainerId = &v
+	return s
+}
+
 func (s *DescribeImageListWithBaselineNameRequest) SetCriteria(v string) *DescribeImageListWithBaselineNameRequest {
 	s.Criteria = &v
 	return s
@@ -11449,6 +11714,11 @@ func (s *DescribeImageListWithBaselineNameRequest) SetCurrentPage(v int32) *Desc
 	return s
 }
 
+func (s *DescribeImageListWithBaselineNameRequest) SetImage(v string) *DescribeImageListWithBaselineNameRequest {
+	s.Image = &v
+	return s
+}
+
 func (s *DescribeImageListWithBaselineNameRequest) SetImageDigest(v string) *DescribeImageListWithBaselineNameRequest {
 	s.ImageDigest = &v
 	return s
@@ -11459,8 +11729,18 @@ func (s *DescribeImageListWithBaselineNameRequest) SetLang(v string) *DescribeIm
 	return s
 }
 
+func (s *DescribeImageListWithBaselineNameRequest) SetNamespace(v string) *DescribeImageListWithBaselineNameRequest {
+	s.Namespace = &v
+	return s
+}
+
 func (s *DescribeImageListWithBaselineNameRequest) SetPageSize(v int32) *DescribeImageListWithBaselineNameRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameRequest) SetPod(v string) *DescribeImageListWithBaselineNameRequest {
+	s.Pod = &v
 	return s
 }
 
@@ -11476,6 +11756,11 @@ func (s *DescribeImageListWithBaselineNameRequest) SetRepoName(v string) *Descri
 
 func (s *DescribeImageListWithBaselineNameRequest) SetRepoNamespace(v string) *DescribeImageListWithBaselineNameRequest {
 	s.RepoNamespace = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameRequest) SetScanRange(v []*string) *DescribeImageListWithBaselineNameRequest {
+	s.ScanRange = v
 	return s
 }
 
@@ -11509,8 +11794,13 @@ func (s *DescribeImageListWithBaselineNameResponseBody) SetRequestId(v string) *
 }
 
 type DescribeImageListWithBaselineNameResponseBodyImageInfos struct {
+	BaselineType    *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName     *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ContainerId     *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
 	Digest          *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	HighRiskImage   *int32  `json:"HighRiskImage,omitempty" xml:"HighRiskImage,omitempty"`
+	Image           *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	ImageCreate     *int64  `json:"ImageCreate,omitempty" xml:"ImageCreate,omitempty"`
 	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageSize       *int32  `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
@@ -11518,7 +11808,9 @@ type DescribeImageListWithBaselineNameResponseBodyImageInfos struct {
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LowRiskImage    *int32  `json:"LowRiskImage,omitempty" xml:"LowRiskImage,omitempty"`
 	MiddleRiskImage *int32  `json:"MiddleRiskImage,omitempty" xml:"MiddleRiskImage,omitempty"`
+	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NoRiskImage     *int32  `json:"NoRiskImage,omitempty" xml:"NoRiskImage,omitempty"`
+	Pod             *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId          *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	RepoName        *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
@@ -11538,6 +11830,26 @@ func (s DescribeImageListWithBaselineNameResponseBodyImageInfos) GoString() stri
 	return s.String()
 }
 
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetBaselineType(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.BaselineType = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetClusterId(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetClusterName(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetContainerId(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.ContainerId = &v
+	return s
+}
+
 func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetDigest(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
 	s.Digest = &v
 	return s
@@ -11545,6 +11857,11 @@ func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetDigest(v st
 
 func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetHighRiskImage(v int32) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
 	s.HighRiskImage = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetImage(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.Image = &v
 	return s
 }
 
@@ -11583,8 +11900,18 @@ func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetMiddleRiskI
 	return s
 }
 
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetNamespace(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.Namespace = &v
+	return s
+}
+
 func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetNoRiskImage(v int32) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
 	s.NoRiskImage = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetPod(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.Pod = &v
 	return s
 }
 
@@ -11837,26 +12164,32 @@ func (s *DescribeImageStatisticsResponse) SetBody(v *DescribeImageStatisticsResp
 }
 
 type DescribeImageVulListRequest struct {
-	AliasName      *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Dealed         *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	Digest         *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Necessity      *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepoId         *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoInstanceId *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
-	RepoName       *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespace  *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	RepoRegionId   *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	StatusList     *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
-	Tag            *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uuids          *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	AliasName      *string   `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	ClusterId      *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName    *string   `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ContainerId    *string   `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	CurrentPage    *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Dealed         *string   `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	Digest         *string   `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	Image          *string   `json:"Image,omitempty" xml:"Image,omitempty"`
+	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lang           *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace      *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Necessity      *string   `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	PageSize       *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Pod            *string   `json:"Pod,omitempty" xml:"Pod,omitempty"`
+	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepoId         *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	RepoInstanceId *string   `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
+	RepoName       *string   `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespace  *string   `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	RepoRegionId   *string   `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	ScanRange      []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
+	StatusList     *string   `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
+	Tag            *string   `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Type           *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uuids          *string   `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
 func (s DescribeImageVulListRequest) String() string {
@@ -11877,6 +12210,16 @@ func (s *DescribeImageVulListRequest) SetClusterId(v string) *DescribeImageVulLi
 	return s
 }
 
+func (s *DescribeImageVulListRequest) SetClusterName(v string) *DescribeImageVulListRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeImageVulListRequest) SetContainerId(v string) *DescribeImageVulListRequest {
+	s.ContainerId = &v
+	return s
+}
+
 func (s *DescribeImageVulListRequest) SetCurrentPage(v int32) *DescribeImageVulListRequest {
 	s.CurrentPage = &v
 	return s
@@ -11889,6 +12232,11 @@ func (s *DescribeImageVulListRequest) SetDealed(v string) *DescribeImageVulListR
 
 func (s *DescribeImageVulListRequest) SetDigest(v string) *DescribeImageVulListRequest {
 	s.Digest = &v
+	return s
+}
+
+func (s *DescribeImageVulListRequest) SetImage(v string) *DescribeImageVulListRequest {
+	s.Image = &v
 	return s
 }
 
@@ -11907,6 +12255,11 @@ func (s *DescribeImageVulListRequest) SetName(v string) *DescribeImageVulListReq
 	return s
 }
 
+func (s *DescribeImageVulListRequest) SetNamespace(v string) *DescribeImageVulListRequest {
+	s.Namespace = &v
+	return s
+}
+
 func (s *DescribeImageVulListRequest) SetNecessity(v string) *DescribeImageVulListRequest {
 	s.Necessity = &v
 	return s
@@ -11914,6 +12267,11 @@ func (s *DescribeImageVulListRequest) SetNecessity(v string) *DescribeImageVulLi
 
 func (s *DescribeImageVulListRequest) SetPageSize(v int32) *DescribeImageVulListRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageVulListRequest) SetPod(v string) *DescribeImageVulListRequest {
+	s.Pod = &v
 	return s
 }
 
@@ -11944,6 +12302,11 @@ func (s *DescribeImageVulListRequest) SetRepoNamespace(v string) *DescribeImageV
 
 func (s *DescribeImageVulListRequest) SetRepoRegionId(v string) *DescribeImageVulListRequest {
 	s.RepoRegionId = &v
+	return s
+}
+
+func (s *DescribeImageVulListRequest) SetScanRange(v []*string) *DescribeImageVulListRequest {
+	s.ScanRange = v
 	return s
 }
 
@@ -12012,14 +12375,20 @@ type DescribeImageVulListResponseBodyVulRecords struct {
 	AliasName         *string                                                      `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	CanFix            *string                                                      `json:"CanFix,omitempty" xml:"CanFix,omitempty"`
 	CanUpdate         *bool                                                        `json:"CanUpdate,omitempty" xml:"CanUpdate,omitempty"`
+	ClusterId         *string                                                      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName       *string                                                      `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ContainerId       *string                                                      `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
 	ExtendContentJson *DescribeImageVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
 	FirstTs           *int64                                                       `json:"FirstTs,omitempty" xml:"FirstTs,omitempty"`
+	Image             *string                                                      `json:"Image,omitempty" xml:"Image,omitempty"`
 	ImageDigest       *string                                                      `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
 	LastTs            *int64                                                       `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
 	Layers            []*string                                                    `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
 	ModifyTs          *int64                                                       `json:"ModifyTs,omitempty" xml:"ModifyTs,omitempty"`
 	Name              *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace         *string                                                      `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	Necessity         *string                                                      `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	Pod               *string                                                      `json:"Pod,omitempty" xml:"Pod,omitempty"`
 	PrimaryId         *int64                                                       `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
 	Related           *string                                                      `json:"Related,omitempty" xml:"Related,omitempty"`
 	RepoName          *string                                                      `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
@@ -12053,6 +12422,21 @@ func (s *DescribeImageVulListResponseBodyVulRecords) SetCanUpdate(v bool) *Descr
 	return s
 }
 
+func (s *DescribeImageVulListResponseBodyVulRecords) SetClusterId(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeImageVulListResponseBodyVulRecords) SetClusterName(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeImageVulListResponseBodyVulRecords) SetContainerId(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.ContainerId = &v
+	return s
+}
+
 func (s *DescribeImageVulListResponseBodyVulRecords) SetExtendContentJson(v *DescribeImageVulListResponseBodyVulRecordsExtendContentJson) *DescribeImageVulListResponseBodyVulRecords {
 	s.ExtendContentJson = v
 	return s
@@ -12060,6 +12444,11 @@ func (s *DescribeImageVulListResponseBodyVulRecords) SetExtendContentJson(v *Des
 
 func (s *DescribeImageVulListResponseBodyVulRecords) SetFirstTs(v int64) *DescribeImageVulListResponseBodyVulRecords {
 	s.FirstTs = &v
+	return s
+}
+
+func (s *DescribeImageVulListResponseBodyVulRecords) SetImage(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.Image = &v
 	return s
 }
 
@@ -12088,8 +12477,18 @@ func (s *DescribeImageVulListResponseBodyVulRecords) SetName(v string) *Describe
 	return s
 }
 
+func (s *DescribeImageVulListResponseBodyVulRecords) SetNamespace(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.Namespace = &v
+	return s
+}
+
 func (s *DescribeImageVulListResponseBodyVulRecords) SetNecessity(v string) *DescribeImageVulListResponseBodyVulRecords {
 	s.Necessity = &v
+	return s
+}
+
+func (s *DescribeImageVulListResponseBodyVulRecords) SetPod(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.Pod = &v
 	return s
 }
 
@@ -12443,6 +12842,8 @@ func (s *DescribeInstallCodesResponse) SetBody(v *DescribeInstallCodesResponseBo
 }
 
 type DescribeInstanceAntiBruteForceRulesRequest struct {
+	CurrentPage     *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerId *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	UuidList        []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
@@ -12454,6 +12855,16 @@ func (s DescribeInstanceAntiBruteForceRulesRequest) String() string {
 
 func (s DescribeInstanceAntiBruteForceRulesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceAntiBruteForceRulesRequest) SetCurrentPage(v int32) *DescribeInstanceAntiBruteForceRulesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeInstanceAntiBruteForceRulesRequest) SetPageSize(v int32) *DescribeInstanceAntiBruteForceRulesRequest {
+	s.PageSize = &v
+	return s
 }
 
 func (s *DescribeInstanceAntiBruteForceRulesRequest) SetResourceOwnerId(v int64) *DescribeInstanceAntiBruteForceRulesRequest {
@@ -22962,6 +23373,99 @@ func (s *DescribeVulExportInfoResponse) SetBody(v *DescribeVulExportInfoResponse
 	return s
 }
 
+type DescribeVulFixStatisticsResponseBody struct {
+	FixStat   []*DescribeVulFixStatisticsResponseBodyFixStat `json:"FixStat,omitempty" xml:"FixStat,omitempty" type:"Repeated"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeVulFixStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulFixStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulFixStatisticsResponseBody) SetFixStat(v []*DescribeVulFixStatisticsResponseBodyFixStat) *DescribeVulFixStatisticsResponseBody {
+	s.FixStat = v
+	return s
+}
+
+func (s *DescribeVulFixStatisticsResponseBody) SetRequestId(v string) *DescribeVulFixStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeVulFixStatisticsResponseBodyFixStat struct {
+	FixedTodayNum *int32  `json:"FixedTodayNum,omitempty" xml:"FixedTodayNum,omitempty"`
+	FixedTotalNum *int32  `json:"FixedTotalNum,omitempty" xml:"FixedTotalNum,omitempty"`
+	FixingNum     *int32  `json:"FixingNum,omitempty" xml:"FixingNum,omitempty"`
+	NeedFixNum    *int32  `json:"NeedFixNum,omitempty" xml:"NeedFixNum,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeVulFixStatisticsResponseBodyFixStat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulFixStatisticsResponseBodyFixStat) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulFixStatisticsResponseBodyFixStat) SetFixedTodayNum(v int32) *DescribeVulFixStatisticsResponseBodyFixStat {
+	s.FixedTodayNum = &v
+	return s
+}
+
+func (s *DescribeVulFixStatisticsResponseBodyFixStat) SetFixedTotalNum(v int32) *DescribeVulFixStatisticsResponseBodyFixStat {
+	s.FixedTotalNum = &v
+	return s
+}
+
+func (s *DescribeVulFixStatisticsResponseBodyFixStat) SetFixingNum(v int32) *DescribeVulFixStatisticsResponseBodyFixStat {
+	s.FixingNum = &v
+	return s
+}
+
+func (s *DescribeVulFixStatisticsResponseBodyFixStat) SetNeedFixNum(v int32) *DescribeVulFixStatisticsResponseBodyFixStat {
+	s.NeedFixNum = &v
+	return s
+}
+
+func (s *DescribeVulFixStatisticsResponseBodyFixStat) SetType(v string) *DescribeVulFixStatisticsResponseBodyFixStat {
+	s.Type = &v
+	return s
+}
+
+type DescribeVulFixStatisticsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVulFixStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeVulFixStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulFixStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulFixStatisticsResponse) SetHeaders(v map[string]*string) *DescribeVulFixStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVulFixStatisticsResponse) SetStatusCode(v int32) *DescribeVulFixStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVulFixStatisticsResponse) SetBody(v *DescribeVulFixStatisticsResponseBody) *DescribeVulFixStatisticsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVulListRequest struct {
 	AliasName      *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	AttachTypes    *string `json:"AttachTypes,omitempty" xml:"AttachTypes,omitempty"`
@@ -26167,6 +26671,170 @@ func (s *InstallCloudMonitorResponse) SetBody(v *InstallCloudMonitorResponseBody
 	return s
 }
 
+type ListAvailableHoneypotRequest struct {
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s ListAvailableHoneypotRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvailableHoneypotRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvailableHoneypotRequest) SetNodeId(v string) *ListAvailableHoneypotRequest {
+	s.NodeId = &v
+	return s
+}
+
+type ListAvailableHoneypotResponseBody struct {
+	Code           *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count          *int32                                   `json:"Count,omitempty" xml:"Count,omitempty"`
+	Data           []*ListAvailableHoneypotResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListAvailableHoneypotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvailableHoneypotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvailableHoneypotResponseBody) SetCode(v string) *ListAvailableHoneypotResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBody) SetCount(v int32) *ListAvailableHoneypotResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBody) SetData(v []*ListAvailableHoneypotResponseBodyData) *ListAvailableHoneypotResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBody) SetHttpStatusCode(v int32) *ListAvailableHoneypotResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBody) SetMessage(v string) *ListAvailableHoneypotResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBody) SetRequestId(v string) *ListAvailableHoneypotResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBody) SetSuccess(v bool) *ListAvailableHoneypotResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAvailableHoneypotResponseBodyData struct {
+	HoneypotImageDisplayName *string `json:"HoneypotImageDisplayName,omitempty" xml:"HoneypotImageDisplayName,omitempty"`
+	HoneypotImageId          *string `json:"HoneypotImageId,omitempty" xml:"HoneypotImageId,omitempty"`
+	HoneypotImageName        *string `json:"HoneypotImageName,omitempty" xml:"HoneypotImageName,omitempty"`
+	HoneypotImageType        *string `json:"HoneypotImageType,omitempty" xml:"HoneypotImageType,omitempty"`
+	HoneypotImageVersion     *string `json:"HoneypotImageVersion,omitempty" xml:"HoneypotImageVersion,omitempty"`
+	Multiports               *string `json:"Multiports,omitempty" xml:"Multiports,omitempty"`
+	Proto                    *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	ServicePort              *string `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	Template                 *string `json:"Template,omitempty" xml:"Template,omitempty"`
+}
+
+func (s ListAvailableHoneypotResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvailableHoneypotResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvailableHoneypotResponseBodyData) SetHoneypotImageDisplayName(v string) *ListAvailableHoneypotResponseBodyData {
+	s.HoneypotImageDisplayName = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBodyData) SetHoneypotImageId(v string) *ListAvailableHoneypotResponseBodyData {
+	s.HoneypotImageId = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBodyData) SetHoneypotImageName(v string) *ListAvailableHoneypotResponseBodyData {
+	s.HoneypotImageName = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBodyData) SetHoneypotImageType(v string) *ListAvailableHoneypotResponseBodyData {
+	s.HoneypotImageType = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBodyData) SetHoneypotImageVersion(v string) *ListAvailableHoneypotResponseBodyData {
+	s.HoneypotImageVersion = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBodyData) SetMultiports(v string) *ListAvailableHoneypotResponseBodyData {
+	s.Multiports = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBodyData) SetProto(v string) *ListAvailableHoneypotResponseBodyData {
+	s.Proto = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBodyData) SetServicePort(v string) *ListAvailableHoneypotResponseBodyData {
+	s.ServicePort = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponseBodyData) SetTemplate(v string) *ListAvailableHoneypotResponseBodyData {
+	s.Template = &v
+	return s
+}
+
+type ListAvailableHoneypotResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAvailableHoneypotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAvailableHoneypotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvailableHoneypotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvailableHoneypotResponse) SetHeaders(v map[string]*string) *ListAvailableHoneypotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponse) SetStatusCode(v int32) *ListAvailableHoneypotResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAvailableHoneypotResponse) SetBody(v *ListAvailableHoneypotResponseBody) *ListAvailableHoneypotResponse {
+	s.Body = v
+	return s
+}
+
 type ListCheckInstanceResultRequest struct {
 	CheckId         *int64    `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	CurrentPage     *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -27345,7 +28013,6 @@ type ListHoneypotNodeResponseBodyHoneypotNodeList struct {
 	NodeId                      *string   `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	NodeIp                      *string   `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
 	NodeName                    *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	NodeVersion                 *string   `json:"NodeVersion,omitempty" xml:"NodeVersion,omitempty"`
 	ProbeTotalCount             *int32    `json:"ProbeTotalCount,omitempty" xml:"ProbeTotalCount,omitempty"`
 	ProbeUsedCount              *int32    `json:"ProbeUsedCount,omitempty" xml:"ProbeUsedCount,omitempty"`
 	SecurityGroupProbeIpList    []*string `json:"SecurityGroupProbeIpList,omitempty" xml:"SecurityGroupProbeIpList,omitempty" type:"Repeated"`
@@ -27402,11 +28069,6 @@ func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetNodeIp(v string) *List
 
 func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetNodeName(v string) *ListHoneypotNodeResponseBodyHoneypotNodeList {
 	s.NodeName = &v
-	return s
-}
-
-func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetNodeVersion(v string) *ListHoneypotNodeResponseBodyHoneypotNodeList {
-	s.NodeVersion = &v
 	return s
 }
 
@@ -31881,7 +32543,9 @@ func (s *RebootMachineResponse) SetBody(v *RebootMachineResponseBody) *RebootMac
 }
 
 type RefreshAssetsRequest struct {
-	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	AssetType         *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	CloudAssetSubType *int32  `json:"CloudAssetSubType,omitempty" xml:"CloudAssetSubType,omitempty"`
+	CloudAssetType    *int32  `json:"CloudAssetType,omitempty" xml:"CloudAssetType,omitempty"`
 }
 
 func (s RefreshAssetsRequest) String() string {
@@ -31894,6 +32558,16 @@ func (s RefreshAssetsRequest) GoString() string {
 
 func (s *RefreshAssetsRequest) SetAssetType(v string) *RefreshAssetsRequest {
 	s.AssetType = &v
+	return s
+}
+
+func (s *RefreshAssetsRequest) SetCloudAssetSubType(v int32) *RefreshAssetsRequest {
+	s.CloudAssetSubType = &v
+	return s
+}
+
+func (s *RefreshAssetsRequest) SetCloudAssetType(v int32) *RefreshAssetsRequest {
+	s.CloudAssetType = &v
 	return s
 }
 
@@ -32722,6 +33396,74 @@ func (client *Client) AddVpcHoneyPot(request *AddVpcHoneyPotRequest) (_result *A
 	runtime := &util.RuntimeOptions{}
 	_result = &AddVpcHoneyPotResponse{}
 	_body, _err := client.AddVpcHoneyPotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BindAuthToMachineWithOptions(request *BindAuthToMachineRequest, runtime *util.RuntimeOptions) (_result *BindAuthToMachineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthVersion)) {
+		query["AuthVersion"] = request.AuthVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoBind)) {
+		query["AutoBind"] = request.AutoBind
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Bind)) {
+		query["Bind"] = request.Bind
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindAll)) {
+		query["BindAll"] = request.BindAll
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
+		query["Criteria"] = request.Criteria
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalExp)) {
+		query["LogicalExp"] = request.LogicalExp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnBind)) {
+		query["UnBind"] = request.UnBind
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindAuthToMachine"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindAuthToMachineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BindAuthToMachine(request *BindAuthToMachineRequest) (_result *BindAuthToMachineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindAuthToMachineResponse{}
+	_body, _err := client.BindAuthToMachineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34026,8 +34768,20 @@ func (client *Client) DescribeAffectedMaliciousFileImagesWithOptions(request *De
 		query["ClusterId"] = request.ClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerId)) {
+		query["ContainerId"] = request.ContainerId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Image)) {
+		query["Image"] = request.Image
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageDigest)) {
@@ -34046,12 +34800,24 @@ func (client *Client) DescribeAffectedMaliciousFileImagesWithOptions(request *De
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Levels)) {
+		query["Levels"] = request.Levels
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaliciousMd5)) {
 		query["MaliciousMd5"] = request.MaliciousMd5
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pod)) {
+		query["Pod"] = request.Pod
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
@@ -34072,6 +34838,10 @@ func (client *Client) DescribeAffectedMaliciousFileImagesWithOptions(request *De
 
 	if !tea.BoolValue(util.IsUnset(request.RepoRegionId)) {
 		query["RepoRegionId"] = request.RepoRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanRange)) {
+		query["ScanRange"] = request.ScanRange
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -34527,6 +35297,10 @@ func (client *Client) DescribeAssetDetailByUuidsWithOptions(request *DescribeAss
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
 		query["Uuids"] = request.Uuids
 	}
@@ -35232,6 +36006,10 @@ func (client *Client) DescribeCloudCenterInstancesWithOptions(request *DescribeC
 
 	if !tea.BoolValue(util.IsUnset(request.Importance)) {
 		query["Importance"] = request.Importance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LogicalExp)) {
@@ -36144,6 +36922,10 @@ func (client *Client) DescribeFrontVulPatchListWithOptions(request *DescribeFron
 		query["Info"] = request.Info
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OperateType)) {
 		query["OperateType"] = request.OperateType
 	}
@@ -36378,6 +37160,10 @@ func (client *Client) DescribeGroupedMaliciousFilesWithOptions(request *Describe
 
 	if !tea.BoolValue(util.IsUnset(request.RepoRegionId)) {
 		query["RepoRegionId"] = request.RepoRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanRange)) {
+		query["ScanRange"] = request.ScanRange
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -36661,6 +37447,10 @@ func (client *Client) DescribeImageBaselineCheckSummaryWithOptions(request *Desc
 		query["RiskLevel"] = request.RiskLevel
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ScanRange)) {
+		query["ScanRange"] = request.ScanRange
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -36837,6 +37627,10 @@ func (client *Client) DescribeImageGroupedVulListWithOptions(request *DescribeIm
 		query["RepoRegionId"] = request.RepoRegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ScanRange)) {
+		query["ScanRange"] = request.ScanRange
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["Type"] = request.Type
 	}
@@ -36893,6 +37687,14 @@ func (client *Client) DescribeImageListWithBaselineNameWithOptions(request *Desc
 		query["ClusterId"] = request.ClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerId)) {
+		query["ContainerId"] = request.ContainerId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
 		query["Criteria"] = request.Criteria
 	}
@@ -36905,6 +37707,10 @@ func (client *Client) DescribeImageListWithBaselineNameWithOptions(request *Desc
 		query["CurrentPage"] = request.CurrentPage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Image)) {
+		query["Image"] = request.Image
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageDigest)) {
 		query["ImageDigest"] = request.ImageDigest
 	}
@@ -36913,8 +37719,16 @@ func (client *Client) DescribeImageListWithBaselineNameWithOptions(request *Desc
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pod)) {
+		query["Pod"] = request.Pod
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RepoInstanceId)) {
@@ -36927,6 +37741,10 @@ func (client *Client) DescribeImageListWithBaselineNameWithOptions(request *Desc
 
 	if !tea.BoolValue(util.IsUnset(request.RepoNamespace)) {
 		query["RepoNamespace"] = request.RepoNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanRange)) {
+		query["ScanRange"] = request.ScanRange
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -37043,6 +37861,14 @@ func (client *Client) DescribeImageVulListWithOptions(request *DescribeImageVulL
 		query["ClusterId"] = request.ClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerId)) {
+		query["ContainerId"] = request.ContainerId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -37053,6 +37879,10 @@ func (client *Client) DescribeImageVulListWithOptions(request *DescribeImageVulL
 
 	if !tea.BoolValue(util.IsUnset(request.Digest)) {
 		query["Digest"] = request.Digest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Image)) {
+		query["Image"] = request.Image
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
@@ -37067,12 +37897,20 @@ func (client *Client) DescribeImageVulListWithOptions(request *DescribeImageVulL
 		query["Name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Necessity)) {
 		query["Necessity"] = request.Necessity
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pod)) {
+		query["Pod"] = request.Pod
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -37105,6 +37943,10 @@ func (client *Client) DescribeImageVulListWithOptions(request *DescribeImageVulL
 
 	if !tea.BoolValue(util.IsUnset(request.RepoRegionId)) {
 		query["RepoRegionId"] = request.RepoRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanRange)) {
+		query["ScanRange"] = request.ScanRange
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StatusList)) {
@@ -37248,6 +38090,14 @@ func (client *Client) DescribeInstanceAntiBruteForceRulesWithOptions(request *De
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
@@ -40611,6 +41461,39 @@ func (client *Client) DescribeVulExportInfo(request *DescribeVulExportInfoReques
 	return _result, _err
 }
 
+func (client *Client) DescribeVulFixStatisticsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeVulFixStatisticsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVulFixStatistics"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVulFixStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVulFixStatistics() (_result *DescribeVulFixStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVulFixStatisticsResponse{}
+	_body, _err := client.DescribeVulFixStatisticsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeVulListWithOptions(request *DescribeVulListRequest, runtime *util.RuntimeOptions) (_result *DescribeVulListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41893,6 +42776,50 @@ func (client *Client) InstallCloudMonitor(request *InstallCloudMonitorRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallCloudMonitorResponse{}
 	_body, _err := client.InstallCloudMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAvailableHoneypotWithOptions(request *ListAvailableHoneypotRequest, runtime *util.RuntimeOptions) (_result *ListAvailableHoneypotResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAvailableHoneypot"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAvailableHoneypotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAvailableHoneypot(request *ListAvailableHoneypotRequest) (_result *ListAvailableHoneypotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAvailableHoneypotResponse{}
+	_body, _err := client.ListAvailableHoneypotWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44796,6 +45723,14 @@ func (client *Client) RefreshAssetsWithOptions(request *RefreshAssetsRequest, ru
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AssetType)) {
 		query["AssetType"] = request.AssetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudAssetSubType)) {
+		query["CloudAssetSubType"] = request.CloudAssetSubType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudAssetType)) {
+		query["CloudAssetType"] = request.CloudAssetType
 	}
 
 	req := &openapi.OpenApiRequest{
