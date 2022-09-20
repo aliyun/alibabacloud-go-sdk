@@ -12,168 +12,12 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type CheckChatappContactsRequest struct {
-	ChannelType *string   `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	Contacts    []*string `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
-	CustWabaId  *string   `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	From        *string   `json:"From,omitempty" xml:"From,omitempty"`
-}
-
-func (s CheckChatappContactsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckChatappContactsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CheckChatappContactsRequest) SetChannelType(v string) *CheckChatappContactsRequest {
-	s.ChannelType = &v
-	return s
-}
-
-func (s *CheckChatappContactsRequest) SetContacts(v []*string) *CheckChatappContactsRequest {
-	s.Contacts = v
-	return s
-}
-
-func (s *CheckChatappContactsRequest) SetCustWabaId(v string) *CheckChatappContactsRequest {
-	s.CustWabaId = &v
-	return s
-}
-
-func (s *CheckChatappContactsRequest) SetFrom(v string) *CheckChatappContactsRequest {
-	s.From = &v
-	return s
-}
-
-type CheckChatappContactsShrinkRequest struct {
-	ChannelType    *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	ContactsShrink *string `json:"Contacts,omitempty" xml:"Contacts,omitempty"`
-	CustWabaId     *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	From           *string `json:"From,omitempty" xml:"From,omitempty"`
-}
-
-func (s CheckChatappContactsShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckChatappContactsShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CheckChatappContactsShrinkRequest) SetChannelType(v string) *CheckChatappContactsShrinkRequest {
-	s.ChannelType = &v
-	return s
-}
-
-func (s *CheckChatappContactsShrinkRequest) SetContactsShrink(v string) *CheckChatappContactsShrinkRequest {
-	s.ContactsShrink = &v
-	return s
-}
-
-func (s *CheckChatappContactsShrinkRequest) SetCustWabaId(v string) *CheckChatappContactsShrinkRequest {
-	s.CustWabaId = &v
-	return s
-}
-
-func (s *CheckChatappContactsShrinkRequest) SetFrom(v string) *CheckChatappContactsShrinkRequest {
-	s.From = &v
-	return s
-}
-
-type CheckChatappContactsResponseBody struct {
-	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*CheckChatappContactsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CheckChatappContactsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckChatappContactsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CheckChatappContactsResponseBody) SetCode(v string) *CheckChatappContactsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CheckChatappContactsResponseBody) SetData(v []*CheckChatappContactsResponseBodyData) *CheckChatappContactsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CheckChatappContactsResponseBody) SetMessage(v string) *CheckChatappContactsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CheckChatappContactsResponseBody) SetRequestId(v string) *CheckChatappContactsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CheckChatappContactsResponseBodyData struct {
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s CheckChatappContactsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckChatappContactsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CheckChatappContactsResponseBodyData) SetPhoneNumber(v string) *CheckChatappContactsResponseBodyData {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *CheckChatappContactsResponseBodyData) SetStatus(v string) *CheckChatappContactsResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-type CheckChatappContactsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckChatappContactsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckChatappContactsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckChatappContactsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CheckChatappContactsResponse) SetHeaders(v map[string]*string) *CheckChatappContactsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CheckChatappContactsResponse) SetStatusCode(v int32) *CheckChatappContactsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CheckChatappContactsResponse) SetBody(v *CheckChatappContactsResponseBody) *CheckChatappContactsResponse {
-	s.Body = v
-	return s
-}
-
 type CreateChatappTemplateRequest struct {
 	Category     *string                                   `json:"Category,omitempty" xml:"Category,omitempty"`
 	Components   []*CreateChatappTemplateRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	CustWabaId   *string                                   `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	Example      map[string]*string                        `json:"Example,omitempty" xml:"Example,omitempty"`
+	IsvCode      *string                                   `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Language     *string                                   `json:"Language,omitempty" xml:"Language,omitempty"`
 	Name         *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
 	TemplateType *string                                   `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
@@ -204,6 +48,11 @@ func (s *CreateChatappTemplateRequest) SetCustWabaId(v string) *CreateChatappTem
 
 func (s *CreateChatappTemplateRequest) SetExample(v map[string]*string) *CreateChatappTemplateRequest {
 	s.Example = v
+	return s
+}
+
+func (s *CreateChatappTemplateRequest) SetIsvCode(v string) *CreateChatappTemplateRequest {
+	s.IsvCode = &v
 	return s
 }
 
@@ -321,6 +170,7 @@ type CreateChatappTemplateShrinkRequest struct {
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
 	CustWabaId       *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	ExampleShrink    *string `json:"Example,omitempty" xml:"Example,omitempty"`
+	IsvCode          *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Language         *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	TemplateType     *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
@@ -351,6 +201,11 @@ func (s *CreateChatappTemplateShrinkRequest) SetCustWabaId(v string) *CreateChat
 
 func (s *CreateChatappTemplateShrinkRequest) SetExampleShrink(v string) *CreateChatappTemplateShrinkRequest {
 	s.ExampleShrink = &v
+	return s
+}
+
+func (s *CreateChatappTemplateShrinkRequest) SetIsvCode(v string) *CreateChatappTemplateShrinkRequest {
+	s.IsvCode = &v
 	return s
 }
 
@@ -458,6 +313,7 @@ func (s *CreateChatappTemplateResponse) SetBody(v *CreateChatappTemplateResponse
 
 type DeleteChatappTemplateRequest struct {
 	CustWabaId   *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
+	IsvCode      *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
@@ -471,6 +327,11 @@ func (s DeleteChatappTemplateRequest) GoString() string {
 
 func (s *DeleteChatappTemplateRequest) SetCustWabaId(v string) *DeleteChatappTemplateRequest {
 	s.CustWabaId = &v
+	return s
+}
+
+func (s *DeleteChatappTemplateRequest) SetIsvCode(v string) *DeleteChatappTemplateRequest {
+	s.IsvCode = &v
 	return s
 }
 
@@ -539,6 +400,7 @@ func (s *DeleteChatappTemplateResponse) SetBody(v *DeleteChatappTemplateResponse
 
 type GetChatappTemplateDetailRequest struct {
 	CustWabaId   *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
+	IsvCode      *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Language     *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
@@ -553,6 +415,11 @@ func (s GetChatappTemplateDetailRequest) GoString() string {
 
 func (s *GetChatappTemplateDetailRequest) SetCustWabaId(v string) *GetChatappTemplateDetailRequest {
 	s.CustWabaId = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailRequest) SetIsvCode(v string) *GetChatappTemplateDetailRequest {
+	s.IsvCode = &v
 	return s
 }
 
@@ -780,6 +647,7 @@ func (s *GetChatappTemplateDetailResponse) SetBody(v *GetChatappTemplateDetailRe
 type ListChatappTemplateRequest struct {
 	AuditStatus *string                         `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	CustWabaId  *string                         `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
+	IsvCode     *string                         `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Language    *string                         `json:"Language,omitempty" xml:"Language,omitempty"`
 	Name        *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
 	Page        *ListChatappTemplateRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
@@ -800,6 +668,11 @@ func (s *ListChatappTemplateRequest) SetAuditStatus(v string) *ListChatappTempla
 
 func (s *ListChatappTemplateRequest) SetCustWabaId(v string) *ListChatappTemplateRequest {
 	s.CustWabaId = &v
+	return s
+}
+
+func (s *ListChatappTemplateRequest) SetIsvCode(v string) *ListChatappTemplateRequest {
+	s.IsvCode = &v
 	return s
 }
 
@@ -844,6 +717,7 @@ func (s *ListChatappTemplateRequestPage) SetSize(v int32) *ListChatappTemplateRe
 type ListChatappTemplateShrinkRequest struct {
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	CustWabaId  *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
+	IsvCode     *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PageShrink  *string `json:"Page,omitempty" xml:"Page,omitempty"`
@@ -864,6 +738,11 @@ func (s *ListChatappTemplateShrinkRequest) SetAuditStatus(v string) *ListChatapp
 
 func (s *ListChatappTemplateShrinkRequest) SetCustWabaId(v string) *ListChatappTemplateShrinkRequest {
 	s.CustWabaId = &v
+	return s
+}
+
+func (s *ListChatappTemplateShrinkRequest) SetIsvCode(v string) *ListChatappTemplateShrinkRequest {
+	s.IsvCode = &v
 	return s
 }
 
@@ -993,6 +872,7 @@ type SendChatappMassMessageRequest struct {
 	FallBackContent *string                                    `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
 	FallBackId      *string                                    `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
 	From            *string                                    `json:"From,omitempty" xml:"From,omitempty"`
+	IsvCode         *string                                    `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Language        *string                                    `json:"Language,omitempty" xml:"Language,omitempty"`
 	SenderList      []*SendChatappMassMessageRequestSenderList `json:"SenderList,omitempty" xml:"SenderList,omitempty" type:"Repeated"`
 	TaskId          *string                                    `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -1029,6 +909,11 @@ func (s *SendChatappMassMessageRequest) SetFallBackId(v string) *SendChatappMass
 
 func (s *SendChatappMassMessageRequest) SetFrom(v string) *SendChatappMassMessageRequest {
 	s.From = &v
+	return s
+}
+
+func (s *SendChatappMassMessageRequest) SetIsvCode(v string) *SendChatappMassMessageRequest {
+	s.IsvCode = &v
 	return s
 }
 
@@ -1087,6 +972,7 @@ type SendChatappMassMessageShrinkRequest struct {
 	FallBackContent  *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
 	FallBackId       *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
 	From             *string `json:"From,omitempty" xml:"From,omitempty"`
+	IsvCode          *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Language         *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	SenderListShrink *string `json:"SenderList,omitempty" xml:"SenderList,omitempty"`
 	TaskId           *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -1123,6 +1009,11 @@ func (s *SendChatappMassMessageShrinkRequest) SetFallBackId(v string) *SendChata
 
 func (s *SendChatappMassMessageShrinkRequest) SetFrom(v string) *SendChatappMassMessageShrinkRequest {
 	s.From = &v
+	return s
+}
+
+func (s *SendChatappMassMessageShrinkRequest) SetIsvCode(v string) *SendChatappMassMessageShrinkRequest {
+	s.IsvCode = &v
 	return s
 }
 
@@ -1217,6 +1108,7 @@ type SendChatappMessageRequest struct {
 	FallBackContent *string            `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
 	FallBackId      *string            `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
 	From            *string            `json:"From,omitempty" xml:"From,omitempty"`
+	IsvCode         *string            `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Language        *string            `json:"Language,omitempty" xml:"Language,omitempty"`
 	MessageType     *string            `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 	Payload         []*string          `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
@@ -1264,6 +1156,11 @@ func (s *SendChatappMessageRequest) SetFrom(v string) *SendChatappMessageRequest
 	return s
 }
 
+func (s *SendChatappMessageRequest) SetIsvCode(v string) *SendChatappMessageRequest {
+	s.IsvCode = &v
+	return s
+}
+
 func (s *SendChatappMessageRequest) SetLanguage(v string) *SendChatappMessageRequest {
 	s.Language = &v
 	return s
@@ -1306,6 +1203,7 @@ type SendChatappMessageShrinkRequest struct {
 	FallBackContent      *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
 	FallBackId           *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
 	From                 *string `json:"From,omitempty" xml:"From,omitempty"`
+	IsvCode              *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Language             *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	MessageType          *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 	PayloadShrink        *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
@@ -1350,6 +1248,11 @@ func (s *SendChatappMessageShrinkRequest) SetFallBackId(v string) *SendChatappMe
 
 func (s *SendChatappMessageShrinkRequest) SetFrom(v string) *SendChatappMessageShrinkRequest {
 	s.From = &v
+	return s
+}
+
+func (s *SendChatappMessageShrinkRequest) SetIsvCode(v string) *SendChatappMessageShrinkRequest {
+	s.IsvCode = &v
 	return s
 }
 
@@ -1499,68 +1402,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) CheckChatappContactsWithOptions(tmpReq *CheckChatappContactsRequest, runtime *util.RuntimeOptions) (_result *CheckChatappContactsResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &CheckChatappContactsShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Contacts)) {
-		request.ContactsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Contacts, tea.String("Contacts"), tea.String("json"))
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
-		body["ChannelType"] = request.ChannelType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ContactsShrink)) {
-		body["Contacts"] = request.ContactsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
-		body["CustWabaId"] = request.CustWabaId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.From)) {
-		body["From"] = request.From
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CheckChatappContacts"),
-		Version:     tea.String("2020-06-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CheckChatappContactsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CheckChatappContacts(request *CheckChatappContactsRequest) (_result *CheckChatappContactsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CheckChatappContactsResponse{}
-	_body, _err := client.CheckChatappContactsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateChatappTemplateWithOptions(tmpReq *CreateChatappTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateChatappTemplateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -1591,6 +1432,10 @@ func (client *Client) CreateChatappTemplateWithOptions(tmpReq *CreateChatappTemp
 
 	if !tea.BoolValue(util.IsUnset(request.ExampleShrink)) {
 		body["Example"] = request.ExampleShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
+		body["IsvCode"] = request.IsvCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
@@ -1649,6 +1494,10 @@ func (client *Client) DeleteChatappTemplateWithOptions(request *DeleteChatappTem
 		query["CustWabaId"] = request.CustWabaId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
+		query["IsvCode"] = request.IsvCode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
 		query["TemplateCode"] = request.TemplateCode
 	}
@@ -1695,6 +1544,10 @@ func (client *Client) GetChatappTemplateDetailWithOptions(request *GetChatappTem
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
 		query["CustWabaId"] = request.CustWabaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
+		query["IsvCode"] = request.IsvCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
@@ -1757,6 +1610,10 @@ func (client *Client) ListChatappTemplateWithOptions(tmpReq *ListChatappTemplate
 
 	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
 		query["CustWabaId"] = request.CustWabaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
+		query["IsvCode"] = request.IsvCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
@@ -1835,6 +1692,10 @@ func (client *Client) SendChatappMassMessageWithOptions(tmpReq *SendChatappMassM
 
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		body["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
+		body["IsvCode"] = request.IsvCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
@@ -1930,6 +1791,10 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		body["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
+		body["IsvCode"] = request.IsvCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
