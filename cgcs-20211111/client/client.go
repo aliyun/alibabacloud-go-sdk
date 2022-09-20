@@ -12,6 +12,121 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type BatchCheckSessionRequest struct {
+	Records *BatchCheckSessionRequestRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
+}
+
+func (s BatchCheckSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCheckSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCheckSessionRequest) SetRecords(v *BatchCheckSessionRequestRecords) *BatchCheckSessionRequest {
+	s.Records = v
+	return s
+}
+
+type BatchCheckSessionRequestRecords struct {
+	CustomSessionId   *string            `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	PlatformSessionId *string            `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+	ReferenceInfo     map[string]*string `json:"ReferenceInfo,omitempty" xml:"ReferenceInfo,omitempty"`
+	Type              *string            `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s BatchCheckSessionRequestRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCheckSessionRequestRecords) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCheckSessionRequestRecords) SetCustomSessionId(v string) *BatchCheckSessionRequestRecords {
+	s.CustomSessionId = &v
+	return s
+}
+
+func (s *BatchCheckSessionRequestRecords) SetPlatformSessionId(v string) *BatchCheckSessionRequestRecords {
+	s.PlatformSessionId = &v
+	return s
+}
+
+func (s *BatchCheckSessionRequestRecords) SetReferenceInfo(v map[string]*string) *BatchCheckSessionRequestRecords {
+	s.ReferenceInfo = v
+	return s
+}
+
+func (s *BatchCheckSessionRequestRecords) SetType(v string) *BatchCheckSessionRequestRecords {
+	s.Type = &v
+	return s
+}
+
+type BatchCheckSessionShrinkRequest struct {
+	RecordsShrink *string `json:"Records,omitempty" xml:"Records,omitempty"`
+}
+
+func (s BatchCheckSessionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCheckSessionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCheckSessionShrinkRequest) SetRecordsShrink(v string) *BatchCheckSessionShrinkRequest {
+	s.RecordsShrink = &v
+	return s
+}
+
+type BatchCheckSessionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchCheckSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCheckSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCheckSessionResponseBody) SetRequestId(v string) *BatchCheckSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchCheckSessionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchCheckSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchCheckSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCheckSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCheckSessionResponse) SetHeaders(v map[string]*string) *BatchCheckSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchCheckSessionResponse) SetStatusCode(v int32) *BatchCheckSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchCheckSessionResponse) SetBody(v *BatchCheckSessionResponseBody) *BatchCheckSessionResponse {
+	s.Body = v
+	return s
+}
+
 type CancelReserveTaskRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -1583,6 +1698,111 @@ func (s *DeleteAppVersionResponse) SetStatusCode(v int32) *DeleteAppVersionRespo
 }
 
 func (s *DeleteAppVersionResponse) SetBody(v *DeleteAppVersionResponseBody) *DeleteAppVersionResponse {
+	s.Body = v
+	return s
+}
+
+type DownloadDumpfileRequest struct {
+	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	DumpFileId   *string `json:"DumpFileId,omitempty" xml:"DumpFileId,omitempty"`
+	OperatorId   *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
+	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+}
+
+func (s DownloadDumpfileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDumpfileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDumpfileRequest) SetAppVersionId(v string) *DownloadDumpfileRequest {
+	s.AppVersionId = &v
+	return s
+}
+
+func (s *DownloadDumpfileRequest) SetDumpFileId(v string) *DownloadDumpfileRequest {
+	s.DumpFileId = &v
+	return s
+}
+
+func (s *DownloadDumpfileRequest) SetOperatorId(v string) *DownloadDumpfileRequest {
+	s.OperatorId = &v
+	return s
+}
+
+func (s *DownloadDumpfileRequest) SetOperatorType(v string) *DownloadDumpfileRequest {
+	s.OperatorType = &v
+	return s
+}
+
+type DownloadDumpfileResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DownloadDumpfileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDumpfileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDumpfileResponseBody) SetCode(v string) *DownloadDumpfileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DownloadDumpfileResponseBody) SetData(v string) *DownloadDumpfileResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DownloadDumpfileResponseBody) SetMessage(v string) *DownloadDumpfileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DownloadDumpfileResponseBody) SetRequestId(v string) *DownloadDumpfileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DownloadDumpfileResponseBody) SetSuccess(v bool) *DownloadDumpfileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DownloadDumpfileResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DownloadDumpfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DownloadDumpfileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDumpfileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDumpfileResponse) SetHeaders(v map[string]*string) *DownloadDumpfileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DownloadDumpfileResponse) SetStatusCode(v int32) *DownloadDumpfileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DownloadDumpfileResponse) SetBody(v *DownloadDumpfileResponseBody) *DownloadDumpfileResponse {
 	s.Body = v
 	return s
 }
@@ -3278,6 +3498,286 @@ func (s *ModifyAppVersionResponse) SetBody(v *ModifyAppVersionResponseBody) *Mod
 	return s
 }
 
+type QueryDumpFilesRequest struct {
+	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	OperatorId   *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
+	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+}
+
+func (s QueryDumpFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDumpFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDumpFilesRequest) SetAppVersionId(v string) *QueryDumpFilesRequest {
+	s.AppVersionId = &v
+	return s
+}
+
+func (s *QueryDumpFilesRequest) SetOperatorId(v string) *QueryDumpFilesRequest {
+	s.OperatorId = &v
+	return s
+}
+
+func (s *QueryDumpFilesRequest) SetOperatorType(v string) *QueryDumpFilesRequest {
+	s.OperatorType = &v
+	return s
+}
+
+type QueryDumpFilesResponseBody struct {
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*QueryDumpFilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDumpFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDumpFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDumpFilesResponseBody) SetCode(v string) *QueryDumpFilesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryDumpFilesResponseBody) SetData(v []*QueryDumpFilesResponseBodyData) *QueryDumpFilesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryDumpFilesResponseBody) SetMessage(v string) *QueryDumpFilesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryDumpFilesResponseBody) SetRequestId(v string) *QueryDumpFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDumpFilesResponseBody) SetSuccess(v bool) *QueryDumpFilesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDumpFilesResponseBodyData struct {
+	FileCreatTime *string `json:"FileCreatTime,omitempty" xml:"FileCreatTime,omitempty"`
+	FileId        *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	FileName      *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize      *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	ObjectName    *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
+}
+
+func (s QueryDumpFilesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDumpFilesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDumpFilesResponseBodyData) SetFileCreatTime(v string) *QueryDumpFilesResponseBodyData {
+	s.FileCreatTime = &v
+	return s
+}
+
+func (s *QueryDumpFilesResponseBodyData) SetFileId(v string) *QueryDumpFilesResponseBodyData {
+	s.FileId = &v
+	return s
+}
+
+func (s *QueryDumpFilesResponseBodyData) SetFileName(v string) *QueryDumpFilesResponseBodyData {
+	s.FileName = &v
+	return s
+}
+
+func (s *QueryDumpFilesResponseBodyData) SetFileSize(v int64) *QueryDumpFilesResponseBodyData {
+	s.FileSize = &v
+	return s
+}
+
+func (s *QueryDumpFilesResponseBodyData) SetObjectName(v string) *QueryDumpFilesResponseBodyData {
+	s.ObjectName = &v
+	return s
+}
+
+type QueryDumpFilesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryDumpFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDumpFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDumpFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDumpFilesResponse) SetHeaders(v map[string]*string) *QueryDumpFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDumpFilesResponse) SetStatusCode(v int32) *QueryDumpFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDumpFilesResponse) SetBody(v *QueryDumpFilesResponseBody) *QueryDumpFilesResponse {
+	s.Body = v
+	return s
+}
+
+type QueryOpsChartRequest struct {
+	ChartType         *string `json:"ChartType,omitempty" xml:"ChartType,omitempty"`
+	OperatorId        *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
+	OperatorType      *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+	QueryEndDate      *string `json:"QueryEndDate,omitempty" xml:"QueryEndDate,omitempty"`
+	QueryStartDate    *string `json:"QueryStartDate,omitempty" xml:"QueryStartDate,omitempty"`
+}
+
+func (s QueryOpsChartRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOpsChartRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOpsChartRequest) SetChartType(v string) *QueryOpsChartRequest {
+	s.ChartType = &v
+	return s
+}
+
+func (s *QueryOpsChartRequest) SetOperatorId(v string) *QueryOpsChartRequest {
+	s.OperatorId = &v
+	return s
+}
+
+func (s *QueryOpsChartRequest) SetOperatorType(v string) *QueryOpsChartRequest {
+	s.OperatorType = &v
+	return s
+}
+
+func (s *QueryOpsChartRequest) SetPlatformSessionId(v string) *QueryOpsChartRequest {
+	s.PlatformSessionId = &v
+	return s
+}
+
+func (s *QueryOpsChartRequest) SetQueryEndDate(v string) *QueryOpsChartRequest {
+	s.QueryEndDate = &v
+	return s
+}
+
+func (s *QueryOpsChartRequest) SetQueryStartDate(v string) *QueryOpsChartRequest {
+	s.QueryStartDate = &v
+	return s
+}
+
+type QueryOpsChartResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*QueryOpsChartResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryOpsChartResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOpsChartResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOpsChartResponseBody) SetCode(v string) *QueryOpsChartResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryOpsChartResponseBody) SetData(v []*QueryOpsChartResponseBodyData) *QueryOpsChartResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryOpsChartResponseBody) SetMessage(v string) *QueryOpsChartResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryOpsChartResponseBody) SetRequestId(v string) *QueryOpsChartResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOpsChartResponseBody) SetSuccess(v bool) *QueryOpsChartResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryOpsChartResponseBodyData struct {
+	StatDate     *string  `json:"StatDate,omitempty" xml:"StatDate,omitempty"`
+	UsagePercent *float64 `json:"UsagePercent,omitempty" xml:"UsagePercent,omitempty"`
+}
+
+func (s QueryOpsChartResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOpsChartResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOpsChartResponseBodyData) SetStatDate(v string) *QueryOpsChartResponseBodyData {
+	s.StatDate = &v
+	return s
+}
+
+func (s *QueryOpsChartResponseBodyData) SetUsagePercent(v float64) *QueryOpsChartResponseBodyData {
+	s.UsagePercent = &v
+	return s
+}
+
+type QueryOpsChartResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryOpsChartResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryOpsChartResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOpsChartResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOpsChartResponse) SetHeaders(v map[string]*string) *QueryOpsChartResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryOpsChartResponse) SetStatusCode(v int32) *QueryOpsChartResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryOpsChartResponse) SetBody(v *QueryOpsChartResponseBody) *QueryOpsChartResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseCapacityRequest struct {
 	AppId                        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppVersion                   *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
@@ -3859,6 +4359,56 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) BatchCheckSessionWithOptions(tmpReq *BatchCheckSessionRequest, runtime *util.RuntimeOptions) (_result *BatchCheckSessionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchCheckSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Records))) {
+		request.RecordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Records), tea.String("Records"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RecordsShrink)) {
+		query["Records"] = request.RecordsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchCheckSession"),
+		Version:     tea.String("2021-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchCheckSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchCheckSession(request *BatchCheckSessionRequest) (_result *BatchCheckSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchCheckSessionResponse{}
+	_body, _err := client.BatchCheckSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CancelReserveTaskWithOptions(request *CancelReserveTaskRequest, runtime *util.RuntimeOptions) (_result *CancelReserveTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4428,6 +4978,62 @@ func (client *Client) DeleteAppVersion(request *DeleteAppVersionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppVersionResponse{}
 	_body, _err := client.DeleteAppVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DownloadDumpfileWithOptions(request *DownloadDumpfileRequest, runtime *util.RuntimeOptions) (_result *DownloadDumpfileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppVersionId)) {
+		body["AppVersionId"] = request.AppVersionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DumpFileId)) {
+		body["DumpFileId"] = request.DumpFileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
+		body["OperatorId"] = request.OperatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorType)) {
+		body["OperatorType"] = request.OperatorType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DownloadDumpfile"),
+		Version:     tea.String("2021-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DownloadDumpfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DownloadDumpfile(request *DownloadDumpfileRequest) (_result *DownloadDumpfileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DownloadDumpfileResponse{}
+	_body, _err := client.DownloadDumpfileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5072,6 +5678,122 @@ func (client *Client) ModifyAppVersion(request *ModifyAppVersionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAppVersionResponse{}
 	_body, _err := client.ModifyAppVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryDumpFilesWithOptions(request *QueryDumpFilesRequest, runtime *util.RuntimeOptions) (_result *QueryDumpFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppVersionId)) {
+		body["AppVersionId"] = request.AppVersionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
+		body["OperatorId"] = request.OperatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorType)) {
+		body["OperatorType"] = request.OperatorType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDumpFiles"),
+		Version:     tea.String("2021-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDumpFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDumpFiles(request *QueryDumpFilesRequest) (_result *QueryDumpFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDumpFilesResponse{}
+	_body, _err := client.QueryDumpFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryOpsChartWithOptions(request *QueryOpsChartRequest, runtime *util.RuntimeOptions) (_result *QueryOpsChartResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChartType)) {
+		body["ChartType"] = request.ChartType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
+		body["OperatorId"] = request.OperatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorType)) {
+		body["OperatorType"] = request.OperatorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlatformSessionId)) {
+		body["PlatformSessionId"] = request.PlatformSessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryEndDate)) {
+		body["QueryEndDate"] = request.QueryEndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryStartDate)) {
+		body["QueryStartDate"] = request.QueryStartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryOpsChart"),
+		Version:     tea.String("2021-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryOpsChartResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryOpsChart(request *QueryOpsChartRequest) (_result *QueryOpsChartResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryOpsChartResponse{}
+	_body, _err := client.QueryOpsChartWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
