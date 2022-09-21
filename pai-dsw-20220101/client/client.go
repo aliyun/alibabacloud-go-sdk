@@ -47,6 +47,105 @@ func (s *DemoCategory) SetSubCategories(v []*DemoCategory) *DemoCategory {
 	return s
 }
 
+type CreateIdleInstanceCullerRequest struct {
+	CpuPercentThreshold  *int32 `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
+	GpuPercentThreshold  *int32 `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
+	MaxIdleTimeInMinutes *int32 `json:"MaxIdleTimeInMinutes,omitempty" xml:"MaxIdleTimeInMinutes,omitempty"`
+}
+
+func (s CreateIdleInstanceCullerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdleInstanceCullerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdleInstanceCullerRequest) SetCpuPercentThreshold(v int32) *CreateIdleInstanceCullerRequest {
+	s.CpuPercentThreshold = &v
+	return s
+}
+
+func (s *CreateIdleInstanceCullerRequest) SetGpuPercentThreshold(v int32) *CreateIdleInstanceCullerRequest {
+	s.GpuPercentThreshold = &v
+	return s
+}
+
+func (s *CreateIdleInstanceCullerRequest) SetMaxIdleTimeInMinutes(v int32) *CreateIdleInstanceCullerRequest {
+	s.MaxIdleTimeInMinutes = &v
+	return s
+}
+
+type CreateIdleInstanceCullerResponseBody struct {
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateIdleInstanceCullerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdleInstanceCullerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdleInstanceCullerResponseBody) SetCode(v string) *CreateIdleInstanceCullerResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateIdleInstanceCullerResponseBody) SetInstanceId(v string) *CreateIdleInstanceCullerResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateIdleInstanceCullerResponseBody) SetMessage(v string) *CreateIdleInstanceCullerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateIdleInstanceCullerResponseBody) SetRequestId(v string) *CreateIdleInstanceCullerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateIdleInstanceCullerResponseBody) SetSuccess(v bool) *CreateIdleInstanceCullerResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateIdleInstanceCullerResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateIdleInstanceCullerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateIdleInstanceCullerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdleInstanceCullerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdleInstanceCullerResponse) SetHeaders(v map[string]*string) *CreateIdleInstanceCullerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIdleInstanceCullerResponse) SetStatusCode(v int32) *CreateIdleInstanceCullerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateIdleInstanceCullerResponse) SetBody(v *CreateIdleInstanceCullerResponseBody) *CreateIdleInstanceCullerResponse {
+	s.Body = v
+	return s
+}
+
 type CreateInstanceRequest struct {
 	Accessibility        *string                                 `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	Datasets             []*CreateInstanceRequestDatasets        `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
@@ -538,6 +637,76 @@ func (s *CreateInstanceSnapshotResponse) SetBody(v *CreateInstanceSnapshotRespon
 	return s
 }
 
+type DeleteIdleInstanceCullerResponseBody struct {
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteIdleInstanceCullerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIdleInstanceCullerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIdleInstanceCullerResponseBody) SetCode(v string) *DeleteIdleInstanceCullerResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteIdleInstanceCullerResponseBody) SetInstanceId(v string) *DeleteIdleInstanceCullerResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteIdleInstanceCullerResponseBody) SetMessage(v string) *DeleteIdleInstanceCullerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteIdleInstanceCullerResponseBody) SetRequestId(v string) *DeleteIdleInstanceCullerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteIdleInstanceCullerResponseBody) SetSuccess(v bool) *DeleteIdleInstanceCullerResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteIdleInstanceCullerResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteIdleInstanceCullerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteIdleInstanceCullerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIdleInstanceCullerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIdleInstanceCullerResponse) SetHeaders(v map[string]*string) *DeleteIdleInstanceCullerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIdleInstanceCullerResponse) SetStatusCode(v int32) *DeleteIdleInstanceCullerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteIdleInstanceCullerResponse) SetBody(v *DeleteIdleInstanceCullerResponseBody) *DeleteIdleInstanceCullerResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteInstanceResponseBody struct {
 	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
@@ -768,6 +937,100 @@ func (s *DeleteInstanceSnapshotResponse) SetStatusCode(v int32) *DeleteInstanceS
 }
 
 func (s *DeleteInstanceSnapshotResponse) SetBody(v *DeleteInstanceSnapshotResponseBody) *DeleteInstanceSnapshotResponse {
+	s.Body = v
+	return s
+}
+
+type GetIdleInstanceCullerResponseBody struct {
+	Code                 *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	CpuPercentThreshold  *int32  `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
+	GpuPercentThreshold  *int32  `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
+	IdleTimeInMinutes    *int32  `json:"IdleTimeInMinutes,omitempty" xml:"IdleTimeInMinutes,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxIdleTimeInMinutes *int32  `json:"MaxIdleTimeInMinutes,omitempty" xml:"MaxIdleTimeInMinutes,omitempty"`
+	Message              *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success              *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetIdleInstanceCullerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdleInstanceCullerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdleInstanceCullerResponseBody) SetCode(v string) *GetIdleInstanceCullerResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetIdleInstanceCullerResponseBody) SetCpuPercentThreshold(v int32) *GetIdleInstanceCullerResponseBody {
+	s.CpuPercentThreshold = &v
+	return s
+}
+
+func (s *GetIdleInstanceCullerResponseBody) SetGpuPercentThreshold(v int32) *GetIdleInstanceCullerResponseBody {
+	s.GpuPercentThreshold = &v
+	return s
+}
+
+func (s *GetIdleInstanceCullerResponseBody) SetIdleTimeInMinutes(v int32) *GetIdleInstanceCullerResponseBody {
+	s.IdleTimeInMinutes = &v
+	return s
+}
+
+func (s *GetIdleInstanceCullerResponseBody) SetInstanceId(v string) *GetIdleInstanceCullerResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetIdleInstanceCullerResponseBody) SetMaxIdleTimeInMinutes(v int32) *GetIdleInstanceCullerResponseBody {
+	s.MaxIdleTimeInMinutes = &v
+	return s
+}
+
+func (s *GetIdleInstanceCullerResponseBody) SetMessage(v string) *GetIdleInstanceCullerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetIdleInstanceCullerResponseBody) SetRequestId(v string) *GetIdleInstanceCullerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetIdleInstanceCullerResponseBody) SetSuccess(v bool) *GetIdleInstanceCullerResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetIdleInstanceCullerResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetIdleInstanceCullerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetIdleInstanceCullerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdleInstanceCullerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdleInstanceCullerResponse) SetHeaders(v map[string]*string) *GetIdleInstanceCullerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIdleInstanceCullerResponse) SetStatusCode(v int32) *GetIdleInstanceCullerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIdleInstanceCullerResponse) SetBody(v *GetIdleInstanceCullerResponseBody) *GetIdleInstanceCullerResponse {
 	s.Body = v
 	return s
 }
@@ -3448,6 +3711,60 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) CreateIdleInstanceCuller(InstanceId *string, request *CreateIdleInstanceCullerRequest) (_result *CreateIdleInstanceCullerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateIdleInstanceCullerResponse{}
+	_body, _err := client.CreateIdleInstanceCullerWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateIdleInstanceCullerWithOptions(InstanceId *string, request *CreateIdleInstanceCullerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIdleInstanceCullerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CpuPercentThreshold)) {
+		body["CpuPercentThreshold"] = request.CpuPercentThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GpuPercentThreshold)) {
+		body["GpuPercentThreshold"] = request.GpuPercentThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxIdleTimeInMinutes)) {
+		body["MaxIdleTimeInMinutes"] = request.MaxIdleTimeInMinutes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIdleInstanceCuller"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/idleinstanceculler"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateIdleInstanceCullerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3646,6 +3963,42 @@ func (client *Client) CreateInstanceSnapshotWithOptions(InstanceId *string, requ
 	return _result, _err
 }
 
+func (client *Client) DeleteIdleInstanceCuller(InstanceId *string) (_result *DeleteIdleInstanceCullerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteIdleInstanceCullerResponse{}
+	_body, _err := client.DeleteIdleInstanceCullerWithOptions(InstanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteIdleInstanceCullerWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteIdleInstanceCullerResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIdleInstanceCuller"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/idleinstanceculler"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteIdleInstanceCullerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3746,6 +4099,42 @@ func (client *Client) DeleteInstanceSnapshotWithOptions(InstanceId *string, Snap
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteInstanceSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetIdleInstanceCuller(InstanceId *string) (_result *GetIdleInstanceCullerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetIdleInstanceCullerResponse{}
+	_body, _err := client.GetIdleInstanceCullerWithOptions(InstanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetIdleInstanceCullerWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIdleInstanceCullerResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIdleInstanceCuller"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/idleinstanceculler"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetIdleInstanceCullerResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
