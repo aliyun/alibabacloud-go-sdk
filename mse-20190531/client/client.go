@@ -8,7 +8,7 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1409,6 +1409,7 @@ func (s *AddGatewayRouteRequestServices) SetVersion(v string) *AddGatewayRouteRe
 }
 
 type AddGatewayRouteRequestServicesHttpDubboTranscoder struct {
+	DubboServiceGroup   *string                                                           `json:"DubboServiceGroup,omitempty" xml:"DubboServiceGroup,omitempty"`
 	DubboServiceName    *string                                                           `json:"DubboServiceName,omitempty" xml:"DubboServiceName,omitempty"`
 	DubboServiceVersion *string                                                           `json:"DubboServiceVersion,omitempty" xml:"DubboServiceVersion,omitempty"`
 	MothedMapList       []*AddGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList `json:"MothedMapList,omitempty" xml:"MothedMapList,omitempty" type:"Repeated"`
@@ -1420,6 +1421,11 @@ func (s AddGatewayRouteRequestServicesHttpDubboTranscoder) String() string {
 
 func (s AddGatewayRouteRequestServicesHttpDubboTranscoder) GoString() string {
 	return s.String()
+}
+
+func (s *AddGatewayRouteRequestServicesHttpDubboTranscoder) SetDubboServiceGroup(v string) *AddGatewayRouteRequestServicesHttpDubboTranscoder {
+	s.DubboServiceGroup = &v
+	return s
 }
 
 func (s *AddGatewayRouteRequestServicesHttpDubboTranscoder) SetDubboServiceName(v string) *AddGatewayRouteRequestServicesHttpDubboTranscoder {
@@ -14778,6 +14784,7 @@ type ListClusterTypesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ConnectType    *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
 	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
+	MseVersion     *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -14801,6 +14808,11 @@ func (s *ListClusterTypesRequest) SetConnectType(v string) *ListClusterTypesRequ
 
 func (s *ListClusterTypesRequest) SetMseSessionId(v string) *ListClusterTypesRequest {
 	s.MseSessionId = &v
+	return s
+}
+
+func (s *ListClusterTypesRequest) SetMseVersion(v string) *ListClusterTypesRequest {
+	s.MseVersion = &v
 	return s
 }
 
@@ -14918,6 +14930,7 @@ type ListClusterVersionsRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterType    *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
+	MseVersion     *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 }
 
 func (s ListClusterVersionsRequest) String() string {
@@ -14940,6 +14953,11 @@ func (s *ListClusterVersionsRequest) SetClusterType(v string) *ListClusterVersio
 
 func (s *ListClusterVersionsRequest) SetMseSessionId(v string) *ListClusterVersionsRequest {
 	s.MseSessionId = &v
+	return s
+}
+
+func (s *ListClusterVersionsRequest) SetMseVersion(v string) *ListClusterVersionsRequest {
+	s.MseVersion = &v
 	return s
 }
 
@@ -17528,6 +17546,7 @@ func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetVersion(v strin
 }
 
 type ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder struct {
+	DubboServiceGroup   *string                                                                                `json:"DubboServiceGroup,omitempty" xml:"DubboServiceGroup,omitempty"`
 	DubboServiceName    *string                                                                                `json:"DubboServiceName,omitempty" xml:"DubboServiceName,omitempty"`
 	DubboServiceVersion *string                                                                                `json:"DubboServiceVersion,omitempty" xml:"DubboServiceVersion,omitempty"`
 	MothedMapList       []*ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoderMothedMapList `json:"MothedMapList,omitempty" xml:"MothedMapList,omitempty" type:"Repeated"`
@@ -17539,6 +17558,11 @@ func (s ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder) 
 
 func (s ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder) GoString() string {
 	return s.String()
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder) SetDubboServiceGroup(v string) *ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder {
+	s.DubboServiceGroup = &v
+	return s
 }
 
 func (s *ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder) SetDubboServiceName(v string) *ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder {
@@ -26401,6 +26425,7 @@ func (s *UpdateGatewayRouteRequestServices) SetVersion(v string) *UpdateGatewayR
 }
 
 type UpdateGatewayRouteRequestServicesHttpDubboTranscoder struct {
+	DubboServiceGroup   *string                                                              `json:"DubboServiceGroup,omitempty" xml:"DubboServiceGroup,omitempty"`
 	DubboServiceName    *string                                                              `json:"DubboServiceName,omitempty" xml:"DubboServiceName,omitempty"`
 	DubboServiceVersion *string                                                              `json:"DubboServiceVersion,omitempty" xml:"DubboServiceVersion,omitempty"`
 	MothedMapList       []*UpdateGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList `json:"MothedMapList,omitempty" xml:"MothedMapList,omitempty" type:"Repeated"`
@@ -26412,6 +26437,11 @@ func (s UpdateGatewayRouteRequestServicesHttpDubboTranscoder) String() string {
 
 func (s UpdateGatewayRouteRequestServicesHttpDubboTranscoder) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateGatewayRouteRequestServicesHttpDubboTranscoder) SetDubboServiceGroup(v string) *UpdateGatewayRouteRequestServicesHttpDubboTranscoder {
+	s.DubboServiceGroup = &v
+	return s
 }
 
 func (s *UpdateGatewayRouteRequestServicesHttpDubboTranscoder) SetDubboServiceName(v string) *UpdateGatewayRouteRequestServicesHttpDubboTranscoder {
@@ -35316,6 +35346,10 @@ func (client *Client) ListClusterTypesWithOptions(request *ListClusterTypesReque
 		query["MseSessionId"] = request.MseSessionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MseVersion)) {
+		query["MseVersion"] = request.MseVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -35370,6 +35404,10 @@ func (client *Client) ListClusterVersionsWithOptions(request *ListClusterVersion
 
 	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
 		query["MseSessionId"] = request.MseSessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MseVersion)) {
+		query["MseVersion"] = request.MseVersion
 	}
 
 	req := &openapi.OpenApiRequest{
