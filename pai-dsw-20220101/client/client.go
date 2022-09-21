@@ -8,7 +8,7 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -783,6 +783,7 @@ type GetInstanceResponseBody struct {
 	GmtCreateTime              *string                                       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime            *string                                       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	HttpStatusCode             *int32                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	IdleInstanceCuller         *GetInstanceResponseBodyIdleInstanceCuller    `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
 	ImageId                    *string                                       `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName                  *string                                       `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	ImageUrl                   *string                                       `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
@@ -791,6 +792,7 @@ type GetInstanceResponseBody struct {
 	InstanceShutdownTimer      *GetInstanceResponseBodyInstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
 	InstanceUrl                *string                                       `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
 	JupyterlabUrl              *string                                       `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
+	Labels                     []*GetInstanceResponseBodyLabels              `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	LatestSnapshot             *GetInstanceResponseBodyLatestSnapshot        `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
 	Message                    *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	PaymentType                *string                                       `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
@@ -870,6 +872,11 @@ func (s *GetInstanceResponseBody) SetHttpStatusCode(v int32) *GetInstanceRespons
 	return s
 }
 
+func (s *GetInstanceResponseBody) SetIdleInstanceCuller(v *GetInstanceResponseBodyIdleInstanceCuller) *GetInstanceResponseBody {
+	s.IdleInstanceCuller = v
+	return s
+}
+
 func (s *GetInstanceResponseBody) SetImageId(v string) *GetInstanceResponseBody {
 	s.ImageId = &v
 	return s
@@ -907,6 +914,11 @@ func (s *GetInstanceResponseBody) SetInstanceUrl(v string) *GetInstanceResponseB
 
 func (s *GetInstanceResponseBody) SetJupyterlabUrl(v string) *GetInstanceResponseBody {
 	s.JupyterlabUrl = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetLabels(v []*GetInstanceResponseBodyLabels) *GetInstanceResponseBody {
+	s.Labels = v
 	return s
 }
 
@@ -1028,6 +1040,47 @@ func (s *GetInstanceResponseBodyDatasets) SetMountPath(v string) *GetInstanceRes
 	return s
 }
 
+type GetInstanceResponseBodyIdleInstanceCuller struct {
+	CpuPercentThreshold  *int32  `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
+	GpuPercentThreshold  *int32  `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
+	IdleTimeInMinutes    *int32  `json:"IdleTimeInMinutes,omitempty" xml:"IdleTimeInMinutes,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxIdleTimeInMinutes *int32  `json:"MaxIdleTimeInMinutes,omitempty" xml:"MaxIdleTimeInMinutes,omitempty"`
+}
+
+func (s GetInstanceResponseBodyIdleInstanceCuller) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyIdleInstanceCuller) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyIdleInstanceCuller) SetCpuPercentThreshold(v int32) *GetInstanceResponseBodyIdleInstanceCuller {
+	s.CpuPercentThreshold = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyIdleInstanceCuller) SetGpuPercentThreshold(v int32) *GetInstanceResponseBodyIdleInstanceCuller {
+	s.GpuPercentThreshold = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyIdleInstanceCuller) SetIdleTimeInMinutes(v int32) *GetInstanceResponseBodyIdleInstanceCuller {
+	s.IdleTimeInMinutes = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyIdleInstanceCuller) SetInstanceId(v string) *GetInstanceResponseBodyIdleInstanceCuller {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyIdleInstanceCuller) SetMaxIdleTimeInMinutes(v int32) *GetInstanceResponseBodyIdleInstanceCuller {
+	s.MaxIdleTimeInMinutes = &v
+	return s
+}
+
 type GetInstanceResponseBodyInstanceShutdownTimer struct {
 	DueTime           *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
 	GmtCreateTime     *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
@@ -1066,6 +1119,29 @@ func (s *GetInstanceResponseBodyInstanceShutdownTimer) SetInstanceId(v string) *
 
 func (s *GetInstanceResponseBodyInstanceShutdownTimer) SetRemainingTimeInMs(v int64) *GetInstanceResponseBodyInstanceShutdownTimer {
 	s.RemainingTimeInMs = &v
+	return s
+}
+
+type GetInstanceResponseBodyLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetInstanceResponseBodyLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyLabels) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyLabels) SetKey(v string) *GetInstanceResponseBodyLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyLabels) SetValue(v string) *GetInstanceResponseBodyLabels {
+	s.Value = &v
 	return s
 }
 
@@ -2583,6 +2659,7 @@ type ListInstancesResponseBodyInstances struct {
 	EnvironmentVariables       map[string]*string                                       `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
 	GmtCreateTime              *string                                                  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime            *string                                                  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	IdleInstanceCuller         *ListInstancesResponseBodyInstancesIdleInstanceCuller    `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
 	ImageId                    *string                                                  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName                  *string                                                  `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	ImageUrl                   *string                                                  `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
@@ -2655,6 +2732,11 @@ func (s *ListInstancesResponseBodyInstances) SetGmtCreateTime(v string) *ListIns
 
 func (s *ListInstancesResponseBodyInstances) SetGmtModifiedTime(v string) *ListInstancesResponseBodyInstances {
 	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetIdleInstanceCuller(v *ListInstancesResponseBodyInstancesIdleInstanceCuller) *ListInstancesResponseBodyInstances {
+	s.IdleInstanceCuller = v
 	return s
 }
 
@@ -2803,6 +2885,47 @@ func (s *ListInstancesResponseBodyInstancesDatasets) SetDatasetId(v string) *Lis
 
 func (s *ListInstancesResponseBodyInstancesDatasets) SetMountPath(v string) *ListInstancesResponseBodyInstancesDatasets {
 	s.MountPath = &v
+	return s
+}
+
+type ListInstancesResponseBodyInstancesIdleInstanceCuller struct {
+	CpuPercentThreshold  *int32  `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
+	GpuPercentThreshold  *int32  `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
+	IdleTimeInMinutes    *int32  `json:"IdleTimeInMinutes,omitempty" xml:"IdleTimeInMinutes,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxIdleTimeInMinutes *int32  `json:"MaxIdleTimeInMinutes,omitempty" xml:"MaxIdleTimeInMinutes,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesIdleInstanceCuller) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesIdleInstanceCuller) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesIdleInstanceCuller) SetCpuPercentThreshold(v int32) *ListInstancesResponseBodyInstancesIdleInstanceCuller {
+	s.CpuPercentThreshold = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesIdleInstanceCuller) SetGpuPercentThreshold(v int32) *ListInstancesResponseBodyInstancesIdleInstanceCuller {
+	s.GpuPercentThreshold = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesIdleInstanceCuller) SetIdleTimeInMinutes(v int32) *ListInstancesResponseBodyInstancesIdleInstanceCuller {
+	s.IdleTimeInMinutes = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesIdleInstanceCuller) SetInstanceId(v string) *ListInstancesResponseBodyInstancesIdleInstanceCuller {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesIdleInstanceCuller) SetMaxIdleTimeInMinutes(v int32) *ListInstancesResponseBodyInstancesIdleInstanceCuller {
+	s.MaxIdleTimeInMinutes = &v
 	return s
 }
 
@@ -3436,7 +3559,6 @@ func (client *Client) CreateInstanceShutdownTimerWithOptions(InstanceId *string,
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DueTime)) {
 		body["DueTime"] = request.DueTime
@@ -3454,7 +3576,7 @@ func (client *Client) CreateInstanceShutdownTimerWithOptions(InstanceId *string,
 		Action:      tea.String("CreateInstanceShutdownTimer"),
 		Version:     tea.String("2022-01-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/shutdowntimer"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/shutdowntimer"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3487,7 +3609,6 @@ func (client *Client) CreateInstanceSnapshotWithOptions(InstanceId *string, requ
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
 		body["ImageUrl"] = request.ImageUrl
@@ -3509,7 +3630,7 @@ func (client *Client) CreateInstanceSnapshotWithOptions(InstanceId *string, requ
 		Action:      tea.String("CreateInstanceSnapshot"),
 		Version:     tea.String("2022-01-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/snapshots"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/snapshots"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3538,7 +3659,6 @@ func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanc
 }
 
 func (client *Client) DeleteInstanceWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3546,7 +3666,7 @@ func (client *Client) DeleteInstanceWithOptions(InstanceId *string, headers map[
 		Action:      tea.String("DeleteInstance"),
 		Version:     tea.String("2022-01-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId)),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3575,7 +3695,6 @@ func (client *Client) DeleteInstanceShutdownTimer(InstanceId *string) (_result *
 }
 
 func (client *Client) DeleteInstanceShutdownTimerWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceShutdownTimerResponse, _err error) {
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3583,7 +3702,7 @@ func (client *Client) DeleteInstanceShutdownTimerWithOptions(InstanceId *string,
 		Action:      tea.String("DeleteInstanceShutdownTimer"),
 		Version:     tea.String("2022-01-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/shutdowntimer"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/shutdowntimer"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3612,8 +3731,6 @@ func (client *Client) DeleteInstanceSnapshot(InstanceId *string, SnapshotId *str
 }
 
 func (client *Client) DeleteInstanceSnapshotWithOptions(InstanceId *string, SnapshotId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceSnapshotResponse, _err error) {
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	SnapshotId = openapiutil.GetEncodeParam(SnapshotId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3621,7 +3738,7 @@ func (client *Client) DeleteInstanceSnapshotWithOptions(InstanceId *string, Snap
 		Action:      tea.String("DeleteInstanceSnapshot"),
 		Version:     tea.String("2022-01-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/snapshots/" + tea.StringValue(SnapshotId)),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/snapshots/" + tea.StringValue(openapiutil.GetEncodeParam(SnapshotId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3650,7 +3767,6 @@ func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceRespo
 }
 
 func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3658,7 +3774,7 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[str
 		Action:      tea.String("GetInstance"),
 		Version:     tea.String("2022-01-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId)),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3691,7 +3807,6 @@ func (client *Client) GetInstanceMetricsWithOptions(InstanceId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
@@ -3717,7 +3832,7 @@ func (client *Client) GetInstanceMetricsWithOptions(InstanceId *string, request 
 		Action:      tea.String("GetInstanceMetrics"),
 		Version:     tea.String("2022-01-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/instance/" + tea.StringValue(InstanceId) + "/metrics"),
+		Pathname:    tea.String("/api/v2/instance/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/metrics"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3746,7 +3861,6 @@ func (client *Client) GetInstanceShutdownTimer(InstanceId *string) (_result *Get
 }
 
 func (client *Client) GetInstanceShutdownTimerWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceShutdownTimerResponse, _err error) {
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3754,7 +3868,7 @@ func (client *Client) GetInstanceShutdownTimerWithOptions(InstanceId *string, he
 		Action:      tea.String("GetInstanceShutdownTimer"),
 		Version:     tea.String("2022-01-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/shutdowntimer"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/shutdowntimer"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3783,8 +3897,6 @@ func (client *Client) GetInstanceSnapshot(InstanceId *string, SnapshotId *string
 }
 
 func (client *Client) GetInstanceSnapshotWithOptions(InstanceId *string, SnapshotId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceSnapshotResponse, _err error) {
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	SnapshotId = openapiutil.GetEncodeParam(SnapshotId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3792,7 +3904,7 @@ func (client *Client) GetInstanceSnapshotWithOptions(InstanceId *string, Snapsho
 		Action:      tea.String("GetInstanceSnapshot"),
 		Version:     tea.String("2022-01-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/snapshots/" + tea.StringValue(SnapshotId)),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/snapshots/" + tea.StringValue(openapiutil.GetEncodeParam(SnapshotId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4067,7 +4179,6 @@ func (client *Client) ListInstanceSnapshotWithOptions(InstanceId *string, reques
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
 		query["Order"] = request.Order
@@ -4093,7 +4204,7 @@ func (client *Client) ListInstanceSnapshotWithOptions(InstanceId *string, reques
 		Action:      tea.String("ListInstanceSnapshot"),
 		Version:     tea.String("2022-01-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/snapshots"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/snapshots"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4254,7 +4365,6 @@ func (client *Client) StartInstance(InstanceId *string) (_result *StartInstanceR
 }
 
 func (client *Client) StartInstanceWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartInstanceResponse, _err error) {
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4262,7 +4372,7 @@ func (client *Client) StartInstanceWithOptions(InstanceId *string, headers map[s
 		Action:      tea.String("StartInstance"),
 		Version:     tea.String("2022-01-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/start"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/start"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4295,7 +4405,6 @@ func (client *Client) StopInstanceWithOptions(InstanceId *string, request *StopI
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.SaveImage)) {
 		query["SaveImage"] = request.SaveImage
@@ -4309,7 +4418,7 @@ func (client *Client) StopInstanceWithOptions(InstanceId *string, request *StopI
 		Action:      tea.String("StopInstance"),
 		Version:     tea.String("2022-01-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/stop"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/stop"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4342,7 +4451,6 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		body["InstanceName"] = request.InstanceName
@@ -4356,7 +4464,7 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		Action:      tea.String("UpdateInstance"),
 		Version:     tea.String("2022-01-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId)),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
