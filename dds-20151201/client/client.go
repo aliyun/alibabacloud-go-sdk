@@ -8,7 +8,7 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -588,6 +588,7 @@ type CreateDBInstanceRequest struct {
 	DatabaseNames         *string `json:"DatabaseNames,omitempty" xml:"DatabaseNames,omitempty"`
 	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	HiddenZoneId          *string `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
 	NetworkType           *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -599,6 +600,7 @@ type CreateDBInstanceRequest struct {
 	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RestoreTime           *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
+	SecondaryZoneId       *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 	SecurityIPList        *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	SrcDBInstanceId       *string `json:"SrcDBInstanceId,omitempty" xml:"SrcDBInstanceId,omitempty"`
@@ -687,6 +689,11 @@ func (s *CreateDBInstanceRequest) SetEngineVersion(v string) *CreateDBInstanceRe
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetHiddenZoneId(v string) *CreateDBInstanceRequest {
+	s.HiddenZoneId = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetNetworkType(v string) *CreateDBInstanceRequest {
 	s.NetworkType = &v
 	return s
@@ -739,6 +746,11 @@ func (s *CreateDBInstanceRequest) SetResourceOwnerId(v int64) *CreateDBInstanceR
 
 func (s *CreateDBInstanceRequest) SetRestoreTime(v string) *CreateDBInstanceRequest {
 	s.RestoreTime = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetSecondaryZoneId(v string) *CreateDBInstanceRequest {
+	s.SecondaryZoneId = &v
 	return s
 }
 
@@ -3330,12 +3342,14 @@ func (s *DescribeBackupPolicyRequest) SetSecurityToken(v string) *DescribeBackup
 }
 
 type DescribeBackupPolicyResponseBody struct {
+	BackupInterval           *int32  `json:"BackupInterval,omitempty" xml:"BackupInterval,omitempty"`
 	BackupRetentionPeriod    *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	EnableBackupLog          *int32  `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
 	LogBackupRetentionPeriod *int32  `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	PreferredBackupPeriod    *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	PreferredBackupTime      *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SnapshotBackupType       *string `json:"SnapshotBackupType,omitempty" xml:"SnapshotBackupType,omitempty"`
 }
 
 func (s DescribeBackupPolicyResponseBody) String() string {
@@ -3344,6 +3358,11 @@ func (s DescribeBackupPolicyResponseBody) String() string {
 
 func (s DescribeBackupPolicyResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetBackupInterval(v int32) *DescribeBackupPolicyResponseBody {
+	s.BackupInterval = &v
+	return s
 }
 
 func (s *DescribeBackupPolicyResponseBody) SetBackupRetentionPeriod(v string) *DescribeBackupPolicyResponseBody {
@@ -3373,6 +3392,11 @@ func (s *DescribeBackupPolicyResponseBody) SetPreferredBackupTime(v string) *Des
 
 func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBackupPolicyResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetSnapshotBackupType(v string) *DescribeBackupPolicyResponseBody {
+	s.SnapshotBackupType = &v
 	return s
 }
 
@@ -3653,6 +3677,7 @@ func (s *DescribeBackupsResponse) SetBody(v *DescribeBackupsResponseBody) *Descr
 }
 
 type DescribeDBInstanceAttributeRequest struct {
+	ChargeType           *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -3669,6 +3694,11 @@ func (s DescribeDBInstanceAttributeRequest) String() string {
 
 func (s DescribeDBInstanceAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeRequest) SetChargeType(v string) *DescribeDBInstanceAttributeRequest {
+	s.ChargeType = &v
+	return s
 }
 
 func (s *DescribeDBInstanceAttributeRequest) SetDBInstanceId(v string) *DescribeDBInstanceAttributeRequest {
@@ -3764,6 +3794,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	DBInstanceStatus            *string                                                                       `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	DBInstanceStorage           *int32                                                                        `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
 	DBInstanceType              *string                                                                       `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
+	DestroyTime                 *string                                                                       `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
 	Engine                      *string                                                                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion               *string                                                                       `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	ExpireTime                  *string                                                                       `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
@@ -3776,7 +3807,9 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	MaxConnections              *int32                                                                        `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	MaxIOPS                     *int32                                                                        `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
 	MongosList                  *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosList       `json:"MongosList,omitempty" xml:"MongosList,omitempty" type:"Struct"`
+	NetworkAddresses            *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses `json:"NetworkAddresses,omitempty" xml:"NetworkAddresses,omitempty" type:"Struct"`
 	NetworkType                 *string                                                                       `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	PaymentType                 *string                                                                       `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	ProtocolType                *string                                                                       `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	ReadonlyReplicas            *string                                                                       `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
 	RegionId                    *string                                                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3864,6 +3897,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetDBInst
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetDestroyTime(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.DestroyTime = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetEngine(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.Engine = &v
 	return s
@@ -3924,8 +3962,18 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetMongos
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetNetworkAddresses(v *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.NetworkAddresses = v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetNetworkType(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetPaymentType(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.PaymentType = &v
 	return s
 }
 
@@ -4187,6 +4235,94 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListM
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongosAttribute) SetVpcCloudInstanceId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongosAttribute {
 	s.VpcCloudInstanceId = &v
+	return s
+}
+
+type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses struct {
+	NetworkAddress []*DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress `json:"NetworkAddress,omitempty" xml:"NetworkAddress,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses) SetNetworkAddress(v []*DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses {
+	s.NetworkAddress = v
+	return s
+}
+
+type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress struct {
+	ExpiredTime    *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	IPAddress      *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	NetworkAddress *string `json:"NetworkAddress,omitempty" xml:"NetworkAddress,omitempty"`
+	NetworkType    *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	NodeId         *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeType       *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Port           *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Role           *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	VPCId          *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId      *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetExpiredTime(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetIPAddress(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
+	s.IPAddress = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetNetworkAddress(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
+	s.NetworkAddress = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetNetworkType(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetNodeId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetNodeType(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
+	s.NodeType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetPort(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetRole(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
+	s.Role = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetVPCId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
+	s.VPCId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetVSwitchId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
+	s.VSwitchId = &v
 	return s
 }
 
@@ -11513,6 +11649,7 @@ func (s *ModifyAuditPolicyResponse) SetBody(v *ModifyAuditPolicyResponseBody) *M
 }
 
 type ModifyBackupPolicyRequest struct {
+	BackupInterval           *string `json:"BackupInterval,omitempty" xml:"BackupInterval,omitempty"`
 	BackupRetentionPeriod    *int64  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	DBInstanceId             *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	EnableBackupLog          *int64  `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
@@ -11524,6 +11661,7 @@ type ModifyBackupPolicyRequest struct {
 	ResourceOwnerAccount     *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId          *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken            *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	SnapshotBackupType       *string `json:"SnapshotBackupType,omitempty" xml:"SnapshotBackupType,omitempty"`
 }
 
 func (s ModifyBackupPolicyRequest) String() string {
@@ -11532,6 +11670,11 @@ func (s ModifyBackupPolicyRequest) String() string {
 
 func (s ModifyBackupPolicyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyBackupPolicyRequest) SetBackupInterval(v string) *ModifyBackupPolicyRequest {
+	s.BackupInterval = &v
+	return s
 }
 
 func (s *ModifyBackupPolicyRequest) SetBackupRetentionPeriod(v int64) *ModifyBackupPolicyRequest {
@@ -11586,6 +11729,11 @@ func (s *ModifyBackupPolicyRequest) SetResourceOwnerId(v int64) *ModifyBackupPol
 
 func (s *ModifyBackupPolicyRequest) SetSecurityToken(v string) *ModifyBackupPolicyRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetSnapshotBackupType(v string) *ModifyBackupPolicyRequest {
+	s.SnapshotBackupType = &v
 	return s
 }
 
@@ -12285,7 +12433,6 @@ func (s *ModifyDBInstanceNetworkTypeResponse) SetBody(v *ModifyDBInstanceNetwork
 
 type ModifyDBInstanceSSLRequest struct {
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DisableTlsProtocol   *string `json:"DisableTlsProtocol,omitempty" xml:"DisableTlsProtocol,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -12304,11 +12451,6 @@ func (s ModifyDBInstanceSSLRequest) GoString() string {
 
 func (s *ModifyDBInstanceSSLRequest) SetDBInstanceId(v string) *ModifyDBInstanceSSLRequest {
 	s.DBInstanceId = &v
-	return s
-}
-
-func (s *ModifyDBInstanceSSLRequest) SetDisableTlsProtocol(v string) *ModifyDBInstanceSSLRequest {
-	s.DisableTlsProtocol = &v
 	return s
 }
 
@@ -15422,6 +15564,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["EngineVersion"] = request.EngineVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HiddenZoneId)) {
+		query["HiddenZoneId"] = request.HiddenZoneId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
 		query["NetworkType"] = request.NetworkType
 	}
@@ -15464,6 +15610,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.RestoreTime)) {
 		query["RestoreTime"] = request.RestoreTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondaryZoneId)) {
+		query["SecondaryZoneId"] = request.SecondaryZoneId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
@@ -16858,6 +17008,10 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -19678,6 +19832,10 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupInterval)) {
+		query["BackupInterval"] = request.BackupInterval
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BackupRetentionPeriod)) {
 		query["BackupRetentionPeriod"] = request.BackupRetentionPeriod
 	}
@@ -19720,6 +19878,10 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotBackupType)) {
+		query["SnapshotBackupType"] = request.SnapshotBackupType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20208,10 +20370,6 @@ func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSS
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DisableTlsProtocol)) {
-		query["DisableTlsProtocol"] = request.DisableTlsProtocol
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
