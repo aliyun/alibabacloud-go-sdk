@@ -8,7 +8,7 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1218,23 +1218,24 @@ func (s *DetailSceneRequest) SetId(v string) *DetailSceneRequest {
 }
 
 type DetailSceneResponseBody struct {
-	Captures     []*DetailSceneResponseBodyCaptures `json:"Captures,omitempty" xml:"Captures,omitempty" type:"Repeated"`
-	Code         *int64                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	CoverUrl     *string                            `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	GmtCreate    *int64                             `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified  *int64                             `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id           *string                            `json:"Id,omitempty" xml:"Id,omitempty"`
-	Message      *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name         *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	PreviewToken *string                            `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
-	Published    *bool                              `json:"Published,omitempty" xml:"Published,omitempty"`
-	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SourceNum    *int64                             `json:"SourceNum,omitempty" xml:"SourceNum,omitempty"`
-	Status       *string                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusName   *string                            `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	SubSceneNum  *int64                             `json:"SubSceneNum,omitempty" xml:"SubSceneNum,omitempty"`
-	Success      *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	Type         *string                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	Captures     []*DetailSceneResponseBodyCaptures   `json:"Captures,omitempty" xml:"Captures,omitempty" type:"Repeated"`
+	Code         *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	CoverUrl     *string                              `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	FloorPlans   []*DetailSceneResponseBodyFloorPlans `json:"FloorPlans,omitempty" xml:"FloorPlans,omitempty" type:"Repeated"`
+	GmtCreate    *int64                               `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *int64                               `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *string                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message      *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name         *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreviewToken *string                              `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
+	Published    *bool                                `json:"Published,omitempty" xml:"Published,omitempty"`
+	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceNum    *int64                               `json:"SourceNum,omitempty" xml:"SourceNum,omitempty"`
+	Status       *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusName   *string                              `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	SubSceneNum  *int64                               `json:"SubSceneNum,omitempty" xml:"SubSceneNum,omitempty"`
+	Success      *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	Type         *string                              `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DetailSceneResponseBody) String() string {
@@ -1257,6 +1258,11 @@ func (s *DetailSceneResponseBody) SetCode(v int64) *DetailSceneResponseBody {
 
 func (s *DetailSceneResponseBody) SetCoverUrl(v string) *DetailSceneResponseBody {
 	s.CoverUrl = &v
+	return s
+}
+
+func (s *DetailSceneResponseBody) SetFloorPlans(v []*DetailSceneResponseBodyFloorPlans) *DetailSceneResponseBody {
+	s.FloorPlans = v
 	return s
 }
 
@@ -1350,6 +1356,41 @@ func (s *DetailSceneResponseBodyCaptures) SetTitle(v string) *DetailSceneRespons
 
 func (s *DetailSceneResponseBodyCaptures) SetUrl(v string) *DetailSceneResponseBodyCaptures {
 	s.Url = &v
+	return s
+}
+
+type DetailSceneResponseBodyFloorPlans struct {
+	ColorMapUrl *string `json:"ColorMapUrl,omitempty" xml:"ColorMapUrl,omitempty"`
+	FloorLabel  *string `json:"FloorLabel,omitempty" xml:"FloorLabel,omitempty"`
+	FloorName   *string `json:"FloorName,omitempty" xml:"FloorName,omitempty"`
+	MiniMapUrl  *string `json:"MiniMapUrl,omitempty" xml:"MiniMapUrl,omitempty"`
+}
+
+func (s DetailSceneResponseBodyFloorPlans) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetailSceneResponseBodyFloorPlans) GoString() string {
+	return s.String()
+}
+
+func (s *DetailSceneResponseBodyFloorPlans) SetColorMapUrl(v string) *DetailSceneResponseBodyFloorPlans {
+	s.ColorMapUrl = &v
+	return s
+}
+
+func (s *DetailSceneResponseBodyFloorPlans) SetFloorLabel(v string) *DetailSceneResponseBodyFloorPlans {
+	s.FloorLabel = &v
+	return s
+}
+
+func (s *DetailSceneResponseBodyFloorPlans) SetFloorName(v string) *DetailSceneResponseBodyFloorPlans {
+	s.FloorName = &v
+	return s
+}
+
+func (s *DetailSceneResponseBodyFloorPlans) SetMiniMapUrl(v string) *DetailSceneResponseBodyFloorPlans {
+	s.MiniMapUrl = &v
 	return s
 }
 
