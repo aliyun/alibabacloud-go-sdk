@@ -8,7 +8,7 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -409,6 +409,98 @@ func (s *UdpConfig) SetHashKey(v string) *UdpConfig {
 
 func (s *UdpConfig) SetScheduler(v string) *UdpConfig {
 	s.Scheduler = &v
+	return s
+}
+
+type AccosicateNetworkAclRequest struct {
+	NetworkAclId *string                                `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	Resource     []*AccosicateNetworkAclRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
+}
+
+func (s AccosicateNetworkAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccosicateNetworkAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AccosicateNetworkAclRequest) SetNetworkAclId(v string) *AccosicateNetworkAclRequest {
+	s.NetworkAclId = &v
+	return s
+}
+
+func (s *AccosicateNetworkAclRequest) SetResource(v []*AccosicateNetworkAclRequestResource) *AccosicateNetworkAclRequest {
+	s.Resource = v
+	return s
+}
+
+type AccosicateNetworkAclRequestResource struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s AccosicateNetworkAclRequestResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccosicateNetworkAclRequestResource) GoString() string {
+	return s.String()
+}
+
+func (s *AccosicateNetworkAclRequestResource) SetResourceId(v string) *AccosicateNetworkAclRequestResource {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *AccosicateNetworkAclRequestResource) SetResourceType(v string) *AccosicateNetworkAclRequestResource {
+	s.ResourceType = &v
+	return s
+}
+
+type AccosicateNetworkAclResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AccosicateNetworkAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccosicateNetworkAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AccosicateNetworkAclResponseBody) SetRequestId(v string) *AccosicateNetworkAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AccosicateNetworkAclResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AccosicateNetworkAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AccosicateNetworkAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccosicateNetworkAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AccosicateNetworkAclResponse) SetHeaders(v map[string]*string) *AccosicateNetworkAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AccosicateNetworkAclResponse) SetStatusCode(v int32) *AccosicateNetworkAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AccosicateNetworkAclResponse) SetBody(v *AccosicateNetworkAclResponseBody) *AccosicateNetworkAclResponse {
+	s.Body = v
 	return s
 }
 
@@ -2084,6 +2176,163 @@ func (s *CreateEpnInstanceResponse) SetBody(v *CreateEpnInstanceResponseBody) *C
 	return s
 }
 
+type CreateFileSystemRequest struct {
+	OrderDetails []*CreateFileSystemRequestOrderDetails `json:"OrderDetails,omitempty" xml:"OrderDetails,omitempty" type:"Repeated"`
+}
+
+func (s CreateFileSystemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileSystemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileSystemRequest) SetOrderDetails(v []*CreateFileSystemRequestOrderDetails) *CreateFileSystemRequest {
+	s.OrderDetails = v
+	return s
+}
+
+type CreateFileSystemRequestOrderDetails struct {
+	ChargeType        *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	EnsRegionId       *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	FileSystemName    *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
+	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
+	NetworkId         *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	ProtocolType      *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	StorgeType        *string `json:"StorgeType,omitempty" xml:"StorgeType,omitempty"`
+}
+
+func (s CreateFileSystemRequestOrderDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileSystemRequestOrderDetails) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileSystemRequestOrderDetails) SetChargeType(v string) *CreateFileSystemRequestOrderDetails {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateFileSystemRequestOrderDetails) SetEnsRegionId(v string) *CreateFileSystemRequestOrderDetails {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateFileSystemRequestOrderDetails) SetFileSystemName(v string) *CreateFileSystemRequestOrderDetails {
+	s.FileSystemName = &v
+	return s
+}
+
+func (s *CreateFileSystemRequestOrderDetails) SetMountTargetDomain(v string) *CreateFileSystemRequestOrderDetails {
+	s.MountTargetDomain = &v
+	return s
+}
+
+func (s *CreateFileSystemRequestOrderDetails) SetNetworkId(v string) *CreateFileSystemRequestOrderDetails {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *CreateFileSystemRequestOrderDetails) SetOrderType(v string) *CreateFileSystemRequestOrderDetails {
+	s.OrderType = &v
+	return s
+}
+
+func (s *CreateFileSystemRequestOrderDetails) SetProtocolType(v string) *CreateFileSystemRequestOrderDetails {
+	s.ProtocolType = &v
+	return s
+}
+
+func (s *CreateFileSystemRequestOrderDetails) SetStorgeType(v string) *CreateFileSystemRequestOrderDetails {
+	s.StorgeType = &v
+	return s
+}
+
+type CreateFileSystemShrinkRequest struct {
+	OrderDetailsShrink *string `json:"OrderDetails,omitempty" xml:"OrderDetails,omitempty"`
+}
+
+func (s CreateFileSystemShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileSystemShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileSystemShrinkRequest) SetOrderDetailsShrink(v string) *CreateFileSystemShrinkRequest {
+	s.OrderDetailsShrink = &v
+	return s
+}
+
+type CreateFileSystemResponseBody struct {
+	AllocationId   []*string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty" type:"Repeated"`
+	BizStatusCode  *string   `json:"BizStatusCode,omitempty" xml:"BizStatusCode,omitempty"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UnAllocationId []*string `json:"UnAllocationId,omitempty" xml:"UnAllocationId,omitempty" type:"Repeated"`
+}
+
+func (s CreateFileSystemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileSystemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileSystemResponseBody) SetAllocationId(v []*string) *CreateFileSystemResponseBody {
+	s.AllocationId = v
+	return s
+}
+
+func (s *CreateFileSystemResponseBody) SetBizStatusCode(v string) *CreateFileSystemResponseBody {
+	s.BizStatusCode = &v
+	return s
+}
+
+func (s *CreateFileSystemResponseBody) SetRequestId(v string) *CreateFileSystemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFileSystemResponseBody) SetUnAllocationId(v []*string) *CreateFileSystemResponseBody {
+	s.UnAllocationId = v
+	return s
+}
+
+type CreateFileSystemResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFileSystemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileSystemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileSystemResponse) SetHeaders(v map[string]*string) *CreateFileSystemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFileSystemResponse) SetStatusCode(v int32) *CreateFileSystemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFileSystemResponse) SetBody(v *CreateFileSystemResponseBody) *CreateFileSystemResponse {
+	s.Body = v
+	return s
+}
+
 type CreateForwardEntryRequest struct {
 	ExternalIp       *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
 	ExternalPort     *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
@@ -3410,6 +3659,93 @@ func (s *CreateLoadBalancerUDPListenerResponse) SetBody(v *CreateLoadBalancerUDP
 	return s
 }
 
+type CreateMountTargetRequest struct {
+	EnsRegionId     *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	FileSystemId    *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
+	NetWorkId       *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
+}
+
+func (s CreateMountTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMountTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMountTargetRequest) SetEnsRegionId(v string) *CreateMountTargetRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateMountTargetRequest) SetFileSystemId(v string) *CreateMountTargetRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *CreateMountTargetRequest) SetMountTargetName(v string) *CreateMountTargetRequest {
+	s.MountTargetName = &v
+	return s
+}
+
+func (s *CreateMountTargetRequest) SetNetWorkId(v string) *CreateMountTargetRequest {
+	s.NetWorkId = &v
+	return s
+}
+
+type CreateMountTargetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateMountTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMountTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMountTargetResponseBody) SetRequestId(v string) *CreateMountTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateMountTargetResponseBody) SetStatus(v string) *CreateMountTargetResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CreateMountTargetResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMountTargetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateMountTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMountTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMountTargetResponse) SetHeaders(v map[string]*string) *CreateMountTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMountTargetResponse) SetStatusCode(v int32) *CreateMountTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMountTargetResponse) SetBody(v *CreateMountTargetResponseBody) *CreateMountTargetResponse {
+	s.Body = v
+	return s
+}
+
 type CreateNatGatewayRequest struct {
 	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
@@ -3586,6 +3922,198 @@ func (s *CreateNetworkResponse) SetStatusCode(v int32) *CreateNetworkResponse {
 }
 
 func (s *CreateNetworkResponse) SetBody(v *CreateNetworkResponseBody) *CreateNetworkResponse {
+	s.Body = v
+	return s
+}
+
+type CreateNetworkAclRequest struct {
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	NetworkAclName *string `json:"NetworkAclName,omitempty" xml:"NetworkAclName,omitempty"`
+}
+
+func (s CreateNetworkAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkAclRequest) SetDescription(v string) *CreateNetworkAclRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateNetworkAclRequest) SetNetworkAclName(v string) *CreateNetworkAclRequest {
+	s.NetworkAclName = &v
+	return s
+}
+
+type CreateNetworkAclResponseBody struct {
+	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateNetworkAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkAclResponseBody) SetNetworkAclId(v string) *CreateNetworkAclResponseBody {
+	s.NetworkAclId = &v
+	return s
+}
+
+func (s *CreateNetworkAclResponseBody) SetRequestId(v string) *CreateNetworkAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateNetworkAclResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateNetworkAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateNetworkAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkAclResponse) SetHeaders(v map[string]*string) *CreateNetworkAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateNetworkAclResponse) SetStatusCode(v int32) *CreateNetworkAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateNetworkAclResponse) SetBody(v *CreateNetworkAclResponseBody) *CreateNetworkAclResponse {
+	s.Body = v
+	return s
+}
+
+type CreateNetworkAclEntryRequest struct {
+	CidrBlock           *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Direction           *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	NetworkAclEntryName *string `json:"NetworkAclEntryName,omitempty" xml:"NetworkAclEntryName,omitempty"`
+	NetworkAclId        *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange           *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority            *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s CreateNetworkAclEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkAclEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkAclEntryRequest) SetCidrBlock(v string) *CreateNetworkAclEntryRequest {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *CreateNetworkAclEntryRequest) SetDescription(v string) *CreateNetworkAclEntryRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateNetworkAclEntryRequest) SetDirection(v string) *CreateNetworkAclEntryRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *CreateNetworkAclEntryRequest) SetNetworkAclEntryName(v string) *CreateNetworkAclEntryRequest {
+	s.NetworkAclEntryName = &v
+	return s
+}
+
+func (s *CreateNetworkAclEntryRequest) SetNetworkAclId(v string) *CreateNetworkAclEntryRequest {
+	s.NetworkAclId = &v
+	return s
+}
+
+func (s *CreateNetworkAclEntryRequest) SetPolicy(v string) *CreateNetworkAclEntryRequest {
+	s.Policy = &v
+	return s
+}
+
+func (s *CreateNetworkAclEntryRequest) SetPortRange(v string) *CreateNetworkAclEntryRequest {
+	s.PortRange = &v
+	return s
+}
+
+func (s *CreateNetworkAclEntryRequest) SetPriority(v int32) *CreateNetworkAclEntryRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateNetworkAclEntryRequest) SetProtocol(v string) *CreateNetworkAclEntryRequest {
+	s.Protocol = &v
+	return s
+}
+
+type CreateNetworkAclEntryResponseBody struct {
+	NetworkAclEntryId *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateNetworkAclEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkAclEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkAclEntryResponseBody) SetNetworkAclEntryId(v string) *CreateNetworkAclEntryResponseBody {
+	s.NetworkAclEntryId = &v
+	return s
+}
+
+func (s *CreateNetworkAclEntryResponseBody) SetRequestId(v string) *CreateNetworkAclEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateNetworkAclEntryResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateNetworkAclEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateNetworkAclEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkAclEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkAclEntryResponse) SetHeaders(v map[string]*string) *CreateNetworkAclEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateNetworkAclEntryResponse) SetStatusCode(v int32) *CreateNetworkAclEntryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateNetworkAclEntryResponse) SetBody(v *CreateNetworkAclEntryResponseBody) *CreateNetworkAclEntryResponse {
 	s.Body = v
 	return s
 }
@@ -4139,6 +4667,75 @@ func (s *DeleteEpnInstanceResponse) SetBody(v *DeleteEpnInstanceResponseBody) *D
 	return s
 }
 
+type DeleteFileSystemRequest struct {
+	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+}
+
+func (s DeleteFileSystemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFileSystemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFileSystemRequest) SetEnsRegionId(v string) *DeleteFileSystemRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DeleteFileSystemRequest) SetFileSystemId(v string) *DeleteFileSystemRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+type DeleteFileSystemResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteFileSystemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFileSystemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFileSystemResponseBody) SetRequestId(v string) *DeleteFileSystemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteFileSystemResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFileSystemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFileSystemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFileSystemResponse) SetHeaders(v map[string]*string) *DeleteFileSystemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFileSystemResponse) SetStatusCode(v int32) *DeleteFileSystemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFileSystemResponse) SetBody(v *DeleteFileSystemResponseBody) *DeleteFileSystemResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteForwardEntryRequest struct {
 	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
 }
@@ -4415,6 +5012,81 @@ func (s *DeleteLoadBalancerListenerResponse) SetBody(v *DeleteLoadBalancerListen
 	return s
 }
 
+type DeleteMountTargetRequest struct {
+	EnsRegionId     *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	FileSystemId    *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
+}
+
+func (s DeleteMountTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMountTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMountTargetRequest) SetEnsRegionId(v string) *DeleteMountTargetRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DeleteMountTargetRequest) SetFileSystemId(v string) *DeleteMountTargetRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DeleteMountTargetRequest) SetMountTargetName(v string) *DeleteMountTargetRequest {
+	s.MountTargetName = &v
+	return s
+}
+
+type DeleteMountTargetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteMountTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMountTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMountTargetResponseBody) SetRequestId(v string) *DeleteMountTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteMountTargetResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMountTargetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMountTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMountTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMountTargetResponse) SetHeaders(v map[string]*string) *DeleteMountTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMountTargetResponse) SetStatusCode(v int32) *DeleteMountTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMountTargetResponse) SetBody(v *DeleteMountTargetResponseBody) *DeleteMountTargetResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteNatGatewayRequest struct {
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 }
@@ -4537,6 +5209,132 @@ func (s *DeleteNetworkResponse) SetStatusCode(v int32) *DeleteNetworkResponse {
 }
 
 func (s *DeleteNetworkResponse) SetBody(v *DeleteNetworkResponseBody) *DeleteNetworkResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteNetworkAclRequest struct {
+	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+}
+
+func (s DeleteNetworkAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkAclRequest) SetNetworkAclId(v string) *DeleteNetworkAclRequest {
+	s.NetworkAclId = &v
+	return s
+}
+
+type DeleteNetworkAclResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteNetworkAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkAclResponseBody) SetRequestId(v string) *DeleteNetworkAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteNetworkAclResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteNetworkAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteNetworkAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkAclResponse) SetHeaders(v map[string]*string) *DeleteNetworkAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNetworkAclResponse) SetStatusCode(v int32) *DeleteNetworkAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteNetworkAclResponse) SetBody(v *DeleteNetworkAclResponseBody) *DeleteNetworkAclResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteNetworkAclEntryRequest struct {
+	NetworkAclEntryId *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
+}
+
+func (s DeleteNetworkAclEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkAclEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkAclEntryRequest) SetNetworkAclEntryId(v string) *DeleteNetworkAclEntryRequest {
+	s.NetworkAclEntryId = &v
+	return s
+}
+
+type DeleteNetworkAclEntryResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteNetworkAclEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkAclEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkAclEntryResponseBody) SetRequestId(v string) *DeleteNetworkAclEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteNetworkAclEntryResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteNetworkAclEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteNetworkAclEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkAclEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkAclEntryResponse) SetHeaders(v map[string]*string) *DeleteNetworkAclEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNetworkAclEntryResponse) SetStatusCode(v int32) *DeleteNetworkAclEntryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteNetworkAclEntryResponse) SetBody(v *DeleteNetworkAclEntryResponseBody) *DeleteNetworkAclEntryResponse {
 	s.Body = v
 	return s
 }
@@ -5349,23 +6147,6 @@ func (s *DescribeAvailableResourceResponse) SetStatusCode(v int32) *DescribeAvai
 
 func (s *DescribeAvailableResourceResponse) SetBody(v *DescribeAvailableResourceResponseBody) *DescribeAvailableResourceResponse {
 	s.Body = v
-	return s
-}
-
-type DescribeAvailableResourceInfoRequest struct {
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s DescribeAvailableResourceInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceInfoRequest) SetVersion(v string) *DescribeAvailableResourceInfoRequest {
-	s.Version = &v
 	return s
 }
 
@@ -11910,6 +12691,7 @@ type DescribeInstancesResponseBodyInstancesInstance struct {
 	InstanceId              *string                                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName            *string                                                           `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceResourceType    *string                                                           `json:"InstanceResourceType,omitempty" xml:"InstanceResourceType,omitempty"`
+	InstanceTypeFamily      *string                                                           `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
 	InternetMaxBandwidthIn  *int32                                                            `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
 	InternetMaxBandwidthOut *int32                                                            `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	Memory                  *int32                                                            `json:"Memory,omitempty" xml:"Memory,omitempty"`
@@ -11989,6 +12771,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) SetInstanceName(v strin
 
 func (s *DescribeInstancesResponseBodyInstancesInstance) SetInstanceResourceType(v string) *DescribeInstancesResponseBodyInstancesInstance {
 	s.InstanceResourceType = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetInstanceTypeFamily(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.InstanceTypeFamily = &v
 	return s
 }
 
@@ -14146,6 +14933,164 @@ func (s *DescribeMeasurementDataResponse) SetBody(v *DescribeMeasurementDataResp
 	return s
 }
 
+type DescribeMountTargetsRequest struct {
+	EnsRegionId     *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	FileSystemId    *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeMountTargetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMountTargetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMountTargetsRequest) SetEnsRegionId(v string) *DescribeMountTargetsRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeMountTargetsRequest) SetFileSystemId(v string) *DescribeMountTargetsRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeMountTargetsRequest) SetMountTargetName(v string) *DescribeMountTargetsRequest {
+	s.MountTargetName = &v
+	return s
+}
+
+func (s *DescribeMountTargetsRequest) SetPageNumber(v int32) *DescribeMountTargetsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeMountTargetsRequest) SetPageSize(v int32) *DescribeMountTargetsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeMountTargetsResponseBody struct {
+	MountTargets []*DescribeMountTargetsResponseBodyMountTargets `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Repeated"`
+	PageNumber   *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeMountTargetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMountTargetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMountTargetsResponseBody) SetMountTargets(v []*DescribeMountTargetsResponseBodyMountTargets) *DescribeMountTargetsResponseBody {
+	s.MountTargets = v
+	return s
+}
+
+func (s *DescribeMountTargetsResponseBody) SetPageNumber(v int32) *DescribeMountTargetsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeMountTargetsResponseBody) SetPageSize(v int32) *DescribeMountTargetsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeMountTargetsResponseBody) SetRequestId(v string) *DescribeMountTargetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeMountTargetsResponseBody) SetTotalCount(v int32) *DescribeMountTargetsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeMountTargetsResponseBodyMountTargets struct {
+	EnsRegionId       *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	FileSystemId      *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
+	MountTargetName   *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
+	NetWorkId         *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeMountTargetsResponseBodyMountTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMountTargetsResponseBodyMountTargets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMountTargetsResponseBodyMountTargets) SetEnsRegionId(v string) *DescribeMountTargetsResponseBodyMountTargets {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeMountTargetsResponseBodyMountTargets) SetFileSystemId(v string) *DescribeMountTargetsResponseBodyMountTargets {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeMountTargetsResponseBodyMountTargets) SetMountTargetDomain(v string) *DescribeMountTargetsResponseBodyMountTargets {
+	s.MountTargetDomain = &v
+	return s
+}
+
+func (s *DescribeMountTargetsResponseBodyMountTargets) SetMountTargetName(v string) *DescribeMountTargetsResponseBodyMountTargets {
+	s.MountTargetName = &v
+	return s
+}
+
+func (s *DescribeMountTargetsResponseBodyMountTargets) SetNetWorkId(v string) *DescribeMountTargetsResponseBodyMountTargets {
+	s.NetWorkId = &v
+	return s
+}
+
+func (s *DescribeMountTargetsResponseBodyMountTargets) SetStatus(v string) *DescribeMountTargetsResponseBodyMountTargets {
+	s.Status = &v
+	return s
+}
+
+type DescribeMountTargetsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMountTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMountTargetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMountTargetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMountTargetsResponse) SetHeaders(v map[string]*string) *DescribeMountTargetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMountTargetsResponse) SetStatusCode(v int32) *DescribeMountTargetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMountTargetsResponse) SetBody(v *DescribeMountTargetsResponseBody) *DescribeMountTargetsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeNatGatewaysRequest struct {
 	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -14322,6 +15267,341 @@ func (s *DescribeNatGatewaysResponse) SetBody(v *DescribeNatGatewaysResponseBody
 	return s
 }
 
+type DescribeNetworkAclsRequest struct {
+	NetworkAclId   *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	NetworkAclName *string `json:"NetworkAclName,omitempty" xml:"NetworkAclName,omitempty"`
+	PageNumber     *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s DescribeNetworkAclsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAclsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAclsRequest) SetNetworkAclId(v string) *DescribeNetworkAclsRequest {
+	s.NetworkAclId = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsRequest) SetNetworkAclName(v string) *DescribeNetworkAclsRequest {
+	s.NetworkAclName = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsRequest) SetPageNumber(v string) *DescribeNetworkAclsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsRequest) SetPageSize(v string) *DescribeNetworkAclsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsRequest) SetResourceId(v string) *DescribeNetworkAclsRequest {
+	s.ResourceId = &v
+	return s
+}
+
+type DescribeNetworkAclsResponseBody struct {
+	NetworkAcls []*DescribeNetworkAclsResponseBodyNetworkAcls `json:"NetworkAcls,omitempty" xml:"NetworkAcls,omitempty" type:"Repeated"`
+	PageNumber  *string                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *string                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *string                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeNetworkAclsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAclsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAclsResponseBody) SetNetworkAcls(v []*DescribeNetworkAclsResponseBodyNetworkAcls) *DescribeNetworkAclsResponseBody {
+	s.NetworkAcls = v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBody) SetPageNumber(v string) *DescribeNetworkAclsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBody) SetPageSize(v string) *DescribeNetworkAclsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBody) SetRequestId(v string) *DescribeNetworkAclsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBody) SetTotalCount(v string) *DescribeNetworkAclsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeNetworkAclsResponseBodyNetworkAcls struct {
+	CreationTime      *string                                                        `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description       *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	EgressAclEntries  []*DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries  `json:"EgressAclEntries,omitempty" xml:"EgressAclEntries,omitempty" type:"Repeated"`
+	IngressAclEntries []*DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries `json:"IngressAclEntries,omitempty" xml:"IngressAclEntries,omitempty" type:"Repeated"`
+	NetworkAclId      *string                                                        `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	NetworkAclName    *string                                                        `json:"NetworkAclName,omitempty" xml:"NetworkAclName,omitempty"`
+	Resources         []*DescribeNetworkAclsResponseBodyNetworkAclsResources         `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	Status            *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeNetworkAclsResponseBodyNetworkAcls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAclsResponseBodyNetworkAcls) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAcls) SetCreationTime(v string) *DescribeNetworkAclsResponseBodyNetworkAcls {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAcls) SetDescription(v string) *DescribeNetworkAclsResponseBodyNetworkAcls {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAcls) SetEgressAclEntries(v []*DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) *DescribeNetworkAclsResponseBodyNetworkAcls {
+	s.EgressAclEntries = v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAcls) SetIngressAclEntries(v []*DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) *DescribeNetworkAclsResponseBodyNetworkAcls {
+	s.IngressAclEntries = v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAcls) SetNetworkAclId(v string) *DescribeNetworkAclsResponseBodyNetworkAcls {
+	s.NetworkAclId = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAcls) SetNetworkAclName(v string) *DescribeNetworkAclsResponseBodyNetworkAcls {
+	s.NetworkAclName = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAcls) SetResources(v []*DescribeNetworkAclsResponseBodyNetworkAclsResources) *DescribeNetworkAclsResponseBodyNetworkAcls {
+	s.Resources = v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAcls) SetStatus(v string) *DescribeNetworkAclsResponseBodyNetworkAcls {
+	s.Status = &v
+	return s
+}
+
+type DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries struct {
+	CidrBlock           *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	NetworkAclEntryId   *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
+	NetworkAclEntryName *string `json:"NetworkAclEntryName,omitempty" xml:"NetworkAclEntryName,omitempty"`
+	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange           *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority            *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) SetCidrBlock(v string) *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) SetDescription(v string) *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) SetNetworkAclEntryId(v string) *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries {
+	s.NetworkAclEntryId = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) SetNetworkAclEntryName(v string) *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries {
+	s.NetworkAclEntryName = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) SetPolicy(v string) *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries {
+	s.Policy = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) SetPortRange(v string) *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries {
+	s.PortRange = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) SetPriority(v int32) *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries {
+	s.Priority = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) SetProtocol(v string) *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) SetType(v string) *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries {
+	s.Type = &v
+	return s
+}
+
+type DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries struct {
+	CidrBlock           *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	NetworkAclEntryId   *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
+	NetworkAclEntryName *string `json:"NetworkAclEntryName,omitempty" xml:"NetworkAclEntryName,omitempty"`
+	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange           *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority            *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) SetCidrBlock(v string) *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) SetDescription(v string) *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) SetNetworkAclEntryId(v string) *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries {
+	s.NetworkAclEntryId = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) SetNetworkAclEntryName(v string) *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries {
+	s.NetworkAclEntryName = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) SetPolicy(v string) *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries {
+	s.Policy = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) SetPortRange(v string) *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries {
+	s.PortRange = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) SetPriority(v int32) *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries {
+	s.Priority = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) SetProtocol(v string) *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) SetType(v string) *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries {
+	s.Type = &v
+	return s
+}
+
+type DescribeNetworkAclsResponseBodyNetworkAclsResources struct {
+	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeNetworkAclsResponseBodyNetworkAclsResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAclsResponseBodyNetworkAclsResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsResources) SetEnsRegionId(v string) *DescribeNetworkAclsResponseBodyNetworkAclsResources {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsResources) SetResourceId(v string) *DescribeNetworkAclsResponseBodyNetworkAclsResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsResources) SetResourceType(v string) *DescribeNetworkAclsResponseBodyNetworkAclsResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsResources) SetStatus(v string) *DescribeNetworkAclsResponseBodyNetworkAclsResources {
+	s.Status = &v
+	return s
+}
+
+type DescribeNetworkAclsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeNetworkAclsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeNetworkAclsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAclsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAclsResponse) SetHeaders(v map[string]*string) *DescribeNetworkAclsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponse) SetStatusCode(v int32) *DescribeNetworkAclsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponse) SetBody(v *DescribeNetworkAclsResponseBody) *DescribeNetworkAclsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeNetworkAttributeRequest struct {
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 }
@@ -14345,6 +15625,7 @@ type DescribeNetworkAttributeResponseBody struct {
 	CreatedTime    *string                                             `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	Description    *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
 	EnsRegionId    *string                                             `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	NetworkAclId   *string                                             `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
 	NetworkId      *string                                             `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	NetworkName    *string                                             `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
 	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -14383,6 +15664,11 @@ func (s *DescribeNetworkAttributeResponseBody) SetDescription(v string) *Describ
 
 func (s *DescribeNetworkAttributeResponseBody) SetEnsRegionId(v string) *DescribeNetworkAttributeResponseBody {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBody) SetNetworkAclId(v string) *DescribeNetworkAttributeResponseBody {
+	s.NetworkAclId = &v
 	return s
 }
 
@@ -14851,6 +16137,7 @@ type DescribeNetworksResponseBodyNetworksNetwork struct {
 	CreatedTime   *string                                                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	Description   *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
 	EnsRegionId   *string                                                `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	NetworkAclId  *string                                                `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
 	NetworkId     *string                                                `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	NetworkName   *string                                                `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
 	RouterTableId *string                                                `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
@@ -14883,6 +16170,11 @@ func (s *DescribeNetworksResponseBodyNetworksNetwork) SetDescription(v string) *
 
 func (s *DescribeNetworksResponseBodyNetworksNetwork) SetEnsRegionId(v string) *DescribeNetworksResponseBodyNetworksNetwork {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetwork) SetNetworkAclId(v string) *DescribeNetworksResponseBodyNetworksNetwork {
+	s.NetworkAclId = &v
 	return s
 }
 
@@ -16056,6 +17348,187 @@ func (s *DescribeSecurityGroupsResponse) SetStatusCode(v int32) *DescribeSecurit
 }
 
 func (s *DescribeSecurityGroupsResponse) SetBody(v *DescribeSecurityGroupsResponseBody) *DescribeSecurityGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSelfImagesRequest struct {
+	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName  *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeSelfImagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSelfImagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSelfImagesRequest) SetImageId(v string) *DescribeSelfImagesRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeSelfImagesRequest) SetImageName(v string) *DescribeSelfImagesRequest {
+	s.ImageName = &v
+	return s
+}
+
+func (s *DescribeSelfImagesRequest) SetPageNumber(v int32) *DescribeSelfImagesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSelfImagesRequest) SetPageSize(v int32) *DescribeSelfImagesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeSelfImagesResponseBody struct {
+	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Images    *DescribeSelfImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSelfImagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSelfImagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSelfImagesResponseBody) SetCode(v int32) *DescribeSelfImagesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBody) SetImages(v *DescribeSelfImagesResponseBodyImages) *DescribeSelfImagesResponseBody {
+	s.Images = v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBody) SetRequestId(v string) *DescribeSelfImagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSelfImagesResponseBodyImages struct {
+	Image []*DescribeSelfImagesResponseBodyImagesImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSelfImagesResponseBodyImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSelfImagesResponseBodyImages) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSelfImagesResponseBodyImages) SetImage(v []*DescribeSelfImagesResponseBodyImagesImage) *DescribeSelfImagesResponseBodyImages {
+	s.Image = v
+	return s
+}
+
+type DescribeSelfImagesResponseBodyImagesImage struct {
+	Architecture    *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	CreationTime    *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
+	ImageSize       *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OsVersion       *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
+	Platform        *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeSelfImagesResponseBodyImagesImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSelfImagesResponseBodyImagesImage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetArchitecture(v string) *DescribeSelfImagesResponseBodyImagesImage {
+	s.Architecture = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetCreationTime(v string) *DescribeSelfImagesResponseBodyImagesImage {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetImageId(v string) *DescribeSelfImagesResponseBodyImagesImage {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetImageName(v string) *DescribeSelfImagesResponseBodyImagesImage {
+	s.ImageName = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetImageOwnerAlias(v string) *DescribeSelfImagesResponseBodyImagesImage {
+	s.ImageOwnerAlias = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetImageSize(v string) *DescribeSelfImagesResponseBodyImagesImage {
+	s.ImageSize = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetInstanceId(v string) *DescribeSelfImagesResponseBodyImagesImage {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetOsVersion(v string) *DescribeSelfImagesResponseBodyImagesImage {
+	s.OsVersion = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetPlatform(v string) *DescribeSelfImagesResponseBodyImagesImage {
+	s.Platform = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetStatus(v string) *DescribeSelfImagesResponseBodyImagesImage {
+	s.Status = &v
+	return s
+}
+
+type DescribeSelfImagesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSelfImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSelfImagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSelfImagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSelfImagesResponse) SetHeaders(v map[string]*string) *DescribeSelfImagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSelfImagesResponse) SetStatusCode(v int32) *DescribeSelfImagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponse) SetBody(v *DescribeSelfImagesResponseBody) *DescribeSelfImagesResponse {
 	s.Body = v
 	return s
 }
@@ -18274,6 +19747,81 @@ func (s *ModifyEpnInstanceResponse) SetStatusCode(v int32) *ModifyEpnInstanceRes
 }
 
 func (s *ModifyEpnInstanceResponse) SetBody(v *ModifyEpnInstanceResponseBody) *ModifyEpnInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyFileSystemRequest struct {
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+}
+
+func (s ModifyFileSystemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFileSystemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFileSystemRequest) SetDescription(v string) *ModifyFileSystemRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyFileSystemRequest) SetEnsRegionId(v string) *ModifyFileSystemRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *ModifyFileSystemRequest) SetFileSystemId(v string) *ModifyFileSystemRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+type ModifyFileSystemResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyFileSystemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFileSystemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFileSystemResponseBody) SetRequestId(v string) *ModifyFileSystemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyFileSystemResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyFileSystemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFileSystemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFileSystemResponse) SetHeaders(v map[string]*string) *ModifyFileSystemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyFileSystemResponse) SetStatusCode(v int32) *ModifyFileSystemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyFileSystemResponse) SetBody(v *ModifyFileSystemResponseBody) *ModifyFileSystemResponse {
 	s.Body = v
 	return s
 }
@@ -20887,6 +22435,81 @@ func (s *ResetDeviceInstanceResponse) SetBody(v *ResetDeviceInstanceResponseBody
 	return s
 }
 
+type ResizeDiskRequest struct {
+	DiskId  *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	NewSize *string `json:"NewSize,omitempty" xml:"NewSize,omitempty"`
+}
+
+func (s ResizeDiskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResizeDiskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResizeDiskRequest) SetDiskId(v string) *ResizeDiskRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *ResizeDiskRequest) SetNewSize(v string) *ResizeDiskRequest {
+	s.NewSize = &v
+	return s
+}
+
+type ResizeDiskResponseBody struct {
+	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResizeDiskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResizeDiskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResizeDiskResponseBody) SetOrderId(v string) *ResizeDiskResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ResizeDiskResponseBody) SetRequestId(v string) *ResizeDiskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResizeDiskResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResizeDiskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResizeDiskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResizeDiskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResizeDiskResponse) SetHeaders(v map[string]*string) *ResizeDiskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResizeDiskResponse) SetStatusCode(v int32) *ResizeDiskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResizeDiskResponse) SetBody(v *ResizeDiskResponseBody) *ResizeDiskResponse {
+	s.Body = v
+	return s
+}
+
 type RestartDeviceInstanceRequest struct {
 	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -23308,6 +24931,98 @@ func (s *UnassignPrivateIpAddressesResponse) SetBody(v *UnassignPrivateIpAddress
 	return s
 }
 
+type UnassociateNetworkAclRequest struct {
+	NetworkAclId *string                                 `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	Resource     []*UnassociateNetworkAclRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
+}
+
+func (s UnassociateNetworkAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassociateNetworkAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnassociateNetworkAclRequest) SetNetworkAclId(v string) *UnassociateNetworkAclRequest {
+	s.NetworkAclId = &v
+	return s
+}
+
+func (s *UnassociateNetworkAclRequest) SetResource(v []*UnassociateNetworkAclRequestResource) *UnassociateNetworkAclRequest {
+	s.Resource = v
+	return s
+}
+
+type UnassociateNetworkAclRequestResource struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s UnassociateNetworkAclRequestResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassociateNetworkAclRequestResource) GoString() string {
+	return s.String()
+}
+
+func (s *UnassociateNetworkAclRequestResource) SetResourceId(v string) *UnassociateNetworkAclRequestResource {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *UnassociateNetworkAclRequestResource) SetResourceType(v string) *UnassociateNetworkAclRequestResource {
+	s.ResourceType = &v
+	return s
+}
+
+type UnassociateNetworkAclResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnassociateNetworkAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassociateNetworkAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnassociateNetworkAclResponseBody) SetRequestId(v string) *UnassociateNetworkAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnassociateNetworkAclResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnassociateNetworkAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnassociateNetworkAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassociateNetworkAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnassociateNetworkAclResponse) SetHeaders(v map[string]*string) *UnassociateNetworkAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnassociateNetworkAclResponse) SetStatusCode(v int32) *UnassociateNetworkAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnassociateNetworkAclResponse) SetBody(v *UnassociateNetworkAclResponseBody) *UnassociateNetworkAclResponse {
+	s.Body = v
+	return s
+}
+
 type UpgradeAICInstanceImageRequest struct {
 	ImageId   *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ServerIds []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
@@ -23527,6 +25242,54 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AccosicateNetworkAclWithOptions(request *AccosicateNetworkAclRequest, runtime *util.RuntimeOptions) (_result *AccosicateNetworkAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NetworkAclId)) {
+		query["NetworkAclId"] = request.NetworkAclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AccosicateNetworkAcl"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AccosicateNetworkAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AccosicateNetworkAcl(request *AccosicateNetworkAclRequest) (_result *AccosicateNetworkAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AccosicateNetworkAclResponse{}
+	_body, _err := client.AccosicateNetworkAclWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24512,6 +26275,52 @@ func (client *Client) CreateEpnInstance(request *CreateEpnInstanceRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) CreateFileSystemWithOptions(tmpReq *CreateFileSystemRequest, runtime *util.RuntimeOptions) (_result *CreateFileSystemResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateFileSystemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.OrderDetails)) {
+		request.OrderDetailsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OrderDetails, tea.String("OrderDetails"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFileSystem"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFileSystemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFileSystem(request *CreateFileSystemRequest) (_result *CreateFileSystemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFileSystemResponse{}
+	_body, _err := client.CreateFileSystemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateForwardEntryWithOptions(request *CreateForwardEntryRequest, runtime *util.RuntimeOptions) (_result *CreateForwardEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25328,6 +27137,62 @@ func (client *Client) CreateLoadBalancerUDPListener(request *CreateLoadBalancerU
 	return _result, _err
 }
 
+func (client *Client) CreateMountTargetWithOptions(request *CreateMountTargetRequest, runtime *util.RuntimeOptions) (_result *CreateMountTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountTargetName)) {
+		query["MountTargetName"] = request.MountTargetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetWorkId)) {
+		query["NetWorkId"] = request.NetWorkId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMountTarget"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMountTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateMountTarget(request *CreateMountTargetRequest) (_result *CreateMountTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMountTargetResponse{}
+	_body, _err := client.CreateMountTargetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateNatGatewayWithOptions(request *CreateNatGatewayRequest, runtime *util.RuntimeOptions) (_result *CreateNatGatewayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25437,6 +27302,130 @@ func (client *Client) CreateNetwork(request *CreateNetworkRequest) (_result *Cre
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNetworkResponse{}
 	_body, _err := client.CreateNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateNetworkAclWithOptions(request *CreateNetworkAclRequest, runtime *util.RuntimeOptions) (_result *CreateNetworkAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkAclName)) {
+		query["NetworkAclName"] = request.NetworkAclName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNetworkAcl"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateNetworkAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateNetworkAcl(request *CreateNetworkAclRequest) (_result *CreateNetworkAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateNetworkAclResponse{}
+	_body, _err := client.CreateNetworkAclWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateNetworkAclEntryWithOptions(request *CreateNetworkAclEntryRequest, runtime *util.RuntimeOptions) (_result *CreateNetworkAclEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CidrBlock)) {
+		query["CidrBlock"] = request.CidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkAclEntryName)) {
+		query["NetworkAclEntryName"] = request.NetworkAclEntryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkAclId)) {
+		query["NetworkAclId"] = request.NetworkAclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PortRange)) {
+		query["PortRange"] = request.PortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNetworkAclEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateNetworkAclEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateNetworkAclEntry(request *CreateNetworkAclEntryRequest) (_result *CreateNetworkAclEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateNetworkAclEntryResponse{}
+	_body, _err := client.CreateNetworkAclEntryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25796,6 +27785,46 @@ func (client *Client) DeleteEpnInstance(request *DeleteEpnInstanceRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DeleteFileSystemWithOptions(request *DeleteFileSystemRequest, runtime *util.RuntimeOptions) (_result *DeleteFileSystemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFileSystem"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFileSystemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteFileSystem(request *DeleteFileSystemRequest) (_result *DeleteFileSystemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteFileSystemResponse{}
+	_body, _err := client.DeleteFileSystemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteForwardEntryWithOptions(request *DeleteForwardEntryRequest, runtime *util.RuntimeOptions) (_result *DeleteForwardEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25984,6 +28013,58 @@ func (client *Client) DeleteLoadBalancerListener(request *DeleteLoadBalancerList
 	return _result, _err
 }
 
+func (client *Client) DeleteMountTargetWithOptions(request *DeleteMountTargetRequest, runtime *util.RuntimeOptions) (_result *DeleteMountTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountTargetName)) {
+		query["MountTargetName"] = request.MountTargetName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMountTarget"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMountTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMountTarget(request *DeleteMountTargetRequest) (_result *DeleteMountTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMountTargetResponse{}
+	_body, _err := client.DeleteMountTargetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteNatGatewayWithOptions(request *DeleteNatGatewayRequest, runtime *util.RuntimeOptions) (_result *DeleteNatGatewayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26065,6 +28146,94 @@ func (client *Client) DeleteNetwork(request *DeleteNetworkRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNetworkResponse{}
 	_body, _err := client.DeleteNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteNetworkAclWithOptions(request *DeleteNetworkAclRequest, runtime *util.RuntimeOptions) (_result *DeleteNetworkAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NetworkAclId)) {
+		query["NetworkAclId"] = request.NetworkAclId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNetworkAcl"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteNetworkAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteNetworkAcl(request *DeleteNetworkAclRequest) (_result *DeleteNetworkAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNetworkAclResponse{}
+	_body, _err := client.DeleteNetworkAclWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteNetworkAclEntryWithOptions(request *DeleteNetworkAclEntryRequest, runtime *util.RuntimeOptions) (_result *DeleteNetworkAclEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NetworkAclEntryId)) {
+		query["NetworkAclEntryId"] = request.NetworkAclEntryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNetworkAclEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteNetworkAclEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteNetworkAclEntry(request *DeleteNetworkAclEntryRequest) (_result *DeleteNetworkAclEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNetworkAclEntryResponse{}
+	_body, _err := client.DeleteNetworkAclEntryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26410,19 +28579,8 @@ func (client *Client) DescribeAvailableResource(request *DescribeAvailableResour
 	return _result, _err
 }
 
-func (client *Client) DescribeAvailableResourceInfoWithOptions(request *DescribeAvailableResourceInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeAvailableResourceInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+func (client *Client) DescribeAvailableResourceInfoWithOptions(runtime *util.RuntimeOptions) (_result *DescribeAvailableResourceInfoResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeAvailableResourceInfo"),
 		Version:     tea.String("2017-11-10"),
@@ -26443,10 +28601,10 @@ func (client *Client) DescribeAvailableResourceInfoWithOptions(request *Describe
 	return _result, _err
 }
 
-func (client *Client) DescribeAvailableResourceInfo(request *DescribeAvailableResourceInfoRequest) (_result *DescribeAvailableResourceInfoResponse, _err error) {
+func (client *Client) DescribeAvailableResourceInfo() (_result *DescribeAvailableResourceInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAvailableResourceInfoResponse{}
-	_body, _err := client.DescribeAvailableResourceInfoWithOptions(request, runtime)
+	_body, _err := client.DescribeAvailableResourceInfoWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28984,6 +31142,66 @@ func (client *Client) DescribeMeasurementData(request *DescribeMeasurementDataRe
 	return _result, _err
 }
 
+func (client *Client) DescribeMountTargetsWithOptions(request *DescribeMountTargetsRequest, runtime *util.RuntimeOptions) (_result *DescribeMountTargetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountTargetName)) {
+		query["MountTargetName"] = request.MountTargetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMountTargets"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMountTargetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMountTargets(request *DescribeMountTargetsRequest) (_result *DescribeMountTargetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMountTargetsResponse{}
+	_body, _err := client.DescribeMountTargetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeNatGatewaysWithOptions(request *DescribeNatGatewaysRequest, runtime *util.RuntimeOptions) (_result *DescribeNatGatewaysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29017,6 +31235,46 @@ func (client *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNatGatewaysResponse{}
 	_body, _err := client.DescribeNatGatewaysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeNetworkAclsWithOptions(request *DescribeNetworkAclsRequest, runtime *util.RuntimeOptions) (_result *DescribeNetworkAclsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNetworkAcls"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNetworkAclsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeNetworkAcls(request *DescribeNetworkAclsRequest) (_result *DescribeNetworkAclsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNetworkAclsResponse{}
+	_body, _err := client.DescribeNetworkAclsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29515,6 +31773,62 @@ func (client *Client) DescribeSecurityGroups(request *DescribeSecurityGroupsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSecurityGroupsResponse{}
 	_body, _err := client.DescribeSecurityGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSelfImagesWithOptions(request *DescribeSelfImagesRequest, runtime *util.RuntimeOptions) (_result *DescribeSelfImagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		query["ImageName"] = request.ImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSelfImages"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSelfImagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSelfImages(request *DescribeSelfImagesRequest) (_result *DescribeSelfImagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSelfImagesResponse{}
+	_body, _err := client.DescribeSelfImagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30515,6 +32829,58 @@ func (client *Client) ModifyEpnInstance(request *ModifyEpnInstanceRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyEpnInstanceResponse{}
 	_body, _err := client.ModifyEpnInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyFileSystemWithOptions(request *ModifyFileSystemRequest, runtime *util.RuntimeOptions) (_result *ModifyFileSystemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyFileSystem"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyFileSystemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyFileSystem(request *ModifyFileSystemRequest) (_result *ModifyFileSystemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyFileSystemResponse{}
+	_body, _err := client.ModifyFileSystemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32078,6 +34444,54 @@ func (client *Client) ResetDeviceInstance(request *ResetDeviceInstanceRequest) (
 	return _result, _err
 }
 
+func (client *Client) ResizeDiskWithOptions(request *ResizeDiskRequest, runtime *util.RuntimeOptions) (_result *ResizeDiskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewSize)) {
+		query["NewSize"] = request.NewSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResizeDisk"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResizeDiskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResizeDisk(request *ResizeDiskRequest) (_result *ResizeDiskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResizeDiskResponse{}
+	_body, _err := client.ResizeDiskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RestartDeviceInstanceWithOptions(request *RestartDeviceInstanceRequest, runtime *util.RuntimeOptions) (_result *RestartDeviceInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33435,6 +35849,54 @@ func (client *Client) UnassignPrivateIpAddresses(request *UnassignPrivateIpAddre
 	runtime := &util.RuntimeOptions{}
 	_result = &UnassignPrivateIpAddressesResponse{}
 	_body, _err := client.UnassignPrivateIpAddressesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnassociateNetworkAclWithOptions(request *UnassociateNetworkAclRequest, runtime *util.RuntimeOptions) (_result *UnassociateNetworkAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NetworkAclId)) {
+		query["NetworkAclId"] = request.NetworkAclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnassociateNetworkAcl"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnassociateNetworkAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnassociateNetworkAcl(request *UnassociateNetworkAclRequest) (_result *UnassociateNetworkAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnassociateNetworkAclResponse{}
+	_body, _err := client.UnassociateNetworkAclWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
