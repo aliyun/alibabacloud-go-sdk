@@ -18549,6 +18549,147 @@ func (s *ListGatewaySlbResponse) SetBody(v *ListGatewaySlbResponseBody) *ListGat
 	return s
 }
 
+type ListInstanceCountRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ClusterType    *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
+	MseVersion     *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+}
+
+func (s ListInstanceCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceCountRequest) SetAcceptLanguage(v string) *ListInstanceCountRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListInstanceCountRequest) SetClusterType(v string) *ListInstanceCountRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *ListInstanceCountRequest) SetMseSessionId(v string) *ListInstanceCountRequest {
+	s.MseSessionId = &v
+	return s
+}
+
+func (s *ListInstanceCountRequest) SetMseVersion(v string) *ListInstanceCountRequest {
+	s.MseVersion = &v
+	return s
+}
+
+func (s *ListInstanceCountRequest) SetRegionId(v string) *ListInstanceCountRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListInstanceCountRequest) SetRequestPars(v string) *ListInstanceCountRequest {
+	s.RequestPars = &v
+	return s
+}
+
+type ListInstanceCountResponseBody struct {
+	Code           *int32   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           []*int32 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	DynamicCode    *string  `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string  `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListInstanceCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceCountResponseBody) SetCode(v int32) *ListInstanceCountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListInstanceCountResponseBody) SetData(v []*int32) *ListInstanceCountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListInstanceCountResponseBody) SetDynamicCode(v string) *ListInstanceCountResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListInstanceCountResponseBody) SetDynamicMessage(v string) *ListInstanceCountResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListInstanceCountResponseBody) SetErrorCode(v string) *ListInstanceCountResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListInstanceCountResponseBody) SetHttpStatusCode(v int32) *ListInstanceCountResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListInstanceCountResponseBody) SetMessage(v string) *ListInstanceCountResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListInstanceCountResponseBody) SetRequestId(v string) *ListInstanceCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceCountResponseBody) SetSuccess(v bool) *ListInstanceCountResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListInstanceCountResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstanceCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInstanceCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceCountResponse) SetHeaders(v map[string]*string) *ListInstanceCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceCountResponse) SetStatusCode(v int32) *ListInstanceCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstanceCountResponse) SetBody(v *ListInstanceCountResponseBody) *ListInstanceCountResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstancesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
@@ -22707,6 +22848,7 @@ type QueryClusterSpecificationRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ConnectType    *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
 	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
+	MseVersion     *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 }
 
 func (s QueryClusterSpecificationRequest) String() string {
@@ -22729,6 +22871,11 @@ func (s *QueryClusterSpecificationRequest) SetConnectType(v string) *QueryCluste
 
 func (s *QueryClusterSpecificationRequest) SetMseSessionId(v string) *QueryClusterSpecificationRequest {
 	s.MseSessionId = &v
+	return s
+}
+
+func (s *QueryClusterSpecificationRequest) SetMseVersion(v string) *QueryClusterSpecificationRequest {
+	s.MseVersion = &v
 	return s
 }
 
@@ -35934,6 +36081,70 @@ func (client *Client) ListGatewaySlb(request *ListGatewaySlbRequest) (_result *L
 	return _result, _err
 }
 
+func (client *Client) ListInstanceCountWithOptions(request *ListInstanceCountRequest, runtime *util.RuntimeOptions) (_result *ListInstanceCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
+		query["MseSessionId"] = request.MseSessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MseVersion)) {
+		query["MseVersion"] = request.MseVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
+		query["RequestPars"] = request.RequestPars
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceCount"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInstanceCount(request *ListInstanceCountRequest) (_result *ListInstanceCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInstanceCountResponse{}
+	_body, _err := client.ListInstanceCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37206,6 +37417,10 @@ func (client *Client) QueryClusterSpecificationWithOptions(request *QueryCluster
 
 	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
 		query["MseSessionId"] = request.MseSessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MseVersion)) {
+		query["MseVersion"] = request.MseVersion
 	}
 
 	req := &openapi.OpenApiRequest{
