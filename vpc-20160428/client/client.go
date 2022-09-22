@@ -8,7 +8,7 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -20399,6 +20399,7 @@ type DescribeForwardTableEntriesRequest struct {
 	InternalIp           *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
 	InternalPort         *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
 	IpProtocol           *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	NatGatewayId         *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -20453,6 +20454,11 @@ func (s *DescribeForwardTableEntriesRequest) SetInternalPort(v string) *Describe
 
 func (s *DescribeForwardTableEntriesRequest) SetIpProtocol(v string) *DescribeForwardTableEntriesRequest {
 	s.IpProtocol = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesRequest) SetNatGatewayId(v string) *DescribeForwardTableEntriesRequest {
+	s.NatGatewayId = &v
 	return s
 }
 
@@ -25234,6 +25240,7 @@ type DescribePhysicalConnectionsRequest struct {
 	RegionId               *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount   *string                                     `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId        *int64                                      `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tags                   []*DescribePhysicalConnectionsRequestTags   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribePhysicalConnectionsRequest) String() string {
@@ -25294,6 +25301,11 @@ func (s *DescribePhysicalConnectionsRequest) SetResourceOwnerId(v int64) *Descri
 	return s
 }
 
+func (s *DescribePhysicalConnectionsRequest) SetTags(v []*DescribePhysicalConnectionsRequestTags) *DescribePhysicalConnectionsRequest {
+	s.Tags = v
+	return s
+}
+
 type DescribePhysicalConnectionsRequestFilter struct {
 	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
@@ -25314,6 +25326,29 @@ func (s *DescribePhysicalConnectionsRequestFilter) SetKey(v string) *DescribePhy
 
 func (s *DescribePhysicalConnectionsRequestFilter) SetValue(v []*string) *DescribePhysicalConnectionsRequestFilter {
 	s.Value = v
+	return s
+}
+
+type DescribePhysicalConnectionsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribePhysicalConnectionsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhysicalConnectionsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhysicalConnectionsRequestTags) SetKey(v string) *DescribePhysicalConnectionsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionsRequestTags) SetValue(v string) *DescribePhysicalConnectionsRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -27483,6 +27518,7 @@ type DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType s
 	CrossBorder                     *bool   `json:"CrossBorder,omitempty" xml:"CrossBorder,omitempty"`
 	Description                     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EndTime                         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FastLinkMode                    *bool   `json:"FastLinkMode,omitempty" xml:"FastLinkMode,omitempty"`
 	HasReservationData              *string `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
 	HcRate                          *int32  `json:"HcRate,omitempty" xml:"HcRate,omitempty"`
 	HcThreshold                     *int32  `json:"HcThreshold,omitempty" xml:"HcThreshold,omitempty"`
@@ -27564,6 +27600,11 @@ func (s *DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceTy
 
 func (s *DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType) SetEndTime(v string) *DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType) SetFastLinkMode(v bool) *DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType {
+	s.FastLinkMode = &v
 	return s
 }
 
@@ -27899,6 +27940,7 @@ func (s *DescribeServerRelatedGlobalAccelerationInstancesResponse) SetBody(v *De
 }
 
 type DescribeSnatTableEntriesRequest struct {
+	NatGatewayId         *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -27920,6 +27962,11 @@ func (s DescribeSnatTableEntriesRequest) String() string {
 
 func (s DescribeSnatTableEntriesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSnatTableEntriesRequest) SetNatGatewayId(v string) *DescribeSnatTableEntriesRequest {
+	s.NatGatewayId = &v
+	return s
 }
 
 func (s *DescribeSnatTableEntriesRequest) SetOwnerAccount(v string) *DescribeSnatTableEntriesRequest {
@@ -37878,6 +37925,7 @@ type ListFullNatEntriesRequest struct {
 	FullNatTableId       *string   `json:"FullNatTableId,omitempty" xml:"FullNatTableId,omitempty"`
 	IpProtocol           *string   `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	MaxResults           *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NatGatewayId         *string   `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	NetworkInterfaceIds  []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
 	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -37922,6 +37970,11 @@ func (s *ListFullNatEntriesRequest) SetIpProtocol(v string) *ListFullNatEntriesR
 
 func (s *ListFullNatEntriesRequest) SetMaxResults(v int64) *ListFullNatEntriesRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ListFullNatEntriesRequest) SetNatGatewayId(v string) *ListFullNatEntriesRequest {
+	s.NatGatewayId = &v
 	return s
 }
 
@@ -40136,6 +40189,210 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
+type ListTagResourcesForExpressConnectRequest struct {
+	MaxResults           *int32                                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount         *string                                        `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId           []*string                                      `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string                                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType         *string                                        `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag                  []*ListTagResourcesForExpressConnectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesForExpressConnectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesForExpressConnectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesForExpressConnectRequest) SetMaxResults(v int32) *ListTagResourcesForExpressConnectRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectRequest) SetNextToken(v string) *ListTagResourcesForExpressConnectRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectRequest) SetOwnerAccount(v string) *ListTagResourcesForExpressConnectRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectRequest) SetOwnerId(v int64) *ListTagResourcesForExpressConnectRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectRequest) SetRegionId(v string) *ListTagResourcesForExpressConnectRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectRequest) SetResourceId(v []*string) *ListTagResourcesForExpressConnectRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectRequest) SetResourceOwnerAccount(v string) *ListTagResourcesForExpressConnectRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectRequest) SetResourceOwnerId(v int64) *ListTagResourcesForExpressConnectRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectRequest) SetResourceType(v string) *ListTagResourcesForExpressConnectRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectRequest) SetTag(v []*ListTagResourcesForExpressConnectRequestTag) *ListTagResourcesForExpressConnectRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesForExpressConnectRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesForExpressConnectRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesForExpressConnectRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesForExpressConnectRequestTag) SetKey(v string) *ListTagResourcesForExpressConnectRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectRequestTag) SetValue(v string) *ListTagResourcesForExpressConnectRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesForExpressConnectResponseBody struct {
+	NextToken    *string                                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources *ListTagResourcesForExpressConnectResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
+}
+
+func (s ListTagResourcesForExpressConnectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesForExpressConnectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesForExpressConnectResponseBody) SetNextToken(v string) *ListTagResourcesForExpressConnectResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectResponseBody) SetRequestId(v string) *ListTagResourcesForExpressConnectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectResponseBody) SetTagResources(v *ListTagResourcesForExpressConnectResponseBodyTagResources) *ListTagResourcesForExpressConnectResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesForExpressConnectResponseBodyTagResources struct {
+	TagResource []*ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesForExpressConnectResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesForExpressConnectResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesForExpressConnectResponseBodyTagResources) SetTagResource(v []*ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource) *ListTagResourcesForExpressConnectResponseBodyTagResources {
+	s.TagResource = v
+	return s
+}
+
+type ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource) SetResourceId(v string) *ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource) SetTagKey(v string) *ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesForExpressConnectResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesForExpressConnectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTagResourcesForExpressConnectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesForExpressConnectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesForExpressConnectResponse) SetHeaders(v map[string]*string) *ListTagResourcesForExpressConnectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectResponse) SetStatusCode(v int32) *ListTagResourcesForExpressConnectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesForExpressConnectResponse) SetBody(v *ListTagResourcesForExpressConnectResponseBody) *ListTagResourcesForExpressConnectResponse {
+	s.Body = v
+	return s
+}
+
 type ListTrafficMirrorFiltersRequest struct {
 	MaxResults              *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken               *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -40721,16 +40978,17 @@ func (s *ListTrafficMirrorSessionsResponse) SetBody(v *ListTrafficMirrorSessions
 }
 
 type ListVirtualPhysicalConnectionsRequest struct {
-	IsConfirmed                             *bool     `json:"IsConfirmed,omitempty" xml:"IsConfirmed,omitempty"`
-	MaxResults                              *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                               *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PhysicalConnectionId                    *string   `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	RegionId                                *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VirtualPhysicalConnectionAliUids        []*string `json:"VirtualPhysicalConnectionAliUids,omitempty" xml:"VirtualPhysicalConnectionAliUids,omitempty" type:"Repeated"`
-	VirtualPhysicalConnectionBusinessStatus *string   `json:"VirtualPhysicalConnectionBusinessStatus,omitempty" xml:"VirtualPhysicalConnectionBusinessStatus,omitempty"`
-	VirtualPhysicalConnectionIds            []*string `json:"VirtualPhysicalConnectionIds,omitempty" xml:"VirtualPhysicalConnectionIds,omitempty" type:"Repeated"`
-	VirtualPhysicalConnectionStatuses       []*string `json:"VirtualPhysicalConnectionStatuses,omitempty" xml:"VirtualPhysicalConnectionStatuses,omitempty" type:"Repeated"`
-	VlanIds                                 []*string `json:"VlanIds,omitempty" xml:"VlanIds,omitempty" type:"Repeated"`
+	IsConfirmed                             *bool                                        `json:"IsConfirmed,omitempty" xml:"IsConfirmed,omitempty"`
+	MaxResults                              *int32                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                               *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PhysicalConnectionId                    *string                                      `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
+	RegionId                                *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tags                                    []*ListVirtualPhysicalConnectionsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VirtualPhysicalConnectionAliUids        []*string                                    `json:"VirtualPhysicalConnectionAliUids,omitempty" xml:"VirtualPhysicalConnectionAliUids,omitempty" type:"Repeated"`
+	VirtualPhysicalConnectionBusinessStatus *string                                      `json:"VirtualPhysicalConnectionBusinessStatus,omitempty" xml:"VirtualPhysicalConnectionBusinessStatus,omitempty"`
+	VirtualPhysicalConnectionIds            []*string                                    `json:"VirtualPhysicalConnectionIds,omitempty" xml:"VirtualPhysicalConnectionIds,omitempty" type:"Repeated"`
+	VirtualPhysicalConnectionStatuses       []*string                                    `json:"VirtualPhysicalConnectionStatuses,omitempty" xml:"VirtualPhysicalConnectionStatuses,omitempty" type:"Repeated"`
+	VlanIds                                 []*string                                    `json:"VlanIds,omitempty" xml:"VlanIds,omitempty" type:"Repeated"`
 }
 
 func (s ListVirtualPhysicalConnectionsRequest) String() string {
@@ -40766,6 +41024,11 @@ func (s *ListVirtualPhysicalConnectionsRequest) SetRegionId(v string) *ListVirtu
 	return s
 }
 
+func (s *ListVirtualPhysicalConnectionsRequest) SetTags(v []*ListVirtualPhysicalConnectionsRequestTags) *ListVirtualPhysicalConnectionsRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *ListVirtualPhysicalConnectionsRequest) SetVirtualPhysicalConnectionAliUids(v []*string) *ListVirtualPhysicalConnectionsRequest {
 	s.VirtualPhysicalConnectionAliUids = v
 	return s
@@ -40788,6 +41051,29 @@ func (s *ListVirtualPhysicalConnectionsRequest) SetVirtualPhysicalConnectionStat
 
 func (s *ListVirtualPhysicalConnectionsRequest) SetVlanIds(v []*string) *ListVirtualPhysicalConnectionsRequest {
 	s.VlanIds = v
+	return s
+}
+
+type ListVirtualPhysicalConnectionsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListVirtualPhysicalConnectionsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVirtualPhysicalConnectionsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListVirtualPhysicalConnectionsRequestTags) SetKey(v string) *ListVirtualPhysicalConnectionsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListVirtualPhysicalConnectionsRequestTags) SetValue(v string) *ListVirtualPhysicalConnectionsRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -50068,6 +50354,134 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 	return s
 }
 
+type TagResourcesForExpressConnectRequest struct {
+	OwnerAccount         *string                                    `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId           []*string                                  `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string                                    `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                     `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType         *string                                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag                  []*TagResourcesForExpressConnectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesForExpressConnectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesForExpressConnectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesForExpressConnectRequest) SetOwnerAccount(v string) *TagResourcesForExpressConnectRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *TagResourcesForExpressConnectRequest) SetOwnerId(v int64) *TagResourcesForExpressConnectRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *TagResourcesForExpressConnectRequest) SetRegionId(v string) *TagResourcesForExpressConnectRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *TagResourcesForExpressConnectRequest) SetResourceId(v []*string) *TagResourcesForExpressConnectRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesForExpressConnectRequest) SetResourceOwnerAccount(v string) *TagResourcesForExpressConnectRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *TagResourcesForExpressConnectRequest) SetResourceOwnerId(v int64) *TagResourcesForExpressConnectRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *TagResourcesForExpressConnectRequest) SetResourceType(v string) *TagResourcesForExpressConnectRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesForExpressConnectRequest) SetTag(v []*TagResourcesForExpressConnectRequestTag) *TagResourcesForExpressConnectRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesForExpressConnectRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesForExpressConnectRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesForExpressConnectRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesForExpressConnectRequestTag) SetKey(v string) *TagResourcesForExpressConnectRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesForExpressConnectRequestTag) SetValue(v string) *TagResourcesForExpressConnectRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesForExpressConnectResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TagResourcesForExpressConnectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesForExpressConnectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesForExpressConnectResponseBody) SetRequestId(v string) *TagResourcesForExpressConnectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TagResourcesForExpressConnectResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TagResourcesForExpressConnectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TagResourcesForExpressConnectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesForExpressConnectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesForExpressConnectResponse) SetHeaders(v map[string]*string) *TagResourcesForExpressConnectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesForExpressConnectResponse) SetStatusCode(v int32) *TagResourcesForExpressConnectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesForExpressConnectResponse) SetBody(v *TagResourcesForExpressConnectResponseBody) *TagResourcesForExpressConnectResponse {
+	s.Body = v
+	return s
+}
+
 type TerminatePhysicalConnectionRequest struct {
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -51143,6 +51557,117 @@ func (s *UnassociateVpcCidrBlockResponse) SetStatusCode(v int32) *UnassociateVpc
 }
 
 func (s *UnassociateVpcCidrBlockResponse) SetBody(v *UnassociateVpcCidrBlockResponseBody) *UnassociateVpcCidrBlockResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesForExpressConnectRequest struct {
+	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey               []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesForExpressConnectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesForExpressConnectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesForExpressConnectRequest) SetAll(v bool) *UntagResourcesForExpressConnectRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesForExpressConnectRequest) SetOwnerAccount(v string) *UntagResourcesForExpressConnectRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UntagResourcesForExpressConnectRequest) SetOwnerId(v int64) *UntagResourcesForExpressConnectRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UntagResourcesForExpressConnectRequest) SetRegionId(v string) *UntagResourcesForExpressConnectRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UntagResourcesForExpressConnectRequest) SetResourceId(v []*string) *UntagResourcesForExpressConnectRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesForExpressConnectRequest) SetResourceOwnerAccount(v string) *UntagResourcesForExpressConnectRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UntagResourcesForExpressConnectRequest) SetResourceOwnerId(v int64) *UntagResourcesForExpressConnectRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UntagResourcesForExpressConnectRequest) SetResourceType(v string) *UntagResourcesForExpressConnectRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesForExpressConnectRequest) SetTagKey(v []*string) *UntagResourcesForExpressConnectRequest {
+	s.TagKey = v
+	return s
+}
+
+type UntagResourcesForExpressConnectResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UntagResourcesForExpressConnectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesForExpressConnectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesForExpressConnectResponseBody) SetRequestId(v string) *UntagResourcesForExpressConnectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UntagResourcesForExpressConnectResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UntagResourcesForExpressConnectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UntagResourcesForExpressConnectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesForExpressConnectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesForExpressConnectResponse) SetHeaders(v map[string]*string) *UntagResourcesForExpressConnectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesForExpressConnectResponse) SetStatusCode(v int32) *UntagResourcesForExpressConnectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesForExpressConnectResponse) SetBody(v *UntagResourcesForExpressConnectResponseBody) *UntagResourcesForExpressConnectResponse {
 	s.Body = v
 	return s
 }
@@ -64913,6 +65438,10 @@ func (client *Client) DescribeForwardTableEntriesWithOptions(request *DescribeFo
 		query["IpProtocol"] = request.IpProtocol
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -66397,6 +66926,10 @@ func (client *Client) DescribePhysicalConnectionsWithOptions(request *DescribePh
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -67061,6 +67594,10 @@ func (client *Client) DescribeSnatTableEntriesWithOptions(request *DescribeSnatT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -70493,6 +71030,10 @@ func (client *Client) ListFullNatEntriesWithOptions(request *ListFullNatEntriesR
 		query["MaxResults"] = request.MaxResults
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceIds)) {
 		query["NetworkInterfaceIds"] = request.NetworkInterfaceIds
 	}
@@ -71307,6 +71848,86 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) ListTagResourcesForExpressConnectWithOptions(request *ListTagResourcesForExpressConnectRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesForExpressConnectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResourcesForExpressConnect"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesForExpressConnectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTagResourcesForExpressConnect(request *ListTagResourcesForExpressConnectRequest) (_result *ListTagResourcesForExpressConnectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesForExpressConnectResponse{}
+	_body, _err := client.ListTagResourcesForExpressConnectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTrafficMirrorFiltersWithOptions(request *ListTrafficMirrorFiltersRequest, runtime *util.RuntimeOptions) (_result *ListTrafficMirrorFiltersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71507,6 +72128,10 @@ func (client *Client) ListVirtualPhysicalConnectionsWithOptions(request *ListVir
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VirtualPhysicalConnectionAliUids)) {
@@ -76987,6 +77612,78 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+func (client *Client) TagResourcesForExpressConnectWithOptions(request *TagResourcesForExpressConnectRequest, runtime *util.RuntimeOptions) (_result *TagResourcesForExpressConnectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResourcesForExpressConnect"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesForExpressConnectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TagResourcesForExpressConnect(request *TagResourcesForExpressConnectRequest) (_result *TagResourcesForExpressConnectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesForExpressConnectResponse{}
+	_body, _err := client.TagResourcesForExpressConnectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) TerminatePhysicalConnectionWithOptions(request *TerminatePhysicalConnectionRequest, runtime *util.RuntimeOptions) (_result *TerminatePhysicalConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -77716,6 +78413,82 @@ func (client *Client) UnassociateVpcCidrBlock(request *UnassociateVpcCidrBlockRe
 	runtime := &util.RuntimeOptions{}
 	_result = &UnassociateVpcCidrBlockResponse{}
 	_body, _err := client.UnassociateVpcCidrBlockWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UntagResourcesForExpressConnectWithOptions(request *UntagResourcesForExpressConnectRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesForExpressConnectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResourcesForExpressConnect"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesForExpressConnectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UntagResourcesForExpressConnect(request *UntagResourcesForExpressConnectRequest) (_result *UntagResourcesForExpressConnectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UntagResourcesForExpressConnectResponse{}
+	_body, _err := client.UntagResourcesForExpressConnectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
