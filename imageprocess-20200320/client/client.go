@@ -8,12 +8,11 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
@@ -479,8 +478,8 @@ func (s *ClassifyFNFRequest) SetTracerId(v string) *ClassifyFNFRequest {
 }
 
 type ClassifyFNFAdvanceRequest struct {
-	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
 	DataFormat     *string   `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	ImageUrlObject io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	OrgId          *string   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	OrgName        *string   `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	TracerId       *string   `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
@@ -494,13 +493,13 @@ func (s ClassifyFNFAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ClassifyFNFAdvanceRequest) SetImageUrlObject(v io.Reader) *ClassifyFNFAdvanceRequest {
-	s.ImageUrlObject = v
+func (s *ClassifyFNFAdvanceRequest) SetDataFormat(v string) *ClassifyFNFAdvanceRequest {
+	s.DataFormat = &v
 	return s
 }
 
-func (s *ClassifyFNFAdvanceRequest) SetDataFormat(v string) *ClassifyFNFAdvanceRequest {
-	s.DataFormat = &v
+func (s *ClassifyFNFAdvanceRequest) SetImageUrlObject(v io.Reader) *ClassifyFNFAdvanceRequest {
+	s.ImageUrlObject = v
 	return s
 }
 
@@ -839,8 +838,8 @@ func (s *DetectHipKeypointXRayRequest) SetTracerId(v string) *DetectHipKeypointX
 }
 
 type DetectHipKeypointXRayAdvanceRequest struct {
-	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
 	DataFormat     *string   `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	ImageUrlObject io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	OrgId          *string   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	OrgName        *string   `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	TracerId       *string   `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
@@ -854,13 +853,13 @@ func (s DetectHipKeypointXRayAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetectHipKeypointXRayAdvanceRequest) SetImageUrlObject(v io.Reader) *DetectHipKeypointXRayAdvanceRequest {
-	s.ImageUrlObject = v
+func (s *DetectHipKeypointXRayAdvanceRequest) SetDataFormat(v string) *DetectHipKeypointXRayAdvanceRequest {
+	s.DataFormat = &v
 	return s
 }
 
-func (s *DetectHipKeypointXRayAdvanceRequest) SetDataFormat(v string) *DetectHipKeypointXRayAdvanceRequest {
-	s.DataFormat = &v
+func (s *DetectHipKeypointXRayAdvanceRequest) SetImageUrlObject(v io.Reader) *DetectHipKeypointXRayAdvanceRequest {
+	s.ImageUrlObject = v
 	return s
 }
 
@@ -1060,8 +1059,8 @@ func (s *DetectKneeKeypointXRayRequest) SetTracerId(v string) *DetectKneeKeypoin
 }
 
 type DetectKneeKeypointXRayAdvanceRequest struct {
-	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
 	DataFormat     *string   `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	ImageUrlObject io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	OrgId          *string   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	OrgName        *string   `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	TracerId       *string   `json:"TracerId,omitempty" xml:"TracerId,omitempty"`
@@ -1075,13 +1074,13 @@ func (s DetectKneeKeypointXRayAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetectKneeKeypointXRayAdvanceRequest) SetImageUrlObject(v io.Reader) *DetectKneeKeypointXRayAdvanceRequest {
-	s.ImageUrlObject = v
+func (s *DetectKneeKeypointXRayAdvanceRequest) SetDataFormat(v string) *DetectKneeKeypointXRayAdvanceRequest {
+	s.DataFormat = &v
 	return s
 }
 
-func (s *DetectKneeKeypointXRayAdvanceRequest) SetDataFormat(v string) *DetectKneeKeypointXRayAdvanceRequest {
-	s.DataFormat = &v
+func (s *DetectKneeKeypointXRayAdvanceRequest) SetImageUrlObject(v io.Reader) *DetectKneeKeypointXRayAdvanceRequest {
+	s.ImageUrlObject = v
 	return s
 }
 
@@ -1275,10 +1274,10 @@ func (s *DetectKneeXRayRequest) SetUrl(v string) *DetectKneeXRayRequest {
 }
 
 type DetectKneeXRayAdvanceRequest struct {
-	UrlObject  io.Reader `json:"UrlObject,omitempty" xml:"UrlObject,omitempty" require:"true"`
 	DataFormat *string   `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	OrgId      *string   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	OrgName    *string   `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	UrlObject  io.Reader `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DetectKneeXRayAdvanceRequest) String() string {
@@ -1287,11 +1286,6 @@ func (s DetectKneeXRayAdvanceRequest) String() string {
 
 func (s DetectKneeXRayAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DetectKneeXRayAdvanceRequest) SetUrlObject(v io.Reader) *DetectKneeXRayAdvanceRequest {
-	s.UrlObject = v
-	return s
 }
 
 func (s *DetectKneeXRayAdvanceRequest) SetDataFormat(v string) *DetectKneeXRayAdvanceRequest {
@@ -1306,6 +1300,11 @@ func (s *DetectKneeXRayAdvanceRequest) SetOrgId(v string) *DetectKneeXRayAdvance
 
 func (s *DetectKneeXRayAdvanceRequest) SetOrgName(v string) *DetectKneeXRayAdvanceRequest {
 	s.OrgName = &v
+	return s
+}
+
+func (s *DetectKneeXRayAdvanceRequest) SetUrlObject(v io.Reader) *DetectKneeXRayAdvanceRequest {
+	s.UrlObject = v
 	return s
 }
 
@@ -2186,9 +2185,9 @@ func (s *DetectSkinDiseaseRequest) SetUrl(v string) *DetectSkinDiseaseRequest {
 }
 
 type DetectSkinDiseaseAdvanceRequest struct {
-	UrlObject io.Reader `json:"UrlObject,omitempty" xml:"UrlObject,omitempty" require:"true"`
 	OrgId     *string   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	OrgName   *string   `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	UrlObject io.Reader `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DetectSkinDiseaseAdvanceRequest) String() string {
@@ -2199,11 +2198,6 @@ func (s DetectSkinDiseaseAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetectSkinDiseaseAdvanceRequest) SetUrlObject(v io.Reader) *DetectSkinDiseaseAdvanceRequest {
-	s.UrlObject = v
-	return s
-}
-
 func (s *DetectSkinDiseaseAdvanceRequest) SetOrgId(v string) *DetectSkinDiseaseAdvanceRequest {
 	s.OrgId = &v
 	return s
@@ -2211,6 +2205,11 @@ func (s *DetectSkinDiseaseAdvanceRequest) SetOrgId(v string) *DetectSkinDiseaseA
 
 func (s *DetectSkinDiseaseAdvanceRequest) SetOrgName(v string) *DetectSkinDiseaseAdvanceRequest {
 	s.OrgName = &v
+	return s
+}
+
+func (s *DetectSkinDiseaseAdvanceRequest) SetUrlObject(v io.Reader) *DetectSkinDiseaseAdvanceRequest {
+	s.UrlObject = v
 	return s
 }
 
@@ -3838,6 +3837,156 @@ func (s *ScreenChestCTResponse) SetBody(v *ScreenChestCTResponseBody) *ScreenChe
 	return s
 }
 
+type ScreenECRequest struct {
+	DataSourceType *string                   `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	URLList        []*ScreenECRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s ScreenECRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenECRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenECRequest) SetDataSourceType(v string) *ScreenECRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ScreenECRequest) SetURLList(v []*ScreenECRequestURLList) *ScreenECRequest {
+	s.URLList = v
+	return s
+}
+
+type ScreenECRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s ScreenECRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenECRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenECRequestURLList) SetURL(v string) *ScreenECRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type ScreenECResponseBody struct {
+	Data      *ScreenECResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ScreenECResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenECResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenECResponseBody) SetData(v *ScreenECResponseBodyData) *ScreenECResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ScreenECResponseBody) SetRequestId(v string) *ScreenECResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ScreenECResponseBodyData struct {
+	Lesion *ScreenECResponseBodyDataLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+}
+
+func (s ScreenECResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenECResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenECResponseBodyData) SetLesion(v *ScreenECResponseBodyDataLesion) *ScreenECResponseBodyData {
+	s.Lesion = v
+	return s
+}
+
+type ScreenECResponseBodyDataLesion struct {
+	BenignVolume  *string   `json:"BenignVolume,omitempty" xml:"BenignVolume,omitempty"`
+	EcVolume      *string   `json:"EcVolume,omitempty" xml:"EcVolume,omitempty"`
+	EsoVolume     *string   `json:"EsoVolume,omitempty" xml:"EsoVolume,omitempty"`
+	Mask          *string   `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Possibilities []*string `json:"Possibilities,omitempty" xml:"Possibilities,omitempty" type:"Repeated"`
+}
+
+func (s ScreenECResponseBodyDataLesion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenECResponseBodyDataLesion) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenECResponseBodyDataLesion) SetBenignVolume(v string) *ScreenECResponseBodyDataLesion {
+	s.BenignVolume = &v
+	return s
+}
+
+func (s *ScreenECResponseBodyDataLesion) SetEcVolume(v string) *ScreenECResponseBodyDataLesion {
+	s.EcVolume = &v
+	return s
+}
+
+func (s *ScreenECResponseBodyDataLesion) SetEsoVolume(v string) *ScreenECResponseBodyDataLesion {
+	s.EsoVolume = &v
+	return s
+}
+
+func (s *ScreenECResponseBodyDataLesion) SetMask(v string) *ScreenECResponseBodyDataLesion {
+	s.Mask = &v
+	return s
+}
+
+func (s *ScreenECResponseBodyDataLesion) SetPossibilities(v []*string) *ScreenECResponseBodyDataLesion {
+	s.Possibilities = v
+	return s
+}
+
+type ScreenECResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ScreenECResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ScreenECResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenECResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenECResponse) SetHeaders(v map[string]*string) *ScreenECResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ScreenECResponse) SetStatusCode(v int32) *ScreenECResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ScreenECResponse) SetBody(v *ScreenECResponseBody) *ScreenECResponse {
+	s.Body = v
+	return s
+}
+
 type SegmentOARRequest struct {
 	BodyPart   *string                     `json:"BodyPart,omitempty" xml:"BodyPart,omitempty"`
 	Contrast   *bool                       `json:"Contrast,omitempty" xml:"Contrast,omitempty"`
@@ -4335,7 +4484,7 @@ func (client *Client) ClassifyFNFAdvance(request *ClassifyFNFAdvanceRequest, run
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -4374,35 +4523,35 @@ func (client *Client) ClassifyFNFAdvance(request *ClassifyFNFAdvanceRequest, run
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageUrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		classifyFNFReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		classifyFNFReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	classifyFNFResp, _err := client.ClassifyFNFWithOptions(classifyFNFReq, runtime)
@@ -4557,7 +4706,7 @@ func (client *Client) DetectHipKeypointXRayAdvance(request *DetectHipKeypointXRa
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -4596,35 +4745,35 @@ func (client *Client) DetectHipKeypointXRayAdvance(request *DetectHipKeypointXRa
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageUrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectHipKeypointXRayReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectHipKeypointXRayReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectHipKeypointXRayResp, _err := client.DetectHipKeypointXRayWithOptions(detectHipKeypointXRayReq, runtime)
@@ -4723,7 +4872,7 @@ func (client *Client) DetectKneeKeypointXRayAdvance(request *DetectKneeKeypointX
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -4762,35 +4911,35 @@ func (client *Client) DetectKneeKeypointXRayAdvance(request *DetectKneeKeypointX
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageUrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectKneeKeypointXRayReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectKneeKeypointXRayReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectKneeKeypointXRayResp, _err := client.DetectKneeKeypointXRayWithOptions(detectKneeKeypointXRayReq, runtime)
@@ -4885,7 +5034,7 @@ func (client *Client) DetectKneeXRayAdvance(request *DetectKneeXRayAdvanceReques
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -4924,35 +5073,35 @@ func (client *Client) DetectKneeXRayAdvance(request *DetectKneeXRayAdvanceReques
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.UrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectKneeXRayReq.Url = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectKneeXRayReq.Url = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectKneeXRayResp, _err := client.DetectKneeXRayWithOptions(detectKneeXRayReq, runtime)
@@ -5259,7 +5408,7 @@ func (client *Client) DetectSkinDiseaseAdvance(request *DetectSkinDiseaseAdvance
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -5298,35 +5447,35 @@ func (client *Client) DetectSkinDiseaseAdvance(request *DetectSkinDiseaseAdvance
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.UrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectSkinDiseaseReq.Url = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectSkinDiseaseReq.Url = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectSkinDiseaseResp, _err := client.DetectSkinDiseaseWithOptions(detectSkinDiseaseReq, runtime)
@@ -5679,6 +5828,54 @@ func (client *Client) ScreenChestCT(request *ScreenChestCTRequest) (_result *Scr
 	runtime := &util.RuntimeOptions{}
 	_result = &ScreenChestCTResponse{}
 	_body, _err := client.ScreenChestCTWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ScreenECWithOptions(request *ScreenECRequest, runtime *util.RuntimeOptions) (_result *ScreenECResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		body["URLList"] = request.URLList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ScreenEC"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ScreenECResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ScreenEC(request *ScreenECRequest) (_result *ScreenECResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ScreenECResponse{}
+	_body, _err := client.ScreenECWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
