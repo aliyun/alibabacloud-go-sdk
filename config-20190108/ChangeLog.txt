@@ -1,3 +1,6 @@
+2022-09-23 Version: v3.0.0
+- Generated golang 2019-01-08 for Config.
+
 2022-08-11 Version: v2.0.9
 - Fix ListManagedRules bugs.
 
