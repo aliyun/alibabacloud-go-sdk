@@ -5,7 +5,7 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
@@ -12516,6 +12516,7 @@ type DescribeInstancesRequest struct {
 	InstanceIds          *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceResourceType *string `json:"InstanceResourceType,omitempty" xml:"InstanceResourceType,omitempty"`
+	IntranetIp           *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	NetworkId            *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	OrderByParams        *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -12571,6 +12572,11 @@ func (s *DescribeInstancesRequest) SetInstanceName(v string) *DescribeInstancesR
 
 func (s *DescribeInstancesRequest) SetInstanceResourceType(v string) *DescribeInstancesRequest {
 	s.InstanceResourceType = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetIntranetIp(v string) *DescribeInstancesRequest {
+	s.IntranetIp = &v
 	return s
 }
 
@@ -30650,6 +30656,10 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceResourceType)) {
 		query["InstanceResourceType"] = request.InstanceResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntranetIp)) {
+		query["IntranetIp"] = request.IntranetIp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
