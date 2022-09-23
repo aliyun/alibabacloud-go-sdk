@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2021-01-20 for ImageSearch.
+
 2021-12-09 Version: v1.0.5
 - Add General Recognition Function.
 - Add Commodity Title Function.

@@ -5,15 +5,14 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
@@ -48,8 +47,8 @@ func (s *CommodityTitleRequest) SetTitleIndex(v int64) *CommodityTitleRequest {
 }
 
 type CommodityTitleAdvanceRequest struct {
-	PicContentObject io.Reader `json:"PicContentObject,omitempty" xml:"PicContentObject,omitempty" require:"true"`
 	InstanceName     *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PicContentObject io.Reader `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
 	TitleIndex       *int64    `json:"TitleIndex,omitempty" xml:"TitleIndex,omitempty"`
 }
 
@@ -61,13 +60,13 @@ func (s CommodityTitleAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CommodityTitleAdvanceRequest) SetPicContentObject(v io.Reader) *CommodityTitleAdvanceRequest {
-	s.PicContentObject = v
+func (s *CommodityTitleAdvanceRequest) SetInstanceName(v string) *CommodityTitleAdvanceRequest {
+	s.InstanceName = &v
 	return s
 }
 
-func (s *CommodityTitleAdvanceRequest) SetInstanceName(v string) *CommodityTitleAdvanceRequest {
-	s.InstanceName = &v
+func (s *CommodityTitleAdvanceRequest) SetPicContentObject(v io.Reader) *CommodityTitleAdvanceRequest {
+	s.PicContentObject = v
 	return s
 }
 
@@ -135,8 +134,9 @@ func (s *CommodityTitleResponseBodyData) SetTitle(v string) *CommodityTitleRespo
 }
 
 type CommodityTitleResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CommodityTitleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CommodityTitleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CommodityTitleResponse) String() string {
@@ -149,6 +149,11 @@ func (s CommodityTitleResponse) GoString() string {
 
 func (s *CommodityTitleResponse) SetHeaders(v map[string]*string) *CommodityTitleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CommodityTitleResponse) SetStatusCode(v int32) *CommodityTitleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -181,8 +186,8 @@ func (s *GeneralRecognitionRequest) SetPicContent(v string) *GeneralRecognitionR
 }
 
 type GeneralRecognitionAdvanceRequest struct {
-	PicContentObject io.Reader `json:"PicContentObject,omitempty" xml:"PicContentObject,omitempty" require:"true"`
 	InstanceName     *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PicContentObject io.Reader `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
 }
 
 func (s GeneralRecognitionAdvanceRequest) String() string {
@@ -193,13 +198,13 @@ func (s GeneralRecognitionAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GeneralRecognitionAdvanceRequest) SetPicContentObject(v io.Reader) *GeneralRecognitionAdvanceRequest {
-	s.PicContentObject = v
+func (s *GeneralRecognitionAdvanceRequest) SetInstanceName(v string) *GeneralRecognitionAdvanceRequest {
+	s.InstanceName = &v
 	return s
 }
 
-func (s *GeneralRecognitionAdvanceRequest) SetInstanceName(v string) *GeneralRecognitionAdvanceRequest {
-	s.InstanceName = &v
+func (s *GeneralRecognitionAdvanceRequest) SetPicContentObject(v io.Reader) *GeneralRecognitionAdvanceRequest {
+	s.PicContentObject = v
 	return s
 }
 
@@ -291,8 +296,9 @@ func (s *GeneralRecognitionResponseBodyDataResult) SetTag(v string) *GeneralReco
 }
 
 type GeneralRecognitionResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GeneralRecognitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GeneralRecognitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GeneralRecognitionResponse) String() string {
@@ -305,6 +311,11 @@ func (s GeneralRecognitionResponse) GoString() string {
 
 func (s *GeneralRecognitionResponse) SetHeaders(v map[string]*string) *GeneralRecognitionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GeneralRecognitionResponse) SetStatusCode(v int32) *GeneralRecognitionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -413,8 +424,9 @@ func (s *ImageAmazonResponseBodyData) SetVideoUrl(v string) *ImageAmazonResponse
 }
 
 type ImageAmazonResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ImageAmazonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImageAmazonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ImageAmazonResponse) String() string {
@@ -427,6 +439,11 @@ func (s ImageAmazonResponse) GoString() string {
 
 func (s *ImageAmazonResponse) SetHeaders(v map[string]*string) *ImageAmazonResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ImageAmazonResponse) SetStatusCode(v int32) *ImageAmazonResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -546,8 +563,9 @@ func (s *ImageCategoryResponseBodyDataCateResult) SetScore(v float32) *ImageCate
 }
 
 type ImageCategoryResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ImageCategoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImageCategoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ImageCategoryResponse) String() string {
@@ -560,6 +578,11 @@ func (s ImageCategoryResponse) GoString() string {
 
 func (s *ImageCategoryResponse) SetHeaders(v map[string]*string) *ImageCategoryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ImageCategoryResponse) SetStatusCode(v int32) *ImageCategoryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -657,8 +680,9 @@ func (s *ImageDuplicationResponseBody) SetSuccess(v bool) *ImageDuplicationRespo
 }
 
 type ImageDuplicationResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ImageDuplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImageDuplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ImageDuplicationResponse) String() string {
@@ -671,6 +695,11 @@ func (s ImageDuplicationResponse) GoString() string {
 
 func (s *ImageDuplicationResponse) SetHeaders(v map[string]*string) *ImageDuplicationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ImageDuplicationResponse) SetStatusCode(v int32) *ImageDuplicationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -819,8 +848,9 @@ func (s *ImagePropertyResponseBodyDataPropertyResultsValues) SetValueName(v stri
 }
 
 type ImagePropertyResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ImagePropertyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImagePropertyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ImagePropertyResponse) String() string {
@@ -833,6 +863,11 @@ func (s ImagePropertyResponse) GoString() string {
 
 func (s *ImagePropertyResponse) SetHeaders(v map[string]*string) *ImagePropertyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ImagePropertyResponse) SetStatusCode(v int32) *ImagePropertyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -877,8 +912,8 @@ func (s *ImageSegmentationRequest) SetReturnPicType(v string) *ImageSegmentation
 }
 
 type ImageSegmentationAdvanceRequest struct {
-	PicContentObject io.Reader `json:"PicContentObject,omitempty" xml:"PicContentObject,omitempty" require:"true"`
 	InstanceName     *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PicContentObject io.Reader `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
 	ReturnPicFormat  *string   `json:"ReturnPicFormat,omitempty" xml:"ReturnPicFormat,omitempty"`
 	ReturnPicType    *string   `json:"ReturnPicType,omitempty" xml:"ReturnPicType,omitempty"`
 }
@@ -891,13 +926,13 @@ func (s ImageSegmentationAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ImageSegmentationAdvanceRequest) SetPicContentObject(v io.Reader) *ImageSegmentationAdvanceRequest {
-	s.PicContentObject = v
+func (s *ImageSegmentationAdvanceRequest) SetInstanceName(v string) *ImageSegmentationAdvanceRequest {
+	s.InstanceName = &v
 	return s
 }
 
-func (s *ImageSegmentationAdvanceRequest) SetInstanceName(v string) *ImageSegmentationAdvanceRequest {
-	s.InstanceName = &v
+func (s *ImageSegmentationAdvanceRequest) SetPicContentObject(v io.Reader) *ImageSegmentationAdvanceRequest {
+	s.PicContentObject = v
 	return s
 }
 
@@ -970,8 +1005,9 @@ func (s *ImageSegmentationResponseBodyData) SetPicUrl(v string) *ImageSegmentati
 }
 
 type ImageSegmentationResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ImageSegmentationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImageSegmentationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ImageSegmentationResponse) String() string {
@@ -984,6 +1020,11 @@ func (s ImageSegmentationResponse) GoString() string {
 
 func (s *ImageSegmentationResponse) SetHeaders(v map[string]*string) *ImageSegmentationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ImageSegmentationResponse) SetStatusCode(v int32) *ImageSegmentationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1044,11 +1085,35 @@ func (client *Client) CommodityTitleWithOptions(request *CommodityTitleRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PicContent)) {
+		body["PicContent"] = request.PicContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TitleIndex)) {
+		body["TitleIndex"] = request.TitleIndex
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CommodityTitle"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CommodityTitleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CommodityTitle"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1094,7 +1159,7 @@ func (client *Client) CommodityTitleAdvance(request *CommodityTitleAdvanceReques
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -1133,35 +1198,35 @@ func (client *Client) CommodityTitleAdvance(request *CommodityTitleAdvanceReques
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.PicContentObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		commodityTitleReq.PicContent = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		commodityTitleReq.PicContent = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	commodityTitleResp, _err := client.CommodityTitleWithOptions(commodityTitleReq, runtime)
@@ -1178,11 +1243,31 @@ func (client *Client) GeneralRecognitionWithOptions(request *GeneralRecognitionR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PicContent)) {
+		body["PicContent"] = request.PicContent
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GeneralRecognition"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GeneralRecognitionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GeneralRecognition"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1228,7 +1313,7 @@ func (client *Client) GeneralRecognitionAdvance(request *GeneralRecognitionAdvan
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -1267,35 +1352,35 @@ func (client *Client) GeneralRecognitionAdvance(request *GeneralRecognitionAdvan
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.PicContentObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		generalRecognitionReq.PicContent = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		generalRecognitionReq.PicContent = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	generalRecognitionResp, _err := client.GeneralRecognitionWithOptions(generalRecognitionReq, runtime)
@@ -1312,11 +1397,46 @@ func (client *Client) ImageAmazonWithOptions(request *ImageAmazonRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Gif)) {
+		body["Gif"] = request.Gif
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImgUrlList)) {
+		body["ImgUrlList"] = request.ImgUrlList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateMode)) {
+		body["TemplateMode"] = request.TemplateMode
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TextList)) {
+		bodyFlat["TextList"] = request.TextList
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageAmazon"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ImageAmazonResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ImageAmazon"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1340,11 +1460,31 @@ func (client *Client) ImageCategoryWithOptions(request *ImageCategoryRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PicUrl)) {
+		body["PicUrl"] = request.PicUrl
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageCategory"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ImageCategoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ImageCategory"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1368,11 +1508,47 @@ func (client *Client) ImageDuplicationWithOptions(request *ImageDuplicationReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageHeight)) {
+		body["ImageHeight"] = request.ImageHeight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageWidth)) {
+		body["ImageWidth"] = request.ImageWidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputImageNum)) {
+		body["OutputImageNum"] = request.OutputImageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PicNumList)) {
+		body["PicNumList"] = request.PicNumList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PicUrlList)) {
+		body["PicUrlList"] = request.PicUrlList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageDuplication"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ImageDuplicationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ImageDuplication"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1396,11 +1572,31 @@ func (client *Client) ImagePropertyWithOptions(request *ImagePropertyRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PicUrl)) {
+		body["PicUrl"] = request.PicUrl
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageProperty"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ImagePropertyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ImageProperty"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1424,11 +1620,39 @@ func (client *Client) ImageSegmentationWithOptions(request *ImageSegmentationReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PicContent)) {
+		body["PicContent"] = request.PicContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnPicFormat)) {
+		body["ReturnPicFormat"] = request.ReturnPicFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnPicType)) {
+		body["ReturnPicType"] = request.ReturnPicType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageSegmentation"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ImageSegmentationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ImageSegmentation"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1474,7 +1698,7 @@ func (client *Client) ImageSegmentationAdvance(request *ImageSegmentationAdvance
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -1513,35 +1737,35 @@ func (client *Client) ImageSegmentationAdvance(request *ImageSegmentationAdvance
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.PicContentObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		imageSegmentationReq.PicContent = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		imageSegmentationReq.PicContent = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	imageSegmentationResp, _err := client.ImageSegmentationWithOptions(imageSegmentationReq, runtime)
