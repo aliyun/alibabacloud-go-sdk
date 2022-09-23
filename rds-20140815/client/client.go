@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -2001,9 +2001,10 @@ func (s *CopyDatabaseRequest) SetResourceOwnerId(v int64) *CopyDatabaseRequest {
 }
 
 type CopyDatabaseResponseBody struct {
-	DBName   *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	DBStatus *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	DBName    *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DBStatus  *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CopyDatabaseResponseBody) String() string {
@@ -2021,6 +2022,11 @@ func (s *CopyDatabaseResponseBody) SetDBName(v string) *CopyDatabaseResponseBody
 
 func (s *CopyDatabaseResponseBody) SetDBStatus(v string) *CopyDatabaseResponseBody {
 	s.DBStatus = &v
+	return s
+}
+
+func (s *CopyDatabaseResponseBody) SetRequestId(v string) *CopyDatabaseResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2627,6 +2633,7 @@ type CreateDBInstanceRequest struct {
 	Category                       *string                                  `json:"Category,omitempty" xml:"Category,omitempty"`
 	ClientToken                    *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ConnectionMode                 *string                                  `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
+	ConnectionString               *string                                  `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	CreateStrategy                 *string                                  `json:"CreateStrategy,omitempty" xml:"CreateStrategy,omitempty"`
 	DBInstanceClass                *string                                  `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	DBInstanceDescription          *string                                  `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
@@ -2710,6 +2717,11 @@ func (s *CreateDBInstanceRequest) SetClientToken(v string) *CreateDBInstanceRequ
 
 func (s *CreateDBInstanceRequest) SetConnectionMode(v string) *CreateDBInstanceRequest {
 	s.ConnectionMode = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetConnectionString(v string) *CreateDBInstanceRequest {
+	s.ConnectionString = &v
 	return s
 }
 
@@ -2984,6 +2996,7 @@ type CreateDBInstanceShrinkRequest struct {
 	Category                       *string                             `json:"Category,omitempty" xml:"Category,omitempty"`
 	ClientToken                    *string                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ConnectionMode                 *string                             `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
+	ConnectionString               *string                             `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	CreateStrategy                 *string                             `json:"CreateStrategy,omitempty" xml:"CreateStrategy,omitempty"`
 	DBInstanceClass                *string                             `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	DBInstanceDescription          *string                             `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
@@ -3067,6 +3080,11 @@ func (s *CreateDBInstanceShrinkRequest) SetClientToken(v string) *CreateDBInstan
 
 func (s *CreateDBInstanceShrinkRequest) SetConnectionMode(v string) *CreateDBInstanceShrinkRequest {
 	s.ConnectionMode = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetConnectionString(v string) *CreateDBInstanceShrinkRequest {
+	s.ConnectionString = &v
 	return s
 }
 
@@ -6286,6 +6304,7 @@ func (s *DeleteParameterGroupResponse) SetBody(v *DeleteParameterGroupResponseBo
 
 type DeleteSecretRequest struct {
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DbInstanceId         *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -6305,6 +6324,11 @@ func (s DeleteSecretRequest) GoString() string {
 
 func (s *DeleteSecretRequest) SetClientToken(v string) *DeleteSecretRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteSecretRequest) SetDbInstanceId(v string) *DeleteSecretRequest {
+	s.DbInstanceId = &v
 	return s
 }
 
@@ -6950,9 +6974,14 @@ type DescribeAccountsResponseBodyAccountsDBInstanceAccount struct {
 	AccountName        *string                                                                  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	AccountStatus      *string                                                                  `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	AccountType        *string                                                                  `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	BypassRLS          *string                                                                  `json:"BypassRLS,omitempty" xml:"BypassRLS,omitempty"`
+	CreateDB           *string                                                                  `json:"CreateDB,omitempty" xml:"CreateDB,omitempty"`
+	CreateRole         *string                                                                  `json:"CreateRole,omitempty" xml:"CreateRole,omitempty"`
 	DBInstanceId       *string                                                                  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	DatabasePrivileges *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges `json:"DatabasePrivileges,omitempty" xml:"DatabasePrivileges,omitempty" type:"Struct"`
 	PrivExceeded       *string                                                                  `json:"PrivExceeded,omitempty" xml:"PrivExceeded,omitempty"`
+	Replication        *string                                                                  `json:"Replication,omitempty" xml:"Replication,omitempty"`
+	ValidUntil         *string                                                                  `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty"`
 }
 
 func (s DescribeAccountsResponseBodyAccountsDBInstanceAccount) String() string {
@@ -6983,6 +7012,21 @@ func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetAccountType(v
 	return s
 }
 
+func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetBypassRLS(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
+	s.BypassRLS = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetCreateDB(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
+	s.CreateDB = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetCreateRole(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
+	s.CreateRole = &v
+	return s
+}
+
 func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetDBInstanceId(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
 	s.DBInstanceId = &v
 	return s
@@ -6995,6 +7039,16 @@ func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetDatabasePrivi
 
 func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetPrivExceeded(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
 	s.PrivExceeded = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetReplication(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
+	s.Replication = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetValidUntil(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
+	s.ValidUntil = &v
 	return s
 }
 
@@ -8220,6 +8274,7 @@ type DescribeBackupPolicyResponseBody struct {
 	Category                      *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	CompressType                  *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
 	EnableBackupLog               *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	EnableIncrementDataBackup     *bool   `json:"EnableIncrementDataBackup,omitempty" xml:"EnableIncrementDataBackup,omitempty"`
 	HighSpaceUsageProtection      *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
 	LocalLogRetentionHours        *int32  `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
 	LocalLogRetentionSpace        *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
@@ -8290,6 +8345,11 @@ func (s *DescribeBackupPolicyResponseBody) SetCompressType(v string) *DescribeBa
 
 func (s *DescribeBackupPolicyResponseBody) SetEnableBackupLog(v string) *DescribeBackupPolicyResponseBody {
 	s.EnableBackupLog = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetEnableIncrementDataBackup(v bool) *DescribeBackupPolicyResponseBody {
+	s.EnableIncrementDataBackup = &v
 	return s
 }
 
@@ -11011,6 +11071,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	IPType                         *string                                                                               `json:"IPType,omitempty" xml:"IPType,omitempty"`
 	IncrementSourceDBInstanceId    *string                                                                               `json:"IncrementSourceDBInstanceId,omitempty" xml:"IncrementSourceDBInstanceId,omitempty"`
 	InstanceNetworkType            *string                                                                               `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	InstructionSetArch             *string                                                                               `json:"InstructionSetArch,omitempty" xml:"InstructionSetArch,omitempty"`
 	LatestKernelVersion            *string                                                                               `json:"LatestKernelVersion,omitempty" xml:"LatestKernelVersion,omitempty"`
 	LockMode                       *string                                                                               `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	LockReason                     *string                                                                               `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
@@ -11223,6 +11284,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetInc
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetInstanceNetworkType(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.InstanceNetworkType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetInstructionSetArch(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.InstructionSetArch = &v
 	return s
 }
 
@@ -16238,14 +16304,16 @@ func (s *DescribeDBMiniEngineVersionsResponseBody) SetTotalCount(v int32) *Descr
 }
 
 type DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems struct {
-	Engine          *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion   *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	IsHotfixVersion *bool   `json:"IsHotfixVersion,omitempty" xml:"IsHotfixVersion,omitempty"`
-	MinorVersion    *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	NodeType        *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	ReleaseNote     *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	ReleaseType     *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
-	StatusDesc      *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	CommunityMinorVersion *string `json:"CommunityMinorVersion,omitempty" xml:"CommunityMinorVersion,omitempty"`
+	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	IsHotfixVersion       *bool   `json:"IsHotfixVersion,omitempty" xml:"IsHotfixVersion,omitempty"`
+	MinorVersion          *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	NodeType              *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	ReleaseNote           *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	ReleaseType           *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
+	StatusDesc            *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	Tag                   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems) String() string {
@@ -16254,6 +16322,11 @@ func (s DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems) String() stri
 
 func (s DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems) SetCommunityMinorVersion(v string) *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems {
+	s.CommunityMinorVersion = &v
+	return s
 }
 
 func (s *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems) SetEngine(v string) *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems {
@@ -16293,6 +16366,11 @@ func (s *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems) SetReleaseTy
 
 func (s *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems) SetStatusDesc(v string) *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems {
 	s.StatusDesc = &v
+	return s
+}
+
+func (s *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems) SetTag(v string) *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems {
+	s.Tag = &v
 	return s
 }
 
@@ -17351,6 +17429,9 @@ func (s *DescribeDatabasesResponseBodyDatabases) SetDatabase(v []*DescribeDataba
 type DescribeDatabasesResponseBodyDatabasesDatabase struct {
 	Accounts         *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	CharacterSetName *string                                                 `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
+	Collate          *string                                                 `json:"Collate,omitempty" xml:"Collate,omitempty"`
+	ConnLimit        *string                                                 `json:"ConnLimit,omitempty" xml:"ConnLimit,omitempty"`
+	Ctype            *string                                                 `json:"Ctype,omitempty" xml:"Ctype,omitempty"`
 	DBDescription    *string                                                 `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
 	DBInstanceId     *string                                                 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	DBName           *string                                                 `json:"DBName,omitempty" xml:"DBName,omitempty"`
@@ -17359,6 +17440,7 @@ type DescribeDatabasesResponseBodyDatabasesDatabase struct {
 	PageNumber       *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize         *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceGroupId  *string                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tablespace       *string                                                 `json:"Tablespace,omitempty" xml:"Tablespace,omitempty"`
 	TotalCount       *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -17377,6 +17459,21 @@ func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetAccounts(v *Describe
 
 func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetCharacterSetName(v string) *DescribeDatabasesResponseBodyDatabasesDatabase {
 	s.CharacterSetName = &v
+	return s
+}
+
+func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetCollate(v string) *DescribeDatabasesResponseBodyDatabasesDatabase {
+	s.Collate = &v
+	return s
+}
+
+func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetConnLimit(v string) *DescribeDatabasesResponseBodyDatabasesDatabase {
+	s.ConnLimit = &v
+	return s
+}
+
+func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetCtype(v string) *DescribeDatabasesResponseBodyDatabasesDatabase {
+	s.Ctype = &v
 	return s
 }
 
@@ -17417,6 +17514,11 @@ func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetPageSize(v int32) *D
 
 func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetResourceGroupId(v string) *DescribeDatabasesResponseBodyDatabasesDatabase {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetTablespace(v string) *DescribeDatabasesResponseBodyDatabasesDatabase {
+	s.Tablespace = &v
 	return s
 }
 
@@ -19321,442 +19423,6 @@ func (s *DescribeHASwitchConfigResponse) SetStatusCode(v int32) *DescribeHASwitc
 }
 
 func (s *DescribeHASwitchConfigResponse) SetBody(v *DescribeHASwitchConfigResponseBody) *DescribeHASwitchConfigResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeHistoryTasksRequest struct {
-	FromExecTime  *int32  `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
-	FromStartTime *string `json:"FromStartTime,omitempty" xml:"FromStartTime,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType  *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType      *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	ToExecTime    *int32  `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
-	ToStartTime   *string `json:"ToStartTime,omitempty" xml:"ToStartTime,omitempty"`
-}
-
-func (s DescribeHistoryTasksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeHistoryTasksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeHistoryTasksRequest) SetFromExecTime(v int32) *DescribeHistoryTasksRequest {
-	s.FromExecTime = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksRequest) SetFromStartTime(v string) *DescribeHistoryTasksRequest {
-	s.FromStartTime = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksRequest) SetInstanceId(v string) *DescribeHistoryTasksRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksRequest) SetInstanceType(v string) *DescribeHistoryTasksRequest {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksRequest) SetPageNumber(v int32) *DescribeHistoryTasksRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksRequest) SetPageSize(v int32) *DescribeHistoryTasksRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksRequest) SetRegionId(v string) *DescribeHistoryTasksRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksRequest) SetSecurityToken(v string) *DescribeHistoryTasksRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksRequest) SetStatus(v string) *DescribeHistoryTasksRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksRequest) SetTaskId(v string) *DescribeHistoryTasksRequest {
-	s.TaskId = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksRequest) SetTaskType(v string) *DescribeHistoryTasksRequest {
-	s.TaskType = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksRequest) SetToExecTime(v int32) *DescribeHistoryTasksRequest {
-	s.ToExecTime = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksRequest) SetToStartTime(v string) *DescribeHistoryTasksRequest {
-	s.ToStartTime = &v
-	return s
-}
-
-type DescribeHistoryTasksResponseBody struct {
-	Items      []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeHistoryTasksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeHistoryTasksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeHistoryTasksResponseBody) SetItems(v []*DescribeHistoryTasksResponseBodyItems) *DescribeHistoryTasksResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBody) SetPageNumber(v int32) *DescribeHistoryTasksResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBody) SetPageSize(v int32) *DescribeHistoryTasksResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBody) SetRequestId(v string) *DescribeHistoryTasksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBody) SetTotalCount(v int32) *DescribeHistoryTasksResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeHistoryTasksResponseBodyItems struct {
-	ActionInfo      *string  `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
-	CallerSource    *string  `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
-	CallerUid       *string  `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	CurrentStepName *string  `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
-	DbType          *string  `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EndTime         *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId      *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName    *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType    *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Product         *string  `json:"Product,omitempty" xml:"Product,omitempty"`
-	Progress        *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	ReasonCode      *string  `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	RegionId        *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RemainTime      *int32   `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	StartTime       *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status          *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskDetail      *string  `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty"`
-	TaskId          *string  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType        *string  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	Uid             *string  `json:"Uid,omitempty" xml:"Uid,omitempty"`
-}
-
-func (s DescribeHistoryTasksResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeHistoryTasksResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetActionInfo(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.ActionInfo = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetCallerSource(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.CallerSource = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetCallerUid(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.CallerUid = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetCurrentStepName(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.CurrentStepName = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetDbType(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.DbType = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetEndTime(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetInstanceId(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetInstanceName(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetInstanceType(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetProduct(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.Product = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetProgress(v float32) *DescribeHistoryTasksResponseBodyItems {
-	s.Progress = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetReasonCode(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.ReasonCode = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetRegionId(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetRemainTime(v int32) *DescribeHistoryTasksResponseBodyItems {
-	s.RemainTime = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetStartTime(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetStatus(v int32) *DescribeHistoryTasksResponseBodyItems {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetTaskDetail(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.TaskDetail = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetTaskId(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.TaskId = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetTaskType(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.TaskType = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponseBodyItems) SetUid(v string) *DescribeHistoryTasksResponseBodyItems {
-	s.Uid = &v
-	return s
-}
-
-type DescribeHistoryTasksResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHistoryTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeHistoryTasksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeHistoryTasksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeHistoryTasksResponse) SetHeaders(v map[string]*string) *DescribeHistoryTasksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponse) SetStatusCode(v int32) *DescribeHistoryTasksResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksResponse) SetBody(v *DescribeHistoryTasksResponseBody) *DescribeHistoryTasksResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeHistoryTasksStatRequest struct {
-	FromExecTime  *int32  `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
-	FromStartTime *string `json:"FromStartTime,omitempty" xml:"FromStartTime,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType      *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	ToExecTime    *int32  `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
-	ToStartTime   *string `json:"ToStartTime,omitempty" xml:"ToStartTime,omitempty"`
-}
-
-func (s DescribeHistoryTasksStatRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeHistoryTasksStatRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeHistoryTasksStatRequest) SetFromExecTime(v int32) *DescribeHistoryTasksStatRequest {
-	s.FromExecTime = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatRequest) SetFromStartTime(v string) *DescribeHistoryTasksStatRequest {
-	s.FromStartTime = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatRequest) SetInstanceId(v string) *DescribeHistoryTasksStatRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatRequest) SetRegionId(v string) *DescribeHistoryTasksStatRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatRequest) SetSecurityToken(v string) *DescribeHistoryTasksStatRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatRequest) SetStatus(v string) *DescribeHistoryTasksStatRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatRequest) SetTaskId(v string) *DescribeHistoryTasksStatRequest {
-	s.TaskId = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatRequest) SetTaskType(v string) *DescribeHistoryTasksStatRequest {
-	s.TaskType = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatRequest) SetToExecTime(v int32) *DescribeHistoryTasksStatRequest {
-	s.ToExecTime = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatRequest) SetToStartTime(v string) *DescribeHistoryTasksStatRequest {
-	s.ToStartTime = &v
-	return s
-}
-
-type DescribeHistoryTasksStatResponseBody struct {
-	Items     []*DescribeHistoryTasksStatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeHistoryTasksStatResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeHistoryTasksStatResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeHistoryTasksStatResponseBody) SetItems(v []*DescribeHistoryTasksStatResponseBodyItems) *DescribeHistoryTasksStatResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatResponseBody) SetRequestId(v string) *DescribeHistoryTasksStatResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeHistoryTasksStatResponseBodyItems struct {
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeHistoryTasksStatResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeHistoryTasksStatResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeHistoryTasksStatResponseBodyItems) SetStatus(v string) *DescribeHistoryTasksStatResponseBodyItems {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatResponseBodyItems) SetTotalCount(v int32) *DescribeHistoryTasksStatResponseBodyItems {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeHistoryTasksStatResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHistoryTasksStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeHistoryTasksStatResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeHistoryTasksStatResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeHistoryTasksStatResponse) SetHeaders(v map[string]*string) *DescribeHistoryTasksStatResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatResponse) SetStatusCode(v int32) *DescribeHistoryTasksStatResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeHistoryTasksStatResponse) SetBody(v *DescribeHistoryTasksStatResponseBody) *DescribeHistoryTasksStatResponse {
 	s.Body = v
 	return s
 }
@@ -25561,6 +25227,7 @@ func (s *DescribeSQLLogReportListResponse) SetBody(v *DescribeSQLLogReportListRe
 type DescribeSecretsRequest struct {
 	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DbInstanceId         *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -25586,6 +25253,11 @@ func (s *DescribeSecretsRequest) SetAcceptLanguage(v string) *DescribeSecretsReq
 
 func (s *DescribeSecretsRequest) SetClientToken(v string) *DescribeSecretsRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeSecretsRequest) SetDbInstanceId(v string) *DescribeSecretsRequest {
+	s.DbInstanceId = &v
 	return s
 }
 
@@ -28726,14 +28398,16 @@ func (s *ListClassesResponseBody) SetRequestId(v string) *ListClassesResponseBod
 }
 
 type ListClassesResponseBodyItems struct {
-	ClassCode      *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	ClassGroup     *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
-	Cpu            *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	MaxConnections *string `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	MaxIOMBPS      *string `json:"MaxIOMBPS,omitempty" xml:"MaxIOMBPS,omitempty"`
-	MaxIOPS        *string `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
-	MemoryClass    *string `json:"MemoryClass,omitempty" xml:"MemoryClass,omitempty"`
-	ReferencePrice *string `json:"ReferencePrice,omitempty" xml:"ReferencePrice,omitempty"`
+	ClassCode          *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	ClassGroup         *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
+	Cpu                *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	EncryptedMemory    *string `json:"EncryptedMemory,omitempty" xml:"EncryptedMemory,omitempty"`
+	InstructionSetArch *string `json:"InstructionSetArch,omitempty" xml:"InstructionSetArch,omitempty"`
+	MaxConnections     *string `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MaxIOMBPS          *string `json:"MaxIOMBPS,omitempty" xml:"MaxIOMBPS,omitempty"`
+	MaxIOPS            *string `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	MemoryClass        *string `json:"MemoryClass,omitempty" xml:"MemoryClass,omitempty"`
+	ReferencePrice     *string `json:"ReferencePrice,omitempty" xml:"ReferencePrice,omitempty"`
 }
 
 func (s ListClassesResponseBodyItems) String() string {
@@ -28756,6 +28430,16 @@ func (s *ListClassesResponseBodyItems) SetClassGroup(v string) *ListClassesRespo
 
 func (s *ListClassesResponseBodyItems) SetCpu(v string) *ListClassesResponseBodyItems {
 	s.Cpu = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyItems) SetEncryptedMemory(v string) *ListClassesResponseBodyItems {
+	s.EncryptedMemory = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyItems) SetInstructionSetArch(v string) *ListClassesResponseBodyItems {
+	s.InstructionSetArch = &v
 	return s
 }
 
@@ -30148,6 +29832,7 @@ type ModifyBackupPolicyRequest struct {
 	CompressType                  *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
 	DBInstanceId                  *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	EnableBackupLog               *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	EnableIncrementDataBackup     *bool   `json:"EnableIncrementDataBackup,omitempty" xml:"EnableIncrementDataBackup,omitempty"`
 	HighSpaceUsageProtection      *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
 	LocalLogRetentionHours        *string `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
 	LocalLogRetentionSpace        *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
@@ -30228,6 +29913,11 @@ func (s *ModifyBackupPolicyRequest) SetDBInstanceId(v string) *ModifyBackupPolic
 
 func (s *ModifyBackupPolicyRequest) SetEnableBackupLog(v string) *ModifyBackupPolicyRequest {
 	s.EnableBackupLog = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetEnableIncrementDataBackup(v bool) *ModifyBackupPolicyRequest {
+	s.EnableIncrementDataBackup = &v
 	return s
 }
 
@@ -40774,6 +40464,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		query["ConnectionMode"] = request.ConnectionMode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ConnectionString)) {
+		query["ConnectionString"] = request.ConnectionString
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CreateStrategy)) {
 		query["CreateStrategy"] = request.CreateStrategy
 	}
@@ -42668,6 +42362,10 @@ func (client *Client) DeleteSecretWithOptions(request *DeleteSecretRequest, runt
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceId)) {
+		query["DbInstanceId"] = request.DbInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Engine)) {
@@ -47052,178 +46750,6 @@ func (client *Client) DescribeHASwitchConfig(request *DescribeHASwitchConfigRequ
 	return _result, _err
 }
 
-func (client *Client) DescribeHistoryTasksWithOptions(request *DescribeHistoryTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeHistoryTasksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FromExecTime)) {
-		query["FromExecTime"] = request.FromExecTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FromStartTime)) {
-		query["FromStartTime"] = request.FromStartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
-		query["InstanceType"] = request.InstanceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
-		query["TaskId"] = request.TaskId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
-		query["TaskType"] = request.TaskType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ToExecTime)) {
-		query["ToExecTime"] = request.ToExecTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ToStartTime)) {
-		query["ToStartTime"] = request.ToStartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeHistoryTasks"),
-		Version:     tea.String("2014-08-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeHistoryTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeHistoryTasks(request *DescribeHistoryTasksRequest) (_result *DescribeHistoryTasksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeHistoryTasksResponse{}
-	_body, _err := client.DescribeHistoryTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeHistoryTasksStatWithOptions(request *DescribeHistoryTasksStatRequest, runtime *util.RuntimeOptions) (_result *DescribeHistoryTasksStatResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FromExecTime)) {
-		query["FromExecTime"] = request.FromExecTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FromStartTime)) {
-		query["FromStartTime"] = request.FromStartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
-		query["TaskId"] = request.TaskId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
-		query["TaskType"] = request.TaskType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ToExecTime)) {
-		query["ToExecTime"] = request.ToExecTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ToStartTime)) {
-		query["ToStartTime"] = request.ToStartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeHistoryTasksStat"),
-		Version:     tea.String("2014-08-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeHistoryTasksStatResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeHistoryTasksStat(request *DescribeHistoryTasksStatRequest) (_result *DescribeHistoryTasksStatResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeHistoryTasksStatResponse{}
-	_body, _err := client.DescribeHistoryTasksStatWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeInstanceAutoRenewalAttributeWithOptions(request *DescribeInstanceAutoRenewalAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceAutoRenewalAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49258,6 +48784,10 @@ func (client *Client) DescribeSecretsWithOptions(request *DescribeSecretsRequest
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceId)) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Engine)) {
 		query["Engine"] = request.Engine
 	}
@@ -51288,6 +50818,10 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 
 	if !tea.BoolValue(util.IsUnset(request.EnableBackupLog)) {
 		query["EnableBackupLog"] = request.EnableBackupLog
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableIncrementDataBackup)) {
+		query["EnableIncrementDataBackup"] = request.EnableIncrementDataBackup
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.HighSpaceUsageProtection)) {

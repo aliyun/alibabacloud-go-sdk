@@ -1,3 +1,6 @@
+2022-09-23 Version: v3.0.0
+- Generated golang 2014-08-15 for Rds.
+
 2022-08-31 Version: v2.1.1
 - Support More Open Api.
 
