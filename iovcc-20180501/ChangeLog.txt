@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2018-05-01 for iovcc.
+
 2021-09-29 Version: v1.0.3
 - ALL.
 
