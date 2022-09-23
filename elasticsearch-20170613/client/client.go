@@ -5,52 +5,537 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ClientNodeConfiguration struct {
+	Amount   *int64  `json:"amount,omitempty" xml:"amount,omitempty"`
+	Disk     *int64  `json:"disk,omitempty" xml:"disk,omitempty"`
+	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	Spec     *string `json:"spec,omitempty" xml:"spec,omitempty"`
+}
+
+func (s ClientNodeConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClientNodeConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ClientNodeConfiguration) SetAmount(v int64) *ClientNodeConfiguration {
+	s.Amount = &v
+	return s
+}
+
+func (s *ClientNodeConfiguration) SetDisk(v int64) *ClientNodeConfiguration {
+	s.Disk = &v
+	return s
+}
+
+func (s *ClientNodeConfiguration) SetDiskType(v string) *ClientNodeConfiguration {
+	s.DiskType = &v
+	return s
+}
+
+func (s *ClientNodeConfiguration) SetSpec(v string) *ClientNodeConfiguration {
+	s.Spec = &v
+	return s
+}
+
+type DictInfo struct {
+	FileSize   *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s DictInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DictInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DictInfo) SetFileSize(v int64) *DictInfo {
+	s.FileSize = &v
+	return s
+}
+
+func (s *DictInfo) SetName(v string) *DictInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DictInfo) SetSourceType(v string) *DictInfo {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DictInfo) SetType(v string) *DictInfo {
+	s.Type = &v
+	return s
+}
+
+type ElasticDataNodeConfiguration struct {
+	Amount           *int64  `json:"amount,omitempty" xml:"amount,omitempty"`
+	Disk             *int64  `json:"disk,omitempty" xml:"disk,omitempty"`
+	DiskEncryption   *bool   `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	DiskType         *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	Spec             *string `json:"spec,omitempty" xml:"spec,omitempty"`
+}
+
+func (s ElasticDataNodeConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ElasticDataNodeConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ElasticDataNodeConfiguration) SetAmount(v int64) *ElasticDataNodeConfiguration {
+	s.Amount = &v
+	return s
+}
+
+func (s *ElasticDataNodeConfiguration) SetDisk(v int64) *ElasticDataNodeConfiguration {
+	s.Disk = &v
+	return s
+}
+
+func (s *ElasticDataNodeConfiguration) SetDiskEncryption(v bool) *ElasticDataNodeConfiguration {
+	s.DiskEncryption = &v
+	return s
+}
+
+func (s *ElasticDataNodeConfiguration) SetDiskType(v string) *ElasticDataNodeConfiguration {
+	s.DiskType = &v
+	return s
+}
+
+func (s *ElasticDataNodeConfiguration) SetPerformanceLevel(v string) *ElasticDataNodeConfiguration {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *ElasticDataNodeConfiguration) SetSpec(v string) *ElasticDataNodeConfiguration {
+	s.Spec = &v
+	return s
+}
+
+type Elasticsearch struct {
+	AdvancedDedicateMaster       *bool                         `json:"advancedDedicateMaster,omitempty" xml:"advancedDedicateMaster,omitempty"`
+	AdvancedSetting              *ElasticsearchAdvancedSetting `json:"advancedSetting,omitempty" xml:"advancedSetting,omitempty" type:"Struct"`
+	AliwsDicts                   []*DictInfo                   `json:"aliwsDicts,omitempty" xml:"aliwsDicts,omitempty" type:"Repeated"`
+	ClientNodeConfiguration      *ClientNodeConfiguration      `json:"clientNodeConfiguration,omitempty" xml:"clientNodeConfiguration,omitempty"`
+	CreatedAt                    *string                       `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	DataNode                     *bool                         `json:"dataNode,omitempty" xml:"dataNode,omitempty"`
+	DedicateMaster               *bool                         `json:"dedicateMaster,omitempty" xml:"dedicateMaster,omitempty"`
+	Description                  *string                       `json:"description,omitempty" xml:"description,omitempty"`
+	DictList                     []*DictInfo                   `json:"dictList,omitempty" xml:"dictList,omitempty" type:"Repeated"`
+	Domain                       *string                       `json:"domain,omitempty" xml:"domain,omitempty"`
+	ElasticDataNodeConfiguration *ElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty"`
+	EnableKibanaPrivateNetwork   *bool                         `json:"enableKibanaPrivateNetwork,omitempty" xml:"enableKibanaPrivateNetwork,omitempty"`
+	EnableKibanaPublicNetwork    *bool                         `json:"enableKibanaPublicNetwork,omitempty" xml:"enableKibanaPublicNetwork,omitempty"`
+	EnablePublic                 *bool                         `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
+	EndTime                      *int64                        `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	EsConfig                     map[string]*string            `json:"esConfig,omitempty" xml:"esConfig,omitempty"`
+	EsIPWhitelist                []*string                     `json:"esIPWhitelist,omitempty" xml:"esIPWhitelist,omitempty" type:"Repeated"`
+	EsVersion                    *string                       `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
+	ExtendConfigs                []map[string]interface{}      `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
+	HaveClientNode               *bool                         `json:"haveClientNode,omitempty" xml:"haveClientNode,omitempty"`
+	HaveElasticDataNode          *bool                         `json:"haveElasticDataNode,omitempty" xml:"haveElasticDataNode,omitempty"`
+	HaveKibana                   *bool                         `json:"haveKibana,omitempty" xml:"haveKibana,omitempty"`
+	IkHotDicts                   []*DictInfo                   `json:"ikHotDicts,omitempty" xml:"ikHotDicts,omitempty" type:"Repeated"`
+	InstanceId                   *string                       `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	KibanaConfiguration          *KibanaNodeConfiguration      `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty"`
+	KibanaDomain                 *string                       `json:"kibanaDomain,omitempty" xml:"kibanaDomain,omitempty"`
+	KibanaIPWhitelist            []*string                     `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
+	KibanaPort                   *int64                        `json:"kibanaPort,omitempty" xml:"kibanaPort,omitempty"`
+	KibanaPrivateDomain          *string                       `json:"kibanaPrivateDomain,omitempty" xml:"kibanaPrivateDomain,omitempty"`
+	KibanaPrivateIPWhitelist     []*string                     `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
+	KibanaPrivatePort            *int64                        `json:"kibanaPrivatePort,omitempty" xml:"kibanaPrivatePort,omitempty"`
+	KibanaProtocol               *string                       `json:"kibanaProtocol,omitempty" xml:"kibanaProtocol,omitempty"`
+	MasterConfiguration          *MasterNodeConfiguration      `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty"`
+	NetworkConfig                *NetworkConfig                `json:"networkConfig,omitempty" xml:"networkConfig,omitempty"`
+	NodeAmount                   *int64                        `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	NodeSpec                     *NodeSpec                     `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty"`
+	PaymentType                  *string                       `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	Port                         *int64                        `json:"port,omitempty" xml:"port,omitempty"`
+	PrivateNetworkIpWhiteList    []*string                     `json:"privateNetworkIpWhiteList,omitempty" xml:"privateNetworkIpWhiteList,omitempty" type:"Repeated"`
+	ProductType                  *string                       `json:"productType,omitempty" xml:"productType,omitempty"`
+	Protocol                     *string                       `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	PublicDomain                 *string                       `json:"publicDomain,omitempty" xml:"publicDomain,omitempty"`
+	PublicIpWhitelist            []*string                     `json:"publicIpWhitelist,omitempty" xml:"publicIpWhitelist,omitempty" type:"Repeated"`
+	PublicPort                   *int64                        `json:"publicPort,omitempty" xml:"publicPort,omitempty"`
+	ReadWritePolicy              *ReadWritePolicy              `json:"readWritePolicy,omitempty" xml:"readWritePolicy,omitempty"`
+	ResourceGroupId              *string                       `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	ServiceVpc                   *bool                         `json:"serviceVpc,omitempty" xml:"serviceVpc,omitempty"`
+	Status                       *string                       `json:"status,omitempty" xml:"status,omitempty"`
+	SynonymsDicts                []*DictInfo                   `json:"synonymsDicts,omitempty" xml:"synonymsDicts,omitempty" type:"Repeated"`
+	Tags                         []*Tag                        `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	UpdatedAt                    *string                       `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	WarmNode                     *bool                         `json:"warmNode,omitempty" xml:"warmNode,omitempty"`
+	WarmNodeConfiguration        *WarmNodeConfiguration        `json:"warmNodeConfiguration,omitempty" xml:"warmNodeConfiguration,omitempty"`
+	ZoneCount                    *int64                        `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
+	ZoneInfos                    []*ZoneInfo                   `json:"zoneInfos,omitempty" xml:"zoneInfos,omitempty" type:"Repeated"`
+}
+
+func (s Elasticsearch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Elasticsearch) GoString() string {
+	return s.String()
+}
+
+func (s *Elasticsearch) SetAdvancedDedicateMaster(v bool) *Elasticsearch {
+	s.AdvancedDedicateMaster = &v
+	return s
+}
+
+func (s *Elasticsearch) SetAdvancedSetting(v *ElasticsearchAdvancedSetting) *Elasticsearch {
+	s.AdvancedSetting = v
+	return s
+}
+
+func (s *Elasticsearch) SetAliwsDicts(v []*DictInfo) *Elasticsearch {
+	s.AliwsDicts = v
+	return s
+}
+
+func (s *Elasticsearch) SetClientNodeConfiguration(v *ClientNodeConfiguration) *Elasticsearch {
+	s.ClientNodeConfiguration = v
+	return s
+}
+
+func (s *Elasticsearch) SetCreatedAt(v string) *Elasticsearch {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *Elasticsearch) SetDataNode(v bool) *Elasticsearch {
+	s.DataNode = &v
+	return s
+}
+
+func (s *Elasticsearch) SetDedicateMaster(v bool) *Elasticsearch {
+	s.DedicateMaster = &v
+	return s
+}
+
+func (s *Elasticsearch) SetDescription(v string) *Elasticsearch {
+	s.Description = &v
+	return s
+}
+
+func (s *Elasticsearch) SetDictList(v []*DictInfo) *Elasticsearch {
+	s.DictList = v
+	return s
+}
+
+func (s *Elasticsearch) SetDomain(v string) *Elasticsearch {
+	s.Domain = &v
+	return s
+}
+
+func (s *Elasticsearch) SetElasticDataNodeConfiguration(v *ElasticDataNodeConfiguration) *Elasticsearch {
+	s.ElasticDataNodeConfiguration = v
+	return s
+}
+
+func (s *Elasticsearch) SetEnableKibanaPrivateNetwork(v bool) *Elasticsearch {
+	s.EnableKibanaPrivateNetwork = &v
+	return s
+}
+
+func (s *Elasticsearch) SetEnableKibanaPublicNetwork(v bool) *Elasticsearch {
+	s.EnableKibanaPublicNetwork = &v
+	return s
+}
+
+func (s *Elasticsearch) SetEnablePublic(v bool) *Elasticsearch {
+	s.EnablePublic = &v
+	return s
+}
+
+func (s *Elasticsearch) SetEndTime(v int64) *Elasticsearch {
+	s.EndTime = &v
+	return s
+}
+
+func (s *Elasticsearch) SetEsConfig(v map[string]*string) *Elasticsearch {
+	s.EsConfig = v
+	return s
+}
+
+func (s *Elasticsearch) SetEsIPWhitelist(v []*string) *Elasticsearch {
+	s.EsIPWhitelist = v
+	return s
+}
+
+func (s *Elasticsearch) SetEsVersion(v string) *Elasticsearch {
+	s.EsVersion = &v
+	return s
+}
+
+func (s *Elasticsearch) SetExtendConfigs(v []map[string]interface{}) *Elasticsearch {
+	s.ExtendConfigs = v
+	return s
+}
+
+func (s *Elasticsearch) SetHaveClientNode(v bool) *Elasticsearch {
+	s.HaveClientNode = &v
+	return s
+}
+
+func (s *Elasticsearch) SetHaveElasticDataNode(v bool) *Elasticsearch {
+	s.HaveElasticDataNode = &v
+	return s
+}
+
+func (s *Elasticsearch) SetHaveKibana(v bool) *Elasticsearch {
+	s.HaveKibana = &v
+	return s
+}
+
+func (s *Elasticsearch) SetIkHotDicts(v []*DictInfo) *Elasticsearch {
+	s.IkHotDicts = v
+	return s
+}
+
+func (s *Elasticsearch) SetInstanceId(v string) *Elasticsearch {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *Elasticsearch) SetKibanaConfiguration(v *KibanaNodeConfiguration) *Elasticsearch {
+	s.KibanaConfiguration = v
+	return s
+}
+
+func (s *Elasticsearch) SetKibanaDomain(v string) *Elasticsearch {
+	s.KibanaDomain = &v
+	return s
+}
+
+func (s *Elasticsearch) SetKibanaIPWhitelist(v []*string) *Elasticsearch {
+	s.KibanaIPWhitelist = v
+	return s
+}
+
+func (s *Elasticsearch) SetKibanaPort(v int64) *Elasticsearch {
+	s.KibanaPort = &v
+	return s
+}
+
+func (s *Elasticsearch) SetKibanaPrivateDomain(v string) *Elasticsearch {
+	s.KibanaPrivateDomain = &v
+	return s
+}
+
+func (s *Elasticsearch) SetKibanaPrivateIPWhitelist(v []*string) *Elasticsearch {
+	s.KibanaPrivateIPWhitelist = v
+	return s
+}
+
+func (s *Elasticsearch) SetKibanaPrivatePort(v int64) *Elasticsearch {
+	s.KibanaPrivatePort = &v
+	return s
+}
+
+func (s *Elasticsearch) SetKibanaProtocol(v string) *Elasticsearch {
+	s.KibanaProtocol = &v
+	return s
+}
+
+func (s *Elasticsearch) SetMasterConfiguration(v *MasterNodeConfiguration) *Elasticsearch {
+	s.MasterConfiguration = v
+	return s
+}
+
+func (s *Elasticsearch) SetNetworkConfig(v *NetworkConfig) *Elasticsearch {
+	s.NetworkConfig = v
+	return s
+}
+
+func (s *Elasticsearch) SetNodeAmount(v int64) *Elasticsearch {
+	s.NodeAmount = &v
+	return s
+}
+
+func (s *Elasticsearch) SetNodeSpec(v *NodeSpec) *Elasticsearch {
+	s.NodeSpec = v
+	return s
+}
+
+func (s *Elasticsearch) SetPaymentType(v string) *Elasticsearch {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *Elasticsearch) SetPort(v int64) *Elasticsearch {
+	s.Port = &v
+	return s
+}
+
+func (s *Elasticsearch) SetPrivateNetworkIpWhiteList(v []*string) *Elasticsearch {
+	s.PrivateNetworkIpWhiteList = v
+	return s
+}
+
+func (s *Elasticsearch) SetProductType(v string) *Elasticsearch {
+	s.ProductType = &v
+	return s
+}
+
+func (s *Elasticsearch) SetProtocol(v string) *Elasticsearch {
+	s.Protocol = &v
+	return s
+}
+
+func (s *Elasticsearch) SetPublicDomain(v string) *Elasticsearch {
+	s.PublicDomain = &v
+	return s
+}
+
+func (s *Elasticsearch) SetPublicIpWhitelist(v []*string) *Elasticsearch {
+	s.PublicIpWhitelist = v
+	return s
+}
+
+func (s *Elasticsearch) SetPublicPort(v int64) *Elasticsearch {
+	s.PublicPort = &v
+	return s
+}
+
+func (s *Elasticsearch) SetReadWritePolicy(v *ReadWritePolicy) *Elasticsearch {
+	s.ReadWritePolicy = v
+	return s
+}
+
+func (s *Elasticsearch) SetResourceGroupId(v string) *Elasticsearch {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *Elasticsearch) SetServiceVpc(v bool) *Elasticsearch {
+	s.ServiceVpc = &v
+	return s
+}
+
+func (s *Elasticsearch) SetStatus(v string) *Elasticsearch {
+	s.Status = &v
+	return s
+}
+
+func (s *Elasticsearch) SetSynonymsDicts(v []*DictInfo) *Elasticsearch {
+	s.SynonymsDicts = v
+	return s
+}
+
+func (s *Elasticsearch) SetTags(v []*Tag) *Elasticsearch {
+	s.Tags = v
+	return s
+}
+
+func (s *Elasticsearch) SetUpdatedAt(v string) *Elasticsearch {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *Elasticsearch) SetWarmNode(v bool) *Elasticsearch {
+	s.WarmNode = &v
+	return s
+}
+
+func (s *Elasticsearch) SetWarmNodeConfiguration(v *WarmNodeConfiguration) *Elasticsearch {
+	s.WarmNodeConfiguration = v
+	return s
+}
+
+func (s *Elasticsearch) SetZoneCount(v int64) *Elasticsearch {
+	s.ZoneCount = &v
+	return s
+}
+
+func (s *Elasticsearch) SetZoneInfos(v []*ZoneInfo) *Elasticsearch {
+	s.ZoneInfos = v
+	return s
+}
+
+type ElasticsearchAdvancedSetting struct {
+	GcName *string `json:"gcName,omitempty" xml:"gcName,omitempty"`
+}
+
+func (s ElasticsearchAdvancedSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ElasticsearchAdvancedSetting) GoString() string {
+	return s.String()
+}
+
+func (s *ElasticsearchAdvancedSetting) SetGcName(v string) *ElasticsearchAdvancedSetting {
+	s.GcName = &v
+	return s
+}
+
+type KibanaNodeConfiguration struct {
+	Amount *int64  `json:"amount,omitempty" xml:"amount,omitempty"`
+	Disk   *int64  `json:"disk,omitempty" xml:"disk,omitempty"`
+	Spec   *string `json:"spec,omitempty" xml:"spec,omitempty"`
+}
+
+func (s KibanaNodeConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KibanaNodeConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *KibanaNodeConfiguration) SetAmount(v int64) *KibanaNodeConfiguration {
+	s.Amount = &v
+	return s
+}
+
+func (s *KibanaNodeConfiguration) SetDisk(v int64) *KibanaNodeConfiguration {
+	s.Disk = &v
+	return s
+}
+
+func (s *KibanaNodeConfiguration) SetSpec(v string) *KibanaNodeConfiguration {
+	s.Spec = &v
+	return s
+}
+
 type Logstash struct {
-	// Config
-	Config map[string]*string `json:"config,omitempty" xml:"config,omitempty"`
-	// CreatedAt
-	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// DataNode
-	DataNode *bool `json:"dataNode,omitempty" xml:"dataNode,omitempty"`
-	// Description
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// EndTime
-	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// EndpointList
-	EndpointList []*LogstashEndpointList `json:"endpointList,omitempty" xml:"endpointList,omitempty" type:"Repeated"`
-	// InstanceId
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// NetworkConfig
-	NetworkConfig *LogstashNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
-	// NodeAmount
-	NodeAmount *int64 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	// NodeSpec
-	NodeSpec *LogstashNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
-	// PaymentType
-	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// Protocol
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// ResourceGroupId
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Status
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Tags
-	Tags []*LogstashTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// UpdatedAt
-	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// Version
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// ZoneCount
-	ZoneCount *int64 `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
-	// ZoneInfos
-	ZoneInfos []*LogstashZoneInfos `json:"zoneInfos,omitempty" xml:"zoneInfos,omitempty" type:"Repeated"`
+	Config          map[string]*string      `json:"config,omitempty" xml:"config,omitempty"`
+	CreatedAt       *string                 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	DataNode        *bool                   `json:"dataNode,omitempty" xml:"dataNode,omitempty"`
+	Description     *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	EndTime         *int64                  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	EndpointList    []*LogstashEndpointList `json:"endpointList,omitempty" xml:"endpointList,omitempty" type:"Repeated"`
+	InstanceId      *string                 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	NetworkConfig   *LogstashNetworkConfig  `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
+	NodeAmount      *int64                  `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	NodeSpec        *LogstashNodeSpec       `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	PaymentType     *string                 `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	Protocol        *string                 `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	ResourceGroupId *string                 `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Status          *string                 `json:"status,omitempty" xml:"status,omitempty"`
+	Tags            []*LogstashTags         `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	UpdatedAt       *string                 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	Version         *string                 `json:"version,omitempty" xml:"version,omitempty"`
+	ZoneCount       *int64                  `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
+	ZoneInfos       []*LogstashZoneInfos    `json:"zoneInfos,omitempty" xml:"zoneInfos,omitempty" type:"Repeated"`
 }
 
 func (s Logstash) String() string {
@@ -157,11 +642,8 @@ func (s *Logstash) SetZoneInfos(v []*LogstashZoneInfos) *Logstash {
 }
 
 type LogstashEndpointList struct {
-	// Host
-	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// Port
-	Port *int64 `json:"port,omitempty" xml:"port,omitempty"`
-	// ZoneId
+	Host   *string `json:"host,omitempty" xml:"host,omitempty"`
+	Port   *int64  `json:"port,omitempty" xml:"port,omitempty"`
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
@@ -189,13 +671,9 @@ func (s *LogstashEndpointList) SetZoneId(v string) *LogstashEndpointList {
 }
 
 type LogstashNetworkConfig struct {
-	// Type
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// VpcId
-	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// VsArea
-	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
-	// VswitchId
+	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+	VpcId     *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VsArea    *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
 	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
 }
 
@@ -228,12 +706,9 @@ func (s *LogstashNetworkConfig) SetVswitchId(v string) *LogstashNetworkConfig {
 }
 
 type LogstashNodeSpec struct {
-	// Disk
-	Disk *int64 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// DiskType
+	Disk     *int64  `json:"disk,omitempty" xml:"disk,omitempty"`
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// Spec
-	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	Spec     *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
 func (s LogstashNodeSpec) String() string {
@@ -260,9 +735,7 @@ func (s *LogstashNodeSpec) SetSpec(v string) *LogstashNodeSpec {
 }
 
 type LogstashTags struct {
-	// TagKey
-	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// TagValue
+	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 
@@ -285,9 +758,7 @@ func (s *LogstashTags) SetTagValue(v string) *LogstashTags {
 }
 
 type LogstashZoneInfos struct {
-	// Status
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// ZoneId
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
@@ -305,6 +776,344 @@ func (s *LogstashZoneInfos) SetStatus(v string) *LogstashZoneInfos {
 }
 
 func (s *LogstashZoneInfos) SetZoneId(v string) *LogstashZoneInfos {
+	s.ZoneId = &v
+	return s
+}
+
+type MasterNodeConfiguration struct {
+	Amount   *int64  `json:"amount,omitempty" xml:"amount,omitempty"`
+	Disk     *int64  `json:"disk,omitempty" xml:"disk,omitempty"`
+	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	Spec     *string `json:"spec,omitempty" xml:"spec,omitempty"`
+}
+
+func (s MasterNodeConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MasterNodeConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *MasterNodeConfiguration) SetAmount(v int64) *MasterNodeConfiguration {
+	s.Amount = &v
+	return s
+}
+
+func (s *MasterNodeConfiguration) SetDisk(v int64) *MasterNodeConfiguration {
+	s.Disk = &v
+	return s
+}
+
+func (s *MasterNodeConfiguration) SetDiskType(v string) *MasterNodeConfiguration {
+	s.DiskType = &v
+	return s
+}
+
+func (s *MasterNodeConfiguration) SetSpec(v string) *MasterNodeConfiguration {
+	s.Spec = &v
+	return s
+}
+
+type NetworkConfig struct {
+	Type             *string         `json:"type,omitempty" xml:"type,omitempty"`
+	VpcId            *string         `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VsArea           *string         `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	VswitchId        *string         `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+	WhiteIpGroupList []*WhiteIpGroup `json:"whiteIpGroupList,omitempty" xml:"whiteIpGroupList,omitempty" type:"Repeated"`
+}
+
+func (s NetworkConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NetworkConfig) GoString() string {
+	return s.String()
+}
+
+func (s *NetworkConfig) SetType(v string) *NetworkConfig {
+	s.Type = &v
+	return s
+}
+
+func (s *NetworkConfig) SetVpcId(v string) *NetworkConfig {
+	s.VpcId = &v
+	return s
+}
+
+func (s *NetworkConfig) SetVsArea(v string) *NetworkConfig {
+	s.VsArea = &v
+	return s
+}
+
+func (s *NetworkConfig) SetVswitchId(v string) *NetworkConfig {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *NetworkConfig) SetWhiteIpGroupList(v []*WhiteIpGroup) *NetworkConfig {
+	s.WhiteIpGroupList = v
+	return s
+}
+
+type NodeInfo struct {
+	Host     *string `json:"host,omitempty" xml:"host,omitempty"`
+	HostName *string `json:"hostName,omitempty" xml:"hostName,omitempty"`
+	Port     *int64  `json:"port,omitempty" xml:"port,omitempty"`
+	ZoneId   *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s NodeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *NodeInfo) SetHost(v string) *NodeInfo {
+	s.Host = &v
+	return s
+}
+
+func (s *NodeInfo) SetHostName(v string) *NodeInfo {
+	s.HostName = &v
+	return s
+}
+
+func (s *NodeInfo) SetPort(v int64) *NodeInfo {
+	s.Port = &v
+	return s
+}
+
+func (s *NodeInfo) SetZoneId(v string) *NodeInfo {
+	s.ZoneId = &v
+	return s
+}
+
+type NodeSpec struct {
+	Disk             *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
+	DiskEncryption   *bool   `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	DiskType         *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	Spec             *string `json:"spec,omitempty" xml:"spec,omitempty"`
+}
+
+func (s NodeSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodeSpec) GoString() string {
+	return s.String()
+}
+
+func (s *NodeSpec) SetDisk(v int32) *NodeSpec {
+	s.Disk = &v
+	return s
+}
+
+func (s *NodeSpec) SetDiskEncryption(v bool) *NodeSpec {
+	s.DiskEncryption = &v
+	return s
+}
+
+func (s *NodeSpec) SetDiskType(v string) *NodeSpec {
+	s.DiskType = &v
+	return s
+}
+
+func (s *NodeSpec) SetPerformanceLevel(v string) *NodeSpec {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *NodeSpec) SetSpec(v string) *NodeSpec {
+	s.Spec = &v
+	return s
+}
+
+type PaymentInfo struct {
+	AutoRenewDuration *int64  `json:"autoRenewDuration,omitempty" xml:"autoRenewDuration,omitempty"`
+	Duration          *int64  `json:"duration,omitempty" xml:"duration,omitempty"`
+	IsAutoRenew       *bool   `json:"isAutoRenew,omitempty" xml:"isAutoRenew,omitempty"`
+	PricingCycle      *string `json:"pricingCycle,omitempty" xml:"pricingCycle,omitempty"`
+}
+
+func (s PaymentInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PaymentInfo) GoString() string {
+	return s.String()
+}
+
+func (s *PaymentInfo) SetAutoRenewDuration(v int64) *PaymentInfo {
+	s.AutoRenewDuration = &v
+	return s
+}
+
+func (s *PaymentInfo) SetDuration(v int64) *PaymentInfo {
+	s.Duration = &v
+	return s
+}
+
+func (s *PaymentInfo) SetIsAutoRenew(v bool) *PaymentInfo {
+	s.IsAutoRenew = &v
+	return s
+}
+
+func (s *PaymentInfo) SetPricingCycle(v string) *PaymentInfo {
+	s.PricingCycle = &v
+	return s
+}
+
+type ReadWritePolicy struct {
+	AutoGeneratePk *bool   `json:"autoGeneratePk,omitempty" xml:"autoGeneratePk,omitempty"`
+	WriteHa        *bool   `json:"writeHa,omitempty" xml:"writeHa,omitempty"`
+	WritePolicy    *string `json:"writePolicy,omitempty" xml:"writePolicy,omitempty"`
+}
+
+func (s ReadWritePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadWritePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ReadWritePolicy) SetAutoGeneratePk(v bool) *ReadWritePolicy {
+	s.AutoGeneratePk = &v
+	return s
+}
+
+func (s *ReadWritePolicy) SetWriteHa(v bool) *ReadWritePolicy {
+	s.WriteHa = &v
+	return s
+}
+
+func (s *ReadWritePolicy) SetWritePolicy(v string) *ReadWritePolicy {
+	s.WritePolicy = &v
+	return s
+}
+
+type Tag struct {
+	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s Tag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Tag) GoString() string {
+	return s.String()
+}
+
+func (s *Tag) SetTagKey(v string) *Tag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *Tag) SetTagValue(v string) *Tag {
+	s.TagValue = &v
+	return s
+}
+
+type WarmNodeConfiguration struct {
+	Amount           *int64  `json:"amount,omitempty" xml:"amount,omitempty"`
+	Disk             *int64  `json:"disk,omitempty" xml:"disk,omitempty"`
+	DiskEncryption   *bool   `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	DiskType         *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	Spec             *string `json:"spec,omitempty" xml:"spec,omitempty"`
+}
+
+func (s WarmNodeConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WarmNodeConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *WarmNodeConfiguration) SetAmount(v int64) *WarmNodeConfiguration {
+	s.Amount = &v
+	return s
+}
+
+func (s *WarmNodeConfiguration) SetDisk(v int64) *WarmNodeConfiguration {
+	s.Disk = &v
+	return s
+}
+
+func (s *WarmNodeConfiguration) SetDiskEncryption(v bool) *WarmNodeConfiguration {
+	s.DiskEncryption = &v
+	return s
+}
+
+func (s *WarmNodeConfiguration) SetDiskType(v string) *WarmNodeConfiguration {
+	s.DiskType = &v
+	return s
+}
+
+func (s *WarmNodeConfiguration) SetPerformanceLevel(v string) *WarmNodeConfiguration {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *WarmNodeConfiguration) SetSpec(v string) *WarmNodeConfiguration {
+	s.Spec = &v
+	return s
+}
+
+type WhiteIpGroup struct {
+	WhiteIpType *string   `json:"WhiteIpType,omitempty" xml:"WhiteIpType,omitempty"`
+	GroupName   *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	Ips         []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+}
+
+func (s WhiteIpGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WhiteIpGroup) GoString() string {
+	return s.String()
+}
+
+func (s *WhiteIpGroup) SetWhiteIpType(v string) *WhiteIpGroup {
+	s.WhiteIpType = &v
+	return s
+}
+
+func (s *WhiteIpGroup) SetGroupName(v string) *WhiteIpGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *WhiteIpGroup) SetIps(v []*string) *WhiteIpGroup {
+	s.Ips = v
+	return s
+}
+
+type ZoneInfo struct {
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s ZoneInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ZoneInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ZoneInfo) SetStatus(v string) *ZoneInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *ZoneInfo) SetZoneId(v string) *ZoneInfo {
 	s.ZoneId = &v
 	return s
 }
@@ -1053,7 +1862,6 @@ func (s *CapacityPlanResponse) SetBody(v *CapacityPlanResponseBody) *CapacityPla
 
 type CloseDiagnosisRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 	Lang        *string `json:"lang,omitempty" xml:"lang,omitempty"`
 }
 
@@ -1067,11 +1875,6 @@ func (s CloseDiagnosisRequest) GoString() string {
 
 func (s *CloseDiagnosisRequest) SetClientToken(v string) *CloseDiagnosisRequest {
 	s.ClientToken = &v
-	return s
-}
-
-func (s *CloseDiagnosisRequest) SetBody(v string) *CloseDiagnosisRequest {
-	s.Body = &v
 	return s
 }
 
@@ -1427,7 +2230,6 @@ func (s *CreateComponentIndexRequestTemplate) SetSettings(v map[string]interface
 }
 
 type CreateComponentIndexResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
@@ -2085,14 +2887,10 @@ func (s *CreateLogstashRequestNodeSpec) SetSpec(v string) *CreateLogstashRequest
 }
 
 type CreateLogstashRequestPaymentInfo struct {
-	// 自动续费包月周期
-	AutoRenewDuration *int64 `json:"autoRenewDuration,omitempty" xml:"autoRenewDuration,omitempty"`
-	// 包月周期
-	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// 是否自动续费
-	IsAutoRenew *bool `json:"isAutoRenew,omitempty" xml:"isAutoRenew,omitempty"`
-	// 日期单位
-	PricingCycle *string `json:"pricingCycle,omitempty" xml:"pricingCycle,omitempty"`
+	AutoRenewDuration *int64  `json:"autoRenewDuration,omitempty" xml:"autoRenewDuration,omitempty"`
+	Duration          *int64  `json:"duration,omitempty" xml:"duration,omitempty"`
+	IsAutoRenew       *bool   `json:"isAutoRenew,omitempty" xml:"isAutoRenew,omitempty"`
+	PricingCycle      *string `json:"pricingCycle,omitempty" xml:"pricingCycle,omitempty"`
 }
 
 func (s CreateLogstashRequestPaymentInfo) String() string {
@@ -2333,11 +3131,9 @@ func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateS
 
 type CreateVpcEndpointRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 终端节点服务ID
-	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 可用区ID
-	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
-	DryRun *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	ServiceId   *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ZoneId      *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	DryRun      *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateVpcEndpointRequest) String() string {
@@ -2623,7 +3419,6 @@ func (s *DeleteComponentIndexRequest) SetBody(v string) *DeleteComponentIndexReq
 }
 
 type DeleteComponentIndexResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
@@ -4770,8 +5565,7 @@ func (s *DescribeDynamicSettingsRequest) SetBody(v string) *DescribeDynamicSetti
 
 type DescribeDynamicSettingsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Id of the request
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DescribeDynamicSettingsResponseBody) String() string {
@@ -5967,23 +6761,6 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 	return s
 }
 
-type DescribeKibanaSettingsRequest struct {
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeKibanaSettingsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeKibanaSettingsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeKibanaSettingsRequest) SetBody(v string) *DescribeKibanaSettingsRequest {
-	s.Body = &v
-	return s
-}
-
 type DescribeKibanaSettingsResponseBody struct {
 	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
@@ -6033,23 +6810,6 @@ func (s *DescribeKibanaSettingsResponse) SetStatusCode(v int32) *DescribeKibanaS
 
 func (s *DescribeKibanaSettingsResponse) SetBody(v *DescribeKibanaSettingsResponseBody) *DescribeKibanaSettingsResponse {
 	s.Body = v
-	return s
-}
-
-type DescribeLogstashRequest struct {
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeLogstashRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLogstashRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLogstashRequest) SetBody(v string) *DescribeLogstashRequest {
-	s.Body = &v
 	return s
 }
 
@@ -6631,23 +7391,6 @@ func (s *DescribePipelineManagementConfigResponse) SetBody(v *DescribePipelineMa
 	return s
 }
 
-type DescribeRegionsRequest struct {
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeRegionsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionsRequest) SetBody(v string) *DescribeRegionsRequest {
-	s.Body = &v
-	return s
-}
-
 type DescribeRegionsResponseBody struct {
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeRegionsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
@@ -7036,9 +7779,11 @@ func (s *DescribeXpackMonitorConfigResponse) SetBody(v *DescribeXpackMonitorConf
 }
 
 type DiagnoseInstanceRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
-	Lang        *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	ClientToken   *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DiagnoseItems []*string `json:"diagnoseItems,omitempty" xml:"diagnoseItems,omitempty" type:"Repeated"`
+	Indices       []*string `json:"indices,omitempty" xml:"indices,omitempty" type:"Repeated"`
+	Type          *string   `json:"type,omitempty" xml:"type,omitempty"`
+	Lang          *string   `json:"lang,omitempty" xml:"lang,omitempty"`
 }
 
 func (s DiagnoseInstanceRequest) String() string {
@@ -7054,8 +7799,18 @@ func (s *DiagnoseInstanceRequest) SetClientToken(v string) *DiagnoseInstanceRequ
 	return s
 }
 
-func (s *DiagnoseInstanceRequest) SetBody(v string) *DiagnoseInstanceRequest {
-	s.Body = &v
+func (s *DiagnoseInstanceRequest) SetDiagnoseItems(v []*string) *DiagnoseInstanceRequest {
+	s.DiagnoseItems = v
+	return s
+}
+
+func (s *DiagnoseInstanceRequest) SetIndices(v []*string) *DiagnoseInstanceRequest {
+	s.Indices = v
+	return s
+}
+
+func (s *DiagnoseInstanceRequest) SetType(v string) *DiagnoseInstanceRequest {
+	s.Type = &v
 	return s
 }
 
@@ -7088,11 +7843,10 @@ func (s *DiagnoseInstanceResponseBody) SetResult(v *DiagnoseInstanceResponseBody
 }
 
 type DiagnoseInstanceResponseBodyResult struct {
-	CreateTime    *int64                                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DiagnoseItems []*DiagnoseInstanceResponseBodyResultDiagnoseItems `json:"diagnoseItems,omitempty" xml:"diagnoseItems,omitempty" type:"Repeated"`
-	InstanceId    *string                                            `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	ReportId      *string                                            `json:"reportId,omitempty" xml:"reportId,omitempty"`
-	State         *string                                            `json:"state,omitempty" xml:"state,omitempty"`
+	CreateTime *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	ReportId   *string `json:"reportId,omitempty" xml:"reportId,omitempty"`
+	State      *string `json:"state,omitempty" xml:"state,omitempty"`
 }
 
 func (s DiagnoseInstanceResponseBodyResult) String() string {
@@ -7108,11 +7862,6 @@ func (s *DiagnoseInstanceResponseBodyResult) SetCreateTime(v int64) *DiagnoseIns
 	return s
 }
 
-func (s *DiagnoseInstanceResponseBodyResult) SetDiagnoseItems(v []*DiagnoseInstanceResponseBodyResultDiagnoseItems) *DiagnoseInstanceResponseBodyResult {
-	s.DiagnoseItems = v
-	return s
-}
-
 func (s *DiagnoseInstanceResponseBodyResult) SetInstanceId(v string) *DiagnoseInstanceResponseBodyResult {
 	s.InstanceId = &v
 	return s
@@ -7125,23 +7874,6 @@ func (s *DiagnoseInstanceResponseBodyResult) SetReportId(v string) *DiagnoseInst
 
 func (s *DiagnoseInstanceResponseBodyResult) SetState(v string) *DiagnoseInstanceResponseBodyResult {
 	s.State = &v
-	return s
-}
-
-type DiagnoseInstanceResponseBodyResultDiagnoseItems struct {
-	Item *string `json:"item,omitempty" xml:"item,omitempty"`
-}
-
-func (s DiagnoseInstanceResponseBodyResultDiagnoseItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DiagnoseInstanceResponseBodyResultDiagnoseItems) GoString() string {
-	return s.String()
-}
-
-func (s *DiagnoseInstanceResponseBodyResultDiagnoseItems) SetItem(v string) *DiagnoseInstanceResponseBodyResultDiagnoseItems {
-	s.Item = &v
 	return s
 }
 
@@ -7991,7 +8723,6 @@ func (s *GetOpenStoreUsageRequest) SetBody(v string) *GetOpenStoreUsageRequest {
 }
 
 type GetOpenStoreUsageResponseBody struct {
-	// Id of the request
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *GetOpenStoreUsageResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -8015,9 +8746,7 @@ func (s *GetOpenStoreUsageResponseBody) SetResult(v *GetOpenStoreUsageResponseBo
 }
 
 type GetOpenStoreUsageResponseBodyResult struct {
-	// 当前使用量
 	CurrentUsage *int64 `json:"currentUsage,omitempty" xml:"currentUsage,omitempty"`
-	// 昨日使用容量
 	LastDayUsage *int64 `json:"lastDayUsage,omitempty" xml:"lastDayUsage,omitempty"`
 }
 
@@ -11192,7 +11921,6 @@ func (s *ListCollectorsResponse) SetBody(v *ListCollectorsResponseBody) *ListCol
 }
 
 type ListComponentIndicesRequest struct {
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	Page *int32  `json:"page,omitempty" xml:"page,omitempty"`
 	Size *int32  `json:"size,omitempty" xml:"size,omitempty"`
@@ -11204,11 +11932,6 @@ func (s ListComponentIndicesRequest) String() string {
 
 func (s ListComponentIndicesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListComponentIndicesRequest) SetBody(v string) *ListComponentIndicesRequest {
-	s.Body = &v
-	return s
 }
 
 func (s *ListComponentIndicesRequest) SetName(v string) *ListComponentIndicesRequest {
@@ -12334,7 +13057,6 @@ func (s *ListDiagnoseIndicesResponse) SetBody(v *ListDiagnoseIndicesResponseBody
 }
 
 type ListDiagnoseReportRequest struct {
-	Body      *string `json:"body,omitempty" xml:"body,omitempty"`
 	Detail    *bool   `json:"detail,omitempty" xml:"detail,omitempty"`
 	EndTime   *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	Lang      *string `json:"lang,omitempty" xml:"lang,omitempty"`
@@ -12350,11 +13072,6 @@ func (s ListDiagnoseReportRequest) String() string {
 
 func (s ListDiagnoseReportRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListDiagnoseReportRequest) SetBody(v string) *ListDiagnoseReportRequest {
-	s.Body = &v
-	return s
 }
 
 func (s *ListDiagnoseReportRequest) SetDetail(v bool) *ListDiagnoseReportRequest {
@@ -13790,7 +14507,6 @@ func (s *ListIndexTemplatesResponse) SetBody(v *ListIndexTemplatesResponseBody) 
 }
 
 type ListInstanceRequest struct {
-	Body             *string `json:"body,omitempty" xml:"body,omitempty"`
 	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
 	EsVersion        *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
 	InstanceCategory *string `json:"instanceCategory,omitempty" xml:"instanceCategory,omitempty"`
@@ -13810,11 +14526,6 @@ func (s ListInstanceRequest) String() string {
 
 func (s ListInstanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListInstanceRequest) SetBody(v string) *ListInstanceRequest {
-	s.Body = &v
-	return s
 }
 
 func (s *ListInstanceRequest) SetDescription(v string) *ListInstanceRequest {
@@ -14329,9 +15040,402 @@ func (s *ListInstanceResponse) SetBody(v *ListInstanceResponseBody) *ListInstanc
 	return s
 }
 
+type ListInstanceHistoryEventsRequest struct {
+	Body                  []*ListInstanceHistoryEventsRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	EventCreateEndTime    *string                                 `json:"eventCreateEndTime,omitempty" xml:"eventCreateEndTime,omitempty"`
+	EventCreateStartTime  *string                                 `json:"eventCreateStartTime,omitempty" xml:"eventCreateStartTime,omitempty"`
+	EventCycleStatus      []*string                               `json:"eventCycleStatus,omitempty" xml:"eventCycleStatus,omitempty" type:"Repeated"`
+	EventExecuteEndTime   *string                                 `json:"eventExecuteEndTime,omitempty" xml:"eventExecuteEndTime,omitempty"`
+	EventExecuteStartTime *string                                 `json:"eventExecuteStartTime,omitempty" xml:"eventExecuteStartTime,omitempty"`
+	EventFinashEndTime    *string                                 `json:"eventFinashEndTime,omitempty" xml:"eventFinashEndTime,omitempty"`
+	EventFinashStartTime  *string                                 `json:"eventFinashStartTime,omitempty" xml:"eventFinashStartTime,omitempty"`
+	EventLevel            []*string                               `json:"eventLevel,omitempty" xml:"eventLevel,omitempty" type:"Repeated"`
+	EventType             []*string                               `json:"eventType,omitempty" xml:"eventType,omitempty" type:"Repeated"`
+	InstanceId            *string                                 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	NodeIP                *string                                 `json:"nodeIP,omitempty" xml:"nodeIP,omitempty"`
+	Page                  *int32                                  `json:"page,omitempty" xml:"page,omitempty"`
+	Size                  *int32                                  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListInstanceHistoryEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetBody(v []*ListInstanceHistoryEventsRequestBody) *ListInstanceHistoryEventsRequest {
+	s.Body = v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventCreateEndTime(v string) *ListInstanceHistoryEventsRequest {
+	s.EventCreateEndTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventCreateStartTime(v string) *ListInstanceHistoryEventsRequest {
+	s.EventCreateStartTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventCycleStatus(v []*string) *ListInstanceHistoryEventsRequest {
+	s.EventCycleStatus = v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventExecuteEndTime(v string) *ListInstanceHistoryEventsRequest {
+	s.EventExecuteEndTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventExecuteStartTime(v string) *ListInstanceHistoryEventsRequest {
+	s.EventExecuteStartTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventFinashEndTime(v string) *ListInstanceHistoryEventsRequest {
+	s.EventFinashEndTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventFinashStartTime(v string) *ListInstanceHistoryEventsRequest {
+	s.EventFinashStartTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventLevel(v []*string) *ListInstanceHistoryEventsRequest {
+	s.EventLevel = v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventType(v []*string) *ListInstanceHistoryEventsRequest {
+	s.EventType = v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetInstanceId(v string) *ListInstanceHistoryEventsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetNodeIP(v string) *ListInstanceHistoryEventsRequest {
+	s.NodeIP = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetPage(v int32) *ListInstanceHistoryEventsRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetSize(v int32) *ListInstanceHistoryEventsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListInstanceHistoryEventsRequestBody struct {
+	Desc      *bool   `json:"desc,omitempty" xml:"desc,omitempty"`
+	SortField *string `json:"sortField,omitempty" xml:"sortField,omitempty"`
+}
+
+func (s ListInstanceHistoryEventsRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsRequestBody) SetDesc(v bool) *ListInstanceHistoryEventsRequestBody {
+	s.Desc = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequestBody) SetSortField(v string) *ListInstanceHistoryEventsRequestBody {
+	s.SortField = &v
+	return s
+}
+
+type ListInstanceHistoryEventsShrinkRequest struct {
+	Body                   []*ListInstanceHistoryEventsShrinkRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	EventCreateEndTime     *string                                       `json:"eventCreateEndTime,omitempty" xml:"eventCreateEndTime,omitempty"`
+	EventCreateStartTime   *string                                       `json:"eventCreateStartTime,omitempty" xml:"eventCreateStartTime,omitempty"`
+	EventCycleStatusShrink *string                                       `json:"eventCycleStatus,omitempty" xml:"eventCycleStatus,omitempty"`
+	EventExecuteEndTime    *string                                       `json:"eventExecuteEndTime,omitempty" xml:"eventExecuteEndTime,omitempty"`
+	EventExecuteStartTime  *string                                       `json:"eventExecuteStartTime,omitempty" xml:"eventExecuteStartTime,omitempty"`
+	EventFinashEndTime     *string                                       `json:"eventFinashEndTime,omitempty" xml:"eventFinashEndTime,omitempty"`
+	EventFinashStartTime   *string                                       `json:"eventFinashStartTime,omitempty" xml:"eventFinashStartTime,omitempty"`
+	EventLevelShrink       *string                                       `json:"eventLevel,omitempty" xml:"eventLevel,omitempty"`
+	EventTypeShrink        *string                                       `json:"eventType,omitempty" xml:"eventType,omitempty"`
+	InstanceId             *string                                       `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	NodeIP                 *string                                       `json:"nodeIP,omitempty" xml:"nodeIP,omitempty"`
+	Page                   *int32                                        `json:"page,omitempty" xml:"page,omitempty"`
+	Size                   *int32                                        `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListInstanceHistoryEventsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetBody(v []*ListInstanceHistoryEventsShrinkRequestBody) *ListInstanceHistoryEventsShrinkRequest {
+	s.Body = v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetEventCreateEndTime(v string) *ListInstanceHistoryEventsShrinkRequest {
+	s.EventCreateEndTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetEventCreateStartTime(v string) *ListInstanceHistoryEventsShrinkRequest {
+	s.EventCreateStartTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetEventCycleStatusShrink(v string) *ListInstanceHistoryEventsShrinkRequest {
+	s.EventCycleStatusShrink = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetEventExecuteEndTime(v string) *ListInstanceHistoryEventsShrinkRequest {
+	s.EventExecuteEndTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetEventExecuteStartTime(v string) *ListInstanceHistoryEventsShrinkRequest {
+	s.EventExecuteStartTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetEventFinashEndTime(v string) *ListInstanceHistoryEventsShrinkRequest {
+	s.EventFinashEndTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetEventFinashStartTime(v string) *ListInstanceHistoryEventsShrinkRequest {
+	s.EventFinashStartTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetEventLevelShrink(v string) *ListInstanceHistoryEventsShrinkRequest {
+	s.EventLevelShrink = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetEventTypeShrink(v string) *ListInstanceHistoryEventsShrinkRequest {
+	s.EventTypeShrink = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetInstanceId(v string) *ListInstanceHistoryEventsShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetNodeIP(v string) *ListInstanceHistoryEventsShrinkRequest {
+	s.NodeIP = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetPage(v int32) *ListInstanceHistoryEventsShrinkRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetSize(v int32) *ListInstanceHistoryEventsShrinkRequest {
+	s.Size = &v
+	return s
+}
+
+type ListInstanceHistoryEventsShrinkRequestBody struct {
+	Desc      *bool   `json:"desc,omitempty" xml:"desc,omitempty"`
+	SortField *string `json:"sortField,omitempty" xml:"sortField,omitempty"`
+}
+
+func (s ListInstanceHistoryEventsShrinkRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsShrinkRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequestBody) SetDesc(v bool) *ListInstanceHistoryEventsShrinkRequestBody {
+	s.Desc = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequestBody) SetSortField(v string) *ListInstanceHistoryEventsShrinkRequestBody {
+	s.SortField = &v
+	return s
+}
+
+type ListInstanceHistoryEventsResponseBody struct {
+	Headers   *ListInstanceHistoryEventsResponseBodyHeaders  `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListInstanceHistoryEventsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListInstanceHistoryEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsResponseBody) SetHeaders(v *ListInstanceHistoryEventsResponseBodyHeaders) *ListInstanceHistoryEventsResponseBody {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBody) SetRequestId(v string) *ListInstanceHistoryEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBody) SetResult(v []*ListInstanceHistoryEventsResponseBodyResult) *ListInstanceHistoryEventsResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListInstanceHistoryEventsResponseBodyHeaders struct {
+	XTotalCount   *int64 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
+	XTotalFailed  *int64 `json:"X-Total-Failed,omitempty" xml:"X-Total-Failed,omitempty"`
+	XTotalSuccess *int64 `json:"X-Total-Success,omitempty" xml:"X-Total-Success,omitempty"`
+}
+
+func (s ListInstanceHistoryEventsResponseBodyHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsResponseBodyHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyHeaders) SetXTotalCount(v int64) *ListInstanceHistoryEventsResponseBodyHeaders {
+	s.XTotalCount = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyHeaders) SetXTotalFailed(v int64) *ListInstanceHistoryEventsResponseBodyHeaders {
+	s.XTotalFailed = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyHeaders) SetXTotalSuccess(v int64) *ListInstanceHistoryEventsResponseBodyHeaders {
+	s.XTotalSuccess = &v
+	return s
+}
+
+type ListInstanceHistoryEventsResponseBodyResult struct {
+	EcsId            *string `json:"ecsId,omitempty" xml:"ecsId,omitempty"`
+	EventCreateTime  *string `json:"eventCreateTime,omitempty" xml:"eventCreateTime,omitempty"`
+	EventCycleStatus *string `json:"eventCycleStatus,omitempty" xml:"eventCycleStatus,omitempty"`
+	EventExecuteTime *string `json:"eventExecuteTime,omitempty" xml:"eventExecuteTime,omitempty"`
+	EventFinashTime  *string `json:"eventFinashTime,omitempty" xml:"eventFinashTime,omitempty"`
+	EventLevel       *string `json:"eventLevel,omitempty" xml:"eventLevel,omitempty"`
+	EventType        *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
+	InstanceId       *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	NodeIP           *string `json:"nodeIP,omitempty" xml:"nodeIP,omitempty"`
+	RegionId         *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s ListInstanceHistoryEventsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetEcsId(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.EcsId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetEventCreateTime(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.EventCreateTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetEventCycleStatus(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.EventCycleStatus = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetEventExecuteTime(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.EventExecuteTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetEventFinashTime(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.EventFinashTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetEventLevel(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.EventLevel = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetEventType(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.EventType = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetInstanceId(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetNodeIP(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.NodeIP = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetRegionId(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.RegionId = &v
+	return s
+}
+
+type ListInstanceHistoryEventsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstanceHistoryEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInstanceHistoryEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsResponse) SetHeaders(v map[string]*string) *ListInstanceHistoryEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponse) SetStatusCode(v int32) *ListInstanceHistoryEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponse) SetBody(v *ListInstanceHistoryEventsResponseBody) *ListInstanceHistoryEventsResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstanceIndicesRequest struct {
 	All         *bool   `json:"all,omitempty" xml:"all,omitempty"`
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 	IsManaged   *bool   `json:"isManaged,omitempty" xml:"isManaged,omitempty"`
 	IsOpenstore *bool   `json:"isOpenstore,omitempty" xml:"isOpenstore,omitempty"`
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -14349,11 +15453,6 @@ func (s ListInstanceIndicesRequest) GoString() string {
 
 func (s *ListInstanceIndicesRequest) SetAll(v bool) *ListInstanceIndicesRequest {
 	s.All = &v
-	return s
-}
-
-func (s *ListInstanceIndicesRequest) SetBody(v string) *ListInstanceIndicesRequest {
-	s.Body = &v
 	return s
 }
 
@@ -14687,6 +15786,7 @@ type ListLogstashRequest struct {
 	Page            *int32  `json:"page,omitempty" xml:"page,omitempty"`
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	Size            *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	Tags            *string `json:"tags,omitempty" xml:"tags,omitempty"`
 	Version         *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -14730,6 +15830,11 @@ func (s *ListLogstashRequest) SetResourceGroupId(v string) *ListLogstashRequest 
 
 func (s *ListLogstashRequest) SetSize(v int32) *ListLogstashRequest {
 	s.Size = &v
+	return s
+}
+
+func (s *ListLogstashRequest) SetTags(v string) *ListLogstashRequest {
+	s.Tags = &v
 	return s
 }
 
@@ -15130,7 +16235,6 @@ func (s *ListLogstashLogResponse) SetBody(v *ListLogstashLogResponseBody) *ListL
 }
 
 type ListLogstashPluginsRequest struct {
-	Body   *string `json:"body,omitempty" xml:"body,omitempty"`
 	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
 	Page   *int32  `json:"page,omitempty" xml:"page,omitempty"`
 	Size   *int32  `json:"size,omitempty" xml:"size,omitempty"`
@@ -15143,11 +16247,6 @@ func (s ListLogstashPluginsRequest) String() string {
 
 func (s ListLogstashPluginsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListLogstashPluginsRequest) SetBody(v string) *ListLogstashPluginsRequest {
-	s.Body = &v
-	return s
 }
 
 func (s *ListLogstashPluginsRequest) SetName(v string) *ListLogstashPluginsRequest {
@@ -15740,7 +16839,6 @@ func (s *ListPipelineIdsResponse) SetBody(v *ListPipelineIdsResponseBody) *ListP
 }
 
 type ListPluginsRequest struct {
-	Body   *string `json:"body,omitempty" xml:"body,omitempty"`
 	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
 	Page   *string `json:"page,omitempty" xml:"page,omitempty"`
 	Size   *int32  `json:"size,omitempty" xml:"size,omitempty"`
@@ -15753,11 +16851,6 @@ func (s ListPluginsRequest) String() string {
 
 func (s ListPluginsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListPluginsRequest) SetBody(v string) *ListPluginsRequest {
-	s.Body = &v
-	return s
 }
 
 func (s *ListPluginsRequest) SetName(v string) *ListPluginsRequest {
@@ -15898,7 +16991,6 @@ func (s *ListPluginsResponse) SetBody(v *ListPluginsResponseBody) *ListPluginsRe
 
 type ListSearchLogRequest struct {
 	BeginTime *int64  `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	Body      *string `json:"body,omitempty" xml:"body,omitempty"`
 	EndTime   *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	Page      *int32  `json:"page,omitempty" xml:"page,omitempty"`
 	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
@@ -15916,11 +17008,6 @@ func (s ListSearchLogRequest) GoString() string {
 
 func (s *ListSearchLogRequest) SetBeginTime(v int64) *ListSearchLogRequest {
 	s.BeginTime = &v
-	return s
-}
-
-func (s *ListSearchLogRequest) SetBody(v string) *ListSearchLogRequest {
-	s.Body = &v
 	return s
 }
 
@@ -16340,7 +17427,6 @@ type ListTagResourcesRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Size         *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
 	Tags         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Body         *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -16378,11 +17464,6 @@ func (s *ListTagResourcesRequest) SetSize(v int32) *ListTagResourcesRequest {
 
 func (s *ListTagResourcesRequest) SetTags(v string) *ListTagResourcesRequest {
 	s.Tags = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetBody(v string) *ListTagResourcesRequest {
-	s.Body = &v
 	return s
 }
 
@@ -16520,7 +17601,6 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTagsRequest struct {
-	Body         *string `json:"body,omitempty" xml:"body,omitempty"`
 	PageSize     *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
@@ -16531,11 +17611,6 @@ func (s ListTagsRequest) String() string {
 
 func (s ListTagsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListTagsRequest) SetBody(v string) *ListTagsRequest {
-	s.Body = &v
-	return s
 }
 
 func (s *ListTagsRequest) SetPageSize(v int32) *ListTagsRequest {
@@ -17169,23 +18244,12 @@ func (s *ModifyInstanceMaintainTimeResponse) SetBody(v *ModifyInstanceMaintainTi
 }
 
 type ModifyWhiteIpsRequest struct {
-	// 修改方式，取值含义如下：
-	//
-	// Cover（默认值）：使用ips参数的值覆盖原IP白名单。
-	//
-	// Append：在原IP白名单中增加ips参数中输入的IP地址。
-	//
-	// Delete：Delete：在原IP白名单中删除ips参数中输入的IP地址，至少需要保留一个IP地址。
-	ModifyMode *string `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
-	// 网络类型。可选值：PRIVATE（私网）、PUBLIC（公网）。如果选填了whiteIpList参数，则该参数必填。
-	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// 节点类型。可选值：WORKER（Elasticsearch集群）、KIBANA（Kibana集群）。如果选填了whiteIpList参数，则该参数必填。
-	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
-	// 以白名单组whiteIpGroup传参方式，更新实例白名单安全配置。仅支持更新一个白名单组。
+	ModifyMode   *string                            `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
+	NetworkType  *string                            `json:"networkType,omitempty" xml:"networkType,omitempty"`
+	NodeType     *string                            `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
 	WhiteIpGroup *ModifyWhiteIpsRequestWhiteIpGroup `json:"whiteIpGroup,omitempty" xml:"whiteIpGroup,omitempty" type:"Struct"`
-	// 白名单列表。whiteIpGroup为空时可用，更改默认分组白名单
-	WhiteIpList []*string `json:"whiteIpList,omitempty" xml:"whiteIpList,omitempty" type:"Repeated"`
-	ClientToken *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	WhiteIpList  []*string                          `json:"whiteIpList,omitempty" xml:"whiteIpList,omitempty" type:"Repeated"`
+	ClientToken  *string                            `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s ModifyWhiteIpsRequest) String() string {
@@ -17227,12 +18291,9 @@ func (s *ModifyWhiteIpsRequest) SetClientToken(v string) *ModifyWhiteIpsRequest 
 }
 
 type ModifyWhiteIpsRequestWhiteIpGroup struct {
-	// 白名单组的组名。如果选填了whiteIpGroup参数，则该参数必填。
-	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// 白名单组中的IP列表。如果选填了whiteIpGroup参数，则该参数必填。
-	Ips []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
-	// ip白名单的类型
-	WhiteIpType *string `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
+	GroupName   *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	Ips         []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+	WhiteIpType *string   `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
 }
 
 func (s ModifyWhiteIpsRequestWhiteIpGroup) String() string {
@@ -18829,9 +19890,13 @@ func (s *RestartInstanceResponse) SetBody(v *RestartInstanceResponseBody) *Resta
 }
 
 type RestartLogstashRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Force       *bool   `json:"force,omitempty" xml:"force,omitempty"`
+	BatchCount   *float64  `json:"batchCount,omitempty" xml:"batchCount,omitempty"`
+	BlueGreenDep *bool     `json:"blueGreenDep,omitempty" xml:"blueGreenDep,omitempty"`
+	NodeTypes    []*string `json:"nodeTypes,omitempty" xml:"nodeTypes,omitempty" type:"Repeated"`
+	Nodes        []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
+	RestartType  *string   `json:"restartType,omitempty" xml:"restartType,omitempty"`
+	ClientToken  *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Force        *bool     `json:"force,omitempty" xml:"force,omitempty"`
 }
 
 func (s RestartLogstashRequest) String() string {
@@ -18842,8 +19907,28 @@ func (s RestartLogstashRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RestartLogstashRequest) SetBody(v string) *RestartLogstashRequest {
-	s.Body = &v
+func (s *RestartLogstashRequest) SetBatchCount(v float64) *RestartLogstashRequest {
+	s.BatchCount = &v
+	return s
+}
+
+func (s *RestartLogstashRequest) SetBlueGreenDep(v bool) *RestartLogstashRequest {
+	s.BlueGreenDep = &v
+	return s
+}
+
+func (s *RestartLogstashRequest) SetNodeTypes(v []*string) *RestartLogstashRequest {
+	s.NodeTypes = v
+	return s
+}
+
+func (s *RestartLogstashRequest) SetNodes(v []*string) *RestartLogstashRequest {
+	s.Nodes = v
+	return s
+}
+
+func (s *RestartLogstashRequest) SetRestartType(v string) *RestartLogstashRequest {
+	s.RestartType = &v
 	return s
 }
 
@@ -18858,7 +19943,8 @@ func (s *RestartLogstashRequest) SetForce(v bool) *RestartLogstashRequest {
 }
 
 type RestartLogstashResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *Logstash `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s RestartLogstashResponseBody) String() string {
@@ -18871,6 +19957,11 @@ func (s RestartLogstashResponseBody) GoString() string {
 
 func (s *RestartLogstashResponseBody) SetRequestId(v string) *RestartLogstashResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *RestartLogstashResponseBody) SetResult(v *Logstash) *RestartLogstashResponseBody {
+	s.Result = v
 	return s
 }
 
@@ -19218,6 +20309,7 @@ func (s *RunPipelinesResponse) SetBody(v *RunPipelinesResponseBody) *RunPipeline
 type ShrinkNodeRequest struct {
 	Body         []*ShrinkNodeRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 	ClientToken  *string                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Count        *int32                   `json:"count,omitempty" xml:"count,omitempty"`
 	IgnoreStatus *bool                    `json:"ignoreStatus,omitempty" xml:"ignoreStatus,omitempty"`
 	NodeType     *string                  `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
 }
@@ -19240,6 +20332,11 @@ func (s *ShrinkNodeRequest) SetClientToken(v string) *ShrinkNodeRequest {
 	return s
 }
 
+func (s *ShrinkNodeRequest) SetCount(v int32) *ShrinkNodeRequest {
+	s.Count = &v
+	return s
+}
+
 func (s *ShrinkNodeRequest) SetIgnoreStatus(v bool) *ShrinkNodeRequest {
 	s.IgnoreStatus = &v
 	return s
@@ -19251,9 +20348,11 @@ func (s *ShrinkNodeRequest) SetNodeType(v string) *ShrinkNodeRequest {
 }
 
 type ShrinkNodeRequestBody struct {
-	Host   *string `json:"host,omitempty" xml:"host,omitempty"`
-	Port   *int32  `json:"port,omitempty" xml:"port,omitempty"`
-	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	Host     *string `json:"host,omitempty" xml:"host,omitempty"`
+	HostName *string `json:"hostName,omitempty" xml:"hostName,omitempty"`
+	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	Port     *int32  `json:"port,omitempty" xml:"port,omitempty"`
+	ZoneId   *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
 func (s ShrinkNodeRequestBody) String() string {
@@ -19266,6 +20365,16 @@ func (s ShrinkNodeRequestBody) GoString() string {
 
 func (s *ShrinkNodeRequestBody) SetHost(v string) *ShrinkNodeRequestBody {
 	s.Host = &v
+	return s
+}
+
+func (s *ShrinkNodeRequestBody) SetHostName(v string) *ShrinkNodeRequestBody {
+	s.HostName = &v
+	return s
+}
+
+func (s *ShrinkNodeRequestBody) SetNodeType(v string) *ShrinkNodeRequestBody {
+	s.NodeType = &v
 	return s
 }
 
@@ -19475,23 +20584,6 @@ func (s *StartCollectorResponse) SetBody(v *StartCollectorResponseBody) *StartCo
 	return s
 }
 
-type StopApmRequest struct {
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s StopApmRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopApmRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StopApmRequest) SetBody(v string) *StopApmRequest {
-	s.Body = &v
-	return s
-}
-
 type StopApmResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
@@ -19695,7 +20787,9 @@ func (s *StopPipelinesResponse) SetBody(v *StopPipelinesResponseBody) *StopPipel
 }
 
 type TagResourcesRequest struct {
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	ResourceIds  []*string                  `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	ResourceType *string                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tags         []*TagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -19706,13 +20800,47 @@ func (s TagResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *TagResourcesRequest) SetBody(v string) *TagResourcesRequest {
-	s.Body = &v
+func (s *TagResourcesRequest) SetResourceIds(v []*string) *TagResourcesRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTags(v []*TagResourcesRequestTags) *TagResourcesRequest {
+	s.Tags = v
+	return s
+}
+
+type TagResourcesRequestTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s TagResourcesRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTags) SetKey(v string) *TagResourcesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTags) SetValue(v string) *TagResourcesRequestTags {
+	s.Value = &v
 	return s
 }
 
 type TagResourcesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s TagResourcesResponseBody) String() string {
@@ -19725,6 +20853,11 @@ func (s TagResourcesResponseBody) GoString() string {
 
 func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetResult(v bool) *TagResourcesResponseBody {
+	s.Result = &v
 	return s
 }
 
@@ -19868,11 +21001,8 @@ func (s *TransferNodeResponse) SetBody(v *TransferNodeResponseBody) *TransferNod
 }
 
 type TriggerNetworkRequest struct {
-	// 动作类型。CLOSE：关闭; OPEN：开启
-	ActionType *string `json:"actionType,omitempty" xml:"actionType,omitempty"`
-	// 网络类型。PUBLIC：公网；PRIVATE：私网
+	ActionType  *string `json:"actionType,omitempty" xml:"actionType,omitempty"`
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// 实例类型。KIBANA kibana公私网/WORKER 集群公私网
 	NodeType    *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
@@ -20033,8 +21163,8 @@ func (s *UninstallKibanaPluginResponse) SetBody(v *UninstallKibanaPluginResponse
 }
 
 type UninstallLogstashPluginRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Body        []*string `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	ClientToken *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s UninstallLogstashPluginRequest) String() string {
@@ -20045,8 +21175,8 @@ func (s UninstallLogstashPluginRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UninstallLogstashPluginRequest) SetBody(v string) *UninstallLogstashPluginRequest {
-	s.Body = &v
+func (s *UninstallLogstashPluginRequest) SetBody(v []*string) *UninstallLogstashPluginRequest {
+	s.Body = v
 	return s
 }
 
@@ -20056,8 +21186,9 @@ func (s *UninstallLogstashPluginRequest) SetClientToken(v string) *UninstallLogs
 }
 
 type UninstallLogstashPluginResponseBody struct {
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Headers   map[string]interface{} `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*string              `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s UninstallLogstashPluginResponseBody) String() string {
@@ -20066,6 +21197,11 @@ func (s UninstallLogstashPluginResponseBody) String() string {
 
 func (s UninstallLogstashPluginResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UninstallLogstashPluginResponseBody) SetHeaders(v map[string]interface{}) *UninstallLogstashPluginResponseBody {
+	s.Headers = v
+	return s
 }
 
 func (s *UninstallLogstashPluginResponseBody) SetRequestId(v string) *UninstallLogstashPluginResponseBody {
@@ -20530,16 +21666,11 @@ func (s *UpdateAliwsDictResponse) SetBody(v *UpdateAliwsDictResponseBody) *Updat
 }
 
 type UpdateApmRequest struct {
-	// apm实例名
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// es实例id
-	OutputES *string `json:"outputES,omitempty" xml:"outputES,omitempty"`
-	// es实例密码
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	OutputES         *string `json:"outputES,omitempty" xml:"outputES,omitempty"`
 	OutputESPassword *string `json:"outputESPassword,omitempty" xml:"outputESPassword,omitempty"`
-	// es实例用户名
 	OutputESUserName *string `json:"outputESUserName,omitempty" xml:"outputESUserName,omitempty"`
-	// apm server密码
-	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	Token            *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s UpdateApmRequest) String() string {
@@ -20628,9 +21759,7 @@ func (s *UpdateApmResponse) SetBody(v *UpdateApmResponseBody) *UpdateApmResponse
 }
 
 type UpdateBlackIpsRequest struct {
-	Body          *string   `json:"body,omitempty" xml:"body,omitempty"`
-	ClientToken   *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EsIPBlacklist []*string `json:"esIPBlacklist,omitempty" xml:"esIPBlacklist,omitempty" type:"Repeated"`
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s UpdateBlackIpsRequest) String() string {
@@ -20641,18 +21770,8 @@ func (s UpdateBlackIpsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateBlackIpsRequest) SetBody(v string) *UpdateBlackIpsRequest {
-	s.Body = &v
-	return s
-}
-
 func (s *UpdateBlackIpsRequest) SetClientToken(v string) *UpdateBlackIpsRequest {
 	s.ClientToken = &v
-	return s
-}
-
-func (s *UpdateBlackIpsRequest) SetEsIPBlacklist(v []*string) *UpdateBlackIpsRequest {
-	s.EsIPBlacklist = v
 	return s
 }
 
@@ -21388,7 +22507,6 @@ func (s *UpdateComponentIndexRequestTemplate) SetSettings(v map[string]interface
 }
 
 type UpdateComponentIndexResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -21718,7 +22836,6 @@ func (s *UpdateDictResponse) SetBody(v *UpdateDictResponseBody) *UpdateDictRespo
 }
 
 type UpdateDynamicSettingsRequest struct {
-	// 幂等参数
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
@@ -22721,9 +23838,10 @@ func (s *UpdateKibanaSettingsResponse) SetBody(v *UpdateKibanaSettingsResponseBo
 }
 
 type UpdateKibanaWhiteIpsRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ModifyMode  *string `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
+	KibanaIPWhitelist []*string                                `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
+	WhiteIpGroup      *UpdateKibanaWhiteIpsRequestWhiteIpGroup `json:"whiteIpGroup,omitempty" xml:"whiteIpGroup,omitempty" type:"Struct"`
+	ClientToken       *string                                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ModifyMode        *string                                  `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
 }
 
 func (s UpdateKibanaWhiteIpsRequest) String() string {
@@ -22734,8 +23852,13 @@ func (s UpdateKibanaWhiteIpsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateKibanaWhiteIpsRequest) SetBody(v string) *UpdateKibanaWhiteIpsRequest {
-	s.Body = &v
+func (s *UpdateKibanaWhiteIpsRequest) SetKibanaIPWhitelist(v []*string) *UpdateKibanaWhiteIpsRequest {
+	s.KibanaIPWhitelist = v
+	return s
+}
+
+func (s *UpdateKibanaWhiteIpsRequest) SetWhiteIpGroup(v *UpdateKibanaWhiteIpsRequestWhiteIpGroup) *UpdateKibanaWhiteIpsRequest {
+	s.WhiteIpGroup = v
 	return s
 }
 
@@ -22746,6 +23869,35 @@ func (s *UpdateKibanaWhiteIpsRequest) SetClientToken(v string) *UpdateKibanaWhit
 
 func (s *UpdateKibanaWhiteIpsRequest) SetModifyMode(v string) *UpdateKibanaWhiteIpsRequest {
 	s.ModifyMode = &v
+	return s
+}
+
+type UpdateKibanaWhiteIpsRequestWhiteIpGroup struct {
+	GroupName   *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	Ips         []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+	WhiteIpType *string   `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
+}
+
+func (s UpdateKibanaWhiteIpsRequestWhiteIpGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateKibanaWhiteIpsRequestWhiteIpGroup) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateKibanaWhiteIpsRequestWhiteIpGroup) SetGroupName(v string) *UpdateKibanaWhiteIpsRequestWhiteIpGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateKibanaWhiteIpsRequestWhiteIpGroup) SetIps(v []*string) *UpdateKibanaWhiteIpsRequestWhiteIpGroup {
+	s.Ips = v
+	return s
+}
+
+func (s *UpdateKibanaWhiteIpsRequestWhiteIpGroup) SetWhiteIpType(v string) *UpdateKibanaWhiteIpsRequestWhiteIpGroup {
+	s.WhiteIpType = &v
 	return s
 }
 
@@ -22773,8 +23925,9 @@ func (s *UpdateKibanaWhiteIpsResponseBody) SetResult(v *UpdateKibanaWhiteIpsResp
 }
 
 type UpdateKibanaWhiteIpsResponseBodyResult struct {
-	KibanaIPWhitelist        []*string `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
-	KibanaPrivateIPWhitelist []*string `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
+	KibanaIPWhitelist        []*string                                            `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
+	KibanaPrivateIPWhitelist []*string                                            `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
+	NetworkConfig            *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
 }
 
 func (s UpdateKibanaWhiteIpsResponseBodyResult) String() string {
@@ -22792,6 +23945,81 @@ func (s *UpdateKibanaWhiteIpsResponseBodyResult) SetKibanaIPWhitelist(v []*strin
 
 func (s *UpdateKibanaWhiteIpsResponseBodyResult) SetKibanaPrivateIPWhitelist(v []*string) *UpdateKibanaWhiteIpsResponseBodyResult {
 	s.KibanaPrivateIPWhitelist = v
+	return s
+}
+
+func (s *UpdateKibanaWhiteIpsResponseBodyResult) SetNetworkConfig(v *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig) *UpdateKibanaWhiteIpsResponseBodyResult {
+	s.NetworkConfig = v
+	return s
+}
+
+type UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig struct {
+	Type             *string                                                                `json:"type,omitempty" xml:"type,omitempty"`
+	VpcId            *string                                                                `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VsArea           *string                                                                `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	VswitchId        *string                                                                `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+	WhiteIpGroupList []*UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList `json:"whiteIpGroupList,omitempty" xml:"whiteIpGroupList,omitempty" type:"Repeated"`
+}
+
+func (s UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig) SetType(v string) *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig) SetVpcId(v string) *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig {
+	s.VpcId = &v
+	return s
+}
+
+func (s *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig) SetVsArea(v string) *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig {
+	s.VsArea = &v
+	return s
+}
+
+func (s *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig) SetVswitchId(v string) *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig) SetWhiteIpGroupList(v []*UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList) *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig {
+	s.WhiteIpGroupList = v
+	return s
+}
+
+type UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList struct {
+	GroupName   *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	Ips         []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+	WhiteIpType *string   `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
+}
+
+func (s UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList) SetGroupName(v string) *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList) SetIps(v []*string) *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList {
+	s.Ips = v
+	return s
+}
+
+func (s *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList) SetWhiteIpType(v string) *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList {
+	s.WhiteIpType = &v
 	return s
 }
 
@@ -22825,8 +24053,9 @@ func (s *UpdateKibanaWhiteIpsResponse) SetBody(v *UpdateKibanaWhiteIpsResponseBo
 }
 
 type UpdateLogstashRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	NodeAmount  *int32                         `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	NodeSpec    *UpdateLogstashRequestNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	ClientToken *string                        `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s UpdateLogstashRequest) String() string {
@@ -22837,13 +24066,47 @@ func (s UpdateLogstashRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateLogstashRequest) SetBody(v string) *UpdateLogstashRequest {
-	s.Body = &v
+func (s *UpdateLogstashRequest) SetNodeAmount(v int32) *UpdateLogstashRequest {
+	s.NodeAmount = &v
+	return s
+}
+
+func (s *UpdateLogstashRequest) SetNodeSpec(v *UpdateLogstashRequestNodeSpec) *UpdateLogstashRequest {
+	s.NodeSpec = v
 	return s
 }
 
 func (s *UpdateLogstashRequest) SetClientToken(v string) *UpdateLogstashRequest {
 	s.ClientToken = &v
+	return s
+}
+
+type UpdateLogstashRequestNodeSpec struct {
+	Disk     *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
+	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	Spec     *string `json:"spec,omitempty" xml:"spec,omitempty"`
+}
+
+func (s UpdateLogstashRequestNodeSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLogstashRequestNodeSpec) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLogstashRequestNodeSpec) SetDisk(v int32) *UpdateLogstashRequestNodeSpec {
+	s.Disk = &v
+	return s
+}
+
+func (s *UpdateLogstashRequestNodeSpec) SetDiskType(v string) *UpdateLogstashRequestNodeSpec {
+	s.DiskType = &v
+	return s
+}
+
+func (s *UpdateLogstashRequestNodeSpec) SetSpec(v string) *UpdateLogstashRequestNodeSpec {
+	s.Spec = &v
 	return s
 }
 
@@ -23136,8 +24399,12 @@ func (s *UpdateLogstashSettingsResponse) SetBody(v *UpdateLogstashSettingsRespon
 }
 
 type UpdatePipelineManagementConfigRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Endpoints              []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	Password               *string   `json:"password,omitempty" xml:"password,omitempty"`
+	PipelineIds            []*string `json:"pipelineIds,omitempty" xml:"pipelineIds,omitempty" type:"Repeated"`
+	PipelineManagementType *string   `json:"pipelineManagementType,omitempty" xml:"pipelineManagementType,omitempty"`
+	UserName               *string   `json:"userName,omitempty" xml:"userName,omitempty"`
+	ClientToken            *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s UpdatePipelineManagementConfigRequest) String() string {
@@ -23148,8 +24415,28 @@ func (s UpdatePipelineManagementConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdatePipelineManagementConfigRequest) SetBody(v string) *UpdatePipelineManagementConfigRequest {
-	s.Body = &v
+func (s *UpdatePipelineManagementConfigRequest) SetEndpoints(v []*string) *UpdatePipelineManagementConfigRequest {
+	s.Endpoints = v
+	return s
+}
+
+func (s *UpdatePipelineManagementConfigRequest) SetPassword(v string) *UpdatePipelineManagementConfigRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *UpdatePipelineManagementConfigRequest) SetPipelineIds(v []*string) *UpdatePipelineManagementConfigRequest {
+	s.PipelineIds = v
+	return s
+}
+
+func (s *UpdatePipelineManagementConfigRequest) SetPipelineManagementType(v string) *UpdatePipelineManagementConfigRequest {
+	s.PipelineManagementType = &v
+	return s
+}
+
+func (s *UpdatePipelineManagementConfigRequest) SetUserName(v string) *UpdatePipelineManagementConfigRequest {
+	s.UserName = &v
 	return s
 }
 
@@ -24117,8 +25404,11 @@ func (s *UpdateWhiteIpsResponse) SetBody(v *UpdateWhiteIpsResponseBody) *UpdateW
 }
 
 type UpdateXpackMonitorConfigRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Enable      *bool     `json:"enable,omitempty" xml:"enable,omitempty"`
+	Endpoints   []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	Password    *string   `json:"password,omitempty" xml:"password,omitempty"`
+	UserName    *string   `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s UpdateXpackMonitorConfigRequest) String() string {
@@ -24134,8 +25424,23 @@ func (s *UpdateXpackMonitorConfigRequest) SetClientToken(v string) *UpdateXpackM
 	return s
 }
 
-func (s *UpdateXpackMonitorConfigRequest) SetBody(v string) *UpdateXpackMonitorConfigRequest {
-	s.Body = &v
+func (s *UpdateXpackMonitorConfigRequest) SetEnable(v bool) *UpdateXpackMonitorConfigRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateXpackMonitorConfigRequest) SetEndpoints(v []*string) *UpdateXpackMonitorConfigRequest {
+	s.Endpoints = v
+	return s
+}
+
+func (s *UpdateXpackMonitorConfigRequest) SetPassword(v string) *UpdateXpackMonitorConfigRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *UpdateXpackMonitorConfigRequest) SetUserName(v string) *UpdateXpackMonitorConfigRequest {
+	s.UserName = &v
 	return s
 }
 
@@ -24192,10 +25497,10 @@ func (s *UpdateXpackMonitorConfigResponse) SetBody(v *UpdateXpackMonitorConfigRe
 }
 
 type UpgradeEngineVersionRequest struct {
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	DryRun      *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
 	Version     *string `json:"version,omitempty" xml:"version,omitempty"`
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	DryRun      *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s UpgradeEngineVersionRequest) String() string {
@@ -24204,16 +25509,6 @@ func (s UpgradeEngineVersionRequest) String() string {
 
 func (s UpgradeEngineVersionRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpgradeEngineVersionRequest) SetClientToken(v string) *UpgradeEngineVersionRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *UpgradeEngineVersionRequest) SetDryRun(v bool) *UpgradeEngineVersionRequest {
-	s.DryRun = &v
-	return s
 }
 
 func (s *UpgradeEngineVersionRequest) SetType(v string) *UpgradeEngineVersionRequest {
@@ -24226,9 +25521,19 @@ func (s *UpgradeEngineVersionRequest) SetVersion(v string) *UpgradeEngineVersion
 	return s
 }
 
+func (s *UpgradeEngineVersionRequest) SetClientToken(v string) *UpgradeEngineVersionRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpgradeEngineVersionRequest) SetDryRun(v bool) *UpgradeEngineVersionRequest {
+	s.DryRun = &v
+	return s
+}
+
 type UpgradeEngineVersionResponseBody struct {
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *UpgradeEngineVersionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*UpgradeEngineVersionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s UpgradeEngineVersionResponseBody) String() string {
@@ -24244,15 +25549,15 @@ func (s *UpgradeEngineVersionResponseBody) SetRequestId(v string) *UpgradeEngine
 	return s
 }
 
-func (s *UpgradeEngineVersionResponseBody) SetResult(v *UpgradeEngineVersionResponseBodyResult) *UpgradeEngineVersionResponseBody {
+func (s *UpgradeEngineVersionResponseBody) SetResult(v []*UpgradeEngineVersionResponseBodyResult) *UpgradeEngineVersionResponseBody {
 	s.Result = v
 	return s
 }
 
 type UpgradeEngineVersionResponseBodyResult struct {
-	Status         *string                                               `json:"status,omitempty" xml:"status,omitempty"`
-	ValidateResult *UpgradeEngineVersionResponseBodyResultValidateResult `json:"validateResult,omitempty" xml:"validateResult,omitempty" type:"Struct"`
-	ValidateType   *string                                               `json:"validateType,omitempty" xml:"validateType,omitempty"`
+	Status         *string                                                 `json:"status,omitempty" xml:"status,omitempty"`
+	ValidateResult []*UpgradeEngineVersionResponseBodyResultValidateResult `json:"validateResult,omitempty" xml:"validateResult,omitempty" type:"Repeated"`
+	ValidateType   *string                                                 `json:"validateType,omitempty" xml:"validateType,omitempty"`
 }
 
 func (s UpgradeEngineVersionResponseBodyResult) String() string {
@@ -24268,7 +25573,7 @@ func (s *UpgradeEngineVersionResponseBodyResult) SetStatus(v string) *UpgradeEng
 	return s
 }
 
-func (s *UpgradeEngineVersionResponseBodyResult) SetValidateResult(v *UpgradeEngineVersionResponseBodyResultValidateResult) *UpgradeEngineVersionResponseBodyResult {
+func (s *UpgradeEngineVersionResponseBodyResult) SetValidateResult(v []*UpgradeEngineVersionResponseBodyResultValidateResult) *UpgradeEngineVersionResponseBodyResult {
 	s.ValidateResult = v
 	return s
 }
@@ -24413,6 +25718,7 @@ func (s *ValidateConnectionResponse) SetBody(v *ValidateConnectionResponseBody) 
 
 type ValidateShrinkNodesRequest struct {
 	Body         []*ValidateShrinkNodesRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	Count        *int32                            `json:"count,omitempty" xml:"count,omitempty"`
 	IgnoreStatus *bool                             `json:"ignoreStatus,omitempty" xml:"ignoreStatus,omitempty"`
 	NodeType     *string                           `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
 }
@@ -24430,6 +25736,11 @@ func (s *ValidateShrinkNodesRequest) SetBody(v []*ValidateShrinkNodesRequestBody
 	return s
 }
 
+func (s *ValidateShrinkNodesRequest) SetCount(v int32) *ValidateShrinkNodesRequest {
+	s.Count = &v
+	return s
+}
+
 func (s *ValidateShrinkNodesRequest) SetIgnoreStatus(v bool) *ValidateShrinkNodesRequest {
 	s.IgnoreStatus = &v
 	return s
@@ -24441,9 +25752,11 @@ func (s *ValidateShrinkNodesRequest) SetNodeType(v string) *ValidateShrinkNodesR
 }
 
 type ValidateShrinkNodesRequestBody struct {
-	Host   *string `json:"host,omitempty" xml:"host,omitempty"`
-	Port   *int32  `json:"port,omitempty" xml:"port,omitempty"`
-	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	Host     *string `json:"host,omitempty" xml:"host,omitempty"`
+	HostName *string `json:"hostName,omitempty" xml:"hostName,omitempty"`
+	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	Port     *int32  `json:"port,omitempty" xml:"port,omitempty"`
+	ZoneId   *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
 func (s ValidateShrinkNodesRequestBody) String() string {
@@ -24456,6 +25769,16 @@ func (s ValidateShrinkNodesRequestBody) GoString() string {
 
 func (s *ValidateShrinkNodesRequestBody) SetHost(v string) *ValidateShrinkNodesRequestBody {
 	s.Host = &v
+	return s
+}
+
+func (s *ValidateShrinkNodesRequestBody) SetHostName(v string) *ValidateShrinkNodesRequestBody {
+	s.HostName = &v
+	return s
+}
+
+func (s *ValidateShrinkNodesRequestBody) SetNodeType(v string) *ValidateShrinkNodesRequestBody {
+	s.NodeType = &v
 	return s
 }
 
@@ -24707,8 +26030,21 @@ func (s *ValidateTransferableNodesResponse) SetBody(v *ValidateTransferableNodes
 }
 
 type CreateInstanceRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ClientNodeConfiguration      *ClientNodeConfiguration      `json:"clientNodeConfiguration,omitempty" xml:"clientNodeConfiguration,omitempty"`
+	ElasticDataNodeConfiguration *ElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty"`
+	EsAdminPassword              *string                       `json:"esAdminPassword,omitempty" xml:"esAdminPassword,omitempty"`
+	EsVersion                    *string                       `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
+	InstanceCategory             *string                       `json:"instanceCategory,omitempty" xml:"instanceCategory,omitempty"`
+	KibanaConfiguration          *KibanaNodeConfiguration      `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty"`
+	MasterConfiguration          *MasterNodeConfiguration      `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty"`
+	NetworkConfig                *NetworkConfig                `json:"networkConfig,omitempty" xml:"networkConfig,omitempty"`
+	NodeAmount                   *int32                        `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	NodeSpec                     *NodeSpec                     `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty"`
+	PaymentInfo                  *PaymentInfo                  `json:"paymentInfo,omitempty" xml:"paymentInfo,omitempty"`
+	PaymentType                  *string                       `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	WarmNodeConfiguration        *WarmNodeConfiguration        `json:"warmNodeConfiguration,omitempty" xml:"warmNodeConfiguration,omitempty"`
+	ZoneCount                    *int32                        `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
+	ClientToken                  *string                       `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -24719,8 +26055,73 @@ func (s CreateInstanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateInstanceRequest) SetBody(v string) *CreateInstanceRequest {
-	s.Body = &v
+func (s *CreateInstanceRequest) SetClientNodeConfiguration(v *ClientNodeConfiguration) *CreateInstanceRequest {
+	s.ClientNodeConfiguration = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetElasticDataNodeConfiguration(v *ElasticDataNodeConfiguration) *CreateInstanceRequest {
+	s.ElasticDataNodeConfiguration = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetEsAdminPassword(v string) *CreateInstanceRequest {
+	s.EsAdminPassword = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetEsVersion(v string) *CreateInstanceRequest {
+	s.EsVersion = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetInstanceCategory(v string) *CreateInstanceRequest {
+	s.InstanceCategory = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetKibanaConfiguration(v *KibanaNodeConfiguration) *CreateInstanceRequest {
+	s.KibanaConfiguration = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetMasterConfiguration(v *MasterNodeConfiguration) *CreateInstanceRequest {
+	s.MasterConfiguration = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetNetworkConfig(v *NetworkConfig) *CreateInstanceRequest {
+	s.NetworkConfig = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetNodeAmount(v int32) *CreateInstanceRequest {
+	s.NodeAmount = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetNodeSpec(v *NodeSpec) *CreateInstanceRequest {
+	s.NodeSpec = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPaymentInfo(v *PaymentInfo) *CreateInstanceRequest {
+	s.PaymentInfo = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPaymentType(v string) *CreateInstanceRequest {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetWarmNodeConfiguration(v *WarmNodeConfiguration) *CreateInstanceRequest {
+	s.WarmNodeConfiguration = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetZoneCount(v int32) *CreateInstanceRequest {
+	s.ZoneCount = &v
 	return s
 }
 
@@ -24863,7 +26264,6 @@ func (client *Client) ActivateZonesWithOptions(InstanceId *string, request *Acti
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -24878,7 +26278,7 @@ func (client *Client) ActivateZonesWithOptions(InstanceId *string, request *Acti
 		Action:      tea.String("ActivateZones"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/recover-zones"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/recover-zones"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -24911,7 +26311,6 @@ func (client *Client) AddConnectableClusterWithOptions(InstanceId *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -24926,7 +26325,7 @@ func (client *Client) AddConnectableClusterWithOptions(InstanceId *string, reque
 		Action:      tea.String("AddConnectableCluster"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/connected-clusters"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/connected-clusters"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -24959,7 +26358,6 @@ func (client *Client) AddSnapshotRepoWithOptions(InstanceId *string, request *Ad
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -24968,7 +26366,7 @@ func (client *Client) AddSnapshotRepoWithOptions(InstanceId *string, request *Ad
 		Action:      tea.String("AddSnapshotRepo"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/snapshot-repos"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/snapshot-repos"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25001,7 +26399,6 @@ func (client *Client) CancelDeletionWithOptions(InstanceId *string, request *Can
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -25016,7 +26413,7 @@ func (client *Client) CancelDeletionWithOptions(InstanceId *string, request *Can
 		Action:      tea.String("CancelDeletion"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/cancel-deletion"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/cancel-deletion"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25049,7 +26446,6 @@ func (client *Client) CancelLogstashDeletionWithOptions(InstanceId *string, requ
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -25064,7 +26460,7 @@ func (client *Client) CancelLogstashDeletionWithOptions(InstanceId *string, requ
 		Action:      tea.String("CancelLogstashDeletion"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/actions/cancel-deletion"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/cancel-deletion"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25097,7 +26493,6 @@ func (client *Client) CancelTaskWithOptions(InstanceId *string, request *CancelT
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -25116,7 +26511,7 @@ func (client *Client) CancelTaskWithOptions(InstanceId *string, request *CancelT
 		Action:      tea.String("CancelTask"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/cancel-task"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/cancel-task"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25207,7 +26602,6 @@ func (client *Client) CloseDiagnosisWithOptions(InstanceId *string, request *Clo
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -25220,13 +26614,12 @@ func (client *Client) CloseDiagnosisWithOptions(InstanceId *string, request *Clo
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CloseDiagnosis"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/actions/close-diagnosis"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/close-diagnosis"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25259,7 +26652,6 @@ func (client *Client) CloseHttpsWithOptions(InstanceId *string, request *CloseHt
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -25274,7 +26666,7 @@ func (client *Client) CloseHttpsWithOptions(InstanceId *string, request *CloseHt
 		Action:      tea.String("CloseHttps"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/close-https"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/close-https"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25307,8 +26699,6 @@ func (client *Client) CloseManagedIndexWithOptions(InstanceId *string, Index *st
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	Index = openapiutil.GetEncodeParam(Index)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -25323,7 +26713,7 @@ func (client *Client) CloseManagedIndexWithOptions(InstanceId *string, Index *st
 		Action:      tea.String("CloseManagedIndex"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/indices/" + tea.StringValue(Index) + "/close-managed"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/indices/" + tea.StringValue(openapiutil.GetEncodeParam(Index)) + "/close-managed"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25403,8 +26793,6 @@ func (client *Client) CreateComponentIndexWithOptions(InstanceId *string, name *
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	name = openapiutil.GetEncodeParam(name)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Meta)) {
 		body["_meta"] = request.Meta
@@ -25422,7 +26810,7 @@ func (client *Client) CreateComponentIndexWithOptions(InstanceId *string, name *
 		Action:      tea.String("CreateComponentIndex"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/component-index/" + tea.StringValue(name)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/component-index/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25455,7 +26843,6 @@ func (client *Client) CreateDataStreamWithOptions(InstanceId *string, request *C
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -25470,7 +26857,7 @@ func (client *Client) CreateDataStreamWithOptions(InstanceId *string, request *C
 		Action:      tea.String("CreateDataStream"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-streams"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/data-streams"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25503,7 +26890,6 @@ func (client *Client) CreateDataTasksWithOptions(InstanceId *string, request *Cr
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -25518,7 +26904,7 @@ func (client *Client) CreateDataTasksWithOptions(InstanceId *string, request *Cr
 		Action:      tea.String("CreateDataTasks"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-task"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/data-task"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25551,7 +26937,6 @@ func (client *Client) CreateILMPolicyWithOptions(InstanceId *string, request *Cr
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -25566,7 +26951,7 @@ func (client *Client) CreateILMPolicyWithOptions(InstanceId *string, request *Cr
 		Action:      tea.String("CreateILMPolicy"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/ilm-policies"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/ilm-policies"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25599,7 +26984,6 @@ func (client *Client) CreateIndexTemplateWithOptions(InstanceId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -25614,7 +26998,7 @@ func (client *Client) CreateIndexTemplateWithOptions(InstanceId *string, request
 		Action:      tea.String("CreateIndexTemplate"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/index-templates"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/index-templates"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25723,7 +27107,6 @@ func (client *Client) CreatePipelinesWithOptions(InstanceId *string, request *Cr
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -25742,7 +27125,7 @@ func (client *Client) CreatePipelinesWithOptions(InstanceId *string, request *Cr
 		Action:      tea.String("CreatePipelines"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/pipelines"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25775,7 +27158,6 @@ func (client *Client) CreateSnapshotWithOptions(InstanceId *string, request *Cre
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -25790,7 +27172,7 @@ func (client *Client) CreateSnapshotWithOptions(InstanceId *string, request *Cre
 		Action:      tea.String("CreateSnapshot"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/snapshots"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/snapshots"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25823,7 +27205,6 @@ func (client *Client) CreateVpcEndpointWithOptions(InstanceId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -25851,7 +27232,7 @@ func (client *Client) CreateVpcEndpointWithOptions(InstanceId *string, request *
 		Action:      tea.String("CreateVpcEndpoint"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/vpc-endpoints"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/vpc-endpoints"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25884,7 +27265,6 @@ func (client *Client) DeactivateZonesWithOptions(InstanceId *string, request *De
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -25899,7 +27279,7 @@ func (client *Client) DeactivateZonesWithOptions(InstanceId *string, request *De
 		Action:      tea.String("DeactivateZones"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/down-zones"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/down-zones"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25932,7 +27312,6 @@ func (client *Client) DeleteCollectorWithOptions(ResId *string, request *DeleteC
 	if _err != nil {
 		return _result, _err
 	}
-	ResId = openapiutil.GetEncodeParam(ResId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -25947,7 +27326,7 @@ func (client *Client) DeleteCollectorWithOptions(ResId *string, request *DeleteC
 		Action:      tea.String("DeleteCollector"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId)),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(openapiutil.GetEncodeParam(ResId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -25980,8 +27359,6 @@ func (client *Client) DeleteComponentIndexWithOptions(InstanceId *string, name *
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -25990,7 +27367,7 @@ func (client *Client) DeleteComponentIndexWithOptions(InstanceId *string, name *
 		Action:      tea.String("DeleteComponentIndex"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/component-index/" + tea.StringValue(name)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/component-index/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26023,7 +27400,6 @@ func (client *Client) DeleteConnectedClusterWithOptions(InstanceId *string, requ
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -26042,7 +27418,7 @@ func (client *Client) DeleteConnectedClusterWithOptions(InstanceId *string, requ
 		Action:      tea.String("DeleteConnectedCluster"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/connected-clusters"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/connected-clusters"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26075,8 +27451,6 @@ func (client *Client) DeleteDataStreamWithOptions(InstanceId *string, DataStream
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	DataStream = openapiutil.GetEncodeParam(DataStream)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -26091,7 +27465,7 @@ func (client *Client) DeleteDataStreamWithOptions(InstanceId *string, DataStream
 		Action:      tea.String("DeleteDataStream"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-streams/" + tea.StringValue(DataStream)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/data-streams/" + tea.StringValue(openapiutil.GetEncodeParam(DataStream))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26124,7 +27498,6 @@ func (client *Client) DeleteDataTaskWithOptions(InstanceId *string, request *Del
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -26143,7 +27516,7 @@ func (client *Client) DeleteDataTaskWithOptions(InstanceId *string, request *Del
 		Action:      tea.String("DeleteDataTask"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-task"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/data-task"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26176,8 +27549,6 @@ func (client *Client) DeleteDeprecatedTemplateWithOptions(InstanceId *string, na
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -26186,7 +27557,7 @@ func (client *Client) DeleteDeprecatedTemplateWithOptions(InstanceId *string, na
 		Action:      tea.String("DeleteDeprecatedTemplate"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/deprecated-templates/" + tea.StringValue(name)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/deprecated-templates/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26219,8 +27590,6 @@ func (client *Client) DeleteILMPolicyWithOptions(InstanceId *string, PolicyName 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	PolicyName = openapiutil.GetEncodeParam(PolicyName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -26229,7 +27598,7 @@ func (client *Client) DeleteILMPolicyWithOptions(InstanceId *string, PolicyName 
 		Action:      tea.String("DeleteILMPolicy"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/ilm-policies/" + tea.StringValue(PolicyName)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/ilm-policies/" + tea.StringValue(openapiutil.GetEncodeParam(PolicyName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26262,8 +27631,6 @@ func (client *Client) DeleteIndexTemplateWithOptions(InstanceId *string, IndexTe
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	IndexTemplate = openapiutil.GetEncodeParam(IndexTemplate)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -26272,7 +27639,7 @@ func (client *Client) DeleteIndexTemplateWithOptions(InstanceId *string, IndexTe
 		Action:      tea.String("DeleteIndexTemplate"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/index-templates/" + tea.StringValue(IndexTemplate)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/index-templates/" + tea.StringValue(openapiutil.GetEncodeParam(IndexTemplate))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26305,7 +27672,6 @@ func (client *Client) DeleteInstanceWithOptions(InstanceId *string, request *Del
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -26324,7 +27690,7 @@ func (client *Client) DeleteInstanceWithOptions(InstanceId *string, request *Del
 		Action:      tea.String("DeleteInstance"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26357,7 +27723,6 @@ func (client *Client) DeleteLogstashWithOptions(InstanceId *string, request *Del
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -26376,7 +27741,7 @@ func (client *Client) DeleteLogstashWithOptions(InstanceId *string, request *Del
 		Action:      tea.String("DeleteLogstash"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId)),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26409,7 +27774,6 @@ func (client *Client) DeletePipelinesWithOptions(InstanceId *string, request *De
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -26428,7 +27792,7 @@ func (client *Client) DeletePipelinesWithOptions(InstanceId *string, request *De
 		Action:      tea.String("DeletePipelines"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/pipelines"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26461,7 +27825,6 @@ func (client *Client) DeleteSnapshotRepoWithOptions(InstanceId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -26480,7 +27843,7 @@ func (client *Client) DeleteSnapshotRepoWithOptions(InstanceId *string, request 
 		Action:      tea.String("DeleteSnapshotRepo"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/snapshot-repos"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/snapshot-repos"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26513,8 +27876,6 @@ func (client *Client) DeleteVpcEndpointWithOptions(InstanceId *string, EndpointI
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	EndpointId = openapiutil.GetEncodeParam(EndpointId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -26529,7 +27890,7 @@ func (client *Client) DeleteVpcEndpointWithOptions(InstanceId *string, EndpointI
 		Action:      tea.String("DeleteVpcEndpoint"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/vpc-endpoints/" + tea.StringValue(EndpointId)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/vpc-endpoints/" + tea.StringValue(openapiutil.GetEncodeParam(EndpointId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26562,7 +27923,6 @@ func (client *Client) DescribeAckOperatorWithOptions(ClusterId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -26571,7 +27931,7 @@ func (client *Client) DescribeAckOperatorWithOptions(ClusterId *string, request 
 		Action:      tea.String("DescribeAckOperator"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/ack-clusters/" + tea.StringValue(ClusterId) + "/operator"),
+		Pathname:    tea.String("/openapi/ack-clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/operator"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26604,7 +27964,6 @@ func (client *Client) DescribeApmWithOptions(instanceId *string, request *Descri
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -26613,7 +27972,7 @@ func (client *Client) DescribeApmWithOptions(instanceId *string, request *Descri
 		Action:      tea.String("DescribeApm"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(instanceId)),
+		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26646,7 +28005,6 @@ func (client *Client) DescribeCollectorWithOptions(ResId *string, request *Descr
 	if _err != nil {
 		return _result, _err
 	}
-	ResId = openapiutil.GetEncodeParam(ResId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -26655,7 +28013,7 @@ func (client *Client) DescribeCollectorWithOptions(ResId *string, request *Descr
 		Action:      tea.String("DescribeCollector"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId)),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(openapiutil.GetEncodeParam(ResId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26688,8 +28046,6 @@ func (client *Client) DescribeComponentIndexWithOptions(InstanceId *string, name
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -26698,7 +28054,7 @@ func (client *Client) DescribeComponentIndexWithOptions(InstanceId *string, name
 		Action:      tea.String("DescribeComponentIndex"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/component-index/" + tea.StringValue(name)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/component-index/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26731,7 +28087,6 @@ func (client *Client) DescribeConnectableClustersWithOptions(InstanceId *string,
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AlreadySetItems)) {
 		query["alreadySetItems"] = request.AlreadySetItems
@@ -26746,7 +28101,7 @@ func (client *Client) DescribeConnectableClustersWithOptions(InstanceId *string,
 		Action:      tea.String("DescribeConnectableClusters"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/connectable-clusters"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/connectable-clusters"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26779,8 +28134,6 @@ func (client *Client) DescribeDeprecatedTemplateWithOptions(InstanceId *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -26789,7 +28142,7 @@ func (client *Client) DescribeDeprecatedTemplateWithOptions(InstanceId *string, 
 		Action:      tea.String("DescribeDeprecatedTemplate"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/deprecated-templates/" + tea.StringValue(name)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/deprecated-templates/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26822,8 +28175,6 @@ func (client *Client) DescribeDiagnoseReportWithOptions(InstanceId *string, Repo
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	ReportId = openapiutil.GetEncodeParam(ReportId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["lang"] = request.Lang
@@ -26838,7 +28189,7 @@ func (client *Client) DescribeDiagnoseReportWithOptions(InstanceId *string, Repo
 		Action:      tea.String("DescribeDiagnoseReport"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/reports/" + tea.StringValue(ReportId)),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/reports/" + tea.StringValue(openapiutil.GetEncodeParam(ReportId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26871,7 +28222,6 @@ func (client *Client) DescribeDiagnosisSettingsWithOptions(InstanceId *string, r
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["lang"] = request.Lang
@@ -26886,7 +28236,7 @@ func (client *Client) DescribeDiagnosisSettingsWithOptions(InstanceId *string, r
 		Action:      tea.String("DescribeDiagnosisSettings"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/settings"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/settings"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26919,7 +28269,6 @@ func (client *Client) DescribeDynamicSettingsWithOptions(InstanceId *string, req
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -26928,7 +28277,7 @@ func (client *Client) DescribeDynamicSettingsWithOptions(InstanceId *string, req
 		Action:      tea.String("DescribeDynamicSettings"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/dynamic-settings"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dynamic-settings"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26961,7 +28310,6 @@ func (client *Client) DescribeElasticsearchHealthWithOptions(InstanceId *string,
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -26970,7 +28318,7 @@ func (client *Client) DescribeElasticsearchHealthWithOptions(InstanceId *string,
 		Action:      tea.String("DescribeElasticsearchHealth"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/elasticsearch-health"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/elasticsearch-health"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27003,8 +28351,6 @@ func (client *Client) DescribeILMPolicyWithOptions(InstanceId *string, PolicyNam
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	PolicyName = openapiutil.GetEncodeParam(PolicyName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -27013,7 +28359,7 @@ func (client *Client) DescribeILMPolicyWithOptions(InstanceId *string, PolicyNam
 		Action:      tea.String("DescribeILMPolicy"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/ilm-policies/" + tea.StringValue(PolicyName)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/ilm-policies/" + tea.StringValue(openapiutil.GetEncodeParam(PolicyName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27046,8 +28392,6 @@ func (client *Client) DescribeIndexTemplateWithOptions(InstanceId *string, Index
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	IndexTemplate = openapiutil.GetEncodeParam(IndexTemplate)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -27056,7 +28400,7 @@ func (client *Client) DescribeIndexTemplateWithOptions(InstanceId *string, Index
 		Action:      tea.String("DescribeIndexTemplate"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/index-templates/" + tea.StringValue(IndexTemplate)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/index-templates/" + tea.StringValue(openapiutil.GetEncodeParam(IndexTemplate))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27089,7 +28433,6 @@ func (client *Client) DescribeInstanceWithOptions(InstanceId *string, request *D
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -27098,7 +28441,7 @@ func (client *Client) DescribeInstanceWithOptions(InstanceId *string, request *D
 		Action:      tea.String("DescribeInstance"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27114,11 +28457,11 @@ func (client *Client) DescribeInstanceWithOptions(InstanceId *string, request *D
 	return _result, _err
 }
 
-func (client *Client) DescribeKibanaSettings(InstanceId *string, request *DescribeKibanaSettingsRequest) (_result *DescribeKibanaSettingsResponse, _err error) {
+func (client *Client) DescribeKibanaSettings(InstanceId *string) (_result *DescribeKibanaSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeKibanaSettingsResponse{}
-	_body, _err := client.DescribeKibanaSettingsWithOptions(InstanceId, request, headers, runtime)
+	_body, _err := client.DescribeKibanaSettingsWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27126,21 +28469,15 @@ func (client *Client) DescribeKibanaSettings(InstanceId *string, request *Descri
 	return _result, _err
 }
 
-func (client *Client) DescribeKibanaSettingsWithOptions(InstanceId *string, request *DescribeKibanaSettingsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeKibanaSettingsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+func (client *Client) DescribeKibanaSettingsWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeKibanaSettingsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeKibanaSettings"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/kibana-settings"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/kibana-settings"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27156,11 +28493,11 @@ func (client *Client) DescribeKibanaSettingsWithOptions(InstanceId *string, requ
 	return _result, _err
 }
 
-func (client *Client) DescribeLogstash(InstanceId *string, request *DescribeLogstashRequest) (_result *DescribeLogstashResponse, _err error) {
+func (client *Client) DescribeLogstash(InstanceId *string) (_result *DescribeLogstashResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeLogstashResponse{}
-	_body, _err := client.DescribeLogstashWithOptions(InstanceId, request, headers, runtime)
+	_body, _err := client.DescribeLogstashWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27168,21 +28505,15 @@ func (client *Client) DescribeLogstash(InstanceId *string, request *DescribeLogs
 	return _result, _err
 }
 
-func (client *Client) DescribeLogstashWithOptions(InstanceId *string, request *DescribeLogstashRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeLogstashResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+func (client *Client) DescribeLogstashWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeLogstashResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeLogstash"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId)),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27215,8 +28546,6 @@ func (client *Client) DescribePipelineWithOptions(InstanceId *string, PipelineId
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	PipelineId = openapiutil.GetEncodeParam(PipelineId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -27225,7 +28554,7 @@ func (client *Client) DescribePipelineWithOptions(InstanceId *string, PipelineId
 		Action:      tea.String("DescribePipeline"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines/" + tea.StringValue(PipelineId)),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27258,7 +28587,6 @@ func (client *Client) DescribePipelineManagementConfigWithOptions(InstanceId *st
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -27273,7 +28601,7 @@ func (client *Client) DescribePipelineManagementConfigWithOptions(InstanceId *st
 		Action:      tea.String("DescribePipelineManagementConfig"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipeline-management-config"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/pipeline-management-config"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27289,11 +28617,11 @@ func (client *Client) DescribePipelineManagementConfigWithOptions(InstanceId *st
 	return _result, _err
 }
 
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, headers, runtime)
+	_body, _err := client.DescribeRegionsWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27301,14 +28629,9 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
+func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRegions"),
@@ -27347,7 +28670,6 @@ func (client *Client) DescribeSnapshotSettingWithOptions(InstanceId *string, req
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -27356,7 +28678,7 @@ func (client *Client) DescribeSnapshotSettingWithOptions(InstanceId *string, req
 		Action:      tea.String("DescribeSnapshotSetting"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/snapshot-setting"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/snapshot-setting"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27389,7 +28711,6 @@ func (client *Client) DescribeTemplatesWithOptions(InstanceId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -27398,7 +28719,7 @@ func (client *Client) DescribeTemplatesWithOptions(InstanceId *string, request *
 		Action:      tea.String("DescribeTemplates"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/templates"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/templates"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27431,7 +28752,6 @@ func (client *Client) DescribeXpackMonitorConfigWithOptions(InstanceId *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -27440,7 +28760,7 @@ func (client *Client) DescribeXpackMonitorConfigWithOptions(InstanceId *string, 
 		Action:      tea.String("DescribeXpackMonitorConfig"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/xpack-monitor-config"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/xpack-monitor-config"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27473,7 +28793,6 @@ func (client *Client) DiagnoseInstanceWithOptions(InstanceId *string, request *D
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -27483,16 +28802,29 @@ func (client *Client) DiagnoseInstanceWithOptions(InstanceId *string, request *D
 		query["lang"] = request.Lang
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiagnoseItems)) {
+		body["diagnoseItems"] = request.DiagnoseItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Indices)) {
+		body["indices"] = request.Indices
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DiagnoseInstance"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/actions/diagnose"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/diagnose"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27525,7 +28857,6 @@ func (client *Client) EstimatedLogstashRestartTimeWithOptions(InstanceId *string
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Force)) {
 		query["force"] = request.Force
@@ -27540,7 +28871,7 @@ func (client *Client) EstimatedLogstashRestartTimeWithOptions(InstanceId *string
 		Action:      tea.String("EstimatedLogstashRestartTime"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/estimated-time/restart-time"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/estimated-time/restart-time"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27573,7 +28904,6 @@ func (client *Client) EstimatedRestartTimeWithOptions(InstanceId *string, reques
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Force)) {
 		query["force"] = request.Force
@@ -27588,7 +28918,7 @@ func (client *Client) EstimatedRestartTimeWithOptions(InstanceId *string, reques
 		Action:      tea.String("EstimatedRestartTime"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/estimated-time/restart-time"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/estimated-time/restart-time"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27662,7 +28992,6 @@ func (client *Client) GetElastictaskWithOptions(InstanceId *string, request *Get
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -27671,7 +29000,7 @@ func (client *Client) GetElastictaskWithOptions(InstanceId *string, request *Get
 		Action:      tea.String("GetElastictask"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/elastic-task"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/elastic-task"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27704,7 +29033,6 @@ func (client *Client) GetEmonGrafanaAlertsWithOptions(ProjectId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	ProjectId = openapiutil.GetEncodeParam(ProjectId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -27713,7 +29041,7 @@ func (client *Client) GetEmonGrafanaAlertsWithOptions(ProjectId *string, request
 		Action:      tea.String("GetEmonGrafanaAlerts"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/emon/projects/" + tea.StringValue(ProjectId) + "/grafana/proxy/api/alerts"),
+		Pathname:    tea.String("/openapi/emon/projects/" + tea.StringValue(openapiutil.GetEncodeParam(ProjectId)) + "/grafana/proxy/api/alerts"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27746,7 +29074,6 @@ func (client *Client) GetEmonGrafanaDashboardsWithOptions(ProjectId *string, req
 	if _err != nil {
 		return _result, _err
 	}
-	ProjectId = openapiutil.GetEncodeParam(ProjectId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -27755,7 +29082,7 @@ func (client *Client) GetEmonGrafanaDashboardsWithOptions(ProjectId *string, req
 		Action:      tea.String("GetEmonGrafanaDashboards"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/emon/projects/" + tea.StringValue(ProjectId) + "/grafana/proxy/api/search"),
+		Pathname:    tea.String("/openapi/emon/projects/" + tea.StringValue(openapiutil.GetEncodeParam(ProjectId)) + "/grafana/proxy/api/search"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27788,7 +29115,6 @@ func (client *Client) GetEmonMonitorDataWithOptions(ProjectId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	ProjectId = openapiutil.GetEncodeParam(ProjectId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -27797,7 +29123,7 @@ func (client *Client) GetEmonMonitorDataWithOptions(ProjectId *string, request *
 		Action:      tea.String("GetEmonMonitorData"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/emon/projects/" + tea.StringValue(ProjectId) + "/metrics/query"),
+		Pathname:    tea.String("/openapi/emon/projects/" + tea.StringValue(openapiutil.GetEncodeParam(ProjectId)) + "/metrics/query"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27830,7 +29156,6 @@ func (client *Client) GetOpenStoreUsageWithOptions(InstanceId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -27839,7 +29164,7 @@ func (client *Client) GetOpenStoreUsageWithOptions(InstanceId *string, request *
 		Action:      tea.String("GetOpenStoreUsage"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/openstore/usage"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/openstore/usage"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27919,7 +29244,6 @@ func (client *Client) GetSuggestShrinkableNodesWithOptions(InstanceId *string, r
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Count)) {
 		query["count"] = request.Count
@@ -27942,7 +29266,7 @@ func (client *Client) GetSuggestShrinkableNodesWithOptions(InstanceId *string, r
 		Action:      tea.String("GetSuggestShrinkableNodes"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/suggest-shrinkable-nodes"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/suggest-shrinkable-nodes"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -27975,7 +29299,6 @@ func (client *Client) GetTransferableNodesWithOptions(InstanceId *string, reques
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Count)) {
 		query["count"] = request.Count
@@ -27994,7 +29317,7 @@ func (client *Client) GetTransferableNodesWithOptions(InstanceId *string, reques
 		Action:      tea.String("GetTransferableNodes"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/transferable-nodes"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/transferable-nodes"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28074,7 +29397,6 @@ func (client *Client) InstallAckOperatorWithOptions(ClusterId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -28089,7 +29411,7 @@ func (client *Client) InstallAckOperatorWithOptions(ClusterId *string, request *
 		Action:      tea.String("InstallAckOperator"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/ack-clusters/" + tea.StringValue(ClusterId) + "/operator"),
+		Pathname:    tea.String("/openapi/ack-clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/operator"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28122,7 +29444,6 @@ func (client *Client) InstallKibanaSystemPluginWithOptions(InstanceId *string, r
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -28137,7 +29458,7 @@ func (client *Client) InstallKibanaSystemPluginWithOptions(InstanceId *string, r
 		Action:      tea.String("InstallKibanaSystemPlugin"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/kibana-plugins/system/actions/install"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/kibana-plugins/system/actions/install"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28170,7 +29491,6 @@ func (client *Client) InstallLogstashSystemPluginWithOptions(InstanceId *string,
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -28185,7 +29505,7 @@ func (client *Client) InstallLogstashSystemPluginWithOptions(InstanceId *string,
 		Action:      tea.String("InstallLogstashSystemPlugin"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/plugins/system/actions/install"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/plugins/system/actions/install"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28218,7 +29538,6 @@ func (client *Client) InstallSystemPluginWithOptions(InstanceId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -28233,7 +29552,7 @@ func (client *Client) InstallSystemPluginWithOptions(InstanceId *string, request
 		Action:      tea.String("InstallSystemPlugin"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/plugins/system/actions/install"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/plugins/system/actions/install"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28266,7 +29585,6 @@ func (client *Client) InstallUserPluginsWithOptions(InstanceId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -28275,7 +29593,7 @@ func (client *Client) InstallUserPluginsWithOptions(InstanceId *string, request 
 		Action:      tea.String("InstallUserPlugins"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/plugins/user/actions/install"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/plugins/user/actions/install"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28308,7 +29626,6 @@ func (client *Client) InterruptElasticsearchTaskWithOptions(InstanceId *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -28323,7 +29640,7 @@ func (client *Client) InterruptElasticsearchTaskWithOptions(InstanceId *string, 
 		Action:      tea.String("InterruptElasticsearchTask"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/interrupt"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/interrupt"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28356,7 +29673,6 @@ func (client *Client) InterruptLogstashTaskWithOptions(InstanceId *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -28371,7 +29687,7 @@ func (client *Client) InterruptLogstashTaskWithOptions(InstanceId *string, reque
 		Action:      tea.String("InterruptLogstashTask"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/actions/interrupt"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/interrupt"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28459,7 +29775,6 @@ func (client *Client) ListAckNamespacesWithOptions(ClusterId *string, request *L
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["page"] = request.Page
@@ -28478,7 +29793,7 @@ func (client *Client) ListAckNamespacesWithOptions(ClusterId *string, request *L
 		Action:      tea.String("ListAckNamespaces"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/ack-clusters/" + tea.StringValue(ClusterId) + "/namespaces"),
+		Pathname:    tea.String("/openapi/ack-clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/namespaces"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28511,7 +29826,6 @@ func (client *Client) ListActionRecordsWithOptions(InstanceId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ActionNames)) {
 		query["actionNames"] = request.ActionNames
@@ -28554,7 +29868,7 @@ func (client *Client) ListActionRecordsWithOptions(InstanceId *string, request *
 		Action:      tea.String("ListActionRecords"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/action-records"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/action-records"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28587,7 +29901,6 @@ func (client *Client) ListAllNodeWithOptions(InstanceId *string, request *ListAl
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Extended)) {
 		query["extended"] = request.Extended
@@ -28602,7 +29915,7 @@ func (client *Client) ListAllNodeWithOptions(InstanceId *string, request *ListAl
 		Action:      tea.String("ListAllNode"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/nodes"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/nodes"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28635,7 +29948,6 @@ func (client *Client) ListAlternativeSnapshotReposWithOptions(InstanceId *string
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AlreadySetItems)) {
 		query["alreadySetItems"] = request.AlreadySetItems
@@ -28650,7 +29962,7 @@ func (client *Client) ListAlternativeSnapshotReposWithOptions(InstanceId *string
 		Action:      tea.String("ListAlternativeSnapshotRepos"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/alternative-snapshot-repos"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/alternative-snapshot-repos"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28746,7 +30058,6 @@ func (client *Client) ListAvailableEsInstanceIdsWithOptions(InstanceId *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -28755,7 +30066,7 @@ func (client *Client) ListAvailableEsInstanceIdsWithOptions(InstanceId *string, 
 		Action:      tea.String("ListAvailableEsInstanceIds"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/available-elasticsearch-for-centralized-management"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/available-elasticsearch-for-centralized-management"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28855,7 +30166,6 @@ func (client *Client) ListComponentIndicesWithOptions(InstanceId *string, reques
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["name"] = request.Name
@@ -28872,13 +30182,12 @@ func (client *Client) ListComponentIndicesWithOptions(InstanceId *string, reques
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListComponentIndices"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/component-index"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/component-index"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28911,7 +30220,6 @@ func (client *Client) ListConnectedClustersWithOptions(InstanceId *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -28920,7 +30228,7 @@ func (client *Client) ListConnectedClustersWithOptions(InstanceId *string, reque
 		Action:      tea.String("ListConnectedClusters"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/connected-clusters"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/connected-clusters"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -28953,7 +30261,6 @@ func (client *Client) ListDataStreamsWithOptions(InstanceId *string, request *Li
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IsManaged)) {
 		query["isManaged"] = request.IsManaged
@@ -28972,7 +30279,7 @@ func (client *Client) ListDataStreamsWithOptions(InstanceId *string, request *Li
 		Action:      tea.String("ListDataStreams"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-streams"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/data-streams"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -29005,7 +30312,6 @@ func (client *Client) ListDataTasksWithOptions(InstanceId *string, request *List
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -29014,7 +30320,7 @@ func (client *Client) ListDataTasksWithOptions(InstanceId *string, request *List
 		Action:      tea.String("ListDataTasks"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-task"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/data-task"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -29102,7 +30408,6 @@ func (client *Client) ListDeprecatedTemplatesWithOptions(InstanceId *string, req
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["name"] = request.Name
@@ -29125,7 +30430,7 @@ func (client *Client) ListDeprecatedTemplatesWithOptions(InstanceId *string, req
 		Action:      tea.String("ListDeprecatedTemplates"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/deprecated-templates"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/deprecated-templates"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -29158,7 +30463,6 @@ func (client *Client) ListDiagnoseIndicesWithOptions(InstanceId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["lang"] = request.Lang
@@ -29173,7 +30477,7 @@ func (client *Client) ListDiagnoseIndicesWithOptions(InstanceId *string, request
 		Action:      tea.String("ListDiagnoseIndices"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/indices"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/indices"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -29206,7 +30510,6 @@ func (client *Client) ListDiagnoseReportWithOptions(InstanceId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Detail)) {
 		query["detail"] = request.Detail
@@ -29239,13 +30542,12 @@ func (client *Client) ListDiagnoseReportWithOptions(InstanceId *string, request 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDiagnoseReport"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/reports"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/reports"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -29278,7 +30580,6 @@ func (client *Client) ListDiagnoseReportIdsWithOptions(InstanceId *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["endTime"] = request.EndTime
@@ -29313,7 +30614,7 @@ func (client *Client) ListDiagnoseReportIdsWithOptions(InstanceId *string, reque
 		Action:      tea.String("ListDiagnoseReportIds"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/report-ids"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/report-ids"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -29346,7 +30647,6 @@ func (client *Client) ListDictInformationWithOptions(InstanceId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AnalyzerType)) {
 		query["analyzerType"] = request.AnalyzerType
@@ -29369,7 +30669,7 @@ func (client *Client) ListDictInformationWithOptions(InstanceId *string, request
 		Action:      tea.String("ListDictInformation"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/dict/_info"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dict/_info"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -29402,7 +30702,6 @@ func (client *Client) ListDictsWithOptions(InstanceId *string, request *ListDict
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AnalyzerType)) {
 		query["analyzerType"] = request.AnalyzerType
@@ -29421,7 +30720,7 @@ func (client *Client) ListDictsWithOptions(InstanceId *string, request *ListDict
 		Action:      tea.String("ListDicts"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/dicts"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dicts"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -29521,7 +30820,6 @@ func (client *Client) ListExtendfilesWithOptions(InstanceId *string, request *Li
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -29530,7 +30828,7 @@ func (client *Client) ListExtendfilesWithOptions(InstanceId *string, request *Li
 		Action:      tea.String("ListExtendfiles"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/extendfiles"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/extendfiles"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -29563,7 +30861,6 @@ func (client *Client) ListILMPoliciesWithOptions(InstanceId *string, request *Li
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
 		query["policyName"] = request.PolicyName
@@ -29578,7 +30875,7 @@ func (client *Client) ListILMPoliciesWithOptions(InstanceId *string, request *Li
 		Action:      tea.String("ListILMPolicies"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/ilm-policies"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/ilm-policies"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -29611,7 +30908,6 @@ func (client *Client) ListIndexTemplatesWithOptions(InstanceId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IndexTemplate)) {
 		query["indexTemplate"] = request.IndexTemplate
@@ -29634,7 +30930,7 @@ func (client *Client) ListIndexTemplatesWithOptions(InstanceId *string, request 
 		Action:      tea.String("ListIndexTemplates"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/index-templates"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/index-templates"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -29715,7 +31011,6 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, head
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListInstance"),
@@ -29729,6 +31024,115 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, head
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInstanceHistoryEvents(request *ListInstanceHistoryEventsRequest) (_result *ListInstanceHistoryEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstanceHistoryEventsResponse{}
+	_body, _err := client.ListInstanceHistoryEventsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListInstanceHistoryEventsWithOptions(tmpReq *ListInstanceHistoryEventsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstanceHistoryEventsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListInstanceHistoryEventsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EventCycleStatus)) {
+		request.EventCycleStatusShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventCycleStatus, tea.String("eventCycleStatus"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.EventLevel)) {
+		request.EventLevelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventLevel, tea.String("eventLevel"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.EventType)) {
+		request.EventTypeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventType, tea.String("eventType"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventCreateEndTime)) {
+		query["eventCreateEndTime"] = request.EventCreateEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventCreateStartTime)) {
+		query["eventCreateStartTime"] = request.EventCreateStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventCycleStatusShrink)) {
+		query["eventCycleStatus"] = request.EventCycleStatusShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventExecuteEndTime)) {
+		query["eventExecuteEndTime"] = request.EventExecuteEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventExecuteStartTime)) {
+		query["eventExecuteStartTime"] = request.EventExecuteStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventFinashEndTime)) {
+		query["eventFinashEndTime"] = request.EventFinashEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventFinashStartTime)) {
+		query["eventFinashStartTime"] = request.EventFinashStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventLevelShrink)) {
+		query["eventLevel"] = request.EventLevelShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventTypeShrink)) {
+		query["eventType"] = request.EventTypeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIP)) {
+		query["nodeIP"] = request.NodeIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    util.ToArray(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceHistoryEvents"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/events"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceHistoryEventsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -29754,7 +31158,6 @@ func (client *Client) ListInstanceIndicesWithOptions(InstanceId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.All)) {
 		query["all"] = request.All
@@ -29783,13 +31186,12 @@ func (client *Client) ListInstanceIndicesWithOptions(InstanceId *string, request
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListInstanceIndices"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/indices"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/indices"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -29822,7 +31224,6 @@ func (client *Client) ListKibanaPluginsWithOptions(InstanceId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["page"] = request.Page
@@ -29841,7 +31242,7 @@ func (client *Client) ListKibanaPluginsWithOptions(InstanceId *string, request *
 		Action:      tea.String("ListKibanaPlugins"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/kibana-plugins"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/kibana-plugins"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -29899,6 +31300,10 @@ func (client *Client) ListLogstashWithOptions(request *ListLogstashRequest, head
 		query["size"] = request.Size
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["tags"] = request.Tags
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Version)) {
 		query["version"] = request.Version
 	}
@@ -29945,7 +31350,6 @@ func (client *Client) ListLogstashLogWithOptions(InstanceId *string, request *Li
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
 		query["beginTime"] = request.BeginTime
@@ -29980,7 +31384,7 @@ func (client *Client) ListLogstashLogWithOptions(InstanceId *string, request *Li
 		Action:      tea.String("ListLogstashLog"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/search-log"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/search-log"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30013,7 +31417,6 @@ func (client *Client) ListLogstashPluginsWithOptions(InstanceId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["name"] = request.Name
@@ -30034,13 +31437,12 @@ func (client *Client) ListLogstashPluginsWithOptions(InstanceId *string, request
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListLogstashPlugins"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/plugins"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/plugins"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30073,7 +31475,6 @@ func (client *Client) ListNodesWithOptions(ResId *string, request *ListNodesRequ
 	if _err != nil {
 		return _result, _err
 	}
-	ResId = openapiutil.GetEncodeParam(ResId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EcsInstanceIds)) {
 		query["ecsInstanceIds"] = request.EcsInstanceIds
@@ -30104,7 +31505,7 @@ func (client *Client) ListNodesWithOptions(ResId *string, request *ListNodesRequ
 		Action:      tea.String("ListNodes"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/nodes"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(openapiutil.GetEncodeParam(ResId)) + "/nodes"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30137,7 +31538,6 @@ func (client *Client) ListPipelineWithOptions(InstanceId *string, request *ListP
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["page"] = request.Page
@@ -30160,7 +31560,7 @@ func (client *Client) ListPipelineWithOptions(InstanceId *string, request *ListP
 		Action:      tea.String("ListPipeline"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/pipelines"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30193,7 +31593,6 @@ func (client *Client) ListPipelineIdsWithOptions(InstanceId *string, request *Li
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -30202,7 +31601,7 @@ func (client *Client) ListPipelineIdsWithOptions(InstanceId *string, request *Li
 		Action:      tea.String("ListPipelineIds"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/pipeline-ids"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/pipeline-ids"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30235,7 +31634,6 @@ func (client *Client) ListPluginsWithOptions(InstanceId *string, request *ListPl
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["name"] = request.Name
@@ -30256,13 +31654,12 @@ func (client *Client) ListPluginsWithOptions(InstanceId *string, request *ListPl
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListPlugins"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/plugins"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/plugins"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30295,7 +31692,6 @@ func (client *Client) ListSearchLogWithOptions(InstanceId *string, request *List
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
 		query["beginTime"] = request.BeginTime
@@ -30324,13 +31720,12 @@ func (client *Client) ListSearchLogWithOptions(InstanceId *string, request *List
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListSearchLog"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/search-log"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/search-log"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30363,7 +31758,6 @@ func (client *Client) ListShardRecoveriesWithOptions(InstanceId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ActiveOnly)) {
 		query["activeOnly"] = request.ActiveOnly
@@ -30378,7 +31772,7 @@ func (client *Client) ListShardRecoveriesWithOptions(InstanceId *string, request
 		Action:      tea.String("ListShardRecoveries"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/cat-recovery"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/cat-recovery"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30411,7 +31805,6 @@ func (client *Client) ListSnapshotReposByInstanceIdWithOptions(InstanceId *strin
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -30420,7 +31813,7 @@ func (client *Client) ListSnapshotReposByInstanceIdWithOptions(InstanceId *strin
 		Action:      tea.String("ListSnapshotReposByInstanceId"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/snapshot-repos"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/snapshot-repos"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30481,7 +31874,6 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagResources"),
@@ -30532,7 +31924,6 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, headers map[
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTags"),
@@ -30571,7 +31962,6 @@ func (client *Client) ListVpcEndpointsWithOptions(InstanceId *string, request *L
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["page"] = request.Page
@@ -30590,7 +31980,7 @@ func (client *Client) ListVpcEndpointsWithOptions(InstanceId *string, request *L
 		Action:      tea.String("ListVpcEndpoints"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/vpc-endpoints"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/vpc-endpoints"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30623,7 +32013,6 @@ func (client *Client) MigrateToOtherZoneWithOptions(InstanceId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["dryRun"] = request.DryRun
@@ -30638,7 +32027,7 @@ func (client *Client) MigrateToOtherZoneWithOptions(InstanceId *string, request 
 		Action:      tea.String("MigrateToOtherZone"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/migrate-zones"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/migrate-zones"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30671,7 +32060,6 @@ func (client *Client) ModifyDeployMachineWithOptions(ResId *string, request *Mod
 	if _err != nil {
 		return _result, _err
 	}
-	ResId = openapiutil.GetEncodeParam(ResId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -30686,7 +32074,7 @@ func (client *Client) ModifyDeployMachineWithOptions(ResId *string, request *Mod
 		Action:      tea.String("ModifyDeployMachine"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/actions/modify-deploy-machines"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(openapiutil.GetEncodeParam(ResId)) + "/actions/modify-deploy-machines"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30719,7 +32107,6 @@ func (client *Client) ModifyElastictaskWithOptions(InstanceId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -30728,7 +32115,7 @@ func (client *Client) ModifyElastictaskWithOptions(InstanceId *string, request *
 		Action:      tea.String("ModifyElastictask"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/elastic-task"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/elastic-task"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30761,7 +32148,6 @@ func (client *Client) ModifyInstanceMaintainTimeWithOptions(InstanceId *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -30776,7 +32162,7 @@ func (client *Client) ModifyInstanceMaintainTimeWithOptions(InstanceId *string, 
 		Action:      tea.String("ModifyInstanceMaintainTime"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/modify-maintaintime"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/modify-maintaintime"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30809,7 +32195,6 @@ func (client *Client) ModifyWhiteIpsWithOptions(InstanceId *string, request *Mod
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -30845,7 +32230,7 @@ func (client *Client) ModifyWhiteIpsWithOptions(InstanceId *string, request *Mod
 		Action:      tea.String("ModifyWhiteIps"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/modify-white-ips"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/modify-white-ips"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30878,7 +32263,6 @@ func (client *Client) MoveResourceGroupWithOptions(InstanceId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -30893,7 +32277,7 @@ func (client *Client) MoveResourceGroupWithOptions(InstanceId *string, request *
 		Action:      tea.String("MoveResourceGroup"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/resourcegroup"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/resourcegroup"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30926,7 +32310,6 @@ func (client *Client) OpenDiagnosisWithOptions(InstanceId *string, request *Open
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -30945,7 +32328,7 @@ func (client *Client) OpenDiagnosisWithOptions(InstanceId *string, request *Open
 		Action:      tea.String("OpenDiagnosis"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/actions/open-diagnosis"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/open-diagnosis"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -30978,7 +32361,6 @@ func (client *Client) OpenHttpsWithOptions(InstanceId *string, request *OpenHttp
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -30993,7 +32375,7 @@ func (client *Client) OpenHttpsWithOptions(InstanceId *string, request *OpenHttp
 		Action:      tea.String("OpenHttps"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/open-https"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/open-https"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31026,8 +32408,6 @@ func (client *Client) PostEmonTryAlarmRuleWithOptions(ProjectId *string, AlarmGr
 	if _err != nil {
 		return _result, _err
 	}
-	ProjectId = openapiutil.GetEncodeParam(ProjectId)
-	AlarmGroupId = openapiutil.GetEncodeParam(AlarmGroupId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -31036,7 +32416,7 @@ func (client *Client) PostEmonTryAlarmRuleWithOptions(ProjectId *string, AlarmGr
 		Action:      tea.String("PostEmonTryAlarmRule"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/emon/projects/" + tea.StringValue(ProjectId) + "/alarm-groups/" + tea.StringValue(AlarmGroupId) + "/alarm-rules/_test"),
+		Pathname:    tea.String("/openapi/emon/projects/" + tea.StringValue(openapiutil.GetEncodeParam(ProjectId)) + "/alarm-groups/" + tea.StringValue(openapiutil.GetEncodeParam(AlarmGroupId)) + "/alarm-rules/_test"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31069,7 +32449,6 @@ func (client *Client) RecommendTemplatesWithOptions(InstanceId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.UsageScenario)) {
 		query["usageScenario"] = request.UsageScenario
@@ -31084,7 +32463,7 @@ func (client *Client) RecommendTemplatesWithOptions(InstanceId *string, request 
 		Action:      tea.String("RecommendTemplates"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/recommended-templates"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/recommended-templates"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31117,7 +32496,6 @@ func (client *Client) ReinstallCollectorWithOptions(ResId *string, request *Rein
 	if _err != nil {
 		return _result, _err
 	}
-	ResId = openapiutil.GetEncodeParam(ResId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -31132,7 +32510,7 @@ func (client *Client) ReinstallCollectorWithOptions(ResId *string, request *Rein
 		Action:      tea.String("ReinstallCollector"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/actions/reinstall"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(openapiutil.GetEncodeParam(ResId)) + "/actions/reinstall"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31165,7 +32543,6 @@ func (client *Client) RemoveApmWithOptions(instanceId *string, request *RemoveAp
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -31174,7 +32551,7 @@ func (client *Client) RemoveApmWithOptions(instanceId *string, request *RemoveAp
 		Action:      tea.String("RemoveApm"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(instanceId)),
+		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31207,7 +32584,6 @@ func (client *Client) RenewInstanceWithOptions(InstanceId *string, request *Rene
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -31222,7 +32598,7 @@ func (client *Client) RenewInstanceWithOptions(InstanceId *string, request *Rene
 		Action:      tea.String("RenewInstance"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/renew"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/renew"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31255,7 +32631,6 @@ func (client *Client) RenewLogstashWithOptions(InstanceId *string, request *Rene
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -31270,7 +32645,7 @@ func (client *Client) RenewLogstashWithOptions(InstanceId *string, request *Rene
 		Action:      tea.String("RenewLogstash"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/actions/renew"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/renew"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31303,7 +32678,6 @@ func (client *Client) RestartCollectorWithOptions(ResId *string, request *Restar
 	if _err != nil {
 		return _result, _err
 	}
-	ResId = openapiutil.GetEncodeParam(ResId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -31318,7 +32692,7 @@ func (client *Client) RestartCollectorWithOptions(ResId *string, request *Restar
 		Action:      tea.String("RestartCollector"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/actions/restart"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(openapiutil.GetEncodeParam(ResId)) + "/actions/restart"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31351,7 +32725,6 @@ func (client *Client) RestartInstanceWithOptions(InstanceId *string, request *Re
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -31370,7 +32743,7 @@ func (client *Client) RestartInstanceWithOptions(InstanceId *string, request *Re
 		Action:      tea.String("RestartInstance"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/restart"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/restart"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31403,7 +32776,6 @@ func (client *Client) RestartLogstashWithOptions(InstanceId *string, request *Re
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -31413,16 +32785,37 @@ func (client *Client) RestartLogstashWithOptions(InstanceId *string, request *Re
 		query["force"] = request.Force
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BatchCount)) {
+		body["batchCount"] = request.BatchCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BlueGreenDep)) {
+		body["blueGreenDep"] = request.BlueGreenDep
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeTypes)) {
+		body["nodeTypes"] = request.NodeTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nodes)) {
+		body["nodes"] = request.Nodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestartType)) {
+		body["restartType"] = request.RestartType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RestartLogstash"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/actions/restart"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/restart"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31455,7 +32848,6 @@ func (client *Client) ResumeElasticsearchTaskWithOptions(InstanceId *string, req
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -31470,7 +32862,7 @@ func (client *Client) ResumeElasticsearchTaskWithOptions(InstanceId *string, req
 		Action:      tea.String("ResumeElasticsearchTask"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/resume"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/resume"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31503,7 +32895,6 @@ func (client *Client) ResumeLogstashTaskWithOptions(InstanceId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -31518,7 +32909,7 @@ func (client *Client) ResumeLogstashTaskWithOptions(InstanceId *string, request 
 		Action:      tea.String("ResumeLogstashTask"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/actions/resume"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/resume"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31551,8 +32942,6 @@ func (client *Client) RolloverDataStreamWithOptions(InstanceId *string, DataStre
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	DataStream = openapiutil.GetEncodeParam(DataStream)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -31567,7 +32956,7 @@ func (client *Client) RolloverDataStreamWithOptions(InstanceId *string, DataStre
 		Action:      tea.String("RolloverDataStream"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-streams/" + tea.StringValue(DataStream) + "/rollover"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/data-streams/" + tea.StringValue(openapiutil.GetEncodeParam(DataStream)) + "/rollover"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31600,7 +32989,6 @@ func (client *Client) RunPipelinesWithOptions(InstanceId *string, request *RunPi
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -31615,7 +33003,7 @@ func (client *Client) RunPipelinesWithOptions(InstanceId *string, request *RunPi
 		Action:      tea.String("RunPipelines"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines/action/run"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/pipelines/action/run"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31648,10 +33036,13 @@ func (client *Client) ShrinkNodeWithOptions(InstanceId *string, request *ShrinkN
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		query["count"] = request.Count
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IgnoreStatus)) {
@@ -31671,7 +33062,7 @@ func (client *Client) ShrinkNodeWithOptions(InstanceId *string, request *ShrinkN
 		Action:      tea.String("ShrinkNode"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/shrink"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/shrink"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31704,7 +33095,6 @@ func (client *Client) StartApmWithOptions(instanceId *string, request *StartApmR
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -31713,7 +33103,7 @@ func (client *Client) StartApmWithOptions(instanceId *string, request *StartApmR
 		Action:      tea.String("StartApm"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(instanceId) + "/actions/start"),
+		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/actions/start"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31746,7 +33136,6 @@ func (client *Client) StartCollectorWithOptions(ResId *string, request *StartCol
 	if _err != nil {
 		return _result, _err
 	}
-	ResId = openapiutil.GetEncodeParam(ResId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -31761,7 +33150,7 @@ func (client *Client) StartCollectorWithOptions(ResId *string, request *StartCol
 		Action:      tea.String("StartCollector"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/actions/start"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(openapiutil.GetEncodeParam(ResId)) + "/actions/start"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31777,11 +33166,11 @@ func (client *Client) StartCollectorWithOptions(ResId *string, request *StartCol
 	return _result, _err
 }
 
-func (client *Client) StopApm(instanceId *string, request *StopApmRequest) (_result *StopApmResponse, _err error) {
+func (client *Client) StopApm(instanceId *string) (_result *StopApmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &StopApmResponse{}
-	_body, _err := client.StopApmWithOptions(instanceId, request, headers, runtime)
+	_body, _err := client.StopApmWithOptions(instanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31789,21 +33178,15 @@ func (client *Client) StopApm(instanceId *string, request *StopApmRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) StopApmWithOptions(instanceId *string, request *StopApmRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopApmResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
+func (client *Client) StopApmWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopApmResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopApm"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(instanceId) + "/actions/stop"),
+		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/actions/stop"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31836,7 +33219,6 @@ func (client *Client) StopCollectorWithOptions(ResId *string, request *StopColle
 	if _err != nil {
 		return _result, _err
 	}
-	ResId = openapiutil.GetEncodeParam(ResId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -31851,7 +33233,7 @@ func (client *Client) StopCollectorWithOptions(ResId *string, request *StopColle
 		Action:      tea.String("StopCollector"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/actions/stop"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(openapiutil.GetEncodeParam(ResId)) + "/actions/stop"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31884,7 +33266,6 @@ func (client *Client) StopPipelinesWithOptions(InstanceId *string, request *Stop
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -31899,7 +33280,7 @@ func (client *Client) StopPipelinesWithOptions(InstanceId *string, request *Stop
 		Action:      tea.String("StopPipelines"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines/action/stop"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/pipelines/action/stop"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31932,9 +33313,22 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		body["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TagResources"),
@@ -31973,7 +33367,6 @@ func (client *Client) TransferNodeWithOptions(InstanceId *string, request *Trans
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -31992,7 +33385,7 @@ func (client *Client) TransferNodeWithOptions(InstanceId *string, request *Trans
 		Action:      tea.String("TransferNode"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/transfer"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/transfer"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32025,7 +33418,6 @@ func (client *Client) TriggerNetworkWithOptions(InstanceId *string, request *Tri
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -32053,7 +33445,7 @@ func (client *Client) TriggerNetworkWithOptions(InstanceId *string, request *Tri
 		Action:      tea.String("TriggerNetwork"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/network-trigger"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/network-trigger"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32086,7 +33478,6 @@ func (client *Client) UninstallKibanaPluginWithOptions(InstanceId *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -32101,7 +33492,7 @@ func (client *Client) UninstallKibanaPluginWithOptions(InstanceId *string, reque
 		Action:      tea.String("UninstallKibanaPlugin"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/kibana-plugins/actions/uninstall"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/kibana-plugins/actions/uninstall"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32134,7 +33525,6 @@ func (client *Client) UninstallLogstashPluginWithOptions(InstanceId *string, req
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -32149,7 +33539,7 @@ func (client *Client) UninstallLogstashPluginWithOptions(InstanceId *string, req
 		Action:      tea.String("UninstallLogstashPlugin"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/plugins/actions/uninstall"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/plugins/actions/uninstall"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32182,7 +33572,6 @@ func (client *Client) UninstallPluginWithOptions(InstanceId *string, request *Un
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -32197,7 +33586,7 @@ func (client *Client) UninstallPluginWithOptions(InstanceId *string, request *Un
 		Action:      tea.String("UninstallPlugin"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/plugins/actions/uninstall"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/plugins/actions/uninstall"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32289,7 +33678,6 @@ func (client *Client) UpdateAdminPasswordWithOptions(InstanceId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -32304,7 +33692,7 @@ func (client *Client) UpdateAdminPasswordWithOptions(InstanceId *string, request
 		Action:      tea.String("UpdateAdminPassword"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/admin-pwd"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/admin-pwd"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32337,7 +33725,6 @@ func (client *Client) UpdateAdvancedSettingWithOptions(InstanceId *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -32352,7 +33739,7 @@ func (client *Client) UpdateAdvancedSettingWithOptions(InstanceId *string, reque
 		Action:      tea.String("UpdateAdvancedSetting"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/update-advanced-setting"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/update-advanced-setting"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32385,7 +33772,6 @@ func (client *Client) UpdateAliwsDictWithOptions(InstanceId *string, request *Up
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -32400,7 +33786,7 @@ func (client *Client) UpdateAliwsDictWithOptions(InstanceId *string, request *Up
 		Action:      tea.String("UpdateAliwsDict"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/aliws-dict"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/aliws-dict"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32433,7 +33819,6 @@ func (client *Client) UpdateApmWithOptions(instanceId *string, request *UpdateAp
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
@@ -32463,7 +33848,7 @@ func (client *Client) UpdateApmWithOptions(instanceId *string, request *UpdateAp
 		Action:      tea.String("UpdateApm"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(instanceId)),
+		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32496,31 +33881,24 @@ func (client *Client) UpdateBlackIpsWithOptions(InstanceId *string, request *Upd
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
 	}
 
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EsIPBlacklist)) {
-		body["esIPBlacklist"] = request.EsIPBlacklist
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateBlackIps"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/black-ips"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/black-ips"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("formData"),
+		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateBlackIpsResponse{}
@@ -32549,7 +33927,6 @@ func (client *Client) UpdateCollectorWithOptions(ResId *string, request *UpdateC
 	if _err != nil {
 		return _result, _err
 	}
-	ResId = openapiutil.GetEncodeParam(ResId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -32564,7 +33941,7 @@ func (client *Client) UpdateCollectorWithOptions(ResId *string, request *UpdateC
 		Action:      tea.String("UpdateCollector"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId)),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(openapiutil.GetEncodeParam(ResId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32597,7 +33974,6 @@ func (client *Client) UpdateCollectorNameWithOptions(ResId *string, request *Upd
 	if _err != nil {
 		return _result, _err
 	}
-	ResId = openapiutil.GetEncodeParam(ResId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -32612,7 +33988,7 @@ func (client *Client) UpdateCollectorNameWithOptions(ResId *string, request *Upd
 		Action:      tea.String("UpdateCollectorName"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/actions/rename"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(openapiutil.GetEncodeParam(ResId)) + "/actions/rename"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32645,8 +34021,6 @@ func (client *Client) UpdateComponentIndexWithOptions(InstanceId *string, name *
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	name = openapiutil.GetEncodeParam(name)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Meta)) {
 		body["_meta"] = request.Meta
@@ -32664,7 +34038,7 @@ func (client *Client) UpdateComponentIndexWithOptions(InstanceId *string, name *
 		Action:      tea.String("UpdateComponentIndex"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/component-index/" + tea.StringValue(name)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/component-index/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32697,7 +34071,6 @@ func (client *Client) UpdateDescriptionWithOptions(InstanceId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -32717,7 +34090,7 @@ func (client *Client) UpdateDescriptionWithOptions(InstanceId *string, request *
 		Action:      tea.String("UpdateDescription"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/description"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/description"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32750,7 +34123,6 @@ func (client *Client) UpdateDiagnosisSettingsWithOptions(InstanceId *string, req
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -32769,7 +34141,7 @@ func (client *Client) UpdateDiagnosisSettingsWithOptions(InstanceId *string, req
 		Action:      tea.String("UpdateDiagnosisSettings"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/settings"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/settings"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32802,7 +34174,6 @@ func (client *Client) UpdateDictWithOptions(InstanceId *string, request *UpdateD
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -32817,7 +34188,7 @@ func (client *Client) UpdateDictWithOptions(InstanceId *string, request *UpdateD
 		Action:      tea.String("UpdateDict"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/dict"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dict"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32850,7 +34221,6 @@ func (client *Client) UpdateDynamicSettingsWithOptions(InstanceId *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -32873,7 +34243,7 @@ func (client *Client) UpdateDynamicSettingsWithOptions(InstanceId *string, reque
 		Action:      tea.String("UpdateDynamicSettings"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/dynamic-settings"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dynamic-settings"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32906,7 +34276,6 @@ func (client *Client) UpdateExtendConfigWithOptions(InstanceId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -32921,7 +34290,7 @@ func (client *Client) UpdateExtendConfigWithOptions(InstanceId *string, request 
 		Action:      tea.String("UpdateExtendConfig"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/extend-configs/actions/update"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/extend-configs/actions/update"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -32954,7 +34323,6 @@ func (client *Client) UpdateExtendfilesWithOptions(InstanceId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -32969,7 +34337,7 @@ func (client *Client) UpdateExtendfilesWithOptions(InstanceId *string, request *
 		Action:      tea.String("UpdateExtendfiles"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/extendfiles"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/extendfiles"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33002,7 +34370,6 @@ func (client *Client) UpdateHotIkDictsWithOptions(InstanceId *string, request *U
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33017,7 +34384,7 @@ func (client *Client) UpdateHotIkDictsWithOptions(InstanceId *string, request *U
 		Action:      tea.String("UpdateHotIkDicts"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/ik-hot-dict"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/ik-hot-dict"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33050,8 +34417,6 @@ func (client *Client) UpdateILMPolicyWithOptions(InstanceId *string, PolicyName 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	PolicyName = openapiutil.GetEncodeParam(PolicyName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -33066,7 +34431,7 @@ func (client *Client) UpdateILMPolicyWithOptions(InstanceId *string, PolicyName 
 		Action:      tea.String("UpdateILMPolicy"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/ilm-policies/" + tea.StringValue(PolicyName)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/ilm-policies/" + tea.StringValue(openapiutil.GetEncodeParam(PolicyName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33099,8 +34464,6 @@ func (client *Client) UpdateIndexTemplateWithOptions(InstanceId *string, IndexTe
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	IndexTemplate = openapiutil.GetEncodeParam(IndexTemplate)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -33115,7 +34478,7 @@ func (client *Client) UpdateIndexTemplateWithOptions(InstanceId *string, IndexTe
 		Action:      tea.String("UpdateIndexTemplate"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/index-templates/" + tea.StringValue(IndexTemplate)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/index-templates/" + tea.StringValue(openapiutil.GetEncodeParam(IndexTemplate))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33148,7 +34511,6 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33167,7 +34529,7 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		Action:      tea.String("UpdateInstance"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33200,7 +34562,6 @@ func (client *Client) UpdateInstanceChargeTypeWithOptions(InstanceId *string, re
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33215,7 +34576,7 @@ func (client *Client) UpdateInstanceChargeTypeWithOptions(InstanceId *string, re
 		Action:      tea.String("UpdateInstanceChargeType"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/convert-pay-type"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/convert-pay-type"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33248,7 +34609,6 @@ func (client *Client) UpdateInstanceSettingsWithOptions(InstanceId *string, requ
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33263,7 +34623,7 @@ func (client *Client) UpdateInstanceSettingsWithOptions(InstanceId *string, requ
 		Action:      tea.String("UpdateInstanceSettings"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/instance-settings"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/instance-settings"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33296,7 +34656,6 @@ func (client *Client) UpdateKibanaSettingsWithOptions(InstanceId *string, reques
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33311,7 +34670,7 @@ func (client *Client) UpdateKibanaSettingsWithOptions(InstanceId *string, reques
 		Action:      tea.String("UpdateKibanaSettings"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/update-kibana-settings"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/update-kibana-settings"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33344,7 +34703,6 @@ func (client *Client) UpdateKibanaWhiteIpsWithOptions(InstanceId *string, reques
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33354,16 +34712,25 @@ func (client *Client) UpdateKibanaWhiteIpsWithOptions(InstanceId *string, reques
 		query["modifyMode"] = request.ModifyMode
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KibanaIPWhitelist)) {
+		body["kibanaIPWhitelist"] = request.KibanaIPWhitelist
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.WhiteIpGroup))) {
+		body["whiteIpGroup"] = request.WhiteIpGroup
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateKibanaWhiteIps"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/kibana-white-ips"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/kibana-white-ips"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33396,22 +34763,30 @@ func (client *Client) UpdateLogstashWithOptions(InstanceId *string, request *Upd
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeAmount)) {
+		body["nodeAmount"] = request.NodeAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NodeSpec))) {
+		body["nodeSpec"] = request.NodeSpec
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateLogstash"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId)),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33444,7 +34819,6 @@ func (client *Client) UpdateLogstashChargeTypeWithOptions(InstanceId *string, re
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33459,7 +34833,7 @@ func (client *Client) UpdateLogstashChargeTypeWithOptions(InstanceId *string, re
 		Action:      tea.String("UpdateLogstashChargeType"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/actions/convert-pay-type"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/convert-pay-type"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33492,7 +34866,6 @@ func (client *Client) UpdateLogstashDescriptionWithOptions(InstanceId *string, r
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33507,7 +34880,7 @@ func (client *Client) UpdateLogstashDescriptionWithOptions(InstanceId *string, r
 		Action:      tea.String("UpdateLogstashDescription"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/description"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/description"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33540,7 +34913,6 @@ func (client *Client) UpdateLogstashSettingsWithOptions(InstanceId *string, requ
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33555,7 +34927,7 @@ func (client *Client) UpdateLogstashSettingsWithOptions(InstanceId *string, requ
 		Action:      tea.String("UpdateLogstashSettings"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/instance-settings"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/instance-settings"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33588,22 +34960,42 @@ func (client *Client) UpdatePipelineManagementConfigWithOptions(InstanceId *stri
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Endpoints)) {
+		body["endpoints"] = request.Endpoints
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineIds)) {
+		body["pipelineIds"] = request.PipelineIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineManagementType)) {
+		body["pipelineManagementType"] = request.PipelineManagementType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["userName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdatePipelineManagementConfig"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipeline-management-config"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/pipeline-management-config"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33636,7 +35028,6 @@ func (client *Client) UpdatePipelinesWithOptions(InstanceId *string, request *Up
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33655,7 +35046,7 @@ func (client *Client) UpdatePipelinesWithOptions(InstanceId *string, request *Up
 		Action:      tea.String("UpdatePipelines"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/pipelines"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33688,7 +35079,6 @@ func (client *Client) UpdatePrivateNetworkWhiteIpsWithOptions(InstanceId *string
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33707,7 +35097,7 @@ func (client *Client) UpdatePrivateNetworkWhiteIpsWithOptions(InstanceId *string
 		Action:      tea.String("UpdatePrivateNetworkWhiteIps"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/private-network-white-ips"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/private-network-white-ips"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33740,7 +35130,6 @@ func (client *Client) UpdatePublicNetworkWithOptions(InstanceId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33755,7 +35144,7 @@ func (client *Client) UpdatePublicNetworkWithOptions(InstanceId *string, request
 		Action:      tea.String("UpdatePublicNetwork"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/public-network"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/public-network"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33788,7 +35177,6 @@ func (client *Client) UpdatePublicWhiteIpsWithOptions(InstanceId *string, reques
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33807,7 +35195,7 @@ func (client *Client) UpdatePublicWhiteIpsWithOptions(InstanceId *string, reques
 		Action:      tea.String("UpdatePublicWhiteIps"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/public-white-ips"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/public-white-ips"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33840,7 +35228,6 @@ func (client *Client) UpdateReadWritePolicyWithOptions(InstanceId *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -33855,7 +35242,7 @@ func (client *Client) UpdateReadWritePolicyWithOptions(InstanceId *string, reque
 		Action:      tea.String("UpdateReadWritePolicy"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/update-read-write-policy"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/update-read-write-policy"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33888,7 +35275,6 @@ func (client *Client) UpdateSnapshotSettingWithOptions(InstanceId *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -33897,7 +35283,7 @@ func (client *Client) UpdateSnapshotSettingWithOptions(InstanceId *string, reque
 		Action:      tea.String("UpdateSnapshotSetting"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/snapshot-setting"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/snapshot-setting"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33930,7 +35316,6 @@ func (client *Client) UpdateSynonymsDictsWithOptions(InstanceId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -33945,7 +35330,7 @@ func (client *Client) UpdateSynonymsDictsWithOptions(InstanceId *string, request
 		Action:      tea.String("UpdateSynonymsDicts"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/synonymsDict"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/synonymsDict"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -33978,8 +35363,6 @@ func (client *Client) UpdateTemplateWithOptions(InstanceId *string, TemplateName
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	TemplateName = openapiutil.GetEncodeParam(TemplateName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -33994,7 +35377,7 @@ func (client *Client) UpdateTemplateWithOptions(InstanceId *string, TemplateName
 		Action:      tea.String("UpdateTemplate"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/templates/" + tea.StringValue(TemplateName)),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/templates/" + tea.StringValue(openapiutil.GetEncodeParam(TemplateName))),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -34027,7 +35410,6 @@ func (client *Client) UpdateWhiteIpsWithOptions(InstanceId *string, request *Upd
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -34055,7 +35437,7 @@ func (client *Client) UpdateWhiteIpsWithOptions(InstanceId *string, request *Upd
 		Action:      tea.String("UpdateWhiteIps"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/white-ips"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/white-ips"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -34088,22 +35470,38 @@ func (client *Client) UpdateXpackMonitorConfigWithOptions(InstanceId *string, re
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Endpoints)) {
+		body["endpoints"] = request.Endpoints
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["userName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateXpackMonitorConfig"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/xpack-monitor-config"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/xpack-monitor-config"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -34136,7 +35534,6 @@ func (client *Client) UpgradeEngineVersionWithOptions(InstanceId *string, reques
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
@@ -34164,11 +35561,11 @@ func (client *Client) UpgradeEngineVersionWithOptions(InstanceId *string, reques
 		Action:      tea.String("UpgradeEngineVersion"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/upgrade-version"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/upgrade-version"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("formData"),
+		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeEngineVersionResponse{}
@@ -34197,7 +35594,6 @@ func (client *Client) ValidateConnectionWithOptions(InstanceId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -34212,7 +35608,7 @@ func (client *Client) ValidateConnectionWithOptions(InstanceId *string, request 
 		Action:      tea.String("ValidateConnection"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/validate-connection"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/validate-connection"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -34245,8 +35641,11 @@ func (client *Client) ValidateShrinkNodesWithOptions(InstanceId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		query["count"] = request.Count
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IgnoreStatus)) {
 		query["ignoreStatus"] = request.IgnoreStatus
 	}
@@ -34264,7 +35663,7 @@ func (client *Client) ValidateShrinkNodesWithOptions(InstanceId *string, request
 		Action:      tea.String("ValidateShrinkNodes"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/validate-shrink-nodes"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/validate-shrink-nodes"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -34348,7 +35747,6 @@ func (client *Client) ValidateTransferableNodesWithOptions(InstanceId *string, r
 	if _err != nil {
 		return _result, _err
 	}
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.NodeType)) {
 		query["nodeType"] = request.NodeType
@@ -34363,7 +35761,7 @@ func (client *Client) ValidateTransferableNodesWithOptions(InstanceId *string, r
 		Action:      tea.String("ValidateTransferableNodes"),
 		Version:     tea.String("2017-06-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/validate-transfer-nodes"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/validate-transfer-nodes"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -34401,10 +35799,67 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		query["clientToken"] = request.ClientToken
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ClientNodeConfiguration))) {
+		body["clientNodeConfiguration"] = request.ClientNodeConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ElasticDataNodeConfiguration))) {
+		body["elasticDataNodeConfiguration"] = request.ElasticDataNodeConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EsAdminPassword)) {
+		body["esAdminPassword"] = request.EsAdminPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EsVersion)) {
+		body["esVersion"] = request.EsVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceCategory)) {
+		body["instanceCategory"] = request.InstanceCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.KibanaConfiguration))) {
+		body["kibanaConfiguration"] = request.KibanaConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.MasterConfiguration))) {
+		body["masterConfiguration"] = request.MasterConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NetworkConfig))) {
+		body["networkConfig"] = request.NetworkConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeAmount)) {
+		body["nodeAmount"] = request.NodeAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NodeSpec))) {
+		body["nodeSpec"] = request.NodeSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.PaymentInfo))) {
+		body["paymentInfo"] = request.PaymentInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
+		body["paymentType"] = request.PaymentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.WarmNodeConfiguration))) {
+		body["warmNodeConfiguration"] = request.WarmNodeConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneCount)) {
+		body["zoneCount"] = request.ZoneCount
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("createInstance"),
