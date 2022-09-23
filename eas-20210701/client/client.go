@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -596,9 +596,9 @@ func (s *CreateBenchmarkTaskRequest) SetBody(v string) *CreateBenchmarkTaskReque
 
 type CreateBenchmarkTaskResponseBody struct {
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskName  *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s CreateBenchmarkTaskResponseBody) String() string {
@@ -614,11 +614,6 @@ func (s *CreateBenchmarkTaskResponseBody) SetMessage(v string) *CreateBenchmarkT
 	return s
 }
 
-func (s *CreateBenchmarkTaskResponseBody) SetName(v string) *CreateBenchmarkTaskResponseBody {
-	s.Name = &v
-	return s
-}
-
 func (s *CreateBenchmarkTaskResponseBody) SetRegion(v string) *CreateBenchmarkTaskResponseBody {
 	s.Region = &v
 	return s
@@ -626,6 +621,11 @@ func (s *CreateBenchmarkTaskResponseBody) SetRegion(v string) *CreateBenchmarkTa
 
 func (s *CreateBenchmarkTaskResponseBody) SetRequestId(v string) *CreateBenchmarkTaskResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateBenchmarkTaskResponseBody) SetTaskName(v string) *CreateBenchmarkTaskResponseBody {
+	s.TaskName = &v
 	return s
 }
 
@@ -1031,9 +1031,9 @@ func (s *CreateServiceResponse) SetBody(v *CreateServiceResponseBody) *CreateSer
 }
 
 type CreateServiceAutoScalerRequest struct {
-	Max        *int32                                    `json:"max,omitempty" xml:"max,omitempty"`
-	Min        *int32                                    `json:"min,omitempty" xml:"min,omitempty"`
-	Strategies *CreateServiceAutoScalerRequestStrategies `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Struct"`
+	Max             *int32                                           `json:"max,omitempty" xml:"max,omitempty"`
+	Min             *int32                                           `json:"min,omitempty" xml:"min,omitempty"`
+	ScaleStrategies []*CreateServiceAutoScalerRequestScaleStrategies `json:"scaleStrategies,omitempty" xml:"scaleStrategies,omitempty" type:"Repeated"`
 }
 
 func (s CreateServiceAutoScalerRequest) String() string {
@@ -1054,31 +1054,37 @@ func (s *CreateServiceAutoScalerRequest) SetMin(v int32) *CreateServiceAutoScale
 	return s
 }
 
-func (s *CreateServiceAutoScalerRequest) SetStrategies(v *CreateServiceAutoScalerRequestStrategies) *CreateServiceAutoScalerRequest {
-	s.Strategies = v
+func (s *CreateServiceAutoScalerRequest) SetScaleStrategies(v []*CreateServiceAutoScalerRequestScaleStrategies) *CreateServiceAutoScalerRequest {
+	s.ScaleStrategies = v
 	return s
 }
 
-type CreateServiceAutoScalerRequestStrategies struct {
-	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	Qps *float32 `json:"qps,omitempty" xml:"qps,omitempty"`
+type CreateServiceAutoScalerRequestScaleStrategies struct {
+	MetricName *string  `json:"metricName,omitempty" xml:"metricName,omitempty"`
+	Service    *string  `json:"service,omitempty" xml:"service,omitempty"`
+	Threshold  *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
 }
 
-func (s CreateServiceAutoScalerRequestStrategies) String() string {
+func (s CreateServiceAutoScalerRequestScaleStrategies) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateServiceAutoScalerRequestStrategies) GoString() string {
+func (s CreateServiceAutoScalerRequestScaleStrategies) GoString() string {
 	return s.String()
 }
 
-func (s *CreateServiceAutoScalerRequestStrategies) SetCpu(v float32) *CreateServiceAutoScalerRequestStrategies {
-	s.Cpu = &v
+func (s *CreateServiceAutoScalerRequestScaleStrategies) SetMetricName(v string) *CreateServiceAutoScalerRequestScaleStrategies {
+	s.MetricName = &v
 	return s
 }
 
-func (s *CreateServiceAutoScalerRequestStrategies) SetQps(v float32) *CreateServiceAutoScalerRequestStrategies {
-	s.Qps = &v
+func (s *CreateServiceAutoScalerRequestScaleStrategies) SetService(v string) *CreateServiceAutoScalerRequestScaleStrategies {
+	s.Service = &v
+	return s
+}
+
+func (s *CreateServiceAutoScalerRequestScaleStrategies) SetThreshold(v float32) *CreateServiceAutoScalerRequestScaleStrategies {
+	s.Threshold = &v
 	return s
 }
 
@@ -2343,13 +2349,13 @@ func (s *DescribeServiceResponse) SetBody(v *Service) *DescribeServiceResponse {
 }
 
 type DescribeServiceAutoScalerResponseBody struct {
-	Behavior      map[string]interface{} `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
-	CurrentValues map[string]interface{} `json:"CurrentValues,omitempty" xml:"CurrentValues,omitempty"`
-	MaxReplica    *int32                 `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
-	MinReplica    *int32                 `json:"MinReplica,omitempty" xml:"MinReplica,omitempty"`
-	RequestId     *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceName   *string                `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Strategies    map[string]interface{} `json:"Strategies,omitempty" xml:"Strategies,omitempty"`
+	Behavior        map[string]interface{}                                  `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
+	CurrentMetrics  []*DescribeServiceAutoScalerResponseBodyCurrentMetrics  `json:"CurrentMetrics,omitempty" xml:"CurrentMetrics,omitempty" type:"Repeated"`
+	MaxReplica      *int32                                                  `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
+	MinReplica      *int32                                                  `json:"MinReplica,omitempty" xml:"MinReplica,omitempty"`
+	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScaleStrategies []*DescribeServiceAutoScalerResponseBodyScaleStrategies `json:"ScaleStrategies,omitempty" xml:"ScaleStrategies,omitempty" type:"Repeated"`
+	ServiceName     *string                                                 `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s DescribeServiceAutoScalerResponseBody) String() string {
@@ -2365,8 +2371,8 @@ func (s *DescribeServiceAutoScalerResponseBody) SetBehavior(v map[string]interfa
 	return s
 }
 
-func (s *DescribeServiceAutoScalerResponseBody) SetCurrentValues(v map[string]interface{}) *DescribeServiceAutoScalerResponseBody {
-	s.CurrentValues = v
+func (s *DescribeServiceAutoScalerResponseBody) SetCurrentMetrics(v []*DescribeServiceAutoScalerResponseBodyCurrentMetrics) *DescribeServiceAutoScalerResponseBody {
+	s.CurrentMetrics = v
 	return s
 }
 
@@ -2385,13 +2391,71 @@ func (s *DescribeServiceAutoScalerResponseBody) SetRequestId(v string) *Describe
 	return s
 }
 
+func (s *DescribeServiceAutoScalerResponseBody) SetScaleStrategies(v []*DescribeServiceAutoScalerResponseBodyScaleStrategies) *DescribeServiceAutoScalerResponseBody {
+	s.ScaleStrategies = v
+	return s
+}
+
 func (s *DescribeServiceAutoScalerResponseBody) SetServiceName(v string) *DescribeServiceAutoScalerResponseBody {
 	s.ServiceName = &v
 	return s
 }
 
-func (s *DescribeServiceAutoScalerResponseBody) SetStrategies(v map[string]interface{}) *DescribeServiceAutoScalerResponseBody {
-	s.Strategies = v
+type DescribeServiceAutoScalerResponseBodyCurrentMetrics struct {
+	MetricName *string  `json:"metricName,omitempty" xml:"metricName,omitempty"`
+	Service    *string  `json:"service,omitempty" xml:"service,omitempty"`
+	Value      *float32 `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s DescribeServiceAutoScalerResponseBodyCurrentMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceAutoScalerResponseBodyCurrentMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceAutoScalerResponseBodyCurrentMetrics) SetMetricName(v string) *DescribeServiceAutoScalerResponseBodyCurrentMetrics {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeServiceAutoScalerResponseBodyCurrentMetrics) SetService(v string) *DescribeServiceAutoScalerResponseBodyCurrentMetrics {
+	s.Service = &v
+	return s
+}
+
+func (s *DescribeServiceAutoScalerResponseBodyCurrentMetrics) SetValue(v float32) *DescribeServiceAutoScalerResponseBodyCurrentMetrics {
+	s.Value = &v
+	return s
+}
+
+type DescribeServiceAutoScalerResponseBodyScaleStrategies struct {
+	MetricName *string  `json:"metricName,omitempty" xml:"metricName,omitempty"`
+	Service    *string  `json:"service,omitempty" xml:"service,omitempty"`
+	Threshold  *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+}
+
+func (s DescribeServiceAutoScalerResponseBodyScaleStrategies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceAutoScalerResponseBodyScaleStrategies) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceAutoScalerResponseBodyScaleStrategies) SetMetricName(v string) *DescribeServiceAutoScalerResponseBodyScaleStrategies {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeServiceAutoScalerResponseBodyScaleStrategies) SetService(v string) *DescribeServiceAutoScalerResponseBodyScaleStrategies {
+	s.Service = &v
+	return s
+}
+
+func (s *DescribeServiceAutoScalerResponseBodyScaleStrategies) SetThreshold(v float32) *DescribeServiceAutoScalerResponseBodyScaleStrategies {
+	s.Threshold = &v
 	return s
 }
 
@@ -2537,6 +2601,146 @@ func (s *DescribeServiceCronScalerResponse) SetStatusCode(v int32) *DescribeServ
 }
 
 func (s *DescribeServiceCronScalerResponse) SetBody(v *DescribeServiceCronScalerResponseBody) *DescribeServiceCronScalerResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeServiceEventRequest struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageNum   *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize  *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeServiceEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceEventRequest) SetEndTime(v string) *DescribeServiceEventRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeServiceEventRequest) SetPageNum(v string) *DescribeServiceEventRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeServiceEventRequest) SetPageSize(v string) *DescribeServiceEventRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeServiceEventRequest) SetStartTime(v string) *DescribeServiceEventRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeServiceEventResponseBody struct {
+	Events       []*DescribeServiceEventResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	PageNum      *int64                                    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPageNum *int64                                    `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+}
+
+func (s DescribeServiceEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceEventResponseBody) SetEvents(v []*DescribeServiceEventResponseBodyEvents) *DescribeServiceEventResponseBody {
+	s.Events = v
+	return s
+}
+
+func (s *DescribeServiceEventResponseBody) SetPageNum(v int64) *DescribeServiceEventResponseBody {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeServiceEventResponseBody) SetRequestId(v string) *DescribeServiceEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeServiceEventResponseBody) SetTotalCount(v int64) *DescribeServiceEventResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeServiceEventResponseBody) SetTotalPageNum(v int64) *DescribeServiceEventResponseBody {
+	s.TotalPageNum = &v
+	return s
+}
+
+type DescribeServiceEventResponseBodyEvents struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Time    *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeServiceEventResponseBodyEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceEventResponseBodyEvents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceEventResponseBodyEvents) SetMessage(v string) *DescribeServiceEventResponseBodyEvents {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeServiceEventResponseBodyEvents) SetReason(v string) *DescribeServiceEventResponseBodyEvents {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeServiceEventResponseBodyEvents) SetTime(v string) *DescribeServiceEventResponseBodyEvents {
+	s.Time = &v
+	return s
+}
+
+func (s *DescribeServiceEventResponseBodyEvents) SetType(v string) *DescribeServiceEventResponseBodyEvents {
+	s.Type = &v
+	return s
+}
+
+type DescribeServiceEventResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeServiceEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeServiceEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceEventResponse) SetHeaders(v map[string]*string) *DescribeServiceEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeServiceEventResponse) SetStatusCode(v int32) *DescribeServiceEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeServiceEventResponse) SetBody(v *DescribeServiceEventResponseBody) *DescribeServiceEventResponse {
 	s.Body = v
 	return s
 }
@@ -3310,6 +3514,140 @@ func (s *ListServiceInstancesResponse) SetBody(v *ListServiceInstancesResponseBo
 	return s
 }
 
+type ListServiceVersionsRequest struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListServiceVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceVersionsRequest) SetPageNumber(v int32) *ListServiceVersionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListServiceVersionsRequest) SetPageSize(v int32) *ListServiceVersionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListServiceVersionsResponseBody struct {
+	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Versions   []*ListServiceVersionsResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceVersionsResponseBody) SetPageNumber(v int32) *ListServiceVersionsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListServiceVersionsResponseBody) SetPageSize(v int32) *ListServiceVersionsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListServiceVersionsResponseBody) SetRequestId(v string) *ListServiceVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceVersionsResponseBody) SetTotalCount(v int64) *ListServiceVersionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListServiceVersionsResponseBody) SetVersions(v []*ListServiceVersionsResponseBodyVersions) *ListServiceVersionsResponseBody {
+	s.Versions = v
+	return s
+}
+
+type ListServiceVersionsResponseBodyVersions struct {
+	BuildTime       *string `json:"BuildTime,omitempty" xml:"BuildTime,omitempty"`
+	ImageAvailable  *string `json:"ImageAvailable,omitempty" xml:"ImageAvailable,omitempty"`
+	ImageId         *int32  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ServiceRunnable *string `json:"ServiceRunnable,omitempty" xml:"ServiceRunnable,omitempty"`
+}
+
+func (s ListServiceVersionsResponseBodyVersions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceVersionsResponseBodyVersions) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceVersionsResponseBodyVersions) SetBuildTime(v string) *ListServiceVersionsResponseBodyVersions {
+	s.BuildTime = &v
+	return s
+}
+
+func (s *ListServiceVersionsResponseBodyVersions) SetImageAvailable(v string) *ListServiceVersionsResponseBodyVersions {
+	s.ImageAvailable = &v
+	return s
+}
+
+func (s *ListServiceVersionsResponseBodyVersions) SetImageId(v int32) *ListServiceVersionsResponseBodyVersions {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ListServiceVersionsResponseBodyVersions) SetMessage(v string) *ListServiceVersionsResponseBodyVersions {
+	s.Message = &v
+	return s
+}
+
+func (s *ListServiceVersionsResponseBodyVersions) SetServiceRunnable(v string) *ListServiceVersionsResponseBodyVersions {
+	s.ServiceRunnable = &v
+	return s
+}
+
+type ListServiceVersionsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListServiceVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceVersionsResponse) SetHeaders(v map[string]*string) *ListServiceVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceVersionsResponse) SetStatusCode(v int32) *ListServiceVersionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceVersionsResponse) SetBody(v *ListServiceVersionsResponseBody) *ListServiceVersionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListServicesRequest struct {
 	Filter     *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
@@ -4005,9 +4343,9 @@ func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateSer
 }
 
 type UpdateServiceAutoScalerRequest struct {
-	Max        *int32                                    `json:"max,omitempty" xml:"max,omitempty"`
-	Min        *int32                                    `json:"min,omitempty" xml:"min,omitempty"`
-	Strategies *UpdateServiceAutoScalerRequestStrategies `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Struct"`
+	Max             *int32                                           `json:"max,omitempty" xml:"max,omitempty"`
+	Min             *int32                                           `json:"min,omitempty" xml:"min,omitempty"`
+	ScaleStrategies []*UpdateServiceAutoScalerRequestScaleStrategies `json:"scaleStrategies,omitempty" xml:"scaleStrategies,omitempty" type:"Repeated"`
 }
 
 func (s UpdateServiceAutoScalerRequest) String() string {
@@ -4028,31 +4366,37 @@ func (s *UpdateServiceAutoScalerRequest) SetMin(v int32) *UpdateServiceAutoScale
 	return s
 }
 
-func (s *UpdateServiceAutoScalerRequest) SetStrategies(v *UpdateServiceAutoScalerRequestStrategies) *UpdateServiceAutoScalerRequest {
-	s.Strategies = v
+func (s *UpdateServiceAutoScalerRequest) SetScaleStrategies(v []*UpdateServiceAutoScalerRequestScaleStrategies) *UpdateServiceAutoScalerRequest {
+	s.ScaleStrategies = v
 	return s
 }
 
-type UpdateServiceAutoScalerRequestStrategies struct {
-	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	Qps *float32 `json:"qps,omitempty" xml:"qps,omitempty"`
+type UpdateServiceAutoScalerRequestScaleStrategies struct {
+	MetricName *string  `json:"metricName,omitempty" xml:"metricName,omitempty"`
+	Service    *string  `json:"service,omitempty" xml:"service,omitempty"`
+	Threshold  *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
 }
 
-func (s UpdateServiceAutoScalerRequestStrategies) String() string {
+func (s UpdateServiceAutoScalerRequestScaleStrategies) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateServiceAutoScalerRequestStrategies) GoString() string {
+func (s UpdateServiceAutoScalerRequestScaleStrategies) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateServiceAutoScalerRequestStrategies) SetCpu(v float32) *UpdateServiceAutoScalerRequestStrategies {
-	s.Cpu = &v
+func (s *UpdateServiceAutoScalerRequestScaleStrategies) SetMetricName(v string) *UpdateServiceAutoScalerRequestScaleStrategies {
+	s.MetricName = &v
 	return s
 }
 
-func (s *UpdateServiceAutoScalerRequestStrategies) SetQps(v float32) *UpdateServiceAutoScalerRequestStrategies {
-	s.Qps = &v
+func (s *UpdateServiceAutoScalerRequestScaleStrategies) SetService(v string) *UpdateServiceAutoScalerRequestScaleStrategies {
+	s.Service = &v
+	return s
+}
+
+func (s *UpdateServiceAutoScalerRequestScaleStrategies) SetThreshold(v float32) *UpdateServiceAutoScalerRequestScaleStrategies {
+	s.Threshold = &v
 	return s
 }
 
@@ -4536,8 +4880,6 @@ func (client *Client) CreateResourceInstancesWithOptions(ClusterId *string, Reso
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoRenewal)) {
 		body["AutoRenewal"] = request.AutoRenewal
@@ -4567,7 +4909,7 @@ func (client *Client) CreateResourceInstancesWithOptions(ClusterId *string, Reso
 		Action:      tea.String("CreateResourceInstances"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId) + "/instances"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/instances"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4600,8 +4942,6 @@ func (client *Client) CreateResourceLogWithOptions(ClusterId *string, ResourceId
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.LogStore)) {
 		body["LogStore"] = request.LogStore
@@ -4619,7 +4959,7 @@ func (client *Client) CreateResourceLogWithOptions(ClusterId *string, ResourceId
 		Action:      tea.String("CreateResourceLog"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId) + "/log"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/log"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4693,8 +5033,6 @@ func (client *Client) CreateServiceAutoScalerWithOptions(ClusterId *string, Serv
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Max)) {
 		body["max"] = request.Max
@@ -4704,8 +5042,8 @@ func (client *Client) CreateServiceAutoScalerWithOptions(ClusterId *string, Serv
 		body["min"] = request.Min
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Strategies))) {
-		body["strategies"] = request.Strategies
+	if !tea.BoolValue(util.IsUnset(request.ScaleStrategies)) {
+		body["scaleStrategies"] = request.ScaleStrategies
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4716,7 +5054,7 @@ func (client *Client) CreateServiceAutoScalerWithOptions(ClusterId *string, Serv
 		Action:      tea.String("CreateServiceAutoScaler"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/autoscaler"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/autoscaler"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4749,8 +5087,6 @@ func (client *Client) CreateServiceCronScalerWithOptions(ClusterId *string, Serv
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ExcludeDates)) {
 		body["ExcludeDates"] = request.ExcludeDates
@@ -4768,7 +5104,7 @@ func (client *Client) CreateServiceCronScalerWithOptions(ClusterId *string, Serv
 		Action:      tea.String("CreateServiceCronScaler"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/cronscaler"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/cronscaler"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4801,8 +5137,6 @@ func (client *Client) CreateServiceMirrorWithOptions(ClusterId *string, ServiceN
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Ratio)) {
 		body["Ratio"] = request.Ratio
@@ -4820,7 +5154,7 @@ func (client *Client) CreateServiceMirrorWithOptions(ClusterId *string, ServiceN
 		Action:      tea.String("CreateServiceMirror"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/mirror"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/mirror"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4849,8 +5183,6 @@ func (client *Client) DeleteBenchmarkTask(ClusterId *string, TaskName *string) (
 }
 
 func (client *Client) DeleteBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteBenchmarkTaskResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	TaskName = openapiutil.GetEncodeParam(TaskName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4858,7 +5190,7 @@ func (client *Client) DeleteBenchmarkTaskWithOptions(ClusterId *string, TaskName
 		Action:      tea.String("DeleteBenchmarkTask"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(TaskName)),
+		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(TaskName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4887,8 +5219,6 @@ func (client *Client) DeleteResource(ClusterId *string, ResourceId *string) (_re
 }
 
 func (client *Client) DeleteResourceWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4896,7 +5226,7 @@ func (client *Client) DeleteResourceWithOptions(ClusterId *string, ResourceId *s
 		Action:      tea.String("DeleteResource"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId)),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4925,8 +5255,6 @@ func (client *Client) DeleteResourceDLink(ClusterId *string, ResourceId *string)
 }
 
 func (client *Client) DeleteResourceDLinkWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceDLinkResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4934,7 +5262,7 @@ func (client *Client) DeleteResourceDLinkWithOptions(ClusterId *string, Resource
 		Action:      tea.String("DeleteResourceDLink"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId) + "/dlink"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/dlink"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4967,8 +5295,6 @@ func (client *Client) DeleteResourceInstancesWithOptions(ClusterId *string, Reso
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AllFailed)) {
 		query["AllFailed"] = request.AllFailed
@@ -4986,7 +5312,7 @@ func (client *Client) DeleteResourceInstancesWithOptions(ClusterId *string, Reso
 		Action:      tea.String("DeleteResourceInstances"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId) + "/instances"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/instances"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5015,8 +5341,6 @@ func (client *Client) DeleteResourceLog(ClusterId *string, ResourceId *string) (
 }
 
 func (client *Client) DeleteResourceLogWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceLogResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5024,7 +5348,7 @@ func (client *Client) DeleteResourceLogWithOptions(ClusterId *string, ResourceId
 		Action:      tea.String("DeleteResourceLog"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId) + "/log"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/log"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5053,8 +5377,6 @@ func (client *Client) DeleteService(ClusterId *string, ServiceName *string) (_re
 }
 
 func (client *Client) DeleteServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5062,7 +5384,7 @@ func (client *Client) DeleteServiceWithOptions(ClusterId *string, ServiceName *s
 		Action:      tea.String("DeleteService"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName)),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5091,8 +5413,6 @@ func (client *Client) DeleteServiceAutoScaler(ClusterId *string, ServiceName *st
 }
 
 func (client *Client) DeleteServiceAutoScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceAutoScalerResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5100,7 +5420,7 @@ func (client *Client) DeleteServiceAutoScalerWithOptions(ClusterId *string, Serv
 		Action:      tea.String("DeleteServiceAutoScaler"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/autoscaler"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/autoscaler"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5129,8 +5449,6 @@ func (client *Client) DeleteServiceCronScaler(ClusterId *string, ServiceName *st
 }
 
 func (client *Client) DeleteServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceCronScalerResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5138,7 +5456,7 @@ func (client *Client) DeleteServiceCronScalerWithOptions(ClusterId *string, Serv
 		Action:      tea.String("DeleteServiceCronScaler"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/cronscaler"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/cronscaler"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5171,8 +5489,6 @@ func (client *Client) DeleteServiceInstancesWithOptions(ClusterId *string, Servi
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceList)) {
 		query["InstanceList"] = request.InstanceList
@@ -5186,7 +5502,7 @@ func (client *Client) DeleteServiceInstancesWithOptions(ClusterId *string, Servi
 		Action:      tea.String("DeleteServiceInstances"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/instances"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/instances"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5215,8 +5531,6 @@ func (client *Client) DeleteServiceMirror(ClusterId *string, ServiceName *string
 }
 
 func (client *Client) DeleteServiceMirrorWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceMirrorResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5224,7 +5538,7 @@ func (client *Client) DeleteServiceMirrorWithOptions(ClusterId *string, ServiceN
 		Action:      tea.String("DeleteServiceMirror"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/mirror"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/mirror"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5253,8 +5567,6 @@ func (client *Client) DescribeBenchmarkTask(ClusterId *string, TaskName *string)
 }
 
 func (client *Client) DescribeBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeBenchmarkTaskResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	TaskName = openapiutil.GetEncodeParam(TaskName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5262,7 +5574,7 @@ func (client *Client) DescribeBenchmarkTaskWithOptions(ClusterId *string, TaskNa
 		Action:      tea.String("DescribeBenchmarkTask"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(TaskName)),
+		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(TaskName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5291,8 +5603,6 @@ func (client *Client) DescribeBenchmarkTaskReport(ClusterId *string, TaskName *s
 }
 
 func (client *Client) DescribeBenchmarkTaskReportWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeBenchmarkTaskReportResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	TaskName = openapiutil.GetEncodeParam(TaskName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5300,7 +5610,7 @@ func (client *Client) DescribeBenchmarkTaskReportWithOptions(ClusterId *string, 
 		Action:      tea.String("DescribeBenchmarkTaskReport"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(TaskName) + "/report"),
+		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(TaskName)) + "/report"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5329,8 +5639,6 @@ func (client *Client) DescribeResource(ClusterId *string, ResourceId *string) (_
 }
 
 func (client *Client) DescribeResourceWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeResourceResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5338,7 +5646,7 @@ func (client *Client) DescribeResourceWithOptions(ClusterId *string, ResourceId 
 		Action:      tea.String("DescribeResource"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId)),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5367,8 +5675,6 @@ func (client *Client) DescribeResourceDLink(ClusterId *string, ResourceId *strin
 }
 
 func (client *Client) DescribeResourceDLinkWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeResourceDLinkResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5376,7 +5682,7 @@ func (client *Client) DescribeResourceDLinkWithOptions(ClusterId *string, Resour
 		Action:      tea.String("DescribeResourceDLink"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId) + "/dlink"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/dlink"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5405,8 +5711,6 @@ func (client *Client) DescribeResourceLog(ClusterId *string, ResourceId *string)
 }
 
 func (client *Client) DescribeResourceLogWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeResourceLogResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5414,7 +5718,7 @@ func (client *Client) DescribeResourceLogWithOptions(ClusterId *string, Resource
 		Action:      tea.String("DescribeResourceLog"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId) + "/log"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/log"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5443,8 +5747,6 @@ func (client *Client) DescribeService(ClusterId *string, ServiceName *string) (_
 }
 
 func (client *Client) DescribeServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5452,7 +5754,7 @@ func (client *Client) DescribeServiceWithOptions(ClusterId *string, ServiceName 
 		Action:      tea.String("DescribeService"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName)),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5481,8 +5783,6 @@ func (client *Client) DescribeServiceAutoScaler(ClusterId *string, ServiceName *
 }
 
 func (client *Client) DescribeServiceAutoScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceAutoScalerResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5490,7 +5790,7 @@ func (client *Client) DescribeServiceAutoScalerWithOptions(ClusterId *string, Se
 		Action:      tea.String("DescribeServiceAutoScaler"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/autoscaler"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/autoscaler"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5519,8 +5819,6 @@ func (client *Client) DescribeServiceCronScaler(ClusterId *string, ServiceName *
 }
 
 func (client *Client) DescribeServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceCronScalerResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5528,7 +5826,7 @@ func (client *Client) DescribeServiceCronScalerWithOptions(ClusterId *string, Se
 		Action:      tea.String("DescribeServiceCronScaler"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/cronscaler"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/cronscaler"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5536,6 +5834,64 @@ func (client *Client) DescribeServiceCronScalerWithOptions(ClusterId *string, Se
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeServiceCronScalerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeServiceEvent(ClusterId *string, ServiceName *string, request *DescribeServiceEventRequest) (_result *DescribeServiceEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeServiceEventResponse{}
+	_body, _err := client.DescribeServiceEventWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeServiceEventWithOptions(ClusterId *string, ServiceName *string, request *DescribeServiceEventRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceEvent"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/events"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeServiceEventResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5561,8 +5917,6 @@ func (client *Client) DescribeServiceLogWithOptions(ClusterId *string, ServiceNa
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
@@ -5596,7 +5950,7 @@ func (client *Client) DescribeServiceLogWithOptions(ClusterId *string, ServiceNa
 		Action:      tea.String("DescribeServiceLog"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/logs"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/logs"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5625,8 +5979,6 @@ func (client *Client) DescribeServiceMirror(ClusterId *string, ServiceName *stri
 }
 
 func (client *Client) DescribeServiceMirrorWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceMirrorResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5634,7 +5986,7 @@ func (client *Client) DescribeServiceMirrorWithOptions(ClusterId *string, Servic
 		Action:      tea.String("DescribeServiceMirror"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/mirror"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/mirror"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5703,9 +6055,6 @@ func (client *Client) ListResourceInstanceWorkerWithOptions(ClusterId *string, R
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
-	InstanceName = openapiutil.GetEncodeParam(InstanceName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
@@ -5723,7 +6072,7 @@ func (client *Client) ListResourceInstanceWorkerWithOptions(ClusterId *string, R
 		Action:      tea.String("ListResourceInstanceWorker"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId) + "/instance/" + tea.StringValue(InstanceName) + "/workers"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/instance/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceName)) + "/workers"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5756,8 +6105,6 @@ func (client *Client) ListResourceInstancesWithOptions(ClusterId *string, Resour
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
 		query["ChargeType"] = request.ChargeType
@@ -5779,7 +6126,7 @@ func (client *Client) ListResourceInstancesWithOptions(ClusterId *string, Resour
 		Action:      tea.String("ListResourceInstances"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId) + "/instances"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/instances"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5812,8 +6159,6 @@ func (client *Client) ListResourceServicesWithOptions(ClusterId *string, Resourc
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
@@ -5831,7 +6176,7 @@ func (client *Client) ListResourceServicesWithOptions(ClusterId *string, Resourc
 		Action:      tea.String("ListResourceServices"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId) + "/services"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/services"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5914,8 +6259,6 @@ func (client *Client) ListServiceInstancesWithOptions(ClusterId *string, Service
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
@@ -5933,7 +6276,7 @@ func (client *Client) ListServiceInstancesWithOptions(ClusterId *string, Service
 		Action:      tea.String("ListServiceInstances"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/instances"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/instances"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5941,6 +6284,56 @@ func (client *Client) ListServiceInstancesWithOptions(ClusterId *string, Service
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListServiceInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListServiceVersions(ClusterId *string, ServiceName *string, request *ListServiceVersionsRequest) (_result *ListServiceVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListServiceVersionsResponse{}
+	_body, _err := client.ListServiceVersionsWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListServiceVersionsWithOptions(ClusterId *string, ServiceName *string, request *ListServiceVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceVersions"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/versions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceVersionsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6028,8 +6421,6 @@ func (client *Client) ReleaseServiceWithOptions(ClusterId *string, ServiceName *
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.TrafficState)) {
 		body["TrafficState"] = request.TrafficState
@@ -6047,7 +6438,7 @@ func (client *Client) ReleaseServiceWithOptions(ClusterId *string, ServiceName *
 		Action:      tea.String("ReleaseService"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/release"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/release"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6076,8 +6467,6 @@ func (client *Client) StartBenchmarkTask(ClusterId *string, TaskName *string) (_
 }
 
 func (client *Client) StartBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartBenchmarkTaskResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	TaskName = openapiutil.GetEncodeParam(TaskName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6085,7 +6474,7 @@ func (client *Client) StartBenchmarkTaskWithOptions(ClusterId *string, TaskName 
 		Action:      tea.String("StartBenchmarkTask"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(TaskName) + "/start"),
+		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(TaskName)) + "/start"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6114,8 +6503,6 @@ func (client *Client) StartService(ClusterId *string, ServiceName *string) (_res
 }
 
 func (client *Client) StartServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartServiceResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6123,7 +6510,7 @@ func (client *Client) StartServiceWithOptions(ClusterId *string, ServiceName *st
 		Action:      tea.String("StartService"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/start"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/start"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6152,8 +6539,6 @@ func (client *Client) StopBenchmarkTask(ClusterId *string, TaskName *string) (_r
 }
 
 func (client *Client) StopBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopBenchmarkTaskResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	TaskName = openapiutil.GetEncodeParam(TaskName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6161,7 +6546,7 @@ func (client *Client) StopBenchmarkTaskWithOptions(ClusterId *string, TaskName *
 		Action:      tea.String("StopBenchmarkTask"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(TaskName) + "/stop"),
+		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(TaskName)) + "/stop"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6190,8 +6575,6 @@ func (client *Client) StopService(ClusterId *string, ServiceName *string) (_resu
 }
 
 func (client *Client) StopServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopServiceResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6199,7 +6582,7 @@ func (client *Client) StopServiceWithOptions(ClusterId *string, ServiceName *str
 		Action:      tea.String("StopService"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/stop"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/stop"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6232,8 +6615,6 @@ func (client *Client) UpdateBenchmarkTaskWithOptions(ClusterId *string, TaskName
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	TaskName = openapiutil.GetEncodeParam(TaskName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -6242,7 +6623,7 @@ func (client *Client) UpdateBenchmarkTaskWithOptions(ClusterId *string, TaskName
 		Action:      tea.String("UpdateBenchmarkTask"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(TaskName)),
+		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(TaskName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6275,8 +6656,6 @@ func (client *Client) UpdateResourceWithOptions(ClusterId *string, ResourceId *s
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
 		body["ResourceName"] = request.ResourceName
@@ -6290,7 +6669,7 @@ func (client *Client) UpdateResourceWithOptions(ClusterId *string, ResourceId *s
 		Action:      tea.String("UpdateResource"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId)),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6323,8 +6702,6 @@ func (client *Client) UpdateResourceDLinkWithOptions(ClusterId *string, Resource
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DestinationCIDRs)) {
 		body["DestinationCIDRs"] = request.DestinationCIDRs
@@ -6350,7 +6727,7 @@ func (client *Client) UpdateResourceDLinkWithOptions(ClusterId *string, Resource
 		Action:      tea.String("UpdateResourceDLink"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ResourceId) + "/dlink"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/dlink"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6383,8 +6760,6 @@ func (client *Client) UpdateServiceWithOptions(ClusterId *string, ServiceName *s
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    request.Body,
@@ -6393,7 +6768,7 @@ func (client *Client) UpdateServiceWithOptions(ClusterId *string, ServiceName *s
 		Action:      tea.String("UpdateService"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName)),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6426,8 +6801,6 @@ func (client *Client) UpdateServiceAutoScalerWithOptions(ClusterId *string, Serv
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Max)) {
 		body["max"] = request.Max
@@ -6437,8 +6810,8 @@ func (client *Client) UpdateServiceAutoScalerWithOptions(ClusterId *string, Serv
 		body["min"] = request.Min
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Strategies))) {
-		body["strategies"] = request.Strategies
+	if !tea.BoolValue(util.IsUnset(request.ScaleStrategies)) {
+		body["scaleStrategies"] = request.ScaleStrategies
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6449,7 +6822,7 @@ func (client *Client) UpdateServiceAutoScalerWithOptions(ClusterId *string, Serv
 		Action:      tea.String("UpdateServiceAutoScaler"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/autoscaler"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/autoscaler"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6482,8 +6855,6 @@ func (client *Client) UpdateServiceCronScalerWithOptions(ClusterId *string, Serv
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ExcludeDates)) {
 		body["ExcludeDates"] = request.ExcludeDates
@@ -6501,7 +6872,7 @@ func (client *Client) UpdateServiceCronScalerWithOptions(ClusterId *string, Serv
 		Action:      tea.String("UpdateServiceCronScaler"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/cronscaler"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/cronscaler"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6534,8 +6905,6 @@ func (client *Client) UpdateServiceMirrorWithOptions(ClusterId *string, ServiceN
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Ratio)) {
 		body["Ratio"] = request.Ratio
@@ -6553,7 +6922,7 @@ func (client *Client) UpdateServiceMirrorWithOptions(ClusterId *string, ServiceN
 		Action:      tea.String("UpdateServiceMirror"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/mirror"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/mirror"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6586,8 +6955,6 @@ func (client *Client) UpdateServiceVersionWithOptions(ClusterId *string, Service
 	if _err != nil {
 		return _result, _err
 	}
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	ServiceName = openapiutil.GetEncodeParam(ServiceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Version)) {
 		body["Version"] = request.Version
@@ -6601,7 +6968,7 @@ func (client *Client) UpdateServiceVersionWithOptions(ClusterId *string, Service
 		Action:      tea.String("UpdateServiceVersion"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/version"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/version"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),

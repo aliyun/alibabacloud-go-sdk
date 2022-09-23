@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2021-07-01 for eas.
+
 2022-08-15 Version: v1.1.7
 - Fix bug.
 
