@@ -1,3 +1,6 @@
+2022-09-23 Version: v3.0.0
+- Generated golang 2017-08-01 for polardb.
+
 2022-09-09 Version: v2.0.8
 - Support new feature.
 

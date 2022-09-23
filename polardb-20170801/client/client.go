@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -7383,6 +7383,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	PayType              *string                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	RegionId             *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServerlessType       *string                                              `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
 	StoragePayType       *string                                              `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
 	StorageSpace         *int64                                               `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
 	StorageUsed          *int64                                               `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
@@ -7491,6 +7492,11 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetRegionId(v string) *De
 
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetResourceGroupId(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetServerlessType(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.ServerlessType = &v
 	return s
 }
 
