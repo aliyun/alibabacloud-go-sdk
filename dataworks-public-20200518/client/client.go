@@ -5,15 +5,14 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
@@ -2435,11 +2434,11 @@ func (s *CreateImportMigrationRequest) SetWorkspaceMap(v string) *CreateImportMi
 }
 
 type CreateImportMigrationAdvanceRequest struct {
-	PackageFileObject  io.Reader `json:"PackageFileObject,omitempty" xml:"PackageFileObject,omitempty" require:"true"`
 	CalculateEngineMap *string   `json:"CalculateEngineMap,omitempty" xml:"CalculateEngineMap,omitempty"`
 	CommitRule         *string   `json:"CommitRule,omitempty" xml:"CommitRule,omitempty"`
 	Description        *string   `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name               *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	PackageFileObject  io.Reader `json:"PackageFile,omitempty" xml:"PackageFile,omitempty"`
 	PackageType        *string   `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	ProjectId          *int64    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ResourceGroupMap   *string   `json:"ResourceGroupMap,omitempty" xml:"ResourceGroupMap,omitempty"`
@@ -2452,11 +2451,6 @@ func (s CreateImportMigrationAdvanceRequest) String() string {
 
 func (s CreateImportMigrationAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateImportMigrationAdvanceRequest) SetPackageFileObject(v io.Reader) *CreateImportMigrationAdvanceRequest {
-	s.PackageFileObject = v
-	return s
 }
 
 func (s *CreateImportMigrationAdvanceRequest) SetCalculateEngineMap(v string) *CreateImportMigrationAdvanceRequest {
@@ -2476,6 +2470,11 @@ func (s *CreateImportMigrationAdvanceRequest) SetDescription(v string) *CreateIm
 
 func (s *CreateImportMigrationAdvanceRequest) SetName(v string) *CreateImportMigrationAdvanceRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateImportMigrationAdvanceRequest) SetPackageFileObject(v io.Reader) *CreateImportMigrationAdvanceRequest {
+	s.PackageFileObject = v
 	return s
 }
 
@@ -8472,6 +8471,7 @@ func (s *GetDISyncInstanceInfoResponseBodyDataSolutionInfo) SetStepDetail(v []*G
 }
 
 type GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail struct {
+	Info     *string `json:"Info,omitempty" xml:"Info,omitempty"`
 	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	StepId   *int64  `json:"StepId,omitempty" xml:"StepId,omitempty"`
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
@@ -8483,6 +8483,11 @@ func (s GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail) String() st
 
 func (s GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail) GoString() string {
 	return s.String()
+}
+
+func (s *GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail) SetInfo(v string) *GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail {
+	s.Info = &v
+	return s
 }
 
 func (s *GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail) SetStatus(v string) *GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail {
@@ -42863,7 +42868,7 @@ func (client *Client) CreateImportMigrationAdvance(request *CreateImportMigratio
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -42902,35 +42907,35 @@ func (client *Client) CreateImportMigrationAdvance(request *CreateImportMigratio
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.PackageFileObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		createImportMigrationReq.PackageFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		createImportMigrationReq.PackageFile = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	createImportMigrationResp, _err := client.CreateImportMigrationWithOptions(createImportMigrationReq, runtime)
