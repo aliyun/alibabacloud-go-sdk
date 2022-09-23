@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -4939,93 +4939,6 @@ func (s *UpdateIpProtectionResponse) SetBody(v *UpdateIpProtectionResponseBody) 
 	return s
 }
 
-type UpdateMailAddressMsgCallBackUrlRequest struct {
-	MailFrom             *string `json:"MailFrom,omitempty" xml:"MailFrom,omitempty"`
-	NotifyUrl            *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s UpdateMailAddressMsgCallBackUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMailAddressMsgCallBackUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMailAddressMsgCallBackUrlRequest) SetMailFrom(v string) *UpdateMailAddressMsgCallBackUrlRequest {
-	s.MailFrom = &v
-	return s
-}
-
-func (s *UpdateMailAddressMsgCallBackUrlRequest) SetNotifyUrl(v string) *UpdateMailAddressMsgCallBackUrlRequest {
-	s.NotifyUrl = &v
-	return s
-}
-
-func (s *UpdateMailAddressMsgCallBackUrlRequest) SetOwnerId(v int64) *UpdateMailAddressMsgCallBackUrlRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *UpdateMailAddressMsgCallBackUrlRequest) SetResourceOwnerAccount(v string) *UpdateMailAddressMsgCallBackUrlRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *UpdateMailAddressMsgCallBackUrlRequest) SetResourceOwnerId(v int64) *UpdateMailAddressMsgCallBackUrlRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type UpdateMailAddressMsgCallBackUrlResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateMailAddressMsgCallBackUrlResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMailAddressMsgCallBackUrlResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMailAddressMsgCallBackUrlResponseBody) SetRequestId(v string) *UpdateMailAddressMsgCallBackUrlResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateMailAddressMsgCallBackUrlResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateMailAddressMsgCallBackUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateMailAddressMsgCallBackUrlResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMailAddressMsgCallBackUrlResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMailAddressMsgCallBackUrlResponse) SetHeaders(v map[string]*string) *UpdateMailAddressMsgCallBackUrlResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateMailAddressMsgCallBackUrlResponse) SetStatusCode(v int32) *UpdateMailAddressMsgCallBackUrlResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateMailAddressMsgCallBackUrlResponse) SetBody(v *UpdateMailAddressMsgCallBackUrlResponseBody) *UpdateMailAddressMsgCallBackUrlResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -7458,66 +7371,6 @@ func (client *Client) UpdateIpProtection(request *UpdateIpProtectionRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateIpProtectionResponse{}
 	_body, _err := client.UpdateIpProtectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateMailAddressMsgCallBackUrlWithOptions(request *UpdateMailAddressMsgCallBackUrlRequest, runtime *util.RuntimeOptions) (_result *UpdateMailAddressMsgCallBackUrlResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.MailFrom)) {
-		query["MailFrom"] = request.MailFrom
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NotifyUrl)) {
-		query["NotifyUrl"] = request.NotifyUrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateMailAddressMsgCallBackUrl"),
-		Version:     tea.String("2015-11-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateMailAddressMsgCallBackUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateMailAddressMsgCallBackUrl(request *UpdateMailAddressMsgCallBackUrlRequest) (_result *UpdateMailAddressMsgCallBackUrlResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateMailAddressMsgCallBackUrlResponse{}
-	_body, _err := client.UpdateMailAddressMsgCallBackUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
