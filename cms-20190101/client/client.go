@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -321,6 +321,163 @@ func (s *ApplyMetricRuleTemplateResponse) SetBody(v *ApplyMetricRuleTemplateResp
 	return s
 }
 
+type BatchCreateInstantSiteMonitorRequest struct {
+	RegionId *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskList []*BatchCreateInstantSiteMonitorRequestTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
+}
+
+func (s BatchCreateInstantSiteMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateInstantSiteMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateInstantSiteMonitorRequest) SetRegionId(v string) *BatchCreateInstantSiteMonitorRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *BatchCreateInstantSiteMonitorRequest) SetTaskList(v []*BatchCreateInstantSiteMonitorRequestTaskList) *BatchCreateInstantSiteMonitorRequest {
+	s.TaskList = v
+	return s
+}
+
+type BatchCreateInstantSiteMonitorRequestTaskList struct {
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	IspCities   *string `json:"IspCities,omitempty" xml:"IspCities,omitempty"`
+	OptionsJson *string `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
+	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s BatchCreateInstantSiteMonitorRequestTaskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateInstantSiteMonitorRequestTaskList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateInstantSiteMonitorRequestTaskList) SetAddress(v string) *BatchCreateInstantSiteMonitorRequestTaskList {
+	s.Address = &v
+	return s
+}
+
+func (s *BatchCreateInstantSiteMonitorRequestTaskList) SetIspCities(v string) *BatchCreateInstantSiteMonitorRequestTaskList {
+	s.IspCities = &v
+	return s
+}
+
+func (s *BatchCreateInstantSiteMonitorRequestTaskList) SetOptionsJson(v string) *BatchCreateInstantSiteMonitorRequestTaskList {
+	s.OptionsJson = &v
+	return s
+}
+
+func (s *BatchCreateInstantSiteMonitorRequestTaskList) SetTaskName(v string) *BatchCreateInstantSiteMonitorRequestTaskList {
+	s.TaskName = &v
+	return s
+}
+
+func (s *BatchCreateInstantSiteMonitorRequestTaskList) SetTaskType(v string) *BatchCreateInstantSiteMonitorRequestTaskList {
+	s.TaskType = &v
+	return s
+}
+
+type BatchCreateInstantSiteMonitorResponseBody struct {
+	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*BatchCreateInstantSiteMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BatchCreateInstantSiteMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateInstantSiteMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateInstantSiteMonitorResponseBody) SetCode(v string) *BatchCreateInstantSiteMonitorResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchCreateInstantSiteMonitorResponseBody) SetData(v []*BatchCreateInstantSiteMonitorResponseBodyData) *BatchCreateInstantSiteMonitorResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BatchCreateInstantSiteMonitorResponseBody) SetMessage(v string) *BatchCreateInstantSiteMonitorResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BatchCreateInstantSiteMonitorResponseBody) SetRequestId(v string) *BatchCreateInstantSiteMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchCreateInstantSiteMonitorResponseBody) SetSuccess(v bool) *BatchCreateInstantSiteMonitorResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchCreateInstantSiteMonitorResponseBodyData struct {
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s BatchCreateInstantSiteMonitorResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateInstantSiteMonitorResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateInstantSiteMonitorResponseBodyData) SetTaskId(v string) *BatchCreateInstantSiteMonitorResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *BatchCreateInstantSiteMonitorResponseBodyData) SetTaskName(v string) *BatchCreateInstantSiteMonitorResponseBodyData {
+	s.TaskName = &v
+	return s
+}
+
+type BatchCreateInstantSiteMonitorResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchCreateInstantSiteMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchCreateInstantSiteMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateInstantSiteMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateInstantSiteMonitorResponse) SetHeaders(v map[string]*string) *BatchCreateInstantSiteMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchCreateInstantSiteMonitorResponse) SetStatusCode(v int32) *BatchCreateInstantSiteMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchCreateInstantSiteMonitorResponse) SetBody(v *BatchCreateInstantSiteMonitorResponseBody) *BatchCreateInstantSiteMonitorResponse {
+	s.Body = v
+	return s
+}
+
 type BatchCreateIntantSiteMonitorRequest struct {
 	RegionId *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TaskList []*BatchCreateIntantSiteMonitorRequestTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
@@ -386,10 +543,9 @@ func (s *BatchCreateIntantSiteMonitorRequestTaskList) SetTaskType(v string) *Bat
 }
 
 type BatchCreateIntantSiteMonitorResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -885,6 +1041,7 @@ func (s *CreateDynamicTagGroupRequest) SetTemplateIdList(v []*string) *CreateDyn
 }
 
 type CreateDynamicTagGroupRequestMatchExpress struct {
+	TagName               *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 	TagValue              *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	TagValueMatchFunction *string `json:"TagValueMatchFunction,omitempty" xml:"TagValueMatchFunction,omitempty"`
 }
@@ -895,6 +1052,11 @@ func (s CreateDynamicTagGroupRequestMatchExpress) String() string {
 
 func (s CreateDynamicTagGroupRequestMatchExpress) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDynamicTagGroupRequestMatchExpress) SetTagName(v string) *CreateDynamicTagGroupRequestMatchExpress {
+	s.TagName = &v
+	return s
 }
 
 func (s *CreateDynamicTagGroupRequestMatchExpress) SetTagValue(v string) *CreateDynamicTagGroupRequestMatchExpress {
@@ -1470,15 +1632,16 @@ func (s *CreateGroupMonitoringAgentProcessRequest) SetRegionId(v string) *Create
 }
 
 type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
-	ComparisonOperator  *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	EffectiveInterval   *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	EscalationsLevel    *string `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
-	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	SilenceTime         *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	Statistics          *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	Threshold           *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	Times               *string `json:"Times,omitempty" xml:"Times,omitempty"`
-	Webhook             *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
+	ComparisonOperator  *string                                                          `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	EffectiveInterval   *string                                                          `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
+	EscalationsLevel    *string                                                          `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
+	NoEffectiveInterval *string                                                          `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
+	SilenceTime         *string                                                          `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	Statistics          *string                                                          `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	TargetList          []*CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
+	Threshold           *string                                                          `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Times               *string                                                          `json:"Times,omitempty" xml:"Times,omitempty"`
+	Webhook             *string                                                          `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
 func (s CreateGroupMonitoringAgentProcessRequestAlertConfig) String() string {
@@ -1519,6 +1682,11 @@ func (s *CreateGroupMonitoringAgentProcessRequestAlertConfig) SetStatistics(v st
 	return s
 }
 
+func (s *CreateGroupMonitoringAgentProcessRequestAlertConfig) SetTargetList(v []*CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList) *CreateGroupMonitoringAgentProcessRequestAlertConfig {
+	s.TargetList = v
+	return s
+}
+
 func (s *CreateGroupMonitoringAgentProcessRequestAlertConfig) SetThreshold(v string) *CreateGroupMonitoringAgentProcessRequestAlertConfig {
 	s.Threshold = &v
 	return s
@@ -1531,6 +1699,41 @@ func (s *CreateGroupMonitoringAgentProcessRequestAlertConfig) SetTimes(v string)
 
 func (s *CreateGroupMonitoringAgentProcessRequestAlertConfig) SetWebhook(v string) *CreateGroupMonitoringAgentProcessRequestAlertConfig {
 	s.Webhook = &v
+	return s
+}
+
+type CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList struct {
+	Arn        *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
+}
+
+func (s CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList) SetArn(v string) *CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList {
+	s.Arn = &v
+	return s
+}
+
+func (s *CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList) SetId(v string) *CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList) SetJsonParams(v string) *CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList {
+	s.JsonParams = &v
+	return s
+}
+
+func (s *CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList) SetLevel(v string) *CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList {
+	s.Level = &v
 	return s
 }
 
@@ -1631,6 +1834,7 @@ type CreateHostAvailabilityRequest struct {
 	AlertConfig               *CreateHostAvailabilityRequestAlertConfig                 `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
 	TaskOption                *CreateHostAvailabilityRequestTaskOption                  `json:"TaskOption,omitempty" xml:"TaskOption,omitempty" type:"Struct"`
 	AlertConfigEscalationList []*CreateHostAvailabilityRequestAlertConfigEscalationList `json:"AlertConfigEscalationList,omitempty" xml:"AlertConfigEscalationList,omitempty" type:"Repeated"`
+	AlertConfigTargetList     []*CreateHostAvailabilityRequestAlertConfigTargetList     `json:"AlertConfigTargetList,omitempty" xml:"AlertConfigTargetList,omitempty" type:"Repeated"`
 	GroupId                   *int64                                                    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	InstanceList              []*string                                                 `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	RegionId                  *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1659,6 +1863,11 @@ func (s *CreateHostAvailabilityRequest) SetTaskOption(v *CreateHostAvailabilityR
 
 func (s *CreateHostAvailabilityRequest) SetAlertConfigEscalationList(v []*CreateHostAvailabilityRequestAlertConfigEscalationList) *CreateHostAvailabilityRequest {
 	s.AlertConfigEscalationList = v
+	return s
+}
+
+func (s *CreateHostAvailabilityRequest) SetAlertConfigTargetList(v []*CreateHostAvailabilityRequestAlertConfigTargetList) *CreateHostAvailabilityRequest {
+	s.AlertConfigTargetList = v
 	return s
 }
 
@@ -1836,6 +2045,41 @@ func (s *CreateHostAvailabilityRequestAlertConfigEscalationList) SetTimes(v int3
 
 func (s *CreateHostAvailabilityRequestAlertConfigEscalationList) SetValue(v string) *CreateHostAvailabilityRequestAlertConfigEscalationList {
 	s.Value = &v
+	return s
+}
+
+type CreateHostAvailabilityRequestAlertConfigTargetList struct {
+	Arn        *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
+}
+
+func (s CreateHostAvailabilityRequestAlertConfigTargetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHostAvailabilityRequestAlertConfigTargetList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHostAvailabilityRequestAlertConfigTargetList) SetArn(v string) *CreateHostAvailabilityRequestAlertConfigTargetList {
+	s.Arn = &v
+	return s
+}
+
+func (s *CreateHostAvailabilityRequestAlertConfigTargetList) SetId(v string) *CreateHostAvailabilityRequestAlertConfigTargetList {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateHostAvailabilityRequestAlertConfigTargetList) SetJsonParams(v string) *CreateHostAvailabilityRequestAlertConfigTargetList {
+	s.JsonParams = &v
+	return s
+}
+
+func (s *CreateHostAvailabilityRequestAlertConfigTargetList) SetLevel(v string) *CreateHostAvailabilityRequestAlertConfigTargetList {
+	s.Level = &v
 	return s
 }
 
@@ -2640,6 +2884,176 @@ func (s *CreateInstantSiteMonitorResponse) SetStatusCode(v int32) *CreateInstant
 }
 
 func (s *CreateInstantSiteMonitorResponse) SetBody(v *CreateInstantSiteMonitorResponseBody) *CreateInstantSiteMonitorResponse {
+	s.Body = v
+	return s
+}
+
+type CreateMetricRuleBlackListRequest struct {
+	Category        *string                                    `json:"Category,omitempty" xml:"Category,omitempty"`
+	EffectiveTime   *string                                    `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	EnableEndTime   *string                                    `json:"EnableEndTime,omitempty" xml:"EnableEndTime,omitempty"`
+	EnableStartTime *string                                    `json:"EnableStartTime,omitempty" xml:"EnableStartTime,omitempty"`
+	Instances       []*string                                  `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	Metrics         []*CreateMetricRuleBlackListRequestMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	Name            *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace       *string                                    `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId        *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScopeType       *string                                    `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	ScopeValue      *string                                    `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty"`
+}
+
+func (s CreateMetricRuleBlackListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMetricRuleBlackListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMetricRuleBlackListRequest) SetCategory(v string) *CreateMetricRuleBlackListRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListRequest) SetEffectiveTime(v string) *CreateMetricRuleBlackListRequest {
+	s.EffectiveTime = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListRequest) SetEnableEndTime(v string) *CreateMetricRuleBlackListRequest {
+	s.EnableEndTime = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListRequest) SetEnableStartTime(v string) *CreateMetricRuleBlackListRequest {
+	s.EnableStartTime = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListRequest) SetInstances(v []*string) *CreateMetricRuleBlackListRequest {
+	s.Instances = v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListRequest) SetMetrics(v []*CreateMetricRuleBlackListRequestMetrics) *CreateMetricRuleBlackListRequest {
+	s.Metrics = v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListRequest) SetName(v string) *CreateMetricRuleBlackListRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListRequest) SetNamespace(v string) *CreateMetricRuleBlackListRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListRequest) SetRegionId(v string) *CreateMetricRuleBlackListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListRequest) SetScopeType(v string) *CreateMetricRuleBlackListRequest {
+	s.ScopeType = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListRequest) SetScopeValue(v string) *CreateMetricRuleBlackListRequest {
+	s.ScopeValue = &v
+	return s
+}
+
+type CreateMetricRuleBlackListRequestMetrics struct {
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Resource   *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+}
+
+func (s CreateMetricRuleBlackListRequestMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMetricRuleBlackListRequestMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMetricRuleBlackListRequestMetrics) SetMetricName(v string) *CreateMetricRuleBlackListRequestMetrics {
+	s.MetricName = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListRequestMetrics) SetResource(v string) *CreateMetricRuleBlackListRequestMetrics {
+	s.Resource = &v
+	return s
+}
+
+type CreateMetricRuleBlackListResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateMetricRuleBlackListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMetricRuleBlackListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMetricRuleBlackListResponseBody) SetCode(v string) *CreateMetricRuleBlackListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListResponseBody) SetId(v string) *CreateMetricRuleBlackListResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListResponseBody) SetMessage(v string) *CreateMetricRuleBlackListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListResponseBody) SetRequestId(v string) *CreateMetricRuleBlackListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListResponseBody) SetSuccess(v bool) *CreateMetricRuleBlackListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateMetricRuleBlackListResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMetricRuleBlackListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateMetricRuleBlackListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMetricRuleBlackListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMetricRuleBlackListResponse) SetHeaders(v map[string]*string) *CreateMetricRuleBlackListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListResponse) SetStatusCode(v int32) *CreateMetricRuleBlackListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMetricRuleBlackListResponse) SetBody(v *CreateMetricRuleBlackListResponseBody) *CreateMetricRuleBlackListResponse {
 	s.Body = v
 	return s
 }
@@ -5182,6 +5596,99 @@ func (s *DeleteLogMonitorResponse) SetStatusCode(v int32) *DeleteLogMonitorRespo
 }
 
 func (s *DeleteLogMonitorResponse) SetBody(v *DeleteLogMonitorResponseBody) *DeleteLogMonitorResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMetricRuleBlackListRequest struct {
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteMetricRuleBlackListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMetricRuleBlackListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMetricRuleBlackListRequest) SetId(v string) *DeleteMetricRuleBlackListRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteMetricRuleBlackListRequest) SetRegionId(v string) *DeleteMetricRuleBlackListRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteMetricRuleBlackListResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count     *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteMetricRuleBlackListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMetricRuleBlackListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMetricRuleBlackListResponseBody) SetCode(v string) *DeleteMetricRuleBlackListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteMetricRuleBlackListResponseBody) SetCount(v int32) *DeleteMetricRuleBlackListResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *DeleteMetricRuleBlackListResponseBody) SetMessage(v string) *DeleteMetricRuleBlackListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteMetricRuleBlackListResponseBody) SetRequestId(v string) *DeleteMetricRuleBlackListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMetricRuleBlackListResponseBody) SetSuccess(v bool) *DeleteMetricRuleBlackListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteMetricRuleBlackListResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMetricRuleBlackListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMetricRuleBlackListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMetricRuleBlackListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMetricRuleBlackListResponse) SetHeaders(v map[string]*string) *DeleteMetricRuleBlackListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMetricRuleBlackListResponse) SetStatusCode(v int32) *DeleteMetricRuleBlackListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMetricRuleBlackListResponse) SetBody(v *DeleteMetricRuleBlackListResponseBody) *DeleteMetricRuleBlackListResponse {
 	s.Body = v
 	return s
 }
@@ -8431,6 +8938,7 @@ type DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationR
 	Expression         *string                                                                                           `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	ExpressionList     *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResourceExpressionList `json:"ExpressionList,omitempty" xml:"ExpressionList,omitempty" type:"Struct"`
 	ExpressionListJoin *string                                                                                           `json:"ExpressionListJoin,omitempty" xml:"ExpressionListJoin,omitempty"`
+	ExpressionRaw      *string                                                                                           `json:"ExpressionRaw,omitempty" xml:"ExpressionRaw,omitempty"`
 	Level              *int32                                                                                            `json:"Level,omitempty" xml:"Level,omitempty"`
 	PreCondition       *string                                                                                           `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
 	Tag                *string                                                                                           `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -8463,6 +8971,11 @@ func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalat
 
 func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResource) SetExpressionListJoin(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResource {
 	s.ExpressionListJoin = &v
+	return s
+}
+
+func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResource) SetExpressionRaw(v string) *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResource {
+	s.ExpressionRaw = &v
 	return s
 }
 
@@ -11827,15 +12340,16 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertCon
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig struct {
-	ComparisonOperator  *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	EffectiveInterval   *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	EscalationsLevel    *string `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
-	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	SilenceTime         *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	Statistics          *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	Threshold           *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	Times               *string `json:"Times,omitempty" xml:"Times,omitempty"`
-	Webhook             *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
+	ComparisonOperator  *string                                                                                          `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	EffectiveInterval   *string                                                                                          `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
+	EscalationsLevel    *string                                                                                          `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
+	NoEffectiveInterval *string                                                                                          `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
+	SilenceTime         *string                                                                                          `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	Statistics          *string                                                                                          `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	TargetList          *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Struct"`
+	Threshold           *string                                                                                          `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Times               *string                                                                                          `json:"Times,omitempty" xml:"Times,omitempty"`
+	Webhook             *string                                                                                          `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
 func (s DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig) String() string {
@@ -11876,6 +12390,11 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertCon
 	return s
 }
 
+func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig) SetTargetList(v *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList) *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig {
+	s.TargetList = v
+	return s
+}
+
 func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig) SetThreshold(v string) *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig {
 	s.Threshold = &v
 	return s
@@ -11888,6 +12407,58 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertCon
 
 func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig) SetWebhook(v string) *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig {
 	s.Webhook = &v
+	return s
+}
+
+type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList struct {
+	Target []*DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
+}
+
+func (s DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList) SetTarget(v []*DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget) *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList {
+	s.Target = v
+	return s
+}
+
+type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget struct {
+	Arn        *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	JsonParmas *string `json:"JsonParmas,omitempty" xml:"JsonParmas,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
+}
+
+func (s DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget) SetArn(v string) *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget {
+	s.Arn = &v
+	return s
+}
+
+func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget) SetId(v string) *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget) SetJsonParmas(v string) *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget {
+	s.JsonParmas = &v
+	return s
+}
+
+func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget) SetLevel(v string) *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget {
+	s.Level = &v
 	return s
 }
 
@@ -12160,6 +12731,7 @@ type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig s
 	NotifyType     *int32                                                                                   `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
 	SilenceTime    *int32                                                                                   `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
 	StartTime      *int32                                                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TargetList     *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetList     `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Struct"`
 	WebHook        *string                                                                                  `json:"WebHook,omitempty" xml:"WebHook,omitempty"`
 }
 
@@ -12193,6 +12765,11 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConf
 
 func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig) SetStartTime(v int32) *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig) SetTargetList(v *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetList) *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig {
+	s.TargetList = v
 	return s
 }
 
@@ -12256,6 +12833,58 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConf
 
 func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigEscalationListEscalationList) SetValue(v string) *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigEscalationListEscalationList {
 	s.Value = &v
+	return s
+}
+
+type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetList struct {
+	Target []*DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetList) SetTarget(v []*DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget) *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetList {
+	s.Target = v
+	return s
+}
+
+type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget struct {
+	Arn        *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
+}
+
+func (s DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget) SetArn(v string) *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget {
+	s.Arn = &v
+	return s
+}
+
+func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget) SetId(v string) *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget) SetJsonParams(v string) *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget {
+	s.JsonParams = &v
+	return s
+}
+
+func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget) SetLevel(v string) *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget {
+	s.Level = &v
 	return s
 }
 
@@ -13061,6 +13690,7 @@ type DescribeHybridMonitorTaskListRequest struct {
 	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TargetUserId      *int64  `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
 	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	TaskType          *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
@@ -13105,6 +13735,11 @@ func (s *DescribeHybridMonitorTaskListRequest) SetPageSize(v int32) *DescribeHyb
 
 func (s *DescribeHybridMonitorTaskListRequest) SetRegionId(v string) *DescribeHybridMonitorTaskListRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListRequest) SetTargetUserId(v int64) *DescribeHybridMonitorTaskListRequest {
+	s.TargetUserId = &v
 	return s
 }
 
@@ -14716,6 +15351,253 @@ func (s *DescribeMetricMetaListResponse) SetStatusCode(v int32) *DescribeMetricM
 }
 
 func (s *DescribeMetricMetaListResponse) SetBody(v *DescribeMetricMetaListResponseBody) *DescribeMetricMetaListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMetricRuleBlackListRequest struct {
+	Category   *string   `json:"Category,omitempty" xml:"Category,omitempty"`
+	Ids        []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	Namespace  *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Order      *int32    `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeMetricRuleBlackListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricRuleBlackListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricRuleBlackListRequest) SetCategory(v string) *DescribeMetricRuleBlackListRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListRequest) SetIds(v []*string) *DescribeMetricRuleBlackListRequest {
+	s.Ids = v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListRequest) SetNamespace(v string) *DescribeMetricRuleBlackListRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListRequest) SetOrder(v int32) *DescribeMetricRuleBlackListRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListRequest) SetPageNumber(v int32) *DescribeMetricRuleBlackListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListRequest) SetPageSize(v int32) *DescribeMetricRuleBlackListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListRequest) SetRegionId(v string) *DescribeMetricRuleBlackListRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeMetricRuleBlackListResponseBody struct {
+	Code                        *string                                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	DescribeMetricRuleBlackList []*DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList `json:"DescribeMetricRuleBlackList,omitempty" xml:"DescribeMetricRuleBlackList,omitempty" type:"Repeated"`
+	Message                     *string                                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId                   *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                     *bool                                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total                       *int32                                                                `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeMetricRuleBlackListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricRuleBlackListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricRuleBlackListResponseBody) SetCode(v string) *DescribeMetricRuleBlackListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBody) SetDescribeMetricRuleBlackList(v []*DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) *DescribeMetricRuleBlackListResponseBody {
+	s.DescribeMetricRuleBlackList = v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBody) SetMessage(v string) *DescribeMetricRuleBlackListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBody) SetRequestId(v string) *DescribeMetricRuleBlackListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBody) SetSuccess(v bool) *DescribeMetricRuleBlackListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBody) SetTotal(v int32) *DescribeMetricRuleBlackListResponseBody {
+	s.Total = &v
+	return s
+}
+
+type DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList struct {
+	Category        *string                                                                      `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreateTime      *string                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EffectiveTime   *string                                                                      `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	EnableEndTime   *int64                                                                       `json:"EnableEndTime,omitempty" xml:"EnableEndTime,omitempty"`
+	EnableStartTime *int64                                                                       `json:"EnableStartTime,omitempty" xml:"EnableStartTime,omitempty"`
+	Id              *string                                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
+	Instances       []*string                                                                    `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	IsEnable        *bool                                                                        `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
+	Metrics         []*DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackListMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	Name            *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace       *string                                                                      `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ScopeType       *string                                                                      `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	ScopeValue      []*string                                                                    `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
+	UpdateTime      *string                                                                      `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetCategory(v string) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetCreateTime(v string) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetEffectiveTime(v string) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.EffectiveTime = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetEnableEndTime(v int64) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.EnableEndTime = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetEnableStartTime(v int64) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.EnableStartTime = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetId(v string) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetInstances(v []*string) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.Instances = v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetIsEnable(v bool) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.IsEnable = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetMetrics(v []*DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackListMetrics) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.Metrics = v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetName(v string) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetNamespace(v string) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetScopeType(v string) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.ScopeType = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetScopeValue(v []*string) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.ScopeValue = v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) SetUpdateTime(v string) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackListMetrics struct {
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Resource   *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+}
+
+func (s DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackListMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackListMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackListMetrics) SetMetricName(v string) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackListMetrics {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackListMetrics) SetResource(v string) *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackListMetrics {
+	s.Resource = &v
+	return s
+}
+
+type DescribeMetricRuleBlackListResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMetricRuleBlackListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMetricRuleBlackListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricRuleBlackListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricRuleBlackListResponse) SetHeaders(v map[string]*string) *DescribeMetricRuleBlackListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponse) SetStatusCode(v int32) *DescribeMetricRuleBlackListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMetricRuleBlackListResponse) SetBody(v *DescribeMetricRuleBlackListResponseBody) *DescribeMetricRuleBlackListResponse {
 	s.Body = v
 	return s
 }
@@ -19045,9 +19927,12 @@ func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusList) SetNodeStatu
 }
 
 type DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus struct {
-	AutoInstall *bool   `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AutoInstall          *bool   `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OsMonitorErrorCode   *string `json:"OsMonitorErrorCode,omitempty" xml:"OsMonitorErrorCode,omitempty"`
+	OsMonitorErrorDetail *string `json:"OsMonitorErrorDetail,omitempty" xml:"OsMonitorErrorDetail,omitempty"`
+	OsMonitorStatus      *string `json:"OsMonitorStatus,omitempty" xml:"OsMonitorStatus,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) String() string {
@@ -19065,6 +19950,21 @@ func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) Se
 
 func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) SetInstanceId(v string) *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) SetOsMonitorErrorCode(v string) *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus {
+	s.OsMonitorErrorCode = &v
+	return s
+}
+
+func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) SetOsMonitorErrorDetail(v string) *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus {
+	s.OsMonitorErrorDetail = &v
+	return s
+}
+
+func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) SetOsMonitorStatus(v string) *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus {
+	s.OsMonitorStatus = &v
 	return s
 }
 
@@ -19983,31 +20883,32 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity) S
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
-	Attempts        *int64   `json:"attempts,omitempty" xml:"attempts,omitempty"`
-	Authentication  *int32   `json:"authentication,omitempty" xml:"authentication,omitempty"`
-	Cookie          *string  `json:"cookie,omitempty" xml:"cookie,omitempty"`
-	DiagnosisMtr    *bool    `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
-	DiagnosisPing   *bool    `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
-	DnsMatchRule    *string  `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
-	DnsServer       *string  `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
-	DnsType         *string  `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
-	ExpectValue     *string  `json:"expect_value,omitempty" xml:"expect_value,omitempty"`
-	FailureRate     *float32 `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
-	Header          *string  `json:"header,omitempty" xml:"header,omitempty"`
-	HttpMethod      *string  `json:"http_method,omitempty" xml:"http_method,omitempty"`
-	IsBase64Encode  *string  `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
-	MatchRule       *int32   `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
-	Password        *string  `json:"password,omitempty" xml:"password,omitempty"`
-	PingNum         *int32   `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
-	Port            *int32   `json:"port,omitempty" xml:"port,omitempty"`
-	Protocol        *string  `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	RequestContent  *string  `json:"request_content,omitempty" xml:"request_content,omitempty"`
-	RequestFormat   *string  `json:"request_format,omitempty" xml:"request_format,omitempty"`
-	ResponseContent *string  `json:"response_content,omitempty" xml:"response_content,omitempty"`
-	ResponseFormat  *string  `json:"response_format,omitempty" xml:"response_format,omitempty"`
-	RetryDelay      *int32   `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
-	TimeOut         *int64   `json:"time_out,omitempty" xml:"time_out,omitempty"`
-	Username        *string  `json:"username,omitempty" xml:"username,omitempty"`
+	Assertions      *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions `json:"assertions,omitempty" xml:"assertions,omitempty" type:"Struct"`
+	Attempts        *int64                                                                    `json:"attempts,omitempty" xml:"attempts,omitempty"`
+	Authentication  *int32                                                                    `json:"authentication,omitempty" xml:"authentication,omitempty"`
+	Cookie          *string                                                                   `json:"cookie,omitempty" xml:"cookie,omitempty"`
+	DiagnosisMtr    *bool                                                                     `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
+	DiagnosisPing   *bool                                                                     `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
+	DnsMatchRule    *string                                                                   `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
+	DnsServer       *string                                                                   `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
+	DnsType         *string                                                                   `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
+	ExpectValue     *string                                                                   `json:"expect_value,omitempty" xml:"expect_value,omitempty"`
+	FailureRate     *float32                                                                  `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
+	Header          *string                                                                   `json:"header,omitempty" xml:"header,omitempty"`
+	HttpMethod      *string                                                                   `json:"http_method,omitempty" xml:"http_method,omitempty"`
+	IsBase64Encode  *string                                                                   `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
+	MatchRule       *int32                                                                    `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
+	Password        *string                                                                   `json:"password,omitempty" xml:"password,omitempty"`
+	PingNum         *int32                                                                    `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
+	Port            *int32                                                                    `json:"port,omitempty" xml:"port,omitempty"`
+	Protocol        *string                                                                   `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	RequestContent  *string                                                                   `json:"request_content,omitempty" xml:"request_content,omitempty"`
+	RequestFormat   *string                                                                   `json:"request_format,omitempty" xml:"request_format,omitempty"`
+	ResponseContent *string                                                                   `json:"response_content,omitempty" xml:"response_content,omitempty"`
+	ResponseFormat  *string                                                                   `json:"response_format,omitempty" xml:"response_format,omitempty"`
+	RetryDelay      *int32                                                                    `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
+	TimeOut         *int64                                                                    `json:"time_out,omitempty" xml:"time_out,omitempty"`
+	Username        *string                                                                   `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) String() string {
@@ -20016,6 +20917,11 @@ func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) String()
 
 func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetAssertions(v *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.Assertions = v
+	return s
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetAttempts(v int64) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
@@ -20140,6 +21046,58 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetTime
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetUsername(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.Username = &v
+	return s
+}
+
+type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions struct {
+	Assertions []*DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions `json:"assertions,omitempty" xml:"assertions,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions) SetAssertions(v []*DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions {
+	s.Assertions = v
+	return s
+}
+
+type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions struct {
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	Property *string `json:"property,omitempty" xml:"property,omitempty"`
+	Target   *string `json:"target,omitempty" xml:"target,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions) SetOperator(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions {
+	s.Operator = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions) SetProperty(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions {
+	s.Property = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions) SetTarget(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions {
+	s.Target = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions) SetType(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions {
+	s.Type = &v
 	return s
 }
 
@@ -20319,6 +21277,7 @@ type DescribeSiteMonitorISPCityListRequest struct {
 	IPV6     *bool   `json:"IPV6,omitempty" xml:"IPV6,omitempty"`
 	Isp      *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ViewAll  *bool   `json:"ViewAll,omitempty" xml:"ViewAll,omitempty"`
 }
 
 func (s DescribeSiteMonitorISPCityListRequest) String() string {
@@ -20351,6 +21310,11 @@ func (s *DescribeSiteMonitorISPCityListRequest) SetIsp(v string) *DescribeSiteMo
 
 func (s *DescribeSiteMonitorISPCityListRequest) SetRegionId(v string) *DescribeSiteMonitorISPCityListRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorISPCityListRequest) SetViewAll(v bool) *DescribeSiteMonitorISPCityListRequest {
+	s.ViewAll = &v
 	return s
 }
 
@@ -20572,12 +21536,13 @@ func (s *DescribeSiteMonitorISPCityListResponse) SetBody(v *DescribeSiteMonitorI
 }
 
 type DescribeSiteMonitorListRequest struct {
-	Keyword  *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Page     *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Keyword   *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Page      *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DescribeSiteMonitorListRequest) String() string {
@@ -20610,6 +21575,11 @@ func (s *DescribeSiteMonitorListRequest) SetRegionId(v string) *DescribeSiteMoni
 
 func (s *DescribeSiteMonitorListRequest) SetTaskId(v string) *DescribeSiteMonitorListRequest {
 	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorListRequest) SetTaskState(v string) *DescribeSiteMonitorListRequest {
+	s.TaskState = &v
 	return s
 }
 
@@ -20760,35 +21730,36 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitor) SetUpdateTi
 }
 
 type DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson struct {
-	AcceptableResponseCode *string  `json:"acceptable_response_code,omitempty" xml:"acceptable_response_code,omitempty"`
-	Attempts               *int64   `json:"attempts,omitempty" xml:"attempts,omitempty"`
-	Authentication         *int32   `json:"authentication,omitempty" xml:"authentication,omitempty"`
-	CertVerify             *bool    `json:"cert_verify,omitempty" xml:"cert_verify,omitempty"`
-	Cookie                 *string  `json:"cookie,omitempty" xml:"cookie,omitempty"`
-	DiagnosisMtr           *bool    `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
-	DiagnosisPing          *bool    `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
-	DnsMatchRule           *string  `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
-	DnsServer              *string  `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
-	DnsType                *string  `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
-	EnableOperatorDns      *bool    `json:"enable_operator_dns,omitempty" xml:"enable_operator_dns,omitempty"`
-	FailureRate            *float32 `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
-	Header                 *string  `json:"header,omitempty" xml:"header,omitempty"`
-	HttpMethod             *string  `json:"http_method,omitempty" xml:"http_method,omitempty"`
-	IsBase64Encode         *string  `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
-	MatchRule              *int32   `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
-	Password               *string  `json:"password,omitempty" xml:"password,omitempty"`
-	PingNum                *int32   `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
-	Port                   *int32   `json:"port,omitempty" xml:"port,omitempty"`
-	Protocol               *string  `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	ProxyProtocol          *bool    `json:"proxy_protocol,omitempty" xml:"proxy_protocol,omitempty"`
-	RequestContent         *string  `json:"request_content,omitempty" xml:"request_content,omitempty"`
-	RequestFormat          *string  `json:"request_format,omitempty" xml:"request_format,omitempty"`
-	ResponseContent        *string  `json:"response_content,omitempty" xml:"response_content,omitempty"`
-	ResponseFormat         *string  `json:"response_format,omitempty" xml:"response_format,omitempty"`
-	RetryDelay             *int32   `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
-	TimeOut                *int64   `json:"time_out,omitempty" xml:"time_out,omitempty"`
-	UnfollowRedirect       *bool    `json:"unfollow_redirect,omitempty" xml:"unfollow_redirect,omitempty"`
-	Username               *string  `json:"username,omitempty" xml:"username,omitempty"`
+	AcceptableResponseCode *string                                                                          `json:"acceptable_response_code,omitempty" xml:"acceptable_response_code,omitempty"`
+	Assertions             *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertions `json:"assertions,omitempty" xml:"assertions,omitempty" type:"Struct"`
+	Attempts               *int64                                                                           `json:"attempts,omitempty" xml:"attempts,omitempty"`
+	Authentication         *int32                                                                           `json:"authentication,omitempty" xml:"authentication,omitempty"`
+	CertVerify             *bool                                                                            `json:"cert_verify,omitempty" xml:"cert_verify,omitempty"`
+	Cookie                 *string                                                                          `json:"cookie,omitempty" xml:"cookie,omitempty"`
+	DiagnosisMtr           *bool                                                                            `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
+	DiagnosisPing          *bool                                                                            `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
+	DnsMatchRule           *string                                                                          `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
+	DnsServer              *string                                                                          `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
+	DnsType                *string                                                                          `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
+	EnableOperatorDns      *bool                                                                            `json:"enable_operator_dns,omitempty" xml:"enable_operator_dns,omitempty"`
+	FailureRate            *float32                                                                         `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
+	Header                 *string                                                                          `json:"header,omitempty" xml:"header,omitempty"`
+	HttpMethod             *string                                                                          `json:"http_method,omitempty" xml:"http_method,omitempty"`
+	IsBase64Encode         *string                                                                          `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
+	MatchRule              *int32                                                                           `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
+	Password               *string                                                                          `json:"password,omitempty" xml:"password,omitempty"`
+	PingNum                *int32                                                                           `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
+	Port                   *int32                                                                           `json:"port,omitempty" xml:"port,omitempty"`
+	Protocol               *string                                                                          `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	ProxyProtocol          *bool                                                                            `json:"proxy_protocol,omitempty" xml:"proxy_protocol,omitempty"`
+	RequestContent         *string                                                                          `json:"request_content,omitempty" xml:"request_content,omitempty"`
+	RequestFormat          *string                                                                          `json:"request_format,omitempty" xml:"request_format,omitempty"`
+	ResponseContent        *string                                                                          `json:"response_content,omitempty" xml:"response_content,omitempty"`
+	ResponseFormat         *string                                                                          `json:"response_format,omitempty" xml:"response_format,omitempty"`
+	RetryDelay             *int32                                                                           `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
+	TimeOut                *int64                                                                           `json:"time_out,omitempty" xml:"time_out,omitempty"`
+	UnfollowRedirect       *bool                                                                            `json:"unfollow_redirect,omitempty" xml:"unfollow_redirect,omitempty"`
+	Username               *string                                                                          `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) String() string {
@@ -20801,6 +21772,11 @@ func (s DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) G
 
 func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetAcceptableResponseCode(v string) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
 	s.AcceptableResponseCode = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetAssertions(v *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertions) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
+	s.Assertions = v
 	return s
 }
 
@@ -20941,6 +21917,58 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) 
 
 func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetUsername(v string) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
 	s.Username = &v
+	return s
+}
+
+type DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertions struct {
+	Assertions []*DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions `json:"assertions,omitempty" xml:"assertions,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertions) SetAssertions(v []*DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertions {
+	s.Assertions = v
+	return s
+}
+
+type DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions struct {
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	Property *string `json:"property,omitempty" xml:"property,omitempty"`
+	Target   *string `json:"target,omitempty" xml:"target,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions) SetOperator(v string) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions {
+	s.Operator = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions) SetProperty(v string) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions {
+	s.Property = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions) SetTarget(v string) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions {
+	s.Target = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions) SetType(v string) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions {
+	s.Type = &v
 	return s
 }
 
@@ -23298,6 +24326,105 @@ func (s *EnableHostAvailabilityResponse) SetBody(v *EnableHostAvailabilityRespon
 	return s
 }
 
+type EnableMetricRuleBlackListRequest struct {
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsEnable *bool   `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s EnableMetricRuleBlackListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableMetricRuleBlackListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableMetricRuleBlackListRequest) SetId(v string) *EnableMetricRuleBlackListRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *EnableMetricRuleBlackListRequest) SetIsEnable(v bool) *EnableMetricRuleBlackListRequest {
+	s.IsEnable = &v
+	return s
+}
+
+func (s *EnableMetricRuleBlackListRequest) SetRegionId(v string) *EnableMetricRuleBlackListRequest {
+	s.RegionId = &v
+	return s
+}
+
+type EnableMetricRuleBlackListResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count     *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EnableMetricRuleBlackListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableMetricRuleBlackListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableMetricRuleBlackListResponseBody) SetCode(v string) *EnableMetricRuleBlackListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EnableMetricRuleBlackListResponseBody) SetCount(v int32) *EnableMetricRuleBlackListResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *EnableMetricRuleBlackListResponseBody) SetMessage(v string) *EnableMetricRuleBlackListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EnableMetricRuleBlackListResponseBody) SetRequestId(v string) *EnableMetricRuleBlackListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableMetricRuleBlackListResponseBody) SetSuccess(v bool) *EnableMetricRuleBlackListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EnableMetricRuleBlackListResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableMetricRuleBlackListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableMetricRuleBlackListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableMetricRuleBlackListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableMetricRuleBlackListResponse) SetHeaders(v map[string]*string) *EnableMetricRuleBlackListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableMetricRuleBlackListResponse) SetStatusCode(v int32) *EnableMetricRuleBlackListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableMetricRuleBlackListResponse) SetBody(v *EnableMetricRuleBlackListResponseBody) *EnableMetricRuleBlackListResponse {
+	s.Body = v
+	return s
+}
+
 type EnableMetricRulesRequest struct {
 	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RuleId   []*string `json:"RuleId,omitempty" xml:"RuleId,omitempty" type:"Repeated"`
@@ -23636,15 +24763,16 @@ func (s *ModifyGroupMonitoringAgentProcessRequest) SetRegionId(v string) *Modify
 }
 
 type ModifyGroupMonitoringAgentProcessRequestAlertConfig struct {
-	ComparisonOperator  *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	EffectiveInterval   *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	EscalationsLevel    *string `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
-	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	SilenceTime         *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	Statistics          *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	Threshold           *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	Times               *string `json:"Times,omitempty" xml:"Times,omitempty"`
-	Webhook             *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
+	ComparisonOperator  *string                                                          `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	EffectiveInterval   *string                                                          `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
+	EscalationsLevel    *string                                                          `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
+	NoEffectiveInterval *string                                                          `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
+	SilenceTime         *string                                                          `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	Statistics          *string                                                          `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	TargetList          []*ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
+	Threshold           *string                                                          `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Times               *string                                                          `json:"Times,omitempty" xml:"Times,omitempty"`
+	Webhook             *string                                                          `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
 func (s ModifyGroupMonitoringAgentProcessRequestAlertConfig) String() string {
@@ -23685,6 +24813,11 @@ func (s *ModifyGroupMonitoringAgentProcessRequestAlertConfig) SetStatistics(v st
 	return s
 }
 
+func (s *ModifyGroupMonitoringAgentProcessRequestAlertConfig) SetTargetList(v []*ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList) *ModifyGroupMonitoringAgentProcessRequestAlertConfig {
+	s.TargetList = v
+	return s
+}
+
 func (s *ModifyGroupMonitoringAgentProcessRequestAlertConfig) SetThreshold(v string) *ModifyGroupMonitoringAgentProcessRequestAlertConfig {
 	s.Threshold = &v
 	return s
@@ -23697,6 +24830,41 @@ func (s *ModifyGroupMonitoringAgentProcessRequestAlertConfig) SetTimes(v string)
 
 func (s *ModifyGroupMonitoringAgentProcessRequestAlertConfig) SetWebhook(v string) *ModifyGroupMonitoringAgentProcessRequestAlertConfig {
 	s.Webhook = &v
+	return s
+}
+
+type ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList struct {
+	Arn        *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
+}
+
+func (s ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList) SetArn(v string) *ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList {
+	s.Arn = &v
+	return s
+}
+
+func (s *ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList) SetId(v string) *ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList) SetJsonParams(v string) *ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList {
+	s.JsonParams = &v
+	return s
+}
+
+func (s *ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList) SetLevel(v string) *ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList {
+	s.Level = &v
 	return s
 }
 
@@ -23768,6 +24936,7 @@ type ModifyHostAvailabilityRequest struct {
 	AlertConfig               *ModifyHostAvailabilityRequestAlertConfig                 `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
 	TaskOption                *ModifyHostAvailabilityRequestTaskOption                  `json:"TaskOption,omitempty" xml:"TaskOption,omitempty" type:"Struct"`
 	AlertConfigEscalationList []*ModifyHostAvailabilityRequestAlertConfigEscalationList `json:"AlertConfigEscalationList,omitempty" xml:"AlertConfigEscalationList,omitempty" type:"Repeated"`
+	AlertConfigTargetList     []*ModifyHostAvailabilityRequestAlertConfigTargetList     `json:"AlertConfigTargetList,omitempty" xml:"AlertConfigTargetList,omitempty" type:"Repeated"`
 	GroupId                   *int64                                                    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Id                        *int64                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceList              []*string                                                 `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
@@ -23796,6 +24965,11 @@ func (s *ModifyHostAvailabilityRequest) SetTaskOption(v *ModifyHostAvailabilityR
 
 func (s *ModifyHostAvailabilityRequest) SetAlertConfigEscalationList(v []*ModifyHostAvailabilityRequestAlertConfigEscalationList) *ModifyHostAvailabilityRequest {
 	s.AlertConfigEscalationList = v
+	return s
+}
+
+func (s *ModifyHostAvailabilityRequest) SetAlertConfigTargetList(v []*ModifyHostAvailabilityRequestAlertConfigTargetList) *ModifyHostAvailabilityRequest {
+	s.AlertConfigTargetList = v
 	return s
 }
 
@@ -23973,6 +25147,41 @@ func (s *ModifyHostAvailabilityRequestAlertConfigEscalationList) SetTimes(v int3
 
 func (s *ModifyHostAvailabilityRequestAlertConfigEscalationList) SetValue(v string) *ModifyHostAvailabilityRequestAlertConfigEscalationList {
 	s.Value = &v
+	return s
+}
+
+type ModifyHostAvailabilityRequestAlertConfigTargetList struct {
+	Arn        *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
+}
+
+func (s ModifyHostAvailabilityRequestAlertConfigTargetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHostAvailabilityRequestAlertConfigTargetList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHostAvailabilityRequestAlertConfigTargetList) SetArn(v string) *ModifyHostAvailabilityRequestAlertConfigTargetList {
+	s.Arn = &v
+	return s
+}
+
+func (s *ModifyHostAvailabilityRequestAlertConfigTargetList) SetId(v string) *ModifyHostAvailabilityRequestAlertConfigTargetList {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyHostAvailabilityRequestAlertConfigTargetList) SetJsonParams(v string) *ModifyHostAvailabilityRequestAlertConfigTargetList {
+	s.JsonParams = &v
+	return s
+}
+
+func (s *ModifyHostAvailabilityRequestAlertConfigTargetList) SetLevel(v string) *ModifyHostAvailabilityRequestAlertConfigTargetList {
+	s.Level = &v
 	return s
 }
 
@@ -24676,6 +25885,182 @@ func (s *ModifyHybridMonitorTaskResponse) SetStatusCode(v int32) *ModifyHybridMo
 }
 
 func (s *ModifyHybridMonitorTaskResponse) SetBody(v *ModifyHybridMonitorTaskResponseBody) *ModifyHybridMonitorTaskResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyMetricRuleBlackListRequest struct {
+	Category        *string                                    `json:"Category,omitempty" xml:"Category,omitempty"`
+	EffectiveTime   *string                                    `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	EnableEndTime   *string                                    `json:"EnableEndTime,omitempty" xml:"EnableEndTime,omitempty"`
+	EnableStartTime *string                                    `json:"EnableStartTime,omitempty" xml:"EnableStartTime,omitempty"`
+	Id              *string                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Instances       []*string                                  `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	Metrics         []*ModifyMetricRuleBlackListRequestMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	Name            *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace       *string                                    `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId        *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScopeType       *string                                    `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	ScopeValue      *string                                    `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty"`
+}
+
+func (s ModifyMetricRuleBlackListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyMetricRuleBlackListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyMetricRuleBlackListRequest) SetCategory(v string) *ModifyMetricRuleBlackListRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListRequest) SetEffectiveTime(v string) *ModifyMetricRuleBlackListRequest {
+	s.EffectiveTime = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListRequest) SetEnableEndTime(v string) *ModifyMetricRuleBlackListRequest {
+	s.EnableEndTime = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListRequest) SetEnableStartTime(v string) *ModifyMetricRuleBlackListRequest {
+	s.EnableStartTime = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListRequest) SetId(v string) *ModifyMetricRuleBlackListRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListRequest) SetInstances(v []*string) *ModifyMetricRuleBlackListRequest {
+	s.Instances = v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListRequest) SetMetrics(v []*ModifyMetricRuleBlackListRequestMetrics) *ModifyMetricRuleBlackListRequest {
+	s.Metrics = v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListRequest) SetName(v string) *ModifyMetricRuleBlackListRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListRequest) SetNamespace(v string) *ModifyMetricRuleBlackListRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListRequest) SetRegionId(v string) *ModifyMetricRuleBlackListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListRequest) SetScopeType(v string) *ModifyMetricRuleBlackListRequest {
+	s.ScopeType = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListRequest) SetScopeValue(v string) *ModifyMetricRuleBlackListRequest {
+	s.ScopeValue = &v
+	return s
+}
+
+type ModifyMetricRuleBlackListRequestMetrics struct {
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Resource   *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+}
+
+func (s ModifyMetricRuleBlackListRequestMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyMetricRuleBlackListRequestMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyMetricRuleBlackListRequestMetrics) SetMetricName(v string) *ModifyMetricRuleBlackListRequestMetrics {
+	s.MetricName = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListRequestMetrics) SetResource(v string) *ModifyMetricRuleBlackListRequestMetrics {
+	s.Resource = &v
+	return s
+}
+
+type ModifyMetricRuleBlackListResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count     *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyMetricRuleBlackListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyMetricRuleBlackListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyMetricRuleBlackListResponseBody) SetCode(v string) *ModifyMetricRuleBlackListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListResponseBody) SetCount(v string) *ModifyMetricRuleBlackListResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListResponseBody) SetMessage(v string) *ModifyMetricRuleBlackListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListResponseBody) SetRequestId(v string) *ModifyMetricRuleBlackListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListResponseBody) SetSuccess(v bool) *ModifyMetricRuleBlackListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyMetricRuleBlackListResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyMetricRuleBlackListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyMetricRuleBlackListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyMetricRuleBlackListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyMetricRuleBlackListResponse) SetHeaders(v map[string]*string) *ModifyMetricRuleBlackListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListResponse) SetStatusCode(v int32) *ModifyMetricRuleBlackListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyMetricRuleBlackListResponse) SetBody(v *ModifyMetricRuleBlackListResponseBody) *ModifyMetricRuleBlackListResponse {
 	s.Body = v
 	return s
 }
@@ -27503,7 +28888,6 @@ func (s *PutGroupMetricRuleResponse) SetBody(v *PutGroupMetricRuleResponseBody) 
 }
 
 type PutHybridMonitorMetricDataRequest struct {
-	// 上报的监控数据
 	MetricList []*PutHybridMonitorMetricDataRequestMetricList `json:"MetricList,omitempty" xml:"MetricList,omitempty" type:"Repeated"`
 	Namespace  *string                                        `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	RegionId   *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -27533,14 +28917,10 @@ func (s *PutHybridMonitorMetricDataRequest) SetRegionId(v string) *PutHybridMoni
 }
 
 type PutHybridMonitorMetricDataRequestMetricList struct {
-	// 标签，Key只能是英文字母、数字、下划线
 	Labels []*PutHybridMonitorMetricDataRequestMetricListLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// 指标名，只能是英文字母、数字、下划线
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 时间戳，unix毫秒数，如果不传会使用服务器时间
-	TS *int64 `json:"TS,omitempty" xml:"TS,omitempty"`
-	// 监控值，浮点或整型
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name   *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	TS     *int64                                               `json:"TS,omitempty" xml:"TS,omitempty"`
+	Value  *string                                              `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s PutHybridMonitorMetricDataRequestMetricList) String() string {
@@ -27572,7 +28952,6 @@ func (s *PutHybridMonitorMetricDataRequestMetricList) SetValue(v string) *PutHyb
 }
 
 type PutHybridMonitorMetricDataRequestMetricListLabels struct {
-	// 只能是英文字母、数字、下划线
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -27596,12 +28975,9 @@ func (s *PutHybridMonitorMetricDataRequestMetricListLabels) SetValue(v string) *
 }
 
 type PutHybridMonitorMetricDataResponseBody struct {
-	// 返回code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 不合法的指标信息
+	Code        *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	ErrorDetail []*PutHybridMonitorMetricDataResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Repeated"`
-	// 请求的requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PutHybridMonitorMetricDataResponseBody) String() string {
@@ -27628,10 +29004,8 @@ func (s *PutHybridMonitorMetricDataResponseBody) SetRequestId(v string) *PutHybr
 }
 
 type PutHybridMonitorMetricDataResponseBodyErrorDetail struct {
-	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 错误数据在上报列表中的序号，从0开始
-	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	Index        *int64  `json:"Index,omitempty" xml:"Index,omitempty"`
 }
 
 func (s PutHybridMonitorMetricDataResponseBodyErrorDetail) String() string {
@@ -30066,6 +31440,50 @@ func (client *Client) ApplyMetricRuleTemplate(request *ApplyMetricRuleTemplateRe
 	return _result, _err
 }
 
+func (client *Client) BatchCreateInstantSiteMonitorWithOptions(request *BatchCreateInstantSiteMonitorRequest, runtime *util.RuntimeOptions) (_result *BatchCreateInstantSiteMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskList)) {
+		query["TaskList"] = request.TaskList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchCreateInstantSiteMonitor"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchCreateInstantSiteMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchCreateInstantSiteMonitor(request *BatchCreateInstantSiteMonitorRequest) (_result *BatchCreateInstantSiteMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchCreateInstantSiteMonitorResponse{}
+	_body, _err := client.BatchCreateInstantSiteMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) BatchCreateIntantSiteMonitorWithOptions(request *BatchCreateIntantSiteMonitorRequest, runtime *util.RuntimeOptions) (_result *BatchCreateIntantSiteMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30536,6 +31954,10 @@ func (client *Client) CreateHostAvailabilityWithOptions(request *CreateHostAvail
 		query["AlertConfigEscalationList"] = request.AlertConfigEscalationList
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AlertConfigTargetList)) {
+		query["AlertConfigTargetList"] = request.AlertConfigTargetList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
 	}
@@ -30847,6 +32269,86 @@ func (client *Client) CreateInstantSiteMonitor(request *CreateInstantSiteMonitor
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstantSiteMonitorResponse{}
 	_body, _err := client.CreateInstantSiteMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateMetricRuleBlackListWithOptions(request *CreateMetricRuleBlackListRequest, runtime *util.RuntimeOptions) (_result *CreateMetricRuleBlackListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveTime)) {
+		query["EffectiveTime"] = request.EffectiveTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableEndTime)) {
+		query["EnableEndTime"] = request.EnableEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStartTime)) {
+		query["EnableStartTime"] = request.EnableStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instances)) {
+		query["Instances"] = request.Instances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
+		query["Metrics"] = request.Metrics
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeType)) {
+		query["ScopeType"] = request.ScopeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeValue)) {
+		query["ScopeValue"] = request.ScopeValue
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMetricRuleBlackList"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMetricRuleBlackListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateMetricRuleBlackList(request *CreateMetricRuleBlackListRequest) (_result *CreateMetricRuleBlackListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMetricRuleBlackListResponse{}
+	_body, _err := client.CreateMetricRuleBlackListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31990,6 +33492,50 @@ func (client *Client) DeleteLogMonitor(request *DeleteLogMonitorRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DeleteMetricRuleBlackListWithOptions(request *DeleteMetricRuleBlackListRequest, runtime *util.RuntimeOptions) (_result *DeleteMetricRuleBlackListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMetricRuleBlackList"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMetricRuleBlackListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMetricRuleBlackList(request *DeleteMetricRuleBlackListRequest) (_result *DeleteMetricRuleBlackListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMetricRuleBlackListResponse{}
+	_body, _err := client.DeleteMetricRuleBlackListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteMetricRuleResourcesWithOptions(request *DeleteMetricRuleResourcesRequest, runtime *util.RuntimeOptions) (_result *DeleteMetricRuleResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32471,7 +34017,11 @@ func (client *Client) DescribeActiveMetricRuleListWithOptions(request *DescribeA
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["Product"] = request.Product
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -32480,7 +34030,7 @@ func (client *Client) DescribeActiveMetricRuleListWithOptions(request *DescribeA
 		Version:     tea.String("2019-01-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -33988,6 +35538,10 @@ func (client *Client) DescribeHybridMonitorTaskListWithOptions(request *Describe
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TargetUserId)) {
+		query["TargetUserId"] = request.TargetUserId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		query["TaskId"] = request.TaskId
 	}
@@ -34403,6 +35957,70 @@ func (client *Client) DescribeMetricMetaList(request *DescribeMetricMetaListRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMetricMetaListResponse{}
 	_body, _err := client.DescribeMetricMetaListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMetricRuleBlackListWithOptions(request *DescribeMetricRuleBlackListRequest, runtime *util.RuntimeOptions) (_result *DescribeMetricRuleBlackListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ids)) {
+		query["Ids"] = request.Ids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMetricRuleBlackList"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMetricRuleBlackListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMetricRuleBlackList(request *DescribeMetricRuleBlackListRequest) (_result *DescribeMetricRuleBlackListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMetricRuleBlackListResponse{}
+	_body, _err := client.DescribeMetricRuleBlackListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35736,6 +37354,10 @@ func (client *Client) DescribeSiteMonitorISPCityListWithOptions(request *Describ
 		query["Isp"] = request.Isp
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ViewAll)) {
+		query["ViewAll"] = request.ViewAll
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -35790,6 +37412,10 @@ func (client *Client) DescribeSiteMonitorListWithOptions(request *DescribeSiteMo
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskState)) {
+		query["TaskState"] = request.TaskState
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
@@ -36768,6 +38394,54 @@ func (client *Client) EnableHostAvailability(request *EnableHostAvailabilityRequ
 	return _result, _err
 }
 
+func (client *Client) EnableMetricRuleBlackListWithOptions(request *EnableMetricRuleBlackListRequest, runtime *util.RuntimeOptions) (_result *EnableMetricRuleBlackListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsEnable)) {
+		query["IsEnable"] = request.IsEnable
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableMetricRuleBlackList"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableMetricRuleBlackListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableMetricRuleBlackList(request *EnableMetricRuleBlackListRequest) (_result *EnableMetricRuleBlackListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableMetricRuleBlackListResponse{}
+	_body, _err := client.EnableMetricRuleBlackListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) EnableMetricRulesWithOptions(request *EnableMetricRulesRequest, runtime *util.RuntimeOptions) (_result *EnableMetricRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36972,6 +38646,10 @@ func (client *Client) ModifyHostAvailabilityWithOptions(request *ModifyHostAvail
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AlertConfigEscalationList)) {
 		query["AlertConfigEscalationList"] = request.AlertConfigEscalationList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertConfigTargetList)) {
+		query["AlertConfigTargetList"] = request.AlertConfigTargetList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
@@ -37245,6 +38923,90 @@ func (client *Client) ModifyHybridMonitorTask(request *ModifyHybridMonitorTaskRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyHybridMonitorTaskResponse{}
 	_body, _err := client.ModifyHybridMonitorTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyMetricRuleBlackListWithOptions(request *ModifyMetricRuleBlackListRequest, runtime *util.RuntimeOptions) (_result *ModifyMetricRuleBlackListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveTime)) {
+		query["EffectiveTime"] = request.EffectiveTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableEndTime)) {
+		query["EnableEndTime"] = request.EnableEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStartTime)) {
+		query["EnableStartTime"] = request.EnableStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instances)) {
+		query["Instances"] = request.Instances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
+		query["Metrics"] = request.Metrics
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeType)) {
+		query["ScopeType"] = request.ScopeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeValue)) {
+		query["ScopeValue"] = request.ScopeValue
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyMetricRuleBlackList"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyMetricRuleBlackListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyMetricRuleBlackList(request *ModifyMetricRuleBlackListRequest) (_result *ModifyMetricRuleBlackListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyMetricRuleBlackListResponse{}
+	_body, _err := client.ModifyMetricRuleBlackListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
