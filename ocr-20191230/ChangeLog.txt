@@ -1,3 +1,6 @@
+2022-09-23 Version: v3.0.0
+- Generated golang 2019-12-30 for ocr.
+
 2022-06-21 Version: v2.0.9
 - Release RecognizeTurkeyIdentityCard RecognizeMalaysiaIdentityCard RecognizeRussiaIdentityCard RecognizeIndonesiaIdentityCard RecognizeUkraineIdentityCard RecognizeVietnamIdentityCard.
 
