@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2018-01-15 for dcdn.
+
 2022-09-16 Version: v1.0.20
 - Update DescribeDcdnReport.
 

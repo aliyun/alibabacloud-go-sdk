@@ -5,23 +5,24 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AddDcdnDomainRequest struct {
-	CheckUrl        *string `json:"CheckUrl,omitempty" xml:"CheckUrl,omitempty"`
-	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Scope           *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Sources         *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TopLevelDomain  *string `json:"TopLevelDomain,omitempty" xml:"TopLevelDomain,omitempty"`
+	CheckUrl        *string                    `json:"CheckUrl,omitempty" xml:"CheckUrl,omitempty"`
+	DomainName      *string                    `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerAccount    *string                    `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId         *int64                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Scope           *string                    `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	SecurityToken   *string                    `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Sources         *string                    `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	Tag             []*AddDcdnDomainRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TopLevelDomain  *string                    `json:"TopLevelDomain,omitempty" xml:"TopLevelDomain,omitempty"`
 }
 
 func (s AddDcdnDomainRequest) String() string {
@@ -72,8 +73,36 @@ func (s *AddDcdnDomainRequest) SetSources(v string) *AddDcdnDomainRequest {
 	return s
 }
 
+func (s *AddDcdnDomainRequest) SetTag(v []*AddDcdnDomainRequestTag) *AddDcdnDomainRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *AddDcdnDomainRequest) SetTopLevelDomain(v string) *AddDcdnDomainRequest {
 	s.TopLevelDomain = &v
+	return s
+}
+
+type AddDcdnDomainRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s AddDcdnDomainRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDcdnDomainRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *AddDcdnDomainRequestTag) SetKey(v string) *AddDcdnDomainRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *AddDcdnDomainRequestTag) SetValue(v string) *AddDcdnDomainRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -12793,7 +12822,6 @@ type DescribeDcdnIpaDomainDetailResponseBodyDomainDetail struct {
 	SSLPub          *string                                                     `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
 	Scope           *string                                                     `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	Sources         *DescribeDcdnIpaDomainDetailResponseBodyDomainDetailSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
-	TenantID        *string                                                     `json:"TenantID,omitempty" xml:"TenantID,omitempty"`
 }
 
 func (s DescribeDcdnIpaDomainDetailResponseBodyDomainDetail) String() string {
@@ -12861,11 +12889,6 @@ func (s *DescribeDcdnIpaDomainDetailResponseBodyDomainDetail) SetScope(v string)
 
 func (s *DescribeDcdnIpaDomainDetailResponseBodyDomainDetail) SetSources(v *DescribeDcdnIpaDomainDetailResponseBodyDomainDetailSources) *DescribeDcdnIpaDomainDetailResponseBodyDomainDetail {
 	s.Sources = v
-	return s
-}
-
-func (s *DescribeDcdnIpaDomainDetailResponseBodyDomainDetail) SetTenantID(v string) *DescribeDcdnIpaDomainDetailResponseBodyDomainDetail {
-	s.TenantID = &v
 	return s
 }
 
@@ -12958,157 +12981,6 @@ func (s *DescribeDcdnIpaDomainDetailResponse) SetStatusCode(v int32) *DescribeDc
 }
 
 func (s *DescribeDcdnIpaDomainDetailResponse) SetBody(v *DescribeDcdnIpaDomainDetailResponseBody) *DescribeDcdnIpaDomainDetailResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeDcdnIpaDomainMultiUsageDataRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeDcdnIpaDomainMultiUsageDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnIpaDomainMultiUsageDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataRequest) SetDomainName(v string) *DescribeDcdnIpaDomainMultiUsageDataRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataRequest) SetEndTime(v string) *DescribeDcdnIpaDomainMultiUsageDataRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataRequest) SetOwnerId(v int64) *DescribeDcdnIpaDomainMultiUsageDataRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataRequest) SetStartTime(v string) *DescribeDcdnIpaDomainMultiUsageDataRequest {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeDcdnIpaDomainMultiUsageDataResponseBody struct {
-	EndTime            *string                                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId          *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime          *string                                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TrafficPerInterval *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval `json:"TrafficPerInterval,omitempty" xml:"TrafficPerInterval,omitempty" type:"Struct"`
-}
-
-func (s DescribeDcdnIpaDomainMultiUsageDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnIpaDomainMultiUsageDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBody) SetEndTime(v string) *DescribeDcdnIpaDomainMultiUsageDataResponseBody {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBody) SetRequestId(v string) *DescribeDcdnIpaDomainMultiUsageDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBody) SetStartTime(v string) *DescribeDcdnIpaDomainMultiUsageDataResponseBody {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBody) SetTrafficPerInterval(v *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval) *DescribeDcdnIpaDomainMultiUsageDataResponseBody {
-	s.TrafficPerInterval = v
-	return s
-}
-
-type DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval struct {
-	TrafficDataModule []*DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule `json:"TrafficDataModule,omitempty" xml:"TrafficDataModule,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval) SetTrafficDataModule(v []*DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerInterval {
-	s.TrafficDataModule = v
-	return s
-}
-
-type DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule struct {
-	Area      *string  `json:"Area,omitempty" xml:"Area,omitempty"`
-	Bps       *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	Domain    *string  `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	TimeStamp *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-}
-
-func (s DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) SetArea(v string) *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule {
-	s.Area = &v
-	return s
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) SetBps(v float32) *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule {
-	s.Bps = &v
-	return s
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) SetDomain(v string) *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule {
-	s.Domain = &v
-	return s
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) SetTimeStamp(v string) *DescribeDcdnIpaDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule {
-	s.TimeStamp = &v
-	return s
-}
-
-type DescribeDcdnIpaDomainMultiUsageDataResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDcdnIpaDomainMultiUsageDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDcdnIpaDomainMultiUsageDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnIpaDomainMultiUsageDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataResponse) SetHeaders(v map[string]*string) *DescribeDcdnIpaDomainMultiUsageDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataResponse) SetStatusCode(v int32) *DescribeDcdnIpaDomainMultiUsageDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDcdnIpaDomainMultiUsageDataResponse) SetBody(v *DescribeDcdnIpaDomainMultiUsageDataResponseBody) *DescribeDcdnIpaDomainMultiUsageDataResponse {
 	s.Body = v
 	return s
 }
@@ -13427,7 +13299,6 @@ type DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData struct {
 	SSLProtocol     *string                                                       `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
 	Sandbox         *string                                                       `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
 	Sources         *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
-	TenantID        *string                                                       `json:"TenantID,omitempty" xml:"TenantID,omitempty"`
 }
 
 func (s DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData) String() string {
@@ -13485,11 +13356,6 @@ func (s *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData) SetSandbox(v str
 
 func (s *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData) SetSources(v *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageDataSources) *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData {
 	s.Sources = v
-	return s
-}
-
-func (s *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData) SetTenantID(v string) *DescribeDcdnIpaUserDomainsResponseBodyDomainsPageData {
-	s.TenantID = &v
 	return s
 }
 
@@ -24439,6 +24305,10 @@ func (client *Client) AddDcdnDomainWithOptions(request *AddDcdnDomainRequest, ru
 		query["Sources"] = request.Sources
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TopLevelDomain)) {
 		query["TopLevelDomain"] = request.TopLevelDomain
 	}
@@ -29780,62 +29650,6 @@ func (client *Client) DescribeDcdnIpaDomainDetail(request *DescribeDcdnIpaDomain
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnIpaDomainDetailResponse{}
 	_body, _err := client.DescribeDcdnIpaDomainDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDcdnIpaDomainMultiUsageDataWithOptions(request *DescribeDcdnIpaDomainMultiUsageDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnIpaDomainMultiUsageDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
-		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDcdnIpaDomainMultiUsageData"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDcdnIpaDomainMultiUsageDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDcdnIpaDomainMultiUsageData(request *DescribeDcdnIpaDomainMultiUsageDataRequest) (_result *DescribeDcdnIpaDomainMultiUsageDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDcdnIpaDomainMultiUsageDataResponse{}
-	_body, _err := client.DescribeDcdnIpaDomainMultiUsageDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
