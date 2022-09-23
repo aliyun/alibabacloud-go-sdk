@@ -1,3 +1,6 @@
+2022-09-23 Version: v3.0.0
+- Generated golang 2022-03-14 for CC5G.
+
 2022-08-18 Version: v2.0.2
 - Cc5g.
 

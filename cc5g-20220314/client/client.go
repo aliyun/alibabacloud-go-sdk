@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1112,6 +1112,87 @@ func (s *DetachVpcFromNetLinkResponse) SetBody(v *DetachVpcFromNetLinkResponseBo
 	return s
 }
 
+type FailCardsRequest struct {
+	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Iccids      []*string `json:"Iccids,omitempty" xml:"Iccids,omitempty" type:"Repeated"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s FailCardsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FailCardsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FailCardsRequest) SetClientToken(v string) *FailCardsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *FailCardsRequest) SetDryRun(v bool) *FailCardsRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *FailCardsRequest) SetIccids(v []*string) *FailCardsRequest {
+	s.Iccids = v
+	return s
+}
+
+func (s *FailCardsRequest) SetRegionId(v string) *FailCardsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type FailCardsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s FailCardsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FailCardsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FailCardsResponseBody) SetRequestId(v string) *FailCardsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type FailCardsResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FailCardsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FailCardsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FailCardsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FailCardsResponse) SetHeaders(v map[string]*string) *FailCardsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FailCardsResponse) SetStatusCode(v int32) *FailCardsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FailCardsResponse) SetBody(v *FailCardsResponseBody) *FailCardsResponse {
+	s.Body = v
+	return s
+}
+
 type GetCardRequest struct {
 	Iccid *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 }
@@ -1498,6 +1579,7 @@ type GetWirelessCloudConnectorResponseBody struct {
 	NetLinks                 []*GetWirelessCloudConnectorResponseBodyNetLinks `json:"NetLinks,omitempty" xml:"NetLinks,omitempty" type:"Repeated"`
 	RegionId                 *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId                *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceType              *string                                          `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	Status                   *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
 	UseCase                  *string                                          `json:"UseCase,omitempty" xml:"UseCase,omitempty"`
 	WirelessCloudConnectorId *string                                          `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
@@ -1566,6 +1648,11 @@ func (s *GetWirelessCloudConnectorResponseBody) SetRequestId(v string) *GetWirel
 	return s
 }
 
+func (s *GetWirelessCloudConnectorResponseBody) SetServiceType(v string) *GetWirelessCloudConnectorResponseBody {
+	s.ServiceType = &v
+	return s
+}
+
 func (s *GetWirelessCloudConnectorResponseBody) SetStatus(v string) *GetWirelessCloudConnectorResponseBody {
 	s.Status = &v
 	return s
@@ -1585,6 +1672,7 @@ type GetWirelessCloudConnectorResponseBodyNetLinks struct {
 	APN         *string   `json:"APN,omitempty" xml:"APN,omitempty"`
 	CreateTime  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	GrantAliUid *string   `json:"GrantAliUid,omitempty" xml:"GrantAliUid,omitempty"`
 	ISP         *string   `json:"ISP,omitempty" xml:"ISP,omitempty"`
 	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	NetLinkId   *string   `json:"NetLinkId,omitempty" xml:"NetLinkId,omitempty"`
@@ -1614,6 +1702,11 @@ func (s *GetWirelessCloudConnectorResponseBodyNetLinks) SetCreateTime(v string) 
 
 func (s *GetWirelessCloudConnectorResponseBodyNetLinks) SetDescription(v string) *GetWirelessCloudConnectorResponseBodyNetLinks {
 	s.Description = &v
+	return s
+}
+
+func (s *GetWirelessCloudConnectorResponseBodyNetLinks) SetGrantAliUid(v string) *GetWirelessCloudConnectorResponseBodyNetLinks {
+	s.GrantAliUid = &v
 	return s
 }
 
@@ -1677,6 +1770,93 @@ func (s *GetWirelessCloudConnectorResponse) SetStatusCode(v int32) *GetWirelessC
 }
 
 func (s *GetWirelessCloudConnectorResponse) SetBody(v *GetWirelessCloudConnectorResponseBody) *GetWirelessCloudConnectorResponse {
+	s.Body = v
+	return s
+}
+
+type GrantNetLinkRequest struct {
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	GrantAliUid              *int64  `json:"GrantAliUid,omitempty" xml:"GrantAliUid,omitempty"`
+	NetLinkId                *string `json:"NetLinkId,omitempty" xml:"NetLinkId,omitempty"`
+	WirelessCloudConnectorId *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
+}
+
+func (s GrantNetLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantNetLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantNetLinkRequest) SetClientToken(v string) *GrantNetLinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GrantNetLinkRequest) SetDryRun(v bool) *GrantNetLinkRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *GrantNetLinkRequest) SetGrantAliUid(v int64) *GrantNetLinkRequest {
+	s.GrantAliUid = &v
+	return s
+}
+
+func (s *GrantNetLinkRequest) SetNetLinkId(v string) *GrantNetLinkRequest {
+	s.NetLinkId = &v
+	return s
+}
+
+func (s *GrantNetLinkRequest) SetWirelessCloudConnectorId(v string) *GrantNetLinkRequest {
+	s.WirelessCloudConnectorId = &v
+	return s
+}
+
+type GrantNetLinkResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GrantNetLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantNetLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GrantNetLinkResponseBody) SetRequestId(v string) *GrantNetLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GrantNetLinkResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GrantNetLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GrantNetLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantNetLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GrantNetLinkResponse) SetHeaders(v map[string]*string) *GrantNetLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GrantNetLinkResponse) SetStatusCode(v int32) *GrantNetLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GrantNetLinkResponse) SetBody(v *GrantNetLinkResponseBody) *GrantNetLinkResponse {
 	s.Body = v
 	return s
 }
@@ -3153,6 +3333,7 @@ type ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors struct {
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceType              *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	Status                   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	UseCase                  *string `json:"UseCase,omitempty" xml:"UseCase,omitempty"`
 	WirelessCloudConnectorId *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
@@ -3203,6 +3384,11 @@ func (s *ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors) SetName
 
 func (s *ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors) SetRegionId(v string) *ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors) SetServiceType(v string) *ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors {
+	s.ServiceType = &v
 	return s
 }
 
@@ -3650,6 +3836,87 @@ func (s *ResumeCardsResponse) SetStatusCode(v int32) *ResumeCardsResponse {
 }
 
 func (s *ResumeCardsResponse) SetBody(v *ResumeCardsResponseBody) *ResumeCardsResponse {
+	s.Body = v
+	return s
+}
+
+type RevokeNetLinkRequest struct {
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	NetLinkId                *string `json:"NetLinkId,omitempty" xml:"NetLinkId,omitempty"`
+	WirelessCloudConnectorId *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
+}
+
+func (s RevokeNetLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeNetLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeNetLinkRequest) SetClientToken(v string) *RevokeNetLinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RevokeNetLinkRequest) SetDryRun(v bool) *RevokeNetLinkRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *RevokeNetLinkRequest) SetNetLinkId(v string) *RevokeNetLinkRequest {
+	s.NetLinkId = &v
+	return s
+}
+
+func (s *RevokeNetLinkRequest) SetWirelessCloudConnectorId(v string) *RevokeNetLinkRequest {
+	s.WirelessCloudConnectorId = &v
+	return s
+}
+
+type RevokeNetLinkResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RevokeNetLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeNetLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeNetLinkResponseBody) SetRequestId(v string) *RevokeNetLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RevokeNetLinkResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RevokeNetLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RevokeNetLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeNetLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeNetLinkResponse) SetHeaders(v map[string]*string) *RevokeNetLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevokeNetLinkResponse) SetStatusCode(v int32) *RevokeNetLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RevokeNetLinkResponse) SetBody(v *RevokeNetLinkResponseBody) *RevokeNetLinkResponse {
 	s.Body = v
 	return s
 }
@@ -5187,6 +5454,62 @@ func (client *Client) DetachVpcFromNetLink(request *DetachVpcFromNetLinkRequest)
 	return _result, _err
 }
 
+func (client *Client) FailCardsWithOptions(request *FailCardsRequest, runtime *util.RuntimeOptions) (_result *FailCardsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Iccids)) {
+		query["Iccids"] = request.Iccids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FailCards"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FailCardsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FailCards(request *FailCardsRequest) (_result *FailCardsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FailCardsResponse{}
+	_body, _err := client.FailCardsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetCardWithOptions(request *GetCardRequest, runtime *util.RuntimeOptions) (_result *GetCardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5340,6 +5663,66 @@ func (client *Client) GetWirelessCloudConnector(request *GetWirelessCloudConnect
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWirelessCloudConnectorResponse{}
 	_body, _err := client.GetWirelessCloudConnectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GrantNetLinkWithOptions(request *GrantNetLinkRequest, runtime *util.RuntimeOptions) (_result *GrantNetLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrantAliUid)) {
+		query["GrantAliUid"] = request.GrantAliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetLinkId)) {
+		query["NetLinkId"] = request.NetLinkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorId)) {
+		query["WirelessCloudConnectorId"] = request.WirelessCloudConnectorId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GrantNetLink"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GrantNetLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GrantNetLink(request *GrantNetLinkRequest) (_result *GrantNetLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GrantNetLinkResponse{}
+	_body, _err := client.GrantNetLinkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5916,6 +6299,62 @@ func (client *Client) ResumeCards(request *ResumeCardsRequest) (_result *ResumeC
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeCardsResponse{}
 	_body, _err := client.ResumeCardsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RevokeNetLinkWithOptions(request *RevokeNetLinkRequest, runtime *util.RuntimeOptions) (_result *RevokeNetLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetLinkId)) {
+		query["NetLinkId"] = request.NetLinkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorId)) {
+		query["WirelessCloudConnectorId"] = request.WirelessCloudConnectorId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevokeNetLink"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevokeNetLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RevokeNetLink(request *RevokeNetLinkRequest) (_result *RevokeNetLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RevokeNetLinkResponse{}
+	_body, _err := client.RevokeNetLinkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
