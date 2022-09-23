@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2019-06-01 for oos.
+
 2022-09-15 Version: v1.0.4
 - Update CreateSecret Parameter Tags Type.
 

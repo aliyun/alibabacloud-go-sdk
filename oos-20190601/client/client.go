@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -608,6 +608,349 @@ func (s *CreateApplicationGroupResponse) SetStatusCode(v int32) *CreateApplicati
 }
 
 func (s *CreateApplicationGroupResponse) SetBody(v *CreateApplicationGroupResponseBody) *CreateApplicationGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateOpsItemRequest struct {
+	Category        *string                `json:"Category,omitempty" xml:"Category,omitempty"`
+	ClientToken     *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DedupString     *string                `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
+	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Priority        *int32                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId        *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Resources       *string                `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	Severity        *string                `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Solutions       *string                `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
+	Source          *string                `json:"Source,omitempty" xml:"Source,omitempty"`
+	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title           *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s CreateOpsItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOpsItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOpsItemRequest) SetCategory(v string) *CreateOpsItemRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateOpsItemRequest) SetClientToken(v string) *CreateOpsItemRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateOpsItemRequest) SetDedupString(v string) *CreateOpsItemRequest {
+	s.DedupString = &v
+	return s
+}
+
+func (s *CreateOpsItemRequest) SetDescription(v string) *CreateOpsItemRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateOpsItemRequest) SetPriority(v int32) *CreateOpsItemRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateOpsItemRequest) SetRegionId(v string) *CreateOpsItemRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateOpsItemRequest) SetResourceGroupId(v string) *CreateOpsItemRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateOpsItemRequest) SetResources(v string) *CreateOpsItemRequest {
+	s.Resources = &v
+	return s
+}
+
+func (s *CreateOpsItemRequest) SetSeverity(v string) *CreateOpsItemRequest {
+	s.Severity = &v
+	return s
+}
+
+func (s *CreateOpsItemRequest) SetSolutions(v string) *CreateOpsItemRequest {
+	s.Solutions = &v
+	return s
+}
+
+func (s *CreateOpsItemRequest) SetSource(v string) *CreateOpsItemRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateOpsItemRequest) SetTags(v map[string]interface{}) *CreateOpsItemRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateOpsItemRequest) SetTitle(v string) *CreateOpsItemRequest {
+	s.Title = &v
+	return s
+}
+
+type CreateOpsItemShrinkRequest struct {
+	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DedupString     *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Resources       *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	Severity        *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Solutions       *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s CreateOpsItemShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOpsItemShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOpsItemShrinkRequest) SetCategory(v string) *CreateOpsItemShrinkRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateOpsItemShrinkRequest) SetClientToken(v string) *CreateOpsItemShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateOpsItemShrinkRequest) SetDedupString(v string) *CreateOpsItemShrinkRequest {
+	s.DedupString = &v
+	return s
+}
+
+func (s *CreateOpsItemShrinkRequest) SetDescription(v string) *CreateOpsItemShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateOpsItemShrinkRequest) SetPriority(v int32) *CreateOpsItemShrinkRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateOpsItemShrinkRequest) SetRegionId(v string) *CreateOpsItemShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateOpsItemShrinkRequest) SetResourceGroupId(v string) *CreateOpsItemShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateOpsItemShrinkRequest) SetResources(v string) *CreateOpsItemShrinkRequest {
+	s.Resources = &v
+	return s
+}
+
+func (s *CreateOpsItemShrinkRequest) SetSeverity(v string) *CreateOpsItemShrinkRequest {
+	s.Severity = &v
+	return s
+}
+
+func (s *CreateOpsItemShrinkRequest) SetSolutions(v string) *CreateOpsItemShrinkRequest {
+	s.Solutions = &v
+	return s
+}
+
+func (s *CreateOpsItemShrinkRequest) SetSource(v string) *CreateOpsItemShrinkRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateOpsItemShrinkRequest) SetTagsShrink(v string) *CreateOpsItemShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateOpsItemShrinkRequest) SetTitle(v string) *CreateOpsItemShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+type CreateOpsItemResponseBody struct {
+	OpsItem   *CreateOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateOpsItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOpsItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOpsItemResponseBody) SetOpsItem(v *CreateOpsItemResponseBodyOpsItem) *CreateOpsItemResponseBody {
+	s.OpsItem = v
+	return s
+}
+
+func (s *CreateOpsItemResponseBody) SetRequestId(v string) *CreateOpsItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateOpsItemResponseBodyOpsItem struct {
+	Attributes      *string                `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	Category        *string                `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreateDate      *string                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	CreatedBy       *string                `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	LastModifiedBy  *string                `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
+	OpsItemId       *string                `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
+	Priority        *int32                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Resources       *string                `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	Severity        *string                `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Solutions       *string                `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
+	Source          *string                `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status          *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title           *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+	UpdateDate      *string                `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+}
+
+func (s CreateOpsItemResponseBodyOpsItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOpsItemResponseBodyOpsItem) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetAttributes(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.Attributes = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetCategory(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetCreateDate(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetCreatedBy(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.CreatedBy = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetDescription(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetLastModifiedBy(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.LastModifiedBy = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetOpsItemId(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.OpsItemId = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetPriority(v int32) *CreateOpsItemResponseBodyOpsItem {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetResourceGroupId(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetResources(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.Resources = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetSeverity(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.Severity = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetSolutions(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.Solutions = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetSource(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetStatus(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetTags(v map[string]interface{}) *CreateOpsItemResponseBodyOpsItem {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetTitle(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateOpsItemResponseBodyOpsItem) SetUpdateDate(v string) *CreateOpsItemResponseBodyOpsItem {
+	s.UpdateDate = &v
+	return s
+}
+
+type CreateOpsItemResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateOpsItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateOpsItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOpsItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOpsItemResponse) SetHeaders(v map[string]*string) *CreateOpsItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOpsItemResponse) SetStatusCode(v int32) *CreateOpsItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOpsItemResponse) SetBody(v *CreateOpsItemResponseBody) *CreateOpsItemResponse {
 	s.Body = v
 	return s
 }
@@ -3428,6 +3771,200 @@ func (s *GetInventorySchemaResponse) SetStatusCode(v int32) *GetInventorySchemaR
 }
 
 func (s *GetInventorySchemaResponse) SetBody(v *GetInventorySchemaResponseBody) *GetInventorySchemaResponse {
+	s.Body = v
+	return s
+}
+
+type GetOpsItemRequest struct {
+	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetOpsItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOpsItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOpsItemRequest) SetOpsItemId(v string) *GetOpsItemRequest {
+	s.OpsItemId = &v
+	return s
+}
+
+func (s *GetOpsItemRequest) SetRegionId(v string) *GetOpsItemRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetOpsItemResponseBody struct {
+	OpsItem   *GetOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetOpsItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOpsItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOpsItemResponseBody) SetOpsItem(v *GetOpsItemResponseBodyOpsItem) *GetOpsItemResponseBody {
+	s.OpsItem = v
+	return s
+}
+
+func (s *GetOpsItemResponseBody) SetRequestId(v string) *GetOpsItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetOpsItemResponseBodyOpsItem struct {
+	Attributes      map[string]interface{}   `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	Category        *string                  `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreateBy        *string                  `json:"CreateBy,omitempty" xml:"CreateBy,omitempty"`
+	CreateDate      *string                  `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DedupString     *string                  `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
+	Description     *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	LastModifiedBy  *string                  `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
+	OpsItemId       *string                  `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
+	Priority        *int32                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ResourceGroupId *string                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Resources       []*string                `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	Severity        *string                  `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Solutions       []map[string]interface{} `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
+	Source          *string                  `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status          *string                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags            map[string]interface{}   `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title           *string                  `json:"Title,omitempty" xml:"Title,omitempty"`
+	UpdateDate      *string                  `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+}
+
+func (s GetOpsItemResponseBodyOpsItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOpsItemResponseBodyOpsItem) GoString() string {
+	return s.String()
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetAttributes(v map[string]interface{}) *GetOpsItemResponseBodyOpsItem {
+	s.Attributes = v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetCategory(v string) *GetOpsItemResponseBodyOpsItem {
+	s.Category = &v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetCreateBy(v string) *GetOpsItemResponseBodyOpsItem {
+	s.CreateBy = &v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetCreateDate(v string) *GetOpsItemResponseBodyOpsItem {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetDedupString(v string) *GetOpsItemResponseBodyOpsItem {
+	s.DedupString = &v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetDescription(v string) *GetOpsItemResponseBodyOpsItem {
+	s.Description = &v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetLastModifiedBy(v string) *GetOpsItemResponseBodyOpsItem {
+	s.LastModifiedBy = &v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetOpsItemId(v string) *GetOpsItemResponseBodyOpsItem {
+	s.OpsItemId = &v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetPriority(v int32) *GetOpsItemResponseBodyOpsItem {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetResourceGroupId(v string) *GetOpsItemResponseBodyOpsItem {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetResources(v []*string) *GetOpsItemResponseBodyOpsItem {
+	s.Resources = v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetSeverity(v string) *GetOpsItemResponseBodyOpsItem {
+	s.Severity = &v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetSolutions(v []map[string]interface{}) *GetOpsItemResponseBodyOpsItem {
+	s.Solutions = v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetSource(v string) *GetOpsItemResponseBodyOpsItem {
+	s.Source = &v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetStatus(v string) *GetOpsItemResponseBodyOpsItem {
+	s.Status = &v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetTags(v map[string]interface{}) *GetOpsItemResponseBodyOpsItem {
+	s.Tags = v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetTitle(v string) *GetOpsItemResponseBodyOpsItem {
+	s.Title = &v
+	return s
+}
+
+func (s *GetOpsItemResponseBodyOpsItem) SetUpdateDate(v string) *GetOpsItemResponseBodyOpsItem {
+	s.UpdateDate = &v
+	return s
+}
+
+type GetOpsItemResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOpsItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOpsItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOpsItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOpsItemResponse) SetHeaders(v map[string]*string) *GetOpsItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOpsItemResponse) SetStatusCode(v int32) *GetOpsItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOpsItemResponse) SetBody(v *GetOpsItemResponseBody) *GetOpsItemResponse {
 	s.Body = v
 	return s
 }
@@ -6929,6 +7466,299 @@ func (s *ListInventoryEntriesResponse) SetStatusCode(v int32) *ListInventoryEntr
 }
 
 func (s *ListInventoryEntriesResponse) SetBody(v *ListInventoryEntriesResponseBody) *ListInventoryEntriesResponse {
+	s.Body = v
+	return s
+}
+
+type ListOpsItemsRequest struct {
+	Filter       []*ListOpsItemsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	MaxResults   *int32                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId     *string                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceTags map[string]interface{}       `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
+	Tags         map[string]interface{}       `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ListOpsItemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOpsItemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOpsItemsRequest) SetFilter(v []*ListOpsItemsRequestFilter) *ListOpsItemsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListOpsItemsRequest) SetMaxResults(v int32) *ListOpsItemsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListOpsItemsRequest) SetNextToken(v string) *ListOpsItemsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListOpsItemsRequest) SetRegionId(v string) *ListOpsItemsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListOpsItemsRequest) SetResourceTags(v map[string]interface{}) *ListOpsItemsRequest {
+	s.ResourceTags = v
+	return s
+}
+
+func (s *ListOpsItemsRequest) SetTags(v map[string]interface{}) *ListOpsItemsRequest {
+	s.Tags = v
+	return s
+}
+
+type ListOpsItemsRequestFilter struct {
+	Name     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operator *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value    []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListOpsItemsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOpsItemsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListOpsItemsRequestFilter) SetName(v string) *ListOpsItemsRequestFilter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListOpsItemsRequestFilter) SetOperator(v string) *ListOpsItemsRequestFilter {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListOpsItemsRequestFilter) SetValue(v []*string) *ListOpsItemsRequestFilter {
+	s.Value = v
+	return s
+}
+
+type ListOpsItemsShrinkRequest struct {
+	Filter             []*ListOpsItemsShrinkRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	MaxResults         *int32                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken          *string                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId           *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceTagsShrink *string                            `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
+	TagsShrink         *string                            `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ListOpsItemsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOpsItemsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOpsItemsShrinkRequest) SetFilter(v []*ListOpsItemsShrinkRequestFilter) *ListOpsItemsShrinkRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListOpsItemsShrinkRequest) SetMaxResults(v int32) *ListOpsItemsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListOpsItemsShrinkRequest) SetNextToken(v string) *ListOpsItemsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListOpsItemsShrinkRequest) SetRegionId(v string) *ListOpsItemsShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListOpsItemsShrinkRequest) SetResourceTagsShrink(v string) *ListOpsItemsShrinkRequest {
+	s.ResourceTagsShrink = &v
+	return s
+}
+
+func (s *ListOpsItemsShrinkRequest) SetTagsShrink(v string) *ListOpsItemsShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type ListOpsItemsShrinkRequestFilter struct {
+	Name     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operator *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value    []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListOpsItemsShrinkRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOpsItemsShrinkRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListOpsItemsShrinkRequestFilter) SetName(v string) *ListOpsItemsShrinkRequestFilter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListOpsItemsShrinkRequestFilter) SetOperator(v string) *ListOpsItemsShrinkRequestFilter {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListOpsItemsShrinkRequestFilter) SetValue(v []*string) *ListOpsItemsShrinkRequestFilter {
+	s.Value = v
+	return s
+}
+
+type ListOpsItemsResponseBody struct {
+	MaxResults *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OpsItems   []*ListOpsItemsResponseBodyOpsItems `json:"OpsItems,omitempty" xml:"OpsItems,omitempty" type:"Repeated"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListOpsItemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOpsItemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOpsItemsResponseBody) SetMaxResults(v int32) *ListOpsItemsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListOpsItemsResponseBody) SetNextToken(v string) *ListOpsItemsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListOpsItemsResponseBody) SetOpsItems(v []*ListOpsItemsResponseBodyOpsItems) *ListOpsItemsResponseBody {
+	s.OpsItems = v
+	return s
+}
+
+func (s *ListOpsItemsResponseBody) SetRequestId(v string) *ListOpsItemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOpsItemsResponseBody) SetTotalCount(v int32) *ListOpsItemsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListOpsItemsResponseBodyOpsItems struct {
+	Category   *string                `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreateDate *string                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	OpsItemId  *string                `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
+	Priority   *int32                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Severity   *string                `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Source     *string                `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status     *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags       map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title      *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+	UpdateDate *string                `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+}
+
+func (s ListOpsItemsResponseBodyOpsItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOpsItemsResponseBodyOpsItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListOpsItemsResponseBodyOpsItems) SetCategory(v string) *ListOpsItemsResponseBodyOpsItems {
+	s.Category = &v
+	return s
+}
+
+func (s *ListOpsItemsResponseBodyOpsItems) SetCreateDate(v string) *ListOpsItemsResponseBodyOpsItems {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *ListOpsItemsResponseBodyOpsItems) SetOpsItemId(v string) *ListOpsItemsResponseBodyOpsItems {
+	s.OpsItemId = &v
+	return s
+}
+
+func (s *ListOpsItemsResponseBodyOpsItems) SetPriority(v int32) *ListOpsItemsResponseBodyOpsItems {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListOpsItemsResponseBodyOpsItems) SetSeverity(v string) *ListOpsItemsResponseBodyOpsItems {
+	s.Severity = &v
+	return s
+}
+
+func (s *ListOpsItemsResponseBodyOpsItems) SetSource(v string) *ListOpsItemsResponseBodyOpsItems {
+	s.Source = &v
+	return s
+}
+
+func (s *ListOpsItemsResponseBodyOpsItems) SetStatus(v string) *ListOpsItemsResponseBodyOpsItems {
+	s.Status = &v
+	return s
+}
+
+func (s *ListOpsItemsResponseBodyOpsItems) SetTags(v map[string]interface{}) *ListOpsItemsResponseBodyOpsItems {
+	s.Tags = v
+	return s
+}
+
+func (s *ListOpsItemsResponseBodyOpsItems) SetTitle(v string) *ListOpsItemsResponseBodyOpsItems {
+	s.Title = &v
+	return s
+}
+
+func (s *ListOpsItemsResponseBodyOpsItems) SetUpdateDate(v string) *ListOpsItemsResponseBodyOpsItems {
+	s.UpdateDate = &v
+	return s
+}
+
+type ListOpsItemsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListOpsItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListOpsItemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOpsItemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOpsItemsResponse) SetHeaders(v map[string]*string) *ListOpsItemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOpsItemsResponse) SetStatusCode(v int32) *ListOpsItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOpsItemsResponse) SetBody(v *ListOpsItemsResponseBody) *ListOpsItemsResponse {
 	s.Body = v
 	return s
 }
@@ -11423,6 +12253,373 @@ func (s *UpdateExecutionResponse) SetBody(v *UpdateExecutionResponseBody) *Updat
 	return s
 }
 
+type UpdateOpsItemRequest struct {
+	Category        *string                `json:"Category,omitempty" xml:"Category,omitempty"`
+	ClientToken     *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DedupString     *string                `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
+	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	OpsItemId       *string                `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
+	Priority        *int32                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId        *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Resources       *string                `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	Severity        *string                `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Solutions       *string                `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
+	Source          *string                `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status          *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title           *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateOpsItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOpsItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOpsItemRequest) SetCategory(v string) *UpdateOpsItemRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetClientToken(v string) *UpdateOpsItemRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetDedupString(v string) *UpdateOpsItemRequest {
+	s.DedupString = &v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetDescription(v string) *UpdateOpsItemRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetOpsItemId(v string) *UpdateOpsItemRequest {
+	s.OpsItemId = &v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetPriority(v int32) *UpdateOpsItemRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetRegionId(v string) *UpdateOpsItemRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetResourceGroupId(v string) *UpdateOpsItemRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetResources(v string) *UpdateOpsItemRequest {
+	s.Resources = &v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetSeverity(v string) *UpdateOpsItemRequest {
+	s.Severity = &v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetSolutions(v string) *UpdateOpsItemRequest {
+	s.Solutions = &v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetSource(v string) *UpdateOpsItemRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetStatus(v string) *UpdateOpsItemRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetTags(v map[string]interface{}) *UpdateOpsItemRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *UpdateOpsItemRequest) SetTitle(v string) *UpdateOpsItemRequest {
+	s.Title = &v
+	return s
+}
+
+type UpdateOpsItemShrinkRequest struct {
+	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DedupString     *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	OpsItemId       *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
+	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Resources       *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	Severity        *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Solutions       *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateOpsItemShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOpsItemShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetCategory(v string) *UpdateOpsItemShrinkRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetClientToken(v string) *UpdateOpsItemShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetDedupString(v string) *UpdateOpsItemShrinkRequest {
+	s.DedupString = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetDescription(v string) *UpdateOpsItemShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetOpsItemId(v string) *UpdateOpsItemShrinkRequest {
+	s.OpsItemId = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetPriority(v int32) *UpdateOpsItemShrinkRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetRegionId(v string) *UpdateOpsItemShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetResourceGroupId(v string) *UpdateOpsItemShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetResources(v string) *UpdateOpsItemShrinkRequest {
+	s.Resources = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetSeverity(v string) *UpdateOpsItemShrinkRequest {
+	s.Severity = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetSolutions(v string) *UpdateOpsItemShrinkRequest {
+	s.Solutions = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetSource(v string) *UpdateOpsItemShrinkRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetStatus(v string) *UpdateOpsItemShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetTagsShrink(v string) *UpdateOpsItemShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *UpdateOpsItemShrinkRequest) SetTitle(v string) *UpdateOpsItemShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+type UpdateOpsItemResponseBody struct {
+	OpsItem   *UpdateOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateOpsItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOpsItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOpsItemResponseBody) SetOpsItem(v *UpdateOpsItemResponseBodyOpsItem) *UpdateOpsItemResponseBody {
+	s.OpsItem = v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBody) SetRequestId(v string) *UpdateOpsItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateOpsItemResponseBodyOpsItem struct {
+	Attributes      *string                `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	Category        *string                `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreateDate      *string                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	CreatedBy       *string                `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	LastModifiedBy  *string                `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
+	OpsItemId       *string                `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
+	Priority        *int32                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Resources       []*string              `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	Severity        *string                `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Solutions       []*string              `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
+	Source          *string                `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status          *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title           *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+	UpdateDate      *string                `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+}
+
+func (s UpdateOpsItemResponseBodyOpsItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOpsItemResponseBodyOpsItem) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetAttributes(v string) *UpdateOpsItemResponseBodyOpsItem {
+	s.Attributes = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetCategory(v string) *UpdateOpsItemResponseBodyOpsItem {
+	s.Category = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetCreateDate(v string) *UpdateOpsItemResponseBodyOpsItem {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetCreatedBy(v string) *UpdateOpsItemResponseBodyOpsItem {
+	s.CreatedBy = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetDescription(v string) *UpdateOpsItemResponseBodyOpsItem {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetLastModifiedBy(v string) *UpdateOpsItemResponseBodyOpsItem {
+	s.LastModifiedBy = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetOpsItemId(v string) *UpdateOpsItemResponseBodyOpsItem {
+	s.OpsItemId = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetPriority(v int32) *UpdateOpsItemResponseBodyOpsItem {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetResourceGroupId(v string) *UpdateOpsItemResponseBodyOpsItem {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetResources(v []*string) *UpdateOpsItemResponseBodyOpsItem {
+	s.Resources = v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetSeverity(v string) *UpdateOpsItemResponseBodyOpsItem {
+	s.Severity = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetSolutions(v []*string) *UpdateOpsItemResponseBodyOpsItem {
+	s.Solutions = v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetSource(v string) *UpdateOpsItemResponseBodyOpsItem {
+	s.Source = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetStatus(v string) *UpdateOpsItemResponseBodyOpsItem {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetTags(v map[string]interface{}) *UpdateOpsItemResponseBodyOpsItem {
+	s.Tags = v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetTitle(v string) *UpdateOpsItemResponseBodyOpsItem {
+	s.Title = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponseBodyOpsItem) SetUpdateDate(v string) *UpdateOpsItemResponseBodyOpsItem {
+	s.UpdateDate = &v
+	return s
+}
+
+type UpdateOpsItemResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateOpsItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateOpsItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOpsItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOpsItemResponse) SetHeaders(v map[string]*string) *UpdateOpsItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateOpsItemResponse) SetStatusCode(v int32) *UpdateOpsItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateOpsItemResponse) SetBody(v *UpdateOpsItemResponseBody) *UpdateOpsItemResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateParameterRequest struct {
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -13045,6 +14242,104 @@ func (client *Client) CreateApplicationGroup(request *CreateApplicationGroupRequ
 	return _result, _err
 }
 
+func (client *Client) CreateOpsItemWithOptions(tmpReq *CreateOpsItemRequest, runtime *util.RuntimeOptions) (_result *CreateOpsItemResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateOpsItemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DedupString)) {
+		query["DedupString"] = request.DedupString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		query["Resources"] = request.Resources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Severity)) {
+		query["Severity"] = request.Severity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Solutions)) {
+		query["Solutions"] = request.Solutions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOpsItem"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOpsItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOpsItem(request *CreateOpsItemRequest) (_result *CreateOpsItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOpsItemResponse{}
+	_body, _err := client.CreateOpsItemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateParameterWithOptions(tmpReq *CreateParameterRequest, runtime *util.RuntimeOptions) (_result *CreateParameterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -14257,6 +15552,54 @@ func (client *Client) GetInventorySchema(request *GetInventorySchemaRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) GetOpsItemWithOptions(request *GetOpsItemRequest, runtime *util.RuntimeOptions) (_result *GetOpsItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpsItemId)) {
+		query["OpsItemId"] = request.OpsItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOpsItem"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOpsItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOpsItem(request *GetOpsItemRequest) (_result *GetOpsItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOpsItemResponse{}
+	_body, _err := client.GetOpsItemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetParameterWithOptions(request *GetParameterRequest, runtime *util.RuntimeOptions) (_result *GetParameterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15354,6 +16697,80 @@ func (client *Client) ListInventoryEntries(request *ListInventoryEntriesRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInventoryEntriesResponse{}
 	_body, _err := client.ListInventoryEntriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListOpsItemsWithOptions(tmpReq *ListOpsItemsRequest, runtime *util.RuntimeOptions) (_result *ListOpsItemsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListOpsItemsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceTags)) {
+		request.ResourceTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceTags, tea.String("ResourceTags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTagsShrink)) {
+		query["ResourceTags"] = request.ResourceTagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOpsItems"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOpsItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOpsItems(request *ListOpsItemsRequest) (_result *ListOpsItemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOpsItemsResponse{}
+	_body, _err := client.ListOpsItemsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17036,6 +18453,112 @@ func (client *Client) UpdateExecution(request *UpdateExecutionRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateExecutionResponse{}
 	_body, _err := client.UpdateExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateOpsItemWithOptions(tmpReq *UpdateOpsItemRequest, runtime *util.RuntimeOptions) (_result *UpdateOpsItemResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateOpsItemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DedupString)) {
+		query["DedupString"] = request.DedupString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpsItemId)) {
+		query["OpsItemId"] = request.OpsItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		query["Resources"] = request.Resources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Severity)) {
+		query["Severity"] = request.Severity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Solutions)) {
+		query["Solutions"] = request.Solutions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateOpsItem"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateOpsItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateOpsItem(request *UpdateOpsItemRequest) (_result *UpdateOpsItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateOpsItemResponse{}
+	_body, _err := client.UpdateOpsItemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
