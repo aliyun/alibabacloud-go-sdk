@@ -5,17 +5,17 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AssociateChatbotInstanceRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ChatbotInstanceId *string `json:"ChatbotInstanceId,omitempty" xml:"ChatbotInstanceId,omitempty"`
 	ChatbotName       *string `json:"ChatbotName,omitempty" xml:"ChatbotName,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s AssociateChatbotInstanceRequest) String() string {
@@ -26,11 +26,6 @@ func (s AssociateChatbotInstanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AssociateChatbotInstanceRequest) SetInstanceId(v string) *AssociateChatbotInstanceRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *AssociateChatbotInstanceRequest) SetChatbotInstanceId(v string) *AssociateChatbotInstanceRequest {
 	s.ChatbotInstanceId = &v
 	return s
@@ -38,6 +33,11 @@ func (s *AssociateChatbotInstanceRequest) SetChatbotInstanceId(v string) *Associ
 
 func (s *AssociateChatbotInstanceRequest) SetChatbotName(v string) *AssociateChatbotInstanceRequest {
 	s.ChatbotName = &v
+	return s
+}
+
+func (s *AssociateChatbotInstanceRequest) SetInstanceId(v string) *AssociateChatbotInstanceRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -59,8 +59,9 @@ func (s *AssociateChatbotInstanceResponseBody) SetRequestId(v string) *Associate
 }
 
 type AssociateChatbotInstanceResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AssociateChatbotInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssociateChatbotInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AssociateChatbotInstanceResponse) String() string {
@@ -76,6 +77,11 @@ func (s *AssociateChatbotInstanceResponse) SetHeaders(v map[string]*string) *Ass
 	return s
 }
 
+func (s *AssociateChatbotInstanceResponse) SetStatusCode(v int32) *AssociateChatbotInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AssociateChatbotInstanceResponse) SetBody(v *AssociateChatbotInstanceResponseBody) *AssociateChatbotInstanceResponse {
 	s.Body = v
 	return s
@@ -83,9 +89,9 @@ func (s *AssociateChatbotInstanceResponse) SetBody(v *AssociateChatbotInstanceRe
 
 type AuditTTSVoiceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Voice      *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	Text       *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	SpeechRate *string `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Text       *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Voice      *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
 	Volume     *string `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
@@ -102,8 +108,8 @@ func (s *AuditTTSVoiceRequest) SetInstanceId(v string) *AuditTTSVoiceRequest {
 	return s
 }
 
-func (s *AuditTTSVoiceRequest) SetVoice(v string) *AuditTTSVoiceRequest {
-	s.Voice = &v
+func (s *AuditTTSVoiceRequest) SetSpeechRate(v string) *AuditTTSVoiceRequest {
+	s.SpeechRate = &v
 	return s
 }
 
@@ -112,8 +118,8 @@ func (s *AuditTTSVoiceRequest) SetText(v string) *AuditTTSVoiceRequest {
 	return s
 }
 
-func (s *AuditTTSVoiceRequest) SetSpeechRate(v string) *AuditTTSVoiceRequest {
-	s.SpeechRate = &v
+func (s *AuditTTSVoiceRequest) SetVoice(v string) *AuditTTSVoiceRequest {
+	s.Voice = &v
 	return s
 }
 
@@ -123,8 +129,8 @@ func (s *AuditTTSVoiceRequest) SetVolume(v string) *AuditTTSVoiceRequest {
 }
 
 type AuditTTSVoiceResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AuditionUrl *string `json:"AuditionUrl,omitempty" xml:"AuditionUrl,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AuditTTSVoiceResponseBody) String() string {
@@ -135,19 +141,20 @@ func (s AuditTTSVoiceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AuditTTSVoiceResponseBody) SetRequestId(v string) *AuditTTSVoiceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *AuditTTSVoiceResponseBody) SetAuditionUrl(v string) *AuditTTSVoiceResponseBody {
 	s.AuditionUrl = &v
 	return s
 }
 
+func (s *AuditTTSVoiceResponseBody) SetRequestId(v string) *AuditTTSVoiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type AuditTTSVoiceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AuditTTSVoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AuditTTSVoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AuditTTSVoiceResponse) String() string {
@@ -163,17 +170,23 @@ func (s *AuditTTSVoiceResponse) SetHeaders(v map[string]*string) *AuditTTSVoiceR
 	return s
 }
 
+func (s *AuditTTSVoiceResponse) SetStatusCode(v int32) *AuditTTSVoiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AuditTTSVoiceResponse) SetBody(v *AuditTTSVoiceResponseBody) *AuditTTSVoiceResponse {
 	s.Body = v
 	return s
 }
 
 type BeginDialogueRequest struct {
-	CalledNumber   *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber  *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	InitialContext *string `json:"InitialContext,omitempty" xml:"InitialContext,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	CalledNumber    *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CallingNumber   *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	ConversationId  *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	InitialContext  *string `json:"InitialContext,omitempty" xml:"InitialContext,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceOwnerId *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
 }
 
 func (s BeginDialogueRequest) String() string {
@@ -209,11 +222,16 @@ func (s *BeginDialogueRequest) SetInstanceId(v string) *BeginDialogueRequest {
 	return s
 }
 
+func (s *BeginDialogueRequest) SetInstanceOwnerId(v int64) *BeginDialogueRequest {
+	s.InstanceOwnerId = &v
+	return s
+}
+
 type BeginDialogueResponseBody struct {
 	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
@@ -230,6 +248,11 @@ func (s *BeginDialogueResponseBody) SetAction(v string) *BeginDialogueResponseBo
 	return s
 }
 
+func (s *BeginDialogueResponseBody) SetActionParams(v string) *BeginDialogueResponseBody {
+	s.ActionParams = &v
+	return s
+}
+
 func (s *BeginDialogueResponseBody) SetInterruptible(v bool) *BeginDialogueResponseBody {
 	s.Interruptible = &v
 	return s
@@ -240,19 +263,15 @@ func (s *BeginDialogueResponseBody) SetRequestId(v string) *BeginDialogueRespons
 	return s
 }
 
-func (s *BeginDialogueResponseBody) SetActionParams(v string) *BeginDialogueResponseBody {
-	s.ActionParams = &v
-	return s
-}
-
 func (s *BeginDialogueResponseBody) SetTextResponse(v string) *BeginDialogueResponseBody {
 	s.TextResponse = &v
 	return s
 }
 
 type BeginDialogueResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BeginDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BeginDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BeginDialogueResponse) String() string {
@@ -268,15 +287,21 @@ func (s *BeginDialogueResponse) SetHeaders(v map[string]*string) *BeginDialogueR
 	return s
 }
 
+func (s *BeginDialogueResponse) SetStatusCode(v int32) *BeginDialogueResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *BeginDialogueResponse) SetBody(v *BeginDialogueResponseBody) *BeginDialogueResponse {
 	s.Body = v
 	return s
 }
 
 type CollectedNumberRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	Number         *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	ConversationId  *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceOwnerId *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	Number          *string `json:"Number,omitempty" xml:"Number,omitempty"`
 }
 
 func (s CollectedNumberRequest) String() string {
@@ -287,13 +312,18 @@ func (s CollectedNumberRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CollectedNumberRequest) SetConversationId(v string) *CollectedNumberRequest {
+	s.ConversationId = &v
+	return s
+}
+
 func (s *CollectedNumberRequest) SetInstanceId(v string) *CollectedNumberRequest {
 	s.InstanceId = &v
 	return s
 }
 
-func (s *CollectedNumberRequest) SetConversationId(v string) *CollectedNumberRequest {
-	s.ConversationId = &v
+func (s *CollectedNumberRequest) SetInstanceOwnerId(v int64) *CollectedNumberRequest {
+	s.InstanceOwnerId = &v
 	return s
 }
 
@@ -304,9 +334,9 @@ func (s *CollectedNumberRequest) SetNumber(v string) *CollectedNumberRequest {
 
 type CollectedNumberResponseBody struct {
 	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
@@ -323,6 +353,11 @@ func (s *CollectedNumberResponseBody) SetAction(v string) *CollectedNumberRespon
 	return s
 }
 
+func (s *CollectedNumberResponseBody) SetActionParams(v string) *CollectedNumberResponseBody {
+	s.ActionParams = &v
+	return s
+}
+
 func (s *CollectedNumberResponseBody) SetInterruptible(v bool) *CollectedNumberResponseBody {
 	s.Interruptible = &v
 	return s
@@ -333,19 +368,15 @@ func (s *CollectedNumberResponseBody) SetRequestId(v string) *CollectedNumberRes
 	return s
 }
 
-func (s *CollectedNumberResponseBody) SetActionParams(v string) *CollectedNumberResponseBody {
-	s.ActionParams = &v
-	return s
-}
-
 func (s *CollectedNumberResponseBody) SetTextResponse(v string) *CollectedNumberResponseBody {
 	s.TextResponse = &v
 	return s
 }
 
 type CollectedNumberResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CollectedNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CollectedNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CollectedNumberResponse) String() string {
@@ -361,18 +392,119 @@ func (s *CollectedNumberResponse) SetHeaders(v map[string]*string) *CollectedNum
 	return s
 }
 
+func (s *CollectedNumberResponse) SetStatusCode(v int32) *CollectedNumberResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CollectedNumberResponse) SetBody(v *CollectedNumberResponseBody) *CollectedNumberResponse {
 	s.Body = v
 	return s
 }
 
+type CreateDownloadUrlRequest struct {
+	DownloadTaskId *string `json:"DownloadTaskId,omitempty" xml:"DownloadTaskId,omitempty"`
+	FileId         *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+}
+
+func (s CreateDownloadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDownloadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDownloadUrlRequest) SetDownloadTaskId(v string) *CreateDownloadUrlRequest {
+	s.DownloadTaskId = &v
+	return s
+}
+
+func (s *CreateDownloadUrlRequest) SetFileId(v string) *CreateDownloadUrlRequest {
+	s.FileId = &v
+	return s
+}
+
+type CreateDownloadUrlResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	FileHttpUrl    *string `json:"FileHttpUrl,omitempty" xml:"FileHttpUrl,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDownloadUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDownloadUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDownloadUrlResponseBody) SetCode(v string) *CreateDownloadUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDownloadUrlResponseBody) SetFileHttpUrl(v string) *CreateDownloadUrlResponseBody {
+	s.FileHttpUrl = &v
+	return s
+}
+
+func (s *CreateDownloadUrlResponseBody) SetHttpStatusCode(v int32) *CreateDownloadUrlResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateDownloadUrlResponseBody) SetMessage(v string) *CreateDownloadUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDownloadUrlResponseBody) SetRequestId(v string) *CreateDownloadUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDownloadUrlResponseBody) SetSuccess(v bool) *CreateDownloadUrlResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDownloadUrlResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDownloadUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDownloadUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDownloadUrlResponse) SetHeaders(v map[string]*string) *CreateDownloadUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDownloadUrlResponse) SetStatusCode(v int32) *CreateDownloadUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDownloadUrlResponse) SetBody(v *CreateDownloadUrlResponseBody) *CreateDownloadUrlResponse {
+	s.Body = v
+	return s
+}
+
 type CreateInstanceRequest struct {
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Concurrency       *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	ChatbotInstanceId *string `json:"ChatbotInstanceId,omitempty" xml:"ChatbotInstanceId,omitempty"`
-	NluServiceType    *string `json:"NluServiceType,omitempty" xml:"NluServiceType,omitempty"`
-	ChatbotName       *string `json:"ChatbotName,omitempty" xml:"ChatbotName,omitempty"`
+	Concurrency *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -383,8 +515,8 @@ func (s CreateInstanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateInstanceRequest) SetName(v string) *CreateInstanceRequest {
-	s.Name = &v
+func (s *CreateInstanceRequest) SetConcurrency(v int64) *CreateInstanceRequest {
+	s.Concurrency = &v
 	return s
 }
 
@@ -393,29 +525,14 @@ func (s *CreateInstanceRequest) SetDescription(v string) *CreateInstanceRequest 
 	return s
 }
 
-func (s *CreateInstanceRequest) SetConcurrency(v int64) *CreateInstanceRequest {
-	s.Concurrency = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetChatbotInstanceId(v string) *CreateInstanceRequest {
-	s.ChatbotInstanceId = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetNluServiceType(v string) *CreateInstanceRequest {
-	s.NluServiceType = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetChatbotName(v string) *CreateInstanceRequest {
-	s.ChatbotName = &v
+func (s *CreateInstanceRequest) SetName(v string) *CreateInstanceRequest {
+	s.Name = &v
 	return s
 }
 
 type CreateInstanceResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -426,19 +543,20 @@ func (s CreateInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateInstanceResponseBody) SetInstanceId(v string) *CreateInstanceResponseBody {
 	s.InstanceId = &v
 	return s
 }
 
+func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type CreateInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateInstanceResponse) String() string {
@@ -451,6 +569,11 @@ func (s CreateInstanceResponse) GoString() string {
 
 func (s *CreateInstanceResponse) SetHeaders(v map[string]*string) *CreateInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceResponse) SetStatusCode(v int32) *CreateInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -502,9 +625,9 @@ func (s *DebugBeginDialogueRequest) SetInstanceId(v string) *DebugBeginDialogueR
 
 type DebugBeginDialogueResponseBody struct {
 	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
@@ -521,6 +644,11 @@ func (s *DebugBeginDialogueResponseBody) SetAction(v string) *DebugBeginDialogue
 	return s
 }
 
+func (s *DebugBeginDialogueResponseBody) SetActionParams(v string) *DebugBeginDialogueResponseBody {
+	s.ActionParams = &v
+	return s
+}
+
 func (s *DebugBeginDialogueResponseBody) SetInterruptible(v bool) *DebugBeginDialogueResponseBody {
 	s.Interruptible = &v
 	return s
@@ -531,19 +659,15 @@ func (s *DebugBeginDialogueResponseBody) SetRequestId(v string) *DebugBeginDialo
 	return s
 }
 
-func (s *DebugBeginDialogueResponseBody) SetActionParams(v string) *DebugBeginDialogueResponseBody {
-	s.ActionParams = &v
-	return s
-}
-
 func (s *DebugBeginDialogueResponseBody) SetTextResponse(v string) *DebugBeginDialogueResponseBody {
 	s.TextResponse = &v
 	return s
 }
 
 type DebugBeginDialogueResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DebugBeginDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DebugBeginDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DebugBeginDialogueResponse) String() string {
@@ -559,14 +683,19 @@ func (s *DebugBeginDialogueResponse) SetHeaders(v map[string]*string) *DebugBegi
 	return s
 }
 
+func (s *DebugBeginDialogueResponse) SetStatusCode(v int32) *DebugBeginDialogueResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DebugBeginDialogueResponse) SetBody(v *DebugBeginDialogueResponseBody) *DebugBeginDialogueResponse {
 	s.Body = v
 	return s
 }
 
 type DebugCollectedNumberRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Number         *string `json:"Number,omitempty" xml:"Number,omitempty"`
 }
 
@@ -578,13 +707,13 @@ func (s DebugCollectedNumberRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DebugCollectedNumberRequest) SetInstanceId(v string) *DebugCollectedNumberRequest {
-	s.InstanceId = &v
+func (s *DebugCollectedNumberRequest) SetConversationId(v string) *DebugCollectedNumberRequest {
+	s.ConversationId = &v
 	return s
 }
 
-func (s *DebugCollectedNumberRequest) SetConversationId(v string) *DebugCollectedNumberRequest {
-	s.ConversationId = &v
+func (s *DebugCollectedNumberRequest) SetInstanceId(v string) *DebugCollectedNumberRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -595,9 +724,9 @@ func (s *DebugCollectedNumberRequest) SetNumber(v string) *DebugCollectedNumberR
 
 type DebugCollectedNumberResponseBody struct {
 	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
@@ -614,6 +743,11 @@ func (s *DebugCollectedNumberResponseBody) SetAction(v string) *DebugCollectedNu
 	return s
 }
 
+func (s *DebugCollectedNumberResponseBody) SetActionParams(v string) *DebugCollectedNumberResponseBody {
+	s.ActionParams = &v
+	return s
+}
+
 func (s *DebugCollectedNumberResponseBody) SetInterruptible(v bool) *DebugCollectedNumberResponseBody {
 	s.Interruptible = &v
 	return s
@@ -624,19 +758,15 @@ func (s *DebugCollectedNumberResponseBody) SetRequestId(v string) *DebugCollecte
 	return s
 }
 
-func (s *DebugCollectedNumberResponseBody) SetActionParams(v string) *DebugCollectedNumberResponseBody {
-	s.ActionParams = &v
-	return s
-}
-
 func (s *DebugCollectedNumberResponseBody) SetTextResponse(v string) *DebugCollectedNumberResponseBody {
 	s.TextResponse = &v
 	return s
 }
 
 type DebugCollectedNumberResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DebugCollectedNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DebugCollectedNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DebugCollectedNumberResponse) String() string {
@@ -652,14 +782,19 @@ func (s *DebugCollectedNumberResponse) SetHeaders(v map[string]*string) *DebugCo
 	return s
 }
 
+func (s *DebugCollectedNumberResponse) SetStatusCode(v int32) *DebugCollectedNumberResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DebugCollectedNumberResponse) SetBody(v *DebugCollectedNumberResponseBody) *DebugCollectedNumberResponse {
 	s.Body = v
 	return s
 }
 
 type DebugDialogueRequest struct {
-	ConversationId    *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
 	AdditionalContext *string `json:"AdditionalContext,omitempty" xml:"AdditionalContext,omitempty"`
+	ConversationId    *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Utterance         *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
@@ -672,13 +807,13 @@ func (s DebugDialogueRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DebugDialogueRequest) SetConversationId(v string) *DebugDialogueRequest {
-	s.ConversationId = &v
+func (s *DebugDialogueRequest) SetAdditionalContext(v string) *DebugDialogueRequest {
+	s.AdditionalContext = &v
 	return s
 }
 
-func (s *DebugDialogueRequest) SetAdditionalContext(v string) *DebugDialogueRequest {
-	s.AdditionalContext = &v
+func (s *DebugDialogueRequest) SetConversationId(v string) *DebugDialogueRequest {
+	s.ConversationId = &v
 	return s
 }
 
@@ -694,9 +829,9 @@ func (s *DebugDialogueRequest) SetUtterance(v string) *DebugDialogueRequest {
 
 type DebugDialogueResponseBody struct {
 	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
@@ -713,6 +848,11 @@ func (s *DebugDialogueResponseBody) SetAction(v string) *DebugDialogueResponseBo
 	return s
 }
 
+func (s *DebugDialogueResponseBody) SetActionParams(v string) *DebugDialogueResponseBody {
+	s.ActionParams = &v
+	return s
+}
+
 func (s *DebugDialogueResponseBody) SetInterruptible(v bool) *DebugDialogueResponseBody {
 	s.Interruptible = &v
 	return s
@@ -723,19 +863,15 @@ func (s *DebugDialogueResponseBody) SetRequestId(v string) *DebugDialogueRespons
 	return s
 }
 
-func (s *DebugDialogueResponseBody) SetActionParams(v string) *DebugDialogueResponseBody {
-	s.ActionParams = &v
-	return s
-}
-
 func (s *DebugDialogueResponseBody) SetTextResponse(v string) *DebugDialogueResponseBody {
 	s.TextResponse = &v
 	return s
 }
 
 type DebugDialogueResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DebugDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DebugDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DebugDialogueResponse) String() string {
@@ -748,6 +884,11 @@ func (s DebugDialogueResponse) GoString() string {
 
 func (s *DebugDialogueResponse) SetHeaders(v map[string]*string) *DebugDialogueResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DebugDialogueResponse) SetStatusCode(v int32) *DebugDialogueResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -791,8 +932,9 @@ func (s *DeleteInstanceResponseBody) SetRequestId(v string) *DeleteInstanceRespo
 }
 
 type DeleteInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteInstanceResponse) String() string {
@@ -808,14 +950,19 @@ func (s *DeleteInstanceResponse) SetHeaders(v map[string]*string) *DeleteInstanc
 	return s
 }
 
+func (s *DeleteInstanceResponse) SetStatusCode(v int32) *DeleteInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeConversationRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeConversationRequest) String() string {
@@ -826,25 +973,25 @@ func (s DescribeConversationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeConversationRequest) SetInstanceId(v string) *DescribeConversationRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *DescribeConversationRequest) SetConversationId(v string) *DescribeConversationRequest {
 	s.ConversationId = &v
 	return s
 }
 
+func (s *DescribeConversationRequest) SetInstanceId(v string) *DescribeConversationRequest {
+	s.InstanceId = &v
+	return s
+}
+
 type DescribeConversationResponseBody struct {
-	EffectiveAnswerCount *int32  `json:"EffectiveAnswerCount,omitempty" xml:"EffectiveAnswerCount,omitempty"`
+	BeginTime            *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	CallingNumber        *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
 	ConversationId       *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	TransferredToAgent   *bool   `json:"TransferredToAgent,omitempty" xml:"TransferredToAgent,omitempty"`
+	EffectiveAnswerCount *int32  `json:"EffectiveAnswerCount,omitempty" xml:"EffectiveAnswerCount,omitempty"`
 	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	BeginTime            *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	SkillGroupId         *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	CallingNumber        *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	TransferredToAgent   *bool   `json:"TransferredToAgent,omitempty" xml:"TransferredToAgent,omitempty"`
 	UserUtteranceCount   *int32  `json:"UserUtteranceCount,omitempty" xml:"UserUtteranceCount,omitempty"`
 }
 
@@ -856,8 +1003,13 @@ func (s DescribeConversationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeConversationResponseBody) SetEffectiveAnswerCount(v int32) *DescribeConversationResponseBody {
-	s.EffectiveAnswerCount = &v
+func (s *DescribeConversationResponseBody) SetBeginTime(v int64) *DescribeConversationResponseBody {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *DescribeConversationResponseBody) SetCallingNumber(v string) *DescribeConversationResponseBody {
+	s.CallingNumber = &v
 	return s
 }
 
@@ -866,8 +1018,8 @@ func (s *DescribeConversationResponseBody) SetConversationId(v string) *Describe
 	return s
 }
 
-func (s *DescribeConversationResponseBody) SetTransferredToAgent(v bool) *DescribeConversationResponseBody {
-	s.TransferredToAgent = &v
+func (s *DescribeConversationResponseBody) SetEffectiveAnswerCount(v int32) *DescribeConversationResponseBody {
+	s.EffectiveAnswerCount = &v
 	return s
 }
 
@@ -881,18 +1033,13 @@ func (s *DescribeConversationResponseBody) SetRequestId(v string) *DescribeConve
 	return s
 }
 
-func (s *DescribeConversationResponseBody) SetBeginTime(v int64) *DescribeConversationResponseBody {
-	s.BeginTime = &v
-	return s
-}
-
 func (s *DescribeConversationResponseBody) SetSkillGroupId(v string) *DescribeConversationResponseBody {
 	s.SkillGroupId = &v
 	return s
 }
 
-func (s *DescribeConversationResponseBody) SetCallingNumber(v string) *DescribeConversationResponseBody {
-	s.CallingNumber = &v
+func (s *DescribeConversationResponseBody) SetTransferredToAgent(v bool) *DescribeConversationResponseBody {
+	s.TransferredToAgent = &v
 	return s
 }
 
@@ -902,8 +1049,9 @@ func (s *DescribeConversationResponseBody) SetUserUtteranceCount(v int32) *Descr
 }
 
 type DescribeConversationResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeConversationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeConversationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeConversationResponse) String() string {
@@ -919,14 +1067,19 @@ func (s *DescribeConversationResponse) SetHeaders(v map[string]*string) *Describ
 	return s
 }
 
+func (s *DescribeConversationResponse) SetStatusCode(v int32) *DescribeConversationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeConversationResponse) SetBody(v *DescribeConversationResponseBody) *DescribeConversationResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeConversationContextRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeConversationContextRequest) String() string {
@@ -937,19 +1090,19 @@ func (s DescribeConversationContextRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeConversationContextRequest) SetInstanceId(v string) *DescribeConversationContextRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *DescribeConversationContextRequest) SetConversationId(v string) *DescribeConversationContextRequest {
 	s.ConversationId = &v
 	return s
 }
 
+func (s *DescribeConversationContextRequest) SetInstanceId(v string) *DescribeConversationContextRequest {
+	s.InstanceId = &v
+	return s
+}
+
 type DescribeConversationContextResponseBody struct {
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ConversationContext *string `json:"ConversationContext,omitempty" xml:"ConversationContext,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeConversationContextResponseBody) String() string {
@@ -960,19 +1113,20 @@ func (s DescribeConversationContextResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeConversationContextResponseBody) SetRequestId(v string) *DescribeConversationContextResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeConversationContextResponseBody) SetConversationContext(v string) *DescribeConversationContextResponseBody {
 	s.ConversationContext = &v
 	return s
 }
 
+func (s *DescribeConversationContextResponseBody) SetRequestId(v string) *DescribeConversationContextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DescribeConversationContextResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeConversationContextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeConversationContextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeConversationContextResponse) String() string {
@@ -988,14 +1142,19 @@ func (s *DescribeConversationContextResponse) SetHeaders(v map[string]*string) *
 	return s
 }
 
+func (s *DescribeConversationContextResponse) SetStatusCode(v int32) *DescribeConversationContextResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeConversationContextResponse) SetBody(v *DescribeConversationContextResponseBody) *DescribeConversationContextResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeExportProgressRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ExportTaskId *string `json:"ExportTaskId,omitempty" xml:"ExportTaskId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeExportProgressRequest) String() string {
@@ -1006,20 +1165,20 @@ func (s DescribeExportProgressRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeExportProgressRequest) SetInstanceId(v string) *DescribeExportProgressRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *DescribeExportProgressRequest) SetExportTaskId(v string) *DescribeExportProgressRequest {
 	s.ExportTaskId = &v
 	return s
 }
 
+func (s *DescribeExportProgressRequest) SetInstanceId(v string) *DescribeExportProgressRequest {
+	s.InstanceId = &v
+	return s
+}
+
 type DescribeExportProgressResponseBody struct {
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	FileHttpUrl *string `json:"FileHttpUrl,omitempty" xml:"FileHttpUrl,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeExportProgressResponseBody) String() string {
@@ -1030,8 +1189,8 @@ func (s DescribeExportProgressResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeExportProgressResponseBody) SetStatus(v string) *DescribeExportProgressResponseBody {
-	s.Status = &v
+func (s *DescribeExportProgressResponseBody) SetFileHttpUrl(v string) *DescribeExportProgressResponseBody {
+	s.FileHttpUrl = &v
 	return s
 }
 
@@ -1040,14 +1199,15 @@ func (s *DescribeExportProgressResponseBody) SetRequestId(v string) *DescribeExp
 	return s
 }
 
-func (s *DescribeExportProgressResponseBody) SetFileHttpUrl(v string) *DescribeExportProgressResponseBody {
-	s.FileHttpUrl = &v
+func (s *DescribeExportProgressResponseBody) SetStatus(v string) *DescribeExportProgressResponseBody {
+	s.Status = &v
 	return s
 }
 
 type DescribeExportProgressResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeExportProgressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeExportProgressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeExportProgressResponse) String() string {
@@ -1060,6 +1220,11 @@ func (s DescribeExportProgressResponse) GoString() string {
 
 func (s *DescribeExportProgressResponse) SetHeaders(v map[string]*string) *DescribeExportProgressResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeExportProgressResponse) SetStatusCode(v int32) *DescribeExportProgressResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1086,15 +1251,15 @@ func (s *DescribeInstanceRequest) SetInstanceId(v string) *DescribeInstanceReque
 }
 
 type DescribeInstanceResponseBody struct {
-	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	ModifyTime           *int64    `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	RequestId            *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Concurrency          *int64    `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
 	ApplicableOperations []*string `json:"ApplicableOperations,omitempty" xml:"ApplicableOperations,omitempty" type:"Repeated"`
+	Concurrency          *int64    `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ModifyTime           *int64    `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	ModifyUserName       *string   `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
 	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId            *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeInstanceResponseBody) String() string {
@@ -1105,28 +1270,8 @@ func (s DescribeInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstanceResponseBody) SetStatus(v string) *DescribeInstanceResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetModifyTime(v int64) *DescribeInstanceResponseBody {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetDescription(v string) *DescribeInstanceResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetRequestId(v string) *DescribeInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetInstanceId(v string) *DescribeInstanceResponseBody {
-	s.InstanceId = &v
+func (s *DescribeInstanceResponseBody) SetApplicableOperations(v []*string) *DescribeInstanceResponseBody {
+	s.ApplicableOperations = v
 	return s
 }
 
@@ -1135,8 +1280,18 @@ func (s *DescribeInstanceResponseBody) SetConcurrency(v int64) *DescribeInstance
 	return s
 }
 
-func (s *DescribeInstanceResponseBody) SetApplicableOperations(v []*string) *DescribeInstanceResponseBody {
-	s.ApplicableOperations = v
+func (s *DescribeInstanceResponseBody) SetDescription(v string) *DescribeInstanceResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetInstanceId(v string) *DescribeInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetModifyTime(v int64) *DescribeInstanceResponseBody {
+	s.ModifyTime = &v
 	return s
 }
 
@@ -1150,9 +1305,20 @@ func (s *DescribeInstanceResponseBody) SetName(v string) *DescribeInstanceRespon
 	return s
 }
 
+func (s *DescribeInstanceResponseBody) SetRequestId(v string) *DescribeInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetStatus(v string) *DescribeInstanceResponseBody {
+	s.Status = &v
+	return s
+}
+
 type DescribeInstanceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeInstanceResponse) String() string {
@@ -1165,6 +1331,11 @@ func (s DescribeInstanceResponse) GoString() string {
 
 func (s *DescribeInstanceResponse) SetHeaders(v map[string]*string) *DescribeInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceResponse) SetStatusCode(v int32) *DescribeInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1191,9 +1362,9 @@ func (s *DescribeNavigationConfigRequest) SetInstanceId(v string) *DescribeNavig
 }
 
 type DescribeNavigationConfigResponseBody struct {
+	GreetingConfig       *DescribeNavigationConfigResponseBodyGreetingConfig       `json:"GreetingConfig,omitempty" xml:"GreetingConfig,omitempty" type:"Struct"`
 	RequestId            *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SilenceTimeoutConfig *DescribeNavigationConfigResponseBodySilenceTimeoutConfig `json:"SilenceTimeoutConfig,omitempty" xml:"SilenceTimeoutConfig,omitempty" type:"Struct"`
-	GreetingConfig       *DescribeNavigationConfigResponseBodyGreetingConfig       `json:"GreetingConfig,omitempty" xml:"GreetingConfig,omitempty" type:"Struct"`
 	UnrecognizingConfig  *DescribeNavigationConfigResponseBodyUnrecognizingConfig  `json:"UnrecognizingConfig,omitempty" xml:"UnrecognizingConfig,omitempty" type:"Struct"`
 }
 
@@ -1203,6 +1374,11 @@ func (s DescribeNavigationConfigResponseBody) String() string {
 
 func (s DescribeNavigationConfigResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeNavigationConfigResponseBody) SetGreetingConfig(v *DescribeNavigationConfigResponseBodyGreetingConfig) *DescribeNavigationConfigResponseBody {
+	s.GreetingConfig = v
+	return s
 }
 
 func (s *DescribeNavigationConfigResponseBody) SetRequestId(v string) *DescribeNavigationConfigResponseBody {
@@ -1215,78 +1391,14 @@ func (s *DescribeNavigationConfigResponseBody) SetSilenceTimeoutConfig(v *Descri
 	return s
 }
 
-func (s *DescribeNavigationConfigResponseBody) SetGreetingConfig(v *DescribeNavigationConfigResponseBodyGreetingConfig) *DescribeNavigationConfigResponseBody {
-	s.GreetingConfig = v
-	return s
-}
-
 func (s *DescribeNavigationConfigResponseBody) SetUnrecognizingConfig(v *DescribeNavigationConfigResponseBodyUnrecognizingConfig) *DescribeNavigationConfigResponseBody {
 	s.UnrecognizingConfig = v
 	return s
 }
 
-type DescribeNavigationConfigResponseBodySilenceTimeoutConfig struct {
-	Timeout           *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	IntentTrigger     *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
-	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
-	SourceType        *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	FinalAction       *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
-	Prompt            *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	Threshold         *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
-}
-
-func (s DescribeNavigationConfigResponseBodySilenceTimeoutConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeNavigationConfigResponseBodySilenceTimeoutConfig) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetTimeout(v int64) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
-	s.Timeout = &v
-	return s
-}
-
-func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetIntentTrigger(v string) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
-	s.IntentTrigger = &v
-	return s
-}
-
-func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetFinalPrompt(v string) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
-	s.FinalPrompt = &v
-	return s
-}
-
-func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetSourceType(v string) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
-	s.SourceType = &v
-	return s
-}
-
-func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetFinalAction(v string) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
-	s.FinalAction = &v
-	return s
-}
-
-func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetPrompt(v string) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
-	s.Prompt = &v
-	return s
-}
-
-func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetThreshold(v int32) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
-	s.Threshold = &v
-	return s
-}
-
-func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetFinalActionParams(v string) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
-	s.FinalActionParams = &v
-	return s
-}
-
 type DescribeNavigationConfigResponseBodyGreetingConfig struct {
-	IntentTrigger *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
 	GreetingWords *string `json:"GreetingWords,omitempty" xml:"GreetingWords,omitempty"`
+	IntentTrigger *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
 	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -1298,13 +1410,13 @@ func (s DescribeNavigationConfigResponseBodyGreetingConfig) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeNavigationConfigResponseBodyGreetingConfig) SetIntentTrigger(v string) *DescribeNavigationConfigResponseBodyGreetingConfig {
-	s.IntentTrigger = &v
+func (s *DescribeNavigationConfigResponseBodyGreetingConfig) SetGreetingWords(v string) *DescribeNavigationConfigResponseBodyGreetingConfig {
+	s.GreetingWords = &v
 	return s
 }
 
-func (s *DescribeNavigationConfigResponseBodyGreetingConfig) SetGreetingWords(v string) *DescribeNavigationConfigResponseBodyGreetingConfig {
-	s.GreetingWords = &v
+func (s *DescribeNavigationConfigResponseBodyGreetingConfig) SetIntentTrigger(v string) *DescribeNavigationConfigResponseBodyGreetingConfig {
+	s.IntentTrigger = &v
 	return s
 }
 
@@ -1313,12 +1425,71 @@ func (s *DescribeNavigationConfigResponseBodyGreetingConfig) SetSourceType(v str
 	return s
 }
 
-type DescribeNavigationConfigResponseBodyUnrecognizingConfig struct {
-	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
+type DescribeNavigationConfigResponseBodySilenceTimeoutConfig struct {
 	FinalAction       *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
 	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
-	Threshold         *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
+	IntentTrigger     *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
 	Prompt            *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	SourceType        *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Threshold         *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Timeout           *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s DescribeNavigationConfigResponseBodySilenceTimeoutConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNavigationConfigResponseBodySilenceTimeoutConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetFinalAction(v string) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
+	s.FinalAction = &v
+	return s
+}
+
+func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetFinalActionParams(v string) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
+	s.FinalActionParams = &v
+	return s
+}
+
+func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetFinalPrompt(v string) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
+	s.FinalPrompt = &v
+	return s
+}
+
+func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetIntentTrigger(v string) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
+	s.IntentTrigger = &v
+	return s
+}
+
+func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetPrompt(v string) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
+	s.Prompt = &v
+	return s
+}
+
+func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetSourceType(v string) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetThreshold(v int32) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
+	s.Threshold = &v
+	return s
+}
+
+func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetTimeout(v int64) *DescribeNavigationConfigResponseBodySilenceTimeoutConfig {
+	s.Timeout = &v
+	return s
+}
+
+type DescribeNavigationConfigResponseBodyUnrecognizingConfig struct {
+	FinalAction       *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
+	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
+	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
+	Prompt            *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Threshold         *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s DescribeNavigationConfigResponseBodyUnrecognizingConfig) String() string {
@@ -1327,11 +1498,6 @@ func (s DescribeNavigationConfigResponseBodyUnrecognizingConfig) String() string
 
 func (s DescribeNavigationConfigResponseBodyUnrecognizingConfig) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeNavigationConfigResponseBodyUnrecognizingConfig) SetFinalPrompt(v string) *DescribeNavigationConfigResponseBodyUnrecognizingConfig {
-	s.FinalPrompt = &v
-	return s
 }
 
 func (s *DescribeNavigationConfigResponseBodyUnrecognizingConfig) SetFinalAction(v string) *DescribeNavigationConfigResponseBodyUnrecognizingConfig {
@@ -1344,8 +1510,8 @@ func (s *DescribeNavigationConfigResponseBodyUnrecognizingConfig) SetFinalAction
 	return s
 }
 
-func (s *DescribeNavigationConfigResponseBodyUnrecognizingConfig) SetThreshold(v int32) *DescribeNavigationConfigResponseBodyUnrecognizingConfig {
-	s.Threshold = &v
+func (s *DescribeNavigationConfigResponseBodyUnrecognizingConfig) SetFinalPrompt(v string) *DescribeNavigationConfigResponseBodyUnrecognizingConfig {
+	s.FinalPrompt = &v
 	return s
 }
 
@@ -1354,9 +1520,15 @@ func (s *DescribeNavigationConfigResponseBodyUnrecognizingConfig) SetPrompt(v st
 	return s
 }
 
+func (s *DescribeNavigationConfigResponseBodyUnrecognizingConfig) SetThreshold(v int32) *DescribeNavigationConfigResponseBodyUnrecognizingConfig {
+	s.Threshold = &v
+	return s
+}
+
 type DescribeNavigationConfigResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeNavigationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeNavigationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeNavigationConfigResponse) String() string {
@@ -1372,14 +1544,20 @@ func (s *DescribeNavigationConfigResponse) SetHeaders(v map[string]*string) *Des
 	return s
 }
 
+func (s *DescribeNavigationConfigResponse) SetStatusCode(v int32) *DescribeNavigationConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeNavigationConfigResponse) SetBody(v *DescribeNavigationConfigResponseBody) *DescribeNavigationConfigResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeRecordingRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	ConversationId          *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NeedVoiceSliceRecording *bool   `json:"NeedVoiceSliceRecording,omitempty" xml:"NeedVoiceSliceRecording,omitempty"`
 }
 
 func (s DescribeRecordingRequest) String() string {
@@ -1390,20 +1568,26 @@ func (s DescribeRecordingRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRecordingRequest) SetInstanceId(v string) *DescribeRecordingRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *DescribeRecordingRequest) SetConversationId(v string) *DescribeRecordingRequest {
 	s.ConversationId = &v
 	return s
 }
 
+func (s *DescribeRecordingRequest) SetInstanceId(v string) *DescribeRecordingRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRecordingRequest) SetNeedVoiceSliceRecording(v bool) *DescribeRecordingRequest {
+	s.NeedVoiceSliceRecording = &v
+	return s
+}
+
 type DescribeRecordingResponseBody struct {
-	FilePath  *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	FileName  *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileName                    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FilePath                    *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	RequestId                   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VoiceSliceRecordingListJson *string `json:"VoiceSliceRecordingListJson,omitempty" xml:"VoiceSliceRecordingListJson,omitempty"`
 }
 
 func (s DescribeRecordingResponseBody) String() string {
@@ -1412,6 +1596,11 @@ func (s DescribeRecordingResponseBody) String() string {
 
 func (s DescribeRecordingResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRecordingResponseBody) SetFileName(v string) *DescribeRecordingResponseBody {
+	s.FileName = &v
+	return s
 }
 
 func (s *DescribeRecordingResponseBody) SetFilePath(v string) *DescribeRecordingResponseBody {
@@ -1424,14 +1613,15 @@ func (s *DescribeRecordingResponseBody) SetRequestId(v string) *DescribeRecordin
 	return s
 }
 
-func (s *DescribeRecordingResponseBody) SetFileName(v string) *DescribeRecordingResponseBody {
-	s.FileName = &v
+func (s *DescribeRecordingResponseBody) SetVoiceSliceRecordingListJson(v string) *DescribeRecordingResponseBody {
+	s.VoiceSliceRecordingListJson = &v
 	return s
 }
 
 type DescribeRecordingResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRecordingResponse) String() string {
@@ -1447,16 +1637,21 @@ func (s *DescribeRecordingResponse) SetHeaders(v map[string]*string) *DescribeRe
 	return s
 }
 
+func (s *DescribeRecordingResponse) SetStatusCode(v int32) *DescribeRecordingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeRecordingResponse) SetBody(v *DescribeRecordingResponseBody) *DescribeRecordingResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeStatisticalDataRequest struct {
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TimeUnit            *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
 	BeginTimeLeftRange  *int64  `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
 	BeginTimeRightRange *int64  `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TimeUnit            *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
 }
 
 func (s DescribeStatisticalDataRequest) String() string {
@@ -1465,16 +1660,6 @@ func (s DescribeStatisticalDataRequest) String() string {
 
 func (s DescribeStatisticalDataRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeStatisticalDataRequest) SetInstanceId(v string) *DescribeStatisticalDataRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeStatisticalDataRequest) SetTimeUnit(v string) *DescribeStatisticalDataRequest {
-	s.TimeUnit = &v
-	return s
 }
 
 func (s *DescribeStatisticalDataRequest) SetBeginTimeLeftRange(v int64) *DescribeStatisticalDataRequest {
@@ -1487,15 +1672,25 @@ func (s *DescribeStatisticalDataRequest) SetBeginTimeRightRange(v int64) *Descri
 	return s
 }
 
+func (s *DescribeStatisticalDataRequest) SetInstanceId(v string) *DescribeStatisticalDataRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeStatisticalDataRequest) SetTimeUnit(v string) *DescribeStatisticalDataRequest {
+	s.TimeUnit = &v
+	return s
+}
+
 type DescribeStatisticalDataResponseBody struct {
+	ConversationTotalNum     *int64                                                       `json:"ConversationTotalNum,omitempty" xml:"ConversationTotalNum,omitempty"`
+	RequestId                *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResolvedQuestionTotalNum *int64                                                       `json:"ResolvedQuestionTotalNum,omitempty" xml:"ResolvedQuestionTotalNum,omitempty"`
+	StatisticalDataReports   []*DescribeStatisticalDataResponseBodyStatisticalDataReports `json:"StatisticalDataReports,omitempty" xml:"StatisticalDataReports,omitempty" type:"Repeated"`
 	TotalDialoguePassRate    *string                                                      `json:"TotalDialoguePassRate,omitempty" xml:"TotalDialoguePassRate,omitempty"`
 	TotalKnowledgeHitRate    *string                                                      `json:"TotalKnowledgeHitRate,omitempty" xml:"TotalKnowledgeHitRate,omitempty"`
 	TotalResolutionRate      *string                                                      `json:"TotalResolutionRate,omitempty" xml:"TotalResolutionRate,omitempty"`
 	TotalValidAnswerRate     *string                                                      `json:"TotalValidAnswerRate,omitempty" xml:"TotalValidAnswerRate,omitempty"`
-	RequestId                *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResolvedQuestionTotalNum *int64                                                       `json:"ResolvedQuestionTotalNum,omitempty" xml:"ResolvedQuestionTotalNum,omitempty"`
-	ConversationTotalNum     *int64                                                       `json:"ConversationTotalNum,omitempty" xml:"ConversationTotalNum,omitempty"`
-	StatisticalDataReports   []*DescribeStatisticalDataResponseBodyStatisticalDataReports `json:"StatisticalDataReports,omitempty" xml:"StatisticalDataReports,omitempty" type:"Repeated"`
 }
 
 func (s DescribeStatisticalDataResponseBody) String() string {
@@ -1504,6 +1699,26 @@ func (s DescribeStatisticalDataResponseBody) String() string {
 
 func (s DescribeStatisticalDataResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeStatisticalDataResponseBody) SetConversationTotalNum(v int64) *DescribeStatisticalDataResponseBody {
+	s.ConversationTotalNum = &v
+	return s
+}
+
+func (s *DescribeStatisticalDataResponseBody) SetRequestId(v string) *DescribeStatisticalDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeStatisticalDataResponseBody) SetResolvedQuestionTotalNum(v int64) *DescribeStatisticalDataResponseBody {
+	s.ResolvedQuestionTotalNum = &v
+	return s
+}
+
+func (s *DescribeStatisticalDataResponseBody) SetStatisticalDataReports(v []*DescribeStatisticalDataResponseBodyStatisticalDataReports) *DescribeStatisticalDataResponseBody {
+	s.StatisticalDataReports = v
+	return s
 }
 
 func (s *DescribeStatisticalDataResponseBody) SetTotalDialoguePassRate(v string) *DescribeStatisticalDataResponseBody {
@@ -1526,34 +1741,14 @@ func (s *DescribeStatisticalDataResponseBody) SetTotalValidAnswerRate(v string) 
 	return s
 }
 
-func (s *DescribeStatisticalDataResponseBody) SetRequestId(v string) *DescribeStatisticalDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeStatisticalDataResponseBody) SetResolvedQuestionTotalNum(v int64) *DescribeStatisticalDataResponseBody {
-	s.ResolvedQuestionTotalNum = &v
-	return s
-}
-
-func (s *DescribeStatisticalDataResponseBody) SetConversationTotalNum(v int64) *DescribeStatisticalDataResponseBody {
-	s.ConversationTotalNum = &v
-	return s
-}
-
-func (s *DescribeStatisticalDataResponseBody) SetStatisticalDataReports(v []*DescribeStatisticalDataResponseBodyStatisticalDataReports) *DescribeStatisticalDataResponseBody {
-	s.StatisticalDataReports = v
-	return s
-}
-
 type DescribeStatisticalDataResponseBodyStatisticalDataReports struct {
+	DialoguePassRate     *string `json:"DialoguePassRate,omitempty" xml:"DialoguePassRate,omitempty"`
 	KnowledgeHitRate     *string `json:"KnowledgeHitRate,omitempty" xml:"KnowledgeHitRate,omitempty"`
-	ResolvedQuestionNum  *int32  `json:"ResolvedQuestionNum,omitempty" xml:"ResolvedQuestionNum,omitempty"`
 	ResolutionRate       *string `json:"ResolutionRate,omitempty" xml:"ResolutionRate,omitempty"`
+	ResolvedQuestionNum  *int32  `json:"ResolvedQuestionNum,omitempty" xml:"ResolvedQuestionNum,omitempty"`
 	StatisticalDate      *string `json:"StatisticalDate,omitempty" xml:"StatisticalDate,omitempty"`
 	TotalConversationNum *int32  `json:"TotalConversationNum,omitempty" xml:"TotalConversationNum,omitempty"`
 	ValidAnswerRate      *string `json:"ValidAnswerRate,omitempty" xml:"ValidAnswerRate,omitempty"`
-	DialoguePassRate     *string `json:"DialoguePassRate,omitempty" xml:"DialoguePassRate,omitempty"`
 }
 
 func (s DescribeStatisticalDataResponseBodyStatisticalDataReports) String() string {
@@ -1564,18 +1759,23 @@ func (s DescribeStatisticalDataResponseBodyStatisticalDataReports) GoString() st
 	return s.String()
 }
 
+func (s *DescribeStatisticalDataResponseBodyStatisticalDataReports) SetDialoguePassRate(v string) *DescribeStatisticalDataResponseBodyStatisticalDataReports {
+	s.DialoguePassRate = &v
+	return s
+}
+
 func (s *DescribeStatisticalDataResponseBodyStatisticalDataReports) SetKnowledgeHitRate(v string) *DescribeStatisticalDataResponseBodyStatisticalDataReports {
 	s.KnowledgeHitRate = &v
 	return s
 }
 
-func (s *DescribeStatisticalDataResponseBodyStatisticalDataReports) SetResolvedQuestionNum(v int32) *DescribeStatisticalDataResponseBodyStatisticalDataReports {
-	s.ResolvedQuestionNum = &v
+func (s *DescribeStatisticalDataResponseBodyStatisticalDataReports) SetResolutionRate(v string) *DescribeStatisticalDataResponseBodyStatisticalDataReports {
+	s.ResolutionRate = &v
 	return s
 }
 
-func (s *DescribeStatisticalDataResponseBodyStatisticalDataReports) SetResolutionRate(v string) *DescribeStatisticalDataResponseBodyStatisticalDataReports {
-	s.ResolutionRate = &v
+func (s *DescribeStatisticalDataResponseBodyStatisticalDataReports) SetResolvedQuestionNum(v int32) *DescribeStatisticalDataResponseBodyStatisticalDataReports {
+	s.ResolvedQuestionNum = &v
 	return s
 }
 
@@ -1594,14 +1794,10 @@ func (s *DescribeStatisticalDataResponseBodyStatisticalDataReports) SetValidAnsw
 	return s
 }
 
-func (s *DescribeStatisticalDataResponseBodyStatisticalDataReports) SetDialoguePassRate(v string) *DescribeStatisticalDataResponseBodyStatisticalDataReports {
-	s.DialoguePassRate = &v
-	return s
-}
-
 type DescribeStatisticalDataResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeStatisticalDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeStatisticalDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeStatisticalDataResponse) String() string {
@@ -1617,13 +1813,19 @@ func (s *DescribeStatisticalDataResponse) SetHeaders(v map[string]*string) *Desc
 	return s
 }
 
+func (s *DescribeStatisticalDataResponse) SetStatusCode(v int32) *DescribeStatisticalDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeStatisticalDataResponse) SetBody(v *DescribeStatisticalDataResponseBody) *DescribeStatisticalDataResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeTTSConfigRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceOwnerId *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
 }
 
 func (s DescribeTTSConfigRequest) String() string {
@@ -1639,11 +1841,18 @@ func (s *DescribeTTSConfigRequest) SetInstanceId(v string) *DescribeTTSConfigReq
 	return s
 }
 
+func (s *DescribeTTSConfigRequest) SetInstanceOwnerId(v int64) *DescribeTTSConfigRequest {
+	s.InstanceOwnerId = &v
+	return s
+}
+
 type DescribeTTSConfigResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Volume     *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	Voice      *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	SpeechRate *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	AppKey         *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	NlsServiceType *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SpeechRate     *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Voice          *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Volume         *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s DescribeTTSConfigResponseBody) String() string {
@@ -1654,18 +1863,18 @@ func (s DescribeTTSConfigResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeTTSConfigResponseBody) SetAppKey(v string) *DescribeTTSConfigResponseBody {
+	s.AppKey = &v
+	return s
+}
+
+func (s *DescribeTTSConfigResponseBody) SetNlsServiceType(v string) *DescribeTTSConfigResponseBody {
+	s.NlsServiceType = &v
+	return s
+}
+
 func (s *DescribeTTSConfigResponseBody) SetRequestId(v string) *DescribeTTSConfigResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeTTSConfigResponseBody) SetVolume(v int32) *DescribeTTSConfigResponseBody {
-	s.Volume = &v
-	return s
-}
-
-func (s *DescribeTTSConfigResponseBody) SetVoice(v string) *DescribeTTSConfigResponseBody {
-	s.Voice = &v
 	return s
 }
 
@@ -1674,9 +1883,20 @@ func (s *DescribeTTSConfigResponseBody) SetSpeechRate(v int32) *DescribeTTSConfi
 	return s
 }
 
+func (s *DescribeTTSConfigResponseBody) SetVoice(v string) *DescribeTTSConfigResponseBody {
+	s.Voice = &v
+	return s
+}
+
+func (s *DescribeTTSConfigResponseBody) SetVolume(v int32) *DescribeTTSConfigResponseBody {
+	s.Volume = &v
+	return s
+}
+
 type DescribeTTSConfigResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeTTSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTTSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeTTSConfigResponse) String() string {
@@ -1692,18 +1912,25 @@ func (s *DescribeTTSConfigResponse) SetHeaders(v map[string]*string) *DescribeTT
 	return s
 }
 
+func (s *DescribeTTSConfigResponse) SetStatusCode(v int32) *DescribeTTSConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeTTSConfigResponse) SetBody(v *DescribeTTSConfigResponseBody) *DescribeTTSConfigResponse {
 	s.Body = v
 	return s
 }
 
 type DialogueRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ConversationId    *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	Utterance         *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	AdditionalContext *string `json:"AdditionalContext,omitempty" xml:"AdditionalContext,omitempty"`
 	CalledNumber      *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	CallingNumber     *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	AdditionalContext *string `json:"AdditionalContext,omitempty" xml:"AdditionalContext,omitempty"`
+	ConversationId    *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	Emotion           *string `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceOwnerId   *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	Utterance         *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 
 func (s DialogueRequest) String() string {
@@ -1714,18 +1941,8 @@ func (s DialogueRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DialogueRequest) SetInstanceId(v string) *DialogueRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DialogueRequest) SetConversationId(v string) *DialogueRequest {
-	s.ConversationId = &v
-	return s
-}
-
-func (s *DialogueRequest) SetUtterance(v string) *DialogueRequest {
-	s.Utterance = &v
+func (s *DialogueRequest) SetAdditionalContext(v string) *DialogueRequest {
+	s.AdditionalContext = &v
 	return s
 }
 
@@ -1739,16 +1956,36 @@ func (s *DialogueRequest) SetCallingNumber(v string) *DialogueRequest {
 	return s
 }
 
-func (s *DialogueRequest) SetAdditionalContext(v string) *DialogueRequest {
-	s.AdditionalContext = &v
+func (s *DialogueRequest) SetConversationId(v string) *DialogueRequest {
+	s.ConversationId = &v
+	return s
+}
+
+func (s *DialogueRequest) SetEmotion(v string) *DialogueRequest {
+	s.Emotion = &v
+	return s
+}
+
+func (s *DialogueRequest) SetInstanceId(v string) *DialogueRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DialogueRequest) SetInstanceOwnerId(v int64) *DialogueRequest {
+	s.InstanceOwnerId = &v
+	return s
+}
+
+func (s *DialogueRequest) SetUtterance(v string) *DialogueRequest {
+	s.Utterance = &v
 	return s
 }
 
 type DialogueResponseBody struct {
 	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
@@ -1765,6 +2002,11 @@ func (s *DialogueResponseBody) SetAction(v string) *DialogueResponseBody {
 	return s
 }
 
+func (s *DialogueResponseBody) SetActionParams(v string) *DialogueResponseBody {
+	s.ActionParams = &v
+	return s
+}
+
 func (s *DialogueResponseBody) SetInterruptible(v bool) *DialogueResponseBody {
 	s.Interruptible = &v
 	return s
@@ -1775,19 +2017,15 @@ func (s *DialogueResponseBody) SetRequestId(v string) *DialogueResponseBody {
 	return s
 }
 
-func (s *DialogueResponseBody) SetActionParams(v string) *DialogueResponseBody {
-	s.ActionParams = &v
-	return s
-}
-
 func (s *DialogueResponseBody) SetTextResponse(v string) *DialogueResponseBody {
 	s.TextResponse = &v
 	return s
 }
 
 type DialogueResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DialogueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DialogueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DialogueResponse) String() string {
@@ -1800,6 +2038,11 @@ func (s DialogueResponse) GoString() string {
 
 func (s *DialogueResponse) SetHeaders(v map[string]*string) *DialogueResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DialogueResponse) SetStatusCode(v int32) *DialogueResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1826,8 +2069,8 @@ func (s *DisableInstanceRequest) SetInstanceId(v string) *DisableInstanceRequest
 }
 
 type DisableInstanceResponseBody struct {
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DisableInstanceResponseBody) String() string {
@@ -1838,19 +2081,20 @@ func (s DisableInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DisableInstanceResponseBody) SetStatus(v string) *DisableInstanceResponseBody {
-	s.Status = &v
-	return s
-}
-
 func (s *DisableInstanceResponseBody) SetRequestId(v string) *DisableInstanceResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DisableInstanceResponseBody) SetStatus(v string) *DisableInstanceResponseBody {
+	s.Status = &v
+	return s
+}
+
 type DisableInstanceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableInstanceResponse) String() string {
@@ -1863,6 +2107,11 @@ func (s DisableInstanceResponse) GoString() string {
 
 func (s *DisableInstanceResponse) SetHeaders(v map[string]*string) *DisableInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableInstanceResponse) SetStatusCode(v int32) *DisableInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1889,8 +2138,8 @@ func (s *EnableInstanceRequest) SetInstanceId(v string) *EnableInstanceRequest {
 }
 
 type EnableInstanceResponseBody struct {
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s EnableInstanceResponseBody) String() string {
@@ -1901,19 +2150,20 @@ func (s EnableInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *EnableInstanceResponseBody) SetStatus(v string) *EnableInstanceResponseBody {
-	s.Status = &v
-	return s
-}
-
 func (s *EnableInstanceResponseBody) SetRequestId(v string) *EnableInstanceResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *EnableInstanceResponseBody) SetStatus(v string) *EnableInstanceResponseBody {
+	s.Status = &v
+	return s
+}
+
 type EnableInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableInstanceResponse) String() string {
@@ -1929,14 +2179,21 @@ func (s *EnableInstanceResponse) SetHeaders(v map[string]*string) *EnableInstanc
 	return s
 }
 
+func (s *EnableInstanceResponse) SetStatusCode(v int32) *EnableInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *EnableInstanceResponse) SetBody(v *EnableInstanceResponseBody) *EnableInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type EndDialogueRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	ConversationId  *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	HangUpParams    *string `json:"HangUpParams,omitempty" xml:"HangUpParams,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceOwnerId *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
 }
 
 func (s EndDialogueRequest) String() string {
@@ -1947,13 +2204,23 @@ func (s EndDialogueRequest) GoString() string {
 	return s.String()
 }
 
+func (s *EndDialogueRequest) SetConversationId(v string) *EndDialogueRequest {
+	s.ConversationId = &v
+	return s
+}
+
+func (s *EndDialogueRequest) SetHangUpParams(v string) *EndDialogueRequest {
+	s.HangUpParams = &v
+	return s
+}
+
 func (s *EndDialogueRequest) SetInstanceId(v string) *EndDialogueRequest {
 	s.InstanceId = &v
 	return s
 }
 
-func (s *EndDialogueRequest) SetConversationId(v string) *EndDialogueRequest {
-	s.ConversationId = &v
+func (s *EndDialogueRequest) SetInstanceOwnerId(v int64) *EndDialogueRequest {
+	s.InstanceOwnerId = &v
 	return s
 }
 
@@ -1975,8 +2242,9 @@ func (s *EndDialogueResponseBody) SetRequestId(v string) *EndDialogueResponseBod
 }
 
 type EndDialogueResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EndDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EndDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EndDialogueResponse) String() string {
@@ -1992,16 +2260,24 @@ func (s *EndDialogueResponse) SetHeaders(v map[string]*string) *EndDialogueRespo
 	return s
 }
 
+func (s *EndDialogueResponse) SetStatusCode(v int32) *EndDialogueResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *EndDialogueResponse) SetBody(v *EndDialogueResponseBody) *EndDialogueResponse {
 	s.Body = v
 	return s
 }
 
 type ExportConversationDetailsRequest struct {
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	CallingNumber       *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	BeginTimeLeftRange  *int64  `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
-	BeginTimeRightRange *int64  `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	BeginTimeLeftRange  *int64    `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
+	BeginTimeRightRange *int64    `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	CallingNumber       *string   `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	InstanceId          *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Options             []*string `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
+	RoundsLeftRange     *int32    `json:"RoundsLeftRange,omitempty" xml:"RoundsLeftRange,omitempty"`
+	RoundsRightRange    *int32    `json:"RoundsRightRange,omitempty" xml:"RoundsRightRange,omitempty"`
 }
 
 func (s ExportConversationDetailsRequest) String() string {
@@ -2010,16 +2286,6 @@ func (s ExportConversationDetailsRequest) String() string {
 
 func (s ExportConversationDetailsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ExportConversationDetailsRequest) SetInstanceId(v string) *ExportConversationDetailsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ExportConversationDetailsRequest) SetCallingNumber(v string) *ExportConversationDetailsRequest {
-	s.CallingNumber = &v
-	return s
 }
 
 func (s *ExportConversationDetailsRequest) SetBeginTimeLeftRange(v int64) *ExportConversationDetailsRequest {
@@ -2032,9 +2298,34 @@ func (s *ExportConversationDetailsRequest) SetBeginTimeRightRange(v int64) *Expo
 	return s
 }
 
+func (s *ExportConversationDetailsRequest) SetCallingNumber(v string) *ExportConversationDetailsRequest {
+	s.CallingNumber = &v
+	return s
+}
+
+func (s *ExportConversationDetailsRequest) SetInstanceId(v string) *ExportConversationDetailsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ExportConversationDetailsRequest) SetOptions(v []*string) *ExportConversationDetailsRequest {
+	s.Options = v
+	return s
+}
+
+func (s *ExportConversationDetailsRequest) SetRoundsLeftRange(v int32) *ExportConversationDetailsRequest {
+	s.RoundsLeftRange = &v
+	return s
+}
+
+func (s *ExportConversationDetailsRequest) SetRoundsRightRange(v int32) *ExportConversationDetailsRequest {
+	s.RoundsRightRange = &v
+	return s
+}
+
 type ExportConversationDetailsResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ExportTaskId *string `json:"ExportTaskId,omitempty" xml:"ExportTaskId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ExportConversationDetailsResponseBody) String() string {
@@ -2045,19 +2336,20 @@ func (s ExportConversationDetailsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ExportConversationDetailsResponseBody) SetRequestId(v string) *ExportConversationDetailsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ExportConversationDetailsResponseBody) SetExportTaskId(v string) *ExportConversationDetailsResponseBody {
 	s.ExportTaskId = &v
 	return s
 }
 
+func (s *ExportConversationDetailsResponseBody) SetRequestId(v string) *ExportConversationDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ExportConversationDetailsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExportConversationDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExportConversationDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExportConversationDetailsResponse) String() string {
@@ -2073,17 +2365,22 @@ func (s *ExportConversationDetailsResponse) SetHeaders(v map[string]*string) *Ex
 	return s
 }
 
+func (s *ExportConversationDetailsResponse) SetStatusCode(v int32) *ExportConversationDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ExportConversationDetailsResponse) SetBody(v *ExportConversationDetailsResponseBody) *ExportConversationDetailsResponse {
 	s.Body = v
 	return s
 }
 
 type ExportStatisticalDataRequest struct {
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TimeUnit            *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
-	ExportType          *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
 	BeginTimeLeftRange  *int64  `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
 	BeginTimeRightRange *int64  `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	ExportType          *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TimeUnit            *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
 }
 
 func (s ExportStatisticalDataRequest) String() string {
@@ -2092,21 +2389,6 @@ func (s ExportStatisticalDataRequest) String() string {
 
 func (s ExportStatisticalDataRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ExportStatisticalDataRequest) SetInstanceId(v string) *ExportStatisticalDataRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ExportStatisticalDataRequest) SetTimeUnit(v string) *ExportStatisticalDataRequest {
-	s.TimeUnit = &v
-	return s
-}
-
-func (s *ExportStatisticalDataRequest) SetExportType(v string) *ExportStatisticalDataRequest {
-	s.ExportType = &v
-	return s
 }
 
 func (s *ExportStatisticalDataRequest) SetBeginTimeLeftRange(v int64) *ExportStatisticalDataRequest {
@@ -2119,9 +2401,24 @@ func (s *ExportStatisticalDataRequest) SetBeginTimeRightRange(v int64) *ExportSt
 	return s
 }
 
+func (s *ExportStatisticalDataRequest) SetExportType(v string) *ExportStatisticalDataRequest {
+	s.ExportType = &v
+	return s
+}
+
+func (s *ExportStatisticalDataRequest) SetInstanceId(v string) *ExportStatisticalDataRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ExportStatisticalDataRequest) SetTimeUnit(v string) *ExportStatisticalDataRequest {
+	s.TimeUnit = &v
+	return s
+}
+
 type ExportStatisticalDataResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ExportTaskId *string `json:"ExportTaskId,omitempty" xml:"ExportTaskId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ExportStatisticalDataResponseBody) String() string {
@@ -2132,19 +2429,20 @@ func (s ExportStatisticalDataResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ExportStatisticalDataResponseBody) SetRequestId(v string) *ExportStatisticalDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ExportStatisticalDataResponseBody) SetExportTaskId(v string) *ExportStatisticalDataResponseBody {
 	s.ExportTaskId = &v
 	return s
 }
 
+func (s *ExportStatisticalDataResponseBody) SetRequestId(v string) *ExportStatisticalDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ExportStatisticalDataResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExportStatisticalDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExportStatisticalDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExportStatisticalDataResponse) String() string {
@@ -2160,7 +2458,517 @@ func (s *ExportStatisticalDataResponse) SetHeaders(v map[string]*string) *Export
 	return s
 }
 
+func (s *ExportStatisticalDataResponse) SetStatusCode(v int32) *ExportStatisticalDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ExportStatisticalDataResponse) SetBody(v *ExportStatisticalDataResponseBody) *ExportStatisticalDataResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateUploadUrlRequest struct {
+	CallerBid                      *string `json:"CallerBid,omitempty" xml:"CallerBid,omitempty"`
+	CallerIp                       *string `json:"CallerIp,omitempty" xml:"CallerIp,omitempty"`
+	CallerParentId                 *int64  `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
+	CallerType                     *string `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
+	CallerUid                      *int64  `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	ClientIp                       *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	Environment                    *int32  `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	FileName                       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	InstanceId                     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceOwnerId                *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	Key                            *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	MfaPresent                     *bool   `json:"MfaPresent,omitempty" xml:"MfaPresent,omitempty"`
+	ProxyOriginalSecurityTransport *bool   `json:"ProxyOriginalSecurityTransport,omitempty" xml:"ProxyOriginalSecurityTransport,omitempty"`
+	ProxyOriginalSourceIp          *string `json:"ProxyOriginalSourceIp,omitempty" xml:"ProxyOriginalSourceIp,omitempty"`
+	ProxyTrustTransportInfo        *bool   `json:"ProxyTrustTransportInfo,omitempty" xml:"ProxyTrustTransportInfo,omitempty"`
+	RequestId                      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityToken                  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	SecurityTransport              *bool   `json:"SecurityTransport,omitempty" xml:"SecurityTransport,omitempty"`
+	TenantId                       *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantName                     *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	UserId                         *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName                       *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	XspaceServicerId               *int64  `json:"XspaceServicerId,omitempty" xml:"XspaceServicerId,omitempty"`
+	XspaceTenantBuId               *int64  `json:"XspaceTenantBuId,omitempty" xml:"XspaceTenantBuId,omitempty"`
+}
+
+func (s GenerateUploadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateUploadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateUploadUrlRequest) SetCallerBid(v string) *GenerateUploadUrlRequest {
+	s.CallerBid = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetCallerIp(v string) *GenerateUploadUrlRequest {
+	s.CallerIp = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetCallerParentId(v int64) *GenerateUploadUrlRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetCallerType(v string) *GenerateUploadUrlRequest {
+	s.CallerType = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetCallerUid(v int64) *GenerateUploadUrlRequest {
+	s.CallerUid = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetClientIp(v string) *GenerateUploadUrlRequest {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetEnvironment(v int32) *GenerateUploadUrlRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetFileName(v string) *GenerateUploadUrlRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetInstanceId(v string) *GenerateUploadUrlRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetInstanceOwnerId(v int64) *GenerateUploadUrlRequest {
+	s.InstanceOwnerId = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetKey(v string) *GenerateUploadUrlRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetMfaPresent(v bool) *GenerateUploadUrlRequest {
+	s.MfaPresent = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetProxyOriginalSecurityTransport(v bool) *GenerateUploadUrlRequest {
+	s.ProxyOriginalSecurityTransport = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetProxyOriginalSourceIp(v string) *GenerateUploadUrlRequest {
+	s.ProxyOriginalSourceIp = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetProxyTrustTransportInfo(v bool) *GenerateUploadUrlRequest {
+	s.ProxyTrustTransportInfo = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetRequestId(v string) *GenerateUploadUrlRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetSecurityToken(v string) *GenerateUploadUrlRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetSecurityTransport(v bool) *GenerateUploadUrlRequest {
+	s.SecurityTransport = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetTenantId(v int64) *GenerateUploadUrlRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetTenantName(v string) *GenerateUploadUrlRequest {
+	s.TenantName = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetUserId(v int64) *GenerateUploadUrlRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetUserName(v string) *GenerateUploadUrlRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetXspaceServicerId(v int64) *GenerateUploadUrlRequest {
+	s.XspaceServicerId = &v
+	return s
+}
+
+func (s *GenerateUploadUrlRequest) SetXspaceTenantBuId(v int64) *GenerateUploadUrlRequest {
+	s.XspaceTenantBuId = &v
+	return s
+}
+
+type GenerateUploadUrlResponseBody struct {
+	Code           *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GenerateUploadUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GenerateUploadUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateUploadUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateUploadUrlResponseBody) SetCode(v string) *GenerateUploadUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GenerateUploadUrlResponseBody) SetData(v *GenerateUploadUrlResponseBodyData) *GenerateUploadUrlResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenerateUploadUrlResponseBody) SetHttpStatusCode(v int32) *GenerateUploadUrlResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GenerateUploadUrlResponseBody) SetMessage(v string) *GenerateUploadUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateUploadUrlResponseBody) SetRequestId(v string) *GenerateUploadUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateUploadUrlResponseBody) SetSuccess(v bool) *GenerateUploadUrlResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GenerateUploadUrlResponseBodyData struct {
+	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	Expire    *int32  `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	Folder    *string `json:"Folder,omitempty" xml:"Folder,omitempty"`
+	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GenerateUploadUrlResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateUploadUrlResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateUploadUrlResponseBodyData) SetAccessId(v string) *GenerateUploadUrlResponseBodyData {
+	s.AccessId = &v
+	return s
+}
+
+func (s *GenerateUploadUrlResponseBodyData) SetExpire(v int32) *GenerateUploadUrlResponseBodyData {
+	s.Expire = &v
+	return s
+}
+
+func (s *GenerateUploadUrlResponseBodyData) SetFolder(v string) *GenerateUploadUrlResponseBodyData {
+	s.Folder = &v
+	return s
+}
+
+func (s *GenerateUploadUrlResponseBodyData) SetHost(v string) *GenerateUploadUrlResponseBodyData {
+	s.Host = &v
+	return s
+}
+
+func (s *GenerateUploadUrlResponseBodyData) SetMessage(v string) *GenerateUploadUrlResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateUploadUrlResponseBodyData) SetPolicy(v string) *GenerateUploadUrlResponseBodyData {
+	s.Policy = &v
+	return s
+}
+
+func (s *GenerateUploadUrlResponseBodyData) SetSignature(v string) *GenerateUploadUrlResponseBodyData {
+	s.Signature = &v
+	return s
+}
+
+func (s *GenerateUploadUrlResponseBodyData) SetSuccess(v bool) *GenerateUploadUrlResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type GenerateUploadUrlResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateUploadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateUploadUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateUploadUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateUploadUrlResponse) SetHeaders(v map[string]*string) *GenerateUploadUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateUploadUrlResponse) SetStatusCode(v int32) *GenerateUploadUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateUploadUrlResponse) SetBody(v *GenerateUploadUrlResponseBody) *GenerateUploadUrlResponse {
+	s.Body = v
+	return s
+}
+
+type GetAsrConfigRequest struct {
+	ConfigLevel *int32  `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
+	EntryId     *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+}
+
+func (s GetAsrConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsrConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsrConfigRequest) SetConfigLevel(v int32) *GetAsrConfigRequest {
+	s.ConfigLevel = &v
+	return s
+}
+
+func (s *GetAsrConfigRequest) SetEntryId(v string) *GetAsrConfigRequest {
+	s.EntryId = &v
+	return s
+}
+
+type GetAsrConfigResponseBody struct {
+	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetAsrConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMsg       *string                       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAsrConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsrConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsrConfigResponseBody) SetCode(v string) *GetAsrConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAsrConfigResponseBody) SetData(v *GetAsrConfigResponseBodyData) *GetAsrConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAsrConfigResponseBody) SetErrorMsg(v string) *GetAsrConfigResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetAsrConfigResponseBody) SetHttpStatusCode(v int32) *GetAsrConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetAsrConfigResponseBody) SetRequestId(v string) *GetAsrConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAsrConfigResponseBody) SetSuccess(v bool) *GetAsrConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAsrConfigResponseBodyData struct {
+	AsrAcousticModelId   *string `json:"AsrAcousticModelId,omitempty" xml:"AsrAcousticModelId,omitempty"`
+	AsrClassVocabularyId *string `json:"AsrClassVocabularyId,omitempty" xml:"AsrClassVocabularyId,omitempty"`
+	AsrCustomizationId   *string `json:"AsrCustomizationId,omitempty" xml:"AsrCustomizationId,omitempty"`
+	AsrVocabularyId      *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
+}
+
+func (s GetAsrConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsrConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsrConfigResponseBodyData) SetAsrAcousticModelId(v string) *GetAsrConfigResponseBodyData {
+	s.AsrAcousticModelId = &v
+	return s
+}
+
+func (s *GetAsrConfigResponseBodyData) SetAsrClassVocabularyId(v string) *GetAsrConfigResponseBodyData {
+	s.AsrClassVocabularyId = &v
+	return s
+}
+
+func (s *GetAsrConfigResponseBodyData) SetAsrCustomizationId(v string) *GetAsrConfigResponseBodyData {
+	s.AsrCustomizationId = &v
+	return s
+}
+
+func (s *GetAsrConfigResponseBodyData) SetAsrVocabularyId(v string) *GetAsrConfigResponseBodyData {
+	s.AsrVocabularyId = &v
+	return s
+}
+
+type GetAsrConfigResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAsrConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAsrConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsrConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsrConfigResponse) SetHeaders(v map[string]*string) *GetAsrConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAsrConfigResponse) SetStatusCode(v int32) *GetAsrConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAsrConfigResponse) SetBody(v *GetAsrConfigResponseBody) *GetAsrConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetRealTimeConcurrencyRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetRealTimeConcurrencyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRealTimeConcurrencyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRealTimeConcurrencyRequest) SetInstanceId(v string) *GetRealTimeConcurrencyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetRealTimeConcurrencyResponseBody struct {
+	MaxConcurrency      *int64  `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	RealTimeConcurrency *int64  `json:"RealTimeConcurrency,omitempty" xml:"RealTimeConcurrency,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Timestamp           *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s GetRealTimeConcurrencyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRealTimeConcurrencyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRealTimeConcurrencyResponseBody) SetMaxConcurrency(v int64) *GetRealTimeConcurrencyResponseBody {
+	s.MaxConcurrency = &v
+	return s
+}
+
+func (s *GetRealTimeConcurrencyResponseBody) SetRealTimeConcurrency(v int64) *GetRealTimeConcurrencyResponseBody {
+	s.RealTimeConcurrency = &v
+	return s
+}
+
+func (s *GetRealTimeConcurrencyResponseBody) SetRequestId(v string) *GetRealTimeConcurrencyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRealTimeConcurrencyResponseBody) SetTimestamp(v int64) *GetRealTimeConcurrencyResponseBody {
+	s.Timestamp = &v
+	return s
+}
+
+type GetRealTimeConcurrencyResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRealTimeConcurrencyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRealTimeConcurrencyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRealTimeConcurrencyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRealTimeConcurrencyResponse) SetHeaders(v map[string]*string) *GetRealTimeConcurrencyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRealTimeConcurrencyResponse) SetStatusCode(v int32) *GetRealTimeConcurrencyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRealTimeConcurrencyResponse) SetBody(v *GetRealTimeConcurrencyResponseBody) *GetRealTimeConcurrencyResponse {
 	s.Body = v
 	return s
 }
@@ -2195,11 +3003,11 @@ func (s *ListChatbotInstancesRequest) SetPageSize(v int32) *ListChatbotInstances
 }
 
 type ListChatbotInstancesResponseBody struct {
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize   *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Bots       []*ListChatbotInstancesResponseBodyBots `json:"Bots,omitempty" xml:"Bots,omitempty" type:"Repeated"`
+	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListChatbotInstancesResponseBody) String() string {
@@ -2210,8 +3018,8 @@ func (s ListChatbotInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListChatbotInstancesResponseBody) SetRequestId(v string) *ListChatbotInstancesResponseBody {
-	s.RequestId = &v
+func (s *ListChatbotInstancesResponseBody) SetBots(v []*ListChatbotInstancesResponseBodyBots) *ListChatbotInstancesResponseBody {
+	s.Bots = v
 	return s
 }
 
@@ -2220,29 +3028,29 @@ func (s *ListChatbotInstancesResponseBody) SetPageNumber(v int32) *ListChatbotIn
 	return s
 }
 
-func (s *ListChatbotInstancesResponseBody) SetTotalCount(v int64) *ListChatbotInstancesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListChatbotInstancesResponseBody) SetPageSize(v int64) *ListChatbotInstancesResponseBody {
 	s.PageSize = &v
 	return s
 }
 
-func (s *ListChatbotInstancesResponseBody) SetBots(v []*ListChatbotInstancesResponseBodyBots) *ListChatbotInstancesResponseBody {
-	s.Bots = v
+func (s *ListChatbotInstancesResponseBody) SetRequestId(v string) *ListChatbotInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListChatbotInstancesResponseBody) SetTotalCount(v int64) *ListChatbotInstancesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 type ListChatbotInstancesResponseBodyBots struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TimeZone     *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 	Avatar       *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	TimeZone     *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s ListChatbotInstancesResponseBodyBots) String() string {
@@ -2253,18 +3061,23 @@ func (s ListChatbotInstancesResponseBodyBots) GoString() string {
 	return s.String()
 }
 
+func (s *ListChatbotInstancesResponseBodyBots) SetAvatar(v string) *ListChatbotInstancesResponseBodyBots {
+	s.Avatar = &v
+	return s
+}
+
+func (s *ListChatbotInstancesResponseBodyBots) SetCreateTime(v string) *ListChatbotInstancesResponseBodyBots {
+	s.CreateTime = &v
+	return s
+}
+
 func (s *ListChatbotInstancesResponseBodyBots) SetInstanceId(v string) *ListChatbotInstancesResponseBodyBots {
 	s.InstanceId = &v
 	return s
 }
 
-func (s *ListChatbotInstancesResponseBodyBots) SetTimeZone(v string) *ListChatbotInstancesResponseBodyBots {
-	s.TimeZone = &v
-	return s
-}
-
-func (s *ListChatbotInstancesResponseBodyBots) SetAvatar(v string) *ListChatbotInstancesResponseBodyBots {
-	s.Avatar = &v
+func (s *ListChatbotInstancesResponseBodyBots) SetIntroduction(v string) *ListChatbotInstancesResponseBodyBots {
+	s.Introduction = &v
 	return s
 }
 
@@ -2278,19 +3091,15 @@ func (s *ListChatbotInstancesResponseBodyBots) SetName(v string) *ListChatbotIns
 	return s
 }
 
-func (s *ListChatbotInstancesResponseBodyBots) SetIntroduction(v string) *ListChatbotInstancesResponseBodyBots {
-	s.Introduction = &v
-	return s
-}
-
-func (s *ListChatbotInstancesResponseBodyBots) SetCreateTime(v string) *ListChatbotInstancesResponseBodyBots {
-	s.CreateTime = &v
+func (s *ListChatbotInstancesResponseBodyBots) SetTimeZone(v string) *ListChatbotInstancesResponseBodyBots {
+	s.TimeZone = &v
 	return s
 }
 
 type ListChatbotInstancesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListChatbotInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListChatbotInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListChatbotInstancesResponse) String() string {
@@ -2306,14 +3115,19 @@ func (s *ListChatbotInstancesResponse) SetHeaders(v map[string]*string) *ListCha
 	return s
 }
 
+func (s *ListChatbotInstancesResponse) SetStatusCode(v int32) *ListChatbotInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListChatbotInstancesResponse) SetBody(v *ListChatbotInstancesResponseBody) *ListChatbotInstancesResponse {
 	s.Body = v
 	return s
 }
 
 type ListConversationDetailsRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ListConversationDetailsRequest) String() string {
@@ -2324,19 +3138,19 @@ func (s ListConversationDetailsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListConversationDetailsRequest) SetInstanceId(v string) *ListConversationDetailsRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *ListConversationDetailsRequest) SetConversationId(v string) *ListConversationDetailsRequest {
 	s.ConversationId = &v
 	return s
 }
 
+func (s *ListConversationDetailsRequest) SetInstanceId(v string) *ListConversationDetailsRequest {
+	s.InstanceId = &v
+	return s
+}
+
 type ListConversationDetailsResponseBody struct {
-	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ConversationDetails []*ListConversationDetailsResponseBodyConversationDetails `json:"ConversationDetails,omitempty" xml:"ConversationDetails,omitempty" type:"Repeated"`
+	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListConversationDetailsResponseBody) String() string {
@@ -2347,23 +3161,23 @@ func (s ListConversationDetailsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListConversationDetailsResponseBody) SetRequestId(v string) *ListConversationDetailsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListConversationDetailsResponseBody) SetConversationDetails(v []*ListConversationDetailsResponseBodyConversationDetails) *ListConversationDetailsResponseBody {
 	s.ConversationDetails = v
 	return s
 }
 
+func (s *ListConversationDetailsResponseBody) SetRequestId(v string) *ListConversationDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ListConversationDetailsResponseBodyConversationDetails struct {
 	Action         *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Speaker        *string `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
-	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
 	ActionParams   *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	SequenceId     *string `json:"SequenceId,omitempty" xml:"SequenceId,omitempty"`
+	Speaker        *string `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
 	Utterance      *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 
@@ -2380,13 +3194,8 @@ func (s *ListConversationDetailsResponseBodyConversationDetails) SetAction(v str
 	return s
 }
 
-func (s *ListConversationDetailsResponseBodyConversationDetails) SetSpeaker(v string) *ListConversationDetailsResponseBodyConversationDetails {
-	s.Speaker = &v
-	return s
-}
-
-func (s *ListConversationDetailsResponseBodyConversationDetails) SetCreateTime(v int64) *ListConversationDetailsResponseBodyConversationDetails {
-	s.CreateTime = &v
+func (s *ListConversationDetailsResponseBodyConversationDetails) SetActionParams(v string) *ListConversationDetailsResponseBodyConversationDetails {
+	s.ActionParams = &v
 	return s
 }
 
@@ -2395,13 +3204,18 @@ func (s *ListConversationDetailsResponseBodyConversationDetails) SetConversation
 	return s
 }
 
-func (s *ListConversationDetailsResponseBodyConversationDetails) SetActionParams(v string) *ListConversationDetailsResponseBodyConversationDetails {
-	s.ActionParams = &v
+func (s *ListConversationDetailsResponseBodyConversationDetails) SetCreateTime(v int64) *ListConversationDetailsResponseBodyConversationDetails {
+	s.CreateTime = &v
 	return s
 }
 
 func (s *ListConversationDetailsResponseBodyConversationDetails) SetSequenceId(v string) *ListConversationDetailsResponseBodyConversationDetails {
 	s.SequenceId = &v
+	return s
+}
+
+func (s *ListConversationDetailsResponseBodyConversationDetails) SetSpeaker(v string) *ListConversationDetailsResponseBodyConversationDetails {
+	s.Speaker = &v
 	return s
 }
 
@@ -2411,8 +3225,9 @@ func (s *ListConversationDetailsResponseBodyConversationDetails) SetUtterance(v 
 }
 
 type ListConversationDetailsResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListConversationDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConversationDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListConversationDetailsResponse) String() string {
@@ -2428,15 +3243,28 @@ func (s *ListConversationDetailsResponse) SetHeaders(v map[string]*string) *List
 	return s
 }
 
+func (s *ListConversationDetailsResponse) SetStatusCode(v int32) *ListConversationDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListConversationDetailsResponse) SetBody(v *ListConversationDetailsResponseBody) *ListConversationDetailsResponse {
 	s.Body = v
 	return s
 }
 
 type ListConversationsRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	BeginTimeLeftRange  *int64  `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
+	BeginTimeRightRange *int64  `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	CallingNumber       *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsSandBox           *string `json:"IsSandBox,omitempty" xml:"IsSandBox,omitempty"`
+	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Query               *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Result              *int64  `json:"Result,omitempty" xml:"Result,omitempty"`
+	RoundsLeftRange     *int32  `json:"RoundsLeftRange,omitempty" xml:"RoundsLeftRange,omitempty"`
+	RoundsRightRange    *int32  `json:"RoundsRightRange,omitempty" xml:"RoundsRightRange,omitempty"`
 }
 
 func (s ListConversationsRequest) String() string {
@@ -2447,8 +3275,28 @@ func (s ListConversationsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListConversationsRequest) SetBeginTimeLeftRange(v int64) *ListConversationsRequest {
+	s.BeginTimeLeftRange = &v
+	return s
+}
+
+func (s *ListConversationsRequest) SetBeginTimeRightRange(v int64) *ListConversationsRequest {
+	s.BeginTimeRightRange = &v
+	return s
+}
+
+func (s *ListConversationsRequest) SetCallingNumber(v string) *ListConversationsRequest {
+	s.CallingNumber = &v
+	return s
+}
+
 func (s *ListConversationsRequest) SetInstanceId(v string) *ListConversationsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListConversationsRequest) SetIsSandBox(v string) *ListConversationsRequest {
+	s.IsSandBox = &v
 	return s
 }
 
@@ -2462,12 +3310,32 @@ func (s *ListConversationsRequest) SetPageSize(v int32) *ListConversationsReques
 	return s
 }
 
+func (s *ListConversationsRequest) SetQuery(v string) *ListConversationsRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *ListConversationsRequest) SetResult(v int64) *ListConversationsRequest {
+	s.Result = &v
+	return s
+}
+
+func (s *ListConversationsRequest) SetRoundsLeftRange(v int32) *ListConversationsRequest {
+	s.RoundsLeftRange = &v
+	return s
+}
+
+func (s *ListConversationsRequest) SetRoundsRightRange(v int32) *ListConversationsRequest {
+	s.RoundsRightRange = &v
+	return s
+}
+
 type ListConversationsResponseBody struct {
-	TotalCount    *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Conversations []*ListConversationsResponseBodyConversations `json:"Conversations,omitempty" xml:"Conversations,omitempty" type:"Repeated"`
+	PageNumber    *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber    *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Conversations []*ListConversationsResponseBodyConversations `json:"Conversations,omitempty" xml:"Conversations,omitempty" type:"Repeated"`
+	TotalCount    *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListConversationsResponseBody) String() string {
@@ -2478,8 +3346,13 @@ func (s ListConversationsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListConversationsResponseBody) SetTotalCount(v int64) *ListConversationsResponseBody {
-	s.TotalCount = &v
+func (s *ListConversationsResponseBody) SetConversations(v []*ListConversationsResponseBodyConversations) *ListConversationsResponseBody {
+	s.Conversations = v
+	return s
+}
+
+func (s *ListConversationsResponseBody) SetPageNumber(v int32) *ListConversationsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -2493,25 +3366,23 @@ func (s *ListConversationsResponseBody) SetRequestId(v string) *ListConversation
 	return s
 }
 
-func (s *ListConversationsResponseBody) SetPageNumber(v int32) *ListConversationsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListConversationsResponseBody) SetConversations(v []*ListConversationsResponseBodyConversations) *ListConversationsResponseBody {
-	s.Conversations = v
+func (s *ListConversationsResponseBody) SetTotalCount(v int64) *ListConversationsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 type ListConversationsResponseBodyConversations struct {
-	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EffectiveAnswerCount *int32  `json:"EffectiveAnswerCount,omitempty" xml:"EffectiveAnswerCount,omitempty"`
-	TransferredToAgent   *bool   `json:"TransferredToAgent,omitempty" xml:"TransferredToAgent,omitempty"`
-	BeginTime            *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	SkillGroupId         *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	ConversationId       *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	CallingNumber        *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	UserUtteranceCount   *int32  `json:"UserUtteranceCount,omitempty" xml:"UserUtteranceCount,omitempty"`
+	CalledNumber             *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CallingNumber            *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	ConversationId           *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	EndReason                *int32  `json:"EndReason,omitempty" xml:"EndReason,omitempty"`
+	EndTime                  *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	HasLastPlaybackCompleted *bool   `json:"HasLastPlaybackCompleted,omitempty" xml:"HasLastPlaybackCompleted,omitempty"`
+	HasToAgent               *bool   `json:"HasToAgent,omitempty" xml:"HasToAgent,omitempty"`
+	Rounds                   *int32  `json:"Rounds,omitempty" xml:"Rounds,omitempty"`
+	SandBox                  *bool   `json:"SandBox,omitempty" xml:"SandBox,omitempty"`
+	SkillGroup               *string `json:"SkillGroup,omitempty" xml:"SkillGroup,omitempty"`
+	StartTime                *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListConversationsResponseBodyConversations) String() string {
@@ -2522,33 +3393,8 @@ func (s ListConversationsResponseBodyConversations) GoString() string {
 	return s.String()
 }
 
-func (s *ListConversationsResponseBodyConversations) SetEndTime(v int64) *ListConversationsResponseBodyConversations {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListConversationsResponseBodyConversations) SetEffectiveAnswerCount(v int32) *ListConversationsResponseBodyConversations {
-	s.EffectiveAnswerCount = &v
-	return s
-}
-
-func (s *ListConversationsResponseBodyConversations) SetTransferredToAgent(v bool) *ListConversationsResponseBodyConversations {
-	s.TransferredToAgent = &v
-	return s
-}
-
-func (s *ListConversationsResponseBodyConversations) SetBeginTime(v int64) *ListConversationsResponseBodyConversations {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *ListConversationsResponseBodyConversations) SetSkillGroupId(v string) *ListConversationsResponseBodyConversations {
-	s.SkillGroupId = &v
-	return s
-}
-
-func (s *ListConversationsResponseBodyConversations) SetConversationId(v string) *ListConversationsResponseBodyConversations {
-	s.ConversationId = &v
+func (s *ListConversationsResponseBodyConversations) SetCalledNumber(v string) *ListConversationsResponseBodyConversations {
+	s.CalledNumber = &v
 	return s
 }
 
@@ -2557,14 +3403,55 @@ func (s *ListConversationsResponseBodyConversations) SetCallingNumber(v string) 
 	return s
 }
 
-func (s *ListConversationsResponseBodyConversations) SetUserUtteranceCount(v int32) *ListConversationsResponseBodyConversations {
-	s.UserUtteranceCount = &v
+func (s *ListConversationsResponseBodyConversations) SetConversationId(v string) *ListConversationsResponseBodyConversations {
+	s.ConversationId = &v
+	return s
+}
+
+func (s *ListConversationsResponseBodyConversations) SetEndReason(v int32) *ListConversationsResponseBodyConversations {
+	s.EndReason = &v
+	return s
+}
+
+func (s *ListConversationsResponseBodyConversations) SetEndTime(v int64) *ListConversationsResponseBodyConversations {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListConversationsResponseBodyConversations) SetHasLastPlaybackCompleted(v bool) *ListConversationsResponseBodyConversations {
+	s.HasLastPlaybackCompleted = &v
+	return s
+}
+
+func (s *ListConversationsResponseBodyConversations) SetHasToAgent(v bool) *ListConversationsResponseBodyConversations {
+	s.HasToAgent = &v
+	return s
+}
+
+func (s *ListConversationsResponseBodyConversations) SetRounds(v int32) *ListConversationsResponseBodyConversations {
+	s.Rounds = &v
+	return s
+}
+
+func (s *ListConversationsResponseBodyConversations) SetSandBox(v bool) *ListConversationsResponseBodyConversations {
+	s.SandBox = &v
+	return s
+}
+
+func (s *ListConversationsResponseBodyConversations) SetSkillGroup(v string) *ListConversationsResponseBodyConversations {
+	s.SkillGroup = &v
+	return s
+}
+
+func (s *ListConversationsResponseBodyConversations) SetStartTime(v int64) *ListConversationsResponseBodyConversations {
+	s.StartTime = &v
 	return s
 }
 
 type ListConversationsResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListConversationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConversationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListConversationsResponse) String() string {
@@ -2580,14 +3467,230 @@ func (s *ListConversationsResponse) SetHeaders(v map[string]*string) *ListConver
 	return s
 }
 
+func (s *ListConversationsResponse) SetStatusCode(v int32) *ListConversationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListConversationsResponse) SetBody(v *ListConversationsResponseBody) *ListConversationsResponse {
 	s.Body = v
 	return s
 }
 
-type ListInstancesRequest struct {
+type ListDownloadTasksRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListDownloadTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownloadTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownloadTasksRequest) SetPageNumber(v int32) *ListDownloadTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDownloadTasksRequest) SetPageSize(v int32) *ListDownloadTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDownloadTasksResponseBody struct {
+	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	DownloadTasks  *ListDownloadTasksResponseBodyDownloadTasks `json:"DownloadTasks,omitempty" xml:"DownloadTasks,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDownloadTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownloadTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownloadTasksResponseBody) SetCode(v string) *ListDownloadTasksResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBody) SetDownloadTasks(v *ListDownloadTasksResponseBodyDownloadTasks) *ListDownloadTasksResponseBody {
+	s.DownloadTasks = v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBody) SetHttpStatusCode(v int32) *ListDownloadTasksResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBody) SetMessage(v string) *ListDownloadTasksResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBody) SetRequestId(v string) *ListDownloadTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBody) SetSuccess(v bool) *ListDownloadTasksResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDownloadTasksResponseBodyDownloadTasks struct {
+	List       []*ListDownloadTasksResponseBodyDownloadTasksList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNumber *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDownloadTasksResponseBodyDownloadTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownloadTasksResponseBodyDownloadTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownloadTasksResponseBodyDownloadTasks) SetList(v []*ListDownloadTasksResponseBodyDownloadTasksList) *ListDownloadTasksResponseBodyDownloadTasks {
+	s.List = v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBodyDownloadTasks) SetPageNumber(v int32) *ListDownloadTasksResponseBodyDownloadTasks {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBodyDownloadTasks) SetPageSize(v int32) *ListDownloadTasksResponseBodyDownloadTasks {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBodyDownloadTasks) SetTotalCount(v int32) *ListDownloadTasksResponseBodyDownloadTasks {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDownloadTasksResponseBodyDownloadTasksList struct {
+	DownloadTaskFiles []*ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles `json:"DownloadTaskFiles,omitempty" xml:"DownloadTaskFiles,omitempty" type:"Repeated"`
+	ExpireTime        *int64                                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Status            *string                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId            *string                                                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Title             *string                                                            `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s ListDownloadTasksResponseBodyDownloadTasksList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownloadTasksResponseBodyDownloadTasksList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownloadTasksResponseBodyDownloadTasksList) SetDownloadTaskFiles(v []*ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles) *ListDownloadTasksResponseBodyDownloadTasksList {
+	s.DownloadTaskFiles = v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBodyDownloadTasksList) SetExpireTime(v int64) *ListDownloadTasksResponseBodyDownloadTasksList {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBodyDownloadTasksList) SetStatus(v string) *ListDownloadTasksResponseBodyDownloadTasksList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBodyDownloadTasksList) SetTaskId(v string) *ListDownloadTasksResponseBodyDownloadTasksList {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBodyDownloadTasksList) SetTitle(v string) *ListDownloadTasksResponseBodyDownloadTasksList {
+	s.Title = &v
+	return s
+}
+
+type ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles struct {
+	FileId   *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	Progress *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles) SetFileId(v string) *ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles) SetProgress(v int32) *ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles {
+	s.Progress = &v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles) SetStatus(v string) *ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles) SetTitle(v string) *ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles {
+	s.Title = &v
+	return s
+}
+
+type ListDownloadTasksResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDownloadTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDownloadTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownloadTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownloadTasksResponse) SetHeaders(v map[string]*string) *ListDownloadTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDownloadTasksResponse) SetStatusCode(v int32) *ListDownloadTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDownloadTasksResponse) SetBody(v *ListDownloadTasksResponseBody) *ListDownloadTasksResponse {
+	s.Body = v
+	return s
+}
+
+type ListInstancesRequest struct {
+	NluServiceTypeListJsonString *string `json:"NluServiceTypeListJsonString,omitempty" xml:"NluServiceTypeListJsonString,omitempty"`
+	PageNumber                   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -2596,6 +3699,11 @@ func (s ListInstancesRequest) String() string {
 
 func (s ListInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesRequest) SetNluServiceTypeListJsonString(v string) *ListInstancesRequest {
+	s.NluServiceTypeListJsonString = &v
+	return s
 }
 
 func (s *ListInstancesRequest) SetPageNumber(v int32) *ListInstancesRequest {
@@ -2610,10 +3718,10 @@ func (s *ListInstancesRequest) SetPageSize(v int32) *ListInstancesRequest {
 
 type ListInstancesResponseBody struct {
 	Instances  []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -2629,8 +3737,8 @@ func (s *ListInstancesResponseBody) SetInstances(v []*ListInstancesResponseBodyI
 	return s
 }
 
-func (s *ListInstancesResponseBody) SetTotalCount(v int32) *ListInstancesResponseBody {
-	s.TotalCount = &v
+func (s *ListInstancesResponseBody) SetPageNumber(v int32) *ListInstancesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -2644,20 +3752,20 @@ func (s *ListInstancesResponseBody) SetRequestId(v string) *ListInstancesRespons
 	return s
 }
 
-func (s *ListInstancesResponseBody) SetPageNumber(v int32) *ListInstancesResponseBody {
-	s.PageNumber = &v
+func (s *ListInstancesResponseBody) SetTotalCount(v int32) *ListInstancesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 type ListInstancesResponseBodyInstances struct {
-	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	ModifyUserName       *string   `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
 	ApplicableOperations []*string `json:"ApplicableOperations,omitempty" xml:"ApplicableOperations,omitempty" type:"Repeated"`
-	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Concurrency          *int64    `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModifyTime           *int64    `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyUserName       *string   `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -2668,33 +3776,8 @@ func (s ListInstancesResponseBodyInstances) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstancesResponseBodyInstances) SetStatus(v string) *ListInstancesResponseBodyInstances {
-	s.Status = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyInstances) SetModifyUserName(v string) *ListInstancesResponseBodyInstances {
-	s.ModifyUserName = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyInstances) SetDescription(v string) *ListInstancesResponseBodyInstances {
-	s.Description = &v
-	return s
-}
-
 func (s *ListInstancesResponseBodyInstances) SetApplicableOperations(v []*string) *ListInstancesResponseBodyInstances {
 	s.ApplicableOperations = v
-	return s
-}
-
-func (s *ListInstancesResponseBodyInstances) SetInstanceId(v string) *ListInstancesResponseBodyInstances {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyInstances) SetName(v string) *ListInstancesResponseBodyInstances {
-	s.Name = &v
 	return s
 }
 
@@ -2703,14 +3786,40 @@ func (s *ListInstancesResponseBodyInstances) SetConcurrency(v int64) *ListInstan
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstances) SetDescription(v string) *ListInstancesResponseBodyInstances {
+	s.Description = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetInstanceId(v string) *ListInstancesResponseBodyInstances {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstances) SetModifyTime(v int64) *ListInstancesResponseBodyInstances {
 	s.ModifyTime = &v
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstances) SetModifyUserName(v string) *ListInstancesResponseBodyInstances {
+	s.ModifyUserName = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetName(v string) *ListInstancesResponseBodyInstances {
+	s.Name = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetStatus(v string) *ListInstancesResponseBodyInstances {
+	s.Status = &v
+	return s
+}
+
 type ListInstancesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListInstancesResponse) String() string {
@@ -2726,16 +3835,161 @@ func (s *ListInstancesResponse) SetHeaders(v map[string]*string) *ListInstancesR
 	return s
 }
 
+func (s *ListInstancesResponse) SetStatusCode(v int32) *ListInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInstancesResponse {
 	s.Body = v
 	return s
 }
 
+type ModifyAsrConfigRequest struct {
+	AsrAcousticModelId   *string `json:"AsrAcousticModelId,omitempty" xml:"AsrAcousticModelId,omitempty"`
+	AsrClassVocabularyId *string `json:"AsrClassVocabularyId,omitempty" xml:"AsrClassVocabularyId,omitempty"`
+	AsrCustomizationId   *string `json:"AsrCustomizationId,omitempty" xml:"AsrCustomizationId,omitempty"`
+	AsrVocabularyId      *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
+	ConfigLevel          *int32  `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
+	EntryId              *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+}
+
+func (s ModifyAsrConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAsrConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAsrConfigRequest) SetAsrAcousticModelId(v string) *ModifyAsrConfigRequest {
+	s.AsrAcousticModelId = &v
+	return s
+}
+
+func (s *ModifyAsrConfigRequest) SetAsrClassVocabularyId(v string) *ModifyAsrConfigRequest {
+	s.AsrClassVocabularyId = &v
+	return s
+}
+
+func (s *ModifyAsrConfigRequest) SetAsrCustomizationId(v string) *ModifyAsrConfigRequest {
+	s.AsrCustomizationId = &v
+	return s
+}
+
+func (s *ModifyAsrConfigRequest) SetAsrVocabularyId(v string) *ModifyAsrConfigRequest {
+	s.AsrVocabularyId = &v
+	return s
+}
+
+func (s *ModifyAsrConfigRequest) SetConfigLevel(v int32) *ModifyAsrConfigRequest {
+	s.ConfigLevel = &v
+	return s
+}
+
+func (s *ModifyAsrConfigRequest) SetEntryId(v string) *ModifyAsrConfigRequest {
+	s.EntryId = &v
+	return s
+}
+
+type ModifyAsrConfigResponseBody struct {
+	Code           *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ModifyAsrConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMsg       *string                          `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	HttpStatusCode *int32                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyAsrConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAsrConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAsrConfigResponseBody) SetCode(v string) *ModifyAsrConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyAsrConfigResponseBody) SetData(v *ModifyAsrConfigResponseBodyData) *ModifyAsrConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyAsrConfigResponseBody) SetErrorMsg(v string) *ModifyAsrConfigResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ModifyAsrConfigResponseBody) SetHttpStatusCode(v int32) *ModifyAsrConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyAsrConfigResponseBody) SetRequestId(v string) *ModifyAsrConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyAsrConfigResponseBody) SetSuccess(v bool) *ModifyAsrConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyAsrConfigResponseBodyData struct {
+	AffectedRows *int32 `json:"AffectedRows,omitempty" xml:"AffectedRows,omitempty"`
+}
+
+func (s ModifyAsrConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAsrConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAsrConfigResponseBodyData) SetAffectedRows(v int32) *ModifyAsrConfigResponseBodyData {
+	s.AffectedRows = &v
+	return s
+}
+
+type ModifyAsrConfigResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyAsrConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyAsrConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAsrConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAsrConfigResponse) SetHeaders(v map[string]*string) *ModifyAsrConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAsrConfigResponse) SetStatusCode(v int32) *ModifyAsrConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAsrConfigResponse) SetBody(v *ModifyAsrConfigResponseBody) *ModifyAsrConfigResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyGreetingConfigRequest struct {
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	GreetingWords *string `json:"GreetingWords,omitempty" xml:"GreetingWords,omitempty"`
-	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentTrigger *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
+	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s ModifyGreetingConfigRequest) String() string {
@@ -2746,23 +4000,23 @@ func (s ModifyGreetingConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyGreetingConfigRequest) SetInstanceId(v string) *ModifyGreetingConfigRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *ModifyGreetingConfigRequest) SetGreetingWords(v string) *ModifyGreetingConfigRequest {
 	s.GreetingWords = &v
 	return s
 }
 
-func (s *ModifyGreetingConfigRequest) SetSourceType(v string) *ModifyGreetingConfigRequest {
-	s.SourceType = &v
+func (s *ModifyGreetingConfigRequest) SetInstanceId(v string) *ModifyGreetingConfigRequest {
+	s.InstanceId = &v
 	return s
 }
 
 func (s *ModifyGreetingConfigRequest) SetIntentTrigger(v string) *ModifyGreetingConfigRequest {
 	s.IntentTrigger = &v
+	return s
+}
+
+func (s *ModifyGreetingConfigRequest) SetSourceType(v string) *ModifyGreetingConfigRequest {
+	s.SourceType = &v
 	return s
 }
 
@@ -2784,8 +4038,9 @@ func (s *ModifyGreetingConfigResponseBody) SetRequestId(v string) *ModifyGreetin
 }
 
 type ModifyGreetingConfigResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyGreetingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyGreetingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyGreetingConfigResponse) String() string {
@@ -2801,16 +4056,21 @@ func (s *ModifyGreetingConfigResponse) SetHeaders(v map[string]*string) *ModifyG
 	return s
 }
 
+func (s *ModifyGreetingConfigResponse) SetStatusCode(v int32) *ModifyGreetingConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyGreetingConfigResponse) SetBody(v *ModifyGreetingConfigResponseBody) *ModifyGreetingConfigResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyInstanceRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Concurrency       *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	ChatbotInstanceId *string `json:"ChatbotInstanceId,omitempty" xml:"ChatbotInstanceId,omitempty"`
+	Concurrency *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ModifyInstanceRequest) String() string {
@@ -2821,8 +4081,8 @@ func (s ModifyInstanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyInstanceRequest) SetInstanceId(v string) *ModifyInstanceRequest {
-	s.InstanceId = &v
+func (s *ModifyInstanceRequest) SetConcurrency(v int64) *ModifyInstanceRequest {
+	s.Concurrency = &v
 	return s
 }
 
@@ -2831,13 +4091,13 @@ func (s *ModifyInstanceRequest) SetDescription(v string) *ModifyInstanceRequest 
 	return s
 }
 
-func (s *ModifyInstanceRequest) SetConcurrency(v int64) *ModifyInstanceRequest {
-	s.Concurrency = &v
+func (s *ModifyInstanceRequest) SetInstanceId(v string) *ModifyInstanceRequest {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *ModifyInstanceRequest) SetChatbotInstanceId(v string) *ModifyInstanceRequest {
-	s.ChatbotInstanceId = &v
+func (s *ModifyInstanceRequest) SetName(v string) *ModifyInstanceRequest {
+	s.Name = &v
 	return s
 }
 
@@ -2859,8 +4119,9 @@ func (s *ModifyInstanceResponseBody) SetRequestId(v string) *ModifyInstanceRespo
 }
 
 type ModifyInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyInstanceResponse) String() string {
@@ -2876,21 +4137,26 @@ func (s *ModifyInstanceResponse) SetHeaders(v map[string]*string) *ModifyInstanc
 	return s
 }
 
+func (s *ModifyInstanceResponse) SetStatusCode(v int32) *ModifyInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyInstanceResponse) SetBody(v *ModifyInstanceResponseBody) *ModifyInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type ModifySilenceTimeoutConfigRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Prompt            *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	Timeout           *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Threshold         *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
 	FinalAction       *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
 	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
-	SourceType        *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentTrigger     *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
+	Prompt            *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	SourceType        *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Threshold         *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Timeout           *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s ModifySilenceTimeoutConfigRequest) String() string {
@@ -2899,31 +4165,6 @@ func (s ModifySilenceTimeoutConfigRequest) String() string {
 
 func (s ModifySilenceTimeoutConfigRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifySilenceTimeoutConfigRequest) SetInstanceId(v string) *ModifySilenceTimeoutConfigRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ModifySilenceTimeoutConfigRequest) SetPrompt(v string) *ModifySilenceTimeoutConfigRequest {
-	s.Prompt = &v
-	return s
-}
-
-func (s *ModifySilenceTimeoutConfigRequest) SetTimeout(v int64) *ModifySilenceTimeoutConfigRequest {
-	s.Timeout = &v
-	return s
-}
-
-func (s *ModifySilenceTimeoutConfigRequest) SetThreshold(v int32) *ModifySilenceTimeoutConfigRequest {
-	s.Threshold = &v
-	return s
-}
-
-func (s *ModifySilenceTimeoutConfigRequest) SetFinalPrompt(v string) *ModifySilenceTimeoutConfigRequest {
-	s.FinalPrompt = &v
-	return s
 }
 
 func (s *ModifySilenceTimeoutConfigRequest) SetFinalAction(v string) *ModifySilenceTimeoutConfigRequest {
@@ -2936,13 +4177,38 @@ func (s *ModifySilenceTimeoutConfigRequest) SetFinalActionParams(v string) *Modi
 	return s
 }
 
-func (s *ModifySilenceTimeoutConfigRequest) SetSourceType(v string) *ModifySilenceTimeoutConfigRequest {
-	s.SourceType = &v
+func (s *ModifySilenceTimeoutConfigRequest) SetFinalPrompt(v string) *ModifySilenceTimeoutConfigRequest {
+	s.FinalPrompt = &v
+	return s
+}
+
+func (s *ModifySilenceTimeoutConfigRequest) SetInstanceId(v string) *ModifySilenceTimeoutConfigRequest {
+	s.InstanceId = &v
 	return s
 }
 
 func (s *ModifySilenceTimeoutConfigRequest) SetIntentTrigger(v string) *ModifySilenceTimeoutConfigRequest {
 	s.IntentTrigger = &v
+	return s
+}
+
+func (s *ModifySilenceTimeoutConfigRequest) SetPrompt(v string) *ModifySilenceTimeoutConfigRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *ModifySilenceTimeoutConfigRequest) SetSourceType(v string) *ModifySilenceTimeoutConfigRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ModifySilenceTimeoutConfigRequest) SetThreshold(v int32) *ModifySilenceTimeoutConfigRequest {
+	s.Threshold = &v
+	return s
+}
+
+func (s *ModifySilenceTimeoutConfigRequest) SetTimeout(v int64) *ModifySilenceTimeoutConfigRequest {
+	s.Timeout = &v
 	return s
 }
 
@@ -2964,8 +4230,9 @@ func (s *ModifySilenceTimeoutConfigResponseBody) SetRequestId(v string) *ModifyS
 }
 
 type ModifySilenceTimeoutConfigResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifySilenceTimeoutConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySilenceTimeoutConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifySilenceTimeoutConfigResponse) String() string {
@@ -2981,16 +4248,23 @@ func (s *ModifySilenceTimeoutConfigResponse) SetHeaders(v map[string]*string) *M
 	return s
 }
 
+func (s *ModifySilenceTimeoutConfigResponse) SetStatusCode(v int32) *ModifySilenceTimeoutConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifySilenceTimeoutConfigResponse) SetBody(v *ModifySilenceTimeoutConfigResponseBody) *ModifySilenceTimeoutConfigResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyTTSConfigRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Voice      *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	SpeechRate *string `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Volume     *string `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	AppKey         *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NlsServiceType *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
+	SpeechRate     *string `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Voice          *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Volume         *string `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s ModifyTTSConfigRequest) String() string {
@@ -3001,18 +4275,28 @@ func (s ModifyTTSConfigRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyTTSConfigRequest) SetAppKey(v string) *ModifyTTSConfigRequest {
+	s.AppKey = &v
+	return s
+}
+
 func (s *ModifyTTSConfigRequest) SetInstanceId(v string) *ModifyTTSConfigRequest {
 	s.InstanceId = &v
 	return s
 }
 
-func (s *ModifyTTSConfigRequest) SetVoice(v string) *ModifyTTSConfigRequest {
-	s.Voice = &v
+func (s *ModifyTTSConfigRequest) SetNlsServiceType(v string) *ModifyTTSConfigRequest {
+	s.NlsServiceType = &v
 	return s
 }
 
 func (s *ModifyTTSConfigRequest) SetSpeechRate(v string) *ModifyTTSConfigRequest {
 	s.SpeechRate = &v
+	return s
+}
+
+func (s *ModifyTTSConfigRequest) SetVoice(v string) *ModifyTTSConfigRequest {
+	s.Voice = &v
 	return s
 }
 
@@ -3039,8 +4323,9 @@ func (s *ModifyTTSConfigResponseBody) SetRequestId(v string) *ModifyTTSConfigRes
 }
 
 type ModifyTTSConfigResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyTTSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyTTSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyTTSConfigResponse) String() string {
@@ -3056,18 +4341,23 @@ func (s *ModifyTTSConfigResponse) SetHeaders(v map[string]*string) *ModifyTTSCon
 	return s
 }
 
+func (s *ModifyTTSConfigResponse) SetStatusCode(v int32) *ModifyTTSConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyTTSConfigResponse) SetBody(v *ModifyTTSConfigResponseBody) *ModifyTTSConfigResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyUnrecognizingConfigRequest struct {
+	FinalAction       *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
+	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
+	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Prompt            *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	Threshold         *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
-	FinalAction       *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
-	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
 }
 
 func (s ModifyUnrecognizingConfigRequest) String() string {
@@ -3076,6 +4366,21 @@ func (s ModifyUnrecognizingConfigRequest) String() string {
 
 func (s ModifyUnrecognizingConfigRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyUnrecognizingConfigRequest) SetFinalAction(v string) *ModifyUnrecognizingConfigRequest {
+	s.FinalAction = &v
+	return s
+}
+
+func (s *ModifyUnrecognizingConfigRequest) SetFinalActionParams(v string) *ModifyUnrecognizingConfigRequest {
+	s.FinalActionParams = &v
+	return s
+}
+
+func (s *ModifyUnrecognizingConfigRequest) SetFinalPrompt(v string) *ModifyUnrecognizingConfigRequest {
+	s.FinalPrompt = &v
+	return s
 }
 
 func (s *ModifyUnrecognizingConfigRequest) SetInstanceId(v string) *ModifyUnrecognizingConfigRequest {
@@ -3090,21 +4395,6 @@ func (s *ModifyUnrecognizingConfigRequest) SetPrompt(v string) *ModifyUnrecogniz
 
 func (s *ModifyUnrecognizingConfigRequest) SetThreshold(v int32) *ModifyUnrecognizingConfigRequest {
 	s.Threshold = &v
-	return s
-}
-
-func (s *ModifyUnrecognizingConfigRequest) SetFinalPrompt(v string) *ModifyUnrecognizingConfigRequest {
-	s.FinalPrompt = &v
-	return s
-}
-
-func (s *ModifyUnrecognizingConfigRequest) SetFinalAction(v string) *ModifyUnrecognizingConfigRequest {
-	s.FinalAction = &v
-	return s
-}
-
-func (s *ModifyUnrecognizingConfigRequest) SetFinalActionParams(v string) *ModifyUnrecognizingConfigRequest {
-	s.FinalActionParams = &v
 	return s
 }
 
@@ -3126,8 +4416,9 @@ func (s *ModifyUnrecognizingConfigResponseBody) SetRequestId(v string) *ModifyUn
 }
 
 type ModifyUnrecognizingConfigResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyUnrecognizingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyUnrecognizingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyUnrecognizingConfigResponse) String() string {
@@ -3143,16 +4434,21 @@ func (s *ModifyUnrecognizingConfigResponse) SetHeaders(v map[string]*string) *Mo
 	return s
 }
 
+func (s *ModifyUnrecognizingConfigResponse) SetStatusCode(v int32) *ModifyUnrecognizingConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyUnrecognizingConfigResponse) SetBody(v *ModifyUnrecognizingConfigResponseBody) *ModifyUnrecognizingConfigResponse {
 	s.Body = v
 	return s
 }
 
 type QueryConversationsRequest struct {
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	CallingNumber       *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
 	BeginTimeLeftRange  *int64  `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
 	BeginTimeRightRange *int64  `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	CallingNumber       *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
@@ -3165,8 +4461,13 @@ func (s QueryConversationsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryConversationsRequest) SetInstanceId(v string) *QueryConversationsRequest {
-	s.InstanceId = &v
+func (s *QueryConversationsRequest) SetBeginTimeLeftRange(v int64) *QueryConversationsRequest {
+	s.BeginTimeLeftRange = &v
+	return s
+}
+
+func (s *QueryConversationsRequest) SetBeginTimeRightRange(v int64) *QueryConversationsRequest {
+	s.BeginTimeRightRange = &v
 	return s
 }
 
@@ -3175,13 +4476,8 @@ func (s *QueryConversationsRequest) SetCallingNumber(v string) *QueryConversatio
 	return s
 }
 
-func (s *QueryConversationsRequest) SetBeginTimeLeftRange(v int64) *QueryConversationsRequest {
-	s.BeginTimeLeftRange = &v
-	return s
-}
-
-func (s *QueryConversationsRequest) SetBeginTimeRightRange(v int64) *QueryConversationsRequest {
-	s.BeginTimeRightRange = &v
+func (s *QueryConversationsRequest) SetInstanceId(v string) *QueryConversationsRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -3196,11 +4492,11 @@ func (s *QueryConversationsRequest) SetPageSize(v int32) *QueryConversationsRequ
 }
 
 type QueryConversationsResponseBody struct {
-	TotalCount    *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Conversations []*QueryConversationsResponseBodyConversations `json:"Conversations,omitempty" xml:"Conversations,omitempty" type:"Repeated"`
+	PageNumber    *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber    *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Conversations []*QueryConversationsResponseBodyConversations `json:"Conversations,omitempty" xml:"Conversations,omitempty" type:"Repeated"`
+	TotalCount    *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryConversationsResponseBody) String() string {
@@ -3211,8 +4507,13 @@ func (s QueryConversationsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryConversationsResponseBody) SetTotalCount(v int64) *QueryConversationsResponseBody {
-	s.TotalCount = &v
+func (s *QueryConversationsResponseBody) SetConversations(v []*QueryConversationsResponseBodyConversations) *QueryConversationsResponseBody {
+	s.Conversations = v
+	return s
+}
+
+func (s *QueryConversationsResponseBody) SetPageNumber(v int32) *QueryConversationsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -3226,24 +4527,19 @@ func (s *QueryConversationsResponseBody) SetRequestId(v string) *QueryConversati
 	return s
 }
 
-func (s *QueryConversationsResponseBody) SetPageNumber(v int32) *QueryConversationsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *QueryConversationsResponseBody) SetConversations(v []*QueryConversationsResponseBodyConversations) *QueryConversationsResponseBody {
-	s.Conversations = v
+func (s *QueryConversationsResponseBody) SetTotalCount(v int64) *QueryConversationsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 type QueryConversationsResponseBodyConversations struct {
-	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EffectiveAnswerCount *int32  `json:"EffectiveAnswerCount,omitempty" xml:"EffectiveAnswerCount,omitempty"`
-	TransferredToAgent   *bool   `json:"TransferredToAgent,omitempty" xml:"TransferredToAgent,omitempty"`
 	BeginTime            *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	SkillGroupId         *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	ConversationId       *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
 	CallingNumber        *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	ConversationId       *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	EffectiveAnswerCount *int32  `json:"EffectiveAnswerCount,omitempty" xml:"EffectiveAnswerCount,omitempty"`
+	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	SkillGroupId         *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	TransferredToAgent   *bool   `json:"TransferredToAgent,omitempty" xml:"TransferredToAgent,omitempty"`
 	UserUtteranceCount   *int32  `json:"UserUtteranceCount,omitempty" xml:"UserUtteranceCount,omitempty"`
 }
 
@@ -3255,28 +4551,13 @@ func (s QueryConversationsResponseBodyConversations) GoString() string {
 	return s.String()
 }
 
-func (s *QueryConversationsResponseBodyConversations) SetEndTime(v int64) *QueryConversationsResponseBodyConversations {
-	s.EndTime = &v
-	return s
-}
-
-func (s *QueryConversationsResponseBodyConversations) SetEffectiveAnswerCount(v int32) *QueryConversationsResponseBodyConversations {
-	s.EffectiveAnswerCount = &v
-	return s
-}
-
-func (s *QueryConversationsResponseBodyConversations) SetTransferredToAgent(v bool) *QueryConversationsResponseBodyConversations {
-	s.TransferredToAgent = &v
-	return s
-}
-
 func (s *QueryConversationsResponseBodyConversations) SetBeginTime(v int64) *QueryConversationsResponseBodyConversations {
 	s.BeginTime = &v
 	return s
 }
 
-func (s *QueryConversationsResponseBodyConversations) SetSkillGroupId(v string) *QueryConversationsResponseBodyConversations {
-	s.SkillGroupId = &v
+func (s *QueryConversationsResponseBodyConversations) SetCallingNumber(v string) *QueryConversationsResponseBodyConversations {
+	s.CallingNumber = &v
 	return s
 }
 
@@ -3285,8 +4566,23 @@ func (s *QueryConversationsResponseBodyConversations) SetConversationId(v string
 	return s
 }
 
-func (s *QueryConversationsResponseBodyConversations) SetCallingNumber(v string) *QueryConversationsResponseBodyConversations {
-	s.CallingNumber = &v
+func (s *QueryConversationsResponseBodyConversations) SetEffectiveAnswerCount(v int32) *QueryConversationsResponseBodyConversations {
+	s.EffectiveAnswerCount = &v
+	return s
+}
+
+func (s *QueryConversationsResponseBodyConversations) SetEndTime(v int64) *QueryConversationsResponseBodyConversations {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryConversationsResponseBodyConversations) SetSkillGroupId(v string) *QueryConversationsResponseBodyConversations {
+	s.SkillGroupId = &v
+	return s
+}
+
+func (s *QueryConversationsResponseBodyConversations) SetTransferredToAgent(v bool) *QueryConversationsResponseBodyConversations {
+	s.TransferredToAgent = &v
 	return s
 }
 
@@ -3296,8 +4592,9 @@ func (s *QueryConversationsResponseBodyConversations) SetUserUtteranceCount(v in
 }
 
 type QueryConversationsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryConversationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryConversationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryConversationsResponse) String() string {
@@ -3313,19 +4610,26 @@ func (s *QueryConversationsResponse) SetHeaders(v map[string]*string) *QueryConv
 	return s
 }
 
+func (s *QueryConversationsResponse) SetStatusCode(v int32) *QueryConversationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *QueryConversationsResponse) SetBody(v *QueryConversationsResponseBody) *QueryConversationsResponse {
 	s.Body = v
 	return s
 }
 
 type SaveRecordingRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FilePath       *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ConversationId          *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	Duration                *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName                *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FilePath                *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceOwnerId         *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	StartTime               *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	VoiceSliceRecordingList *string `json:"VoiceSliceRecordingList,omitempty" xml:"VoiceSliceRecordingList,omitempty"`
 }
 
 func (s SaveRecordingRequest) String() string {
@@ -3336,18 +4640,8 @@ func (s SaveRecordingRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SaveRecordingRequest) SetInstanceId(v string) *SaveRecordingRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *SaveRecordingRequest) SetConversationId(v string) *SaveRecordingRequest {
 	s.ConversationId = &v
-	return s
-}
-
-func (s *SaveRecordingRequest) SetStartTime(v int64) *SaveRecordingRequest {
-	s.StartTime = &v
 	return s
 }
 
@@ -3366,8 +4660,28 @@ func (s *SaveRecordingRequest) SetFilePath(v string) *SaveRecordingRequest {
 	return s
 }
 
+func (s *SaveRecordingRequest) SetInstanceId(v string) *SaveRecordingRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SaveRecordingRequest) SetInstanceOwnerId(v int64) *SaveRecordingRequest {
+	s.InstanceOwnerId = &v
+	return s
+}
+
+func (s *SaveRecordingRequest) SetStartTime(v int64) *SaveRecordingRequest {
+	s.StartTime = &v
+	return s
+}
+
 func (s *SaveRecordingRequest) SetType(v string) *SaveRecordingRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *SaveRecordingRequest) SetVoiceSliceRecordingList(v string) *SaveRecordingRequest {
+	s.VoiceSliceRecordingList = &v
 	return s
 }
 
@@ -3389,8 +4703,9 @@ func (s *SaveRecordingResponseBody) SetRequestId(v string) *SaveRecordingRespons
 }
 
 type SaveRecordingResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SaveRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SaveRecordingResponse) String() string {
@@ -3406,15 +4721,21 @@ func (s *SaveRecordingResponse) SetHeaders(v map[string]*string) *SaveRecordingR
 	return s
 }
 
+func (s *SaveRecordingResponse) SetStatusCode(v int32) *SaveRecordingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SaveRecordingResponse) SetBody(v *SaveRecordingResponseBody) *SaveRecordingResponse {
 	s.Body = v
 	return s
 }
 
 type SilenceTimeoutRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	InitialContext *string `json:"InitialContext,omitempty" xml:"InitialContext,omitempty"`
+	ConversationId  *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	InitialContext  *string `json:"InitialContext,omitempty" xml:"InitialContext,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceOwnerId *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
 }
 
 func (s SilenceTimeoutRequest) String() string {
@@ -3423,11 +4744,6 @@ func (s SilenceTimeoutRequest) String() string {
 
 func (s SilenceTimeoutRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SilenceTimeoutRequest) SetInstanceId(v string) *SilenceTimeoutRequest {
-	s.InstanceId = &v
-	return s
 }
 
 func (s *SilenceTimeoutRequest) SetConversationId(v string) *SilenceTimeoutRequest {
@@ -3440,11 +4756,21 @@ func (s *SilenceTimeoutRequest) SetInitialContext(v string) *SilenceTimeoutReque
 	return s
 }
 
+func (s *SilenceTimeoutRequest) SetInstanceId(v string) *SilenceTimeoutRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SilenceTimeoutRequest) SetInstanceOwnerId(v int64) *SilenceTimeoutRequest {
+	s.InstanceOwnerId = &v
+	return s
+}
+
 type SilenceTimeoutResponseBody struct {
 	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
@@ -3461,6 +4787,11 @@ func (s *SilenceTimeoutResponseBody) SetAction(v string) *SilenceTimeoutResponse
 	return s
 }
 
+func (s *SilenceTimeoutResponseBody) SetActionParams(v string) *SilenceTimeoutResponseBody {
+	s.ActionParams = &v
+	return s
+}
+
 func (s *SilenceTimeoutResponseBody) SetInterruptible(v bool) *SilenceTimeoutResponseBody {
 	s.Interruptible = &v
 	return s
@@ -3471,19 +4802,15 @@ func (s *SilenceTimeoutResponseBody) SetRequestId(v string) *SilenceTimeoutRespo
 	return s
 }
 
-func (s *SilenceTimeoutResponseBody) SetActionParams(v string) *SilenceTimeoutResponseBody {
-	s.ActionParams = &v
-	return s
-}
-
 func (s *SilenceTimeoutResponseBody) SetTextResponse(v string) *SilenceTimeoutResponseBody {
 	s.TextResponse = &v
 	return s
 }
 
 type SilenceTimeoutResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SilenceTimeoutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SilenceTimeoutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SilenceTimeoutResponse) String() string {
@@ -3496,6 +4823,11 @@ func (s SilenceTimeoutResponse) GoString() string {
 
 func (s *SilenceTimeoutResponse) SetHeaders(v map[string]*string) *SilenceTimeoutResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SilenceTimeoutResponse) SetStatusCode(v int32) *SilenceTimeoutResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3556,11 +4888,35 @@ func (client *Client) AssociateChatbotInstanceWithOptions(request *AssociateChat
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChatbotInstanceId)) {
+		query["ChatbotInstanceId"] = request.ChatbotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatbotName)) {
+		query["ChatbotName"] = request.ChatbotName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateChatbotInstance"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AssociateChatbotInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AssociateChatbotInstance"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3584,11 +4940,43 @@ func (client *Client) AuditTTSVoiceWithOptions(request *AuditTTSVoiceRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechRate)) {
+		query["SpeechRate"] = request.SpeechRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		query["Text"] = request.Text
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Voice)) {
+		query["Voice"] = request.Voice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Volume)) {
+		query["Volume"] = request.Volume
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AuditTTSVoice"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AuditTTSVoiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AuditTTSVoice"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3612,11 +5000,47 @@ func (client *Client) BeginDialogueWithOptions(request *BeginDialogueRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallingNumber)) {
+		query["CallingNumber"] = request.CallingNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConversationId)) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitialContext)) {
+		query["InitialContext"] = request.InitialContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceOwnerId)) {
+		query["InstanceOwnerId"] = request.InstanceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BeginDialogue"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BeginDialogueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BeginDialogue"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3640,11 +5064,39 @@ func (client *Client) CollectedNumberWithOptions(request *CollectedNumberRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConversationId)) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceOwnerId)) {
+		query["InstanceOwnerId"] = request.InstanceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CollectedNumber"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CollectedNumberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CollectedNumber"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3663,16 +5115,80 @@ func (client *Client) CollectedNumber(request *CollectedNumberRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) CreateDownloadUrlWithOptions(request *CreateDownloadUrlRequest, runtime *util.RuntimeOptions) (_result *CreateDownloadUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDownloadUrl"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDownloadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDownloadUrl(request *CreateDownloadUrlRequest) (_result *CreateDownloadUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDownloadUrlResponse{}
+	_body, _err := client.CreateDownloadUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Concurrency)) {
+		query["Concurrency"] = request.Concurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstance"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateInstance"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3696,11 +5212,43 @@ func (client *Client) DebugBeginDialogueWithOptions(request *DebugBeginDialogueR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallingNumber)) {
+		query["CallingNumber"] = request.CallingNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConversationId)) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitialContext)) {
+		query["InitialContext"] = request.InitialContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DebugBeginDialogue"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DebugBeginDialogueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DebugBeginDialogue"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3724,11 +5272,35 @@ func (client *Client) DebugCollectedNumberWithOptions(request *DebugCollectedNum
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConversationId)) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DebugCollectedNumber"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DebugCollectedNumberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DebugCollectedNumber"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3752,11 +5324,39 @@ func (client *Client) DebugDialogueWithOptions(request *DebugDialogueRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdditionalContext)) {
+		query["AdditionalContext"] = request.AdditionalContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConversationId)) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Utterance)) {
+		query["Utterance"] = request.Utterance
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DebugDialogue"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DebugDialogueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DebugDialogue"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3780,11 +5380,27 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstance"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteInstance"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3810,10 +5426,21 @@ func (client *Client) DescribeConversationWithOptions(request *DescribeConversat
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeConversation"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeConversationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeConversation"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3839,10 +5466,21 @@ func (client *Client) DescribeConversationContextWithOptions(request *DescribeCo
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeConversationContext"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeConversationContextResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeConversationContext"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3868,10 +5506,21 @@ func (client *Client) DescribeExportProgressWithOptions(request *DescribeExportP
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExportProgress"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeExportProgressResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeExportProgress"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3897,10 +5546,21 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstance"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstance"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3926,10 +5586,21 @@ func (client *Client) DescribeNavigationConfigWithOptions(request *DescribeNavig
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNavigationConfig"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeNavigationConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeNavigationConfig"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3955,10 +5626,21 @@ func (client *Client) DescribeRecordingWithOptions(request *DescribeRecordingReq
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRecording"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRecordingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRecording"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3984,10 +5666,21 @@ func (client *Client) DescribeStatisticalDataWithOptions(request *DescribeStatis
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeStatisticalData"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeStatisticalDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeStatisticalData"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4013,10 +5706,21 @@ func (client *Client) DescribeTTSConfigWithOptions(request *DescribeTTSConfigReq
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTTSConfig"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeTTSConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeTTSConfig"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4040,11 +5744,55 @@ func (client *Client) DialogueWithOptions(request *DialogueRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdditionalContext)) {
+		query["AdditionalContext"] = request.AdditionalContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallingNumber)) {
+		query["CallingNumber"] = request.CallingNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConversationId)) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Emotion)) {
+		query["Emotion"] = request.Emotion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceOwnerId)) {
+		query["InstanceOwnerId"] = request.InstanceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Utterance)) {
+		query["Utterance"] = request.Utterance
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Dialogue"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DialogueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("Dialogue"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4068,11 +5816,27 @@ func (client *Client) DisableInstanceWithOptions(request *DisableInstanceRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableInstance"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DisableInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DisableInstance"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4096,11 +5860,27 @@ func (client *Client) EnableInstanceWithOptions(request *EnableInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableInstance"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EnableInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableInstance"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4124,11 +5904,39 @@ func (client *Client) EndDialogueWithOptions(request *EndDialogueRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConversationId)) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HangUpParams)) {
+		query["HangUpParams"] = request.HangUpParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceOwnerId)) {
+		query["InstanceOwnerId"] = request.InstanceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EndDialogue"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EndDialogueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EndDialogue"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4152,11 +5960,51 @@ func (client *Client) ExportConversationDetailsWithOptions(request *ExportConver
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginTimeLeftRange)) {
+		query["BeginTimeLeftRange"] = request.BeginTimeLeftRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginTimeRightRange)) {
+		query["BeginTimeRightRange"] = request.BeginTimeRightRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallingNumber)) {
+		query["CallingNumber"] = request.CallingNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		query["Options"] = request.Options
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoundsLeftRange)) {
+		query["RoundsLeftRange"] = request.RoundsLeftRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoundsRightRange)) {
+		query["RoundsRightRange"] = request.RoundsRightRange
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportConversationDetails"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ExportConversationDetailsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExportConversationDetails"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4180,11 +6028,43 @@ func (client *Client) ExportStatisticalDataWithOptions(request *ExportStatistica
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginTimeLeftRange)) {
+		query["BeginTimeLeftRange"] = request.BeginTimeLeftRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginTimeRightRange)) {
+		query["BeginTimeRightRange"] = request.BeginTimeRightRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportType)) {
+		query["ExportType"] = request.ExportType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeUnit)) {
+		query["TimeUnit"] = request.TimeUnit
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportStatisticalData"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ExportStatisticalDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExportStatisticalData"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4203,6 +6083,230 @@ func (client *Client) ExportStatisticalData(request *ExportStatisticalDataReques
 	return _result, _err
 }
 
+func (client *Client) GenerateUploadUrlWithOptions(request *GenerateUploadUrlRequest, runtime *util.RuntimeOptions) (_result *GenerateUploadUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallerBid)) {
+		body["CallerBid"] = request.CallerBid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallerIp)) {
+		body["CallerIp"] = request.CallerIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallerParentId)) {
+		body["CallerParentId"] = request.CallerParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallerType)) {
+		body["CallerType"] = request.CallerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallerUid)) {
+		body["CallerUid"] = request.CallerUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientIp)) {
+		body["ClientIp"] = request.ClientIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		body["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceOwnerId)) {
+		body["InstanceOwnerId"] = request.InstanceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		body["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MfaPresent)) {
+		body["MfaPresent"] = request.MfaPresent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyOriginalSecurityTransport)) {
+		body["ProxyOriginalSecurityTransport"] = request.ProxyOriginalSecurityTransport
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyOriginalSourceIp)) {
+		body["ProxyOriginalSourceIp"] = request.ProxyOriginalSourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyTrustTransportInfo)) {
+		body["ProxyTrustTransportInfo"] = request.ProxyTrustTransportInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		body["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityTransport)) {
+		body["SecurityTransport"] = request.SecurityTransport
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantName)) {
+		body["TenantName"] = request.TenantName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XspaceServicerId)) {
+		body["XspaceServicerId"] = request.XspaceServicerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XspaceTenantBuId)) {
+		body["XspaceTenantBuId"] = request.XspaceTenantBuId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateUploadUrl"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateUploadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateUploadUrl(request *GenerateUploadUrlRequest) (_result *GenerateUploadUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateUploadUrlResponse{}
+	_body, _err := client.GenerateUploadUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAsrConfigWithOptions(request *GetAsrConfigRequest, runtime *util.RuntimeOptions) (_result *GetAsrConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigLevel)) {
+		query["ConfigLevel"] = request.ConfigLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryId)) {
+		query["EntryId"] = request.EntryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAsrConfig"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAsrConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAsrConfig(request *GetAsrConfigRequest) (_result *GetAsrConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAsrConfigResponse{}
+	_body, _err := client.GetAsrConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRealTimeConcurrencyWithOptions(request *GetRealTimeConcurrencyRequest, runtime *util.RuntimeOptions) (_result *GetRealTimeConcurrencyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRealTimeConcurrency"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRealTimeConcurrencyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRealTimeConcurrency(request *GetRealTimeConcurrencyRequest) (_result *GetRealTimeConcurrencyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRealTimeConcurrencyResponse{}
+	_body, _err := client.GetRealTimeConcurrencyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListChatbotInstancesWithOptions(request *ListChatbotInstancesRequest, runtime *util.RuntimeOptions) (_result *ListChatbotInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4210,10 +6314,21 @@ func (client *Client) ListChatbotInstancesWithOptions(request *ListChatbotInstan
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListChatbotInstances"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListChatbotInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListChatbotInstances"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4239,10 +6354,21 @@ func (client *Client) ListConversationDetailsWithOptions(request *ListConversati
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConversationDetails"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListConversationDetailsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListConversationDetails"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4268,10 +6394,21 @@ func (client *Client) ListConversationsWithOptions(request *ListConversationsReq
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConversations"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListConversationsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListConversations"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4290,6 +6427,46 @@ func (client *Client) ListConversations(request *ListConversationsRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ListDownloadTasksWithOptions(request *ListDownloadTasksRequest, runtime *util.RuntimeOptions) (_result *ListDownloadTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDownloadTasks"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDownloadTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDownloadTasks(request *ListDownloadTasksRequest) (_result *ListDownloadTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDownloadTasksResponse{}
+	_body, _err := client.ListDownloadTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4297,10 +6474,21 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstances"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListInstances"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4319,16 +6507,108 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+func (client *Client) ModifyAsrConfigWithOptions(request *ModifyAsrConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyAsrConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AsrAcousticModelId)) {
+		query["AsrAcousticModelId"] = request.AsrAcousticModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AsrClassVocabularyId)) {
+		query["AsrClassVocabularyId"] = request.AsrClassVocabularyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AsrCustomizationId)) {
+		query["AsrCustomizationId"] = request.AsrCustomizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AsrVocabularyId)) {
+		query["AsrVocabularyId"] = request.AsrVocabularyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigLevel)) {
+		query["ConfigLevel"] = request.ConfigLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryId)) {
+		query["EntryId"] = request.EntryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAsrConfig"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAsrConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyAsrConfig(request *ModifyAsrConfigRequest) (_result *ModifyAsrConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAsrConfigResponse{}
+	_body, _err := client.ModifyAsrConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyGreetingConfigWithOptions(request *ModifyGreetingConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyGreetingConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GreetingWords)) {
+		query["GreetingWords"] = request.GreetingWords
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentTrigger)) {
+		query["IntentTrigger"] = request.IntentTrigger
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyGreetingConfig"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyGreetingConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyGreetingConfig"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4352,11 +6632,39 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Concurrency)) {
+		query["Concurrency"] = request.Concurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstance"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyInstance"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4380,11 +6688,59 @@ func (client *Client) ModifySilenceTimeoutConfigWithOptions(request *ModifySilen
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FinalAction)) {
+		query["FinalAction"] = request.FinalAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FinalActionParams)) {
+		query["FinalActionParams"] = request.FinalActionParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FinalPrompt)) {
+		query["FinalPrompt"] = request.FinalPrompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentTrigger)) {
+		query["IntentTrigger"] = request.IntentTrigger
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		query["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySilenceTimeoutConfig"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifySilenceTimeoutConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifySilenceTimeoutConfig"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4408,11 +6764,47 @@ func (client *Client) ModifyTTSConfigWithOptions(request *ModifyTTSConfigRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NlsServiceType)) {
+		query["NlsServiceType"] = request.NlsServiceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechRate)) {
+		query["SpeechRate"] = request.SpeechRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Voice)) {
+		query["Voice"] = request.Voice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Volume)) {
+		query["Volume"] = request.Volume
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTTSConfig"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyTTSConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyTTSConfig"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4436,11 +6828,47 @@ func (client *Client) ModifyUnrecognizingConfigWithOptions(request *ModifyUnreco
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FinalAction)) {
+		query["FinalAction"] = request.FinalAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FinalActionParams)) {
+		query["FinalActionParams"] = request.FinalActionParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FinalPrompt)) {
+		query["FinalPrompt"] = request.FinalPrompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		query["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyUnrecognizingConfig"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyUnrecognizingConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyUnrecognizingConfig"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4466,10 +6894,21 @@ func (client *Client) QueryConversationsWithOptions(request *QueryConversationsR
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryConversations"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryConversationsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryConversations"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4493,11 +6932,59 @@ func (client *Client) SaveRecordingWithOptions(request *SaveRecordingRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConversationId)) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilePath)) {
+		query["FilePath"] = request.FilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceOwnerId)) {
+		query["InstanceOwnerId"] = request.InstanceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceSliceRecordingList)) {
+		query["VoiceSliceRecordingList"] = request.VoiceSliceRecordingList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveRecording"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SaveRecordingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SaveRecording"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4521,11 +7008,39 @@ func (client *Client) SilenceTimeoutWithOptions(request *SilenceTimeoutRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConversationId)) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitialContext)) {
+		query["InitialContext"] = request.InitialContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceOwnerId)) {
+		query["InstanceOwnerId"] = request.InstanceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SilenceTimeout"),
+		Version:     tea.String("2018-06-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SilenceTimeoutResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SilenceTimeout"), tea.String("2018-06-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
