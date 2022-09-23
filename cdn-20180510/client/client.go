@@ -5,24 +5,25 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AddCdnDomainRequest struct {
-	CdnType         *string `json:"CdnType,omitempty" xml:"CdnType,omitempty"`
-	CheckUrl        *string `json:"CheckUrl,omitempty" xml:"CheckUrl,omitempty"`
-	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Scope           *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Sources         *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TopLevelDomain  *string `json:"TopLevelDomain,omitempty" xml:"TopLevelDomain,omitempty"`
+	CdnType         *string                   `json:"CdnType,omitempty" xml:"CdnType,omitempty"`
+	CheckUrl        *string                   `json:"CheckUrl,omitempty" xml:"CheckUrl,omitempty"`
+	DomainName      *string                   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerAccount    *string                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId         *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId *string                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Scope           *string                   `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	SecurityToken   *string                   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Sources         *string                   `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	Tag             []*AddCdnDomainRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TopLevelDomain  *string                   `json:"TopLevelDomain,omitempty" xml:"TopLevelDomain,omitempty"`
 }
 
 func (s AddCdnDomainRequest) String() string {
@@ -78,8 +79,36 @@ func (s *AddCdnDomainRequest) SetSources(v string) *AddCdnDomainRequest {
 	return s
 }
 
+func (s *AddCdnDomainRequest) SetTag(v []*AddCdnDomainRequestTag) *AddCdnDomainRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *AddCdnDomainRequest) SetTopLevelDomain(v string) *AddCdnDomainRequest {
 	s.TopLevelDomain = &v
+	return s
+}
+
+type AddCdnDomainRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s AddCdnDomainRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCdnDomainRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *AddCdnDomainRequestTag) SetKey(v string) *AddCdnDomainRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *AddCdnDomainRequestTag) SetValue(v string) *AddCdnDomainRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -21433,6 +21462,10 @@ func (client *Client) AddCdnDomainWithOptions(request *AddCdnDomainRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.Sources)) {
 		query["Sources"] = request.Sources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TopLevelDomain)) {
