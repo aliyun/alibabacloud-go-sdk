@@ -10,7 +10,7 @@
 ## 安装
 你可以使用 `go mod` 来管理你的依赖，
 ```sh
-  go get github.com/alibabacloud-go/dyplsapi-20170525
+  go get github.com/alibabacloud-go/dyplsapi-20170525/v2
 ```
 
 ## 问题

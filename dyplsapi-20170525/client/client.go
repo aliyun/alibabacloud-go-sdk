@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1913,8 +1913,7 @@ type CreatePickUpWaybillResponseBody struct {
 	Data           *CreatePickUpWaybillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	HttpStatusCode *int32                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePickUpWaybillResponseBody) String() string {
@@ -2259,8 +2258,7 @@ type CreatePickUpWaybillPreQueryResponseBody struct {
 	Data           *CreatePickUpWaybillPreQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePickUpWaybillPreQueryResponseBody) String() string {
@@ -2793,170 +2791,6 @@ func (s *GetSecretAsrDetailResponse) SetBody(v *GetSecretAsrDetailResponseBody) 
 	return s
 }
 
-type GetSubscriptionDetailRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	SubsId               *int64  `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
-}
-
-func (s GetSubscriptionDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSubscriptionDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetSubscriptionDetailRequest) SetOwnerId(v int64) *GetSubscriptionDetailRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailRequest) SetPoolKey(v string) *GetSubscriptionDetailRequest {
-	s.PoolKey = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailRequest) SetResourceOwnerAccount(v string) *GetSubscriptionDetailRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailRequest) SetResourceOwnerId(v int64) *GetSubscriptionDetailRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailRequest) SetSecretNo(v string) *GetSubscriptionDetailRequest {
-	s.SecretNo = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailRequest) SetSubsId(v int64) *GetSubscriptionDetailRequest {
-	s.SubsId = &v
-	return s
-}
-
-type GetSubscriptionDetailResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetSubscriptionDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetSubscriptionDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSubscriptionDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetSubscriptionDetailResponseBody) SetCode(v string) *GetSubscriptionDetailResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailResponseBody) SetData(v *GetSubscriptionDetailResponseBodyData) *GetSubscriptionDetailResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetSubscriptionDetailResponseBody) SetMessage(v string) *GetSubscriptionDetailResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailResponseBody) SetRequestId(v string) *GetSubscriptionDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetSubscriptionDetailResponseBodyData struct {
-	City         *string `json:"City,omitempty" xml:"City,omitempty"`
-	PhoneNo      *string `json:"PhoneNo,omitempty" xml:"PhoneNo,omitempty"`
-	Province     *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	SecretNo     *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	SubsId       *int64  `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
-	SwitchStatus *int32  `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
-	Vendor       *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-}
-
-func (s GetSubscriptionDetailResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSubscriptionDetailResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetSubscriptionDetailResponseBodyData) SetCity(v string) *GetSubscriptionDetailResponseBodyData {
-	s.City = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailResponseBodyData) SetPhoneNo(v string) *GetSubscriptionDetailResponseBodyData {
-	s.PhoneNo = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailResponseBodyData) SetProvince(v string) *GetSubscriptionDetailResponseBodyData {
-	s.Province = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailResponseBodyData) SetSecretNo(v string) *GetSubscriptionDetailResponseBodyData {
-	s.SecretNo = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailResponseBodyData) SetSubsId(v int64) *GetSubscriptionDetailResponseBodyData {
-	s.SubsId = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailResponseBodyData) SetSwitchStatus(v int32) *GetSubscriptionDetailResponseBodyData {
-	s.SwitchStatus = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailResponseBodyData) SetVendor(v string) *GetSubscriptionDetailResponseBodyData {
-	s.Vendor = &v
-	return s
-}
-
-type GetSubscriptionDetailResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSubscriptionDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSubscriptionDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSubscriptionDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSubscriptionDetailResponse) SetHeaders(v map[string]*string) *GetSubscriptionDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSubscriptionDetailResponse) SetStatusCode(v int32) *GetSubscriptionDetailResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetSubscriptionDetailResponse) SetBody(v *GetSubscriptionDetailResponseBody) *GetSubscriptionDetailResponse {
-	s.Body = v
-	return s
-}
-
 type GetTotalPublicUrlRequest struct {
 	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	CallTime             *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
@@ -3414,146 +3248,6 @@ func (s *OperateBlackNoResponse) SetStatusCode(v int32) *OperateBlackNoResponse 
 }
 
 func (s *OperateBlackNoResponse) SetBody(v *OperateBlackNoResponseBody) *OperateBlackNoResponse {
-	s.Body = v
-	return s
-}
-
-type QueryCallStatusRequest struct {
-	CallNo               *string `json:"CallNo,omitempty" xml:"CallNo,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SubsId               *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
-}
-
-func (s QueryCallStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCallStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCallStatusRequest) SetCallNo(v string) *QueryCallStatusRequest {
-	s.CallNo = &v
-	return s
-}
-
-func (s *QueryCallStatusRequest) SetOwnerId(v int64) *QueryCallStatusRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *QueryCallStatusRequest) SetPoolKey(v string) *QueryCallStatusRequest {
-	s.PoolKey = &v
-	return s
-}
-
-func (s *QueryCallStatusRequest) SetResourceOwnerAccount(v string) *QueryCallStatusRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *QueryCallStatusRequest) SetResourceOwnerId(v int64) *QueryCallStatusRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *QueryCallStatusRequest) SetSubsId(v string) *QueryCallStatusRequest {
-	s.SubsId = &v
-	return s
-}
-
-type QueryCallStatusResponseBody struct {
-	Code                *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message             *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId           *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecretCallStatusDTO *QueryCallStatusResponseBodySecretCallStatusDTO `json:"SecretCallStatusDTO,omitempty" xml:"SecretCallStatusDTO,omitempty" type:"Struct"`
-}
-
-func (s QueryCallStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCallStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCallStatusResponseBody) SetCode(v string) *QueryCallStatusResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryCallStatusResponseBody) SetMessage(v string) *QueryCallStatusResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryCallStatusResponseBody) SetRequestId(v string) *QueryCallStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryCallStatusResponseBody) SetSecretCallStatusDTO(v *QueryCallStatusResponseBodySecretCallStatusDTO) *QueryCallStatusResponseBody {
-	s.SecretCallStatusDTO = v
-	return s
-}
-
-type QueryCallStatusResponseBodySecretCallStatusDTO struct {
-	CalledNo  *string `json:"CalledNo,omitempty" xml:"CalledNo,omitempty"`
-	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s QueryCallStatusResponseBodySecretCallStatusDTO) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCallStatusResponseBodySecretCallStatusDTO) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCallStatusResponseBodySecretCallStatusDTO) SetCalledNo(v string) *QueryCallStatusResponseBodySecretCallStatusDTO {
-	s.CalledNo = &v
-	return s
-}
-
-func (s *QueryCallStatusResponseBodySecretCallStatusDTO) SetExtension(v string) *QueryCallStatusResponseBodySecretCallStatusDTO {
-	s.Extension = &v
-	return s
-}
-
-func (s *QueryCallStatusResponseBodySecretCallStatusDTO) SetStatus(v int32) *QueryCallStatusResponseBodySecretCallStatusDTO {
-	s.Status = &v
-	return s
-}
-
-type QueryCallStatusResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCallStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryCallStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCallStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCallStatusResponse) SetHeaders(v map[string]*string) *QueryCallStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryCallStatusResponse) SetStatusCode(v int32) *QueryCallStatusResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *QueryCallStatusResponse) SetBody(v *QueryCallStatusResponseBody) *QueryCallStatusResponse {
 	s.Body = v
 	return s
 }
@@ -6152,70 +5846,6 @@ func (client *Client) GetSecretAsrDetail(request *GetSecretAsrDetailRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) GetSubscriptionDetailWithOptions(request *GetSubscriptionDetailRequest, runtime *util.RuntimeOptions) (_result *GetSubscriptionDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
-		query["PoolKey"] = request.PoolKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecretNo)) {
-		query["SecretNo"] = request.SecretNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SubsId)) {
-		query["SubsId"] = request.SubsId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetSubscriptionDetail"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetSubscriptionDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetSubscriptionDetail(request *GetSubscriptionDetailRequest) (_result *GetSubscriptionDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetSubscriptionDetailResponse{}
-	_body, _err := client.GetSubscriptionDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetTotalPublicUrlWithOptions(request *GetTotalPublicUrlRequest, runtime *util.RuntimeOptions) (_result *GetTotalPublicUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6473,70 +6103,6 @@ func (client *Client) OperateBlackNo(request *OperateBlackNoRequest) (_result *O
 	runtime := &util.RuntimeOptions{}
 	_result = &OperateBlackNoResponse{}
 	_body, _err := client.OperateBlackNoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) QueryCallStatusWithOptions(request *QueryCallStatusRequest, runtime *util.RuntimeOptions) (_result *QueryCallStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CallNo)) {
-		query["CallNo"] = request.CallNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
-		query["PoolKey"] = request.PoolKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SubsId)) {
-		query["SubsId"] = request.SubsId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryCallStatus"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryCallStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryCallStatus(request *QueryCallStatusRequest) (_result *QueryCallStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryCallStatusResponse{}
-	_body, _err := client.QueryCallStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
