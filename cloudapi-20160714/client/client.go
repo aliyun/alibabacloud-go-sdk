@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -6576,6 +6576,7 @@ type DescribeApiGroupResponseBodyCustomDomainsDomainItem struct {
 	DomainWebSocketStatus  *string `json:"DomainWebSocketStatus,omitempty" xml:"DomainWebSocketStatus,omitempty"`
 	IsHttpRedirectToHttps  *bool   `json:"IsHttpRedirectToHttps,omitempty" xml:"IsHttpRedirectToHttps,omitempty"`
 	WildcardDomainPatterns *string `json:"WildcardDomainPatterns,omitempty" xml:"WildcardDomainPatterns,omitempty"`
+	WssEnable              *string `json:"WssEnable,omitempty" xml:"WssEnable,omitempty"`
 }
 
 func (s DescribeApiGroupResponseBodyCustomDomainsDomainItem) String() string {
@@ -6643,6 +6644,11 @@ func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetIsHttpRedirectT
 
 func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetWildcardDomainPatterns(v string) *DescribeApiGroupResponseBodyCustomDomainsDomainItem {
 	s.WildcardDomainPatterns = &v
+	return s
+}
+
+func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetWssEnable(v string) *DescribeApiGroupResponseBodyCustomDomainsDomainItem {
+	s.WssEnable = &v
 	return s
 }
 
@@ -12187,6 +12193,7 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) SetStageName(v
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig struct {
 	EventBridgeConfig     *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig     `json:"EventBridgeConfig,omitempty" xml:"EventBridgeConfig,omitempty" type:"Struct"`
 	FunctionComputeConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig `json:"FunctionComputeConfig,omitempty" xml:"FunctionComputeConfig,omitempty" type:"Struct"`
+	MockConfig            *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig            `json:"MockConfig,omitempty" xml:"MockConfig,omitempty" type:"Struct"`
 	OssConfig             *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig             `json:"OssConfig,omitempty" xml:"OssConfig,omitempty" type:"Struct"`
 	ServiceAddress        *string                                                                                    `json:"ServiceAddress,omitempty" xml:"ServiceAddress,omitempty"`
 	Type                  *string                                                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -12208,6 +12215,11 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) S
 
 func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetFunctionComputeConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
 	s.FunctionComputeConfig = v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetMockConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
+	s.MockConfig = v
 	return s
 }
 
@@ -12322,6 +12334,58 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFun
 
 func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) SetServiceName(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig {
 	s.ServiceName = &v
+	return s
+}
+
+type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig struct {
+	MockHeaders    []*DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders `json:"MockHeaders,omitempty" xml:"MockHeaders,omitempty" type:"Repeated"`
+	MockResult     *string                                                                                      `json:"MockResult,omitempty" xml:"MockResult,omitempty"`
+	MockStatusCode *string                                                                                      `json:"MockStatusCode,omitempty" xml:"MockStatusCode,omitempty"`
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig) SetMockHeaders(v []*DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig {
+	s.MockHeaders = v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig) SetMockResult(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig {
+	s.MockResult = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig) SetMockStatusCode(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig {
+	s.MockStatusCode = &v
+	return s
+}
+
+type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders struct {
+	HeaderName  *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
+	HeaderValue *string `json:"HeaderValue,omitempty" xml:"HeaderValue,omitempty"`
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders) SetHeaderName(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders {
+	s.HeaderName = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders) SetHeaderValue(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders {
+	s.HeaderValue = &v
 	return s
 }
 
