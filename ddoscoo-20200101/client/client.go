@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -7428,6 +7428,7 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
 	DomainLimit      *int32  `json:"DomainLimit,omitempty" xml:"DomainLimit,omitempty"`
 	ElasticBandwidth *int32  `json:"ElasticBandwidth,omitempty" xml:"ElasticBandwidth,omitempty"`
 	ElasticBw        *int32  `json:"ElasticBw,omitempty" xml:"ElasticBw,omitempty"`
+	ElasticBwModel   *string `json:"ElasticBwModel,omitempty" xml:"ElasticBwModel,omitempty"`
 	FunctionVersion  *string `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PortLimit        *int32  `json:"PortLimit,omitempty" xml:"PortLimit,omitempty"`
@@ -7470,6 +7471,11 @@ func (s *DescribeInstanceSpecsResponseBodyInstanceSpecs) SetElasticBandwidth(v i
 
 func (s *DescribeInstanceSpecsResponseBodyInstanceSpecs) SetElasticBw(v int32) *DescribeInstanceSpecsResponseBodyInstanceSpecs {
 	s.ElasticBw = &v
+	return s
+}
+
+func (s *DescribeInstanceSpecsResponseBodyInstanceSpecs) SetElasticBwModel(v string) *DescribeInstanceSpecsResponseBodyInstanceSpecs {
+	s.ElasticBwModel = &v
 	return s
 }
 
@@ -7854,16 +7860,17 @@ func (s *DescribeInstancesResponseBody) SetTotalCount(v int64) *DescribeInstance
 }
 
 type DescribeInstancesResponseBodyInstances struct {
-	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DebtStatus *int32  `json:"DebtStatus,omitempty" xml:"DebtStatus,omitempty"`
-	Edition    *int32  `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	Enabled    *int32  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	ExpireTime *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpMode     *string `json:"IpMode,omitempty" xml:"IpMode,omitempty"`
-	IpVersion  *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DebtStatus    *int32  `json:"DebtStatus,omitempty" xml:"DebtStatus,omitempty"`
+	Edition       *int32  `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	Enabled       *int32  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ExpireTime    *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpMode        *string `json:"IpMode,omitempty" xml:"IpMode,omitempty"`
+	IpVersion     *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IsFirstOpenBw *int64  `json:"IsFirstOpenBw,omitempty" xml:"IsFirstOpenBw,omitempty"`
+	Remark        *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstances) String() string {
@@ -7911,6 +7918,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetIpMode(v string) *DescribeIn
 
 func (s *DescribeInstancesResponseBodyInstances) SetIpVersion(v string) *DescribeInstancesResponseBodyInstances {
 	s.IpVersion = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetIsFirstOpenBw(v int64) *DescribeInstancesResponseBodyInstances {
+	s.IsFirstOpenBw = &v
 	return s
 }
 
