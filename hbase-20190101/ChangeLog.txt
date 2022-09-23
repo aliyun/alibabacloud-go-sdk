@@ -1,3 +1,6 @@
+2022-09-23 Version: v3.0.0
+- Generated golang 2019-01-01 for HBase.
+
 2022-04-14 Version: v2.9.10
 - Amp build sdk.
 
