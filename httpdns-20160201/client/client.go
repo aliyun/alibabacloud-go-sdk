@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -59,8 +59,9 @@ func (s *AddDomainResponseBody) SetRequestId(v string) *AddDomainResponseBody {
 }
 
 type AddDomainResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddDomainResponse) String() string {
@@ -73,6 +74,11 @@ func (s AddDomainResponse) GoString() string {
 
 func (s *AddDomainResponse) SetHeaders(v map[string]*string) *AddDomainResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddDomainResponse) SetStatusCode(v int32) *AddDomainResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -128,8 +134,9 @@ func (s *DeleteDomainResponseBody) SetRequestId(v string) *DeleteDomainResponseB
 }
 
 type DeleteDomainResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDomainResponse) String() string {
@@ -142,6 +149,11 @@ func (s DeleteDomainResponse) GoString() string {
 
 func (s *DeleteDomainResponse) SetHeaders(v map[string]*string) *DeleteDomainResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -255,8 +267,9 @@ func (s *DescribeDomainsResponseBodyDomainsDomain) SetDomainName(v string) *Desc
 }
 
 type DescribeDomainsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDomainsResponse) String() string {
@@ -269,6 +282,11 @@ func (s DescribeDomainsResponse) GoString() string {
 
 func (s *DescribeDomainsResponse) SetHeaders(v map[string]*string) *DescribeDomainsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainsResponse) SetStatusCode(v int32) *DescribeDomainsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -360,8 +378,9 @@ func (s *GetAccountInfoResponseBodyAccountInfo) SetUnsignedEnabled(v bool) *GetA
 }
 
 type GetAccountInfoResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAccountInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAccountInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAccountInfoResponse) String() string {
@@ -374,6 +393,11 @@ func (s GetAccountInfoResponse) GoString() string {
 
 func (s *GetAccountInfoResponse) SetHeaders(v map[string]*string) *GetAccountInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAccountInfoResponse) SetStatusCode(v int32) *GetAccountInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -464,8 +488,9 @@ func (s *GetResolveCountSummaryResponseBodyResolveSummary) SetHttps6(v int64) *G
 }
 
 type GetResolveCountSummaryResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetResolveCountSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetResolveCountSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetResolveCountSummaryResponse) String() string {
@@ -478,6 +503,11 @@ func (s GetResolveCountSummaryResponse) GoString() string {
 
 func (s *GetResolveCountSummaryResponse) SetHeaders(v map[string]*string) *GetResolveCountSummaryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetResolveCountSummaryResponse) SetStatusCode(v int32) *GetResolveCountSummaryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -585,8 +615,9 @@ func (s *GetResolveStatisticsResponseBodyDataPointsDataPoint) SetTime(v int32) *
 }
 
 type GetResolveStatisticsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetResolveStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetResolveStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetResolveStatisticsResponse) String() string {
@@ -599,6 +630,11 @@ func (s GetResolveStatisticsResponse) GoString() string {
 
 func (s *GetResolveStatisticsResponse) SetHeaders(v map[string]*string) *GetResolveStatisticsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetResolveStatisticsResponse) SetStatusCode(v int32) *GetResolveStatisticsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -730,8 +766,9 @@ func (s *ListDomainsResponseBodyDomainInfosDomainInfo) SetResolvedHttps6(v int64
 }
 
 type ListDomainsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDomainsResponse) String() string {
@@ -744,6 +781,11 @@ func (s ListDomainsResponse) GoString() string {
 
 func (s *ListDomainsResponse) SetHeaders(v map[string]*string) *ListDomainsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListDomainsResponse) SetStatusCode(v int32) *ListDomainsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -805,11 +847,16 @@ func (client *Client) AddDomainWithOptions(request *AddDomainRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["DomainName"] = request.DomainName
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddDomain"),
@@ -819,7 +866,7 @@ func (client *Client) AddDomainWithOptions(request *AddDomainRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddDomainResponse{}
@@ -848,11 +895,16 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["DomainName"] = request.DomainName
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDomain"),
@@ -862,7 +914,7 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDomainResponse{}
@@ -891,12 +943,20 @@ func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomains"),
@@ -906,7 +966,7 @@ func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainsResponse{}
@@ -939,7 +999,7 @@ func (client *Client) GetAccountInfoWithOptions(runtime *util.RuntimeOptions) (_
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAccountInfoResponse{}
@@ -968,11 +1028,16 @@ func (client *Client) GetResolveCountSummaryWithOptions(request *GetResolveCount
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Granularity"] = request.Granularity
-	query["TimeSpan"] = request.TimeSpan
+	if !tea.BoolValue(util.IsUnset(request.Granularity)) {
+		query["Granularity"] = request.Granularity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeSpan)) {
+		query["TimeSpan"] = request.TimeSpan
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetResolveCountSummary"),
@@ -982,7 +1047,7 @@ func (client *Client) GetResolveCountSummaryWithOptions(request *GetResolveCount
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResolveCountSummaryResponse{}
@@ -1011,13 +1076,24 @@ func (client *Client) GetResolveStatisticsWithOptions(request *GetResolveStatist
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["Granularity"] = request.Granularity
-	query["ProtocolName"] = request.ProtocolName
-	query["TimeSpan"] = request.TimeSpan
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Granularity)) {
+		query["Granularity"] = request.Granularity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProtocolName)) {
+		query["ProtocolName"] = request.ProtocolName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeSpan)) {
+		query["TimeSpan"] = request.TimeSpan
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetResolveStatistics"),
@@ -1027,7 +1103,7 @@ func (client *Client) GetResolveStatisticsWithOptions(request *GetResolveStatist
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResolveStatisticsResponse{}
@@ -1056,11 +1132,16 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDomains"),
@@ -1070,7 +1151,7 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDomainsResponse{}
