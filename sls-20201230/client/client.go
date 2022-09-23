@@ -7,9 +7,9 @@ package client
 import (
 	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-sls/client"
 	
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -4134,76 +4134,6 @@ func (s *GetSavedSearchResponse) SetBody(v *SavedSearch) *GetSavedSearchResponse
 	return s
 }
 
-type GetShipperConfigResponseBody struct {
-	CreateTime          *int64                 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	LastModifyTime      *int64                 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	ShipperName         *string                `json:"shipperName,omitempty" xml:"shipperName,omitempty"`
-	TargetConfiguration map[string]interface{} `json:"targetConfiguration,omitempty" xml:"targetConfiguration,omitempty"`
-	TargetType          *string                `json:"targetType,omitempty" xml:"targetType,omitempty"`
-}
-
-func (s GetShipperConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShipperConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetShipperConfigResponseBody) SetCreateTime(v int64) *GetShipperConfigResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetShipperConfigResponseBody) SetLastModifyTime(v int64) *GetShipperConfigResponseBody {
-	s.LastModifyTime = &v
-	return s
-}
-
-func (s *GetShipperConfigResponseBody) SetShipperName(v string) *GetShipperConfigResponseBody {
-	s.ShipperName = &v
-	return s
-}
-
-func (s *GetShipperConfigResponseBody) SetTargetConfiguration(v map[string]interface{}) *GetShipperConfigResponseBody {
-	s.TargetConfiguration = v
-	return s
-}
-
-func (s *GetShipperConfigResponseBody) SetTargetType(v string) *GetShipperConfigResponseBody {
-	s.TargetType = &v
-	return s
-}
-
-type GetShipperConfigResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetShipperConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetShipperConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShipperConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetShipperConfigResponse) SetHeaders(v map[string]*string) *GetShipperConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetShipperConfigResponse) SetStatusCode(v int32) *GetShipperConfigResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetShipperConfigResponse) SetBody(v *GetShipperConfigResponseBody) *GetShipperConfigResponse {
-	s.Body = v
-	return s
-}
-
 type GetShipperStatusRequest struct {
 	From   *int64  `json:"from,omitempty" xml:"from,omitempty"`
 	Offset *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
@@ -5539,52 +5469,6 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
-type MergeShardsRequest struct {
-	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-}
-
-func (s MergeShardsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s MergeShardsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *MergeShardsRequest) SetAction(v string) *MergeShardsRequest {
-	s.Action = &v
-	return s
-}
-
-type MergeShardsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       []*Shard           `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s MergeShardsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s MergeShardsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *MergeShardsResponse) SetHeaders(v map[string]*string) *MergeShardsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *MergeShardsResponse) SetStatusCode(v int32) *MergeShardsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *MergeShardsResponse) SetBody(v []*Shard) *MergeShardsResponse {
-	s.Body = v
-	return s
-}
-
 type RemoveConfigFromMachineGroupResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -5609,7 +5493,6 @@ func (s *RemoveConfigFromMachineGroupResponse) SetStatusCode(v int32) *RemoveCon
 }
 
 type SplitShardRequest struct {
-	Action     *string `json:"action,omitempty" xml:"action,omitempty"`
 	Key        *string `json:"key,omitempty" xml:"key,omitempty"`
 	ShardCount *int32  `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
 }
@@ -5620,11 +5503,6 @@ func (s SplitShardRequest) String() string {
 
 func (s SplitShardRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SplitShardRequest) SetAction(v string) *SplitShardRequest {
-	s.Action = &v
-	return s
 }
 
 func (s *SplitShardRequest) SetKey(v string) *SplitShardRequest {
@@ -9602,45 +9480,6 @@ func (client *Client) GetSavedSearchWithOptions(project *string, savedsearchName
 	return _result, _err
 }
 
-func (client *Client) GetShipperConfig(project *string, logstore *string, shipperName *string) (_result *GetShipperConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetShipperConfigResponse{}
-	_body, _err := client.GetShipperConfigWithOptions(project, logstore, shipperName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetShipperConfigWithOptions(project *string, logstore *string, shipperName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetShipperConfigResponse, _err error) {
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetShipperConfig"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper/" + tea.StringValue(shipperName)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetShipperConfigResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) GetShipperStatus(project *string, logstore *string, shipperName *string, request *GetShipperStatusRequest) (_result *GetShipperStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10454,55 +10293,6 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 	return _result, _err
 }
 
-func (client *Client) MergeShards(project *string, logstore *string, shardID *string, request *MergeShardsRequest) (_result *MergeShardsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &MergeShardsResponse{}
-	_body, _err := client.MergeShardsWithOptions(project, logstore, shardID, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) MergeShardsWithOptions(project *string, logstore *string, shardID *string, request *MergeShardsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *MergeShardsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Action)) {
-		query["action"] = request.Action
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("MergeShards"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shardID)),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("array"),
-	}
-	_result = &MergeShardsResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) RemoveConfigFromMachineGroup(project *string, machineGroup *string, configName *string) (_result *RemoveConfigFromMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10542,11 +10332,11 @@ func (client *Client) RemoveConfigFromMachineGroupWithOptions(project *string, m
 	return _result, _err
 }
 
-func (client *Client) SplitShard(project *string, logstore *string, shardID *string, request *SplitShardRequest) (_result *SplitShardResponse, _err error) {
+func (client *Client) SplitShard(project *string, logstore *string, shard *string, request *SplitShardRequest) (_result *SplitShardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &SplitShardResponse{}
-	_body, _err := client.SplitShardWithOptions(project, logstore, shardID, request, headers, runtime)
+	_body, _err := client.SplitShardWithOptions(project, logstore, shard, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10554,7 +10344,7 @@ func (client *Client) SplitShard(project *string, logstore *string, shardID *str
 	return _result, _err
 }
 
-func (client *Client) SplitShardWithOptions(project *string, logstore *string, shardID *string, request *SplitShardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SplitShardResponse, _err error) {
+func (client *Client) SplitShardWithOptions(project *string, logstore *string, shard *string, request *SplitShardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SplitShardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -10562,10 +10352,6 @@ func (client *Client) SplitShardWithOptions(project *string, logstore *string, s
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Action)) {
-		query["action"] = request.Action
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Key)) {
 		query["key"] = request.Key
 	}
@@ -10583,7 +10369,7 @@ func (client *Client) SplitShardWithOptions(project *string, logstore *string, s
 		Action:      tea.String("SplitShard"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shardID)),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shard) + "?action=split"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),

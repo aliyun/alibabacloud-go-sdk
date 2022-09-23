@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2020-12-30 for Sls.
+
 2022-09-15 Version: v1.5.1
 - Fix signature bug.
 
