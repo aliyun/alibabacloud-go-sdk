@@ -5,21 +5,21 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type CreateBindingRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VirtualHost     *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
-	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
-	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
+	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
 	BindingKey      *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
 	BindingType     *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
-	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
+	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
+	VirtualHost     *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s CreateBindingRequest) String() string {
@@ -30,23 +30,8 @@ func (s CreateBindingRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateBindingRequest) SetInstanceId(v string) *CreateBindingRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateBindingRequest) SetVirtualHost(v string) *CreateBindingRequest {
-	s.VirtualHost = &v
-	return s
-}
-
-func (s *CreateBindingRequest) SetSourceExchange(v string) *CreateBindingRequest {
-	s.SourceExchange = &v
-	return s
-}
-
-func (s *CreateBindingRequest) SetDestinationName(v string) *CreateBindingRequest {
-	s.DestinationName = &v
+func (s *CreateBindingRequest) SetArgument(v string) *CreateBindingRequest {
+	s.Argument = &v
 	return s
 }
 
@@ -60,8 +45,23 @@ func (s *CreateBindingRequest) SetBindingType(v string) *CreateBindingRequest {
 	return s
 }
 
-func (s *CreateBindingRequest) SetArgument(v string) *CreateBindingRequest {
-	s.Argument = &v
+func (s *CreateBindingRequest) SetDestinationName(v string) *CreateBindingRequest {
+	s.DestinationName = &v
+	return s
+}
+
+func (s *CreateBindingRequest) SetInstanceId(v string) *CreateBindingRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateBindingRequest) SetSourceExchange(v string) *CreateBindingRequest {
+	s.SourceExchange = &v
+	return s
+}
+
+func (s *CreateBindingRequest) SetVirtualHost(v string) *CreateBindingRequest {
+	s.VirtualHost = &v
 	return s
 }
 
@@ -83,8 +83,9 @@ func (s *CreateBindingResponseBody) SetRequestId(v string) *CreateBindingRespons
 }
 
 type CreateBindingResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateBindingResponse) String() string {
@@ -100,19 +101,24 @@ func (s *CreateBindingResponse) SetHeaders(v map[string]*string) *CreateBindingR
 	return s
 }
 
+func (s *CreateBindingResponse) SetStatusCode(v int32) *CreateBindingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateBindingResponse) SetBody(v *CreateBindingResponseBody) *CreateBindingResponse {
 	s.Body = v
 	return s
 }
 
 type CreateExchangeRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VirtualHost       *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
+	AlternateExchange *string `json:"AlternateExchange,omitempty" xml:"AlternateExchange,omitempty"`
+	AutoDeleteState   *bool   `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
 	ExchangeName      *string `json:"ExchangeName,omitempty" xml:"ExchangeName,omitempty"`
 	ExchangeType      *string `json:"ExchangeType,omitempty" xml:"ExchangeType,omitempty"`
-	AutoDeleteState   *bool   `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Internal          *bool   `json:"Internal,omitempty" xml:"Internal,omitempty"`
-	AlternateExchange *string `json:"AlternateExchange,omitempty" xml:"AlternateExchange,omitempty"`
+	VirtualHost       *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s CreateExchangeRequest) String() string {
@@ -123,13 +129,13 @@ func (s CreateExchangeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateExchangeRequest) SetInstanceId(v string) *CreateExchangeRequest {
-	s.InstanceId = &v
+func (s *CreateExchangeRequest) SetAlternateExchange(v string) *CreateExchangeRequest {
+	s.AlternateExchange = &v
 	return s
 }
 
-func (s *CreateExchangeRequest) SetVirtualHost(v string) *CreateExchangeRequest {
-	s.VirtualHost = &v
+func (s *CreateExchangeRequest) SetAutoDeleteState(v bool) *CreateExchangeRequest {
+	s.AutoDeleteState = &v
 	return s
 }
 
@@ -143,8 +149,8 @@ func (s *CreateExchangeRequest) SetExchangeType(v string) *CreateExchangeRequest
 	return s
 }
 
-func (s *CreateExchangeRequest) SetAutoDeleteState(v bool) *CreateExchangeRequest {
-	s.AutoDeleteState = &v
+func (s *CreateExchangeRequest) SetInstanceId(v string) *CreateExchangeRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -153,8 +159,8 @@ func (s *CreateExchangeRequest) SetInternal(v bool) *CreateExchangeRequest {
 	return s
 }
 
-func (s *CreateExchangeRequest) SetAlternateExchange(v string) *CreateExchangeRequest {
-	s.AlternateExchange = &v
+func (s *CreateExchangeRequest) SetVirtualHost(v string) *CreateExchangeRequest {
+	s.VirtualHost = &v
 	return s
 }
 
@@ -176,8 +182,9 @@ func (s *CreateExchangeResponseBody) SetRequestId(v string) *CreateExchangeRespo
 }
 
 type CreateExchangeResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateExchangeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateExchangeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateExchangeResponse) String() string {
@@ -193,23 +200,28 @@ func (s *CreateExchangeResponse) SetHeaders(v map[string]*string) *CreateExchang
 	return s
 }
 
+func (s *CreateExchangeResponse) SetStatusCode(v int32) *CreateExchangeResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateExchangeResponse) SetBody(v *CreateExchangeResponseBody) *CreateExchangeResponse {
 	s.Body = v
 	return s
 }
 
 type CreateQueueRequest struct {
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VirtualHost          *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
-	QueueName            *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	AutoDeleteState      *bool   `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
-	ExclusiveState       *bool   `json:"ExclusiveState,omitempty" xml:"ExclusiveState,omitempty"`
-	MessageTTL           *int64  `json:"MessageTTL,omitempty" xml:"MessageTTL,omitempty"`
 	AutoExpireState      *int64  `json:"AutoExpireState,omitempty" xml:"AutoExpireState,omitempty"`
-	MaxLength            *int64  `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
 	DeadLetterExchange   *string `json:"DeadLetterExchange,omitempty" xml:"DeadLetterExchange,omitempty"`
 	DeadLetterRoutingKey *string `json:"DeadLetterRoutingKey,omitempty" xml:"DeadLetterRoutingKey,omitempty"`
+	ExclusiveState       *bool   `json:"ExclusiveState,omitempty" xml:"ExclusiveState,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxLength            *int64  `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
 	MaximumPriority      *int32  `json:"MaximumPriority,omitempty" xml:"MaximumPriority,omitempty"`
+	MessageTTL           *int64  `json:"MessageTTL,omitempty" xml:"MessageTTL,omitempty"`
+	QueueName            *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	VirtualHost          *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s CreateQueueRequest) String() string {
@@ -220,43 +232,13 @@ func (s CreateQueueRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateQueueRequest) SetInstanceId(v string) *CreateQueueRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateQueueRequest) SetVirtualHost(v string) *CreateQueueRequest {
-	s.VirtualHost = &v
-	return s
-}
-
-func (s *CreateQueueRequest) SetQueueName(v string) *CreateQueueRequest {
-	s.QueueName = &v
-	return s
-}
-
 func (s *CreateQueueRequest) SetAutoDeleteState(v bool) *CreateQueueRequest {
 	s.AutoDeleteState = &v
 	return s
 }
 
-func (s *CreateQueueRequest) SetExclusiveState(v bool) *CreateQueueRequest {
-	s.ExclusiveState = &v
-	return s
-}
-
-func (s *CreateQueueRequest) SetMessageTTL(v int64) *CreateQueueRequest {
-	s.MessageTTL = &v
-	return s
-}
-
 func (s *CreateQueueRequest) SetAutoExpireState(v int64) *CreateQueueRequest {
 	s.AutoExpireState = &v
-	return s
-}
-
-func (s *CreateQueueRequest) SetMaxLength(v int64) *CreateQueueRequest {
-	s.MaxLength = &v
 	return s
 }
 
@@ -270,8 +252,38 @@ func (s *CreateQueueRequest) SetDeadLetterRoutingKey(v string) *CreateQueueReque
 	return s
 }
 
+func (s *CreateQueueRequest) SetExclusiveState(v bool) *CreateQueueRequest {
+	s.ExclusiveState = &v
+	return s
+}
+
+func (s *CreateQueueRequest) SetInstanceId(v string) *CreateQueueRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateQueueRequest) SetMaxLength(v int64) *CreateQueueRequest {
+	s.MaxLength = &v
+	return s
+}
+
 func (s *CreateQueueRequest) SetMaximumPriority(v int32) *CreateQueueRequest {
 	s.MaximumPriority = &v
+	return s
+}
+
+func (s *CreateQueueRequest) SetMessageTTL(v int64) *CreateQueueRequest {
+	s.MessageTTL = &v
+	return s
+}
+
+func (s *CreateQueueRequest) SetQueueName(v string) *CreateQueueRequest {
+	s.QueueName = &v
+	return s
+}
+
+func (s *CreateQueueRequest) SetVirtualHost(v string) *CreateQueueRequest {
+	s.VirtualHost = &v
 	return s
 }
 
@@ -293,8 +305,9 @@ func (s *CreateQueueResponseBody) SetRequestId(v string) *CreateQueueResponseBod
 }
 
 type CreateQueueResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateQueueResponse) String() string {
@@ -307,6 +320,11 @@ func (s CreateQueueResponse) GoString() string {
 
 func (s *CreateQueueResponse) SetHeaders(v map[string]*string) *CreateQueueResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateQueueResponse) SetStatusCode(v int32) *CreateQueueResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -356,8 +374,9 @@ func (s *CreateVirtualHostResponseBody) SetRequestId(v string) *CreateVirtualHos
 }
 
 type CreateVirtualHostResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVirtualHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVirtualHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateVirtualHostResponse) String() string {
@@ -373,18 +392,23 @@ func (s *CreateVirtualHostResponse) SetHeaders(v map[string]*string) *CreateVirt
 	return s
 }
 
+func (s *CreateVirtualHostResponse) SetStatusCode(v int32) *CreateVirtualHostResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateVirtualHostResponse) SetBody(v *CreateVirtualHostResponseBody) *CreateVirtualHostResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteBindingRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VirtualHost     *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
-	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
-	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
-	BindingType     *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
 	BindingKey      *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
+	BindingType     *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
+	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
+	VirtualHost     *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s DeleteBindingRequest) String() string {
@@ -395,23 +419,8 @@ func (s DeleteBindingRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteBindingRequest) SetInstanceId(v string) *DeleteBindingRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteBindingRequest) SetVirtualHost(v string) *DeleteBindingRequest {
-	s.VirtualHost = &v
-	return s
-}
-
-func (s *DeleteBindingRequest) SetSourceExchange(v string) *DeleteBindingRequest {
-	s.SourceExchange = &v
-	return s
-}
-
-func (s *DeleteBindingRequest) SetDestinationName(v string) *DeleteBindingRequest {
-	s.DestinationName = &v
+func (s *DeleteBindingRequest) SetBindingKey(v string) *DeleteBindingRequest {
+	s.BindingKey = &v
 	return s
 }
 
@@ -420,8 +429,23 @@ func (s *DeleteBindingRequest) SetBindingType(v string) *DeleteBindingRequest {
 	return s
 }
 
-func (s *DeleteBindingRequest) SetBindingKey(v string) *DeleteBindingRequest {
-	s.BindingKey = &v
+func (s *DeleteBindingRequest) SetDestinationName(v string) *DeleteBindingRequest {
+	s.DestinationName = &v
+	return s
+}
+
+func (s *DeleteBindingRequest) SetInstanceId(v string) *DeleteBindingRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteBindingRequest) SetSourceExchange(v string) *DeleteBindingRequest {
+	s.SourceExchange = &v
+	return s
+}
+
+func (s *DeleteBindingRequest) SetVirtualHost(v string) *DeleteBindingRequest {
+	s.VirtualHost = &v
 	return s
 }
 
@@ -443,8 +467,9 @@ func (s *DeleteBindingResponseBody) SetRequestId(v string) *DeleteBindingRespons
 }
 
 type DeleteBindingResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteBindingResponse) String() string {
@@ -460,15 +485,20 @@ func (s *DeleteBindingResponse) SetHeaders(v map[string]*string) *DeleteBindingR
 	return s
 }
 
+func (s *DeleteBindingResponse) SetStatusCode(v int32) *DeleteBindingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteBindingResponse) SetBody(v *DeleteBindingResponseBody) *DeleteBindingResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteExchangeRequest struct {
+	ExchangeName *string `json:"ExchangeName,omitempty" xml:"ExchangeName,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	VirtualHost  *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
-	ExchangeName *string `json:"ExchangeName,omitempty" xml:"ExchangeName,omitempty"`
 }
 
 func (s DeleteExchangeRequest) String() string {
@@ -479,6 +509,11 @@ func (s DeleteExchangeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteExchangeRequest) SetExchangeName(v string) *DeleteExchangeRequest {
+	s.ExchangeName = &v
+	return s
+}
+
 func (s *DeleteExchangeRequest) SetInstanceId(v string) *DeleteExchangeRequest {
 	s.InstanceId = &v
 	return s
@@ -486,11 +521,6 @@ func (s *DeleteExchangeRequest) SetInstanceId(v string) *DeleteExchangeRequest {
 
 func (s *DeleteExchangeRequest) SetVirtualHost(v string) *DeleteExchangeRequest {
 	s.VirtualHost = &v
-	return s
-}
-
-func (s *DeleteExchangeRequest) SetExchangeName(v string) *DeleteExchangeRequest {
-	s.ExchangeName = &v
 	return s
 }
 
@@ -512,8 +542,9 @@ func (s *DeleteExchangeResponseBody) SetRequestId(v string) *DeleteExchangeRespo
 }
 
 type DeleteExchangeResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteExchangeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteExchangeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteExchangeResponse) String() string {
@@ -526,6 +557,11 @@ func (s DeleteExchangeResponse) GoString() string {
 
 func (s *DeleteExchangeResponse) SetHeaders(v map[string]*string) *DeleteExchangeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteExchangeResponse) SetStatusCode(v int32) *DeleteExchangeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -581,8 +617,9 @@ func (s *DeleteQueueResponseBody) SetRequestId(v string) *DeleteQueueResponseBod
 }
 
 type DeleteQueueResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteQueueResponse) String() string {
@@ -595,6 +632,11 @@ func (s DeleteQueueResponse) GoString() string {
 
 func (s *DeleteQueueResponse) SetHeaders(v map[string]*string) *DeleteQueueResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteQueueResponse) SetStatusCode(v int32) *DeleteQueueResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -644,8 +686,9 @@ func (s *DeleteVirtualHostResponseBody) SetRequestId(v string) *DeleteVirtualHos
 }
 
 type DeleteVirtualHostResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteVirtualHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVirtualHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteVirtualHostResponse) String() string {
@@ -658,6 +701,11 @@ func (s DeleteVirtualHostResponse) GoString() string {
 
 func (s *DeleteVirtualHostResponse) SetHeaders(v map[string]*string) *DeleteVirtualHostResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteVirtualHostResponse) SetStatusCode(v int32) *DeleteVirtualHostResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -684,8 +732,8 @@ func (s *GetMetadataAmountRequest) SetInstanceId(v string) *GetMetadataAmountReq
 }
 
 type GetMetadataAmountResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetMetadataAmountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMetadataAmountResponseBody) String() string {
@@ -696,23 +744,23 @@ func (s GetMetadataAmountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetMetadataAmountResponseBody) SetRequestId(v string) *GetMetadataAmountResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetMetadataAmountResponseBody) SetData(v *GetMetadataAmountResponseBodyData) *GetMetadataAmountResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *GetMetadataAmountResponseBody) SetRequestId(v string) *GetMetadataAmountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetMetadataAmountResponseBodyData struct {
-	MaxVirtualHosts     *int32 `json:"MaxVirtualHosts,omitempty" xml:"MaxVirtualHosts,omitempty"`
-	CurrentVirtualHosts *int32 `json:"CurrentVirtualHosts,omitempty" xml:"CurrentVirtualHosts,omitempty"`
-	MaxQueues           *int32 `json:"MaxQueues,omitempty" xml:"MaxQueues,omitempty"`
 	CurrentExchanges    *int32 `json:"CurrentExchanges,omitempty" xml:"CurrentExchanges,omitempty"`
-	MaxExchanges        *int32 `json:"MaxExchanges,omitempty" xml:"MaxExchanges,omitempty"`
 	CurrentQueues       *int32 `json:"CurrentQueues,omitempty" xml:"CurrentQueues,omitempty"`
+	CurrentVirtualHosts *int32 `json:"CurrentVirtualHosts,omitempty" xml:"CurrentVirtualHosts,omitempty"`
+	MaxExchanges        *int32 `json:"MaxExchanges,omitempty" xml:"MaxExchanges,omitempty"`
+	MaxQueues           *int32 `json:"MaxQueues,omitempty" xml:"MaxQueues,omitempty"`
+	MaxVirtualHosts     *int32 `json:"MaxVirtualHosts,omitempty" xml:"MaxVirtualHosts,omitempty"`
 }
 
 func (s GetMetadataAmountResponseBodyData) String() string {
@@ -723,28 +771,8 @@ func (s GetMetadataAmountResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetMetadataAmountResponseBodyData) SetMaxVirtualHosts(v int32) *GetMetadataAmountResponseBodyData {
-	s.MaxVirtualHosts = &v
-	return s
-}
-
-func (s *GetMetadataAmountResponseBodyData) SetCurrentVirtualHosts(v int32) *GetMetadataAmountResponseBodyData {
-	s.CurrentVirtualHosts = &v
-	return s
-}
-
-func (s *GetMetadataAmountResponseBodyData) SetMaxQueues(v int32) *GetMetadataAmountResponseBodyData {
-	s.MaxQueues = &v
-	return s
-}
-
 func (s *GetMetadataAmountResponseBodyData) SetCurrentExchanges(v int32) *GetMetadataAmountResponseBodyData {
 	s.CurrentExchanges = &v
-	return s
-}
-
-func (s *GetMetadataAmountResponseBodyData) SetMaxExchanges(v int32) *GetMetadataAmountResponseBodyData {
-	s.MaxExchanges = &v
 	return s
 }
 
@@ -753,9 +781,30 @@ func (s *GetMetadataAmountResponseBodyData) SetCurrentQueues(v int32) *GetMetada
 	return s
 }
 
+func (s *GetMetadataAmountResponseBodyData) SetCurrentVirtualHosts(v int32) *GetMetadataAmountResponseBodyData {
+	s.CurrentVirtualHosts = &v
+	return s
+}
+
+func (s *GetMetadataAmountResponseBodyData) SetMaxExchanges(v int32) *GetMetadataAmountResponseBodyData {
+	s.MaxExchanges = &v
+	return s
+}
+
+func (s *GetMetadataAmountResponseBodyData) SetMaxQueues(v int32) *GetMetadataAmountResponseBodyData {
+	s.MaxQueues = &v
+	return s
+}
+
+func (s *GetMetadataAmountResponseBodyData) SetMaxVirtualHosts(v int32) *GetMetadataAmountResponseBodyData {
+	s.MaxVirtualHosts = &v
+	return s
+}
+
 type GetMetadataAmountResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetMetadataAmountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMetadataAmountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetMetadataAmountResponse) String() string {
@@ -771,6 +820,11 @@ func (s *GetMetadataAmountResponse) SetHeaders(v map[string]*string) *GetMetadat
 	return s
 }
 
+func (s *GetMetadataAmountResponse) SetStatusCode(v int32) *GetMetadataAmountResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetMetadataAmountResponse) SetBody(v *GetMetadataAmountResponseBody) *GetMetadataAmountResponse {
 	s.Body = v
 	return s
@@ -778,9 +832,9 @@ func (s *GetMetadataAmountResponse) SetBody(v *GetMetadataAmountResponseBody) *G
 
 type ListBindingsRequest struct {
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s ListBindingsRequest) String() string {
@@ -796,8 +850,8 @@ func (s *ListBindingsRequest) SetInstanceId(v string) *ListBindingsRequest {
 	return s
 }
 
-func (s *ListBindingsRequest) SetVirtualHost(v string) *ListBindingsRequest {
-	s.VirtualHost = &v
+func (s *ListBindingsRequest) SetMaxResults(v int32) *ListBindingsRequest {
+	s.MaxResults = &v
 	return s
 }
 
@@ -806,14 +860,14 @@ func (s *ListBindingsRequest) SetNextToken(v string) *ListBindingsRequest {
 	return s
 }
 
-func (s *ListBindingsRequest) SetMaxResults(v int32) *ListBindingsRequest {
-	s.MaxResults = &v
+func (s *ListBindingsRequest) SetVirtualHost(v string) *ListBindingsRequest {
+	s.VirtualHost = &v
 	return s
 }
 
 type ListBindingsResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListBindingsResponseBody) String() string {
@@ -824,20 +878,20 @@ func (s ListBindingsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListBindingsResponseBody) SetRequestId(v string) *ListBindingsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListBindingsResponseBody) SetData(v *ListBindingsResponseBodyData) *ListBindingsResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *ListBindingsResponseBody) SetRequestId(v string) *ListBindingsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ListBindingsResponseBodyData struct {
-	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	Bindings   []*ListBindingsResponseBodyDataBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+	MaxResults *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListBindingsResponseBodyData) String() string {
@@ -848,8 +902,8 @@ func (s ListBindingsResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ListBindingsResponseBodyData) SetNextToken(v string) *ListBindingsResponseBodyData {
-	s.NextToken = &v
+func (s *ListBindingsResponseBodyData) SetBindings(v []*ListBindingsResponseBodyDataBindings) *ListBindingsResponseBodyData {
+	s.Bindings = v
 	return s
 }
 
@@ -858,17 +912,17 @@ func (s *ListBindingsResponseBodyData) SetMaxResults(v int32) *ListBindingsRespo
 	return s
 }
 
-func (s *ListBindingsResponseBodyData) SetBindings(v []*ListBindingsResponseBodyDataBindings) *ListBindingsResponseBodyData {
-	s.Bindings = v
+func (s *ListBindingsResponseBodyData) SetNextToken(v string) *ListBindingsResponseBodyData {
+	s.NextToken = &v
 	return s
 }
 
 type ListBindingsResponseBodyDataBindings struct {
-	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
+	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
 	BindingKey      *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
 	BindingType     *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
-	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
 	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
+	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
 }
 
 func (s ListBindingsResponseBodyDataBindings) String() string {
@@ -879,8 +933,8 @@ func (s ListBindingsResponseBodyDataBindings) GoString() string {
 	return s.String()
 }
 
-func (s *ListBindingsResponseBodyDataBindings) SetSourceExchange(v string) *ListBindingsResponseBodyDataBindings {
-	s.SourceExchange = &v
+func (s *ListBindingsResponseBodyDataBindings) SetArgument(v string) *ListBindingsResponseBodyDataBindings {
+	s.Argument = &v
 	return s
 }
 
@@ -894,19 +948,20 @@ func (s *ListBindingsResponseBodyDataBindings) SetBindingType(v string) *ListBin
 	return s
 }
 
-func (s *ListBindingsResponseBodyDataBindings) SetArgument(v string) *ListBindingsResponseBodyDataBindings {
-	s.Argument = &v
-	return s
-}
-
 func (s *ListBindingsResponseBodyDataBindings) SetDestinationName(v string) *ListBindingsResponseBodyDataBindings {
 	s.DestinationName = &v
 	return s
 }
 
+func (s *ListBindingsResponseBodyDataBindings) SetSourceExchange(v string) *ListBindingsResponseBodyDataBindings {
+	s.SourceExchange = &v
+	return s
+}
+
 type ListBindingsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListBindingsResponse) String() string {
@@ -922,17 +977,22 @@ func (s *ListBindingsResponse) SetHeaders(v map[string]*string) *ListBindingsRes
 	return s
 }
 
+func (s *ListBindingsResponse) SetStatusCode(v int32) *ListBindingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListBindingsResponse) SetBody(v *ListBindingsResponseBody) *ListBindingsResponse {
 	s.Body = v
 	return s
 }
 
 type ListDownStreamBindingsRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VirtualHost  *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 	ExchangeName *string `json:"ExchangeName,omitempty" xml:"ExchangeName,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	VirtualHost  *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s ListDownStreamBindingsRequest) String() string {
@@ -943,23 +1003,13 @@ func (s ListDownStreamBindingsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListDownStreamBindingsRequest) SetInstanceId(v string) *ListDownStreamBindingsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListDownStreamBindingsRequest) SetVirtualHost(v string) *ListDownStreamBindingsRequest {
-	s.VirtualHost = &v
-	return s
-}
-
 func (s *ListDownStreamBindingsRequest) SetExchangeName(v string) *ListDownStreamBindingsRequest {
 	s.ExchangeName = &v
 	return s
 }
 
-func (s *ListDownStreamBindingsRequest) SetNextToken(v string) *ListDownStreamBindingsRequest {
-	s.NextToken = &v
+func (s *ListDownStreamBindingsRequest) SetInstanceId(v string) *ListDownStreamBindingsRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -968,11 +1018,21 @@ func (s *ListDownStreamBindingsRequest) SetMaxResults(v int32) *ListDownStreamBi
 	return s
 }
 
+func (s *ListDownStreamBindingsRequest) SetNextToken(v string) *ListDownStreamBindingsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDownStreamBindingsRequest) SetVirtualHost(v string) *ListDownStreamBindingsRequest {
+	s.VirtualHost = &v
+	return s
+}
+
 type ListDownStreamBindingsResponseBody struct {
+	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ListDownStreamBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ListDownStreamBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -982,6 +1042,16 @@ func (s ListDownStreamBindingsResponseBody) String() string {
 
 func (s ListDownStreamBindingsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListDownStreamBindingsResponseBody) SetCode(v int32) *ListDownStreamBindingsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDownStreamBindingsResponseBody) SetData(v *ListDownStreamBindingsResponseBodyData) *ListDownStreamBindingsResponseBody {
+	s.Data = v
+	return s
 }
 
 func (s *ListDownStreamBindingsResponseBody) SetMessage(v string) *ListDownStreamBindingsResponseBody {
@@ -994,25 +1064,15 @@ func (s *ListDownStreamBindingsResponseBody) SetRequestId(v string) *ListDownStr
 	return s
 }
 
-func (s *ListDownStreamBindingsResponseBody) SetData(v *ListDownStreamBindingsResponseBodyData) *ListDownStreamBindingsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListDownStreamBindingsResponseBody) SetCode(v int32) *ListDownStreamBindingsResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ListDownStreamBindingsResponseBody) SetSuccess(v bool) *ListDownStreamBindingsResponseBody {
 	s.Success = &v
 	return s
 }
 
 type ListDownStreamBindingsResponseBodyData struct {
-	NextToken  *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults *int32                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	Bindings   []*ListDownStreamBindingsResponseBodyDataBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+	MaxResults *int32                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListDownStreamBindingsResponseBodyData) String() string {
@@ -1023,8 +1083,8 @@ func (s ListDownStreamBindingsResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ListDownStreamBindingsResponseBodyData) SetNextToken(v string) *ListDownStreamBindingsResponseBodyData {
-	s.NextToken = &v
+func (s *ListDownStreamBindingsResponseBodyData) SetBindings(v []*ListDownStreamBindingsResponseBodyDataBindings) *ListDownStreamBindingsResponseBodyData {
+	s.Bindings = v
 	return s
 }
 
@@ -1033,17 +1093,17 @@ func (s *ListDownStreamBindingsResponseBodyData) SetMaxResults(v int32) *ListDow
 	return s
 }
 
-func (s *ListDownStreamBindingsResponseBodyData) SetBindings(v []*ListDownStreamBindingsResponseBodyDataBindings) *ListDownStreamBindingsResponseBodyData {
-	s.Bindings = v
+func (s *ListDownStreamBindingsResponseBodyData) SetNextToken(v string) *ListDownStreamBindingsResponseBodyData {
+	s.NextToken = &v
 	return s
 }
 
 type ListDownStreamBindingsResponseBodyDataBindings struct {
-	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
+	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
 	BindingKey      *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
 	BindingType     *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
-	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
 	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
+	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
 }
 
 func (s ListDownStreamBindingsResponseBodyDataBindings) String() string {
@@ -1054,8 +1114,8 @@ func (s ListDownStreamBindingsResponseBodyDataBindings) GoString() string {
 	return s.String()
 }
 
-func (s *ListDownStreamBindingsResponseBodyDataBindings) SetSourceExchange(v string) *ListDownStreamBindingsResponseBodyDataBindings {
-	s.SourceExchange = &v
+func (s *ListDownStreamBindingsResponseBodyDataBindings) SetArgument(v string) *ListDownStreamBindingsResponseBodyDataBindings {
+	s.Argument = &v
 	return s
 }
 
@@ -1069,19 +1129,20 @@ func (s *ListDownStreamBindingsResponseBodyDataBindings) SetBindingType(v string
 	return s
 }
 
-func (s *ListDownStreamBindingsResponseBodyDataBindings) SetArgument(v string) *ListDownStreamBindingsResponseBodyDataBindings {
-	s.Argument = &v
-	return s
-}
-
 func (s *ListDownStreamBindingsResponseBodyDataBindings) SetDestinationName(v string) *ListDownStreamBindingsResponseBodyDataBindings {
 	s.DestinationName = &v
 	return s
 }
 
+func (s *ListDownStreamBindingsResponseBodyDataBindings) SetSourceExchange(v string) *ListDownStreamBindingsResponseBodyDataBindings {
+	s.SourceExchange = &v
+	return s
+}
+
 type ListDownStreamBindingsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDownStreamBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDownStreamBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDownStreamBindingsResponse) String() string {
@@ -1097,174 +1158,22 @@ func (s *ListDownStreamBindingsResponse) SetHeaders(v map[string]*string) *ListD
 	return s
 }
 
+func (s *ListDownStreamBindingsResponse) SetStatusCode(v int32) *ListDownStreamBindingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDownStreamBindingsResponse) SetBody(v *ListDownStreamBindingsResponseBody) *ListDownStreamBindingsResponse {
 	s.Body = v
 	return s
 }
 
-type ListExchangesRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-}
-
-func (s ListExchangesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListExchangesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListExchangesRequest) SetInstanceId(v string) *ListExchangesRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListExchangesRequest) SetVirtualHost(v string) *ListExchangesRequest {
-	s.VirtualHost = &v
-	return s
-}
-
-func (s *ListExchangesRequest) SetNextToken(v string) *ListExchangesRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListExchangesRequest) SetMaxResults(v int32) *ListExchangesRequest {
-	s.MaxResults = &v
-	return s
-}
-
-type ListExchangesResponseBody struct {
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ListExchangesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s ListExchangesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListExchangesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListExchangesResponseBody) SetRequestId(v string) *ListExchangesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListExchangesResponseBody) SetData(v *ListExchangesResponseBodyData) *ListExchangesResponseBody {
-	s.Data = v
-	return s
-}
-
-type ListExchangesResponseBodyData struct {
-	NextToken  *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Exchanges  []*ListExchangesResponseBodyDataExchanges `json:"Exchanges,omitempty" xml:"Exchanges,omitempty" type:"Repeated"`
-}
-
-func (s ListExchangesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListExchangesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListExchangesResponseBodyData) SetNextToken(v string) *ListExchangesResponseBodyData {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListExchangesResponseBodyData) SetMaxResults(v int32) *ListExchangesResponseBodyData {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListExchangesResponseBodyData) SetExchanges(v []*ListExchangesResponseBodyDataExchanges) *ListExchangesResponseBodyData {
-	s.Exchanges = v
-	return s
-}
-
-type ListExchangesResponseBodyDataExchanges struct {
-	AutoDeleteState *bool                  `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
-	CreateTime      *int64                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Attributes      map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	VHostName       *string                `json:"VHostName,omitempty" xml:"VHostName,omitempty"`
-	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ExchangeType    *string                `json:"ExchangeType,omitempty" xml:"ExchangeType,omitempty"`
-}
-
-func (s ListExchangesResponseBodyDataExchanges) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListExchangesResponseBodyDataExchanges) GoString() string {
-	return s.String()
-}
-
-func (s *ListExchangesResponseBodyDataExchanges) SetAutoDeleteState(v bool) *ListExchangesResponseBodyDataExchanges {
-	s.AutoDeleteState = &v
-	return s
-}
-
-func (s *ListExchangesResponseBodyDataExchanges) SetCreateTime(v int64) *ListExchangesResponseBodyDataExchanges {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListExchangesResponseBodyDataExchanges) SetAttributes(v map[string]interface{}) *ListExchangesResponseBodyDataExchanges {
-	s.Attributes = v
-	return s
-}
-
-func (s *ListExchangesResponseBodyDataExchanges) SetVHostName(v string) *ListExchangesResponseBodyDataExchanges {
-	s.VHostName = &v
-	return s
-}
-
-func (s *ListExchangesResponseBodyDataExchanges) SetName(v string) *ListExchangesResponseBodyDataExchanges {
-	s.Name = &v
-	return s
-}
-
-func (s *ListExchangesResponseBodyDataExchanges) SetExchangeType(v string) *ListExchangesResponseBodyDataExchanges {
-	s.ExchangeType = &v
-	return s
-}
-
-type ListExchangesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListExchangesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListExchangesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListExchangesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListExchangesResponse) SetHeaders(v map[string]*string) *ListExchangesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListExchangesResponse) SetBody(v *ListExchangesResponseBody) *ListExchangesResponse {
-	s.Body = v
-	return s
-}
-
 type ListExchangeUpStreamBindingsRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VirtualHost  *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 	ExchangeName *string `json:"ExchangeName,omitempty" xml:"ExchangeName,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	VirtualHost  *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s ListExchangeUpStreamBindingsRequest) String() string {
@@ -1275,23 +1184,13 @@ func (s ListExchangeUpStreamBindingsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListExchangeUpStreamBindingsRequest) SetInstanceId(v string) *ListExchangeUpStreamBindingsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListExchangeUpStreamBindingsRequest) SetVirtualHost(v string) *ListExchangeUpStreamBindingsRequest {
-	s.VirtualHost = &v
-	return s
-}
-
 func (s *ListExchangeUpStreamBindingsRequest) SetExchangeName(v string) *ListExchangeUpStreamBindingsRequest {
 	s.ExchangeName = &v
 	return s
 }
 
-func (s *ListExchangeUpStreamBindingsRequest) SetNextToken(v string) *ListExchangeUpStreamBindingsRequest {
-	s.NextToken = &v
+func (s *ListExchangeUpStreamBindingsRequest) SetInstanceId(v string) *ListExchangeUpStreamBindingsRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -1300,11 +1199,21 @@ func (s *ListExchangeUpStreamBindingsRequest) SetMaxResults(v int32) *ListExchan
 	return s
 }
 
+func (s *ListExchangeUpStreamBindingsRequest) SetNextToken(v string) *ListExchangeUpStreamBindingsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListExchangeUpStreamBindingsRequest) SetVirtualHost(v string) *ListExchangeUpStreamBindingsRequest {
+	s.VirtualHost = &v
+	return s
+}
+
 type ListExchangeUpStreamBindingsResponseBody struct {
+	Code      *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ListExchangeUpStreamBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ListExchangeUpStreamBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1314,6 +1223,16 @@ func (s ListExchangeUpStreamBindingsResponseBody) String() string {
 
 func (s ListExchangeUpStreamBindingsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListExchangeUpStreamBindingsResponseBody) SetCode(v int32) *ListExchangeUpStreamBindingsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListExchangeUpStreamBindingsResponseBody) SetData(v *ListExchangeUpStreamBindingsResponseBodyData) *ListExchangeUpStreamBindingsResponseBody {
+	s.Data = v
+	return s
 }
 
 func (s *ListExchangeUpStreamBindingsResponseBody) SetMessage(v string) *ListExchangeUpStreamBindingsResponseBody {
@@ -1326,25 +1245,15 @@ func (s *ListExchangeUpStreamBindingsResponseBody) SetRequestId(v string) *ListE
 	return s
 }
 
-func (s *ListExchangeUpStreamBindingsResponseBody) SetData(v *ListExchangeUpStreamBindingsResponseBodyData) *ListExchangeUpStreamBindingsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListExchangeUpStreamBindingsResponseBody) SetCode(v int32) *ListExchangeUpStreamBindingsResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ListExchangeUpStreamBindingsResponseBody) SetSuccess(v bool) *ListExchangeUpStreamBindingsResponseBody {
 	s.Success = &v
 	return s
 }
 
 type ListExchangeUpStreamBindingsResponseBodyData struct {
-	NextToken  *string                                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults *int32                                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	Bindings   []*ListExchangeUpStreamBindingsResponseBodyDataBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+	MaxResults *int32                                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListExchangeUpStreamBindingsResponseBodyData) String() string {
@@ -1355,8 +1264,8 @@ func (s ListExchangeUpStreamBindingsResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ListExchangeUpStreamBindingsResponseBodyData) SetNextToken(v string) *ListExchangeUpStreamBindingsResponseBodyData {
-	s.NextToken = &v
+func (s *ListExchangeUpStreamBindingsResponseBodyData) SetBindings(v []*ListExchangeUpStreamBindingsResponseBodyDataBindings) *ListExchangeUpStreamBindingsResponseBodyData {
+	s.Bindings = v
 	return s
 }
 
@@ -1365,17 +1274,17 @@ func (s *ListExchangeUpStreamBindingsResponseBodyData) SetMaxResults(v int32) *L
 	return s
 }
 
-func (s *ListExchangeUpStreamBindingsResponseBodyData) SetBindings(v []*ListExchangeUpStreamBindingsResponseBodyDataBindings) *ListExchangeUpStreamBindingsResponseBodyData {
-	s.Bindings = v
+func (s *ListExchangeUpStreamBindingsResponseBodyData) SetNextToken(v string) *ListExchangeUpStreamBindingsResponseBodyData {
+	s.NextToken = &v
 	return s
 }
 
 type ListExchangeUpStreamBindingsResponseBodyDataBindings struct {
-	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
+	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
 	BindingKey      *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
 	BindingType     *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
-	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
 	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
+	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
 }
 
 func (s ListExchangeUpStreamBindingsResponseBodyDataBindings) String() string {
@@ -1386,8 +1295,8 @@ func (s ListExchangeUpStreamBindingsResponseBodyDataBindings) GoString() string 
 	return s.String()
 }
 
-func (s *ListExchangeUpStreamBindingsResponseBodyDataBindings) SetSourceExchange(v string) *ListExchangeUpStreamBindingsResponseBodyDataBindings {
-	s.SourceExchange = &v
+func (s *ListExchangeUpStreamBindingsResponseBodyDataBindings) SetArgument(v string) *ListExchangeUpStreamBindingsResponseBodyDataBindings {
+	s.Argument = &v
 	return s
 }
 
@@ -1401,19 +1310,20 @@ func (s *ListExchangeUpStreamBindingsResponseBodyDataBindings) SetBindingType(v 
 	return s
 }
 
-func (s *ListExchangeUpStreamBindingsResponseBodyDataBindings) SetArgument(v string) *ListExchangeUpStreamBindingsResponseBodyDataBindings {
-	s.Argument = &v
-	return s
-}
-
 func (s *ListExchangeUpStreamBindingsResponseBodyDataBindings) SetDestinationName(v string) *ListExchangeUpStreamBindingsResponseBodyDataBindings {
 	s.DestinationName = &v
 	return s
 }
 
+func (s *ListExchangeUpStreamBindingsResponseBodyDataBindings) SetSourceExchange(v string) *ListExchangeUpStreamBindingsResponseBodyDataBindings {
+	s.SourceExchange = &v
+	return s
+}
+
 type ListExchangeUpStreamBindingsResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListExchangeUpStreamBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListExchangeUpStreamBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListExchangeUpStreamBindingsResponse) String() string {
@@ -1429,14 +1339,182 @@ func (s *ListExchangeUpStreamBindingsResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *ListExchangeUpStreamBindingsResponse) SetStatusCode(v int32) *ListExchangeUpStreamBindingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListExchangeUpStreamBindingsResponse) SetBody(v *ListExchangeUpStreamBindingsResponseBody) *ListExchangeUpStreamBindingsResponse {
 	s.Body = v
 	return s
 }
 
+type ListExchangesRequest struct {
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
+}
+
+func (s ListExchangesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExchangesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListExchangesRequest) SetInstanceId(v string) *ListExchangesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListExchangesRequest) SetMaxResults(v int32) *ListExchangesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListExchangesRequest) SetNextToken(v string) *ListExchangesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListExchangesRequest) SetVirtualHost(v string) *ListExchangesRequest {
+	s.VirtualHost = &v
+	return s
+}
+
+type ListExchangesResponseBody struct {
+	Data      *ListExchangesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListExchangesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExchangesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListExchangesResponseBody) SetData(v *ListExchangesResponseBodyData) *ListExchangesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListExchangesResponseBody) SetRequestId(v string) *ListExchangesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListExchangesResponseBodyData struct {
+	Exchanges  []*ListExchangesResponseBodyDataExchanges `json:"Exchanges,omitempty" xml:"Exchanges,omitempty" type:"Repeated"`
+	MaxResults *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListExchangesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExchangesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListExchangesResponseBodyData) SetExchanges(v []*ListExchangesResponseBodyDataExchanges) *ListExchangesResponseBodyData {
+	s.Exchanges = v
+	return s
+}
+
+func (s *ListExchangesResponseBodyData) SetMaxResults(v int32) *ListExchangesResponseBodyData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListExchangesResponseBodyData) SetNextToken(v string) *ListExchangesResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+type ListExchangesResponseBodyDataExchanges struct {
+	Attributes      map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	AutoDeleteState *bool                  `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
+	CreateTime      *int64                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExchangeType    *string                `json:"ExchangeType,omitempty" xml:"ExchangeType,omitempty"`
+	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	VHostName       *string                `json:"VHostName,omitempty" xml:"VHostName,omitempty"`
+}
+
+func (s ListExchangesResponseBodyDataExchanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExchangesResponseBodyDataExchanges) GoString() string {
+	return s.String()
+}
+
+func (s *ListExchangesResponseBodyDataExchanges) SetAttributes(v map[string]interface{}) *ListExchangesResponseBodyDataExchanges {
+	s.Attributes = v
+	return s
+}
+
+func (s *ListExchangesResponseBodyDataExchanges) SetAutoDeleteState(v bool) *ListExchangesResponseBodyDataExchanges {
+	s.AutoDeleteState = &v
+	return s
+}
+
+func (s *ListExchangesResponseBodyDataExchanges) SetCreateTime(v int64) *ListExchangesResponseBodyDataExchanges {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListExchangesResponseBodyDataExchanges) SetExchangeType(v string) *ListExchangesResponseBodyDataExchanges {
+	s.ExchangeType = &v
+	return s
+}
+
+func (s *ListExchangesResponseBodyDataExchanges) SetName(v string) *ListExchangesResponseBodyDataExchanges {
+	s.Name = &v
+	return s
+}
+
+func (s *ListExchangesResponseBodyDataExchanges) SetVHostName(v string) *ListExchangesResponseBodyDataExchanges {
+	s.VHostName = &v
+	return s
+}
+
+type ListExchangesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListExchangesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListExchangesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExchangesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListExchangesResponse) SetHeaders(v map[string]*string) *ListExchangesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListExchangesResponse) SetStatusCode(v int32) *ListExchangesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListExchangesResponse) SetBody(v *ListExchangesResponseBody) *ListExchangesResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstancesRequest struct {
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -1447,19 +1525,19 @@ func (s ListInstancesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstancesRequest) SetNextToken(v string) *ListInstancesRequest {
-	s.NextToken = &v
-	return s
-}
-
 func (s *ListInstancesRequest) SetMaxResults(v int32) *ListInstancesRequest {
 	s.MaxResults = &v
 	return s
 }
 
+func (s *ListInstancesRequest) SetNextToken(v string) *ListInstancesRequest {
+	s.NextToken = &v
+	return s
+}
+
 type ListInstancesResponseBody struct {
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -1470,20 +1548,20 @@ func (s ListInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstancesResponseBody) SetRequestId(v string) *ListInstancesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListInstancesResponseBody) SetData(v *ListInstancesResponseBodyData) *ListInstancesResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *ListInstancesResponseBody) SetRequestId(v string) *ListInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ListInstancesResponseBodyData struct {
-	NextToken  *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	Instances  []*ListInstancesResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	MaxResults *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListInstancesResponseBodyData) String() string {
@@ -1494,8 +1572,8 @@ func (s ListInstancesResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstancesResponseBodyData) SetNextToken(v string) *ListInstancesResponseBodyData {
-	s.NextToken = &v
+func (s *ListInstancesResponseBodyData) SetInstances(v []*ListInstancesResponseBodyDataInstances) *ListInstancesResponseBodyData {
+	s.Instances = v
 	return s
 }
 
@@ -1504,23 +1582,29 @@ func (s *ListInstancesResponseBodyData) SetMaxResults(v int32) *ListInstancesRes
 	return s
 }
 
-func (s *ListInstancesResponseBodyData) SetInstances(v []*ListInstancesResponseBodyDataInstances) *ListInstancesResponseBodyData {
-	s.Instances = v
+func (s *ListInstancesResponseBodyData) SetNextToken(v string) *ListInstancesResponseBodyData {
+	s.NextToken = &v
 	return s
 }
 
 type ListInstancesResponseBodyDataInstances struct {
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportEIP        *bool   `json:"SupportEIP,omitempty" xml:"SupportEIP,omitempty"`
 	AutoRenewInstance *bool   `json:"AutoRenewInstance,omitempty" xml:"AutoRenewInstance,omitempty"`
+	ClassicEndpoint   *string `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
 	ExpireTime        *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	OrderCreateTime   *int64  `json:"OrderCreateTime,omitempty" xml:"OrderCreateTime,omitempty"`
-	InstanceName      *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PrivateEndpoint   *string `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty"`
-	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName      *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceType      *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	MaxEipTps         *int32  `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
+	MaxQueue          *int32  `json:"MaxQueue,omitempty" xml:"MaxQueue,omitempty"`
+	MaxTps            *int32  `json:"MaxTps,omitempty" xml:"MaxTps,omitempty"`
+	MaxVhost          *int32  `json:"MaxVhost,omitempty" xml:"MaxVhost,omitempty"`
+	OrderCreateTime   *int64  `json:"OrderCreateTime,omitempty" xml:"OrderCreateTime,omitempty"`
+	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	PrivateEndpoint   *string `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty"`
 	PublicEndpoint    *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageSize       *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	SupportEIP        *bool   `json:"SupportEIP,omitempty" xml:"SupportEIP,omitempty"`
 }
 
 func (s ListInstancesResponseBodyDataInstances) String() string {
@@ -1531,18 +1615,13 @@ func (s ListInstancesResponseBodyDataInstances) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstancesResponseBodyDataInstances) SetStatus(v string) *ListInstancesResponseBodyDataInstances {
-	s.Status = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyDataInstances) SetSupportEIP(v bool) *ListInstancesResponseBodyDataInstances {
-	s.SupportEIP = &v
-	return s
-}
-
 func (s *ListInstancesResponseBodyDataInstances) SetAutoRenewInstance(v bool) *ListInstancesResponseBodyDataInstances {
 	s.AutoRenewInstance = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetClassicEndpoint(v string) *ListInstancesResponseBodyDataInstances {
+	s.ClassicEndpoint = &v
 	return s
 }
 
@@ -1551,8 +1630,8 @@ func (s *ListInstancesResponseBodyDataInstances) SetExpireTime(v int64) *ListIns
 	return s
 }
 
-func (s *ListInstancesResponseBodyDataInstances) SetOrderCreateTime(v int64) *ListInstancesResponseBodyDataInstances {
-	s.OrderCreateTime = &v
+func (s *ListInstancesResponseBodyDataInstances) SetInstanceId(v string) *ListInstancesResponseBodyDataInstances {
+	s.InstanceId = &v
 	return s
 }
 
@@ -1561,8 +1640,33 @@ func (s *ListInstancesResponseBodyDataInstances) SetInstanceName(v string) *List
 	return s
 }
 
-func (s *ListInstancesResponseBodyDataInstances) SetPrivateEndpoint(v string) *ListInstancesResponseBodyDataInstances {
-	s.PrivateEndpoint = &v
+func (s *ListInstancesResponseBodyDataInstances) SetInstanceType(v string) *ListInstancesResponseBodyDataInstances {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetMaxEipTps(v int32) *ListInstancesResponseBodyDataInstances {
+	s.MaxEipTps = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetMaxQueue(v int32) *ListInstancesResponseBodyDataInstances {
+	s.MaxQueue = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetMaxTps(v int32) *ListInstancesResponseBodyDataInstances {
+	s.MaxTps = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetMaxVhost(v int32) *ListInstancesResponseBodyDataInstances {
+	s.MaxVhost = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetOrderCreateTime(v int64) *ListInstancesResponseBodyDataInstances {
+	s.OrderCreateTime = &v
 	return s
 }
 
@@ -1571,13 +1675,8 @@ func (s *ListInstancesResponseBodyDataInstances) SetOrderType(v string) *ListIns
 	return s
 }
 
-func (s *ListInstancesResponseBodyDataInstances) SetInstanceId(v string) *ListInstancesResponseBodyDataInstances {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyDataInstances) SetInstanceType(v string) *ListInstancesResponseBodyDataInstances {
-	s.InstanceType = &v
+func (s *ListInstancesResponseBodyDataInstances) SetPrivateEndpoint(v string) *ListInstancesResponseBodyDataInstances {
+	s.PrivateEndpoint = &v
 	return s
 }
 
@@ -1586,9 +1685,25 @@ func (s *ListInstancesResponseBodyDataInstances) SetPublicEndpoint(v string) *Li
 	return s
 }
 
+func (s *ListInstancesResponseBodyDataInstances) SetStatus(v string) *ListInstancesResponseBodyDataInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetStorageSize(v int32) *ListInstancesResponseBodyDataInstances {
+	s.StorageSize = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetSupportEIP(v bool) *ListInstancesResponseBodyDataInstances {
+	s.SupportEIP = &v
+	return s
+}
+
 type ListInstancesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListInstancesResponse) String() string {
@@ -1604,6 +1719,11 @@ func (s *ListInstancesResponse) SetHeaders(v map[string]*string) *ListInstancesR
 	return s
 }
 
+func (s *ListInstancesResponse) SetStatusCode(v int32) *ListInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInstancesResponse {
 	s.Body = v
 	return s
@@ -1611,10 +1731,10 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 
 type ListQueueConsumersRequest struct {
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
-	Queue       *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
 	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	QueryCount  *int32  `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	Queue       *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
+	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s ListQueueConsumersRequest) String() string {
@@ -1630,16 +1750,6 @@ func (s *ListQueueConsumersRequest) SetInstanceId(v string) *ListQueueConsumersR
 	return s
 }
 
-func (s *ListQueueConsumersRequest) SetVirtualHost(v string) *ListQueueConsumersRequest {
-	s.VirtualHost = &v
-	return s
-}
-
-func (s *ListQueueConsumersRequest) SetQueue(v string) *ListQueueConsumersRequest {
-	s.Queue = &v
-	return s
-}
-
 func (s *ListQueueConsumersRequest) SetNextToken(v string) *ListQueueConsumersRequest {
 	s.NextToken = &v
 	return s
@@ -1650,9 +1760,19 @@ func (s *ListQueueConsumersRequest) SetQueryCount(v int32) *ListQueueConsumersRe
 	return s
 }
 
+func (s *ListQueueConsumersRequest) SetQueue(v string) *ListQueueConsumersRequest {
+	s.Queue = &v
+	return s
+}
+
+func (s *ListQueueConsumersRequest) SetVirtualHost(v string) *ListQueueConsumersRequest {
+	s.VirtualHost = &v
+	return s
+}
+
 type ListQueueConsumersResponseBody struct {
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListQueueConsumersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListQueueConsumersResponseBody) String() string {
@@ -1663,20 +1783,20 @@ func (s ListQueueConsumersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListQueueConsumersResponseBody) SetRequestId(v string) *ListQueueConsumersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListQueueConsumersResponseBody) SetData(v *ListQueueConsumersResponseBodyData) *ListQueueConsumersResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *ListQueueConsumersResponseBody) SetRequestId(v string) *ListQueueConsumersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ListQueueConsumersResponseBodyData struct {
-	NextToken  *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Consumers  []*ListQueueConsumersResponseBodyDataConsumers `json:"Consumers,omitempty" xml:"Consumers,omitempty" type:"Repeated"`
 	MaxResults *int32                                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListQueueConsumersResponseBodyData) String() string {
@@ -1687,11 +1807,6 @@ func (s ListQueueConsumersResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ListQueueConsumersResponseBodyData) SetNextToken(v string) *ListQueueConsumersResponseBodyData {
-	s.NextToken = &v
-	return s
-}
-
 func (s *ListQueueConsumersResponseBodyData) SetConsumers(v []*ListQueueConsumersResponseBodyDataConsumers) *ListQueueConsumersResponseBodyData {
 	s.Consumers = v
 	return s
@@ -1699,6 +1814,11 @@ func (s *ListQueueConsumersResponseBodyData) SetConsumers(v []*ListQueueConsumer
 
 func (s *ListQueueConsumersResponseBodyData) SetMaxResults(v int32) *ListQueueConsumersResponseBodyData {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ListQueueConsumersResponseBodyData) SetNextToken(v string) *ListQueueConsumersResponseBodyData {
+	s.NextToken = &v
 	return s
 }
 
@@ -1720,8 +1840,9 @@ func (s *ListQueueConsumersResponseBodyDataConsumers) SetConsumerTag(v string) *
 }
 
 type ListQueueConsumersResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListQueueConsumersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListQueueConsumersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListQueueConsumersResponse) String() string {
@@ -1737,186 +1858,22 @@ func (s *ListQueueConsumersResponse) SetHeaders(v map[string]*string) *ListQueue
 	return s
 }
 
+func (s *ListQueueConsumersResponse) SetStatusCode(v int32) *ListQueueConsumersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListQueueConsumersResponse) SetBody(v *ListQueueConsumersResponseBody) *ListQueueConsumersResponse {
-	s.Body = v
-	return s
-}
-
-type ListQueuesRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-}
-
-func (s ListQueuesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListQueuesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListQueuesRequest) SetInstanceId(v string) *ListQueuesRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListQueuesRequest) SetVirtualHost(v string) *ListQueuesRequest {
-	s.VirtualHost = &v
-	return s
-}
-
-func (s *ListQueuesRequest) SetNextToken(v string) *ListQueuesRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListQueuesRequest) SetMaxResults(v int32) *ListQueuesRequest {
-	s.MaxResults = &v
-	return s
-}
-
-type ListQueuesResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ListQueuesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s ListQueuesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListQueuesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListQueuesResponseBody) SetRequestId(v string) *ListQueuesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListQueuesResponseBody) SetData(v *ListQueuesResponseBodyData) *ListQueuesResponseBody {
-	s.Data = v
-	return s
-}
-
-type ListQueuesResponseBodyData struct {
-	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Queues     []*ListQueuesResponseBodyDataQueues `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
-	MaxResults *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-}
-
-func (s ListQueuesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListQueuesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListQueuesResponseBodyData) SetNextToken(v string) *ListQueuesResponseBodyData {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListQueuesResponseBodyData) SetQueues(v []*ListQueuesResponseBodyDataQueues) *ListQueuesResponseBodyData {
-	s.Queues = v
-	return s
-}
-
-func (s *ListQueuesResponseBodyData) SetMaxResults(v int32) *ListQueuesResponseBodyData {
-	s.MaxResults = &v
-	return s
-}
-
-type ListQueuesResponseBodyDataQueues struct {
-	ExclusiveState  *bool                  `json:"ExclusiveState,omitempty" xml:"ExclusiveState,omitempty"`
-	AutoDeleteState *bool                  `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
-	CreateTime      *int64                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Attributes      map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	VHostName       *string                `json:"VHostName,omitempty" xml:"VHostName,omitempty"`
-	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId         *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	LastConsumeTime *int64                 `json:"LastConsumeTime,omitempty" xml:"LastConsumeTime,omitempty"`
-}
-
-func (s ListQueuesResponseBodyDataQueues) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListQueuesResponseBodyDataQueues) GoString() string {
-	return s.String()
-}
-
-func (s *ListQueuesResponseBodyDataQueues) SetExclusiveState(v bool) *ListQueuesResponseBodyDataQueues {
-	s.ExclusiveState = &v
-	return s
-}
-
-func (s *ListQueuesResponseBodyDataQueues) SetAutoDeleteState(v bool) *ListQueuesResponseBodyDataQueues {
-	s.AutoDeleteState = &v
-	return s
-}
-
-func (s *ListQueuesResponseBodyDataQueues) SetCreateTime(v int64) *ListQueuesResponseBodyDataQueues {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListQueuesResponseBodyDataQueues) SetAttributes(v map[string]interface{}) *ListQueuesResponseBodyDataQueues {
-	s.Attributes = v
-	return s
-}
-
-func (s *ListQueuesResponseBodyDataQueues) SetVHostName(v string) *ListQueuesResponseBodyDataQueues {
-	s.VHostName = &v
-	return s
-}
-
-func (s *ListQueuesResponseBodyDataQueues) SetName(v string) *ListQueuesResponseBodyDataQueues {
-	s.Name = &v
-	return s
-}
-
-func (s *ListQueuesResponseBodyDataQueues) SetOwnerId(v string) *ListQueuesResponseBodyDataQueues {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ListQueuesResponseBodyDataQueues) SetLastConsumeTime(v int64) *ListQueuesResponseBodyDataQueues {
-	s.LastConsumeTime = &v
-	return s
-}
-
-type ListQueuesResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListQueuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListQueuesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListQueuesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListQueuesResponse) SetHeaders(v map[string]*string) *ListQueuesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListQueuesResponse) SetBody(v *ListQueuesResponseBody) *ListQueuesResponse {
 	s.Body = v
 	return s
 }
 
 type ListQueueUpStreamBindingsRequest struct {
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
-	QueueName   *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	QueueName   *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
 }
 
 func (s ListQueueUpStreamBindingsRequest) String() string {
@@ -1932,13 +1889,8 @@ func (s *ListQueueUpStreamBindingsRequest) SetInstanceId(v string) *ListQueueUpS
 	return s
 }
 
-func (s *ListQueueUpStreamBindingsRequest) SetVirtualHost(v string) *ListQueueUpStreamBindingsRequest {
-	s.VirtualHost = &v
-	return s
-}
-
-func (s *ListQueueUpStreamBindingsRequest) SetQueueName(v string) *ListQueueUpStreamBindingsRequest {
-	s.QueueName = &v
+func (s *ListQueueUpStreamBindingsRequest) SetMaxResults(v int32) *ListQueueUpStreamBindingsRequest {
+	s.MaxResults = &v
 	return s
 }
 
@@ -1947,14 +1899,19 @@ func (s *ListQueueUpStreamBindingsRequest) SetNextToken(v string) *ListQueueUpSt
 	return s
 }
 
-func (s *ListQueueUpStreamBindingsRequest) SetMaxResults(v int32) *ListQueueUpStreamBindingsRequest {
-	s.MaxResults = &v
+func (s *ListQueueUpStreamBindingsRequest) SetQueueName(v string) *ListQueueUpStreamBindingsRequest {
+	s.QueueName = &v
+	return s
+}
+
+func (s *ListQueueUpStreamBindingsRequest) SetVirtualHost(v string) *ListQueueUpStreamBindingsRequest {
+	s.VirtualHost = &v
 	return s
 }
 
 type ListQueueUpStreamBindingsResponseBody struct {
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListQueueUpStreamBindingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListQueueUpStreamBindingsResponseBody) String() string {
@@ -1965,20 +1922,20 @@ func (s ListQueueUpStreamBindingsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListQueueUpStreamBindingsResponseBody) SetRequestId(v string) *ListQueueUpStreamBindingsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListQueueUpStreamBindingsResponseBody) SetData(v *ListQueueUpStreamBindingsResponseBodyData) *ListQueueUpStreamBindingsResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *ListQueueUpStreamBindingsResponseBody) SetRequestId(v string) *ListQueueUpStreamBindingsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ListQueueUpStreamBindingsResponseBodyData struct {
-	NextToken  *string                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults *string                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	Bindings   []*ListQueueUpStreamBindingsResponseBodyDataBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+	MaxResults *string                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListQueueUpStreamBindingsResponseBodyData) String() string {
@@ -1989,8 +1946,8 @@ func (s ListQueueUpStreamBindingsResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ListQueueUpStreamBindingsResponseBodyData) SetNextToken(v string) *ListQueueUpStreamBindingsResponseBodyData {
-	s.NextToken = &v
+func (s *ListQueueUpStreamBindingsResponseBodyData) SetBindings(v []*ListQueueUpStreamBindingsResponseBodyDataBindings) *ListQueueUpStreamBindingsResponseBodyData {
+	s.Bindings = v
 	return s
 }
 
@@ -1999,17 +1956,17 @@ func (s *ListQueueUpStreamBindingsResponseBodyData) SetMaxResults(v string) *Lis
 	return s
 }
 
-func (s *ListQueueUpStreamBindingsResponseBodyData) SetBindings(v []*ListQueueUpStreamBindingsResponseBodyDataBindings) *ListQueueUpStreamBindingsResponseBodyData {
-	s.Bindings = v
+func (s *ListQueueUpStreamBindingsResponseBodyData) SetNextToken(v string) *ListQueueUpStreamBindingsResponseBodyData {
+	s.NextToken = &v
 	return s
 }
 
 type ListQueueUpStreamBindingsResponseBodyDataBindings struct {
-	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
+	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
 	BindingKey      *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
 	BindingType     *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
-	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
 	DestinationName *string `json:"DestinationName,omitempty" xml:"DestinationName,omitempty"`
+	SourceExchange  *string `json:"SourceExchange,omitempty" xml:"SourceExchange,omitempty"`
 }
 
 func (s ListQueueUpStreamBindingsResponseBodyDataBindings) String() string {
@@ -2020,8 +1977,8 @@ func (s ListQueueUpStreamBindingsResponseBodyDataBindings) GoString() string {
 	return s.String()
 }
 
-func (s *ListQueueUpStreamBindingsResponseBodyDataBindings) SetSourceExchange(v string) *ListQueueUpStreamBindingsResponseBodyDataBindings {
-	s.SourceExchange = &v
+func (s *ListQueueUpStreamBindingsResponseBodyDataBindings) SetArgument(v string) *ListQueueUpStreamBindingsResponseBodyDataBindings {
+	s.Argument = &v
 	return s
 }
 
@@ -2035,19 +1992,20 @@ func (s *ListQueueUpStreamBindingsResponseBodyDataBindings) SetBindingType(v str
 	return s
 }
 
-func (s *ListQueueUpStreamBindingsResponseBodyDataBindings) SetArgument(v string) *ListQueueUpStreamBindingsResponseBodyDataBindings {
-	s.Argument = &v
-	return s
-}
-
 func (s *ListQueueUpStreamBindingsResponseBodyDataBindings) SetDestinationName(v string) *ListQueueUpStreamBindingsResponseBodyDataBindings {
 	s.DestinationName = &v
 	return s
 }
 
+func (s *ListQueueUpStreamBindingsResponseBodyDataBindings) SetSourceExchange(v string) *ListQueueUpStreamBindingsResponseBodyDataBindings {
+	s.SourceExchange = &v
+	return s
+}
+
 type ListQueueUpStreamBindingsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListQueueUpStreamBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListQueueUpStreamBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListQueueUpStreamBindingsResponse) String() string {
@@ -2063,15 +2021,195 @@ func (s *ListQueueUpStreamBindingsResponse) SetHeaders(v map[string]*string) *Li
 	return s
 }
 
+func (s *ListQueueUpStreamBindingsResponse) SetStatusCode(v int32) *ListQueueUpStreamBindingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListQueueUpStreamBindingsResponse) SetBody(v *ListQueueUpStreamBindingsResponseBody) *ListQueueUpStreamBindingsResponse {
+	s.Body = v
+	return s
+}
+
+type ListQueuesRequest struct {
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
+}
+
+func (s ListQueuesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQueuesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListQueuesRequest) SetInstanceId(v string) *ListQueuesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListQueuesRequest) SetMaxResults(v int32) *ListQueuesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListQueuesRequest) SetNextToken(v string) *ListQueuesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListQueuesRequest) SetVirtualHost(v string) *ListQueuesRequest {
+	s.VirtualHost = &v
+	return s
+}
+
+type ListQueuesResponseBody struct {
+	Data      *ListQueuesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListQueuesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQueuesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListQueuesResponseBody) SetData(v *ListQueuesResponseBodyData) *ListQueuesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListQueuesResponseBody) SetRequestId(v string) *ListQueuesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListQueuesResponseBodyData struct {
+	MaxResults *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Queues     []*ListQueuesResponseBodyDataQueues `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
+}
+
+func (s ListQueuesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQueuesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListQueuesResponseBodyData) SetMaxResults(v int32) *ListQueuesResponseBodyData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListQueuesResponseBodyData) SetNextToken(v string) *ListQueuesResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListQueuesResponseBodyData) SetQueues(v []*ListQueuesResponseBodyDataQueues) *ListQueuesResponseBodyData {
+	s.Queues = v
+	return s
+}
+
+type ListQueuesResponseBodyDataQueues struct {
+	Attributes      map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	AutoDeleteState *bool                  `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
+	CreateTime      *int64                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExclusiveState  *bool                  `json:"ExclusiveState,omitempty" xml:"ExclusiveState,omitempty"`
+	LastConsumeTime *int64                 `json:"LastConsumeTime,omitempty" xml:"LastConsumeTime,omitempty"`
+	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId         *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	VHostName       *string                `json:"VHostName,omitempty" xml:"VHostName,omitempty"`
+}
+
+func (s ListQueuesResponseBodyDataQueues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQueuesResponseBodyDataQueues) GoString() string {
+	return s.String()
+}
+
+func (s *ListQueuesResponseBodyDataQueues) SetAttributes(v map[string]interface{}) *ListQueuesResponseBodyDataQueues {
+	s.Attributes = v
+	return s
+}
+
+func (s *ListQueuesResponseBodyDataQueues) SetAutoDeleteState(v bool) *ListQueuesResponseBodyDataQueues {
+	s.AutoDeleteState = &v
+	return s
+}
+
+func (s *ListQueuesResponseBodyDataQueues) SetCreateTime(v int64) *ListQueuesResponseBodyDataQueues {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListQueuesResponseBodyDataQueues) SetExclusiveState(v bool) *ListQueuesResponseBodyDataQueues {
+	s.ExclusiveState = &v
+	return s
+}
+
+func (s *ListQueuesResponseBodyDataQueues) SetLastConsumeTime(v int64) *ListQueuesResponseBodyDataQueues {
+	s.LastConsumeTime = &v
+	return s
+}
+
+func (s *ListQueuesResponseBodyDataQueues) SetName(v string) *ListQueuesResponseBodyDataQueues {
+	s.Name = &v
+	return s
+}
+
+func (s *ListQueuesResponseBodyDataQueues) SetOwnerId(v string) *ListQueuesResponseBodyDataQueues {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListQueuesResponseBodyDataQueues) SetVHostName(v string) *ListQueuesResponseBodyDataQueues {
+	s.VHostName = &v
+	return s
+}
+
+type ListQueuesResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListQueuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListQueuesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQueuesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListQueuesResponse) SetHeaders(v map[string]*string) *ListQueuesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListQueuesResponse) SetStatusCode(v int32) *ListQueuesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListQueuesResponse) SetBody(v *ListQueuesResponseBody) *ListQueuesResponse {
 	s.Body = v
 	return s
 }
 
 type ListVirtualHostsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListVirtualHostsRequest) String() string {
@@ -2087,19 +2225,19 @@ func (s *ListVirtualHostsRequest) SetInstanceId(v string) *ListVirtualHostsReque
 	return s
 }
 
-func (s *ListVirtualHostsRequest) SetNextToken(v string) *ListVirtualHostsRequest {
-	s.NextToken = &v
-	return s
-}
-
 func (s *ListVirtualHostsRequest) SetMaxResults(v int32) *ListVirtualHostsRequest {
 	s.MaxResults = &v
 	return s
 }
 
+func (s *ListVirtualHostsRequest) SetNextToken(v string) *ListVirtualHostsRequest {
+	s.NextToken = &v
+	return s
+}
+
 type ListVirtualHostsResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListVirtualHostsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListVirtualHostsResponseBody) String() string {
@@ -2110,19 +2248,19 @@ func (s ListVirtualHostsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListVirtualHostsResponseBody) SetRequestId(v string) *ListVirtualHostsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListVirtualHostsResponseBody) SetData(v *ListVirtualHostsResponseBodyData) *ListVirtualHostsResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *ListVirtualHostsResponseBody) SetRequestId(v string) *ListVirtualHostsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ListVirtualHostsResponseBodyData struct {
-	NextToken    *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	MaxResults   *int32                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	VirtualHosts []*ListVirtualHostsResponseBodyDataVirtualHosts `json:"VirtualHosts,omitempty" xml:"VirtualHosts,omitempty" type:"Repeated"`
 }
 
@@ -2134,13 +2272,13 @@ func (s ListVirtualHostsResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ListVirtualHostsResponseBodyData) SetNextToken(v string) *ListVirtualHostsResponseBodyData {
-	s.NextToken = &v
+func (s *ListVirtualHostsResponseBodyData) SetMaxResults(v int32) *ListVirtualHostsResponseBodyData {
+	s.MaxResults = &v
 	return s
 }
 
-func (s *ListVirtualHostsResponseBodyData) SetMaxResults(v int32) *ListVirtualHostsResponseBodyData {
-	s.MaxResults = &v
+func (s *ListVirtualHostsResponseBodyData) SetNextToken(v string) *ListVirtualHostsResponseBodyData {
+	s.NextToken = &v
 	return s
 }
 
@@ -2167,8 +2305,9 @@ func (s *ListVirtualHostsResponseBodyDataVirtualHosts) SetName(v string) *ListVi
 }
 
 type ListVirtualHostsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVirtualHostsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVirtualHostsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVirtualHostsResponse) String() string {
@@ -2184,7 +2323,105 @@ func (s *ListVirtualHostsResponse) SetHeaders(v map[string]*string) *ListVirtual
 	return s
 }
 
+func (s *ListVirtualHostsResponse) SetStatusCode(v int32) *ListVirtualHostsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListVirtualHostsResponse) SetBody(v *ListVirtualHostsResponseBody) *ListVirtualHostsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateInstanceNameRequest struct {
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+}
+
+func (s UpdateInstanceNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceNameRequest) SetInstanceId(v string) *UpdateInstanceNameRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateInstanceNameRequest) SetInstanceName(v string) *UpdateInstanceNameRequest {
+	s.InstanceName = &v
+	return s
+}
+
+type UpdateInstanceNameResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateInstanceNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceNameResponseBody) SetCode(v int32) *UpdateInstanceNameResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateInstanceNameResponseBody) SetData(v string) *UpdateInstanceNameResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateInstanceNameResponseBody) SetMessage(v string) *UpdateInstanceNameResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateInstanceNameResponseBody) SetRequestId(v string) *UpdateInstanceNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateInstanceNameResponseBody) SetSuccess(v bool) *UpdateInstanceNameResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateInstanceNameResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateInstanceNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateInstanceNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceNameResponse) SetHeaders(v map[string]*string) *UpdateInstanceNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceNameResponse) SetStatusCode(v int32) *UpdateInstanceNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateInstanceNameResponse) SetBody(v *UpdateInstanceNameResponseBody) *UpdateInstanceNameResponse {
 	s.Body = v
 	return s
 }
@@ -2241,11 +2478,51 @@ func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Argument)) {
+		body["Argument"] = request.Argument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindingKey)) {
+		body["BindingKey"] = request.BindingKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindingType)) {
+		body["BindingType"] = request.BindingType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationName)) {
+		body["DestinationName"] = request.DestinationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceExchange)) {
+		body["SourceExchange"] = request.SourceExchange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualHost)) {
+		body["VirtualHost"] = request.VirtualHost
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBinding"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateBindingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateBinding"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2269,11 +2546,51 @@ func (client *Client) CreateExchangeWithOptions(request *CreateExchangeRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlternateExchange)) {
+		body["AlternateExchange"] = request.AlternateExchange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoDeleteState)) {
+		body["AutoDeleteState"] = request.AutoDeleteState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExchangeName)) {
+		body["ExchangeName"] = request.ExchangeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExchangeType)) {
+		body["ExchangeType"] = request.ExchangeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Internal)) {
+		body["Internal"] = request.Internal
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualHost)) {
+		body["VirtualHost"] = request.VirtualHost
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateExchange"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateExchangeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateExchange"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2297,11 +2614,67 @@ func (client *Client) CreateQueueWithOptions(request *CreateQueueRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoDeleteState)) {
+		body["AutoDeleteState"] = request.AutoDeleteState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoExpireState)) {
+		body["AutoExpireState"] = request.AutoExpireState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeadLetterExchange)) {
+		body["DeadLetterExchange"] = request.DeadLetterExchange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeadLetterRoutingKey)) {
+		body["DeadLetterRoutingKey"] = request.DeadLetterRoutingKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExclusiveState)) {
+		body["ExclusiveState"] = request.ExclusiveState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxLength)) {
+		body["MaxLength"] = request.MaxLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumPriority)) {
+		body["MaximumPriority"] = request.MaximumPriority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageTTL)) {
+		body["MessageTTL"] = request.MessageTTL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueName)) {
+		body["QueueName"] = request.QueueName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualHost)) {
+		body["VirtualHost"] = request.VirtualHost
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateQueue"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateQueueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateQueue"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2325,11 +2698,31 @@ func (client *Client) CreateVirtualHostWithOptions(request *CreateVirtualHostReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualHost)) {
+		body["VirtualHost"] = request.VirtualHost
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVirtualHost"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateVirtualHostResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateVirtualHost"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2353,11 +2746,47 @@ func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BindingKey)) {
+		body["BindingKey"] = request.BindingKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindingType)) {
+		body["BindingType"] = request.BindingType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationName)) {
+		body["DestinationName"] = request.DestinationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceExchange)) {
+		body["SourceExchange"] = request.SourceExchange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualHost)) {
+		body["VirtualHost"] = request.VirtualHost
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBinding"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteBindingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteBinding"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2381,11 +2810,35 @@ func (client *Client) DeleteExchangeWithOptions(request *DeleteExchangeRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExchangeName)) {
+		body["ExchangeName"] = request.ExchangeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualHost)) {
+		body["VirtualHost"] = request.VirtualHost
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteExchange"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteExchangeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteExchange"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2409,11 +2862,35 @@ func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueName)) {
+		body["QueueName"] = request.QueueName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualHost)) {
+		body["VirtualHost"] = request.VirtualHost
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteQueue"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteQueueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteQueue"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2437,11 +2914,31 @@ func (client *Client) DeleteVirtualHostWithOptions(request *DeleteVirtualHostReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualHost)) {
+		body["VirtualHost"] = request.VirtualHost
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVirtualHost"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVirtualHostResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteVirtualHost"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2467,10 +2964,21 @@ func (client *Client) GetMetadataAmountWithOptions(request *GetMetadataAmountReq
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMetadataAmount"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetadataAmountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMetadataAmount"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2496,10 +3004,21 @@ func (client *Client) ListBindingsWithOptions(request *ListBindingsRequest, runt
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBindings"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBindingsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBindings"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2525,10 +3044,21 @@ func (client *Client) ListDownStreamBindingsWithOptions(request *ListDownStreamB
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDownStreamBindings"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListDownStreamBindingsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDownStreamBindings"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2547,35 +3077,6 @@ func (client *Client) ListDownStreamBindings(request *ListDownStreamBindingsRequ
 	return _result, _err
 }
 
-func (client *Client) ListExchangesWithOptions(request *ListExchangesRequest, runtime *util.RuntimeOptions) (_result *ListExchangesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &ListExchangesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListExchanges"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListExchanges(request *ListExchangesRequest) (_result *ListExchangesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListExchangesResponse{}
-	_body, _err := client.ListExchangesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListExchangeUpStreamBindingsWithOptions(request *ListExchangeUpStreamBindingsRequest, runtime *util.RuntimeOptions) (_result *ListExchangeUpStreamBindingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2583,10 +3084,21 @@ func (client *Client) ListExchangeUpStreamBindingsWithOptions(request *ListExcha
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListExchangeUpStreamBindings"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListExchangeUpStreamBindingsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListExchangeUpStreamBindings"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2605,6 +3117,46 @@ func (client *Client) ListExchangeUpStreamBindings(request *ListExchangeUpStream
 	return _result, _err
 }
 
+func (client *Client) ListExchangesWithOptions(request *ListExchangesRequest, runtime *util.RuntimeOptions) (_result *ListExchangesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListExchanges"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListExchangesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListExchanges(request *ListExchangesRequest) (_result *ListExchangesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListExchangesResponse{}
+	_body, _err := client.ListExchangesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2612,10 +3164,21 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstances"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListInstances"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2641,10 +3204,21 @@ func (client *Client) ListQueueConsumersWithOptions(request *ListQueueConsumersR
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListQueueConsumers"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListQueueConsumersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListQueueConsumers"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2663,35 +3237,6 @@ func (client *Client) ListQueueConsumers(request *ListQueueConsumersRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) ListQueuesWithOptions(request *ListQueuesRequest, runtime *util.RuntimeOptions) (_result *ListQueuesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &ListQueuesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListQueues"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListQueues(request *ListQueuesRequest) (_result *ListQueuesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListQueuesResponse{}
-	_body, _err := client.ListQueuesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListQueueUpStreamBindingsWithOptions(request *ListQueueUpStreamBindingsRequest, runtime *util.RuntimeOptions) (_result *ListQueueUpStreamBindingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2699,10 +3244,21 @@ func (client *Client) ListQueueUpStreamBindingsWithOptions(request *ListQueueUpS
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListQueueUpStreamBindings"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListQueueUpStreamBindingsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListQueueUpStreamBindings"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2721,6 +3277,46 @@ func (client *Client) ListQueueUpStreamBindings(request *ListQueueUpStreamBindin
 	return _result, _err
 }
 
+func (client *Client) ListQueuesWithOptions(request *ListQueuesRequest, runtime *util.RuntimeOptions) (_result *ListQueuesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListQueues"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListQueuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListQueues(request *ListQueuesRequest) (_result *ListQueuesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListQueuesResponse{}
+	_body, _err := client.ListQueuesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListVirtualHostsWithOptions(request *ListVirtualHostsRequest, runtime *util.RuntimeOptions) (_result *ListVirtualHostsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2728,10 +3324,21 @@ func (client *Client) ListVirtualHostsWithOptions(request *ListVirtualHostsReque
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVirtualHosts"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListVirtualHostsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListVirtualHosts"), tea.String("2019-12-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2743,6 +3350,54 @@ func (client *Client) ListVirtualHosts(request *ListVirtualHostsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVirtualHostsResponse{}
 	_body, _err := client.ListVirtualHostsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateInstanceNameWithOptions(request *UpdateInstanceNameRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceName"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInstanceNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateInstanceName(request *UpdateInstanceNameRequest) (_result *UpdateInstanceNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateInstanceNameResponse{}
+	_body, _err := client.UpdateInstanceNameWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
