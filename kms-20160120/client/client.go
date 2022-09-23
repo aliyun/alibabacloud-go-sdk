@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1047,6 +1047,7 @@ func (s *CreateCertificateResponse) SetBody(v *CreateCertificateResponseBody) *C
 }
 
 type CreateKeyRequest struct {
+	DKMSInstanceId          *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EnableAutomaticRotation *bool   `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
 	KeySpec                 *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
@@ -1062,6 +1063,11 @@ func (s CreateKeyRequest) String() string {
 
 func (s CreateKeyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateKeyRequest) SetDKMSInstanceId(v string) *CreateKeyRequest {
+	s.DKMSInstanceId = &v
+	return s
 }
 
 func (s *CreateKeyRequest) SetDescription(v string) *CreateKeyRequest {
@@ -1127,6 +1133,7 @@ type CreateKeyResponseBodyKeyMetadata struct {
 	AutomaticRotation  *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
 	CreationDate       *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
 	Creator            *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	DKMSInstanceId     *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	DeleteDate         *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
 	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	KeyId              *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
@@ -1167,6 +1174,11 @@ func (s *CreateKeyResponseBodyKeyMetadata) SetCreationDate(v string) *CreateKeyR
 
 func (s *CreateKeyResponseBodyKeyMetadata) SetCreator(v string) *CreateKeyResponseBodyKeyMetadata {
 	s.Creator = &v
+	return s
+}
+
+func (s *CreateKeyResponseBodyKeyMetadata) SetDKMSInstanceId(v string) *CreateKeyResponseBodyKeyMetadata {
+	s.DKMSInstanceId = &v
 	return s
 }
 
@@ -1363,6 +1375,7 @@ func (s *CreateKeyVersionResponse) SetBody(v *CreateKeyVersionResponseBody) *Cre
 }
 
 type CreateSecretRequest struct {
+	DKMSInstanceId          *string                `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	Description             *string                `json:"Description,omitempty" xml:"Description,omitempty"`
 	EnableAutomaticRotation *bool                  `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
 	EncryptionKeyId         *string                `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
@@ -1382,6 +1395,11 @@ func (s CreateSecretRequest) String() string {
 
 func (s CreateSecretRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSecretRequest) SetDKMSInstanceId(v string) *CreateSecretRequest {
+	s.DKMSInstanceId = &v
+	return s
 }
 
 func (s *CreateSecretRequest) SetDescription(v string) *CreateSecretRequest {
@@ -1440,6 +1458,7 @@ func (s *CreateSecretRequest) SetVersionId(v string) *CreateSecretRequest {
 }
 
 type CreateSecretShrinkRequest struct {
+	DKMSInstanceId          *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EnableAutomaticRotation *bool   `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
 	EncryptionKeyId         *string `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
@@ -1459,6 +1478,11 @@ func (s CreateSecretShrinkRequest) String() string {
 
 func (s CreateSecretShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSecretShrinkRequest) SetDKMSInstanceId(v string) *CreateSecretShrinkRequest {
+	s.DKMSInstanceId = &v
+	return s
 }
 
 func (s *CreateSecretShrinkRequest) SetDescription(v string) *CreateSecretShrinkRequest {
@@ -1519,6 +1543,7 @@ func (s *CreateSecretShrinkRequest) SetVersionId(v string) *CreateSecretShrinkRe
 type CreateSecretResponseBody struct {
 	Arn               *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	AutomaticRotation *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
+	DKMSInstanceId    *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	ExtendedConfig    *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
 	NextRotationDate  *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1543,6 +1568,11 @@ func (s *CreateSecretResponseBody) SetArn(v string) *CreateSecretResponseBody {
 
 func (s *CreateSecretResponseBody) SetAutomaticRotation(v string) *CreateSecretResponseBody {
 	s.AutomaticRotation = &v
+	return s
+}
+
+func (s *CreateSecretResponseBody) SetDKMSInstanceId(v string) *CreateSecretResponseBody {
+	s.DKMSInstanceId = &v
 	return s
 }
 
@@ -2258,6 +2288,7 @@ type DescribeKeyResponseBodyKeyMetadata struct {
 	AutomaticRotation             *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
 	CreationDate                  *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
 	Creator                       *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	DKMSInstanceId                *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	DeleteDate                    *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
 	DeletionProtection            *string `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	DeletionProtectionDescription *string `json:"DeletionProtectionDescription,omitempty" xml:"DeletionProtectionDescription,omitempty"`
@@ -2300,6 +2331,11 @@ func (s *DescribeKeyResponseBodyKeyMetadata) SetCreationDate(v string) *Describe
 
 func (s *DescribeKeyResponseBodyKeyMetadata) SetCreator(v string) *DescribeKeyResponseBodyKeyMetadata {
 	s.Creator = &v
+	return s
+}
+
+func (s *DescribeKeyResponseBodyKeyMetadata) SetDKMSInstanceId(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.DKMSInstanceId = &v
 	return s
 }
 
@@ -2624,6 +2660,7 @@ type DescribeSecretResponseBody struct {
 	Arn               *string                         `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	AutomaticRotation *string                         `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
 	CreateTime        *string                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DKMSInstanceId    *string                         `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	Description       *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
 	EncryptionKeyId   *string                         `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
 	ExtendedConfig    *string                         `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
@@ -2658,6 +2695,11 @@ func (s *DescribeSecretResponseBody) SetAutomaticRotation(v string) *DescribeSec
 
 func (s *DescribeSecretResponseBody) SetCreateTime(v string) *DescribeSecretResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBody) SetDKMSInstanceId(v string) *DescribeSecretResponseBody {
+	s.DKMSInstanceId = &v
 	return s
 }
 
@@ -7453,6 +7495,10 @@ func (client *Client) CreateKeyWithOptions(request *CreateKeyRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DKMSInstanceId)) {
+		query["DKMSInstanceId"] = request.DKMSInstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -7571,6 +7617,10 @@ func (client *Client) CreateSecretWithOptions(tmpReq *CreateSecretRequest, runti
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DKMSInstanceId)) {
+		query["DKMSInstanceId"] = request.DKMSInstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
