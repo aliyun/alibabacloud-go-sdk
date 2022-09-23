@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -94,8 +94,9 @@ func (s *GetTagKeyResponseBodyTagKeys) SetTagKey(v []*string) *GetTagKeyResponse
 }
 
 type GetTagKeyResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTagKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTagKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTagKeyResponse) String() string {
@@ -108,6 +109,11 @@ func (s GetTagKeyResponse) GoString() string {
 
 func (s *GetTagKeyResponse) SetHeaders(v map[string]*string) *GetTagKeyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetTagKeyResponse) SetStatusCode(v int32) *GetTagKeyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -204,8 +210,9 @@ func (s *GetTagValResponseBodyTagValues) SetTagValue(v []*string) *GetTagValResp
 }
 
 type GetTagValResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTagValResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTagValResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTagValResponse) String() string {
@@ -218,6 +225,11 @@ func (s GetTagValResponse) GoString() string {
 
 func (s *GetTagValResponse) SetHeaders(v map[string]*string) *GetTagValResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetTagValResponse) SetStatusCode(v int32) *GetTagValResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -505,8 +517,9 @@ func (s *GetTraceResponseBodySpansSpanTagEntryListTagEntry) SetValue(v string) *
 }
 
 type GetTraceResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTraceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTraceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTraceResponse) String() string {
@@ -519,6 +532,11 @@ func (s GetTraceResponse) GoString() string {
 
 func (s *GetTraceResponse) SetHeaders(v map[string]*string) *GetTraceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetTraceResponse) SetStatusCode(v int32) *GetTraceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -603,8 +621,9 @@ func (s *ListIpOrHostsResponseBodyIpNames) SetIpName(v []*string) *ListIpOrHosts
 }
 
 type ListIpOrHostsResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIpOrHostsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIpOrHostsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIpOrHostsResponse) String() string {
@@ -617,6 +636,11 @@ func (s ListIpOrHostsResponse) GoString() string {
 
 func (s *ListIpOrHostsResponse) SetHeaders(v map[string]*string) *ListIpOrHostsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListIpOrHostsResponse) SetStatusCode(v int32) *ListIpOrHostsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -718,8 +742,9 @@ func (s *ListServicesResponseBodyServicesService) SetServiceName(v string) *List
 }
 
 type ListServicesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListServicesResponse) String() string {
@@ -732,6 +757,11 @@ func (s ListServicesResponse) GoString() string {
 
 func (s *ListServicesResponse) SetHeaders(v map[string]*string) *ListServicesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListServicesResponse) SetStatusCode(v int32) *ListServicesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -816,8 +846,9 @@ func (s *ListSpanNamesResponseBodySpanNames) SetSpanName(v []*string) *ListSpanN
 }
 
 type ListSpanNamesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSpanNamesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSpanNamesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSpanNamesResponse) String() string {
@@ -830,6 +861,11 @@ func (s ListSpanNamesResponse) GoString() string {
 
 func (s *ListSpanNamesResponse) SetHeaders(v map[string]*string) *ListSpanNamesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListSpanNamesResponse) SetStatusCode(v int32) *ListSpanNamesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -962,8 +998,9 @@ func (s *QueryMetricResponseBody) SetRequestId(v string) *QueryMetricResponseBod
 }
 
 type QueryMetricResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryMetricResponse) String() string {
@@ -976,6 +1013,11 @@ func (s QueryMetricResponse) GoString() string {
 
 func (s *QueryMetricResponse) SetHeaders(v map[string]*string) *QueryMetricResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QueryMetricResponse) SetStatusCode(v int32) *QueryMetricResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1219,8 +1261,9 @@ func (s *SearchTracesResponseBodyPageBeanTraceInfosTraceInfo) SetTraceID(v strin
 }
 
 type SearchTracesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchTracesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchTracesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SearchTracesResponse) String() string {
@@ -1233,6 +1276,11 @@ func (s SearchTracesResponse) GoString() string {
 
 func (s *SearchTracesResponse) SetHeaders(v map[string]*string) *SearchTracesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SearchTracesResponse) SetStatusCode(v int32) *SearchTracesResponse {
+	s.StatusCode = &v
 	return s
 }
 
