@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -3511,6 +3511,122 @@ func (s *DescribeColumnsResponse) SetBody(v *DescribeColumnsResponseBody) *Descr
 	return s
 }
 
+type DescribeComputeResourceRequest struct {
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeComputeResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComputeResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComputeResourceRequest) SetOwnerAccount(v string) *DescribeComputeResourceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeComputeResourceRequest) SetOwnerId(v int64) *DescribeComputeResourceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeComputeResourceRequest) SetRegionId(v string) *DescribeComputeResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeComputeResourceRequest) SetResourceOwnerAccount(v string) *DescribeComputeResourceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeComputeResourceRequest) SetResourceOwnerId(v int64) *DescribeComputeResourceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeComputeResourceResponseBody struct {
+	ComputeResource []*DescribeComputeResourceResponseBodyComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Repeated"`
+	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeComputeResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComputeResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComputeResourceResponseBody) SetComputeResource(v []*DescribeComputeResourceResponseBodyComputeResource) *DescribeComputeResourceResponseBody {
+	s.ComputeResource = v
+	return s
+}
+
+func (s *DescribeComputeResourceResponseBody) SetRequestId(v string) *DescribeComputeResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeComputeResourceResponseBodyComputeResource struct {
+	DisplayValue *string `json:"DisplayValue,omitempty" xml:"DisplayValue,omitempty"`
+	RealValue    *string `json:"RealValue,omitempty" xml:"RealValue,omitempty"`
+}
+
+func (s DescribeComputeResourceResponseBodyComputeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComputeResourceResponseBodyComputeResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComputeResourceResponseBodyComputeResource) SetDisplayValue(v string) *DescribeComputeResourceResponseBodyComputeResource {
+	s.DisplayValue = &v
+	return s
+}
+
+func (s *DescribeComputeResourceResponseBodyComputeResource) SetRealValue(v string) *DescribeComputeResourceResponseBodyComputeResource {
+	s.RealValue = &v
+	return s
+}
+
+type DescribeComputeResourceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeComputeResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeComputeResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComputeResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComputeResourceResponse) SetHeaders(v map[string]*string) *DescribeComputeResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeComputeResourceResponse) SetStatusCode(v int32) *DescribeComputeResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeComputeResourceResponse) SetBody(v *DescribeComputeResourceResponseBody) *DescribeComputeResourceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeConnectionCountRecordsRequest struct {
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -3907,6 +4023,8 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	ExecutorCount        *string                                                   `json:"ExecutorCount,omitempty" xml:"ExecutorCount,omitempty"`
 	ExpireTime           *string                                                   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	Expired              *string                                                   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	InnerIp              *string                                                   `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
+	InnerPort            *string                                                   `json:"InnerPort,omitempty" xml:"InnerPort,omitempty"`
 	KmsId                *string                                                   `json:"KmsId,omitempty" xml:"KmsId,omitempty"`
 	LockMode             *string                                                   `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	LockReason           *string                                                   `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
@@ -4051,6 +4169,16 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetExpireTime(v s
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetExpired(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
 	s.Expired = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetInnerIp(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.InnerIp = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetInnerPort(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.InnerPort = &v
 	return s
 }
 
@@ -4459,6 +4587,222 @@ func (s *DescribeDBClusterHealthReportResponse) SetStatusCode(v int32) *Describe
 }
 
 func (s *DescribeDBClusterHealthReportResponse) SetBody(v *DescribeDBClusterHealthReportResponseBody) *DescribeDBClusterHealthReportResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBClusterHealthStatusRequest struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeDBClusterHealthStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterHealthStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterHealthStatusRequest) SetDBClusterId(v string) *DescribeDBClusterHealthStatusRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusRequest) SetRegionId(v string) *DescribeDBClusterHealthStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeDBClusterHealthStatusResponseBody struct {
+	CS             *DescribeDBClusterHealthStatusResponseBodyCS       `json:"CS,omitempty" xml:"CS,omitempty" type:"Struct"`
+	Executor       *DescribeDBClusterHealthStatusResponseBodyExecutor `json:"Executor,omitempty" xml:"Executor,omitempty" type:"Struct"`
+	InstanceStatus *string                                            `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Worker         *DescribeDBClusterHealthStatusResponseBodyWorker   `json:"Worker,omitempty" xml:"Worker,omitempty" type:"Struct"`
+}
+
+func (s DescribeDBClusterHealthStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterHealthStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBody) SetCS(v *DescribeDBClusterHealthStatusResponseBodyCS) *DescribeDBClusterHealthStatusResponseBody {
+	s.CS = v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBody) SetExecutor(v *DescribeDBClusterHealthStatusResponseBodyExecutor) *DescribeDBClusterHealthStatusResponseBody {
+	s.Executor = v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBody) SetInstanceStatus(v string) *DescribeDBClusterHealthStatusResponseBody {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBody) SetRequestId(v string) *DescribeDBClusterHealthStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBody) SetWorker(v *DescribeDBClusterHealthStatusResponseBodyWorker) *DescribeDBClusterHealthStatusResponseBody {
+	s.Worker = v
+	return s
+}
+
+type DescribeDBClusterHealthStatusResponseBodyCS struct {
+	ActiveCount      *int64  `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	ExpectedCount    *int64  `json:"ExpectedCount,omitempty" xml:"ExpectedCount,omitempty"`
+	RiskCount        *int64  `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnavailableCount *int64  `json:"UnavailableCount,omitempty" xml:"UnavailableCount,omitempty"`
+}
+
+func (s DescribeDBClusterHealthStatusResponseBodyCS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterHealthStatusResponseBodyCS) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyCS) SetActiveCount(v int64) *DescribeDBClusterHealthStatusResponseBodyCS {
+	s.ActiveCount = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyCS) SetExpectedCount(v int64) *DescribeDBClusterHealthStatusResponseBodyCS {
+	s.ExpectedCount = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyCS) SetRiskCount(v int64) *DescribeDBClusterHealthStatusResponseBodyCS {
+	s.RiskCount = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyCS) SetStatus(v string) *DescribeDBClusterHealthStatusResponseBodyCS {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyCS) SetUnavailableCount(v int64) *DescribeDBClusterHealthStatusResponseBodyCS {
+	s.UnavailableCount = &v
+	return s
+}
+
+type DescribeDBClusterHealthStatusResponseBodyExecutor struct {
+	ActiveCount      *int64  `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	ExpectedCount    *int64  `json:"ExpectedCount,omitempty" xml:"ExpectedCount,omitempty"`
+	RiskCount        *int64  `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnavailableCount *int64  `json:"UnavailableCount,omitempty" xml:"UnavailableCount,omitempty"`
+}
+
+func (s DescribeDBClusterHealthStatusResponseBodyExecutor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterHealthStatusResponseBodyExecutor) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyExecutor) SetActiveCount(v int64) *DescribeDBClusterHealthStatusResponseBodyExecutor {
+	s.ActiveCount = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyExecutor) SetExpectedCount(v int64) *DescribeDBClusterHealthStatusResponseBodyExecutor {
+	s.ExpectedCount = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyExecutor) SetRiskCount(v int64) *DescribeDBClusterHealthStatusResponseBodyExecutor {
+	s.RiskCount = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyExecutor) SetStatus(v string) *DescribeDBClusterHealthStatusResponseBodyExecutor {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyExecutor) SetUnavailableCount(v int64) *DescribeDBClusterHealthStatusResponseBodyExecutor {
+	s.UnavailableCount = &v
+	return s
+}
+
+type DescribeDBClusterHealthStatusResponseBodyWorker struct {
+	ActiveCount      *int64  `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	ExpectedCount    *int64  `json:"ExpectedCount,omitempty" xml:"ExpectedCount,omitempty"`
+	RiskCount        *int64  `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnavailableCount *int64  `json:"UnavailableCount,omitempty" xml:"UnavailableCount,omitempty"`
+}
+
+func (s DescribeDBClusterHealthStatusResponseBodyWorker) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterHealthStatusResponseBodyWorker) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyWorker) SetActiveCount(v int64) *DescribeDBClusterHealthStatusResponseBodyWorker {
+	s.ActiveCount = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyWorker) SetExpectedCount(v int64) *DescribeDBClusterHealthStatusResponseBodyWorker {
+	s.ExpectedCount = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyWorker) SetRiskCount(v int64) *DescribeDBClusterHealthStatusResponseBodyWorker {
+	s.RiskCount = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyWorker) SetStatus(v string) *DescribeDBClusterHealthStatusResponseBodyWorker {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBodyWorker) SetUnavailableCount(v int64) *DescribeDBClusterHealthStatusResponseBodyWorker {
+	s.UnavailableCount = &v
+	return s
+}
+
+type DescribeDBClusterHealthStatusResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBClusterHealthStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDBClusterHealthStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterHealthStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterHealthStatusResponse) SetHeaders(v map[string]*string) *DescribeDBClusterHealthStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponse) SetStatusCode(v int32) *DescribeDBClusterHealthStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBClusterHealthStatusResponse) SetBody(v *DescribeDBClusterHealthStatusResponseBody) *DescribeDBClusterHealthStatusResponse {
 	s.Body = v
 	return s
 }
@@ -5027,6 +5371,7 @@ type DescribeDBClustersRequest struct {
 	DBClusterDescription *string                         `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	DBClusterIds         *string                         `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
 	DBClusterStatus      *string                         `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	DBVersion            *string                         `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerAccount         *string                         `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber           *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -5058,6 +5403,11 @@ func (s *DescribeDBClustersRequest) SetDBClusterIds(v string) *DescribeDBCluster
 
 func (s *DescribeDBClustersRequest) SetDBClusterStatus(v string) *DescribeDBClustersRequest {
 	s.DBClusterStatus = &v
+	return s
+}
+
+func (s *DescribeDBClustersRequest) SetDBVersion(v string) *DescribeDBClustersRequest {
+	s.DBVersion = &v
 	return s
 }
 
@@ -5209,6 +5559,8 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	ExecutorCount        *string                                           `json:"ExecutorCount,omitempty" xml:"ExecutorCount,omitempty"`
 	ExpireTime           *string                                           `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	Expired              *string                                           `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	InnerIp              *string                                           `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
+	InnerPort            *string                                           `json:"InnerPort,omitempty" xml:"InnerPort,omitempty"`
 	LockMode             *string                                           `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	LockReason           *string                                           `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	Mode                 *string                                           `json:"Mode,omitempty" xml:"Mode,omitempty"`
@@ -5335,6 +5687,16 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetExpireTime(v string) *
 
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetExpired(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
 	s.Expired = &v
+	return s
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetInnerIp(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.InnerIp = &v
+	return s
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetInnerPort(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.InnerPort = &v
 	return s
 }
 
@@ -6348,6 +6710,140 @@ func (s *DescribeDownloadRecordsResponse) SetStatusCode(v int32) *DescribeDownlo
 }
 
 func (s *DescribeDownloadRecordsResponse) SetBody(v *DescribeDownloadRecordsResponseBody) *DescribeDownloadRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEIURangeRequest struct {
+	ComputeResource      *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Operation            *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeEIURangeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEIURangeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEIURangeRequest) SetComputeResource(v string) *DescribeEIURangeRequest {
+	s.ComputeResource = &v
+	return s
+}
+
+func (s *DescribeEIURangeRequest) SetDBClusterId(v string) *DescribeEIURangeRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeEIURangeRequest) SetOperation(v string) *DescribeEIURangeRequest {
+	s.Operation = &v
+	return s
+}
+
+func (s *DescribeEIURangeRequest) SetOwnerAccount(v string) *DescribeEIURangeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeEIURangeRequest) SetOwnerId(v int64) *DescribeEIURangeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeEIURangeRequest) SetRegionId(v string) *DescribeEIURangeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEIURangeRequest) SetResourceOwnerAccount(v string) *DescribeEIURangeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeEIURangeRequest) SetResourceOwnerId(v int64) *DescribeEIURangeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeEIURangeResponseBody struct {
+	EIUInfo   *DescribeEIURangeResponseBodyEIUInfo `json:"EIUInfo,omitempty" xml:"EIUInfo,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeEIURangeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEIURangeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEIURangeResponseBody) SetEIUInfo(v *DescribeEIURangeResponseBodyEIUInfo) *DescribeEIURangeResponseBody {
+	s.EIUInfo = v
+	return s
+}
+
+func (s *DescribeEIURangeResponseBody) SetRequestId(v string) *DescribeEIURangeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeEIURangeResponseBodyEIUInfo struct {
+	DefaultValue *string  `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	EIURange     []*int64 `json:"EIURange,omitempty" xml:"EIURange,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEIURangeResponseBodyEIUInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEIURangeResponseBodyEIUInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEIURangeResponseBodyEIUInfo) SetDefaultValue(v string) *DescribeEIURangeResponseBodyEIUInfo {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *DescribeEIURangeResponseBodyEIUInfo) SetEIURange(v []*int64) *DescribeEIURangeResponseBodyEIUInfo {
+	s.EIURange = v
+	return s
+}
+
+type DescribeEIURangeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEIURangeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEIURangeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEIURangeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEIURangeResponse) SetHeaders(v map[string]*string) *DescribeEIURangeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEIURangeResponse) SetStatusCode(v int32) *DescribeEIURangeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEIURangeResponse) SetBody(v *DescribeEIURangeResponseBody) *DescribeEIURangeResponse {
 	s.Body = v
 	return s
 }
@@ -12423,8 +12919,7 @@ type ModifyDBClusterPayTypeResponseBody struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OrderId     *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	PayType     *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDBClusterPayTypeResponseBody) String() string {
@@ -15677,6 +16172,66 @@ func (client *Client) DescribeColumns(request *DescribeColumnsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DescribeComputeResourceWithOptions(request *DescribeComputeResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeComputeResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeComputeResource"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeComputeResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeComputeResource(request *DescribeComputeResourceRequest) (_result *DescribeComputeResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeComputeResourceResponse{}
+	_body, _err := client.DescribeComputeResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeConnectionCountRecordsWithOptions(request *DescribeConnectionCountRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeConnectionCountRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15965,6 +16520,54 @@ func (client *Client) DescribeDBClusterHealthReport(request *DescribeDBClusterHe
 	return _result, _err
 }
 
+func (client *Client) DescribeDBClusterHealthStatusWithOptions(request *DescribeDBClusterHealthStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterHealthStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBClusterHealthStatus"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBClusterHealthStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBClusterHealthStatus(request *DescribeDBClusterHealthStatusRequest) (_result *DescribeDBClusterHealthStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBClusterHealthStatusResponse{}
+	_body, _err := client.DescribeDBClusterHealthStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDBClusterNetInfoWithOptions(request *DescribeDBClusterNetInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterNetInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16189,6 +16792,10 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 
 	if !tea.BoolValue(util.IsUnset(request.DBClusterStatus)) {
 		query["DBClusterStatus"] = request.DBClusterStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBVersion)) {
+		query["DBVersion"] = request.DBVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -16614,6 +17221,78 @@ func (client *Client) DescribeDownloadRecords(request *DescribeDownloadRecordsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDownloadRecordsResponse{}
 	_body, _err := client.DescribeDownloadRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEIURangeWithOptions(request *DescribeEIURangeRequest, runtime *util.RuntimeOptions) (_result *DescribeEIURangeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComputeResource)) {
+		query["ComputeResource"] = request.ComputeResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operation)) {
+		query["Operation"] = request.Operation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEIURange"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEIURangeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEIURange(request *DescribeEIURangeRequest) (_result *DescribeEIURangeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEIURangeResponse{}
+	_body, _err := client.DescribeEIURangeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
