@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -15269,9 +15269,10 @@ func (s *ListAITemplateResponse) SetBody(v *ListAITemplateResponseBody) *ListAIT
 }
 
 type ListAppInfoRequest struct {
-	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	PageNo   *int32                 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status   *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag      *ListAppInfoRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 }
 
 func (s ListAppInfoRequest) String() string {
@@ -15294,6 +15295,34 @@ func (s *ListAppInfoRequest) SetPageSize(v int32) *ListAppInfoRequest {
 
 func (s *ListAppInfoRequest) SetStatus(v string) *ListAppInfoRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListAppInfoRequest) SetTag(v *ListAppInfoRequestTag) *ListAppInfoRequest {
+	s.Tag = v
+	return s
+}
+
+type ListAppInfoRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListAppInfoRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppInfoRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInfoRequestTag) SetKey(v string) *ListAppInfoRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListAppInfoRequestTag) SetValue(v string) *ListAppInfoRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -15327,13 +15356,14 @@ func (s *ListAppInfoResponseBody) SetTotal(v int32) *ListAppInfoResponseBody {
 }
 
 type ListAppInfoResponseBodyAppInfoList struct {
-	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName          *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AppId            *string                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName          *string                                   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CreationTime     *string                                   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description      *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	ModificationTime *string                                   `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	Status           *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags             []*ListAppInfoResponseBodyAppInfoListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Type             *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAppInfoResponseBodyAppInfoList) String() string {
@@ -15374,8 +15404,36 @@ func (s *ListAppInfoResponseBodyAppInfoList) SetStatus(v string) *ListAppInfoRes
 	return s
 }
 
+func (s *ListAppInfoResponseBodyAppInfoList) SetTags(v []*ListAppInfoResponseBodyAppInfoListTags) *ListAppInfoResponseBodyAppInfoList {
+	s.Tags = v
+	return s
+}
+
 func (s *ListAppInfoResponseBodyAppInfoList) SetType(v string) *ListAppInfoResponseBodyAppInfoList {
 	s.Type = &v
+	return s
+}
+
+type ListAppInfoResponseBodyAppInfoListTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListAppInfoResponseBodyAppInfoListTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppInfoResponseBodyAppInfoListTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInfoResponseBodyAppInfoListTags) SetTagKey(v string) *ListAppInfoResponseBodyAppInfoListTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListAppInfoResponseBodyAppInfoListTags) SetTagValue(v string) *ListAppInfoResponseBodyAppInfoListTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -26747,6 +26805,10 @@ func (client *Client) ListAppInfoWithOptions(request *ListAppInfoRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Tag))) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
