@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -100,21 +100,22 @@ func (s *CreateConfigResponse) SetBody(v *CreateConfigResponseBody) *CreateConfi
 }
 
 type CreateDataLimitRequest struct {
-	AuditStatus     *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	AutoScan        *int32  `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
-	Enable          *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	EngineType      *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	EventStatus     *int32  `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	LogStoreDay     *int32  `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	OcrStatus       *int32  `json:"OcrStatus,omitempty" xml:"OcrStatus,omitempty"`
-	ParentId        *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Port            *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ResourceType    *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SamplingSize    *int32  `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
-	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	AuditStatus           *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	AutoScan              *int32  `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
+	CertificatePermission *string `json:"CertificatePermission,omitempty" xml:"CertificatePermission,omitempty"`
+	Enable                *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EngineType            *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	EventStatus           *int32  `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	LogStoreDay           *int32  `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
+	OcrStatus             *int32  `json:"OcrStatus,omitempty" xml:"OcrStatus,omitempty"`
+	ParentId              *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	Password              *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Port                  *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ResourceType          *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SamplingSize          *int32  `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
+	ServiceRegionId       *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateDataLimitRequest) String() string {
@@ -132,6 +133,11 @@ func (s *CreateDataLimitRequest) SetAuditStatus(v int32) *CreateDataLimitRequest
 
 func (s *CreateDataLimitRequest) SetAutoScan(v int32) *CreateDataLimitRequest {
 	s.AutoScan = &v
+	return s
+}
+
+func (s *CreateDataLimitRequest) SetCertificatePermission(v string) *CreateDataLimitRequest {
+	s.CertificatePermission = &v
 	return s
 }
 
@@ -258,6 +264,7 @@ type CreateRuleRequest struct {
 	ContentCategory *int32  `json:"ContentCategory,omitempty" xml:"ContentCategory,omitempty"`
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MatchType       *int32  `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductId       *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
@@ -299,6 +306,11 @@ func (s *CreateRuleRequest) SetDescription(v string) *CreateRuleRequest {
 
 func (s *CreateRuleRequest) SetLang(v string) *CreateRuleRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *CreateRuleRequest) SetMatchType(v int32) *CreateRuleRequest {
+	s.MatchType = &v
 	return s
 }
 
@@ -2081,42 +2093,45 @@ func (s *DescribeDataLimitsResponseBody) SetTotalCount(v int32) *DescribeDataLim
 }
 
 type DescribeDataLimitsResponseBodyItems struct {
-	AuditStatus         *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	AutoScan            *int32  `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
-	CheckStatus         *int32  `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	CheckStatusName     *string `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
-	DatamaskStatus      *int32  `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
-	DbVersion           *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	Enable              *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	EngineType          *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	ErrorCode           *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	EventStatus         *int32  `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	GmtCreate           *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LastFinishedTime    *int64  `json:"LastFinishedTime,omitempty" xml:"LastFinishedTime,omitempty"`
-	LocalName           *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	LogStoreDay         *int32  `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	NextStartTime       *int64  `json:"NextStartTime,omitempty" xml:"NextStartTime,omitempty"`
-	OcrStatus           *int32  `json:"OcrStatus,omitempty" xml:"OcrStatus,omitempty"`
-	ParentId            *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	Port                *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ProcessStatus       *int32  `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
-	ProcessTotalCount   *int32  `json:"ProcessTotalCount,omitempty" xml:"ProcessTotalCount,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceType        *int64  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceTypeCode    *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
-	SamplingSize        *int32  `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
-	SupportAudit        *bool   `json:"SupportAudit,omitempty" xml:"SupportAudit,omitempty"`
-	SupportDatamask     *bool   `json:"SupportDatamask,omitempty" xml:"SupportDatamask,omitempty"`
-	SupportEvent        *bool   `json:"SupportEvent,omitempty" xml:"SupportEvent,omitempty"`
-	SupportOcr          *bool   `json:"SupportOcr,omitempty" xml:"SupportOcr,omitempty"`
-	SupportScan         *bool   `json:"SupportScan,omitempty" xml:"SupportScan,omitempty"`
-	TenantName          *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	TotalCount          *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	AuditStatus         *int32    `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	AutoScan            *int32    `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
+	CheckStatus         *int32    `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	CheckStatusName     *string   `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
+	DatamaskStatus      *int32    `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
+	DbVersion           *string   `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	Enable              *int32    `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EngineType          *string   `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	ErrorCode           *string   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	EventStatus         *int32    `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	GmtCreate           *int64    `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id                  *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceDescription *string   `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	InstanceId          *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LastFinishedTime    *int64    `json:"LastFinishedTime,omitempty" xml:"LastFinishedTime,omitempty"`
+	LocalName           *string   `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	LogStoreDay         *int32    `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
+	NextStartTime       *int64    `json:"NextStartTime,omitempty" xml:"NextStartTime,omitempty"`
+	OcrStatus           *int32    `json:"OcrStatus,omitempty" xml:"OcrStatus,omitempty"`
+	ParentId            *string   `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	Port                *int32    `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProcessStatus       *int32    `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	ProcessTotalCount   *int32    `json:"ProcessTotalCount,omitempty" xml:"ProcessTotalCount,omitempty"`
+	RegionId            *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType        *int64    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceTypeCode    *string   `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
+	SamplingSize        *int32    `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
+	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitempty" xml:"SecurityGroupIdList,omitempty" type:"Repeated"`
+	SupportAudit        *bool     `json:"SupportAudit,omitempty" xml:"SupportAudit,omitempty"`
+	SupportDatamask     *bool     `json:"SupportDatamask,omitempty" xml:"SupportDatamask,omitempty"`
+	SupportEvent        *bool     `json:"SupportEvent,omitempty" xml:"SupportEvent,omitempty"`
+	SupportOcr          *bool     `json:"SupportOcr,omitempty" xml:"SupportOcr,omitempty"`
+	SupportScan         *bool     `json:"SupportScan,omitempty" xml:"SupportScan,omitempty"`
+	TenantName          *string   `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	TotalCount          *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UserName            *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	VSwitchIdList       []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
+	VpcId               *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeDataLimitsResponseBodyItems) String() string {
@@ -2267,6 +2282,11 @@ func (s *DescribeDataLimitsResponseBodyItems) SetSamplingSize(v int32) *Describe
 	return s
 }
 
+func (s *DescribeDataLimitsResponseBodyItems) SetSecurityGroupIdList(v []*string) *DescribeDataLimitsResponseBodyItems {
+	s.SecurityGroupIdList = v
+	return s
+}
+
 func (s *DescribeDataLimitsResponseBodyItems) SetSupportAudit(v bool) *DescribeDataLimitsResponseBodyItems {
 	s.SupportAudit = &v
 	return s
@@ -2304,6 +2324,16 @@ func (s *DescribeDataLimitsResponseBodyItems) SetTotalCount(v int32) *DescribeDa
 
 func (s *DescribeDataLimitsResponseBodyItems) SetUserName(v string) *DescribeDataLimitsResponseBodyItems {
 	s.UserName = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetVSwitchIdList(v []*string) *DescribeDataLimitsResponseBodyItems {
+	s.VSwitchIdList = v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetVpcId(v string) *DescribeDataLimitsResponseBodyItems {
+	s.VpcId = &v
 	return s
 }
 
@@ -4521,6 +4551,7 @@ type DescribeOssObjectsRequest struct {
 	RiskLevelId       *int32  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 	RuleId            *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	ServiceRegionId   *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	TemplateId        *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeOssObjectsRequest) String() string {
@@ -4578,6 +4609,11 @@ func (s *DescribeOssObjectsRequest) SetRuleId(v int64) *DescribeOssObjectsReques
 
 func (s *DescribeOssObjectsRequest) SetServiceRegionId(v string) *DescribeOssObjectsRequest {
 	s.ServiceRegionId = &v
+	return s
+}
+
+func (s *DescribeOssObjectsRequest) SetTemplateId(v int64) *DescribeOssObjectsRequest {
+	s.TemplateId = &v
 	return s
 }
 
@@ -4976,7 +5012,8 @@ func (s *DescribePackagesResponse) SetBody(v *DescribePackagesResponseBody) *Des
 }
 
 type DescribeRiskLevelsRequest struct {
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeRiskLevelsRequest) String() string {
@@ -4989,6 +5026,11 @@ func (s DescribeRiskLevelsRequest) GoString() string {
 
 func (s *DescribeRiskLevelsRequest) SetLang(v string) *DescribeRiskLevelsRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeRiskLevelsRequest) SetTemplateId(v int64) *DescribeRiskLevelsRequest {
+	s.TemplateId = &v
 	return s
 }
 
@@ -5087,6 +5129,7 @@ type DescribeRulesRequest struct {
 	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	KeywordCompatible *bool   `json:"KeywordCompatible,omitempty" xml:"KeywordCompatible,omitempty"`
 	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MatchType         *int32  `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProductCode       *int32  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
@@ -5137,6 +5180,11 @@ func (s *DescribeRulesRequest) SetKeywordCompatible(v bool) *DescribeRulesReques
 
 func (s *DescribeRulesRequest) SetLang(v string) *DescribeRulesRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetMatchType(v int32) *DescribeRulesRequest {
+	s.MatchType = &v
 	return s
 }
 
@@ -5236,6 +5284,7 @@ type DescribeRulesResponseBodyItems struct {
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	LoginName       *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
 	MajorKey        *string `json:"MajorKey,omitempty" xml:"MajorKey,omitempty"`
+	MatchType       *int32  `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductId       *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
@@ -5323,6 +5372,11 @@ func (s *DescribeRulesResponseBodyItems) SetLoginName(v string) *DescribeRulesRe
 
 func (s *DescribeRulesResponseBodyItems) SetMajorKey(v string) *DescribeRulesResponseBodyItems {
 	s.MajorKey = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetMatchType(v int32) *DescribeRulesResponseBodyItems {
+	s.MatchType = &v
 	return s
 }
 
@@ -5417,6 +5471,7 @@ type DescribeTablesRequest struct {
 	RiskLevelId     *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 	RuleId          *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	TemplateId      *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeTablesRequest) String() string {
@@ -5479,6 +5534,11 @@ func (s *DescribeTablesRequest) SetRuleId(v int64) *DescribeTablesRequest {
 
 func (s *DescribeTablesRequest) SetServiceRegionId(v string) *DescribeTablesRequest {
 	s.ServiceRegionId = &v
+	return s
+}
+
+func (s *DescribeTablesRequest) SetTemplateId(v int64) *DescribeTablesRequest {
+	s.TemplateId = &v
 	return s
 }
 
@@ -5736,6 +5796,8 @@ func (s *DescribeUserStatusResponseBody) SetUserStatus(v *DescribeUserStatusResp
 
 type DescribeUserStatusResponseBodyUserStatus struct {
 	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AuditClosable   *bool   `json:"AuditClosable,omitempty" xml:"AuditClosable,omitempty"`
+	AuditReleasable *bool   `json:"AuditReleasable,omitempty" xml:"AuditReleasable,omitempty"`
 	Authed          *bool   `json:"Authed,omitempty" xml:"Authed,omitempty"`
 	ChargeType      *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	DataManagerRole *int32  `json:"DataManagerRole,omitempty" xml:"DataManagerRole,omitempty"`
@@ -5743,6 +5805,8 @@ type DescribeUserStatusResponseBodyUserStatus struct {
 	InstanceNum     *int32  `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
 	LabStatus       *int32  `json:"LabStatus,omitempty" xml:"LabStatus,omitempty"`
 	Purchased       *bool   `json:"Purchased,omitempty" xml:"Purchased,omitempty"`
+	ReleaseDays     *int32  `json:"ReleaseDays,omitempty" xml:"ReleaseDays,omitempty"`
+	ReleaseTime     *int64  `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
 	RemainDays      *int32  `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
 	Trail           *bool   `json:"Trail,omitempty" xml:"Trail,omitempty"`
 	UseInstanceNum  *int32  `json:"UseInstanceNum,omitempty" xml:"UseInstanceNum,omitempty"`
@@ -5759,6 +5823,16 @@ func (s DescribeUserStatusResponseBodyUserStatus) GoString() string {
 
 func (s *DescribeUserStatusResponseBodyUserStatus) SetAccessKeyId(v string) *DescribeUserStatusResponseBodyUserStatus {
 	s.AccessKeyId = &v
+	return s
+}
+
+func (s *DescribeUserStatusResponseBodyUserStatus) SetAuditClosable(v bool) *DescribeUserStatusResponseBodyUserStatus {
+	s.AuditClosable = &v
+	return s
+}
+
+func (s *DescribeUserStatusResponseBodyUserStatus) SetAuditReleasable(v bool) *DescribeUserStatusResponseBodyUserStatus {
+	s.AuditReleasable = &v
 	return s
 }
 
@@ -5794,6 +5868,16 @@ func (s *DescribeUserStatusResponseBodyUserStatus) SetLabStatus(v int32) *Descri
 
 func (s *DescribeUserStatusResponseBodyUserStatus) SetPurchased(v bool) *DescribeUserStatusResponseBodyUserStatus {
 	s.Purchased = &v
+	return s
+}
+
+func (s *DescribeUserStatusResponseBodyUserStatus) SetReleaseDays(v int32) *DescribeUserStatusResponseBodyUserStatus {
+	s.ReleaseDays = &v
+	return s
+}
+
+func (s *DescribeUserStatusResponseBodyUserStatus) SetReleaseTime(v int64) *DescribeUserStatusResponseBodyUserStatus {
+	s.ReleaseTime = &v
 	return s
 }
 
@@ -6066,19 +6150,22 @@ func (s *ManualTriggerMaskingProcessResponse) SetBody(v *ManualTriggerMaskingPro
 }
 
 type ModifyDataLimitRequest struct {
-	AuditStatus     *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	AutoScan        *int32  `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
-	EngineType      *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	LogStoreDay     *int32  `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	ModifyPassword  *bool   `json:"ModifyPassword,omitempty" xml:"ModifyPassword,omitempty"`
-	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Port            *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ResourceType    *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SamplingSize    *int32  `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
-	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	AuditStatus         *int32    `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	AutoScan            *int32    `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
+	EngineType          *string   `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	Id                  *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Lang                *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	LogStoreDay         *int32    `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
+	ModifyPassword      *bool     `json:"ModifyPassword,omitempty" xml:"ModifyPassword,omitempty"`
+	Password            *string   `json:"Password,omitempty" xml:"Password,omitempty"`
+	Port                *int32    `json:"Port,omitempty" xml:"Port,omitempty"`
+	ResourceType        *int32    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SamplingSize        *int32    `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
+	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitempty" xml:"SecurityGroupIdList,omitempty" type:"Repeated"`
+	ServiceRegionId     *string   `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	UserName            *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	VSwitchIdList       []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
+	VpcId               *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ModifyDataLimitRequest) String() string {
@@ -6144,6 +6231,11 @@ func (s *ModifyDataLimitRequest) SetSamplingSize(v int32) *ModifyDataLimitReques
 	return s
 }
 
+func (s *ModifyDataLimitRequest) SetSecurityGroupIdList(v []*string) *ModifyDataLimitRequest {
+	s.SecurityGroupIdList = v
+	return s
+}
+
 func (s *ModifyDataLimitRequest) SetServiceRegionId(v string) *ModifyDataLimitRequest {
 	s.ServiceRegionId = &v
 	return s
@@ -6151,6 +6243,16 @@ func (s *ModifyDataLimitRequest) SetServiceRegionId(v string) *ModifyDataLimitRe
 
 func (s *ModifyDataLimitRequest) SetUserName(v string) *ModifyDataLimitRequest {
 	s.UserName = &v
+	return s
+}
+
+func (s *ModifyDataLimitRequest) SetVSwitchIdList(v []*string) *ModifyDataLimitRequest {
+	s.VSwitchIdList = v
+	return s
+}
+
+func (s *ModifyDataLimitRequest) SetVpcId(v string) *ModifyDataLimitRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -6505,6 +6607,7 @@ type ModifyRuleRequest struct {
 	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MatchType   *int32  `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductId   *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
@@ -6538,6 +6641,11 @@ func (s *ModifyRuleRequest) SetId(v int64) *ModifyRuleRequest {
 
 func (s *ModifyRuleRequest) SetLang(v string) *ModifyRuleRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *ModifyRuleRequest) SetMatchType(v int32) *ModifyRuleRequest {
+	s.MatchType = &v
 	return s
 }
 
@@ -6893,6 +7001,10 @@ func (client *Client) CreateDataLimitWithOptions(request *CreateDataLimitRequest
 		query["AutoScan"] = request.AutoScan
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CertificatePermission)) {
+		query["CertificatePermission"] = request.CertificatePermission
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Enable)) {
 		query["Enable"] = request.Enable
 	}
@@ -7003,6 +7115,10 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchType)) {
+		query["MatchType"] = request.MatchType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -8377,6 +8493,10 @@ func (client *Client) DescribeOssObjectsWithOptions(request *DescribeOssObjectsR
 		query["ServiceRegionId"] = request.ServiceRegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8493,6 +8613,10 @@ func (client *Client) DescribeRiskLevelsWithOptions(request *DescribeRiskLevelsR
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8559,6 +8683,10 @@ func (client *Client) DescribeRulesWithOptions(request *DescribeRulesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchType)) {
+		query["MatchType"] = request.MatchType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -8675,6 +8803,10 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceRegionId)) {
 		query["ServiceRegionId"] = request.ServiceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8953,12 +9085,24 @@ func (client *Client) ModifyDataLimitWithOptions(request *ModifyDataLimitRequest
 		query["SamplingSize"] = request.SamplingSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIdList)) {
+		query["SecurityGroupIdList"] = request.SecurityGroupIdList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceRegionId)) {
 		query["ServiceRegionId"] = request.ServiceRegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserName)) {
 		query["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchIdList)) {
+		query["VSwitchIdList"] = request.VSwitchIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9223,6 +9367,10 @@ func (client *Client) ModifyRuleWithOptions(request *ModifyRuleRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchType)) {
+		query["MatchType"] = request.MatchType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
