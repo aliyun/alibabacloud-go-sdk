@@ -1,3 +1,6 @@
+2022-09-23 Version: v3.0.0
+- Generated golang 2021-05-13 for IoTCC.
+
 2022-09-07 Version: v2.2.4
 - Support iotcc for iot.
 
