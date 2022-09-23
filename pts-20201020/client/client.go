@@ -5,18 +5,16 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AdjustJMeterSceneSpeedRequest struct {
-	// 报告id
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// 要调整到的压力值
-	Speed *int32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	Speed    *int32  `json:"Speed,omitempty" xml:"Speed,omitempty"`
 }
 
 func (s AdjustJMeterSceneSpeedRequest) String() string {
@@ -41,10 +39,9 @@ type AdjustJMeterSceneSpeedResponseBody struct {
 	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 报告ID
-	ReportId  *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ReportId       *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AdjustJMeterSceneSpeedResponseBody) String() string {
@@ -655,22 +652,15 @@ func (s *GetAllRegionsResponse) SetBody(v *GetAllRegionsResponseBody) *GetAllReg
 }
 
 type GetJMeterLogsRequest struct {
-	// 第几台引擎，起始为0
-	AgentIndex *int32 `json:"AgentIndex,omitempty" xml:"AgentIndex,omitempty"`
-	// 开始时间
-	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// 结束时间
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 关键字
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 日志等级
+	AgentIndex *int32  `json:"AgentIndex,omitempty" xml:"AgentIndex,omitempty"`
+	BeginTime  *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 报告ID
-	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// 线程名
-	Thread *string `json:"Thread,omitempty" xml:"Thread,omitempty"`
+	ReportId   *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	Thread     *string `json:"Thread,omitempty" xml:"Thread,omitempty"`
 }
 
 func (s GetJMeterLogsRequest) String() string {
@@ -727,10 +717,8 @@ func (s *GetJMeterLogsRequest) SetThread(v string) *GetJMeterLogsRequest {
 }
 
 type GetJMeterLogsResponseBody struct {
-	// 引擎数量，想要获得第几台引擎的日志可以根据引擎数量传值
-	AgentCount *int32  `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 日志内容
+	AgentCount *int32                   `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
+	Code       *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Logs       []map[string]interface{} `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	Message    *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	PageNumber *int32                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -823,14 +811,10 @@ func (s *GetJMeterLogsResponse) SetBody(v *GetJMeterLogsResponseBody) *GetJMeter
 }
 
 type GetJMeterSampleMetricsRequest struct {
-	// 开始时间
-	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// 结束时间
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 报告ID
-	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// 采样器索引，从0开始。-1返回全场景
-	SamplerId *int32 `json:"SamplerId,omitempty" xml:"SamplerId,omitempty"`
+	BeginTime *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ReportId  *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	SamplerId *int32  `json:"SamplerId,omitempty" xml:"SamplerId,omitempty"`
 }
 
 func (s GetJMeterSampleMetricsRequest) String() string {
@@ -862,14 +846,12 @@ func (s *GetJMeterSampleMetricsRequest) SetSamplerId(v int32) *GetJMeterSampleMe
 }
 
 type GetJMeterSampleMetricsResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 采样器聚合数据列表
-	SampleMetricList []*string `json:"SampleMetricList,omitempty" xml:"SampleMetricList,omitempty" type:"Repeated"`
-	// 采样器列表，可根据该列表传递需要查询的采样器
-	SamplerMap map[string]interface{} `json:"SamplerMap,omitempty" xml:"SamplerMap,omitempty"`
-	Success    *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code             *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message          *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId        *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SampleMetricList []*string              `json:"SampleMetricList,omitempty" xml:"SampleMetricList,omitempty" type:"Repeated"`
+	SamplerMap       map[string]interface{} `json:"SamplerMap,omitempty" xml:"SamplerMap,omitempty"`
+	Success          *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetJMeterSampleMetricsResponseBody) String() string {
@@ -940,29 +922,19 @@ func (s *GetJMeterSampleMetricsResponse) SetBody(v *GetJMeterSampleMetricsRespon
 }
 
 type GetJMeterSamplingLogsRequest struct {
-	// 压测引擎编号
-	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// 开始时间
-	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// 结束时间
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 关键字
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 最大响应时间，单位ms
-	MaxRT *int32 `json:"MaxRT,omitempty" xml:"MaxRT,omitempty"`
-	// 最小响应时间，单位ms
-	MinRT      *int32 `json:"MinRT,omitempty" xml:"MinRT,omitempty"`
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 报告ID
+	AgentId      *int64  `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	BeginTime    *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	MaxRT        *int32  `json:"MaxRT,omitempty" xml:"MaxRT,omitempty"`
+	MinRT        *int32  `json:"MinRT,omitempty" xml:"MinRT,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ReportId     *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
-	// 第几个采样器，从0开始
-	SamplerId *int32 `json:"SamplerId,omitempty" xml:"SamplerId,omitempty"`
-	// 采样结果是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 线程
-	Thread *string `json:"Thread,omitempty" xml:"Thread,omitempty"`
+	SamplerId    *int32  `json:"SamplerId,omitempty" xml:"SamplerId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Thread       *string `json:"Thread,omitempty" xml:"Thread,omitempty"`
 }
 
 func (s GetJMeterSamplingLogsRequest) String() string {
@@ -1039,16 +1011,15 @@ func (s *GetJMeterSamplingLogsRequest) SetThread(v string) *GetJMeterSamplingLog
 }
 
 type GetJMeterSamplingLogsResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 采样器的采样结果
-	SampleResults []*string `json:"SampleResults,omitempty" xml:"SampleResults,omitempty" type:"Repeated"`
-	Success       *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount    *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber     *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SampleResults  []*string `json:"SampleResults,omitempty" xml:"SampleResults,omitempty" type:"Repeated"`
+	Success        *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount     *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetJMeterSamplingLogsResponseBody) String() string {
@@ -1134,7 +1105,6 @@ func (s *GetJMeterSamplingLogsResponse) SetBody(v *GetJMeterSamplingLogsResponse
 }
 
 type GetJMeterSceneRunningDataRequest struct {
-	// 场景id
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -1152,14 +1122,13 @@ func (s *GetJMeterSceneRunningDataRequest) SetSceneId(v string) *GetJMeterSceneR
 }
 
 type GetJMeterSceneRunningDataResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DocumentUrl    *string `json:"DocumentUrl,omitempty" xml:"DocumentUrl,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 运行中的数据
-	RunningData *GetJMeterSceneRunningDataResponseBodyRunningData `json:"RunningData,omitempty" xml:"RunningData,omitempty" type:"Struct"`
-	Success     *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	DocumentUrl    *string                                           `json:"DocumentUrl,omitempty" xml:"DocumentUrl,omitempty"`
+	HttpStatusCode *int32                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RunningData    *GetJMeterSceneRunningDataResponseBodyRunningData `json:"RunningData,omitempty" xml:"RunningData,omitempty" type:"Struct"`
+	Success        *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetJMeterSceneRunningDataResponseBody) String() string {
@@ -1206,34 +1175,20 @@ func (s *GetJMeterSceneRunningDataResponseBody) SetSuccess(v bool) *GetJMeterSce
 }
 
 type GetJMeterSceneRunningDataResponseBodyRunningData struct {
-	// 压测引擎数量
-	AgentCount *int32 `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
-	// 压测引擎列表
-	AgentIdList []*string `json:"AgentIdList,omitempty" xml:"AgentIdList,omitempty" type:"Repeated"`
-	// 场景整体的采样状态
-	AllSampleStat map[string]interface{} `json:"AllSampleStat,omitempty" xml:"AllSampleStat,omitempty"`
-	// 并发量
-	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	// 是否生成了报告
-	HasReport *bool `json:"HasReport,omitempty" xml:"HasReport,omitempty"`
-	// 压测计划持续时间，单位s
-	HoldFor *int32 `json:"HoldFor,omitempty" xml:"HoldFor,omitempty"`
-	// 是否是调试
-	IsDebugging *bool `json:"IsDebugging,omitempty" xml:"IsDebugging,omitempty"`
-	// 每一个采样器的状态
+	AgentCount     *int32                   `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
+	AgentIdList    []*string                `json:"AgentIdList,omitempty" xml:"AgentIdList,omitempty" type:"Repeated"`
+	AllSampleStat  map[string]interface{}   `json:"AllSampleStat,omitempty" xml:"AllSampleStat,omitempty"`
+	Concurrency    *int32                   `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	HasReport      *bool                    `json:"HasReport,omitempty" xml:"HasReport,omitempty"`
+	HoldFor        *int32                   `json:"HoldFor,omitempty" xml:"HoldFor,omitempty"`
+	IsDebugging    *bool                    `json:"IsDebugging,omitempty" xml:"IsDebugging,omitempty"`
 	SampleStatList []map[string]interface{} `json:"SampleStatList,omitempty" xml:"SampleStatList,omitempty" type:"Repeated"`
-	// 场景id
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 场景名称
-	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// 当前所处阶段
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// 压测计划开始时间戳，单位ms
-	StartTimeTS *int64 `json:"StartTimeTS,omitempty" xml:"StartTimeTS,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 目前消耗的vum
-	Vum *int64 `json:"Vum,omitempty" xml:"Vum,omitempty"`
+	SceneId        *string                  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName      *string                  `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	StageName      *string                  `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StartTimeTS    *int64                   `json:"StartTimeTS,omitempty" xml:"StartTimeTS,omitempty"`
+	Status         *string                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Vum            *int64                   `json:"Vum,omitempty" xml:"Vum,omitempty"`
 }
 
 func (s GetJMeterSceneRunningDataResponseBodyRunningData) String() string {
@@ -1344,7 +1299,6 @@ func (s *GetJMeterSceneRunningDataResponse) SetBody(v *GetJMeterSceneRunningData
 }
 
 type GetOpenJMeterSceneRequest struct {
-	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -1362,13 +1316,12 @@ func (s *GetOpenJMeterSceneRequest) SetSceneId(v string) *GetOpenJMeterSceneRequ
 }
 
 type GetOpenJMeterSceneResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 场景详情
-	Scene   *GetOpenJMeterSceneResponseBodyScene `json:"Scene,omitempty" xml:"Scene,omitempty" type:"Struct"`
-	Success *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Scene          *GetOpenJMeterSceneResponseBodyScene `json:"Scene,omitempty" xml:"Scene,omitempty" type:"Struct"`
+	Success        *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOpenJMeterSceneResponseBody) String() string {
@@ -1410,51 +1363,30 @@ func (s *GetOpenJMeterSceneResponseBody) SetSuccess(v bool) *GetOpenJMeterSceneR
 }
 
 type GetOpenJMeterSceneResponseBodyScene struct {
-	// 施压机数量
-	AgentCount *int32 `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
-	// 基本信息
-	BaseInfo *GetOpenJMeterSceneResponseBodySceneBaseInfo `json:"BaseInfo,omitempty" xml:"BaseInfo,omitempty" type:"Struct"`
-	// 最大并发，并发模式下生效
-	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	// constantThroughputTimerType
-	ConstantThroughputTimerType *string `json:"ConstantThroughputTimerType,omitempty" xml:"ConstantThroughputTimerType,omitempty"`
-	// DNS配置
-	DnsCacheConfig *GetOpenJMeterSceneResponseBodySceneDnsCacheConfig `json:"DnsCacheConfig,omitempty" xml:"DnsCacheConfig,omitempty" type:"Struct"`
-	// 压测持续时间，单位为s
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 环境id
-	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// 文件列表
-	FileList []*GetOpenJMeterSceneResponseBodySceneFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
-	// 是否为VPC压测
-	IsVpcTest *bool  `json:"IsVpcTest,omitempty" xml:"IsVpcTest,omitempty"`
-	MaxRps    *int32 `json:"MaxRps,omitempty" xml:"MaxRps,omitempty"`
-	// 施压模式，concurrency_mode表示并发压测,tps_mode表示RPS压测
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// 压力来源。“”表示公网，intranet-vpc表示VPC
-	Pool *string `json:"Pool,omitempty" xml:"Pool,omitempty"`
-	// 递增时间，单位s
-	RampUp *int32 `json:"RampUp,omitempty" xml:"RampUp,omitempty"`
-	// VPC压测时配置
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 场景id
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 场景名
-	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// 安全组id，VPC压测时配置
-	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	StartConcurrency *int32  `json:"StartConcurrency,omitempty" xml:"StartConcurrency,omitempty"`
-	StartRps         *int32  `json:"StartRps,omitempty" xml:"StartRps,omitempty"`
-	// 递增阶梯数。预热时间和预热阶段数都不配置时 使用固定压力值 只配置预热时间，不配置阶段数时 使用均匀递增 预热时间和阶段数都配置时，并且steps<rampUp 使用阶梯递增 不能只配置steps，不配置rampUp 如果这样配置，默认使用固定压力值
-	Steps *int32 `json:"Steps,omitempty" xml:"Steps,omitempty"`
-	// synchronizing timer 类型
-	SyncTimerType *string `json:"SyncTimerType,omitempty" xml:"SyncTimerType,omitempty"`
-	// 测试文件
-	TestFile *string `json:"TestFile,omitempty" xml:"TestFile,omitempty"`
-	// 交换机id，VPC压测时配置
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// vpc的id，VPC压测时配置
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AgentCount                  *int32                                             `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
+	BaseInfo                    *GetOpenJMeterSceneResponseBodySceneBaseInfo       `json:"BaseInfo,omitempty" xml:"BaseInfo,omitempty" type:"Struct"`
+	Concurrency                 *int32                                             `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	ConstantThroughputTimerType *string                                            `json:"ConstantThroughputTimerType,omitempty" xml:"ConstantThroughputTimerType,omitempty"`
+	DnsCacheConfig              *GetOpenJMeterSceneResponseBodySceneDnsCacheConfig `json:"DnsCacheConfig,omitempty" xml:"DnsCacheConfig,omitempty" type:"Struct"`
+	Duration                    *int32                                             `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EnvironmentId               *string                                            `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	FileList                    []*GetOpenJMeterSceneResponseBodySceneFileList     `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	IsVpcTest                   *bool                                              `json:"IsVpcTest,omitempty" xml:"IsVpcTest,omitempty"`
+	MaxRps                      *int32                                             `json:"MaxRps,omitempty" xml:"MaxRps,omitempty"`
+	Mode                        *string                                            `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Pool                        *string                                            `json:"Pool,omitempty" xml:"Pool,omitempty"`
+	RampUp                      *int32                                             `json:"RampUp,omitempty" xml:"RampUp,omitempty"`
+	RegionId                    *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SceneId                     *string                                            `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName                   *string                                            `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	SecurityGroupId             *string                                            `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	StartConcurrency            *int32                                             `json:"StartConcurrency,omitempty" xml:"StartConcurrency,omitempty"`
+	StartRps                    *int32                                             `json:"StartRps,omitempty" xml:"StartRps,omitempty"`
+	Steps                       *int32                                             `json:"Steps,omitempty" xml:"Steps,omitempty"`
+	SyncTimerType               *string                                            `json:"SyncTimerType,omitempty" xml:"SyncTimerType,omitempty"`
+	TestFile                    *string                                            `json:"TestFile,omitempty" xml:"TestFile,omitempty"`
+	VSwitchId                   *string                                            `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                       *string                                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetOpenJMeterSceneResponseBodyScene) String() string {
@@ -1586,18 +1518,12 @@ func (s *GetOpenJMeterSceneResponseBodyScene) SetVpcId(v string) *GetOpenJMeterS
 }
 
 type GetOpenJMeterSceneResponseBodySceneBaseInfo struct {
-	// 创建人名
-	CreateName *string `json:"CreateName,omitempty" xml:"CreateName,omitempty"`
-	// 修改人名
-	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
-	// 操作类型
+	CreateName  *string `json:"CreateName,omitempty" xml:"CreateName,omitempty"`
+	ModifyName  *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// 场景压测负责人
-	Principal *string `json:"Principal,omitempty" xml:"Principal,omitempty"`
-	// 备注
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 场景来源
-	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Principal   *string `json:"Principal,omitempty" xml:"Principal,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Resource    *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
 func (s GetOpenJMeterSceneResponseBodySceneBaseInfo) String() string {
@@ -1639,12 +1565,9 @@ func (s *GetOpenJMeterSceneResponseBodySceneBaseInfo) SetResource(v string) *Get
 }
 
 type GetOpenJMeterSceneResponseBodySceneDnsCacheConfig struct {
-	// 是否清除缓存
-	ClearCacheEachIteration *bool `json:"ClearCacheEachIteration,omitempty" xml:"ClearCacheEachIteration,omitempty"`
-	// DNS服务器
-	DnsServers []*string `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Repeated"`
-	// 域名绑定
-	HostTable map[string]interface{} `json:"HostTable,omitempty" xml:"HostTable,omitempty"`
+	ClearCacheEachIteration *bool                  `json:"ClearCacheEachIteration,omitempty" xml:"ClearCacheEachIteration,omitempty"`
+	DnsServers              []*string              `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Repeated"`
+	HostTable               map[string]interface{} `json:"HostTable,omitempty" xml:"HostTable,omitempty"`
 }
 
 func (s GetOpenJMeterSceneResponseBodySceneDnsCacheConfig) String() string {
@@ -1671,20 +1594,13 @@ func (s *GetOpenJMeterSceneResponseBodySceneDnsCacheConfig) SetHostTable(v map[s
 }
 
 type GetOpenJMeterSceneResponseBodySceneFileList struct {
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件地址
+	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileOssAddress *string `json:"FileOssAddress,omitempty" xml:"FileOssAddress,omitempty"`
-	// 文件大小
-	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 文件的md5值
-	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// csv文件是否切分
-	SplitCsv *bool `json:"SplitCsv,omitempty" xml:"SplitCsv,omitempty"`
+	FileSize       *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	FileType       *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Md5            *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	SplitCsv       *bool   `json:"SplitCsv,omitempty" xml:"SplitCsv,omitempty"`
 }
 
 func (s GetOpenJMeterSceneResponseBodySceneFileList) String() string {
@@ -4795,9 +4711,7 @@ func (s *GetUserVpcsResponse) SetBody(v *GetUserVpcsResponseBody) *GetUserVpcsRe
 }
 
 type ListEnvsRequest struct {
-	// 环境ID
-	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
-	// 环境名
+	EnvId      *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
 	EnvName    *string `json:"EnvName,omitempty" xml:"EnvName,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -4832,8 +4746,7 @@ func (s *ListEnvsRequest) SetPageSize(v int32) *ListEnvsRequest {
 }
 
 type ListEnvsResponseBody struct {
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 环境列表
+	Code           *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Envs           []*ListEnvsResponseBodyEnvs `json:"Envs,omitempty" xml:"Envs,omitempty" type:"Repeated"`
 	HttpStatusCode *int32                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -4898,26 +4811,16 @@ func (s *ListEnvsResponseBody) SetTotalCount(v int64) *ListEnvsResponseBody {
 }
 
 type ListEnvsResponseBodyEnvs struct {
-	// 创建时间
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 环境ID
-	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
-	// 环境名
-	EnvName *string `json:"EnvName,omitempty" xml:"EnvName,omitempty"`
-	// 依赖的jmeter版本
-	EnvVersion *string `json:"EnvVersion,omitempty" xml:"EnvVersion,omitempty"`
-	// 包含的jar包
-	Files []*ListEnvsResponseBodyEnvsFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// 修改时间
-	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// jmeter属性
-	Properties []*ListEnvsResponseBodyEnvsProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
-	// 关联的场景
-	RelatedScenes []*string `json:"RelatedScenes,omitempty" xml:"RelatedScenes,omitempty" type:"Repeated"`
-	// 关联的场景id
-	RunningScenes []*string `json:"RunningScenes,omitempty" xml:"RunningScenes,omitempty" type:"Repeated"`
-	// 环境的文件总大小
-	UsedCapacity *int64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
+	CreateTime    *int64                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnvId         *string                               `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvName       *string                               `json:"EnvName,omitempty" xml:"EnvName,omitempty"`
+	EnvVersion    *string                               `json:"EnvVersion,omitempty" xml:"EnvVersion,omitempty"`
+	Files         []*ListEnvsResponseBodyEnvsFiles      `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	ModifiedTime  *int64                                `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Properties    []*ListEnvsResponseBodyEnvsProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+	RelatedScenes []*string                             `json:"RelatedScenes,omitempty" xml:"RelatedScenes,omitempty" type:"Repeated"`
+	RunningScenes []*string                             `json:"RunningScenes,omitempty" xml:"RunningScenes,omitempty" type:"Repeated"`
+	UsedCapacity  *int64                                `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
 }
 
 func (s ListEnvsResponseBodyEnvs) String() string {
@@ -4979,16 +4882,11 @@ func (s *ListEnvsResponseBodyEnvs) SetUsedCapacity(v int64) *ListEnvsResponseBod
 }
 
 type ListEnvsResponseBodyEnvsFiles struct {
-	// 文件ID
-	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件的oss地址
+	FileId         *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileOssAddress *string `json:"FileOssAddress,omitempty" xml:"FileOssAddress,omitempty"`
-	// 文件大小，单位为Byte
-	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// jar包的md5值
-	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	FileSize       *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	Md5            *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
 }
 
 func (s ListEnvsResponseBodyEnvsFiles) String() string {
@@ -5025,12 +4923,9 @@ func (s *ListEnvsResponseBodyEnvsFiles) SetMd5(v string) *ListEnvsResponseBodyEn
 }
 
 type ListEnvsResponseBodyEnvsProperties struct {
-	// 描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 属性名
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 属性值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListEnvsResponseBodyEnvsProperties) String() string {
@@ -5086,18 +4981,13 @@ func (s *ListEnvsResponse) SetBody(v *ListEnvsResponseBody) *ListEnvsResponse {
 }
 
 type ListJMeterReportsRequest struct {
-	// 报告的起始时间，单位为ms
-	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// 报告的结束时间
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 报告关键字
+	BeginTime  *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 报告ID
-	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// 要查看的报告的场景id
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	ReportId   *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	SceneId    *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s ListJMeterReportsRequest) String() string {
@@ -5209,16 +5099,11 @@ func (s *ListJMeterReportsResponseBody) SetTotalCount(v int64) *ListJMeterReport
 }
 
 type ListJMeterReportsResponseBodyReports struct {
-	// 压测开始时间
-	ActualStartTime *int64 `json:"ActualStartTime,omitempty" xml:"ActualStartTime,omitempty"`
-	// 压测持续时间
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 报告id
-	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// 报告名称
-	ReportName *string `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
-	// 消耗的vum
-	Vum *int64 `json:"Vum,omitempty" xml:"Vum,omitempty"`
+	ActualStartTime *int64  `json:"ActualStartTime,omitempty" xml:"ActualStartTime,omitempty"`
+	Duration        *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ReportId        *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ReportName      *string `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
+	Vum             *int64  `json:"Vum,omitempty" xml:"Vum,omitempty"`
 }
 
 func (s ListJMeterReportsResponseBodyReports) String() string {
@@ -5284,12 +5169,10 @@ func (s *ListJMeterReportsResponse) SetBody(v *ListJMeterReportsResponseBody) *L
 }
 
 type ListOpenJMeterScenesRequest struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 场景id
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 场景名
-	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SceneId    *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName  *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 }
 
 func (s ListOpenJMeterScenesRequest) String() string {
@@ -5386,12 +5269,9 @@ func (s *ListOpenJMeterScenesResponseBody) SetTotalCount(v int64) *ListOpenJMete
 }
 
 type ListOpenJMeterScenesResponseBodyJMeterScene struct {
-	// 压测持续时间
 	DurationStr *string `json:"DurationStr,omitempty" xml:"DurationStr,omitempty"`
-	// 场景id
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 场景名
-	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName   *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 }
 
 func (s ListOpenJMeterScenesResponseBodyJMeterScene) String() string {
@@ -5668,7 +5548,6 @@ func (s *ModifyPtsSceneResponse) SetBody(v *ModifyPtsSceneResponseBody) *ModifyP
 }
 
 type RemoveEnvRequest struct {
-	// 要删除的环境ID
 	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
 }
 
@@ -5756,7 +5635,6 @@ func (s *RemoveEnvResponse) SetBody(v *RemoveEnvResponseBody) *RemoveEnvResponse
 }
 
 type RemoveOpenJMeterSceneRequest struct {
-	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -5844,7 +5722,6 @@ func (s *RemoveOpenJMeterSceneResponse) SetBody(v *RemoveOpenJMeterSceneResponse
 }
 
 type SaveEnvRequest struct {
-	// 环境
 	Env *SaveEnvRequestEnv `json:"Env,omitempty" xml:"Env,omitempty" type:"Struct"`
 }
 
@@ -5862,16 +5739,11 @@ func (s *SaveEnvRequest) SetEnv(v *SaveEnvRequestEnv) *SaveEnvRequest {
 }
 
 type SaveEnvRequestEnv struct {
-	// 环境id，不填表示新建环境，填了表示修改该环境
-	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
-	// 环境名称
-	EnvName *string `json:"EnvName,omitempty" xml:"EnvName,omitempty"`
-	// 环境依赖的文件
-	Files []*SaveEnvRequestEnvFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// jmeter插件的环境标签
-	JmeterPluginLabel *string `json:"JmeterPluginLabel,omitempty" xml:"JmeterPluginLabel,omitempty"`
-	// jmeter属性
-	Properties []*SaveEnvRequestEnvProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+	EnvId             *string                        `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvName           *string                        `json:"EnvName,omitempty" xml:"EnvName,omitempty"`
+	Files             []*SaveEnvRequestEnvFiles      `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	JmeterPluginLabel *string                        `json:"JmeterPluginLabel,omitempty" xml:"JmeterPluginLabel,omitempty"`
+	Properties        []*SaveEnvRequestEnvProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
 }
 
 func (s SaveEnvRequestEnv) String() string {
@@ -5908,9 +5780,7 @@ func (s *SaveEnvRequestEnv) SetProperties(v []*SaveEnvRequestEnvProperties) *Sav
 }
 
 type SaveEnvRequestEnvFiles struct {
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件oss地址，目前只支持上海region的oss地址
+	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileOssAddress *string `json:"FileOssAddress,omitempty" xml:"FileOssAddress,omitempty"`
 }
 
@@ -5933,12 +5803,9 @@ func (s *SaveEnvRequestEnvFiles) SetFileOssAddress(v string) *SaveEnvRequestEnvF
 }
 
 type SaveEnvRequestEnvProperties struct {
-	// 描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 属性名
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 属性值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SaveEnvRequestEnvProperties) String() string {
@@ -5965,7 +5832,6 @@ func (s *SaveEnvRequestEnvProperties) SetValue(v string) *SaveEnvRequestEnvPrope
 }
 
 type SaveEnvShrinkRequest struct {
-	// 环境
 	EnvShrink *string `json:"Env,omitempty" xml:"Env,omitempty"`
 }
 
@@ -5983,8 +5849,7 @@ func (s *SaveEnvShrinkRequest) SetEnvShrink(v string) *SaveEnvShrinkRequest {
 }
 
 type SaveEnvResponseBody struct {
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 操作的环境id
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	EnvId          *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
 	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -6060,7 +5925,6 @@ func (s *SaveEnvResponse) SetBody(v *SaveEnvResponseBody) *SaveEnvResponse {
 }
 
 type SaveOpenJMeterSceneRequest struct {
-	// 场景详情
 	OpenJMeterScene *SaveOpenJMeterSceneRequestOpenJMeterScene `json:"OpenJMeterScene,omitempty" xml:"OpenJMeterScene,omitempty" type:"Struct"`
 }
 
@@ -6078,51 +5942,30 @@ func (s *SaveOpenJMeterSceneRequest) SetOpenJMeterScene(v *SaveOpenJMeterSceneRe
 }
 
 type SaveOpenJMeterSceneRequestOpenJMeterScene struct {
-	// 施压引擎数量
-	AgentCount *int32 `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
-	// 最大并发
-	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	// constantThroughputTimerType
-	ConstantThroughputTimerType *string `json:"ConstantThroughputTimerType,omitempty" xml:"ConstantThroughputTimerType,omitempty"`
-	// DNS配置
-	DnsCacheConfig *SaveOpenJMeterSceneRequestOpenJMeterSceneDnsCacheConfig `json:"DnsCacheConfig,omitempty" xml:"DnsCacheConfig,omitempty" type:"Struct"`
-	// 压测持续时间
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 关联的环境id
-	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// 文件列表
-	FileList []*SaveOpenJMeterSceneRequestOpenJMeterSceneFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
-	// 是否为VPC测试，默认为false表示公网测试，此值为true时VPC相关配置才生效
-	IsVpcTest *bool `json:"IsVpcTest,omitempty" xml:"IsVpcTest,omitempty"`
-	// Jmeter属性
-	JMeterProperties []*SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties `json:"JMeterProperties,omitempty" xml:"JMeterProperties,omitempty" type:"Repeated"`
-	// jmeter插件的环境标签
-	JmeterPluginLabel *string `json:"JmeterPluginLabel,omitempty" xml:"JmeterPluginLabel,omitempty"`
-	MaxRps            *int32  `json:"MaxRps,omitempty" xml:"MaxRps,omitempty"`
-	// 压力模式
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// 预热时间
-	RampUp *int32 `json:"RampUp,omitempty" xml:"RampUp,omitempty"`
-	// region的id，VPC压测时配置
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 场景ID
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 场景名
-	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// 安全组id，VPC压测时配置
-	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	StartConcurrency *int32  `json:"StartConcurrency,omitempty" xml:"StartConcurrency,omitempty"`
-	StartRps         *int32  `json:"StartRps,omitempty" xml:"StartRps,omitempty"`
-	// 预热阶段
-	Steps *int32 `json:"Steps,omitempty" xml:"Steps,omitempty"`
-	// synchronizing timer 类型
-	SyncTimerType *string `json:"SyncTimerType,omitempty" xml:"SyncTimerType,omitempty"`
-	// 测试文件
-	TestFile *string `json:"TestFile,omitempty" xml:"TestFile,omitempty"`
-	// 交换机id，VPC压测时配置
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// vpc的id，VPC压测时配置
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AgentCount                  *int32                                                       `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
+	Concurrency                 *int32                                                       `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	ConstantThroughputTimerType *string                                                      `json:"ConstantThroughputTimerType,omitempty" xml:"ConstantThroughputTimerType,omitempty"`
+	DnsCacheConfig              *SaveOpenJMeterSceneRequestOpenJMeterSceneDnsCacheConfig     `json:"DnsCacheConfig,omitempty" xml:"DnsCacheConfig,omitempty" type:"Struct"`
+	Duration                    *int32                                                       `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EnvironmentId               *string                                                      `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	FileList                    []*SaveOpenJMeterSceneRequestOpenJMeterSceneFileList         `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	IsVpcTest                   *bool                                                        `json:"IsVpcTest,omitempty" xml:"IsVpcTest,omitempty"`
+	JMeterProperties            []*SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties `json:"JMeterProperties,omitempty" xml:"JMeterProperties,omitempty" type:"Repeated"`
+	JmeterPluginLabel           *string                                                      `json:"JmeterPluginLabel,omitempty" xml:"JmeterPluginLabel,omitempty"`
+	MaxRps                      *int32                                                       `json:"MaxRps,omitempty" xml:"MaxRps,omitempty"`
+	Mode                        *string                                                      `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	RampUp                      *int32                                                       `json:"RampUp,omitempty" xml:"RampUp,omitempty"`
+	RegionId                    *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SceneId                     *string                                                      `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName                   *string                                                      `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	SecurityGroupId             *string                                                      `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	StartConcurrency            *int32                                                       `json:"StartConcurrency,omitempty" xml:"StartConcurrency,omitempty"`
+	StartRps                    *int32                                                       `json:"StartRps,omitempty" xml:"StartRps,omitempty"`
+	Steps                       *int32                                                       `json:"Steps,omitempty" xml:"Steps,omitempty"`
+	SyncTimerType               *string                                                      `json:"SyncTimerType,omitempty" xml:"SyncTimerType,omitempty"`
+	TestFile                    *string                                                      `json:"TestFile,omitempty" xml:"TestFile,omitempty"`
+	VSwitchId                   *string                                                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                       *string                                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SaveOpenJMeterSceneRequestOpenJMeterScene) String() string {
@@ -6283,20 +6126,13 @@ func (s *SaveOpenJMeterSceneRequestOpenJMeterSceneDnsCacheConfig) SetHostTable(v
 }
 
 type SaveOpenJMeterSceneRequestOpenJMeterSceneFileList struct {
-	// 文件id
-	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件公网可访问的oss地址
+	FileId         *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileOssAddress *string `json:"FileOssAddress,omitempty" xml:"FileOssAddress,omitempty"`
-	// 文件大小，单位byte
-	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件的MD5
-	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// 是否切分，仅针对csv有效
-	SplitCsv *bool `json:"SplitCsv,omitempty" xml:"SplitCsv,omitempty"`
-	// 文件tag
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	FileSize       *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	Md5            *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	SplitCsv       *bool   `json:"SplitCsv,omitempty" xml:"SplitCsv,omitempty"`
+	Tags           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s SaveOpenJMeterSceneRequestOpenJMeterSceneFileList) String() string {
@@ -6366,7 +6202,6 @@ func (s *SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties) SetValue(v s
 }
 
 type SaveOpenJMeterSceneShrinkRequest struct {
-	// 场景详情
 	OpenJMeterSceneShrink *string `json:"OpenJMeterScene,omitempty" xml:"OpenJMeterScene,omitempty"`
 }
 
@@ -6388,9 +6223,8 @@ type SaveOpenJMeterSceneResponseBody struct {
 	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 场景id
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	SceneId        *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SaveOpenJMeterSceneResponseBody) String() string {
@@ -6461,7 +6295,6 @@ func (s *SaveOpenJMeterSceneResponse) SetBody(v *SaveOpenJMeterSceneResponseBody
 }
 
 type SavePtsSceneRequest struct {
-	// 场景详细信息
 	Scene *SavePtsSceneRequestScene `json:"Scene,omitempty" xml:"Scene,omitempty" type:"Struct"`
 }
 
@@ -6479,20 +6312,13 @@ func (s *SavePtsSceneRequest) SetScene(v *SavePtsSceneRequestScene) *SavePtsScen
 }
 
 type SavePtsSceneRequestScene struct {
-	// 高级设置
-	AdvanceSetting *SavePtsSceneRequestSceneAdvanceSetting `json:"AdvanceSetting,omitempty" xml:"AdvanceSetting,omitempty" type:"Struct"`
-	// 文件参数
-	FileParameterList []*SavePtsSceneRequestSceneFileParameterList `json:"FileParameterList,omitempty" xml:"FileParameterList,omitempty" type:"Repeated"`
-	// 全局自定义参数
+	AdvanceSetting      *SavePtsSceneRequestSceneAdvanceSetting        `json:"AdvanceSetting,omitempty" xml:"AdvanceSetting,omitempty" type:"Struct"`
+	FileParameterList   []*SavePtsSceneRequestSceneFileParameterList   `json:"FileParameterList,omitempty" xml:"FileParameterList,omitempty" type:"Repeated"`
 	GlobalParameterList []*SavePtsSceneRequestSceneGlobalParameterList `json:"GlobalParameterList,omitempty" xml:"GlobalParameterList,omitempty" type:"Repeated"`
-	// 施压配置
-	LoadConfig *SavePtsSceneRequestSceneLoadConfig `json:"LoadConfig,omitempty" xml:"LoadConfig,omitempty" type:"Struct"`
-	// 链路配置
-	RelationList []*SavePtsSceneRequestSceneRelationList `json:"RelationList,omitempty" xml:"RelationList,omitempty" type:"Repeated"`
-	// 场景ID，不传为新建，传递为修改
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 场景名
-	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	LoadConfig          *SavePtsSceneRequestSceneLoadConfig            `json:"LoadConfig,omitempty" xml:"LoadConfig,omitempty" type:"Struct"`
+	RelationList        []*SavePtsSceneRequestSceneRelationList        `json:"RelationList,omitempty" xml:"RelationList,omitempty" type:"Repeated"`
+	SceneId             *string                                        `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName           *string                                        `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 }
 
 func (s SavePtsSceneRequestScene) String() string {
@@ -6539,14 +6365,10 @@ func (s *SavePtsSceneRequestScene) SetSceneName(v string) *SavePtsSceneRequestSc
 }
 
 type SavePtsSceneRequestSceneAdvanceSetting struct {
-	// 超时时间，单位秒
-	ConnectionTimeoutInSecond *int32 `json:"ConnectionTimeoutInSecond,omitempty" xml:"ConnectionTimeoutInSecond,omitempty"`
-	// 域名绑定IP关系
-	DomainBindingList []*SavePtsSceneRequestSceneAdvanceSettingDomainBindingList `json:"DomainBindingList,omitempty" xml:"DomainBindingList,omitempty" type:"Repeated"`
-	// 日志采样率，[1,50]，且是10的倍数
-	LogRate *int32 `json:"LogRate,omitempty" xml:"LogRate,omitempty"`
-	// 新增成功状态码，多个用英文逗号隔开
-	SuccessCode *string `json:"SuccessCode,omitempty" xml:"SuccessCode,omitempty"`
+	ConnectionTimeoutInSecond *int32                                                     `json:"ConnectionTimeoutInSecond,omitempty" xml:"ConnectionTimeoutInSecond,omitempty"`
+	DomainBindingList         []*SavePtsSceneRequestSceneAdvanceSettingDomainBindingList `json:"DomainBindingList,omitempty" xml:"DomainBindingList,omitempty" type:"Repeated"`
+	LogRate                   *int32                                                     `json:"LogRate,omitempty" xml:"LogRate,omitempty"`
+	SuccessCode               *string                                                    `json:"SuccessCode,omitempty" xml:"SuccessCode,omitempty"`
 }
 
 func (s SavePtsSceneRequestSceneAdvanceSetting) String() string {
@@ -6578,10 +6400,8 @@ func (s *SavePtsSceneRequestSceneAdvanceSetting) SetSuccessCode(v string) *SaveP
 }
 
 type SavePtsSceneRequestSceneAdvanceSettingDomainBindingList struct {
-	// 域名
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// 对应的IP
-	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
+	Domain *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Ips    []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
 }
 
 func (s SavePtsSceneRequestSceneAdvanceSettingDomainBindingList) String() string {
@@ -6603,9 +6423,7 @@ func (s *SavePtsSceneRequestSceneAdvanceSettingDomainBindingList) SetIps(v []*st
 }
 
 type SavePtsSceneRequestSceneFileParameterList struct {
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件的oss地址，必须是公网可访问的
+	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileOssAddress *string `json:"FileOssAddress,omitempty" xml:"FileOssAddress,omitempty"`
 }
 
@@ -6628,9 +6446,7 @@ func (s *SavePtsSceneRequestSceneFileParameterList) SetFileOssAddress(v string) 
 }
 
 type SavePtsSceneRequestSceneGlobalParameterList struct {
-	// 参数名
-	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
-	// 全局参数值，不可参数化
+	ParamName  *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
 	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
 }
 
@@ -6653,26 +6469,16 @@ func (s *SavePtsSceneRequestSceneGlobalParameterList) SetParamValue(v string) *S
 }
 
 type SavePtsSceneRequestSceneLoadConfig struct {
-	// 指定机器数，并发必须大于250(RPS大于2000)才能使用，最大扩展机器数不能超过 最大并发/250(最大RPS/2000)
-	AgentCount *int32 `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
-	// API的起始、最大RPS值设置，在RPS模式下使用
-	ApiLoadConfigList []*SavePtsSceneRequestSceneLoadConfigApiLoadConfigList `json:"ApiLoadConfigList,omitempty" xml:"ApiLoadConfigList,omitempty" type:"Repeated"`
-	// 是否自动递增，只有在并发模式下有效，即 testMode=concurrency_mode 时
-	AutoStep *bool `json:"AutoStep,omitempty" xml:"AutoStep,omitempty"`
-	// 场景施压量级配置信息
-	Configuration *SavePtsSceneRequestSceneLoadConfigConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Struct"`
-	// 递增百分比，取值范围[10,100]，且是整十倍；只有在并发模式且是自动递增模式下有效，即 testMode=concurrency_mode 且 autoStep=true 时
-	Increment *int32 `json:"Increment,omitempty" xml:"Increment,omitempty"`
-	// 单量级持续时长，单位分钟，一定是小于施压时长 maxRunningTime
-	KeepTime *int32 `json:"KeepTime,omitempty" xml:"KeepTime,omitempty"`
-	// 施压时长，单位分钟，[1-1440]
-	MaxRunningTime *int32 `json:"MaxRunningTime,omitempty" xml:"MaxRunningTime,omitempty"`
-	// 链路的起始、最大并发值设置，在并发模式下使用
+	AgentCount             *int32                                                      `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
+	ApiLoadConfigList      []*SavePtsSceneRequestSceneLoadConfigApiLoadConfigList      `json:"ApiLoadConfigList,omitempty" xml:"ApiLoadConfigList,omitempty" type:"Repeated"`
+	AutoStep               *bool                                                       `json:"AutoStep,omitempty" xml:"AutoStep,omitempty"`
+	Configuration          *SavePtsSceneRequestSceneLoadConfigConfiguration            `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Struct"`
+	Increment              *int32                                                      `json:"Increment,omitempty" xml:"Increment,omitempty"`
+	KeepTime               *int32                                                      `json:"KeepTime,omitempty" xml:"KeepTime,omitempty"`
+	MaxRunningTime         *int32                                                      `json:"MaxRunningTime,omitempty" xml:"MaxRunningTime,omitempty"`
 	RelationLoadConfigList []*SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList `json:"RelationLoadConfigList,omitempty" xml:"RelationLoadConfigList,omitempty" type:"Repeated"`
-	// 施压模式，并发模式(concurrency_mode) 和RPS模式(tps_mode)
-	TestMode *string `json:"TestMode,omitempty" xml:"TestMode,omitempty"`
-	// VPC配置
-	VpcLoadConfig *SavePtsSceneRequestSceneLoadConfigVpcLoadConfig `json:"VpcLoadConfig,omitempty" xml:"VpcLoadConfig,omitempty" type:"Struct"`
+	TestMode               *string                                                     `json:"TestMode,omitempty" xml:"TestMode,omitempty"`
+	VpcLoadConfig          *SavePtsSceneRequestSceneLoadConfigVpcLoadConfig            `json:"VpcLoadConfig,omitempty" xml:"VpcLoadConfig,omitempty" type:"Struct"`
 }
 
 func (s SavePtsSceneRequestSceneLoadConfig) String() string {
@@ -6734,12 +6540,9 @@ func (s *SavePtsSceneRequestSceneLoadConfig) SetVpcLoadConfig(v *SavePtsSceneReq
 }
 
 type SavePtsSceneRequestSceneLoadConfigApiLoadConfigList struct {
-	// apiId
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// 起始RPS值
-	RpsBegin *int32 `json:"RpsBegin,omitempty" xml:"RpsBegin,omitempty"`
-	// 最大RPS值
-	RpsLimit *int32 `json:"RpsLimit,omitempty" xml:"RpsLimit,omitempty"`
+	ApiId    *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	RpsBegin *int32  `json:"RpsBegin,omitempty" xml:"RpsBegin,omitempty"`
+	RpsLimit *int32  `json:"RpsLimit,omitempty" xml:"RpsLimit,omitempty"`
 }
 
 func (s SavePtsSceneRequestSceneLoadConfigApiLoadConfigList) String() string {
@@ -6766,14 +6569,10 @@ func (s *SavePtsSceneRequestSceneLoadConfigApiLoadConfigList) SetRpsLimit(v int3
 }
 
 type SavePtsSceneRequestSceneLoadConfigConfiguration struct {
-	// 所有链路的起始并发总值，均分给每个链路，在并发模式下使用，若不设置该值，则relationLoadConfig必须填写
 	AllConcurrencyBegin *int32 `json:"AllConcurrencyBegin,omitempty" xml:"AllConcurrencyBegin,omitempty"`
-	// 所有链路的最大并发总值，均分给每个链路，在并发模式下使用，若不设置该值，则relationLoadConfig必须填写
 	AllConcurrencyLimit *int32 `json:"AllConcurrencyLimit,omitempty" xml:"AllConcurrencyLimit,omitempty"`
-	// 所有API的起始RPS总值，均分给每个API，在RPS模式下使用，若不设置该值，则apiLoadConfig必须填写
-	AllRpsBegin *int32 `json:"AllRpsBegin,omitempty" xml:"AllRpsBegin,omitempty"`
-	// 所有API的最大RPS总值，均分给每个API，在RPS模式下使用，若不设置该值，则apiLoadConfig必须填写
-	AllRpsLimit *int32 `json:"AllRpsLimit,omitempty" xml:"AllRpsLimit,omitempty"`
+	AllRpsBegin         *int32 `json:"AllRpsBegin,omitempty" xml:"AllRpsBegin,omitempty"`
+	AllRpsLimit         *int32 `json:"AllRpsLimit,omitempty" xml:"AllRpsLimit,omitempty"`
 }
 
 func (s SavePtsSceneRequestSceneLoadConfigConfiguration) String() string {
@@ -6805,12 +6604,9 @@ func (s *SavePtsSceneRequestSceneLoadConfigConfiguration) SetAllRpsLimit(v int32
 }
 
 type SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList struct {
-	// concurrencyBegin
-	ConcurrencyBegin *int32 `json:"ConcurrencyBegin,omitempty" xml:"ConcurrencyBegin,omitempty"`
-	// 最大并发
-	ConcurrencyLimit *int32 `json:"ConcurrencyLimit,omitempty" xml:"ConcurrencyLimit,omitempty"`
-	// 链路id
-	RelationId *string `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	ConcurrencyBegin *int32  `json:"ConcurrencyBegin,omitempty" xml:"ConcurrencyBegin,omitempty"`
+	ConcurrencyLimit *int32  `json:"ConcurrencyLimit,omitempty" xml:"ConcurrencyLimit,omitempty"`
+	RelationId       *string `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 }
 
 func (s SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList) String() string {
@@ -6837,14 +6633,10 @@ func (s *SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList) SetRelationId
 }
 
 type SavePtsSceneRequestSceneLoadConfigVpcLoadConfig struct {
-	// regionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 安全组的Id
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// 交换机的Id
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// vpcId
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SavePtsSceneRequestSceneLoadConfigVpcLoadConfig) String() string {
@@ -6876,14 +6668,10 @@ func (s *SavePtsSceneRequestSceneLoadConfigVpcLoadConfig) SetVpcId(v string) *Sa
 }
 
 type SavePtsSceneRequestSceneRelationList struct {
-	// 链路下的API信息
-	ApiList []*SavePtsSceneRequestSceneRelationListApiList `json:"ApiList,omitempty" xml:"ApiList,omitempty" type:"Repeated"`
-	// 链路中的文件参数配置信息
+	ApiList                  []*SavePtsSceneRequestSceneRelationListApiList                  `json:"ApiList,omitempty" xml:"ApiList,omitempty" type:"Repeated"`
 	FileParameterExplainList []*SavePtsSceneRequestSceneRelationListFileParameterExplainList `json:"FileParameterExplainList,omitempty" xml:"FileParameterExplainList,omitempty" type:"Repeated"`
-	// 链路id
-	RelationId *string `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
-	// 链路名
-	RelationName *string `json:"RelationName,omitempty" xml:"RelationName,omitempty"`
+	RelationId               *string                                                         `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	RelationName             *string                                                         `json:"RelationName,omitempty" xml:"RelationName,omitempty"`
 }
 
 func (s SavePtsSceneRequestSceneRelationList) String() string {
@@ -6915,26 +6703,16 @@ func (s *SavePtsSceneRequestSceneRelationList) SetRelationName(v string) *SavePt
 }
 
 type SavePtsSceneRequestSceneRelationListApiList struct {
-	// API的id
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// API名
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// 请求body
-	Body *SavePtsSceneRequestSceneRelationListApiListBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// 检查点
-	CheckPointList []*SavePtsSceneRequestSceneRelationListApiListCheckPointList `json:"CheckPointList,omitempty" xml:"CheckPointList,omitempty" type:"Repeated"`
-	// 出参
-	ExportList []*SavePtsSceneRequestSceneRelationListApiListExportList `json:"ExportList,omitempty" xml:"ExportList,omitempty" type:"Repeated"`
-	// headerList
-	HeaderList []*SavePtsSceneRequestSceneRelationListApiListHeaderList `json:"HeaderList,omitempty" xml:"HeaderList,omitempty" type:"Repeated"`
-	// 请求方法
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// 重定向次数，只能是0（允许重定向）或者10（不允许重定向）
-	RedirectCountLimit *int32 `json:"RedirectCountLimit,omitempty" xml:"RedirectCountLimit,omitempty"`
-	// API超时时间，单位秒，默认5s，范围[1-60]
-	TimeoutInSecond *int32 `json:"TimeoutInSecond,omitempty" xml:"TimeoutInSecond,omitempty"`
-	// 压测URL
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	ApiId              *string                                                      `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName            *string                                                      `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	Body               *SavePtsSceneRequestSceneRelationListApiListBody             `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	CheckPointList     []*SavePtsSceneRequestSceneRelationListApiListCheckPointList `json:"CheckPointList,omitempty" xml:"CheckPointList,omitempty" type:"Repeated"`
+	ExportList         []*SavePtsSceneRequestSceneRelationListApiListExportList     `json:"ExportList,omitempty" xml:"ExportList,omitempty" type:"Repeated"`
+	HeaderList         []*SavePtsSceneRequestSceneRelationListApiListHeaderList     `json:"HeaderList,omitempty" xml:"HeaderList,omitempty" type:"Repeated"`
+	Method             *string                                                      `json:"Method,omitempty" xml:"Method,omitempty"`
+	RedirectCountLimit *int32                                                       `json:"RedirectCountLimit,omitempty" xml:"RedirectCountLimit,omitempty"`
+	TimeoutInSecond    *int32                                                       `json:"TimeoutInSecond,omitempty" xml:"TimeoutInSecond,omitempty"`
+	Url                *string                                                      `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s SavePtsSceneRequestSceneRelationListApiList) String() string {
@@ -6996,9 +6774,7 @@ func (s *SavePtsSceneRequestSceneRelationListApiList) SetUrl(v string) *SavePtsS
 }
 
 type SavePtsSceneRequestSceneRelationListApiListBody struct {
-	// body 的实际内容 形式 {"key1":"value2","key2":"value2"}
-	BodyValue *string `json:"BodyValue,omitempty" xml:"BodyValue,omitempty"`
-	// body 类型，默认 application/x-www-form-urlencoded
+	BodyValue   *string `json:"BodyValue,omitempty" xml:"BodyValue,omitempty"`
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 }
 
@@ -7021,14 +6797,10 @@ func (s *SavePtsSceneRequestSceneRelationListApiListBody) SetContentType(v strin
 }
 
 type SavePtsSceneRequestSceneRelationListApiListCheckPointList struct {
-	// 检查对象 type=HEADER 时，表示header中的字段，type=EXPORTED_PARAM ，表示出参名
-	CheckPoint *string `json:"CheckPoint,omitempty" xml:"CheckPoint,omitempty"`
-	// 检查点类型 响应body(BODY_TEXT)，响应header(HEADER)， 响应状态码(STATUS_CODE) ，出参（EXPORTED_PARAM）
-	CheckType *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// 检查内容，即期望值
+	CheckPoint  *string `json:"CheckPoint,omitempty" xml:"CheckPoint,omitempty"`
+	CheckType   *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
 	ExpectValue *string `json:"ExpectValue,omitempty" xml:"ExpectValue,omitempty"`
-	// 检查条件 CheckPointOperator 中
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Operator    *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 }
 
 func (s SavePtsSceneRequestSceneRelationListApiListCheckPointList) String() string {
@@ -7060,13 +6832,9 @@ func (s *SavePtsSceneRequestSceneRelationListApiListCheckPointList) SetOperator(
 }
 
 type SavePtsSceneRequestSceneRelationListApiListExportList struct {
-	// 第几个匹配项，可以是数字 或 random（ BODY_TEXT情况下才需要count）
-	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 出参名
-	ExportName *string `json:"ExportName,omitempty" xml:"ExportName,omitempty"`
-	// 出参来源 请求体(BODY_TEXT)，请求体(BODY_JSON)，请求头(HEADER)，响应状态码(STATUS_CODE)
-	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
-	// 出参的解析表达式
+	Count       *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	ExportName  *string `json:"ExportName,omitempty" xml:"ExportName,omitempty"`
+	ExportType  *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
 	ExportValue *string `json:"ExportValue,omitempty" xml:"ExportValue,omitempty"`
 }
 
@@ -7099,9 +6867,7 @@ func (s *SavePtsSceneRequestSceneRelationListApiListExportList) SetExportValue(v
 }
 
 type SavePtsSceneRequestSceneRelationListApiListHeaderList struct {
-	// header参数名
-	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
-	// 参数对应的值
+	HeaderName  *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
 	HeaderValue *string `json:"HeaderValue,omitempty" xml:"HeaderValue,omitempty"`
 }
 
@@ -7124,13 +6890,9 @@ func (s *SavePtsSceneRequestSceneRelationListApiListHeaderList) SetHeaderValue(v
 }
 
 type SavePtsSceneRequestSceneRelationListFileParameterExplainList struct {
-	// 是否作为基准文件
-	BaseFile *bool `json:"BaseFile,omitempty" xml:"BaseFile,omitempty"`
-	// 文件是否轮询一次
-	CycleOnce *bool `json:"CycleOnce,omitempty" xml:"CycleOnce,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件使用的参数列名
+	BaseFile      *bool   `json:"BaseFile,omitempty" xml:"BaseFile,omitempty"`
+	CycleOnce     *bool   `json:"CycleOnce,omitempty" xml:"CycleOnce,omitempty"`
+	FileName      *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileParamName *string `json:"FileParamName,omitempty" xml:"FileParamName,omitempty"`
 }
 
@@ -7163,7 +6925,6 @@ func (s *SavePtsSceneRequestSceneRelationListFileParameterExplainList) SetFilePa
 }
 
 type SavePtsSceneShrinkRequest struct {
-	// 场景详细信息
 	SceneShrink *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 }
 
@@ -7185,9 +6946,8 @@ type SavePtsSceneResponseBody struct {
 	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 场景ID
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	SceneId        *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SavePtsSceneResponseBody) String() string {
@@ -7351,7 +7111,6 @@ func (s *StartDebugPtsSceneResponse) SetBody(v *StartDebugPtsSceneResponseBody) 
 }
 
 type StartDebuggingJMeterSceneRequest struct {
-	// 场景id
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -7538,7 +7297,6 @@ func (s *StartPtsSceneResponse) SetBody(v *StartPtsSceneResponseBody) *StartPtsS
 }
 
 type StartTestingJMeterSceneRequest struct {
-	// 场景id
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -7725,7 +7483,6 @@ func (s *StopDebugPtsSceneResponse) SetBody(v *StopDebugPtsSceneResponseBody) *S
 }
 
 type StopDebuggingJMeterSceneRequest struct {
-	// 场景id
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -7900,7 +7657,6 @@ func (s *StopPtsSceneResponse) SetBody(v *StopPtsSceneResponseBody) *StopPtsScen
 }
 
 type StopTestingJMeterSceneRequest struct {
-	// 场景id
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
