@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -130,8 +130,9 @@ func (s *CreateVerifySchemeResponseBodyGateVerifySchemeDTO) SetSchemeCode(v stri
 }
 
 type CreateVerifySchemeResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVerifySchemeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVerifySchemeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateVerifySchemeResponse) String() string {
@@ -144,6 +145,11 @@ func (s CreateVerifySchemeResponse) GoString() string {
 
 func (s *CreateVerifySchemeResponse) SetHeaders(v map[string]*string) *CreateVerifySchemeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateVerifySchemeResponse) SetStatusCode(v int32) *CreateVerifySchemeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -229,8 +235,9 @@ func (s *DeleteVerifySchemeResponseBody) SetResult(v bool) *DeleteVerifySchemeRe
 }
 
 type DeleteVerifySchemeResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteVerifySchemeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVerifySchemeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteVerifySchemeResponse) String() string {
@@ -243,6 +250,11 @@ func (s DeleteVerifySchemeResponse) GoString() string {
 
 func (s *DeleteVerifySchemeResponse) SetHeaders(v map[string]*string) *DeleteVerifySchemeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteVerifySchemeResponse) SetStatusCode(v int32) *DeleteVerifySchemeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -345,8 +357,9 @@ func (s *DescribeVerifySchemeResponseBodySchemeQueryResultDTO) SetAppEncryptInfo
 }
 
 type DescribeVerifySchemeResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVerifySchemeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVerifySchemeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVerifySchemeResponse) String() string {
@@ -359,6 +372,11 @@ func (s DescribeVerifySchemeResponse) GoString() string {
 
 func (s *DescribeVerifySchemeResponse) SetHeaders(v map[string]*string) *DescribeVerifySchemeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeVerifySchemeResponse) SetStatusCode(v int32) *DescribeVerifySchemeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -467,8 +485,9 @@ func (s *GetAuthTokenResponseBodyTokenInfo) SetJwtToken(v string) *GetAuthTokenR
 }
 
 type GetAuthTokenResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAuthTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAuthTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAuthTokenResponse) String() string {
@@ -481,6 +500,11 @@ func (s GetAuthTokenResponse) GoString() string {
 
 func (s *GetAuthTokenResponse) SetHeaders(v map[string]*string) *GetAuthTokenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAuthTokenResponse) SetStatusCode(v int32) *GetAuthTokenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -589,8 +613,9 @@ func (s *GetAuthorizationUrlResponseBodyData) SetAuthorizationUrl(v string) *Get
 }
 
 type GetAuthorizationUrlResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAuthorizationUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAuthorizationUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAuthorizationUrlResponse) String() string {
@@ -603,6 +628,11 @@ func (s GetAuthorizationUrlResponse) GoString() string {
 
 func (s *GetAuthorizationUrlResponse) SetHeaders(v map[string]*string) *GetAuthorizationUrlResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAuthorizationUrlResponse) SetStatusCode(v int32) *GetAuthorizationUrlResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -723,8 +753,9 @@ func (s *GetCertifyResultResponseBodyData) SetVerifyResult(v string) *GetCertify
 }
 
 type GetCertifyResultResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetCertifyResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCertifyResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetCertifyResultResponse) String() string {
@@ -737,6 +768,11 @@ func (s GetCertifyResultResponse) GoString() string {
 
 func (s *GetCertifyResultResponse) SetHeaders(v map[string]*string) *GetCertifyResultResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetCertifyResultResponse) SetStatusCode(v int32) *GetCertifyResultResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -839,8 +875,9 @@ func (s *GetMobileResponseBodyGetMobileResultDTO) SetMobile(v string) *GetMobile
 }
 
 type GetMobileResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetMobileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMobileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetMobileResponse) String() string {
@@ -853,6 +890,11 @@ func (s GetMobileResponse) GoString() string {
 
 func (s *GetMobileResponse) SetHeaders(v map[string]*string) *GetMobileResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetMobileResponse) SetStatusCode(v int32) *GetMobileResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1015,8 +1057,9 @@ func (s *GetSmsAuthTokensResponseBodyData) SetStsToken(v string) *GetSmsAuthToke
 }
 
 type GetSmsAuthTokensResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSmsAuthTokensResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSmsAuthTokensResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSmsAuthTokensResponse) String() string {
@@ -1029,6 +1072,11 @@ func (s GetSmsAuthTokensResponse) GoString() string {
 
 func (s *GetSmsAuthTokensResponse) SetHeaders(v map[string]*string) *GetSmsAuthTokensResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetSmsAuthTokensResponse) SetStatusCode(v int32) *GetSmsAuthTokensResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1184,8 +1232,9 @@ func (s *QueryGateVerifyBillingPublicResponseBodyDataSceneBillingList) SetSingle
 }
 
 type QueryGateVerifyBillingPublicResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryGateVerifyBillingPublicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryGateVerifyBillingPublicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryGateVerifyBillingPublicResponse) String() string {
@@ -1198,6 +1247,11 @@ func (s QueryGateVerifyBillingPublicResponse) GoString() string {
 
 func (s *QueryGateVerifyBillingPublicResponse) SetHeaders(v map[string]*string) *QueryGateVerifyBillingPublicResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QueryGateVerifyBillingPublicResponse) SetStatusCode(v int32) *QueryGateVerifyBillingPublicResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1371,8 +1425,9 @@ func (s *QueryGateVerifyStatisticPublicResponseBodyDataDayStatistic) SetTotalUnk
 }
 
 type QueryGateVerifyStatisticPublicResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryGateVerifyStatisticPublicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryGateVerifyStatisticPublicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryGateVerifyStatisticPublicResponse) String() string {
@@ -1385,6 +1440,11 @@ func (s QueryGateVerifyStatisticPublicResponse) GoString() string {
 
 func (s *QueryGateVerifyStatisticPublicResponse) SetHeaders(v map[string]*string) *QueryGateVerifyStatisticPublicResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QueryGateVerifyStatisticPublicResponse) SetStatusCode(v int32) *QueryGateVerifyStatisticPublicResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1499,8 +1559,9 @@ func (s *VerifyMobileResponseBodyGateVerifyResultDTO) SetVerifyResult(v string) 
 }
 
 type VerifyMobileResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *VerifyMobileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifyMobileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s VerifyMobileResponse) String() string {
@@ -1513,6 +1574,11 @@ func (s VerifyMobileResponse) GoString() string {
 
 func (s *VerifyMobileResponse) SetHeaders(v map[string]*string) *VerifyMobileResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VerifyMobileResponse) SetStatusCode(v int32) *VerifyMobileResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1621,8 +1687,9 @@ func (s *VerifyPhoneWithTokenResponseBodyGateVerify) SetVerifyResult(v string) *
 }
 
 type VerifyPhoneWithTokenResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *VerifyPhoneWithTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifyPhoneWithTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s VerifyPhoneWithTokenResponse) String() string {
@@ -1635,6 +1702,11 @@ func (s VerifyPhoneWithTokenResponse) GoString() string {
 
 func (s *VerifyPhoneWithTokenResponse) SetHeaders(v map[string]*string) *VerifyPhoneWithTokenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VerifyPhoneWithTokenResponse) SetStatusCode(v int32) *VerifyPhoneWithTokenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1708,8 +1780,9 @@ func (s *VerifySmsCodeResponseBody) SetRequestId(v string) *VerifySmsCodeRespons
 }
 
 type VerifySmsCodeResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *VerifySmsCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifySmsCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s VerifySmsCodeResponse) String() string {
@@ -1722,6 +1795,11 @@ func (s VerifySmsCodeResponse) GoString() string {
 
 func (s *VerifySmsCodeResponse) SetHeaders(v map[string]*string) *VerifySmsCodeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VerifySmsCodeResponse) SetStatusCode(v int32) *VerifySmsCodeResponse {
+	s.StatusCode = &v
 	return s
 }
 
